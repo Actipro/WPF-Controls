@@ -1,0 +1,322 @@
+<ribbon:RibbonWindow x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mediaImaging="clr-namespace:System.Windows.Media.Imaging;assembly=PresentationCore"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	ApplicationName="Actipro Ribbon QuickStart"	
+	DocumentName="Getting Started #13"	
+    >
+
+	<DockPanel>
+		
+		<!-- Ribbon Control -->
+		<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top">
+			
+			<!-- Tab Panel Items (Appear next to the tabs) -->
+			<ribbon:Ribbon.TabPanelItems>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Help16.png" Label="Application Help" KeyTipAccessText="Z" />
+			</ribbon:Ribbon.TabPanelItems>
+	
+			<ribbon:Ribbon.ApplicationMenu>
+				<!-- Application Menu -->
+				<ribbon:ApplicationMenu>
+				
+					<!-- Application Menu Items -->
+					<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="New" KeyTipAccessText="N" />
+					<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" KeyTipAccessText="O" />
+					<ribbon:Button ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" KeyTipAccessText="S" />
+					<ribbon:SplitButton ImageSourceLarge="/Images/Icons/SaveAs32.png" Label="Save As" KeyTipAccessText="A" />
+					<ribbon:Separator />
+					<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Print32.png" Label="Print" KeyTipAccessText="P" />
+					<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ManageVersions32.png" Label="Prepare" KeyTipAccessText="E" />
+					<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Mail32.png" Label="Send" KeyTipAccessText="D" />
+					<ribbon:PopupButton ImageSourceLarge="/Images/Icons/PublishPost32.png" Label="Publish" KeyTipAccessText="U" />
+					<ribbon:Separator />
+					<ribbon:Button ImageSourceLarge="/Images/Icons/Close32.png" Label="Close" KeyTipAccessText="C" />
+
+					<!-- Additional Content (Right side of application menu) -->
+					<ribbon:ApplicationMenu.AdditionalContent>
+						<ribbon:RecentDocumentMenu>
+							<shared:RecentDocumentManager x:Name="recentDocManager" />
+						</ribbon:RecentDocumentMenu>
+					</ribbon:ApplicationMenu.AdditionalContent>
+					
+					<!-- Application Menu Footer Buttons -->
+					<ribbon:ApplicationMenu.FooterButtons>
+						<ribbon:Button ImageSourceSmall="/Images/Icons/Options16.png" Label="Options" KeyTipAccessText="I" />
+						<ribbon:Button ImageSourceSmall="/Images/Icons/Exit16.png" Label="Exit Sample"  KeyTipAccessText="X" />
+					</ribbon:ApplicationMenu.FooterButtons>
+				</ribbon:ApplicationMenu>
+			</ribbon:Ribbon.ApplicationMenu>
+			
+			<!-- Quick Access ToolBar (QAT) -->
+			<ribbon:Ribbon.QuickAccessToolBarItems>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+			</ribbon:Ribbon.QuickAccessToolBarItems>
+						
+			<!-- Tabs -->
+			<ribbon:Ribbon.Tabs>
+			
+				<ribbon:Tab Label="Home" KeyTipAccessText="H">
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Paste16.png" Label="Clipboard" KeyTipAccessText="ZC">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="10" Size="Small" />
+						</ribbon:Group.Variants>					
+						<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Paste32.png" ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="V" ScreenTipDescription="Paste the contents of the Clipboard.">
+							<ribbon:Menu>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="P" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteSpecial16.png" Label="Paste Special" KeyTipAccessText="S" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteHyperlink16.png" Label="Paste Hyperlink" KeyTipAccessText="H" />
+							</ribbon:Menu>
+						</ribbon:SplitButton>
+						<ribbon:StackPanel ItemVariantBehavior="MediumThenSmallWhenSmall">
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Cut16.png" Label="Cut" KeyTipAccessText="X" ScreenTipDescription="Cut the selection from the document and put it on the Clipboard." />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Copy16.png" Label="Copy" KeyTipAccessText="C" ScreenTipDescription="Copy the selection and put it on the Clipboard." />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/FormatPainter16.png" Label="Format Painter" KeyTipAccessText="FP" ScreenTipDescription="Copy formatting from one place and apply it to another." />
+						</ribbon:StackPanel>
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font" KeyTipAccessText="ZF">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="50" Size="Medium" />
+							<ribbon:GroupVariant Priority="90" Size="Collapsed" />
+						</ribbon:Group.Variants>
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,3,2,5,4,1">
+							<ribbon:ButtonGroup HasBorder="False">
+								<ribbon:FontFamilyComboBox Width="135" Command="sample:ApplicationCommands.FontFamily" KeyTipAccessText="FF" />
+								<ribbon:FontSizeComboBox Width="40" Command="sample:ApplicationCommands.FontSize" KeyTipAccessText="FS" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/GrowFont16.png" Label="Grow Font" KeyTipAccessText="FG" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ShrinkFont16.png" Label="Shrink Font" KeyTipAccessText="FK" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" KeyTipAccessText="E" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" KeyTipAccessText="1" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" KeyTipAccessText="2" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" KeyTipAccessText="3" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Strikethrough16.png" Label="Strikethrough" KeyTipAccessText="4" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Subscript16.png" Label="Subscript" KeyTipAccessText="5" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Superscript16.png" Label="Superscript" KeyTipAccessText="6" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ChangeCase16.png" Label="Change Case" KeyTipAccessText="7" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/TextHighlightColor16.png" Label="Text Highlight Color" KeyTipAccessText="I" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font Color" KeyTipAccessText="FC" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" KeyTipAccessText="ZP">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="40" Size="Medium" />
+							<ribbon:GroupVariant Priority="80" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,1,4,5,6,2,3">
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Bullets16.png" Label="Bullets" KeyTipAccessText="U" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Numbering16.png" Label="Numbering" KeyTipAccessText="N" />
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/MultilevelList16.png" Label="Multilevel List" KeyTipAccessText="M" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/DecreaseIndent16.png" Label="Decrease Indent" KeyTipAccessText="AO" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/IncreaseIndent16.png" Label="Increase Indent" KeyTipAccessText="AI" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Sort16.png" Label="Sort" KeyTipAccessText="SO" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ToggleSymbols16.png" Label="Show/Hide Symbols" KeyTipAccessText="8" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextLeft16.png" Label="Align Text Left" KeyTipAccessText="AL" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Center" KeyTipAccessText="AC" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextRight16.png" Label="Align Text Right" KeyTipAccessText="AR" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextJustify16.png" Label="Justify" KeyTipAccessText="AJ" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/LineSpacing16.png" Label="Line Spacing" KeyTipAccessText="K" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Shading16.png" Label="Shading" KeyTipAccessText="H" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/BorderBottom16.png" Label="Borders" KeyTipAccessText="B" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/QuickStyles16.png" Label="Styles" KeyTipAccessText="ZS">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="20" Size="Medium" />
+							<ribbon:GroupVariant Priority="60" Size="Small" />
+							<ribbon:GroupVariant Priority="70" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:RibbonGallery ImageSourceLarge="/Images/Icons/QuickStyles32.png" Label="Quick Styles" KeyTipAccessText="L" 
+							ScreenTipDescription="Format titles, quotes, and other text using the styles in this gallery." IsSelectionHighlightVisible="False">
+							<ribbon:RibbonGallery.ItemsSource>
+								<x:Array Type="{x:Type mediaImaging:BitmapImage}">
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Normal" UriSource="/Images/RibbonGalleries/Styles/Normal.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="No Spacing" UriSource="/Images/RibbonGalleries/Styles/NoSpacing.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Heading 1" UriSource="/Images/RibbonGalleries/Styles/Heading1.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Heading 2" UriSource="/Images/RibbonGalleries/Styles/Heading2.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Title" UriSource="/Images/RibbonGalleries/Styles/Title.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtitle" UriSource="/Images/RibbonGalleries/Styles/SubTitle.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtle Emphasis" UriSource="/Images/RibbonGalleries/Styles/SubtleEmphasis.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Emphasis" UriSource="/Images/RibbonGalleries/Styles/Emphasis.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Emphasis" UriSource="/Images/RibbonGalleries/Styles/IntenseEmphasis.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Strong" UriSource="/Images/RibbonGalleries/Styles/Strong.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Quote" UriSource="/Images/RibbonGalleries/Styles/Quote.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Quote" UriSource="/Images/RibbonGalleries/Styles/IntenseQuote.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtle Reference" UriSource="/Images/RibbonGalleries/Styles/SubtleReference.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Reference" UriSource="/Images/RibbonGalleries/Styles/IntenseReference.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Book Title" UriSource="/Images/RibbonGalleries/Styles/BookTitle.png" />
+									<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Paragraph" UriSource="/Images/RibbonGalleries/Styles/ListParagraph.png" />
+								</x:Array>
+							</ribbon:RibbonGallery.ItemsSource>
+							<ribbon:RibbonGallery.ItemTemplate>
+								<DataTemplate>
+									<Image Margin="2" Source="{Binding BindsDirectlyToSource=True}" Stretch="None" />
+								</DataTemplate>
+							</ribbon:RibbonGallery.ItemTemplate>
+							<ribbon:RibbonGallery.PopupContent>
+								<StackPanel>
+									<ribbon:PopupGallery InitialColumnCount="4" IsSelectionHighlightVisible="False"
+										ItemTemplate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemTemplate}"										
+										ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemsSource}"
+										/>
+									<ribbon:Separator />
+									<ribbon:Menu>
+										<ribbon:Button Label="Save Selection as a New Quick Style..." />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/ApplyStyles16.png" Label="Apply Styles..." />
+									</ribbon:Menu>
+								</StackPanel>
+							</ribbon:RibbonGallery.PopupContent>
+						</ribbon:RibbonGallery>
+						<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ChangeStyles32.png" Label="Change Styles" KeyTipAccessText="G" />
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Find16.png" Label="Editing" KeyTipAccessText="ZN">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="30" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+							<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Find16.png" Label="Find" KeyTipAccessText="FD" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Replace16.png" Label="Replace" KeyTipAccessText="R" />
+							<ribbon:PopupButton ImageSourceSmall="/Images/Icons/Select16.png" Label="Select" KeyTipAccessText="SL" />
+						</ribbon:StackPanel>					
+					</ribbon:Group>				
+				</ribbon:Tab>
+				
+				<ribbon:Tab Label="Insert" KeyTipAccessText="N" />
+				<ribbon:Tab Label="Page Layout" KeyTipAccessText="P" />
+				<ribbon:Tab Label="References" KeyTipAccessText="S" />
+				<ribbon:Tab Label="Mailings" KeyTipAccessText="M" />
+				<ribbon:Tab Label="Review" KeyTipAccessText="R" />
+				<ribbon:Tab Label="View" KeyTipAccessText="W" />
+			</ribbon:Ribbon.Tabs>
+			
+		</ribbon:Ribbon>
+		
+		<!-- StatusBar Control (Is the normal WPF control but with styling) -->
+		<StatusBar DockPanel.Dock="Bottom" FocusManager.IsFocusScope="True" Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarStyleKey}}"
+					FontSize="{x:Static ribbon:RibbonMeasurements.UIFontSize}">
+			<StatusBar.Resources>
+				<shared:PercentageConverter x:Key="PercentageConverter" />
+			</StatusBar.Resources>
+			<StatusBar.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+				</ItemsPanelTemplate>
+			</StatusBar.ItemsPanel>
+			
+			<StatusBarItem Grid.Column="0" Padding="3,0,0,0">
+				<ribbon:Button Context="StatusBarItem" Padding="6,0,6,0" Label="Page: 1 of 1" 
+					ScreenTipHeader="Page number in document. Click to open the Go To dialog box." />
+			</StatusBarItem>
+			<Separator Grid.Column="1" />
+			<StatusBarItem Grid.Column="2" Padding="0">
+				<ribbon:Button Context="StatusBarItem" Padding="6,0,6,0" Label="Words: Not available" 
+					ScreenTipHeader="Number of words in document. Click to open Word Count dialog box."
+					/>
+			</StatusBarItem>
+			<Separator Grid.Column="3" />
+			<StatusBarItem Grid.Column="4" />
+			<Separator Grid.Column="5" />
+			<StatusBarItem Grid.Column="6" Padding="4,0,4,0">
+				<StackPanel Orientation="Horizontal">
+					<ribbon:ButtonGroup Context="StatusBarItem">
+						<ribbon:Button ImageSourceSmall="/Images/Icons/ViewFullScreenReading16.png" ScreenTipHeader="Read Mode" />
+						<ribbon:Button ImageSourceSmall="/Images/Icons/ViewPrintLayout16.png" ScreenTipHeader="Print Layout" />
+						<ribbon:Button ImageSourceSmall="/Images/Icons/ViewWebLayout16.png" ScreenTipHeader="Web Layout" />
+					</ribbon:ButtonGroup>
+					
+					<ribbon:Button Context="StatusBarItem" Padding="6,0,6,0" 
+						ScreenTipHeader="Zoom level: Click to open the Zoom dialog box."
+						Label="{Binding ElementName=scaleSlider, Path=Value, Converter={StaticResource PercentageConverter}, ConverterParameter=%}"
+						/>						
+					
+					<RepeatButton Margin="1,0,1,0" CommandTarget="{Binding ElementName=scaleSlider}" ribbon:ScreenTipService.ScreenTipHeader="Zoom Out" 
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey}}"/>
+					<Slider x:Name="scaleSlider" Width="100" Value="1.0" Minimum="0.5" Maximum="2.0" LargeChange="0.5" SmallChange="0.1" VerticalAlignment="Center" 
+						IsSnapToTickEnabled="True" TickFrequency="0.1" ribbon:ScreenTipService.ScreenTipHeader="Zoom"
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderStyleKey}}" />
+					<RepeatButton Margin="1,0,1,0" CommandTarget="{Binding ElementName=scaleSlider}" ribbon:ScreenTipService.ScreenTipHeader="Zoom In" 
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey}}"/>
+				</StackPanel>
+			</StatusBarItem>
+		</StatusBar>	
+		
+		<RichTextBox x:Name="editor" Margin="7" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+			<RichTextBox.Resources>
+				<!-- Make the scroll viewer in the RichTextBox use the custom scrollbar style -->
+				<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
+			</RichTextBox.Resources>
+			
+			<FlowDocument>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Adding a StatusBar</Paragraph>
+				<Paragraph>
+					In this step we have added a native WPF <Bold>StatusBar</Bold> to the <Bold>RibbonWindow</Bold>.
+				</Paragraph>
+				<Paragraph>
+					The <Bold>StatusBar</Bold> uses a standard <Bold>Grid</Bold> for layout and 
+					uses a default lighter style for panels along with an alternate darker style for panels that may be applied
+					to the right side items of the <Bold>StatusBar</Bold>.
+				</Paragraph>
+				<Paragraph>
+					Note that a number of ribbon <Bold>Button</Bold> controls are used in the <Bold>StatusBar</Bold>.
+					They have their context set to <Bold>StatusBarItem</Bold> so that they initially render like labels 
+					and switch to a button sort of UI when the mouse moves over them.
+					A <Bold>ButtonGroup</Bold> is also used to wrap several small <Bold>Button</Bold> controls with a border.
+				</Paragraph>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">What's Next</Paragraph>
+				<Paragraph>
+					In the next <Bold>Getting Started</Bold> step, we will describe what needs to be done to tie your controls to WPF commands.
+				</Paragraph>
+			</FlowDocument>								
+		</RichTextBox>
+			
+	</DockPanel>
+	
+</ribbon:RibbonWindow>

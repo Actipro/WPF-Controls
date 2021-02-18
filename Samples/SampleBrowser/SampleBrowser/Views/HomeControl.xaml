@@ -1,0 +1,127 @@
+﻿<UserControl x:Name="overlayControl" x:Class="ActiproSoftware.SampleBrowser.HomeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+			 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+			 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+			 FontSize="14"
+			 Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+			 >
+
+	<views:InertiaScrollViewer Style="{DynamicResource SampleInertiaScrollViewerStyle}">
+		<StackPanel>
+			
+			<!-- Featured Demos -->
+			<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+				<TextBlock Margin="50,30,50,0" Text="FEATURED DEMOS" Style="{StaticResource DocumentSectionHeadingTextBlockStyle}" />
+				<ItemsControl Margin="50,20,0,20" ItemsSource="{Binding ProductData.FeaturedSamples}" Style="{StaticResource FeaturedProductItemInfoItemsControlStyle}" />
+			</StackPanel>
+		
+			<!-- All Products -->
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+
+					<Grid Margin="50,30,50,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="2*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+			
+						<TextBlock Margin="0,0,20,0" Text="DISCOVER OUR WPF CONTROLS" Style="{StaticResource DocumentSectionHeadingTextBlockStyle}" />
+						<sampleBrowser:SampleSearchAutoCompleteBox Grid.Column="2" Margin="0,0,-17,0" />
+					</Grid>
+			
+					<ItemsControl Margin="50,20,7,10" ItemsSource="{Binding ProductData.ProductFamilies}" Style="{StaticResource ProductFamilyInfoButtonItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+			
+			<!-- What's New in Version -->
+			<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+				<Grid Margin="50,30,50,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" MinWidth="30" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+			
+					<TextBlock Style="{StaticResource DocumentSectionHeadingTextBlockStyle}">
+						<Run Text="WHAT'S NEW IN" />
+						<Run Text="{Binding ProductData.ProductVersionText, Mode=OneTime}" />
+					</TextBlock>
+					
+					<TextBlock Grid.Column="2" Margin="0,0,-17,0">
+						<Hyperlink CommandParameter="{Binding ProductData.ReleaseHistory.FirstItem}" Command="{Binding NavigateViewToItemInfoCommand}" Style="{StaticResource HyperlinkStyle}">Release History</Hyperlink>
+					</TextBlock>
+				</Grid>
+			
+				<ItemsControl Margin="50,20,33,10" ItemsSource="{Binding ProductData.ProductFamiliesWithNews}" IsTabStop="False">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<views:MultiColumnPanel MaxColumnCount="4" ColumnMinWidth="294" ColumnMargin="20" CanRemoveEmptyColumns="True" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Margin="0,0,0,20">
+								<DockPanel>
+									<Canvas DockPanel.Dock="Left" Width="24" Height="24" VerticalAlignment="Center">
+										<Rectangle Width="24" Height="24" Fill="#70000000" RenderTransformOrigin="0.5,0.5" FlowDirection="LeftToRight">
+											<Rectangle.OpacityMask>
+												<ImageBrush ImageSource="{Binding Source={x:Reference image}, Path=Source}" />
+											</Rectangle.OpacityMask>
+											<Rectangle.RenderTransform>
+												<TransformGroup>
+													<TranslateTransform Y="1" />
+													<ScaleTransform ScaleX="1.02" ScaleY="1.02" />
+												</TransformGroup>
+											</Rectangle.RenderTransform>
+										</Rectangle>
+										<Image x:Name="image" Width="24" Height="24" Source="{Binding LogoImageSource}" />
+									</Canvas>
+									<TextBlock Margin="7,0,0,0" Style="{StaticResource ColumnHeaderHyperlinkTextBlockStyle}">
+										<Hyperlink CommandParameter="{Binding OverviewItem}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}">
+											<Run Text="{Binding Title}" />
+										</Hyperlink>
+									</TextBlock>
+								</DockPanel>
+								<ItemsControl Margin="0,7,0,0" ItemsSource="{Binding News}" IsTabStop="False">
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<DockPanel Margin="0,3">
+												<Rectangle DockPanel.Dock="Left" Margin="9,7,9,0" Width="6" Height="6" Fill="#e37700" VerticalAlignment="Top" />
+												<TextBlock Style="{StaticResource HyperlinkTextBlockStyle}" Padding="0" TextWrapping="Wrap">
+													<Hyperlink CommandParameter="{Binding TargetUri}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl, AncestorLevel=2}, Path=DataContext.NavigateViewToItemInfoCommand}">
+														<Hyperlink.Style>
+															<Style TargetType="Hyperlink" BasedOn="{StaticResource HyperlinkStyle}">
+																<Style.Triggers>
+																	<Trigger Property="CommandParameter" Value="{x:Null}">
+																		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+																		<Setter Property="IsEnabled" Value="False" />
+																	</Trigger>
+																</Style.Triggers>
+															</Style>
+														</Hyperlink.Style>
+														
+														<Run Text="{Binding Title}" />
+													</Hyperlink>
+												</TextBlock>
+											</DockPanel>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</StackPanel>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+				
+		</StackPanel>
+	</views:InertiaScrollViewer>
+	
+</UserControl>

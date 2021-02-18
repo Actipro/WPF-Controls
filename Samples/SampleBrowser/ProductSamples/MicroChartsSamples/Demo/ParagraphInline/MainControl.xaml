@@ -1,0 +1,66 @@
+<sampleBrowser:ProductItemControl
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.ParagraphInline.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Micro charts are great because they can help visualize data in small areas.
+					They even lend themselves to be used within paragraphs, such as in reports or presentations.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelNarrowStyle}">
+
+			<sampleBrowser:LabeledCardControl>
+				<RichTextBox BorderThickness="0">
+					<FlowDocument FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}">
+						<Paragraph>
+							<Span Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" 
+								  FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}">Fiscal Year Summary Report</Span>
+						</Paragraph>
+						<Paragraph>
+							This past fiscal year saw an increase in the number of widgets produced.
+							Over <Bold>11 million</Bold> widgets were created, continuing the trend of production increases quarter over quarter
+							<InlineUIContainer>
+								<microcharts:MicroXYChart Margin="5,0,5,0" Width="100" Height="12">
+									<microcharts:MicroLineSeries ItemsSource="{Binding MonthlyProduction}" MarkerVisibility="First,Last" />
+								</microcharts:MicroXYChart>
+							</InlineUIContainer>
+							from company inception through the end of the past fiscal year.
+						</Paragraph>
+						<Paragraph>
+							Month-by-month widget sales
+							<InlineUIContainer>
+								<microcharts:MicroXYChart Margin="5,0,5,0" Width="100" Height="12" IsAxisBaselineVisible="True" YAxisMinimum="0">
+									<microcharts:MicroBarSeries ItemsSource="{Binding MonthlySales}" BarStyleKinds="Low,High" />
+								</microcharts:MicroXYChart>
+							</InlineUIContainer>
+							this past fiscal year topped the prior fiscal year's sales
+							<InlineUIContainer>
+								<microcharts:MicroXYChart Margin="5,0,5,0" Width="100" Height="12" IsAxisBaselineVisible="True" YAxisMinimum="0">
+									<microcharts:MicroBarSeries ItemsSource="{Binding PreviousMonthlySales}" BarStyleKinds="Low,High" />
+								</microcharts:MicroXYChart>
+							</InlineUIContainer>
+							nearly every month.
+							Fiscal year sales reached over <Bold>$50 million</Bold>.
+						</Paragraph>
+					</FlowDocument>
+				</RichTextBox >
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,92 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Exporting.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c"
+    >
+	
+	<DockPanel Style="{StaticResource SamplePanelWideStyle}">
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="0,0,0,20" FocusManager.IsFocusScope="true">
+			<DockPanel>
+				<WrapPanel DockPanel.Dock="Left" VerticalAlignment="Center">
+					<TextBlock Margin="0,0,5,0" Text="Exporter" VerticalAlignment="Center" />
+					<ComboBox x:Name="exporterComboBox">
+						<ComboBoxItem Content="RTF (Rich Text Format)" />
+						<ComboBoxItem Content="HTML (Class-Based Styling)" />
+						<ComboBoxItem Content="HTML (Inline Styling)" />
+						<ComboBoxItem Content="HTML (Fragment w/Inline Styling)" />
+					</ComboBox>
+					<Button Margin="3,0,0,0" Content="Export" Click="OnExportButtonClick" />
+				</WrapPanel>
+			</DockPanel>
+		</shared:PixelSnapper>
+		
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			
+			<DockPanel Grid.Row="1" Margin="0,0,20,0">
+				<TextBlock DockPanel.Dock="Top" Margin="0,0,0,3" Text="EXPORTED MARKUP" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+				<editor:SyntaxEditor x:Name="exportEditor">
+					<editor:EditorDocument IsReadOnly="True" />
+				</editor:SyntaxEditor>
+			</DockPanel>
+
+			<DockPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0">
+				<TextBlock DockPanel.Dock="Top" Margin="0,0,0,3" Text="RTF PREVIEW" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />			
+				<RichTextBox x:Name="previewRichTextBox" IsReadOnly="True" VerticalScrollBarVisibility="Visible" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+			</DockPanel>
+
+			<DockPanel Grid.ColumnSpan="2" Margin="0,0,0,20">
+				<TextBlock DockPanel.Dock="Top" Margin="0,0,0,3" Text="SYNTAXEDITOR INSTANCE" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+				<editor:SyntaxEditor x:Name="editor">
+					<editor:EditorDocument xml:space="preserve">
+						<editor:EditorDocument.Language>
+							<sample:SimpleSyntaxLanguage />
+						</editor:EditorDocument.Language><![CDATA[/*
+
+SyntaxEditor has built-in capabilities for exporting its content
+to RTF and HTML.  In the case of HTML, there are several output types
+from which to choose.
+
+This QuickStart allows you to choose an exporter to use in the drop-down
+above.  Then click the Export button to see the output below.  In the 
+case of RTF, a live preview is displayed on the lower right too.
+
+There are methods available for exporting an entire snapshot, a
+selection within a view, or exporting a snapshot to a file.
+
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+	
+function Subtract(x, y) {
+	return x - y;
+}
+	
+function Multiply(x, y) {
+	return x * y;
+}
+	
+function Divide(x, y) {
+	return x / y;
+}
+				
+]]></editor:EditorDocument>
+				</editor:SyntaxEditor>
+			</DockPanel>
+		</Grid>
+
+	</DockPanel>
+
+</UserControl>

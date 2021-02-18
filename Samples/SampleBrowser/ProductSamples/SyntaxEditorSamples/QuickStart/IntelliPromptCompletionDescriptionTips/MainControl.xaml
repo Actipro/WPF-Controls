@@ -1,0 +1,45 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionDescriptionTips.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel HorizontalAlignment="Left">
+				<Button Content="Complete word (Ctrl+Space)" Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" CommandTarget="{Binding ElementName=editor}" />
+				<Button Margin="0,3,0,0" Content="Show completion list" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" CommandTarget="{Binding ElementName=editor}" />
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace IntelliPromptCompletionDescriptionTipsOnDemandQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how description tips for completion list
+	/// items can be generated on-demand.  The completion list shows
+	/// a member list containing C# native type keywords.
+	/// </summary>
+	/// </remarks>
+	/// The items for this sample are hardcoded in the code behind of 
+	/// this sample.  Normally when implementing a language, you would 
+	/// alter the items based on the current context of the caret.
+	/// </remarks>
+	public class Foo {
+
+		public void AMethod() {
+			// Press Ctrl+Space below this comment to show the 
+			// completion list.  Then highlight an item in the list to
+			// see its dynamically-generated description tip.
+			
+		}
+	}
+}]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

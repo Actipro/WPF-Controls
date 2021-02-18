@@ -1,0 +1,147 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbTailItems.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Dictionary.xaml" />
+				<ResourceDictionary>
+					<!-- DataTemplates for tail BreadcrumbItems -->
+					<DataTemplate x:Key="BreadcrumbItemTemplateImageOnly">
+						<shared:DynamicImage Source="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}"
+							   Stretch="None"
+							   VerticalAlignment="Center" />
+					</DataTemplate>
+
+					<!-- This Style will explicitly set the ItemsSource property on a BreadcrumbItem. Therefore, a
+					       HierarchicalDataTemplate is not needed when used with this style. -->
+					<Style x:Key="BreadcrumbItemStyleBase"
+						   TargetType="{x:Type navigation:BreadcrumbItem}">
+						<Setter Property="ItemsSource"
+								Value="{Binding XPath=ShellItem}" />
+						<Setter Property="ImageSource"
+								Value="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}" />
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStyleProgressiveFade70"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will progressively dim the tail BreadCrumbItems below the selected item. -->
+							<Trigger Property="IsTailItem"
+									 Value="true">
+								<Setter Property="Opacity"
+										Value="0.7" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStyleImageOnly"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will show the tail BreadCrumbItems below the selected item with an image only. -->
+							<Trigger Property="IsTailItem"
+										 Value="true">
+								<Setter Property="HeaderTemplate"
+										Value="{StaticResource BreadcrumbItemTemplateImageOnly}" />
+								<Setter Property="ToolTip"
+										Value="{Binding XPath=@Name}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=MaxTailItemCount}">
+							<gridseditors:Int32PropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" />
+						</grids:PropertyModel>
+						<grids:PropertyModel DisplayName="Tail item display style">
+							<grids:PropertyModel.ValueTemplate>
+								<DataTemplate>
+									<ComboBox Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}"
+											  SelectionChanged="OnDisplayStyleListSelectionChanged" SelectedIndex="0">
+										<ComboBoxItem>Fade the tail items to 50% opacity (default)</ComboBoxItem>
+										<ComboBoxItem>Progressively fade tail items to 70% opacity</ComboBoxItem>
+										<ComboBoxItem>Show with image only (includes tooltip)</ComboBoxItem>
+									</ComboBox>
+								</DataTemplate>
+							</grids:PropertyModel.ValueTemplate>
+						</grids:PropertyModel>
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				
+					<Button Margin="0,10,0,0" Content="Select leaf item" Style="{StaticResource SampleOptionsActionButtonStyle}" Click="OnSelectLeafItemClick"
+							ToolTip="This button can be used to quickly jump to a leaf item deep in the hierarchy." />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By default, the Actipro Breadcrumb control mimics the Breadcrumb control available in Windows Explorer,
+					by ensuring that the selected item is always the last item displayed. Breadcrumb controls available in other
+					Operating Systems keep the tail items visible (with a unique look), if the user navigates up the hierarchy.
+					Since the tail items are still visible, the user can quickly navigate back down at any time. Once the user navigates
+					to a new branch, or path, then the tail items will be removed if they are no longer part of the selected branch.
+					<LineBreak /><LineBreak />
+					The displaying of tail items is controlled by the MaxTailItemCount property, which is an integer. By
+					default this property is zero (0), or no tail items, but can be set to any positive integer. Therefore, you can
+					specify any number of tail items and by setting this property to Int32.MaxValue, you can specify
+					unlimited tail items.
+					<LineBreak /><LineBreak />
+					This example allows you view the affects of changing MaxTailItemCount, which is limited to 5 for
+					demonstration purposes only. In addition, the example shows a few ways that tail items can be presented.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+		<navigation:Breadcrumb x:Name="breadcrumb"
+							   RootItem="{Binding XPath=ShellItem}"
+							   ItemContainerStyle="{StaticResource BreadcrumbItemStyleBase}"
+							   ItemTemplate="{StaticResource BreadcrumbItemTemplate}"
+							   ComboBoxItemTemplate="{StaticResource ComboBoxItemTemplate}"
+							   MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+							   MenuItemTemplate="{StaticResource MenuItemNormalTemplate}"
+							   MenuItemExpandedTemplate="{StaticResource MenuItemExpandedTemplate}"
+							   MaxTailItemCount="5"
+							   ConvertItem="OnBreadcrumbConvertItem">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1">
+					<shared:DynamicImage Source="/Images/Icons/Refresh16.png" Stretch="None" VerticalAlignment="Center" />
+					<Button.ToolTip>
+						<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Refresh {0}">
+							<Binding ElementName="breadcrumb" Path="SelectedItem" Mode="OneWay" Converter="{StaticResource PathConverter}" />
+						</MultiBinding>
+					</Button.ToolTip>
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+	</StackPanel>
+	
+</sampleBrowser:ProductItemControl>

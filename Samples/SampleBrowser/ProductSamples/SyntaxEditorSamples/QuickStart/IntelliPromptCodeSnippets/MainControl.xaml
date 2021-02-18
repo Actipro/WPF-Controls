@@ -1,0 +1,34 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCodeSnippets.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCodeSnippets"
+    >
+    
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Margin="20,10" Orientation="Horizontal">
+			<Button DockPanel.Dock="Left" Content="Insert Snippet" Click="OnInsertSnippetButtonClick" />
+			<TextBlock Margin="10,0,0,0" Text="Use the button to programmatically start a code snippet session" VerticalAlignment="Center" />
+		</StackPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/*
+	IntelliPrompt code snippets mimic Visual Studio's code snippet
+	features and can even use the same file format.
+	Code snippets can easily be added to any custom language.
+*/
+function foo() {
+
+	// Type 'for' or 'while' on the next line and then press 
+	// the Tab key to see a code snippet activate:
+	
+	
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

@@ -1,0 +1,54 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.WallCalendar.CalendarPage"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+	<Border Background="White" BorderThickness="1" BorderBrush="Gray">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Grid Grid.ColumnSpan="7" Background="#538ed5">
+				<TextBlock Padding="10" HorizontalAlignment="Center" Foreground="WhiteSmoke" FontSize="24" FontWeight="Bold"
+						Text="{Binding Month}" />
+			</Grid>
+			<TextBlock HorizontalAlignment="Center" Text="S" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="0" />
+			<TextBlock HorizontalAlignment="Center" Text="M" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="1" />
+			<TextBlock HorizontalAlignment="Center" Text="T" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="2" />
+			<TextBlock HorizontalAlignment="Center" Text="W" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="3" />
+			<TextBlock HorizontalAlignment="Center" Text="T" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="4" />
+			<TextBlock HorizontalAlignment="Center" Text="F" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="5" />
+			<TextBlock HorizontalAlignment="Center" Text="S" FontSize="24" FontWeight="Bold" Grid.Row="1" Grid.Column="6" />
+			<Grid Grid.Row="2" Grid.ColumnSpan="7" x:Name="coreGrid">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			</Grid>
+		</Grid>
+	</Border>
+</UserControl>

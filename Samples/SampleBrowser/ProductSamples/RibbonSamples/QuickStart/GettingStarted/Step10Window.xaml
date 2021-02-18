@@ -1,0 +1,226 @@
+<ribbon:RibbonWindow x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mediaImaging="clr-namespace:System.Windows.Media.Imaging;assembly=PresentationCore"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	ApplicationName="Actipro Ribbon QuickStart"	
+	DocumentName="Getting Started #10"	
+    >
+	
+	<DockPanel>
+	
+		<!-- Ribbon Control -->
+		<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top">
+			
+			<!-- Tab Panel Items (Appear next to the tabs) -->
+			<ribbon:Ribbon.TabPanelItems>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Help16.png" Label="Application Help" KeyTipAccessText="Z" />
+			</ribbon:Ribbon.TabPanelItems>
+	
+			<!-- Quick Access ToolBar (QAT) -->
+			<ribbon:Ribbon.QuickAccessToolBarItems>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+			</ribbon:Ribbon.QuickAccessToolBarItems>
+						
+			<!-- Tabs -->
+			<ribbon:Ribbon.Tabs>
+			
+				<ribbon:Tab Label="Home" KeyTipAccessText="H">
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Paste16.png" Label="Clipboard" KeyTipAccessText="ZC">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="10" Size="Small" />
+						</ribbon:Group.Variants>					
+						<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Paste32.png" ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="V">
+							<ribbon:Menu>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="P" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteSpecial16.png" Label="Paste Special" KeyTipAccessText="S" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteHyperlink16.png" Label="Paste Hyperlink" KeyTipAccessText="H" />
+							</ribbon:Menu>
+						</ribbon:SplitButton>
+						<ribbon:StackPanel ItemVariantBehavior="MediumThenSmallWhenSmall">
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Cut16.png" Label="Cut" KeyTipAccessText="X" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Copy16.png" Label="Copy" KeyTipAccessText="C" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/FormatPainter16.png" Label="Format Painter" KeyTipAccessText="FP" />
+						</ribbon:StackPanel>
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font" KeyTipAccessText="ZF">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="50" Size="Medium" />
+							<ribbon:GroupVariant Priority="90" Size="Collapsed" />
+						</ribbon:Group.Variants>
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,3,2,5,4,1">
+							<ribbon:ButtonGroup HasBorder="False">
+								<ribbon:FontFamilyComboBox Width="135" Command="sample:ApplicationCommands.FontFamily" KeyTipAccessText="FF" />
+								<ribbon:FontSizeComboBox Width="40" Command="sample:ApplicationCommands.FontSize" KeyTipAccessText="FS" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/GrowFont16.png" Label="Grow Font" KeyTipAccessText="FG" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ShrinkFont16.png" Label="Shrink Font" KeyTipAccessText="FK" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" KeyTipAccessText="E" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" KeyTipAccessText="1" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" KeyTipAccessText="2" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" KeyTipAccessText="3" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Strikethrough16.png" Label="Strikethrough" KeyTipAccessText="4" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Subscript16.png" Label="Subscript" KeyTipAccessText="5" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Superscript16.png" Label="Superscript" KeyTipAccessText="6" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ChangeCase16.png" Label="Change Case" KeyTipAccessText="7" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/TextHighlightColor16.png" Label="Text Highlight Color" KeyTipAccessText="I" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font Color" KeyTipAccessText="FC" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" KeyTipAccessText="ZP">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="40" Size="Medium" />
+							<ribbon:GroupVariant Priority="80" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,1,4,5,6,2,3">
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Bullets16.png" Label="Bullets" KeyTipAccessText="U" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Numbering16.png" Label="Numbering" KeyTipAccessText="N" />
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/MultilevelList16.png" Label="Multilevel List" KeyTipAccessText="M" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/DecreaseIndent16.png" Label="Decrease Indent" KeyTipAccessText="AO" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/IncreaseIndent16.png" Label="Increase Indent" KeyTipAccessText="AI" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Sort16.png" Label="Sort" KeyTipAccessText="SO" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ToggleSymbols16.png" Label="Show/Hide Symbols" KeyTipAccessText="8" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextLeft16.png" Label="Align Text Left" KeyTipAccessText="AL" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Center" KeyTipAccessText="AC" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextRight16.png" Label="Align Text Right" KeyTipAccessText="AR" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextJustify16.png" Label="Justify" KeyTipAccessText="AJ" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/LineSpacing16.png" Label="Line Spacing" KeyTipAccessText="K" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Shading16.png" Label="Shading" KeyTipAccessText="H" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/BorderBottom16.png" Label="Borders" KeyTipAccessText="B" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/QuickStyles16.png" Label="Styles" KeyTipAccessText="ZS">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="20" Size="Medium" />
+							<ribbon:GroupVariant Priority="60" Size="Small" />
+							<ribbon:GroupVariant Priority="70" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:RibbonGallery ImageSourceLarge="/Images/Icons/QuickStyles32.png" Label="Quick Styles" KeyTipAccessText="L" IsSelectionHighlightVisible="False">
+							<ribbon:RibbonGallery.ItemsSource>
+								<x:Array Type="{x:Type mediaImaging:BitmapImage}">
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Normal.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/NoSpacing.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Heading1.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Heading2.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Title.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/SubTitle.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/SubtleEmphasis.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Emphasis.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/IntenseEmphasis.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Strong.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/Quote.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/IntenseQuote.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/SubtleReference.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/IntenseReference.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/BookTitle.png" />
+									<mediaImaging:BitmapImage UriSource="/Images/RibbonGalleries/Styles/ListParagraph.png" />
+								</x:Array>
+							</ribbon:RibbonGallery.ItemsSource>
+							<ribbon:RibbonGallery.ItemTemplate>
+								<DataTemplate>
+									<Image Margin="2" Source="{Binding BindsDirectlyToSource=True}" Stretch="None" />
+								</DataTemplate>
+							</ribbon:RibbonGallery.ItemTemplate>
+							<ribbon:RibbonGallery.PopupContent>
+								<StackPanel>
+									<ribbon:PopupGallery InitialColumnCount="4" IsSelectionHighlightVisible="False"
+										ItemTemplate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemTemplate}"										
+										ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemsSource}"
+										/>
+									<ribbon:Separator />
+									<ribbon:Menu>
+										<ribbon:Button Label="Save Selection as a New Quick Style..." />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/ApplyStyles16.png" Label="Apply Styles..." />
+									</ribbon:Menu>
+								</StackPanel>
+							</ribbon:RibbonGallery.PopupContent>
+						</ribbon:RibbonGallery>
+						<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ChangeStyles32.png" Label="Change Styles" KeyTipAccessText="G" />
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Find16.png" Label="Editing" KeyTipAccessText="ZN">
+						<ribbon:Group.Variants>
+							<ribbon:GroupVariant Priority="30" Size="Collapsed" />
+						</ribbon:Group.Variants>					
+						<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+							<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Find16.png" Label="Find" KeyTipAccessText="FD" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Replace16.png" Label="Replace" KeyTipAccessText="R" />
+							<ribbon:PopupButton ImageSourceSmall="/Images/Icons/Select16.png" Label="Select" KeyTipAccessText="SL" />
+						</ribbon:StackPanel>					
+					</ribbon:Group>				
+				</ribbon:Tab>
+				
+				<ribbon:Tab Label="Insert" KeyTipAccessText="N" />
+				<ribbon:Tab Label="Page Layout" KeyTipAccessText="P" />
+				<ribbon:Tab Label="References" KeyTipAccessText="S" />
+				<ribbon:Tab Label="Mailings" KeyTipAccessText="M" />
+				<ribbon:Tab Label="Review" KeyTipAccessText="R" />
+				<ribbon:Tab Label="View" KeyTipAccessText="W" />
+			</ribbon:Ribbon.Tabs>
+			
+		</ribbon:Ribbon>
+			
+		<RichTextBox x:Name="editor" Margin="7" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+			<RichTextBox.Resources>
+				<!-- Make the scroll viewer in the RichTextBox use the custom scrollbar style -->
+				<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
+			</RichTextBox.Resources>
+			
+			<FlowDocument>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Adding Quick Access Toolbar Items</Paragraph>
+				<Paragraph>
+					In this step we have added ribbon controls to the <Bold>QuickAccessToolBarItems</Bold> collection
+					on the <Bold>Ribbon</Bold> control.
+					The <Bold>Quick Access Toolbar</Bold> appears above the ribbon by default but can be moved below it.
+				</Paragraph>
+				<Paragraph>
+					We also have added a <Bold>Button</Bold> to the <Bold>TabPanelItems</Bold> collection
+					on the <Bold>Ribbon</Bold> control.
+					The <Bold>Button</Bold> that was added appears next to the tabs and allows access to application help.
+				</Paragraph>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">What's Next</Paragraph>
+				<Paragraph>
+					In the next <Bold>Getting Started</Bold> step, we will configure the <Bold>Application Menu</Bold>.
+				</Paragraph>
+			</FlowDocument>								
+		</RichTextBox>
+			
+	</DockPanel>
+			
+</ribbon:RibbonWindow>

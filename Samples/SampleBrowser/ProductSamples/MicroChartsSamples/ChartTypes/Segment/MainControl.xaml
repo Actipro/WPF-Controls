@@ -1,0 +1,202 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.MicroChartsSamples.ChartTypes.Segment"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:SegmentColorConverter x:Key="SegmentColorConverter" />
+		<sample:SegmentHeightConverter x:Key="SegmentHeightConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Total}">
+						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="30" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Value}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="30" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A segment chart provides a visual representation of an integer value in relation to a total number.
+					Each segment in the chart is rendered as highlighted or unhighlighted.
+					For instance, if the value is 3 of 10, there will be 10 total segments displayed, with the first 3 rendering as highlighted.
+					<LineBreak /><LineBreak />
+					This sort of chart is great for use on dashboards, and also as an indicator of steps or progress achieved.
+					<LineBreak /><LineBreak />
+					The style for the segments can be customized, allowing for any sort of shape, size, or color combination.
+					The Panel used to render the chart can also be set, enabling wrapping and other layout scenarios.
+					<LineBreak /><LineBreak />
+					Value converters can be used to further customize the brush or size of each segment to create some interesting effects.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<microcharts:MicroSegmentChart x:Name="chart" Value="3" Total="10" />
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Built-in commands are available to allow buttons to increment or decrement the value">
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+						<RepeatButton Margin="0,0,5,0" MinWidth="20" MinHeight="20" Content="-" Command="{Binding ElementName=commandedSegmentChart, Path=DecreaseCommand}" />
+						<microcharts:MicroSegmentChart x:Name="commandedSegmentChart" Value="3" Total="10" />
+						<RepeatButton Margin="5,0,0,0" MinWidth="20" MinHeight="20" Content="+" Command="{Binding ElementName=commandedSegmentChart, Path=IncreaseCommand}" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Square size and customized highlight color">
+					<microcharts:MicroSegmentChart Value="7" Total="10" HorizontalAlignment="Left">
+						<microcharts:MicroSegmentChart.ItemContainerStyle>
+							<Style TargetType="microcharts:MicroSegmentChartItem">
+								<Setter Property="HighlightedBackground" Value="#e73232" />
+								<Setter Property="Margin" Value="1" />
+								<Setter Property="MinHeight" Value="13" />
+								<Setter Property="MinWidth" Value="13" />
+							</Style>
+						</microcharts:MicroSegmentChart.ItemContainerStyle>
+					</microcharts:MicroSegmentChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Value converters used to create a gradient effect across the segments and alter heights">
+					<StackPanel HorizontalAlignment="Left">
+						<microcharts:MicroSegmentChart x:Name="gradientSegmentChart" Value="9" Total="10" HorizontalAlignment="Left">
+							<microcharts:MicroSegmentChart.ItemContainerStyle>
+								<Style TargetType="microcharts:MicroSegmentChartItem">
+									<Setter Property="HighlightedBackground" Value="{Binding Converter={StaticResource SegmentColorConverter}}" />
+									<Setter Property="Height" Value="{Binding Converter={StaticResource SegmentHeightConverter}}" />
+									<Setter Property="MinWidth" Value="10" />
+									<Setter Property="VerticalAlignment" Value="Bottom" />
+								</Style>
+							</microcharts:MicroSegmentChart.ItemContainerStyle>
+						</microcharts:MicroSegmentChart>
+						<Slider Minimum="1" Maximum="10" Value="{Binding ElementName=gradientSegmentChart, Path=Value, Mode=TwoWay}" LargeChange="1" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="3x3 grid of segments">
+					<microcharts:MicroSegmentChart Value="5" Total="9" HorizontalAlignment="Left">
+						<microcharts:MicroSegmentChart.ItemContainerStyle>
+							<Style TargetType="microcharts:MicroSegmentChartItem">
+								<Setter Property="HighlightedBackground" Value="#77b4c3" />
+							</Style>
+						</microcharts:MicroSegmentChart.ItemContainerStyle>
+						<microcharts:MicroSegmentChart.ItemsPanel>
+							<ItemsPanelTemplate>
+								<WrapPanel MaxWidth="45" />
+							</ItemsPanelTemplate>
+						</microcharts:MicroSegmentChart.ItemsPanel>
+					</microcharts:MicroSegmentChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Each segment has a number data context that can be injected into the segment template">
+					<microcharts:MicroSegmentChart Value="6" Total="10" HorizontalAlignment="Left">
+						<microcharts:MicroSegmentChart.ItemContainerStyle>
+							<Style TargetType="microcharts:MicroSegmentChartItem">
+								<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+								<Setter Property="HighlightedBackground" Value="#0177ce" />
+								<Setter Property="MinHeight" Value="25" />
+								<Setter Property="MinWidth" Value="25" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="microcharts:MicroSegmentChartItem">
+
+											<Border x:Name="background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+													BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+												<TextBlock x:Name="text" Text="{Binding}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+											</Border>
+
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsHighlighted" Value="True">
+													<Setter TargetName="background" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HighlightedBackground}" />
+													<Setter TargetName="text" Property="Foreground" Value="#ffffff" />
+												</Trigger>
+											</ControlTemplate.Triggers>
+
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroSegmentChart.ItemContainerStyle>
+					</microcharts:MicroSegmentChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Any shape or custom element can be used to represent a segment">
+					<microcharts:MicroSegmentChart Value="5" Total="15" HorizontalAlignment="Left">
+						<microcharts:MicroSegmentChart.ItemContainerStyle>
+							<Style TargetType="microcharts:MicroSegmentChartItem">
+								<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+								<Setter Property="HighlightedBackground" Value="#9e5aac" />
+								<Setter Property="MinHeight" Value="15" />
+								<Setter Property="MinWidth" Value="15" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="microcharts:MicroSegmentChartItem">
+
+											<Ellipse x:Name="background" Fill="{TemplateBinding Background}" />
+
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsHighlighted" Value="True">
+													<Setter TargetName="background" Property="Fill" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HighlightedBackground}" />
+												</Trigger>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroSegmentChart.ItemContainerStyle>
+					</microcharts:MicroSegmentChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="100 segments with WrapPanel, which can show a percentage in a dashboard scenario">
+					<StackPanel Orientation="Horizontal">
+						<microcharts:MicroSegmentChart Value="57" Total="100" HorizontalAlignment="Left">
+							<microcharts:MicroSegmentChart.ItemContainerStyle>
+								<Style TargetType="microcharts:MicroSegmentChartItem">
+									<Setter Property="HighlightedBackground" Value="#26b106" />
+									<Setter Property="Margin" Value="1" />
+									<Setter Property="MinHeight" Value="8" />
+									<Setter Property="MinWidth" Value="8" />
+								</Style>
+							</microcharts:MicroSegmentChart.ItemContainerStyle>
+							<microcharts:MicroSegmentChart.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel MaxWidth="100" />
+								</ItemsPanelTemplate>
+							</microcharts:MicroSegmentChart.ItemsPanel>
+						</microcharts:MicroSegmentChart>
+
+						<StackPanel Margin="10,0,0,0" MaxWidth="150" VerticalAlignment="Center">
+							<TextBlock Text="57%" Foreground="#26b106" FontFamily="Arial Narrow" FontSize="48" />
+							<TextBlock Text="of customers opened the email" TextWrapping="Wrap" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

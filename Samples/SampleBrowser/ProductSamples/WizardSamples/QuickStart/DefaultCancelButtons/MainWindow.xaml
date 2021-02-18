@@ -1,0 +1,92 @@
+<Window 
+	x:Name="window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="600" MinHeight="450" 
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="Height" 
+	ResizeMode="CanResize"
+	>
+	
+	<Window.Resources>
+
+		<!-- Data Providers -->
+		<ObjectDataProvider x:Key="DefaultButtonObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowDefaultButton"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="CancelButtonObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowCancelButton"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		
+	</Window.Resources>
+
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard QuickStart">
+
+		<!-- Default/Cancel Buttons -->
+		<wizard:WizardPage x:Name="defaultCancelButtonsPage" PageType="Interior" NextPage="finishPage"
+			Caption="Automated Default/Cancel Buttons"
+			Description="Wizard can automatically set the default and cancel buttons for the containing Window based on a property setting." 
+			HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+
+			<StackPanel HorizontalAlignment="Left">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					
+					<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,14" TextWrapping="Wrap">
+						Use the controls below to configure the default and cancel buttons for the containing Window.
+					</TextBlock>
+					
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="50,0,0,7" FontWeight="Bold">Default Button</TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Margin="50,0,0,7" FontWeight="Bold">Cancel Button</TextBlock>
+					
+					<TextBlock Grid.Row="2" Grid.Column="0" Margin="50,0,0,7" TextWrapping="Wrap">The default button is clicked when the ENTER key is pressed in the Window.</TextBlock>
+					<TextBlock Grid.Row="2" Grid.Column="1" Margin="50,0,0,7" TextWrapping="Wrap">The cancel button is clicked when the ESCAPE key is pressed in the Window.</TextBlock>
+					
+					<StackPanel Grid.Row="3" Grid.Column="0" Margin="50,0,0,7">
+						<TextBlock>Button:</TextBlock>
+						<shared:RadioButtonList 
+							SelectedValue="{Binding ElementName=wizard, Path=WindowDefaultButton}" 			 
+							ItemsSource="{Binding Source={StaticResource DefaultButtonObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<StackPanel Grid.Row="3" Grid.Column="1" Margin="50,0,0,7">
+						<TextBlock>Button:</TextBlock>
+						<shared:RadioButtonList
+							SelectedValue="{Binding ElementName=wizard, Path=WindowCancelButton}" 			 
+							ItemsSource="{Binding Source={StaticResource CancelButtonObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="50,7,0,0" TextWrapping="Wrap">Note that <Bold>FinishThenNext</Bold> and <Bold>NextThenFinish</Bold> are special settings. For example, the <Bold>FinishThenNext</Bold> setting tries to use the <Bold>Finish</Bold> button if it is visible and enabled.  Otherwise, the <Bold>Next</Bold> button becomes the default button.</TextBlock>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+
+		<!-- Finish -->
+		<wizard:WizardPage x:Name="finishPage" 
+				Caption="QuickStart Complete"
+				Description="This is the finish page for this QuickStart." 
+				Title="QuickStart Complete">
+			<TextBlock TextWrapping="Wrap">Press the Back button to change more options for this QuickStart.</TextBlock>
+		</wizard:WizardPage>
+		
+	</wizard:Wizard>
+	
+</Window>

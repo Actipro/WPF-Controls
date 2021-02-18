@@ -1,0 +1,149 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridEditorsIntegration.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridEditorsIntegration"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+		<!-- These converters are only needed if your property grid must support non-CLS compliant SByte, UInt16, or UInt32 values -->
+		<sample:SByteToInt16Converter x:Key="SByteToInt16Converter" />
+		<sample:UInt16ToInt32Converter x:Key="UInt16ToInt32Converter" />
+		<sample:UInt32ToInt64Converter x:Key="UInt32ToInt64Converter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Actipro.Editors.Interop.Grids assembly can be used to quickly and easily integrate
+					the Actipro Editors product into the PropertyGrid control in the Actipro Grids product.
+					Numerous property editors are provided, which are used by the PropertyGrid to customize how a property is presented.
+					<LineBreak /><LineBreak />
+					The example demonstrates all the built-in property editors provided, each of which exposes several properties.
+					These properties are bound to identical properties on the underlying control, thereby making it easy to configure.
+					<LineBreak /><LineBreak />
+					This sample also shows how several non-CLS compliant numeric types can be edited using existing Editors.
+					<LineBreak /><LineBreak />
+					<Italic>Note: This demo uses controls from both the Grids and Editors products.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}" IsSummaryVisible="False"
+							gridseditors:BuiltinPropertyEditors.IsEnabled="True" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.PropertyEditors>
+				<!-- 
+					Use the various *PropertyEditor classes provided to integrate our built-in property editors with properties
+					of specific object types, property types, and/or property names... here are several examples: 
+				-->
+				<gridseditors:DatePropertyEditor PropertyName="DateLongValue" Format="D" />
+				<gridseditors:MaskedStringPropertyEditor PropertyName="MaskedString" Mask="\w+([.]\w+)*@\w+([.]\w+)+" />
+				<gridseditors:EnumPropertyEditor UseDisplayAttributes="True" />
+
+
+				<!-- This property editor is only needed if your property grid must support non-CLS compliant SByte values -->
+				<gridseditors:Int16PropertyEditor PropertyType="system:SByte" Minimum="-128" Maximum="127">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<editors:Int16EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource SByteToInt16Converter}}" 
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							  
+								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
+								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
+								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
+								IsEditable="{Binding ValuePropertyEditor.IsEditable}"
+								IsNullAllowed="{Binding ValuePropertyEditor.IsNullAllowed}"
+								PlaceholderText="{Binding ValuePropertyEditor.PlaceholderText}"
+								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
+								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
+								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
+							  
+								Format="{Binding ValuePropertyEditor.Format}"
+								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
+								Maximum="{Binding ValuePropertyEditor.Maximum}"
+								Minimum="{Binding ValuePropertyEditor.Minimum}"
+								PickerKind="{Binding ValuePropertyEditor.PickerKind}"
+								SmallChange="{Binding ValuePropertyEditor.SmallChange}"
+								/>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</gridseditors:Int16PropertyEditor>
+
+				<!-- This property editor is only needed if your property grid must support non-CLS compliant UInt16 values -->
+				<gridseditors:Int32PropertyEditor PropertyType="system:UInt16" Minimum="0" Maximum="65535">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<editors:Int32EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt16ToInt32Converter}}" 
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							  
+								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
+								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
+								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
+								IsEditable="{Binding ValuePropertyEditor.IsEditable}"
+								IsNullAllowed="{Binding ValuePropertyEditor.IsNullAllowed}"
+								PlaceholderText="{Binding ValuePropertyEditor.PlaceholderText}"
+								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
+								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
+								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
+							  
+								Format="{Binding ValuePropertyEditor.Format}"
+								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
+								Maximum="{Binding ValuePropertyEditor.Maximum}"
+								Minimum="{Binding ValuePropertyEditor.Minimum}"
+								PickerKind="{Binding ValuePropertyEditor.PickerKind}"
+								SmallChange="{Binding ValuePropertyEditor.SmallChange}"
+								/>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</gridseditors:Int32PropertyEditor>
+
+				<!-- This property editor is only needed if your property grid must support non-CLS compliant UInt32 values -->
+				<gridseditors:Int64PropertyEditor PropertyType="system:UInt32" Minimum="0" Maximum="4294967295">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<editors:Int64EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt32ToInt64Converter}}" 
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							  
+								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
+								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
+								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
+								IsEditable="{Binding ValuePropertyEditor.IsEditable}"
+								IsNullAllowed="{Binding ValuePropertyEditor.IsNullAllowed}"
+								PlaceholderText="{Binding ValuePropertyEditor.PlaceholderText}"
+								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
+								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
+								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
+							  
+								Format="{Binding ValuePropertyEditor.Format}"
+								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
+								Maximum="{Binding ValuePropertyEditor.Maximum}"
+								Minimum="{Binding ValuePropertyEditor.Minimum}"
+								PickerKind="{Binding ValuePropertyEditor.PickerKind}"
+								SmallChange="{Binding ValuePropertyEditor.SmallChange}"
+								/>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</gridseditors:Int64PropertyEditor>
+
+			</grids:PropertyGrid.PropertyEditors>
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

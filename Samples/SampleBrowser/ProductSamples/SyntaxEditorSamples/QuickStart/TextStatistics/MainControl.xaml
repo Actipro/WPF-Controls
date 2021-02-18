@@ -1,0 +1,36 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.TextStatistics.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:text="clr-namespace:ActiproSoftware.Text;assembly=ActiproSoftware.Text.Wpf"
+    >
+	
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Right">
+			<DockPanel Margin="20">
+				<shared:PixelSnapper DockPanel.Dock="Top">
+					<TextBlock TextWrapping="Wrap" Style='{StaticResource SampleSectionHeadingTextBlockStyle}'>TEXT STATISTICS</TextBlock>
+				</shared:PixelSnapper>
+				<ListView x:Name="resultsListView" Margin="0,3,0,0">
+					<ListView.View>
+						<GridView>
+							<GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=(text:ITextStatistic.Description)}" />
+							<GridViewColumn Header="Value" DisplayMemberBinding="{Binding Path=(text:ITextStatistic.StringValue)}" />
+						</GridView>
+					</ListView.View>
+				</ListView>
+			</DockPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" DocumentTextChanged="OnEditorDocumentTextChanged" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+			<editor:EditorDocument xml:space="preserve"><![CDATA[SyntaxEditor has some innovative features for automatically calculating statistics on text.  This sample shows how easy it is to get statistics for the entire document.  Alternatively, you can choose to get statistics for the selected text in SyntaxEditor or get statistics on a string without using a SyntaxEditor control.
+				
+Base statistics include line, sentence, word, syllable, character, letter counts and averages based on those counts.  Additionally the text is scanned and readability scored.  It even tells you the education grade level needed to understand the text.
+
+The individual statistics can be bound to the ItemsSource of a ListBox for easy display.
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</DockPanel>
+
+</UserControl>

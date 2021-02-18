@@ -1,0 +1,239 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+	<UserControl.Resources>
+		
+		<!-- SlideShowWizardButtonContainerStyle -->
+		<Style x:Key="SlideShowWizardButtonContainerStyle" TargetType="{x:Type wizard:WizardButtonContainer}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type wizard:WizardButtonContainer}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<Button x:Name="PART_BackButton" OverridesDefaultStyle="True" ClickMode="Press"
+								HorizontalAlignment="Left" Command="wizard:WizardCommands.PreviousPage">
+								<Button.Template>
+									<ControlTemplate TargetType="Button">
+										<Border Width="70" Height="70" Background="Transparent">
+											<ContentPresenter x:Name="Presenter" RenderTransformOrigin="0,1" Opacity="0.3">
+												<ContentPresenter.RenderTransform>
+													<ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+												</ContentPresenter.RenderTransform>
+											</ContentPresenter>
+										</Border>
+										
+										<ControlTemplate.Triggers>
+											<EventTrigger RoutedEvent="UIElement.MouseEnter">
+												<BeginStoryboard>
+													<Storyboard>
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:0.2" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleY" To="1" Duration="0:0:0.2" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0.1" />
+													</Storyboard>
+												</BeginStoryboard>
+											</EventTrigger>
+											<EventTrigger RoutedEvent="UIElement.MouseLeave">
+												<BeginStoryboard>
+													<Storyboard>
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleX" To="0.6" Duration="0:0:0.1" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleY" To="0.6" Duration="0:0:0.1" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="Opacity" To="0.3" Duration="0:0:0.1" />
+													</Storyboard>
+												</BeginStoryboard>
+											</EventTrigger>
+										</ControlTemplate.Triggers>
+									</ControlTemplate>
+								</Button.Template>
+								
+								<Canvas Background="Transparent">
+									<Path Stroke="#FFFFFF" StrokeThickness="4" Fill="#80FFFFFF"
+										Data="M 20,35 L 40,15 L 40,55 Z" />
+								</Canvas>
+							</Button>	
+							
+							<Button x:Name="PART_NextButton" Grid.Column="1" OverridesDefaultStyle="True" ClickMode="Press"
+								HorizontalAlignment="Right" Command="wizard:WizardCommands.NextPage">
+								<Button.Template>
+									<ControlTemplate TargetType="Button">
+										<Border Width="70" Height="70" Background="Transparent">
+											<ContentPresenter x:Name="Presenter" RenderTransformOrigin="1,1" Opacity="0.3">
+												<ContentPresenter.RenderTransform>
+													<ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+												</ContentPresenter.RenderTransform>
+											</ContentPresenter>
+										</Border>
+										
+										<ControlTemplate.Triggers>
+											<EventTrigger RoutedEvent="UIElement.MouseEnter">
+												<BeginStoryboard>
+													<Storyboard>
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleX" To="1" Duration="0:0:0.2" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleY" To="1" Duration="0:0:0.2" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0.1" />
+													</Storyboard>
+												</BeginStoryboard>
+											</EventTrigger>
+											<EventTrigger RoutedEvent="UIElement.MouseLeave">
+												<BeginStoryboard>
+													<Storyboard>
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleX" To="0.6" Duration="0:0:0.1" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="RenderTransform.ScaleY" To="0.6" Duration="0:0:0.1" DecelerationRatio="0.5" />
+														<DoubleAnimation Storyboard.TargetName="Presenter" Storyboard.TargetProperty="Opacity" To="0.3" Duration="0:0:0.1" />
+													</Storyboard>
+												</BeginStoryboard>
+											</EventTrigger>
+										</ControlTemplate.Triggers>
+									</ControlTemplate>
+								</Button.Template>
+								
+								<Canvas Background="Transparent">
+									<Path Stroke="#FFFFFF" StrokeThickness="4" Fill="#80FFFFFF"
+										Data="M 50,35 L 30,15 L 30,55 Z" />
+								</Canvas>
+							</Button>								
+						</Grid>
+						
+						<ControlTemplate.Triggers>
+							<Trigger SourceName="PART_BackButton" Property="IsEnabled" Value="False">
+								<Setter TargetName="PART_BackButton" Property="Visibility" Value="Collapsed" />
+							</Trigger>
+							<Trigger SourceName="PART_NextButton" Property="IsEnabled" Value="False">
+								<Setter TargetName="PART_NextButton" Property="Visibility" Value="Collapsed" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!-- SlideShowWizardStyle -->
+		<Style x:Key="SlideShowWizardStyle" TargetType="{x:Type wizard:Wizard}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type wizard:Wizard}">
+						<Grid Background="{TemplateBinding Background}">
+							<wizard:WizardPagePresenter x:Name="PART_TransitionPresenter" 
+								DefaultDirection="{TemplateBinding TransitionDefaultDirection}" 
+								TransitionSelector="{TemplateBinding TransitionSelector}" />
+
+							<wizard:WizardButtonContainer x:Name="PART_ButtonContainer" Margin="0,0,0,5" Style="{StaticResource SlideShowWizardButtonContainerStyle}" VerticalAlignment="Bottom" />
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+		<!-- SlideShowWizardPageBackground -->
+		<LinearGradientBrush x:Key="SlideShowWizardPageBackground" StartPoint="0,0" EndPoint="0,1">
+			<GradientStop Offset="0.65" Color="#000000" />
+			<GradientStop Offset="1" Color="#486691" />
+		</LinearGradientBrush>
+		
+		<!-- SlideShowWizardPageHeaderForeground -->
+		<SolidColorBrush x:Key="SlideShowWizardPageHeaderForeground" Color="#C1EEFF" />
+		
+		<!-- SlideShowWizardPageTitleStyle -->
+		<Style x:Key="SlideShowWizardPageTitleStyle" TargetType="{x:Type wizard:WizardPage}">
+			<Setter Property="Background" Value="{StaticResource SlideShowWizardPageBackground}" />
+			<Setter Property="Foreground" Value="#FFFFFF" />
+			<Setter Property="PageType" Value="Blank" />
+		</Style>
+		
+		<!-- RichTextBox-->
+        <Style TargetType="RichTextBox">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="Cursor" Value="Arrow" />
+			<Setter Property="Foreground" Value="#FFFFFF" />
+			<Setter Property="IsReadOnly" Value="True" />
+			<Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+        </Style>
+        
+	</UserControl.Resources>
+
+	<wizard:Wizard x:Name="wizard" Style="{StaticResource SlideShowWizardStyle}">
+		<wizard:Wizard.TransitionSelector>
+			<shared:MultiTransitionSelector>
+				<shared:BarWipeTransition />
+			</shared:MultiTransitionSelector>
+		</wizard:Wizard.TransitionSelector>
+
+		<!-- Intro -->
+		<wizard:WizardPage Style="{StaticResource SlideShowWizardPageTitleStyle}">
+			<Grid>
+				<StackPanel Margin="30,30,30,120" VerticalAlignment="Bottom">
+					<TextBlock FontSize="30" TextWrapping="Wrap" Text="Actipro Wizard for WPF" />
+					<shared:ReflectionContentControl ReflectionHeight="40" ReflectionMargin="-7" ReflectionStartOpacity="0.3" ReflectionEndOffset="0.8">
+						<TextBlock FontSize="60" Foreground="{StaticResource SlideShowWizardPageHeaderForeground}" TextWrapping="Wrap" Text="SLIDE SHOW DEMO" />
+					</shared:ReflectionContentControl>
+				</StackPanel>
+				<TextBlock Margin="0,0,70,17" FontSize="14" Text="Click this button to begin..." HorizontalAlignment="Right" VerticalAlignment="Bottom" Opacity="0.75" />
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Middle -->
+		<wizard:WizardPage Style="{StaticResource SlideShowWizardPageTitleStyle}">
+			<StackPanel Margin="50">
+				<TextBlock FontSize="45" Foreground="{StaticResource SlideShowWizardPageHeaderForeground}" TextWrapping="Wrap" Text="WPF Slide Shows with Actipro Wizard" />
+
+				<RichTextBox Margin="0,20,0,0">
+					<FlowDocument FontSize="20">
+						<List Margin="0">
+							<ListItem><Paragraph>Place a Wizard like this on full-screen Window to really simulate a slide show presentation.</Paragraph></ListItem>
+							<ListItem Margin="0,10,0,0"><Paragraph>Since this is a WPF application, you can demo any WPF concept interactively right in your presentation.  You can't do that in PowerPoint!</Paragraph></ListItem>
+							<ListItem Margin="0,10,0,0"><Paragraph>Use any of the page-change transitions contained in the Shared Library or create your own.</Paragraph></ListItem>
+							<ListItem Margin="0,10,0,0"><Paragraph>This Wizard instance simply has a custom Style applied to it and its pages.</Paragraph></ListItem>
+						</List>
+					</FlowDocument>								
+				</RichTextBox>
+									
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Finish -->
+		<wizard:WizardPage Style="{StaticResource SlideShowWizardPageTitleStyle}">
+			<Grid>
+				<TextBlock Margin="50" FontSize="45" Foreground="{StaticResource SlideShowWizardPageHeaderForeground}" TextWrapping="Wrap" Text="WPF Animation Fully Supported" />
+
+				<Border Height="200" VerticalAlignment="Center">
+					<Border.Background>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+							<GradientStop Offset="0" Color="Transparent" />
+							<GradientStop Offset="0.15" Color="#FFFFFF" />
+							<GradientStop Offset="0.85" Color="#FFFFFF" />
+							<GradientStop Offset="1" Color="Transparent" />
+						</LinearGradientBrush>
+					</Border.Background>
+					
+					<shared:ActiproLogo HorizontalAlignment="Center" VerticalAlignment="Center">
+						<shared:ActiproLogo.LayoutTransform>
+							<ScaleTransform ScaleX="1" ScaleY="1" />
+						</shared:ActiproLogo.LayoutTransform>
+						
+						<shared:ActiproLogo.Triggers>
+							<EventTrigger RoutedEvent="Control.Loaded">
+								<BeginStoryboard>
+									<Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.5">
+										<DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" From="1.0" To="1.5" AutoReverse="True" Duration="0:0:1" DecelerationRatio="0.5" />
+										<DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleY" From="1.0" To="1.5" AutoReverse="True" Duration="0:0:1" DecelerationRatio="0.5" />
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+						</shared:ActiproLogo.Triggers>
+					</shared:ActiproLogo>
+				</Border>
+									
+			</Grid>
+		</wizard:WizardPage>
+		
+	</wizard:Wizard>
+			
+</UserControl>

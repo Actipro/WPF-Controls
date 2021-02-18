@@ -1,0 +1,83 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridExplicitProperties.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridExplicitProperties"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" RecommendedSize="250, 100" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how explicitly-defined properties can be appended to the properties found by reflecting on a data object.
+					The "RecommendedSize" property comes from a data object, while the rest are explicitly-defined in XAML.
+					You can even use explicitly-defined properties when there is no data object set.
+					<LineBreak /><LineBreak />
+					Explicitly-defined properties are added to the PropertyGrid.Properties collection with instances of the PropertyModel class.
+					PropertyModel implements IPropertyModel and inherits DependencyObject, thereby supporting optional XAML bindings for many of its properties.
+					<LineBreak /><LineBreak />
+					The PropertyModel.CanAutoConfigure property can be set to True to tell the PropertyModel to automatically fill its properties
+					as best it can based on a Binding that is set on the PropertyModel.Value property.
+					This is very handy for quickly setting up specific explicit properties that are bound to one or more target objects.
+					Properties like Category, Description, ValueType, etc. will all be filled in unless they are already specified by the PropertyModel.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid MaxWidth="{StaticResource SampleThinMaxWidth}" Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<grids:PropertyGrid x:Name="propGrid" DataObject="{StaticResource TestObject}" gridseditors:BuiltinPropertyEditors.IsEnabled="True" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.Properties>
+				<!-- Properties bound to a TextBox -->
+				<grids:PropertyModel CanAutoConfigure="True" Category="Auto-Configured and Bound to a TextBox" 
+									 Value="{Binding ElementName=boundTextBox, Path=Text, Mode=TwoWay}" ValueTemplateKind="ImmediateString"
+									 Description="This property is defined with a PropertyModel in XAML and binds to the Text property of the TextBox below.  The ValueTemplateKind is set to ImmediateString so text changes immediately push through the Value property's Binding." />
+				<grids:PropertyModel CanAutoConfigure="True" Category="Auto-Configured and Bound to a TextBox" 
+									 Value="{Binding ElementName=boundTextBox, Path=IsEnabled, Mode=TwoWay}" 
+									 Description="This property is defined with a PropertyModel in XAML and binds to the IsEnabled property of the TextBox below." />
+				<grids:PropertyModel CanAutoConfigure="True" Category="Auto-Configured and Bound to a TextBox" 
+									 Value="{Binding ElementName=boundTextBox, Path=TabIndex, Mode=TwoWay}" 
+									 Description="This property is defined with a PropertyModel in XAML and binds to the TabIndex property of the TextBox below.  The Int32PropertyEditor is set to have a Minimum=0.">
+					<gridseditors:Int32PropertyEditor Minimum="0" />
+				</grids:PropertyModel>
+				
+				<!-- Unbound properties -->
+				<grids:PropertyModel x:Name="unboundProperty" Category="Unbound, Defined in XAML" DisplayName="Editable property" Value="Editable value from XAML" 
+									 Description="This property is defined with a PropertyModel in XAML and has an editable value explicitly set." />
+				<grids:PropertyModel Category="Unbound, Defined in XAML" DisplayName="Read-only property" Value="Read-Only value from XAML" IsValueReadOnly="True"
+									 Description="This property is defined with a PropertyModel in XAML and is read-only." />
+			</grids:PropertyGrid.Properties>
+		</grids:PropertyGrid>
+
+		<StackPanel Grid.Row="2">
+
+			<TextBlock Margin="0,10,0,0" Text="Target TextBox for the auto-configured property models:" TextWrapping="Wrap" />
+			<TextBox x:Name="boundTextBox" Margin="0,3,0,0" Text="Value in TextBox.Text" />
+
+			<TextBlock Margin="0,10,0,0" Text="Size value from TestObject.RecommendedSize property:" TextWrapping="Wrap" />
+			<TextBox Margin="0,3,0,0" Text="{Binding Source={StaticResource TestObject}, Path=RecommendedSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+			<TextBlock Margin="0,10,0,0" Text="Update a property model via code:" TextWrapping="Wrap" />
+			<Button Margin="0,3,0,0" Content="Update the Unbound Editable Property" Click="OnUpdateValueButtonClick" />
+
+		</StackPanel>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

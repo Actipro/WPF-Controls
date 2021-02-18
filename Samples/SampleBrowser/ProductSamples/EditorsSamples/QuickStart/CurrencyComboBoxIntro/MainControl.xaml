@@ -1,0 +1,87 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.CurrencyComboBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CurrencyComboBox can be used to select a Currency from a 
+					list of currencies in the world. The SelectedValue will be a string that contains the 
+					three letter currency code associated with the selected Currency.
+					<LineBreak /><LineBreak />
+					The currency code can then be used with LINQ and CountryCurrencyMapping to query
+					the Country or countries that use that Currency.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:CurrencyComboBox x:Name="comboBox" MinWidth="300" SelectedValue="USD" HorizontalAlignment="Center" 
+									  shared:HintProperties.Hint="Currency" SelectionChanged="OnComboBoxSelectionChanged" />
+
+			<views:MultiColumnPanel MaxWidth="{StaticResource SampleNarrowMaxWidth}" MaxColumnCount="2" ColumnMinWidth="200">
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Selected currency code:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=comboBox, Path=SelectedValue}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+				</StackPanel>
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Countries that use currency:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<ItemsControl x:Name="countriesItemsControl" Margin="7,3,0,0" HorizontalAlignment="Center">
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<WrapPanel />
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<Border Margin="0,0,7,3" CornerRadius="3" BorderThickness="1" BorderBrush="#808080" Background="#20ffffff" Padding="5,2" Opacity="0.75">
+									<TextBlock Text="{Binding Code}" />
+								</Border>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</StackPanel>
+			</views:MultiColumnPanel>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Code-only display">
+					<editors:CurrencyComboBox MinWidth="300" DisplayMemberPath="Code" SelectedValue="JPY" shared:HintProperties.Hint="Currency" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom item template">
+					<editors:CurrencyComboBox MinWidth="300" DisplayMemberPath="{x:Null}" SelectedValue="EUR" shared:HintProperties.Hint="Currency" HorizontalAlignment="Left">
+						<editors:CurrencyComboBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="{Binding Code}" FontWeight="Bold" />
+									<TextBlock Margin="7,0,0,0" Text="{Binding Name}" Opacity="0.75" />
+								</StackPanel>
+							</DataTemplate>
+						</editors:CurrencyComboBox.ItemTemplate>
+					</editors:CurrencyComboBox>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text telling the user the kind of data to enter">
+					<editors:CurrencyComboBox MinWidth="300" shared:HintProperties.Hint="Currency" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,63 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses"	
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<!-- Start -->
+					<sample:StartPage PageType="Exterior"
+							Caption="Custom Page Classes / Programmatic Reuse QuickStart"
+							Description="This QuickStart shows two interesting, yet optional, concepts:  creation and styling of custom page classes, and programmatic reuse of a page.">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<StackPanel>
+								<TextBlock TextWrapping="Wrap">This sample will repeat an item entry page (defined by the custom ItemEntryPage class) a specified number of times.</TextBlock>
+								<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">How many times should the item entry page repeat?</TextBlock>
+								<StackPanel Margin="50,7,0,0" Orientation="Horizontal">
+									<TextBox x:Name="PART_RepeatCountTextBox" Text="3" Width="50" />
+									<TextBlock Text=" time(s)" VerticalAlignment="Center" />
+								</StackPanel>
+							</StackPanel>
+
+							<TextBlock Grid.Row="1" TextWrapping="Wrap">To continue, click Next.</TextBlock>
+						</Grid>
+					</sample:StartPage>
+
+					<!-- Interior (content defined in separate ItemEntryPage.xaml) -->
+					<sample:ItemEntryPage />
+
+					<!-- Finish -->
+					<wizard:WizardPage x:Name="finishPage" PageType="Exterior" FinishButtonVisible="True" 
+							Caption="Wizard QuickStart Completed"
+							Description="You have completed the QuickStart.">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<TextBlock Grid.Row="1" TextWrapping="Wrap">To close this QuickStart, click Finish.</TextBlock>
+						</Grid>
+					</wizard:WizardPage>
+
+				</wizard:Wizard>
+
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+
+</UserControl>

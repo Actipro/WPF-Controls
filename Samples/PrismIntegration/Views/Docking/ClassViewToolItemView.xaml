@@ -1,0 +1,18 @@
+<UserControl x:Name="userControl" x:Class="ActiproSoftware.Windows.PrismIntegration.Views.ClassViewToolItemView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<TreeView BorderThickness="0">
+		<TreeViewItem Header="WPFControlsSample" IsExpanded="True">
+			<TreeViewItem Header="Project References" />
+			<TreeViewItem Header="ActiproSoftware.Windows.ProductSamples.DockingSamples" />
+			<TreeViewItem Header="ActiproSoftware.Windows.ProductSamples.RibbonSamples" />
+			<TreeViewItem Header="ActiproSoftware.Windows.ProductSamples.SharedSamples" />
+			<TreeViewItem Header="ActiproSoftware.Windows.ProductSamples.WizardSamples" />
+			<TreeViewItem Header="ActiproSoftware.Windows.Properties" />
+			<TreeViewItem Header="ActiproSoftware.Windows.SampleBrowser" />
+			<TreeViewItem Header="XamlGeneratedNamespace" />
+		</TreeViewItem>
+	</TreeView>
+
+</UserControl>

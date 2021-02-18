@@ -1,0 +1,120 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.AxisGrid.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style x:Key="ChartStyle" TargetType="charts:XYChart">
+			<Style.Setters>
+				<Setter Property="Width" Value="390"/>
+				<Setter Property="Height" Value="250"/>
+				<Setter Property="Margin" Value="0,0,0,10"/>
+				<Setter Property="IsAxisBaselineVisible" Value="True"/>
+			</Style.Setters>
+		</Style>
+
+		<Style x:Key="LineSeriesStyle" TargetType="charts:LineSeries">
+			<Style.Setters>
+				<Setter Property="ItemsSource" Value="{Binding ChartData}"/>
+				<Setter Property="MarkerVisibility" Value="All"/>
+				<Setter Property="XPath" Value="Index"/>
+				<Setter Property="YPath" Value="Amount"/>
+			</Style.Setters>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Axis grid lines and stripes can be used to easily trace data points to their values on the axis.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="No grid lines or stripes">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Major grid lines visible on Y axis">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridLineMajorVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Major and minor grid lines visible on Y axis">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridLineMajorVisibility="Y" GridLineMinorVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Major grid lines and stripes visible on Y axis">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Major grid lines and visible on X and Y axis">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridLineMajorVisibility="All">
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5" />
+						</charts:XYChart.XAxes>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom stripe and alternating stripe brushes">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridStripeVisibility="Y" GridStripeBrush="#fffddc" GridStripeAlternatingBrush="#fffaac">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom grid major and minor line brushes">
+					<charts:XYChart Style="{StaticResource ChartStyle}" GridLineMajorVisibility="Y" GridLineMinorVisibility="Y"
+									GridLineMajorBrush="#996495EF" GridLineMinorBrush="#556495ED">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="5" TickMinorInterval="2.5"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

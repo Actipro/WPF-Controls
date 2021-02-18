@@ -1,0 +1,101 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.PrinterViewMarginsCustom.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.PrinterViewMarginsCustom"
+    >
+    <UserControl.Resources>
+
+		<!-- sample:CustomMargin Style -->
+		<Style x:Key="{x:Type sample:CustomMargin}" TargetType="{x:Type sample:CustomMargin}">
+			<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+			<Setter Property="BorderThickness" Value="0,0,0,1" />
+			<Setter Property="Margin" Value="0,0,0,10" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type sample:CustomMargin}">
+						<ControlTemplate.Resources>
+							
+							<shared:StringFormatConverter x:Key="StringFormatConverter" />
+						
+						</ControlTemplate.Resources>
+
+						<Border Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								Padding="3"
+								SnapsToDevicePixels="True">
+								
+							<DockPanel>
+								<!-- Company logo -->
+								<shared:ActiproLogo DockPanel.Dock="Left" VerticalAlignment="Center" />
+							
+								<StackPanel Margin="30,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+									<!-- Page number -->
+									<TextBlock HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">
+										<TextBlock.Text>
+											<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Page {0} of {1}">
+												<Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type editor:IPrinterView}}" Path="PageNumber" />
+												<Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type editor:IPrinterView}}" Path="PageCount" />
+											</MultiBinding>
+										</TextBlock.Text>
+									</TextBlock>
+																	
+									<!-- Document title -->
+									<TextBlock Margin="0,10,0,0" Text="{TemplateBinding DocumentTitle}" TextWrapping="Wrap" HorizontalAlignment="Center" />
+								</StackPanel>
+								
+							</DockPanel>								
+						</Border>
+						
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+    
+    </UserControl.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<!-- SyntaxEditor that uses a custom printer margin factory -->
+		<editor:SyntaxEditor x:Name="editor" Grid.ColumnSpan="2" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+			<editor:SyntaxEditor.PrintSettings>
+				<editor:PrintSettings DocumentTitle="c:\Documents\ActiproSyntaxEditor.txt" 
+					IsPageNumberMarginVisible="False" IsDocumentTitleMarginVisible="False">
+					<editor:PrintSettings.ViewMarginFactories>
+						<sample:CustomMarginFactory />
+					</editor:PrintSettings.ViewMarginFactories>
+				</editor:PrintSettings>
+			</editor:SyntaxEditor.PrintSettings>
+			
+			<editor:EditorDocument xml:space="preserve"><![CDATA[This QuickStart shows how to create a custom margin that is displayed on the header of each page in a document printout. 
+						
+The custom margin demonstrated here is placed at the top of each page, rendering a company logo (the Actipro logo) with the page number/filename next to it, and a horizontal rule underneath.
+
+The style for this custom margin is defined completely in XAML.  It shows how to bind to page numbers and the document title.
+
+This sample shows the power and flexibility of SyntaxEditor's margins model.  You can add any other custom margins that you wish as well.]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+		<Button x:Name="refreshPrintPreviewButton" Grid.Row="1" Margin="20,10,10,10" 
+			Content="Refresh Print Preview" Click="OnRefreshPrintPreviewButtonClick" />
+		<Button x:Name="showPrintPreviewDialogButton" Grid.Row="1" Grid.Column="1" Margin="10,10,20,10" 
+			Content="Show Print Preview Dialog" Click="OnShowPrintPreviewDialogButtonClick" />
+
+		<editor:EditorDocumentViewer x:Name="documentViewer" Grid.Row="2" Grid.ColumnSpan="2" />
+		
+	</Grid>
+
+</UserControl>

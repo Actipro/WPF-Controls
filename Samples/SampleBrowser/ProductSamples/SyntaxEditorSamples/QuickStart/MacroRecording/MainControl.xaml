@@ -1,0 +1,52 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.MacroRecording.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    >
+	
+	<DockPanel>
+		<!-- ToolBar -->
+		<shared:PixelSnapper DockPanel.Dock="Top">
+			<ToolBarTray>
+				<ToolBar>
+					<Button Command="editor:EditorCommands.RunMacro">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage Source="/Images/Icons/MacroRecordingRun16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							<TextBlock Margin="3,0,0,0" Text="Run Recorded Macro" VerticalAlignment="Center" />
+						</StackPanel>
+					</Button>
+					<Button x:Name="recordMacroButton" Command="editor:EditorCommands.ToggleMacroRecording">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage x:Name="recordMacroButtonImage" Source="/Images/Icons/MacroRecordingRecord16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							<TextBlock x:Name="recordMacroButtonTextBlock" Margin="3,0,0,0" Text="Record Macro" VerticalAlignment="Center" />
+						</StackPanel>
+					</Button>
+					<ToggleButton x:Name="pauseRecordingButton" Command="editor:EditorCommands.PauseResumeMacroRecording">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage Source="/Images/Icons/MacroRecordingPause16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							<TextBlock x:Name="pauseRecordingButtonTextBlock" Margin="3,0,0,0" Text="Pause Recording" VerticalAlignment="Center" />
+						</StackPanel>
+					</ToggleButton>
+					<Button Command="editor:EditorCommands.CancelMacroRecording">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage Source="/Images/Icons/MacroRecordingCancel16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							<TextBlock Margin="3,0,0,0" Text="Cancel Recording" VerticalAlignment="Center" />
+						</StackPanel>
+					</Button>
+				</ToolBar>
+			</ToolBarTray>
+		</shared:PixelSnapper>
+		
+		<!-- Editor -->
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True" 
+							 MacroRecordingStateChanged="OnSyntaxEditorMacroRecordingStateChanged">
+			<editor:EditorDocument xml:space="preserve"><![CDATA[SyntaxEditor has native macro recording capabilities that allow you to record any sequence of edit actions and replay them at a later time.
+
+This QuickStart allows you to test macro recording functionality.  Simply start recording using the Record Macro button above and start making edits to the document.  Then stop the recording and run the recorded macro to reply the persisted edit actions.
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</DockPanel>
+
+</UserControl>

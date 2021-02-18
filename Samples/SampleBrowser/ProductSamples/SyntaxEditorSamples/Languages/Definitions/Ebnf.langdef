@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'EBNF' language created by Actipro Software LLC.
+  Copyright (c) 2009-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Ebnf" LanguageDescription="EBNF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2009-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="AstNodeDeclaration" />
+		<ClassificationType Key="AstNodePropertyDeclaration" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Label" DefaultStyle="#FF808080,,True" />
+		<ClassificationType Key="NonTerminal" DefaultStyle="#FF2B91AF" />
+		<ClassificationType Key="NonTerminalDeclaration" DefaultStyle="#FF800080" />
+		<ClassificationType Key="PropertyName" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Punctuation" DefaultStyle=",True" />
+		<ClassificationType Key="String" DefaultStyle="#FFA31515" />
+		<ClassificationType Key="Terminal" DefaultStyle="#FF284082" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Id="1" Key="Default" DefaultCaseSensitivity="Sensitive">
+				<State.ChildStates>
+					<StateRef Key="MultiLineComment" />
+					<StateRef Key="TreeConstructor" />
+				</State.ChildStates>
+				<ExplicitPatternGroup TokenId="1" TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						null token
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="2" TokenKey="Terminal" ClassificationTypeKey="Terminal" Pattern="@ (_ | {Alpha})({Word})*" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="3" TokenKey="NonTerminalDeclaration" ClassificationTypeKey="NonTerminalDeclaration" Pattern="(_ | {Alpha})({Word})*" LookAheadPattern="{LineTerminatorWhitespace}+ \:" />
+				<RegexPatternGroup TokenId="4" TokenKey="LabelDeclaration" ClassificationTypeKey="Label" Pattern="(_ | {Alpha})({Word})*" LookAheadPattern="\:" />
+				<RegexPatternGroup TokenId="5" TokenKey="NonTerminal" ClassificationTypeKey="NonTerminal" Pattern="(_ | {Alpha})({Word})*" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="6" TokenKey="String" ClassificationTypeKey="String" Pattern="\&quot; [^\n\&quot;]* [\n\&quot;]" />
+				<RegexPatternGroup TokenId="7" TokenKey="NonTerminalStartDelimiter" ClassificationTypeKey="Punctuation" Pattern="{LineTerminator} {Whitespace}* :" />
+				<ExplicitPatternGroup TokenId="8" TokenKey="NonTerminalEndDelimiter" ClassificationTypeKey="Punctuation" LookBehindPattern="^ {Whitespace}*" Pattern=";" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						( ) | : ;
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="10" TokenKey="Whitespace" Pattern="{LineTerminatorWhitespace}+" />
+			</State>
+			<!-- TreeConstructor state -->
+			<State Id="2" Key="TreeConstructor" DefaultCaseSensitivity="Sensitive">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup Pattern="-&gt;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenId="1" TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="\(">
+					<ExplicitPatterns><![CDATA[
+						childof childrenof count custom leftassociativity valueof
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="1" TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						explicitvalue null
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="1" TokenKey="Keyword" ClassificationTypeKey="Keyword" LookBehindPattern="\." LookAheadPattern="\(">
+					<ExplicitPatterns><![CDATA[
+						add append set
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="11" TokenKey="PropertyName" ClassificationTypeKey="PropertyName" LookBehindPattern="=&gt; {Whitespace}*" Pattern="(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenId="11" TokenKey="PropertyName" ClassificationTypeKey="PropertyName" LookBehindPattern="\." Pattern="(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenId="12" TokenKey="AstNodeDeclaration" ClassificationTypeKey="AstNodeDeclaration" Pattern="(_ | {Alpha})({Word})*" LookAheadPattern="[\[\(]" />
+				<RegexPatternGroup TokenId="13" TokenKey="LabelReference" ClassificationTypeKey="Label" Pattern="(_ | {Alpha})({Word})*" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Id="3" Key="MultiLineComment" DefaultTokenId="14" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="15" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenId="16" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="17" TokenKey="MultiLineCommentLineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenId="14" TokenKey="MultiLineCommentText" Pattern="[^*\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[ExternAliasDirective
+	: @Extern IdentifierOrContextualKeyword i:IdentifierOrContextualKeyword @SemiColon
+		-> ExternalAliasDirective().set(i => Alias)
+	;]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

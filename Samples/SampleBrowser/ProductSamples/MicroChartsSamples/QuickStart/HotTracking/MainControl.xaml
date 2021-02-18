@@ -1,0 +1,138 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator" RandomSeed="71032093" StartAmount="0" AllowNegativeNumbers="True" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					All the chart types support hot tracking using the mouse, which allows the end-user to see the value associated with a given point.
+					There are several options for customizing the legend shown in the tooltip, giving you complete control over it's appearance.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Default legend tool tip">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Formatted Y value">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														 MarkerVisibility="All" MarkerStyleKinds="All" LegendStringFormat="{}{0:F4}" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Formatted X and Y values">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														 MarkerVisibility="All" MarkerStyleKinds="All" LegendStringFormat="{}X: {2}, Y: {3:F2}" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Description and formatted Y value">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														 MarkerVisibility="All" MarkerStyleKinds="All" LegendStringFormat="{}{5} {0:C}" Description="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="5-point star legend marker shape">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														 MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.LegendMarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Star5Points" />
+								</Style>
+							</microcharts:MicroLineSeries.LegendMarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Customized legend template">
+					<microcharts:MicroXYChart Width="130" Height="18" IsHotTrackingEnabled="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														 MarkerVisibility="All" MarkerStyleKinds="All" LegendStringFormat="X: {2}&#x0a;Y: {3:F5}">
+							<microcharts:MicroLineSeries.LegendItemTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" />
+											<ColumnDefinition Width="*" />
+										</Grid.ColumnDefinitions>
+										<microcharts:MicroChartMarker Width="16" Height="16" Style="{Binding MarkerStyle}" VerticalAlignment="Center">
+											<microcharts:MicroChartMarker.Template>
+												<ControlTemplate TargetType="microcharts:MicroChartMarker">
+													<Grid>
+														<Ellipse Fill="{TemplateBinding Background}" />
+														<Ellipse Margin="4" Fill="#ffffff" />
+													</Grid>
+												</ControlTemplate>
+											</microcharts:MicroChartMarker.Template>
+										</microcharts:MicroChartMarker>
+										<TextBlock Grid.Column="1" Margin="6,0,0,0" Text="{Binding Text}" />
+									</Grid>
+								</DataTemplate>
+							</microcharts:MicroLineSeries.LegendItemTemplate>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two non-stacked series, different formatting">
+					<microcharts:MicroXYChart Width="130" Height="36" YAxisMinimum="0" IsHotTrackingEnabled="True">
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" LegendStringFormat="{}OH: {0:F3}">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend upward" DataPointCount="10" StartAmount="10" StepRange="10" Trend="Upward" />
+							</microcharts:MicroAreaSeries.DataContext>
+						</microcharts:MicroAreaSeries>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" LegendStringFormat="{}VA: {0:F3}">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend downward" DataPointCount="10" StartAmount="25" StepRange="10" Trend="Downward" />
+							</microcharts:MicroAreaSeries.DataContext>
+						</microcharts:MicroAreaSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two stacked series">
+					<microcharts:MicroXYChart Width="130" Height="36" YAxisMinimum="0" IsHotTrackingEnabled="True">
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" StackKind="Normal" LegendStringFormat="{}{0:F4}">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend upward" DataPointCount="10" StartAmount="10" StepRange="10" Trend="Upward" />
+							</microcharts:MicroAreaSeries.DataContext>
+						</microcharts:MicroAreaSeries>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" StackKind="Normal" LegendStringFormat="{}{0:F4}">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend downward" DataPointCount="10" StartAmount="25" StepRange="10" Trend="Downward" />
+							</microcharts:MicroAreaSeries.DataContext>
+						</microcharts:MicroAreaSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

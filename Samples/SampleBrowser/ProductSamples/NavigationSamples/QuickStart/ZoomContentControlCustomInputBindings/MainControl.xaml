@@ -1,0 +1,87 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlCustomInputBindings.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlCustomInputBindings"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="RoutedCommandTemplate" DataType="{x:Type RoutedCommand}">
+			<TextBlock Text="{Binding Name}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="InputBindingSelectionTemplate">
+			<ComboBox ItemsSource="{x:Static sample:MainControl.Commands}" ItemTemplate="{StaticResource RoutedCommandTemplate}"
+						Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" 
+						SelectionChanged="OnComboBoxSelectionChanged" SelectedItem="{Binding Value}" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=leftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlShiftLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+Shift+LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shiftLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Shift+LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=altLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Alt+LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlAltLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+Alt+LeftClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlShiftLeftClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+Shift+Alt+LeftClick" />
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=leftDoubleClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="LeftDoubleClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlLeftDoubleClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+LeftDoubleClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlShiftLeftDoubleClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+Shift+LeftDoubleClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=altLeftDoubleClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Alt+LeftDoubleClick" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ctrlAltLeftDoubleClickBinding, Path=Command}" ValueTemplate="{StaticResource InputBindingSelectionTemplate}" DisplayName="Ctrl+Alt+LeftDoubleClick" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The mouse interation with the ZoomContentControl can be fully customized using
+					one or more MouseBinding or MouseWheelBinding (from our Shared Library).
+					<LineBreak /><LineBreak />
+					This example overrides the default input bindings and defines new input bindings.
+					Using the options on the side, the commands tied to several of the custom input bindings can be changed.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<navigation:ZoomContentControl x:Name="zoomContentControl" AreDefaultInputBindingsEnabled="False" ZoomStep="0.5">
+			<navigation:ZoomContentControl.InputBindings>
+				<MouseBinding x:Name="leftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftClick" />
+				<MouseBinding x:Name="ctrlLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftClick" />
+				<MouseBinding x:Name="ctrlShiftLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.StartZoomToRegion}" Gesture="Ctrl+Shift+LeftClick" />
+				<MouseBinding x:Name="shiftLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.StartZoomToRegion}" Gesture="Shift+LeftClick" />
+				<MouseBinding x:Name="altLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterToPoint}" Gesture="Alt+LeftClick" />
+				<MouseBinding x:Name="ctrlAltLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterAndZoomInToPoint}" Gesture="Ctrl+Alt+LeftClick" />
+				<MouseBinding x:Name="ctrlShiftAltLeftClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterAndZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftClick" />
+
+				<MouseBinding x:Name="leftDoubleClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftDoubleClick" />
+				<MouseBinding x:Name="ctrlLeftDoubleClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftDoubleClick" />
+				<MouseBinding x:Name="ctrlShiftLeftDoubleClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterAndZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftDoubleClick" />
+				<MouseBinding x:Name="altLeftDoubleClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterToPoint}" Gesture="Alt+LeftDoubleClick" />
+				<MouseBinding x:Name="ctrlAltLeftDoubleClickBinding" Command="{x:Static navigation:ZoomContentControlCommands.CenterAndZoomInToPoint}" Gesture="Ctrl+Alt+LeftDoubleClick" />
+
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="PositiveDelta" />
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="NegativeDelta" />
+			</navigation:ZoomContentControl.InputBindings>
+			<shared:ActiproLogo />
+		</navigation:ZoomContentControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

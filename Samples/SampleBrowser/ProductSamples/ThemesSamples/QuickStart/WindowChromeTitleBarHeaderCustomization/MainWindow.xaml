@@ -1,0 +1,56 @@
+<Window x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Title="WindowChrome Title Bar Header Customization"
+	Width="800" Height="600" 
+	Icon="/Images/Icons/Actipro.ico"
+	TextOptions.TextFormattingMode="Display"
+	WindowStartupLocation="CenterScreen"
+    >
+	<!--
+		The themes:WindowChrome.TitleBarHeader property defaults to binding to the window's Title property value,
+		but could be explicitly set as an attached property on the window to bind to the window's DataContext instead...
+		The TitleBarHeader value becomes the DataContext that can be used in bindings within TitleBarHeaderTemplate
+	-->
+	
+	<themes:WindowChrome.Chrome>
+		
+		<!--
+			A single WindowChrome instance can be used in multiple Windows, but this sample defines the WindowChrome inline
+		-->
+		<themes:WindowChrome x:Name="chrome" TitleBarHeaderAlignment="Center" TitleBarHeaderMargin="20,0">
+			<themes:WindowChrome.TitleBarHeaderTemplate>
+				<DataTemplate>
+					<shared:PopupButton MaxWidth="300" Content="{Binding}" DisplayMode="Merged" 
+										Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
+										Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+										IsTabStop="False" Focusable="False">
+						<shared:PopupButton.ContentTemplate>
+							<DataTemplate>
+								<DockPanel>
+									<ContentPresenter DockPanel.Dock="Right" Margin="5,2,0,0" ContentTemplate="{StaticResource {x:Static themes:SharedResourceKeys.DropDownArrowGlyphTemplateKey}}" VerticalAlignment="Center" />
+									<TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+								</DockPanel>
+							</DataTemplate>
+						</shared:PopupButton.ContentTemplate>
+						<shared:PopupButton.PopupMenu>
+							<ContextMenu>
+								<MenuItem Header="Save" />
+								<MenuItem Header="Save As..." />
+								<Separator />
+								<MenuItem Header="Close" />
+							</ContextMenu>
+						</shared:PopupButton.PopupMenu>
+					</shared:PopupButton>
+				</DataTemplate>
+			</themes:WindowChrome.TitleBarHeaderTemplate>
+		</themes:WindowChrome>
+
+	</themes:WindowChrome.Chrome>
+	
+	<sampleBrowser:RichTextBox x:Name="editor" Margin="7" DocumentUri="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarHeaderCustomization/OverviewDocument.xaml" />
+	
+</Window>

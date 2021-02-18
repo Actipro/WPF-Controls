@@ -1,0 +1,49 @@
+<Window 
+	x:Name="window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="600" MinHeight="450" 
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="Height" 
+	ResizeMode="CanResize"
+	FocusManager.FocusedElement="{Binding ElementName=wizard}"
+	>
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome />
+	</themes:WindowChrome.Chrome>
+	
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard QuickStart" PageSequenceType="Stack">
+		<wizard:Wizard.TransitionSelector>
+			<shared:MultiTransitionSelector>
+				<!-- This adds a single bar wipe transition -->
+				<shared:BarWipeTransition />
+			</shared:MultiTransitionSelector>
+		</wizard:Wizard.TransitionSelector>
+		
+		<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
+				Caption="Welcome to the Wizard Sample Application"
+				Description="Thank you for downloading the Actipro Wizard control.">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="1" TextWrapping="Wrap">To continue, click Next.</TextBlock>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<wizard:WizardPage x:Name="interiorPage" 
+				Caption="Interior Page Sample"
+				Description="This is a sample interior page that represents a step in your wizard." 
+				Title="Interior Page">
+			<TextBlock TextWrapping="Wrap">Add your content here.</TextBlock>
+		</wizard:WizardPage>
+		
+	</wizard:Wizard>
+	
+</Window>

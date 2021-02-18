@@ -1,0 +1,47 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionTags.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<Button HorizontalAlignment="Left" Content="Show completion list" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" CommandTarget="{Binding ElementName=editor}" />
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[<html>
+<body>
+
+<!-- 
+
+This QuickStart shows how you can create completion list items that insert
+text that is different than what is displayed in the actual list.
+
+In this sample we have three items:
+1) The comment item inserts comment delimiters around the caret.
+2) The 'a' element places the caret in the middle of an auto-generated
+	'href' attribute.
+3) The 'br' element does a normal insert where the caret moves after
+	the inserted text.
+
+Since comments have '!' and '-' characters in them, those characters
+have been added to the completion session's allowed-characters collection.
+This enables them to be typed without closing the popup.
+
+Press Ctrl+Space or type '<' below this comment and try selecting the 
+various options to see how the inserted text is placed around the caret.
+
+-->
+
+
+
+</body>
+</html>
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

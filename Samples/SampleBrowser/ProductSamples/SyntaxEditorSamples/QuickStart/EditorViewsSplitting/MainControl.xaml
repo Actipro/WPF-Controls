@@ -1,0 +1,36 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    >
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=CanSplitHorizontally}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=HasHorizontalSplit}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument xml:space="preserve"><![CDATA[SyntaxEditor has options to allow splitting into multiple editor views.
+Horizontal splits are supported.
+				
+Use the checkboxes above to alter split settings.
+				
+When splitting is enabled a small box appears next to the scrollbar.
+Click and drag on the box to create a split.
+
+Once split, the splitter in between the views can be
+dragged to resize the split.
+Double-clicking it removes the split.]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+
+</sampleBrowser:ProductItemControl>

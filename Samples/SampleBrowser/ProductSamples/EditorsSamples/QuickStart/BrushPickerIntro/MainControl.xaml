@@ -1,0 +1,58 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.BrushPickerIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"	
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=picker, Path=IsNullAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=picker, Path=IsGradientAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=picker, Path=IsAlphaEnabled}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="BRUSH VALUE">
+				<Border Width="200" Height="200" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" 
+						Background="{Binding ElementName=picker, Path=Value}" />
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The BrushPicker control combines several other primitives (ColorPicker and GradientStopSlider) together to
+					create a control that allows for easy selection of a Brush value.
+					<LineBreak /><LineBreak />
+					The toggle at the top determines the kind of Brush being edited.
+					The color selection UI and gradient stop slider (only visible for gradient brushes) are used to alter brush properties.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<editors:BrushPicker x:Name="picker">
+					<editors:BrushPicker.Value>
+						<LinearGradientBrush EndPoint="1,0">
+							<GradientStop Offset="0" Color="#70ff19" />
+							<GradientStop Offset="0.5" Color="#ffe719" />
+							<GradientStop Offset="1" Color="#ff2f19" />
+						</LinearGradientBrush>
+					</editors:BrushPicker.Value>
+				</editors:BrushPicker>
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

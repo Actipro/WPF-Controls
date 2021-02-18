@@ -1,0 +1,196 @@
+<ribbon:Tab x:Class="ActiproSoftware.ProductSamples.RibbonSamples.Common.WordHomeTab" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:mediaImaging="clr-namespace:System.Windows.Media.Imaging;assembly=PresentationCore"
+	Label="Home" KeyTipAccessText="H"
+    >
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Paste16.png" Label="Clipboard" KeyTipAccessText="ZC">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="10" Size="Small" />
+		</ribbon:Group.Variants>					
+		<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Paste32.png" ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="V" ScreenTipDescription="Paste the contents of the Clipboard." Command="ApplicationCommands.Paste">
+			<ribbon:Menu>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="P" Command="ApplicationCommands.Paste" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/PasteSpecial16.png" Label="Paste Special" KeyTipAccessText="S" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/PasteHyperlink16.png" Label="Paste Hyperlink" KeyTipAccessText="H" />
+			</ribbon:Menu>
+		</ribbon:SplitButton>
+		<ribbon:StackPanel ItemVariantBehavior="MediumThenSmallWhenSmall">
+			<ribbon:Button ImageSourceSmall="/Images/Icons/Cut16.png" Label="Cut" KeyTipAccessText="X" ScreenTipDescription="Cut the selection from the document and put it on the Clipboard." Command="ApplicationCommands.Cut" />
+			<ribbon:Button ImageSourceSmall="/Images/Icons/Copy16.png" Label="Copy" KeyTipAccessText="C" ScreenTipDescription="Copy the selection and put it on the Clipboard." Command="ApplicationCommands.Copy" />
+			<ribbon:Button ImageSourceSmall="/Images/Icons/FormatPainter16.png" Label="Format Painter" KeyTipAccessText="FP" ScreenTipDescription="Copy formatting from one place and apply it to another." />
+		</ribbon:StackPanel>
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font" KeyTipAccessText="ZF">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="50" Size="Medium" />
+			<ribbon:GroupVariant Priority="90" Size="Collapsed" />
+		</ribbon:Group.Variants>
+		<ribbon:RowPanel ThreeRowItemSortOrder="0,3,2,5,4,1">
+			<ribbon:ButtonGroup HasBorder="False">
+				<ribbon:FontFamilyComboBox Width="135" KeyTipAccessText="FF" />
+				<ribbon:FontSizeComboBox Width="40" KeyTipAccessText="FS" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/GrowFont16.png" Label="Grow Font" KeyTipAccessText="FG" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/ShrinkFont16.png" Label="Shrink Font" KeyTipAccessText="FK" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" KeyTipAccessText="E" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" KeyTipAccessText="1" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" KeyTipAccessText="2" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" KeyTipAccessText="3" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Strikethrough16.png" Label="Strikethrough" KeyTipAccessText="4" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Subscript16.png" Label="Subscript" KeyTipAccessText="5" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Superscript16.png" Label="Superscript" KeyTipAccessText="6" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ChangeCase16.png" Label="Change Case" KeyTipAccessText="7" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/TextHighlightColor16.png" Label="Text Highlight Color" KeyTipAccessText="I" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font Color" KeyTipAccessText="FC">
+					<StackPanel>
+						<ribbon:ColorPickerGallery InitialColumnCount="10" HorizontalAlignment="Center">
+							<ribbon:ColorPickerGallery.CategorizedItemsSource>
+								<x:Array Type="{x:Type media:SolidColorBrush}">
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FFFFFF" ribbon:ScreenTipService.ScreenTipHeader="White" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#000000" ribbon:ScreenTipService.ScreenTipHeader="Black" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#EEECE1" ribbon:ScreenTipService.ScreenTipHeader="Tan" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#1F497D" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4F81BD" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#C0504D" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#9BBB59" ribbon:ScreenTipService.ScreenTipHeader="Olive Green" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#8064A2" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4BACC6" ribbon:ScreenTipService.ScreenTipHeader="Aqua" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#F79646" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#C00000" ribbon:ScreenTipService.ScreenTipHeader="Dark Red" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FF0000" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FFC000" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FFFF00" ribbon:ScreenTipService.ScreenTipHeader="Yellow" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#92D050" ribbon:ScreenTipService.ScreenTipHeader="Light Green" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#00B050" ribbon:ScreenTipService.ScreenTipHeader="Green" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#00B0F0" ribbon:ScreenTipService.ScreenTipHeader="Light Blue" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#0070C0" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#002060" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+									<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#7030A0" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+								</x:Array>
+							</ribbon:ColorPickerGallery.CategorizedItemsSource>
+						</ribbon:ColorPickerGallery>
+						<ribbon:Separator />
+						<ribbon:Menu>
+							<ribbon:Button Label="More Colors..." />
+						</ribbon:Menu>
+					</StackPanel>
+				</ribbon:SplitButton>
+			</ribbon:ButtonGroup>						
+		</ribbon:RowPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" KeyTipAccessText="ZP">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="40" Size="Medium" />
+			<ribbon:GroupVariant Priority="80" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:RowPanel ThreeRowItemSortOrder="0,1,4,5,6,2,3">
+			<ribbon:ButtonGroup>
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Bullets16.png" Label="Bullets" KeyTipAccessText="U" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Numbering16.png" Label="Numbering" KeyTipAccessText="N" />
+				<ribbon:PopupButton ImageSourceSmall="/Images/Icons/MultilevelList16.png" Label="Multilevel List" KeyTipAccessText="M" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/DecreaseIndent16.png" Label="Decrease Indent" KeyTipAccessText="AO" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/IncreaseIndent16.png" Label="Increase Indent" KeyTipAccessText="AI" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Sort16.png" Label="Sort" KeyTipAccessText="SO" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/ToggleSymbols16.png" Label="Show/Hide Symbols" KeyTipAccessText="8" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextLeft16.png" Label="Align Text Left" KeyTipAccessText="AL" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Center" KeyTipAccessText="AC" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextRight16.png" Label="Align Text Right" KeyTipAccessText="AR" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextJustify16.png" Label="Justify" KeyTipAccessText="AJ" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:PopupButton ImageSourceSmall="/Images/Icons/LineSpacing16.png" Label="Line Spacing" KeyTipAccessText="K" />
+			</ribbon:ButtonGroup>
+			<ribbon:ButtonGroup>
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Shading16.png" Label="Shading" KeyTipAccessText="H" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/BorderBottom16.png" Label="Borders" KeyTipAccessText="B" />
+			</ribbon:ButtonGroup>						
+		</ribbon:RowPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/QuickStyles16.png" Label="Styles" KeyTipAccessText="ZS">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="20" Size="Medium" />
+			<ribbon:GroupVariant Priority="60" Size="Small" />
+			<ribbon:GroupVariant Priority="70" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:RibbonGallery ImageSourceLarge="/Images/Icons/QuickStyles32.png" Label="Quick Styles" KeyTipAccessText="L"
+			ScreenTipDescription="Format titles, quotes, and other text using the styles in this gallery." IsSelectionHighlightVisible="False">
+			<ribbon:RibbonGallery.ItemsSource>
+				<x:Array Type="{x:Type mediaImaging:BitmapImage}">
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Normal" UriSource="/Images/RibbonGalleries/Styles/Normal.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="No Spacing" UriSource="/Images/RibbonGalleries/Styles/NoSpacing.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Heading 1" UriSource="/Images/RibbonGalleries/Styles/Heading1.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Heading 2" UriSource="/Images/RibbonGalleries/Styles/Heading2.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Title" UriSource="/Images/RibbonGalleries/Styles/Title.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtitle" UriSource="/Images/RibbonGalleries/Styles/SubTitle.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtle Emphasis" UriSource="/Images/RibbonGalleries/Styles/SubtleEmphasis.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Emphasis" UriSource="/Images/RibbonGalleries/Styles/Emphasis.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Emphasis" UriSource="/Images/RibbonGalleries/Styles/IntenseEmphasis.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Strong" UriSource="/Images/RibbonGalleries/Styles/Strong.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Quote" UriSource="/Images/RibbonGalleries/Styles/Quote.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Quote" UriSource="/Images/RibbonGalleries/Styles/IntenseQuote.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Subtle Reference" UriSource="/Images/RibbonGalleries/Styles/SubtleReference.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Intense Reference" UriSource="/Images/RibbonGalleries/Styles/IntenseReference.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Book Title" UriSource="/Images/RibbonGalleries/Styles/BookTitle.png" />
+					<mediaImaging:BitmapImage ribbon:ScreenTipService.ScreenTipHeader="Paragraph" UriSource="/Images/RibbonGalleries/Styles/ListParagraph.png" />
+				</x:Array>
+			</ribbon:RibbonGallery.ItemsSource>
+			<ribbon:RibbonGallery.ItemTemplate>
+				<DataTemplate>
+					<Image Margin="2" Source="{Binding BindsDirectlyToSource=True}" Stretch="None" />
+				</DataTemplate>
+			</ribbon:RibbonGallery.ItemTemplate>
+			<ribbon:RibbonGallery.PopupContent>
+				<StackPanel>
+					<ribbon:PopupGallery InitialColumnCount="4" IsSelectionHighlightVisible="False"
+						ItemTemplate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemTemplate}"										
+						ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonGallery}}, Path=ItemsSource}"
+						/>
+					<ribbon:Separator />
+					<ribbon:Menu>
+						<ribbon:Button Label="Save Selection as a New Quick Style..." />
+						<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" />
+						<ribbon:Button ImageSourceSmall="/Images/Icons/ApplyStyles16.png" Label="Apply Styles..." />
+					</ribbon:Menu>
+				</StackPanel>
+			</ribbon:RibbonGallery.PopupContent>
+		</ribbon:RibbonGallery>
+		<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ChangeStyles32.png" Label="Change Styles" KeyTipAccessText="G" />
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Find16.png" Label="Editing" KeyTipAccessText="ZN">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="30" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+			<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Find16.png" Label="Find" KeyTipAccessText="FD" />
+			<ribbon:Button ImageSourceSmall="/Images/Icons/Replace16.png" Label="Replace" KeyTipAccessText="R" />
+			<ribbon:PopupButton ImageSourceSmall="/Images/Icons/Select16.png" Label="Select" KeyTipAccessText="SL" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>				
+</ribbon:Tab>
+			

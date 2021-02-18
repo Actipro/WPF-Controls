@@ -1,0 +1,67 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxGettingStarted.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The TreeListBox control displays a hierarchy of items in an indented vertical list, and is designed for MVVM usage.
+					<LineBreak /><LineBreak />
+					This sample shows a very simple example of getting started using the control.
+					It uses a TreeNodeModel class for items that is defined in the Common folder of this sample project.
+					Likewise, a DefaultTreeListBoxItemAdapter instance defined in the same folder is an item adapter that
+					provides communication between the control and the custom item type.
+					<LineBreak /><LineBreak />
+					Please feel free to use those classes as a basis for your own items and item adapters.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListBox MaxWidth="{StaticResource SampleThinMaxWidth}" IsRootItemVisible="True" TopLevelIndent="2">
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter TopLevelExpandabilityDefault="Never" />
+			</grids:TreeListBox.ItemAdapter>
+			<grids:TreeListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
+						<TextBlock Margin="4,0,0,0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+					</StackPanel>
+				</DataTemplate>
+			</grids:TreeListBox.ItemTemplate>
+			<common:TreeNodeModel ImageSource="/Images/Icons/Solution16.png" Name="Solution 'ActiproControlsSample' (1 project)" IsExpanded="True">
+				<common:TreeNodeModel ImageSource="/Images/Icons/ProjectCSharp16.png" Name="ActiproControlsSample" IsExpanded="True">
+					<common:TreeNodeModel ImageSource="/Images/Icons/Wrench16.png" Name="Properties" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="References">
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="ActiproSoftware.Grids.Wpf" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="System" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="System.Core" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="PresentationCore" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="PresentationFramework" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="WindowsBase" />
+					</common:TreeNodeModel>
+					<common:TreeNodeModel ImageSource="/Images/Icons/TextDocument16.png" Name="About.txt" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/TextDocument16.png" Name="ReleaseHistory.txt" />
+					<common:FolderTreeNodeModel Name="Source" IsExpanded="True">
+						<common:TreeNodeModel ImageSource="/Images/Icons/CSharpDocument16.png" Name="App.cs" />
+						<common:TreeNodeModel ImageSource="/Images/Icons/CSharpDocument16.png" Name="Component.cs" />
+					</common:FolderTreeNodeModel>
+				</common:TreeNodeModel>
+			</common:TreeNodeModel>
+		</grids:TreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

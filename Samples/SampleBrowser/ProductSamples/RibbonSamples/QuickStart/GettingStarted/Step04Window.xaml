@@ -1,0 +1,72 @@
+<ribbon:RibbonWindow x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	ApplicationName="Actipro Ribbon QuickStart"	
+	DocumentName="Getting Started #4"	
+    >
+	
+	<DockPanel>
+
+		<!-- Ribbon Control -->
+		<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top">
+			
+			<!-- Tabs -->
+			<ribbon:Ribbon.Tabs>
+			
+				<ribbon:Tab Label="Home" KeyTipAccessText="H">
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Paste16.png" Label="Clipboard" KeyTipAccessText="ZC" />
+					<ribbon:Group ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font" KeyTipAccessText="ZF" />
+					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" KeyTipAccessText="ZP" />
+					<ribbon:Group ImageSourceSmall="/Images/Icons/QuickStyles16.png" Label="Styles" KeyTipAccessText="ZS" />
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Find16.png" Label="Editing" KeyTipAccessText="ZN" />					
+				</ribbon:Tab>
+				
+				<ribbon:Tab Label="Insert" KeyTipAccessText="N" />
+				<ribbon:Tab Label="Page Layout" KeyTipAccessText="P" />
+				<ribbon:Tab Label="References" KeyTipAccessText="S" />
+				<ribbon:Tab Label="Mailings" KeyTipAccessText="M" />
+				<ribbon:Tab Label="Review" KeyTipAccessText="R" />
+				<ribbon:Tab Label="View" KeyTipAccessText="W" />
+			</ribbon:Ribbon.Tabs>
+			
+		</ribbon:Ribbon>
+		
+		<RichTextBox x:Name="editor" Margin="7" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+			<RichTextBox.Resources>
+				<!-- Make the scroll viewer in the RichTextBox use the custom scrollbar style -->
+				<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
+			</RichTextBox.Resources>
+			
+			<FlowDocument>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Add Groups</Paragraph>
+				<Paragraph>
+					Add a <Bold>Group</Bold> control as an item of the <Bold>Tab</Bold> for each group that should appear on the <Bold>Tab</Bold>.
+					For the <Bold>Home</Bold> tab, we have added <Bold>Clipboard</Bold>, <Bold>Font</Bold>, <Bold>Paragraph</Bold>,
+					<Bold>Styles</Bold>, and <Bold>Editing</Bold> groups.
+				</Paragraph>
+				<Paragraph>
+					Set the <Bold>Label</Bold> property of each <Bold>Group</Bold> to the text label that appears at the bottom of the group.
+					Set the <Bold>ImageSourceSmall</Bold> property of each <Bold>Group</Bold> to a small image that will be
+					displayed if the group enters a collapsed state.
+				</Paragraph>
+				<Paragraph>
+					As with other controls in the ribbon, it is important to set the <Bold>KeyTipAccessText</Bold> property on each group so that it 
+					supports keyboard navigation using key tips when the group is collapsed.
+					The <Bold>KeyTipAccessText</Bold> property value for groups should be two characters, starting with <Bold>Z</Bold>.
+					For instance, <Bold>ZC</Bold> is used as the key tip access text for the <Bold>Clipboard</Bold> group when it is collapsed.
+				</Paragraph>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">What's Next</Paragraph>
+				<Paragraph>
+					In the next <Bold>Getting Started</Bold> step, we will define the items in the <Bold>Clipboard</Bold> group.
+				</Paragraph>
+			</FlowDocument>								
+		</RichTextBox>
+			
+	</DockPanel>
+			
+</ribbon:RibbonWindow>

@@ -1,0 +1,84 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="userControl"
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbActionButtons.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Dictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Actipro Breadcrumb control supports any number of custom action buttons to be added to the right side (left side
+					when in Right-to-Left mode) of the control. The buttons can perform any operation, but they should typically perform
+					an operation related to the Breadcrumb control or the selected item.
+					<LineBreak /><LineBreak />
+					This quick-start also demonstrates the built-in support for the following NavigationCommands:
+					BrowseHome, FirstPage, GoToPage, LastPage, NextPage, and PreviousPage.
+					<LineBreak /><LineBreak />
+					<Italic>Note: The NextPage and LastPage commands are only supported when tail items are also enabled.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+		<navigation:Breadcrumb x:Name="breadcrumb"
+							   RootItem="{Binding XPath=ShellItem}"
+							   ItemContainerStyle="{StaticResource BreadcrumbItemStyle}"
+							   ItemTemplate="{StaticResource BreadcrumbItemTemplate}"
+							   ComboBoxItemTemplate="{StaticResource ComboBoxItemTemplate}"
+							   MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+							   MenuItemTemplate="{StaticResource MenuItemNormalTemplate}"
+							   MenuItemExpandedTemplate="{StaticResource MenuItemExpandedTemplate}"
+							   MaxTailItemCount="100"
+							   ConvertItem="OnBreadcrumbConvertItem">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="BrowseHome (Desktop)" Command="NavigationCommands.BrowseHome">
+					<shared:DynamicImage Source="/Images/Icons/Computer16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="FirstPage" Command="NavigationCommands.FirstPage">
+					<shared:DynamicImage Source="/Images/Icons/MoveFirst16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="PreviousPage" Command="NavigationCommands.PreviousPage">
+					<shared:DynamicImage Source="/Images/Icons/MovePrevious16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="NextPage" Command="NavigationCommands.NextPage">
+					<shared:DynamicImage Source="/Images/Icons/MoveNext16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="LastPage" Command="NavigationCommands.LastPage">
+					<shared:DynamicImage Source="/Images/Icons/MoveLast16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1"
+						ToolTip="GoToPage (Desktop\Recycle Bin)" Command="NavigationCommands.GoToPage" CommandParameter="Desktop\Recycle Bin">
+					<shared:DynamicImage Source="/Images/Icons/RecycleBin16.png" Stretch="None" VerticalAlignment="Center" />
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+	</StackPanel>
+</sampleBrowser:ProductItemControl>

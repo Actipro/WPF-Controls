@@ -1,0 +1,73 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptQuickInfo.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CodeOutliningRangeBased"
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<Button Content="Show quick info for word at caret" Click="OnShowQuickInfoButtonClick" />
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:JavascriptSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/*
+
+This QuickStart shows how to dynamically create an IntelliPrompt
+quick info session in several different scenarios.  The specific
+scenarios that are shown in this sample are:
+
+1) Mouse hover over line number in line number margin
+2) Mouse hover over words in the text area
+3) Clicking button above to show info about the word at the caret
+
+The SyntaxEditor quick info feature makes it easy to use rich 
+formatting in its popup based on a mini-HTML markup.  Any
+WPF content can be hosted in the quick info popups too.
+
+This sample implements a custom IQuickInfoProvider and registers
+it as a service with your language.  The QuickInfoProviderBase
+base class implements automated mouse tracking and only requires
+that you implement two methods to fully support automated
+quick info features.
+
+Note that when a quick info session is opened in response to the
+keyboard or a button click, mouse move/hover events are ignored
+until the session closes.
+
+*/
+
+var labelString = 'Screen pixel count: ';
+
+function displayScreenPixelCount(screenWidth, screenHeight) {
+	/*
+		Write a paragraph with the screen's pixel count
+	*/
+	document.write("<p>" + labelString);
+
+	var pixelCount = product(screenWidth, screenHeight);
+	document.write(pixelCount);
+
+	if (pixelCount <= 64000) {
+		document.write(" (small)");
+	}
+	else {
+		document.write(" (large)");
+	}
+
+	document.write("</p>");
+}
+
+function product(x, y) {
+	return x * y;
+}
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

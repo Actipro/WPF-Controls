@@ -1,0 +1,73 @@
+﻿<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.WorkspaceContent.MainControl"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+		>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					While a common use of the Actipro Docking &amp; MDI package is to have tool windows
+					that surround a MDI (Multiple Document Interface) area, in many cases you may not wish to have documents in your application.
+					In these cases you may wish to just place some sort of arbitrary content 
+					in the "workspace" area of your application with tool windows surrounding it.
+					<LineBreak /><LineBreak />
+					This QuickStart shows how to place tool windows around a Workspace 
+					that contains any sort of content you wish.
+					In this sample, we've used an Actipro logo, but any UI such as a ScrollViewer with large-sized content could be used instead.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+        <docking:DockSite.AutoHideLeftContainers>
+            <docking:ToolWindowContainer>
+                <docking:ToolWindow x:Name="findResults1ToolWindow" Title="Find Results 1"
+						ImageSource="/Images/Icons/FindResults16.png">
+                    <TextBox BorderThickness="0" Text="(no results)" IsReadOnly="True" TextWrapping="Wrap" />
+                </docking:ToolWindow>
+            </docking:ToolWindowContainer>
+		</docking:DockSite.AutoHideLeftContainers>
+		
+		<docking:SplitContainer Orientation="Vertical">
+
+			<!-- Workspace -->
+			<docking:Workspace>
+                <Viewbox Margin="10" MaxWidth="400" Stretch="Uniform">
+                    <shared:ActiproLogo />
+                </Viewbox>
+			</docking:Workspace>
+
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="outputToolWindow" Title="Output" ImageSource="/Images/Icons/Output16.png">
+					<TextBox BorderThickness="0" Text="(no output)" IsReadOnly="True" TextWrapping="Wrap" />
+				</docking:ToolWindow>
+				<docking:ToolWindow x:Name="errorListToolWindow" Title="Error List"
+						ImageSource="/Images/Icons/ErrorList16.png">
+					<ListView BorderThickness="0">
+						<ListView.View>
+							<GridView>
+								<GridViewColumn Header="" Width="16" />
+								<GridViewColumn Header="" Width="16" />
+								<GridViewColumn Header="Description" Width="200" />
+								<GridViewColumn Header="File" Width="100" />
+								<GridViewColumn Header="Line" Width="50" />
+								<GridViewColumn Header="Column" Width="50" />
+								<GridViewColumn Header="Project" Width="100" />
+							</GridView>
+						</ListView.View>
+					</ListView>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+
+		</docking:SplitContainer>
+	</docking:DockSite>
+	
+</sampleBrowser:ProductItemControl>

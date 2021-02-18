@@ -1,0 +1,44 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyExpandability.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyExpandability"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=PropertyExpandability}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By default the property grid will use the associated TypeConverter to determine if a property is expandable. 
+					This behavior can be overridden using the PropertyExpandability property.
+					Properties can be forced to always be expandable (ForceAlways) or only when the property and its associated
+					type doesn't define a TypeConverter (ForceSimple).
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}" SummaryHeight="Auto" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

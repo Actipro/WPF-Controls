@@ -1,0 +1,38 @@
+﻿<Page x:Class="ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.WindowChromeTitleBarBackButton.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	  xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" 
+      >
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelNarrowStyle}">
+			
+			<TextBlock Margin="0,10,0,0" Text="Click a 'Learn More' button below to navigate to a second page, which will enable the 'Back' button on the left side of the title bar." TextWrapping="Wrap" FontSize="14" />
+			
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="8" ShadowOpacity="0.2">
+				<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+						CornerRadius="10" Padding="30,20" SnapsToDevicePixels="True">
+					<StackPanel>
+						<TextBlock Text="Actipro Themes" TextWrapping="Wrap" FontSize="24" />
+						<TextBlock Margin="0,5,0,0" Text="Actipro Themes ensures that a great consistent visual appearance is applied to all controls within your application, regardless of whether they are Actipro control products or native WPF controls." TextWrapping="Wrap" FontSize="14" />
+						<Button Margin="0,15,0,5" Content="Learn More" FontSize="18" themes:ThemeProperties.CornerRadius="5" HorizontalAlignment="Left" Padding="15,5" Click="OnNavigateToPage2ButtonClick" />
+					</StackPanel>
+				</Border>
+			</shared:ShadowChrome>
+			
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="8" ShadowOpacity="0.2">
+				<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+						CornerRadius="10" Padding="30,20" SnapsToDevicePixels="True">
+					<StackPanel>
+						<TextBlock Text="Actipro WPF Controls" TextWrapping="Wrap" FontSize="24" />
+						<TextBlock Margin="0,5,0,0" Text="Over 100 WPF controls and components are available in an assortment of products that improve your application's UI with rich features and functionality." TextWrapping="Wrap" FontSize="14" />
+						<Button Margin="0,15,0,5" Content="Learn More" FontSize="18" themes:ThemeProperties.CornerRadius="5" HorizontalAlignment="Left" Padding="15,5" Click="OnNavigateToPage2ButtonClick" />
+					</StackPanel>
+				</Border>
+			</shared:ShadowChrome>
+			
+		</StackPanel>
+	</ScrollViewer>
+</Page>

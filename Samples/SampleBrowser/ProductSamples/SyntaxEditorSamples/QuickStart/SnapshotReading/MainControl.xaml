@@ -1,0 +1,100 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SnapshotReading.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    >
+    
+	<docking:DockSite>
+		<docking:SplitContainer Orientation="Vertical">
+			<docking:SplitContainer Orientation="Horizontal">
+				<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+					
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+						<editor:EditorDocument x:Name="document" xml:space="preserve" IsReadOnly="True"><![CDATA[using System;
+
+namespace SnapshotReadingQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how easily a text snapshot 
+	/// (which is an immutable copy of a document at a given
+	/// time) can be navigated via the use of an ITextSnapshotReader.  
+	/// </summary>
+	public class SnapshotReading {
+
+		/// <summary>
+		/// Snapshot readers allow you to navigate through a snapshot 
+		/// by character, word, token, along with many options for
+		/// each method.  Typically when doing parsing of a document,
+		/// You grab the "current" snapshot and use a reader to
+		/// run through it.  Since it's immutable, you know that
+		/// typing or other operations made by an end user won't
+		/// affect it.
+		/// </summary>
+		/// <remarks>
+		/// Use the links to the right to navigate through this 
+		/// snapshot.  The editor view's selection will highlight the
+		/// character or token that is found.
+		/// </remarks>
+		public int SampleProperty { get; set; }
+
+	}
+}
+]]></editor:EditorDocument>
+
+					</editor:SyntaxEditor>
+					
+				</docking:Workspace>
+				
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Navigation" CanClose="False">
+						<ScrollViewer>
+							<StackPanel Margin="10">
+								<TextBlock TextWrapping="Wrap" >
+									<Run Text="Go to previous..." /><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousCharacterHyperlinkClick">character</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousWordStartHyperlinkClick">word start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousLineEndHyperlinkClick">line end</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousTokenHyperlinkClick">token</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousThirdTokenHyperlinkClick">third token</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToPreviousDocCommentHyperlinkClick">documentation comment</Hyperlink><LineBreak/>
+									<LineBreak/>
+									<Run Text="Go to current..." /><LineBreak/>
+									<Hyperlink Click="OnGoToSnapshotStartHyperlinkClick">document start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToSnapshotEndHyperlinkClick">document end</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToCurrentLineStartHyperlinkClick">line start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToCurrentLineEndHyperlinkClick">line end</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToCurrentWordStartHyperlinkClick">word start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToCurrentWordEndHyperlinkClick">word end</Hyperlink><LineBreak/>
+									<LineBreak/>
+									<Run Text="Go to next..." /><LineBreak/>
+									<Hyperlink Click="OnGoToNextCharacterHyperlinkClick">character</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToNextWordStartHyperlinkClick">word start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToNextLineStartHyperlinkClick">line start</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToNextTokenHyperlinkClick">token</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToNextThirdTokenHyperlinkClick">third token</Hyperlink><LineBreak/>
+									<Hyperlink Click="OnGoToNextDocCommentHyperlinkClick">documentation comment</Hyperlink><LineBreak/>
+								</TextBlock>
+							</StackPanel>
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+				
+			</docking:SplitContainer>
+			
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Results" CanClose="False" ContainerDockedSize="200,150">
+					<editor:SyntaxEditor x:Name="resultsEditor" BorderThickness="0" CanSplitHorizontally="False" IsSelectionMarginVisible="False" IsOutliningMarginVisible="False">
+						<editor:EditorDocument IsReadOnly="True" Text="" />
+					</editor:SyntaxEditor>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+			
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+    
+</UserControl>

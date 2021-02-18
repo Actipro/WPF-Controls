@@ -1,0 +1,171 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GoToLine.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Line number " VerticalAlignment="Center" />
+				<TextBox x:Name="lineNumberTextBox" Width="50" Text="50" VerticalAlignment="Center" />
+				<Button Margin="3,0,0,0" Content="Go to Line" VerticalAlignment="Center" Click="OnGoToLineButtonClick" />
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[This QuickStart shows how easy it is to implement go to line
+functionality, which is just a matter of setting the caret's position:
+editor.Caret.Position = new TextPosition(lineIndex, 0);
+
+The caret moves to the specified line index and ensures that it is
+scrolled into view.  To test this feature, enter a line number in
+the TextBox above and click the "Go to Line" button.
+
+We've added a number of nonsense lines below to give the document
+some length so that the scroll to caret feature can be demoed.
+
+In addition, this line ensures the caret scrolls to the view's middle:
+editor.ActiveView.Scroller.ScrollLineToVisibleMiddle();
+
+A1
+B1
+C1
+D1
+E1
+F1
+G1
+H1
+I1
+J1
+K1
+L1
+M1
+N1
+O1
+P1
+Q1
+R1
+S1
+T1
+U1
+V1
+W1
+X1
+Y1
+Z1
+					
+A2
+B2
+C2
+D2
+E2
+F2
+G2
+H2
+I2
+J2
+K2
+L2
+M2
+N2
+O2
+P2
+Q2
+R2
+S2
+T2
+U2
+V2
+W2
+X2
+Y2
+Z2
+
+A3
+B3
+C3
+D3
+E3
+F3
+G3
+H3
+I3
+J3
+K3
+L3
+M3
+N3
+O3
+P3
+Q3
+R3
+S3
+T3
+U3
+V3
+W3
+X3
+Y3
+Z3
+
+A4
+B4
+C4
+D4
+E4
+F4
+G4
+H4
+I4
+J4
+K4
+L4
+M4
+N4
+O4
+P4
+Q4
+R4
+S4
+T4
+U4
+V4
+W4
+X4
+Y4
+Z4
+
+A5
+B5
+C5
+D5
+E5
+F5
+G5
+H5
+I5
+J5
+K5
+L5
+M5
+N5
+O5
+P5
+Q5
+R5
+S5
+T5
+U5
+V5
+W5
+X5
+Y5
+Z5
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

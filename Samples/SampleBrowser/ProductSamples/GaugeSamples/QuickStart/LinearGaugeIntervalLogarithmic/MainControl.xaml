@@ -1,0 +1,102 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=marker, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=LogarithmicBase}">
+						<gridseditors:DoublePropertyEditor Minimum="2" Maximum="10" SmallChange="1" LargeChange="2" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=Minimum}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=Maximum}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=IsReversed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=MajorInterval}">
+						<gridseditors:DoublePropertyEditor Minimum="2" Maximum="10" SmallChange="1" LargeChange="2" HasPopup="True" PickerKind="Default" IsNaNAllowed="True" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=MinorInterval}">
+						<gridseditors:DoublePropertyEditor Minimum="2" Maximum="10" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" IsNaNAllowed="True" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The LinearGauge control fully supports logarithmic scales, using a configurable base.
+					Additionally, tick marks and tick labels can be shown linearly or logarithmically, regardless of the scale.
+					<LineBreak /><LineBreak />
+					Several of the options relating to logarithmic scales can be configured.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:LinearGauge x:Name="gauge" Orientation="Vertical" Width="100" Height="300" HorizontalAlignment="Center"
+					RimType="ClippedRectangle" RimBrush="#345688" BackgroundType="RoundedSide"
+					BackgroundSizeRatio="0.9" Background="Gray" GlassType="ClippedRectangle">
+
+				<gauge:LinearGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:LinearGauge.LayoutTransform>
+
+				<gauge:LinearGauge.Scales>
+					<gauge:LinearScale BarExtent="75%" IsBarVisible="False">
+						<gauge:LinearScale.TickSets>
+							<gauge:LinearTickSet x:Name="tickSet" Minimum="1" Maximum="100" IsLogarithmic="True"
+									LogarithmicBase="10" MajorInterval="NaN" MinorInterval="2" IntervalOrigin="Zero">
+
+								<gauge:LinearTickSet.Ranges>
+									<gauge:LinearRange StartValue="10" EndValue="100" Background="#33000000"
+											StartAscent="0" EndAscent="15%" HasDropShadow="False" />
+									<gauge:LinearRange StartValue="1" EndValue="10" Background="#33000000"
+											StartAscent="15%" EndAscent="0" HasDropShadow="False" />
+								</gauge:LinearTickSet.Ranges>
+								
+								<gauge:LinearTickSet.Ticks>
+									<gauge:LinearTickMarkMinor TickMarkExtent="1" TickMarkAscent="10%"
+											TickMarkType="Rectangle" Background="Blue" />
+									<gauge:LinearTickMarkMajor TickMarkExtent="7%" TickMarkAscent="15%"
+											TickMarkType="Diamond" Background="DarkBlue" />
+									<gauge:LinearTickLabelMinor FontFamily="Tahoma" FontSize="8" ScalePlacement="Inside"
+											ScaleOffset="7%" Foreground="Black" />
+									<gauge:LinearTickLabelMajor FontFamily="Tahoma" FontSize="10" FontWeight="Bold"
+											ScalePlacement="Outside" ScaleOffset="15%" Foreground="Black" />
+								</gauge:LinearTickSet.Ticks>
+
+								<gauge:LinearTickSet.Pointers>
+									<gauge:LinearPointerMarker x:Name="marker" Value="1" PointerExtent="5%"
+											PointerAscent="25%" Background="Gray" BorderWidth="0.5" />
+								</gauge:LinearTickSet.Pointers>
+								
+							</gauge:LinearTickSet>
+						</gauge:LinearScale.TickSets>
+					</gauge:LinearScale>
+				</gauge:LinearGauge.Scales>
+			</gauge:LinearGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

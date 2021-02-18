@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineViewport.AdornmentElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+			 xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+			 FontFamily="{DynamicResource {x:Static SystemFonts.MessageFontFamilyKey}}"
+             IsTabStop="False"
+             >
+	<docking:TabbedMdiContainerTabControl CanTabsHighlightOnPointerOverWhenInactive="False" CanTabsPromote="False" 
+										  HighlightThickness="0,1" BorderThickness="0" IsTabStop="False" TabClosing="OnTabControlTabClosing">
+		<docking:AdvancedTabItem LayoutKind="Preview" Header="Object [from metadata]" CanClose="True" IsReadOnly="True">
+			<editor:SyntaxEditor IsTabStop="False" CanSplitHorizontally="False" BorderThickness="0">
+				<editor:EditorDocument xml:space="preserve" IsReadOnly="True">
+					<editor:EditorDocument.Language>
+						<editor:CSharpSyntaxLanguage />
+					</editor:EditorDocument.Language><![CDATA[using System.Runtime;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
+using System.Security;
+
+namespace System {
+	//
+	// Summary:
+	//     Supports all classes in the .NET Framework class hierarchy and provides low-level
+	//     services to derived classes. This is the ultimate base class of all classes in
+	//     the .NET Framework; it is the root of the type hierarchy.
+	[ClassInterface(ClassInterfaceType.AutoDual)]
+	[ComVisible(true)]
+	public class Object {
+		//
+		// Summary:
+		//     Initializes a new instance of the System.Object class.
+		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
+		public Object();
+
+		//
+		// Summary:
+		//     Allows an object to try to free resources and perform other cleanup operations
+		//     before it is reclaimed by garbage collection.
+		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
+		~Object();
+
+		//
+		// Summary:
+		//     Determines whether the specified object instances are considered equal.
+		//
+		// Parameters:
+		//   objA:
+		//     The first object to compare.
+		//
+		//   objB:
+		//     The second object to compare.
+		//
+		// Returns:
+		//     true if the objects are considered equal; otherwise, false. If both objA and
+		//     objB are null, the method returns true.
+		[TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")]
+		public static bool Equals(Object objA, Object objB);
+		//
+		// Summary:
+		//     Determines whether the specified System.Object instances are the same instance.
+		//
+		// Parameters:
+		//   objA:
+		//     The first object to compare.
+		//
+		//   objB:
+		//     The second object to compare.
+		//
+		// Returns:
+		//     true if objA is the same instance as objB or if both are null; otherwise, false.
+		[ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
+		[TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")]
+		public static bool ReferenceEquals(Object objA, Object objB);
+		//
+		// Summary:
+		//     Determines whether the specified object is equal to the current object.
+		//
+		// Parameters:
+		//   obj:
+		//     The object to compare with the current object.
+		//
+		// Returns:
+		//     true if the specified object is equal to the current object; otherwise, false.
+		[TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")]
+		public virtual bool Equals(Object obj);
+		//
+		// Summary:
+		//     Serves as a hash function for a particular type.
+		//
+		// Returns:
+		//     A hash code for the current object.
+		[TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")]
+		public virtual int GetHashCode();
+		//
+		// Summary:
+		//     Gets the System.Type of the current instance.
+		//
+		// Returns:
+		//     The exact runtime type of the current instance.
+		[SecuritySafeCritical]
+		public Type GetType();
+		//
+		// Summary:
+		//     Returns a string that represents the current object.
+		//
+		// Returns:
+		//     A string that represents the current object.
+		public virtual string ToString();
+		//
+		// Summary:
+		//     Creates a shallow copy of the current System.Object.
+		//
+		// Returns:
+		//     A shallow copy of the current System.Object.
+		[SecuritySafeCritical]
+		protected Object MemberwiseClone();
+	}
+}
+]]></editor:EditorDocument>
+			</editor:SyntaxEditor>
+		</docking:AdvancedTabItem>
+	</docking:TabbedMdiContainerTabControl>
+</UserControl>

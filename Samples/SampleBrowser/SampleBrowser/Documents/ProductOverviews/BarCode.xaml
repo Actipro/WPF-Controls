@@ -1,0 +1,48 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarCodeSamples/Demo/SymbologySummary/MainControl">
+					<Image Width="400" Height="130" Source="/Images/Screenshots/BarCode-Summary-400x130.png" />
+				</Button>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarCodeSamples/Demo/Invoice/MainControl">
+					<Image Width="400" Height="130" Source="/Images/Screenshots/BarCode-Invoice-400x130.png" />
+				</Button>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Bar Code makes it easy to add the most common 2D and linear bar codes to any application or report.
+					It takes all the work out of the bar code generation process by allowing you to simply say what value to encode. 
+					It automatically calculates any appropriate checksums and generates the resulting bar code for you.
+				</TextBlock>
+				
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					The output is completely customizable with many options, everything from setting the bar height to display of the encoded value below the bar lines.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

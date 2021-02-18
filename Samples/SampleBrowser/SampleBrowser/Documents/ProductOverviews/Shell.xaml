@@ -1,0 +1,50 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/ShellSamples/Demo/FileExplorer/MainControl">
+						<Image Width="190" Height="300" Source="/Images/Screenshots/Shell-FileExplorer-190x300.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/ShellSamples/Demo/BrowseForFolder/MainControl">
+						<Image Width="190" Height="300" Source="/Images/Screenshots/Shell-BrowseForFolder-190x300.png" />
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Actipro Shell controls allow for easy folder and file browsing. While the product comes packed with a pre-built implementation for the Windows shell that mimics Windows Explorer, 
+					the controls are fully customizable, allowing you to filter or change the folders/files presented. 
+					Or build your own shell service to support other files systems, such as the remote side for a FTP client.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					All of the UI found in the Shell controls is native WPF, and can be fully-themed or even customized with XAML data templates.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

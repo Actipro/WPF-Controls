@@ -1,0 +1,161 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl" 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomTitleBarContent.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		
+		<shared:ConditionalConverter x:Key="StatusLightConditionalConverter">
+			<shared:ConditionalConverter.TrueValue>
+				<SolidColorBrush Color="#5cd404" />
+			</shared:ConditionalConverter.TrueValue>
+			<shared:ConditionalConverter.FalseValue>
+				<SolidColorBrush Color="#d40404" />
+			</shared:ConditionalConverter.FalseValue>
+		</shared:ConditionalConverter>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=dockSite, Path=ToolWindowsTitleBarContextContentAlignment}" DisplayName="Context alignment" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows how the ToolWindow.ToolWindowContainerTitleBarContextContentTemplate property
+					can optionally be set to a DataTemplate that contains custom UI for display
+					in a ToolWindowContainer title bar.
+					<LineBreak /><LineBreak />
+					The template can contain anything from indicators, to additional buttons, to status messages.
+					The template's data context is the same as that of the ToolWindow.
+					It can be aligned to the near (left) or far (right) side of the title bar.
+					<LineBreak /><LineBreak />
+					In this sample, simple primitive types are used as the data contexts.
+					In a production application, complex types would typically be used instead.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+			
+		<docking:SplitContainer Orientation="Vertical">
+		
+			<docking:SplitContainer Orientation="Horizontal">
+			
+				<!-- Workspace -->
+				<docking:Workspace>
+					<docking:TabbedMdiHost />
+				</docking:Workspace>
+			
+				<docking:SplitContainer Orientation="Vertical">
+				
+					<docking:ToolWindowContainer>
+						<docking:ToolWindow x:Name="searchToolWindow" Title="Search Button" ContainerDockedSize="250,200">
+							<docking:ToolWindow.DataContext>
+								<system:Boolean>True</system:Boolean>
+							</docking:ToolWindow.DataContext>
+							<docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+								<DataTemplate>
+									<Button Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="3" VerticalAlignment="Center"
+											Visibility="{Binding Converter={StaticResource BooleanToVisibilityConverter}}"
+											Command="{Binding ElementName=rootSampleControl, Path=SearchCommand}">
+										<Button.ContentTemplate>
+											<DataTemplate>
+  												<Canvas Width="10" Height="10">
+													<Path Width="10" Height="10" StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+															Data="M 0.5,3.5 A 3,3 90 0 1 3.5,0.5 A 3,3 90 0 1 6.5,3.5 A 3,3 90 0 1 3.5,6.5 A 3,3 90 0 1 0.5,3  M 5.5,6 L 9,9.5 L 9.5,9 L 6,5.5 Z"  />
+  												</Canvas>
+											</DataTemplate>
+										</Button.ContentTemplate>
+									</Button>
+								</DataTemplate>
+							</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+						
+							<Grid Margin="10">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+						
+								<CheckBox Content="Is search button visible" IsChecked="{Binding ElementName=searchToolWindow, Path=DataContext, Mode=TwoWay}" />
+								<TextBlock Grid.Row="1" Margin="0,10,0,0" Text="This tool window contains a custom search button in the title bar, whose visibilty is controlled by the CheckBox." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+							</Grid>
+						</docking:ToolWindow>
+					</docking:ToolWindowContainer>
+			
+					<docking:ToolWindowContainer>
+						<docking:ToolWindow x:Name="labelToolWindow" Title="Label" ContainerDockedSize="250,200">
+							<docking:ToolWindow.DataContext>
+								<system:String>Approved</system:String>
+							</docking:ToolWindow.DataContext>
+							<docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+								<DataTemplate>
+									<TextBlock Margin="10,0" Text="{Binding}" FontSize="10" FontStyle="Italic" VerticalAlignment="Center" />
+								</DataTemplate>
+							</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+						
+							<Grid Margin="10">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+						
+								<ComboBox SelectedItem="{Binding ElementName=labelToolWindow, Path=DataContext, Mode=TwoWay}">
+									<system:String>Approved</system:String>
+									<system:String>Rejected</system:String>
+								</ComboBox>
+								<TextBlock Grid.Row="1" Margin="0,10,0,0" Text="This tool window contains a custom status label in the title bar that is controlled by the ComboBox." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+							</Grid>
+						</docking:ToolWindow>
+					</docking:ToolWindowContainer>
+				</docking:SplitContainer>
+			
+			</docking:SplitContainer>
+			
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="statusToolWindow" Title="Status" ContainerDockedSize="200,120">
+					<docking:ToolWindow.DataContext>
+						<system:Boolean>False</system:Boolean>
+					</docking:ToolWindow.DataContext>
+					<docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+						<DataTemplate>
+							<Ellipse Margin="2" Width="12" Height="12" StrokeThickness="1" Stroke="#ffffff" HorizontalAlignment="Center" VerticalAlignment="Center"
+										Fill="{Binding Converter={StaticResource StatusLightConditionalConverter}}" />
+						</DataTemplate>
+					</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
+					
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						
+						<CheckBox Content="Is approved" IsChecked="{Binding ElementName=statusToolWindow, Path=DataContext, Mode=TwoWay}" />
+						<TextBlock Grid.Row="1" Margin="0,10,0,0" Text="This tool window contains a custom indicator in the title bar that is controlled by the CheckBox." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+					</Grid>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+		
+		</docking:SplitContainer>
+					
+	</docking:DockSite>
+		
+</sampleBrowser:ProductItemControl>

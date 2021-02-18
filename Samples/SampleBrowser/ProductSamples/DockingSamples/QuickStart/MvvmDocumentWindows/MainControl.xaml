@@ -1,0 +1,46 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The DockSite control is designed to fully support the optional usage of MVVM patterns,
+					in other words, data-bound items that can generate docking window container views.
+					<LineBreak /><LineBreak />
+					DockSite has numerous properties and methods that mimic what is found on a traditional ItemsControl.
+					This sample uses the DocumentItemContainerStyle property to specify a Style that binds 
+					data item properties (Title, IsOpen, etc.) to the generated container.
+					The two implicit DataTemplate instances that specify the view content of the containers generated for the data items
+					are found within the main view's Resources.
+					Normally these should be placed in the Application.Resources instead so that they can be found by floating windows.
+					Alternatively, the DocumentItemTemplate or DocumentItemTemplateSelector properties can be used instead of implicit data templates.
+					Finally, the DocumentItemsSource property is an enumerable of data items that generate document window containers.
+					Style selector properties are also available for scenarios where multiple styles are required.
+					<LineBreak /><LineBreak />
+					The tool window in this sample is statically defined in the XAML of the main view.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- Main view -->
+	<ContentControl x:Name="rootContentControl" IsTabStop="False" Focusable="False">
+		<ContentControl.ContentTemplate>
+			<DataTemplate>
+				<sample:MainView />
+			</DataTemplate>
+		</ContentControl.ContentTemplate>
+		<ContentControl.Content>
+			<sample:MainViewModel />
+		</ContentControl.Content>
+	</ContentControl>
+
+</sampleBrowser:ProductItemControl>

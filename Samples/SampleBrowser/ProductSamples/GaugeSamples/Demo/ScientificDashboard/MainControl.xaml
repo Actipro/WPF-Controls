@@ -1,0 +1,220 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GaugeSamples.Demo.ScientificDashboard.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.GaugeSamples.Demo.ScientificDashboard"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+		<local:CelsiusConverter x:Key="CelsiusConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge, DigitalGauge, and LinearGauge controls can be used to
+					implement a dashboard for various data points.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Orientation="Horizontal" Style="{StaticResource SamplePanelWideStyle}" HorizontalAlignment="Center">
+			
+			<sampleBrowser:LabeledCardControl VerticalAlignment="Top">
+				<StackPanel>
+					<TextBlock Margin="0,0,0,10" Text="Water Flow Monitor" Style="{StaticResource SampleFigureHeadingTextBlockStyle}" />
+					
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="0" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<!-- PSI -->
+						<gauge:CircularGauge Radius="90" Width="200" Height="200" FrameType="CircularThickRim"
+								Background="#7A5858" RimBrush="#504E5F" ToolTip="Pounds per square inch">
+							<gauge:CircularGauge.Items>
+								<TextBlock gauge:CircularGauge.Y="30" Text="PSI" FontFamily="Arial" Foreground="Wheat"
+										FontSize="18" />
+							</gauge:CircularGauge.Items>
+							<gauge:CircularGauge.Scales>
+								<gauge:CircularScale BorderBrush="Black" Background="#7A5858" SweepAngle="340"
+										Radius="48" StartAngle="100">
+									<gauge:CircularScale.TickSets>
+										<gauge:CircularTickSet Maximum="500" MajorInterval="50" MinorInterval="10">
+											<gauge:CircularTickSet.Ticks>
+												<gauge:CircularTickMarkMinor TickMarkExtent="5" TickMarkAscent="3"
+														TickMarkType="Rectangle" ScalePlacement="Outside" />
+												<gauge:CircularTickMarkMajor TickMarkExtent="10" TickMarkAscent="3"
+														TickMarkType="Rectangle" ScalePlacement="Outside" ScaleOffset="1" />
+												<gauge:CircularTickLabelMajor FontFamily="Tahoma" FontSize="11"
+														SkipValues="50,150,250,350,450" ScalePlacement="Outside"
+														ScaleOffset="11" Foreground="Wheat" />
+											</gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickSet.Pointers>
+												<gauge:CircularPointerNeedle x:Name="psiNeedle" BorderBrush="Wheat"
+														Background="{shared:LinearGradientBrush GhostWhite, White, GradientType=LeftToRight}"
+														PointerAscent="5" PointerExtent="70" NeedleType="PivotSwordSharp"
+														HasDropShadow="False" DampeningMinimumDuration="0:0:0.500" />
+												<gauge:CircularPointerCap CapType="CircleConvex" PointerExtent="10"
+														Background="#504E5F" />
+											</gauge:CircularTickSet.Pointers>
+										</gauge:CircularTickSet>
+									</gauge:CircularScale.TickSets>
+								</gauge:CircularScale>
+							</gauge:CircularGauge.Scales>
+						</gauge:CircularGauge>
+
+						<!-- GPM -->
+						<gauge:CircularGauge Grid.Column="2" Radius="90" Width="200" Height="200"
+								FrameType="CircularThickRim" Background="#58667A" RimBrush="#504E5F"
+								ToolTip="Gallons per minute">
+							<gauge:CircularGauge.Items>
+								<TextBlock gauge:CircularGauge.Y="30" Text="GPM" FontFamily="Arial" Foreground="Wheat"
+										FontSize="18" />
+							</gauge:CircularGauge.Items>
+							<gauge:CircularGauge.Scales>
+								<gauge:CircularScale BorderBrush="Black" Background="#58667A" SweepAngle="340" Radius="48"
+										StartAngle="100">
+									<gauge:CircularScale.TickSets>
+										<gauge:CircularTickSet Maximum="250" MajorInterval="25" MinorInterval="5">
+											<gauge:CircularTickSet.Ticks>
+												<gauge:CircularTickMarkMinor TickMarkExtent="5" TickMarkAscent="3"
+														TickMarkType="Rectangle" ScalePlacement="Outside" />
+												<gauge:CircularTickMarkMajor TickMarkExtent="10" TickMarkAscent="3"
+														TickMarkType="Rectangle" ScalePlacement="Outside" ScaleOffset="1" />
+												<gauge:CircularTickLabelMajor FontFamily="Tahoma" FontSize="11"
+														SkipValues="25,75,125,175,225" ScalePlacement="Outside"
+														ScaleOffset="11" Foreground="Wheat" />
+											</gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickSet.Pointers>
+												<gauge:CircularPointerNeedle x:Name="gpmNeedle" BorderBrush="Wheat"
+														Background="{shared:LinearGradientBrush GhostWhite, White, GradientType=LeftToRight}"
+														PointerAscent="5" PointerExtent="70" NeedleType="PivotSwordSharp"
+														HasDropShadow="False" DampeningMinimumDuration="0:0:0.500" />
+												<gauge:CircularPointerCap CapType="CircleConvex" PointerExtent="10"
+														Background="#58667A" />
+											</gauge:CircularTickSet.Pointers>
+										</gauge:CircularTickSet>
+									</gauge:CircularScale.TickSets>
+								</gauge:CircularScale>
+							</gauge:CircularGauge.Scales>
+						</gauge:CircularGauge>
+					</Grid>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+			
+			<sampleBrowser:LabeledCardControl Margin="20,0,0,0" VerticalAlignment="Top">
+				<StackPanel>
+					<TextBlock Margin="0,0,0,10" Text="Temperature" Style="{StaticResource SampleFigureHeadingTextBlockStyle}" />
+					
+					<Grid HorizontalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<!-- Fahrenheit -->
+						<gauge:LinearGauge Width="60" Height="200" Orientation="Vertical" Background="Black"
+								RimBrush="DarkGoldenrod" FrameType="RoundedRectangleThinRim">
+
+							<gauge:LinearGauge.Items>
+								<TextBlock gauge:CircularGauge.Y="-75" Text="F" FontFamily="Arial" Foreground="Wheat"
+										FontSize="16" />
+								<gauge:DigitalGauge Y="77" Foreground="DarkGoldenrod"
+										CharacterType="Segment7Trapezoid"  FrameType="None" Height="25" Width="40"
+										CharacterCount="3" CharacterHeight="18"
+										Value="{Binding Value, ElementName=fahrenheitBar, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:000}'}" />
+							</gauge:LinearGauge.Items>
+
+							<gauge:LinearGauge.Scales>
+								<gauge:LinearScale BarExtent="100" BarAscent="5" Background="GhostWhite">
+									<gauge:LinearScale.TickSets>
+										<gauge:LinearTickSet Minimum="0" Maximum="212" MajorInterval="10" MinorInterval="1">
+											<gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickLabelCustom Value="0" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="4" FontSize="9" />
+												<gauge:LinearTickLabelCustom Value="32" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="2" FontSize="10" />
+												<gauge:LinearTickLabelCustom Value="212" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="2" FontSize="9" />
+											</gauge:LinearTickSet.Ticks>
+											<gauge:LinearTickSet.Pointers>
+												<gauge:LinearPointerBar x:Name="fahrenheitBar"
+														BarType="CircleBulbRoundedRectangle" PointerAscent="5"
+														PointerExtent="7" HasDropShadow="True"
+														DampeningMinimumDuration="0:0:0.500"
+														Background="{shared:LinearGradientBrush Goldenrod, DarkGoldenrod, GradientType=TopLeftToBottomRight}" />
+											</gauge:LinearTickSet.Pointers>
+										</gauge:LinearTickSet>
+									</gauge:LinearScale.TickSets>
+								</gauge:LinearScale>
+							</gauge:LinearGauge.Scales>
+						</gauge:LinearGauge>
+
+						<!-- Celsius -->
+						<gauge:LinearGauge Grid.Column="2" Width="60" Height="200" Orientation="Vertical" Background="Black"
+								RimBrush="DarkGoldenrod" FrameType="RoundedRectangleThinRim">
+
+							<gauge:LinearGauge.Items>
+								<TextBlock gauge:CircularGauge.Y="-75" Text="C" FontFamily="Arial" Foreground="Wheat"
+										FontSize="16" />
+								<gauge:DigitalGauge Y="77" Foreground="DarkGoldenrod"
+										CharacterType="Segment7Trapezoid" FrameType="None" Height="25" Width="40"
+										CharacterCount="2" CharacterHeight="18"
+										Value="{Binding Value, ElementName=celsiusBar, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:00}'}" />
+							</gauge:LinearGauge.Items>
+
+							<gauge:LinearGauge.Scales>
+								<gauge:LinearScale BarExtent="100" BarAscent="5" Background="GhostWhite">
+									<gauge:LinearScale.TickSets>
+										<gauge:LinearTickSet Minimum="0" Maximum="100" MajorInterval="10"
+												MinorInterval="1">
+											<gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickLabelCustom Value="0" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="4" FontSize="9" />
+												<gauge:LinearTickLabelCustom Value="50" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="2" FontSize="9" />
+												<gauge:LinearTickLabelCustom Value="100" Foreground="LightGoldenrodYellow"
+														ScalePlacement="Outside" ScaleOffset="2" FontSize="9" />
+											</gauge:LinearTickSet.Ticks>
+											<gauge:LinearTickSet.Pointers>
+												<gauge:LinearPointerBar x:Name="celsiusBar"
+														BarType="CircleBulbRoundedRectangle" PointerAscent="5"
+														PointerExtent="7" HasDropShadow="True"
+														DampeningMinimumDuration="0:0:0.500"
+														Background="{shared:LinearGradientBrush Goldenrod, DarkGoldenrod, GradientType=TopLeftToBottomRight}"
+														Value="{Binding Value, ElementName=fahrenheitBar, Converter={StaticResource CelsiusConverter}}"/>
+											</gauge:LinearTickSet.Pointers>
+										</gauge:LinearTickSet>
+									</gauge:LinearScale.TickSets>
+								</gauge:LinearScale>
+							</gauge:LinearGauge.Scales>
+						</gauge:LinearGauge>
+					</Grid>
+
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

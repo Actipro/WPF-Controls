@@ -1,0 +1,49 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.PrintingToXps.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c"
+    >
+
+	<DockPanel>
+		
+		<Button DockPanel.Dock="Top" Margin="20,10" Content="Save to XPS File" Click="OnSaveToFileButtonClick" />
+
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+			<editor:SyntaxEditor.PrintSettings>
+				<editor:PrintSettings IsLineNumberMarginVisible="True" />
+			</editor:SyntaxEditor.PrintSettings>
+			<editor:EditorDocument xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:SimpleSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/*
+
+This QuickStart shows how easy it is to save the contents of a SyntaxEditor to an XPS file.  Click the 'Save to XPS File' button above to save the contents of the editor to an XPS file.
+
+The output to the XPS file uses the SyntaxEditor print settings for configuration, meaning you have lots of control over what is output.  You can toggle line numbers, page numbers, document filename, add custom margins, and more.
+
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+	
+function Subtract(x, y) {
+	return x - y;
+}
+	
+function Multiply(x, y) {
+	return x * y;
+}
+	
+function Divide(x, y) {
+	return x / y;
+}
+				
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

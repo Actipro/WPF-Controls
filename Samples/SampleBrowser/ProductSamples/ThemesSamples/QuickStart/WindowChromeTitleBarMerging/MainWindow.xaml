@@ -1,0 +1,66 @@
+<Window x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Title="WindowChrome Title Bar Merging"
+	Width="800" Height="600" 
+	MinWidth="400" MinHeight="300"
+	Icon="/Images/Icons/Actipro.ico"
+	TextOptions.TextFormattingMode="Display"
+	WindowStartupLocation="CenterScreen"
+	themes:WindowChrome.ElementKind="NonClientArea"
+    >
+	
+	<themes:WindowChrome.Chrome>
+		
+		<themes:WindowChrome x:Name="chrome" HasIcon="False" TitleBarHeaderAlignment="Center" TitleBarMergeKind="ContentOnly" TitleBarHeaderMargin="107,0,7,0" />
+
+	</themes:WindowChrome.Chrome>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" MinHeight="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight)}" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<Rectangle Grid.RowSpan="3" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" />
+		
+		<StackPanel Grid.RowSpan="2" Margin="15" Width="70">
+			<Viewbox StretchDirection="DownOnly" Stretch="Uniform">
+				<shared:ActiproLogo />
+			</Viewbox>
+		</StackPanel>
+		
+		<!-- 
+			This Rectangle is recognized as a "TitleBar" element so that the top portion of the left column can be dragged...
+			Note that the Window also needs this attached property set for this to work: themes:WindowChrome.ElementKind="NonClientArea"
+		-->
+		<Rectangle themes:WindowChrome.ElementKind="TitleBar" Fill="Transparent" />
+		
+		<Border Grid.Row="1" Grid.Column="1" Margin="30,30,30,0" Padding="30,15"
+				Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" CornerRadius="5"
+				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" BorderThickness="1">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="30" />
+					<ColumnDefinition Width="2*" />
+				</Grid.ColumnDefinitions>
+			
+				<TextBlock Text="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), StringFormat=Title Bar Height: {0}}" TextWrapping="Wrap" TextAlignment="Center" />
+				<TextBlock Grid.Column="2" Text="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarRightContentWidth), StringFormat=Title Bar Right Content Width: {0}}" TextWrapping="Wrap" TextAlignment="Center" />
+			</Grid>
+		</Border>
+		
+		<sampleBrowser:RichTextBox x:Name="editor" Grid.Row="2" Grid.Column="1" Margin="30" DocumentUri="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMerging/OverviewDocument.xaml" />
+	</Grid>
+	
+	
+</Window>

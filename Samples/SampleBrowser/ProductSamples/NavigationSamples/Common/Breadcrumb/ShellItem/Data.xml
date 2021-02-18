@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ShellItem Name="Desktop" Image="Desktop16.png">
+
+  <ShellItem Name="Computer" Image="Computer16.png">
+    <ShellItem Name="Local Disk (C:)"  Image="HardDrive16.png">
+      <ShellItem Name="Program Files"  Image="FolderClosed16.png">
+        <ShellItem Name="Actipro Software"  Image="FolderClosed16.png">
+          <ShellItem Name="WPF Controls"  Image="FolderClosed16.png" />
+        </ShellItem>
+      </ShellItem>
+      <ShellItem Name="ProgramData"  Image="FolderClosed16.png" />
+      <ShellItem Name="Temp"  Image="FolderClosed16.png" />
+      <ShellItem Name="Users"  Image="FolderClosed16.png">
+        <ShellItem Name="Public"  Image="FolderClosed16.png" />
+        <ShellItem Name="John Doe"  Image="FolderClosed16.png" />
+      </ShellItem>
+      <ShellItem Name="Windows"  Image="FolderClosed16.png">
+        <ShellItem Name="assembly"  Image="FolderClosed16.png" />
+        <ShellItem Name="en-US"  Image="FolderClosed16.png" />
+        <ShellItem Name="Globalization"  Image="FolderClosed16.png" />
+        <ShellItem Name="Help"  Image="FolderClosed16.png" />
+        <ShellItem Name="Microsoft.Net"  Image="FolderClosed16.png" />
+        <ShellItem Name="Performance"  Image="FolderClosed16.png" />
+        <ShellItem Name="security"  Image="FolderClosed16.png" />
+        <ShellItem Name="Setup"  Image="FolderClosed16.png" />
+        <ShellItem Name="system"  Image="FolderClosed16.png" />
+        <ShellItem Name="System32"  Image="FolderClosed16.png" />
+        <ShellItem Name="Tasks"  Image="FolderClosed16.png" />
+        <ShellItem Name="Temp"  Image="FolderClosed16.png" />
+      </ShellItem>
+    </ShellItem>
+    <ShellItem Name="Local Disk (D:)"  Image="HardDrive16.png" />
+    <ShellItem Name="DVD Drive (E:)"  Image="CD16.png" />
+    <ShellItem Name="CD Drive (F:)"  Image="CD16.png" />
+    <ShellItem Name="Removable Disk (G:)"  Image="UsbDrive16.png" />
+    <ShellItem Name="Removable Disk (H:)"  Image="UsbDrive16.png" />
+  </ShellItem>
+	
+  <ShellItem Name="John Doe" Image="User16.png">
+    <ShellItem Name="AppData"  Image="FolderClosed16.png" />
+    <ShellItem Name="Contacts"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Desktop"  Image="FolderClosed16.png" />
+    <ShellItem Name="Documents"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Downloads"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Favorites"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Links"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Music"  Image="FolderClosedGreen16.png" />
+    <ShellItem Name="Videos"  Image="FolderClosedGreen16.png" />
+  </ShellItem>
+
+  <ShellItem Name="Network and Internet"  Image="Network16.png" />
+
+  <ShellItem Name="Recycle Bin" Image="RecycleBin16.png" />
+</ShellItem>

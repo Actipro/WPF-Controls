@@ -1,0 +1,89 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GaugeSamples.QuickStart.CircularGaugeRefreshRate.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:DurationToMillisecondConverter x:Key="DurationToMillisecondConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=RefreshRate, Converter={StaticResource DurationToMillisecondConverter}}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="2000" SmallChange="25" LargeChange="200" Format="0'ms'" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge control supports a configurable refresh rate, which restricts how often the control
+					updates the display. By default, value changes are immediately reflected in the control's display. If there are
+					several updates per second, it becomes difficult to read the values as they flash by. By increasing the refresh rate,
+					the number of display updates is reduced, which gives the user enough time to read the values as they change.
+					<LineBreak /><LineBreak />
+					The refresh rate determines the minimum duration between updates. Therefore, if the refresh rate is set to 500
+					milliseconds, then there will be no more than 2 updates per second.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" HorizontalAlignment="Center" Background="Ivory"
+					RimBrush="#FFF4F3F8" FrameType="CircularGear" IsBackgroundEffectEnabled="False">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="75" StartAngle="30" SweepAngle="330" BarExtent="1">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet MajorInterval="10" MinorInterval="2">
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor TickMarkExtent="7" TickMarkAscent="4"
+											TickMarkType="TriangleSharp"
+											Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}" />
+									<gauge:CircularTickMarkMajor TickMarkExtent="10" TickMarkAscent="4"
+											TickMarkType="SwordBlunt"
+											Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}" />
+									<gauge:CircularTickLabelMajor Foreground="#FF0C0909" FontSize="10"
+											ScalePlacement="Outside" ScaleOffset="5" TextOrientation="Rotated" />
+								</gauge:CircularTickSet.Ticks>
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle x:Name="needle" NeedleType="TriangleSharp"
+											PointerExtent="75" PointerAscent="10"
+											Background="{shared:LinearGradientBrush #FFE16179, #FF9A1225, GradientType=LeftToRight, AdditionalStopCount=1}" />
+									<gauge:CircularPointerCap PointerExtent="25" CapType="CircleConvex"
+											Background="#FF9A1225" />
+								</gauge:CircularTickSet.Pointers>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.Common.Breadcrumb.ShellItem"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+		xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+		>
+
+	<!-- Converters -->
+	<shared:ImageConverter x:Key="ImageConverter" UriPrefix="pack://application:,,,/SampleBrowser;component/Images/Icons/" />
+	<shared:UriConverter x:Key="UriConverter" UriPrefix="pack://application:,,,/SampleBrowser;component/Images/Icons/" />
+
+	<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+	<local:PathConverter x:Key="PathConverter" />
+
+	<!-- DataTemplates -->
+
+	<!-- DataTemplate for BreadcrumbItems.-->
+	<DataTemplate x:Key="BreadcrumbItemTemplate">
+		<TextBlock Text="{Binding XPath=@Name}"
+				   TextTrimming="CharacterEllipsis"
+				   VerticalAlignment="Center" />
+	</DataTemplate>
+
+	<!-- DataTemplate for MenuItems.-->
+	<DataTemplate x:Key="MenuItemNormalTemplate">
+		<TextBlock Margin="2,0,0,0" Text="{Binding XPath=@Name}" />
+	</DataTemplate>
+
+	<!-- DataTemplate for MenuItems, when the associated item is currently expanded. -->
+	<DataTemplate x:Key="MenuItemExpandedTemplate">
+		<TextBlock Margin="2,0,0,0" Text="{Binding XPath=@Name}"
+				   FontWeight="Bold" />
+	</DataTemplate>
+
+	<!-- DataTemplate for ComboBoxItems.-->
+	<DataTemplate x:Key="ComboBoxItemTemplate">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<shared:DynamicImage Grid.Column="0"
+				   Margin="2,2,0,2"
+				   Source="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}"
+				   Stretch="None"
+				   VerticalAlignment="Center" />
+			<TextBlock Grid.Column="1"
+					   Margin="3,0,2,0"
+					   Text="{Binding XPath=@Name}"
+					   VerticalAlignment="Center"/>
+		</Grid>
+	</DataTemplate>
+
+	<!-- Styles -->
+
+	<!-- This Style will explicitly set the ItemsSource property on a BreadcrumbItem. Therefore, a HierarchicalDataTemplate
+	       is not needed when used with this style. -->
+	<Style x:Key="BreadcrumbItemStyle"
+		   TargetType="{x:Type navigation:BreadcrumbItem}">
+		<Setter Property="ItemsSource" Value="{Binding XPath=ShellItem}" />
+		<Setter Property="ImageSource" Value="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}" />
+		<Style.Triggers>
+			<!-- This trigger will set the tooltip to the item's name, if it is minimized. -->
+			<Trigger Property="IsMinimized"
+					 Value="true">
+				<Setter Property="ToolTip"
+						Value="{Binding XPath=@Name}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+	<!-- This Style will explicitly set the Icon property on a MenuItem. -->
+	<Style x:Key="MenuItemContainerStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+		<Setter Property="Icon" Value="{Binding XPath=@Image, Path=Value, Converter={StaticResource ImageConverter}}" />
+	</Style>
+
+</ResourceDictionary>

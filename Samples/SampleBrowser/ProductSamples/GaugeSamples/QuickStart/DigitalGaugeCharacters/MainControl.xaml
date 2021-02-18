@@ -1,0 +1,84 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=Value}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterCasing}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=Foreground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=DimmedBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterCount}">
+						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="30" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterHeight}">
+						<gridseditors:DoublePropertyEditor Minimum="20" Maximum="50" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" IsNaNAllowed="True" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterWidthRatio}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterSegmentThickness}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="8" SmallChange="1" LargeChange="2" HasPopup="True" PickerKind="Default" IsNaNAllowed="True" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterSpacing}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="25" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=TextAlignment}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=CharacterOverflowAlignment}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=SkewAngleX}">
+						<gridseditors:DoublePropertyEditor Minimum="-45" Maximum="45" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=SkewAngleY}">
+						<gridseditors:DoublePropertyEditor Minimum="-45" Maximum="45" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="3" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The DigitalGauge control includes five different character styles to choose from. In
+					addition, the various colors and sizes used by the characters can be customized as desired.
+					<LineBreak /><LineBreak />
+					Several of the options that control the characters are available.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:DigitalGauge x:Name="gauge" Width="300" Height="100" HorizontalAlignment="Center" Value="Actipro"
+					CharacterCount="10" Foreground="#5588FF" Background="#555566" IsBackgroundEffectEnabled="False"
+					FrameType="ClippedRectangle" CharacterType="Segment7Normal" CharacterPadding="10,0" >
+
+				<gauge:DigitalGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:DigitalGauge.LayoutTransform>
+
+			</gauge:DigitalGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,45 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03b.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03b"
+    >
+
+	<!-- SyntaxEditor -->
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<sample:SimpleSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[/*
+	In this sample we've opened the 'advanced' language project in the Language
+	Designer application and generated code files instead of a .langdef file.
+	
+	The result as seen by the end user is the same as in step 3a, where a 
+	.langdef file was used instead.  However now that we've generated code 
+	files, we have a dedicated language class along with some additional helper 
+	classes that list out the classification type and ID values used by the 
+	lexer.
+	
+	The classes generated here will also be used in future steps of this 
+	series.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

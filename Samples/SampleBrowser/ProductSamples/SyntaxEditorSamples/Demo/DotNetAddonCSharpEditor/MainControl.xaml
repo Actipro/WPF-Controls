@@ -1,0 +1,199 @@
+<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonCSharpEditor.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:dotNetReflection="clr-namespace:ActiproSoftware.Text.Languages.DotNet.Reflection;assembly=ActiproSoftware.Text.Addons.DotNet.Wpf"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	FocusManager.FocusedElement="{Binding ElementName=codeEditor}"
+    >
+	
+	<DockPanel>
+		
+		<!-- Toolbar -->
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="0,5,0,0">
+			<ToolBarTray>
+				<ToolBar>
+					<Button Click="OnNewFileButtonClick">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage Source="/Images/Icons/New16.png" Width="16" Height="16" Stretch="UniformToFill" VerticalAlignment="Center" />
+							<TextBlock Margin="2,0,7,0" Text="New Document" VerticalAlignment="Center" />
+						</StackPanel>
+					</Button>
+					<Button Click="OnOpenFileButtonClick">
+						<StackPanel Orientation="Horizontal">
+							<shared:DynamicImage Source="/Images/Icons/Open16.png" Width="16" Height="16" Stretch="UniformToFill" VerticalAlignment="Center" />
+							<TextBlock Margin="2,0,7,0" Text="Open Document" VerticalAlignment="Center" />
+						</StackPanel>
+					</Button>
+					<Separator />
+					<Button Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" ToolTip="Display an Object Member List" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/IntelliPromptCompletion16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Button Command="editor:EditorCommands.RequestIntelliPromptParameterInfoSession" ToolTip="Display Parameter Info" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/IntelliPromptParameterInfo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Button Command="editor:EditorCommands.RequestIntelliPromptQuickInfoSession" ToolTip="Display Quick Info" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/IntelliPromptQuickInfo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Button Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" ToolTip="Display Word Completion" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/IntelliPromptAutoComplete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Separator />
+					<Button Command="editor:EditorCommands.CommentLines" ToolTip="Comment out the selected lines" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/CommentLines16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Button Command="editor:EditorCommands.UncommentLines" ToolTip="Uncomment the selected lines" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/UncommentLines16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Separator />
+					<Button Command="editor:EditorCommands.FormatDocument" ToolTip="Format Document" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/FormatDocument16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+					<Button Command="editor:EditorCommands.FormatSelection" ToolTip="Format Selection" CommandTarget="{Binding ElementName=codeEditor}">
+						<shared:DynamicImage Source="/Images/Icons/FormatSelection16.png" Width="16" Height="16" Stretch="UniformToFill" />
+					</Button>
+				</ToolBar>
+			</ToolBarTray>
+		</shared:PixelSnapper>
+		
+		<!-- Statusbar -->
+		<shared:PixelSnapper DockPanel.Dock="Bottom">
+			<StatusBar FocusManager.IsFocusScope="True">
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" MinWidth="150" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+
+				<StatusBarItem x:Name="messagePanel" Margin="7,0,7,0">Ready</StatusBarItem>
+
+				<StatusBarItem Grid.Column="1">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="linePanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ln 1" />
+						<TextBlock x:Name="columnPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Col 1" />
+						<TextBlock x:Name="characterPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ch 1" />
+					</StackPanel>
+				</StatusBarItem>
+
+			</StatusBar>
+		</shared:PixelSnapper>
+
+		<docking:DockSite>
+			<docking:SplitContainer>
+				
+				<docking:SplitContainer Orientation="Vertical">
+					
+					<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+						
+						<DockPanel>
+							<editor:NavigableSymbolSelector x:Name="symbolSelector" DockPanel.Dock="Top" Margin="0,0,0,1" SyntaxEditor="{Binding ElementName=codeEditor}" />
+							
+							<editor:SyntaxEditor x:Name="codeEditor" 
+													IsLineNumberMarginVisible="True"
+													DocumentParseDataChanged="OnCodeEditorDocumentParseDataChanged" 
+													UserInterfaceUpdate="OnCodeEditorUserInterfaceUpdate"
+													ViewSelectionChanged="OnCodeEditorViewSelectionChanged">
+								<editor:EditorDocument xml:space="preserve"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+
+namespace DotNetLanguagesAddon {
+
+	/// <summary>
+	/// Advanced C# code editing for your end users with the 
+	/// .NET Languages Add-on for Actipro SyntaxEditor.
+	///	</summary>
+	public class CSharpLanguage {
+	
+		/// <summary>
+		/// Edit this document to see background parsing 
+		/// update automatic outlining, the document outline 
+		/// (AST), and syntax errors.
+		///	</summary>
+		public void DemoTest() {
+		
+			// Here is a syntax error... note the squiggle 
+			//   line that shows:
+			int errorTest = 1
+			
+			// Write the error to the console
+			Debug.WriteLine(errorTest);
+			
+			// This syntax language implementation is part of
+			// the .NET Languages Add-on for SyntaxEditor, 
+			// which is optional and sold separately from 
+			// SyntaxEditor and containing bundles.
+			
+		}
+	}	
+}
+]]></editor:EditorDocument>
+							</editor:SyntaxEditor>
+						</DockPanel>
+
+					</docking:Workspace>
+				
+					<docking:ToolWindowContainer>
+						<docking:ToolWindow Title="Error List" ImageSource="/Images/Icons/ErrorList16.png" CanClose="False" ContainerDockedSize="200,150">
+							<ListView x:Name="errorListView" BorderThickness="0" MouseDoubleClick="OnErrorListViewDoubleClick">
+								<ListView.View>
+									<GridView>
+										<GridViewColumn Header="Line" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayLine}" />
+										<GridViewColumn Header="Char" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayCharacter}" />
+										<GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Path=Description}" />
+									</GridView>
+								</ListView.View>
+							</ListView>
+						</docking:ToolWindow>
+					</docking:ToolWindowContainer>
+				</docking:SplitContainer>
+				
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Document Outline" ImageSource="/Images/Icons/DocumentOutline16.png" CanClose="False">
+						<editor:SyntaxEditor x:Name="astOutputEditor"
+											 BorderThickness="0" IsOutliningMarginVisible="False" IsSelectionMarginVisible="False" CanSplitHorizontally="False">
+							<editor:EditorDocument IsReadOnly="true" TabSize="2" />
+						</editor:SyntaxEditor>
+					</docking:ToolWindow>
+					<docking:ToolWindow Title="References" ImageSource="/Images/Icons/VSObjectAssembly16.png" CanClose="False">
+						<DockPanel>
+							<ToolBar DockPanel.Dock="Top" themes:ThemeProperties.UseAlternateStyle="True">
+								<Button Click="OnAddReferenceButtonClick">
+									<StackPanel Orientation="Horizontal">
+										<shared:DynamicImage Source="/Images/Icons/New16.png" Width="16" Height="16" Stretch="UniformToFill" VerticalAlignment="Center" />
+										<TextBlock Margin="2,0,7,0" Text="Add" VerticalAlignment="Center" />
+									</StackPanel>
+								</Button>
+								<Button Click="OnRemoveReferenceButtonClick">
+									<StackPanel Orientation="Horizontal">
+										<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" VerticalAlignment="Center" />
+										<TextBlock Margin="2,0,7,0" Text="Remove" VerticalAlignment="Center" />
+									</StackPanel>
+								</Button>
+							</ToolBar>
+							<ListBox x:Name="referencesListView" BorderThickness="0">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding Path=(dotNetReflection:IProjectAssemblyReference.Assembly).(dotNetReflection:IAssembly.Name)}" />
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</DockPanel>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+				
+			</docking:SplitContainer>
+		</docking:DockSite>
+		
+	</DockPanel>
+
+</sampleBrowser:ProductItemControl>

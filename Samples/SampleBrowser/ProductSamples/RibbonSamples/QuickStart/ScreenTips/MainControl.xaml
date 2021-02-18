@@ -1,0 +1,178 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.ScreenTips.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon includes powerful screen tip functionality via its ScreenTipService class.
+					Screen tips are essentially tooltips that provide a more robust user interface capable of describing the control
+					for which it is displayed via text, images, or other content.  
+					<LineBreak /><LineBreak />
+					Hover over each of the buttons in the ribbon to see various implementations of screen tips.
+					<LineBreak /><LineBreak />
+					The ScreenTipService class defines a number of attached properties, many of which are implemented
+					in the controls in the Ribbon suite.
+					<LineBreak /><LineBreak />
+					- ScreenTipHeader - Many controls use their Label as the header by default.  
+					However you may specify alternate header content via this property.
+					This property accepts any object as content.
+					If the control is associated with an input gesture (a keyboard shortcut), it will appear in parenthesis next to the header content.
+					<LineBreak /><LineBreak />
+					- ScreenTipDescription - The description is used to describe the control in detail, thereby allowing 
+					end users an easy way to know what the control does without having to look elsewhere for information.
+					This property accepts any object as content.
+					<LineBreak /><LineBreak />
+					- ScreenTipImageSource - The image source is generally used for buttons that launch a dialog window.
+					They often display a small thumbnail of the window to the left of the description.
+					This property accepts an ImageSource as content.
+					<LineBreak /><LineBreak />
+					- ScreenTipHelpUri - With the use of this property you can achieve context sensitive help.
+					When a Uri is specified, it will automatically display a help icon and text in the footer 
+					indicating that the F1 key triggers help.
+					See the context sensitive help section below for more information.
+					<LineBreak /><LineBreak />
+					- ScreenTipFooter - Footer content appears at the bottom of the screen tip.
+					The footer is often used to describe the current state of the control when appropriate.
+					This property accepts any object as content.
+					<LineBreak /><LineBreak />
+					One of the best features about screen tips are that our implementation doesn't restrict you to using them on the Ribbon controls.
+					In fact, you can use them anywhere you like!  To do this, simply apply the appropriate attached properties (described above) from the 
+					ScreenTipService.
+					<LineBreak /><LineBreak />
+					So to add a header and description to a regular Button, you would do this:
+					<LineBreak />
+					&lt;Button ribbon:ScreenTipService.ScreenTipHeader="Button Heading" ribbon:ScreenTipService.ScreenTipDescription="This native Button has a screen tip." /&gt;
+					<LineBreak /><LineBreak />
+					Hover the mouse over this RichTextBox to see a screen tip applied to it via the attached properties.
+					<LineBreak /><LineBreak />
+					Screen tip content can be dynamically generated.  This allows you to modify the screen tip data on demand to best reflect
+					the current state of the control.
+					<LineBreak /><LineBreak />
+					To do this, process the ScreenTipOpening event for the desired control.
+					That event fires before a screen tip is about to display for a control.
+					In the event handler, you may change any screen tip properties before they are rendered to the end user.
+					<LineBreak /><LineBreak />
+					Whenever the ScreenTipHelpUri property is set to a non-null value, a help icon and text will appear near the bottom
+					of the screen tip that indicates that the user may press F1 to access context sensitive help for that control.
+					<LineBreak /><LineBreak />
+					To handle this, simply process an Execute handler for the standard ApplicationCommands.Help command.
+					Then in that code, check the ScreenTipService.CurrentScreenTip to see if there is a screen tip currently visible.
+					If there is, and a help URI is specified, show the appropriate topic in your help file.
+					<LineBreak /><LineBreak />
+					To try this out in this sample, first ensure this RichTextBox has focus (since the parent UserControl
+					processes the command), and then hover over the button in the ribbon with the help URI specified and press F1.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top" IsCollapsible="False">
+						<!-- 
+							Use pre-defined WordApplicationMenu type in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />	
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home">
+								<ribbon:Group Label="Hover over buttons to see sample screen tips">
+			
+									<ribbon:StackPanel ItemVariantBehavior="LargeThenMediumWhenMedium">
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Simple Description" 
+											ScreenTipDescription="This is a description of the button."
+											/>
+						
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Alternate Header Content" 
+											ScreenTipHeader="ScreenTips Are Great" 
+											ScreenTipDescription="This is a description of the button."
+											/>
+						
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Footer Content" 
+											ScreenTipDescription="This is a description of the button."
+											>
+											<ribbon:Button.ScreenTipFooter>
+												<Grid>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition Width="Auto" />
+														<ColumnDefinition Width="*" />
+													</Grid.ColumnDefinitions>
+									
+													<Image Margin="0,0,7,0" Width="16" Height="16" Source="/Images/Icons/PasteSpecial16.png" />
+													<TextBlock Grid.Column="1" Text="Place any sort of content in the footer" TextWrapping="Wrap"  VerticalAlignment="Center" />
+												</Grid>
+											</ribbon:Button.ScreenTipFooter>
+										</ribbon:Button>
+									</ribbon:StackPanel>
+						
+									<ribbon:Separator />
+									
+									<ribbon:StackPanel ItemVariantBehavior="LargeThenMediumWhenMedium">
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Button with Help URI" 
+											ScreenTipHelpUri="http://www.actiprosoftware.com" 
+											ScreenTipDescription="This screen tip has a help URI specified."
+											/>
+						
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="ImageSource Content" 
+											ScreenTipImageSource="/Images/Other/CoverPageScreenTip.png" 
+											ScreenTipDescription="This is a description of the button."
+											/>
+						
+										<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Complex ScreenTip" 
+											ScreenTipHeader="ScreenTips Are Great" 
+											ScreenTipImageSource="/Images/Other/CoverPageScreenTip.png" 
+											ScreenTipDescription="This screen tip combines many of the screen tip's features."
+											ScreenTipFooter="Footer content can be placed here." 
+											ScreenTipHelpUri="http://www.actiprosoftware.com" 
+											/>
+									</ribbon:StackPanel>
+						
+									<ribbon:Separator />
+						
+									<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Dynamically-Generated Description" 
+										ScreenTipDescription="(Dynamically generate this description in code-behind)"
+										ScreenTipOpening="OnScreenTipOpening" 
+										/>
+						
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+		
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+		
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,155 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbFileSystem.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbFileSystem"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:ImageConverter x:Key="ImageConverter" UriPrefix="/Images/Icons/" />
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+		<local:PathConverter x:Key="PathConverter" />
+
+		<!-- This DataTempate is used to display the MyComputerData, DriveData, and DirectoryData objects in the Breadcrumb. Since
+		     they all have a Name property, this template can be shared across all three classes. If the classes needed to be
+		     displayed differently, then a DataTemplate would need to be created for each and the ItemTemplate properties would
+		     have to be assigned appropriately in the Styles. -->
+		<DataTemplate x:Key="CommonDataBreadcrumbItemTemplate">
+			<TextBlock Text="{Binding Path=Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<!-- This DataTempate is used to display the MyComputerData, DriveData, and DirectoryData objects in a MenuItem. -->
+		<DataTemplate x:Key="CommonDataMenuItemNormalTemplate">
+			<TextBlock Margin="2,0,0,0" Text="{Binding Path=Name}" />
+		</DataTemplate>
+
+		<!-- This DataTempate is used to display the MyComputerData, DriveData, and DirectoryData objects in a MenuItem, when it
+		     is the expanded item. -->
+		<DataTemplate x:Key="CommonDataMenuItemExpandedTemplate">
+			<TextBlock Margin="2,0,0,0" Text="{Binding Path=Name}" FontWeight="Bold" />
+		</DataTemplate>
+
+		<!-- This Style will explicitly set the Icon property on a MenuItem instances for MyComputerData, DriveData, and
+		     DirectoryData. -->
+		<Style x:Key="CommonDataMenuItemContainerStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+			<Setter Property="Icon" Value="{Binding Path=ImageSource, Converter={StaticResource ImageConverter}}" />
+		</Style>
+
+		<!-- This Style will explicitly set the ImageSource property on a BreadcrumbItem instances for MyComputerData, DriveData,
+		     and DirectoryData. -->
+		<Style x:Key="CommonDataBreadcrumbItemStyle" TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource" Value="{Binding Path=ImageSource}" />
+		</Style>
+
+		<!-- This Style is used specifically for DirectoryData objects.-->
+		<Style x:Key="DirectoryDataBreadcrumbItemStyle" TargetType="{x:Type navigation:BreadcrumbItem}"
+				BasedOn="{StaticResource CommonDataBreadcrumbItemStyle}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Directories}" />
+		</Style>
+
+		<!-- This Style is used specifically for DriveData objects.-->
+		<Style x:Key="DriveDataBreadcrumbItemStyle" TargetType="{x:Type navigation:BreadcrumbItem}"
+				BasedOn="{StaticResource CommonDataBreadcrumbItemStyle}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Directories}" />
+			<Setter Property="ItemContainerStyle" Value="{StaticResource DirectoryDataBreadcrumbItemStyle}" />
+		</Style>
+
+		<!-- This Style is used specifically for MyComputerData objects.-->
+		<Style x:Key="MyComputerDataBreadcrumbItemStyle" TargetType="{x:Type navigation:BreadcrumbItem}"
+				BasedOn="{StaticResource CommonDataBreadcrumbItemStyle}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Drives}" />
+			<Setter Property="ItemContainerStyle" Value="{StaticResource DriveDataBreadcrumbItemStyle}" />
+		</Style>
+
+		<!-- DataTemplate for ComboBoxItems.-->
+		<DataTemplate x:Key="ComboBoxItemTemplate">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<shared:DynamicImage Grid.Column="0" Margin="2,2,0,2" Source="{Binding Path=ImageSource}" Stretch="None"
+						VerticalAlignment="Center" />
+				<TextBlock Grid.Column="1" Margin="3,0,2,0" Text="{Binding Path=Name}" VerticalAlignment="Center" />
+			</Grid>
+		</DataTemplate>
+
+		<!-- This Style is used specifically for DirectoryData objects.-->
+		<Style x:Key="DirectoryDataTreeViewItemStyle" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.TreeViewItemStyleKey}}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Directories}" />
+		</Style>
+
+		<!-- This Style is used specifically for DriveData objects.-->
+		<Style x:Key="DriveDataTreeViewItemStyle" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.TreeViewItemStyleKey}}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Directories}" />
+			<Setter Property="ItemContainerStyle" Value="{StaticResource DirectoryDataTreeViewItemStyle}" />
+		</Style>
+
+		<!-- This Style is used specifically for MyComputerData objects.-->
+		<Style x:Key="MyComputerDataTreeViewItemStyle" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.TreeViewItemStyleKey}}">
+			<Setter Property="ItemsSource" Value="{Binding Path=Drives}" />
+			<Setter Property="ItemContainerStyle" Value="{StaticResource DriveDataTreeViewItemStyle}" />
+		</Style>
+		
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This quick-start shows how the Actipro Breadcrumb control can be used to navigate the drives and directories on the
+					local machine by utilizing the DriveInfo and DirectoryInfo classes available in the
+					System.IO namespace.
+					<LineBreak /><LineBreak />
+					<Italic>Note: This example does not interface with the Windows shell, therefore it does not show non-filesystem objects.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<navigation:Breadcrumb x:Name="breadcrumb" Margin="0,10,0,0"
+				RootItem="{Binding ElementName=userControl, Path=MyComputer[0]}"
+				ItemContainerStyle="{StaticResource MyComputerDataBreadcrumbItemStyle}"
+				ItemTemplate="{StaticResource CommonDataBreadcrumbItemTemplate}"
+				ComboBoxItemsSource="{Binding ElementName=userControl, Path=ComboBoxItems}"
+				ComboBoxItemTemplate="{StaticResource ComboBoxItemTemplate}"
+				MenuItemContainerStyle="{StaticResource CommonDataMenuItemContainerStyle}"
+				MenuItemTemplate="{StaticResource CommonDataMenuItemNormalTemplate}"
+				MenuItemExpandedTemplate="{StaticResource CommonDataMenuItemExpandedTemplate}"
+				ConvertItem="OnBreadcrumbConvertItem" SelectedItemChanged="OnBreadcrumbSelectedItemChanged">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1">
+					<shared:DynamicImage Source="/Images/Icons/Refresh16.png" Stretch="None" VerticalAlignment="Center" />
+					<Button.ToolTip>
+						<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Refresh {0}">
+							<Binding ElementName="breadcrumb" Path="SelectedItem" Mode="OneWay" Converter="{StaticResource PathConverter}" />
+						</MultiBinding>
+					</Button.ToolTip>
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+		<TreeView x:Name="treeView" Grid.Row="1" Margin="0,10" ItemContainerStyle="{StaticResource MyComputerDataTreeViewItemStyle}"
+				ItemsSource="{Binding ElementName=userControl, Path=MyComputer}" ItemTemplate="{StaticResource ComboBoxItemTemplate}"
+				SelectedItemChanged="OnTreeViewSelectedItemChanged" />
+
+		<GridSplitter Grid.Row="1" Width="1" Height="Auto" ResizeBehavior="CurrentAndNext" />
+
+	</Grid>
+</sampleBrowser:ProductItemControl>

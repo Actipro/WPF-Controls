@@ -1,0 +1,115 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator" RandomSeed="65430625" StartAmount="20" StepRange="8" Trend="Upward" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A micro chart's baseline can optionally be assigned, displayed, and its appearance customized.
+					These examples, all of which start with a value of 20, show several ways to use the baseline.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Default baseline used">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroAreaSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														AreaStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Baseline value set to 30 and visible">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="30" IsAxisBaselineVisible="True">
+						<microcharts:MicroAreaSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														AreaStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Baseline value set to 0 and visible; minimum y-axis set to 0">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="0" IsAxisBaselineVisible="True" YAxisMinimum="0">
+						<microcharts:MicroAreaSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														AreaStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Default baseline used">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroBarSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														BarStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Y axis (auto-generated), with major ticks visible">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="30" IsAxisBaselineVisible="True">
+						<microcharts:MicroBarSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														BarStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="0" IsAxisBaselineVisible="True" YAxisMinimum="0">
+						<microcharts:MicroBarSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														BarStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Red baseline">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="30" IsAxisBaselineVisible="True">
+						<microcharts:MicroXYChart.AxisBaselineStyle>
+							<Style TargetType="Shape">
+								<Setter Property="Stroke" Value="Red" />
+							</Style>
+						</microcharts:MicroXYChart.AxisBaselineStyle>
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Green large baseline">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="30" IsAxisBaselineVisible="True">
+						<microcharts:MicroXYChart.AxisBaselineStyle>
+							<Style TargetType="Shape">
+								<Setter Property="Stroke" Value="#a1df79" />
+								<Setter Property="StrokeThickness" Value="3" />
+							</Style>
+						</microcharts:MicroXYChart.AxisBaselineStyle>
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Silver very large baseline">
+					<microcharts:MicroXYChart Width="100" Height="18" AxisBaselineValue="30" IsAxisBaselineVisible="True">
+						<microcharts:MicroXYChart.AxisBaselineStyle>
+							<Style TargetType="Shape">
+								<Setter Property="Stroke" Value="#d0d0d0" />
+								<Setter Property="StrokeThickness" Value="7" />
+							</Style>
+						</microcharts:MicroXYChart.AxisBaselineStyle>
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

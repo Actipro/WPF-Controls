@@ -1,0 +1,84 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SearchFindResults.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:text="clr-namespace:ActiproSoftware.Text;assembly=ActiproSoftware.Text.Wpf"
+	xmlns:textSearching="clr-namespace:ActiproSoftware.Text.Searching;assembly=ActiproSoftware.Text.Wpf"
+    >
+	<UserControl.Resources>
+		
+		<!-- Search options -->
+		<editor:EditorSearchOptions x:Key="EditorSearchOptions" FindText="/// \s \&lt; .+ \&gt;" ReplaceText="$&amp;123" 
+									PatternProvider="{x:Static textSearching:SearchPatternProviders.RegularExpression}" />
+		
+	</UserControl.Resources>
+	
+	<docking:DockSite>
+		<docking:SplitContainer Orientation="Vertical">
+			<docking:SplitContainer Orientation="Horizontal">
+				<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+							
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor" HasSearchOverlayPaneKeyBindings="False" ViewSearch="OnEditorViewSearch">
+						<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace SearchFindResults {
+
+	/// <summary>
+	/// This QuickStart shows how a search operation can be
+	/// performed on a snapshot, and how results can be
+	/// tracked and displayed in a list.
+	/// </summary>
+	public class FindReplace {
+
+		/// <summary>
+		/// One special feature found in SyntaxEditor is
+		/// snapshot translation.  Each search result stores
+		/// the snapshot that created it and therefore
+		/// its text range can be reselected fairly
+		/// accurately, even after numerous edits have been
+		/// made before and after the found text.
+		/// </summary>
+		/// <remarks>
+		/// To try this, press the Quick Replace mode toolbar
+		/// button to the right and then click the Replace All
+		/// button.  Then make several edits in the document.
+		/// Finally, double-click a search result item in the
+		/// list below and watch as it selects the correct
+		/// text range in the document, even though edits
+		/// have been made.
+		/// </remarks>
+		public int SampleProperty { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+					</editor:SyntaxEditor>
+					
+				</docking:Workspace>
+				
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Find and Replace" CanClose="False" ContainerDockedSize="220,200">
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<editor:EditorSearchView SearchOptions="{StaticResource EditorSearchOptions}" SyntaxEditor="{Binding ElementName=editor}"
+													 IsFindAllButtonVisible="True" />
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+				
+			</docking:SplitContainer>
+			
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="resultsToolWindow" Title="Find Results" CanClose="False" ContainerDockedSize="200,150">
+					<TextBox x:Name="resultsTextBox" IsReadOnly="True" BorderThickness="0" MouseDoubleClick="OnResultsTextBoxDoubleClick" FontFamily="Courier New" />
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+			
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+    
+</UserControl>

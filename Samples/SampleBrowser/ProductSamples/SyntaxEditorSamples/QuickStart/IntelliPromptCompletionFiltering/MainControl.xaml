@@ -1,0 +1,77 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionFiltering.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel Orientation="Horizontal">
+				<StackPanel>
+					<CheckBox x:Name="memberTypeFilterButtonsVisibleCheckBox" Content="Member type filter buttons visible" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="inheritedFilterButtonVisibleCheckBox" Margin="0,3,0,0" Content="Inherited filter button visible" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="filterTabsVisibleCheckBox" Margin="0,3,0,0" Content="Access-related tabs visible" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="filterUnmatchedItemsCheckBox" Margin="0,3,0,0" Content="Filter unmatched items (auto-shrink list)" IsChecked="False" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+				</StackPanel>
+				
+				<StackPanel Margin="30,0,0,0" VerticalAlignment="Center">
+					<Button Content="Complete word (Ctrl+Space)" Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" CommandTarget="{Binding ElementName=editor}" />
+					<Button Margin="0,3,0,0" Content="Show completion list" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" CommandTarget="{Binding ElementName=editor}" />
+				</StackPanel>
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace IntelliPromptCompletionFilteringQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how to populate items in a completion list, create richly 
+	/// formatted description tips, and easily add filtering UI in the forms of buttons 
+	/// and tabs.
+	/// </summary>
+	/// </remarks>
+	/// The items and filters for this sample are hardcoded in the code behind of this 
+	/// sample.  Normally when implementing a language, you would alter the items and 
+	/// filters based on the current context of the caret.
+	/// <para>
+	/// This QuickStart also demos the ability for the completion list to automatically 
+	/// hide items that don't match typed text, just like Visual Studio does with VB 
+	/// completion lists.  Check the related CheckBox above to enable this feature.
+	/// </para>
+	/// </remarks>
+	public class Foo {
+		
+		public event EventHandler IntValueChanged;
+
+		/// <summary>An integer value.</summary>
+		private int _intValue;
+
+		/// <summary>An integer value.</summary>
+		public int IntValue {
+			get {
+				return _intValue;
+			}
+			set {
+				// Press Ctrl+Space or type "this." below this 
+				// comment to show the completion list.
+				
+				
+				_intValue = value;
+				this.OnIntValueChanged(EventArgs.Empty);
+			}
+		}
+
+		protected virtual void OnIntValueChanged(EventArgs e) {
+			if (this.IntValueChanged != null)
+				this.IntValueChanged(this, e);
+		}
+	}
+}]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

@@ -1,0 +1,38 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.WebAddonJavaScriptGettingStarted.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    >
+	
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<editor:JavaScriptSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[var labelString = 'Screen pixel count: ';
+
+function displayScreenPixelCount(screenWidth, screenHeight) {
+	/*
+		This line has an intentional syntax error:
+	*/
+	document.write("<p>" + label String);
+
+	var pixelCount = product(screenWidth, screenHeight);
+	document.write(pixelCount);
+
+	if (pixelCount <= 64000) {
+		document.write(" (small)");
+	}
+	else {
+		document.write(" (large)");
+	}
+
+	document.write("</p>");
+}
+
+function product(x, y) {
+	return x * y;
+}
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+
+</UserControl>

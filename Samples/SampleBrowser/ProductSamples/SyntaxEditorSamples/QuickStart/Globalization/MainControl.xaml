@@ -1,0 +1,31 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c"
+    >
+	
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument x:Name="document" xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<sample:SimpleSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[/*
+
+SyntaxEditor supports inline bi-directional text!
+"مرحبا العالم" means "Hello World" in Arabic.
+
+Move the caret through the bi-directional text above to
+see how SyntaxEditor properly handles selection.
+
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+
+</UserControl>

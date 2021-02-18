@@ -1,0 +1,208 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.RadialSliderIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SharedSamples.QuickStart.RadialSliderIntro"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:DegreeToScalarConverter x:Key="DegreeToScalarConverter" />
+		<sample:WarningLevelConverter x:Key="WarningLevelConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The RadialSlider control allows for quick selection of a degree value, which can easily be converted to some form of scalar value.
+					<LineBreak /><LineBreak />
+					Radial sliders function just like normal linear sliders however instead of moving the slider thumb in a straight line,
+					the thumb can move in a circular fashion around the slider's center point.
+					This sort of UI allows for additional precision when compared to linear sliders, especially with touch interaction.
+					<LineBreak /><LineBreak />
+					RadialSlider supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.
+					Combine two RadialSlider controls on top of each other to enable range-based selection.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Allows wrapping">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#ca5656" EndAngle="{Binding ElementName=wrappingSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="wrappingSlider" Radius="100" Value="245" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=wrappingSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Minimum = 90, maximum = 520">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#5aabac" EndAngle="{Binding ElementName=minMaxSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="minMaxSlider" Radius="100" Minimum="90" Maximum="520" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=minMaxSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Allows one cycle positive or negative">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice x:Name="fullCirclePositiveSlice" Radius="80" Stroke="#62d847" 
+													EndAngle="{Binding ElementName=fullCircleSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RingSlice x:Name="fullCircleNegativeSlice" Radius="80" Stroke="#69ac5a" Opacity="0"
+													StartAngle="{Binding ElementName=fullCircleSlider, Path=IntermediateValue, Mode=TwoWay}" EndAngle="0" />
+						<shared:RadialSlider x:Name="fullCircleSlider" Radius="100" Value="60" Minimum="-360" Maximum="360" ValueChanged="OnFullCircleSliderValueChanged" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=fullCircleSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="For use in a corner, reverse fill">
+					<Grid>
+						<Grid>
+							<Grid.RenderTransform>
+								<TranslateTransform X="-120" Y="120" />
+							</Grid.RenderTransform>
+
+							<shared:RingSlice Radius="80" Stroke="#f0f0f0" StartAngle="15" EndAngle="75" />
+							<shared:RingSlice Radius="80" Stroke="#9e5aac" StartAngle="{Binding ElementName=cornerSlider, Path=IntermediateValue, Mode=TwoWay}" EndAngle="75" />
+							<shared:RadialSlider x:Name="cornerSlider" Radius="100" Value="45" Minimum="15" Maximum="75" />
+						</Grid>
+						<TextBlock Margin="20,0,0,20" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="{Binding ElementName=cornerSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Snaps to increments of 30">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#df9238" EndAngle="{Binding ElementName=snappingSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="snappingSlider" Radius="100" Value="120" LargeChange="90" SmallChange="30" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=snappingSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Snaps to segmented background w/value converter">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="-12" EndAngle="12" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="18" EndAngle="42" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="48" EndAngle="72" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="78" EndAngle="102" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="108" EndAngle="132" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="138" EndAngle="162" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="168" EndAngle="192" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="198" EndAngle="222" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="228" EndAngle="252" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="258" EndAngle="282" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="288" EndAngle="312" />
+						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="318" EndAngle="342" />
+						<shared:RadialSlider x:Name="snappingSlider2" Radius="100" Value="120" LargeChange="30" SmallChange="30" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" 
+									Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Semi-circle">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" StartAngle="270" EndAngle="450" />
+						<shared:RingSlice Radius="80" Stroke="#dd38df" StartAngle="270" EndAngle="{Binding ElementName=semiCircleSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="semiCircleSlider" Radius="100" Value="300" Minimum="270" Maximum="450" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=semiCircleSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Warning level, using value converter">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#7ee83f" StartAngle="0" EndAngle="60" />
+						<shared:RingSlice Radius="80" Stroke="#fffc20" StartAngle="60" EndAngle="120" />
+						<shared:RingSlice Radius="80" Stroke="#e83f3f" StartAngle="120" EndAngle="180" />
+						<shared:RadialSlider x:Name="warningLevelSlider" Radius="100" Value="30" Minimum="30" Maximum="150" SmallChange="60" LargeChange="60" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" 
+									Text="{Binding ElementName=warningLevelSlider, Path=Value, Converter={StaticResource WarningLevelConverter}}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Thumb on the inside, large rim">
+					<Grid>
+						<shared:RingSlice Radius="125" StrokeThickness="45" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="125" StrokeThickness="45" Stroke="#e5dd5d" EndAngle="{Binding ElementName=innerThumbSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="innerThumbSlider" Radius="60" Value="245" ThumbArrowAngle="0" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=innerThumbSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two sliders to make a range">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#a2df38" 
+											StartAngle="{Binding ElementName=rangeSlider1, Path=IntermediateValue, Mode=TwoWay}"
+											EndAngle="{Binding ElementName=rangeSlider2, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="rangeSlider1" Radius="100" Value="200" Background="{x:Null}" />
+						<shared:RadialSlider x:Name="rangeSlider2" Radius="100" Value="260" Background="{x:Null}" />
+						<TextBlock Margin="0,0,0,40" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=rangeSlider1, Path=Value}" />
+						<Rectangle Width="80" Height="1" Fill="#a2df38" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<TextBlock Margin="0,32,0,0" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=rangeSlider2, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom thumb normal background">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#77b4c3" EndAngle="{Binding ElementName=customThumbBGSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="customThumbBGSlider" Radius="100" Value="245" ThumbBackground="#c1dfe6" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=customThumbBGSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom thumb pressed background">
+					<Grid>
+						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="#7d6ce2" EndAngle="{Binding ElementName=customThumbBGSlider2, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="customThumbBGSlider2" Radius="100" Value="245" ThumbPressedBackground="#968fbf" />
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=customThumbBGSlider2, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom thumb style">
+					<Grid>
+						<shared:RingSlice Radius="70" StrokeThickness="1" Stroke="#808080" />
+						<shared:RingSlice Radius="72" StrokeThickness="5" Stroke="#e73232" EndAngle="{Binding ElementName=customThumbSlider, Path=IntermediateValue, Mode=TwoWay}" />
+						<shared:RadialSlider x:Name="customThumbSlider" Radius="70" Value="245">
+							<shared:RadialSlider.ThumbStyle>
+								<Style TargetType="shared:CircularThumb">
+									<Setter Property="Height" Value="50" />
+									<Setter Property="IsTabStop" Value="True" />
+									<Setter Property="Padding" Value="10" />
+									<Setter Property="Width" Value="50" />
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="shared:CircularThumb">
+												<Grid Background="Transparent">
+													<Ellipse Margin="{TemplateBinding Padding}" StrokeThickness="2" Stroke="#000000" Fill="#ffffff" />
+												</Grid>
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</shared:RadialSlider.ThumbStyle>
+						</shared:RadialSlider>
+						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=customThumbSlider, Path=Value}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

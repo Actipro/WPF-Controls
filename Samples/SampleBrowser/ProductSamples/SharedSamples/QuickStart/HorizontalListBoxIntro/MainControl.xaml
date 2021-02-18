@@ -1,0 +1,79 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The HorizontalListBox control is a restyled native ListBox that arranges its items in a uniform width horizontally, 
+					and without a ScrollBar.
+					<LineBreak/><LineBreak/>
+					This sample shows how the control can be used to accept input.
+					In the gender selection instance, the control is in its default single selection mode, meaning that only one item can be selected a time.
+					In the work days selection instance, the control is in multiple selection mode, meaning that the items can be tapped to toggle them as selected or unselected.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<StackPanel>
+					<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">
+                        Employee Work Schedule
+					</TextBlock>
+
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="7" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" Text="Name" HorizontalAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="0" Grid.Column="2" Width="200" Text="John Smith" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" Text="Gender" HorizontalAlignment="Right" VerticalAlignment="Center" />
+						<shared:HorizontalListBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+							<ListBoxItem IsSelected="True">&#x2642; Male</ListBoxItem>
+							<ListBoxItem>&#x2640; Female</ListBoxItem>
+							<ListBoxItem>Other or N/A</ListBoxItem>
+						</shared:HorizontalListBox>
+
+						<TextBlock Grid.Row="4" Grid.Column="0" Text="City" HorizontalAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="New York" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="6" Grid.Column="0" Text="Work days" HorizontalAlignment="Right" VerticalAlignment="Center" />
+						<shared:HorizontalListBox Grid.Row="6" Grid.Column="2" SelectionMode="Multiple" HorizontalAlignment="Left" VerticalAlignment="Center">
+							<ListBoxItem>Sun</ListBoxItem>
+							<ListBoxItem IsSelected="True">Mon</ListBoxItem>
+							<ListBoxItem >Tue</ListBoxItem>
+							<ListBoxItem IsSelected="True">Wed</ListBoxItem>
+							<ListBoxItem>Thu</ListBoxItem>
+							<ListBoxItem>Fri</ListBoxItem>
+							<ListBoxItem>Sat</ListBoxItem>
+						</shared:HorizontalListBox>
+					</Grid>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

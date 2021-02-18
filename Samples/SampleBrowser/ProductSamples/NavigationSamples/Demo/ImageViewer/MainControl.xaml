@@ -1,0 +1,38 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.Demo.ImageViewer.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro ZoomContentControl can be used to programmatically and interactively zoom and pan any content.
+					Includes support for custom keyboard and mouse behaviors and a customizable/collapsible view control pane.
+					<LineBreak /><LineBreak />
+					The example can be used to load an image by clicking the "Open Image" button. After loading an image, it
+					can be zoomed and panned like many of the popular image viewers/editors.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+		
+		<navigation:ZoomContentControl x:Name="zoomContentControl" IsVirtualSpaceEnabled="True"
+									   ZoomLevelStops="0.1, 0.25, 0.33, 0.50, 0.75, 1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10">
+			<navigation:ZoomContentControl.HorizontalItems>
+				<Button Command="ApplicationCommands.Open" Content="Open Image"
+						Style="{DynamicResource {x:Static navigation:ZoomContentControl.ButtonBaseStyleKey}}" />
+			</navigation:ZoomContentControl.HorizontalItems>
+			<Image x:Name="image" />
+		</navigation:ZoomContentControl>
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

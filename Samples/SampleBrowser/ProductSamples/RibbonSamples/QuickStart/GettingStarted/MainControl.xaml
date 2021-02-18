@@ -1,0 +1,52 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.GettingStarted.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Use these QuickStarts to learn step-by-step how to get up and running with Actipro Ribbon.
+					The end result is a ribbon that looks and functions just like Word 2007's Home tab.
+					<LineBreak /><LineBreak />
+					Run each QuickStart, one at a time.  Then after you see what each QuickStart adds,
+					open up the XAML source in the sample browser's project to see what was added for each step.
+					The document in each step explains the changes that are made from one step to the next.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<TextBlock Style="{StaticResource SampleSectionHeadingTextBlockStyle}">QUICKSTART LIST</TextBlock>
+			<ListBox x:Name="quickStartListBox" Margin="0,10,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<ListBoxItem Tag="Step01Window" IsSelected="True"><TextBlock TextWrapping="Wrap">1. Create a <Bold>RibbonWindow</Bold> that has a <Bold>RichTextBox</Bold> child control in it.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step02Window"><TextBlock TextWrapping="Wrap">2. Define a <Bold>Ribbon</Bold> control within the <Bold>RibbonWindow</Bold>.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step03Window"><TextBlock TextWrapping="Wrap">3. Add <Bold>Tab</Bold> controls within the <Bold>Ribbon</Bold>.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step04Window"><TextBlock TextWrapping="Wrap">4. Add several <Bold>Group</Bold> controls to the <Bold>Home</Bold> tab.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step05Window"><TextBlock TextWrapping="Wrap">5. Define several controls in the <Bold>Clipboard</Bold> group.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step06Window"><TextBlock TextWrapping="Wrap">6. Define controls in the <Bold>Font</Bold> group.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step07Window"><TextBlock TextWrapping="Wrap">7. Defines controls on the remaining groups in the <Bold>Home</Bold> tab.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step08Window"><TextBlock TextWrapping="Wrap">8. Define the variants for each <Bold>Group</Bold> on the <Bold>Home</Bold> tab.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step09Window"><TextBlock TextWrapping="Wrap">9. Create a <Bold>RibbonGallery</Bold> in the <Bold>Styles</Bold> group.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step10Window"><TextBlock TextWrapping="Wrap">10. Add controls to the quick access toolbar and also to the tab panel area, which is to the right of the tabs.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step11Window"><TextBlock TextWrapping="Wrap">11. Add an application menu to the ribbon.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step12Window"><TextBlock TextWrapping="Wrap">12. Configure screen tips on each of the items in the <Bold>Clipboard</Bold> group.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step13Window"><TextBlock TextWrapping="Wrap">13. Add a <Bold>StatusBar</Bold> with buttons.</TextBlock></ListBoxItem>
+				<ListBoxItem Tag="Step14Window"><TextBlock TextWrapping="Wrap">14. Change the cut, copy and paste buttons so that they execute commands, with UI provided by the commands.</TextBlock></ListBoxItem>
+			</ListBox>
+			
+			<Button Margin="0,5,0,0" Content="Run Selected &quot;Getting Started&quot; QuickStart" HorizontalAlignment="Left" 
+					Style="{StaticResource SampleOptionsActionButtonStyle}" Click="OnLaunchButtonClick" />
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

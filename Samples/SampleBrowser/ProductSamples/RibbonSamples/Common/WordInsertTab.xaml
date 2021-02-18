@@ -1,0 +1,93 @@
+<ribbon:Tab x:Class="ActiproSoftware.ProductSamples.RibbonSamples.Common.WordInsertTab" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	Label="Insert" KeyTipAccessText="N"
+    >
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/CoverPage16.png" Label="Pages" KeyTipAccessText="ZH">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="30" Size="Medium" />
+			<ribbon:GroupVariant Priority="90" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:StackPanel>
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/CoverPage32.png" ImageSourceSmall="/Images/Icons/CoverPage16.png" Label="CoverPage" KeyTipAccessText="V" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/BlankPage32.png" ImageSourceSmall="/Images/Icons/BlankPage16.png" Label="Blank Page" KeyTipAccessText="NP" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/PageBreak32.png" ImageSourceSmall="/Images/Icons/PageBreak16.png" Label="Page Break" KeyTipAccessText="B" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group Label="Tables" IsCollapsible="False">
+		<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Table32.png" Label="Table" KeyTipAccessText="T" />
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Picture16.png" Label="Illustrations" KeyTipAccessText="ZI">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="60" Size="Medium" />
+			<ribbon:GroupVariant Priority="110" Size="Small" />
+			<ribbon:GroupVariant Priority="140" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:Button ImageSourceLarge="/Images/Icons/Picture32.png" ImageSourceSmall="/Images/Icons/Picture16.png" Label="Picture" KeyTipAccessText="P" />
+		<ribbon:StackPanel>
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Shapes32.png" ImageSourceSmall="/Images/Icons/Shapes16.png" Label="Shapes" KeyTipAccessText="SH" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/SmartArt32.png" ImageSourceSmall="/Images/Icons/SmartArt16.png" Label="SmartArt" KeyTipAccessText="M" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Chart32.png" ImageSourceSmall="/Images/Icons/Chart16.png" Label="Chart" KeyTipAccessText="C" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Hyperlink16.png" Label="Links" KeyTipAccessText="ZL">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="10" Size="Medium" />
+			<ribbon:GroupVariant Priority="80" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:StackPanel>
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Hyperlink32.png" ImageSourceSmall="/Images/Icons/Hyperlink16.png" Label="Hyperlink" KeyTipAccessText="I" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Bookmark32.png" ImageSourceSmall="/Images/Icons/Bookmark16.png" Label="Bookmark" KeyTipAccessText="K" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/CrossReference32.png" ImageSourceSmall="/Images/Icons/CrossReference16.png" Label="Cross-reference" KeyTipAccessText="RF" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Header16.png" Label="Header &amp; Footer" KeyTipAccessText="ZH">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="50" Size="Medium" />
+			<ribbon:GroupVariant Priority="130" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:StackPanel>
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Header32.png" ImageSourceSmall="/Images/Icons/Header16.png" Label="Header" KeyTipAccessText="H" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Footer32.png" ImageSourceSmall="/Images/Icons/Footer16.png" Label="Footer" KeyTipAccessText="O" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/PageNumber32.png" ImageSourceSmall="/Images/Icons/PageNumber16.png" Label="Page Number" KeyTipAccessText="NU" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/WordArt16.png" Label="Text" KeyTipAccessText="ZT">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="40" Size="Medium" />
+			<ribbon:GroupVariant Priority="70" Size="Small" />
+			<ribbon:GroupVariant Priority="120" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:PopupButton ImageSourceLarge="/Images/Icons/TextBox32.png" Label="Text Box" KeyTipAccessText="X" />
+		<ribbon:StackPanel ItemVariantBehavior="LargeThenMediumWhenMedium">
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/QuickParts32.png" ImageSourceSmall="/Images/Icons/QuickParts16.png" Label="Quick Parts" KeyTipAccessText="Q" />
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/WordArt32.png" ImageSourceSmall="/Images/Icons/WordArt16.png" Label="WordArt" KeyTipAccessText="W" />
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/DropCap32.png" ImageSourceSmall="/Images/Icons/DropCap16.png" Label="Drop Cap" KeyTipAccessText="RC" />
+		</ribbon:StackPanel>					
+		<ribbon:StackPanel ItemVariantBehavior="MediumThenSmallWhenSmall">
+			<ribbon:SplitButton ImageSourceSmall="/Images/Icons/SignatureLine16.png" Label="Signature Line" KeyTipAccessText="G" />
+			<ribbon:Button ImageSourceSmall="/Images/Icons/DateTime16.png" Label="Date &amp; Time" KeyTipAccessText="D" />
+			<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Object16.png" Label="Object" KeyTipAccessText="J" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+	<ribbon:Group ImageSourceSmall="/Images/Icons/Symbol16.png" Label="Symbols" KeyTipAccessText="ZS">
+		<ribbon:Group.Variants>
+			<ribbon:GroupVariant Priority="20" Size="Medium" />
+			<ribbon:GroupVariant Priority="100" Size="Collapsed" />
+		</ribbon:Group.Variants>					
+		<ribbon:StackPanel>
+			<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Equation32.png" ImageSourceSmall="/Images/Icons/Equation16.png" Label="Equation" KeyTipAccessText="E" />
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Symbol32.png" ImageSourceSmall="/Images/Icons/Symbol16.png" Label="Symbol" KeyTipAccessText="U" />
+		</ribbon:StackPanel>					
+	</ribbon:Group>
+	
+</ribbon:Tab>
+			

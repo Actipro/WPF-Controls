@@ -1,0 +1,176 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.ScrollWheel.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+	
+		<!-- ScrollerContainerStyle -->
+		<Style x:Key="ScrollerContainerStyle" TargetType="Border">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Offset="0" Color="#48474f" />
+						<GradientStop Offset="0.12" Color="#c2c2c4" />
+						<GradientStop Offset="0.25" Color="#fcfcfc" />
+						<GradientStop Offset="0.5" Color="#fcfcfc" />
+						<GradientStop Offset="0.62" Color="#e5e5e7" />
+						<GradientStop Offset="0.75" Color="#fbfbfb" />
+						<GradientStop Offset="0.88" Color="#c6c6c8" />
+						<GradientStop Offset="1" Color="#4a494f" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Offset="0" Color="#73737d" />
+						<GradientStop Offset="0.5" Color="#47485a" />
+						<GradientStop Offset="1" Color="#2d2d37" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="ClipToBounds" Value="True" />
+			<Setter Property="CornerRadius" Value="4" />
+		</Style>
+		
+		<!-- ScrollerMarkerStyle -->
+		<Style x:Key="ScrollerMarkerStyle" TargetType="Border">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.5">
+						<GradientStop Offset="0" Color="#dedff4" />
+						<GradientStop Offset="0.49" Color="#dfe1f0" />
+						<GradientStop Offset="0.5" Color="#babbd7" />
+						<GradientStop Offset="1" Color="#c3c4e3" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="#83859e" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="IsHitTestVisible" Value="False" />
+			<Setter Property="VerticalAlignment" Value="Center" />
+			<Setter Property="Height" Value="38" />
+		</Style>
+
+		<!-- ScrollerSeparator -->
+		<Style x:Key="ScrollerSeparator" TargetType="Border">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Offset="0" Color="#212028" />
+						<GradientStop Offset="0.5" Color="#3a3c4b" />
+						<GradientStop Offset="1" Color="#1c1a25" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="#80c5c6da" />
+			<Setter Property="BorderThickness" Value="2,0,2,0" />
+			<Setter Property="Margin" Value="0,1,0,1" />
+			<Setter Property="Width" Value="6" />
+		</Style>
+		
+		<!-- ScrollerListBoxStyle -->
+		<Style x:Key="ScrollerListBoxStyle" TargetType="ListBox">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+			<Setter Property="ItemContainerStyle">
+				<Setter.Value>
+					<Style TargetType="ListBoxItem">
+						<Setter Property="Background" Value="Transparent" />
+						<Setter Property="BorderThickness" Value="0" />
+						<Setter Property="FontWeight" Value="Bold" />
+						<Setter Property="Height" Value="38" />
+						<Setter Property="Padding" Value="8,4,8,4" />
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="ListBoxItem">
+									<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" 
+											Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+										<ContentPresenter />
+									</Border>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<views:ZapPanel Orientation="Vertical" />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="ItemTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<Viewbox>
+							<ContentPresenter Content="{Binding}" />
+						</Viewbox>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBox">
+						<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" 
+								Background="{TemplateBinding Background}">
+							<ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false"
+									HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+								<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+							</ScrollViewer>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This demo shows how a ZapPanel within a ListBox can be used to build
+					a scroll wheel interface similar to those found on mobile devices.
+					<LineBreak /><LineBreak />
+					In the picker, three ListBox controls are used, one for each scroll wheel part.
+					Click on a wheel value to select it and perform an animated scroll.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+		<Grid Height="174" HorizontalAlignment="Center">
+			<Border Style="{StaticResource ScrollerContainerStyle}">
+				<Grid>
+					<Border Margin="-3,0,0,0" Style="{StaticResource ScrollerSeparator}" HorizontalAlignment="Left" CornerRadius="5,0,0,5" />
+					<Border Margin="0,0,-3,0" Style="{StaticResource ScrollerSeparator}" HorizontalAlignment="Right" CornerRadius="0,5,5,0" />
+				</Grid>
+			</Border>
+			<StackPanel Orientation="Horizontal">
+				<ListBox x:Name="yearListBox" Style="{StaticResource ScrollerListBoxStyle}" />
+				<Border Style="{StaticResource ScrollerSeparator}" />
+				<ListBox x:Name="monthListBox" Style="{StaticResource ScrollerListBoxStyle}" />
+				<Border Style="{StaticResource ScrollerSeparator}" />
+				<ListBox x:Name="dayListBox" Style="{StaticResource ScrollerListBoxStyle}" />
+			</StackPanel> 
+			<Border Style="{StaticResource ScrollerMarkerStyle}" />
+		</Grid>
+		
+	</StackPanel>
+
+</sampleBrowser:ProductItemControl>
+
+

@@ -1,0 +1,86 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<ResourceDictionary Source="CommonResources.xaml" />
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This demo shows how the TaskBoard control can be used to make a task planning system, commonly used in project management 
+					to help organize the priorities of a team.
+					<LineBreak /><LineBreak />
+					A task board consists of zero to many columns, each of which can contain zero to many cards.
+					The board itself can optionally have a footer.  In this sample, the footer contains an "Add a list" button.
+					Each column has a header and optional footer that surrounds the contained card items.  In this sample, the column footers contain "Add a task" buttons.
+					The cards can show any custom content as well, or can vary content based on data template selectors.
+					<LineBreak /><LineBreak />
+					The TaskBoard control is designed for MVVM usage and makes it easy to fully customize the appearance of the entire layout 
+					with properties for column/card spacing, padding, corner radius, etc.
+					Best of all, rich animations are used whenever dragging columns or cards.
+					<LineBreak /><LineBreak />
+					Be sure to try out all of the functionality of this demo.
+					Add lists/tasks, move them around, use the drop-down buttons to change task label colors or delete a task, etc.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid>
+
+		<!-- Multi-gradient background -->
+		<Rectangle Fill="{StaticResource BackgroundGradient1Brush}" />
+		<Rectangle Fill="{StaticResource BackgroundGradient2Brush}" />
+
+		<!-- Task board -->
+		<views:TaskBoard x:Name="taskBoard" Grid.Row="1" ItemsSource="{Binding Lists}" ColumnItemsSourcePath="Tasks" 
+						 Padding="15" ColumnSpacing="15" ColumnPadding="10" FontSize="14">
+			<views:TaskBoard.ItemContainerStyle>
+				<Style TargetType="views:TaskColumn">
+					<Setter Property="Background" Value="#80ffffff" />
+					<Setter Property="BorderThickness" Value="0" />
+					<Setter Property="Foreground" Value="#202020" />
+					<Setter Property="Width" Value="260" />
+				</Style>
+			</views:TaskBoard.ItemContainerStyle>
+			<views:TaskBoard.ItemHeaderTemplate>
+				<DataTemplate>
+					<sample:ColumnHeaderControl />
+				</DataTemplate>
+			</views:TaskBoard.ItemHeaderTemplate>
+			<views:TaskBoard.CardContainerStyle>
+				<Style TargetType="views:TaskCard">
+					<Setter Property="Background" Value="#ffffff" />
+					<Setter Property="BorderThickness" Value="0" />
+					<Setter Property="Foreground" Value="#404040" />
+				</Style>
+			</views:TaskBoard.CardContainerStyle>
+			<views:TaskBoard.CardTemplate>
+				<DataTemplate>
+					<sample:CardContentControl />
+				</DataTemplate>
+			</views:TaskBoard.CardTemplate>
+			<views:TaskBoard.ItemFooterTemplate>
+				<DataTemplate>
+					<sample:AddTaskControl />
+				</DataTemplate>
+			</views:TaskBoard.ItemFooterTemplate>
+			<views:TaskBoard.FooterTemplate>
+				<DataTemplate>
+					<sample:AddListControl Width="260" VerticalAlignment="Top" />
+				</DataTemplate>
+			</views:TaskBoard.FooterTemplate>
+		</views:TaskBoard>
+
+	</Grid>
+</sampleBrowser:ProductItemControl>

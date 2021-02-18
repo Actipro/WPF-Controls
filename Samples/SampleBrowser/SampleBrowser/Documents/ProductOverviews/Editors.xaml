@@ -1,0 +1,54 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/BrushEditBoxIntro/MainControl">
+					<Image Width="400" Height="150" Source="/Images/Screenshots/Editors-BrushEditBox-400x150.png" />
+				</Button>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/DoubleEditBoxIntro/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Editors-DoubleEditBox-190x150.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/DateEditBoxIntro/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Editors-DateEditBox-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Editors contains part-based and masked editors for everything from date/time to currency entry,
+					with unique designs that are specifically crafted to support input by keyboard, mouse, touch, and pen.
+				</TextBlock>
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Edit box controls support .NET data types input such as dates, times, numbers, brushes, colors, enumerations, sizes, and many more.
+					Other controls include a regex-based masked textbox, auto-complete box, calculator, month calendar, star rating, gradient stop slider, and various color component pickers.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

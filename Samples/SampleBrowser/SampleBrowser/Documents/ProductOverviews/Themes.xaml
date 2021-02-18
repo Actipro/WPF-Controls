@@ -1,0 +1,44 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/ThemesSamples/Demo/NotepadEnhanced/OverviewDocument?action=open">
+					<Image Width="400" Height="300" Source="/Images/Screenshots/Themes-NotepadEnhanced-400x300.png" />
+				</Button>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Actipro Themes ensures that a great consistent visual appearance is applied to all controls within your application, 
+					regardless of whether they are Actipro control products or native WPF controls.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Many pre-defined themes are available, such as those for modern, Metro, Office, and Aero styles.
+					Themes can be completely customized and tailored for your needs.
+					When the application's theme is changed, the entire application will shift to render in the new theme, optionally including native WPF controls too.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

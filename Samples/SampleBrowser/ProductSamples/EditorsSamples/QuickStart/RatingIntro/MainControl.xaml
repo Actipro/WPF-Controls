@@ -1,0 +1,198 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.RatingIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rating, Path=ItemCount}">
+						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="10" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rating, Path=Value}">
+						<gridseditors:DoublePropertyEditor IsNullAllowed="True" PlaceholderText="(not set)" Minimum="0" />
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding ElementName=rating, Path=ClearValueCommand}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Clear Value" Command="{Binding Value}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rating, Path=AverageValue}">
+						<gridseditors:DoublePropertyEditor SmallChange="0.25" Minimum="0" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rating, Path=Orientation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rating, Path=IsEnabled}" DisplayName="Is enabled (can change value)" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Rating is an input control that allows an end user to select a value (provide a rating) from a group of symbols, which are star shapes by default.
+					Use a pointer or the keyboard to select a value.
+					<LineBreak /><LineBreak />
+					The Rating control is simplistic in presentation but has several advanced features.
+					When no value has been set, an "average value" can be rendered that reflects the average of what other users have rated.
+					There are four states for each rating item, and each can have its glyph customized to provide some unique presentation scenarios as shown in the gallery.
+					<LineBreak /><LineBreak />
+					Items can be generated via a simple ItemCount property, or manually added and even styled on an item-by-item basis.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<editors:Rating x:Name="rating" ItemCount="5" AverageValue="3.5" />
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Alternate glyph templates">
+					<editors:Rating ItemCount="5" AverageValue="4.3" Value="3" HorizontalAlignment="Center">
+						<editors:Rating.ItemContainerStyle>
+							<Style TargetType="editors:RatingItem">
+								<Setter Property="Padding" Value="0,0,3,0" />
+								<Setter Property="NormalGlyphTemplate">
+									<Setter.Value>
+										<DataTemplate>
+											<Path Width="16" Height="16" StrokeLineJoin="Round" StrokeThickness="1" Stroke="#808080" Fill="Transparent"
+													Data="M8,3.8C9.544,1 12.632,1 14.175,2.4C15.719,3.8 15.719,6.6 14.175,9.4C13.095,11.5 10.316,13.6 8,15C5.684,13.6 2.905,11.5 1.825,9.4C0.281,6.6 0.281,3.8 1.825,2.4C3.368,1 6.456,1 8,3.8Z" />
+										</DataTemplate>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="ActiveGlyphTemplate">
+									<Setter.Value>
+										<DataTemplate>
+											<Path Width="16" Height="16" StrokeLineJoin="Round" StrokeThickness="1" Stroke="#C40000" Fill="#C40000"
+													Data="M8,3.8C9.544,1 12.632,1 14.175,2.4C15.719,3.8 15.719,6.6 14.175,9.4C13.095,11.5 10.316,13.6 8,15C5.684,13.6 2.905,11.5 1.825,9.4C0.281,6.6 0.281,3.8 1.825,2.4C3.368,1 6.456,1 8,3.8Z" />
+										</DataTemplate>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="AverageGlyphTemplate">
+									<Setter.Value>
+										<DataTemplate>
+											<Path Width="16" Height="16" StrokeLineJoin="Round" StrokeThickness="1" Stroke="#808080" Fill="#e0e0e0"
+													Data="M8,3.8C9.544,1 12.632,1 14.175,2.4C15.719,3.8 15.719,6.6 14.175,9.4C13.095,11.5 10.316,13.6 8,15C5.684,13.6 2.905,11.5 1.825,9.4C0.281,6.6 0.281,3.8 1.825,2.4C3.368,1 6.456,1 8,3.8Z" />
+										</DataTemplate>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="SelectedGlyphTemplate">
+									<Setter.Value>
+										<DataTemplate>
+											<Path Width="16" Height="16" StrokeLineJoin="Round" StrokeThickness="1" Stroke="#C40000" Fill="#C40000"
+													Data="M8,3.8C9.544,1 12.632,1 14.175,2.4C15.719,3.8 15.719,6.6 14.175,9.4C13.095,11.5 10.316,13.6 8,15C5.684,13.6 2.905,11.5 1.825,9.4C0.281,6.6 0.281,3.8 1.825,2.4C3.368,1 6.456,1 8,3.8Z" />
+										</DataTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</editors:Rating.ItemContainerStyle>
+					</editors:Rating>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Service quality rating meter">
+					<editors:Rating Value="2" HorizontalAlignment="Center">
+						<editors:RatingItem MinWidth="60" Padding="0" Content="Poor" AverageGlyphTemplate="{x:Null}">
+							<editors:RatingItem.NormalGlyphTemplate>
+								<DataTemplate>
+									<Border Height="20" BorderBrush="#808080" BorderThickness="1,1,0,1">
+										<Rectangle Fill="#c0504e" />
+									</Border>
+								</DataTemplate>
+							</editors:RatingItem.NormalGlyphTemplate>
+							<editors:RatingItem.ActiveGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="1,1,0,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.ActiveGlyphTemplate>
+							<editors:RatingItem.SelectedGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="1,1,0,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.SelectedGlyphTemplate>
+						</editors:RatingItem>
+						<editors:RatingItem MinWidth="60" Padding="0" Content="Fair" AverageGlyphTemplate="{x:Null}">
+							<editors:RatingItem.NormalGlyphTemplate>
+								<DataTemplate>
+									<Border Height="20" BorderBrush="#808080" BorderThickness="0,1">
+										<Rectangle Fill="#ffc000" />
+									</Border>
+								</DataTemplate>
+							</editors:RatingItem.NormalGlyphTemplate>
+							<editors:RatingItem.ActiveGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="0,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.ActiveGlyphTemplate>
+							<editors:RatingItem.SelectedGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="0,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.SelectedGlyphTemplate>
+						</editors:RatingItem>
+						<editors:RatingItem MinWidth="60" Padding="0" Content="Good" AverageGlyphTemplate="{x:Null}">
+							<editors:RatingItem.NormalGlyphTemplate>
+								<DataTemplate>
+									<Border Height="20" BorderBrush="#808080" BorderThickness="0,1,1,1">
+										<Rectangle Fill="#79933c" />
+									</Border>
+								</DataTemplate>
+							</editors:RatingItem.NormalGlyphTemplate>
+							<editors:RatingItem.ActiveGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="0,1,1,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.ActiveGlyphTemplate>
+							<editors:RatingItem.SelectedGlyphTemplate>
+								<DataTemplate>
+									<Rectangle Margin="0,1,1,1" Fill="#404040" Height="8" VerticalAlignment="Center" />
+								</DataTemplate>
+							</editors:RatingItem.SelectedGlyphTemplate>
+						</editors:RatingItem>
+					</editors:Rating>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Horizontal orientation">
+					<editors:Rating ItemCount="5" AverageValue="3.5" HorizontalAlignment="Center" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Vertical orientation">
+					<editors:Rating ItemCount="5" AverageValue="3.5" Orientation="Vertical" HorizontalAlignment="Center" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Large stars">
+					<Viewbox Height="30" Stretch="Uniform" HorizontalAlignment="Center">
+						<editors:Rating ItemCount="5" Value="3" />
+					</Viewbox>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="3 items, with label content">
+					<editors:Rating Value="2" FontWeight="Bold" HorizontalAlignment="Center">
+						<editors:RatingItem Content="1" />
+						<editors:RatingItem Content="2" />
+						<editors:RatingItem Content="3" />
+					</editors:Rating>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="10 items">
+					<editors:Rating ItemCount="10" AverageValue="6.5" HorizontalAlignment="Center" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

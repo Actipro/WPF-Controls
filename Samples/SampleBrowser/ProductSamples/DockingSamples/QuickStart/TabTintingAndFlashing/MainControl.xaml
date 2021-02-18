@@ -1,0 +1,74 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.TabTintingAndFlashing.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Docking window tabs can easily be tinted to a custom color via their TabTintColor property.
+					This allows the default color intensity and gradients used by default to be preseved, while still providing a custom look.
+					<LineBreak /><LineBreak />
+					Tabs also support flashing.  Supported flash modes, via the TabFlashMode property, include blinking (on/off) and smooth (smooth animated transition).
+					The color of the flash can be set with the TabFlashColor property.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+		<docking:SplitContainer>
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Flash Options">
+					<ScrollViewer>
+						<StackPanel Margin="10">
+							<TextBlock Text="Configure the 'Flashing' tool window's flash using these controls..." TextWrapping="Wrap" />
+
+							<TextBlock Margin="0,10,0,0" Text="Flash mode:" TextWrapping="Wrap" />
+							<ComboBox Margin="0,3,0,0" SelectedItem="{Binding ElementName=flashingToolWindow, Path=TabFlashMode, Mode=TwoWay}">
+								<docking:TabFlashMode>None</docking:TabFlashMode>
+								<docking:TabFlashMode>Blink</docking:TabFlashMode>
+								<docking:TabFlashMode>Smooth</docking:TabFlashMode>
+							</ComboBox>
+
+							<TextBlock Margin="0,10,0,0" Text="Flash color:" TextWrapping="Wrap" />
+							<editors:ColorEditBox Margin="0,3,0,0" Value="{Binding ElementName=flashingToolWindow, Path=TabFlashColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						</StackPanel>
+					</ScrollViewer>
+				</docking:ToolWindow>
+				<docking:ToolWindow x:Name="flashingToolWindow" Title="Flashing" TabFlashMode="Smooth">
+					<TextBox BorderThickness="0" Text="This tool window's tab flash can be configured in the other tool window." TextWrapping="Wrap" />
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+
+			<!-- Workspace -->
+			<docking:Workspace>
+				<docking:TabbedMdiHost>
+					<docking:TabbedMdiContainer>
+						<docking:DocumentWindow Title="Blue Tab" TabTintColor="#2a8ae9">
+							<TextBox BorderThickness="0" Text="This document has a blue tab." TextWrapping="Wrap" />
+						</docking:DocumentWindow>
+						<docking:DocumentWindow Title="Red Tab" TabTintColor="#e43e3e">
+							<TextBox BorderThickness="0" Text="This document has a red tab." TextWrapping="Wrap" />
+						</docking:DocumentWindow>
+						<docking:DocumentWindow Title="Green Tab" TabTintColor="#31cb60">
+							<TextBox BorderThickness="0" Text="This document has a green tab." TextWrapping="Wrap" />
+						</docking:DocumentWindow>
+						<docking:DocumentWindow Title="Yellow Tab" TabTintColor="#e7ad09">
+							<TextBox BorderThickness="0" Text="This document has a yellow tab." TextWrapping="Wrap" />
+						</docking:DocumentWindow>
+					</docking:TabbedMdiContainer>
+				</docking:TabbedMdiHost>
+			</docking:Workspace>
+		</docking:SplitContainer>
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

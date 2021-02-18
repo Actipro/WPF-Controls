@@ -1,0 +1,80 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsBookmark.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+    >
+    
+	<DockPanel>
+		<ToolBarTray DockPanel.Dock="Top">
+			<ToolBar>
+				<Button Click="OnToggleIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Bookmark16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Toggle Bookmark" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnToggleBookmarkEnabledButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/BookmarkDisabled16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Toggle Enabled" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnClearIndicatorsButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Clear All Bookmarks" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Separator />
+				<Button Click="OnGoToPreviousIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Back16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Previous Bookmark" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnGoToNextIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Next16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Next Bookmark" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" IsIndicatorMarginVisible="True" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/* 
+
+This QuickStart shows how to work with the bookmark indicators mechanism
+that is built into SyntaxEditor.
+
+Bookmark indicators render a glyph in the indicator margin.  They are 
+line-based and follow the text range of a single document line as edits 
+are made around them.
+
+Use the buttons above to toggle bookmarks on a line, or clear all the
+bookmarks in the document.  The previous and next bookmark buttons
+move the editor's caret to the previous and next bookmark that is found.
+
+*/
+
+var labelString = 'Screen pixel count: ';
+
+function displayScreenPixelCount(screenWidth, screenHeight) {
+	// Write a paragraph with the screen's pixel count
+	document.write("<p>" + sampleString);
+	document.write(product(width, height));
+	document.write("</p>");
+}
+
+function product(x, y) {
+	return x * y;
+}
+]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

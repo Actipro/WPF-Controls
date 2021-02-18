@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Python' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Python" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PythonSystemIdentifier" Description="Python System Identifier" DefaultStyle="#FF800080" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="MultiLineString" />
+					<StateRef Key="String" />
+					<StateRef Key="Comment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="BackSlash" Pattern="\\" LookAheadPattern="{Whitespace}* $" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup Key="OpenCurlyBracePatternGroup" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup Key="CloseCurlyBracePatternGroup" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. , : ; `
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Sensitive">
+					<ExplicitPatterns><![CDATA[
+						and assert break class continue def del elif else except exec finally for from global if import in
+						is lambda not or pass print raise return try while yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="SystemIdentifier" ClassificationTypeKey="PythonSystemIdentifier" Pattern="__ ({Word})+" />
+				<RegexPatternGroup TokenKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						== != = += -= *= //= /= %= + - ** * // / % &= |= ^= & | ^ ~ <<= >>= **= << >> <> <= < >= >
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [Jj]?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [Jj]?" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="[1-9]+ {Digit}* [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="OctalNumber" ClassificationTypeKey="Number" Pattern="0 [0-7]+ [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigit}+ [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- MultiLineString state -->
+			<State Key="MultiLineString" DefaultTokenKey="MultiLineStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineStringStartDelimiter" Pattern="'''" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineStringEndDelimiter" Pattern="'''" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineStringStartDelimiter" Pattern="&quot;&quot;&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineStringEndDelimiter" Pattern="&quot;&quot;&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="MultiLineStringEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenKey="MultiLineStringEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenKey="MultiLineStringEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenKey="MultiLineStringEscapedCharacter" Pattern="\\ {Digit}{3}" />
+				<RegexPatternGroup TokenKey="MultiLineStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="MultiLineStringText" Pattern="[^\\\&quot;']+" />
+			</State>
+			<!-- String state -->
+			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StringEndDelimiter" Pattern="['\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StringEndDelimiter" Pattern="[&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\ {Digit}{3}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\\n" />
+				<RegexPatternGroup TokenKey="StringText" Pattern="[^\\\&quot;'\n]+" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="#" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+<LanguageProject.ExampleText><![CDATA[#
+# PythonSample.py
+#
+# This file uses some common Python constructs.
+#
+
+class FibTest:
+    def __init__(self, count):
+        if count <= 0:
+            raise ValueError("'count' must be larger than zero.")
+        self.count = count
+
+    def get_series(self, can_reverse=False):
+        """
+        Create a Fibonacci series, optionally reverse it, and
+        return a result string.
+        """
+        series = self.fib(self.count)
+        if can_reverse:
+            series.reverse()
+        return 'Fibonacci series up to ' + str(self.count) + \
+               ': ' + str(series)
+
+    @staticmethod
+    def fib(n):
+        """
+        Generate a Fibonacci series up to n.
+        """
+        result = []
+        a, b = 0, 1
+        while b < n:
+            result.append(b)    # add to the list
+            a, b = b, a + b
+        return result
+]]></LanguageProject.ExampleText>
+</LanguageDefinition>

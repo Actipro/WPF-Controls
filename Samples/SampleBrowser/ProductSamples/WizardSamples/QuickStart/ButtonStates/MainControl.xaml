@@ -1,0 +1,76 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<!-- Button States -->
+					<wizard:WizardPage x:Name="buttonStatesPage" PageType="Interior" Caption="Button Visible/Enabled States" 
+							Description="Wizard allows you to set global defaults for standard button visible/enabled states as well as page-specific overrides."
+							Title="Step 4 (Pages and Buttons Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock TextWrapping="Wrap">
+								Use the controls below to alter the global and instance settings for the button visible/enabled states.
+								Note the global settings will affect other pages in the wizard while the instance settings will only affect this page.
+							</TextBlock>
+							<Grid Margin="50,0,0,0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+
+								<StackPanel>
+									<TextBlock Margin="0,14,0,0" FontWeight="Bold">Wizard Global Settings</TextBlock>
+									<CheckBox Margin="0,7,0,0" IsChecked="{Binding ElementName=wizard, Path=HelpButtonVisible}">Help button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=CancelButtonVisible}">Cancel button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=BackButtonVisible}">Back button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=NextButtonVisible}">Next button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=FinishButtonVisible}">Finish button visible</CheckBox>
+									<CheckBox Margin="0,7,0,0" IsChecked="{Binding ElementName=wizard, Path=HelpButtonEnabled}">Help button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=CancelButtonEnabled}">Cancel button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=BackButtonEnabled}">Back button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=NextButtonEnabled}">Next button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=FinishButtonEnabled}">Finish button enabled</CheckBox>
+								</StackPanel>
+								<StackPanel Grid.Column="1">
+									<TextBlock Margin="0,14,0,0" FontWeight="Bold">WizardPage Instance Settings</TextBlock>
+									<CheckBox Margin="0,7,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=HelpButtonVisible}">Help button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=CancelButtonVisible}">Cancel button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=BackButtonVisible}">Back button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=NextButtonVisible}">Next button visible</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=FinishButtonVisible}">Finish button visible</CheckBox>
+									<CheckBox Margin="0,7,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=HelpButtonEnabled}">Help button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=CancelButtonEnabled}">Cancel button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=BackButtonEnabled}">Back button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=NextButtonEnabled}">Next button enabled</CheckBox>
+									<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=FinishButtonEnabled}">Finish button enabled</CheckBox>
+								</StackPanel>
+							</Grid>
+						</StackPanel>
+					</wizard:WizardPage>
+
+					<!-- Finish -->
+					<wizard:WizardPage x:Name="finishPage" 
+							Caption="QuickStart Complete"
+							Description="This is the finish page for this QuickStart." 
+							Title="QuickStart Complete">
+						<TextBlock TextWrapping="Wrap">Press the Back button to change more options for this QuickStart.</TextBlock>
+					</wizard:WizardPage>
+
+				</wizard:Wizard>
+
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+
+</UserControl>

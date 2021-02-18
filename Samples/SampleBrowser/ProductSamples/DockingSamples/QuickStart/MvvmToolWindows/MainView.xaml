@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows.MainView"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.Common"
+		xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+		xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		>
+
+    <UserControl.Resources>
+		
+		<common:ToolItemDockSideConverter x:Key="ToolItemDockSideConverter" />
+		<common:ToolItemStateConverter x:Key="ToolItemStateConverter" />
+
+        <Style x:Key="DockingWindowStyle" TargetType="docking:DockingWindow">
+            <Setter Property="Description" Value="{Binding Path=Description, Mode=TwoWay}" />
+            <Setter Property="ImageSource" Value="{Binding Path=ImageSource, Mode=TwoWay}" />
+            <Setter Property="IsActive" Value="{Binding Path=IsActive, Mode=TwoWay}" />
+            <Setter Property="IsFloating" Value="{Binding Path=IsFloating, Mode=TwoWay}" />
+            <Setter Property="IsOpen" Value="{Binding Path=IsOpen, Mode=TwoWay}" />
+            <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}" />
+            <Setter Property="SerializationId" Value="{Binding Path=SerializationId, Mode=TwoWay}" />
+            <Setter Property="Title" Value="{Binding Path=Title, Mode=TwoWay}" />
+            <Setter Property="WindowGroupName" Value="{Binding Path=WindowGroupName, Mode=TwoWay}" />
+        </Style>
+
+        <Style x:Key="ToolWindowStyle" TargetType="docking:ToolWindow" BasedOn="{StaticResource DockingWindowStyle}">
+            <Setter Property="DefaultDockSide" Value="{Binding Path=DefaultDockSide, Mode=TwoWay, Converter={StaticResource ToolItemDockSideConverter}}" />
+            <Setter Property="State" Value="{Binding Path=State, Mode=TwoWay, Converter={StaticResource ToolItemStateConverter}}" />
+        </Style>
+
+        <sample:ToolItemTemplateSelector x:Key="ToolItemTemplateSelector">
+            <sample:ToolItemTemplateSelector.ToolItem1Template>
+                <DataTemplate>
+                    <sample:ToolItem1View />
+                </DataTemplate>
+            </sample:ToolItemTemplateSelector.ToolItem1Template>
+            <sample:ToolItemTemplateSelector.ToolItem2Template>
+                <DataTemplate>
+                    <sample:ToolItem2View />
+                </DataTemplate>
+            </sample:ToolItemTemplateSelector.ToolItem2Template>
+            <sample:ToolItemTemplateSelector.ToolItem3Template>
+                <DataTemplate>
+                    <sample:ToolItem3View />
+                </DataTemplate>
+            </sample:ToolItemTemplateSelector.ToolItem3Template>
+        </sample:ToolItemTemplateSelector>
+		
+    </UserControl.Resources>
+
+    <!-- DockSite -->
+    <docking:DockSite x:Name="dockSite"
+					  ToolItemContainerStyle="{StaticResource ToolWindowStyle}"
+					  ToolItemTemplateSelector="{StaticResource ToolItemTemplateSelector}"
+					  ToolItemsSource="{Binding ToolItems}"
+					  >
+		<docking:Workspace>
+			<docking:TabbedMdiHost>
+				<docking:TabbedMdiContainer>
+					<docking:DocumentWindow Title="Tools List" ImageSource="/Images/Icons/DocumentOutline16.png">
+						<ListView ItemsSource="{Binding ElementName=dockSite, Path=ToolItemsSource}" SelectedIndex="0" BorderThickness="0">
+							<ListView.View>
+								<GridView>
+									<GridViewColumn Width="150" Header="Title" DisplayMemberBinding="{Binding Title}" />
+									<GridViewColumn Width="60" Header="Is Open" DisplayMemberBinding="{Binding IsOpen}" />
+									<GridViewColumn Width="80" Header="Is Selected" DisplayMemberBinding="{Binding IsSelected}" />
+									<GridViewColumn Width="60" Header="Is Active" DisplayMemberBinding="{Binding IsActive}" />
+									<GridViewColumn Width="60" Header="Is Floating" DisplayMemberBinding="{Binding IsFloating}" />
+								</GridView>
+							</ListView.View>
+						</ListView>
+					</docking:DocumentWindow>
+				</docking:TabbedMdiContainer>
+			</docking:TabbedMdiHost>
+		</docking:Workspace>
+    </docking:DockSite>
+
+</UserControl>

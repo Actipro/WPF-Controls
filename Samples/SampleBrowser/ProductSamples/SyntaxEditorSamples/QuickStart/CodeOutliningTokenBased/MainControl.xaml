@@ -1,0 +1,108 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CodeOutliningTokenBased.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editorOutlining="clr-namespace:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining;assembly=ActiproSoftware.SyntaxEditor.Wpf"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CodeOutliningTokenBased"
+    >
+	<UserControl.Resources>
+
+		<ObjectDataProvider x:Key="OutliningModeObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="editorOutlining:OutliningMode"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		
+	</UserControl.Resources>
+    
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Margin="20,10" Orientation="Horizontal">
+			<Button Click="OnOpenButtonClick">
+				<StackPanel Orientation="Horizontal">
+					<shared:DynamicImage Width="16" Height="16" Stretch="Uniform" Source="/Images/Icons/Open16.png" />
+					<TextBlock Margin="3,0,0,0" Text="Open" VerticalAlignment="Center" />
+				</StackPanel>
+			</Button>
+			<shared:PopupButton Margin="7,0,0,0" DisplayMode="Merged" Content="Outlining" PopupMenuDataContext="{Binding ElementName=editor}">
+				<shared:PopupButton.PopupMenu>
+					<ContextMenu>
+						<MenuItem Command="editor:EditorCommands.CollapseToDefinitions" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.ExpandAllOutlining" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.HideSelection" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.ToggleOutliningExpansion" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.ToggleAllOutliningExpansion" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.StopOutlining" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.StopHidingCurrent" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.StartAutomaticOutlining" CommandTarget="{Binding}" />
+						<MenuItem Command="editor:EditorCommands.ApplyDefaultOutliningExpansion" CommandTarget="{Binding}" />
+					</ContextMenu>
+				</shared:PopupButton.PopupMenu>
+			</shared:PopupButton>
+			<TextBlock Margin="50,0,0,0" VerticalAlignment="Center" Text="Allowed Mode: " />
+			<ComboBox 
+				SelectedValue="{Binding ElementName=document, Path=OutliningMode}" 			 
+				ItemsSource="{Binding Source={StaticResource OutliningModeObjectDataProvider}}" />
+			<TextBlock Margin="22,0,0,0" VerticalAlignment="Center" Text="Active Mode: " />
+			<TextBlock VerticalAlignment="Center" Text="{Binding ElementName=document, Path=OutliningManager.(editorOutlining:IOutliningManager.ActiveMode)}" FontWeight="Bold" />
+			<CheckBox Margin="50,0,0,0" Content="Margin hover highlights enabled" IsChecked="{Binding ElementName=editor, Path=IsCollapsibleRegionHighlightingEnabled}" VerticalAlignment="Center" />
+		</StackPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:JavascriptSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/* 
+
+This QuickStart shows the simplest way to achieve code outlining for a
+language, which is to use a token-based outlining source that executes
+in the main UI thread immediately after any text change occurs.
+
+The benefits of this sort of outlining source are that it's extremely
+fast to get up and running with, and the outlining UI is always 
+up-to-date with the document.
+
+The drawbacks are that there is limited customization for when nodes
+are created, and since it's updating in the main thread, it has the 
+potential to slow down typing speed when used on a very large document.
+For small to medium size documents, it should perform well though.
+
+Since it relies heavily on the language's lexer speed, performance
+can be improved by using a programmatic lexer instead of a dynamic
+lexer.  See the documentation for more detail on lexer types.
+
+*/
+
+var labelString = 'Screen pixel count: ';
+
+function displayScreenPixelCount(screenWidth, screenHeight) {
+	/*
+		Write a paragraph with the screen's pixel count
+	*/
+	document.write("<p>" + labelString);
+
+	var pixelCount = product(screenWidth, screenHeight);
+	document.write(pixelCount);
+
+	if (pixelCount <= 64000) {
+		document.write(" (small)");
+	}
+	else {
+		document.write(" (large)");
+	}
+
+	document.write("</p>");
+}
+
+function product(x, y) {
+	return x * y;
+}
+]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

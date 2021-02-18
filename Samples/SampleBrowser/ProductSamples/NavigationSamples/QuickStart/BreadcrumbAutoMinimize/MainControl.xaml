@@ -1,0 +1,192 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbAutoMinimize.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Dictionary.xaml" />
+				<ResourceDictionary>
+					<!-- DataTemplates for minimized BreadcrumbItems -->
+					<DataTemplate x:Key="BreadcrumbItemMinimizedTemplateNormal">
+						<TextBlock Text="{Binding XPath=@Name}"
+								   TextTrimming="CharacterEllipsis"
+								   VerticalAlignment="Center" />
+					</DataTemplate>
+
+					<DataTemplate x:Key="BreadcrumbItemMinimizedTemplateEllipsis">
+						<TextBlock Text="..."
+								   VerticalAlignment="Center" />
+					</DataTemplate>
+					
+					<DataTemplate x:Key="BreadcrumbItemMinimizedTemplateImageOnly">
+						<shared:DynamicImage Source="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}"
+							   Stretch="None"
+							   VerticalAlignment="Center" />
+					</DataTemplate>
+
+					<!-- This Style will explicitly set the ItemsSource property on a BreadcrumbItem. Therefore, a
+					       HierarchicalDataTemplate is not needed when used with this style. -->
+					<Style x:Key="BreadcrumbItemStyleBase"
+						   TargetType="{x:Type navigation:BreadcrumbItem}">
+						<Setter Property="ItemsSource"
+								Value="{Binding XPath=ShellItem}" />
+						<Setter Property="ImageSource"
+								Value="{Binding XPath=@Image, Path=Value, Converter={StaticResource UriConverter}}" />
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStylePopupOnly"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will only show the popup for minimized BreadCrumbItems. -->
+							<Trigger Property="IsMinimized"
+									 Value="true">
+								<Setter Property="HeaderTemplate"
+										Value="{x:Null}" />
+								<Setter Property="ToolTip"
+										Value="{Binding XPath=@Name}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStyleEllipsis"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will only show "..." for minimized BreadCrumbItems. -->
+							<Trigger Property="IsMinimized"
+									 Value="true">
+								<Setter Property="HeaderTemplate"
+										Value="{StaticResource BreadcrumbItemMinimizedTemplateEllipsis}" />
+								<Setter Property="ToolTip"
+										Value="{Binding XPath=@Name}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStyleImageOnly"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will only show "..." for minimized BreadCrumbItems. -->
+							<Trigger Property="IsMinimized"
+									 Value="true">
+								<Setter Property="HeaderTemplate"
+										Value="{StaticResource BreadcrumbItemMinimizedTemplateImageOnly}" />
+								<Setter Property="ToolTip"
+										Value="{Binding XPath=@Name}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+					<Style x:Key="BreadcrumbItemStyleNormal"
+						   TargetType="{x:Type navigation:BreadcrumbItem}"
+						   BasedOn="{StaticResource BreadcrumbItemStyleBase}">
+						<Style.Triggers>
+							<!-- This trigger will show the minimized BreadCrumbItems the same as when it's not minimized. -->
+							<Trigger Property="IsMinimized"
+									 Value="true">
+								<Setter Property="HeaderTemplate"
+										Value="{StaticResource BreadcrumbItemMinimizedTemplateNormal}" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=AutoMinimizeItemCount}">
+							<gridseditors:Int32PropertyEditor Minimum="0" Maximum="6" SmallChange="1" LargeChange="1" />
+						</grids:PropertyModel>
+						<grids:PropertyModel DisplayName="Minimized item display style">
+							<grids:PropertyModel.ValueTemplate>
+								<DataTemplate>
+									<ComboBox Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}"
+											  SelectionChanged="OnDisplayStyleListSelectionChanged" SelectedIndex="0">
+										<ComboBoxItem>Show popup only</ComboBoxItem>
+										<ComboBoxItem>Show with "..." text</ComboBoxItem>
+										<ComboBoxItem>Show with image only</ComboBoxItem>
+										<ComboBoxItem>Display normally</ComboBoxItem>
+									</ComboBox>
+								</DataTemplate>
+							</grids:PropertyModel.ValueTemplate>
+						</grids:PropertyModel>
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				
+					<Button Margin="0,10,0,0" Content="Select leaf item" Style="{StaticResource SampleOptionsActionButtonStyle}" Click="OnSelectLeafItemClick"
+							ToolTip="This button can be used to quickly jump to a leaf item deep in the hierarchy." />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By default, the Actipro Breadcrumb control mimics the Breadcrumb control available in Windows Explorer,
+					by ensuring that the root item is automatically minimized when an item below it is selected. This feature can
+					be extended to any number items, not including the selected item (which cannot be minimized).
+					<LineBreak /><LineBreak />
+					The auto minimizing of non-selected items is controlled by the AutoMinimizeItemCount property, which is
+					an integer. By default this property is one (1), so only the root item is minimized, but can be set to any positive
+					integer. Therefore, you can specify that no items should be minimized or, by setting this property to
+					Int32.MaxValue, you can specify all non-selected items should be minimized.
+					<LineBreak /><LineBreak />
+					When an item is minimized, it will appear as the top MenuItem in it's associated ContextMenu.
+					<LineBreak /><LineBreak />
+					This example allows you view the affects of changing AutoMinimizeItemCount, which is limited to 6
+					for demonstration purposes only. In addition, the example shows a few ways that minimized items can be presented.
+					<LineBreak /><LineBreak />
+					<Italic>Note: Tail items are included in order to illustrate that auto minimizing can extend past the selected item.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+		<navigation:Breadcrumb x:Name="breadcrumb"
+							   RootItem="{Binding XPath=ShellItem}"
+							   ItemContainerStyle="{StaticResource BreadcrumbItemStyleBase}"
+							   ItemTemplate="{StaticResource BreadcrumbItemTemplate}"
+							   ComboBoxItemTemplate="{StaticResource ComboBoxItemTemplate}"
+							   MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+							   MenuItemTemplate="{StaticResource MenuItemNormalTemplate}"
+							   MenuItemExpandedTemplate="{StaticResource MenuItemExpandedTemplate}"
+							   MaxTailItemCount="100"
+							   ConvertItem="OnBreadcrumbConvertItem">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1">
+					<shared:DynamicImage Source="/Images/Icons/Refresh16.png" Stretch="None" VerticalAlignment="Center" />
+					<Button.ToolTip>
+						<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Refresh {0}">
+							<Binding ElementName="breadcrumb" Path="SelectedItem" Mode="OneWay" Converter="{StaticResource PathConverter}" />
+						</MultiBinding>
+					</Button.ToolTip>
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+	</StackPanel>
+	
+</sampleBrowser:ProductItemControl>

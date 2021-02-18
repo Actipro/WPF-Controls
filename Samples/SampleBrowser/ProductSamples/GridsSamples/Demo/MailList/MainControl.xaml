@@ -1,0 +1,116 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.Demo.MailList.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Demo.MailList"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+		<sample:CustomStyleSelector x:Key="CustomStyleSelector">
+			<sample:CustomStyleSelector.GroupStyle>
+				<Style TargetType="grids:TreeListBoxItem">
+					<Setter Property="Background" Value="#20808080" />
+				</Style>
+			</sample:CustomStyleSelector.GroupStyle>
+			<sample:CustomStyleSelector.MailStyle>
+				<Style TargetType="grids:TreeListBoxItem">
+				</Style>
+			</sample:CustomStyleSelector.MailStyle>
+		</sample:CustomStyleSelector>
+
+		<sample:CustomTemplateSelector x:Key="CustomTemplateSelector">
+			<sample:CustomTemplateSelector.GroupTemplate>
+				<DataTemplate>
+					<TextBlock Margin="0,2" Text="{Binding Name}" FontWeight="Bold" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+				</DataTemplate>
+			</sample:CustomTemplateSelector.GroupTemplate>
+			<sample:CustomTemplateSelector.MailTemplate>
+				<DataTemplate>
+					<Grid Margin="0,2,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="26" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="14" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="26" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Author}" FontSize="16" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+						<shared:DynamicImage Grid.Row="0" Grid.Column="3" Width="16" Height="16" Source="/Images/Icons/Flag16.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center"
+											 Visibility="{Binding IsFlagged, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+						<TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding DateTimeText}" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Text}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Opacity="0.75" />
+
+						<Rectangle Grid.Row="3" Grid.ColumnSpan="5" Margin="0,5,0,0" Height="1" Fill="#40808080">
+							<Rectangle.RenderTransform>
+								<TranslateTransform Y="3" />
+							</Rectangle.RenderTransform>
+						</Rectangle>
+					</Grid>
+				</DataTemplate>
+			</sample:CustomTemplateSelector.MailTemplate>
+		</sample:CustomTemplateSelector>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The TreeListBox control can be customized to render its items however you need.
+					In this sample, we've tailored the item container styles and item templates to render similar to an e-mail list
+					within popular mail apps.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="300" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<grids:TreeListBox x:Name="treeListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+						   ItemContainerStyleSelector="{StaticResource CustomStyleSelector}" ItemTemplateSelector="{StaticResource CustomTemplateSelector}" 
+						   TopLevelIndent="26" IndentIncrement="-26" HorizontalAlignment="Left"
+						   SelectionChanged="OnTreeListBoxSelectionChanged">
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+		</grids:TreeListBox>
+
+		<Border Grid.Column="1" BorderThickness="0,1,1,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ListBorderNormalBrushKey}}"
+				Background="{DynamicResource {x:Static themes:AssetResourceKeys.ListBackgroundNormalBrushKey}}">
+			<StackPanel x:Name="messageData" Margin="15">
+				<TextBlock Text="{Binding ElementName=treeListBox, Path=SelectedItem.DateTime}" TextWrapping="Wrap" Opacity="0.6" />
+				<TextBlock Margin="0,3,0,0" Text="{Binding ElementName=treeListBox, Path=SelectedItem.Author}" TextWrapping="Wrap" FontSize="20" Opacity="0.6" />
+				<TextBlock Margin="0,3,0,0" Text="{Binding ElementName=treeListBox, Path=SelectedItem.Name}" TextWrapping="Wrap" FontSize="16" FontWeight="SemiBold" />
+				<TextBlock Margin="0,5,0,0" Text="To&#160;&#160;&#160;Peter Gibbons" TextWrapping="Wrap"/>
+
+				<Rectangle Margin="0,15" Height="1" Fill="#40808080" />
+				<TextBlock Text="{Binding ElementName=treeListBox, Path=SelectedItem.Text}" TextWrapping="Wrap" />
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

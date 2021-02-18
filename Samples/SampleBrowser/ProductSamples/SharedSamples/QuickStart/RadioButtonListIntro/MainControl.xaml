@@ -1,0 +1,91 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"	
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Data Providers -->
+		<ObjectDataProvider x:Key="DockDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="Dock"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=dataBoundRadioButtonList, Path=BulletVerticalAlignment}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=dataBoundRadioButtonList, Path=BulletMargin}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The RadioButtonList control is a regular ListBox capable of rendering its items as radio buttons.
+					<LineBreak /><LineBreak />
+					The selected item in the list will render as a checked radio button.
+					<LineBreak /><LineBreak />
+					RadioButtonList can optionally disable the content of items that aren't currently selected.
+					In the last example, notice how the Select button is disabled when its parent radio button item is not selected.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<shared:RadioButtonList x:Name="dataBoundRadioButtonList" SelectedIndex="0" BulletVerticalAlignment="Top" BulletMargin="0,1,5,0">
+				<shared:RadioButtonList.ItemTemplate>
+					<DataTemplate DataType="ribbonSamplesCommon:SimpleDataItem">
+						<StackPanel>
+							<TextBlock Text="{Binding Name}" FontWeight="Bold" />
+							<TextBlock Margin="15,0,0,3" Text="{Binding Description}" />
+						</StackPanel>
+					</DataTemplate>
+				</shared:RadioButtonList.ItemTemplate>
+				<shared:RadioButtonList.ItemsSource>
+					<x:Array Type="{x:Type ribbonSamplesCommon:SimpleDataItem}">
+						<ribbonSamplesCommon:SimpleDataItem Name="First Item" Description="These items come from a property on a data class" />
+						<ribbonSamplesCommon:SimpleDataItem Name="Second Item" Description="RadioButtonList is a great control" />
+						<ribbonSamplesCommon:SimpleDataItem Name="Third Item" Description="Behold the power of WPF" />
+					</x:Array>
+				</shared:RadioButtonList.ItemsSource>
+			</shared:RadioButtonList>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="RadioButtonList bound to a Dock enumeration">
+					<shared:RadioButtonList x:Name="enumList" ItemsSource="{Binding Source={StaticResource DockDataProvider}}" SelectedIndex="0" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Auto-disable non-selected item content">
+					<StackPanel>
+						<TextBlock Text="Select a destination folder:"  />
+						<shared:RadioButtonList Margin="0,3,0,0" SelectedIndex="0" AutoDisableNonSelectedItemContent="True">
+							<TextBlock Text="Use the default folder"  />
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="C:\Public\Documents\" VerticalAlignment="Center" />
+								<Button Margin="3,0,0,0"  Content="Select an alternate folder" />
+							</StackPanel>
+						</shared:RadioButtonList>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

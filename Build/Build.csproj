@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>ActiproSoftware.Tools.Builds</RootNamespace>
+		<StartupObject>ActiproSoftware.Tools.Builds.Build</StartupObject>
+
+		<AssemblyName>WPF-Build</AssemblyName>
+		<Product>WPF Controls Open-Source Build</Product>
+		<Title>Actipro WPF Controls Open-Source Build</Title>
+		<Description>Actipro WPF Controls Open-Source Build</Description>
+
+		<AssemblyVersion>20.1.2.0</AssemblyVersion>
+		<InformationalVersion>20.1.2.0</InformationalVersion>
+		<PackageVersion>20.1.2.0</PackageVersion>
+
+		<RootNamespace>ActiproSoftware.Tools.Builds</RootNamespace>
+		<Company>Actipro Software LLC</Company>
+		<Authors>Actipro Software LLC</Authors>
+		<Copyright>Copyright (c) 2020-2021 Actipro Software LLC.  All rights reserved.</Copyright>
+
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
+		<NoWarn>CS0649;CS0169</NoWarn>
+		<NukeRootDirectory></NukeRootDirectory>
+		<NukeScriptDirectory></NukeScriptDirectory>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Nuke.Common" Version="5.0.2" />
+	</ItemGroup>
+
+</Project>

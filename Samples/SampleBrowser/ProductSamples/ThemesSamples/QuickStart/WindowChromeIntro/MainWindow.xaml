@@ -1,0 +1,47 @@
+<Window x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Title="WindowChrome Introduction"
+	Width="800" Height="600" 
+	Icon="/Images/Icons/Actipro.ico"
+	TextOptions.TextFormattingMode="Display"
+	WindowStartupLocation="CenterScreen"
+    >
+
+	<themes:WindowChrome.Chrome>
+
+		<themes:WindowChrome x:Name="chrome" />
+
+	</themes:WindowChrome.Chrome>
+
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Margin="30,10" Orientation="Horizontal">
+			<StackPanel>
+				<TextBlock Text="Title bar header alignment:" />
+				<editors:EnumEditBox Margin="0,3,0,0" Value="{Binding ElementName=chrome, Path=TitleBarHeaderAlignment}" />
+				
+				<TextBlock Margin="0,10,0,0" Text="Title bar minimum height:" />
+				<editors:DoubleEditBox Margin="0,3,0,0" Minimum="20" Maximum="50" Value="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarMinHeight)}" />
+				
+				<TextBlock Margin="0,10,0,0" Text="Icon margin:" />
+				<editors:ThicknessEditBox Margin="0,3,0,0" Minimum="0" Maximum="10" Value="{Binding ElementName=chrome, Path=IconMargin}" />
+			</StackPanel>
+
+			<StackPanel Margin="30,0,0,0">
+				<CheckBox IsChecked="{Binding ElementName=chrome, Path=HasTitleBar}" VerticalAlignment="Center">Has title bar</CheckBox>
+				<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=chrome, Path=HasIcon}" VerticalAlignment="Center">Has icon</CheckBox>
+
+				<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=chrome, Path=HasMinimizeButton}" IsThreeState="True" VerticalAlignment="Center">Has minimize button</CheckBox>
+				<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=chrome, Path=HasRestoreButton}" IsThreeState="True" VerticalAlignment="Center">Has restore button</CheckBox>
+				<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=chrome, Path=HasMaximizeButton}" IsThreeState="True" VerticalAlignment="Center">Has maximize button</CheckBox>
+				<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=chrome, Path=HasCloseButton}" VerticalAlignment="Center">Has close button</CheckBox>
+			</StackPanel>
+		</StackPanel>
+
+		<sampleBrowser:RichTextBox x:Name="editor" Margin="7" DocumentUri="/ProductSamples/ThemesSamples/QuickStart/WindowChromeIntro/OverviewDocument.xaml" />
+	</DockPanel>
+
+</Window>

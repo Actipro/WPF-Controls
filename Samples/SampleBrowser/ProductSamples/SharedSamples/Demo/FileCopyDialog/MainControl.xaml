@@ -1,0 +1,210 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl" 
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.Demo.FileCopyDialog.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"	
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:ConditionalConverter x:Key="ConditionalConverter" />
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+		<!-- More Info Button Strings -->
+		<system:String x:Key="MoreInformationString">More Information</system:String>
+		<system:String x:Key="LessInformationString">Less Information</system:String>
+
+		<!-- Brushes -->
+		<LinearGradientBrush x:Key="FileCopyHeaderBackgroundBrush"
+						 EndPoint="1,0.5" StartPoint="0,0.5">
+			<GradientStop Color="#FF135279" Offset="0"/>
+			<GradientStop Color="#FF277D8F" Offset="1"/>
+			<GradientStop Color="#FF135279" Offset="0.575"/>
+		</LinearGradientBrush>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=CanSimulateAPause}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=CanSimulateAnError}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+					<ToggleButton Margin="0,10,0,0" Content="Start Simulated File Copy" Style="{StaticResource SampleOptionsActionButtonStyle}" Click="OnStartButtonClick" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					In this sample, the AnimatedProgressBar control is used to duplicate the Windows file copy dialog. 
+					<LineBreak /><LineBreak />
+					The progress bar indicator will change color when the file copy operation is either paused or has encountered an error.
+					<LineBreak /><LineBreak />
+					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">Please note that the file copy and messageboxes that display are completely fake and do not touch your file system.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border Width="403" MinHeight="165" BorderBrush="#606B75" BorderThickness="1" 
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+						TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" MinHeight="40"/>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" MinHeight="43"/>
+						</Grid.RowDefinitions>
+
+						<!-- Header -->
+						<Border Background="{StaticResource FileCopyHeaderBackgroundBrush}">
+							<TextBlock Margin="22,0,0,0" VerticalAlignment="Center"
+									   Foreground="White" TextTrimming="CharacterEllipsis" FontSize="16">
+								<TextBlock.Text>
+									<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Copying {0} items ({1} GB)">
+										<Binding ElementName="rootSampleControl" Path="FileCopyData.TotalFileCount" />
+										<Binding ElementName="rootSampleControl" Path="FileCopyData.TotalFileSize" />
+									</MultiBinding>
+								</TextBlock.Text>
+							</TextBlock>
+						</Border>
+
+						<!-- Body -->
+						<StackPanel Grid.Row="1" Margin="22,13,22,15">
+							<StackPanel>
+								<StackPanel.Visibility>
+									<MultiBinding Converter="{StaticResource ConditionalConverter}">
+										<Binding ElementName="moreInfoExpander"
+												 Path="IsExpanded" />
+										<Binding Source="{x:Static Visibility.Collapsed}" />
+										<Binding Source="{x:Static Visibility.Visible}" />
+									</MultiBinding>
+								</StackPanel.Visibility>
+
+								<TextBlock TextWrapping="Wrap">from <Bold>Source</Bold> (C:\Source) to <Bold>Target</Bold> (C:\Target)</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									<TextBlock.Text>
+										<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}about {0} Minutes and {1} Seconds remaining">
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.TimeRemaining.Minutes" />
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.TimeRemaining.Seconds" />
+										</MultiBinding>
+									</TextBlock.Text>
+								</TextBlock>
+							</StackPanel>
+							<Grid>
+								<Grid.Visibility>
+									<MultiBinding Converter="{StaticResource ConditionalConverter}">
+										<Binding ElementName="moreInfoExpander"
+												 Path="IsExpanded" />
+										<Binding Source="{x:Static Visibility.Visible}" />
+										<Binding Source="{x:Static Visibility.Collapsed}" />
+									</MultiBinding>
+								</Grid.Visibility>
+
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="6" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+
+								<TextBlock>From:</TextBlock>
+								<TextBlock Grid.Column="2"><Bold>Source</Bold> (C:\Source)</TextBlock>
+
+								<TextBlock Grid.Row="1">To:</TextBlock>
+								<TextBlock Grid.Row="1" Grid.Column="2"><Bold>Target</Bold> (C:\Target)</TextBlock>
+
+								<TextBlock Grid.Row="2">Time remaining:</TextBlock>
+								<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap">
+									<TextBlock.Text>
+										<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}about {0} Minutes and {1} Seconds">
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.TimeRemaining.Minutes" />
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.TimeRemaining.Seconds" />
+										</MultiBinding>
+									</TextBlock.Text>
+								</TextBlock>
+
+								<TextBlock Grid.Row="3">Items remaining:</TextBlock>
+								<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap">
+									<TextBlock.Text>
+										<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}{0} ({1:####0.0} GB)">
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.RemainingFileCount" />
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.RemainingFileSize" />
+										</MultiBinding>
+									</TextBlock.Text>
+								</TextBlock>
+
+								<TextBlock Grid.Row="4">Speed:</TextBlock>
+								<TextBlock Grid.Row="4" Grid.Column="2" TextWrapping="Wrap">
+									<TextBlock.Text>
+										<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}{0:####0.0} MB/sec">
+											<Binding ElementName="rootSampleControl" Path="FileCopyData.Speed" />
+										</MultiBinding>
+									</TextBlock.Text>
+								</TextBlock>
+							</Grid>
+							<shared:AnimatedProgressBar x:Name="animatedProgressBar" Margin="0,10,0,20" Height="20"
+														DecreaseDuration="0"
+														Minimum="0"
+														Maximum="{Binding ElementName=rootSampleControl, Path=FileCopyData.TotalFileSize}"
+														Value="{Binding ElementName=rootSampleControl, Mode=OneWay, Path=FileCopyData.CopiedFileSize}"/>
+						</StackPanel>
+
+						<!-- Footer -->
+						<Grid Grid.Row="2" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Expander x:Name="moreInfoExpander" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="22,0,0,0" 
+									  themes:HeaderedControlThemeProperties.HeaderBackground="Transparent">
+								<themes:HeaderedControlThemeProperties.HeaderStyle>
+									<Style TargetType="ContentControl">
+										<Setter Property="BorderBrush" Value="Transparent" />
+									</Style>
+								</themes:HeaderedControlThemeProperties.HeaderStyle>
+								<Expander.Header>
+									<MultiBinding Converter="{StaticResource ConditionalConverter}">
+										<Binding RelativeSource="{RelativeSource Self}" Path="IsExpanded" />
+										<Binding Source="{StaticResource LessInformationString}" />
+										<Binding Source="{StaticResource MoreInformationString}" />
+									</MultiBinding>
+								</Expander.Header>
+
+								<shared:ZeroSizeContentControl />
+							</Expander>
+							<Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,22,0"
+									MinWidth="73"  MinHeight="23" IsCancel="True"
+									Click="OnCancelButtonClick"
+									>Cancel</Button>
+						</Grid>
+
+					</Grid>
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>
+

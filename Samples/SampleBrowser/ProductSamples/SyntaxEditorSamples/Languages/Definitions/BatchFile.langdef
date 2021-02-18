@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Batch File' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="BatchFile" LanguageDescription="Batch File" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="Label" DefaultStyle="#FF008080" />
+		<ClassificationType Key="BatchFileVariable" Description="Batch File Variable" DefaultStyle="#FF800080" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="PrimaryString" />
+					<StateRef Key="SingleLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="BatchCommand" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						do else end errorlevel exist exit for goto if not pause return say select then when
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="DosCommand" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ansi append assign attrib autofail backup basedev boot break buffers cache call cd chcp chdir chkdsk
+						choice cls cmd codepage command comp copy country date ddinstal debug del detach devicehigh device
+						devinfo dir diskcoache diskcomp diskcopy doskey dpath dumpprocess eautil endlocal erase exit_vdm
+						extproc fcbs fdiskpm fdisk files find format fsaccess fsfilter graftabl iopl join keyb keys label
+						lastdrive lh libpath loadhigh makeini maxwait md memman mem mkdir mode move net patch path pauseonerror
+						picview pmrexx printmonbufsize print priority_disk_io priority prompt protectonly protshell
+						pstat rd recover reipl rename ren replace restore rmdir rmsize run setboot setlocal set shell shift
+						sort spool start subst suppresspopups swappath syslevel syslog threads timeslice time tracebuf
+						tracefmt trace trapdump tree type undelete unpack use verify ver view vmdisk vol xcopy32 xcopy xdfcopy
+						
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Echo" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						@echo echo off on
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Label" ClassificationTypeKey="Label" Pattern=": (_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="BatchFileVariable" Pattern="% {Digit}+" />
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Delimiter">
+					<ExplicitPatterns><![CDATA[
+						# $ ( ) + , . // / ; < = > \
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0x {HexDigit}+" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
+			</State>
+			<!-- PrimaryString state -->
+			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PrimaryStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="::" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="rem" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[@ECHO OFF
+REM - This batch file accepts a choice
+:BEGIN
+CLS
+REM - Present the user with a choice
+CHOICE /N /C:123 PICK A NUMBER (1, 2, or 3)%1
+REM - Redirect to the proper output based on the choice
+IF ERRORLEVEL == 3 GOTO THREE
+IF ERRORLEVEL == 2 GOTO TWO
+IF ERRORLEVEL == 1 GOTO ONE
+GOTO END
+:THREE
+ECHO You pressed three.
+GOTO END
+:TWO
+ECHO You pressed two.
+GOTO END
+:ONE
+ECHO You pressed one.
+:END
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

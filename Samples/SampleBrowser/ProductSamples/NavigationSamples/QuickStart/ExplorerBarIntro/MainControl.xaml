@@ -1,0 +1,154 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.Demo.ExplorerBarIntro.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"     
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+    >
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=expBar, Path=CanExpandMultiple}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Explorer Bar reproduces functionality similar to the Windows Explorer Bar that became popular in Windows XP.
+					It supports a stack of Expander-based controls that when expanded, fade in and slide down.
+					Likewise when collapsed, they fade out and slide up.
+					<LineBreak /><LineBreak />
+					Sometimes you may wish to place emphasis on one particular Expander item.
+					Typically this is the first item.
+					A simple style key can be assigned to that Expander item to have it rendered in alternate colors.
+					In this sample, the top left Expander uses the alternate style.		
+					<LineBreak /><LineBreak />
+					Any content can be hosted in an ExplorerBar item.  
+					An optional flag can be set to only allow a single item to be expanded at any time.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+    <StackPanel Style="{StaticResource SamplePanelWideStyle}">
+	    
+		<navigation:ExplorerBar x:Name="expBar" HorizontalAlignment="Center">
+            <shared:AnimatedExpander IsExpanded="True"
+				Style="{DynamicResource {x:Static navigation:ExplorerBar.ExpanderAlternateStyleKey}}">
+				<shared:AnimatedExpander.Header>
+					<shared:ImageTextInfo ImageSourceLarge="/Images/Icons/PictureTasks32.png" Text="Picture Tasks" />
+				</shared:AnimatedExpander.Header>
+				
+				<Grid>
+					<shared:DynamicImage Source="/Images/Icons/PictureTasks48.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stretch="None" DisabledOpacity="0.2" IsEnabled="False" />
+					
+					<Grid Margin="10">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+												
+						<shared:DynamicImage Grid.Row="0" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/SlideShow16.png" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>View as a slide show</Hyperlink></TextBlock>
+						
+						<shared:DynamicImage Grid.Row="1" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/PrintsOnline16.png" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="1" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Order prints online</Hyperlink></TextBlock>
+						
+						<shared:DynamicImage Grid.Row="2" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/PicturePrint16.png" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="2" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Print this picture</Hyperlink></TextBlock>
+						
+						<shared:DynamicImage Grid.Row="3" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/CD16.png" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="3" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Copy to CD</Hyperlink></TextBlock>
+					</Grid>
+				</Grid>
+            </shared:AnimatedExpander>
+
+			<shared:AnimatedExpander Header="File and Folder Tasks" IsExpanded="True">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<shared:DynamicImage Grid.Row="0" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/FileRename16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Rename this file</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="1" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/FileMove16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Move this file</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="2" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/Copy16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Copy this file</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="3" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/FilePublish16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Publish this file to the Web</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="4" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/Mail16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="4" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>E-mail this file</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="5" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/Delete16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="5" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Delete this file</Hyperlink></TextBlock>
+				</Grid>
+			</shared:AnimatedExpander>
+
+            <shared:AnimatedExpander Header="Other Places">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<shared:DynamicImage Grid.Row="0" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/FolderClosed16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>My Documents</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="1" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/FolderClosed16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>Shared Documents</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="2" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/Computer16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>My Computer</Hyperlink></TextBlock>
+					
+					<shared:DynamicImage Grid.Row="3" Grid.Column="0" Margin="0,2" Width="16" Height="16" Source="/Images/Icons/Network16.png" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap"><Hyperlink>My Network Places</Hyperlink></TextBlock>
+				</Grid>
+            </shared:AnimatedExpander>
+
+            <shared:AnimatedExpander Header="Details" IsExpanded="True">
+				<StackPanel>
+					<shared:DynamicImage Margin="11,10,10,10" Width="32" Height="32" Source="/Images/Icons/Save32.png" HorizontalAlignment="Center" SnapsToDevicePixels="True" />
+					<TextBlock FontWeight="Bold" Text="Save32.png" />
+					<TextBlock Text="PNG Image" />
+					<TextBlock Margin="0,5,0,0" Text="Dimensions: 32 x 32" />
+					<TextBlock Margin="0,5,0,0" Text="Size: 831 bytes" />
+				</StackPanel>
+            </shared:AnimatedExpander>
+        </navigation:ExplorerBar>
+
+    </StackPanel>
+	
+</sampleBrowser:ProductItemControl>

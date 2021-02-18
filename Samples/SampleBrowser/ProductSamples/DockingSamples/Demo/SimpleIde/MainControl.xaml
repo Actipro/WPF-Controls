@@ -1,0 +1,272 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.Demo.SimpleIde.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridsCommon="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:syntaxeditor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Background="Transparent"
+	>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<!-- DockSite -->
+		<docking:DockSite x:Name="dockSite" Grid.Row="1" 
+						  CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI Simple IDE Demo" FloatingWindowIcon="/Images/Icons/Actipro.ico"
+						  FloatingWindowOpening="OnDockSiteFloatingWindowOpening"
+						  MdiKindChanged="OnDockSiteMdiKindChanged"
+						  MenuOpening="OnDockSiteMenuOpening"
+						  NewWindowRequested="OnDockSiteNewWindowRequested"
+						  PrimaryDocumentChanged="OnDockSitePrimaryDocumentChanged"
+						  WindowActivated="OnDockSiteWindowActivated"
+						  WindowAutoHidePopupClosed="OnDockSiteWindowAutoHidePopupClosed"
+						  WindowAutoHidePopupOpened="OnDockSiteWindowAutoHidePopupOpened"
+						  WindowDeactivated="OnDockSiteWindowDeactivated"
+						  WindowRegistered="OnDockSiteWindowRegistered"
+						  WindowsAutoHiding="OnDockSiteWindowsAutoHiding"
+						  WindowsClosed="OnDockSiteWindowsClosed"
+						  WindowsClosing="OnDockSiteWindowsClosing"
+						  WindowsDragged="OnDockSiteWindowsDragged"
+						  WindowsDragging="OnDockSiteWindowsDragging"
+						  WindowsDragOver="OnDockSiteWindowsDragOver"
+						  WindowsOpened="OnDockSiteWindowsOpened"
+						  WindowsOpening="OnDockSiteWindowsOpening"
+						  WindowsStateChanged="OnDockSiteWindowsStateChanged"
+						  WindowUnregistered="OnDockSiteWindowUnregistered"
+						  >
+			<docking:DockSite.AutoHideRightContainers>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow x:Name="findReplaceToolWindow" Title="Find &amp; Replace" ContainerAutoHideSize="230,300" ContainerDockedSize="230,300"
+										Description="Finds or replaces text within the primary document" ImageSource="/Images/Icons/Find16.png">
+						<syntaxeditor:EditorSearchView x:Name="searchView" IsFindAllButtonVisible="True" />
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:DockSite.AutoHideRightContainers>
+
+			<docking:SplitContainer Orientation="Vertical">
+				<docking:SplitContainer>
+
+					<!-- Workspace -->
+					<docking:Workspace x:Name="workspace">
+						<docking:TabbedMdiHost x:Name="tabbedMdiHost" />
+					</docking:Workspace>
+
+					<docking:SplitContainer Orientation="Vertical">
+						<docking:ToolWindowContainer>
+							<docking:ToolWindow x:Name="solutionExplorerToolWindow" Title="Solution Explorer" 
+												Description="Displays the current project" ImageSource="/Images/Icons/SolutionExplorer16.png">
+								<grids:TreeListBox BorderThickness="0" IsRootItemVisible="True" TopLevelIndent="2">
+									<grids:TreeListBox.ItemAdapter>
+										<gridsCommon:DefaultTreeListBoxItemAdapter TopLevelExpandabilityDefault="Never" />
+									</grids:TreeListBox.ItemAdapter>
+									<grids:TreeListBox.ItemTemplate>
+										<DataTemplate>
+											<StackPanel Orientation="Horizontal">
+												<shared:DynamicImage Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Margin="4,0,0,0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+											</StackPanel>
+										</DataTemplate>
+									</grids:TreeListBox.ItemTemplate>
+									<gridsCommon:TreeNodeModel ImageSource="/Images/Icons/Solution16.png" Name="Solution 'ActiproControlsSample' (1 project)" IsExpanded="True">
+										<gridsCommon:TreeNodeModel ImageSource="/Images/Icons/ProjectCSharp16.png" Name="ActiproControlsSample" IsExpanded="True">
+											<gridsCommon:TreeNodeModel ImageSource="/Images/Icons/Wrench16.png" Name="Properties" />
+											<gridsCommon:TreeNodeModel ImageSource="/Images/Icons/Reference16.png" Name="References" />
+											<gridsCommon:TreeNodeModel ImageSource="/Images/Icons/TextDocument16.png" Name="About.txt" />
+										</gridsCommon:TreeNodeModel>
+									</gridsCommon:TreeNodeModel>
+								</grids:TreeListBox>
+							</docking:ToolWindow>
+
+							<docking:ToolWindow x:Name="documentOutlineToolWindow" TabText="Document Outline" Title="Document Outline" 
+												Description="Displays the primary document's document outline" ImageSource="/Images/Icons/ClassView16.png">
+								<TextBox x:Name="documentOutlineTextBox" Grid.Row="1" BorderThickness="0" Text="(none)" AcceptsReturn="True" IsReadOnly="True" 
+										 FontSize="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+							</docking:ToolWindow>
+						</docking:ToolWindowContainer>
+
+						<docking:ToolWindowContainer>
+							<docking:ToolWindow x:Name="propertiesToolWindow" TabText="Properties" Title="Document Properties" ContainerDockedSize="200, 150"
+												Description="Displays the properties of the primary document" ImageSource="/Images/Icons/Properties16.png">
+								<grids:PropertyGrid x:Name="propGrid" BorderThickness="0" IsSummaryVisible="False" IsReadOnly="True" />
+							</docking:ToolWindow>
+						</docking:ToolWindowContainer>
+					</docking:SplitContainer>
+				</docking:SplitContainer>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow x:Name="outputToolWindow" Title="Output" ContainerDockedSize="200, 150" 
+										Description="Displays docking-related events" ImageSource="/Images/Icons/Output16.png">
+						<ListBox x:Name="eventsListBox" BorderThickness="0" />
+					</docking:ToolWindow>
+
+					<docking:ToolWindow x:Name="findResultsToolWindow" TabText="Find Results" Title="Find Results" ContainerDockedSize="200, 150" 
+										Description="Lists the results of a find/replace operation" ImageSource="/Images/Icons/FindResults16.png">
+						<TextBox x:Name="findResultsTextBox" BorderThickness="0" Text="(none)" AcceptsReturn="True" IsReadOnly="True" 
+								 FontFamily="Consolas" MouseDoubleClick="OnFindResultsTextBoxDoubleClick" />
+					</docking:ToolWindow>
+
+					<docking:ToolWindow x:Name="toolWindowsToolWindow" Title="Tool Windows" ContainerDockedSize="200, 150"
+										Description="Allows for modification of all registered tool windows" ImageSource="/Images/Icons/Properties16.png">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<ToolBarTray>
+								<ToolBar>
+									<Button Content="Activate" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.ActivateCommand}" />
+									<Button Content="Open" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.OpenCommand}" />
+									<Button Content="Close" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.CloseCommand}" />
+									<Button Content="Destroy" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.DestroyCommand}" />
+									<Separator />
+									<Button Content="Dock" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.DockCommand}" />
+									<Button Content="Move to MDI" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.MoveToMdiCommand}" />
+									<Button Content="Auto-Hide" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.AutoHideCommand}" />
+									<Button Content="Float" Command="{Binding ElementName=toolWindowListView, Path=SelectedItem.FloatCommand}" />
+								</ToolBar>
+							</ToolBarTray>
+
+							<ListView x:Name="toolWindowListView" Grid.Row="1" ItemsSource="{Binding ElementName=dockSite, Path=ToolWindows}" SelectedIndex="0" BorderThickness="0" TabIndex="0">
+								<ListView.View>
+									<GridView>
+										<GridViewColumn Width="170" Header="Title">
+											<GridViewColumn.CellTemplate>
+												<DataTemplate>
+													<Grid>
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition Width="Auto" />
+															<ColumnDefinition Width="*" />
+														</Grid.ColumnDefinitions>
+														<shared:DynamicImage Width="16" Height="16" Margin="0,0,4,0" Source="{Binding ImageSource}" />
+														<TextBlock Grid.Column="1" Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+													</Grid>
+												</DataTemplate>
+											</GridViewColumn.CellTemplate>
+										</GridViewColumn>
+										<GridViewColumn Width="90" Header="State" DisplayMemberBinding="{Binding State}" />
+										<GridViewColumn Width="60" Header="Is Open" DisplayMemberBinding="{Binding IsOpen}" />
+										<GridViewColumn Width="80" Header="Is Selected" DisplayMemberBinding="{Binding IsSelected}" />
+										<GridViewColumn Width="60" Header="Is Active" DisplayMemberBinding="{Binding IsActive}" />
+										<GridViewColumn Width="80" Header="Is Floating" DisplayMemberBinding="{Binding IsFloating}" />
+									</GridView>
+								</ListView.View>
+							</ListView>
+						</Grid>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+		</docking:DockSite>
+
+		<!-- Menu -->
+		<shared:PixelSnapper>
+			<Menu>
+				<MenuItem Header="_File">
+					<MenuItem Header="New">
+						<MenuItem Header="Text File" Click="OnNewDocumentMenuItemClick" Tag=".txt" />
+						<Separator />
+						<MenuItem Header="C# Class" Click="OnNewDocumentMenuItemClick" Tag=".cs" />
+						<MenuItem Header="JavaScript File" Click="OnNewDocumentMenuItemClick" Tag=".js" />
+						<MenuItem Header="Python File" Click="OnNewDocumentMenuItemClick" Tag=".py" />
+						<MenuItem Header="VB Class" Click="OnNewDocumentMenuItemClick" Tag=".vb" />
+						<MenuItem Header="XML File" Click="OnNewDocumentMenuItemClick" Tag=".xml" />
+					</MenuItem>
+					<MenuItem Header="Open..." Click="OnOpenDocumentMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="_Edit">
+					<MenuItem Header="_Undo" Command="ApplicationCommands.Undo" />
+					<MenuItem Header="_Redo" Command="ApplicationCommands.Redo" />
+					<Separator />
+					<MenuItem Header="Cu_t" Command="ApplicationCommands.Cut" />
+					<MenuItem Header="_Copy" Command="ApplicationCommands.Copy" />
+					<MenuItem Header="_Paste" Command="ApplicationCommands.Paste" />
+				</MenuItem>
+				<MenuItem Header="_View">
+					<MenuItem Header="Document Outline" Command="{Binding ElementName=documentOutlineToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Document Properties" Command="{Binding ElementName=propertiesToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Find &amp; Replace" Command="{Binding ElementName=findReplaceToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Find Results" Command="{Binding ElementName=findResultsToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Output" Command="{Binding ElementName=outputToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Solution Explorer" Command="{Binding ElementName=solutionExplorerToolWindow, Path=ActivateCommand}" />
+					<MenuItem Header="Tool Windows" Command="{Binding ElementName=toolWindowsToolWindow, Path=ActivateCommand}" />
+				</MenuItem>
+				<MenuItem Header="_Options">
+					<MenuItem Header="New Tabs Inserted Before Existing Tabs" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=AreNewTabsInsertedBeforeExistingTabs, Mode=TwoWay}" />
+					<MenuItem x:Name="forceAutoHideToBottomMenuItem" Header="Force Auto-Hide to Bottom" IsCheckable="True" />
+					<MenuItem x:Name="limitFloatingWindowInitialSizeMenuItem" Header="Limit Floating Window Initial Sizes" IsCheckable="True" />
+					<MenuItem x:Name="restrictDraggedWindowsMenuItem" Header="Restrict Dragged Windows (Limit Dock Guides)" IsCheckable="True" />
+					<Separator />
+					<MenuItem Header="Tool Window Tab Images" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveTabImages, Mode=TwoWay}" />
+					<MenuItem Header="Document Tab Images" IsCheckable="True" IsChecked="{Binding ElementName=tabbedMdiHost, Path=HasTabImages, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem Header="Can Document Windows Float" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=CanDocumentWindowsFloat, Mode=TwoWay}" />
+					<MenuItem Header="Can Tool Windows Float" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsFloat, Mode=TwoWay}" />
+					<MenuItem Header="Can Tool Windows Drag to Floating MDI" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsDragToFloatingDockHostsWithWorkspaces, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem Header="Is Live Splitting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=IsLiveSplittingEnabled, Mode=TwoWay}" />
+					<MenuItem Header="Use Drag Float Previews" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=UseDragFloatPreviews, Mode=TwoWay}" />
+					<MenuItem Header="Use Hosted Floating Windows" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=UseHostedFloatingWindows, Mode=TwoWay}" />
+					<MenuItem Header="Use Hosted Popups" IsCheckable="True" IsChecked="{Binding ElementName=dockSite, Path=UseHostedPopups, Mode=TwoWay}" />
+				</MenuItem>
+				<MenuItem Header="_Window">
+					<MenuItem Header="Close All Documents" Command="{Binding ElementName=dockSite, Path=CloseAllDocumentsCommand}" />
+					<Separator />
+					<MenuItem Header="Tabbed MDI" Command="{Binding ElementName=dockSite, Path=SetMdiKindCommand}">
+						<MenuItem.CommandParameter>
+							<docking:MdiKind>Tabbed</docking:MdiKind>
+						</MenuItem.CommandParameter>
+					</MenuItem>
+					<MenuItem Header="Standard MDI" Command="{Binding ElementName=dockSite, Path=SetMdiKindCommand}">
+						<MenuItem.CommandParameter>
+							<docking:MdiKind>Standard</docking:MdiKind>
+						</MenuItem.CommandParameter>
+					</MenuItem>
+					<Separator />
+					<MenuItem Header="Cascade" Command="{Binding ElementName=dockSite, Path=CascadeDocumentsCommand}" />
+					<MenuItem Header="Tile Horizontally" Command="{Binding ElementName=dockSite, Path=TileDocumentsHorizontallyCommand}" />
+					<MenuItem Header="Tile Vertically" Command="{Binding ElementName=dockSite, Path=TileDocumentsVerticallyCommand}" />
+				</MenuItem>
+			</Menu>
+		</shared:PixelSnapper>
+
+		<!-- Statusbar -->
+		<shared:PixelSnapper Grid.Row="2">
+			<StatusBar FocusManager.IsFocusScope="True" Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarStyleKey}}">
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" MinWidth="150" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+
+				<StatusBarItem x:Name="messagePanel" Content="Ready" />
+
+				<StatusBarItem Grid.Column="1">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="linePanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ln 1" />
+						<TextBlock x:Name="columnPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Col 1" />
+						<TextBlock x:Name="characterPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ch 1" />
+					</StackPanel>
+				</StatusBarItem>
+
+				<StatusBarItem x:Name="overwriteModePanel" Grid.Column="2" Margin="7,0,15,0" Content="INS" />
+			</StatusBar>
+		</shared:PixelSnapper>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,142 @@
+﻿<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling.MainControl"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+		xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling"
+		xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+		xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+		>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<shared:ThicknessConverter x:Key="ThicknessConverter" />
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This demo shows how the TaskBoard control can be used to manage a queue of work orders to be performed at an auto repair shop.
+					Each column represents an employee in the shop, and each card represents a queued work order for that employee.
+					<LineBreak /><LineBreak />
+					This sample shows how the task board's appearance can be altered very easily and how 
+					different types of data (e.g. scheduled downtime) can be presented in a completely custom format.
+					Use the Options button in the toolbar to customize several appearance-related task board properties.
+					<LineBreak /><LineBreak />
+					Events are raised before and after any drags occur.  See the statusbar in this sample for notifications of drag events.
+					This allows you to cancel certain drags or take an action when a drag is completed.
+					In this sample, we cancel any drag operations that are performed on a scheduled downtime card.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+	
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+        
+		<!-- ToolBar -->
+		<ToolBar Margin="0,5,0,5" Background="Transparent">
+			<shared:PopupButton DisplayMode="Merged" Content="Options" Style="{StaticResource {x:Static themes:SharedResourceKeys.ToolBarEmbeddedPopupButtonStyleKey}}">
+				<shared:PopupButton.PopupContent>
+					<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" BorderThickness="1" 
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+							TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}"
+							Padding="10">
+						<StackPanel>
+							<TextBlock Text="Columns" FontWeight="Bold" VerticalAlignment="Center" />
+							<StackPanel Orientation="Horizontal">
+								<CheckBox Content="Can drag" IsChecked="{Binding ElementName=taskBoard, Path=CanColumnsDrag, Mode=TwoWay}" VerticalAlignment="Center" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Drag rotation" VerticalAlignment="Center" />
+								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="10" Value="{Binding ElementName=taskBoard, Path=ColumnDragRotationAngle, Mode=TwoWay}" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Corner radius" VerticalAlignment="Center" />
+								<editors:CornerRadiusEditBox Width="100" Value="{Binding ElementName=taskBoard, Path=ColumnCornerRadius, Mode=TwoWay}" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Spacing" VerticalAlignment="Center" />
+								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="30" Value="{Binding ElementName=taskBoard, Path=ColumnSpacing, Mode=TwoWay}" />
+							</StackPanel>
+								
+							<TextBlock Margin="0,7,0,0" Text="Cards" FontWeight="Bold" VerticalAlignment="Center" />
+							<StackPanel Orientation="Horizontal">
+								<CheckBox Content="Can drag" IsChecked="{Binding ElementName=taskBoard, Path=CanCardsDrag, Mode=TwoWay}" VerticalAlignment="Center" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Drag rotation" VerticalAlignment="Center" />
+								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="10" Value="{Binding ElementName=taskBoard, Path=CardDragRotationAngle, Mode=TwoWay}" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Corner radius" VerticalAlignment="Center" />
+								<editors:CornerRadiusEditBox Width="100" Value="{Binding ElementName=taskBoard, Path=CardCornerRadius, Mode=TwoWay}" />
+			
+								<TextBlock Margin="20,0,5,0" Text="Spacing" VerticalAlignment="Center" />
+								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="30" Value="{Binding ElementName=taskBoard, Path=CardSpacing, Mode=TwoWay}" />
+							</StackPanel>
+						</StackPanel>
+					</Border>
+				</shared:PopupButton.PopupContent>
+			</shared:PopupButton>
+
+			<Separator />
+			<Button Content="Add Employee" Click="OnAddEmployeeButtonClick" />
+			<Separator />
+			<Button Content="Add Service" Click="OnAddServiceButtonClick" />
+		</ToolBar>
+		
+		<!-- Separator -->
+		<Rectangle Grid.Row="1" Height="1" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.TaskColumnBorderNormalBrushKey}}" />
+		
+		<!-- StatusBar -->
+		<StatusBar Grid.Row="3">
+			<StatusBar.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Grid />
+				</ItemsPanelTemplate>
+			</StatusBar.ItemsPanel>
+			
+			<StatusBarItem>
+				<TextBlock x:Name="statusTextBlock" Text="Ready" TextTrimming="CharacterEllipsis" />
+			</StatusBarItem>
+		</StatusBar>
+		
+		<!-- Task board -->
+		<views:TaskBoard x:Name="taskBoard" Grid.Row="2" ItemsSource="{Binding Employees}" ColumnItemsSourcePath="Tasks" ColumnCornerRadius="3,25,3,3"
+						 ColumnPadding="{Binding RelativeSource={RelativeSource Self}, Path=CardSpacing, Converter={StaticResource ThicknessConverter}}"
+						 ColumnDragging="OnTaskBoardColumnDragging" ColumnDragOver="OnTaskBoardColumnDragOver" ColumnDropped="OnTaskBoardColumnDropped"
+						 CardDragging="OnTaskBoardCardDragging" CardDragOver="OnTaskBoardCardDragOver" CardDropped="OnTaskBoardCardDropped" CardTapped="OnTaskBoardCardTapped"
+						 >
+			<views:TaskBoard.Resources>
+				<DataTemplate DataType="{x:Type sample:ServiceModel}">
+					<sample:ServiceContentControl />
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type sample:ScheduledDowntimeModel}">
+					<sample:ScheduledDowntimeContentControl />
+				</DataTemplate>
+			</views:TaskBoard.Resources>
+			<views:TaskBoard.ItemContainerStyle>
+				<Style TargetType="views:TaskColumn">
+					<Setter Property="MinWidth" Value="300" />
+				</Style>
+			</views:TaskBoard.ItemContainerStyle>
+			<views:TaskBoard.ItemHeaderTemplate>
+				<DataTemplate>
+					<sample:EmployeeHeaderControl />
+				</DataTemplate>
+			</views:TaskBoard.ItemHeaderTemplate>
+			<views:TaskBoard.CardContainerStyle>
+				<Style TargetType="views:TaskCard">
+					<Setter Property="Background" Value="Transparent" />
+					<Setter Property="BorderThickness" Value="0" />
+					<Setter Property="Padding" Value="0" />
+				</Style>
+			</views:TaskBoard.CardContainerStyle>
+		</views:TaskBoard>
+		
+    </Grid>
+</sampleBrowser:ProductItemControl>

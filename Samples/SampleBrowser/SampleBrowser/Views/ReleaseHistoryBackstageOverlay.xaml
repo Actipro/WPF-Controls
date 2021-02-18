@@ -1,0 +1,52 @@
+﻿<sampleBrowser:BackstageOverlayBase x:Class="ActiproSoftware.SampleBrowser.ReleaseHistoryBackstageOverlay"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800"
+	Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+	BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+	FontSize="14"
+	>
+	
+	<views:InertiaScrollViewer x:Name="scrollViewer" Style="{DynamicResource SampleInertiaScrollViewerStyle}">
+		
+		<StackPanel>
+
+			<StackPanel Margin="50,30,35,30" MaxWidth="{StaticResource SampleWideMaxWidth}">
+				<TextBlock FontSize="16" TextWrapping="Wrap" VerticalAlignment="Center">
+					The Release History documents below give a summary of updates made to the various Actipro WPF Control products in each version.
+				</TextBlock>
+			</StackPanel>
+			
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+					<ItemsControl Margin="50,30,35,10" ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+			
+			<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+				<Grid Margin="50,30,50,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="2*" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+			
+					<TextBlock Margin="0,0,20,0" Text="DISCOVER OUR WPF CONTROLS" Style="{StaticResource DocumentSectionHeadingTextBlockStyle}" />
+					<sampleBrowser:SampleSearchAutoCompleteBox Grid.Column="2" Margin="0,0,-17,0" />
+				</Grid>
+			
+				<ItemsControl Margin="50,20,7,10" ItemsSource="{Binding ProductData.ProductFamilies}"
+							  Style="{StaticResource ProductFamilyInfoButtonItemsControlStyle}" />
+			</StackPanel>
+
+		</StackPanel>
+		
+	</views:InertiaScrollViewer>
+</sampleBrowser:BackstageOverlayBase>

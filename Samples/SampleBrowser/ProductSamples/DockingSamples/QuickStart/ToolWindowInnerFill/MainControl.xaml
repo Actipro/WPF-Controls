@@ -1,0 +1,59 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ToolWindowInnerFill.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+				    By choosing to not place a Workspace within a DockSite hierarchy,
+				    you achieve a tool window inner-fill mode.
+				    In this mode, all tool windows fill the entire content area of the ancestor DockSite.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+		<docking:DockSite.AutoHideLeftContainers>
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="TW08" Title="Tool Window 8" />
+				<docking:ToolWindow x:Name="TW09" Title="Tool Window 9" />
+			</docking:ToolWindowContainer>
+		</docking:DockSite.AutoHideLeftContainers>
+		<docking:DockSite.AutoHideBottomContainers>
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="TW10" Title="Tool Window 10" />
+				<docking:ToolWindow x:Name="TW11" Title="Tool Window 11" />
+			</docking:ToolWindowContainer>
+		</docking:DockSite.AutoHideBottomContainers>
+
+		<docking:SplitContainer>
+			<docking:SplitContainer Orientation="Vertical">
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow x:Name="TW01" Title="Tool Window 1" ContainerDockedSize="600,200" />
+					<docking:ToolWindow x:Name="TW02" Title="Tool Window 2" />
+				</docking:ToolWindowContainer>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow x:Name="TW03" Title="Tool Window 3" />
+					<docking:ToolWindow x:Name="TW04" Title="Tool Window 4" />
+					<docking:ToolWindow x:Name="TW05" Title="Tool Window 5" />
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="TW06" Title="Tool Window 6" />
+				<docking:ToolWindow x:Name="TW07" Title="Tool Window 7" />
+			</docking:ToolWindowContainer>
+		</docking:SplitContainer>
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,123 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.GalleryCustomDraw.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<ObjectDataProvider x:Key="UnderlineStylesObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="ribbonSamplesCommon:UnderlineStyle"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		
+		<ribbonSamplesCommon:UnderlineStyleScreenTipConverter x:Key="UnderlineStyleScreenTipConverter" />
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon provides extremely flexible support for gallery implementations.
+					This sample shows a subset of the features found in galleries, most notably custom draw features for items.
+					<LineBreak /><LineBreak />
+					The Underline SplitButton has a PopupGallery in its popup.
+					Notice that a menu item is also in the popup, below the gallery.
+					<LineBreak /><LineBreak />
+					The PopupGallery specifies to use a single column and has a setting telling it to allow vertical resizing on its popup.
+					These features mean that the items in the gallery will be stacked in a single column vertically and the popup
+					has a gripper at its bottom. 
+					By clicking on the gripper and dragging, the popup may be resized in a vertical direction allowing more or less
+					items to be displayed.
+					<LineBreak /><LineBreak />
+					The PopupGallery's items source is bound to a custom enumeration of type UnderlineStyle.
+					It has an item template assigned that uses Actipro's CustomDrawElement class.
+					The CustomDrawElement class raises a CustomDraw event when it is being rendered.
+					This allows you to draw the element however you like programmatically.
+					In the case of this sample, we route the CustomDraw to an event handler.
+					The event handler calls code that draws visual samples of UnderlineStyle values
+					for each gallery item.
+					<LineBreak /><LineBreak />
+					Each UnderlineStyle item also has a style applied to the item container (a gallery item)
+					that assigns a screen tip based on the UnderlineStyle being represented by the item.
+					This shows up on mouse hovers over items.
+					<LineBreak /><LineBreak />
+					By using custom draw for items, you can create complex programmatically-rendered items for display in your gallery.
+					However Actipro Ribbon also offers you the flexibility of drawing gallery items via normal styles and templates instead.
+					You choose which rendering method is best for your gallery.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon">
+						<!-- 
+							Use pre-defined WordApplicationMenu type in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />	
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home">
+								<ribbon:Group Label="Sample">
+									<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium" RowAlignment="Center">
+										<ribbon:SplitButton Label="Underline" ImageSourceSmall="/Images/Icons/Underline16.png" PopupResizeMode="Vertical">
+											<StackPanel>
+												<ribbon:PopupGallery UseSingleColumn="True" ItemsSource="{Binding Source={StaticResource UnderlineStylesObjectDataProvider}}">
+													<ribbon:PopupGallery.ItemContainerStyle>
+														<Style TargetType="{x:Type ribbon:GalleryItem}">
+															<Setter Property="ScreenTipHeader" Value="{Binding Converter={StaticResource UnderlineStyleScreenTipConverter}}" />
+														</Style>
+													</ribbon:PopupGallery.ItemContainerStyle>											
+													<ribbon:PopupGallery.ItemTemplate>
+														<DataTemplate>
+															<shared:CustomDrawElement Width="150" Height="21" CustomDraw="OnCustomDrawUnderlineGalleryItems" />
+														</DataTemplate>
+													</ribbon:PopupGallery.ItemTemplate>
+												</ribbon:PopupGallery>
+												<ribbon:Separator />
+												<ribbon:Menu>
+													<ribbon:Button Label="More Underlines"  />
+												</ribbon:Menu>
+											</StackPanel>
+										</ribbon:SplitButton>
+									</ribbon:StackPanel>
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+		
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

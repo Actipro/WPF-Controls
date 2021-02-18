@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'RTF' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved. Actipro Software LLC
+
+-->
+<LanguageDefinition LanguageKey="Rtf" LanguageDescription="RTF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" />
+		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" />
+		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<RegexPatternGroup TokenKey="ControlWordToken" ClassificationTypeKey="ControlWord" Pattern="(\\)({Alpha}+)((-)?({Digit}+)|{Digit}*)" />
+				<RegexPatternGroup TokenKey="ControlSymbolToken" ClassificationTypeKey="ControlSymbol" Pattern="\\ [^\p{C}\p{Z}]" />
+				<ExplicitPatternGroup TokenKey="BeginGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="EndGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="}" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[{\rtf 
+{\fonttbl {\f0 Times New Roman;}} 
+{\*\generator Actipro SyntaxEditor;}\f0\fs60 Hello, World! 
+}]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

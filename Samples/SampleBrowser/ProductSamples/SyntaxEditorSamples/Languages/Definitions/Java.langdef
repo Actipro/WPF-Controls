@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Java' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Java" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="JavadocComment" Description="Javadoc Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="JavadocCommentTag" Description="Javadoc Comment Tag" DefaultStyle="#FF808080" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default" DefaultCaseSensitivity="Sensitive">
+				<State.ChildStates>
+					<StateRef Key="PrimaryString" />
+					<StateRef Key="Character" />
+					<StateRef Key="SingleLineComment" />
+					<StateRef Key="JavadocComment" />
+					<StateRef Key="MultiLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. , : ;
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Null" ClassificationTypeKey="Keyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="NativeType" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						boolean byte char double float int long short
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						false true
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						abstract assert break case catch class const continue default do else enum extends finally final
+						for goto if implements import instanceof interface native new package private protected public
+						return static strictfp super switch synchronized this throws throw transient try void volatile
+						while
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						!= ! %= % && &= & *= * ++ += + -- -= - /= / <<= << <= < == = >= >>= >>>= >>> >> > ? ^= ^ |= || | ~
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [FfDd]?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [FfDd]" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+ [Ll]?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0x {HexDigit}+ [Ll]?" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
+			</State>
+			<!-- PrimaryString state -->
+			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PrimaryStringEscapedCharacter">
+					<RegexPattern Value="\\u {HexDigitMacro}{4,4}" />
+					<RegexPattern Value="\\ [0-7]{1,3}" />
+					<RegexPattern Value="\\." />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+			</State>
+			<!-- Character state -->
+			<State Key="Character" DefaultTokenKey="CharacterText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CharacterStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CharacterEndDelimiter" Pattern="[\'\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CharacterEscapedCharacter">
+					<RegexPattern Value="\\u {HexDigit}{4,4}" />
+					<RegexPattern Value="\\ [0-7]{1,3}" />
+					<RegexPattern Value="\\." />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="CharacterText" Pattern="[^\'\\\n]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+			<!-- JavadocComment state -->
+			<State Key="JavadocComment" DefaultTokenKey="JavadocCommentText" DefaultClassificationTypeKey="JavadocComment" DefaultCaseSensitivity="Sensitive">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="JavadocCommentStartDelimiter" Pattern="/**" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="JavadocCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="JavadocCommentTag" ClassificationTypeKey="JavadocCommentTag" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						@author @code @deprecated @docRoot @exception @inheritDoc @linkplain @link @literal @param
+						@return @see @serialData @serialField @serial @since @throws @value @version
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="JavadocCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenKey="JavadocCommentText" Pattern="[^\@\*\n]+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[/** 
+ * The HelloWorld class implements a small application 
+ * that displays "Hello World!" to the standard output.
+ * @author Actipro Software
+ */
+class HelloWorld {
+
+    public static void main(String[] args) {
+		// Write to the console
+        System.out.println("Hello World!");
+    }
+    
+}
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

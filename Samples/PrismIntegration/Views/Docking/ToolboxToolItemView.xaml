@@ -1,0 +1,8 @@
+<UserControl x:Name="userControl" x:Class="ActiproSoftware.Windows.PrismIntegration.Views.ToolboxToolItemView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	>
+
+	<TextBlock Margin="5" Text="Toolbox is currently empty." TextWrapping="Wrap" FontStyle="Italic" />
+
+</UserControl>

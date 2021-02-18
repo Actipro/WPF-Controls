@@ -1,0 +1,94 @@
+﻿<sampleBrowser:ProductItemControl 
+    x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.Palettes.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows the same data rendered in multiple charts, each using a different built-in color palette.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False" ItemsSource="{Binding ElementName=rootSampleControl, Path=StyleSelectors}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<sampleBrowser:LabeledCardControl Label="{Binding Palette.Kind}">
+							<StackPanel>
+								<charts:XYChart Width="250" Height="200" HorizontalAlignment="Center" SeriesStyleSelector="{Binding}" PaddingPercentage="0,0.15,0,0"
+												GridLineMajorVisibility="Y" >
+									<charts:XYChart.YAxes>
+										<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" LabelFormat="{}{0:0}" Baseline="0" Minimum="0"/>
+									</charts:XYChart.YAxes>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+									<charts:AreaSeries YPath="Amount" StackKind="Normal" XPath="Date.Year">
+										<charts:AreaSeries.ItemsSource>
+											<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+										</charts:AreaSeries.ItemsSource>
+									</charts:AreaSeries>
+								</charts:XYChart>
+								
+								<ItemsControl ItemsSource="{Binding Palette.BaseColors}" HorizontalAlignment="Center">
+									<ItemsControl.ItemsPanel>
+										<ItemsPanelTemplate>
+											<StackPanel Margin="0,10,1,0" Orientation="Horizontal" />
+										</ItemsPanelTemplate>
+									</ItemsControl.ItemsPanel>
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<Border Width="16" Height="16" Margin="1,1,0,1" Padding="0" 
+													BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+												<Border.Background>
+													<SolidColorBrush Color="{Binding}" />
+												</Border.Background>
+											</Border>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+							</StackPanel>
+						</sampleBrowser:LabeledCardControl>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+</sampleBrowser:ProductItemControl>

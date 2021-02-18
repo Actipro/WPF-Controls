@@ -1,0 +1,74 @@
+<UserControl 
+	x:Class="ActiproSoftware.ProductSamples.WizardSamples.Demo.Themes.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<!-- Themes -->
+					<wizard:WizardPage x:Name="themesPage" PageType="Interior"
+								Caption="Wizard Supports Custom Styles and Themes" 
+								Description="Wizard supports customization of how all elements in the wizard are rendered."
+								Title="Step 3 (Special Effects and Styles/Themes Path)"
+								HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock TextWrapping="Wrap">Select the theme in the ListBox below to apply to the wizard and its pages.</TextBlock>
+							<Grid Margin="28,7,0,0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+
+								<ListBox x:Name="themeListBox" HorizontalAlignment="Left" SelectionChanged="themeListBox_SelectionChanged">
+									<ListBoxItem IsSelected="True">(Default)</ListBoxItem>
+									<ListBoxItem Tag="WizardMetalTheme.xaml">Brushed Metal Wizard</ListBoxItem>
+									<ListBoxItem Tag="WizardRedTheme.xaml">Red Wizard with Custom Button Style</ListBoxItem>
+									<ListBoxItem Tag="AlternateLayoutButtonContainerTheme.xaml">Alternate Layout for Button Container Template</ListBoxItem>
+									<ListBoxItem Tag="CustomButtonContainerTheme.xaml">Custom Button Container Template</ListBoxItem>
+									<ListBoxItem Tag="CustomExteriorPageTheme.xaml">Custom Exterior Page Template</ListBoxItem>
+									<ListBoxItem Tag="CustomInteriorPageTheme.xaml">Custom Interior Page Template</ListBoxItem>
+								</ListBox>
+								<StackPanel Grid.Column="1" Margin="28,0,0,0">
+									<TextBlock>Sample Exterior Page:</TextBlock>
+									<Border Margin="0,3,0,0" BorderBrush="Black" BorderThickness="1" Width="200" Height="150" HorizontalAlignment="Left">
+										<Border.Background>
+											<VisualBrush>
+												<VisualBrush.Visual>
+													<wizard:Wizard x:Name="sampleExteriorPageWizard" Width="600" Height="450">
+														<wizard:WizardPage PageType="Exterior" Caption="Sample Exterior Page" Description="This is a sample exterior page." />
+													</wizard:Wizard>
+												</VisualBrush.Visual>
+											</VisualBrush>
+										</Border.Background>
+									</Border>
+								</StackPanel>
+							</Grid>
+							<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">All the styles related to these sample themes are defined in the <Bold>Themes</Bold> folder of the main Wizard demo.</TextBlock>
+							<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">By defining custom styles, you can do anything from altering the look and feel of the wizard, to creating custom buttons and button layouts in the button container, and more.</TextBlock>
+						</StackPanel>
+					</wizard:WizardPage>
+
+					<!-- Finish -->
+					<wizard:WizardPage x:Name="finishPage" PageType="Exterior" 
+							Caption="QuickStart Complete"
+							Description="This is the finish page for this QuickStart." 
+							Title="QuickStart Complete">
+						<TextBlock TextWrapping="Wrap">Press the Back button to change more options for this QuickStart.</TextBlock>
+					</wizard:WizardPage>
+
+				</wizard:Wizard>
+
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+
+</UserControl>

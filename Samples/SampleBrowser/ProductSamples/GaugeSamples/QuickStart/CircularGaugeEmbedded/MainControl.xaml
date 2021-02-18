@@ -1,0 +1,110 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=digitalGauge, Path=Visibility}" DisplayName="Digital gauge visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=linearGauge, Path=Visibility}" DisplayName="Linear gauge visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Any number of gauges can be embedded inside the CircularGauge control to provide additional information or
+					present current information in a different manner.
+					<LineBreak /><LineBreak />
+					The CircularGauge control includes embedded LinearGauge and
+					DigitalGauge controls, which can be shown or hidden as desired. The values presented by the three
+					gauges are bound together, but they can easily be updated to display different values.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" Background="Black" HorizontalAlignment="Center">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Items>
+					<gauge:LinearGauge x:Name="linearGauge" Y="50" Width="75" Height="30" Background="Black"
+							FrameType="RoundedRectangleThinRim" RimBrush="Gray">
+						<gauge:LinearGauge.Scales>
+							<gauge:LinearScale BarExtent="90" BarAscent="5">
+								<gauge:LinearScale.TickSets>
+									<gauge:LinearTickSet>
+										<gauge:LinearTickSet.Ticks>
+											<gauge:LinearTickMarkMajor TickMarkAscent="8" TickMarkExtent="3"
+													Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=LeftToRight}" />
+										</gauge:LinearTickSet.Ticks>
+										<gauge:LinearTickSet.Pointers>
+											<gauge:LinearPointerBar Value="{Binding ElementName=needle, Path=Value}"
+													Background="{shared:LinearGradientBrush LightYellow, Yellow, GradientType=TopToBottom}" />
+										</gauge:LinearTickSet.Pointers>
+									</gauge:LinearTickSet>
+								</gauge:LinearScale.TickSets>
+							</gauge:LinearScale>
+						</gauge:LinearGauge.Scales>
+					</gauge:LinearGauge>
+
+					<gauge:DigitalGauge x:Name="digitalGauge" Y="-50" Width="70" Height="30" Background="Black" RimBrush="Black"
+							CharacterType="Segment7Trapezoid" CharacterCount="3" CharacterSpacing="1"
+							Foreground="WhiteSmoke" CharacterHeight="25"
+							Value="{Binding ElementName=needle, Path=Value, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:##0}'}" />
+
+				</gauge:CircularGauge.Items>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="85" StartAngle="0" SweepAngle="360">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet MajorInterval="10" MinorInterval="2">
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle x:Name="needle"
+											Background="{shared:LinearGradientBrush DarkGoldenrod, Goldenrod, GradientType=TopToBottom}"
+											PointerAscent="10" PointerExtent="95" NeedleType="PivotSwordSharp" />
+								</gauge:CircularTickSet.Pointers>
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor TickMarkExtent="4" TickMarkAscent="2"
+											ScalePlacement="Outside" ScaleOffset="5" />
+									<gauge:CircularTickLabelMajor FontSize="11" ScalePlacement="Outside" ScaleOffset="1"
+											TextOrientation="Rotated" Foreground="WhiteSmoke" />
+								</gauge:CircularTickSet.Ticks>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

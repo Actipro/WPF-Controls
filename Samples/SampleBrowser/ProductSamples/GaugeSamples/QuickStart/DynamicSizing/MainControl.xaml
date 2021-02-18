@@ -1,0 +1,103 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:MultiplicationConverter x:Key="MultiplicationConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="-5" Maximum="5" SmallChange="1" LargeChange="2" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The various gauge elements can have their width/height set to an explict size, such as 10-pixels. Alternatively,
+					their sizes can be specified using a percentage of some fixed value. This allows the gauge elements to be sized
+					porportionally  when their associated gauge is sized larger or smaller .
+					<LineBreak /><LineBreak />
+					In the example, the various properties are set using percentage-based sizing.
+					Using the gripper, located at the bottom right of the gauge, the size of the gauge can be changed using the mouse.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ResizableContentControl Width="220" Height="220" HorizontalAlignment="Center"
+					BorderBrush="#A0A0A0" BorderThickness="1">
+				<gauge:CircularGauge x:Name="gauge" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10"
+						RimType="RoundedRectangle" RimBrush="#FF8E89A3" BackgroundType="CircularDarkEdge"
+						Background="#FFA6A670" BackgroundRadiusRatio="0.9">
+					<gauge:CircularGauge.Items>
+						<TextBlock gauge:CircularGauge.Y="-10%" Text="Resizable" Foreground="#66FFFFFF"
+								FontSize="{Binding UnitBaseY, ElementName=gauge, Converter={StaticResource MultiplicationConverter}, ConverterParameter=0.15}" />
+						<TextBlock gauge:CircularGauge.Y="10%" Text="Gauge" Foreground="#66FFFFFF"
+								FontSize="{Binding UnitBaseY, ElementName=gauge, Converter={StaticResource MultiplicationConverter}, ConverterParameter=0.15}" />
+					</gauge:CircularGauge.Items>
+					<gauge:CircularGauge.Scales>
+						<gauge:CircularScale Radius="65%" StartAngle="110" SweepAngle="320" IsBarVisible="False">
+							<gauge:CircularScale.TickSets>
+								<gauge:CircularTickSet MajorInterval="1" MinorInterval="0.2" Minimum="-5" Maximum="5">
+									<gauge:CircularTickSet.Ticks>
+										<!-- Inner Ticks -->
+										<gauge:CircularTickMarkMinor TickMarkExtent="5%" ScalePlacement="Inside"
+												ScaleOffset="15%" TickMarkAscent="1" TickMarkType="Rectangle"
+												Background="#444444" gauge:CircularTickSet.MinorInterval="0.1" />
+										<gauge:CircularTickMarkMajor TickMarkExtent="5%" ScalePlacement="Inside"
+												ScaleOffset="15%" TickMarkAscent="1" TickMarkType="Rectangle"
+												Background="#444444" />
+
+										<!-- Outer Ticks -->
+										<gauge:CircularTickMarkMinor TickMarkExtent="10%" TickMarkAscent="1"
+												TickMarkType="Rectangle" Background="#444444" />
+										<gauge:CircularTickMarkMajor TickMarkExtent="20%" TickMarkAscent="12%"
+												TickMarkType="TriangleSharp" Background="#9AAD32" BorderBrush="#444444"
+												BorderWidth="1" SkipValues="0,-5,5" />
+										<gauge:CircularTickMarkCustom Value="0" TickMarkExtent="25%" TickMarkAscent="8%"
+												TickMarkType="RoundedRectangle" Background="#9AAD32" BorderBrush="#444444"
+												BorderWidth="1" />
+										<gauge:CircularTickMarkCustom Value="-5" TickMarkExtent="25%" TickMarkAscent="8%"
+												TickMarkType="RoundedRectangle" Background="#9AAD32" BorderBrush="#444444"
+												BorderWidth="1" />
+										<gauge:CircularTickMarkCustom Value="5" TickMarkExtent="25%" TickMarkAscent="8%"
+												TickMarkType="RoundedRectangle" Background="#9AAD32" BorderBrush="#444444"
+												BorderWidth="1" />
+										<gauge:CircularTickLabelMajor FontSize="15%" TextOrientation="Rotated"
+												ScalePlacement="Outside" ScaleOffset="10%" Foreground="Black" />
+									</gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickSet.Pointers>
+										<gauge:CircularPointerBar x:Name="bar" BarOrigin="Zero" Background="#66688630"
+												BorderBrush="#444444" BorderWidth="1" PointerExtent="25%"
+												HasDropShadow="False" />
+									</gauge:CircularTickSet.Pointers>
+								</gauge:CircularTickSet>
+							</gauge:CircularScale.TickSets>
+						</gauge:CircularScale>
+					</gauge:CircularGauge.Scales>
+				</gauge:CircularGauge>
+			</shared:ResizableContentControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

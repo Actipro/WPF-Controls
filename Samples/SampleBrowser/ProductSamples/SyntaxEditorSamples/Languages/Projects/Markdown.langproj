@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Markdown' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageProject LanguageKey="Markdown" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.SimpleLanguage" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="MarkdownCode" DefaultStyle="#FF74531F" />
+		<ClassificationType Key="MarkdownCodeBlockDelimiter" DefaultStyle="#FF2B91AF" />
+		<ClassificationType Key="MarkdownEmphasis" DefaultStyle="#FF8F08C4,,True" />
+		<ClassificationType Key="MarkdownEscapedCharacter" DefaultStyle="#FF808080" />
+		<ClassificationType Key="MarkdownHeadingDelimiter" DefaultStyle="#FF808080" />
+		<ClassificationType Key="MarkdownHeadingText" DefaultStyle="#FF008000,True" />
+		<ClassificationType Key="MarkdownHorizontalRule" DefaultStyle="#FFA31515,,,#FFE8E8E8,True" />
+		<ClassificationType Key="MarkdownLinkText" DefaultStyle="#FF2B91AF" />
+		<ClassificationType Key="MarkdownLinkUrl" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="MarkdownOperator" DefaultStyle="#FFA31515" />
+		<ClassificationType Key="MarkdownStrongEmphasis" DefaultStyle="#FF8F08C4,True" />
+		<ClassificationType Key="Number" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<DynamicLexer>
+			<DynamicLexer.Macros>
+				<Macro Key="ZeroToThreeSpaces" Pattern="[ \p{Zs}]{0,3}" />
+				<Macro Key="FourOrMoreSpaces" Pattern="[ \p{Zs}]{4,}" />
+			</DynamicLexer.Macros>
+			<!-- Default state -->
+			<State Key="Default" DefaultTokenKey="Text">
+				<State.ChildStates>
+					<StateRef Key="Heading" />
+					<StateRef Key="QuickLink" />
+					<StateRef Key="InlineLink" />
+					<StateRef Key="FencedCodeBlock" />
+					<StateRef Key="IndentedCodeBlock" />
+					<StateRef Key="Code" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="HorizontalRule" ClassificationTypeKey="MarkdownHorizontalRule" LookBehindPattern="^ {Whitespace}* {LineTerminator}">
+					<RegexPattern Value="^ {ZeroToThreeSpaces} - {Whitespace}* - {Whitespace}* -  ({Whitespace}* -)* {Whitespace}? $ {LineTerminator}?" />
+					<RegexPattern Value="^ {ZeroToThreeSpaces} \* {Whitespace}* \* {Whitespace}* \*  ({Whitespace}* \*)* {Whitespace}? $ {LineTerminator}?" />
+					<RegexPattern Value="^ {ZeroToThreeSpaces} _ {Whitespace}* _ {Whitespace}* _  ({Whitespace}* _)* {Whitespace}? $ {LineTerminator}?" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="Emphasis" ClassificationTypeKey="MarkdownStrongEmphasis">
+					<RegexPattern Value="\*\* [^\*\n\s] ([^\*\n]* [^\*\n\s])? \*\*" />
+					<RegexPattern Value="\_\_ [^\_\n\s] ([^\_\n]* [^\_\n\s])? \_\_" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Emphasis" ClassificationTypeKey="MarkdownEmphasis">
+					<RegexPattern Value="\* [^\*\n\s] ([^\*\n]* [^\*\n\s])? \*" />
+					<RegexPattern Value="\_ [^\_\n\s] ([^\_\n]* [^\_\n\s])? \_" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Text" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="Operator" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="^ {Whitespace}*">
+					<RegexPattern Value="\* {Whitespace}+" />
+					<RegexPattern Value="+ {Whitespace}+" />
+					<RegexPattern Value="\- {Whitespace}+" />
+					<RegexPattern Value="\d+\. {Whitespace}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Operator" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="^ {ZeroToThreeSpaces}">
+					<RegexPattern Value="&gt; ({Whitespace}* &gt;)*" />
+					<RegexPattern Value=": {Whitespace}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}* \. {Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HeadingDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" LookBehindPattern="[^\n] {Whitespace}* {LineTerminator}">
+					<RegexPattern Value="^ ={3,} {Whitespace}* $" />
+					<RegexPattern Value="^ -{3,} {Whitespace}* $" />
+				</RegexPatternGroup>
+				<ExplicitPatternGroup TokenKey="HeadingDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" LookBehindPattern="^" Pattern="---" />
+				<RegexPatternGroup TokenKey="TableDelimiter" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="{LineTerminator}" Pattern="\| ([\s\-\|\:]+ {LineTerminator})?" />
+				<ExplicitPatternGroup TokenKey="TableDelimiter" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="\| [^\n]+" Pattern="|" />
+				<RegexPatternGroup TokenKey="HtmlTag" ClassificationTypeKey="MarkdownOperator" Pattern="\&lt; /? {Word}+ [^\&gt;\n]* \&gt;" />
+				<RegexPatternGroup TokenKey="EscapedCharacter" ClassificationTypeKey="MarkdownEscapedCharacter" Pattern="\\ [\\`*_\{\}\[\]\(\)#+\-\.!]" />
+			</State>
+			<!-- Heading state -->
+			<State Key="Heading" DefaultTokenKey="HeadingText" DefaultClassificationTypeKey="MarkdownHeadingText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="HeadingStartDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="^ #{1,6}" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="HeadingEndDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="(#{1,6} {Whitespace}*)? \n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="HeadingText" ClassificationTypeKey="MarkdownHeadingText" Pattern="[^#\n]+" />
+			</State>
+			<!-- QuickLink state -->
+			<State Key="QuickLink" DefaultTokenKey="LinkText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup Pattern="\&lt; {Whitespace}*" LookAheadPattern="(https?\:\/\/) | ([\w\.%\+\-]+@)" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup Pattern="{Whitespace}* [\&gt;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^&gt;\n]+" />
+			</State>
+			<!-- InlineLink state -->
+			<State Key="InlineLink" DefaultTokenKey="Text">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="LinkDelimiter" Pattern="\!? \[" LookAheadPattern="([^\]\n]* \] \() | (\! \[)" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="LinkDelimiter" Pattern="[\)\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="InlineLink" />
+					<StateRef Key="InlineLinkAttributes" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkText" Pattern="[^\]\n]+" />
+			</State>
+			<!-- InlineLinkAttributes state -->
+			<State Key="InlineLinkAttributes" DefaultTokenKey="LinkUrl">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="LinkDelimiter" Pattern="](" />
+						</Scope.StartPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="LinkTitle" ClassificationTypeKey="MarkdownLinkText" Pattern="\&quot; [^\&quot;\)\n]* \&quot;" />
+				<RegexPatternGroup TokenKey="LinkUrl" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^\)\&quot;\n]+" />
+			</State>
+			<!-- FencedCodeBlock state -->
+			<State Key="FencedCodeBlock" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" LookBehindPattern="^" Pattern="``` .* \n" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="```" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~ .* \n" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CodeText" Pattern="[^`~]+" />
+			</State>
+			<!-- IndentedCodeBlock state -->
+			<State Key="IndentedCodeBlock" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="CodeBlockStartDelimiter" LookBehindPattern="{LineTerminator} {Whitespace}* {LineTerminator}" Pattern="{FourOrMoreSpaces}" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CodeBlockEndDelimiter" Pattern="{LineTerminator} {LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+			</State>
+			<!-- Code state -->
+			<State Key="Code" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CodeDelimiter" Pattern="`" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CodeDelimiter" Pattern="[`\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="EscapedCodeCharacter" Pattern="``" />
+				<RegexPatternGroup TokenKey="CodeText" Pattern="[^`\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageProject.Lexer>
+	<!-- Example text -->
+	<LanguageProject.ExampleText><![CDATA[# Markdown Document
+
+## Introduction
+
+Markdown is a plain text formatting syntax.
+
+Paragraphs are separated by empty lines.
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+## Character Styles
+
+These spans result in 'em' tags:
+
+- *single asterisks*
+- _single underscores_
+
+These spans result in 'strong' tags:
+
+- **double asterisks**
+- __double underscores__
+
+These spans result in 'del' tags:
+
+- ~~double tildes~~
+
+## Links and Images
+
+This is an [example inline link](https://www.actiprosoftware.com "Actipro Software") with tooltip text specified.
+[This link](https://www.actiprosoftware.com) has no tooltip text specified.
+
+URLs and e-mail addresses can be turned into links by enclosing them in angle braces:
+
+- <https://www.actiprosoftware.com>  
+- <support@microsoft.com>
+
+[This link](#markdown-document) links to the first heading in this document via custom ID.
+
+## Images
+
+This is an example of an image:
+
+![Image](https://www.microsoft.com/favicon.ico)
+
+This is an example of an image with a link:
+
+[![Image](https://www.google.com/favicon.ico)](https://www.google.com)
+
+## Blockquotes
+
+Markdown said:
+
+> This is the first level of quoting.
+>
+> > This is a nested blockquote.
+>
+> Back to the first level.
+
+## Lists
+
+Unordered list using minus signs (-):
+
+- Step 1
+- Step 2
+- Step 3
+  - Step 3a
+  - Step 3b
+  - Step 3c
+
+Unordered list using plus signs (+):
+
++ Step 1
++ Step 2
++ Step 3
+  + Step 3a
+  + Step 3b
+  + Step 3c
+
+Unordered list using asterisks (*):
+
+* Step 1
+* Step 2
+* Step 3
+  * Step 3a
+  * Step 3b
+  * Step 3c
+
+Ordered list:
+
+1. Step 1
+1. Step 2
+1. Step 3
+    1. Step 3a
+    1. Step 3b
+    1. Step 3c
+
+Nested (unordered within ordered) list:
+
+1. Step 1
+1. Step 2
+1. Step 3
+    - Step 3a
+    - Step 3b
+    - Step 3c
+
+Definition list:
+
+Term #1
+: This is the definition of term #1.
+
+Term #2
+: This is the definition of term #2.
+
+## Code Blocks
+
+Inline `code` can be delimited with characters.
+
+This code block is fenced with three backticks and has its language specified:
+
+```javascript
+var oldUnload = window.onbeforeunload;
+window.onbeforeunload = function() {
+    saveCoverage();
+    if (oldUnload) {
+        return oldUnload.apply(this, arguments);
+    }
+};
+```
+
+This code block is fenced with three tildes and has its language specified:
+
+~~~ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+~~~
+
+This code block is created by indenting the code, but no language can be specified:
+
+    var foo = 1;
+
+## Tables
+
+| Fruit  | Color  |
+|--------|--------|
+| Apples | Red    |
+| Grapes | Purple |
+| Lemons | Yellow |
+
+## Horizontal Rules
+
+Horizontal rules are formed by placing three or more hyphens, asterisks, or underscores on a line by themselves.
+
+---
+
+***
+
+___
+
+## HTML Tags
+
+<strong>HTML tags</strong> can optionally be used in <em>Markdown</em>.
+
+## Special Characters
+
+Unescaped:
+\ ` * _ { } [ ] ( ) # + - . !
+
+Backslash-Escaped:
+\\ \` \* \_ \{ \} \[ \] \( \) \# \+ \- \. \!
+]]></LanguageProject.ExampleText>
+</LanguageProject>

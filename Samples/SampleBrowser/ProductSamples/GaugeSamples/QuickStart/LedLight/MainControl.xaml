@@ -1,0 +1,80 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:DurationToMillisecondConverter x:Key="DurationToMillisecondConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedState}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedRadiusRatio}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedForeground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=IsLedEffectEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedBorderBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedBorderThickness}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedOnOpacity}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.1" LargeChange="0.2" Format="P0" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedOffOpacity}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.1" LargeChange="0.2" Format="P0" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=BlinkInterval, Converter={StaticResource DurationToMillisecondConverter}}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="2000" SmallChange="100" LargeChange="500" Format="0'ms'" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="3" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Led light includes several built-in shapes to choose from, or you can define your own custom geometry.
+					<LineBreak /><LineBreak />
+					<Italic>Note: Special effects are only available when a solid color brush is used.</Italic>
+					<LineBreak /><LineBreak />
+					Several of the options that control the led light are available.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:Led x:Name="led" Width="200" Height="200" HorizontalAlignment="Center" LedState="On" LedType="Circle">
+				<gauge:Led.LedGeometry>
+					<Geometry>M 5,0 L 6.5,3.5 L 10,5 L 6.5,6.5 L 5,10 L 3.5,6.5 L 0,5 L 3.5,3.5 Z</Geometry>
+				</gauge:Led.LedGeometry>
+
+				<gauge:Led.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:Led.LayoutTransform>
+			</gauge:Led>
+
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,67 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted02.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted02"
+    >
+
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Margin="20,10" Orientation="Horizontal">
+			<TextBlock Text="Number of functions in this code: " />
+			<TextBlock FontWeight="Bold" Text="{Binding ElementName=document, Path=ParseData.Functions.Count}" />
+		</StackPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:SimpleSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/*
+	In this sample we created a dedicated Type for our language called
+	SimpleSyntaxLanguage and were therefore able to apply it to our
+	document directly in XAML.
+	
+	The first line of code in the language constructor initializes the
+	language using the 'basic' Simple language definition file.  This
+	configures the lexer and token tagger, thus allowing syntax highlighting.
+	
+	Next we create a parser for our language that does a token scan
+	and finds the snapshot ranges of any function names in the document.
+	The list of ranges is returned by the parser in a custom parse data
+	object and the number of results is indicated above.  Go ahead and
+	add/remove functions in the code below to see the count update.
+	
+	Parsers execute whenever document text changes occur, and as long as
+	an ambient parse request dispatcher has been set up, they will occur
+	in a worker thread, thereby keeping performance fast on the UI thread.
+	
+	The parser code demonstrated here is by no means production quality,
+	but it does show how you can install any parser to a language.
+	SyntaxEditor can easily integrate with any custom or third-party
+	parsers such as ANTLR or Irony.  Actipro also offers an advanced 
+	LL(*) Parser Framework that we'll showcase in later portions of 
+	this Getting Started series.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

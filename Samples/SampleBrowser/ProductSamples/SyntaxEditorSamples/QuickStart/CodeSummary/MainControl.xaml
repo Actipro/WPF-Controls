@@ -1,0 +1,66 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CodeSummary.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:text="clr-namespace:ActiproSoftware.Text;assembly=ActiproSoftware.Text.Wpf"
+    >
+    
+	<DockPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+		<shared:PixelSnapper DockPanel.Dock="Top">
+			<TextBlock TextWrapping="Wrap">
+				The text statistics framework in found in SyntaxEditor can be used to scan files and return statistics about them.
+				In this QuickStart you can enter a folder path to search.  Each C# and VB source code file is opened and examined
+				and a summary of statistics is displayed in the list below.
+			</TextBlock>
+		</shared:PixelSnapper>
+		
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="0,10,0,0">
+			<DockPanel>
+				<TextBlock DockPanel.Dock="Left" Margin="0,0,3,0" Text="Folder" VerticalAlignment="Center" />
+				<Button x:Name="calculateStatisticsButton" DockPanel.Dock="Right" Margin="3,0,0,0" Content="Calculate Statistics" VerticalAlignment="Stretch" Click="OnCalculateStatisticsButtonClick" />
+				<TextBox x:Name="folderTextBox" VerticalAlignment="Stretch" />
+			</DockPanel>
+		</shared:PixelSnapper>
+		
+		<shared:PixelSnapper DockPanel.Dock="Bottom">
+			<StatusBar>
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+				
+				<StatusBarItem Grid.Column="0">
+					<TextBlock x:Name="messageTextBox" Text="Ready" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+				</StatusBarItem>
+				<Separator Grid.Column="1" />
+				<StatusBarItem Grid.Column="2">
+					<ProgressBar x:Name="progressBar" Width="100" VerticalAlignment="Stretch" MinHeight="16" />
+				</StatusBarItem>
+			</StatusBar>
+		</shared:PixelSnapper>
+		
+		<DockPanel Margin="0,10,0,0">
+			<shared:PixelSnapper DockPanel.Dock="Top">
+				<TextBlock Text="Code Summary:" />
+			</shared:PixelSnapper>
+			<ListView x:Name="resultsListView" Margin="0,3,0,0">
+				<ListView.View>
+					<GridView>
+						<GridViewColumn Header="Description" DisplayMemberBinding="{Binding Path=(text:ITextStatistic.Description)}" />
+						<GridViewColumn Header="Value" DisplayMemberBinding="{Binding Path=(text:ITextStatistic.StringValue)}" />
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</DockPanel>
+		
+	</DockPanel>
+
+</UserControl>

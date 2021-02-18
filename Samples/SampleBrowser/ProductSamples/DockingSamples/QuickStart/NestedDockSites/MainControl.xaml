@@ -1,0 +1,99 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.NestedDockSites.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+				    Dock sites are completely self-contained and can even be nested.
+				    This allows you to put a child DockSite within a document window or tool window.
+				    <LineBreak /><LineBreak />
+				    In this sample we have an outer dock site that just has a couple tool windows and MDI.
+				    The MDI contains two document windows, each with their own nested dock sites.
+				    Those two dock sites have their own docking windows.
+				    <LineBreak /><LineBreak />
+				    When you drag tool windows around from any of the dock sites, notice how they remain self-contained within their ancestor dock site.  
+				    Also try to float one of the tool windows from within a document window's dock site.
+				    Then switch to the other document window.
+				    Notice how the floating tool window automatically closes.
+				    When you switch back to the original document window, the floating window automatically reappears.
+				    <LineBreak /><LineBreak />
+				    It's features like this that make Actipro Docking/MDI stand above the competition.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+    <!-- Outer DockSite -->
+    <docking:DockSite x:Name="outerDockSite">
+        <docking:SplitContainer>
+            <docking:Workspace>
+                <docking:TabbedMdiHost>
+                    <docking:TabbedMdiContainer>
+
+                        <docking:DocumentWindow Title="Document1">
+                            <!-- Inner DockSite 1 -->
+                            <docking:DockSite x:Name="innerDockSite1">
+                                <docking:ToolWindowContainer>
+                                    <docking:ToolWindow Title="Inner DockSite 1-1">
+                                        <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                    </docking:ToolWindow>
+                                    <docking:ToolWindow Title="Inner DockSite 1-2">
+                                        <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                    </docking:ToolWindow>
+                                </docking:ToolWindowContainer>
+                            </docking:DockSite>
+                        </docking:DocumentWindow>
+
+                        <docking:DocumentWindow Title="Document2">
+                            <!-- Inner DockSite 2 -->
+                            <docking:DockSite x:Name="innerDockSite2">
+                                <docking:SplitContainer>
+                                    <docking:ToolWindowContainer>
+                                        <docking:ToolWindow Title="Inner DockSite 2-1">
+                                            <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                        </docking:ToolWindow>
+                                        <docking:ToolWindow Title="Inner DockSite 2-2">
+                                            <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                        </docking:ToolWindow>
+                                    </docking:ToolWindowContainer>
+
+                                    <docking:Workspace>
+                                        <docking:TabbedMdiHost>
+                                            <docking:TabbedMdiContainer>
+                                                <docking:DocumentWindow Title="Inner Document 1">
+                                                    <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                                </docking:DocumentWindow>
+                                                <docking:DocumentWindow Title="Inner Document 2">
+                                                    <TextBox BorderThickness="0" AcceptsReturn="True" />
+                                                </docking:DocumentWindow>
+                                            </docking:TabbedMdiContainer>
+                                        </docking:TabbedMdiHost>
+                                    </docking:Workspace>
+                                </docking:SplitContainer>
+                            </docking:DockSite>
+                        </docking:DocumentWindow>
+
+                    </docking:TabbedMdiContainer>
+                </docking:TabbedMdiHost>
+            </docking:Workspace>
+
+            <docking:ToolWindowContainer>
+                <docking:ToolWindow Title="Outer DockSite 1">
+                    <TextBox BorderThickness="0" AcceptsReturn="True" />
+                </docking:ToolWindow>
+                <docking:ToolWindow Title="Outer DockSite 2">
+                    <TextBox BorderThickness="0" AcceptsReturn="True" />
+                </docking:ToolWindow>
+            </docking:ToolWindowContainer>
+        </docking:SplitContainer>
+    </docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

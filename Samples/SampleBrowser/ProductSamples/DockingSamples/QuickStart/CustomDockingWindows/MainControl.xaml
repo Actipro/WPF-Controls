@@ -1,0 +1,59 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomDockingWindows.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomDockingWindows"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=UseTabbedMdi}" DisplayName="Use tabbed MDI" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows how you can create classes that inherit DocumentWindow or
+					ToolWindow and use those within a DockSite.
+					<LineBreak /><LineBreak />
+					To create custom classes, simply inherit the DocumentWindow or
+					ToolWindow class.  You can even define the contents of your custom classes in XAML.
+					<LineBreak /><LineBreak />
+					See the source files of this QuickStart for examples of how define custom document and tool windows in XAML.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+
+		<docking:SplitContainer Orientation="Horizontal">
+			<docking:ToolWindowContainer>
+				<sample:CustomToolWindow Title="Custom Tool Window 1" />
+				<sample:CustomToolWindow Title="Custom Tool Window 2" />
+			</docking:ToolWindowContainer>
+
+			<!-- Workspace -->
+			<docking:Workspace>
+				<docking:TabbedMdiHost x:Name="tabbedMdiHost">
+					<docking:TabbedMdiContainer>
+						<sample:CustomDocumentWindow Title="Custom DocumentWindow 1" />
+						<sample:CustomDocumentWindow Title="Custom DocumentWindow 2" />
+						<sample:CustomToolWindow Title="Custom Tool Window 3" />
+					</docking:TabbedMdiContainer>
+				</docking:TabbedMdiHost>
+			</docking:Workspace>
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

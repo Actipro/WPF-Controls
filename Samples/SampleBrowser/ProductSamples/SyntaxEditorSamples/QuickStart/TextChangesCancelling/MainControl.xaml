@@ -1,0 +1,42 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.TextChangesCancelling.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c"
+    >
+	
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel>
+				<CheckBox x:Name="cancelCheckBox" Content="Cancel text changes" />
+				<CheckBox x:Name="alternateTextCheckBox" Margin="0,7,0,0"  Content="Insert alternate text instead when cancelling" />
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" DocumentTextChanging="OnEditorDocumentTextChanging">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:SimpleSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/*
+	
+	SyntaxEditor has the ability to cancel text changes 
+	programmatically before a document is modified.
+	
+	To test this behavior, check the cancel box above and try 
+	typing or performing other change operations.  When the 
+	CheckBox is checked, a DocumentTextChanging event in the 
+	code-behind of this sample programmatically cancels the text 
+	change.
+	
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</DockPanel>
+
+</UserControl>

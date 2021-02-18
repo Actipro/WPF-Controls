@@ -1,0 +1,79 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.FanPanelIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="PRECONFIGURED LAYOUTS">
+				<StackPanel>
+					<Button Content="Default" Click="OnLayoutDefaultButtonClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Twist" Click="OnLayoutTwistButtonClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Horizontal" Click="OnLayoutHorizontalButtonClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Vertical" Click="OnLayoutVerticalButtonClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=ForeElementLayoutPlacement}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=ForeAngleStep}">
+							<gridseditors:DoublePropertyEditor Minimum="-360" Maximum="360" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=ForeOffsetStep}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=ForeOpacityStep}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="0.5" SmallChange="0.01" LargeChange="0.05" Format="P0" HasPopup="True" PickerKind="Default" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=BackAngleStep}">
+							<gridseditors:DoublePropertyEditor Minimum="-360" Maximum="360" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=BackOffsetStep}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=BackOpacityStep}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="0.5" SmallChange="0.01" LargeChange="0.05" Format="P0" HasPopup="True" PickerKind="Default" />
+						</grids:PropertyModel>
+					</sampleBrowser:SampleOptionsPropertyGrid>
+					<Button Margin="0,20,0,0" Content="Add New" Click="OnAddItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Insert New (after selected)" Click="OnInsertItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Clear All" Click="OnClearAllClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					FanPanel arranges elements along the z-axis, with options for rotation, offsets, and opacity.
+					The arrange bounds, along with other properties, can be fully animated to provide a nice visual effect.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<sampleBrowser:LabeledCardControl>
+			<ListBox x:Name="listBox" Background="Transparent" BorderThickness="0">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:FanPanel BackAngleStep="{Binding ElementName=rootSampleControl, Path=BackAngleStep}"
+								BackOffsetStep="{Binding ElementName=rootSampleControl, Path=BackOffsetStep}"
+								BackOpacityStep="{Binding ElementName=rootSampleControl, Path=BackOpacityStep}"
+								ForeAngleStep="{Binding ElementName=rootSampleControl, Path=ForeAngleStep}"
+								ForeElementLayoutPlacement="{Binding ElementName=rootSampleControl, Path=ForeElementLayoutPlacement}"
+								ForeOffsetStep="{Binding ElementName=rootSampleControl, Path=ForeOffsetStep}"
+								ForeOpacityStep="{Binding ElementName=rootSampleControl, Path=ForeOpacityStep}" />
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</sampleBrowser:LabeledCardControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

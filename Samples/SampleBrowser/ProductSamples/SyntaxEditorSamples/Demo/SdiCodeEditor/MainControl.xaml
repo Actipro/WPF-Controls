@@ -1,0 +1,365 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Background="{x:Null}"
+    >
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->		
+		<shared:PercentageConverter x:Key="PercentageConverter" />
+		<shared:ImageConverter x:Key="ImageConverter" UriPrefix="pack://application:,,,/SampleBrowser;component/Images/Icons/" />
+	
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		
+		<docking:DockSite Grid.Row="2">
+			<docking:DockSite.AutoHideBottomContainers>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="{Binding ElementName=errorListView, Path=Items.Count, StringFormat={}Error List ({0}), FallbackValue=Error List}" 
+										ImageSource="/Images/Icons/ErrorList16.png" CanClose="False">
+						<ListView x:Name="errorListView" BorderThickness="0" MouseDoubleClick="OnErrorListViewDoubleClick">
+							<ListView.View>
+								<GridView>
+									<GridViewColumn Header="Line" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayLine}" />
+									<GridViewColumn Header="Char" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayCharacter}" />
+									<GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Path=Description}" />
+								</GridView>
+							</ListView.View>
+						</ListView>
+					</docking:ToolWindow>
+					<docking:ToolWindow Title="Events" ImageSource="/Images/Icons/Output16.png" CanClose="False">
+						<!-- Events ListBox -->
+						<ListBox x:Name="eventsListBox" BorderThickness="0" />						
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:DockSite.AutoHideBottomContainers>
+			
+			<docking:DockSite.AutoHideRightContainers>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Document Outline" ImageSource="/Images/Icons/DocumentOutline16.png" CanClose="False">
+						<editor:SyntaxEditor x:Name="astOutputEditor"
+											 BorderThickness="0" IsOutliningMarginVisible="False" IsSelectionMarginVisible="False" CanSplitHorizontally="False">
+							<editor:EditorDocument IsReadOnly="true" TabSize="2">(Language may not have AST building features)</editor:EditorDocument>
+						</editor:SyntaxEditor>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:DockSite.AutoHideRightContainers>
+			
+			<docking:Workspace x:Name="workspace">
+			
+				<DockPanel>
+					<editor:NavigableSymbolSelector x:Name="symbolSelector" DockPanel.Dock="Top" Margin="0,0,0,1" SyntaxEditor="{Binding ElementName=editor}" />
+					
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor"
+										 AreIndentationGuidesVisible="True"
+										 AreWordWrapGlyphsVisible="True"
+										 IsCurrentLineHighlightingEnabled="True"
+										 IsLineNumberMarginVisible="True"
+										 ZoomLevel="{Binding ElementName=zoomSlider, Path=Value}"
+										 DocumentChanged="OnSyntaxEditorDocumentChanged"
+										 DocumentIsModifiedChanged="OnSyntaxEditorDocumentIsModifiedChanged"
+										 DocumentParseDataChanged="OnSyntaxEditorDocumentParseDataChanged"
+										 IsOverwriteModeActiveChanged="OnSyntaxEditorIsOverwriteModeActiveChanged"
+										 MacroRecordingStateChanged="OnSyntaxEditorMacroRecordingStateChanged"
+										 UserInterfaceUpdate="OnSyntaxEditorUserInterfaceUpdate"
+										 ViewIsIncrementalSearchActiveChanged="OnSyntaxEditorViewIsIncrementalSearchActiveChanged"
+										 ViewSearch="OnSyntaxEditorViewSearch"
+										 ViewSelectionChanged="OnSyntaxEditorViewSelectionChanged"
+										 ViewSplitAdded="OnSyntaxEditorViewSplitAdded"
+										 ViewSplitMoved="OnSyntaxEditorViewSplitMoved"
+										 ViewSplitRemoved="OnSyntaxEditorViewSplitRemoved"
+										 >
+						<editor:SyntaxEditor.ScrollBarTrayLeftTemplate>
+							<DataTemplate>
+								<shared:PopupButton DisplayMode="Merged" ToolTip="Add Comment" Padding="0" UseLayoutRounding="True">
+									<shared:PopupButton.PopupMenu>
+										<ContextMenu>
+											<MenuItem Header="E-mail Document" Click="OnEmailDocumentMenuItemClick" />
+											<MenuItem Header="Post Document to Blog" Click="OnPostToBlogMenuItemClick" />
+										</ContextMenu>
+									</shared:PopupButton.PopupMenu>
+								
+									<shared:DynamicImage Width="16" Height="16" Stretch="None" Source="/Images/Icons/Notes16.png" />
+								</shared:PopupButton>
+							</DataTemplate>
+						</editor:SyntaxEditor.ScrollBarTrayLeftTemplate>
+						<editor:EditorDocument xml:space="preserve" FileName="Document1.txt" />
+					</editor:SyntaxEditor>
+				</DockPanel>
+				
+			</docking:Workspace>
+		</docking:DockSite>
+		
+		<!-- Main Menu -->
+		<shared:PixelSnapper Panel.ZIndex="1">
+			<Menu>
+				<MenuItem Header="File">
+					<MenuItem Header="New" Command="ApplicationCommands.New" Icon="{Binding Source='New16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem Header="Open..." Command="ApplicationCommands.Open" Icon="{Binding Source='Open16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem Header="Save" Command="ApplicationCommands.Save" Icon="{Binding Source='Save16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem Header="Print" Command="ApplicationCommands.Print" Icon="{Binding Source='Print16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem Header="Print Preview" Command="ApplicationCommands.PrintPreview" Icon="{Binding Source='PrintPreview16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem Header="Import Visual Studio Settings..." Click="OnFileImportVSSettingsMenuItemClick" />
+					<Separator />
+					<MenuItem Header="Exit" Click="OnFileExitMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="Edit">
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Undo" Icon="{Binding Source='Undo16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Redo" Icon="{Binding Source='Redo16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Cut" Icon="{Binding Source='Cut16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CutAndAppendToClipboard" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Copy" Icon="{Binding Source='Copy16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CopyAndAppendToClipboard" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Paste" Icon="{Binding Source='Paste16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Delete" Icon="{Binding Source='Delete16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.SelectAll" />
+				</MenuItem>
+				<MenuItem Header="Advanced">
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatDocument" Icon="{Binding Source='FormatDocument16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatSelection" Icon="{Binding Source='FormatSelection16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Indent" Icon="{Binding Source='IncreaseIndent16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Outdent" Icon="{Binding Source='DecreaseIndent16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ConvertTabsToSpaces" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ConvertSpacesToTabs" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TabifySelectedLines" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.UntabifySelectedLines" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CommentLines" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.UncommentLines" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MakeUppercase" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MakeLowercase" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleCharacterCasing" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Capitalize" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.DeleteHorizontalWhitespace" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TrimAllTrailingWhitespace" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TrimTrailingWhitespace" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.DeleteLine" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Duplicate" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.DeleteBlankLines" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MoveSelectedLinesUp" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MoveSelectedLinesDown" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TransposeLines" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TransposeWords" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TransposeCharacters" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.IncrementalSearch" />
+					<Separator />
+					<MenuItem Header="Insert Lorem Ipsum" Click="OnInsertLoremIpsumMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="IntelliPrompt">
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" Icon="{Binding Source='IntelliPromptCompletion16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptParameterInfoSession" Icon="{Binding Source='IntelliPromptParameterInfo16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptQuickInfoSession" Icon="{Binding Source='IntelliPromptQuickInfo16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" Icon="{Binding Source='IntelliPromptAutoComplete16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptInsertSnippetSession" Icon="{Binding Source='IntelliPromptCodeSnippetSelection16.png', Converter={StaticResource ImageConverter}}" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptSurroundWithSession" Icon="{Binding Source='IntelliPromptCodeSnippetSelection16.png', Converter={StaticResource ImageConverter}}" />
+				</MenuItem>
+				<MenuItem Header="View">
+					<MenuItem Header="Indicator Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsIndicatorMarginVisible, Mode=TwoWay}" />
+					<MenuItem Header="Line Number Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsLineNumberMarginVisible, Mode=TwoWay}" />
+					<MenuItem Header="Outlining Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsOutliningMarginVisible, Mode=TwoWay}" />
+					<MenuItem Header="Ruler Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsRulerMarginVisible, Mode=TwoWay}" />
+					<MenuItem Header="Selection Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsSelectionMarginVisible, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem x:Name="wordWrapMenuItem" Header="Word Wrap" Click="OnWordWrapModeMenuItemClick" />
+					<MenuItem Header="Word Wrap Glyphs Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=AreWordWrapGlyphsVisible, Mode=TwoWay}" />
+					<MenuItem Header="Whitespace Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsWhitespaceVisible, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem Header="Can Scroll Past Document End" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=CanScrollPastDocumentEnd, Mode=TwoWay}" />
+					<MenuItem Header="Virtual Space at Line End" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsVirtualSpaceAtLineEndEnabled, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem Header="Indentation Guides Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=AreIndentationGuidesVisible, Mode=TwoWay}" />
+					<MenuItem Header="Line Modification Marks Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=AreLineModificationMarksVisible, Mode=TwoWay}" />
+					<MenuItem Header="Current Line Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsCurrentLineHighlightingEnabled, Mode=TwoWay}" />
+					<MenuItem Header="Delimiter Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsDelimiterHighlightingEnabled, Mode=TwoWay}" />
+					<MenuItem Header="Search Result Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsSearchResultHighlightingEnabled, Mode=TwoWay}" />
+					<MenuItem Header="Auto-Correct Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsAutoCorrectEnabled, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem x:Name="toggleTokenInfoMenuItem" Header="Toggle Token Info in Status Bar" IsCheckable="True" Click="OnToggleTokenInfoMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="Outlining">
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CollapseToDefinitions" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.HideSelection" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleOutliningExpansion" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleAllOutliningExpansion" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.StopOutlining" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.StopHidingCurrent" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.StartAutomaticOutlining" />
+				</MenuItem>
+				<MenuItem Header="Language">
+					<MenuItem Header="Plain text" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Optional Add-on Languages (sold separately)" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+					<MenuItem Header="C# (in .NET Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="VB (in .NET Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Python v2.x (in Python Language Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Python v3.x (in Python Language Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="JavaScript (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="JSON (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="XML (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Free Language Definitions" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+					<MenuItem Header="Custom..." Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Assembly" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Batch file" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="C" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="C#" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="C++" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="CSS" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="HTML" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="INI file" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Java" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="JavaScript" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Lua" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Markdown" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="MSIL" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Pascal" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Perl" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="PHP" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="PowerShell" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Python" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="RTF" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Ruby" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="SQL" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="VB" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="VBScript" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="XAML" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="XML" Click="OnLanguageMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="Macros">
+					<MenuItem Header="Run Recorded Macro" Icon="{Binding Source='MacroRecordingRun16.png', Converter={StaticResource ImageConverter}}"  
+							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RunMacro" />
+					<MenuItem x:Name="recordMacroMenuItem" Header="Record Macro" Icon="{Binding Source='MacroRecordingRecord16.png', Converter={StaticResource ImageConverter}}"  
+							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleMacroRecording" />
+					<MenuItem x:Name="pauseRecordingMenuItem" Header="Pause Recording" Icon="{Binding Source='MacroRecordingPause16.png', Converter={StaticResource ImageConverter}}"  
+							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.PauseResumeMacroRecording" />
+					<MenuItem Header="Cancel Recording" Icon="{Binding Source='MacroRecordingCancel16.png', Converter={StaticResource ImageConverter}}"  
+							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CancelMacroRecording" />
+				</MenuItem>
+				<MenuItem Header="Window">
+					<MenuItem Header="Can Split Horizontally" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=CanSplitHorizontally, Mode=TwoWay}" />
+					<MenuItem Header="Has Horizontal Split" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=HasHorizontalSplit, Mode=TwoWay}" />
+					<Separator />
+					<MenuItem Header="Is Document Read-only" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=Document.IsReadOnly, Mode=TwoWay}" />
+				</MenuItem>
+			</Menu>
+		</shared:PixelSnapper>
+		
+		<!-- Toolbar -->
+		<shared:PixelSnapper Grid.Row="1">
+			<ToolBarTray>
+				<ToolBar>
+					<Button Command="ApplicationCommands.New" ToolTip="New" Content="{Binding Source='New16.png', Converter={StaticResource ImageConverter}}" />
+					<Button Command="ApplicationCommands.Open" ToolTip="Open" Content="{Binding Source='Open16.png', Converter={StaticResource ImageConverter}}" />
+					<Button Command="ApplicationCommands.Save" ToolTip="Save" Content="{Binding Source='Save16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button Command="ApplicationCommands.Print" ToolTip="Print" Content="{Binding Source='Print16.png', Converter={StaticResource ImageConverter}}" />
+					<Button Command="ApplicationCommands.PrintPreview" ToolTip="Print Preview" Content="{Binding Source='PrintPreview16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Cut" ToolTip="Cut" Content="{Binding Source='Cut16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Copy" ToolTip="Copy" Content="{Binding Source='Copy16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Paste" ToolTip="Paste" Content="{Binding Source='Paste16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Delete" ToolTip="Delete" Content="{Binding Source='Delete16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Undo" ToolTip="Undo" Content="{Binding Source='Undo16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Redo" ToolTip="Redo" Content="{Binding Source='Redo16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" ToolTip="Display an Object Member List" Content="{Binding Source='IntelliPromptCompletion16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptParameterInfoSession" ToolTip="Display Parameter Info" Content="{Binding Source='IntelliPromptParameterInfo16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptQuickInfoSession" ToolTip="Display Quick Info" Content="{Binding Source='IntelliPromptQuickInfo16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" ToolTip="Display Word Completion" Content="{Binding Source='IntelliPromptAutoComplete16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptInsertSnippetSession" ToolTip="Insert Snippet" Content="{Binding Source='IntelliPromptCodeSnippetSelection16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Outdent" ToolTip="Outdent" Content="{Binding Source='DecreaseIndent16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Indent" ToolTip="Indent" Content="{Binding Source='IncreaseIndent16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CommentLines" ToolTip="Comment out the selected lines" Content="{Binding Source='CommentLines16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.UncommentLines" ToolTip="Uncomment the selected lines" Content="{Binding Source='UncommentLines16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatDocument" ToolTip="Format Document" Content="{Binding Source='FormatDocument16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatSelection" ToolTip="Format Selection" Content="{Binding Source='FormatSelection16.png', Converter={StaticResource ImageConverter}}" />
+					<Separator />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RunMacro" ToolTip="Run Recorded Macro" Content="{Binding Source='MacroRecordingRun16.png', Converter={StaticResource ImageConverter}}" />
+					<Button x:Name="recordMacroButton" CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleMacroRecording" ToolTip="Record Macro" Content="{Binding Source='MacroRecordingRecord16.png', Converter={StaticResource ImageConverter}}" />
+					<ToggleButton x:Name="pauseRecordingButton" CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.PauseResumeMacroRecording" ToolTip="Pause Recording" Content="{Binding Source='MacroRecordingPause16.png', Converter={StaticResource ImageConverter}}" />
+					<Button CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CancelMacroRecording" ToolTip="Cancel Recording" Content="{Binding Source='MacroRecordingCancel16.png', Converter={StaticResource ImageConverter}}" />
+				</ToolBar>
+			</ToolBarTray>
+		</shared:PixelSnapper>
+		
+		<!-- Statusbar -->
+		<shared:PixelSnapper Grid.Row="3">
+			<StatusBar FocusManager.IsFocusScope="True" Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarStyleKey}}">
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" MinWidth="150" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+				
+				<StatusBarItem x:Name="messagePanel" Content="Ready" />
+				
+				<StatusBarItem x:Name="tokenPanel" Grid.Column="1" Margin="7,0,7,0" />
+				
+				<StatusBarItem Grid.Column="2">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock x:Name="linePanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ln 1" />
+						<TextBlock x:Name="columnPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Col 1" />
+						<TextBlock x:Name="characterPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ch 1" />
+					</StackPanel>
+				</StatusBarItem>
+				
+				<StatusBarItem x:Name="overwriteModePanel" Grid.Column="3" Margin="7,0,7,0" Content="INS" />
+				
+				<StatusBarItem Grid.Column="4">
+					<StackPanel Margin="0,0,20,0" Orientation="Horizontal">
+						<RepeatButton x:Name="decreaseZoomButton" CommandTarget="{Binding ElementName=zoomSlider}" ToolTip="Zoom Out" 
+									  Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey}}"/>
+						<Slider x:Name="zoomSlider" Width="100" Value="1.0" Minimum="0.5" Maximum="3.0" LargeChange="0.5" SmallChange="0.1" VerticalAlignment="Center" 
+								IsSnapToTickEnabled="True" TickFrequency="0.1" ToolTip="Zoom"
+								Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderStyleKey}}" />
+						<RepeatButton x:Name="increaseZoomButton" CommandTarget="{Binding ElementName=zoomSlider}" ToolTip="Zoom In" 
+									  Style="{DynamicResource {x:Static themes:SharedResourceKeys.StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey}}"/>
+						<shared:PixelSnapper VerticalRoundMode="CeilingToEven">
+							<TextBlock Text="{Binding ElementName=zoomSlider, Path=Value, Converter={StaticResource PercentageConverter}, ConverterParameter='%'}" 
+									   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" VerticalAlignment="Center" />
+						</shared:PixelSnapper>
+					</StackPanel>
+				</StatusBarItem>
+			</StatusBar>
+		</shared:PixelSnapper>
+		
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

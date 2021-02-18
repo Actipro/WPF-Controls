@@ -1,0 +1,73 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.AnimatedDockPanelIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Styles -->
+		<Style x:Key="CenterContentListBoxItemStyle" TargetType="ListBoxItem">
+			<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+			<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderHighBrushKey}}" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBoxItem">
+						<Border Margin="1" Padding="2" Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+								CornerRadius="2">
+							<TextBlock Text="Center Content" HorizontalAlignment="Center"
+									VerticalAlignment="Center" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Add Top" Click="OnAddItemTopClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Add Bottom" Click="OnAddItemBottomClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Add Left" Click="OnAddItemLeftClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Add Right" Click="OnAddItemRightClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Clear All" Click="OnClearAllClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					AnimatedDockPanel arranges elements by docking then to the left, top, right, or bottom sides.
+					The last element can be configured to fill the remaining space, or can also be docked.
+					The arrange bounds, along with other properties, can be fully animated to provide a nice visual effect.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<sampleBrowser:LabeledCardControl>
+			<ListBox x:Name="listBox" Background="Transparent" BorderThickness="0"
+					 ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:AnimatedDockPanel />
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</sampleBrowser:LabeledCardControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

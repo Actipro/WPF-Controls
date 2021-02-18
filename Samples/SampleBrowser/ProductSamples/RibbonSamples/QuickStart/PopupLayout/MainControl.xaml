@@ -1,0 +1,191 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					
+					Actipro Ribbon has the most robust popup functionality of any product of its type.
+					Actipro has these advantages over other products when working with popups for buttons and split buttons:
+					<LineBreak /><LineBreak />
+					- Lay out popup child controls however you like using panels.
+					<LineBreak /><LineBreak />
+					- Easily create multiple columns of menu items via the use of Menu and Separator controls.
+					<LineBreak /><LineBreak />
+					- The use of different Menu controls means that you can mix large and small menu item sizes in the same popup.
+					<LineBreak /><LineBreak />
+					- Use any control in a popup, including any third-party custom controls.
+					<LineBreak /><LineBreak />
+					- Create headers that span the top of the popup or appear on the side of the popup.
+					<LineBreak /><LineBreak />
+					- The popup supports all the placement properties found on the WPF native Popup.
+					<LineBreak /><LineBreak />
+					- The popup has the option of turning off the border, allowing for the content of the popup to define its outer look.
+					<LineBreak /><LineBreak />
+					This QuickStart sample contains a number of PopupButton controls that show how to 
+					implement a number of the features described above.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+				
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top" IsCollapsible="False">
+						<!-- 
+							Use pre-defined WordApplicationMenu type in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />	
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home">
+								<ribbon:Group Label="Preview">
+			
+									<ribbon:StackPanel ItemVariantBehavior="LargeThenMediumWhenMedium">
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Large/Small Items">
+											<StackPanel>
+												<ribbon:Menu ItemVariantSize="Large">
+													<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="New" MenuItemDescription="Create a new document" />
+													<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" MenuItemDescription="Open a document" />
+													<ribbon:Button ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" MenuItemDescription="Save the document" />
+												</ribbon:Menu>
+												<ribbon:Separator />
+												<ribbon:Menu>
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" />
+												</ribbon:Menu>
+											</StackPanel>
+										</ribbon:PopupButton>
+						
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Two Columns">
+											<StackPanel Orientation="Horizontal">
+												<ribbon:Menu ItemVariantSize="Large">
+													<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="New" />
+													<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" />
+													<ribbon:Button ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" />
+												</ribbon:Menu>
+												<ribbon:Separator VariantSize="Large" />
+												<ribbon:Menu>
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" />
+												</ribbon:Menu>
+											</StackPanel>
+										</ribbon:PopupButton>
+						
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Header">
+											<StackPanel>
+												<shared:ActiproLogo Margin="10" HorizontalAlignment="Center" />
+												<ribbon:Separator />
+												<StackPanel Orientation="Horizontal">
+													<ribbon:Menu ItemVariantSize="Large">
+														<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="New" />
+														<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" />
+														<ribbon:Button ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" />
+													</ribbon:Menu>
+													<ribbon:Separator VariantSize="Large" />
+													<ribbon:Menu>
+														<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" />
+														<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" />
+														<ribbon:Button ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" />
+													</ribbon:Menu>
+												</StackPanel>
+											</StackPanel>
+										</ribbon:PopupButton>
+									</ribbon:StackPanel>
+						
+									<ribbon:StackPanel ItemVariantBehavior="LargeThenMediumWhenMedium">
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Other Control">
+											<StackPanel>
+												<TextBlock MaxWidth="300" TextWrapping="Wrap" Margin="5">This is a native TextBlock, showing how any control can be placed in a popup.</TextBlock>
+												<ribbon:Separator />
+												<ribbon:Menu Grid.Column="2">
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" />
+													<ribbon:Button ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" />
+												</ribbon:Menu>
+											</StackPanel>
+										</ribbon:PopupButton>
+						
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Templated Content"
+											PopupContent="Popups support any type of data content such as this text string, which is templated to be displayed in a button.">
+											<ribbon:PopupButton.PopupContentTemplate>
+												<DataTemplate>
+													<Button Content="{Binding}" />
+												</DataTemplate>
+											</ribbon:PopupButton.PopupContentTemplate>
+										</ribbon:PopupButton>
+						
+										<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Complex Popup">
+											<StackPanel>
+												<shared:ActiproLogo Margin="10" HorizontalAlignment="Center" />
+												<ribbon:Separator />
+												<StackPanel Orientation="Horizontal">
+													<ribbon:Menu ItemVariantSize="Large">
+														<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="New" />
+														<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" />
+														<ribbon:Button ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" />
+													</ribbon:Menu>
+													<ribbon:Separator VariantSize="Large" />
+													<StackPanel>
+														<TextBlock MaxWidth="300" TextWrapping="Wrap" Margin="5">This is a native TextBlock, showing how any control can be placed in a popup.</TextBlock>
+														<ribbon:Separator />
+														<ribbon:Menu>
+															<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" />
+															<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" />
+															<ribbon:Button ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" />
+														</ribbon:Menu>
+													</StackPanel>									
+												</StackPanel>
+											</StackPanel>
+										</ribbon:PopupButton>
+									</ribbon:StackPanel>
+						
+									<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Popup with Resizable Content">
+										<shared:ResizableContentControl MinWidth="250" MinHeight="50" MaxWidth="600" MaxHeight="400">
+											<TextBox Text="This TextBox is wrapped by a ResizableContentControl, allowing the popup to be resized.&#13;&#10;&#13;&#10;Double-click the gripper to auto-resize the popup." AcceptsReturn="True" 
+												BorderThickness="0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" />
+										</shared:ResizableContentControl>
+									</ribbon:PopupButton>
+						
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+		
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SalesSummary>
+  <MonthlySalesSummary Month="April 2020" TotalUnits="1258" ReturnRate="3.9%" InternetSales="42.4%" CatalogSales="2.9%" WalkinSales="6.9%" ResellerSales="47.8%" />
+  <MonthlySalesSummary Month="March 2020" TotalUnits="1147" ReturnRate="6.9%" InternetSales="41.3%" CatalogSales="3.3%" WalkinSales="6.1%" ResellerSales="49.3%" />
+  <MonthlySalesSummary Month="February 2020" TotalUnits="1188" ReturnRate="1.1%" InternetSales="41.1%" CatalogSales="3.4%" WalkinSales="6.4%" ResellerSales="49.1%" />
+  <MonthlySalesSummary Month="January 2020" TotalUnits="1099" ReturnRate="0.9%" InternetSales="41.1%" CatalogSales="3.6%" WalkinSales="7.0%" ResellerSales="48.3%" />
+  <MonthlySalesSummary Month="December 2019" TotalUnits="1021" ReturnRate="0.8%" InternetSales="40.4%" CatalogSales="3.7%" WalkinSales="7.6%" ResellerSales="48.3%" />
+  <MonthlySalesSummary Month="November 2019" TotalUnits="1036" ReturnRate="1.4%" InternetSales="38.3%" CatalogSales="4.1%" WalkinSales="7.4%" ResellerSales="50.2%" />
+  <MonthlySalesSummary Month="October 2019" TotalUnits="989" ReturnRate="2.5%" InternetSales="39.6%" CatalogSales="4.6%" WalkinSales="7.7%" ResellerSales="48.1%" />
+  <MonthlySalesSummary Month="September 2019" TotalUnits="938" ReturnRate="0.3%" InternetSales="39.1%" CatalogSales="4.9%" WalkinSales="8.2%" ResellerSales="47.8%" />
+</SalesSummary>

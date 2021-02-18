@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsWorkflowIntegration", "WindowsWorkflowIntegration.csproj", "{79CFF9D6-EC7C-4801-9431-B71CEF71D06F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{60A9065F-3652-41D8-8921-DCA4E3800C14}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79CFF9D6-EC7C-4801-9431-B71CEF71D06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CFF9D6-EC7C-4801-9431-B71CEF71D06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CFF9D6-EC7C-4801-9431-B71CEF71D06F}.Release|Any CPU.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {995C76B7-29F3-4D37-BBE1-E5CBC5B41ACD}
+	EndGlobalSection
+EndGlobal

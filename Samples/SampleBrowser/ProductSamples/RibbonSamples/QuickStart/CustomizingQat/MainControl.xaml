@@ -1,0 +1,174 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingQat.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon has a very flexible framework for supporting run-time customization of a Ribbon's Quick Access ToolBar (QAT).
+					This sample project even includes the full working source to a CustomizeQat control that provides the functionality
+					below and can easily be added to your own application's Options window.
+					Nearly any control is eligible to be clones to the QAT, even groups.
+					<LineBreak /><LineBreak />
+					Most ribbon controls can be cloned to the QAT by default since their CloneService.CanCloneToQuickAccessToolBar
+					attached property is true.  
+					When you right-click on a ribbon control in the ribbon to show its context menu,
+					the auto-generated menu will contain an Add to Quick Access Toolbar item if the control is permitted to be cloned.
+					Click that menu item to add a clone of the control to the QAT.
+					<LineBreak /><LineBreak />
+					On the CanCloneToQuickAccessToolBar tab, one button has its CloneService.CanCloneToQuickAccessToolBar
+					attached property set to false.  The add to QAT menu item will not appear on its context menu and it
+					will not appear in the CustomizeQat control's available items list below.
+					<LineBreak /><LineBreak />
+					The auto-generated context menu for items in the QAT contains a menu item for removing the item.
+					<LineBreak /><LineBreak />
+					When you click the QAT's Customize button, a menu is displayed that can optionally contain a list of common QAT items.
+					If an item is already in the QAT, it will appear checked.  
+					Click on a menu item to toggle whether that item appears in the QAT.
+					<LineBreak /><LineBreak />
+					The CustomizeQat control is provided full source in the Sample Browser's 
+					/ProductSamples/RibbonSamples/Common/ folder.
+					It contains the functionality below that supports listing available items, adding them to the QAT,
+					resorting the QAT, etc.
+					<LineBreak /><LineBreak />
+					Normally the CustomizeQat is placed in an Options window where there are OK and Cancel buttons.
+					There is a sample of this as well in the Document Editor Demo.
+					In this QuickStart though, we are just providing an Apply Changes button which is similar to what needs to be
+					executed in an Options window when OK is pressed.  It essentially applies any modifications you've made
+					in the CustomizeQat control to the actual QAT in the Ribbon.
+					<LineBreak /><LineBreak />
+					Once you have made some changes to the QAT in the Ribbon, click the Save QAT State button to persist the current
+					items to an XML string.  Make some more changes to the QAT in the Ribbon and then click the Load QAT State
+					button to reload the previous state.  This simulates how you save QAT customizations for users when they close your application
+					and reload them again later when the application is restarted.
+					<LineBreak /><LineBreak />
+					When QAT customization is enabled, items in the QAT are essentially clones of other items and are managed/tracked by the 
+					CloneService.  
+					CloneService creates a deep copy of clone source controls including all dependency properties and items collections.
+					When clones are created or disposed, various attached events fire on the clone source control.
+					These events can be used to customize the clone properties when it is created or attach to events on the clone, etc.
+					Look at the Clone Events tab to see these firing.
+					<LineBreak /><LineBreak />
+					See the documentation's Customizing the QAT topic for more detailed information on these and other related features.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="3*" />
+					</Grid.RowDefinitions>
+
+					<Border Grid.Row="2" Padding="20" BorderThickness="0,1,0,0" 
+								Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+								BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+						<DockPanel LastChildFill="True">
+							<StackPanel Margin="0,20,0,0" DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+								<Button Margin="0,0,7,0" MinWidth="100" Click="OnSaveStateButtonClick">Save QAT State</Button>
+								<Button x:Name="loadQatStateButton" Margin="0,0,20,0" MinWidth="100" Click="OnLoadStateButtonClick" IsEnabled="False">Load QAT State</Button>
+								<Button MinWidth="100" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundMidLowBrushKey}}" Click="OnApplyChangesButtonClick">Apply Changes</Button>
+							</StackPanel>
+							<ribbonSamplesCommon:CustomizeQat x:Name="customizeQat" />
+						</DockPanel>
+					</Border>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+
+					<!-- Ribbon Control (Define last so that adorners overlay other controls) -->
+					<ribbon:Ribbon x:Name="ribbon" Grid.Row="0">
+						<!-- 
+							Use pre-defined WordApplicationMenu, WordHomeTab, WordInsertTab types in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />
+						</ribbon:Ribbon.ApplicationMenu>
+
+						<!-- Tab Panel Items (Appear next to the tabs) -->
+						<ribbon:Ribbon.TabPanelItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Help16.png" Label="Application Help" KeyTipAccessText="Z" />
+						</ribbon:Ribbon.TabPanelItems>
+
+						<!-- Quick Access ToolBar (QAT) Common Items -->
+						<ribbon:Ribbon.QuickAccessToolBarCommonItems>
+							<ribbon:Button Id="New" ImageSourceSmall="/Images/Icons/New16.png" Label="New" />
+							<ribbon:Button Id="Open" ImageSourceSmall="/Images/Icons/Open16.png" Label="Open" />
+							<ribbon:Button Id="Save" ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button Id="Undo" ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button Id="Redo" ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarCommonItems>
+
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button Id="Save" ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button Id="Undo" ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button Id="Redo" ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+
+						<ribbon:Ribbon.Tabs>
+							<ribbonSamplesCommon:WordHomeTab />
+							<ribbonSamplesCommon:WordInsertTab />
+							<ribbon:Tab Label="CanCloneToQuickAccessToolBar">
+								<ribbon:Group Label="CanCloneToQuickAccessToolBar Test" ImageSourceSmall="/Images/Icons/Header16.png" ribbon:CloneService.CanCloneToQuickAccessToolBar="False">
+									<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+										<ribbon:Separator Label="The button below is flagged so that it cannot" />
+										<ribbon:Separator Label="be added to the QAT via its context menu" />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Not Clonable to QAT"
+											ribbon:CloneService.CanCloneToQuickAccessToolBar="False" />
+									</ribbon:StackPanel>
+									<ribbon:Separator />
+									<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+										<ribbon:Separator Label="The button below can be added" />
+										<ribbon:Separator Label="to the QAT via its context menu" />
+										<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Is Clonable to QAT" />
+									</ribbon:StackPanel>
+								</ribbon:Group>
+							</ribbon:Tab>
+							<ribbon:Tab Label="Clone Events">
+								<ribbon:Group Label="Events List" ImageSourceSmall="/Images/Icons/Footer16.png">
+									<ListBox x:Name="eventsListBox" Width="400" Height="{x:Static ribbon:RibbonMeasurements.RibbonControlLargeHeight}" />
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+
+						<ribbon:Ribbon.ContextualTabGroups>
+							<ribbon:ContextualTabGroup Label="Active Tab Group" IsActive="True">
+								<ribbon:Tab Label="Visible">
+									<ribbon:Group Label="Contextual Tab Group">
+										<ribbon:Button ImageSourceSmall="/Images/Icons/QuickStart32.png" Label="Button on Contextual Tab" />
+									</ribbon:Group>
+								</ribbon:Tab>
+							</ribbon:ContextualTabGroup>
+							<ribbon:ContextualTabGroup Label="Inactive Tab Group">
+								<ribbon:Tab Label="Not Visible">
+									<ribbon:Group Label="Contextual Tab Group">
+										<ribbon:Button ImageSourceSmall="/Images/Icons/QuickStart32.png" Label="Another Button on Contextual Tab" />
+									</ribbon:Group>
+								</ribbon:Tab>
+							</ribbon:ContextualTabGroup>
+						</ribbon:Ribbon.ContextualTabGroups>
+					</ribbon:Ribbon>
+
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

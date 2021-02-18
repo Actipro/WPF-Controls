@@ -1,0 +1,133 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.Capabilities.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					One of the best features of Actipro Docking/MDI is the number of options that are available to you as a developer.
+					Many options control the behaviors and capabilities of the docking windows and can be set at a global level as well as at a docking window instance level.
+					<LineBreak /><LineBreak />
+					This sample contains two document windows: one that allows configuration of global document area default settings and another for
+					a particular document window's instance overrides.
+					Likewise, there are two tool windows: one that allows configuration of global tool window default settings and another for
+					a particular tool window's instance overrides.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite" CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI QuickStart" FloatingWindowIcon="/Images/Icons/Actipro.ico">
+		<docking:SplitContainer>
+
+			<!-- Workspace -->
+			<docking:Workspace>
+				<docking:TabbedMdiHost x:Name="tabbedMdiHost">
+					<docking:TabbedMdiContainer>
+						<docking:DocumentWindow x:Name="documentWindow" Title="Document Instance Options" ImageSource="/Images/Icons/TextDocument16.png">
+							<ScrollViewer>
+								<StackPanel Margin="10">
+									<TextBlock Margin="0,0,0,5" Text="These options only affect this particular document window instance:" TextWrapping="Wrap" />
+									<CheckBox Margin="10,3,0,0" Content="CanAttach" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanAttach, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanClose" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanClose, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDock" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanDock, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDragTab" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanDragTab, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanFloat" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanFloat, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="IsReadOnly" IsChecked="{Binding ElementName=documentWindow, Path=IsReadOnly, Mode=TwoWay}" />
+
+									<TextBlock Margin="0,10,0,5" Text="These options are also available but aren't demoed in this sample:" TextWrapping="Wrap" />
+									<CheckBox Margin="10,3,0,0" Content="CanDragToLinkedDockSites" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanDragToLinkedDockSites, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanStandardMdiMaximize" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanStandardMdiMaximize, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanStandardMdiMinimize" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow, Path=CanStandardMdiMinimize, Mode=TwoWay}" />
+								</StackPanel>
+							</ScrollViewer>
+						</docking:DocumentWindow>
+						<docking:DocumentWindow Title="Document Global Options" ImageSource="/Images/Icons/TextDocument16.png">
+							<ScrollViewer>
+								<StackPanel Margin="10">
+									<TextBlock Margin="0,0,0,5" Text="These options provide the global defaults for all documents, which may be overridden by instance settings." TextWrapping="Wrap" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentsAttach" IsChecked="{Binding ElementName=tabbedMdiHost, Path=CanDocumentsAttach, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentsCloseOnMiddleClick" IsChecked="{Binding ElementName=tabbedMdiHost, Path=CanDocumentsCloseOnMiddleClick, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentsDock" IsChecked="{Binding ElementName=tabbedMdiHost, Path=CanDocumentsDock, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentTabsDrag" IsChecked="{Binding ElementName=tabbedMdiHost, Path=CanDocumentTabsDrag, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentWindowsClose" IsChecked="{Binding ElementName=dockSite, Path=CanDocumentWindowsClose, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentWindowsFloat" IsChecked="{Binding ElementName=dockSite, Path=CanDocumentWindowsFloat, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="ContainersHaveNewTabButtons" IsChecked="{Binding ElementName=tabbedMdiHost, Path=ContainersHaveNewTabButtons, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="HasTabCloseButtons" IsChecked="{Binding ElementName=tabbedMdiHost, Path=HasTabCloseButtons, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="HasTabImages" IsChecked="{Binding ElementName=tabbedMdiHost, Path=HasTabImages, Mode=TwoWay}" />
+
+									<TextBlock Margin="0,10,0,5" Text="These options are also available but aren't demoed in this sample:" TextWrapping="Wrap" />
+									<CheckBox Margin="10,3,0,0" Content="CanDocumentWindowsDragToLinkedDockSites" IsChecked="{Binding ElementName=dockSite, Path=CanDocumentWindowsDragToLinkedDockSites, Mode=TwoWay}" />
+									<CheckBox Margin="10,3,0,0" Content="CanFloatingDockHostsHideOnDockSiteUnload" IsChecked="{Binding ElementName=dockSite, Path=CanFloatingDockHostsHideOnDockSiteUnload, Mode=TwoWay}" />
+								</StackPanel>
+							</ScrollViewer>
+						</docking:DocumentWindow>
+					</docking:TabbedMdiContainer>
+				</docking:TabbedMdiHost>
+			</docking:Workspace>
+
+			<docking:SplitContainer Orientation="Vertical">
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow x:Name="toolWindow" Title="Tool Instance Options" ImageSource="/Images/Icons/Properties16.png" ContainerDockedSize="300,200">
+						<ScrollViewer>
+							<StackPanel Margin="10">
+								<TextBlock Margin="0,0,0,5" Text="These options only affect this particular tool window instance:" TextWrapping="Wrap" />
+								<CheckBox Margin="10,3,0,0" Content="CanAttach" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanAttach, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanAutoHide" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanAutoHide, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanBecomeDocument" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanBecomeDocument, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanClose" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanClose, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanDock" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanDock, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanDragTab" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanDragTab, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanFloat" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanFloat, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="HasOptionsButton" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=HasOptionsButton, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="HasTitleBar" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=HasTitleBar, Mode=TwoWay}" />
+
+								<TextBlock Margin="0,10,0,5" Text="These options are also available but aren't demoed in this sample:" TextWrapping="Wrap" />
+								<CheckBox Margin="10,3,0,0" Content="CanDragToLinkedDockSites" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanDragToLinkedDockSites, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanStandardMdiMaximize" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanStandardMdiMaximize, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanStandardMdiMinimize" IsThreeState="True" IsChecked="{Binding ElementName=toolWindow, Path=CanStandardMdiMinimize, Mode=TwoWay}" />
+							</StackPanel>
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Tool Global Options" ImageSource="/Images/Icons/Properties16.png">
+						<ScrollViewer>
+							<StackPanel Margin="10">
+								<TextBlock Margin="0,0,0,5" Text="These options provide the global defaults for all tool windows, which may be overridden by instance settings." TextWrapping="Wrap" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsAttach" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsAttach, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsBecomeDocuments" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsBecomeDocuments, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsClose" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsClose, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsCloseOnMiddleClick" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsCloseOnMiddleClick, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsDock" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsDock, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsFloat" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsFloat, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowTabsDrag" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowTabsDrag, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="FloatingToolWindowContainersHaveMaximizeButtons" IsChecked="{Binding ElementName=dockSite, Path=FloatingToolWindowContainersHaveMaximizeButtons, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="FloatingToolWindowContainersHaveMinimizeButtons" IsChecked="{Binding ElementName=dockSite, Path=FloatingToolWindowContainersHaveMinimizeButtons, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveCloseButtons" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveCloseButtons, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveOptionsButtons" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveOptionsButtons, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveTabImages" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveTabImages, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveTitleBarIcons" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveTitleBarIcons, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveTitleBars" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveTitleBars, Mode=TwoWay}" />
+								<CheckBox Margin="10,3,0,0" Content="ToolWindowsHaveToggleAutoHideButtons" IsChecked="{Binding ElementName=dockSite, Path=ToolWindowsHaveToggleAutoHideButtons, Mode=TwoWay}" />
+
+								<TextBlock Margin="0,10,0,5" Text="These options are also available but aren't demoed in this sample:" TextWrapping="Wrap" />
+								<CheckBox Margin="10,3,0,0" Content="CanToolWindowsDragToLinkedDockSites" IsChecked="{Binding ElementName=dockSite, Path=CanToolWindowsDragToLinkedDockSites, Mode=TwoWay}" />
+							</StackPanel>
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+		</docking:SplitContainer>
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

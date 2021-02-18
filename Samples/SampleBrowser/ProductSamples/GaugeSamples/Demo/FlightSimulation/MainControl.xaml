@@ -1,0 +1,421 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:PercentageConverter x:Key="PercentageConverter" />
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootBorder, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="2.75" SmallChange="0.25" LargeChange="0.5" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This gallery shows several recreations of actual gauges used in airplanes, using Actipro Gauge.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<Grid Style="{StaticResource SamplePanelWideStyle}">
+			<Border x:Name="rootBorder" BorderBrush="#303030" BorderThickness="3" Background="{shared:LinearGradientBrush #6B7473, #9BA6AA, GradientType=TopToBottom}" 
+					Padding="5" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Top"
+					themes:ThemeProperties.ZoomLevel="1.25">
+				<Border.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=rootBorder, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=rootBorder, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</Border.LayoutTransform>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<!-- Fuel Gauge -->
+					<gauge:CircularGauge Grid.Row="0" Grid.Column="0" Margin="5" FrameType="CircularThickRim" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Items>
+							<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="-25" Text="Fuel" Foreground="WhiteSmoke"
+									FontSize="14" />
+							<TextBlock gauge:CircularGauge.X="10" gauge:CircularGauge.Y="13" Text="FLOW" Foreground="WhiteSmoke"
+									FontSize="7" HorizontalAlignment="Left" />
+							<TextBlock gauge:CircularGauge.X="-10" gauge:CircularGauge.Y="13" Text="PSI" Foreground="WhiteSmoke"
+									FontSize="7" HorizontalAlignment="Right" />
+						</gauge:CircularGauge.Items>
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale Radius="65" StartAngle="100" SweepAngle="160" IsBarVisible="False" BarExtent="1">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="0" Maximum="120" MajorInterval="40" MinorInterval="10">
+										<gauge:CircularTickSet.Ranges>
+											<gauge:CircularRange StartValue="41" EndValue="79" StartExtent="15.4%" EndExtent="15.4%"
+													HasDropShadow="False" ScalePlacement="Inside"
+													Background="{shared:LinearGradientBrush #FCCD07, #FBD103, GradientType=TopLeftToBottomRight}" />
+											<gauge:CircularRange StartValue="81" EndValue="99" StartExtent="15.4%" EndExtent="15.4%"
+													HasDropShadow="False" ScalePlacement="Inside"
+													Background="{shared:LinearGradientBrush #07FA04, #4AFF02, GradientType=TopLeftToBottomRight}" />
+										</gauge:CircularTickSet.Ranges>
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkAscent="1" TickMarkExtent="12" Background="#FEFEFE"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="16" Background="#F3F5F5"
+													ScalePlacement="Inside" SkipValues="40,100" />
+											<gauge:CircularTickMarkCustom Value="40" TickMarkAscent="2" TickMarkExtent="16"
+													Background="#FFFD0404" ScalePlacement="Inside" />
+											<gauge:CircularTickMarkCustom Value="100" TickMarkAscent="2" TickMarkExtent="16"
+													Background="#FFFD0404" ScalePlacement="Inside" />
+											<gauge:CircularTickLabelMajor FontFamily="Comic Sans MS, Verdana" FontSize="8"
+													Foreground="WhiteSmoke" ScalePlacement="Inside" ScaleOffset="16" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle NeedleType="TriangleSharp" Value="75" Background="WhiteSmoke"
+													PointerAscent="8" PointerExtent="65" />
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+							<gauge:CircularScale Radius="65" StartAngle="320" SweepAngle="80" IsBarVisible="True" BarExtent="1">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="0" Maximum="20" MajorInterval="5" MinorInterval="0" IsReversed="True">
+										<gauge:CircularTickSet.Ranges>
+											<gauge:CircularRange StartValue="0.5" EndValue="4.5" StartExtent="15.4%" EndExtent="15.4%"
+													HasDropShadow="False" ScalePlacement="Inside"
+													Background="{shared:LinearGradientBrush #FCCD07, #FBD103, GradientType=TopLeftToBottomRight}" />
+											<gauge:CircularRange StartValue="5.5" EndValue="14.5" StartExtent="15.4%" EndExtent="15.4%"
+													HasDropShadow="False" ScalePlacement="Inside"
+													Background="{shared:LinearGradientBrush #07FA04, #4AFF02, GradientType=TopLeftToBottomRight}" />
+										</gauge:CircularTickSet.Ranges>
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="12" Background="#F3F5F5"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickMarkCustom Value="0" TickMarkAscent="2" TickMarkExtent="6"
+													Background="#FFFD0404" ScalePlacement="Inside" ScaleOffset="10" />
+											<gauge:CircularTickMarkCustom Value="20" TickMarkAscent="2" TickMarkExtent="6"
+													Background="#FFFD0404" ScalePlacement="Inside" ScaleOffset="10" />
+											<gauge:CircularTickLabelMajor FontFamily="Comic Sans MS, Verdana" FontSize="8"
+													Foreground="WhiteSmoke" ScalePlacement="Inside" ScaleOffset="14" SkipValues="0,20" />
+											<gauge:CircularTickLabelCustom Value="0" FontFamily="Comic Sans MS, Verdana" FontSize="8"
+													Foreground="WhiteSmoke" ScalePlacement="Inside" ScaleOffset="16" />
+											<gauge:CircularTickLabelCustom Value="20" FontFamily="Comic Sans MS, Verdana" FontSize="8"
+													Foreground="WhiteSmoke" ScalePlacement="Inside" ScaleOffset="16" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle NeedleType="TriangleSharp" Value="8.5" Background="WhiteSmoke"
+													PointerAscent="8" PointerExtent="65" />
+											<gauge:CircularPointerCap CapType="CircleFlat" />
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+
+					<!-- Altimeter Gauge -->
+					<gauge:CircularGauge Grid.Row="0" Grid.Column="1" Margin="5" FrameType="RoundedRectangle" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Items>
+							<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="20" Text="Altimeter" Foreground="WhiteSmoke"
+									FontSize="11" />
+						</gauge:CircularGauge.Items>
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale Radius="55" StartAngle="270" SweepAngle="360" BarExtent="7.2%"
+									Background="{shared:LinearGradientBrush Gray, DarkGray, GradientType=TopToBottom}">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="0" Maximum="12" MajorInterval="1" MinorInterval="0.2">
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkExtent="9.1%" TickMarkAscent="1.8%" Background="White" />
+											<gauge:CircularTickMarkMajor TickMarkType="Ellipse" TickMarkExtent="9.1%"
+													TickMarkAscent="7.2%" Background="White" SkipValues="0,12" />
+											<gauge:CircularTickMarkCustom Value="0" TickMarkType="TriangleSharp" TickMarkExtent="14.5%"
+													TickMarkAscent="14.5%" Background="White" ScalePlacement="Outside" ScaleOffset="-6"
+													HasDropShadow="True" />
+											<gauge:CircularTickLabelMajor FontFamily="Comic Sans MS, Verdana" Foreground="White"
+													ScalePlacement="Inside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="1" Text="5" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="2" Text="10" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="3" Text="15" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="4" Text="20" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="5" Text="25" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="6" Text="30" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="7" Text="35" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="8" Text="40" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="9" Text="45" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="10" Text="50" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="11" Text="55" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="12" Text="60" FontFamily="Comic Sans MS, Verdana"
+													FontSize="6" Foreground="White" ScalePlacement="Outside" ScaleOffset="2" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle NeedleType="SwordSharp" Value="3"
+													Background="{shared:LinearGradientBrush White, #B9B7B7, GradientType=TopToBottom}"
+													PointerExtent="85%" PointerAscent="7.2%" />
+											<gauge:CircularPointerNeedle NeedleType="SwordSharp" Value="11"
+													Background="{shared:LinearGradientBrush White, #878383, GradientType=TopToBottom}"
+													PointerExtent="63%" PointerAscent="12.7%" />
+											<gauge:CircularPointerNeedle NeedleType="TriangleBlunt" Value="12"
+													Background="{shared:LinearGradientBrush White, #988D8D, GradientType=TopToBottom}"
+													PointerExtent="90.9%" PointerAscent="5.4%" />
+											<gauge:CircularPointerCap CapType="CircleConcave"
+													Background="{shared:LinearGradientBrush White, #988D8D, GradientType=TopToBottom}"
+													PointerExtent="10" />
+											<gauge:CircularPointerNeedle NeedleType="PivotTriangleSharp" Value="2"
+													Background="{shared:LinearGradientBrush White, #A49D9D, GradientType=TopToBottom}"
+													PointerExtent="141.8%" PointerAscent="5.4%" />
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+					
+					<!-- Airspeed Gauge -->
+					<gauge:CircularGauge Grid.Row="0" Grid.Column="2" Margin="5" FrameType="CircularTopGradient" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Items>
+							<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="-20" Text="Air Speed" Foreground="WhiteSmoke"
+									FontSize="12" />
+						</gauge:CircularGauge.Items>
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale Radius="69" StartAngle="290" SweepAngle="320" IsBarVisible="False" BarExtent="0">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="30" Maximum="250" MajorInterval="10" MinorInterval="5">
+										<gauge:CircularTickSet.Ranges>
+											<gauge:CircularRange StartValue="60" EndValue="100" StartExtent="6" EndExtent="6"
+													Background="#DDDDDD" ScalePlacement="Inside" ScaleOffset="6" HasDropShadow="False" />
+											<gauge:CircularRange StartValue="75" EndValue="165" StartExtent="6" EndExtent="6"
+													Background="DarkGreen" ScalePlacement="Inside" HasDropShadow="False" />
+											<gauge:CircularRange StartValue="165" EndValue="208" StartExtent="6" EndExtent="6"
+													Background="DarkGoldenrod" ScalePlacement="Inside" HasDropShadow="False" />
+											<gauge:CircularRange StartValue="208" EndValue="209.5" StartExtent="10" EndExtent="10"
+													Background="DarkRed" ScalePlacement="Inside" HasDropShadow="False" />
+										</gauge:CircularTickSet.Ranges>
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkAscent="2" TickMarkExtent="6"
+													Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="12"
+													Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickLabelMajor Foreground="WhiteSmoke" FontSize="7" FontWeight="Bold"
+													ScalePlacement="Inside" ScaleOffset="14"
+													SkipValues="30,50,70,90,110,130,150,170,190,210,230,250" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle Value="80" NeedleType="PivotTriangleBlunt" Background="WhiteSmoke"
+													PointerAscent="7" PointerExtent="70" ScalePlacement="Inside" ScaleOffset="2" />
+											<gauge:CircularPointerCap PointerExtent="14" />
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+		
+					<!-- EGT/CHT Gauge -->
+					<gauge:CircularGauge Grid.Row="1" Grid.Column="0" Margin="5" FrameType="CircularThickRimEclipse" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Items>
+							<TextBlock gauge:CircularGauge.X="-20" gauge:CircularGauge.Y="-47" Text="EGT" Foreground="WhiteSmoke"
+									FontSize="10">
+								<TextBlock.LayoutTransform>
+									<RotateTransform Angle="-14" />
+								</TextBlock.LayoutTransform>
+							</TextBlock>
+							<TextBlock gauge:CircularGauge.X="20" gauge:CircularGauge.Y="-47" Text="CHT" Foreground="WhiteSmoke"
+									FontSize="10">
+								<TextBlock.LayoutTransform>
+									<RotateTransform Angle="14" />
+								</TextBlock.LayoutTransform>
+							</TextBlock>
+							<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="55" Text="x100" Foreground="WhiteSmoke"
+									FontSize="9" />
+							<TextBlock gauge:CircularGauge.X="-20" gauge:CircularGauge.Y="45" Text="°F" Foreground="WhiteSmoke"
+									FontSize="9" />
+							<TextBlock gauge:CircularGauge.X="20" gauge:CircularGauge.Y="45" Text="°F" Foreground="WhiteSmoke"
+									FontSize="9" />
+						</gauge:CircularGauge.Items>
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale gauge:CircularGauge.X="-155" Radius="150" StartAngle="345" SweepAngle="30"
+									IsBarVisible="False">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="6" Maximum="18" MajorInterval="2" MinorInterval="0.5"
+											IsReversed="True">
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkAscent="1" TickMarkExtent="6" ScalePlacement="Inside" />
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="12" ScalePlacement="Inside" />
+											<gauge:CircularTickLabelMajor Foreground="WhiteSmoke" FontSize="8" ScalePlacement="Inside"
+													ScaleOffset="15" SkipValues="6" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerMarker Value="13" MarkerType="TriangleSharp" Background="DarkRed"
+													PointerAscent="4" PointerExtent="50" ScalePlacement="Inside" ScaleOffset="2">
+											</gauge:CircularPointerMarker>
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+							
+							<gauge:CircularScale gauge:CircularGauge.X="155" Radius="150" StartAngle="165" SweepAngle="30" IsBarVisible="False">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="0" Maximum="8" MajorInterval="2" MinorInterval="0.5">
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkAscent="1" TickMarkExtent="6" ScalePlacement="Inside" />
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="12" ScalePlacement="Inside" />
+											<gauge:CircularTickLabelMajor Foreground="WhiteSmoke" FontSize="8" ScalePlacement="Inside"
+													ScaleOffset="15" SkipValues="0" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerMarker Value="2.5" MarkerType="TriangleSharp" Background="DarkRed"
+													PointerAscent="4" PointerExtent="50" ScalePlacement="Inside" ScaleOffset="2">
+											</gauge:CircularPointerMarker>
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+
+					<!-- Compass Gauge -->
+					<gauge:CircularGauge Grid.Row="1" Grid.Column="1" Margin="5" FrameType="CircularTopGradient" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale Radius="55" StartAngle="270" SweepAngle="360" IsBarVisible="False" BarExtent="0">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="0" Maximum="36" MajorInterval="3" MinorInterval="0.5">
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMinor TickMarkAscent="2" TickMarkExtent="4"
+													Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickMarkMajor TickMarkAscent="2" TickMarkExtent="8"
+													Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=TopToBottom}"
+													ScalePlacement="Inside" />
+											<gauge:CircularTickLabelMajor Foreground="WhiteSmoke" FontSize="7" FontWeight="Bold"
+													ScalePlacement="Outside" ScaleOffset="1" SkipValues="0,9,18,27,36"
+													TextOrientation="Rotated"/>
+											<gauge:CircularTickLabelCustom Value="0" Text="N" Foreground="Coral" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="9" Text="E" Foreground="DarkGoldenrod" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="18" Text="S" Foreground="Coral" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="27" Text="W" Foreground="DarkGoldenrod" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle Value="3" NeedleType="CustomGeometry"
+													Background="{shared:LinearGradientBrush Gray, Black, GradientType=TopToBottom}"
+													BorderBrush="DarkGray" BorderWidth="1" PointerAscent="90" PointerExtent="90"
+													ScalePlacement="Inside" ScaleOffset="2">
+												<gauge:CircularPointerNeedle.Geometry>
+													<GeometryGroup>
+														<RectangleGeometry Rect="0,49,15,2" RadiusX="2" RadiusY="2" />
+														<RectangleGeometry Rect="85,49,15,2" RadiusX="2" RadiusY="2" />
+														<RectangleGeometry Rect="49,0,2,15" RadiusX="2" RadiusY="2" />
+														<RectangleGeometry Rect="49,85,2,15" RadiusX="2" RadiusY="2" />
+													</GeometryGroup>
+												</gauge:CircularPointerNeedle.Geometry>
+											</gauge:CircularPointerNeedle>
+											<gauge:CircularPointerNeedle Value="3" NeedleType="CustomGeometry"
+													Background="{shared:LinearGradientBrush White, Gray, GradientType=TopToBottom}"
+													BorderBrush="DarkGray" BorderWidth="1"
+													PointerAscent="60" PointerExtent="60" ScalePlacement="Inside" ScaleOffset="2">
+												<gauge:CircularPointerNeedle.Geometry>
+													<Geometry>M 59.234327 28.791219 C 60.255227 29.822479 60.255227 30.177539 59.234337 31.208789 C 58.213437 32.240049 50.183862 33.394309 43.848235 33.420569 C 43.041868 33.423909 41.083718 33.347639 41.083718 33.347639 L 26.604908 55.673876 C 25.893723 56.770516 24.741388 58.144286 24.142116 58.794476 L 23.052526 59.976616 L 20.962661 59.976616 C 18.396168 59.976616 18.266553 60.845446 22.153971 51.991186 C 23.958614 47.880806 25.886179 42.880946 26.437448 40.880386 C 28.057516 35.001149 28.055273 35.027869 27.017445 33.979509 L 26.107198 33.060029 L 24.020354 33.055529 C 22.582578 33.052439 10.425591 32.111479 10.038166 31.973309 C 10.031238 31.970829 8.6539208 33.838749 6.9774598 36.124226 L 3.9293488 40.279656 L 1.9488908 40.634546 C -0.6784992 41.105356 -0.6913032 41.640806 2.1662478 31.546189 C 2.2904158 31.107559 2.0370758 30.875079 1.2429188 30.698879 C 0.4487628 30.522679 0.4487628 29.477329 1.2429188 29.301139 C 2.0370758 29.124939 2.2904158 28.892459 2.1662478 28.453819 C -0.6913032 18.359199 -0.6784992 18.894649 1.9488908 19.365469 L 3.9293488 19.720359 L 6.9774598 23.875779 C 8.6539208 26.161259 10.031238 28.029179 10.038166 28.026709 C 10.42559 27.888529 22.582578 26.947569 24.020354 26.944479 L 26.107198 26.939989 L 27.017445 26.020509 C 28.055273 24.972139 28.057516 24.998869 26.437448 19.119619 C 25.886179 17.119069 23.958614 12.119209 22.153971 8.0088192 C 18.266552 -0.8454408 18.396168 0.023389203 20.962661 0.023389203 L 23.052526 0.023389203 L 24.142116 1.2055392 C 24.741388 1.8557192 25.893723 3.2294892 26.604908 4.3261392 L 41.083718 26.652379 C 41.083718 26.652379 43.041865 26.576099 43.848231 26.579439 C 50.183859 26.605699 58.213437 27.759959 59.234327 28.791219 z</Geometry>
+												</gauge:CircularPointerNeedle.Geometry>
+											</gauge:CircularPointerNeedle>
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+
+					<!-- Turn Coordinator Gauge -->
+					<gauge:CircularGauge Grid.Row="1" Grid.Column="2" Margin="5" FrameType="CircularDarkEdge" Width="150" Height="150" Radius="75" Background="#444444"
+							RimBrush="#444444">
+						<gauge:CircularGauge.Items>
+							<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="-20" Text="TURN COORDINATOR" Foreground="WhiteSmoke"
+									FontFamily="Courier New" FontSize="7" />
+						</gauge:CircularGauge.Items>
+						<gauge:CircularGauge.Scales>
+							<gauge:CircularScale Radius="45" StartAngle="0" SweepAngle="180" IsBarVisible="False" BarExtent="0">
+								<gauge:CircularScale.TickSets>
+									<gauge:CircularTickSet Minimum="-90" Maximum="90" MajorInterval="30" MinorInterval="0">
+										<gauge:CircularTickSet.Ranges>
+											<gauge:CircularRange StartValue="-30" EndValue="30" StartExtent="10" EndExtent="10"
+													Background="#CCCCCC" />
+										</gauge:CircularTickSet.Ranges>
+										<gauge:CircularTickSet.Ticks>
+											<gauge:CircularTickMarkMajor TickMarkAscent="8" TickMarkExtent="8"
+													TickMarkType="RoundedRectangle" Background="#CCCCCC" SkipValues="0,30,-30" />
+											<gauge:CircularTickMarkCustom Value="0" TickMarkAscent="9" TickMarkExtent="9"
+													TickMarkType="Ellipse" Background="#333333" />
+											<gauge:CircularTickMarkCustom Value="6" TickMarkAscent="1" TickMarkExtent="10"
+													Background="#333333" />
+											<gauge:CircularTickMarkCustom Value="-6" TickMarkAscent="1" TickMarkExtent="10"
+													Background="#333333" />
+											<gauge:CircularTickLabelCustom Value="0" Text="2 MIN" Foreground="WhiteSmoke" FontSize="8"
+													ScalePlacement="Outside" ScaleOffset="5" />
+											<gauge:CircularTickLabelCustom Value="40" Text="L" Foreground="WhiteSmoke" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+											<gauge:CircularTickLabelCustom Value="-40" Text="R" Foreground="WhiteSmoke" FontSize="10"
+													FontWeight="Bold" ScalePlacement="Outside" ScaleOffset="1" />
+										</gauge:CircularTickSet.Ticks>
+										<gauge:CircularTickSet.Pointers>
+											<gauge:CircularPointerNeedle Value="3" NeedleType="CustomGeometry"
+													Background="{shared:LinearGradientBrush White, Gray, GradientType=TopToBottom}"
+													BorderBrush="DarkGray" BorderWidth="1" PointerAscent="100" PointerExtent="25"
+													ScalePlacement="Inside" ScaleOffset="2">
+												<gauge:CircularPointerNeedle.Geometry>
+													<GeometryGroup>
+														<Geometry>M 0 50.096071 C 0 49.573651 0 50.426351 0 49.903931 C 0 49.381521 2.20826 48.963591 4.96857 48.963591 L 9.93714 48.963591 L 9.93714 39.560191 C 9.93714 33.918151 10.26838 30.156791 10.76524 30.156791 C 11.24873 30.156791 11.59333 33.307211 11.59333 37.727371 L 11.59333 45.297941 C 13.31643 42.832831 14.62127 42.267491 17.39 42.533301 L 17.39 19.513371 C 17.39 -4.71931 18.28872 -6.41696 20.15147 14.616011 C 20.56346 19.267881 20.9155 33.295161 21.52961 36.896321 C 23.12006 46.222871 22.73386 44.036851 24.0288 45.906251 C 25.32374 47.775641 25.32374 52.224361 24.0288 54.093751 C 22.73386 55.963151 23.12006 53.777131 21.52961 63.103681 C 20.9155 66.704841 20.56346 80.732121 20.15147 85.383991 C 18.28872 106.41696 17.39 104.71931 17.39 80.486631 L 17.39 57.466701 C 14.62127 57.732511 13.31643 57.167171 11.59333 54.702061 L 11.59333 62.272631 C 11.59333 66.692791 11.24873 69.843211 10.76524 69.843211 C 10.26838 69.843211 9.93714 66.081851 9.93714 60.439811 L 9.93714 51.036411 L 4.96857 51.036411 C 2.20826 51.036411 0 50.618481 0 50.096071 z</Geometry>
+													</GeometryGroup>
+												</gauge:CircularPointerNeedle.Geometry>
+											</gauge:CircularPointerNeedle>
+										</gauge:CircularTickSet.Pointers>
+									</gauge:CircularTickSet>
+								</gauge:CircularScale.TickSets>
+							</gauge:CircularScale>
+						</gauge:CircularGauge.Scales>
+					</gauge:CircularGauge>
+
+				</Grid>
+				
+			</Border>
+		</Grid>
+	</ScrollViewer>
+</sampleBrowser:ProductItemControl>

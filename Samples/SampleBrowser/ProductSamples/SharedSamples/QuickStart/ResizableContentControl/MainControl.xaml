@@ -1,0 +1,65 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=resizableControl, Path=ResizeMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=resizableControl, Path=Padding}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=resizableControl, Path=CanAutoSize}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ResizableContentControl is a simple ContentControl that contains a gripper on one of its sides or corners.
+					When it is dragged by the mouse, the content is resized.
+					The gripper may be double-clicked to auto-size its content back to its desired size.
+					<LineBreak /><LineBreak />
+					The functionality provided by this control is especially useful within popups.
+					<LineBreak /><LineBreak />
+					You can even provide a custom template for the ResizableContentControl to draw the gripper however you like.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<StackPanel>
+					<shared:PopupButton x:Name="resizablePopupButton" Content="Show Resizable Popup">
+						<shared:PopupButton.PopupContent>
+							<shared:ResizableContentControl x:Name="resizableControl" MinWidth="50" MinHeight="50">
+								<Viewbox>
+									<shared:ActiproLogo Margin="20" />
+								</Viewbox>
+							</shared:ResizableContentControl>
+						</shared:PopupButton.PopupContent>
+					</shared:PopupButton>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Resizable TextBox">
+					<shared:ResizableContentControl Width="300" MinWidth="190" MinHeight="50" MaxWidth="450" MaxHeight="200">
+						<TextBox Text="This is a TextBox that has a gripper with min/max widths and heights set on the container." TextWrapping="Wrap" />
+					</shared:ResizableContentControl>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

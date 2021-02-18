@@ -1,0 +1,82 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomPropertyEditor.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomPropertyEditor"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<shared:BooleanNotConverter x:Key="BooleanNotConverter" />
+
+		<sample:HomeAutomationSettings x:Key="HomeAutomationSettings" ProfileName="Standard" KitchenLights="Off" FamilyRoomLights="On" Alarm="On" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=IsReadOnly}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows how easy it is to make a custom property editor for a data type.
+					<LineBreak /><LineBreak />
+					In this sample, we demonstrate a scenario where home automation settings could be displayed in an property grid.
+					The home automation settings object has several properties that are a custom enumeration called OnOffAuto.
+					A custom property editor has been created that targets properties of type OnOffAuto and shows a horizontal ListBox to edit them.
+					A second property editor is also added that doesn't show the Auto option for the Alarm property.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource HomeAutomationSettings}" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.PropertyEditors>
+
+				<!-- Default 'OnOffAuto' type editor -->
+				<grids:PropertyEditor PropertyType="sample:OnOffAuto">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0" 
+													  SelectedValue="{Binding Value, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+													  IsEnabled="{Binding IsReadOnly, Converter={StaticResource BooleanNotConverter}}">
+								<sample:OnOffAuto>Auto</sample:OnOffAuto>
+								<sample:OnOffAuto>On</sample:OnOffAuto>
+								<sample:OnOffAuto>Off</sample:OnOffAuto>
+							</shared:HorizontalListBox>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</grids:PropertyEditor>
+
+				<!-- Special 'OnOffAuto' type editor only for the property named 'Alarm' with no Auto option -->
+				<grids:PropertyEditor PropertyType="sample:OnOffAuto" PropertyName="Alarm">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0" 
+													  SelectedValue="{Binding Value, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+													  IsEnabled="{Binding IsReadOnly, Converter={StaticResource BooleanNotConverter}}">
+								<sample:OnOffAuto>On</sample:OnOffAuto>
+								<sample:OnOffAuto>Off</sample:OnOffAuto>
+							</shared:HorizontalListBox>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</grids:PropertyEditor>
+
+			</grids:PropertyGrid.PropertyEditors>
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

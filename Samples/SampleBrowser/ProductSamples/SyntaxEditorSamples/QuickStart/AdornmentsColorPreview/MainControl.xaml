@@ -1,0 +1,47 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsColorPreview"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument x:Name="document" xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<sample:ColorPreviewSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[/*
+
+This sample shows how easy it is to extend languages to render adornments
+under color values.  Note how each hex color below shows its actual
+color in a rectangle adornment underneath, and it updates live as you type.
+
+This feature is achieved by using a custom ColorPreviewTag to mark
+text ranges that have colors.  Then an adornment manager watches
+for those tags and allows the color preview adornments to be created
+when new tag instances are found.
+
+*/
+
+body {
+	font: Sans-Serif;
+	color: #000;
+	background: rgb(240, 240, 240);
+}
+
+a {
+	color: #00f;
+}
+
+a:hover {
+	color: #8080ff;
+}
+
+h1 {
+	color: #008000;
+}
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

@@ -1,0 +1,279 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="microQuickStartMarkerCustomizationUC" 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.MarkerCustomization.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator" StartAmount="0" AllowNegativeNumbers="True" />
+
+		<Style x:Key="ChartStyle" TargetType="charts:XYChart">
+			<Style.Setters>
+				<Setter Property="Width" Value="390"/>
+				<Setter Property="Height" Value="250"/>
+				<Setter Property="IsAxisBaselineVisible" Value="True"/>
+			</Style.Setters>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The charts markers have an enormous number of built-in display options.
+					You have full control over which kinds of markers are visible and the shape of the marker.
+					Custom marker templates can also be assigned.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="All markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="First/last markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="First,Last" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="High/low markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="High,Low" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="First/last and high/low markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="First,Last,High,Low" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Positive markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="Positive" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Negative markers visible">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="Negative" XPath="Index"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Diamond shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Diamond" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Hexagon shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Hexagon" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Pentagon shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Pentagon" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Octagon shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Octagon" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Rectangle shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Rectangle" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="RoundedRectangle shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="RoundedRectangle" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star4Points shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="15" />
+									<Setter Property="Height" Value="15" />
+									<Setter Property="ShapeKind" Value="Star4Points" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star5Points shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="15" />
+									<Setter Property="Height" Value="15" />
+									<Setter Property="ShapeKind" Value="Star5Points" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star6Points shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="15" />
+									<Setter Property="Height" Value="15" />
+									<Setter Property="ShapeKind" Value="Star6Points" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star8Points shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="15" />
+									<Setter Property="Height" Value="15" />
+									<Setter Property="ShapeKind" Value="Star8Points" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Triangle shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="ShapeKind" Value="Triangle" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Large Star5Points shape">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="25" />
+									<Setter Property="Height" Value="25" />
+									<Setter Property="ShapeKind" Value="Star5Points" />
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom shape template">
+					<charts:XYChart Style="{StaticResource ChartStyle}" IsAxisBaselineVisible="True">
+						<charts:LineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" XPath="Index">
+							<charts:LineSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="charts:ChartMarker">
+												<Grid>
+													<Ellipse Fill="{TemplateBinding Background}" />
+													<Ellipse Margin="2" Fill="#ffffff" />
+												</Grid>
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</charts:LineSeries.MarkerStyle>
+						</charts:LineSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

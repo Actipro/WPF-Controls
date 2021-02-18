@@ -1,0 +1,94 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ZoomContentControl supports two ways to define how the zoom level should be incrementally increased/decreased.
+					Using ZoomStep, a fixed value can be used to derive exponential zoom level stop power increments.
+					Using ZoomLevelStops, a set of fixed values can be used when increasing or decreasing the zoom level.
+					<LineBreak />
+					<LineBreak />
+					In this example, try pressing the zoom in and zoom out buttons on both instances of the ZoomContentControl.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="FIXED INCREMENTAL VALUE (ZOOMSTEP)" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+		<navigation:ZoomContentControl x:Name="zoomContentControl1" Grid.Row="1" Margin="0,5,0,0" ZoomStep="0.1" IsPanPadVisible="False"
+				IsViewControlPaneMinimizable="False">
+			<navigation:ZoomContentControl.InputBindings>
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftClick" />
+
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftDoubleClick" />
+
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="PositiveDelta" />
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="NegativeDelta" />
+			</navigation:ZoomContentControl.InputBindings>
+			<shared:ActiproLogo />
+		</navigation:ZoomContentControl>
+
+		<TextBlock Grid.Row="3" Text="FIXED STOP VALUES (ZOOMLEVELSTOPS)" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+		<navigation:ZoomContentControl Grid.Row="4" Margin="0,5,0,0"
+				ZoomLevelStops="0.1, 0.25, 0.33, 0.50, 0.75, 1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9, 10" IsPanPadVisible="False"
+				IsViewControlPaneMinimizable="False" ZoomLevel="{Binding ZoomLevel, ElementName=zoomContentControl1, Mode=TwoWay}">
+			<navigation:ZoomContentControl.InputBindings>
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+Alt+LeftClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftClick" />
+
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="Shift+Alt+LeftDoubleClick" />
+				<MouseBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="Ctrl+Shift+Alt+LeftDoubleClick" />
+
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomInToPoint}" Gesture="PositiveDelta" />
+				<shared:MouseWheelBinding Command="{x:Static navigation:ZoomContentControlCommands.ZoomOutFromPoint}" Gesture="NegativeDelta" />
+			</navigation:ZoomContentControl.InputBindings>
+			<shared:ActiproLogo />
+		</navigation:ZoomContentControl>
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

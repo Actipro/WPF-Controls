@@ -1,0 +1,63 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="3" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Sorry but we couldn't resist.  Behold the blinking clock following a "power outage".
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:DigitalGauge x:Name="gauge" Width="260" Height="160" HorizontalAlignment="Center" Value="12:00"
+								CharacterPadding="15" CharacterSpacing="10"
+								SkewAngleX="-7" DimmedBrush="#282828"
+								CharacterCount="4" Background="#303030" IsBackgroundEffectEnabled="False"
+								FrameType="RectangleGradient" RimBrush="#61583D" CharacterType="Segment7Normal">
+				<gauge:DigitalGauge.Foreground>
+					<SolidColorBrush x:Name="foreground" Color="#D20000" />
+				</gauge:DigitalGauge.Foreground>
+
+				<gauge:DigitalGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:DigitalGauge.LayoutTransform>
+				
+				<gauge:DigitalGauge.Triggers>
+					<EventTrigger RoutedEvent="Control.Loaded">
+						<BeginStoryboard>
+							<Storyboard RepeatBehavior="Forever">
+								<ColorAnimation Storyboard.TargetName="foreground" Storyboard.TargetProperty="Color" From="#D20000" To="#D20000" BeginTime="0:0:0" Duration="0:0:0.75" FillBehavior="HoldEnd" />
+								<ColorAnimation Storyboard.TargetName="foreground" Storyboard.TargetProperty="Color" From="#282828" To="#282828" BeginTime="0:0:0.75" Duration="0:0:0.75" FillBehavior="HoldEnd" />
+							</Storyboard>
+						</BeginStoryboard>
+					</EventTrigger>
+				</gauge:DigitalGauge.Triggers>
+				
+			</gauge:DigitalGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

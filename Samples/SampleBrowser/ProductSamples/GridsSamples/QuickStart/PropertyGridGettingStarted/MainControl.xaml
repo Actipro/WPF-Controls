@@ -1,0 +1,90 @@
+﻿<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridGettingStarted.MainControl"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+		xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+		xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		xmlns:system="clr-namespace:System;assembly=mscorlib"
+		>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="TARGET DATA OBJECT">
+				<TextBox x:Name="textBox" Text="The PropertyGrid can be bound to any source, such as to this TextBox control." TextWrapping="Wrap">
+					<TextBox.BorderBrush>
+						<LinearGradientBrush EndPoint="0,1">
+							<GradientStop Offset="0" Color="#4e9900" />
+							<GradientStop Offset="1" Color="#0093ff" />
+						</LinearGradientBrush>
+					</TextBox.BorderBrush>
+				</TextBox>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The PropertyGrid control can be bound to any object or objects, using the DataObject or DataObjects properties.  
+					When object(s) are bound, the property grid enumerates the properties on the object(s) and renders them.
+					Each property has an editor that allows its value to be altered, assuming the property is not read-only.
+					Everything can be completely controlled and customized, from whether categories are used, to the properties displayed in the control,
+					to the editors used for modifying property values.
+					<LineBreak /><LineBreak />
+					This sample shows a basic usage of the control where the PropertyGrid has been bound to a TextBox.
+					Change some property values to see how the TextBox is affected.
+					<LineBreak /><LineBreak />
+					This sample also shows integration of our advanced Editors controls with PropertyGrid (via setting BuiltinPropertyEditors.IsEnabled),
+					a categorized/sorted property toggle, and filtering support.
+					Type a property name or type in the Filter TextBox to see the properties filter down instantly.
+					<LineBreak /><LineBreak />
+					<Italic>Note: This sample uses controls from both the Grids and Editors products.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid MaxWidth="{StaticResource SampleThinMaxWidth}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<!-- Categorization/filtering -->
+			<shared:HorizontalListBox x:Name="categorizedListBox" SelectedValuePath="Tag" SelectedIndex="0" VerticalAlignment="Center">
+				<ListBoxItem ToolTip="Categorized">
+					<ListBoxItem.Tag>
+						<system:Boolean>True</system:Boolean>
+					</ListBoxItem.Tag>
+					<shared:DynamicImage Margin="0,1" Source="/Images/Icons/Categorize16.png" Width="16" Height="16" />
+				</ListBoxItem>
+				<ListBoxItem ToolTip="Sorted">
+					<ListBoxItem.Tag>
+						<system:Boolean>False</system:Boolean>
+					</ListBoxItem.Tag>
+					<shared:DynamicImage Margin="0,1" Source="/Images/Icons/Sort16.png" Width="16" Height="16" />
+				</ListBoxItem>
+			</shared:HorizontalListBox>
+			<TextBox x:Name="filterTextBox" Grid.Column="1" Margin="10,0,0,0" shared:HintProperties.Hint="Filter" VerticalAlignment="Center" />
+
+			<!-- Property grid -->
+			<grids:PropertyGrid x:Name="propGrid" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,3,0,0" DataObject="{Binding ElementName=textBox}" IsSummaryVisible="False"
+								IsCategorized="{Binding ElementName=categorizedListBox, Path=SelectedValue}" IsFilterActive="True" CanClearDataObjectOnUnload="True"
+								gridseditors:BuiltinPropertyEditors.IsEnabled="True">
+				<!-- Data filter is applied when IsFilterActive="True" -->
+				<grids:PropertyGrid.DataFilter>
+					<shared:DataFilterGroup Operation="Or">
+						<grids:PropertyModelStringFilter Source="Name" Operation="Contains" Value="{Binding Source={x:Reference filterTextBox}, Path=Text}" StringComparison="CurrentCultureIgnoreCase" />
+						<grids:PropertyModelStringFilter Source="ValueType" Operation="Contains" Value="{Binding Source={x:Reference filterTextBox}, Path=Text}" StringComparison="CurrentCultureIgnoreCase" />
+					</shared:DataFilterGroup>
+				</grids:PropertyGrid.DataFilter>
+			</grids:PropertyGrid>
+		</Grid>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,61 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<!-- SyntaxEditor that uses custom scrollbar tray templates -->
+	<editor:SyntaxEditor>
+		<editor:SyntaxEditor.ScrollBarTrayLeftTemplate>
+			<DataTemplate>
+				<StackPanel Orientation="Horizontal">
+					<shared:PopupButton ToolTip="PopupButton in the left tray" Padding="0" UseLayoutRounding="True">
+						<shared:PopupButton.PopupMenu>
+							<ContextMenu>
+								<MenuItem Header="E-mail Document" />
+								<MenuItem Header="Post Document to Blog" />
+							</ContextMenu>
+						</shared:PopupButton.PopupMenu>
+						
+						<shared:DynamicImage Width="16" Height="16" Stretch="None" Source="/Images/Icons/Notes16.png" />
+					</shared:PopupButton>
+					<TextBlock Margin="3,0,3,0" Text="Label" VerticalAlignment="Center" ToolTip="Place any control in the trays" />
+				</StackPanel>
+			</DataTemplate>
+		</editor:SyntaxEditor.ScrollBarTrayLeftTemplate>
+		<editor:SyntaxEditor.ScrollBarTrayTopTemplate>
+			<DataTemplate>
+				<Button ToolTip="Button in the top tray" Padding="0" UseLayoutRounding="True">
+					<shared:DynamicImage Width="16" Height="16" Stretch="None" Source="/Images/Icons/Find16.png" />
+				</Button>
+			</DataTemplate>
+		</editor:SyntaxEditor.ScrollBarTrayTopTemplate>
+		<editor:SyntaxEditor.ScrollBarTrayRightTemplate>
+			<DataTemplate>
+				<RepeatButton ToolTip="RepeatButton in the right tray" Padding="0" UseLayoutRounding="True">
+					<shared:DynamicImage Width="16" Height="16" Stretch="None" Source="/Images/Icons/Delete16.png" />
+				</RepeatButton>
+			</DataTemplate>
+		</editor:SyntaxEditor.ScrollBarTrayRightTemplate>
+		<editor:SyntaxEditor.ScrollBarTrayBottomTemplate>
+			<DataTemplate>
+				<ToggleButton ToolTip="ToggleButton in the bottom tray" Padding="0" UseLayoutRounding="True">
+					<shared:DynamicImage Width="16" Height="16" Stretch="None" Source="/Images/Icons/Start16.png" />
+				</ToggleButton>
+			</DataTemplate>
+		</editor:SyntaxEditor.ScrollBarTrayBottomTemplate>
+		
+		<editor:EditorDocument xml:space="preserve"><![CDATA[This QuickStart shows how you can place custom content in the four scrollbar "tray" locations found in each editor view.
+One tray is to the left of the horizontal ScrollBar and one is to the right.
+One tray is above the vertical ScrollBar and one is below.
+					
+Any sort of content can be inserted in these locations, including other controls.  SyntaxEditor includes default styles
+that auto-apply to various button types so that they look great when inserted into a scrollbar tray.
+
+In this sample, the left tray contains a PopupButton.  The right tray contains a RepeatButton.  
+The top tray contains a Button.  And the bottom tray contains a ToggleButton.]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

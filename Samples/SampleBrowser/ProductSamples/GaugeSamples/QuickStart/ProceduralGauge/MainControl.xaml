@@ -1,0 +1,38 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.GaugeSamples.QuickStart.ProceduralGauge.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart demonstrates procedural creation of a CircularGauge control. The concepts
+					and techniques used in this QuickStart can be applied to create any of the Gauge controls.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel  x:Name="targetPanel" Style="{StaticResource SamplePanelFullStyle}">
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

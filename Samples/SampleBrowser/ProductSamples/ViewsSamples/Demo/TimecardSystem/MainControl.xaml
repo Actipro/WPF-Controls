@@ -1,0 +1,157 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TimecardSystem.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+		<!-- Styles -->
+		<Style x:Key="BadgeListBoxItemStyle" TargetType="ListBoxItem">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Offset="0.1" Color="#ffffff" />
+						<GradientStop Offset="1" Color="#f9f9f9" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="#D0D0D0" />
+			<Setter Property="BorderThickness" Value="7" />
+			<Setter Property="Foreground" Value="#000000" />
+			<Setter Property="Margin" Value="2" />
+			<Setter Property="Padding" Value="11" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBoxItem">
+						<Border x:Name="border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+								CornerRadius="7">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+
+								<StackPanel Margin="0,0,22,0" VerticalAlignment="Center">
+									<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}" BorderThickness="1" HorizontalAlignment="Center">
+										<Image Width="48" Height="48" Source="{Binding Person.PhotoUri}" />
+									</Border>
+
+									<Button x:Name="toggleClockStateButton" MinWidth="50" MinHeight="50" Margin="0,7,0,0"
+											HorizontalAlignment="Center" Click="OnToggleClockStateButtonClick" Visibility="Collapsed">
+										<StackPanel>
+											<TextBlock Text="Clock" HorizontalAlignment="Center" />
+											<TextBlock Text="{Binding InverseClockState}" HorizontalAlignment="Center" />
+										</StackPanel>
+									</Button>
+								</StackPanel>
+
+								<StackPanel Grid.Column="1" VerticalAlignment="Center">
+									<shared:ActiproLogo x:Name="companyLogo" Margin="0,0,0,7" HorizontalAlignment="Left"
+											Visibility="Collapsed">
+										<shared:ActiproLogo.LayoutTransform>
+											<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+										</shared:ActiproLogo.LayoutTransform>
+									</shared:ActiproLogo>
+									<TextBlock FontWeight="Bold" FontSize="16" Text="{Binding Person.FullName}" />
+									<TextBlock Text="{Binding Person.Position}" FontStyle="Italic" />
+									<StackPanel x:Name="employeeDetailsPanel" Visibility="Collapsed">
+										<TextBlock Margin="0,7,0,0" Text="{Binding Person.Id, Converter={StaticResource StringFormatConverter}, ConverterParameter='Employee #{0}'}" Foreground="Gray" />
+										<TextBlock Text="{Binding Person.HireDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='Hire Date: {0:yyyy-MM-dd}'}" Foreground="Gray" />
+									</StackPanel>
+								</StackPanel>
+							</Grid>
+						</Border>
+
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter TargetName="border" Property="BorderBrush" Value="#f8ce53" />
+								<Setter TargetName="toggleClockStateButton" Property="Visibility" Value="Visible" />
+								<Setter TargetName="companyLogo" Property="Visibility" Value="Visible" />
+								<Setter TargetName="employeeDetailsPanel" Property="Visibility" Value="Visible" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This demo shows how to construct a very visually-appealing timecard system, complete with rich animations.
+					Select an employee in the Clocked-Out list and click the Clock In button their expanded badge.
+					The employee will use the Views product's animation effects to move the badge to the Clocked-In list.
+					Likewise, clicking Clock Out on a selected badge in the Clocked-In list will return the badge to the Clocked-Out list.
+					Also note how when a badge is selected, Views provides smooth animation to arrange the other badges in the same list.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="20" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="3" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Margin="3,0,0,0" Style="{StaticResource SampleSectionHeadingTextBlockStyle}"
+				Text="{Binding InactiveEmployees.Count, ElementName=userControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='CLOCKED-OUT EMPLOYEES ({0})'}" />
+		<ListBox x:Name="inactiveListBox" Grid.Row="2" ItemsSource="{Binding InactiveEmployees, ElementName=userControl}"
+				ItemContainerStyle="{StaticResource BadgeListBoxItemStyle}"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<views:AnimatedStackPanel>
+						<views:AnimatedStackPanel.ArrangeAnimation>
+							<views:ArrangeAnimation EnterAnimation="Fade,Translate,Rotate" LeaveAnimation="Fade,Translate,Rotate"
+									RotateEnterTotalAngle="-90" RotateLeaveTotalAngle="90"
+									TranslateEnterPoint="FarRight,None" TranslateLeavePoint="FarRight,None" />
+						</views:AnimatedStackPanel.ArrangeAnimation>
+					</views:AnimatedStackPanel>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+
+		<TextBlock Grid.Column="2" Margin="3,0,0,0" Style="{StaticResource SampleSectionHeadingTextBlockStyle}"
+				Text="{Binding ActiveEmployees.Count, ElementName=userControl, Converter={StaticResource StringFormatConverter}, ConverterParameter='CLOCKED-IN EMPLOYEES ({0})'}" />
+		<ListBox x:Name="activeListBox" Grid.Column="2" Grid.Row="2" ItemsSource="{Binding ActiveEmployees, ElementName=userControl}"
+				ItemContainerStyle="{StaticResource BadgeListBoxItemStyle}"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<views:AnimatedStackPanel>
+						<views:AnimatedStackPanel.ArrangeAnimation>
+							<views:ArrangeAnimation EnterAnimation="Fade,Translate,Rotate" LeaveAnimation="Fade,Translate,Rotate"
+									RotateEnterTotalAngle="-90" RotateLeaveTotalAngle="90"
+									TranslateEnterPoint="FarLeft,None" TranslateLeavePoint="FarLeft,None" />
+						</views:AnimatedStackPanel.ArrangeAnimation>
+					</views:AnimatedStackPanel>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>
+
+

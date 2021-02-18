@@ -1,0 +1,8 @@
+<UserControl x:Class="ActiproSoftware.Windows.PrismIntegration.Views.TextDocumentItemView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	>
+
+	<TextBox BorderThickness="0" Text="{Binding Text}" IsReadOnly="{Binding IsReadOnly}" TextWrapping="Wrap" />
+
+</UserControl>

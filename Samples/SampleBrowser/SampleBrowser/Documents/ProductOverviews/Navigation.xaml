@@ -1,0 +1,44 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/NavigationSamples/Demo/OutlookUI/OverviewDocument?action=open">
+					<Image Width="400" Height="300" Source="/Images/Screenshots/Navigation-OutlookUI-400x300.png" />
+				</Button>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Navigation is a bundle of NavigationBar, ExplorerBar, ZoomContentControl, and Breadcrumb controls.
+				</TextBlock>
+				
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					NavigationBar implements navigation bar features found in Outlook.
+					ExplorerBar is an accordian view of task panes.
+					ZoomContentControl allows any content to be interactively zoomed and scrolled using customizable mouse and keyboard behaviors.
+					Breadcrumb supports navigation through any sort of hierarchical data, such as file systems.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

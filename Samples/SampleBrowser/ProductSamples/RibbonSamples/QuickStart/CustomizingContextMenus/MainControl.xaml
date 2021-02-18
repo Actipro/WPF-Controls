@@ -1,0 +1,86 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingContextMenus.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingContextMenus"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon auto-generates context menus for most of the controls in it.
+					The auto-generated menu contains items for toggling the visibility of the Quick Access ToolBar (QAT),
+					minimizing the ribbon, etc.
+					<LineBreak /><LineBreak />
+					However many times it is useful to add custom menu items to a specific control, or a certain type of controls.
+					You can achieve this programmatically by overriding the Ribbon.CreateContextMenu method with 
+					menu-altering logic for one or more controls.
+					<LineBreak /><LineBreak />
+					You also can customize the items on the QAT Customize button's menu.
+					Right-click any Button in the ribbon to see the system-generated context menu.
+					But note that a custom menu item has been appended to the context menu via code in this sample.
+					<LineBreak /><LineBreak />
+					Ribbon is designed so that even popup menu items can have context menus when you right-click on them.  Try it!
+					<LineBreak /><LineBreak />
+					Also, click the QAT Customize button to see how a custom item was inserted into that as well.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+
+					<!-- Ribbon Control -->
+					<sample:CustomRibbon x:Name="ribbon" DockPanel.Dock="Top" IsCollapsible="False">			
+						<!-- 
+							Use pre-defined WordApplicationMenu type in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />	
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home">
+								<ribbon:Group Label="Preview">
+									<ribbon:Button ImageSourceLarge="/Images/Icons/Paste32.png" Label="Right-click this Button" />
+									<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Paste32.png" Label="Right-click on popup menu items too">
+										<ribbon:Menu>
+											<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Right-click this menu item" />							
+											<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Or this one" />							
+										</ribbon:Menu>
+									</ribbon:PopupButton>
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</sample:CustomRibbon>
+		
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

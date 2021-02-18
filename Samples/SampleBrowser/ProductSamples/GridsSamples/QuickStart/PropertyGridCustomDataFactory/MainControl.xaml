@@ -1,0 +1,66 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- A custom template for editing country names -->
+		<DataTemplate x:Key="CountryNameValueTemplate">
+			<editors:CountryComboBox Text="{Binding ValueAsString, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+						IsEditable="True" IsReadOnly="{Binding IsReadOnly}"
+						Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}"
+						/>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample demonstrates how a custom data factory can be created to exactly specify which and how properties are displayed.
+					The top property grid uses a custom data factory, while the bottom property grid uses the default data factory.
+					The custom data factory uses a custom property model in several cases that allows for overriding of several property model properties from their defaults.
+					<LineBreak />
+					<LineBreak />
+					The custom data factory in this sample performs several tasks.
+					It picks and chooses which properties to show from the primary customer view model object, all in a specific non-sorted order, 
+					and leaves out the AvailableReferrals and SecretData properties.  
+					The CountryName property is told to use a specific value DataTemplate defined in this sample.
+					The two phone number properties are from a sub-object but are re-routed to be at the same level as the root customer view model.
+					Finally, a set of standard values are added to the ReferredBy property, bound to the hidden AvailableReferrals collection.
+					The standard values use a display member path to determine which text to show in the drop-down.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid MaxWidth="{StaticResource SampleThinMaxWidth}" Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="20" />
+			<RowDefinition Height="3*" />
+		</Grid.RowDefinitions>
+
+		<grids:PropertyGrid DataObject="{Binding}" SortComparer="{x:Null}" IsCategorized="False" IsSummaryVisible="False" 
+							ArePropertiesAutoExpanded="True" CollectionPropertyDisplayMode="Expandable" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.DataFactory>
+				<sample:CustomDataFactory />
+			</grids:PropertyGrid.DataFactory>
+		</grids:PropertyGrid>
+
+		<grids:PropertyGrid Grid.Row="2" DataObject="{Binding}" IsReadOnly="True" IsCategorized="False" IsSummaryVisible="False" 
+							ArePropertiesAutoExpanded="True" CollectionPropertyDisplayMode="Expandable" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,45 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted01.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted01"
+    >
+
+	<!-- SyntaxEditor -->
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument xml:space="preserve"><![CDATA[/*
+	The Simple language is a simplistic C-like language that only knows 
+	several keywords and operators.  All variables are integer numbers.
+	
+	This first sample shows a language project (.langproj) file and
+	generated language definition (.langdef) file that have been created 
+	using the Actipro Language Designer application.  Language projects 
+	are the fastest way to get up and running with a language as they make 
+	it easy to configure syntax highlighting.  See the product documentation 
+	for more information on .langproj and .langdef files.
+	
+	The .langdef file is included in the project as an Embedded Resource
+	from within the /ProductSamples/SyntaxEditorSamples/Languages/Definitions
+	folder and is loaded into a SyntaxEditor instance at run-time to
+	provide the basic syntax highlighting features you see here.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

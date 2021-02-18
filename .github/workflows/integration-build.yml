@@ -1,0 +1,28 @@
+name: Integration Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: Build/Run Nuke
+    runs-on: [self-hosted, windows, x64]
+
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Run build project
+      run: dotnet run --project ./Build/Build.csproj -- --target IntegrationBuild
+    - name: Notify Slack
+      if: always()
+      uses: act10ns/slack@v1
+      with:
+        status: ${{ job.status }}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Assembly' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Assembly" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Label" DefaultStyle="#FF008080" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="PrimaryString" />
+					<StateRef Key="AlternateString" />
+					<StateRef Key="SingleLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						AAA AAD AAM AAS ADC ADD AND ARPL BOUND BSF BSR BSWAP BTC BTR BTS BT CALL CBW CDQ CLC CLD CLFLUSH CLI CLTS
+						CMC CMOVAE CMOVA CMOVB CMOVE CMOVGE CMOVG CMOVLE CMOVL CMOVNAE CMOVNA CMOVNBE CMOVNB CMOVNC CMOVNE
+						CMOVNGE CMOVNG CMOVNLE CMOVNL CMOVNO CMOVNP CMOVNS CMOVNZ CMOVO CMOVPE CMOVPO CMOVP CMOVS CMOVZ
+						CMPSB CMPSD CMPSW CMPXCHG16B CMPXCHG8B CMPXCHG CMP CPUID CWDE CWD DAA DAS DEC DIV ENTER ESC F2XM1
+						FABS FADDP FADD FBLD FBSTP FCHS FCLEX FCMOVBE FCMOVB FCMOVE FCMOVNBE FCMOVNB FCMOVNE FCMOVNU FCMOVU
+						FCOMIP FCOMI FCOMPP FCOMP FCOM FCOS FDECSTP FDISI FDIVP FDIVRP FDIVR FDIV FENI FFREE FIADD FICOMP
+						FICOM FIDIVR FIDIV FILD FIMUL FINCSTP FINIT FISTP FISTTP FIST FISUBR FISUB FLD1 FLDCW FLDENVD FLDENVW
+						FLDENV FLDL2E FLDL2T FLDLG2 FLDLN2 FLDPI FLDZ FLD FMULP FMUL FNCLEX FNDISI FNENI FNINIT FNOP FNSAVED
+						FNSAVEW FNSAVE FNSTCW FNSTENVD FNSTENVW FNSTENV FNSTSW FPATAN FPREM1 FPREM FPTAN FRNDINT FRSTORD
+						FRSTORW FRSTOR FSAVED FSAVEW FSAVE FSCALE FSETPM FSINCOS FSIN FSQRT FSTCW FSTENVD FSTENVW FSTENV
+						FSTP FSTSW FST FSUBP FSUBRP FSUBR FSUB FTST FUCOMIP FUCOMI FUCOMPP FUCOMP FUCOM FWAIT FXAM FXCH FXRSTOR
+						FXSAVE FXTRACT FYL2XP1 FYL2X HLT IDIV IMUL INC INSB INSD INSW INTO INT INVD INVLPG IN IRETDF IRETD
+						IRETF IRET JAE JA JBE JB JCXZ JC JECXZ JE JGE JG JLE JL JMP JNAE JNA JNBE JNB JNC JNE JNGE JNG JNLE JNL JNO
+						JNP JNS JNZ JO JPE JPO JP JS JZ LAHF LAR LDS LEAVE LEA LES LFENCE LFS LGDT LGS LIDT LLDT LMSW LOADALL LOCK
+						LODSB LODSD LODSW LOOPD LOOPED LOOPE LOOPNED LOOPNE LOOPNZD LOOPNZ LOOPZD LOOPZ LSL LSS LTR MASKMOVDQU
+						MASKMOVQ MFENCE MONITOR MOVNTDQ MOVNTI MOVNTPD MOVNTPS MOVNTQ MOVSB MOVSD MOVSW MOVSX MOVZX MOV
+						MUL MWAIT NEG NOP NOT OR OUTSB OUTSD OUTSW OUT PAUSE POPAD POPA POPFD POPF POP PREFETCH0 PREFETCH1
+						PREFETCH2 PREFETCHNTA PUSHAD PUSHA PUSHD PUSHFD PUSHF PUSHW PUSH RCL RCR RDMSR RDPMC* RDTSC REPE
+						REPNE REPNZ REPZ REP RETF RETN RET ROL ROR RSM SAHF SAL SAR SBB SCASB SCASD SCASW SETAE SETA SETBE SETB
+						SETC SETE SETGE SETG SETLE SETL SETNAE SETNA SETNBE SETNB SETNC SETNE SETNGE SETNG SETNLE SETNL SETNO
+						SETNP SETNS SETNZ SETO SETPE SETPO SETP SETS SETZ SFENCE SGDT SHLD SHL SHRD SHR SIDT SLDT SMSW STC STD
+						STI STOSB STOSD STOSW STR SUB SYSCALL SYSENTER SYSEXIT SYSRET TEST VERR VERW VMCALL VMCLEAR VMLAUNCH
+						VMPTRLD VMPTRST VMREAD VMRESUME VMWRITE VMXOFF VMXON WAIT WBINVD WRMSR XADD XCHG XLAT XOR
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Label" ClassificationTypeKey="Label" Pattern="([\._@\$\?] | {Alpha})([@\$\?] | {Word})* \:" />
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="([\._@\$\?] | {AlphaMacro})([@\$\?] | {WordMacro})*" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						! $ * + , - . / : ; < = > ?
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [Xx] {HexDigitMacro}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="OctalNumber" ClassificationTypeKey="Number" Pattern="0 [0-7]*" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="BinaryNumber" ClassificationTypeKey="Number" Pattern="0 [Bb] [0-1]+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="DecimalNumber" ClassificationTypeKey="Number" Pattern="[1-9][0-9]*" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- PrimaryString state -->
+			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\n]+" />
+			</State>
+			<!-- AlternateString state -->
+			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="['\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="''" />
+				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\n]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern=";" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[section	.text
+    global _start
+
+_start:			; The entry point
+
+	mov	edx,len	; The message length
+	mov	ecx,msg	; The message to write
+	mov	ebx,1	; File descriptor (stdout)
+	mov	eax,4	; System call number (sys_write)
+	int	0x80	; Call kernel
+
+	mov	eax,1	; System call number (sys_exit)
+	int	0x80	; Call kernel
+
+section	.data
+
+msg	db	'Hello, world!',0xa
+len	equ	$ - msg
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NavigationRoot>
+  <NavigationGroup Text="Mail" ImageLarge="Mail32.png" ImageSmall="Mail16.png">
+    <NavigationMail>
+      <NavigationFavoriteFolders>
+        <NavigationFolder Text="Inbox" />
+        <NavigationFolder Text="Unread Mail" IsItalic="True" />
+        <NavigationFolder Text="Sent Items" />
+      </NavigationFavoriteFolders>
+      <NavigationMailFolders>
+        <NavigationFolder Text="Inbox" />
+        <NavigationFolder Text="Deleted Items" />
+        <NavigationFolder Text="Drafts" />
+        <NavigationFolder Text="Outbox" />
+        <NavigationFolder Text="Sent Items" />
+      </NavigationMailFolders>
+    </NavigationMail>
+  </NavigationGroup>
+  <NavigationGroup Text="Calendar" ImageLarge="Calendar32.png" ImageSmall="Calendar16.png">
+    <NavigationCalendar />
+  </NavigationGroup>
+  <NavigationGroup Text="Contacts" ImageLarge="Contacts32.png" ImageSmall="Contacts16.png">
+    <NavigationText Text="Contacts content here" />
+  </NavigationGroup>
+  <NavigationGroup Text="Tasks" ImageLarge="Tasks32.png" ImageSmall="Tasks16.png">
+    <NavigationText Text="Tasks content here" />
+  </NavigationGroup>
+  <NavigationGroup Text="Notes" ImageLarge="Notes32.png" ImageSmall="Notes16.png">
+    <NavigationText Text="Notes content here" />
+  </NavigationGroup>
+  <NavigationGroup Text="Folder List" ImageLarge="FolderClosed32.png" ImageSmall="FolderClosed16.png">
+    <NavigationText Text="Folder List content here" />
+  </NavigationGroup>
+  <NavigationGroup Text="Shortcuts" ImageLarge="Shortcuts32.png" ImageSmall="Shortcuts16.png">
+    <NavigationText Text="Shortcuts content here" />
+  </NavigationGroup>
+  <NavigationGroup Text="Journal" ImageLarge="TextDocument32.png" ImageSmall="TextDocument16.png" IsVisible="False">
+    <NavigationText Text="Journal content here" />
+  </NavigationGroup>
+</NavigationRoot>

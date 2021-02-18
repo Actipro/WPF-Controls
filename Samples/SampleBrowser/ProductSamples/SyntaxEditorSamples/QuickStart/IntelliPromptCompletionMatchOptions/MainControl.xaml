@@ -1,0 +1,71 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionMatchOptions.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	>
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel Orientation="Horizontal">
+				<StackPanel>
+					<CheckBox x:Name="isCaseSensitiveCheckBox" Content="Use case sensitive matches first" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="requiresExactCheckBox" Margin="0,3,0,0" Content="Requires exact match for full selection" IsChecked="False" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="useAcronymsCheckBox" Margin="0,3,0,0" Content="Use acronym matching algorithm (normally off by default)" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="useShorthandCheckBox" Margin="0,3,0,0" Content="Use shorthand matching algorithm (normally off by default)" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+					<CheckBox x:Name="highlightMatchesCheckBox" Margin="0,3,0,0" Content="Highlight matched text" IsChecked="True" Checked="OnCheckedChanged" Unchecked="OnCheckedChanged" />
+				</StackPanel>
+
+				<StackPanel Margin="30,0,0,0" VerticalAlignment="Center">
+					<Button Content="Complete word (Ctrl+Space)" Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" CommandTarget="{Binding ElementName=editor}" />
+					<Button Margin="0,3,0,0" Content="Show completion list" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" CommandTarget="{Binding ElementName=editor}" />
+				</StackPanel>
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace IntelliPromptCompletionMatchOptionsQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how various matching options affect the 
+	/// completion list item selection while typing in the editor.
+	/// </summary>
+	/// </remarks>
+	/// The items for this sample are hardcoded in the code behind of 
+	/// this sample.  Normally when implementing a language, you would 
+	/// alter the items based on the current context of the caret.
+	/// </remarks>
+	public class Foo {
+
+		private int aField;
+
+		public int AnIntValue { get; set; }
+		public string AStringValue { get; set; }
+
+		public void AMethod() {
+			// Try typing the following text in quotes when the
+			// completion list is displayed to test match options.
+			// Use Ctrl+Space or type "this." to show the completion list.
+
+			// Show the completion list on the line after this comment
+			// and then type "A".  If case sensitive option is on,
+			// "AMethod" will be matched; otherwise, "aField".
+			
+			// Show the completion list on the line after this comment
+			// and then type "ai".  If the acronym option is on,
+			// "AnIntValue" will be matched.
+			
+			// Show the completion list on the line after this comment
+			// and then type "strval".  If the acronym option is on,
+			// "AStringValue" will be matched.
+			
+		}
+	}
+}]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

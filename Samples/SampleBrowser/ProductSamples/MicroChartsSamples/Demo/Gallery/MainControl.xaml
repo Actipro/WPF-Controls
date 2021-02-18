@@ -1,0 +1,515 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.Gallery.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style x:Key="AxisBaselineStyleLight" TargetType="Shape">
+			<Setter Property="Stroke" Value="#c0c0c0" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Micro charts are designed to provide at-a-glance visualizations of data that work great in many contexts,
+					such as dashboards, reports, or even inline in text.
+					This demo shows off a number of various ways the same data can be presented using various micro chart types and options.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Two line charts with high/low markers and axis">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Store" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+						<TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Foreground="#808080" Text="Net Profit" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" 
+												  AxisBaselineValue="{Binding StoreDataSet[0].TargetSales}" IsAxisBaselineVisible="True" AxisBaselineStyle="{StaticResource AxisBaselineStyleLight}">
+							<microcharts:MicroLineSeries ItemsSource="{Binding StoreDataSet[0].Sales}" MarkerVisibility="High,Low" MarkerStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="1" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[0].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True"
+												  AxisBaselineValue="{Binding StoreDataSet[1].TargetSales}" IsAxisBaselineVisible="True" AxisBaselineStyle="{StaticResource AxisBaselineStyleLight}">
+							<microcharts:MicroLineSeries ItemsSource="{Binding StoreDataSet[1].Sales}" MarkerVisibility="High,Low" MarkerStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[1].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two area charts">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Store" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+						<TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Foreground="#808080" Text="Net Profit" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True">
+							<microcharts:MicroAreaSeries ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="1" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[0].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Plum">
+							<microcharts:MicroAreaSeries ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[1].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two bar charts">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Store" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+						<TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Foreground="#808080" Text="Net Profit" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Fishbowl">
+							<microcharts:MicroBarSeries ItemsSource="{Binding StoreDataSet[0].Sales}" BarStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="1" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[0].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Fishbowl">
+							<microcharts:MicroBarSeries ItemsSource="{Binding StoreDataSet[1].Sales}" BarStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[1].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two bar charts with axis at target sales">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Store" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+						<TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Foreground="#808080" Text="Net Profit" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" 
+												  AxisBaselineValue="{Binding StoreDataSet[0].TargetSales}" IsHotTrackingEnabled="True">
+							<microcharts:MicroBarSeries ItemsSource="{Binding StoreDataSet[0].Sales}" BarStyleKinds="All" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="1" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[0].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" 
+												  AxisBaselineValue="{Binding StoreDataSet[1].TargetSales}" IsHotTrackingEnabled="True">
+							<microcharts:MicroBarSeries ItemsSource="{Binding StoreDataSet[1].Sales}" BarStyleKinds="All" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[1].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two win/loss charts with axis at target sales">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Store" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+						<TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Foreground="#808080" Text="Net Profit" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" 
+												  AxisBaselineValue="{Binding StoreDataSet[0].TargetSales}" IsHotTrackingEnabled="True">
+							<microcharts:MicroWinLossSeries ItemsSource="{Binding StoreDataSet[0].Sales}" BarStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="1" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[0].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroXYChart Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" 
+												  AxisBaselineValue="{Binding StoreDataSet[1].TargetSales}" IsHotTrackingEnabled="True">
+							<microcharts:MicroWinLossSeries ItemsSource="{Binding StoreDataSet[1].Sales}" BarStyleKinds="High,Low" LegendStringFormat="{}{0:C0}" />
+						</microcharts:MicroXYChart>
+						<TextBlock Grid.Row="2" Grid.Column="2" FontSize="12" Text="{Binding Path=StoreDataSet[1].NetProfit, StringFormat='{}{0:C0}'}" VerticalAlignment="Center" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two bullet graphs, one with ellipse display">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroBulletGraph Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center"
+													  FeaturedMeasureValue="{Binding Path=StoreDataSet[0].NetProfit}" Maximum="2000000" ComparativeMeasureValue="1300000"
+													  ProjectedMeasureValue="1950000" ThemeBaseColor="#FF2E4B26" HorizontalAlignment="Left"
+													  LegendStringFormat="Net profit: {0:C0}; Projected: {1:C0}; Target: {2:C0}">
+							<microcharts:MicroBulletGraph.QualitativeRanges>
+								<microcharts:MicroQualitativeRange Value="500000" />
+								<microcharts:MicroQualitativeRange Value="1000000" />
+								<microcharts:MicroQualitativeRange Value="1500000" />
+								<microcharts:MicroQualitativeRange />
+							</microcharts:MicroBulletGraph.QualitativeRanges>
+						</microcharts:MicroBulletGraph>
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroBulletGraph Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center"
+													  FeaturedMeasureValue="{Binding Path=StoreDataSet[1].NetProfit}" Minimum="1" Maximum="2000000"
+													  ComparativeMeasureValue="1300000" ProjectedMeasureValue="1600000" ThemeBaseColor="#FF521C1C"
+													  HorizontalAlignment="Left" LegendStringFormat="Net profit: {0:C0}; Projected: {1:C0}; Target: {2:C0}">
+							<microcharts:MicroBulletGraph.QualitativeRanges>
+								<microcharts:MicroQualitativeRange Value="500000" />
+								<microcharts:MicroQualitativeRange Value="1000000" />
+								<microcharts:MicroQualitativeRange Value="1500000" />
+								<microcharts:MicroQualitativeRange />
+							</microcharts:MicroBulletGraph.QualitativeRanges>
+						</microcharts:MicroBulletGraph>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two box plots, one with mean in place of median">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[0].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroBoxPlot Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="19" VerticalAlignment="Center"
+													Minimum="250000" Maximum="850000" Values="{Binding StoreDataSet[0].Sales}" HorizontalAlignment="Left"
+													LegendStringFormat="Lowest monthly sales: {0:C0}; Highest monthly sales: {6:C0}" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" FontSize="12" Text="{Binding StoreDataSet[1].Name}" VerticalAlignment="Center" />
+						<microcharts:MicroBoxPlot Grid.Row="2" Grid.Column="1" Margin="20,5" Width="100" Height="19" VerticalAlignment="Center"
+													Minimum="250000" Maximum="850000" Values="{Binding StoreDataSet[1].Sales}" IsMeanVisible="True"
+													IsMedianVisible="False" HorizontalAlignment="Left" LegendStringFormat="Lowest monthly sales: {0:C0}; Highest monthly sales: {6:C0}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two scatter series in one chart">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True">
+							<microcharts:MicroScatterSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+							<microcharts:MicroScatterSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two line series in one chart">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Autumn">
+							<microcharts:MicroLineSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+							<microcharts:MicroLineSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two area series in one chart (not stacked)">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Autumn">
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two bar series in one chart (not stacked)">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Autumn">
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two stacked area series">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Mesa">
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Normal" />
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Normal" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two 100% stacked area series">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Mesa">
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5} {0:C0}" StackKind="Percentage" />
+							<microcharts:MicroAreaSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5} {0:C0}" StackKind="Percentage" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two stacked bar series">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Mesa">
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Normal" />
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Normal" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two 100% stacked bar series">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" SeriesStyleSelector="Mesa">
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Percentage" />
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}" StackKind="Percentage" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two series in one chart, one line and one bar">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+						<TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+						<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[0].Name}" />
+							<TextBlock FontSize="12" Text=" vs. " />
+							<TextBlock FontSize="12" Text="{Binding StoreDataSet[1].Name}" />
+						</StackPanel>
+						<microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True">
+							<microcharts:MicroXYChart.SeriesStyleSelector>
+								<microcharts:MicroSeriesPaletteStyleSelector>
+									<microcharts:MicroPalette>
+										<Color>#46bff7</Color>
+										<Color>#06226b</Color>
+									</microcharts:MicroPalette>
+								</microcharts:MicroSeriesPaletteStyleSelector>
+							</microcharts:MicroXYChart.SeriesStyleSelector>
+							<microcharts:MicroBarSeries Description="{Binding StoreDataSet[0].Name}" ItemsSource="{Binding StoreDataSet[0].Sales}" LegendStringFormat="{}{5}: {0:C0}" />
+							<microcharts:MicroLineSeries Description="{Binding StoreDataSet[1].Name}" ItemsSource="{Binding StoreDataSet[1].Sales}" LegendStringFormat="{}{5}: {0:C0}"
+														 MarkerVisibility="All" />
+						</microcharts:MicroXYChart>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

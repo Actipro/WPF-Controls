@@ -1,0 +1,119 @@
+<sampleBrowser:ProductItemControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode" 
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This portion of an invoice header shows how easily bar code controls can be embedded within a flow document.
+					Use this methodology to add bar codes to any document such as a quote, invoice, inventory sheet, etc.
+					<LineBreak /><LineBreak />
+					Vector-based bar codes such as those produced by Actipro Bar Code will be crisper and clearer than any raster image bar
+					codes produced by other products since vector graphics scale to exact precision, no matter what the resolution of the target media is.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SimpleFlowDocumentReader MaxWidth="800" VerticalAlignment="Top">
+				<sampleBrowser:SimpleFlowDocument>
+
+					<Section BorderBrush="Black" BorderThickness="1" Background="White" Padding="20">
+						<Table Foreground="#000000">
+							<Table.Columns>
+								<TableColumn Width="Auto" />
+								<TableColumn Width="330" />
+							</Table.Columns>
+							<TableRowGroup>
+
+								<TableRow>
+									<TableCell>
+										<Paragraph>
+											<shared:ActiproLogo>
+												<shared:ActiproLogo.LayoutTransform>
+													<ScaleTransform ScaleX="0.6" ScaleY="0.6" />
+												</shared:ActiproLogo.LayoutTransform>
+											</shared:ActiproLogo>
+										</Paragraph>
+									</TableCell>
+									<TableCell>
+										<Paragraph Margin="0,10,0,0" FontSize="28" FontWeight="Bold" Foreground="Gray" TextAlignment="Right">
+											Invoice
+										</Paragraph>
+									</TableCell>
+								</TableRow>
+
+								<TableRow>
+									<TableCell>
+
+										<Table CellSpacing="0" BorderBrush="Gray" BorderThickness="1">
+											<Table.Columns>
+												<TableColumn Width="100" />
+												<TableColumn Width="160" />
+											</Table.Columns>
+											<TableRowGroup>
+												<TableRow>
+													<TableCell Padding="10,5" BorderBrush="Gray" BorderThickness="0,0,1,1" Background="#F0F0F0">
+														<Paragraph>Date:</Paragraph>
+													</TableCell>
+													<TableCell Padding="10,5" BorderBrush="Gray" BorderThickness="0,0,0,1" Background="#F0F0F0">
+														<Paragraph>Invoice #:</Paragraph>
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell Padding="10,5" BorderBrush="Gray" BorderThickness="0,0,1,0">
+														<Paragraph Margin="0,8,0,0" TextAlignment="Center">10/1/2007</Paragraph>
+													</TableCell>
+													<TableCell Padding="10,5">
+														<Paragraph TextAlignment="Center">
+															<barCode:BarCode>
+																<barCode:Code39Symbology Value="123456" BarHeight="25" />
+															</barCode:BarCode>
+														</Paragraph>
+													</TableCell>
+												</TableRow>
+											</TableRowGroup>
+										</Table>
+
+									</TableCell>
+									<TableCell Padding="80,10,0,0">
+										<Paragraph>
+											A Customer, Inc.
+											<LineBreak />
+											12345 Main St.
+											<LineBreak />
+											Fooville, OH 12345-6789
+											<LineBreak />
+											USA
+										</Paragraph>
+									</TableCell>
+								</TableRow>
+
+								<TableRow>
+									<TableCell ColumnSpan="2">
+										<Paragraph Margin="0,10,0,0" Foreground="Gray">
+											<Italic>(normally the rest of the invoice would appear here)</Italic>
+										</Paragraph>
+									</TableCell>
+								</TableRow>
+							</TableRowGroup>
+						</Table>
+					</Section>
+
+				</sampleBrowser:SimpleFlowDocument>
+			</sampleBrowser:SimpleFlowDocumentReader>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

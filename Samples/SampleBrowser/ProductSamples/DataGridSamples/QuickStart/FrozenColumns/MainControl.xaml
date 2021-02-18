@@ -1,0 +1,110 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:datagrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
+	xmlns:datagrideditors="http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleCommon="clr-namespace:ActiproSoftware.ProductSamples.DataGridSamples.Common"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Style for DataGridCell -->
+		<Style x:Key="DataGridCellStyleKey" TargetType="{x:Type DataGridCell}"
+				BasedOn="{StaticResource {x:Static themes:DataGridResourceKeys.DataGridCellStyleKey}}">
+			<Style.Triggers>
+
+				<!-- Apply a different look to cells of frozen columns. This can be refactored into a DataTrigger by removing
+					 the condition that references the checkbox. -->
+				<MultiDataTrigger>
+					<MultiDataTrigger.Conditions>
+						<Condition Binding="{Binding Path=(themes:ThemeProperties.UseAlternateStyle), ElementName=datagrid}" Value="True" />
+						<Condition Binding="{Binding Path=Column.IsFrozen, RelativeSource={RelativeSource Self}}" Value="True" />
+					</MultiDataTrigger.Conditions>
+					<Setter Property="Background" Value="#08000000" />
+					<Setter Property="BorderBrush" Value="#08000000" />
+				</MultiDataTrigger>
+
+			</Style.Triggers>
+		</Style>
+
+		<!-- Style for the "pin" button -->
+		<Style x:Key="PinButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}">
+			<Setter Property="Padding" Value="1" />
+			<Setter Property="ContentTemplate" Value="{DynamicResource {x:Static themes:SharedResourceKeys.UnpinGlyphTemplateKey}}" />
+
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=Column.IsFrozen, RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}}" Value="False">
+					<Setter Property="ContentTemplate" Value="{DynamicResource {x:Static themes:SharedResourceKeys.PinGlyphTemplateKey}}" />
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Header template for columns that includes the "pin" button  -->
+		<DataTemplate x:Key="ColumnHeaderTemplate">
+			<DockPanel>
+				<Button DockPanel.Dock="Right" Style="{StaticResource PinButtonStyle}" Margin="3,0,0,0" VerticalAlignment="Center"
+						Command="{x:Static datagrid:DataGridCommands.ToggleFrozenColumn}"
+						CommandParameter="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type DataGridColumnHeader}}}" />
+				<TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" />
+			</DockPanel>
+		</DataTemplate>
+
+		<!-- Use themed ScrollBar style -->
+		<Style TargetType="ScrollBar" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ScrollBarStyleKey}}" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=datagrid, Path=FrozenColumnCount}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="4" SmallChange="1" LargeChange="2" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=datagrid, Path=(themes:ThemeProperties.UseAlternateStyle)}" DisplayName="Use alternate style for frozen columns" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The WPF DataGrid supports any number of frozen, or fixed, columns. Frozen columns are
+					located to the left of any non-frozen columns. This allows columns of interest to be fixed, while horizontally
+					scrolling the remaining non-frozen columns.
+					<LineBreak /><LineBreak />
+					This example shows how a to use the DataGridCommands.ToggleFrozenColumn command from the Actipro WPF DataGrid Contrib
+					assembly. A unique Style can be applied to frozen columns to and a "pin" button is included in the column header.
+					The pin button allows the user to toggle the frozen state of the associated column and has been intentionally
+					excluded from the last column.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<datagrid:ThemedDataGrid x:Name="datagrid" AutoGenerateColumns="False" CanUserAddRows="False"
+				CanUserDeleteRows="False" ItemsSource="{Binding Source={x:Static sampleCommon:SampleData.Values}}"
+				SelectionUnit="FullRow" GridLinesVisibility="All" FrozenColumnCount="1"
+				CellStyle="{StaticResource DataGridCellStyleKey}">
+			<datagrid:ThemedDataGrid.Columns>
+				<datagrideditors:DataGridInt32Column Binding="{Binding Integer}" Header="Integer"
+						HeaderTemplate="{StaticResource ColumnHeaderTemplate}" />
+				<DataGridTextColumn Binding="{Binding String}" Header="String"
+						HeaderTemplate="{StaticResource ColumnHeaderTemplate}" />
+				<datagrideditors:DataGridDateColumn Binding="{Binding DateTime}" Header="Date" 
+						HeaderTemplate="{StaticResource ColumnHeaderTemplate}" />
+				<DataGridCheckBoxColumn Binding="{Binding Boolean}" Header="Boolean"
+						HeaderTemplate="{StaticResource ColumnHeaderTemplate}" />
+				<DataGridTextColumn Binding="{Binding LongString}" Header="Long String" />
+			</datagrid:ThemedDataGrid.Columns>
+		</datagrid:ThemedDataGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

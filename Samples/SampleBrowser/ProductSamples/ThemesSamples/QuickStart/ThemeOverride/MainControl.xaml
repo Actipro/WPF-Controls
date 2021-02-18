@@ -1,0 +1,60 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.ThemeOverride.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+			
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Set &quot;Office Colorful Blue&quot; Theme" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.OfficeColorfulBlue}" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,10,0,0" Content="Set &quot;Office Colorful Green&quot; Theme" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.OfficeColorfulGreen}" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,10,0,0" Content="Set &quot;Office Colorful Indigo&quot; Theme" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.OfficeColorfulIndigo}" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>	
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Border that contains the text uses background, border, and foreground brush resources from the current theme.
+					<LineBreak /><LineBreak />
+					This sample overrides those brush resources for the "Office Colorful Green" and "Office Colorful Indigo" themes only,
+					while the "Office Colorful Blue" theme uses its default theme-defined brush resources.
+					Custom Styles for Button are also applied for the two themes with overrides.
+					<LineBreak /><LineBreak />
+					This technique in being able to override theme resources is very powerful since it allows you to dynamically change specific brush or other assets for various Actipro themes.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelNarrowStyle}">
+			
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}"
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
+						BorderThickness="1" CornerRadius="4" Padding="20">
+					<StackPanel>
+						<shared:PixelSnapper>
+							<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundMidLowNormalBrushKey}}">
+								This container's appearance has been customized in two themes.
+								Use the theme change button buttons in the sample options to alter the theme and see how this container's UI is affected.
+							</TextBlock>
+						</shared:PixelSnapper>
+
+						<Button Margin="0,10,0,0" Content="OK" HorizontalAlignment="Center" Style="{DynamicResource DialogButtonStyle}" />
+					</StackPanel>
+				</Border>
+			</shared:ShadowChrome>
+		
+		</StackPanel>
+		
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

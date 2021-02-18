@@ -1,0 +1,41 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridLazyLoading.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridLazyLoading"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:ParentObject x:Key="ParentObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					When setting the DataObject property, the property grid loads sub-properties
+					(which are properties under expandable properties) when they are needed. This allows objects with recursive references
+					to be used with the PropertyGrid.
+					<LineBreak /><LineBreak />
+					In this example, there are two classes: ParentObject and ChildObject.
+					An instance of ParentObject is created which exposes a ChildObject instance through a public property.
+					In turn, the ChildObject has a reference back to its parent, which is also exposed through a public property.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource ParentObject}" SummaryHeight="Auto" CanClearDataObjectOnUnload="True" />
+		
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

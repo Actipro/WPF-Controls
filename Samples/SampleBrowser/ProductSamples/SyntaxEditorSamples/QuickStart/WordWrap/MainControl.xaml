@@ -1,0 +1,29 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    >
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=WordWrapMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=AreWordWrapGlyphsVisible}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True" IsOutliningMarginVisible="False">
+		<editor:EditorDocument xml:space="preserve"><![CDATA[SyntaxEditor has complete word wrap support.  When long lines are word-wrapped, the text content that would normally be off of the visible view area is wrapped to a new a display line.  The horizontal scrollbar also disappears when in word wrap mode since it is no longer necessary.
+
+An option is available to determine whether wrapped lines display glyphs.  The glyphs make it plainly visible to the end user which lines were wrapped.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+
+</sampleBrowser:ProductItemControl>

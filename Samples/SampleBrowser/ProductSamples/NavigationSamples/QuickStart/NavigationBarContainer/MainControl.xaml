@@ -1,0 +1,37 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"	
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By setting the IsMinimizable and ArePanesVisible properties of a
+					NavigationBar to false, you can use NavigationBar as a headered container.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+			
+			<navigation:NavigationBar IsMinimizable="False" ArePanesVisible="False" IsHeaderContentVisible="True" BorderThickness="1" Width="250">
+				<navigation:NavigationPane Title="Sample Container">
+					
+					<TextBlock Margin="10" Text="This is some content within the containing pane." TextWrapping="Wrap"
+							   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.NavigationPaneHeaderForegroundNormalBrushKey}}" />
+					
+				</navigation:NavigationPane>
+			</navigation:NavigationBar>
+		
+		</StackPanel>
+	</ScrollViewer>
+		
+</sampleBrowser:ProductItemControl>

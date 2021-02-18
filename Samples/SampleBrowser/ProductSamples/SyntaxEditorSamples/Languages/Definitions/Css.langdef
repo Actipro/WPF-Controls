@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'CSS' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Css" LanguageDescription="CSS" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="CssSelector" Description="CSS Selector" DefaultStyle="#FF800000" />
+		<ClassificationType Key="CssPropertyName" Description="CSS Property Name" DefaultStyle="#FFFF0000" />
+		<ClassificationType Key="CssPropertyValue" Description="CSS Property Value" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="CssComment" Description="CSS Comment" DefaultStyle="#FF008000" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<DynamicLexer.Macros>
+				<Macro Key="Word" Pattern="[a-zA-Z_0-9\-]" />
+				<Macro Key="NonWord" Pattern="[^a-zA-Z_0-9\-]" />
+			</DynamicLexer.Macros>
+			<!-- Default state -->
+			<State Key="Default" DefaultTokenKey="SelectorText" DefaultClassificationTypeKey="CssSelector">
+				<State.ChildStates>
+					<StateRef Key="MediaQuery" />
+					<StateRef Key="Property" />
+					<StateRef Key="Comment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="SelectorText" Pattern="{Alpha}({Word})*" />
+			</State>
+			<!-- MediaQuery state -->
+			<State Key="MediaQuery" DefaultTokenKey="MediaQueryText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="MediaQueryText" ClassificationTypeKey="CssSelector" Pattern="@media [^\{]*" LookAheadPattern="{LineTerminatorWhitespace}* \{" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MediaQueryEndDelimiter" Pattern="}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="MediaQueryContent" />
+				</State.ChildStates>
+			</State>
+			<!-- MediaQueryContent state -->
+			<State Key="MediaQueryContent" DefaultTokenKey="SelectorText" DefaultClassificationTypeKey="CssSelector">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MediaQueryStartDelimiter" ClassificationTypeKey="PlainText" Pattern="{" />
+						</Scope.StartPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="MediaQuery" />
+					<StateRef Key="Property" />
+					<StateRef Key="Comment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="SelectorText" Pattern="{Alpha}({Word})*" />
+			</State>
+			<!-- Property state -->
+			<State Key="Property" DefaultTokenKey="PropertyNameText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PropertyStart" Pattern="{" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="PropertyEnd" Pattern="}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="PropertyValue" />
+					<StateRef Key="Comment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="PropertyNameWhitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="PropertyNameLineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="PropertyNameWord" ClassificationTypeKey="CssPropertyName" Pattern="{Word}+" />
+				<RegexPatternGroup TokenKey="PropertyNameText" ClassificationTypeKey="CssPropertyName" Pattern="[^:\}]" />
+			</State>
+			<!-- PropertyValue state -->
+			<State Key="PropertyValue" DefaultTokenKey="PropertyValueText" DefaultClassificationTypeKey="CssPropertyValue">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PropertyValueStart" Pattern=":" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="PropertyValueEnd" Pattern=";" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="Comment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="PropertyValueWhitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="PropertyValueLineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="PropertyValueWord" Pattern="{Word}+" />
+				<RegexPatternGroup TokenKey="PropertyValueText" Pattern="[^;\}]" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="CssComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStart" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentEnd" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="[^*]" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[/*
+	Comment
+*/
+
+a { /* Comment */ color: /* Comment */ Red; }
+
+.TestClass {
+	color: Black;
+	background-color: White;
+	text-align: left;
+}
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

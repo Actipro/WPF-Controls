@@ -1,0 +1,45 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineCodeLens.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineCodeLens"
+    >
+   
+	<!-- SyntaxEditor -->
+	<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True" IsCurrentLineHighlightingEnabled="True">
+		<editor:EditorDocument x:Name="document" xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<sample:CodeLensCSharpSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[using System;
+
+namespace Actipro.AdornmentsIntraLineCodeLens {
+
+	/// <summary>
+	/// This QuickStart shows how intra-line spaces and adornments can
+	/// be used to add Code Lens UI features right in the editor.
+	/// The sample uses a custom parser that collects all type declarations
+	/// found in the AST and an IIntraLineSpacerTag-based tagger 
+	/// that reserves space above lines with type declarations.
+	/// Then an adornment manager renders adornments within the space.
+	/// </summary>
+	public class FirstClass {}
+	
+	/// <summary>
+	/// Make changes anywhere in the editor to see the Code Lens adornments
+	/// adjust their location appropriately.
+	/// </summary>
+	public class SecondClass {}
+	
+	/// <summary>
+	/// Change the name of one of these type declarations and the Code Lens
+	/// adornment will update to reflect the new name.
+	/// </summary>
+	public interface AnInterface {}
+	
+}
+]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

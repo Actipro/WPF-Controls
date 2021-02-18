@@ -1,0 +1,111 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDataValidation.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDataValidation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="VALIDATION ERRORS">
+				<ListBox x:Name="errorListBox" Height="200">
+					<ListBox.ItemTemplate>
+						<DataTemplate DataType="ValidationError">
+							<TextBlock Margin="5,1" Text="{Binding ErrorContent}" TextWrapping="Wrap" />
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The property grid can take full advantage of the native validation framework, such as using a custom
+					ErrorTemplate, ValidationRule, and even IDataErrorInfo.
+					<LineBreak /><LineBreak />
+					This property grid contains all Int32 properties and uses text boxes for input. 
+					Therefore, the user can enter invalid data, such as a string that cannot be converted to an integer. 
+					This example shows custom error reporting and custom business logic, with restricts the integer values to be greater than or equal to 0.
+					<LineBreak /><LineBreak />
+					<Bold>Tip:</Bold> Try entering negative numbers in the "Custom Business Logic" properties and non-integer values
+					(e.g. &quot;Foo&quot;) in the "Custom Error Reporting" properties.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}"
+							CanSummaryAutoSize="True" SummaryHeight="Auto" CanClearDataObjectOnUnload="True"
+							Validation.Error="OnPropertyGridValidationError">
+			<grids:PropertyGrid.PropertyEditors>
+
+				<grids:PropertyEditor PropertyName="BusinessLogic1">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<TextBox IsReadOnly="{Binding IsReadOnly}" 
+									 Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}"
+									 >
+								<TextBox.Text>
+									<Binding Path="Value" Mode="TwoWay" NotifyOnValidationError="True">
+										<Binding.ValidationRules>
+											<sample:PositiveInt32ValidationRule />
+											<ExceptionValidationRule />
+										</Binding.ValidationRules>
+									</Binding>
+								</TextBox.Text>
+							</TextBox>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</grids:PropertyEditor>
+
+				<grids:PropertyEditor PropertyName="ErrorReporting2" ValueTemplateKind="String">
+					<grids:PropertyEditor.ValueTemplate>
+						<DataTemplate>
+							<TextBox Text="{Binding ValueAsString, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
+									 IsReadOnly="{Binding IsReadOnly}" 
+									 Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}"
+									 >
+								<Validation.ErrorTemplate>
+									<ControlTemplate>
+										<Grid>
+											<Border IsHitTestVisible="False" Background="Pink" BorderBrush="Red" BorderThickness="1" Opacity="0.1">
+												<Border.Triggers>
+													<EventTrigger RoutedEvent="Control.Loaded">
+														<BeginStoryboard>
+															<Storyboard RepeatBehavior="Forever">
+																<DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To="0.4"
+																		DecelerationRatio="0.25" AccelerationRatio="0.25" AutoReverse="True"
+																		Duration="0:0:0.75" />
+															</Storyboard>
+														</BeginStoryboard>
+													</EventTrigger>
+												</Border.Triggers>
+											</Border>
+											<AdornedElementPlaceholder />
+										</Grid>
+									</ControlTemplate>
+								</Validation.ErrorTemplate>
+							</TextBox>
+						</DataTemplate>
+					</grids:PropertyEditor.ValueTemplate>
+				</grids:PropertyEditor>
+
+			</grids:PropertyGrid.PropertyEditors>
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Lua' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Lua" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="LuaFunction" Description="Lua Function" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="LuaGlobalVariable" Description="Lua Global Variable" DefaultStyle="#FF008080" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Identifier" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default" DefaultCaseSensitivity="Sensitive">
+				<State.ChildStates>
+					<StateRef Key="SingleQuoteString" />
+					<StateRef Key="DoubleQuoteString" />
+					<StateRef Key="LongBracketString" />
+					<StateRef Key="MultiLineComment" />
+					<StateRef Key="SingleLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="ReservedWord" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						and break do else elseif end false for function if in local nil not or repeat return then true until
+						while
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Function" ClassificationTypeKey="LuaFunction" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						assert collectgarbage dofile error getfenv getmetatable ipairs load loadfile loadstring module
+						next pairs pcall print rawequal rawget rawset require select setfenv setmetatable tonumber tostring
+						type unpack xpcall coroutine.create coroutine.resume coroutine.running coroutine.status
+						coroutine.wrap coroutine.yield debug.debug debug.getfenv debug.gethook debug.getinfo debug.getlocal
+						debug.getmetatable debug.getregistry debug.getupvalue debug.setfenv debug.sethook debug.setlocal
+						debug.setmetatable debug.setupvalue debug.traceback file:close file:flush file:lines file:read
+						file:seek file:setvbuf file:write io.close io.flush io.input io.lines io.open io.output io.popen
+						io.read io.tmpfile io.type io.write math.abs math.acos math.asin math.atan2 math.atan math.ceil
+						math.cosh math.cos math.deg math.exp math.floor math.fmod math.frexp math.huge math.ldexp
+						math.log10 math.log math.max math.min math.modf math.pi math.pow math.rad math.random math.randomseed
+						math.sinh math.sin math.sqrt math.tanh math.tan os.clock os.date os.difftime os.execute os.exit
+						os.getenv os.remove os.rename os.setlocale os.time os.tmpname package.cpath package.loaded
+						package.loadlib package.path package.preload package.seeall string.byte string.char string.dump
+						string.find string.format string.gmatch string.gsub string.len string.lower string.match
+						string.rep string.reverse string.sub string.upper table.concat table.insert table.maxn table.remove
+						table.sort
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="GlobalVariable" ClassificationTypeKey="LuaGlobalVariable" Pattern="_ [A-Z]+" />
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						+ - * / % ^ # == = ~= ::= <= < >= >
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						... .. . , : ;
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- SingleQuoteString state -->
+			<State Key="SingleQuoteString" DefaultTokenKey="SingleQuoteStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleQuoteStringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleQuoteStringEndDelimiter" Pattern="['\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleQuoteStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="SingleQuoteStringText" Pattern="[^'\n]+" />
+			</State>
+			<!-- DoubleQuoteString state -->
+			<State Key="DoubleQuoteString" DefaultTokenKey="DoubleQuoteStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="DoubleQuoteStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="DoubleQuoteStringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="DoubleQuoteStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="DoubleQuoteStringText" Pattern="[^\\\&quot;\n]+" />
+			</State>
+			<!-- LongBracketString state -->
+			<State Key="LongBracketString" DefaultTokenKey="LongBracketStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringStartDelimiter" Pattern="[[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringEndDelimiter" Pattern="]]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringStartDelimiter" Pattern="[=[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringEndDelimiter" Pattern="]=]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringStartDelimiter" Pattern="[==[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringEndDelimiter" Pattern="]==]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringStartDelimiter" Pattern="[===[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="LongBracketStringEndDelimiter" Pattern="]===]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="LongBracketStringText" Pattern="[^\]]+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="--[[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="]]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="--[=[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="]=]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="--[==[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="]==]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="--[===[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="]===]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\]]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="--" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[--[[
+	Sample Lua code
+]]
+x = 10					-- global variable
+do						-- new block
+	local x = x			-- new 'x', with value 10
+	print(x)			--> 10
+	x = x + 1
+	do					-- another block
+		local x = x + 1	-- another 'x'
+		print(x)		--> 12
+	end
+	print(x)			--> 11
+end
+print(x)				--> 10  (the global one)
+print("Complete!")
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

@@ -1,0 +1,59 @@
+<ribbon:RibbonWindow x:Name="window"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	ApplicationName="Actipro Ribbon QuickStart"	
+	DocumentName="Getting Started #1"	
+    >
+	
+	<RichTextBox x:Name="editor" Margin="7" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+		<RichTextBox.Resources>
+			<!-- Make the scroll viewer in the RichTextBox use the custom scrollbar style -->
+			<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
+		</RichTextBox.Resources>
+		
+		<FlowDocument>
+			<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Overview</Paragraph>
+			<Paragraph>
+				Follow the <Bold>Getting Started</Bold> QuickStarts in sequence to learn how to easily build 
+				a fully functional application using the best practices for Ribbon design.
+				The <Bold>Getting Started</Bold> series will show you how to build a Ribbon tab just like
+				the <Bold>Home</Bold> tab in <Bold>Word</Bold>.
+			</Paragraph>
+			<Paragraph>
+				The desired end result of this series, a <Bold>Word</Bold>-like <Bold>Home</Bold> tab, 
+				is provided as the <Bold>Document Editor</Bold> demo in the sample browser.
+			</Paragraph>
+			<Paragraph>
+				All of the source code for the <Bold>Getting Started</Bold> QuickStarts is included in the 
+				sample browser under the <Bold>/ProductSamples/RibbonSamples/QuickStart/GettingStarted</Bold> folder.
+				For instance, this window's source is contained in <Bold>Step01Window.xaml</Bold>.
+			</Paragraph>
+			<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Create a RibbonWindow</Paragraph>
+			<Paragraph>
+				The first step towards building a window with a ribbon on it is to create your actual <Bold>Window</Bold>.
+				Actipro provides the <Bold>RibbonWindow</Bold> base class that includes a lot of custom draw functionality
+				to give your window an appearance similar to the Office windows.
+			</Paragraph>
+			<Paragraph>
+				Note that we have not yet added a <Bold>Ribbon</Bold> control to this window so the title bar draws
+				like a normal window but with the custom style.
+			</Paragraph>
+			<Paragraph>
+				The <Bold>ApplicationName</Bold> property of the <Bold>RibbonWindow</Bold> can be set to display the name
+				of your application.  When you have a document open in the application, set its name to the <Bold>DocumentName</Bold> property.
+				The application and document names draw in different colors when the window is active, making it easy to distinguish
+				between the two.
+			</Paragraph>
+			<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">What's Next</Paragraph>
+			<Paragraph>
+				In the next <Bold>Getting Started</Bold> step, we will add a <Bold>Ribbon</Bold> control.
+			</Paragraph>
+		</FlowDocument>								
+	</RichTextBox>
+		
+</ribbon:RibbonWindow>

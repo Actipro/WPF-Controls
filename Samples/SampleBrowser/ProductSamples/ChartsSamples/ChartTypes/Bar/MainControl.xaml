@@ -1,0 +1,165 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.ChartTypes.Bar.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<x:Array x:Key="PrimaryDataGenerator" Type="sampleData:TimeAggregatedDataGenerator">
+			<sampleData:TimeAggregatedDataGenerator Description="Random trends" />
+			<sampleData:TimeAggregatedDataGenerator Description="Upward trend" Trend="Upward" />
+			<sampleData:TimeAggregatedDataGenerator Description="Downward trend" Trend="Downward" />
+		</x:Array>
+
+		<x:Array x:Key="SecondaryDataGenerator" Type="sampleData:TimeAggregatedDataGenerator">
+			<sampleData:TimeAggregatedDataGenerator Description="Random trends" />
+			<sampleData:TimeAggregatedDataGenerator Description="Upward trend" Trend="Upward" />
+			<sampleData:TimeAggregatedDataGenerator Description="Downward trend" Trend="Downward" />
+		</x:Array>
+
+		<Style TargetType="charts:XYChart">
+			<Setter Property="Width" Value="300" />
+			<Setter Property="Height" Value="175" />
+			<Setter Property="PaddingPercentage" Value="0" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series1, Path=ItemsSource}" DisplayName="Series 1 generated data"
+										 StandardValues="{StaticResource PrimaryDataGenerator}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox DisplayMemberPath="Description" ItemsSource="{StaticResource PrimaryDataGenerator}" SelectedItem="{Binding Value}" SelectedIndex="1"
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding Mode=OneWay, ElementName=series1, Path=ItemsSource}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Regenerate Data" Command="{Binding Value.GenerateCommand}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series2, Path=ItemsSource}" DisplayName="Series 2 generated data"
+										 StandardValues="{StaticResource PrimaryDataGenerator}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox DisplayMemberPath="Description" ItemsSource="{StaticResource SecondaryDataGenerator}" SelectedItem="{Binding Value}" SelectedIndex="0"
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding Mode=OneWay, ElementName=series2, Path=ItemsSource}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Regenerate Data" Command="{Binding Value.GenerateCommand}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=xAxis, Path=BarSpacing}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarSpacings}" SelectedItem="{Binding Value}" 
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=xAxis, Path=BarGroupSpacing}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarGroupSpacings}" SelectedItem="{Binding Value}" 
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A bar chart displays rectangular bars with lengths proportional to the values they represent.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<StackPanel>
+					<TextBlock Margin="0,0,0,7" TextAlignment="Center" Style="{StaticResource SampleFigureHeadingTextBlockStyle}">Actual vs. Projected Sales</TextBlock>
+					<charts:XYChart Width="450" Height="300" GridLineMajorVisibility="Y" GridStripeVisibility="Y" IsLegendVisible="True" PaddingPercentage="0.05, 0.22, 0.05, 0.05">
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis x:Name="xAxis" />
+						</charts:XYChart.XAxes>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" AreMajorTicksVisible="True" AreMinorTicksVisible="True" />
+						</charts:XYChart.YAxes>
+						<charts:BarSeries x:Name="series1" XPath="Date.Year" YPath="Amount" Description="Actual" />
+						<charts:BarSeries x:Name="series2" XPath="Date.Year" YPath="Amount" Description="Projected" />
+					</charts:XYChart>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Range visible; Roman palette">
+					<charts:XYChart HorizontalAlignment="Left">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette Kind="Roman" />
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator DataPointCount="8" StartAmount="20" StepRange="10" TimePeriod="Month" Trend="Upward" />
+						</charts:XYChart.DataContext>
+						<charts:XYChart.XAxes>
+							<charts:XYDateTimeAxis LabelFormat="{}{0:MMM}" SlotIntervalUnit="Month" />
+						</charts:XYChart.XAxes>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" Maximum="60">
+								<charts:XYDoubleAxis.Ranges>
+									<charts:XYRange Minimum="25" Maximum="40" />
+								</charts:XYDoubleAxis.Ranges>
+							</charts:XYDoubleAxis>
+						</charts:XYChart.YAxes>
+						<charts:BarSeries ItemsSource="{Binding}" XPath="Date" YPath="Amount" />
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Vertical orientation; axis visible">
+					<charts:XYChart IsAxisBaselineVisible="True">
+						<charts:XYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator DataPointCount="5" StartAmount="-5" StepRange="10" Trend="Upward" />
+						</charts:XYChart.DataContext>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis />
+						</charts:XYChart.XAxes>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis />
+						</charts:XYChart.YAxes>
+						<charts:BarSeries ItemsSource="{Binding}" XPath="Amount" YPath="Date.Year" Orientation="Vertical" />
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

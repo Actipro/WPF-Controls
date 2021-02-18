@@ -1,0 +1,201 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:ribbonSamplesDemoDocumentEditor="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Ribbon's ColorPickerGallery control provides an implementation of an 
+					Office-like color picker that generally appears on popups.
+					Since it is implemented as a gallery, it supports some really neat features such as categorization of colors,
+					optional filtering (showing/hiding categories of colors), screen tips for colors, advanced selection tracking, and live preview.
+					Making the color button larger or smaller is a simple matter of altering the gallery's item template.
+					<LineBreak /><LineBreak />
+					The really neat optional feature that ColorPickerGallery provides is the auto-generation of lighter and darker shades of 
+					base colors within a category.
+					The generated shades are grouped together in a vertical stack under the related base color.
+					You choose which colors should have shades added by assigning the base colors 
+					a ColorPickerGallery.LayoutBehavior attached property value of Shaded.
+					ColorPickerGallery uses the exact same algorithm Office does when generating shades so you can be sure they will look good.
+					<LineBreak /><LineBreak />
+					By default, each color will have a small margin around it and will appear standalone in the gallery.
+					However sometimes as in the case of generated shade colors, you may wish to group several colors together.
+					What if you don't wish to use auto-generation of shades but still wish to group some colors together?
+					No problem, just use the ColorPickerGallery.LayoutBehavior attached property with
+					GroupStart, GroupInner, and GroupEnd values to properly lay out colors however you like.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<ribbonSamplesDemoDocumentEditor:RichTextBoxExtended Grid.Row="1" BorderThickness="0" AcceptsReturn="True">
+						<FlowDocument FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}">
+							<Paragraph>
+								Select some of this document's text and use the galleries above to change the foreground color of the selected text.
+							</Paragraph>
+						</FlowDocument>
+					</ribbonSamplesDemoDocumentEditor:RichTextBoxExtended>
+				
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon">
+						<!-- 
+							Use pre-defined WordApplicationMenu type in the sample project so that we don't have redundant code 
+							in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />	
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home">
+								<ribbon:Group Label="ColorPickerGallery Samples">
+									<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ColorPicker32.png" Label="Word-Like Font Color Picker">
+										<StackPanel>
+											<ribbon:ColorPickerGallery InitialColumnCount="10" HorizontalAlignment="Center" Command="ribbonSamplesDemoDocumentEditor:ApplicationCommands.ApplyForeground" IsPreviewEnabled="True">
+												<ribbon:ColorPickerGallery.CategorizedItemsSource>
+													<x:Array Type="{x:Type media:SolidColorBrush}">
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FFFFFF" ribbon:ScreenTipService.ScreenTipHeader="White" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#000000" ribbon:ScreenTipService.ScreenTipHeader="Black" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#EEECE1" ribbon:ScreenTipService.ScreenTipHeader="Tan" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#1F497D" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4F81BD" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#C0504D" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#9BBB59" ribbon:ScreenTipService.ScreenTipHeader="Olive Green" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#8064A2" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4BACC6" ribbon:ScreenTipService.ScreenTipHeader="Aqua" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#F79646" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#C00000" ribbon:ScreenTipService.ScreenTipHeader="Dark Red" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FF0000" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FFC000" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FFFF00" ribbon:ScreenTipService.ScreenTipHeader="Yellow" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#92D050" ribbon:ScreenTipService.ScreenTipHeader="Light Green" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#00B050" ribbon:ScreenTipService.ScreenTipHeader="Green" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#00B0F0" ribbon:ScreenTipService.ScreenTipHeader="Light Blue" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#0070C0" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#002060" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+														<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#7030A0" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+													</x:Array>
+												</ribbon:ColorPickerGallery.CategorizedItemsSource>
+											</ribbon:ColorPickerGallery>
+											<ribbon:Separator />
+											<ribbon:Menu>
+												<ribbon:Button Label="More Colors..." />
+											</ribbon:Menu>
+										</StackPanel>
+									</ribbon:PopupButton>
+									<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ColorPicker32.png" Label="Larger Buttons w/Filtering" AutoDisableWhenPopupContentIsDisabled="False">
+										<ribbon:ColorPickerGallery InitialColumnCount="10" HorizontalAlignment="Center" CanFilter="True" Command="ribbonSamplesDemoDocumentEditor:ApplicationCommands.ApplyForeground" IsPreviewEnabled="True">
+											<ribbon:ColorPickerGallery.ItemTemplate>
+												<DataTemplate>
+													<Rectangle Fill="{Binding BindsDirectlyToSource=True}" Width="20" Height="20" />
+												</DataTemplate>										
+											</ribbon:ColorPickerGallery.ItemTemplate>
+											<ribbon:ColorPickerGallery.CategorizedItemsSource>
+												<x:Array Type="{x:Type media:SolidColorBrush}">
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FFFFFF" ribbon:ScreenTipService.ScreenTipHeader="White" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#000000" ribbon:ScreenTipService.ScreenTipHeader="Black" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#EEECE1" ribbon:ScreenTipService.ScreenTipHeader="Tan" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#1F497D" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4F81BD" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#C0504D" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#9BBB59" ribbon:ScreenTipService.ScreenTipHeader="Olive Green" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#8064A2" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#4BACC6" ribbon:ScreenTipService.ScreenTipHeader="Aqua" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Theme Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#F79646" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#C00000" ribbon:ScreenTipService.ScreenTipHeader="Dark Red" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FF0000" ribbon:ScreenTipService.ScreenTipHeader="Red" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FFC000" ribbon:ScreenTipService.ScreenTipHeader="Orange" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#FFFF00" ribbon:ScreenTipService.ScreenTipHeader="Yellow" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#92D050" ribbon:ScreenTipService.ScreenTipHeader="Light Green" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#00B050" ribbon:ScreenTipService.ScreenTipHeader="Green" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#00B0F0" ribbon:ScreenTipService.ScreenTipHeader="Light Blue" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#0070C0" ribbon:ScreenTipService.ScreenTipHeader="Blue" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#002060" ribbon:ScreenTipService.ScreenTipHeader="Dark Blue" />
+													<media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" ribbon:ColorPickerGallery.LayoutBehavior="Shaded" Color="#7030A0" ribbon:ScreenTipService.ScreenTipHeader="Purple" />
+												</x:Array>
+											</ribbon:ColorPickerGallery.CategorizedItemsSource>
+										</ribbon:ColorPickerGallery>
+									</ribbon:PopupButton>
+									<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ColorPicker32.png" Label="Custom Layout" AutoDisableWhenPopupContentIsDisabled="False">
+										<ribbon:ColorPickerGallery InitialColumnCount="3" HorizontalAlignment="Center" Command="ribbonSamplesDemoDocumentEditor:ApplicationCommands.ApplyForeground" IsPreviewEnabled="True">
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupStart" Color="#FFF600" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupStart" Color="#00FFF6" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupStart" Color="#FF00CC" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupInner" Color="#FFBA00" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupInner" Color="#00D2FF" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupInner" Color="#FC00FF" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupEnd" Color="#FF5A00" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupEnd" Color="#00A2FF" />
+											<media:SolidColorBrush ribbon:ColorPickerGallery.LayoutBehavior="GroupEnd" Color="#C000FF" />
+											<media:SolidColorBrush Color="#FF0000" />
+											<media:SolidColorBrush Color="#0000FF" />
+											<media:SolidColorBrush Color="#8000FF" />
+										</ribbon:ColorPickerGallery>
+									</ribbon:PopupButton>
+								</ribbon:Group>
+								<ribbon:Group Label="PopupGallery Sample">
+									<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ColorPicker32.png" Label="PopupGallery-Based Color Picker" AutoDisableWhenPopupContentIsDisabled="False">
+										<ribbon:PopupGallery InitialColumnCount="5" VerticalScrollBarVisibility="Hidden" Command="ribbonSamplesDemoDocumentEditor:ApplicationCommands.ApplyForeground" IsPreviewEnabled="True">
+											<ribbon:PopupGallery.CommandParameter>
+												<ribbon:BrushValueCommandParameter />
+											</ribbon:PopupGallery.CommandParameter>
+											<ribbon:PopupGallery.ItemTemplate>
+												<DataTemplate>
+													<Border BorderThickness="1" BorderBrush="Silver" Background="{Binding BindsDirectlyToSource=True}" Width="24" Height="24" />
+												</DataTemplate>
+											</ribbon:PopupGallery.ItemTemplate>
+								
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Yellow" Color="{x:Static media:Colors.Yellow}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Lime" Color="{x:Static media:Colors.Lime}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Teal" Color="{x:Static media:Colors.Teal}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Magenta" Color="{x:Static media:Colors.Magenta}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Blue" Color="{x:Static media:Colors.Blue}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Red" Color="{x:Static media:Colors.Red}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Navy" Color="{x:Static media:Colors.Navy}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Cyan" Color="{x:Static media:Colors.Cyan}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Green" Color="{x:Static media:Colors.Green}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Purple" Color="{x:Static media:Colors.Purple}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Maroon" Color="{x:Static media:Colors.Maroon}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Olive" Color="{x:Static media:Colors.Olive}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Gray" Color="{x:Static media:Colors.Gray}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Silver" Color="{x:Static media:Colors.Silver}" />
+											<media:SolidColorBrush ribbon:ScreenTipService.ScreenTipHeader="Black" Color="{x:Static media:Colors.Black}" />
+										</ribbon:PopupGallery>
+									</ribbon:PopupButton>
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+				
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

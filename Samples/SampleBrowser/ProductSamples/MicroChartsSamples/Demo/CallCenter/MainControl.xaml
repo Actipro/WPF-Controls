@@ -1,0 +1,209 @@
+﻿<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="700"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style TargetType="microcharts:MicroBulletGraph">
+			<Setter Property="Height" Value="20" />
+			<Setter Property="Width" Value="100" />
+			<Setter Property="Margin" Value="20,5" />
+		</Style>
+
+		<Style x:Key="TitleTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+			<Setter Property="FontWeight" Value="SemiBold" />
+			<Setter Property="TextAlignment" Value="Center" />
+		</Style>
+
+		<Style x:Key="DescriptionTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" />
+			<Setter Property="HorizontalAlignment" Value="Right" />
+			<Setter Property="TextAlignment" Value="Right" />
+			<Setter Property="TextWrapping" Value="Wrap" />
+			<Setter Property="Width" Value="120" />
+		</Style>
+
+		<Style x:Key="ValueTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+			<Setter Property="TextAlignment" Value="Center" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Bullet graphs are great for quickly seeing how a value compares with goals and expectations.
+					In this demo we show how bullet graphs make it simple to create easy-to-read reports.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Grid.ColumnSpan="2" TextAlignment="Center" Style="{StaticResource SampleFigureHeadingTextBlockStyle}">Call Center Metrics for Quarter 1</TextBlock>
+
+					<Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,20" Padding="20" CornerRadius="5"
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+						<StackPanel>
+							<TextBlock Style="{StaticResource TitleTextBlockStyle}">Overall Call Quality (Average)</TextBlock>
+
+							<microcharts:MicroBulletGraph Height="40" Width="200" Maximum="100" 
+														  FeaturedMeasureValue="80" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" 
+														  LegendStringFormat="Rating: {0} (poor: {3}-{5}, satisfactory: {5}-{6}, excellent: {6}-{7})">
+								<microcharts:MicroBulletGraph.QualitativeRanges>
+									<microcharts:MicroQualitativeRange Value="30" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidHighBrushKey}}" />
+									<microcharts:MicroQualitativeRange Value="70" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteYellowBackgroundMidHighBrushKey}}" />
+									<microcharts:MicroQualitativeRange Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundMidHighBrushKey}}" />
+								</microcharts:MicroBulletGraph.QualitativeRanges>
+							</microcharts:MicroBulletGraph>
+
+							<TextBlock Style="{StaticResource ValueTextBlockStyle}">80% quality</TextBlock>
+						</StackPanel>
+					</Border>
+
+					<Border Grid.Row="2" Grid.Column="0" Padding="20" CornerRadius="5"
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+
+						<Grid >
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+
+							<StackPanel Grid.Row="0" Margin="0,5,0,0">
+								<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Call Answer Speed" TextAlignment="Right" />
+								<TextBlock Style="{StaticResource DescriptionTextBlockStyle}" Text="% of calls answered within 15 seconds" />
+							</StackPanel>
+
+							<StackPanel Grid.Row="2" Margin="0,5,0,0">
+								<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Average Handle Time" TextAlignment="Right" />
+								<TextBlock Style="{StaticResource DescriptionTextBlockStyle}" Text="Total time spent on call and administration"/>
+							</StackPanel>
+
+							<StackPanel Grid.Row="4" Margin="0,5,0,0">
+								<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Abandon Rate" TextAlignment="Right" />
+								<TextBlock Style="{StaticResource DescriptionTextBlockStyle}" Text="% of dropped calls"/>
+							</StackPanel>
+
+							<StackPanel Grid.Row="6" Margin="0,5,0,0">
+								<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Conversion Rate" TextAlignment="Right" />
+								<TextBlock Style="{StaticResource DescriptionTextBlockStyle}" Text="# of calls resolved satisfactorily"/>
+							</StackPanel>
+
+							<StackPanel Grid.Column="1">
+								<microcharts:MicroBulletGraph FeaturedMeasureValue="72" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+															  ComparativeMeasureValue="60" Maximum="100"
+															  ComparativeMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" LegendStringFormat="Call answer speed: {0:N0}%   Last quarter mark: {2:N0}%">
+									<microcharts:MicroBulletGraph.QualitativeRanges>
+										<microcharts:MicroQualitativeRange Value="33" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundMidHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="66" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundMidBrushKey}}" />
+										<microcharts:MicroQualitativeRange Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundMidLowBrushKey}}" />
+									</microcharts:MicroBulletGraph.QualitativeRanges>
+								</microcharts:MicroBulletGraph>
+								<TextBlock Style="{StaticResource ValueTextBlockStyle}">70% of calls</TextBlock>
+							</StackPanel>
+
+							<StackPanel Grid.Column="1" Grid.Row="2">
+								<microcharts:MicroBulletGraph FeaturedMeasureValue="100" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+														ComparativeMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" ComparativeMeasureValue="150" 
+														  Minimum="0" Maximum="360"
+														  LegendStringFormat="Average handle time: {0} seconds   Last quarter mark: {2} seconds">
+									<microcharts:MicroBulletGraph.QualitativeRanges>
+										<microcharts:MicroQualitativeRange Value="120" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundMidHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="280" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundMidBrushKey}}" />
+										<microcharts:MicroQualitativeRange Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundMidLowBrushKey}}" />
+									</microcharts:MicroBulletGraph.QualitativeRanges>
+								</microcharts:MicroBulletGraph>
+								<TextBlock Style="{StaticResource ValueTextBlockStyle}">1:40 minutes</TextBlock>
+							</StackPanel>
+
+							<StackPanel Grid.Column="1" Grid.Row="4">
+								<microcharts:MicroBulletGraph Maximum="10" Minimum="0" 
+															  FeaturedMeasureValue="6" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidLowBrushKey}}" 
+															  ProjectedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidHighBrushKey}}" ProjectedMeasureValue="8" 
+															  LegendStringFormat="Abandon rate: {0:N0}%   Next year projection: {1:N0}%">
+									<microcharts:MicroBulletGraph.QualitativeRanges>
+										<microcharts:MicroQualitativeRange Value="4" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="7" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHigherBrushKey}}" />
+									</microcharts:MicroBulletGraph.QualitativeRanges>
+								</microcharts:MicroBulletGraph>
+								<TextBlock Style="{StaticResource ValueTextBlockStyle}">6% of calls</TextBlock>
+							</StackPanel>
+
+							<StackPanel Grid.Column="1" Grid.Row="6">
+								<microcharts:MicroBulletGraph Maximum="1034" Minimum="100" 
+															  FeaturedMeasureValue="912" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundMidHighBrushKey}}" 
+															  LegendStringFormat="Conversion rate: {0} calls   Next year projection: {1} calls" 
+															  ProjectedMeasureValue="980" ProjectedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundMidHighBrushKey}}">
+									<microcharts:MicroBulletGraph.QualitativeRanges>
+										<microcharts:MicroQualitativeRange Value="250" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="450" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHigherBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="690" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Value="850" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+										<microcharts:MicroQualitativeRange Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+									</microcharts:MicroBulletGraph.QualitativeRanges>
+								</microcharts:MicroBulletGraph>
+								<TextBlock Style="{StaticResource ValueTextBlockStyle}">912/1034 calls</TextBlock>
+							</StackPanel>
+						</Grid>
+					</Border>
+
+					<Border Grid.Row="2" Grid.Column="1" Margin="20,0,0,0" Padding="20" CornerRadius="5"
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+						<StackPanel>
+							<TextBlock Style="{StaticResource TitleTextBlockStyle}">Cost Per Contact</TextBlock>
+							<microcharts:MicroBulletGraph Orientation="Vertical" Height="160" Width="30" Maximum="300" 
+														  FeaturedMeasureValue="140" FeaturedMeasureBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}">
+								<microcharts:MicroBulletGraph.QualitativeRanges>
+									<microcharts:MicroQualitativeRange Value="200" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+									<microcharts:MicroQualitativeRange Value="300" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidHighBrushKey}}" />
+								</microcharts:MicroBulletGraph.QualitativeRanges>
+							</microcharts:MicroBulletGraph>
+							<TextBlock Style="{StaticResource ValueTextBlockStyle}">$1.40 per call</TextBlock>
+						</StackPanel>
+					</Border>
+				</Grid>
+
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

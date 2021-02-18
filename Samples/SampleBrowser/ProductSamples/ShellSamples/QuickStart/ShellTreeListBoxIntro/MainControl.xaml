@@ -1,0 +1,56 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellTreeListBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=IsRootItemVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=RootSpecialFolderKind}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=RootShellFolderParsingName}" DisplayName="Root folder parsing name" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=CanIncludeFiles}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=CanIncludeLinks}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=IsRenamingEnabled}" DisplayName="Can rename objects" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=IsDefaultItemContextMenuEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=IsNewFolderContextMenuItemAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=(ScrollViewer.HorizontalScrollBarVisibility)}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=SelectionMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=treeListBox, Path=SelectedItem.FileSystemPath}" DisplayName="Selected object file system path" IsValueReadOnly="True" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=treeListBox, Path=SelectedItem.EditingName}" DisplayName="Selected object editing name" IsValueReadOnly="True" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=treeListBox, Path=SelectedItem.ParsingName}" DisplayName="Selected object parsing name" IsValueReadOnly="True" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
+					<LineBreak /><LineBreak />
+					The ShellTreeListBox control provides an easy way to navigate through Windows Shell or custom folder hierarchies,
+					and it's implemented in a pure WPF user interface.
+					<LineBreak /><LineBreak />
+					The root folder can optionally be displayed.
+					It can be set one of three ways: via a special folder kind enumeration value, via a string-based path, or directly to an IShellObject model instance.
+					<LineBreak /><LineBreak />
+					Top-level options are available for including files or links.
+					Custom filtering can occur at a model or view-model level as well, and custom shell objects can even be injected into the tree.
+					<LineBreak /><LineBreak />
+					Single or multiple selection modes are available.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+	
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<shell:ShellTreeListBox x:Name="treeListBox" RootSpecialFolderKind="Default" MaxWidth="{StaticResource SampleThinMaxWidth}" />
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

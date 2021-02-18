@@ -1,0 +1,189 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.Pie.NestedCharts.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser" 
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator1" DataPointCount="3" Trend="Downward" StartAmount="100" StepRange="35" PresetTitles="Product A;Product B;Product C" PartitionMaxCount="8" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator2" DataPointCount="7" Trend="Downward" StartAmount="100" StepRange="25" PresetTitles="West;Northeast;Southwest;Midwest;Southeast" />
+
+		<Style x:Key="GalleryTextStyle" TargetType="TextBlock">
+			<Setter Property="FontStyle" Value="Italic"/>
+			<Setter Property="Margin" Value="7,0,0,0" />
+			<Setter Property="VerticalAlignment"  Value="Center" />
+			<Setter Property="TextWrapping"  Value="Wrap" />
+		</Style>
+
+		<Style TargetType="charts:PieChart">
+			<Setter Property="Width" Value="350" />
+			<Setter Property="Height" Value="300" />
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="HorizontalAlignment" Value="Left" />
+		</Style>
+
+		<Style TargetType="charts:DonutChart">
+			<Setter Property="Width" Value="350" />
+			<Setter Property="Height" Value="300" />
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="HorizontalAlignment" Value="Left" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					PieCharts can display multiple series as cocentric rings.
+					It also can display child data as an inner or outer ring.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Two series; Custom palettes">
+					<charts:PieChart>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette>
+										<Color>#0B486B</Color>
+										<Color>#3B8686</Color>
+										<Color>#48a4a4</Color>
+										<Color>#79BD9A</Color>
+										<Color>#A8DBA8</Color>
+										<Color>#CFF09E</Color>
+									</charts:Palette>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator2}">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette>
+										<Color>#3B1C4A</Color>
+										<Color>#6B3162</Color>
+										<Color>#B0587B</Color>
+										<Color>#d66d97</Color>
+										<Color>#F6B076</Color>
+										<Color>#F8E192</Color>
+									</charts:Palette>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Donut chart with two series; custom palettes">
+					<charts:DonutChart HoleRadiusPercentage="0.6">
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette>
+										<Color>#0B486B</Color>
+										<Color>#3B8686</Color>
+										<Color>#48a4a4</Color>
+										<Color>#79BD9A</Color>
+										<Color>#A8DBA8</Color>
+										<Color>#CFF09E</Color>
+									</charts:Palette>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator2}">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette>
+										<Color>#3B1C4A</Color>
+										<Color>#6B3162</Color>
+										<Color>#B0587B</Color>
+										<Color>#d66d97</Color>
+										<Color>#F6B076</Color>
+										<Color>#F8E192</Color>
+									</charts:Palette>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:DonutChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Two series with different lengths; Fishbowl and Beach palettes">
+					<charts:PieChart>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}" Length="0.25">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette Kind="Fishbowl"/>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator2}" Length="1.0">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette Kind="Beach"/>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Child data on the outside">
+					<charts:PieChart>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}"
+											ChildrenPath="Partitions" ChildSliceValuePath="Amount"
+											ChildrenLength="0.25" Length="0.75">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette Kind="Default"/>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Child data on the inside">
+					<charts:PieChart>
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}"
+											ChildrenPath="Partitions" ChildSliceValuePath="Amount"
+											ChildrenLength="0.75" Length="0.25"
+											ChildrenPosition="Inside">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette Kind="Default"/>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Donut chart; child data on the outside">
+					<charts:DonutChart HoleRadiusPercentage="0.4">
+						<charts:PieSeries SliceValuePath="Amount" ItemsSource="{StaticResource DataGenerator1}"
+											ChildrenPath="Partitions" ChildSliceValuePath="Amount"
+											ChildrenLength="0.25" Length="0.75">
+							<charts:PieSeries.SliceStyleSelector>
+								<charts:PieSlicePaletteStyleSelector>
+									<charts:Palette Kind="Default"/>
+								</charts:PieSlicePaletteStyleSelector>
+							</charts:PieSeries.SliceStyleSelector>
+						</charts:PieSeries>
+					</charts:DonutChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

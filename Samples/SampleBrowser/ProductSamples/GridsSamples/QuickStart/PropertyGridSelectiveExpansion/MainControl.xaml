@@ -1,0 +1,51 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSelectiveExpansion.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSelectiveExpansion"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how a customized data factory can programmatically initialize certain properties to be expanded.
+					Properties are collapsed by default, but the data factory used by the property grid on the left ensures the Address property is expanded.
+					<LineBreak /><LineBreak />
+					There also is an ArePropertiesAutoExpanded property that can be set to true to auto-expand all properties in the property grid.
+					Use of this feature is demonstrated in the property grid on the right.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" MaxWidth="500" />
+			<ColumnDefinition Width="20" />
+			<ColumnDefinition Width="*" MaxWidth="500" />
+		</Grid.ColumnDefinitions>
+		
+		<TextBlock Margin="0,0,0,3" Text="Address property expanded:" />
+
+		<grids:PropertyGrid Grid.Row="1" DataObject="{Binding}" IsCategorized="False" IsSummaryVisible="False" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.DataFactory>
+				<sample:CustomDataFactory />
+			</grids:PropertyGrid.DataFactory>
+		</grids:PropertyGrid>
+		
+		<TextBlock Grid.Column="2" Margin="0,0,0,3" Text="All properties expanded:" />
+
+		<grids:PropertyGrid Grid.Row="1" Grid.Column="2" DataObject="{Binding}" IsCategorized="False" IsSummaryVisible="False" ArePropertiesAutoExpanded="True" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

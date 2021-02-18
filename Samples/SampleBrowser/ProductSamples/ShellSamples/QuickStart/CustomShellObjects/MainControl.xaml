@@ -1,0 +1,55 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.CustomShellObjects.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ShellSamples.QuickStart.CustomShellObjects"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
+					<LineBreak /><LineBreak />
+					This QuickStart shows how a custom shell service can be created to alter the default shell service's results.
+					In this sample, we've removed all special folders from the base shell service's results
+					and inserted a set of custom 'Cloud Storage' folders.
+					<LineBreak /><LineBreak />
+					While this sample's custom shell service inherits our WindowsShellService class, you could make a shell service class
+					that always returns completely custom results.
+					A usage scenario for this would be when wishing to use ShellTreeListBox for a FTP client, where the remote folders would be 
+					represented as custom shell objects.
+					<LineBreak /><LineBreak />
+					The sample also uses a special item adapter that injects a context menu for the custom shell objects.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<DockPanel Grid.Row="0" Margin="0,0,0,3" MaxWidth="{StaticResource SampleThinMaxWidth}">
+			<Button FocusManager.IsFocusScope="True" DockPanel.Dock="Left" Content="Move Up" Command="{Binding ElementName=treeListBox, Path=MoveUpCommand}" />
+			<TextBox x:Name="pathTextBox" Margin="6,0,0,0" Text="{Binding ElementName=treeListBox, Path=SelectedShellObjectEditingName}" KeyDown="OnPathTextBoxKeyDown" />
+		</DockPanel>
+
+		<shell:ShellTreeListBox x:Name="treeListBox" Grid.Row="1" MaxWidth="{StaticResource SampleThinMaxWidth}" RootSpecialFolderKind="Computer">
+			<shell:ShellTreeListBox.DefaultShellService>
+				<sample:CustomShellService />
+			</shell:ShellTreeListBox.DefaultShellService>
+			<shell:ShellTreeListBox.ItemAdapter>
+				<sample:CustomShellObjectItemAdapter />
+			</shell:ShellTreeListBox.ItemAdapter>
+		</shell:ShellTreeListBox>
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

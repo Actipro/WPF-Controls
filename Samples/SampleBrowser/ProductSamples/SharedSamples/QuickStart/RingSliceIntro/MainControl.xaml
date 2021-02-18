@@ -1,0 +1,112 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=controllableSlice, Path=StartAngle}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="360" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=controllableSlice, Path=EndAngle}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="360" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=controllableSlice, Path=Radius}" DisplayName="Outer radius">
+						<gridseditors:DoublePropertyEditor Minimum="4" Maximum="100" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=controllableSlice, Path=StrokeThickness}" DisplayName="Thickness">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="60" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=controllableSlice, Path=IsRenderedWhenFullCircle}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The RingSlice control renders a portion (or the entire circle) of a ring shape.
+					Its start/end angles, radius, thickness, and other stroke properties can be set.
+					<LineBreak /><LineBreak />
+					Ring slice controls can be combined in many interesting ways within UI,
+					including being used to represent the 'track' or value of a RadialSlider,
+					used to create segmented progress indicators, etc.
+					<LineBreak /><LineBreak />
+					Use the linear sliders in the first example to modify the primary properties of a RingSlice control instance.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<shared:RingSlice x:Name="controllableSlice" Stroke="#e73232" Radius="60" />
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Radial progress indicator">
+					<Grid>
+						<shared:RingSlice Stroke="#6ef046" Radius="60" StartAngle="2" EndAngle="88" />
+						<shared:RingSlice Stroke="#6ef046" Radius="60" StartAngle="92" EndAngle="178" />
+						<shared:RingSlice Stroke="#d0d0d0" Radius="60" StartAngle="182" EndAngle="268" />
+						<shared:RingSlice Stroke="#d0d0d0" Radius="60" StartAngle="272" EndAngle="358" />
+						<TextBlock Foreground="#606060" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="50%" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Radial graph">
+					<Grid>
+						<shared:RingSlice Fill="#00214d" Stroke="#000000" StrokeThickness="2" Radius="60" />
+						<shared:RingSlice Fill="#202020" Stroke="#000000" StrokeThickness="2" Radius="32" />
+						<shared:RingSlice Stroke="#006cff" StrokeThickness="16" Radius="53" EndAngle="160" StrokeEndLineCap="Triangle" />
+						<TextBlock Foreground="#006cff" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="133" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Full ring">
+					<shared:RingSlice Stroke="#7d6ce2" Radius="60" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Customizable start/end caps">
+					<shared:RingSlice Stroke="#77b4c3" Radius="60" EndAngle="270" StrokeStartLineCap="Round" StrokeEndLineCap="Triangle" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Dashed lines (variant 1)">
+					<shared:RingSlice Stroke="#9e5aac" StrokeThickness="4" Radius="60" EndAngle="270" StrokeDashArray="5 0.5" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Dashed lines (variant 2)">
+					<shared:RingSlice Stroke="#9e5aac" StrokeThickness="6" Radius="60" EndAngle="270" StrokeDashArray="3" StrokeDashCap="Round" StrokeDashOffset="-1" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Dashed lines (variant 3)">
+					<shared:RingSlice Stroke="#9e5aac" StrokeThickness="4" Radius="60" EndAngle="270" StrokeDashArray="1" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Dashed lines (variant 4)">
+					<shared:RingSlice Stroke="#9e5aac" StrokeThickness="4" Radius="60" EndAngle="270" StrokeDashArray="0.5" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Pie slice">
+					<Grid>
+						<shared:RingSlice Stroke="#fffc20" StrokeThickness="60" Radius="60" />
+						<shared:RingSlice Stroke="#ffae00" StrokeThickness="60" Radius="60" StartAngle="75" EndAngle="120" />
+						<shared:RingSlice Stroke="#f0e800" StrokeThickness="2" Radius="60" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

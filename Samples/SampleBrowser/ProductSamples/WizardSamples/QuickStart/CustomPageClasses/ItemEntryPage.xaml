@@ -1,0 +1,35 @@
+<wizard:WizardPage x:Class="ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses.ItemEntryPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"				   
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses"
+	Caption="Item Details"
+	Description="Enter the name and description of the item."
+    >
+	<wizard:WizardPage.ContentTemplate>
+		<DataTemplate>
+			
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				
+				<StackPanel Grid.ColumnSpan="2" Margin="0,0,0,14" Orientation="Horizontal" TextElement.FontWeight="Bold">
+					<TextBlock Text="Item #" />
+					<TextBlock Text="{Binding Index}" />							
+				</StackPanel>
+				<Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right">Name:</Label>
+				<TextBox Grid.Row="1" Grid.Column="1" Width="100" Text="{Binding Name}"></TextBox>
+				<Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">Description:</Label>
+				<TextBox Grid.Row="2" Grid.Column="1" Width="100" Margin="0,7,0,0" Text="{Binding Description}"></TextBox>
+			</Grid>
+			
+		</DataTemplate>		
+	</wizard:WizardPage.ContentTemplate>
+</wizard:WizardPage>

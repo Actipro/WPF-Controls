@@ -1,0 +1,165 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<shared:ConditionalConverter x:Key="WidthConverter" TrueValue="19" FalseValue="100">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+		<shared:ConditionalConverter x:Key="HeightConverter" TrueValue="100" FalseValue="19">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+
+		<Style TargetType="microcharts:MicroCandlestickChart">
+			<Setter Property="Width" Value="100" />
+			<Setter Property="Height" Value="19" />
+			<Setter Property="LegendStringFormat" Value="Low: {0:C2}; High: {1:C2}; Open: {2:C2}; Close: {3:C2}" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Orientation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=LowValue}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="20" SmallChange="1" LargeChange="5" Format="C2" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=HighValue}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="20" SmallChange="1" LargeChange="5" Format="C2" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=OpenValue}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="20" SmallChange="1" LargeChange="5" Format="C2" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=CloseValue}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="20" SmallChange="1" LargeChange="5" Format="C2" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="1" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Candlestick charts are used to visualize price movements over time, such as changing stock or currency values. 
+					The edges of the box define the opening and closing values, with the wicks extending to the highest and lowest values reached.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<microcharts:MicroCandlestickChart x:Name="chart" HighValue="20" LowValue="5" OpenValue="10" CloseValue="15" Minimum="0" Maximum="20" LegendStringFormat=""
+												   Width="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource WidthConverter}}" 
+												   Height="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource HeightConverter}}">
+					<microcharts:MicroCandlestickChart.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</microcharts:MicroCandlestickChart.LayoutTransform>
+				</microcharts:MicroCandlestickChart>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Thick lines; filled background for loss, transparent for gain">
+					<StackPanel>
+						<microcharts:MicroCandlestickChart HighValue="20" LowValue="8" OpenValue="13" CloseValue="10">
+							<microcharts:MicroCandlestickChart.LossStyle>
+								<Style TargetType="Shape">
+									<Setter Property="Stroke" Value="#5778B6" />
+									<Setter Property="Fill" Value="#5778B6" />
+									<Setter Property="StrokeThickness" Value="3" />
+								</Style>
+							</microcharts:MicroCandlestickChart.LossStyle>
+						</microcharts:MicroCandlestickChart>
+						<microcharts:MicroCandlestickChart Margin="0,10,0,0" HighValue="20" LowValue="8" OpenValue="10" CloseValue="13">
+							<microcharts:MicroCandlestickChart.LossStyle>
+								<Style TargetType="Shape">
+									<Setter Property="Stroke" Value="#5778B6" />
+									<Setter Property="Fill" Value="#5778B6" />
+									<Setter Property="StrokeThickness" Value="3" />
+								</Style>
+							</microcharts:MicroCandlestickChart.LossStyle>
+						</microcharts:MicroCandlestickChart>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Default style; high value within box">
+					<microcharts:MicroCandlestickChart Minimum="0" Maximum="100" HighValue="92" LowValue="53" OpenValue="84" CloseValue="68">
+						<microcharts:MicroCandlestickChart.LossStyle>
+							<Style TargetType="Shape">
+								<Setter Property="Stroke" Value="#683888" />
+								<Setter Property="Fill" Value="#B592CD" />
+								<Setter Property="StrokeThickness" Value="1" />
+							</Style>
+						</microcharts:MicroCandlestickChart.LossStyle>
+					</microcharts:MicroCandlestickChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Visible outliers; custom shape and color">
+					<microcharts:MicroCandlestickChart Minimum="0" Maximum="100" HighValue="60" LowValue="15" OpenValue="40" CloseValue="60" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Vertical orientation; different gain and loss styles">
+					<StackPanel Orientation="Horizontal">
+						<StackPanel.Resources>
+							<Style TargetType="microcharts:MicroCandlestickChart">
+								<Setter Property="LossStyle">
+									<Setter.Value>
+										<Style TargetType="Path">
+											<Setter Property="Fill" Value="#da4d38" />
+											<Setter Property="Stroke" Value="#da4d38" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="GainStyle">
+									<Setter.Value>
+										<Style TargetType="Path">
+											<Setter Property="Fill" Value="#90bc0b" />
+											<Setter Property="Stroke" Value="#90bc0b" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+
+								<Setter Property="Width" Value="19" />
+								<Setter Property="Height" Value="100" />
+								<Setter Property="Orientation" Value="Vertical" />
+								<Setter Property="Minimum" Value="0" />
+								<Setter Property="Maximum" Value="100" />
+								<Setter Property="LegendStringFormat" Value="Open: {2:C2}; Close: {3:C2}" />
+							</Style>
+						</StackPanel.Resources>
+
+						<microcharts:MicroCandlestickChart HighValue="60" LowValue="5" OpenValue="15" CloseValue="33" />
+						<microcharts:MicroCandlestickChart Margin="10,0,0,0" HighValue="100" LowValue="55" OpenValue="90" CloseValue="70" />
+						<microcharts:MicroCandlestickChart Margin="10,0,0,0" HighValue="70" LowValue="43" OpenValue="50" CloseValue="60" />
+						<microcharts:MicroCandlestickChart Margin="10,0,0,0" HighValue="50" LowValue="15" OpenValue="40" CloseValue="25" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,59 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyDialog.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyDialog"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=IsReadOnly}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The property grid makes it easy to assign various property editors to certain properties based on object type, property name, etc.
+					In this sample, we show how to assign a property editor that contains a built-in text box and ellipses button value template to a Path-named property.
+					<LineBreak /><LineBreak />
+					The ExtendedStringPropertyEditor.ButtonCommand property is set to a DelegateCommand in code-behind.
+					This command executes when the ellipses button is pressed.
+					<LineBreak /><LineBreak />
+					Options are available for controlling the text box and button enabled states, even in scenarios where they would normally be disabled.
+					For instance, you may wish to have the button be enabled for a getter-only collection property, so that the button shows a dialog for extended collection editing.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}" SummaryHeight="100" CanClearDataObjectOnUnload="True">
+			<grids:PropertyGrid.PropertyEditors>
+				<!-- This is a simple default usage where both the TextBox and Button are enabled if the property model is not read-only -->
+				<grids:ExtendedStringPropertyEditor x:Name="editablePathEditor" PropertyName="EditablePath" />
+
+				<!-- This is a usage on a read-only property, where the TextBox will be read-only, but the button will be enabled -->
+				<grids:ExtendedStringPropertyEditor x:Name="readOnlyPathEditor" PropertyName="ReadOnlyPath" Behavior="ButtonEnabled" />
+
+				<!-- This is a usage where we force the TextBox always read-only, but the button is only enabled if the property model is not read-only -->
+				<grids:ExtendedStringPropertyEditor x:Name="uneditablePathEditor" PropertyName="UneditablePath" Behavior="TextReadOnly" />
+			</grids:PropertyGrid.PropertyEditors>
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

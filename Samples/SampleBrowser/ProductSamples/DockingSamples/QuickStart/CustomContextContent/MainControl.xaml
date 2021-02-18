@@ -1,0 +1,86 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomContextContent.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomContextContent"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<shared:ConditionalConverter x:Key="StatusLightConditionalConverter">
+			<shared:ConditionalConverter.TrueValue>
+				<SolidColorBrush Color="#5cd404" />
+			</shared:ConditionalConverter.TrueValue>
+			<shared:ConditionalConverter.FalseValue>
+				<SolidColorBrush Color="#d40404" />
+			</shared:ConditionalConverter.FalseValue>
+		</shared:ConditionalConverter>
+
+		<DataTemplate x:Key="StatusIconDataTemplate">
+			<Ellipse Margin="2" Width="12" Height="12" StrokeThickness="1" Stroke="#ffffff" HorizontalAlignment="Center" VerticalAlignment="Center"
+						Fill="{Binding Path=IsApproved, Converter={StaticResource StatusLightConditionalConverter}}" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=statusToolWindow, Path=DataContext.IsApproved}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Status tool window in this sample shows the different ways a context DataTemplate can be assigned to a tool window.
+					<LineBreak /><LineBreak />
+					The template contains a circular indicator that reflects a boolean approval status.
+					The tool window is configured to show the same template for tool window tabs, tool window container title bars, auto-hide tabs, standard MDI title bars, and tabbed MDI tabs.
+					<LineBreak /><LineBreak />
+					While this sample shows a simple indicator in the template, the template could just as easily contain text or buttons.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+
+		<docking:SplitContainer Orientation="Vertical">
+
+			<!-- Workspace -->
+			<docking:Workspace>
+				<docking:TabbedMdiHost />
+			</docking:Workspace>
+
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow x:Name="statusToolWindow" Title="Status" 
+									AutoHideTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+									StandardMdiTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+									TabbedMdiTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+									ToolWindowContainerTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+									ToolWindowContainerTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+									>
+					<docking:ToolWindow.DataContext>
+						<sample:ContextViewModel />
+					</docking:ToolWindow.DataContext>
+
+					<TextBlock Margin="10" Text="This tool window contains a custom indicator that shows up in tool window tabs, tool window container title bars, auto-hide tabs, standard MDI title bars, and tabbed MDI tabs.  The approval indicator's state is controlled by the boolean value in the view-model.  Use the CheckBox in the Sample Options to change the approval indicator's state." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+				</docking:ToolWindow>
+				<docking:ToolWindow Title="Normal">
+					<TextBlock Margin="10" Focusable="True" Text="This is a normal tool window with no special tab UI." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>
