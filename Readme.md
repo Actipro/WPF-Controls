@@ -1,6 +1,5 @@
 # Actipro WPF Controls
 
-![Integration Build](https://github.com/Actipro/WPF-Controls/workflows/Integration%20Build/badge.svg)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg)](https://github.com/Actipro/.github/blob/main/Code-of-Conduct.md)
 [![Follow @Actipro](https://img.shields.io/twitter/follow/Actipro?style=social)](https://twitter.com/intent/follow?screen_name=Actipro)
 
