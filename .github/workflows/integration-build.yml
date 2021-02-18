@@ -9,7 +9,7 @@ jobs:
 
   build:
     name: Build/Run Nuke
-    runs-on: [self-hosted, windows, x64]
+    runs-on: windows-latest
 
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
