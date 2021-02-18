@@ -1,0 +1,65 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.ThemeReuse.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}"
+				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidBrushKey}}"
+				BorderThickness="1">
+			<Grid>
+
+				<Button Content="Open Inline Dialog" HorizontalAlignment="Center" VerticalAlignment="Center" 
+						Style="{StaticResource SampleOptionsActionButtonStyle}" Click="OnOpenButtonClick" />
+
+				<shared:ShadowChrome x:Name="dialog" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}"
+									 HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Border MaxWidth="500" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderInactiveBrushKey}}"
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}" CornerRadius="4" Padding="20">
+						<Grid TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}"
+							  TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}">
+							<Button MinWidth="25" MinHeight="25" HorizontalAlignment="Right" VerticalAlignment="Top"
+									Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}"
+									ContentTemplate="{StaticResource {x:Static themes:SharedResourceKeys.CloseGlyphTemplateKey}}" 
+									Click="OnCloseButtonClick" />
+
+							<StackPanel>
+								<TextBlock Margin="0,0,30,0" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}">
+									Leave the Theming to Us
+								</TextBlock>
+
+								<TextBlock Margin="0,20,0,0" TextWrapping="Wrap">
+									This sample shows how brush/font assets and styles from the built-in Actipro themes can be used to 
+									create user interfaces to blend well with Actipro's native WPF control styles and custom controls.
+									This sample uses a number of brushes and even a style for an embedded button (the X button on the right), 
+									which is a common look within a toolbar or container.
+									A ShadowChrome decorator is used to provide a soft shadow for the inline dialog.
+								</TextBlock>
+
+								<TextBlock Margin="0,20,0,0" TextWrapping="Wrap">
+									Actipro Themes comes packed with hundreds of brush assets defined for each theme, along with many
+									pre-configured reusable styles for common controls.
+									Change the application theme to see how the UI in this sample adjusts.
+								</TextBlock>
+							</StackPanel>
+						</Grid>
+					</Border>
+				</shared:ShadowChrome>
+
+			</Grid>
+		</Border>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

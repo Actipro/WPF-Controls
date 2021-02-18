@@ -1,0 +1,76 @@
+<Window 
+	x:Name="window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="600" MinHeight="450" 
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="Height" 
+	ResizeMode="CanResize"
+	>
+	
+	<Window.Resources>
+		
+		<!-- Data Providers -->
+		<ObjectDataProvider x:Key="WindowTitleBehaviorObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowTitleBehavior"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
+	</Window.Resources>
+
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard QuickStart">
+
+		<!-- Window Titles -->
+		<wizard:WizardPage x:Name="windowTitlesPage" PageType="Interior" Caption="Automatically Update Window Titles" 
+				Description="Wizard can automatically update the containing Window's title based on the currently selected page."
+				Title="Window Titles"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+				
+					<StackPanel Grid.Column="0">
+						<TextBlock FontWeight="Bold">Choose a title behavior...</TextBlock>
+						<shared:RadioButtonList Margin="0,3,0,0"
+							SelectedValue="{Binding ElementName=wizard, Path=WindowTitleBehavior}" 			 
+							ItemsSource="{Binding Source={StaticResource WindowTitleBehaviorObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<StackPanel Grid.Column="1" Margin="30,0,0,0">
+						<TextBlock TextWrapping="Wrap">A <Bold>Custom</Bold> title behavior will let you use a custom page text formatting string (see below).</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">Format indices <Bold>0</Bold> and <Bold>1</Bold> are the selected page's index (plus <Bold>1</Bold> for display purposes) and wizard's page count respectively.  These are only recommended for wizards that have a single linear execution path.</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">Format indices <Bold>2</Bold>, <Bold>3</Bold>, and <Bold>4</Bold> are the selected page's title, caption, and description respectively.</TextBlock>
+					</StackPanel>
+				</Grid>
+				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Customize The Window Title</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Window Title Base Text</TextBlock>
+					<TextBox Grid.Row="0" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=wizard, Path=WindowTitleBaseText, UpdateSourceTrigger=PropertyChanged}" />
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Window Title Custom Page Text</TextBlock>
+					<TextBox Grid.Row="1" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=wizard, Path=WindowTitleCustomPageText}" />
+					<TextBlock Grid.Row="2" Grid.Column="1" Margin="0,7,7,0" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"><Italic>Custom Page Text is only used when Custom title behavior is selected... tab off of it to see changes but ensure that it is a proper format string before doing so</Italic></TextBlock>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+	</wizard:Wizard>
+	
+</Window>

@@ -1,0 +1,83 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxThreeStateChecking.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<DataTemplate x:Key="ItemDataTemplate">
+			<StackPanel Orientation="Horizontal">
+				<CheckBox Margin="0,0,4,0" IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Center" />
+				<shared:DynamicImage Margin="0,1,4,1" Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
+				<TextBlock Margin="0,0,0,1" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+			</StackPanel>
+		</DataTemplate>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how a TreeListBox can be used to present a tree of three-state checkable items,
+					in this case a hierarchy of selectable folders and files.
+					<LineBreak /><LineBreak />
+					A custom template is used to render items with a checkbox.
+					Further, logic is included such that when a node is checked, the ancestors and descendants update their checked states appropriately.
+					<LineBreak /><LineBreak />
+					Double-tapping a leaf item is handled via an event to toggle the item's checkbox.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid MaxWidth="{StaticResource SampleThinMaxWidth}" Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<TextBlock Margin="0,0,0,3" Text="Choose folders and files:" />
+		<grids:TreeListBox x:Name="treeListBox" Grid.Row="1" ItemTemplate="{StaticResource ItemDataTemplate}"
+						   ItemDefaultActionExecuting="OnTreeListBoxItemDefaultActionExecuting"
+						   >
+			<grids:TreeListBox.ItemAdapter>
+				<!-- An example of using bindings on the adapter, but it's better to not use bindings if you have a large tree... 
+						use method overrides like in DefaultTreeListBoxItemAdapter in that case instead -->
+				<grids:TreeListBoxItemAdapter 
+					ChildrenBinding="{Binding Children, Mode=OneTime}" 
+					IsExpandedBinding="{Binding IsExpanded, Mode=TwoWay}" 
+					IsSelectedBinding="{Binding IsSelected, Mode=TwoWay}" 
+					/>
+			</grids:TreeListBox.ItemAdapter>
+
+			<common:FolderTreeNodeModel Name="My Documents" IsCheckable="True">
+				<common:FolderTreeNodeModel Name="Business" IsExpanded="True" IsCheckable="True" IsChecked="{x:Null}">
+					<common:FolderTreeNodeModel Name="Sales Reports" IsExpanded="True" IsCheckable="True">
+						<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/ExcelDocument16.png" Name="April Forecast.xslx" IsCheckable="True" />
+						<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/ExcelDocument16.png" Name="March Results.xslx" IsCheckable="True" />
+					</common:FolderTreeNodeModel>
+					<common:FolderTreeNodeModel Name="Human Resources" IsExpanded="True" IsChecked="{x:Null}" IsCheckable="True">
+						<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/WordDocument16.png" Name="Accountant Posting.docx" IsCheckable="True" IsChecked="True" />
+						<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/WordDocument16.png" Name="Manager Posting.docx" IsCheckable="True" IsChecked="True" />
+						<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/WordDocument16.png" Name="Senior Developer Posting.docx" IsCheckable="True" />
+					</common:FolderTreeNodeModel>
+					<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/TextDocument16.png" Name="Presentation.txt" IsCheckable="True" />
+					<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/ExcelDocument16.png" Name="Travel Expenses.xslx" IsCheckable="True" />
+				</common:FolderTreeNodeModel>
+				<common:FolderTreeNodeModel Name="Personal" IsExpanded="True" IsCheckable="True" IsChecked="{x:Null}">
+					<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/TextDocument16.png" Name="Lunch Menu.txt" IsCheckable="True" />
+					<common:ThreeStateCheckableTreeNodeModel ImageSource="/Images/Icons/WordDocument16.png" Name="TV Research.docx" IsCheckable="True" IsChecked="True" />
+				</common:FolderTreeNodeModel>
+			</common:FolderTreeNodeModel>
+		</grids:TreeListBox>
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

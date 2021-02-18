@@ -1,0 +1,167 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.StandardMdiOnly.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+		<Style TargetType="docking:StandardMdiWindowControl">
+			<Setter Property="Opacity" Value="0" />
+			<Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+			<Setter Property="RenderTransform">
+				<Setter.Value>
+					<ScaleTransform ScaleX="0.8" ScaleY="0.8" />
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<EventTrigger RoutedEvent="docking:StandardMdiWindowControl.Loaded">
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.2" />
+
+							<DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2">
+								<DoubleAnimation.EasingFunction>
+									<BackEase EasingMode="EaseOut" />
+								</DoubleAnimation.EasingFunction>
+							</DoubleAnimation>
+							<DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2">
+								<DoubleAnimation.EasingFunction>
+									<BackEase EasingMode="EaseOut" />
+								</DoubleAnimation.EasingFunction>
+							</DoubleAnimation>
+						</Storyboard>
+					</BeginStoryboard>
+				</EventTrigger>
+			</Style.Triggers>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows how you can use a DockSite with a contained
+					Workspace and StandardMdiHost to implement a windowed MDI (multiple document interface) for an application.
+					While this particular sample is focused on MDI only and doesn't include any tool windows, tool windows could easily be added and docked into the layout.
+					<LineBreak /><LineBreak />
+					Command-based window cascade and tile functionality is included out-of-the-box.
+					<LineBreak /><LineBreak />
+					When the MDI host's AreMaximizedWindowFramesVisible property is false, bind your external maximized button panel UI's visibility
+					to the MDI host's IsExternalMaximizedUIRequired property.
+					The host will set that property to true when there is a maximized document visible.
+					<LineBreak /><LineBreak />
+					This particular sample also includes an implicit Style for StandardMdiWindowControl that pops the window into place when it is first loaded.
+					<LineBreak /><LineBreak />
+					Use the File/New menu item to add more documents, and try out the various other menu items to change
+					capabilities and adjust document layouts.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<!-- DockSite -->
+		<docking:DockSite x:Name="dockSite" Grid.Row="1">
+			<docking:DockSite.Switcher>
+				<docking:StandardSwitcher AreToolWindowsVisible="False" />
+			</docking:DockSite.Switcher>
+
+			<!-- Workspace -->
+			<docking:Workspace>
+				<docking:StandardMdiHost x:Name="standardMdiHost" AreMaximizedWindowFramesVisible="False">
+					<docking:DocumentWindow Title="Document3.txt" Description="Text document" FileName="Document3.txt" IsReadOnly="True"
+											ImageSource="/Images/Icons/TextDocument16.png">
+						<TextBox BorderThickness="0" Text="The third document, also read-only." TextWrapping="Wrap" IsReadOnly="True" />
+					</docking:DocumentWindow>
+					<docking:DocumentWindow Title="Document2.txt" Description="Text document" FileName="Document2.txt"
+											ImageSource="/Images/Icons/TextDocument16.png">
+						<TextBox BorderThickness="0" Text="The second document." TextWrapping="Wrap" />
+					</docking:DocumentWindow>
+					<docking:DocumentWindow x:Name="documentWindow1"  Title="Document1.txt" Description="Text document" FileName="Document1.txt"
+											ImageSource="/Images/Icons/TextDocument16.png">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<shared:PixelSnapper Margin="5">
+								<StackPanel Orientation="Horizontal">
+									<CheckBox Content="Can Maximize" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow1, Path=CanStandardMdiMaximize, Mode=TwoWay}" />
+									<CheckBox Margin="20,0,0,0" Content="Can Minimize" IsThreeState="True" IsChecked="{Binding ElementName=documentWindow1, Path=CanStandardMdiMinimize, Mode=TwoWay}" />
+								</StackPanel>
+							</shared:PixelSnapper>
+
+							<TextBox Grid.Row="1"  BorderThickness="0" Text="The first document, which also has checkboxes for options that override the global options in the Options menu." TextWrapping="Wrap" />
+						</Grid>
+					</docking:DocumentWindow>
+				</docking:StandardMdiHost>
+			</docking:Workspace>
+
+		</docking:DockSite>
+
+		<!-- Menu -->
+		<shared:PixelSnapper>
+			<Grid>
+				<Menu>
+					<MenuItem Header="_File">
+						<MenuItem Header="New" Click="OnNewDocumentMenuItemClick" />
+						<MenuItem Header="Open..." Click="OnOpenDocumentMenuItemClick" />
+					</MenuItem>
+					<MenuItem Header="_Options">
+						<MenuItem Header="Can Windows Maximize" IsCheckable="True" IsChecked="{Binding ElementName=standardMdiHost, Path=CanWindowsMaximize, Mode=TwoWay}" />
+						<MenuItem Header="Can Windows Minimize" IsCheckable="True" IsChecked="{Binding ElementName=standardMdiHost, Path=CanWindowsMinimize, Mode=TwoWay}" />
+						<Separator />
+						<MenuItem Header="Are Maximized Window Frames Visible" IsCheckable="True" IsChecked="{Binding ElementName=standardMdiHost, Path=AreMaximizedWindowFramesVisible, Mode=TwoWay}" />
+						<MenuItem Header="Is Scrolling Enabled" IsCheckable="True" IsChecked="{Binding ElementName=standardMdiHost, Path=IsScrollingEnabled, Mode=TwoWay}" />
+					</MenuItem>
+					<MenuItem Header="_Window">
+						<MenuItem Header="Close All Documents" Command="{Binding ElementName=dockSite, Path=CloseAllDocumentsCommand}" />
+						<Separator />
+						<MenuItem Header="Cascade" Command="{Binding ElementName=dockSite, Path=CascadeDocumentsCommand}" />
+						<MenuItem Header="Tile Horizontally" Command="{Binding ElementName=dockSite, Path=TileDocumentsHorizontallyCommand}" />
+						<MenuItem Header="Tile Vertically" Command="{Binding ElementName=dockSite, Path=TileDocumentsVerticallyCommand}" />
+						<Separator />
+						<MenuItem Header="Arrange Minimized Windows" Click="OnArrangeMinimizedWindowsMenuItemClick" />
+					</MenuItem>
+				</Menu>
+
+				<!-- External UI for maximized windows -->
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+							Visibility="{Binding ElementName=standardMdiHost, Path=IsExternalMaximizedUIRequired, Converter={StaticResource BooleanToVisibilityConverter}}">
+					<!-- Minimize -->
+					<Button MinWidth="17" MinHeight="17" Padding="2" Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}"
+							ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.MinimizeGlyphTemplateKey}}"
+							Command="{Binding ElementName=standardMdiHost, Path=MinimizePrimaryWindowCommand}" />
+
+					<!-- Restore -->
+					<Button MinWidth="17" MinHeight="17" Padding="2" Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}"
+							ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.RestoreGlyphTemplateKey}}"
+							Command="{Binding ElementName=standardMdiHost, Path=RestorePrimaryWindowCommand}" />
+
+					<!-- Close -->
+					<Button MinWidth="17" MinHeight="17" Padding="2" Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}"
+							ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.CloseGlyphTemplateKey}}"
+							Command="{Binding ElementName=standardMdiHost, Path=ClosePrimaryWindowCommand}" />
+				</StackPanel>
+			</Grid>
+		</shared:PixelSnapper>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,132 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:ribbonSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Common" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					As seen in the Popup Layout QuickStart,
+					Actipro Ribbon's popups are capable of supporting any complex layout of menus such as a combination of small/large menu items,
+					multiple columns of menu items, etc.		
+					All of this functionality is also available for use in context menus as well.
+					And best of all, you can place this functionality in the standard WPF ContextMenu control,
+					thereby allowing you to natively use it for context menus of any control.
+					<LineBreak /><LineBreak />
+					Right-click the TextBox under the Ribbon to see a ContextMenu that contains a complex layout of ribbon controls.
+					Note that any of the menu items can be tied to WPF commands (like cut, copy, paste).
+					Try using those menu items to see how they interact with this document.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" Text="Right-click on this TextBox to show a custom ContextMenu.">
+						<!-- Define a context menu -->
+						<TextBox.ContextMenu>
+							<ribbon:ContextMenu>
+								<StackPanel>
+									<shared:ActiproLogo Margin="10" />
+									<ribbon:Separator />
+									<ribbon:Menu>
+										<ribbon:Separator Label="Common Menu Items" />
+										<ribbon:Button Command="ApplicationCommands.Undo" Label="Undo" ImageSourceSmall="/Images/Icons/Undo16.png" />
+										<ribbon:Button Command="ApplicationCommands.Redo" Label="Redo" ImageSourceSmall="/Images/Icons/Redo16.png" />
+										<ribbon:Separator />
+										<ribbon:Button Command="ApplicationCommands.Cut" Label="Cut" ImageSourceSmall="/Images/Icons/Cut16.png" />
+										<ribbon:Button Command="ApplicationCommands.Copy" Label="Copy" ImageSourceSmall="/Images/Icons/Copy16.png" />
+										<ribbon:Button Command="ApplicationCommands.Paste" Label="Paste" ImageSourceSmall="/Images/Icons/Paste16.png" />
+										<ribbon:Separator Label="Add Extended Functionality" />
+										<ribbon:PopupButton Label="A sub-menu with large items">
+											<ribbon:Menu ItemVariantSize="Large">
+												<ribbon:Button Label="New" ImageSourceLarge="/Images/Icons/New32.png" MenuItemDescription="Create a new document" />
+												<ribbon:Button Label="Open" ImageSourceLarge="/Images/Icons/Open32.png" MenuItemDescription="Open an existing document" />
+												<ribbon:Separator />
+												<ribbon:Button Label="Save" ImageSourceLarge="/Images/Icons/Save32.png" MenuItemDescription="Save the current document" />
+											</ribbon:Menu>
+										</ribbon:PopupButton>
+										<ribbon:SplitButton Label="A split button">
+											<ribbon:Menu>
+												<ribbon:Button Label="Menu Item 1" />
+												<ribbon:Button Label="Menu Item 2" />
+												<ribbon:PopupButton Label="Another Sub-Menu">
+													<ribbon:Menu>
+														<ribbon:Button Label="Menu Item 1" />
+														<ribbon:Button Label="Menu Item 2" />
+														<ribbon:Separator />
+														<ribbon:Button Label="Menu Item 3" />
+													</ribbon:Menu>
+												</ribbon:PopupButton>
+												<ribbon:Separator />
+												<ribbon:Button Label="Menu Item 3" />
+											</ribbon:Menu>
+										</ribbon:SplitButton>
+										<ribbon:ComboBox MinWidth="100" Label="ComboBox on Menu">
+											<ComboBoxItem>Item 1</ComboBoxItem>
+											<ComboBoxItem>Item 2</ComboBoxItem>
+										</ribbon:ComboBox>
+									</ribbon:Menu>
+									<ribbon:Separator />
+									<ribbon:Menu ItemVariantSize="Large">
+										<ribbon:Separator Label="Large Menu Items in Same Context Menu" />
+										<ribbon:Button Label="New" ImageSourceLarge="/Images/Icons/New32.png" MenuItemDescription="Create a new document" />
+										<ribbon:Button Label="Open" ImageSourceLarge="/Images/Icons/Open32.png" MenuItemDescription="Open an existing document" />
+										<ribbon:Separator />
+										<ribbon:Button Label="Save" ImageSourceLarge="/Images/Icons/Save32.png" MenuItemDescription="Save the current document" />
+									</ribbon:Menu>
+								</StackPanel>
+							</ribbon:ContextMenu>
+
+						</TextBox.ContextMenu>
+					</TextBox>
+
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon" IsCollapsible="False">
+						<!-- 
+						Use pre-defined WordApplicationMenu, WordHomeTab, WordInsertTab types in the sample project so that we don't have redundant code 
+						in this sample that takes away from the focus of the sample
+						-->
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbonSamplesCommon:WordApplicationMenu />
+						</ribbon:Ribbon.ApplicationMenu>
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						<ribbon:Ribbon.Tabs>
+							<ribbonSamplesCommon:WordHomeTab />
+							<ribbonSamplesCommon:WordInsertTab />
+							<ribbon:Tab Label="Page Layout" KeyTipAccessText="P" />
+							<ribbon:Tab Label="References" KeyTipAccessText="S" />
+							<ribbon:Tab Label="Mailings" KeyTipAccessText="M" />
+							<ribbon:Tab Label="Review" KeyTipAccessText="R" />
+							<ribbon:Tab Label="View" KeyTipAccessText="W" />
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

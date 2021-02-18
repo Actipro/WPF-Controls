@@ -1,0 +1,54 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.FixedToolWindow.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+	
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite">
+		<docking:DockSite.AutoHideLeftContainers>
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Tool Window 3" />
+				<docking:ToolWindow Title="Tool Window 4" />
+			</docking:ToolWindowContainer>
+		</docking:DockSite.AutoHideLeftContainers>
+		
+		<docking:SplitContainer>
+			<docking:SplitContainer Orientation="Vertical">
+				<docking:SplitContainer>
+			
+					<!-- Workspace -->
+					<docking:Workspace>
+						<docking:TabbedMdiHost>
+							<docking:TabbedMdiContainer>
+								<docking:DocumentWindow Title="Document1.txt">
+									<TextBox BorderThickness="0" Text="Move other tool windows around the 'fixed' tool window." TextWrapping="Wrap" />
+								</docking:DocumentWindow>
+							</docking:TabbedMdiContainer>
+						</docking:TabbedMdiHost>				
+					</docking:Workspace>
+					
+					<docking:ToolWindowContainer>
+						<docking:ToolWindow Title="Fixed" CanAttach="False" CanDragTab="False" HasTitleBar="False">
+							<TextBlock Margin="10" Text="This tool window is 'fixed' and cannot drag or be moved.  Other tool windows may not be attached to it, however they may be docked around it." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+						</docking:ToolWindow>
+					</docking:ToolWindowContainer>
+				</docking:SplitContainer>
+				
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Tool Window 5" />
+					<docking:ToolWindow Title="Tool Window 6" />
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+					
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Tool Window 1" />
+				<docking:ToolWindow Title="Tool Window 2" />
+			</docking:ToolWindowContainer>
+				
+		</docking:SplitContainer>
+	</docking:DockSite>
+	
+</sampleBrowser:ProductItemControl>

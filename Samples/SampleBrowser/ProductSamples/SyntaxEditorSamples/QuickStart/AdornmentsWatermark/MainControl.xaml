@@ -1,0 +1,27 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsWatermark"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[This QuickStart shows how to create an adornment manager that renders
+a watermark effect in the editor view.  The watermark remains
+affixed to the center of the view, even when the editor is
+resized.
+
+This sort of feature is useful when wanting to display "evaluation"
+or other messages in the background of the editor.
+
+The adornment manager is created by the syntax language assigned to
+this editor's document.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

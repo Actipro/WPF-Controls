@@ -1,0 +1,83 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellListViewIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=RootSpecialFolderKind}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=RootShellFolderParsingName}" DisplayName="Root folder parsing name" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=LayoutMode}">
+						<gridseditors:EnumPropertyEditor UseDisplayAttributes="True" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanUseThumbnails}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanIncludeFolders}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanIncludeFiles}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanIncludeLinks}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanNavigateIntoChildFolders}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=CanResetSortOnRootShellFolderChange}" DisplayName="Reset sort on root folder change" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=IsRenamingEnabled}" DisplayName="Can rename objects" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=IsDefaultItemContextMenuEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=SelectionMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=listView, Path=SelectedItem.FileSystemPath}" DisplayName="Selected object file system path" IsValueReadOnly="True" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=listView, Path=SelectedItem.ParsingName}" DisplayName="Selected object parsing name" IsValueReadOnly="True" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=SortDirection}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
+					<LineBreak /><LineBreak />
+					The ShellListView control provides an easy way to see the contents of a Windows Shell or custom folder,
+					and it's implemented in a pure WPF user interface.
+					<LineBreak /><LineBreak />
+					The root folder can be set one of three ways: via a special folder kind enumeration value, via a string-based path, or directly to an IShellObject model instance.
+					<LineBreak /><LineBreak />
+					The root folder determines the properties to display as columns.  Windows Shell objects render very similar to Windows Explorer out of the box.
+					<LineBreak /><LineBreak />
+					Top-level options are available for including folders, files, or links.
+					Custom filtering can occur at a model or view-model level as well, and custom shell objects can even be injected.
+					<LineBreak /><LineBreak />
+					Single or multiple selection modes are available.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+	
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<shell:ShellListView x:Name="listView" RootSpecialFolderKind="Computer">
+			<shell:ShellListView.Columns>
+				<grids:TreeListViewColumn Header="Name" Width="272">
+					<DataTemplate>
+						<Grid Background="Transparent" ToolTip="{Binding ToolTipText}">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+						
+							<Image Width="16" Height="16" VerticalAlignment="Center" Source="{Binding SmallIcon, Mode=OneWay}" />
+							<Image Width="16" Height="16" VerticalAlignment="Center" Source="{Binding SmallIconOverlay, Mode=OneWay}" />
+							<shared:EditableContentControl Grid.Column="1" Margin="2" Content="{Binding Name, Mode=TwoWay}" IsEditing="{Binding IsEditing, Mode=TwoWay}" />
+						</Grid>
+					</DataTemplate>
+				</grids:TreeListViewColumn>
+				<grids:TreeListViewColumn Header="Date Modified" Width="120" />
+				<grids:TreeListViewColumn Header="Type" Width="120" />
+				<grids:TreeListViewColumn Header="Size" Width="80" />
+			</shell:ShellListView.Columns>
+		</shell:ShellListView>
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

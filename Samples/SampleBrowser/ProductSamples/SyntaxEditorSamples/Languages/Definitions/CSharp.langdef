@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'C#' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="CSharp" LanguageDescription="C#" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="CSharpVerbatimString" Description="String (C# @ Verbatim)" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="XmlDocumentationComment" Description="XML Doc Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="XmlDocumentationTag" Description="XML Doc Tag" DefaultStyle="#FF808080" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Id="1" Key="Default" DefaultCaseSensitivity="Sensitive">
+				<State.ChildStates>
+					<StateRef Key="Character" />
+					<StateRef Key="String" />
+					<StateRef Key="InterpolatedString" />
+					<StateRef Key="MultiLineComment" />
+					<StateRef Key="XmlComment" />
+					<StateRef Key="Comment" />
+					<StateRef Key="VerbatimString" />
+					<StateRef Key="InterpolatedVerbatimString" />
+					<StateRef Key="PreprocessorDirective" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup Key="OpenCurlyBracePatternGroup" TokenId="5" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup Key="CloseCurlyBracePatternGroup" TokenId="6" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenId="7" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenId="8" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. , : ;
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="10" TokenKey="Null" ClassificationTypeKey="Keyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenId="11" TokenKey="NativeType" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						object bool string int byte char float sbyte short long ushort uint ulong double decimal
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="12" TokenKey="Boolean" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						false true
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="13" TokenKey="ReservedWord" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						as async await break case catch class else for foreach get abstract base checked const continue default
+						delegate do enum event explicit extern finally fixed global goto if in internal is new private protected
+						public return implicit interface lock namespace operator out override params partial readonly
+						ref this try typeof sealed set sizeof stackalloc static struct switch throw unchecked unsafe using
+						virtual void volatile where while yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="14" TokenKey="ReservedContextualWord" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ascending by descending equals from group into join let on orderby select where var
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="14" TokenKey="ReservedContextualWord" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{Whitespace}* \(">
+					<ExplicitPatterns><![CDATA[
+						nameof when
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="15" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="@? (_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="16" TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						== != = ! ++ -- += -= *= /= %= -> + - * / % && || &= |= ^= & | ~ ^ <<= >>= << >> <= < >= > ?? ? ?.
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="17" TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [FfDdMm]?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [FfDdMm]" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenId="18" TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="19" TokenKey="HexIntegerNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- Character state -->
+			<State Id="2" Key="Character" DefaultTokenId="20" DefaultTokenKey="CharacterText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="21" TokenKey="CharacterStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="22" TokenKey="CharacterEndDelimiter" Pattern="['\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="23" TokenKey="CharacterEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenId="23" TokenKey="CharacterEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenId="23" TokenKey="CharacterEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenId="23" TokenKey="CharacterEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenId="20" TokenKey="CharacterText" Pattern="[^'\\\n]+" />
+			</State>
+			<!-- String state -->
+			<State Id="3" Key="String" DefaultTokenId="24" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="25" TokenKey="StringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="26" TokenKey="StringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="27" TokenKey="StringEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenId="27" TokenKey="StringEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenId="27" TokenKey="StringEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenId="27" TokenKey="StringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenId="24" TokenKey="StringText" Pattern="[^\&quot;\\\n]+" />
+			</State>
+			<!-- InterpolatedString state -->
+			<State Id="4" Key="InterpolatedString" DefaultTokenId="28" DefaultTokenKey="InterpolatedStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="29" TokenKey="InterpolatedStringStartDelimiter" Pattern="$&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="30" TokenKey="InterpolatedStringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="InterpolatedContent" />
+				</State.ChildStates>
+				<ExplicitPatternGroup TokenId="31" TokenKey="InterpolatedStringEscapedOpenCurlyBrace" Pattern="{{" />
+				<ExplicitPatternGroup TokenId="32" TokenKey="InterpolatedStringEscapedCloseCurlyBrace" Pattern="}}" />
+				<RegexPatternGroup TokenId="33" TokenKey="InterpolatedStringEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenId="33" TokenKey="InterpolatedStringEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenId="33" TokenKey="InterpolatedStringEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenId="33" TokenKey="InterpolatedStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenId="28" TokenKey="InterpolatedStringText" Pattern="[^\{\&quot;\\\n]+" />
+			</State>
+			<!-- VerbatimString state -->
+			<State Id="5" Key="VerbatimString" DefaultTokenId="34" DefaultTokenKey="VerbatimStringText" DefaultClassificationTypeKey="CSharpVerbatimString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="35" TokenKey="VerbatimStringStartDelimiter" Pattern="@&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenId="36" TokenKey="VerbatimStringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenId="37" TokenKey="VerbatimStringEscapedDelimiter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenId="38" TokenKey="VerbatimStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="34" TokenKey="VerbatimStringText" Pattern="[^\&quot;\n]+" />
+			</State>
+			<!-- InterpolatedVerbatimString state -->
+			<State Id="6" Key="InterpolatedVerbatimString" DefaultTokenId="39" DefaultTokenKey="InterpolatedVerbatimStringText" DefaultClassificationTypeKey="CSharpVerbatimString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="40" TokenKey="InterpolatedVerbatimStringStartDelimiter" Pattern="$@&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenId="41" TokenKey="InterpolatedVerbatimStringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="InterpolatedContent" />
+				</State.ChildStates>
+				<ExplicitPatternGroup TokenId="42" TokenKey="InterpolatedVerbatimStringEscapedOpenCurlyBrace" Pattern="{{" />
+				<ExplicitPatternGroup TokenId="43" TokenKey="InterpolatedVerbatimStringEscapedCloseCurlyBrace" Pattern="}}" />
+				<ExplicitPatternGroup TokenId="44" TokenKey="InterpolatedVerbatimStringEscapedDelimiter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenId="45" TokenKey="InterpolatedVerbatimStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="39" TokenKey="InterpolatedVerbatimStringText" Pattern="[^\{\&quot;\n]+" />
+			</State>
+			<!-- InterpolatedContent state -->
+			<State Id="7" Key="InterpolatedContent">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="46" TokenKey="InterpolatedContentStartDelimiter" Pattern="{" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="47" TokenKey="InterpolatedContentEndDelimiter" Pattern="}|\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="Character" />
+					<StateRef Key="String" />
+					<StateRef Key="InterpolatedString" />
+					<StateRef Key="MultiLineComment" />
+					<StateRef Key="XmlComment" />
+					<StateRef Key="Comment" />
+					<StateRef Key="VerbatimString" />
+					<StateRef Key="InterpolatedVerbatimString" />
+					<StateRef Key="PreprocessorDirective" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenId="7" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenId="8" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. , : ;
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="10" TokenKey="Null" ClassificationTypeKey="Keyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenId="11" TokenKey="NativeType" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						object bool string int byte char float sbyte short long ushort uint ulong double decimal
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="12" TokenKey="Boolean" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						false true
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="13" TokenKey="ReservedWord" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						as async await break case catch class else for foreach get abstract base checked const continue default
+						delegate do enum event explicit extern finally fixed global goto if in internal is new private protected
+						public return implicit interface lock namespace operator out override params partial readonly
+						ref this try typeof sealed set sizeof stackalloc static struct switch throw unchecked unsafe using
+						virtual void volatile where while yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="14" TokenKey="ReservedContextualWord" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ascending by descending equals from group into join let on orderby select where var
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="14" TokenKey="ReservedContextualWord" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{Whitespace}* \(">
+					<ExplicitPatterns><![CDATA[
+						nameof when
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="15" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="@? (_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="16" TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						== != = ! ++ -- += -= *= /= %= -> + - * / % && || &= |= ^= & | ~ ^ <<= >>= << >> <= < >= > ?? ? ?.
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenId="17" TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [FfDdMm]?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [FfDdMm]" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenId="18" TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="19" TokenKey="HexIntegerNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- Comment state -->
+			<State Id="8" Key="Comment" DefaultTokenId="48" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="49" TokenKey="CommentStartDelimiter" Pattern="//" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="50" TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="51" TokenKey="CommentLineTerminator" Pattern="{LineTerminator} {Whitespace}* //" LookAheadPattern="[^/]" />
+				<RegexPatternGroup TokenId="48" TokenKey="CommentText" Pattern="[^\n]+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Id="9" Key="MultiLineComment" DefaultTokenId="52" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="53" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenId="54" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="55" TokenKey="MultiLineCommentLineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenId="52" TokenKey="MultiLineCommentText" Pattern="[^*\n]+" />
+			</State>
+			<!-- XmlComment state -->
+			<State Id="10" Key="XmlComment" DefaultTokenId="56" DefaultTokenKey="XmlCommentText" DefaultClassificationTypeKey="XmlDocumentationComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="57" TokenKey="XmlCommentStartDelimiter" Pattern="///" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="58" TokenKey="XmlCommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="59" TokenKey="XmlCommentStartTag" ClassificationTypeKey="XmlDocumentationTag" Pattern="&lt; [^\n&gt;]* &gt;?" />
+				<RegexPatternGroup TokenId="60" TokenKey="XmlCommentEndTag" ClassificationTypeKey="XmlDocumentationTag" Pattern="&lt;/ [^\n&gt;]* &gt;?" />
+				<RegexPatternGroup TokenId="61" TokenKey="XmlCommentLineTerminator" Pattern="{LineTerminator} {LineTerminatorWhitespace}* ///" />
+				<RegexPatternGroup TokenId="56" TokenKey="XmlCommentText" Pattern="[^\n&lt;]+" />
+			</State>
+			<!-- PreprocessorDirective state -->
+			<State Id="11" Key="PreprocessorDirective" DefaultTokenId="62" DefaultTokenKey="PreprocessorDirectiveText" DefaultCaseSensitivity="Sensitive">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="63" TokenKey="RegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#region" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="65" TokenKey="EndRegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#endregion" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="66" TokenKey="DefinePreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#define" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="67" TokenKey="UndefPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#undef" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="68" TokenKey="IfPreprocessorDirectiveIf" ClassificationTypeKey="PreprocessorKeyword" Pattern="#if" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="69" TokenKey="IfPreprocessorDirectiveElIf" ClassificationTypeKey="PreprocessorKeyword" Pattern="#elif" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="70" TokenKey="IfPreprocessorDirectiveElse" ClassificationTypeKey="PreprocessorKeyword" Pattern="#else" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="71" TokenKey="IfPreprocessorDirectiveEndIf" ClassificationTypeKey="PreprocessorKeyword" Pattern="#endif" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="72" TokenKey="LinePreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#line" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="73" TokenKey="PragmaPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#pragma" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="74" TokenKey="WarningPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#warning" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="75" TokenKey="ErrorPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#error" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="64" TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="PreprocessorDirectiveComment" />
+				</State.ChildStates>
+				<RegexPatternGroup Pattern="[^/\n]+" />
+			</State>
+			<!-- PreprocessorDirectiveComment state -->
+			<State Id="12" Key="PreprocessorDirectiveComment" DefaultTokenId="48" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="49" TokenKey="CommentStartDelimiter" Pattern="//" />
+						</Scope.StartPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="76" TokenKey="CommentDefault" Pattern="{NonLineTerminator}+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[using System;
+using System.Diagnostics;
+
+public class Foo {
+
+	/// <summary>
+	/// This is a <c>XML</c> documentation comment.
+	/// </summary>
+	public static void Main(string[] args) {
+		Debug.WriteLine("Hello, World!");
+		Debug.WriteLine("You entered the following {0} command line arguments:", args.Length);
+		for (int i = 0; i < args.Length; i++)
+			Debug.WriteLine("{0}", args[i]); 
+	
+	}
+}
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

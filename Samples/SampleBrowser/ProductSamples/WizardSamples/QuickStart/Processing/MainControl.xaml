@@ -1,0 +1,50 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.WizardSamples.Demo.Processing.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+	<UserControl.Resources>
+
+	</UserControl.Resources>
+	
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+			
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False"
+					SelectedPageChanged="wizard_SelectedPageChanged">				  
+
+					<!-- Processing -->
+					<wizard:WizardPage x:Name="processingPage" PageType="Interior" Caption="Buttons Disabled During Processing" 
+							Description="Wizard makes it easy to disable buttons during processing on a step and re-enable them when the processing is complete."
+							Title="Step 5 (Pages and Buttons Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock Margin="0,0,0,14" TextWrapping="Wrap">
+								Click the button below to perform processing using a <Bold>BackgroundWorker</Bold>.
+								During processing the buttons will be disabled.
+							</TextBlock>
+							<TextBlock x:Name="progressTextBlock" Margin="0,0,0,3" HorizontalAlignment="Center">Not started</TextBlock>
+							<ProgressBar x:Name="progressBar" Margin="0,0,0,7"  Width="200" Height="18" Value="0" />
+							<Button x:Name="startProcessingButton" Width="200" Click="startProcessingButton_Click">Start Processing</Button>
+						</StackPanel>
+					</wizard:WizardPage>
+				
+					<!-- Finish -->
+					<wizard:WizardPage x:Name="finishPage" 
+							Caption="QuickStart Complete"
+							Description="This is the finish page for this QuickStart." 
+							Title="QuickStart Complete">
+						<TextBlock TextWrapping="Wrap">Press the Back button to change more options for this QuickStart.</TextBlock>
+					</wizard:WizardPage>
+				
+				</wizard:Wizard>
+			
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+	
+</UserControl>

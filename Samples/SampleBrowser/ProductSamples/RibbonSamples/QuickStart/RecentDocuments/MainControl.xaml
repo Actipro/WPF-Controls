@@ -1,0 +1,109 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.RecentDocuments.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Shared Library includes a RecentDocumentManager that can manage the 
+					documents that were recently opened.
+					The Ribbon product has a RecentDocumentMenu control that can be used in the
+					additional content portion of the application menu.
+					<LineBreak /><LineBreak />
+					The RecentDocumentMenu binds to the recent files list in the RecentDocumentManager
+					and provides a complex sorting of files by the date each file was last opened and whether the file
+					has been pinned to the recent documents menu.
+					<LineBreak /><LineBreak />
+					Normally when a new document is added to the recent documents list, it will push the oldest document
+					off the visible list if the list has reached its maximum display size.
+					However if an old document is pinned to the list, it will not be able to be pushed off and another
+					more recently opened unpinned document above it will move off in its place.
+					<LineBreak /><LineBreak />
+					To see this functionality in action, use the Open menu item on the application menu
+					to open a random file on your hard drive.
+					Notice how it is added to the top of the recent documents list and moves other documents down.
+					Also experiment with pinning and unpinning documents and then opening new documents.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<TextBox Grid.Row="1" BorderThickness="0" AcceptsReturn="True" />
+
+					<!-- Ribbon Control -->
+					<ribbon:Ribbon x:Name="ribbon">
+
+						<ribbon:Ribbon.QuickAccessToolBarItems>
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Save16.png" Label="Save" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Undo16.png" Label="Undo" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Redo16.png" Label="Redo" />
+						</ribbon:Ribbon.QuickAccessToolBarItems>
+						
+						<ribbon:Ribbon.ApplicationMenu>
+							<ribbon:ApplicationMenu>
+								<ribbon:Button Command="ApplicationCommands.New" KeyTipAccessText="N" />
+								<ribbon:Button Command="ApplicationCommands.Open" KeyTipAccessText="O" />
+								<ribbon:Button Command="ApplicationCommands.Save" KeyTipAccessText="S" />
+					
+								<!-- Additional Content (Right side of application menu) -->
+								<ribbon:ApplicationMenu.AdditionalContent>
+									<ribbon:RecentDocumentMenu x:Name="recentDocMenu">
+										<shared:RecentDocumentManager x:Name="recentDocManager" />
+									</ribbon:RecentDocumentMenu>
+								</ribbon:ApplicationMenu.AdditionalContent>
+					
+							</ribbon:ApplicationMenu>				
+						</ribbon:Ribbon.ApplicationMenu>
+					
+						<ribbon:Ribbon.Tabs>
+							<ribbon:Tab Label="Home" KeyTipAccessText="H">
+								<ribbon:Group Label="Label">
+									<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+										<TextBlock>Recent Documents Menu Label:</TextBlock>
+										<TextBox Width="150" Text="{Binding ElementName=recentDocMenu, Path=Label, Mode=TwoWay}" />
+										<TextBlock FontStyle="Italic" Opacity="0.75">(appears at top of application menu)</TextBlock>
+									</ribbon:StackPanel>
+								</ribbon:Group>
+								<ribbon:Group Label="Document Count">
+									<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+										<TextBlock>Maximum Visible Document Count:</TextBlock>
+										<StackPanel Orientation="Horizontal">
+											<Slider Width="100" Minimum="5" Maximum="30" LargeChange="5" SmallChange="1" 
+												IsSnapToTickEnabled="True" TickFrequency="1" Value="{Binding ElementName=recentDocManager, Path=MaxFilteredDocumentCount, Mode=TwoWay}" />
+											<TextBlock Text="{Binding ElementName=recentDocManager, Path=MaxFilteredDocumentCount}" VerticalAlignment="Center" />
+											<TextBlock Text=" documents" VerticalAlignment="Center" />
+										</StackPanel>
+										<TextBlock FontStyle="Italic" Opacity="0.75">(number of documents to display on application menu)</TextBlock>
+									</ribbon:StackPanel>
+								</ribbon:Group>
+							</ribbon:Tab>
+						</ribbon:Ribbon.Tabs>
+					</ribbon:Ribbon>
+		
+				</Grid>
+			</Border>
+		</shared:ShadowChrome>
+		
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

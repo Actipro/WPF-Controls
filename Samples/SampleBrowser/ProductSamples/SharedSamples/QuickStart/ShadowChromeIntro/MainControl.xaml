@@ -1,0 +1,94 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+    xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shadow, Path=Elevation}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="24" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shadow, Path=Direction}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="360" SmallChange="15" LargeChange="45" SpinWrapping="Wrap" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shadow, Path=ShadowOpacity}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.05" LargeChange="0.1" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=shadow, Path=ShadowThickness}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shadow, Path=IsShadowEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=shadow, Path=RenderMode}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ShadowChrome is a primitive control that renders a beautiful modern drop shadow around its child element.
+					<LineBreak /><LineBreak />
+					The child element can be any shape, as the rendered shadow isn't limited to rectangular shapes if the render mode is set to allow shader effects.
+					<LineBreak /><LineBreak />
+					Modern apps use a downward direction (270) for their shadows.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<shared:ShadowChrome x:Name="shadow" Margin="0,20" HorizontalAlignment="Center"
+								 Direction="{DynamicResource {x:Static themes:AssetResourceKeys.PopupShadowDirectionDoubleKey}}"
+								 Elevation="{DynamicResource {x:Static themes:AssetResourceKeys.PopupShadowElevationInt32Key}}" 
+								 ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacityNormalDoubleKey}}">
+				<Border CornerRadius="7" Padding="30,20" 
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.MenuPopupBackgroundNormalBrushKey}}" 
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuPopupBorderNormalBrushKey}}" BorderThickness="1"
+						DataContext="{x:Static sampleData:People.Random}">
+					<Grid HorizontalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						
+						<Ellipse Width="50" Height="50" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+						<Image Width="48" Height="48" Source="{Binding PhotoUri}" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Image.Clip>
+								<EllipseGeometry Center="24,24" RadiusX="24" RadiusY="24" />
+							</Image.Clip>
+						</Image>
+						
+						<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+							<shared:AdvancedTextBlock Text="{Binding FullName}" FontSize="18" TextTrimming="CharacterEllipsis" />
+							<shared:AdvancedTextBlock Text="{Binding EmailAddress}" TextTrimming="CharacterEllipsis" />
+						</StackPanel>
+					</Grid>
+				</Border>
+			</shared:ShadowChrome>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="A shadow applied to a non-rectangular shape using ShaderEffectsRequired render mode">
+					<shared:ShadowChrome Elevation="4" RenderMode="ShaderEffectsRequired">
+						<ContentPresenter TextElement.Foreground="LawnGreen" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.MenuCheckGlyphTemplateKey}}">
+							<ContentPresenter.LayoutTransform>
+								<ScaleTransform ScaleX="3" ScaleY="3" />
+							</ContentPresenter.LayoutTransform>
+						</ContentPresenter>
+					</shared:ShadowChrome>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

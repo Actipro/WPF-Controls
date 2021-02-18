@@ -1,0 +1,90 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted04c.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted04c"
+    >
+
+	<docking:DockSite>
+		<docking:SplitContainer>
+			
+			<docking:SplitContainer Orientation="Vertical">
+			
+				<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+					
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor" DocumentParseDataChanged="OnEditorDocumentParseDataChanged">
+						<editor:EditorDocument xml:space="preserve">
+							<editor:EditorDocument.Language>
+								<sample:SimpleSyntaxLanguage />
+							</editor:EditorDocument.Language><![CDATA[/*
+	In this sample we've completed the grammar by adding
+	robust error handling that can properly recover from
+	parse errors and continue parsing.
+	
+	The LL(*) Parser Framework documentation describes in
+	detail how to adjust grammars for error handling.  The 
+	inline comments in the updated grammar class for this step
+	also provide helpful insight into what has been altered.
+
+	Change the code below to cause parse errors and notice
+	how the parser recovers and continues to build the AST
+	after locating errors.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+					</editor:SyntaxEditor>
+
+				</docking:Workspace>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Error List" ImageSource="/Images/Icons/ErrorList16.png" CanClose="False" ContainerDockedSize="200,150">
+						<ListView x:Name="errorListView" BorderThickness="0" MouseDoubleClick="OnErrorListViewDoubleClick">
+							<ListView.View>
+								<GridView>
+									<GridViewColumn Header="Line" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayLine}" />
+									<GridViewColumn Header="Char" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayCharacter}" />
+									<GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Path=Description}" />
+								</GridView>
+							</ListView.View>
+						</ListView>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+				
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Document Outline" ImageSource="/Images/Icons/DocumentOutline16.png" CanClose="False" ContainerDockedSize="230,200">
+					<editor:SyntaxEditor x:Name="astOutputEditor" 
+											BorderThickness="0" IsOutliningMarginVisible="False" IsSelectionMarginVisible="False" CanSplitHorizontally="False">
+						<editor:EditorDocument IsReadOnly="true" />
+					</editor:SyntaxEditor>
+				</docking:ToolWindow>
+				<docking:ToolWindow Title="EBNF" ImageSource="/Images/Icons/CallStack16.png" CanClose="False" ContainerDockedSize="230,200">
+					<editor:SyntaxEditor x:Name="ebnfEditor" 
+											BorderThickness="0" IsOutliningMarginVisible="False" IsSelectionMarginVisible="False" CanSplitHorizontally="False">
+						<editor:EditorDocument IsReadOnly="true" />
+					</editor:SyntaxEditor>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+					
+		</docking:SplitContainer>
+	</docking:DockSite>
+
+</UserControl>

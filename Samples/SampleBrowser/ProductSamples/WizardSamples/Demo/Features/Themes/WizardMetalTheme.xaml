@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard">
+
+	<!-- WizardButtonContainer Style -->
+	<Style TargetType="{x:Type wizard:WizardButtonContainer}">
+		<Setter Property="Background">
+			<Setter.Value>
+				<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,650,60" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/MetalHeaderBG.png" />
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderBrush" Value="#6F7074" />
+		<Setter Property="BorderThickness" Value="0,1,0,0" />
+	</Style>
+
+	<!-- WizardPage Style -->
+	<Style TargetType="wizard:WizardPage">
+		<Setter Property="Background" Value="White" />
+		<Setter Property="BorderBrush" Value="#6F7074" />
+
+		<Style.Triggers>
+			<Trigger Property="PageType" Value="Exterior">
+				<Setter Property="BorderThickness" Value="0,0,1,0" />
+				<Setter Property="HeaderBackground">
+					<Setter.Value>
+						<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,164,450" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/MetalWatermarkBG.png" />
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="PageType" Value="Interior">
+				<Setter Property="BorderThickness" Value="0,0,0,1" />
+				<Setter Property="HeaderBackground">
+					<Setter.Value>
+						<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,650,60" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/MetalHeaderBG.png" />
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+</ResourceDictionary>

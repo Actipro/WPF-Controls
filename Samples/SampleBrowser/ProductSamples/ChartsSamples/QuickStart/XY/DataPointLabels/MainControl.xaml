@@ -1,0 +1,228 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.DataPointLabels.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.Charts.Common"
+	x:Name="rootControl"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<common:CeilingDoubleConverter x:Key="CeilingDoubleConverter"/>
+
+		<Style x:Key="ChartStyle" TargetType="charts:XYChart">
+			<Style.Setters>
+				<Setter Property="Width" Value="390"/>
+				<Setter Property="Height" Value="250"/>
+				<Setter Property="IsAxisBaselineVisible" Value="True"/>
+			</Style.Setters>
+		</Style>
+
+		<Style x:Key="BarSeriesStyle" TargetType="charts:BarSeries">
+			<Style.Setters>
+				<Setter Property="ItemsSource" Value="{Binding ElementName=rootControl, Path=ChartData}"/>
+				<Setter Property="XPath" Value="Index"/>
+				<Setter Property="YPath" Value="Amount"/>
+				<Setter Property="MarkerVisibility" Value="None"/>
+			</Style.Setters>
+		</Style>
+
+		<Style x:Key="LineSeriesStyle" TargetType="charts:LineSeries">
+			<Style.Setters>
+				<Setter Property="ItemsSource" Value="{Binding ElementName=rootControl, Path=ChartData}"/>
+				<Setter Property="XPath" Value="Index"/>
+				<Setter Property="YPath" Value="Amount"/>
+				<Setter Property="MarkerVisibility" Value="All"/>
+			</Style.Setters>
+		</Style>
+
+		<Style x:Key="LineSeriesStyle2" TargetType="charts:LineSeries" BasedOn="{StaticResource LineSeriesStyle}">
+			<Style.Setters>
+				<Setter Property="ItemsSource" Value="{Binding ElementName=rootControl, Path=ChartData2}"/>
+				<Setter Property="XPath" Value="Index"/>
+				<Setter Property="YPath" Value="Amount"/>
+			</Style.Setters>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Data point labels can be used to easily identify the value of a particular data point.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="No labels">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Labels visible (line series)">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}" LabelVisibility="Visible"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Labels visible (bar series)">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries Style="{StaticResource BarSeriesStyle}" LabelVisibility="Visible"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Labels visible (multiple series)">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis x:Name="yAxis1" AreMajorTicksVisible="True" TickMajorInterval="5"/>
+							<charts:XYDoubleAxis x:Name="yAxis2" AreMajorTicksVisible="True" TickMajorInterval="5000" 
+													Position="FarEdge" Minimum="-15000" Maximum="25000"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}" LabelVisibility="Visible" YAxis="{Binding ElementName=yAxis1}"/>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle2}" LabelVisibility="Visible" YAxis="{Binding ElementName=yAxis2}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Labels visible on mouse hover near axis point">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis x:Name="yAxis3" AreMajorTicksVisible="True" TickMajorInterval="5"/>
+							<charts:XYDoubleAxis x:Name="yAxis4" AreMajorTicksVisible="True" TickMajorInterval="5000" 
+													Position="FarEdge" Minimum="-15000" Maximum="25000"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}" LabelVisibility="PointerAxis" YAxis="{Binding ElementName=yAxis3}"/>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle2}" LabelVisibility="PointerAxis" YAxis="{Binding ElementName=yAxis4}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Labels visible on mouse hover near data point">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis x:Name="yAxis5" AreMajorTicksVisible="True" TickMajorInterval="5"/>
+							<charts:XYDoubleAxis x:Name="yAxis6" AreMajorTicksVisible="True" TickMajorInterval="5000" 
+													Position="FarEdge" Minimum="-15000" Maximum="25000"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}" LabelVisibility="PointerProximity" YAxis="{Binding ElementName=yAxis5}"/>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle2}" LabelVisibility="PointerProximity" YAxis="{Binding ElementName=yAxis6}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Angled labels">
+					<StackPanel>
+						<charts:XYChart Style="{StaticResource ChartStyle}">
+							<charts:XYChart.YAxes>
+								<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+							</charts:XYChart.YAxes>
+							<charts:XYChart.XAxes>
+								<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+							</charts:XYChart.XAxes>
+							<charts:LineSeries LabelVisibility="Visible" Style="{StaticResource LineSeriesStyle}" 
+											  LabelAngle="{Binding ElementName=labelAngleSlider, Path=Value, Converter={StaticResource CeilingDoubleConverter}}"/>
+						</charts:XYChart>
+						<StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+							<TextBlock Text="Label angle set to" Margin="0,0,5,0"/>
+							<TextBlock Text="{Binding ElementName=labelAngleSlider, Path=Value, Converter={StaticResource CeilingDoubleConverter}}"/>
+							<TextBlock Text=". Use slider to change value."/>
+						</StackPanel>
+						<Slider x:Name="labelAngleSlider" HorizontalAlignment="Center" Value="45" Width="200" 
+								SmallChange="1" LargeChange="10" Minimum="0" Maximum="360" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom label format">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries Style="{StaticResource BarSeriesStyle}" LabelVisibility="Visible" LabelFormat="{}{0:C}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom label function">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries Style="{StaticResource BarSeriesStyle}" LabelVisibility="Visible" LabelFunc="{Binding ElementName=rootControl, Path=CustomLabelFunc}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom label style">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="5"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries Style="{StaticResource BarSeriesStyle}" LabelVisibility="Visible">
+							<charts:BarSeries.LabelStyle>
+								<Style TargetType="charts:DataPointLabel">
+									<Setter Property="FontWeight" Value="Bold" />
+									<Setter Property="Foreground" Value="{Binding SeriesDefaultBrush}"/>
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="charts:DataPointLabel">
+												<Border Background="White">
+													<ContentPresenter x:Name="PART_ContentPresenter" Margin="{TemplateBinding Padding}" />
+												</Border>
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</charts:BarSeries.LabelStyle>
+						</charts:BarSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

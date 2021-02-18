@@ -1,0 +1,115 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.AlbumViewer.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.Demo.AlbumViewer"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemTemplateKey">
+			<Image Source="{Binding ImageSource}" Width="186" Height="177" />
+		</DataTemplate>
+
+		<Style x:Key="ItemContainerStyleKey" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"
+								SnapsToDevicePixels="true">
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+									VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+									SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Geometry x:Key="LeftArrow">M 8,0 L 8,14 L 0,7 Z</Geometry>
+		<Geometry x:Key="RightArrow">M 0,0 L 8,7 L 0,14 Z</Geometry>
+
+		<Style x:Key="ListBoxStyleKey" TargetType="{x:Type ListBox}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ListBoxStyleKey}}">
+			<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+			<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBox}">
+						<sampleBrowser:LabeledCardControl>
+							<Grid>
+								<ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
+									<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+								</ScrollViewer>
+								<RepeatButton x:Name="nextButton" Command="{x:Static sample:MainControl.SelectNext}" Width="50" Height="50"
+										HorizontalAlignment="Right" Margin="0,0,10,0" Style="{StaticResource SoftButtonStyle}"
+										Visibility="Collapsed">
+									<Path HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" Fill="Gray"
+											Data="{StaticResource RightArrow}" />
+								</RepeatButton>
+								<RepeatButton x:Name="prevButton" Command="{x:Static sample:MainControl.SelectPrevious}" Width="50" Height="50"
+										HorizontalAlignment="Left" Margin="10,0,0,0" Style="{StaticResource SoftButtonStyle}"
+										Visibility="Collapsed">
+									<Path HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" Fill="Gray"
+											Data="{StaticResource LeftArrow}" />
+								</RepeatButton>
+							</Grid>
+						</sampleBrowser:LabeledCardControl>
+
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="nextButton" Property="Visibility" Value="Visible" />
+								<Setter TargetName="prevButton" Property="Visibility" Value="Visible" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<DockPanel>
+
+			<sampleBrowser:LabeledCardControl DockPanel.Dock="Right" Margin="20,0,0,0" Width="300" VerticalAlignment="Top" 
+											  DataContext="{Binding ElementName=listBox, Path=SelectedItem}">
+				<StackPanel>
+					<TextBlock Text="{Binding AlbumName}" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+					<TextBlock Text="{Binding ArtistName, StringFormat='by {0}'}" TextWrapping="Wrap" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+					
+					<TextBlock Margin="0,20,0,0" Text="{Binding ReleaseDate}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+					<TextBlock Margin="0,3,0,0" Text="{Binding TrackCount, StringFormat='{}{0} total tracks'}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+
+					<editors:Rating Margin="0,20,0,0" ItemCount="5" Value="{Binding Rating}" IsEnabled="False">
+						<editors:Rating.LayoutTransform>
+							<ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+						</editors:Rating.LayoutTransform>
+					</editors:Rating>
+
+					<TextBlock Margin="0,20,0,0" Text="ACTIONS" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+					<TextBlock Margin="0,3,0,0"><Hyperlink>Buy Album Online</Hyperlink></TextBlock>
+					<TextBlock Margin="0,3,0,0"><Hyperlink>Find Tickets</Hyperlink></TextBlock>
+					<TextBlock Margin="0,3,0,0"><Hyperlink>View Additional Artist Info</Hyperlink></TextBlock>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+
+			<ListBox x:Name="listBox" ItemsSource="{Binding ElementName=userControl, Path=Albums}"
+					ItemTemplate="{StaticResource ItemTemplateKey}" ItemContainerStyle="{StaticResource ItemContainerStyleKey}"
+					Style="{StaticResource ListBoxStyleKey}" SelectedIndex="0">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:FanPanel ForeElementLayoutPlacement="Wrap" BackOpacityStep="0.2" />
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</DockPanel>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

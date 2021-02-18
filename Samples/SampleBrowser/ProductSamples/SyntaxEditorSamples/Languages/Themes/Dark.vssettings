@@ -1,0 +1,84 @@
+<UserSettings>
+	<ApplicationIdentity version="10.0"/>
+	<ToolsOptions>
+		<ToolsOptionsCategory name="Environment" RegisteredName="Environment"/>
+	</ToolsOptions>
+	<Category name="Environment_Group" RegisteredName="Environment_Group">
+		<Category name="Environment_FontsAndColors" Category="{1EDA5DD4-927A-43a7-810E-7FD247D0DA1D}" Package="{DA9FB551-C724-11d0-AE1F-00A0C90FFFC3}" RegisteredName="Environment_FontsAndColors" PackageName="Visual Studio Environment Package">
+			<PropertyValue name="Version">2</PropertyValue>
+			<FontsAndColors Version="2.0">
+				<Categories>
+					<Category GUID="{A27B4E24-A735-4D1D-B8E7-9716E1E3D8E0}" FontIsDefault="Yes">
+						<Items>
+
+							<Item Name="Code Snippet Field" Foreground="0x02000000" Background="0x005b5b5b" BoldFont="No"/>
+							<Item Name="Code Snippet Dependent Field" Foreground="0x02000000" Background="0x003d61b6" BoldFont="No"/>
+							<Item Name="Collapsible Text" Foreground="0x00808080" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Collapsible Region" Foreground="0x00303030" Background="0x00232323" BoldFont="No"/>
+							<Item Name="Current Line" Foreground="0x02000000" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Delimiter Matching" Foreground="0x02000000" Background="0x0083450E" BoldFont="No"/>
+							<Item Name="Find Match Highlight" Foreground="0x02000000" Background="0x00003877" BoldFont="No"/>
+							<Item Name="Find Scope Highlight" Foreground="0x02000000" Background="0x00393228" BoldFont="No"/>
+							<Item Name="Inactive Selected Text" Foreground="0x02000000" Background="0x0565656" BoldFont="No"/>
+							<Item Name="Indentation Guides" Foreground="0x02000000" Background="0x00333333" BoldFont="No"/>
+							<Item Name="Indicator Margin" Foreground="0x02000000" Background="0x00333333" BoldFont="No"/>
+							<Item Name="Line Numbers" Foreground="0x00AF912B" Background="0x001E1E1E" BoldFont="No"/>
+							<Item Name="Outlining Margin Square" Foreground="0x00E2E2E2" Background="0x00000000" BoldFont="No"/>
+							<Item Name="Outlining Margin Vertical Rule" Foreground="0x00A5A5A5" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Plain Text" Foreground="0x00C8C8C8" Background="0x001E1E1E" BoldFont="No"/>
+							<Item Name="Selected Text" Foreground="0x02000000" Background="0x00FF9933" BoldFont="No"/>
+							<Item Name="Track Changes After Save" Foreground="0x02000000" Background="0x00307457" BoldFont="No"/>
+							<Item Name="Track Changes Before Save" Foreground="0x02000000" Background="0x00aadcdc" BoldFont="No"/>
+							<Item Name="Track Reverted Changes" Foreground="0x02000000" Background="0x00fa955f" BoldFont="No"/>
+							<Item Name="Visible White Space" Foreground="0x00524814" Background="0x02000000" BoldFont="No"/>
+							
+							<Item Name="Comment" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Identifier" Foreground="0x00C8C8C8" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Keyword" Foreground="0x00D69C56" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Number" Foreground="0x00A8CEB5" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Operator" Foreground="0x009B9B9B" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Preprocessor Keyword" Foreground="0x009B9B9B" Background="0x02000000" BoldFont="No"/>
+							<Item Name="String" Foreground="0x00859DD6" Background="0x02000000" BoldFont="No"/>
+							
+							<Item Name="String (C# @ Verbatim)" Foreground="0x00859DD6" Background="0x02000000" BoldFont="No"/>
+
+							<Item Name="CSS Comment" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+							<Item Name="CSS Property Name" Foreground="0x00FEDC9C" Background="0x02000000" BoldFont="No"/>
+							<Item Name="CSS Property Value" Foreground="0x00C8C8C8" Background="0x02000000" BoldFont="No"/>
+							<Item Name="CSS Selector" Foreground="0x007DBAD7" Background="0x02000000" BoldFont="No"/>
+							
+							<Item Name="JSON Property Name" Foreground="0x007DBAD7" Background="0x02000000" BoldFont="No"/>
+						  
+							<Item Name="Markdown Code" Foreground="0x00AADCDC" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Code Block Delimiter" Foreground="0x00B0C94E" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Emphasis" Foreground="0x00DFA0D8" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Escaped Character" Foreground="0x009A9A9A" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Heading Delimiter" Foreground="0x009A9A9A" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Heading Text" Foreground="0x004AA657" Background="0x02000000" BoldFont="Yes"/>
+							<Item Name="Markdown Horizontal Rule" Foreground="0x00859DD6" Background="0x00313131" BoldFont="No"/>
+							<Item Name="Markdown Link Text" Foreground="0x00B0C94E" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Link Url" Foreground="0x00D69C56" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Operator" Foreground="0x00859DD6" Background="0x02000000" BoldFont="No"/>
+							<Item Name="Markdown Strong Emphasis" Foreground="0x00DFA0D8" Background="0x02000000" BoldFont="Yes"/>
+						  
+							<Item Name="XAML Attribute Markup Extension Value" Foreground="0x007DBAD7" Background="0x02000000" BoldFont="No"/>
+							
+							<Item Name="XML Attribute" Foreground="0x00F4CA92" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Attribute Value" Foreground="0x00C8C8C8" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML CData Section" Foreground="0x0085D5E9" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Comment" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Declaration" Foreground="0x00C8C8C8" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Delimiter" Foreground="0x00808080" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Entity" Foreground="0x008CA0BB" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Name" Foreground="0x00D69C56" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Processing Instruction" Foreground="0x00C8C8C8" Background="0x02000000" BoldFont="No"/>
+
+							<Item Name="XML Doc Comment" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+							<Item Name="XML Doc Tag" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+						</Items>
+					</Category>
+				</Categories>
+			</FontsAndColors>
+		</Category>
+	</Category>
+</UserSettings>

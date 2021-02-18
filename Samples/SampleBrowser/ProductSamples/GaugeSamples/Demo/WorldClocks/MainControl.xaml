@@ -1,0 +1,73 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.GaugeSamples.Demo.WorldClocks"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge can be used to replicate an analog clock, which this sample demostrates.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<Grid Style="{StaticResource SamplePanelWideStyle}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<StackPanel>
+					<local:ClockControl UtcMinutesOffset="-480">
+						<local:ClockControl.LayoutTransform>
+							<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+						</local:ClockControl.LayoutTransform>
+					</local:ClockControl>
+					<TextBlock Margin="0,5,0,0" Text="Los Angeles" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+				</StackPanel>
+
+				<StackPanel Margin="20,0,0,0">
+					<local:ClockControl UtcMinutesOffset="-300">
+						<local:ClockControl.LayoutTransform>
+							<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+						</local:ClockControl.LayoutTransform>
+					</local:ClockControl>
+					<TextBlock Margin="0,5,0,0" Text="New York" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+				</StackPanel>
+
+				<StackPanel Margin="20,0,0,0">
+					<local:ClockControl UtcMinutesOffset="0">
+						<local:ClockControl.LayoutTransform>
+							<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+						</local:ClockControl.LayoutTransform>
+					</local:ClockControl>
+					<TextBlock Margin="0,5,0,0" Text="London" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+				</StackPanel>
+
+				<StackPanel Margin="20,0,0,0">
+					<local:ClockControl UtcMinutesOffset="540">
+						<local:ClockControl.LayoutTransform>
+							<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+						</local:ClockControl.LayoutTransform>
+					</local:ClockControl>
+					<TextBlock Margin="0,5,0,0" Text="Tokyo" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+				</StackPanel>
+			</StackPanel>
+
+			<StackPanel Grid.Row="1" Margin="0,50,0,0">
+				<local:ClockControl />
+				<TextBlock Margin="0,5,0,0" Text="Local" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" HorizontalAlignment="Center" />
+			</StackPanel>
+		</Grid>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

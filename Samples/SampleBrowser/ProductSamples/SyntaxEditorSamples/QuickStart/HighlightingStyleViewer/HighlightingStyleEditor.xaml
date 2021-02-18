@@ -1,0 +1,49 @@
+<UserControl x:Name="highlightingStyleEditor" x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.HighlightingStyleViewer.HighlightingStyleEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.HighlightingStyleViewer"
+    >
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="20" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		
+		<StackPanel Grid.Row="0" Grid.Column="0">
+			<TextBlock Text="Item foreground:" />
+			<editors:ColorEditBox Margin="0,3,0,0" MinWidth="120" HorizontalAlignment="Left" IsNullAllowed="True" PlaceholderText="(default)"
+								  Value="{Binding Path=Foreground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsForegroundEditable}" />		
+		</StackPanel>
+		
+		<StackPanel Grid.Row="0" Grid.Column="2">
+			<TextBlock Text="Item border:" />
+			<editors:ColorEditBox Margin="0,3,0,0" MinWidth="120" HorizontalAlignment="Left" IsNullAllowed="True" PlaceholderText="(default)"
+								  Value="{Binding Path=BorderColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsBorderEditable}" />		
+		</StackPanel>
+		
+		<StackPanel Grid.Row="1" Grid.Column="0" Margin="0,15,0,0">
+			<TextBlock Text="Item background:" />
+			<editors:ColorEditBox Margin="0,3,0,0" MinWidth="120" HorizontalAlignment="Left" IsNullAllowed="True" PlaceholderText="(default)"
+								  Value="{Binding Path=Background, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsBackgroundEditable}" />		
+		</StackPanel>
+		
+		<StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,15,0,0" Orientation="Horizontal">
+			<CheckBox IsChecked="{Binding Bold}" Content="Bold" IsEnabled="{Binding IsBoldEditable}" />
+			<CheckBox Margin="50,0,0,0" IsChecked="{Binding Italic}" Content="Italic" IsEnabled="{Binding IsItalicEditable}" />
+		</StackPanel>
+		
+		<editor:TextStylePreview Grid.Row="3" Grid.ColumnSpan="3" Margin="0,15,0,0" HighlightingStyle="{Binding}" 
+								 HighlightingStyleRegistry="{Binding ElementName=highlightingStyleEditor, Path=HighlightingStyleRegistry}" />
+	</Grid>
+   
+</UserControl>

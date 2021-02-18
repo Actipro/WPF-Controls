@@ -1,0 +1,187 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:UnitToDoubleConverter x:Key="UnitToDoubleConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=NeedleType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=PointerExtent, Converter={StaticResource UnitToDoubleConverter}}" DisplayName="Needle extent">
+						<gridseditors:DoublePropertyEditor Minimum="25" Maximum="125" SmallChange="5" LargeChange="25" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=PointerAscent, Converter={StaticResource UnitToDoubleConverter}}" DisplayName="Needle ascent">
+						<gridseditors:DoublePropertyEditor Minimum="5" Maximum="50" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Background}" DisplayName="Needle background" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=BorderBrush}" DisplayName="Needle border brush" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=BorderWidth}" DisplayName="Needle border width">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=HasDropShadow}" DisplayName="Needle has drop shadow" />
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=Visibility}" DisplayName="Cap visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=CapType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=PointerExtent, Converter={StaticResource UnitToDoubleConverter}}" DisplayName="Cap extent">
+						<gridseditors:DoublePropertyEditor Minimum="10" Maximum="40" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=Background}" DisplayName="Cap background" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=IsBackgroundEffectEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=HasDropShadow}" DisplayName="Cap has drop shadow" />
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=secondNeedle, Path=Visibility}" DisplayName="Second needle visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=secondNeedle, Path=Value}" DisplayName="Second needle value">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Visibility}" DisplayName="Bar visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Value}" DisplayName="Bar value">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=marker, Path=Visibility}" DisplayName="Marker visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=marker, Path=Value}" DisplayName="Marker value">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge control supports any number of pointers, with four built-in types: needles, bars,
+					markers, and labels. Each type can be customized as desired, or you can render your own pointer.
+					<LineBreak /><LineBreak />
+					<Italic>Note: Special effects are only availabe when a solid color brush is used.</Italic>
+					<LineBreak /><LineBreak />
+					Several of the options available for the pointers can be configured.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" HorizontalAlignment="Center"
+					Background="#1F1B43" BackgroundRadiusRatio=".95" RimBrush="Black" FrameType="CircularThickRim">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="75" StartAngle="280" SweepAngle="340" BarExtent="15" Background="Transparent"
+							BorderBrush="#C8C0A1" BorderWidth="1">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet MajorInterval="10" MinorInterval="2">
+								<gauge:CircularTickSet.Ranges>
+									<gauge:CircularRange Background="#229794B2" BorderBrush="#9794B2" BorderWidth="1" StartValue="0"
+											EndValue="50" StartExtent="40" EndExtent="40" HasDropShadow="False"
+											ScalePlacement="Inside" />
+									<gauge:CircularRange Background="#669794B2" BorderBrush="#9794B2" BorderWidth="1"
+											StartValue="50" EndValue="75" StartExtent="40" EndExtent="40" HasDropShadow="False"
+											ScalePlacement="Inside" />
+									<gauge:CircularRange Background="#AA9794B2" BorderBrush="#9794B2" BorderWidth="1"
+											StartValue="75" EndValue="100" StartExtent="40" EndExtent="40" HasDropShadow="False"
+											ScalePlacement="Inside" />
+								</gauge:CircularTickSet.Ranges>
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor TickMarkExtent="7" TickMarkAscent="3" TickMarkType="TriangleSharp"
+											ScalePlacement="Outside" ScaleOffset="10" Background="#9F9CB2" />
+									<gauge:CircularTickMarkMajor TickMarkExtent="7" TickMarkAscent="7" TickMarkType="TriangleSharp"
+											ScalePlacement="Outside" ScaleOffset="8" Background="#9F9CB2" />
+									<gauge:CircularTickMarkMajor TickMarkExtent="19" TickMarkAscent="5"
+											TickMarkType="RoundedRectangle" Background="#928A6C" BorderBrush="#1F1B43"
+											BorderWidth="1" />
+									<gauge:CircularTickLabelMajor Foreground="#868496" FontSize="16" FontWeight="Bold"
+											BorderBrush="#1F1B43" BorderWidth="0.5" TextOrientation="Rotated"
+											ScalePlacement="Inside" ScaleOffset="5" StartValue="10" EndValue="40" SkipValues="0,100" />
+									<gauge:CircularTickLabelMajor Foreground="#1F1B43" FontSize="16" FontWeight="Bold"
+											BorderBrush="#868496" BorderWidth="0.5" TextOrientation="Rotated"
+											ScalePlacement="Inside" ScaleOffset="5" StartValue="60" EndValue="90" SkipValues="0,100" />
+									<gauge:CircularTickLabelCustom Foreground="#A0A0A0" FontSize="16" FontWeight="Bold"
+											BorderBrush="#404040" BorderWidth="0.5" TextOrientation="Rotated"
+											ScalePlacement="Inside" ScaleOffset="5" Value="50" />
+								</gauge:CircularTickSet.Ticks>
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle x:Name="needle" NeedleType="TriangleSharp" PointerExtent="80"
+											PointerAscent="10" Background="#6E5165" BorderBrush="#9E7491" BorderWidth="1">
+										<gauge:CircularPointerNeedle.Geometry>
+											<CombinedGeometry GeometryCombineMode="Union">
+												<CombinedGeometry.Geometry1>
+													<RectangleGeometry Rect="20,3,55,4" RadiusX="2" RadiusY="2" />
+												</CombinedGeometry.Geometry1>
+												<CombinedGeometry.Geometry2>
+													<PathGeometry>
+														<PathFigure IsClosed="True" StartPoint="75,5">
+															<PathFigure.Segments>
+																<PathSegmentCollection>
+																	<LineSegment Point="70,10" />
+																	<LineSegment Point="70,0" />
+																</PathSegmentCollection>
+															</PathFigure.Segments>
+														</PathFigure>
+													</PathGeometry>
+												</CombinedGeometry.Geometry2>
+											</CombinedGeometry>
+										</gauge:CircularPointerNeedle.Geometry>
+									</gauge:CircularPointerNeedle>
+									<gauge:CircularPointerNeedle x:Name="secondNeedle" NeedleType="TriangleSharp" PointerExtent="75"
+											PointerAscent="10" Value="20" Background="#476059" BorderBrush="#7EAA9E" BorderWidth="1"
+											HasDropShadow="{Binding ElementName=needle, Path=HasDropShadow}" />
+									<gauge:CircularPointerBar x:Name="bar" gauge:CircularGauge.ZIndex="-1" PointerExtent="15"
+											Value="30" Background="#55928A6C" BorderBrush="#605325" BorderWidth="1"
+											HasDropShadow="{Binding ElementName=needle, Path=HasDropShadow}" />
+									<gauge:CircularPointerMarker x:Name="marker" PointerExtent="18" PointerAscent="18"
+											MarkerType="Diamond" Value="71" Background="#98A2AF" BorderBrush="#6A717A"
+											BorderWidth="1" HasDropShadow="{Binding ElementName=needle, Path=HasDropShadow}" />
+									<gauge:CircularPointerCap x:Name="cap" PointerExtent="20" CapType="CircleShiny"
+											HasDropShadow="False" Background="#6E5165" ImageSource="/Images/Icons/Smile10.png">
+										<gauge:CircularPointerCap.Geometry>
+											<PathGeometry>
+												<PathFigure IsClosed="True" StartPoint="9,0">
+													<PathFigure.Segments>
+														<PathSegmentCollection>
+															<LineSegment Point="18,18" />
+															<LineSegment Point="0,18" />
+														</PathSegmentCollection>
+													</PathFigure.Segments>
+												</PathFigure>
+											</PathGeometry>
+										</gauge:CircularPointerCap.Geometry>
+									</gauge:CircularPointerCap>
+								</gauge:CircularTickSet.Pointers>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

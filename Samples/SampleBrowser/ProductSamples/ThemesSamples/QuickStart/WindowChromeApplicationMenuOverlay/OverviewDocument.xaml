@@ -1,0 +1,48 @@
+<sampleBrowser:SimpleFlowDocument
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<Paragraph TextAlignment="Center">
+		<sampleBrowser:ScreenshotControl ImageSource="/Images/Screenshots/Themes-WindowChromeApplicationMenuOverlay-200x150.png" />
+	</Paragraph>
+
+	<Paragraph>
+		WindowChrome has a built-in overlay mechanism that lets you display any content above (in z-order) 
+		the window's title bar and normal content areas.
+		This allows for easy creation of home screens or Office-like Backstage user interfaces.
+	</Paragraph>
+
+	<Paragraph>
+		The overlay has several animation options such as fade, slide, fade/slide, or none.
+		Various portions of UI can be bound and displayed conditionally based on whether the overlay is visible.
+	</Paragraph>
+
+	<Paragraph>
+		In this sample, we've set up a WindowChrome that hides the traditional title bar menu icon
+		and centers the title bar text.
+		The sample defines a Menu button on the left side of the title bar and a Help button on the right side.
+		The Menu button uses a built-in WindowChrome command to toggle the overlay visibility.
+	</Paragraph>
+
+	<Paragraph>
+		When the overlay becomes visible, the Menu button hides and a Back button appears in its place.
+		The attached WindowChrome.UseAlternateTitleBarStyle property is bound to the IsOverlayVisible property.
+		The "alternate" title bar means that an alterate set of brushes are used for the title bar and 
+		title bar button rendering.  When using a theme that has an accented title bar, this allows
+		the title bar to render in more of a traditional title bar style while the overlay is visible.
+	</Paragraph>
+
+	<sampleBrowser:ExternalSampleLauncherUIContainer />
+
+	<Paragraph>
+		Related to this concept is that on the Help button, we bind an attached ThemeProperties.UseAlternateStyle
+		property to the IsOverlayVisible property, which allows that button to participate in the alternate style.
+	</Paragraph>
+
+	<Paragraph>
+		This sample also uses a custom button style for buttons in the left column of the overlay.
+	</Paragraph>
+
+</sampleBrowser:SimpleFlowDocument>

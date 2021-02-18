@@ -1,0 +1,55 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.RibbonSamples.Common.CustomizeQat"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="15" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="84" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="40" />
+		</Grid.ColumnDefinitions>
+		
+		<StackPanel MinHeight="44">
+			<TextBlock Text="Choose commands from:" />
+			<ComboBox x:Name="availableQatCategoriesComboBox" Margin="0,3,0,0" SelectionChanged="OnAvailableQatCategoriesListBoxSelectionChanged">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Label}" />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+		</StackPanel>
+		
+		<TextBlock Grid.Column="2" Text="Customize Quick Access Toolbar:" />
+		
+		<ListBox x:Name="availableQatItemsListBox" Grid.Row="2" HorizontalContentAlignment="Stretch" SnapsToDevicePixels="True"
+			MouseDoubleClick="OnAvailableQatItemsListBoxMouseDoubleClick" SelectionChanged="OnAvailableQatItemsListBoxSelectionChanged"
+			ItemTemplate="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ribbon:Ribbon},ResourceId=QuickAccessToolBarCustomizationItemTemplate}}" />
+		
+		<StackPanel Grid.Row="2" Grid.Column="1" Margin="7,0,7,0" VerticalAlignment="Center">
+			<Button x:Name="addToQatButton" Content="Add &gt;&gt;" Click="OnAddToQatButtonClick" IsEnabled="False" />					
+			<Button x:Name="removeFromQatButton" Margin="0,3,0,0" Content="Remove" Click="OnRemoveFromQatButtonClick" IsEnabled="False" />					
+		</StackPanel>
+		
+		<ListBox x:Name="qatItemsListBox" Grid.Row="2" Grid.Column="2" HorizontalContentAlignment="Stretch" SnapsToDevicePixels="True"
+			MouseDoubleClick="OnQatItemsListBoxMouseDoubleClick" SelectionChanged="OnQatItemsListBoxSelectionChanged"
+			ItemTemplate="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ribbon:Ribbon},ResourceId=QuickAccessToolBarCustomizationItemTemplate}}" />
+		
+		<StackPanel Grid.Row="2" Grid.Column="3" Margin="7,0,0,0" VerticalAlignment="Center">
+			<Button x:Name="moveQatItemUpButton" MinHeight="19" Click="OnMoveQatItemUpButtonClick" IsEnabled="False">
+				<Path Fill="{Binding ElementName=moveQatItemUpButton, Path=(TextElement.Foreground)}" Data="M 0,4 L 3.5,0 L 7,4 Z" />
+			</Button>
+			<Button x:Name="moveQatItemDownButton" Margin="0,3,0,0" MinHeight="19" Click="OnMoveQatItemDownButtonClick" IsEnabled="False">
+				<Path Fill="{Binding ElementName=moveQatItemDownButton, Path=(TextElement.Foreground)}" Data="M 0,0 L 3.5,4 L 7,0 Z" />
+			</Button>
+		</StackPanel>
+	</Grid>
+</UserControl>

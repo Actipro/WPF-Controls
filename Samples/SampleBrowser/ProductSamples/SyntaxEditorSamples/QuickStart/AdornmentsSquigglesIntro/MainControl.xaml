@@ -1,0 +1,36 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsSquigglesIntro.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsSquigglesIntro"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[This QuickStart shows how to make a CollectionTagger that tracks
+ISquiggleTag objects for specified ranges of document text.
+ISquiggleTag is a built-in tag type that SyntaxEditor watches for
+and when found, renders a squiggle line under the tagged text range.
+
+This sample's logic looks for the text 'Actipro' in a standalone 
+word and renders a green squiggle line under any instances of the 
+text 'Actipro'.
+
+To get this working, a tagger provider is registered as a service
+on the syntax language in use.  This tagger provider creates
+a tagger instance for each document that uses the language.  
+The sample's logic gets the tagger for the document, and updates
+the tagged ranges in the tagger when the sample is first opened.
+
+Each ISquiggleTag can be assigned an IClassificationType.  If
+one is specified and the classification type is registerd with 
+a highlighting style, the related style's foreground brush will
+be used to render the squiggle.  This enables end users to
+be able to configure the squiggle color in highlighting style
+configuration dialogs.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

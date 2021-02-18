@@ -1,0 +1,73 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbContextMenuCustomization.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Dictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Breadcrumb control raises an OverflowButtonClick event whenever its overflow button is clicked. In
+					addition, the BreadcrumbItem control raises a NavigateButtonClick event whenever its navigate button is
+					clicked. The event arguments for both these events contain the ContextMenu that was created by default
+					and is to be displayed.
+					<LineBreak /><LineBreak />
+					You can modify the context menu's items as needed or even add your own. This sample shows how to add a Separator and
+					custom menu item below it at the end of the overflow context menu and all navigation context menus.
+					<LineBreak /><LineBreak />
+					If you have any themes defined for native ContextMenu or MenuItem controls, the generated context menu should pick
+					those up automatically. Alternatively, you could assign a Style to the context menu programmatically. Or you could
+					even provide a completely different ContextMenu to display.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+		<navigation:Breadcrumb x:Name="breadcrumb"
+							   RootItem="{Binding XPath=ShellItem}"
+							   ItemContainerStyle="{StaticResource BreadcrumbItemStyle}"
+							   ItemTemplate="{StaticResource BreadcrumbItemTemplate}"
+							   MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+							   MenuItemTemplate="{StaticResource MenuItemNormalTemplate}"
+							   MenuItemExpandedTemplate="{StaticResource MenuItemExpandedTemplate}"
+							   ConvertItem="OnBreadcrumbConvertItem"
+							   OverflowButtonClick="OnBreadcrumbOverflowButtonClick"
+							   navigation:BreadcrumbItem.NavigateButtonClick="OnBreadcrumbItemNavigateButtonClick">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1">
+					<shared:DynamicImage Source="/Images/Icons/Refresh16.png" Stretch="None" VerticalAlignment="Center" />
+					<Button.ToolTip>
+						<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Refresh {0}">
+							<Binding ElementName="breadcrumb" Path="SelectedItem" Mode="OneWay" Converter="{StaticResource PathConverter}" />
+						</MultiBinding>
+					</Button.ToolTip>
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+	</StackPanel>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,98 @@
+<sampleBrowser:ProductItemControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The chart control supports any number of ranges, which can be used to highlight areas of interest along it's associated series.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+				
+				<sampleBrowser:LabeledCardControl Label="Green range above 0, red range below 0">
+					<microcharts:MicroXYChart Width="130" Height="40">
+						<microcharts:MicroLineSeries ItemsSource="4;-5;3;6;9;-9;1;5" MarkerVisibility="All" MarkerStyleKinds="All" />
+						<microcharts:MicroXYChart.Ranges>
+							<microcharts:MicroXYRange Background="#2200FF00" Minimum="0"/>
+							<microcharts:MicroXYRange Background="#22FF0000" Maximum="0"/>
+						</microcharts:MicroXYChart.Ranges>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Green range above 0, red range below 0; with gradient">
+					<microcharts:MicroXYChart Width="130" Height="40">
+						<microcharts:MicroLineSeries ItemsSource="4;-5;3;6;9;-9;1;5" MarkerVisibility="All" MarkerStyleKinds="All" />
+						<microcharts:MicroXYChart.Ranges>
+							<microcharts:MicroXYRange Minimum="0">
+								<microcharts:MicroXYRange.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="Transparent" Offset="0" />
+										<GradientStop Color="#2200FF00" Offset="1" />
+									</LinearGradientBrush>
+								</microcharts:MicroXYRange.Background>
+							</microcharts:MicroXYRange>
+							<microcharts:MicroXYRange Maximum="0">
+								<microcharts:MicroXYRange.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="#22FF0000" Offset="0" />
+										<GradientStop Color="Transparent" Offset="1" />
+									</LinearGradientBrush>
+								</microcharts:MicroXYRange.Background>
+							</microcharts:MicroXYRange>
+						</microcharts:MicroXYChart.Ranges>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Yellow range between 2 and 5 on X-axis">
+					<microcharts:MicroXYChart Width="130" Height="40">
+						<microcharts:MicroLineSeries ItemsSource="4;-5;3;6;9;-9;1;5" MarkerVisibility="All" MarkerStyleKinds="All" />
+						<microcharts:MicroXYChart.Ranges>
+							<microcharts:MicroXYRange Background="#88FFFF00" Minimum="2" Maximum="5" Orientation="Vertical"/>
+						</microcharts:MicroXYChart.Ranges>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Green, red, and yellow ranges above together">
+					<microcharts:MicroXYChart Width="130" Height="40">
+						<microcharts:MicroLineSeries ItemsSource="4;-5;3;6;9;-9;1;5" MarkerVisibility="All" MarkerStyleKinds="All" />
+						<microcharts:MicroXYChart.Ranges>
+							<microcharts:MicroXYRange Background="#88FFFF00" Minimum="2" Maximum="5" Orientation="Vertical"/>
+							<microcharts:MicroXYRange Minimum="0">
+								<microcharts:MicroXYRange.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="Transparent" Offset="0" />
+										<GradientStop Color="#2200FF00" Offset="1" />
+									</LinearGradientBrush>
+								</microcharts:MicroXYRange.Background>
+							</microcharts:MicroXYRange>
+							<microcharts:MicroXYRange Maximum="0">
+								<microcharts:MicroXYRange.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="#22FF0000" Offset="0" />
+										<GradientStop Color="Transparent" Offset="1" />
+									</LinearGradientBrush>
+								</microcharts:MicroXYRange.Background>
+							</microcharts:MicroXYRange>
+						</microcharts:MicroXYChart.Ranges>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+			
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

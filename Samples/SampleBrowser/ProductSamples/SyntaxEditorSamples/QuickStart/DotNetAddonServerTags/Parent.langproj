@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+-->
+<LanguageProject LanguageKey="Parent" LanguageDescription="Parent to C# example" OutputLanguageDefinition="False" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\Development\ProductSamples\SyntaxEditorSamples\QuickStart\DotNetAddOnServerTags" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="TransitionDelimiter" DefaultStyle="#FF000000,,,#FFFFFF00" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<ProgrammaticLexer IsMergable="True">
+			<ProgrammaticLexer.States>
+				<State Key="Default" Description="Default" />
+				<State Key="ChildCodeBlock" />
+				<State Key="ChildOutputBlock" />
+			</ProgrammaticLexer.States>
+			<ProgrammaticLexer.TokenDeclarations>
+				<TokenDeclaration Key="Invalid" />
+				<TokenDeclaration Key="Whitespace" />
+				<TokenDeclaration Key="Identifier" />
+				<TokenDeclaration Key="DateKeyword" ClassificationTypeKey="Keyword" />
+				<TokenDeclaration Key="ChildCodeBlockStart" ClassificationTypeKey="TransitionDelimiter" />
+				<TokenDeclaration Key="ChildCodeBlockEnd" ClassificationTypeKey="TransitionDelimiter" />
+				<TokenDeclaration Key="ChildOutputBlockStart" ClassificationTypeKey="TransitionDelimiter" />
+				<TokenDeclaration Key="ChildOutputBlockEnd" ClassificationTypeKey="TransitionDelimiter" />
+			</ProgrammaticLexer.TokenDeclarations>
+		</ProgrammaticLexer>
+	</LanguageProject.Lexer>
+</LanguageProject>

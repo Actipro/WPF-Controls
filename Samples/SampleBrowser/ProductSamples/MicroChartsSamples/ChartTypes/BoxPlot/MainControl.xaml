@@ -1,0 +1,197 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<shared:ConditionalConverter x:Key="WidthConverter" TrueValue="19" FalseValue="100">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+		<shared:ConditionalConverter x:Key="HeightConverter" TrueValue="100" FalseValue="19">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+
+		<Style x:Key="MicroBoxPlotStyleBase" TargetType="microcharts:MicroBoxPlot">
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="Height" Value="19" />
+			<Setter Property="Width" Value="100" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Orientation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=AreOutliersVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=IsMeanVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=IsMedianVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=WhiskerAscent}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<shared:Unit>25%</shared:Unit>
+									<shared:Unit>50%</shared:Unit>
+									<shared:Unit>100%</shared:Unit>
+									<shared:Unit>0</shared:Unit>
+									<shared:Unit>5</shared:Unit>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=IqrMultiplier}" DisplayName="IQR multiplier">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="2" SmallChange="0.1" LargeChange="0.5" IsEditable="False" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="1" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A box plot is a chart used to visualize major statistical values, such as the mean, median, and quartile values,
+					of a data set. The mean and median can be shown as bars perpendicular to the chart. The upper and lower quartile
+					values form the	edges of a box that contains the middle half of the data.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<microcharts:MicroBoxPlot x:Name="chart" AreOutliersVisible="True" IsMeanVisible="True" IqrMultiplier="1.0" Values="-5; 0; 0; 0; 0; 4; 5; 6; 6; 6; 6; 10; 13"
+										  Width="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource WidthConverter}}" 
+										  Height="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource HeightConverter}}">
+					<microcharts:MicroBoxPlot.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</microcharts:MicroBoxPlot.LayoutTransform>
+				</microcharts:MicroBoxPlot>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Default options; thick lines and inverted appearance">
+					<microcharts:MicroBoxPlot Values="1; 2; 3; 4; 5; 6" LegendStringFormat="Lower Quartile: {2:F1}, Upper Quartile: {4:F1}, Average: {7:F1}">
+						<microcharts:MicroBoxPlot.Style>
+							<Style TargetType="microcharts:MicroBoxPlot" BasedOn="{StaticResource MicroBoxPlotStyleBase}">
+								<Setter Property="BoxStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="Fill" Value="#3b8525" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="MedianStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="Stroke" Value="#ffffff" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="WhiskerStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="Stroke" Value="#3b8525" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroBoxPlot.Style>
+					</microcharts:MicroBoxPlot>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Visible outliers; custom shape and color">
+					<microcharts:MicroBoxPlot Values="-6; -1; 0; 1; 2; 2; 2; 3; 4; 4; 5; 6; 6; 7; 9; 14" LegendStringFormat="Minimum: {0}, Maximum: {6}, Median: {3}" AreOutliersVisible="True">
+						<microcharts:MicroBoxPlot.Style>
+							<Style TargetType="microcharts:MicroBoxPlot" BasedOn="{StaticResource MicroBoxPlotStyleBase}">
+								<Setter Property="OutlierStyle">
+									<Setter.Value>
+										<Style TargetType="microcharts:MicroChartMarker">
+											<Setter Property="Background" Value="#ff0000" />
+											<Setter Property="ShapeKind" Value="Diamond" />
+											<Setter Property="Width" Value="7" />
+											<Setter Property="Height" Value="7" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroBoxPlot.Style>
+					</microcharts:MicroBoxPlot>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Mean displayed in custom color; median hidden">
+					<microcharts:MicroBoxPlot Values="-3; -2; -2; -1; 0; 1; 1; 1; 3; 10" IsMedianVisible="False" IsMeanVisible="True"
+										  LegendStringFormat="Minimum: {0}, Maximum: {6}, Mean: {7:F2}">
+						<microcharts:MicroBoxPlot.Style>
+							<Style TargetType="microcharts:MicroBoxPlot" BasedOn="{StaticResource MicroBoxPlotStyleBase}">
+								<Setter Property="MeanStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="StrokeDashArray" Value="5, 2" />
+											<Setter Property="Stroke" Value="#800000" />
+											<Setter Property="StrokeThickness" Value="1" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroBoxPlot.Style>
+					</microcharts:MicroBoxPlot>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Interquartile range set to 0 (whiskers hidden); thick lines">
+					<microcharts:MicroBoxPlot Values="-3; -2; -2; -1; 0; 1; 1; 1; 3" IqrMultiplier="0" AreOutliersVisible="True"
+										  LegendStringFormat="Minimum: {0}, Lower Quartile: {2}, Upper Quartile: {4}, Maximum: {6}">
+						<microcharts:MicroBoxPlot.Style>
+							<Style TargetType="microcharts:MicroBoxPlot" BasedOn="{StaticResource MicroBoxPlotStyleBase}">
+								<Setter Property="BoxStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="Fill" Value="#d0e2f0" />
+											<Setter Property="Stroke" Value="#0068b4" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="MedianStyle">
+									<Setter.Value>
+										<Style TargetType="Shape">
+											<Setter Property="Stroke" Value="#0068b4" />
+											<Setter Property="StrokeThickness" Value="3" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</microcharts:MicroBoxPlot.Style>
+					</microcharts:MicroBoxPlot>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Vertical orientation">
+					<microcharts:MicroBoxPlot Values="-5; 0; 0; 0; 0; 4; 5; 6; 6; 6; 6; 10; 13" Orientation="Vertical" Width="19" Height="100" Margin="5,5,81,5"
+										  AreOutliersVisible="True" LegendStringFormat="Lower Whisker: {1}, Upper Whisker: {5}" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

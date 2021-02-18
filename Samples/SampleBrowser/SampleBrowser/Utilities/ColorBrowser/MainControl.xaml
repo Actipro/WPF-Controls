@@ -1,0 +1,85 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.SampleBrowser.Utilities.ColorBrowser.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.SampleBrowser.Utilities.ColorBrowser"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate DataType="{x:Type sample:NamedColor}">
+
+			<DockPanel>
+				<Border Margin="0,1,7,1" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" BorderThickness="1" Padding="1">
+					<Border DockPanel.Dock="Left" Background="{Binding Brush}" Width="24" Height="24" />
+				</Border>
+				<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+					<TextBlock Text="{Binding Name}" />
+					<TextBlock Text=" (" />
+					<TextBlock Text="{Binding Color}" />
+					<TextBlock Text=")" />
+				</StackPanel>
+			</DockPanel>
+
+		</DataTemplate>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Use this browser to view and/or copy the colors available in Colors and SystemColors.
+					<LineBreak/><LineBreak/>
+					Right-click on a color item to access copy options.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="50" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<DockPanel Grid.Row="1" LastChildFill="True">
+			<TextBlock DockPanel.Dock="Top" Text="COLORS" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+			<ListBox x:Name="colorListBox" Margin="0,10,0,0" ItemsSource="{Binding Source={x:Static sample:NamedColor.Colors}}">
+				<ListBox.ContextMenu>
+					<ContextMenu x:Name="contextMenu1">
+						<MenuItem Header="Copy Hex Value" Command="ApplicationCommands.Copy" />
+						<MenuItem Header="Copy Name" Command="sample:MainControl.CopyName" />
+					</ContextMenu>
+				</ListBox.ContextMenu>
+			</ListBox>
+		</DockPanel>
+
+		<DockPanel Grid.Row="1" Grid.Column="2" LastChildFill="True">
+			<TextBlock DockPanel.Dock="Top" Text="SYSTEM COLORS" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+			<ListBox x:Name="systemColorListBox" Margin="0,10,0,0" ItemsSource="{Binding Source={x:Static sample:NamedColor.SystemColors}}">
+				<ListBox.ContextMenu>
+					<ContextMenu x:Name="contextMenu2">
+						<MenuItem Header="Copy Hex Value" Command="ApplicationCommands.Copy" />
+						<MenuItem Header="Copy Name" Command="sample:MainControl.CopyName" />
+						<Separator />
+						<MenuItem Header="Copy as StaticResource (Color)" Command="sample:MainControl.CopyStaticResourceColor" />
+						<MenuItem Header="Copy as StaticResource (Brush)" Command="sample:MainControl.CopyStaticResourceBrush" />
+					</ContextMenu>
+				</ListBox.ContextMenu>
+			</ListBox>
+		</DockPanel>
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

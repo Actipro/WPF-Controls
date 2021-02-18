@@ -1,0 +1,197 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.PopupButtonIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->		
+		<shared:ImageConverter x:Key="ImageConverter" UriPrefix="pack://application:,,,/SampleBrowser;component/Images/Icons/" />
+	
+		<DataTemplate x:Key="TextBoxPopupContentTemplate">
+			<shared:ResizableContentControl MinHeight="50" Width="298">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}"
+							BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.PopupBorderNormalBrushKey}}">
+						<DockPanel LastChildFill="True" Margin="4,1,1,1">
+							<Button DockPanel.Dock="Right" Width="19" Height="19" Command="{x:Static shared:PopupButton.ClosePopupCommand}"
+									Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}"
+									ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.CloseGlyphTemplateKey}}" />
+							<TextBlock Text="Popup" VerticalAlignment="Center" />
+						</DockPanel>
+					</Border>
+					<TextBox Grid.Row="1" BorderThickness="0" TextWrapping="Wrap">
+						This is an example of a popup that contains a TextBox.
+						The popup content template in this example includes a close button that is bound to the PopupButton.CloseButtonCommand property,
+						and uses a ResizableContentControl to support resizing.
+					</TextBox>
+				</Grid>
+			</shared:ResizableContentControl>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=Content}" ValueTemplateKind="ImmediateString" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=DisplayMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=IsTransparencyModeEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=IsAutoFocusOnOpenEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=StaysOpen}" DisplayName="Popup stays open" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=HasDropShadow}" DisplayName="Popup has drop shadow" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=PreventPopups}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=PopupAnimation}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The PopupButton control is a very useful control in many scenarios.
+					While it renders like a native WPF Button, it is geared for opening custom popup content or a ContextMenu when clicked.
+					<LineBreak /><LineBreak />
+					PopupButton can be configured to render in one of five display modes.
+					Some have popup indicators (arrows), and one renders the control in a split fashion, where the left side of the button acts like a normal button, and the right indicator side opens a popup or menu.
+					<LineBreak /><LineBreak />
+					The popup content can be defined via ContentControl-like properties (PopupContent, PopupContentTemplate, PopupContentTemplateSelector), allowing for MVVM usage.
+					Or set a custom ContextMenu to the PopupMenu property to display a menu instead.
+					<LineBreak /><LineBreak />
+					Use transparency mode to render the background of the control transparently when not focused or hovered over.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<StackPanel>
+
+					<shared:PopupButton x:Name="popupButtonWithMenu" Content="PopupButton with Menu" Width="300" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+										DisplayMode="{Binding ElementName=popupButtonWithPopup, Path=DisplayMode}"
+										HasDropShadow="{Binding ElementName=popupButtonWithPopup, Path=HasDropShadow}"
+										IsTransparencyModeEnabled="{Binding ElementName=popupButtonWithPopup, Path=IsTransparencyModeEnabled}"
+										Click="OnPopupButtonClick" PopupOpening="OnPopupButtonPopupOpening">
+						<shared:PopupButton.PopupMenu>
+							<ContextMenu>
+								<MenuItem Header="Cut" Icon="{Binding Source='Cut16.png', Converter={StaticResource ImageConverter}}" InputGestureText="Ctrl+X" />
+								<MenuItem Header="Copy" Icon="{Binding Source='Copy16.png', Converter={StaticResource ImageConverter}}" InputGestureText="Ctrl+C" />
+								<MenuItem Header="Paste" Icon="{Binding Source='Paste16.png', Converter={StaticResource ImageConverter}}" InputGestureText="Ctrl+V" />
+								<MenuItem Header="Delete" Icon="{Binding Source='Delete16.png', Converter={StaticResource ImageConverter}}" InputGestureText="Del" />
+								<Separator />
+								<MenuItem Header="Select All" InputGestureText="Ctrl+A" />
+								<Separator />
+								<MenuItem x:Name="customMenuItem" Header="Opened at" />
+							</ContextMenu>
+						</shared:PopupButton.PopupMenu>
+					</shared:PopupButton>
+
+					<shared:PopupButton x:Name="popupButtonWithPopup" Margin="0,10,0,0" Content="PopupButton with Popup" Width="300" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}"
+										Click="OnPopupButtonClick" PopupOpening="OnPopupButtonPopupOpening" />
+
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="The various display mode options">
+					<StackPanel Width="200">
+						<shared:PopupButton DisplayMode="Split" Content="Split" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" Click="OnPopupButtonClick" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="Merged" Content="Merged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="CenterMerged" Content="CenterMerged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="ButtonOnly" Content="ButtonOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="PopupOnly" Content="PopupOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="The various display mode options, with transparency mode enabled">
+					<StackPanel Width="200">
+						<shared:PopupButton DisplayMode="Split" Content="Split" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" Click="OnPopupButtonClick" IsTransparencyModeEnabled="True" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="Merged" Content="Merged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" IsTransparencyModeEnabled="True" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="CenterMerged" Content="CenterMerged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" IsTransparencyModeEnabled="True" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="ButtonOnly" Content="ButtonOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" IsTransparencyModeEnabled="True" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="PopupOnly" Content="PopupOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" IsTransparencyModeEnabled="True" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="The various display mode options, with a special style for embedding in other controls">
+					<StackPanel Width="200">
+						<shared:PopupButton DisplayMode="Split" Content="Split" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+											Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedPopupButtonStyleKey}}" Click="OnPopupButtonClick" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="Merged" Content="Merged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+											Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedPopupButtonStyleKey}}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="CenterMerged" Content="CenterMerged" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+											Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedPopupButtonStyleKey}}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="ButtonOnly" Content="ButtonOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+											Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedPopupButtonStyleKey}}" />
+						<shared:PopupButton Margin="0,5,0,0" DisplayMode="PopupOnly" Content="PopupOnly" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}" 
+											Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedPopupButtonStyleKey}}" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Transparent button next to a TextBox">
+					<StackPanel Width="200">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+
+							<TextBox />
+							<shared:PopupButton Grid.Column="1" DisplayMode="ButtonOnly" Padding="2" ToolTip="More information" IsTransparencyModeEnabled="True">
+								<shared:PopupButton.PopupContent>
+									<TextBlock Margin="10" MaxWidth="300" TextWrapping="Wrap">Here is some helpful information about what should be entered into the textbox.</TextBlock>
+								</shared:PopupButton.PopupContent>
+
+								<shared:DynamicImage Width="16" Height="16" Source="/Images/Icons/Help16.png" />
+							</shared:PopupButton>
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Button with a custom indicator">
+					<StackPanel Width="200">
+						<shared:PopupButton Content="Custom Indicator" PopupContentTemplate="{StaticResource TextBoxPopupContentTemplate}">
+							<shared:PopupButton.PopupIndicatorTemplate>
+								<DataTemplate>
+									<Canvas Width="14" Height="12">
+										<Path Canvas.Left="2" Canvas.Top="3" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+											  Data="M 0.5,0.5 L 7.5,0.5  M 0.5,3.5 L 7.5,3.5  M 0.5,6.5 L 7.5,6.5"/>
+									</Canvas>
+								</DataTemplate>
+							</shared:PopupButton.PopupIndicatorTemplate>
+						</shared:PopupButton>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Button with no popup or menu">
+					<StackPanel Width="200">
+						<shared:PopupButton DisplayMode="ButtonOnly" Content="No Popup or Menu" Click="OnPopupButtonClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Popup menu is created on each click">
+					<StackPanel Width="200">
+						<shared:PopupButton DisplayMode="Merged" Content="Dynamic Popup Menu" PopupOpening="OnDynamicPopupButtonPopupOpening" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+</sampleBrowser:ProductItemControl>

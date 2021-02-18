@@ -1,0 +1,35 @@
+﻿<Window x:Class="ActiproSoftware.Windows.PrismIntegration.Views.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+		xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+		xmlns:viewModels="clr-namespace:ActiproSoftware.Windows.PrismIntegration.ViewModels"
+        Title="Actipro Prism v7.2 (Unity) Integration Sample" 
+		Icon="/Actipro.ico"
+		Width="800" Height="600"
+		>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+	
+		<Menu>
+			<MenuItem Header="File">
+				<MenuItem Header="New Text Document" Command="{Binding NewTextDocumentCommand}" />
+			</MenuItem>
+			<MenuItem Header="Window">
+				<MenuItem Header="Class View" Command="{Binding ActivateViewCommand}" CommandParameter="{x:Type viewModels:ClassViewToolItemViewModel}" />
+				<MenuItem Header="Solution Explorer" Command="{Binding ActivateViewCommand}" CommandParameter="{x:Type viewModels:SolutionExplorerToolItemViewModel}" />
+				<MenuItem Header="Toolbox" Command="{Binding ActivateViewCommand}" CommandParameter="{x:Type viewModels:ToolboxToolItemViewModel}" />
+			</MenuItem>
+		</Menu>
+		
+		<docking:DockSite Grid.Row="1" prism:RegionManager.RegionName="{x:Static viewModels:ShellViewModel.MainRegionName}" CanDocumentWindowsFloat="True">
+			<docking:Workspace>
+				<docking:TabbedMdiHost />
+			</docking:Workspace>
+		</docking:DockSite>
+	</Grid>
+	
+</Window>

@@ -1,0 +1,97 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.DateEditBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.Common"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNullAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsArrowKeyPartNavigationEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=CanRetainTime}" DisplayName="Can retain time (useful when also binding a separate TimeEditBox)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Format}" 
+										 ValueTemplateKind="LimitedObject" StandardValues="{x:Static common:PredefinedFormats.Date}"
+										 StandardValuesSelectedValuePath="Format" StandardValuesDisplayMemberPath="Name" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, ElementName=editBox, Path=ResolvedFormat}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=PlaceholderText}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Minimum}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Maximum}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=SpinnerVisibility}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=SpinWrapping}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The DateEditBox control is an advanced editor for entering date-based (year, month, day) data.
+					It has a unique design that allows for fast data entry, regardless of which kind of input (keyboard, mouse, or touch) is used.
+					<LineBreak /><LineBreak />
+					The editor's main appearance is similar to a standard TextBox, where the value can be typed in via a keyboard.
+					Up/down arrow keys, PgUp/PgDn keys, and the mouse wheel can all be used to increment and decrement the part values.
+					<LineBreak /><LineBreak />
+					The editor also contains a default popup picker that is geared for mouse and touch input.
+					The picker uses a month calendar with animated view-changes to allow for selection of a date.
+					<LineBreak /><LineBreak />
+					The editor supports the format in which to display the value, popup picker customization,
+					and optionally null values, placeholder text, and a header.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:DateEditBox x:Name="editBox" HorizontalAlignment="Center" MinWidth="170" PlaceholderText="Date" 
+								 IsNullAllowed="True" Value="{x:Static system:DateTime.Today}" Minimum="2010-01-01" Maximum="2030-12-31" />
+
+			<views:MultiColumnPanel MaxWidth="{StaticResource SampleNarrowMaxWidth}" MaxColumnCount="2" ColumnMinWidth="200">
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Intermediate Value:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=editBox, Path=IntermediateValue}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+					<TextBlock Text="(updated while editing text)" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+				</StackPanel>
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Value:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=editBox, Path=Value}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+					<TextBlock Text="(used for view-model binding)" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+				</StackPanel>
+			</views:MultiColumnPanel>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text telling the user the kind of data to enter">
+					<editors:DateEditBox MinWidth="150" PlaceholderText="Birth date" IsNullAllowed="True" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text prompting the user on a date format">
+					<editors:DateEditBox MinWidth="150" Format="yyyy-MM-dd" PlaceholderText="yyyy-mm-dd" IsNullAllowed="True" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Another date format">
+					<editors:DateEditBox MinWidth="150" Format="dd.MM.yyyy" PlaceholderText="dd.mm.yyyy" IsNullAllowed="True" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="By disabling null values, a value will always be required">
+					<editors:DateEditBox MinWidth="150" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

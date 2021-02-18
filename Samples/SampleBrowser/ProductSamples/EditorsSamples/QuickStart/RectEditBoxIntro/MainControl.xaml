@@ -1,0 +1,102 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.RectEditBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.Common"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=HasPopup}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNullAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsArrowKeyPartNavigationEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNaNAllowed}" DisplayName="Is NaN allowed (type 'n' in edit box)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNegativeInfinityAllowed}" DisplayName="Is -Infinity allowed (type '-i' in edit box)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsPositiveInfinityAllowed}" DisplayName="Is +Infinity allowed (type 'i' in edit box)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Format}" 
+										 ValueTemplateKind="LimitedObject" StandardValues="{x:Static common:PredefinedFormats.Rect}"
+										 StandardValuesSelectedValuePath="Format" StandardValuesDisplayMemberPath="Name" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=PlaceholderText}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Minimum}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=Maximum}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=SmallChange}">
+						<gridseditors:RectPropertyEditor Minimum="1,1,1,1" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=LargeChange}">
+						<gridseditors:RectPropertyEditor Minimum="1,1,1,1" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=SpinnerVisibility}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=SpinWrapping}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The RectEditBox control is an advanced editor for entering Rect-based (x, y, width, height) data.
+					It has a unique design that allows for fast data entry, regardless of which kind of input (keyboard, mouse, or touch) is used.
+					<LineBreak /><LineBreak />
+					The editor's main appearance is similar to a standard TextBox, where the value can be typed in via a keyboard.
+					Up/down arrow keys, PgUp/PgDn keys, and the mouse wheel can all be used to increment and decrement the value.
+					<LineBreak /><LineBreak />
+					The editor also contains a default popup picker that is geared for mouse and touch input.
+					The picker uses a radial slider that allows for making large value changes, and also
+					contains increment and decrement buttons for fine-tuning the value.
+					<LineBreak /><LineBreak />
+					The editor supports a range of allowed values, the format in which to display the value, popup picker customization,
+					and optionally null values, placeholder text, and a header.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:RectEditBox x:Name="editBox" HorizontalAlignment="Center" MinWidth="200" PlaceholderText="Bounds" 
+								 IsNullAllowed="True" Value="5,35,100,50" Minimum="-1000,-1000,0,0" Maximum="1000,1000,1000,1000" />
+
+			<views:MultiColumnPanel MaxWidth="{StaticResource SampleNarrowMaxWidth}" MaxColumnCount="2" ColumnMinWidth="200">
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Intermediate Value:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=editBox, Path=IntermediateValue}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+					<TextBlock Text="(updated while editing text)" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+				</StackPanel>
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Value:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=editBox, Path=Value}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+					<TextBlock Text="(used for view-model binding)" TextWrapping="Wrap" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+				</StackPanel>
+			</views:MultiColumnPanel>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text telling the user the kind of data to enter">
+					<editors:RectEditBox MinWidth="200" PlaceholderText="Item bounds" IsNullAllowed="True" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text prompting the user on the format">
+					<editors:RectEditBox MinWidth="200" PlaceholderText="x, y, width, height" IsNullAllowed="True" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="By disabling null values, a value will always be required">
+					<editors:RectEditBox MinWidth="200" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,61 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CollapsedRegionsAdvanced.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CollapsedRegionsAdvanced"
+    >
+    
+	<DockPanel>
+		<Grid DockPanel.Dock="Top" Margin="20,10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+
+			<Button Grid.Column="0" Content="Collapse Selected Text" Click="OnCollapseButtonClick" />
+			<Button Grid.Column="1" Content="Uncollapse All" Click="OnUncollapseAllButtonClick" />
+		</Grid>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CollapsedRegionSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[using System;
+using System.Diagnostics;
+
+namespace Actipro.CollapsedRegionsAdvanced {
+
+	/// <summary>
+	/// This QuickStart shows how an ICollapsedRegionTag can be used to
+	/// collapse a range of text, and also how an IIntraTextSpacerTag can
+	/// be used to reserve space over the collapsed region so that an
+	/// adornment manager can render a collapsed text placeholder where
+	/// the collapsed text is.
+	/// </summary>
+	public class ActiproTest {
+
+		/// <summary>
+		/// To test text collapsing, select a range of text and press the
+		/// "Collapse Selected Text" button above.  The text will collapse
+		/// and a "..." adornment will be rendered in its place.
+		/// <para>
+		/// A CollapsedRegionQuickInfoProvider is also used to provide
+		/// quick info tips when hovering over the "..." adornment.
+		/// </para>
+		/// <para>
+		/// Please note that the features displayed here are completely
+		/// independent of the more commonly-used code outlining feature.
+		/// </para>
+		/// </summary>
+		public int Actipro { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

@@ -1,0 +1,214 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookEvents.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookEvents"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+		<Style x:Key="SimpleBookPageStyle" TargetType="views:BookPage">
+			<Setter Property="Background" Value="WhiteSmoke" />
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Foreground" Value="#000000" />
+		</Style>
+
+		<Style TargetType="views:BookPage" BasedOn="{StaticResource SimpleBookPageStyle}">
+			<Setter Property="HeaderTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+							<Border BorderBrush="Black" BorderThickness="1" Width="25" Height="1" VerticalAlignment="Center" Margin="0,0,10,0" />
+							<TextBlock Text="{Binding}" FontSize="14" FontWeight="Bold" FontFamily="Arial" />
+							<Border BorderBrush="Black" BorderThickness="1" Width="25" Height="1" VerticalAlignment="Center" Margin="10,0,0,0" />
+						</StackPanel>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FooterTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+							<Border BorderBrush="Black" BorderThickness="1" Width="5" Height="1" VerticalAlignment="Center" Margin="0,0,5,0" />
+							<TextBlock Text="{Binding}" FontSize="12" FontWeight="Bold" FontFamily="Arial" />
+							<Border BorderBrush="Black" BorderThickness="1" Width="5" Height="1" VerticalAlignment="Center" Margin="5,0,0,0" />
+						</StackPanel>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="views:BookPage">
+						<Grid>
+							<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+									BorderThickness="{TemplateBinding BorderThickness}"
+									CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+								<Grid>
+									<Grid Margin="40,45">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="*" />
+											<RowDefinition Height="Auto" />
+										</Grid.RowDefinitions>
+										<ContentPresenter Grid.Row="0" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" />
+										<ContentPresenter Grid.Row="1" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+										<ContentPresenter Grid.Row="2" Content="{TemplateBinding Footer}" ContentTemplate="{TemplateBinding FooterTemplate}" />
+									</Grid>
+									<Border Grid.RowSpan="3" Margin="2">
+										<Viewbox>
+											<sample:DecorativeBorder Opacity="0.5" />
+										</Viewbox>
+									</Border>
+								</Grid>
+							</Border>
+							<Rectangle x:Name="PART_BindingShadow" IsHitTestVisible="False"
+									Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsBindingShadowVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+							<Path x:Name="PART_FlippingShadow" IsHitTestVisible="False" />
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<ListBox x:Name="eventsListBox" Height="120" />
+					<Button Content="Clear List" Margin="0,5,0,0"  Click="OnClearListClick" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<StackPanel>
+					<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+						The Book control raises several events, including a couple cancelable events to prevent the user from navigating way from a page.
+						<LineBreak /><LineBreak />
+						In this QuickStart, the list shows the events raised by the Book control.
+						Check boxes are included to allow certain events to be canceled and allow you to see what effect it has.
+						<LineBreak /><LineBreak />
+					</TextBlock>
+				</StackPanel>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+		<DockPanel>
+			<StackPanel DockPanel.Dock="Bottom" Margin="0,10,0,0">
+				<TextBlock x:Name="curlInstructions" TextWrapping="Wrap" Opacity="0" Text="Click and drag the corner to the opposite side to turn the page" />
+				<TextBlock x:Name="flipInstructions" TextWrapping="Wrap" Opacity="0" />
+			</StackPanel>
+		
+			<Viewbox>
+				<views:Book Width="600" Height="400" HotspotExtent="100" TextOptions.TextFormattingMode="Ideal" PageCurlActivated="OnPageCurlActivated"
+						PageCurlActivating="OnPageCurlActivating" PageCurlDeactivated="OnPageCurlDeactivated"
+						PageFlipped="OnPageFlipped" PageFlipping="OnPageFlipping" SelectedViewChanged="OnSelectedViewChanged">
+					<views:Book.Resources>
+						<Style TargetType="TextBlock">
+							<Setter Property="FontSize" Value="11" />
+							<Setter Property="FontFamily" Value="Arial" />
+							<Setter Property="TextWrapping" Value="Wrap" />
+							<Setter Property="Margin" Value="10,3" />
+						</Style>
+					</views:Book.Resources>
+					<!-- Sheet that is bound to cover -->
+					<views:BookPage Style="{StaticResource SimpleBookPageStyle}" IsBindingShadowVisible="False" />
+
+					<views:BookPage Header="Events" Footer="1">
+						<TextBlock>
+							<Bold>Events</Bold> are raised before and after a page is <Bold>curled and flipped</Bold>, as well as when 
+							the current view is changed. Both the curling and flipping can be canceled, thus preventing the user from 
+							navigating away from the page. These events can also be used to provide instructional help to the user that 
+							describes how to turn a page.
+						</TextBlock>
+					</views:BookPage>
+
+					<views:BookPage Header="PageCurlActivating" Footer="2">
+						<StackPanel>
+							<TextBlock>
+								The <Bold>PageCurlActivating</Bold> event is raised when a page is about to <Bold>curl</Bold>. 
+								The curling can be canceled, thus preventing the user from getting the visual feedback that
+								the page can be turned. This event can be used to provide instructional help to the user 
+								that describes how to turn a page.
+								<LineBreak />
+								<LineBreak />
+								Check the checkbox to cancel all <Bold>PageCurlActivating</Bold> events:
+							</TextBlock>
+							<CheckBox x:Name="cancelPageCurlActivatingCheckBox" HorizontalAlignment="Center" Margin="0,15,0,0"
+									Content="Cancel event" />
+						</StackPanel>
+					</views:BookPage>
+
+					<views:BookPage Header="PageCurlActivated" Footer="3">
+						<TextBlock>
+							The <Bold>PageCurlActivated</Bold> event is raised when a page has <Bold>curled</Bold>.  
+							This event can be used to provide instructional help to the user that describes how 
+							to turn a page.
+						</TextBlock>
+					</views:BookPage>
+
+					<views:BookPage Header="PageCurlDeactivated" Footer="4">
+						<TextBlock>
+							The <Bold>PageCurlDeactivated</Bold> event is raised when a page has stopped <Bold>curling</Bold>.  
+							This event can be used to provide instructional help to the user that describes how to turn a page.
+						</TextBlock>
+					</views:BookPage>
+
+					<views:BookPage Header="PageFlipping" Footer="5">
+						<StackPanel>
+							<TextBlock>
+								The <Bold>PageFlipping</Bold> event is raised when a page is about to <Bold>flip</Bold>. 
+								The flipping can be canceled, thus preventing the user from navigating away from the page. 
+								This event can be used to provide instructional help to the user that describes how 
+								to turn a page.
+								<LineBreak />
+								<LineBreak />
+								Check the checkbox to cancel all <Bold>PageFlipping</Bold> events:
+							</TextBlock>
+							<CheckBox x:Name="cancelPageFlippingCheckBox" HorizontalAlignment="Center" Margin="0,15,0,0"
+									Content="Cancel event" />
+						</StackPanel>
+					</views:BookPage>
+
+					<views:BookPage Header="PageFlipped" Footer="6">
+						<TextBlock>
+							The <Bold>PageFlipped</Bold> event is raised when a page has <Bold>flipped</Bold>.  
+							This event can be used to provide instructional help to the user that describes how 
+							to turn a page.
+						</TextBlock>
+					</views:BookPage>
+
+					<views:BookPage Header="SelectedViewChanged" Footer="7">
+						<TextBlock>
+							The <Bold>SelectedViewChanged</Bold> event is raised when the selected view index has
+							changed. This event can be used to provide feedback to the user that the page has been
+							turned.
+						</TextBlock>
+					</views:BookPage>
+
+					<views:BookPage Header=" " Footer="8">
+						<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Italic>This page intentionally left blank.</Italic>
+						</TextBlock>
+					</views:BookPage>
+
+					<!-- Sheet that is bound to cover -->
+					<views:BookPage Style="{StaticResource SimpleBookPageStyle}" IsBindingShadowVisible="False" />
+				</views:Book>
+			</Viewbox>
+		</DockPanel>
+
+	</StackPanel>
+	
+</sampleBrowser:ProductItemControl>

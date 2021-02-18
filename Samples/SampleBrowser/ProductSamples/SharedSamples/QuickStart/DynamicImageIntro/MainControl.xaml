@@ -1,0 +1,314 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.SharedSamples.QuickStart.DynamicImageIntro"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style TargetType="shared:DynamicImage">
+			<Setter Property="UseLayoutRounding" Value="True" />
+		</Style>
+
+		<DrawingGroup x:Key="CheckVectorDrawing">
+			<GeometryDrawing Brush="#339933" Geometry="M 0,16 A 16,16 0 1 1 32,16 A 16,16 0 1 1 0,16 Z  M 5.75,17.25 L 8.75,14.25 L 13,19 L 23.5,8.25 L 26.25,11.25 L 13,24.5 Z" />
+			<GeometryDrawing Brush="#ffffff" Geometry="M 5.75,17.25 L 8.75,14.25 L 13,19 L 23.5,8.25 L 26.25,11.25 L 13,24.5 Z" />
+		</DrawingGroup>
+
+		<DrawingGroup x:Key="MonochromeCheckVectorDrawing">
+			<GeometryDrawing Brush="#30000000" Geometry="M 0,16 A 16,16 0 1 1 32,16 A 16,16 0 1 1 0,16 Z" />
+			<GeometryDrawing Brush="#000000" Geometry="M 5.75,17.25 L 8.75,14.25 L 13,19 L 23.5,8.25 L 26.25,11.25 L 13,24.5 Z" />
+		</DrawingGroup>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryImage, Path=IsEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryImage, Path=DisabledOpacity}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.1" LargeChange="0.2" Format="P0" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryImage, Path=UseMonochrome}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryImage, Path=Foreground}" DisplayName="Monochrome foreground" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="SWITCH TO THEME">
+				<StackPanel>
+					<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+						<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">Switch to the 'Dark' theme to see all image variations.</Italic>
+					</TextBlock>
+
+					<Grid Margin="0,10,0,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<ToggleButton Content="Black Theme" Style="{StaticResource SampleOptionsActionButtonStyle}" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.Black}" />
+						<ToggleButton Grid.Column="2" Content="Dark Theme" Style="{StaticResource SampleOptionsActionButtonStyle}" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.Dark}" />
+						<ToggleButton Grid.Column="4" Content="Light Theme" Style="{StaticResource SampleOptionsActionButtonStyle}" Command="{Binding SetApplicationThemeCommand}" CommandParameter="{x:Static themes:ThemeNames.Light}" />
+					</Grid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The DynamicImage control inherits the native Image control, and is a drop-in replacement with features that allow it to render the source image as grayscale with less opacity when disabled, or to render the source image in monochrome.
+					In addition to those capabilities, DynamicImage can work with an ImageProvider object to support many additional powerful features.
+					<LineBreak /><LineBreak />
+					Vector images can support chromatic adaptation, which means that when a dark theme is detected, the vector image is cloned and its colors are altered to render clearly on a typical theme background.
+					<LineBreak /><LineBreak />
+					Monochrome images, designed with a single color, can make use of a feature where they adapt that single color to the current DynamicImage foreground color.
+					<LineBreak /><LineBreak />
+					Raster images also support chromatic adaptation, along with being able to swap in other raster images designed for specific themes.
+					High-DPI scenarios are also supported, where alterate scale variations of a raster image can be used.
+					For instance, DynamicImage can detect when it's in a 200% DPI scenario and can pull in a 200% scale image so that everything remains crisp.
+					All of this can be done simply by specifying a default raster image URI, configuring an ImageProvider, and DynamicImage takes care of the rest.
+					<LineBreak /><LineBreak />
+					This sample shows the normal, disabled, monochrome, and disabled monochrome variations of several images using various ImageProvider configurations.
+					Switch between various themes to see how different ImageProviders handle theme changes.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<sampleBrowser:LabeledCardControl Label="Original image">
+					<Image Width="32" Height="32" Source="/Images/ImageProviderSamples/Save32.png" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Margin="20,0,0,0" Label="DynamicImage control">
+					<shared:DynamicImage x:Name="primaryImage" Width="32" Height="32" DisabledOpacity="0.4">
+						<shared:DynamicImage.Source>
+							<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithChromaticAdaptation}" />
+						</shared:DynamicImage.Source>
+					</shared:DynamicImage>
+				</sampleBrowser:LabeledCardControl>
+			</StackPanel>
+
+			<sampleBrowser:SampleGalleryControl Label="32x32 VECTOR IMAGE GALLERY - DRAWINGIMAGES DEFINED IN RESOURCES">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Color image">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="vectorNormal32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<DrawingImage Drawing="{StaticResource CheckVectorDrawing}" shared:ImageProvider.Provider="{x:Static local:ImageProviders.Normal}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorNormal32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorNormal32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorNormal32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Color image with chromatic adaptation for dark themes">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="vectorDarkChromatic32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<DrawingImage Drawing="{StaticResource CheckVectorDrawing}" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithDarkThemeChromaticAdaptation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorDarkChromatic32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorDarkChromatic32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorDarkChromatic32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Monochrome image that adapts to render with the DynamicImage's current foreground color">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="vectorMono32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<DrawingImage Drawing="{StaticResource MonochromeCheckVectorDrawing}" shared:ImageProvider.Provider="{x:Static local:ImageProviders.ForegroundChanging}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=vectorMono32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+
+						<Button Margin="10,0,0,0" Style="{StaticResource AccentButtonStyle}">
+							<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+								<shared:DynamicImage Width="32" Height="32" Source="{Binding ElementName=vectorMono32Image, Path=OriginalSource}" VerticalAlignment="Center" />
+								<TextBlock Margin="7,0,0,0" Text="Button" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" VerticalAlignment="Center" />
+							</StackPanel>
+						</Button>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+			<sampleBrowser:SampleGalleryControl Label="32x32 RASTER IMAGE GALLERY - SAVE32.PNG FILE">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Normal">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="normal32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.Normal}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=normal32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=normal32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=normal32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and chromatic adaptation for dark themes">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="darkChromatic32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithDarkThemeChromaticAdaptation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and a pre-designed purple variation for any dark theme">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="anyDark32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithAnyDarkThemeVariation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=anyDark32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=anyDark32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=anyDark32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and a pre-designed blue variation only for the 'Dark' theme">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="dark32Image" Width="32" Height="32">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithSpecificDarkThemeVariation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=dark32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=dark32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=dark32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl x:Name="colorChromatic32Card" Orientation="Horizontal" Label="High-DPI support, and chromatic adaptation for a blue background via BackgroundHint" 
+												  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundLowBrushKey}}">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="colorChromatic32Image" Width="32" Height="32" BackgroundHint="{Binding ElementName=colorChromatic32Card, Path=Background}">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save32.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithChromaticAdaptation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" BackgroundHint="{Binding ElementName=colorChromatic32Card, Path=Background}" Source="{Binding ElementName=colorChromatic32Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" BackgroundHint="{Binding ElementName=colorChromatic32Card, Path=Background}" Source="{Binding ElementName=colorChromatic32Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" BackgroundHint="{Binding ElementName=colorChromatic32Card, Path=Background}" Source="{Binding ElementName=colorChromatic32Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, displaying monochrome adaptations with specific colors">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteOrangeBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="32" Height="32" Source="{Binding ElementName=darkChromatic32Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundHighBrushKey}}" UseMonochrome="True" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+			<sampleBrowser:SampleGalleryControl Label="16x16 RASTER IMAGE GALLERY - SAVE16.PNG FILE">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Normal">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="normal16Image" Width="16" Height="16">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save16.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.Normal}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=normal16Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=normal16Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=normal16Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and chromatic adaptation for dark themes">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="darkChromatic16Image" Width="16" Height="16">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save16.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithDarkThemeChromaticAdaptation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and a pre-designed purple variation for any dark theme">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="anyDark16Image" Width="16" Height="16">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save16.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithAnyDarkThemeVariation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=anyDark16Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=anyDark16Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=anyDark16Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, and a pre-designed blue variation only for the 'Dark' theme">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="dark16Image" Width="16" Height="16">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save16.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithSpecificDarkThemeVariation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=dark16Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=dark16Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=dark16Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl x:Name="colorChromatic16Card" Orientation="Horizontal" Label="High-DPI support, and chromatic adaptation for a green background via BackgroundHint" 
+												  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowBrushKey}}">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage x:Name="colorChromatic16Image" Width="16" Height="16" BackgroundHint="{Binding ElementName=colorChromatic16Card, Path=Background}">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/ImageProviderSamples/Save16.png" shared:ImageProvider.Provider="{x:Static local:ImageProviders.HighDpiWithChromaticAdaptation}" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" BackgroundHint="{Binding ElementName=colorChromatic16Card, Path=Background}" Source="{Binding ElementName=colorChromatic16Image, Path=OriginalSource}" DisabledOpacity="0.4" IsEnabled="False" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" BackgroundHint="{Binding ElementName=colorChromatic16Card, Path=Background}" Source="{Binding ElementName=colorChromatic16Image, Path=OriginalSource}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" BackgroundHint="{Binding ElementName=colorChromatic16Card, Path=Background}" Source="{Binding ElementName=colorChromatic16Image, Path=OriginalSource}" UseMonochrome="True" DisabledOpacity="0.4" IsEnabled="False" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High-DPI support, displaying monochrome adaptations with specific colors">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteOrangeBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundHighBrushKey}}" UseMonochrome="True" />
+						<shared:DynamicImage Margin="10,0,0,0" Width="16" Height="16" Source="{Binding ElementName=darkChromatic16Image, Path=OriginalSource}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPalettePurpleBackgroundHighBrushKey}}" UseMonochrome="True" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,77 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=snapper, Path=HorizontalRoundMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=snapper, Path=VerticalRoundMode}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The PixelSnapper decorator rounds measurements of its content based on configurable settings.
+					By default, the width and height of the child content are rounded up to the next highest integer.
+					<LineBreak /><LineBreak />
+					By keeping all measurements integers, you work around issues in WPF where images and borders can
+					fall between pixel boundaries and therefore become blurry, even when SnapsToDevicePixels is true.
+					This scenario normally happens when text (such as from a TextBlock) measures decimal numbers and pushes content
+					after it to non-integer start positions.
+					<LineBreak /><LineBreak />
+					<Italic>Note: The UseLayoutRounding property added in .NET 4.0 can help prevent this issue as well.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelThinStyle}" UseLayoutRounding="False">
+			<!-- NOTE: UseLayoutRounding is set back to its WPF default of false here for demonstration purposes -->
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Left">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="10" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<shared:PixelSnapper x:Name="snapper">
+						<Border Width="100.5" Height="100.5" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+							<TextBlock Margin="10" VerticalAlignment="Center" TextWrapping="Wrap" Text="Border with a measurement of (100.5, 100.5)" />
+						</Border>
+					</shared:PixelSnapper>
+
+					<Border Grid.Column="2" BorderThickness="1" BorderBrush="#808080" VerticalAlignment="Top">
+						<shared:DynamicImage Stretch="None" Source="/Images/Icons/Calendar32.png" SnapsToDevicePixels="True" />
+					</Border>
+					<Border Grid.Row="2" BorderThickness="1" BorderBrush="#808080" HorizontalAlignment="Left">
+						<shared:DynamicImage Stretch="None" Source="/Images/Icons/Calendar32.png" SnapsToDevicePixels="True" />
+					</Border>
+				</Grid>
+
+				<sampleBrowser:LabeledCardControl.Label>
+					A PixelSnapper surrounds the border to the left... use the options below to see how changing the rounding modes affects the clarity of the images.
+					Setting the round modes to None will make the images blurry since the normal width/height of the border is a decimal.
+				</sampleBrowser:LabeledCardControl.Label>
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

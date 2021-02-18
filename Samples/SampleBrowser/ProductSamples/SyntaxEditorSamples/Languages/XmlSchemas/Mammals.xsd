@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+XSD Schema for the description of a Mammal.
+Copyright (c) 2001-2009 Actipro Software LLC.  All rights reserved.
+
+-->
+<xs:schema id="Mammals"
+    targetNamespace="http://ActiproSoftware/Mammals"
+    elementFormDefault="qualified"
+    xmlns="http://ActiproSoftware/Mammals"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- -->
+    <xs:element name="mammal">
+        <xs:annotation>
+            <xs:documentation>
+                A description of a mammal.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <!-- hair -->
+                <xs:element name="hair" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The species has hair.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice minOccurs="0">
+                            <xs:element name="colors" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The possible colors of the hair.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element name="color" type="xs:normalizedString">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    A color of hair.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <!-- -->
+                            <xs:element name="type" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The type of hair.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:token">
+                                        <xs:enumeration value="coarse">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    The hair is coarse.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:enumeration>
+                                        <xs:enumeration value="soft">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    The hair is soft.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:enumeration>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="length" use="optional">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    The length of the hair.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:pattern value="([0-9])+[A-Za-z]+|([0-9])*\.([0-9])+[A-Za-z]+">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                A length is a decimal number with a word or abbreviation defining its denomenation. Do not include a space. Example: 12in (12 inches).
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:pattern>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <!-- diet -->
+                <xs:element name="diet" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A description of things that this species naturally depends on for food in the wild.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType mixed="true">
+                        <xs:choice minOccurs="1" maxOccurs="unbounded">
+                            <xs:element name="component" type="xs:token" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A component of this species' diet.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <!-- population -->
+                <xs:element name="population" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A description of the population of this species.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice minOccurs="0">
+                            <xs:element name="locations" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The locations in the world that this species can be found.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:choice minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element name="location" type="xs:normalizedString">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    A location in the world that the species can be found in.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="health" use="optional">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    The health of the population.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="extinct">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The species is extinct.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="endangered">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The species is endangered.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="healthy">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The population is healthy.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <!-- behavior -->
+                <xs:element name="behavior" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The behaviors of a species.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice minOccurs="0">
+                            <xs:element name="communal" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The species exhibits communal behaviors.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="alpha" type="xs:boolean" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The community, often a referred to as a pack, has an alpha male.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="migratory" type="xs:boolean" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                An individual community migrates instead of staying in the same location all the time.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="size" type="xs:integer" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                An individual community is usually about this size.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="offspring">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    The behavior of the mothers of a species towards her young, after birth.
+                                </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:token">
+                                    <xs:enumeration value="abandons">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The mother abandons her young after birth.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="raises">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The mother raises her young for a time after birth.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="species" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        The name of the species of this mammal.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="locomotion">
+                <xs:annotation>
+                    <xs:documentation>
+                        The method by which the species travels.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="aquatic">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This species primarily travels by swimming in aquatic environments.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="terrestrial">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This species primarily travels on land.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="arboreal">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This species primarily travels by swinging or jumping from tree to tree.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="aerial">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This species primarily travels by flying.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

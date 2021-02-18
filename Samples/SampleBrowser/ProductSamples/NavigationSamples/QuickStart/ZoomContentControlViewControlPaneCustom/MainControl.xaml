@@ -1,0 +1,61 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlViewControlPaneCustom.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A custom view control pane can be used with the ZoomContentControl, which has
+					numerous methods, properties, and commands that can be used to customize the look and feel.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<DockPanel Style="{StaticResource SamplePanelFullStyle}">
+		<ToolBarTray DockPanel.Dock="Top" >
+			<ToolBar>
+				<RadioButton x:Name="panDragRadioButton" GroupName="ZoomButtons" Checked="OnRadioButtonChecked"
+						ToolTip="Pan Drag" IsChecked="True">
+					<shared:DynamicImage Source="/Images/Icons/Hand16.png" Width="16" Height="16" />
+				</RadioButton>
+				<Separator />
+				<RadioButton x:Name="zoomInRadioButton" GroupName="ZoomButtons" Checked="OnRadioButtonChecked"
+						ToolTip="Zoom In">
+					<shared:DynamicImage Source="/Images/Icons/ZoomIn16.png" Width="16" Height="16" />
+				</RadioButton>
+				<RadioButton x:Name="zoomOutRadioButton" GroupName="ZoomButtons" Checked="OnRadioButtonChecked"
+						ToolTip="Zoom Out">
+					<shared:DynamicImage Source="/Images/Icons/ZoomOut16.png" Width="16" Height="16" />
+				</RadioButton>
+				<RadioButton x:Name="zoomDragRadioButton" GroupName="ZoomButtons" Checked="OnRadioButtonChecked"
+						ToolTip="Zoom Drag">
+					<shared:DynamicImage Source="/Images/Icons/ZoomDrag16.png" Width="16" Height="16" />
+				</RadioButton>
+				<Separator />
+				<Slider Margin="7,0" MinWidth="100" Value="{Binding ZoomLevel, ElementName=zoomContentControl}"
+						Minimum="{Binding MinZoomLevel, ElementName=zoomContentControl}"
+						Maximum="{Binding MaxZoomLevel, ElementName=zoomContentControl}"
+						Interval="{Binding ZoomStep, ElementName=zoomContentControl}" AutoToolTipPlacement="BottomRight"
+						AutoToolTipPrecision="2" Ticks="1.0" TickPlacement="Both"
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.SliderStyleKey}}"/>
+			</ToolBar>
+		</ToolBarTray>
+
+		<navigation:ZoomContentControl x:Name="zoomContentControl" AreDefaultInputBindingsEnabled="False"
+				IsViewControlPaneVisible="False" ZoomStep="1">
+			<shared:ActiproLogo />
+		</navigation:ZoomContentControl>
+
+	</DockPanel>
+
+</sampleBrowser:ProductItemControl>

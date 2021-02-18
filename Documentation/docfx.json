@@ -1,0 +1,122 @@
+{
+	"metadata": [
+		{
+			"src": [
+				{
+					"src": "../../Source/bin/ReferenceAssemblies",
+					"files": [
+						"PresentationCore.dll",
+						"PresentationFramework.dll",
+						"System.Xaml.dll",
+						"WindowsBase.dll"
+					]
+				},
+				{
+					"src": "../../Source/bin/Release",
+					"files": [
+						"net452/Antlr3.Runtime.dll",
+						"net452/Irony.dll",
+						"net452/ActiproSoftware.Shared.Wpf.dll",
+						"net452/ActiproSoftware.BarCode.Wpf.dll",
+						"net452/ActiproSoftware.Charts.Wpf.dll",
+						"net452/ActiproSoftware.DataGrid.Contrib.Wpf.dll",
+						"net452/ActiproSoftware.Docking.Wpf.dll",
+						"net452/ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll",
+						"net452/ActiproSoftware.Editors.Interop.Grids.Wpf.dll",
+						"net452/ActiproSoftware.Editors.Wpf.dll",
+						"net452/ActiproSoftware.Gauge.Wpf.dll",
+						"net452/ActiproSoftware.Grids.Wpf.dll",
+						"net452/ActiproSoftware.MicroCharts.Wpf.dll",
+						"net452/ActiproSoftware.Navigation.Wpf.dll",
+						"net452/ActiproSoftware.Ribbon.Wpf.dll",
+						"net452/ActiproSoftware.Shell.Wpf.dll",
+						"net452/ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll",
+						"net452/ActiproSoftware.SyntaxEditor.Addons.JavaScript.Wpf.dll",
+						"net452/ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll",
+						"net452/ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll",
+						"net452/ActiproSoftware.SyntaxEditor.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.Antlr.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.DotNet.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.Irony.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.JavaScript.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.Python.Wpf.dll",
+						"net452/ActiproSoftware.Text.Addons.Xml.Wpf.dll",
+						"net452/ActiproSoftware.Text.LLParser.Wpf.dll",
+						"net452/ActiproSoftware.Text.Wpf.dll",
+						"net452/ActiproSoftware.Themes.Aero.Wpf.dll",
+						"net452/ActiproSoftware.Views.Wpf.dll",
+						"net452/ActiproSoftware.Wizard.Wpf.dll"
+						// "**.csproj"
+					]
+				}
+			],
+			"dest": "topics/api",
+			"filter": "api-filter.yml"
+		}
+	],
+	"build": {
+		"content": [
+			{
+				"src": "topics",
+				"files": [
+					"**.md",
+					"api/ActiproSoftware.*.yml",
+					"api/toc.yml",
+					"toc.yml"
+				]
+			}
+		],
+		"resource": [
+			{
+				"src": "topics",
+				"files": [
+					"**.png",
+					"**.gif",
+					"**.jpg"
+				],
+			}
+		],
+		"overwrite": [
+			{
+				"files": [
+					"topics/apidoc/**.md"
+				],
+				"exclude": [
+					"obj/**",
+					"wwwroot/**"
+				]
+			}
+		],
+		"dest": "wwwroot",
+		"globalMetadata": {
+			"_appTitle": "Actipro WPF Controls Docs",
+			"_docsCompanyHref": "https://www.actiprosoftware.com/products/controls/wpf",
+			"_docsCompanyName": "Actipro Software LLC",
+			"_docsCopyrightYears": "1999-2021",
+			"_docsProductHref": "https://www.actiprosoftware.com/products/controls/wpf",
+			"_docsProductName": "WPF Controls",
+			"_docsProductVersion": "21.1",
+			"_disableContribution": false,
+			"_enableNewTab": true,
+			"_gitContribute": {
+				"repo": "https://github.com/Actipro/WPF-Controls",
+				"branch": "develop",
+				"path": "Documentation/topics",
+				"apiSpecFolder": "Documentation/topics/apidoc"
+			},
+		},
+		"globalMetadataFiles": [],
+		"fileMetadataFiles": [],
+		"template": [
+			"default",
+			"../../Deploy/DocFX-Template"
+		],
+		"postProcessors": [],
+		"markdownEngineName": "markdig",
+		"noLangKeyword": false,
+		"xrefService": [
+			"https://xref.docs.microsoft.com/query?uid={uid}"
+		]
+	}
+}

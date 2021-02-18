@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Simple' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Simple" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Delimiter" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="Operator" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Id="1" Key="Default">
+				<State.ChildStates>
+					<StateRef Key="SingleLineComment" />
+					<StateRef Key="MultiLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{LineTerminatorWhitespace}+" />
+				<ExplicitPatternGroup TokenId="2" TokenKey="OpenParenthesis" ClassificationTypeKey="Delimiter" Pattern="(" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="CloseParenthesis" ClassificationTypeKey="Delimiter" Pattern=")" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="OpenCurlyBrace" ClassificationTypeKey="Delimiter" Pattern="{" />
+				<ExplicitPatternGroup TokenId="5" TokenKey="CloseCurlyBrace" ClassificationTypeKey="Delimiter" Pattern="}" />
+				<ExplicitPatternGroup TokenId="6" TokenKey="Function" ClassificationTypeKey="Keyword" Pattern="function" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Sensitive" />
+				<ExplicitPatternGroup TokenId="7" TokenKey="Return" ClassificationTypeKey="Keyword" Pattern="return" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Sensitive" />
+				<ExplicitPatternGroup TokenId="8" TokenKey="Var" ClassificationTypeKey="Keyword" Pattern="var" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Sensitive" />
+				<RegexPatternGroup TokenId="9" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="10" TokenKey="Equality" Pattern="==" />
+				<ExplicitPatternGroup TokenId="11" TokenKey="Inequality" Pattern="!=" />
+				<ExplicitPatternGroup TokenId="12" TokenKey="Assignment" Pattern="=" />
+				<ExplicitPatternGroup TokenId="13" TokenKey="Addition" Pattern="+" />
+				<ExplicitPatternGroup TokenId="14" TokenKey="Subtraction" Pattern="-" />
+				<ExplicitPatternGroup TokenId="15" TokenKey="Multiplication" Pattern="*" />
+				<ExplicitPatternGroup TokenId="16" TokenKey="Division" Pattern="/" />
+				<ExplicitPatternGroup TokenId="17" TokenKey="Comma" Pattern="," />
+				<ExplicitPatternGroup TokenId="18" TokenKey="SemiColon" Pattern=";" />
+				<RegexPatternGroup TokenId="19" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}* \. {Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="19" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Id="2" Key="SingleLineComment" DefaultTokenId="20" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="21" TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenId="22" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="20" TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Id="3" Key="MultiLineComment" DefaultTokenId="23" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenId="24" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenId="25" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenId="26" TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="23" TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[/*
+	Simple Language
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

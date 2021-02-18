@@ -1,0 +1,221 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.SurveyResults.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<SolidColorBrush x:Key="BlueAccentBrush" Color="#0177ce" />
+		<SolidColorBrush x:Key="OrangeAccentBrush" Color="#f4a600" />
+		
+		<Style x:Key="BluePercentageBlockMicroSegmentChartStyle" TargetType="microcharts:MicroSegmentChart">
+			<Setter Property="ItemContainerStyle">
+				<Setter.Value>
+					<Style TargetType="microcharts:MicroSegmentChartItem">
+						<Setter Property="HighlightedBackground" Value="{StaticResource BlueAccentBrush}" />
+						<Setter Property="Margin" Value="1" />
+						<Setter Property="MinHeight" Value="8" />
+						<Setter Property="MinWidth" Value="8" />
+					</Style>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<WrapPanel MaxWidth="100" />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Total" Value="100" />
+		</Style>
+		
+		<Style x:Key="OrangePercentageBlockMicroSegmentChartStyle" TargetType="microcharts:MicroSegmentChart" BasedOn="{StaticResource BluePercentageBlockMicroSegmentChartStyle}">
+			<Setter Property="ItemContainerStyle">
+				<Setter.Value>
+					<Style TargetType="microcharts:MicroSegmentChartItem">
+						<Setter Property="HighlightedBackground" Value="{StaticResource OrangeAccentBrush}" />
+						<Setter Property="Margin" Value="1" />
+						<Setter Property="MinHeight" Value="8" />
+						<Setter Property="MinWidth" Value="8" />
+					</Style>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+		<Style x:Key="BluePercentageLineMicroSegmentChartStyle" TargetType="microcharts:MicroSegmentChart">
+			<Setter Property="ItemContainerStyle">
+				<Setter.Value>
+					<Style TargetType="microcharts:MicroSegmentChartItem">
+						<Setter Property="HighlightedBackground" Value="{StaticResource BlueAccentBrush}" />
+						<Setter Property="Margin" Value="0" />
+						<Setter Property="MinHeight" Value="20" />
+						<Setter Property="MinWidth" Value="2" />
+					</Style>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Total" Value="100" />
+		</Style>
+		
+		<Style x:Key="OrangePercentageLineMicroSegmentChartStyle" TargetType="microcharts:MicroSegmentChart" BasedOn="{StaticResource BluePercentageLineMicroSegmentChartStyle}">
+			<Setter Property="ItemContainerStyle">
+				<Setter.Value>
+					<Style TargetType="microcharts:MicroSegmentChartItem">
+						<Setter Property="HighlightedBackground" Value="{StaticResource OrangeAccentBrush}" />
+						<Setter Property="Margin" Value="0" />
+						<Setter Property="MinHeight" Value="20" />
+						<Setter Property="MinWidth" Value="2" />
+					</Style>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The segment chart can be combined with ring slices to produce great infographic-like data presentations.
+					<LineBreak/><LineBreak/>
+					In this example, we show how customer survey results could be presented in an executive dashboard.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+			
+			<Grid HorizontalAlignment="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="10" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="10" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				
+				<sampleBrowser:LabeledCardControl Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						
+						<TextBlock Text="CUSTOMER RESEARCH" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+						<Grid Grid.Row="1" Margin="0,20,0,0" VerticalAlignment="Center">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="30" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="30" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="120" />
+							</Grid.ColumnDefinitions>
+								
+							<shared:RingSlice Grid.Row="0" Grid.Column="0" Radius="50" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+							<shared:RingSlice Grid.Row="0" Grid.Column="0" Radius="50" Stroke="{StaticResource BlueAccentBrush}" EndAngle="255" />
+							<StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+								<TextBlock Text="71%" Foreground="{StaticResource BlueAccentBrush}" FontFamily="Arial Narrow" FontSize="36" FontWeight="Bold" />
+								<TextBlock Text="viewed the company web site" TextWrapping="Wrap" />
+							</StackPanel>
+					
+							<shared:RingSlice Grid.Row="2" Grid.Column="0" Radius="50" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+							<shared:RingSlice Grid.Row="2" Grid.Column="0" Radius="50" Stroke="{StaticResource OrangeAccentBrush}" EndAngle="151" />
+							<StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+								<TextBlock Text="42%" Foreground="{StaticResource OrangeAccentBrush}" FontFamily="Arial Narrow" FontSize="36" FontWeight="Bold" />
+								<TextBlock Text="viewed company ratings on an external web site" TextWrapping="Wrap" />
+							</StackPanel>
+					
+							<shared:RingSlice Grid.Row="4" Grid.Column="0" Radius="50" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+							<shared:RingSlice Grid.Row="4" Grid.Column="0" Radius="50" Stroke="{StaticResource BlueAccentBrush}" EndAngle="111" />
+							<StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">
+								<TextBlock Text="31%" Foreground="{StaticResource BlueAccentBrush}" FontFamily="Arial Narrow" FontSize="36" FontWeight="Bold" />
+								<TextBlock Text="discussed the company with a friend or acquaintance" TextWrapping="Wrap" />
+							</StackPanel>
+						</Grid>
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+				
+				<sampleBrowser:LabeledCardControl Grid.Row="0" Grid.Column="2">
+					<StackPanel>
+						<TextBlock Text="CUSTOMER FEELINGS" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+						<Grid Margin="0,20,0,0" HorizontalAlignment="Center">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="20" />
+								<ColumnDefinition Width="100" />
+								<ColumnDefinition Width="20" />
+								<ColumnDefinition Width="100" />
+							</Grid.ColumnDefinitions>
+								
+							<microcharts:MicroSegmentChart Grid.Row="0" Grid.Column="0" Value="91" Style="{StaticResource BluePercentageBlockMicroSegmentChartStyle}" />
+							<TextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap">
+								<Span Foreground="{StaticResource BlueAccentBrush}" FontFamily="Arial Narrow" FontSize="26" FontWeight="Bold">91%</Span> felt the company is meeting all quality expectations
+							</TextBlock>
+
+							<microcharts:MicroSegmentChart Grid.Row="0" Grid.Column="2" Value="85" Style="{StaticResource OrangePercentageBlockMicroSegmentChartStyle}" />
+							<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap">
+								<Span Foreground="{StaticResource OrangeAccentBrush}" FontFamily="Arial Narrow" FontSize="26" FontWeight="Bold">85%</Span> felt the company has impacted their lives in a positive way
+							</TextBlock>
+							
+							<microcharts:MicroSegmentChart Grid.Row="0" Grid.Column="4" Value="65" Style="{StaticResource BluePercentageBlockMicroSegmentChartStyle}" />
+							<TextBlock Grid.Row="2" Grid.Column="4" TextWrapping="Wrap">
+								<Span Foreground="{StaticResource BlueAccentBrush}" FontFamily="Arial Narrow" FontSize="26" FontWeight="Bold">65%</Span> have recommended the company to friends
+							</TextBlock>
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+				
+				<sampleBrowser:LabeledCardControl Grid.Row="2" Grid.Column="2">
+					<StackPanel>
+						<TextBlock Text="SOCIAL NETWORKING" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+						<Grid Margin="0,20,0,0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="5" />
+								<ColumnDefinition Width="120" />
+							</Grid.ColumnDefinitions>
+								
+							<microcharts:MicroSegmentChart Grid.Row="0" Grid.Column="0" Value="48" Style="{StaticResource BluePercentageLineMicroSegmentChartStyle}" VerticalAlignment="Center" />
+							<TextBlock Grid.Row="0" Grid.Column="2" Text="48%" Foreground="{StaticResource BlueAccentBrush}" FontFamily="Arial Narrow" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" />
+							<TextBlock Grid.Row="0" Grid.Column="4" Text="would connect via Facebook or Twitter" TextWrapping="Wrap" VerticalAlignment="Center" />
+								
+							<microcharts:MicroSegmentChart Grid.Row="2" Grid.Column="0" Value="27" Style="{StaticResource OrangePercentageLineMicroSegmentChartStyle}" VerticalAlignment="Center" />
+							<TextBlock Grid.Row="2" Grid.Column="2" Text="27%" Foreground="{StaticResource OrangeAccentBrush}" FontFamily="Arial Narrow" FontSize="26" FontWeight="Bold" VerticalAlignment="Center" />
+							<TextBlock Grid.Row="2" Grid.Column="4" Text="would like a monthly e-mail newsletter" TextWrapping="Wrap" VerticalAlignment="Center" />
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+			</Grid>
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,39 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSettingFocus.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Margin="0,0,0,0" Content="Focus first property" Click="OnFocusFirstPropertyButtonClick" />
+					<Button Margin="0,10,0,0" Content="Focus IsTabStop property" Click="OnFocusIsTabStopPropertyButtonClick" />
+					<Button Margin="0,3,0,0" Content="Focus ToolTip property" Click="OnFocusToolTipPropertyButtonClick" />
+					<Button Margin="0,10,0,0" Content="Focus Misc category" Click="OnFocusMiscCategoryButtonClick" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This example shows how to set the focus to various items in a property grid, including properties and categories. 
+					<LineBreak /><LineBreak />
+					Try clicking the various buttons to move the focus around the property grid.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{Binding RelativeSource={RelativeSource Self}}" IsSummaryVisible="False" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

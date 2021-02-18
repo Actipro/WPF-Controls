@@ -1,0 +1,177 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="userControl"
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.Demo.BreadcrumbIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Dictionary.xaml" />
+				<ResourceDictionary>
+					<Style x:Key="TreeViewItemStyle"
+						   TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.TreeViewItemStyleKey}}">
+						<Setter Property="ItemsSource" Value="{Binding XPath=ShellItem}" />
+					</Style>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=IsProgressBarVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=ProgressBarValue}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="5" LargeChange="10" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=ProgressBarIsIndeterminate}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=ProgressBarState}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=AutoMinimizeItemCount}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=breadcrumb, Path=MaxTailItemCount}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Breadcrumb duplicates the functionality of the Breadcrumb control available in Windows Explorer,
+					including overflowing items, minimizing items, recent items list, an embedded progress bar, and
+					action buttons. In addition, the Actipro Breadcrumb supports multiple themes, context menu
+					customization, full support for standard WPF styling and data templating, and a few other cool features.
+					The example shows the Breadcrumb control being used to mimic the Breadcrumb control available in Windows Explorer. 
+					<LineBreak /><LineBreak />
+					The Breadcrumb control contains an instance of the AnimatedProgressBar control, which allows long
+					running operations to display their progress in the background of the Breadcrumb control.
+					<LineBreak /><LineBreak />
+					By default, only the root item will be automatically minimized when it is no longer the
+					selected item, but this behavior can be extended to include a configurable number of items.
+					<LineBreak /><LineBreak />
+					By default, the last item displayed by the Breadcrumb control is also the selected item. The
+					Breadcrumb control can also be configured to allow tail items. For example, if you drill down
+					to a leaf item in the Breadcrumb control and then navigate back up the trail, the tail items
+					will remain visible. This allows the user to quickly drill back down the previously selected branch.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="300" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<TreeView x:Name="treeView"
+					ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+					ItemsSource="{Binding XPath=*}"
+					ItemTemplate="{StaticResource ComboBoxItemTemplate}"
+					SelectedItemChanged="OnTreeViewSelectedItemChanged" />
+
+			<Border Grid.Column="1"
+				Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+				BorderThickness="0,1,1,1"
+				SnapsToDevicePixels="true" />
+		</Grid>
+
+		<navigation:Breadcrumb x:Name="breadcrumb"
+			RootItem="{Binding XPath=ShellItem}"
+			ItemContainerStyle="{StaticResource BreadcrumbItemStyle}"
+			ItemTemplate="{StaticResource BreadcrumbItemTemplate}"
+			ComboBoxItemsSource="{Binding ElementName=userControl, Path=ComboBoxItems}"
+			ComboBoxItemTemplate="{StaticResource ComboBoxItemTemplate}"
+			ComboBoxDropDownToolTip="Previous Locations"
+			MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+			MenuItemTemplate="{StaticResource MenuItemNormalTemplate}"
+			MenuItemExpandedTemplate="{StaticResource MenuItemExpandedTemplate}"
+			IsProgressBarVisible="True"
+			ProgressBarMinimum="0"
+			ProgressBarMaximum="100"
+			ProgressBarValue="0"
+			MaxTailItemCount="1"
+			ConvertItem="OnBreadcrumbConvertItem"
+			SelectedItemChanged="OnBreadcrumbSelectedItemChanged">
+			<navigation:Breadcrumb.ActionButtons>
+				<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}" Padding="1">
+					<shared:DynamicImage Source="/Images/Icons/Refresh16.png" Stretch="None" VerticalAlignment="Center" />
+					<Button.ToolTip>
+						<MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}Refresh {0}">
+							<Binding ElementName="breadcrumb" Path="SelectedItem" Mode="OneWay" Converter="{StaticResource PathConverter}" />
+						</MultiBinding>
+					</Button.ToolTip>
+				</Button>
+			</navigation:Breadcrumb.ActionButtons>
+		</navigation:Breadcrumb>
+
+		<ToolBarTray Grid.Row="1" Margin="0,7,0,0">
+			<ToolBar>
+				<ToolBar.Resources>
+					<Style TargetType="shared:DynamicImage">
+						<Setter Property="Margin" Value="7,1,0,1" />
+					</Style>
+					<Style TargetType="TextBlock">
+						<Setter Property="Margin" Value="3,0,7,0" />
+						<Setter Property="VerticalAlignment" Value="Center" />
+					</Style>
+				</ToolBar.Resources>
+					
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Sort16.png" />
+						<TextBlock>Organize</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Views16.png" />
+						<TextBlock>Views</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Explorer16.png" />
+						<TextBlock>Explore</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/SlideShow16.png" />
+						<TextBlock>SlideShow</TextBlock>
+					</StackPanel>
+				</Button>
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Mail16.png" />
+						<TextBlock>Email</TextBlock>
+					</StackPanel>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+
+	</Grid>
+</sampleBrowser:ProductItemControl>

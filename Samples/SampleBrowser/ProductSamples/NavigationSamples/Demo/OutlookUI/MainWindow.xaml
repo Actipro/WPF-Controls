@@ -1,0 +1,312 @@
+<Window 
+	x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"     
+	xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.Demo.NavigationBarIntro"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"     
+	Title="Inbox - Actipro's Outlook UI Demo" 
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	Icon="/Images/Icons/Outlook.ico"
+    >
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome />
+	</themes:WindowChrome.Chrome>
+	
+	<Window.Resources>
+
+		<shared:DateTimeFormatPatternConverter x:Key="DateTimeFormatPatternConverter" />
+
+	</Window.Resources>
+
+	<DockPanel LastChildFill="True">
+		<Menu DockPanel.Dock="Top" BorderThickness="0,0,0,1">
+			<MenuItem Header="File" />
+			<MenuItem Header="Edit" />
+			<MenuItem Header="View" />
+			<MenuItem Header="Go" />
+			<MenuItem Header="Tools" />
+			<MenuItem Header="Actions" />
+			<MenuItem Header="Help" />
+		</Menu>
+
+		<StatusBar DockPanel.Dock="Bottom">
+			<StatusBar.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="100" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+				</ItemsPanelTemplate>
+			</StatusBar.ItemsPanel>
+
+			<StatusBarItem>2 items</StatusBarItem>
+			<Separator Grid.Column="1" />
+			<StatusBarItem Grid.Column="2"></StatusBarItem>
+		</StatusBar>
+
+		<Border>
+			<Grid Margin="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" MinWidth="34" MaxWidth="250" />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition Width="Auto" MinWidth="16" />
+					<ColumnDefinition Width="*" MinWidth="16" />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<navigation:NavigationBar x:Name="navBar" ContentWidth="160" MaxWidth="250" IsHeaderVisible="False" Background="Transparent" BorderThickness="0">
+					<navigation:NavigationBar.Resources>
+
+						<!-- Add a ScrollViewer style override that looks good on a workspace background -->
+						<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}"></Style>
+
+					</navigation:NavigationBar.Resources>
+
+					<navigation:NavigationPane x:Name="mailPane" Title="Mail" ImageSourceLarge="/Images/Icons/Mail32.png" ImageSourceSmall="/Images/Icons/Mail16.png">
+
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<TreeView Background="Transparent" BorderThickness="0">
+								<TreeViewItem Header="Favorite Folders" IsExpanded="True">
+									<TreeViewItem IsSelected="True">
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Inbox" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Unread Mail" TextElement.FontStyle="Italic" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Sent Items" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+								</TreeViewItem>
+							</TreeView>
+
+							<TreeView Grid.Row="2" Background="Transparent" BorderThickness="0">
+								<TreeViewItem Header="Mail Folders" IsExpanded="True">
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Inbox" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Deleted Items" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Drafts" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Outbox" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+									<TreeViewItem>
+										<TreeViewItem.Header>
+											<StackPanel Margin="-21,0,0,0" Orientation="Horizontal">
+												<shared:DynamicImage Margin="0,0,5,0" Source="/Images/Icons/FolderClosed16.png" Stretch="None" VerticalAlignment="Center" />
+												<TextBlock Text="Sent Items" VerticalAlignment="Center" />
+											</StackPanel>
+										</TreeViewItem.Header>
+									</TreeViewItem>
+								</TreeViewItem>
+							</TreeView>
+						</Grid>
+
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="calendarPane" Title="Calendar" ImageSourceLarge="/Images/Icons/Calendar32.png" ImageSourceSmall="/Images/Icons/Calendar16.png">
+						<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ListBackgroundNormalBrushKey}}"
+								BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ListBorderNormalBrushKey}}" BorderThickness="1">
+							<editors:MonthCalendar Background="Transparent" BorderThickness="0" VerticalAlignment="Top" />
+						</Border>
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="contactsPane" Title="Contacts" ImageSourceLarge="/Images/Icons/Contacts32.png" ImageSourceSmall="/Images/Icons/Contacts16.png">
+						<TextBlock Margin="10" Text="Contacts content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="tasksPane" Title="Tasks" ImageSourceLarge="/Images/Icons/Tasks32.png" ImageSourceSmall="/Images/Icons/Tasks16.png">
+						<TextBlock Margin="10" Text="Tasks content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="notesPane" Title="Notes" ImageSourceLarge="/Images/Icons/Notes32.png" ImageSourceSmall="/Images/Icons/Notes16.png">
+						<TextBlock Margin="10" Text="Notes content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="folderListPane" Title="Folder List" ImageSourceLarge="/Images/Icons/FolderClosed32.png" ImageSourceSmall="/Images/Icons/FolderClosed16.png" IsEnabled="False">
+						<TextBlock Margin="10" Text="Folder List content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="shortcutsPane" Title="Shortcuts" ImageSourceLarge="/Images/Icons/Shortcuts32.png" ImageSourceSmall="/Images/Icons/Shortcuts16.png">
+						<TextBlock Margin="10" Text="Shortcuts content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+					<navigation:NavigationPane x:Name="journalPane" DefaultVisibility="Collapsed" Visibility="Collapsed" Title="Journal" ImageSourceLarge="/Images/Icons/TextDocument32.png" ImageSourceSmall="/Images/Icons/TextDocument16.png">
+						<TextBlock Margin="10" Text="Journal content here" TextWrapping="Wrap" />
+					</navigation:NavigationPane>
+				</navigation:NavigationBar>
+
+				<GridSplitter Grid.Column="1" ResizeDirection="Columns" ResizeBehavior="PreviousAndCurrent" Background="Transparent" Width="5" />
+
+				<!-- Inbox -->
+				<navigation:NavigationBar Grid.Column="2" IsMinimizable="False" ArePanesVisible="False" IsHeaderContentVisible="True" BorderThickness="1">
+					<navigation:NavigationPane Title="Inbox">
+						<ListBox MinWidth="50" BorderThickness="0" SelectedIndex="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<Grid Margin="7,5,3,5">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="Auto" />
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="60" />
+											<ColumnDefinition Width="20" />
+										</Grid.ColumnDefinitions>
+
+										<TextBlock x:Name="from" Margin="0,0,5,0" Text="{Binding From}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+										<TextBlock x:Name="sent" Grid.Column="1" Text="{Binding Sent, Converter={StaticResource DateTimeFormatPatternConverter}, ConverterParameter={x:Static shared:DateTimeFormatPattern.ShortDate}}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" />
+										<shared:DynamicImage x:Name="flag" Grid.RowSpan="2" Grid.Column="2" Width="16" Height="16" Source="/Images/Icons/Flag16.png" HorizontalAlignment="Right" VerticalAlignment="Center" />
+
+										<TextBlock x:Name="subject" Grid.Row="1" Grid.ColumnSpan="2" Opacity="0.6"
+											Text="{Binding Subject}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+									</Grid>
+
+									<DataTemplate.Triggers>
+										<DataTrigger Binding="{Binding IsFlagged}" Value="False">
+											<Setter TargetName="flag" Property="Visibility" Value="Collapsed" />
+										</DataTrigger>
+									</DataTemplate.Triggers>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+
+							<sample:MailItem Sent="2/1/2020" From="Actipro Software" Subject="How is the evaluation going?" IsFlagged="True" />
+							<sample:MailItem Sent="1/20/2020" From="Bob" Subject="Actipro WPF Studio is great!" />
+						</ListBox>
+					</navigation:NavigationPane>
+				</navigation:NavigationBar>
+
+				<!-- Document -->
+				<Border Grid.Column="3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundNormalBrushKey}}" 
+						TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" 
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ListBorderNormalBrushKey}}" BorderThickness="0,1,1,1" Padding="7">
+					<DockPanel LastChildFill="True">
+						<StackPanel DockPanel.Dock="Top">
+							<TextBlock FontWeight="Bold" FontSize="16" Text="How is the evaluation going?" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" />
+							<TextBlock Margin="0,5,0,0" FontSize="16" Text="Actipro Software [sales@actiprosoftware.com]" TextTrimming="CharacterEllipsis" />
+							<StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+								<TextBlock Width="40" Text="Sent:" />
+								<TextBlock Text="Fri 2/1/2020 12:51pm" />
+							</StackPanel>
+							<StackPanel Margin="0,1,0,0" Orientation="Horizontal">
+								<TextBlock Width="40" Text="To:" />
+								<TextBlock Text="Valued Customer" />
+							</StackPanel>
+							<Rectangle Margin="0,7,0,0" Height="1" Fill="#808080" SnapsToDevicePixels="True" />
+						</StackPanel>
+						<sampleBrowser:RichTextBox Margin="0,7,0,0" HorizontalScrollBarVisibility="Hidden" Background="Transparent" BorderThickness="0" IsReadOnly="True">
+							<sampleBrowser:SimpleFlowDocument>
+								<Paragraph>
+									Just wanted to check in to see how your WPF Studio evaluation is going.
+								</Paragraph>
+								<Paragraph>
+									The NavigationBar is an especially neat control since it duplicates Outlook functionality, 
+									comes packed with multiple themes, can be minimized to both the right and left sides,
+									and supports context menu customization along with right-to-left layout.
+								</Paragraph>
+								<Paragraph>
+									The Inbox NavigationBar next to this message demonstrates how NavigationBar can be used 
+									with a single pane whose buttons are hidden.
+									Additionally Expanders within NavigationPanes automatically get styling to support
+									animated expand/collapse and match the theme of the NavigationBar.
+								</Paragraph>
+								<Paragraph>
+									Click on the Options NavigationBar to the right to display it and change a number of settings.
+								</Paragraph>
+								<Paragraph>
+									Please feel free to contact us at any time if you require an evaluation extension.
+								</Paragraph>
+								<Paragraph>
+									Sincerely,
+								</Paragraph>
+								<Paragraph>
+									Actipro Software Sales
+									<LineBreak/>
+									http://www.actiprosoftware.com
+								</Paragraph>
+							</sampleBrowser:SimpleFlowDocument>
+						</sampleBrowser:RichTextBox>
+					</DockPanel>
+				</Border>
+
+				<GridSplitter Grid.Column="3" ResizeDirection="Columns" ResizeBehavior="PreviousAndCurrent" Background="Transparent" Width="5" HorizontalAlignment="Left" />
+
+				<!-- Options -->
+				<navigation:NavigationBar x:Name="optionsNavBar" Grid.Column="5" Title="Options" MinimizesLeft="False" ArePanesVisible="False" IsMinimized="True"
+											Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.NavigationPaneHeaderForegroundNormalBrushKey}}"
+											Background="Transparent" BorderThickness="0">
+					<navigation:NavigationPane Title="Options" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.NavigationPaneHeaderForegroundNormalBrushKey}}">
+						<Border>
+							<StackPanel Margin="5">
+								<TextBlock FontWeight="Bold" Text="Layout Settings:" />
+								<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=navBar, Path=ArePanesVisible}" Content="Are panes visible"
+											Foreground="{Binding ElementName=optionsNavBar, Path=Foreground}" />
+								<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=navBar, Path=IsCustomizationEnabled}" Content="Is customization enabled"
+											Foreground="{Binding ElementName=optionsNavBar, Path=Foreground}" />
+								<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=navBar, Path=IsMinimizable}" Content="Is minimizable"
+											Foreground="{Binding ElementName=optionsNavBar, Path=Foreground}" />
+								<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=navBar, Path=MinimizesLeft}" Content="Minimizes left"
+											Foreground="{Binding ElementName=optionsNavBar, Path=Foreground}" />
+
+								<TextBlock Margin="0,10,0,0" FontWeight="Bold" Text="Popup Settings:" />
+								<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=navBar, Path=IsPopupEnabled}" Content="Is popup enabled"
+											Foreground="{Binding ElementName=optionsNavBar, Path=Foreground}" />
+							</StackPanel>
+						</Border>
+					</navigation:NavigationPane>
+				</navigation:NavigationBar>
+
+			</Grid>
+		</Border>
+
+	</DockPanel>
+
+</Window>

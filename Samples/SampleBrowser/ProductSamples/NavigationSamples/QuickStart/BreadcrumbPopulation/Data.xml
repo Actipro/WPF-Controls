@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MyRootElement>
+  <MyFolderElement FolderName="Folder 1">
+    <MySubfolderElement SubfolderName="Subfolder 1" />
+    <MySubfolderElement SubfolderName="Subfolder 2" />
+    <MySubfolderElement SubfolderName="Subfolder 3" />
+  </MyFolderElement>
+  <MyFolderElement FolderName="Folder 2">
+    <MySubfolderElement SubfolderName="Subfolder 1" />
+    <MySubfolderElement SubfolderName="Subfolder 2" />
+    <MySubfolderElement SubfolderName="Subfolder 3" />
+  </MyFolderElement>
+  <MyFolderElement FolderName="Folder 3">
+    <MySubfolderElement SubfolderName="Subfolder 1" />
+    <MySubfolderElement SubfolderName="Subfolder 2" />
+    <MySubfolderElement SubfolderName="Subfolder 3" />
+  </MyFolderElement>
+</MyRootElement>

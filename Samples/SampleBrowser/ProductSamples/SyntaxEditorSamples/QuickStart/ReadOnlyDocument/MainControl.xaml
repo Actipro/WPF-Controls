@@ -1,0 +1,29 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    >
+	
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel>
+				<CheckBox IsChecked="{Binding ElementName=editor, Path=Document.IsReadOnly}" Content="Document is read-only" />
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+			<editor:EditorDocument IsReadOnly="True" xml:space="preserve"><![CDATA[Documents can be made read-only by setting their IsReadOnly
+property to true.
+
+SyntaxEditor watches that property and automatically updates the
+UI to reflect read-only mode when active.  SyntaxEditor's
+IsDocumentReadOnly property also returns the current read-only 
+state of the encapsulated document and can be used for data-binding 
+to external controls independently of which document is loaded.
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</DockPanel>
+
+</UserControl>

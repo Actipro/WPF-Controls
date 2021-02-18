@@ -1,0 +1,72 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.SeriesVisibility.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+    xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    >
+    
+    <sampleBrowser:ProductItemControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=losAngelesSeries, Path=Visibility}" DisplayName="Los Angeles series visible" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+				    The visibility of any series can be set so that it is either displayed or hidden from view. The bar chart's visibility is toggled with the checkbox.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Foreground="#808080" Text="Description" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Foreground="#808080" Text="Sales" VerticalAlignment="Center" Margin="20,0" />
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontSize="12" Text="New York" />
+                        <TextBlock FontSize="12" Text=" vs. " />
+                        <TextBlock FontSize="12" Text="Los Angeles" />
+                    </StackPanel>
+                    <microcharts:MicroXYChart Grid.Row="1" Grid.Column="1" Margin="20,5" Width="100" Height="18" VerticalAlignment="Center" IsHotTrackingEnabled="True" YAxisMinimum="0">
+                        <microcharts:MicroXYChart.SeriesStyleSelector>
+                            <microcharts:MicroSeriesPaletteStyleSelector>
+                                <microcharts:MicroPalette>
+                                    <Color>#46bff7</Color>
+                                    <Color>#06226b</Color>
+                                </microcharts:MicroPalette>
+                            </microcharts:MicroSeriesPaletteStyleSelector>
+                        </microcharts:MicroXYChart.SeriesStyleSelector>
+                        <microcharts:MicroBarSeries Description="New York" ItemsSource="581415; 591966; 492003; 460123; 523962; 622962; 649196; 789123; 800124; 750126; 741612; 720556" LegendStringFormat="{}{5}: {0:C0}"/>
+                        <microcharts:MicroBarSeries x:Name="losAngelesSeries" Description="Los Angeles" ItemsSource="318624; 358185; 381725; 310128; 251929; 370125; 380120; 354501; 263105; 492031; 423123; 380125" LegendStringFormat="{}{5}: {0:C0}" />
+                    </microcharts:MicroXYChart>
+                </Grid>
+            </sampleBrowser:LabeledCardControl>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

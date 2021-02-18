@@ -1,0 +1,147 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.AutoCompleteBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.AutoCompleteBoxIntro"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsReadOnly}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=InputMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=HasClearButton}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=HasPopupButton}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsPopupOpenedOnFocus}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=PlaceholderText}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=MinCharacterCountToOpenPopup}">
+						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="10" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=MaxPopupHeight}">
+						<gridseditors:DoublePropertyEditor Minimum="100" Maximum="1000" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=CharacterCasing}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=TextAlignment}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The AutoCompleteBox control is a TextBox that also has a popup for presenting a list of suggested items.
+					This kind of control is great for search text entry, Quick Launch fields, etc.
+					<LineBreak /><LineBreak />
+					When the suggestion list popup is displayed, arrow keys can change the selected item in the list.
+					Press Enter to raise an event where queries or appropriate actions can be executed.
+					<LineBreak /><LineBreak />
+					Pre-designed filters can automatically trim down the suggestion list as you type,
+					or you can optionally rebuild the list yourself for a more dynamic approach.
+					<LineBreak /><LineBreak />
+					Use an AdvancedTextBlock in the item template to support highlighting of string filter matched ranges.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:AutoCompleteBox x:Name="textBox" Width="300" HorizontalAlignment="Center" PlaceholderText="Search text" 
+									 TextMemberPath="FullName" NoItemsContent="(no results)"
+									 Submitted="OnTextBoxSubmitted">
+				<editors:AutoCompleteBox.DataFilter>
+					<editors:AutoCompleteBoxStringFilter />
+				</editors:AutoCompleteBox.DataFilter>
+				<editors:AutoCompleteBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}" BorderThickness="1" VerticalAlignment="Center">
+								<Image Width="24" Height="24" Source="{Binding PhotoUri}" />
+							</Border>
+							
+							<shared:AdvancedTextBlock Margin="5,0,0,0" Text="{Binding FullName, Mode=OneWay}" TextTrimming="None" FontWeight="Bold" VerticalAlignment="Center" 
+													  HighlightBackground="#40ffea00"
+													  Captures="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shared:StringFilterCapture.Captures)}" />
+							<TextBlock Margin="5,0" Text="-" VerticalAlignment="Center" />
+							<TextBlock Text="{Binding Position, Mode=OneWay}" VerticalAlignment="Center" />
+						</StackPanel>
+					</DataTemplate>
+				</editors:AutoCompleteBox.ItemTemplate>
+				<editors:AutoCompleteBox.NoItemsContentTemplate>
+					<DataTemplate>
+						<TextBlock Margin="20,3" Text="{Binding}" FontStyle="Italic" HorizontalAlignment="Center" VerticalAlignment="Center" />
+					</DataTemplate>
+				</editors:AutoCompleteBox.NoItemsContentTemplate>
+			</editors:AutoCompleteBox>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Countries list, using DisplayMemberPath and ComboBox input mode, and with a clear button on focus">
+					<editors:AutoCompleteBox x:Name="countryBox" MinWidth="300" PlaceholderText="Country" TextMemberPath="Name" 
+											 DisplayMemberPath="Name" InputMode="ComboBox" HasClearButton="True" HorizontalAlignment="Left">
+						<editors:AutoCompleteBox.DataFilter>
+							<editors:AutoCompleteBoxStringFilter />
+						</editors:AutoCompleteBox.DataFilter>
+					</editors:AutoCompleteBox>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Quick launch tasks, opens popup on focus and updates as you type">
+					<editors:AutoCompleteBox x:Name="quickLaunchBox" MinWidth="300" PlaceholderText="Quick Launch" TextMemberPath="Text" 
+											 IsPopupOpenedOnFocus="True" HasClearButton="True" HasPopupButton="False" HorizontalAlignment="Left"
+											 Submitted="OnQuickLaunchBoxSubmitted"  TextChanged="OnQuickLaunchBoxTextChanged">
+						<editors:AutoCompleteBox.ItemContainerStyleSelector>
+							<sample:QuickLaunchStyleSelector>
+								<sample:QuickLaunchStyleSelector.SeparatorStyle>
+									<Style TargetType="editors:EmbeddedListBoxItem">
+										<Setter Property="IsEnabled" Value="False" />
+										<Setter Property="Template">
+											<Setter.Value>
+												<ControlTemplate TargetType="editors:EmbeddedListBoxItem">
+													<Rectangle Margin="0,2" Height="1" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}" />
+												</ControlTemplate>
+											</Setter.Value>
+										</Setter>
+									</Style>
+								</sample:QuickLaunchStyleSelector.SeparatorStyle>
+							</sample:QuickLaunchStyleSelector>
+						</editors:AutoCompleteBox.ItemContainerStyleSelector>
+						<editors:AutoCompleteBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel Orientation="Horizontal">
+									<shared:DynamicImage Width="16" Height="16" Source="{Binding ImageSource, Mode=OneWay}" />
+									<TextBlock Margin="5,0,0,0" Text="{Binding Text, Mode=OneWay}" VerticalAlignment="Center" />
+								</StackPanel>
+							</DataTemplate>
+						</editors:AutoCompleteBox.ItemTemplate>
+					</editors:AutoCompleteBox>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Countries list, using match highlights">
+					<editors:AutoCompleteBox MinWidth="300" ItemsSource="{Binding ElementName=countryBox, Path=ItemsSource}" 
+											 PlaceholderText="Country" TextMemberPath="Name" HorizontalAlignment="Left">
+						<editors:AutoCompleteBox.DataFilter>
+							<editors:AutoCompleteBoxStringFilter />
+						</editors:AutoCompleteBox.DataFilter>
+						<editors:AutoCompleteBox.ItemTemplate>
+							<DataTemplate>
+								<shared:AdvancedTextBlock Text="{Binding Name, Mode=OneWay}" TextTrimming="None" VerticalAlignment="Center" 
+															Captures="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shared:StringFilterCapture.Captures)}" />
+							</DataTemplate>
+						</editors:AutoCompleteBox.ItemTemplate>
+					</editors:AutoCompleteBox>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

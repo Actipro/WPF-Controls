@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'PHP' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Php" LanguageDescription="PHP" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
+		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
+		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
+		<ClassificationType Key="PhpNumber" Description="PHP Number" />
+		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
+		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Identifier" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="PrimaryString" />
+					<StateRef Key="AlternateString" />
+					<StateRef Key="SingleLineComment" />
+					<StateRef Key="MultiLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="ReservedWord" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						abstract array as break case catch cfunction class clone const continue declare default die done
+						do echo elseif else empty enddeclare endforeach endfor endif endswitch endwhile eval exception
+						exit extends final foreach for function global if implements include_once include interface isset
+						list new old_function php_user_filter print private protected public require_once require return
+						static switch throw try unset use var while
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="PrimitiveType" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						boolean callback double float integer mixed number object resource string
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Null" ClassificationTypeKey="PhpKeyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						TRUE FALSE
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Function" ClassificationTypeKey="PhpFunction" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						abs acos addcslashes addslashes apache_get_modules apache_get_version apache_getenv apache_lookup_uri
+						apache_note apache_request_headers apache_response_headers apache_setenv array_change_key_case
+						array_chunk array_combine array_count_values array_diff array_diff_assoc array_diff_uassoc
+						array_fill array_filter array_flip array_intersect array_intersect_assoc array_intersect_uassoc
+						array_key_exists array_keys array_map array_merge array_merge_recursive array_multisort
+						array_pad array_pop array_push array_rand array_reduce array_reverse array_search array_shift
+						array_slice array_splice array_sum array_udiff array_udiff_assoc array_udiff_uassoc array_uintersect
+						array_uintersect_assoc array_uintersect_uassoc array_unique array_unshift array_values
+						array_walk array_walk_recursive arsort asin asort assert assert_options atan atan2 base_convert
+						base64_decode base64_encode basename bcadd bccomp bcdiv bcmod bcmul bcpow bcpowmod bcscale bcsqrt
+						bcsub bin2hex bindec cal_days_in_month cal_from_jd cal_info cal_to_jd call_user_func call_user_func_array
+						call_user_method call_user_method_array ceil chdir checkdate chgrp chmod chop chown chr chunk_split
+						class_exists class_implements class_parents clearstatcache closedir closelog com_create_guid
+						com_event_sink com_get_active_object com_load_typelib com_message_pump com_print_typeinfo
+						compact connection_aborted connection_status constant convert_cyr_string convert_uudecode
+						convert_uuencode copy cos cosh count count_chars crc32 create_function crypt ctype_alnum ctype_alpha
+						ctype_cntrl ctype_digit ctype_graph ctype_lower ctype_print ctype_punct ctype_space ctype_upper
+						ctype_xdigit current date date_sunrise date_sunset debug_backtrace debug_print_backtrace
+						debug_zval_dump decbin dechex decoct define define_syslog_variables defined deg2rad dir dirname
+						disk_free_space disk_total_space diskfreespace dl dom_import_simplexml doubleval each easter_date
+						easter_days end ereg ereg_replace eregi eregi_replace error_log error_reporting escapeshellarg
+						escapeshellcmd exec exp explode extension_loaded extract ezmlm_hash fclose feof fflush fgetc
+						fgetcsv fgets fgetss file file_exists file_get_contents file_put_contents fileatime filectime
+						filegroup fileinode filemtime fileowner fileperms filesize filetype floatval flock floor flush
+						fmod fopen fpassthru fprintf fputs fread frenchtojd fscanf fseek fsockopen fstat ftell ftp_alloc
+						ftp_cdup ftp_chdir ftp_chmod ftp_close ftp_connect ftp_delete ftp_exec ftp_fget ftp_fput ftp_get
+						ftp_get_option ftp_login ftp_mdtm ftp_mkdir ftp_nb_continue ftp_nb_fget ftp_nb_fput ftp_nb_get
+						ftp_nb_put ftp_nlist ftp_pasv ftp_put ftp_pwd ftp_quit ftp_raw ftp_rawlist ftp_rename ftp_rmdir
+						ftp_set_option ftp_site ftp_size ftp_systype ftruncate func_get_arg func_get_args func_num_args
+						function_exists fwrite get_browser get_cfg_var get_class get_class_methods get_class_vars
+						get_current_user get_declared_classes get_declared_interfaces get_defined_constants get_defined_functions
+						get_defined_vars get_extension_funcs get_headers get_html_translation_table get_include_path
+						get_included_files get_loaded_extensions get_magic_quotes_gpc get_magic_quotes_runtime
+						get_meta_tags get_object_vars get_parent_class get_required_files get_resource_type getallheaders
+						getcwd getdate getenv gethostbyaddr gethostbyname gethostbynamel getimagesize getlastmod
+						getmygid getmyinode getmypid getmyuid getprotobyname getprotobynumber getrandmax getservbyname
+						getservbyport gettimeofday gettype glob gmdate gmmktime gmstrftime gregoriantojd gzclose gzcompress
+						gzdeflate gzencode gzeof gzfile gzgetc gzgets gzgetss gzinflate gzopen gzpassthru gzputs gzread
+						gzrewind gzseek gztell gzuncompress gzwrite header headers_list headers_sent hebrev hebrevc
+						hexdec highlight_file highlight_string html_entity_decode htmlentities htmlspecialchars
+						http_build_query iconv iconv_get_encoding iconv_mime_decode iconv_mime_decode_headers
+						iconv_mime_encode iconv_set_encoding iconv_strlen iconv_strpos iconv_strrpos iconv_substr
+						idate ignore_user_abort image_type_to_mime_type imap_8bit imap_alerts imap_append imap_base64
+						imap_binary imap_body imap_bodystruct imap_check imap_clearflag_full imap_close imap_create
+						imap_createmailbox imap_delete imap_deletemailbox imap_errors imap_expunge imap_fetch_overview
+						imap_fetchbody imap_fetchheader imap_fetchstructure imap_fetchtext imap_get_quota imap_get_quotaroot
+						imap_getacl imap_getmailboxes imap_getsubscribed imap_header imap_headerinfo imap_headers
+						imap_last_error imap_list imap_listmailbox imap_listsubscribed imap_lsub imap_mail imap_mail_compose
+						imap_mail_copy imap_mail_move imap_mailboxmsginfo imap_mime_header_decode imap_msgno imap_num_msg
+						imap_num_recent imap_open imap_ping imap_qprint imap_rename imap_renamemailbox imap_reopen
+						imap_rfc822_parse_adrlist imap_rfc822_parse_headers imap_rfc822_write_address imap_scan
+						imap_scanmailbox imap_search imap_set_quota imap_setacl imap_setflag_full imap_sort imap_status
+						imap_subscribe imap_thread imap_timeout imap_uid imap_undelete imap_unsubscribe imap_utf7_decode
+						imap_utf7_encode imap_utf8 implode import_request_variables in_array ini_alter ini_get ini_get_all
+						ini_restore ini_set interface_exists intval ip2long iptcembed iptcparse is_a is_array is_bool
+						is_callable is_dir is_double is_executable is_file is_finite is_float is_infinite is_int is_integer
+						is_link is_long is_nan is_null is_numeric is_object is_readable is_real is_resource is_scalar
+						is_string is_subclass_of is_uploaded_file is_writable is_writeable jddayofweek jdmonthname
+						jdtofrench jdtogregorian jdtojewish jdtojulian jdtounix jewishtojd join juliantojd key key_exists
+						krsort ksort lcg_value levenshtein libxml_set_streams_context localeconv localtime log log10
+						long2ip lstat ltrim magic_quotes_runtime mail max md5 md5_file metaphone method_exists microtime
+						min mkdir mktime move_uploaded_file mt_getrandmax mt_rand mt_srand mysql mysql_affected_rows
+						mysql_client_encoding mysql_close mysql_connect mysql_data_seek mysql_db_name mysql_db_query
+						mysql_dbname mysql_errno mysql_error mysql_escape_string mysql_fetch_array mysql_fetch_assoc
+						mysql_fetch_field mysql_fetch_lengths mysql_fetch_object mysql_fetch_row mysql_field_flags
+						mysql_field_len mysql_field_name mysql_field_seek mysql_field_table mysql_field_type mysql_fieldflags
+						mysql_fieldlen mysql_fieldname mysql_fieldtable mysql_fieldtype mysql_free_result mysql_freeresult
+						mysql_get_client_info mysql_get_host_info mysql_get_proto_info mysql_get_server_info
+						mysql_info mysql_insert_id mysql_list_dbs mysql_list_fields mysql_list_processes mysql_list_tables
+						mysql_listdbs mysql_listfields mysql_listtables mysql_num_fields mysql_num_rows mysql_numfields
+						mysql_numrows mysql_pconnect mysql_ping mysql_query mysql_real_escape_string mysql_result
+						mysql_select_db mysql_selectdb mysql_stat mysql_table_name mysql_tablename mysql_thread_id
+						mysql_unbuffered_query mysqli_affected_rows mysqli_autocommit mysqli_bind_param mysqli_bind_result
+						mysqli_change_user mysqli_character_set_name mysqli_client_encoding mysqli_close mysqli_commit
+						mysqli_connect mysqli_connect_errno mysqli_connect_error mysqli_data_seek mysqli_debug
+						mysqli_disable_reads_from_master mysqli_disable_rpl_parse mysqli_dump_debug_info mysqli_enable_reads_from_master
+						mysqli_enable_rpl_parse mysqli_errno mysqli_error mysqli_escape_string mysqli_execute
+						mysqli_fetch mysqli_fetch_array mysqli_fetch_assoc mysqli_fetch_field mysqli_fetch_field_direct
+						mysqli_fetch_fields mysqli_fetch_lengths mysqli_fetch_object mysqli_fetch_row mysqli_field_count
+						mysqli_field_seek mysqli_field_tell mysqli_free_result mysqli_get_client_info mysqli_get_client_version
+						mysqli_get_host_info mysqli_get_metadata mysqli_get_proto_info mysqli_get_server_info
+						mysqli_get_server_version mysqli_info mysqli_init mysqli_insert_id mysqli_kill mysqli_master_query
+						mysqli_more_results mysqli_multi_query mysqli_next_result mysqli_num_fields mysqli_num_rows
+						mysqli_options mysqli_param_count mysqli_ping mysqli_prepare mysqli_query mysqli_real_connect
+						mysqli_real_escape_string mysqli_real_query mysqli_report mysqli_rollback mysqli_rpl_parse_enabled
+						mysqli_rpl_probe mysqli_rpl_query_type mysqli_select_db mysqli_send_long_data mysqli_send_query
+						mysqli_set_local_infile_default mysqli_set_local_infile_handler mysqli_set_opt mysqli_slave_query
+						mysqli_sqlstate mysqli_ssl_set mysqli_stat mysqli_stmt_affected_rows mysqli_stmt_attr_get
+						mysqli_stmt_attr_set mysqli_stmt_bind_param mysqli_stmt_bind_result mysqli_stmt_close
+						mysqli_stmt_data_seek mysqli_stmt_errno mysqli_stmt_error mysqli_stmt_execute mysqli_stmt_fetch
+						mysqli_stmt_field_count mysqli_stmt_free_result mysqli_stmt_init mysqli_stmt_insert_id
+						mysqli_stmt_num_rows mysqli_stmt_param_count mysqli_stmt_prepare mysqli_stmt_reset mysqli_stmt_result_metadata
+						mysqli_stmt_send_long_data mysqli_stmt_sqlstate mysqli_stmt_store_result mysqli_store_result
+						mysqli_thread_id mysqli_thread_safe mysqli_use_result mysqli_warning_count natcasesort
+						natsort next nl2br number_format ob_clean ob_end_clean ob_end_flush ob_flush ob_get_clean
+						ob_get_contents ob_get_flush ob_get_length ob_get_level ob_get_status ob_gzhandler ob_iconv_handler
+						ob_implicit_flush ob_list_handlers ob_start octdec odbc_autocommit odbc_binmode odbc_close
+						odbc_close_all odbc_columnprivileges odbc_columns odbc_commit odbc_connect odbc_cursor
+						odbc_data_source odbc_do odbc_error odbc_errormsg odbc_exec odbc_execute odbc_fetch_array
+						odbc_fetch_into odbc_fetch_object odbc_fetch_row odbc_field_len odbc_field_name odbc_field_num
+						odbc_field_precision odbc_field_scale odbc_field_type odbc_foreignkeys odbc_free_result
+						odbc_gettypeinfo odbc_longreadlen odbc_next_result odbc_num_fields odbc_num_rows odbc_pconnect
+						odbc_prepare odbc_primarykeys odbc_procedurecolumns odbc_procedures odbc_result odbc_result_all
+						odbc_rollback odbc_setoption odbc_specialcolumns odbc_statistics odbc_tableprivileges
+						odbc_tables opendir openlog ord output_add_rewrite_var output_reset_rewrite_vars pack parse_ini_file
+						parse_str parse_url passthru pathinfo pclose pfsockopen php_check_syntax php_egg_logo_guid
+						php_ini_scanned_files php_logo_guid php_real_logo_guid php_sapi_name php_strip_whitespace
+						php_uname phpcredits phpinfo phpversion pi popen pos pow preg_grep preg_match preg_match_all
+						preg_quote preg_replace preg_replace_callback preg_split prev print_r printf proc_close proc_get_status
+						proc_open proc_terminate putenv quoted_printable_decode quotemeta rad2deg rand range rawurldecode
+						rawurlencode readdir readfile readgzfile realpath register_shutdown_function register_tick_function
+						rename reset restore_error_handler restore_exception_handler restore_include_path rewind
+						rewinddir rmdir round rsort rtrim scandir serialize session_cache_expire session_cache_limiter
+						session_commit session_decode session_destroy session_encode session_get_cookie_params
+						session_id session_is_registered session_module_name session_name session_regenerate_id
+						session_register session_save_path session_set_cookie_params session_set_save_handler
+						session_start session_unregister session_unset session_write_close set_error_handler set_exception_handler
+						set_file_buffer set_include_path set_magic_quotes_runtime set_socket_blocking set_time_limit
+						setcookie setlocale setrawcookie settype sha1 sha1_file shell_exec show_source shuffle similar_text
+						simplexml_import_dom simplexml_load_file simplexml_load_string sin sinh sizeof sleep socket_get_status
+						socket_set_blocking socket_set_timeout sort soundex spl_classes split spliti sprintf sql_regcase
+						sqlite_array_query sqlite_busy_timeout sqlite_changes sqlite_close sqlite_column sqlite_create_aggregate
+						sqlite_create_function sqlite_current sqlite_error_string sqlite_escape_string sqlite_exec
+						sqlite_factory sqlite_fetch_all sqlite_fetch_array sqlite_fetch_column_types sqlite_fetch_object
+						sqlite_fetch_single sqlite_fetch_string sqlite_field_name sqlite_has_more sqlite_has_prev
+						sqlite_last_error sqlite_last_insert_rowid sqlite_libencoding sqlite_libversion sqlite_next
+						sqlite_num_fields sqlite_num_rows sqlite_open sqlite_popen sqlite_prev sqlite_query sqlite_rewind
+						sqlite_seek sqlite_single_query sqlite_udf_decode_binary sqlite_udf_encode_binary sqlite_unbuffered_query
+						sqlite_valid sqrt srand sscanf stat str_ireplace str_pad str_repeat str_replace str_rot13 str_shuffle
+						str_split str_word_count strcasecmp strchr strcmp strcoll strcspn stream_bucket_append stream_bucket_make_writeable
+						stream_bucket_new stream_bucket_prepend stream_context_create stream_context_get_options
+						stream_context_set_option stream_context_set_params stream_copy_to_stream stream_filter_append
+						stream_filter_prepend stream_filter_register stream_get_contents stream_get_filters stream_get_line
+						stream_get_meta_data stream_get_transports stream_get_wrappers stream_register_wrapper
+						stream_select stream_set_blocking stream_set_timeout stream_set_write_buffer stream_socket_accept
+						stream_socket_client stream_socket_get_name stream_socket_recvfrom stream_socket_sendto
+						stream_socket_server stream_wrapper_register strftime strip_tags stripcslashes stripos
+						stripslashes stristr strlen strnatcasecmp strnatcmp strncasecmp strncmp strpbrk strpos strrchr
+						strrev strripos strrpos strspn strstr strtok strtolower strtotime strtoupper strtr strval substr
+						substr_compare substr_count substr_replace syslog system tan tanh tempnam time tmpfile token_get_all
+						token_name touch trigger_error trim uasort ucfirst ucwords uksort umask uniqid unixtojd unlink
+						unpack unregister_tick_function unserialize urldecode urlencode user_error usleep usort utf8_decode
+						utf8_encode var_dump var_export variant_abs variant_add variant_and variant_cast variant_cat
+						variant_cmp variant_date_from_timestamp variant_date_to_timestamp variant_div variant_eqv
+						variant_fix variant_get_type variant_idiv variant_imp variant_int variant_mod variant_mul
+						variant_neg variant_not variant_or variant_pow variant_round variant_set variant_set_type
+						variant_sub variant_xor version_compare vfprintf virtual vprintf vsprintf wddx_add_vars wddx_deserialize
+						wddx_packet_end wddx_packet_start wddx_serialize_value wddx_serialize_vars wordwrap xml_error_string
+						xml_get_current_byte_index xml_get_current_column_number xml_get_current_line_number
+						xml_get_error_code xml_parse xml_parse_into_struct xml_parser_create xml_parser_create_ns
+						xml_parser_free xml_parser_get_option xml_parser_set_option xml_set_character_data_handler
+						xml_set_default_handler xml_set_element_handler xml_set_end_namespace_decl_handler xml_set_external_entity_ref_handler
+						xml_set_notation_decl_handler xml_set_object xml_set_processing_instruction_handler
+						xml_set_start_namespace_decl_handler xml_set_unparsed_entity_decl_handler xmlrpc_decode
+						xmlrpc_decode_request xmlrpc_encode xmlrpc_encode_request xmlrpc_get_type xmlrpc_is_fault
+						xmlrpc_parse_method_descriptions xmlrpc_server_add_introspection_data xmlrpc_server_call_method
+						xmlrpc_server_create xmlrpc_server_destroy xmlrpc_server_register_introspection_callback
+						xmlrpc_server_register_method xmlrpc_set_type zend_logo_guid zend_version zlib_get_coding_type
+						
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Constant" ClassificationTypeKey="PhpConstant">
+					<ExplicitPatterns><![CDATA[
+						DEFAULT_INCLUDE_PATH E_ALL E_COMPILE_ERROR E_COMPILE_WARNING E_CORE_ERROR E_CORE_WARNING
+						E_ERROR E_NOTICE E_PARSE E_STRICT E_USER_ERROR E_USER_NOTICE E_USER_WARNING E_WARNING PEAR_EXTENSION_DIR
+						PEAR_INSTALL_DIR PHP_BINDIR PHP_CONFIG_FILE_PATH PHP_DATADIR PHP_EOL PHP_EXTENSION_DIR
+						PHP_LIBDIR PHP_LOCALSTATEDIR PHP_OS PHP_OUTPUT_HANDLER_CONT PHP_OUTPUT_HANDLER_END PHP_OUTPUT_HANDLER_START
+						PHP_SYSCONFDIR PHP_VERSION __CLASS__ __FILE__ __FUNCTION__ __LINE__ __METHOD__
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PhpOperator">
+					<ExplicitPatterns><![CDATA[
+						!== != ! %= % && &= & *= * ++ += + , -- -= - .= . /= / : <<= << <= < === == = >= >>= >> > ? ^= ^ |= || | ~
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PhpOperator" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						and or xor
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="PhpNumber" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="PhpNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="PhpNumber" Pattern="0 [xX] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- PrimaryString state -->
+			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PhpString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PrimaryStringVariable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
+				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
+				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\$\\\n]+" />
+			</State>
+			<!-- AlternateString state -->
+			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PhpString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="'" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="AlternateStringLineTerminator" Pattern="\n" />
+				<ExplicitPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\'" />
+				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PhpComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="PhpComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[/* 
+	Simple PHP code to greets players on a team.
+ */
+class GreetPlayers extends Team {
+	// The team players
+	private $players;
+	
+	// The constructor that takes an array of player names
+	// and then greets everyone.
+	public function __construct($players) {
+		if (is_array($players)) {
+			$this->players = $players;			
+			$this->greetPlayers(); # Greet the players.
+		}
+	}
+	
+	// The method that greets all the players
+	private function greetPlayers() {
+		$i = 1;
+		
+		foreach ($this->players as $player) {
+			if (is_string($name)) {
+				echo "Hello " . $name . ", and welcome!";
+				echo "You are player number " . $i;
+				$i++;
+			}
+		}
+	}
+}
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

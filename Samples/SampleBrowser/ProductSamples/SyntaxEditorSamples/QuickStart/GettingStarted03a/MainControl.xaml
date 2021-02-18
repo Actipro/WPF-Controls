@@ -1,0 +1,45 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03a.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03a"
+    >
+
+	<!-- SyntaxEditor -->
+	<editor:SyntaxEditor x:Name="editor">
+		<editor:EditorDocument xml:space="preserve"><![CDATA[/*
+	In this sample we've edited our language project with the Language
+	Designer application some more and have broken out all patterns so that
+	each one has a distinct token ID and key.  The 'advanced' version of the
+	generated .langdef file is also embedded as a resource from this path:
+	/ProductSamples/SyntaxEditorSamples/Languages/Definitions
+	
+	In the 'basic' version of the language definition (shown in step 1),
+	all keywords were in a single pattern group.  In this 'advanced' version, 
+	each keyword has its own pattern group, and thus its own token ID and key.
+	This is important as we start to design more advanced parsers in 
+	subsequent samples.
+	
+	Note that the syntax highlighting still looks the same as it did in
+	step 1.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

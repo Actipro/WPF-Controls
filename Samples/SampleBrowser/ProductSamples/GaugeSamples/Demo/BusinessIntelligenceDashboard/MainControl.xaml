@@ -1,0 +1,411 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="/ProductSamples/GaugeSamples/Demo/BusinessIntelligenceDashboard/Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge, DigitalGauge, and LinearGauge controls can be used to
+					implement a dashboard for various data points.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<Grid Style="{StaticResource SamplePanelWideStyle}" HorizontalAlignment="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="20" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<StackPanel Orientation="Horizontal">
+				<sampleBrowser:LabeledCardControl>
+					<StackPanel>
+						<TextBlock Margin="0,0,0,10" Style="{StaticResource SampleFigureHeadingTextBlockStyle}" Text="Widgets Sold" />
+
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="3" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="3" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<!-- Monthly Units -->
+							<gauge:CircularGauge Width="120" Height="110" HorizontalAlignment="Left" Background="#FFEEEEE3"
+									RimBrush="#FFA4A3A8" FrameType="CircularTopGradient" IsBackgroundEffectEnabled="False"
+									Radius="50">
+								<gauge:CircularGauge.Scales>
+									<gauge:CircularScale Radius="40" StartAngle="135" SweepAngle="270" BarExtent="10"
+											BorderWidth="1" BorderBrush="Black">
+										<gauge:CircularScale.TickSets>
+											<gauge:CircularTickSet MajorInterval="200" MinorInterval="100" Minimum="0"
+													Maximum="2000">
+												<gauge:CircularTickSet.Ranges>
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkRed"
+															BorderBrush="#FF5D63A1" StartValue="0" EndValue="400"
+															ScalePlacement="Inside" HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4"
+															Background="DarkGoldenrod" BorderBrush="#FF5D63A1"
+															StartValue="400" EndValue="1000" ScalePlacement="Inside"
+															HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkGreen"
+															BorderBrush="#FF5D63A1" StartValue="1000" EndValue="2000"
+															ScalePlacement="Inside" HasDropShadow="False" />
+												</gauge:CircularTickSet.Ranges>
+												<gauge:CircularTickSet.Ticks>
+													<gauge:CircularTickMarkMinor TickMarkExtent="5" TickMarkAscent="1"
+															TickMarkType="Rectangle" Background="SlateGray" />
+													<gauge:CircularTickMarkMajor TickMarkExtent="5" TickMarkAscent="5"
+															TickMarkType="Ellipse" Background="SlateGray" SkipValues="0,2000" />
+												</gauge:CircularTickSet.Ticks>
+												<gauge:CircularTickSet.Pointers>
+													<gauge:CircularPointerNeedle x:Name="monthUnitsNeedle"
+															NeedleType="PivotSwordSharp" PointerExtent="45" PointerAscent="4"
+															BorderWidth="0.25" BorderBrush="Black" Background="Wheat"
+															Value="1452" />
+													<gauge:CircularPointerCap Background="Wheat" PointerExtent="10"
+															CapType="CircleConcave" HasDropShadow="False" />
+												</gauge:CircularTickSet.Pointers>
+											</gauge:CircularTickSet>
+										</gauge:CircularScale.TickSets>
+									</gauge:CircularScale>
+								</gauge:CircularGauge.Scales>
+								<gauge:CircularGauge.Items>
+									<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="30"
+											Text="{Binding ElementName=monthUnitsNeedle, Path=Value}" FontFamily="Tahoma"
+											Foreground="DimGray" FontSize="12" />
+								</gauge:CircularGauge.Items>
+							</gauge:CircularGauge>
+							<TextBlock Grid.Row="2" Text="Last 30 Days" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="SemiBold" HorizontalAlignment="Center" />
+
+							<!-- Yearly Units -->
+							<gauge:CircularGauge Grid.Column="2" Width="140" Height="120" HorizontalAlignment="Left"
+									Background="#FFEEEEE3" RimBrush="#FFA4A3A8" FrameType="CircularTopGradient"
+									IsBackgroundEffectEnabled="False" Radius="60">
+								<gauge:CircularGauge.LayoutTransform>
+									<ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+								</gauge:CircularGauge.LayoutTransform>
+								<gauge:CircularGauge.Scales>
+									<gauge:CircularScale Radius="50" StartAngle="135" SweepAngle="270" BarExtent="10"
+											BorderWidth="1" BorderBrush="Black">
+										<gauge:CircularScale.TickSets>
+											<gauge:CircularTickSet MajorInterval="2000" MinorInterval="1000" Minimum="0"
+													Maximum="20000">
+												<gauge:CircularTickSet.Ranges>
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkRed"
+															BorderBrush="#FF5D63A1" StartValue="0" EndValue="4000"
+															ScalePlacement="Inside" HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4"
+															Background="DarkGoldenrod" BorderBrush="#FF5D63A1"
+															StartValue="4000" EndValue="10000" ScalePlacement="Inside"
+															HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkGreen"
+															BorderBrush="#FF5D63A1" StartValue="10000" EndValue="20000"
+															ScalePlacement="Inside" HasDropShadow="False" />
+												</gauge:CircularTickSet.Ranges>
+												<gauge:CircularTickSet.Ticks>
+													<gauge:CircularTickMarkMinor TickMarkExtent="5" TickMarkAscent="1"
+															TickMarkType="Rectangle" Background="SlateGray" />
+													<gauge:CircularTickMarkMajor TickMarkExtent="5" TickMarkAscent="5"
+															TickMarkType="Ellipse" Background="SlateGray" SkipValues="0,20000" />
+												</gauge:CircularTickSet.Ticks>
+												<gauge:CircularTickSet.Pointers>
+													<gauge:CircularPointerNeedle x:Name="yearUnitsNeedle"
+															NeedleType="PivotSwordSharp" PointerExtent="45" PointerAscent="4"
+															BorderWidth="0.25" BorderBrush="Black" Background="Wheat"
+															Value="8161" />
+													<gauge:CircularPointerCap Background="Wheat" PointerExtent="10"
+															CapType="CircleConcave" HasDropShadow="False" />
+												</gauge:CircularTickSet.Pointers>
+											</gauge:CircularTickSet>
+										</gauge:CircularScale.TickSets>
+									</gauge:CircularScale>
+								</gauge:CircularGauge.Scales>
+								<gauge:CircularGauge.Items>
+									<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="30"
+											Text="{Binding ElementName=yearUnitsNeedle, Path=Value}" FontFamily="Tahoma"
+											Foreground="DimGray" FontSize="12" />
+								</gauge:CircularGauge.Items>
+							</gauge:CircularGauge>
+							<TextBlock Grid.Row="2" Grid.Column="2" Text="Year to Date" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="SemiBold" HorizontalAlignment="Center" />
+
+							<!-- Return Rate -->
+							<gauge:CircularGauge Grid.Column="4" Width="120" Height="110" HorizontalAlignment="Left"
+									Background="#FFEEEEE3" RimBrush="#FFA4A3A8" FrameType="CircularTopGradient"
+									IsBackgroundEffectEnabled="False" Radius="50">
+								<gauge:CircularGauge.Scales>
+									<gauge:CircularScale Radius="40" StartAngle="135" SweepAngle="270" BarExtent="10"
+											BorderWidth="1" BorderBrush="Black">
+										<gauge:CircularScale.TickSets>
+											<gauge:CircularTickSet MajorInterval="10" MinorInterval="5" Minimum="0"
+													Maximum="100">
+												<gauge:CircularTickSet.Ranges>
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkGreen"
+															BorderBrush="#FF5D63A1" StartValue="0" EndValue="10"
+															ScalePlacement="Inside" HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4"
+															Background="DarkGoldenrod" BorderBrush="#FF5D63A1" StartValue="10"
+															EndValue="30" ScalePlacement="Inside" HasDropShadow="False" />
+													<gauge:CircularRange StartExtent="4" EndExtent="4" Background="DarkRed"
+															BorderBrush="#FF5D63A1" StartValue="30" EndValue="100"
+															ScalePlacement="Inside" HasDropShadow="False" />
+												</gauge:CircularTickSet.Ranges>
+												<gauge:CircularTickSet.Ticks>
+													<gauge:CircularTickMarkMinor TickMarkExtent="5" TickMarkAscent="1"
+															TickMarkType="Rectangle" Background="SlateGray" />
+													<gauge:CircularTickMarkMajor TickMarkExtent="5" TickMarkAscent="5"
+															TickMarkType="Ellipse" Background="SlateGray" SkipValues="0,100" />
+												</gauge:CircularTickSet.Ticks>
+												<gauge:CircularTickSet.Pointers>
+													<gauge:CircularPointerNeedle x:Name="returnRateNeedle"
+															NeedleType="PivotSwordSharp" PointerExtent="45" PointerAscent="4"
+															BorderWidth="0.25" BorderBrush="Black" Background="Wheat"
+															Value="4.2" />
+													<gauge:CircularPointerCap Background="Wheat" PointerExtent="10"
+															CapType="CircleConcave" HasDropShadow="False" />
+												</gauge:CircularTickSet.Pointers>
+											</gauge:CircularTickSet>
+										</gauge:CircularScale.TickSets>
+									</gauge:CircularScale>
+								</gauge:CircularGauge.Scales>
+								<gauge:CircularGauge.Items>
+									<TextBlock gauge:CircularGauge.X="0" gauge:CircularGauge.Y="30"
+											Text="{Binding ElementName=returnRateNeedle, Path=Value}" FontFamily="Tahoma"
+											Foreground="DimGray" FontSize="12" />
+								</gauge:CircularGauge.Items>
+							</gauge:CircularGauge>
+							<TextBlock Grid.Row="2" Grid.Column="4" Text="Return Rate" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="SemiBold" HorizontalAlignment="Center" />
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Margin="20,0,0,0">
+					<StackPanel>
+						<TextBlock Margin="0,0,0,10" Style="{StaticResource SampleFigureHeadingTextBlockStyle}" Text="Sales By Channel (YTD)" />
+
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="5" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="5" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="5" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<!-- Internet -->
+							<TextBlock Text="Internet" HorizontalAlignment="Center" />
+							<gauge:LinearGauge Grid.Row="2" Orientation="Vertical" Width="30" Height="150"
+									HorizontalAlignment="Center" Background="WhiteSmoke" FrameType="RoundedRectangleThinRim">
+								<gauge:LinearGauge.Scales>
+									<gauge:LinearScale IsBarVisible="False" BarExtent="140">
+										<gauge:LinearScale.TickSets>
+											<gauge:LinearTickSet MajorInterval="5">
+												<gauge:LinearTickSet.Ticks>
+													<gauge:LinearTickMarkMajor TickMarkAscent="10" TickMarkExtent="1" />
+												</gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickSet.Pointers>
+													<gauge:LinearPointerBar x:Name="internetLinearScale" Value="45.4"
+															HasDropShadow="False" ScalePlacement="Overlay" PointerAscent="17"
+															BarType="RoundedRectangle" BorderWidth="1"
+															Background="{shared:LinearGradientBrush Green, DarkGreen, GradientType=TopLeftToBottomRight}" />
+												</gauge:LinearTickSet.Pointers>
+											</gauge:LinearTickSet>
+										</gauge:LinearScale.TickSets>
+									</gauge:LinearScale>
+								</gauge:LinearGauge.Scales>
+							</gauge:LinearGauge>
+							<TextBlock Grid.Row="4"
+									Text="{Binding ElementName=internetLinearScale, Path=Value, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:###.0}%'}"
+									FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+
+							<!-- Catalog -->
+							<TextBlock Grid.Column="2" Text="Catalog" HorizontalAlignment="Center" />
+							<gauge:LinearGauge Grid.Row="2" Grid.Column="2" Orientation="Vertical" Width="30" Height="150"
+									HorizontalAlignment="Center" Background="WhiteSmoke" FrameType="RoundedRectangleThinRim">
+								<gauge:LinearGauge.Scales>
+									<gauge:LinearScale IsBarVisible="False" BarExtent="140">
+										<gauge:LinearScale.TickSets>
+											<gauge:LinearTickSet MajorInterval="5">
+												<gauge:LinearTickSet.Ticks>
+													<gauge:LinearTickMarkMajor TickMarkAscent="10" TickMarkExtent="1" />
+												</gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickSet.Pointers>
+													<gauge:LinearPointerBar x:Name="catalogLinearScale" Value="5.2"
+															HasDropShadow="False" ScalePlacement="Overlay" PointerAscent="17"
+															BarType="RoundedRectangle" BorderWidth="1"
+															Background="{shared:LinearGradientBrush Red, DarkRed, GradientType=TopLeftToBottomRight}" />
+												</gauge:LinearTickSet.Pointers>
+											</gauge:LinearTickSet>
+										</gauge:LinearScale.TickSets>
+									</gauge:LinearScale>
+								</gauge:LinearGauge.Scales>
+							</gauge:LinearGauge>
+							<TextBlock Grid.Row="4" Grid.Column="2"
+									Text="{Binding ElementName=catalogLinearScale, Path=Value, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:###.0}%'}"
+									FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+
+							<!-- Walk-in -->
+							<TextBlock Grid.Column="4" Text="Walk-in" HorizontalAlignment="Center" />
+							<gauge:LinearGauge Grid.Row="2" Grid.Column="4" Orientation="Vertical" Width="30" Height="150"
+									HorizontalAlignment="Center" Background="WhiteSmoke" FrameType="RoundedRectangleThinRim">
+								<gauge:LinearGauge.Scales>
+									<gauge:LinearScale IsBarVisible="False" BarExtent="140">
+										<gauge:LinearScale.TickSets>
+											<gauge:LinearTickSet MajorInterval="5">
+												<gauge:LinearTickSet.Ticks>
+													<gauge:LinearTickMarkMajor TickMarkAscent="10" TickMarkExtent="1" />
+												</gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickSet.Pointers>
+													<gauge:LinearPointerBar x:Name="walkinLinearScale" Value="25.7"
+															HasDropShadow="False" ScalePlacement="Overlay" PointerAscent="17"
+															BarType="RoundedRectangle" BorderWidth="1"
+															Background="{shared:LinearGradientBrush Goldenrod, DarkGoldenrod, GradientType=TopLeftToBottomRight}" />
+												</gauge:LinearTickSet.Pointers>
+											</gauge:LinearTickSet>
+										</gauge:LinearScale.TickSets>
+									</gauge:LinearScale>
+								</gauge:LinearGauge.Scales>
+							</gauge:LinearGauge>
+							<TextBlock Grid.Row="4" Grid.Column="4"
+									Text="{Binding ElementName=walkinLinearScale, Path=Value, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:###.0}%'}"
+									FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+
+							<!-- Reseller -->
+							<TextBlock Grid.Column="6" Text="Reseller" HorizontalAlignment="Center" />
+							<gauge:LinearGauge Grid.Row="2" Grid.Column="6" Orientation="Vertical" Width="30" Height="150"
+									HorizontalAlignment="Center" Background="WhiteSmoke" FrameType="RoundedRectangleThinRim">
+								<gauge:LinearGauge.Scales>
+									<gauge:LinearScale IsBarVisible="False" BarExtent="140">
+										<gauge:LinearScale.TickSets>
+											<gauge:LinearTickSet MajorInterval="5">
+												<gauge:LinearTickSet.Ticks>
+													<gauge:LinearTickMarkMajor TickMarkAscent="10" TickMarkExtent="1" />
+												</gauge:LinearTickSet.Ticks>
+												<gauge:LinearTickSet.Pointers>
+													<gauge:LinearPointerBar x:Name="resellerLinearScale" Value="23.7"
+															HasDropShadow="False" ScalePlacement="Overlay" PointerAscent="17"
+															BarType="RoundedRectangle" BorderWidth="1"
+															Background="{shared:LinearGradientBrush Goldenrod, DarkGoldenrod, GradientType=TopLeftToBottomRight}" />
+												</gauge:LinearTickSet.Pointers>
+											</gauge:LinearTickSet>
+										</gauge:LinearScale.TickSets>
+									</gauge:LinearScale>
+								</gauge:LinearGauge.Scales>
+							</gauge:LinearGauge>
+							<TextBlock Grid.Row="4" Grid.Column="6"
+									Text="{Binding ElementName=resellerLinearScale, Path=Value, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:###.0}%'}"
+									FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" HorizontalAlignment="Center" />
+
+
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</StackPanel>
+
+			<sampleBrowser:LabeledCardControl Grid.Row="2">
+				<StackPanel>
+					<TextBlock Margin="0,0,0,10" Style="{StaticResource SampleFigureHeadingTextBlockStyle}" Text="Sales Details" />
+
+					<ListView ItemsSource="{Binding XPath=SalesSummary/*}" BorderThickness="0">
+						<ListView.View>
+							<GridView>
+								<GridViewColumn Header="Month " DisplayMemberBinding="{Binding XPath=@Month}" Width="140" />
+								<GridViewColumn Header=" Total Units Sold ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@TotalUnits}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+								<GridViewColumn Header=" Return Rate ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@ReturnRate}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+								<GridViewColumn Header=" Internet Sales ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@InternetSales}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+								<GridViewColumn Header=" Catalog Sales ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@CatalogSales}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+								<GridViewColumn Header=" Walk-in Sales ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@WalkinSales}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+								<GridViewColumn Header=" Reseller Sales ">
+									<GridViewColumn.CellTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding XPath=@ResellerSales}" Margin="0,0,3,0"
+													HorizontalAlignment="Right" />
+										</DataTemplate>
+									</GridViewColumn.CellTemplate>
+								</GridViewColumn>
+							</GridView>
+						</ListView.View>
+					</ListView>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+			
+		</Grid>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

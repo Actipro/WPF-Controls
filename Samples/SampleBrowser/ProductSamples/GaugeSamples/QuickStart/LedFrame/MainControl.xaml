@@ -1,0 +1,85 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedState}" />
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=RimType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=RimBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=IsRimEffectEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=BackgroundType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=Background}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=BackgroundRadiusRatio}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=IsBackgroundEffectEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=GlassType}" />
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=Text}" DisplayName="TextBlock text">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=Foreground}" DisplayName="TextBlock foreground" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=FontFamily}" DisplayName="TextBlock font family" />
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="3" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Led control includes several built-in frames to choose from, each with a special effect.
+					The various colors and effects can be customized as desired, or you can render your own frame.
+					<LineBreak /><LineBreak />
+					<Italic>Note: Special effects are only available when a solid color brush is used.</Italic>
+					<LineBreak /><LineBreak />
+					Several of the options that control the frame are available and a TextBlock control has been
+					embedded inside the led to display some additional text.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:Led x:Name="led" Width="200" Height="200" HorizontalAlignment="Center" LedState="On" LedType="Circle"
+					BlinkInterval="0:0:0.750" LedRadiusRatio="0.65" GlassType="Circular">
+				<gauge:Led.BackgroundGeometry>
+					<Geometry>M 1,0 L 2,0 L 3,1 L 3,2 L 2,3 L 1,3 L 0,2 L 0,1 Z</Geometry>
+				</gauge:Led.BackgroundGeometry>
+				<gauge:Led.RimGeometry>
+					<Geometry>M 1,0 L 2,0 L 3,1 L 3,2 L 2,3 L 1,3 L 0,2 L 0,1 Z</Geometry>
+				</gauge:Led.RimGeometry>
+
+				<gauge:Led.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=led, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:Led.LayoutTransform>
+
+				<gauge:Led.Items>
+					<TextBlock x:Name="textBlock" HorizontalAlignment="Center" VerticalAlignment="Center"
+							Text="Power" FontFamily="Tahoma" Foreground="Bisque" FontSize="16" />
+				</gauge:Led.Items>
+			</gauge:Led>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

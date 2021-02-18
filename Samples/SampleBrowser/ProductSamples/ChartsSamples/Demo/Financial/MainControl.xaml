@@ -1,0 +1,220 @@
+﻿<sampleBrowser:ProductItemControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts" 
+	xmlns:Financial="clr-namespace:ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser" 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial.MainControl"
+    mc:Ignorable="d"
+    d:DesignHeight="830" d:DesignWidth="1212">
+	
+	<d:DesignProperties.DataContext>
+		<Financial:FinancialSampleViewModel/>	
+	</d:DesignProperties.DataContext>
+
+	<sampleBrowser:ProductItemControl.DataContext>
+		<Financial:FinancialViewModel/>
+	</sampleBrowser:ProductItemControl.DataContext>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<Financial:ChangeValueConverter x:Key="ChangeValueConverter"/>
+		<Financial:BooleanToStockValueBrushConverter x:Key="BooleanToStockValueBrushConverter"/>
+		<Financial:CurrencyValueConverter x:Key="CurrencyValueConverter"/>
+		<SolidColorBrush x:Key="DarkBrush" Color="#FF292929"/>
+		<SolidColorBrush x:Key="LightBrush" Color="#FFE2E2E2"/>
+		<SolidColorBrush x:Key="DarkContrastBrush" Color="#FF313131"/>
+
+		<Style x:Key="LabelStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="{StaticResource LightBrush}"/>
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="Opacity" Value="0.7"/>
+			<Setter Property="FontWeight" Value="Light"/>
+			<Setter Property="FontFamily" Value="Segoe UI Light"/>
+		</Style>
+		
+		<DataTemplate x:Key="StockTemplate">
+			<Grid Margin="10,5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto" MinHeight="43"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Text="{Binding Name}" d:LayoutOverrides="Width, Height" Foreground="{StaticResource LightBrush}" FontSize="26.667" FontFamily="Segoe UI" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+				<TextBlock Text="{Binding Symbol}" Foreground="{StaticResource LightBrush}" d:LayoutOverrides="Width, Height" Grid.Row="1" FontSize="21.333" FontFamily="Segoe UI Light" Margin="0" VerticalAlignment="Top"/>
+				<TextBlock TextWrapping="Wrap" Text="{Binding Change, Converter={StaticResource ChangeValueConverter}}" d:LayoutOverrides="Width" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Foreground="{Binding IsPriceUp, Converter={StaticResource BooleanToStockValueBrushConverter}}" FontSize="21.333" FontFamily="Segoe UI Semibold" Margin="0" HorizontalAlignment="Right"/>
+				<TextBlock Text="{Binding CurrentPrice.Price, Converter={StaticResource CurrencyValueConverter}, Mode=OneWay}" Foreground="{StaticResource LightBrush}" d:LayoutOverrides="Width" Grid.Column="2" VerticalAlignment="Top" Margin="0" FontFamily="Segoe WP Light" FontSize="26.667" HorizontalAlignment="Right"/>
+				<microcharts:MicroXYChart Margin="10,10,10,0" Grid.Column="1" Width="80" VerticalAlignment="Top" Background="Transparent" Grid.Row="1" Height="20" HorizontalAlignment="Center">
+					<microcharts:MicroLineSeries ItemsSource="{Binding StockPrices}" YPath="Price"/>
+				</microcharts:MicroXYChart>
+			</Grid>
+		</DataTemplate>
+		
+		<Style x:Key="StockContainerTemplate" TargetType="ListBoxItem">
+			<Setter Property="Padding" Value="3"/>
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="VerticalContentAlignment" Value="Top"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBoxItem">
+						<Grid x:Name="grid" Background="{TemplateBinding Background}" Margin="15,10,30,0" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform/>
+									<TranslateTransform/>
+								</TransformGroup>
+							</Grid.RenderTransform>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To=".35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To=".55" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="contentPresenter"/>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="SelectionStates">
+									<VisualStateGroup.Transitions>
+										<VisualTransition GeneratedDuration="0:0:0.2" To="Selected">
+											<VisualTransition.GeneratedEasingFunction>
+												<QuadraticEase EasingMode="EaseInOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+										<VisualTransition GeneratedDuration="0:0:0.2" To="Unselected">
+											<VisualTransition.GeneratedEasingFunction>
+												<QuadraticEase EasingMode="EaseInOut"/>
+											</VisualTransition.GeneratedEasingFunction>
+										</VisualTransition>
+									</VisualStateGroup.Transitions>
+									<VisualState x:Name="Unselected"/>
+									<VisualState x:Name="Selected">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To=".75" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="fillColor2"/>
+											<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
+												<EasingDoubleKeyFrame KeyTime="0" Value="15"/>
+											</DoubleAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="FocusStates">
+									<VisualState x:Name="Focused">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="FocusVisualElement">
+												<DiscreteObjectKeyFrame KeyTime="0">
+													<DiscreteObjectKeyFrame.Value>
+														<Visibility>Visible</Visibility>
+													</DiscreteObjectKeyFrame.Value>
+												</DiscreteObjectKeyFrame>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Unfocused"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Rectangle x:Name="backgroundColor" IsHitTestVisible="False" RadiusY="1" RadiusX="1" Fill="{StaticResource DarkContrastBrush}"/>
+							<Rectangle x:Name="fillColor" Fill="#FF293A49" IsHitTestVisible="False" RadiusY="1" RadiusX="1" Opacity="0"/>
+							<Rectangle x:Name="fillColor2" Fill="#FF293A49" IsHitTestVisible="False" Opacity="0" RadiusY="1" RadiusX="1"/>
+							<ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
+							<Rectangle x:Name="FocusVisualElement" RadiusY="1" RadiusX="1" Stroke="#196DBDD1" StrokeThickness="1" Visibility="Collapsed"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+		<Storyboard x:Key="ShowChart">
+			<DoubleAnimation To="1.0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="chart" BeginTime="0:0:0.25" Duration="0:0:0.2"/>
+		</Storyboard>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<Grid x:Name="LayoutRoot" Background="{StaticResource DarkBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="2*"/>
+		</Grid.ColumnDefinitions>
+		<ListBox Background="{x:Null}" BorderBrush="{x:Null}" 
+				 ItemsSource="{Binding Stocks}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				 SelectedItem="{Binding Path=SelectedStock, Mode=TwoWay}" ItemTemplate="{StaticResource StockTemplate}" 
+				 ItemContainerStyle="{StaticResource StockContainerTemplate}" HorizontalContentAlignment="Stretch" Grid.Row="1"/>
+		<charts:XYChart x:Name="chart" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" BorderBrush="#505050"
+						PaddingPercentage="0.0, 0.2, 0.0, 0.0" GridLineMajorVisibility="Y" GridLineMajorBrush="#11FFFFFF" Padding="50,10,50,50"
+						GridStripeVisibility="Y" GridStripeBrush="#05FFFFFF" Background="Transparent" Opacity="0" Grid.Row="1" >
+			<charts:XYChart.SeriesStyleSelector>
+				<charts:SeriesPaletteStyleSelector AreaBrushKind="SemiTransparentGradient" />
+			</charts:XYChart.SeriesStyleSelector>
+			<charts:XYChart.YAxes>
+				<charts:XYDecimalAxis TickMajorInterval="1.0" TickMinorInterval="0.5" AreMajorTicksVisible="True" LabelStyle="{StaticResource LabelStyle}" LabelFormat="{}{0:0}"
+									  Minimum="{Binding YAxisMinimum}" Maximum="{Binding YAxisMaximum}"/>
+			</charts:XYChart.YAxes>
+			<charts:XYChart.XAxes>
+				<charts:XYDateTimeAxis AreMajorTicksVisible="True" TickMajorInterval="30" TickMajorIntervalUnit="Minute" LabelStyle="{StaticResource LabelStyle}" LabelFormat="{}{0:0:hh:mm tt}" LabelAngle="-45"/>
+			</charts:XYChart.XAxes>
+			<charts:AreaSeries ItemsSource="{Binding Path=SelectedStock.StockPrices}" XPath="Date" YPath="Price" LineVisibility="All"/>
+			<charts:LineSeries ItemsSource="{Binding Path=SelectedStock.StockPrices}" XPath="Date" YPath="Price"
+							   IsAggregationEnabled="True" PrimaryAggregationKind="First" AggregationFactor="0.01" LineKind="Spline"/>
+		</charts:XYChart>
+		<Border BorderThickness="1" Margin="0,0,0,30" Grid.ColumnSpan="2" Background="{StaticResource DarkContrastBrush}" Height="Auto">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Your Portfolio" 
+						   Foreground="{StaticResource LightBrush}" FontSize="36" FontFamily="Segoe UI Light" Margin="20,0,0,0" 
+						   FontWeight="ExtraLight" Opacity="0.9"/>
+				<ItemsControl ItemsSource="{Binding StockMarkets}" Grid.Column="2" VerticalAlignment="Center" Foreground="{StaticResource LightBrush}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border BorderThickness="1" Margin="0,10,10,10" Padding="10" Background="{StaticResource DarkBrush}">
+								<Grid Height="Auto" Width="Auto">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="25"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto"/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<TextBlock Text="{Binding Name}" FontSize="16" FontFamily="Segoe UI Light" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,5"/>
+									<microcharts:MicroXYChart Height="20" VerticalAlignment="Top" Width="80" Grid.Row="1" Background="Transparent" HorizontalAlignment="Left">
+										<microcharts:MicroLineSeries ItemsSource="{Binding StockPrices}" XPath="Date" YPath="Price"/>
+									</microcharts:MicroXYChart>
+									<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" 
+											   Text="{Binding CurrentPrice.Price, Converter={StaticResource CurrencyValueConverter}, Mode=OneWay}" Grid.Column="2" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="16"/>
+								</Grid>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Orientation="Horizontal" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+				</ItemsControl>
+			</Grid>
+		</Border>
+	</Grid>
+</sampleBrowser:ProductItemControl>

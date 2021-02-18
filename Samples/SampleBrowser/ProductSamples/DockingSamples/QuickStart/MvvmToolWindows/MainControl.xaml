@@ -1,0 +1,43 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The DockSite control is designed to fully support the optional usage of MVVM patterns,
+					in other words, data-bound items that can generate docking window container views.
+					<LineBreak /><LineBreak />
+					DockSite has numerous properties and methods that mimic what is found on a traditional ItemsControl.
+					This sample uses the ToolItemContainerStyle property to specify a Style that binds 
+					data item properties (Title, IsOpen, etc.) to the generated container.
+					The ToolItemTemplateSelector property specifies the view content of the container, whose data context is the data item.
+					Finally, the ToolItemsSource property is an enumerable of data items that generate tool window containers.
+					Style and template selector properties are available for scenarios where multiple style or templates are required.
+					<LineBreak /><LineBreak />
+					The document window in this sample is statically defined in the XAML of the main view.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- Main view -->
+	<ContentControl x:Name="rootContentControl" IsTabStop="False" Focusable="False">
+		<ContentControl.ContentTemplate>
+			<DataTemplate>
+				<sample:MainView />
+			</DataTemplate>
+		</ContentControl.ContentTemplate>
+		<ContentControl.Content>
+			<sample:MainViewModel />
+		</ContentControl.Content>
+	</ContentControl>
+
+</sampleBrowser:ProductItemControl>

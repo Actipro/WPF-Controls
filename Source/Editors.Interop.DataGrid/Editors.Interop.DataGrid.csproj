@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+
+		<AssemblyName>ActiproSoftware.Editors.Interop.DataGrid.Wpf</AssemblyName>
+		<Product>Editors.Interop.DataGrid</Product>
+		<Title>Actipro Editors/DataGrid Interop (for WPF)</Title>
+		<Description>Provides interoperability between Actipro's WPF Editors product and the WPF DataGrid.</Description>
+		<PackageTags>Actipro UI Controls WPF XAML Editors DataGrid</PackageTags>
+
+		<AssemblyVersion>21.1.0.0</AssemblyVersion>
+		<InformationalVersion>21.1.0.0</InformationalVersion>
+		<PackageVersion>21.1.0.0</PackageVersion>
+
+		<RootNamespace>ActiproSoftware</RootNamespace>
+		<Company>Actipro Software LLC</Company>
+		<Authors>Actipro Software LLC</Authors>
+		<Copyright>Copyright (c) 2007-2021 Actipro Software LLC.  All rights reserved.</Copyright>
+
+		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
+		<DefineConstants Condition="'$(TargetFramework)' == 'netcoreapp3.1'">$(DefineConstants);NETCORE</DefineConstants>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://www.actiprosoftware.com/products/controls/wpf</PackageProjectUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\bin\Debug</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\bin\Release</OutputPath>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="21.1.0" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,79 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:DurationToMillisecondConverter x:Key="DurationToMillisecondConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=IsChecked}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<CheckBox Margin="5,3,0,3" IsChecked="{Binding Value}" IsThreeState="{Binding Path=Target.IsThreeState}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=IsThreeState}" />
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=SwitchType}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=SwitchRadiusRatio}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=BaseBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=BaseAccentBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=BallBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=ShaftBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=TipBrush}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=IsSwitchEffectEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=SwitchInterval, Converter={StaticResource DurationToMillisecondConverter}}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="2000" SmallChange="25" LargeChange="200" Format="0'ms'" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="3" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ToggleSwitch includes a circular and a flat look, both of which can be animated and customized.
+					<LineBreak /><LineBreak />
+					<Italic>Note: Special effects are only available when a solid color brush is used.</Italic>
+					<LineBreak /><LineBreak />
+					Several of the options that control the switch are available.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<!--- ToggleSwitch -->
+			<gauge:ToggleSwitch x:Name="switch" Width="200" Height="200" SwitchType="Flat" IsThreeState="True" HorizontalAlignment="Center">
+				<gauge:ToggleSwitch.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:ToggleSwitch.LayoutTransform>
+			</gauge:ToggleSwitch>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

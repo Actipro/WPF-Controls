@@ -1,0 +1,58 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptParameterInfo.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<Button Content="Show parameter info at caret" Click="OnShowParameterInfoButtonClick" />
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+				<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/*
+
+This QuickStart shows how to dynamically create an IntelliPrompt
+parameter info session.
+
+The SyntaxEditor parameter info feature shows rich-formatted
+information about an invocation and can optionally highlight
+the current parameter.  Multiple overloads can be presented
+in a parameter info session, and the up/down arrow keys can 
+be used to switch between them.
+
+This sample implements a custom IParameterInfoProvider and registers
+it as a service with your language.  The sample hardcodes a
+parameter info session for the three Foo functions defined below.
+For a more advanced sample that highlights the current parameter,
+please see the Getting Started series sample for parameter info.
+
+*/
+
+function Test() {
+	// Move the caret inside the parens and press the button above
+	//   to see parameter info display (nesting is supported)
+	Foo(Foo(1, 2), 3)
+	
+	// Or move the caret after 'Foo' below and type '(':
+	Foo
+}
+
+function Foo() {
+	return 0;
+}
+
+function Foo(x) {
+	return x;
+}
+
+function Foo(x, y) {
+	return x + y;
+}
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

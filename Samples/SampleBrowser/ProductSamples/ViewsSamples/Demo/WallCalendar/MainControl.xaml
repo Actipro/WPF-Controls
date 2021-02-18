@@ -1,0 +1,627 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.WallCalendar.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.Demo.WallCalendar"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style TargetType="views:BookPage">
+			<Setter Property="Background" Value="Transparent" />
+		</Style>
+
+		<LinearGradientBrush x:Key="PhotoBackground" StartPoint="0,0" EndPoint="1,1">
+			<GradientStop Offset="0" Color="#0c5ea1" />
+			<GradientStop Offset="0.3" Color="#85bbff" />
+			<GradientStop Offset="0.4" Color="#85bbff" />
+			<GradientStop Offset="1" Color="#538ed5" />
+		</LinearGradientBrush>
+
+		<Style x:Key="CoverStyle" TargetType="Border">
+			<Setter Property="BorderBrush" Value="#44538ed5" />
+			<Setter Property="Background" Value="#0c5ea1" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This demo shows how the Book control can be used to recreate a real-world wall calendar.
+					You can turn the page by either clicking or dragging the corners of the pages.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" StretchDirection="DownOnly">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+
+				<Border x:Name="upperBorder" Visibility="Collapsed" Style="{StaticResource CoverStyle}" Grid.Row="0"
+						BorderThickness="3,3,3,0" />
+
+				<Border Grid.Row="1" Style="{StaticResource CoverStyle}" BorderThickness="3,0,3,3" />
+
+				<views:Book x:Name="book" Grid.Row="0" Grid.RowSpan="2" Width="600" Height="600" Orientation="Vertical"
+						IsFirstPageFront="True" PageDepth="24" HotspotExtent="130" SelectedViewChanged="OnSelectedViewIndexChanged">
+					<views:Book.Resources>
+						<Style TargetType="TextBlock">
+							<Setter Property="FontSize" Value="12" />
+							<Setter Property="FontFamily" Value="Verdana" />
+							<Setter Property="Foreground" Value="#000000" />
+							<Setter Property="TextWrapping" Value="Wrap" />
+							<Setter Property="Margin" Value="10,0" />
+						</Style>
+							
+						<Style TargetType="Button">
+							<Setter Property="Template">
+								<Setter.Value>
+									<ControlTemplate TargetType="Button">
+										<Grid>
+											<Border x:Name="outerBorder" Background="#0C5EA1"
+													BorderThickness="{TemplateBinding BorderThickness}"
+													BorderBrush="{TemplateBinding BorderBrush}">
+												<Grid Background="#85bbff" Margin="1">
+													<Border x:Name="innerBorder" Background="#FF448DCA" Visibility="Collapsed" />
+												</Grid>
+											</Border>
+											<ContentPresenter x:Name="contentPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+													HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+													Margin="{TemplateBinding Padding}" />
+											<Rectangle x:Name="disabledVisualElement" Fill="#669999CC" IsHitTestVisible="false"
+													Visibility="Collapsed" />
+											<Rectangle x:Name="focusVisualElement" Margin="1" Stroke="#FF6DBDD1"
+													StrokeThickness="1" IsHitTestVisible="false" Visibility="Collapsed" />
+										</Grid>
+
+										<ControlTemplate.Triggers>
+											<Trigger Property="IsMouseOver" Value="True">
+												<Setter TargetName="innerBorder" Property="Visibility" Value="Visible" />
+											</Trigger>
+											<Trigger Property="IsPressed" Value="True">
+												<Setter TargetName="outerBorder" Property="Background" Value="#FF6DBDD1" />
+												<Setter TargetName="innerBorder" Property="Visibility" Value="Visible" />
+											</Trigger>
+											<Trigger Property="IsEnabled" Value="False">
+												<Setter TargetName="disabledVisualElement" Property="Visibility" Value="Visible" />
+											</Trigger>
+											<Trigger Property="IsKeyboardFocusWithin" Value="True">
+												<Setter TargetName="focusVisualElement" Property="Visibility" Value="Visible" />
+											</Trigger>
+										</ControlTemplate.Triggers>
+									</ControlTemplate>
+								</Setter.Value>
+							</Setter>
+						</Style>
+					</views:Book.Resources>
+						
+					<!-- Front cover -->
+					<Border BorderThickness="3,0,3,3" BorderBrush="#44538ed5">
+						<Grid Background="{StaticResource PhotoBackground}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<TextBlock Margin="20,20,0,0" FontSize="24" FontWeight="Bold" Foreground="WhiteSmoke" Grid.Row="0"
+									Grid.Column="0" Text="Actipro Software" />
+							<Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Stretch="Uniform"
+									Source="Images/Cycling.png" />
+							<TextBlock Margin="0,20" FontSize="24" FontWeight="Bold" Foreground="WhiteSmoke" Grid.Row="2"
+									Grid.Column="2" Text="Sports Calendar 2010" />
+						</Grid>
+					</Border>
+
+					<!-- Months -->
+					<Border BorderThickness="3,3,3,0" BorderBrush="#44538ed5" Background="#0c5ea1">
+						<Grid Margin="9,9,9,0" Background="{StaticResource PhotoBackground}">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/AlpineSkiing.png" />
+							<Grid Row="1">
+								<Grid.RowDefinitions>
+									<RowDefinition />
+									<RowDefinition />
+									<RowDefinition />
+									<RowDefinition />
+									<RowDefinition />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="False" Click="GotoJanuary" />
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+								<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+								<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+							</Grid>
+						</Grid>
+					</Border>
+					<sample:CalendarPage Month="January" StartDay="Friday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="1" HolidayName="New Years" />
+							<sample:Holiday Day="18" HolidayName="Martin Luther King, Jr. Day" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Archery.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="False" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="February" StartDay="Monday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="2" HolidayName="Groundhog Day" />
+							<sample:Holiday Day="14" HolidayName="Chinese New Year" />
+							<sample:Holiday Day="14" HolidayName="Valentine's Day" />
+							<sample:Holiday Day="15" HolidayName="President's Day" />
+							<sample:Holiday Day="17" HolidayName="Ash Wednesday" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Athletics.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="False" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="March" StartDay="Monday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="14" HolidayName="Daylight Saving Time starts" />
+							<sample:Holiday Day="17" HolidayName="St/ Patrick's Day" />
+							<sample:Holiday Day="20" HolidayName="First day of Spring" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Badminton.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="False" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="April" StartDay="Thursday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="1" HolidayName="April Fool's Day" />
+							<sample:Holiday Day="4" HolidayName="Easter" />
+							<sample:Holiday Day="21" HolidayName="Administrative Professional's Day" />
+							<sample:Holiday Day="22" HolidayName="Earth Day" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Baseball.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="False" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="May" StartDay="Saturday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="5" HolidayName="Cinco De Maya" />
+							<sample:Holiday Day="9" HolidayName="Mothers Day" />
+							<sample:Holiday Day="15" HolidayName="Armed Forces Day" />
+							<sample:Holiday Day="31" HolidayName="Memorial Day" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Basketball.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="False" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="June" StartDay="Tuesday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="14" HolidayName="Flag Day" />
+							<sample:Holiday Day="20" HolidayName="Father's Day" />
+							<sample:Holiday Day="21" HolidayName="Summer Begins" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Bobsleigh.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="False" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="July" StartDay="Thursday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="4" HolidayName="Independence Day" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Canoeing.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="False" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="August" StartDay="Sunday" Margin="12,0,12,12" />
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Diving.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="False" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="September" StartDay="Wednesday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="6" HolidayName="Labor Day" />
+							<sample:Holiday Day="12" HolidayName="Grandparents Day" />
+							<sample:Holiday Day="23" HolidayName="First Day of Autumn" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/Equestrian.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="False" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="October" StartDay="Friday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="11" HolidayName="Columbus Day" />
+							<sample:Holiday Day="24" HolidayName="United Nations Day" />
+							<sample:Holiday Day="31" HolidayName="Halloween" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/FieldHockey.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="False" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="True" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="November" StartDay="Monday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="1" HolidayName="All Saints' Day" />
+							<sample:Holiday Day="7" HolidayName="Daylight Saving Time Ends" />
+							<sample:Holiday Day="11" HolidayName="Veteran's Day" />
+							<sample:Holiday Day="25" HolidayName="Thanksgiving" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+
+					<Grid Margin="12,12,12,0" Background="{StaticResource PhotoBackground}">
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Image Grid.RowSpan="2" Margin="20" Stretch="Uniform" Source="Images/FlatwaterCanoeing.png" />
+						<Grid Row="1">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Content="January" IsEnabled="True" Click="GotoJanuary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Content="February" IsEnabled="True" Click="GotoFebruary" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Content="March" IsEnabled="True" Click="GotoMarch" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="April" IsEnabled="True" Click="GotoApril" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Content="May" IsEnabled="True" Click="GotoMay" />
+							<Button Margin="3,0,0,3" Width="100" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="June" IsEnabled="True" Click="GotoJune" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Content="July" IsEnabled="True" Click="GotoJuly" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="August" IsEnabled="True" Click="GotoAugust" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Content="September" IsEnabled="True" Click="GotoSeptember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="October" IsEnabled="True" Click="GotoOctober" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="November" IsEnabled="True" Click="GotoNovember" />
+							<Button Margin="0,0,3,3" Width="100" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="December" IsEnabled="False" Click="GotoDecember" />
+						</Grid>
+					</Grid>
+					<sample:CalendarPage Month="December" StartDay="Wednesday" Margin="12,0,12,12">
+						<sample:CalendarPage.Holidays>
+							<sample:Holiday Day="17" HolidayName="Wright Brothers Day" />
+							<sample:Holiday Day="21" HolidayName="First Day of Winter" />
+							<sample:Holiday Day="25" HolidayName="Christmas" />
+							<sample:Holiday Day="31" HolidayName="New Years Eve" />
+						</sample:CalendarPage.Holidays>
+					</sample:CalendarPage>
+				</views:Book>
+
+			</Grid>
+		</Viewbox>
+	</Grid>
+</sampleBrowser:ProductItemControl>

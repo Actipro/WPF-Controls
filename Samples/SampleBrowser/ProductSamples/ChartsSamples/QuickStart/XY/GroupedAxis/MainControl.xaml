@@ -1,0 +1,126 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootControl"
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.GroupedAxis.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style x:Key="ChartStyle" TargetType="charts:XYChart">
+			<Style.Setters>
+				<Setter Property="Width" Value="450"/>
+				<Setter Property="Height" Value="300"/>
+				<Setter Property="HorizontalAlignment" Value="Left"/>
+				<Setter Property="IsAxisBaselineVisible" Value="True"/>
+				<Setter Property="GridLineMajorVisibility" Value="Y"/>
+				<Setter Property="GridStripeVisibility" Value="Y"/>
+			</Style.Setters>
+		</Style>
+
+		<Style x:Key="AxisTitleStyle" TargetType="ContentControl">
+			<Setter Property="FontSize" Value="14" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					XYGroupedAxis can be used to bind to data that is not a value type, such as strings and complex classes. 
+					You can customize how data is grouped, labeled, and sorted.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Fruit listed by name and calories; No grouping">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette>
+									<Color>#D5335A</Color>
+								</charts:Palette>
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="25" 
+													Title="Calories" Minimum="0" AreLabelsVisible="True"
+													TitleStyle="{StaticResource AxisTitleStyle}"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYGroupedAxis AreMajorTicksVisible="True" AreLabelsVisible="True" LabelAngle="-45" 
+													BarSpacing="4px"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries ItemsSource="{Binding ElementName=rootControl, Path=FruitData}" 
+											XPath="Name" YPath="Calories"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="A chart using the default GroupingFunc; Fruit is grouped by color">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette>
+									<Color>#92B74D</Color>
+								</charts:Palette>
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1" 
+													Title="Count" Minimum="0" AreLabelsVisible="True"
+													TitleStyle="{StaticResource AxisTitleStyle}"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYGroupedAxis AreMajorTicksVisible="True" AreLabelsVisible="True"
+													Title="Color" TitleStyle="{StaticResource AxisTitleStyle}"
+													BarSpacing="4px"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries ItemsSource="{Binding ElementName=rootControl, Path=FruitData}" XPath="Color"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="A chart using a custom GroupingFunc, LabelFunc, and SortingFunc; Fruit is grouped and labeled by the first letter in the name and sorted alphabetically">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette>
+									<Color>#33c0d5</Color>
+								</charts:Palette>
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1" 
+													Title="Count"
+													Minimum="0" AreLabelsVisible="True" 
+													TitleStyle="{StaticResource AxisTitleStyle}"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYGroupedAxis AreMajorTicksVisible="True" AreLabelsVisible="True"
+													Title="First Letter of Name"
+													GroupingFunc="{Binding ElementName=rootControl, Path=GroupByFirstLetter}"
+													LabelFunc="{Binding ElementName=rootControl, Path=LabelWithFirstLetter}"
+													SortingFunc="{Binding ElementName=rootControl, Path=SortAlphabetically}"
+													TitleStyle="{StaticResource AxisTitleStyle}"
+													BarSpacing="4px"/>
+						</charts:XYChart.XAxes>
+						<charts:BarSeries ItemsSource="{Binding ElementName=rootControl, Path=FruitData}" XPath="Name"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

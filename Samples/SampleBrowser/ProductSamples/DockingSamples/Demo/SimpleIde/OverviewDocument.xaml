@@ -1,0 +1,17 @@
+<sampleBrowser:SimpleFlowDocument 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<Paragraph TextAlignment="Center">		
+		<sampleBrowser:ScreenshotControl ImageSource="/Images/Screenshots/Docking-SimpleIde-400x300.png" />
+	</Paragraph>
+	
+	<Paragraph>
+		This demo shows a simple IDE by combining UI controls and features from Actipro's Docking/MDI, SyntaxEditor, and Grids products.
+	</Paragraph>
+
+	<sampleBrowser:ExternalSampleLauncherUIContainer />
+	
+</sampleBrowser:SimpleFlowDocument>

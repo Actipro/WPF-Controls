@@ -1,0 +1,62 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/GridsSamples/Demo/FolderBrowser/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Grids-FolderBrowser-190x150.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/GridsSamples/Demo/MailList/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Grids-MailList-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/GridsSamples/Demo/MusicCatalog/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Grids-MusicCatalog-190x150.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/PropertyGridGettingStarted/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Grids-PropertyGrid-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Grids contains advanced customizable property grid and tree controls.
+					PropertyGrid is similar to the Visual Studio 'Properties' tool window where one or more data objects can be specified and their properties edited.
+				</TextBlock>
+				
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					TreeListBox is extremely fast, lightweight, and displays a single-column tree similar to the Visual Studio Solution Explorer tree control.
+					TreeListView is a multi-column variant of TreeListBox that renders similar to a standard ListView and has many additional features.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

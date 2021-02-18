@@ -1,0 +1,182 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<x:Array x:Key="PrimaryDataGenerator" Type="sampleData:TimeAggregatedDataGenerator">
+			<sampleData:TimeAggregatedDataGenerator Description="Random trends" />
+			<sampleData:TimeAggregatedDataGenerator Description="Upward trend" Trend="Upward" />
+			<sampleData:TimeAggregatedDataGenerator Description="Downward trend" Trend="Downward" />
+		</x:Array>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="RandomTrendDataGenerator" StartAmount="30" StepRange="10" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series, Path=ItemsSource}" DisplayName="Generated data"
+										 StandardValues="{StaticResource PrimaryDataGenerator}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox DisplayMemberPath="Description" ItemsSource="{StaticResource PrimaryDataGenerator}" SelectedItem="{Binding Value}" SelectedIndex="1"
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding Mode=OneWay, ElementName=series, Path=ItemsSource}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Regenerate Data" Command="{Binding Value.GenerateCommand}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series, Path=LineVisibility}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series, Path=LineKind}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="1" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					An area chart is a derivative of a line chart.  
+					The area between the line and axis is filled in.
+					Markers and lines can optionally be displayed.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<microcharts:MicroXYChart x:Name="chart" Width="100" Height="18">
+					<microcharts:MicroXYChart.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</microcharts:MicroXYChart.LayoutTransform>
+					<microcharts:MicroXYChart.SeriesStyleSelector>
+						<microcharts:MicroSeriesPaletteStyleSelector LineBrushKind="Dark" AreaBrushKind="Light" />
+					</microcharts:MicroXYChart.SeriesStyleSelector>
+					<microcharts:MicroAreaSeries x:Name="series" YPath="Amount" />
+				</microcharts:MicroXYChart>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Negative area with alternate style; axis visible">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" IsAxisBaselineVisible="True">
+						<microcharts:MicroXYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="12 data points, trend upward" DataPointCount="12" StartAmount="-12" StepRange="10" Trend="Upward" AllowNegativeNumbers="True" />
+						</microcharts:MicroXYChart.DataContext>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" AreaStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="100 points (high-density); y-axis minimum set; Tulip palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" YAxisMinimum="0" SeriesStyleSelector="Tulip">
+						<microcharts:MicroXYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="100 data points, random trends" DataPointCount="100" StartAmount="30" StepRange="10" />
+						</microcharts:MicroXYChart.DataContext>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="5 points; spline line kind; Autumn palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" SeriesStyleSelector="Autumn">
+						<microcharts:MicroXYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="5 data points, random trends" DataPointCount="5" StartAmount="30" StepRange="10" />
+						</microcharts:MicroXYChart.DataContext>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" LineKind="Spline" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="High/low markers visible; Plum palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" DataContext="{StaticResource RandomTrendDataGenerator}" SeriesStyleSelector="Plum">
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" MarkerVisibility="Low,High" MarkerStyleKinds="Low,High" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Line visible; line and area brush customization; Roman palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" DataContext="{StaticResource RandomTrendDataGenerator}">
+						<microcharts:MicroXYChart.SeriesStyleSelector>
+							<microcharts:MicroSeriesPaletteStyleSelector LineBrushKind="Dark" AreaBrushKind="LightToDarkGradient">
+								<microcharts:MicroPalette Kind="Roman" />
+							</microcharts:MicroSeriesPaletteStyleSelector>
+						</microcharts:MicroXYChart.SeriesStyleSelector>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" LineVisibility="Positive" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Step line kind; Beach palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" DataContext="{StaticResource RandomTrendDataGenerator}" SeriesStyleSelector="Beach">
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" LineKind="Step" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Aggregation of 200 data points down to 10 rendered points; Rose palette">
+					<microcharts:MicroXYChart Width="100" Height="18" HorizontalAlignment="Left" SeriesStyleSelector="Rose">
+						<microcharts:MicroXYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="200 data points, trend upward" DataPointCount="200" StartAmount="20" StepRange="10" Trend="Upward" />
+						</microcharts:MicroXYChart.DataContext>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" AggregationFactor="0.1" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Range visible; Earth palette">
+					<microcharts:MicroXYChart Width="100" Height="30" HorizontalAlignment="Left" YAxisMinimum="0" YAxisMaximum="60" SeriesStyleSelector="Earth">
+						<microcharts:MicroXYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="12 data points, trend upward" DataPointCount="12" StartAmount="20" StepRange="10" Trend="Upward" />
+						</microcharts:MicroXYChart.DataContext>
+						<microcharts:MicroXYChart.Ranges>
+							<microcharts:MicroXYRange Minimum="25" Maximum="40" />
+						</microcharts:MicroXYChart.Ranges>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Orientation="Horizontal" Label="Two series with semi-transparent area fills">
+					<microcharts:MicroXYChart Width="100" Height="30" HorizontalAlignment="Left" YAxisMinimum="0">
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend upward" DataPointCount="10" StartAmount="10" StepRange="10" Trend="Upward" />
+							</microcharts:MicroAreaSeries.DataContext>
+							<microcharts:MicroAreaSeries.AreaStyle>
+								<Style TargetType="Shape">
+									<Setter Property="Fill" Value="#60ff0000" />
+								</Style>
+							</microcharts:MicroAreaSeries.AreaStyle>
+						</microcharts:MicroAreaSeries>
+						<microcharts:MicroAreaSeries ItemsSource="{Binding}" YPath="Amount">
+							<microcharts:MicroAreaSeries.DataContext>
+								<sampleData:TimeAggregatedDataGenerator Description="10 data points, trend downward" DataPointCount="10" StartAmount="25" StepRange="10" Trend="Downward" />
+							</microcharts:MicroAreaSeries.DataContext>
+							<microcharts:MicroAreaSeries.AreaStyle>
+								<Style TargetType="Shape">
+									<Setter Property="Fill" Value="#600000ff" />
+								</Style>
+							</microcharts:MicroAreaSeries.AreaStyle>
+						</microcharts:MicroAreaSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,48 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:datagrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
+	xmlns:datagrideditors="http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DataGridSamples.QuickStart.MaskedTextColumns"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Use themed ScrollBar style -->
+		<Style TargetType="ScrollBar" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ScrollBarStyleKey}}" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Actipro Editors/DataGrid (Interop) product makes it easy to integrate the
+					MaskedTextBox control, as well as the other Editors controls, into a DataGrid.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<datagrid:ThemedDataGrid x:Name="datagrid" AutoGenerateColumns="False" CanUserAddRows="False"
+				CanUserResizeRows="False" CanUserDeleteRows="False"
+				ItemsSource="{Binding Source={x:Static sample:SampleData.Values}}" SelectionUnit="FullRow"
+				GridLinesVisibility="All">
+			<datagrid:ThemedDataGrid.Columns>
+				<datagrideditors:DataGridInt32Column Binding="{Binding Id}" Header="Id" />
+				<datagrideditors:DataGridMaskedStringColumn x:Name="ssnColumn" Binding="{Binding SocialSecurity}"
+						Header="SSN" Mask="\d\d\d-\d\d-\d\d\d\d" MinWidth="150" />
+				<datagrideditors:DataGridMaskedStringColumn x:Name="phoneColumn" Binding="{Binding Phone}" Header="Phone"
+						Mask="([(]\d\d\d[)] |(1-)?\d\d\d-)?\d\d\d-\d\d\d\d" MinWidth="150" />
+			</datagrid:ThemedDataGrid.Columns>
+		</datagrid:ThemedDataGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

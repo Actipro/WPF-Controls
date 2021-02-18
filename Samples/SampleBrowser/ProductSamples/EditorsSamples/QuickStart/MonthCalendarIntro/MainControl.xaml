@@ -1,0 +1,122 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.MonthCalendarIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.MonthCalendarIntro"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=SelectedDate}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=ActiveViewMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=ActiveDate}" DisplayName="Active date (current view date)" />
+					<grids:PropertyModel Value="{Binding ElementName=calendar, Path=SelectTodayCommand}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Select Today" Command="{Binding Value}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsWeekNumberColumnVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsTodayHighlighted}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsTodayButtonVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsClearButtonVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=MaxViewMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=ViewResetMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=DayOfWeekFormatPattern}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=FirstDayOfWeek}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=CalendarWeekRule}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=DisabledDaysOfWeek}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=SelectionMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=MaxSelectionCount}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsDayOfWeekSelectionEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=calendar, Path=IsWeekNumberSelectionEnabled}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The MonthCalendar control allows for selection of a date value using a calendar with animated view changes.
+					<LineBreak /><LineBreak />
+					Use the previous/next buttons in the calendar's header to navigate to a nearby month, or
+					tap the current view's title to 'zoom out' to year, decade, or century views.
+					<LineBreak /><LineBreak />
+					Selection of any date can be made with a minimal number of taps.
+					<LineBreak /><LineBreak />
+					The UI of the calendar is very customizable with each cell in the various views able to have different data templates.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:MonthCalendar x:Name="calendar" HorizontalAlignment="Center" />
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Large centered day numbers">
+					<editors:MonthCalendar HorizontalAlignment="Left">
+						<editors:MonthCalendar.DayItemTemplate>
+							<DataTemplate>
+								<TextBlock Margin="5,3" Text="{Binding Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:%d}'}" 
+											FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+							</DataTemplate>
+						</editors:MonthCalendar.DayItemTemplate>
+					</editors:MonthCalendar>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Alternate two letter day of week format">
+					<editors:MonthCalendar HorizontalAlignment="Left" DayOfWeekFormatPattern="Shortest" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Alternate one letter day of week format">
+					<editors:MonthCalendar HorizontalAlignment="Left" DayOfWeekFormatPattern="SingleLetter" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Disabled weekends and the second Tuesday of each month">
+					<editors:MonthCalendar x:Name="disabledDaysCalendar" HorizontalAlignment="Left" DisabledDaysOfWeek="Weekend" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom template selectors use logic to alter appearance">
+					<editors:MonthCalendar HorizontalAlignment="Left" DayItemTemplate="{x:Null}">
+						<editors:MonthCalendar.DayItemTemplateSelector>
+							<sample:CustomDayItemTemplateSelector>
+								<sample:CustomDayItemTemplateSelector.DefaultTemplate>
+									<DataTemplate>
+										<TextBlock Margin="5,3" Text="{Binding Day}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+									</DataTemplate>
+								</sample:CustomDayItemTemplateSelector.DefaultTemplate>
+								<sample:CustomDayItemTemplateSelector.MarkedTemplate>
+									<DataTemplate>
+										<Grid>
+											<Border BorderThickness="1,1,1,6" BorderBrush="#ca5656">
+												<TextBlock Text="{Binding Day}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+											</Border>
+										</Grid>
+									</DataTemplate>
+								</sample:CustomDayItemTemplateSelector.MarkedTemplate>
+							</sample:CustomDayItemTemplateSelector>
+						</editors:MonthCalendar.DayItemTemplateSelector>
+					</editors:MonthCalendar>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

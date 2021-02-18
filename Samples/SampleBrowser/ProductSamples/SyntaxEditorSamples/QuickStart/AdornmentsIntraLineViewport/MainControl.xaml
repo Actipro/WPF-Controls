@@ -1,0 +1,35 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineViewport.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineViewport"
+    >
+   
+	<!-- SyntaxEditor -->
+	<editor:SyntaxEditor x:Name="editor" Grid.Row="1" IsLineNumberMarginVisible="True">
+		<editor:EditorDocument x:Name="document" xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<sample:IntraLineViewportSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[using System;
+
+namespace Actipro.AdornmentsIntraLineViewport {
+
+	/// <summary>
+	/// This QuickStart shows how intra-line spaces and adornments can
+	/// be used to add UI elements that span the entire text area viewport.
+	/// In this case, a Peek Definition type of adornment is added,
+	/// which consists of a tab control and embedded SyntaxEditor.
+	/// </summary>
+	public class Result {
+	
+		public object Value { get; set; }
+		
+	}
+	
+}
+]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

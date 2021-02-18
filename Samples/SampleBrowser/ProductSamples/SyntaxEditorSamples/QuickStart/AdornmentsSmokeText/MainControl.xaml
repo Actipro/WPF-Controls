@@ -1,0 +1,26 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsSmokeText"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[This QuickStart shows how to create an adornment manager that creates
+a smoke text special effect as text is changed within an editor view.
+
+The adornment manager is created by the syntax language assigned to
+this editor's document.  It shows how to only show smoke effects
+in the active view.
+
+To see the effect in action, start typing and changing text in this
+view.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

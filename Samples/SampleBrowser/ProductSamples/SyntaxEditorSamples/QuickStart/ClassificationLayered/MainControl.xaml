@@ -1,0 +1,47 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ClassificationLayered.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ClassificationLayered"
+    >
+    
+	<DockPanel>
+		<CheckBox x:Name="commentsCheckBox" DockPanel.Dock="Top" Margin="20,10,20,0" Content="Highlight 'Actipro' in documentation comments" IsChecked="True"
+				  Checked="OnCommentsCheckBoxCheckedChanged" Unchecked="OnCommentsCheckBoxCheckedChanged" />
+		<CheckBox x:Name="identifierCheckBox" DockPanel.Dock="Top" Margin="20,5,20,10" Content="Highlight 'Actipro' in identifiers" 
+				  Checked="OnIdentifierCheckBoxCheckedChanged" Unchecked="OnIdentifierCheckBoxCheckedChanged" />
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace CSharpClassificationQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how a custom classification 
+	/// tagger can be layered on top of language lexical 
+	/// classification to contextually highlight words like 
+	/// Actipro.
+	/// </summary>
+	public class ActiproClassificationTest {
+
+		/// <summary>
+		/// Notice how the word Actipro is only highlighted
+		/// within documentation comments.  Actipro is not
+		/// highlighted anywhere else within the code.
+		/// </summary>
+		/// <remarks>
+		/// Check the box above to also highlight identifiers
+		/// that are named Actipro.
+		/// </remarks>
+		public int Actipro { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

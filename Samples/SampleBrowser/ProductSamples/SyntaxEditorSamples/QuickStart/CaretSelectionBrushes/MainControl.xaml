@@ -1,0 +1,53 @@
+<sampleBrowser:ProductItemControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    >
+    
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=Foreground}" DisplayName="Editor foreground" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=Background}" DisplayName="Editor background" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=SelectionMarginBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=OutliningMarginBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginForeground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=CaretBrush}" DisplayName="Caret" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=SelectedTextBackground}" DisplayName="Active selection background" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=InactiveSelectedTextBackground}" DisplayName="Inactive selection background" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<editor:SyntaxEditor x:Name="editor"
+							IsLineNumberMarginVisible="True"
+							Foreground="#F0F0F0"
+							Background="#101010"
+							SelectionMarginBackground="#242121"
+							OutliningMarginBackground="#242121"
+							LineNumberMarginForeground="#3399FF"
+							LineNumberMarginBackground="#343536"
+							CaretBrush="#C0C0C0"
+							SelectedTextBackground="#503399FF"
+							InactiveSelectedTextBackground="#303399FF"
+							>
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[This QuickStart shows how the default "plain text" foreground, editor 
+background, and other margins can be modified.  Brushes are also 
+available to alter how the caret and selection render.
+
+Use the brush pickers at the top to alter the brushes used in 
+this sample.
+
+By tweaking the brushes used to render SyntaxEditor, you can
+give your application a truly unique style.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</sampleBrowser:ProductItemControl>

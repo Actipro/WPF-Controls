@@ -1,0 +1,37 @@
+<UserControl x:Class="ActiproSoftware.Windows.PrismIntegration.Views.WelcomeDocumentItemView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleControls="clr-namespace:ActiproSoftware.Windows.PrismIntegration.Controls">
+
+	<sampleControls:RichTextBox BorderThickness="0" IsReadOnly="{Binding IsReadOnly}">
+		<FlowDocument FontFamily="Calibri" FontSize="14" TextAlignment="Left">
+
+			<Paragraph FontSize="22" FontWeight="Bold">
+				Prism Integration Demo
+				<LineBreak />
+				<Span FontSize="18" Foreground="Silver">for Actipro Docking &amp; MDI</Span>
+			</Paragraph>
+
+			<Paragraph>
+				This sample shows how to integrate Docking &amp; MDI for WPF into a Prism application, using MVVM and Unity (for inversion of control/dependency injection).
+				The sample leverages the Actipro Docking/Prism Interop assembly to allow a DockSite to be defined as a region and includes 2 document windows and 3 tool windows.
+			</Paragraph>
+			<Paragraph>
+				The Solution Explorer and Class View tool windows include both a view-model and a view, which is applied using an implicit DataTemplate.
+				These two view-models are added to the DockSite region using view discovery, and the views are applied as needed.
+				The Toolbox tool window does not include a view-model, but instead adds it's view to the DockSite region directly, again using view discovery.
+			</Paragraph>
+			<Paragraph>
+				The two document windows also include both a view-model and a view, again applied using an implicit DataTemplate.
+				Unlike the tool windows, the document windows use view injection.
+			</Paragraph>
+			<Paragraph>
+				The choice between using view discovery and view injection was arbitrarily made for demonstration purposes only.
+				The document windows could use view discovery and/or the tool windows could use view injection.
+				This is done simply to show the various ways things can be designed.
+			</Paragraph>
+
+		</FlowDocument>
+	</sampleControls:RichTextBox>
+
+</UserControl>

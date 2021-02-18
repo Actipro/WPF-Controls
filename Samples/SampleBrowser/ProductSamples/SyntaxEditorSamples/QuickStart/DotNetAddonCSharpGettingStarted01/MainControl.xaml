@@ -1,0 +1,51 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    >
+	
+	<editor:SyntaxEditor x:Name="codeEditor" IsLineNumberMarginVisible="True">
+		<editor:EditorDocument xml:space="preserve">
+			<editor:EditorDocument.Language>
+				<editor:CSharpSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace DotNetLanguagesAddon {
+
+	/// <summary>
+	/// Advanced C# code editing for your end users with the 
+	/// .NET Languages Add-on for Actipro SyntaxEditor.
+	///	</summary>
+	public class CSharpLanguage {
+	
+		/// <summary>
+		/// This first Getting Started step shows how to
+		/// assign CSharpSyntaxLanguage in XAML, which will
+		/// provide syntax highlighting, parsing, syntax
+		/// error reporting, automatic outlining, and some
+		/// basic IntelliPrompt features out-of-the-box.
+		///	</summary>
+		public void DemoTest() {
+		
+			// The next Getting Started step shows how to
+			// add external assembly references to the project
+			// assembly used by the language to achieve more
+			// advanced automated IntelliPrompt features.
+			
+			var number = 1;
+			Debug.WriteLine(number.ToString());
+			
+			// This syntax language implementation is part of
+			// the .NET Languages Add-on for SyntaxEditor, 
+			// which is optional and sold separately from 
+			// WPF Studio.
+			
+		}
+	}	
+}
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+
+</UserControl>

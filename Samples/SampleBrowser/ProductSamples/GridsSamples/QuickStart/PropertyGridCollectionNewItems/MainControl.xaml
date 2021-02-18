@@ -1,0 +1,42 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionNewItems.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionNewItems"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					When using the inline collection editing feature of the property grid, items can only
+					be added to a collection if the item type has a public default constructor, is a string, or is a value type.
+					The construction of the new entry can be fully customized by using a custom type converter.
+					<LineBreak /><LineBreak />
+					This example shows how a custom type converter can be used to add custom string entries to a list of strings.
+					The converter could be tweaked to add null values or adapted to any type of object.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}"
+							CollectionPropertyDisplayMode="EditableInline" CanSummaryAutoSize="True" SummaryHeight="Auto" CanClearDataObjectOnUnload="True">
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

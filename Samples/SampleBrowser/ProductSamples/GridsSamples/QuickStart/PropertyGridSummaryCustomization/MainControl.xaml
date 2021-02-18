@@ -1,0 +1,44 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSummaryCustomization.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=IsSummaryVisible}" DisplayName="Is visible" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=IsSummaryToggleAllowed}" DisplayName="Is toggle allowed (via item context menu 'Description' item)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=IsSummaryResizable}" DisplayName="Is resizable (using summary splitter)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=CanSummaryAutoSize}" DisplayName="Can auto-size (double-click on summary splitter)" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=propGrid, Path=SummaryHeight}" DisplayName="Height">
+						<gridseditors:DoublePropertyEditor Minimum="0" IsNaNAllowed="True" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The summary area displayed at the bottom of the property grid can be visually and behaviorally customized by
+					changing various properties.
+					Its visibility, height, and ability to resize can all be altered.
+					In addition, a custom template or template selector can be assigned to adjust the summary appearance.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{Binding RelativeSource={RelativeSource Self}}" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

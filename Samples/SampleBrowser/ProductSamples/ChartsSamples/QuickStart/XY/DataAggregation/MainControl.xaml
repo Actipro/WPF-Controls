@@ -1,0 +1,77 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl" 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.DataAggregation.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemTemplateKey">
+			<sampleBrowser:LabeledCardControl Label="{Binding}" HorizontalAlignment="Center">
+				<charts:XYChart Width="450" Height="300" IsAxisBaselineVisible="True" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+					<charts:XYChart.SeriesStyleSelector>
+						<charts:SeriesPaletteStyleSelector>
+							<charts:Palette Kind="Tulip"/>
+						</charts:SeriesPaletteStyleSelector>
+					</charts:XYChart.SeriesStyleSelector>
+					<charts:XYChart.YAxes>
+						<charts:XYDoubleAxis Minimum="{Binding ElementName=rootSampleControl, Path=MinimumAmount}"
+												Maximum="{Binding ElementName=rootSampleControl, Path=MaximumAmount}"
+												Baseline="0" AreLabelsVisible="True" AreMajorTicksVisible="True" TickMajorInterval="10"/>
+					</charts:XYChart.YAxes>
+					<charts:XYChart.XAxes>
+						<charts:XYDoubleAxis  />
+					</charts:XYChart.XAxes>
+					<charts:LineSeries ItemsSource="{Binding ElementName=rootSampleControl, Path=Items}" YPath="Amount" XPath="Index"
+							IsAggregationEnabled="{Binding IsEnabled}" PrimaryAggregationKind="{Binding Kind}" AggregationFactor="{Binding Factor}"
+							LegendStringFormat="{}{0:F3}" MarkerVisibility="All"  >
+						<charts:LineSeries.MarkerStyle>
+							<Style TargetType="charts:ChartMarker">
+								<Setter Property="BorderThickness" Value="0"/>
+								<Setter Property="Width" Value="5"/>
+								<Setter Property="Height" Value="5"/>
+							</Style>
+						</charts:LineSeries.MarkerStyle>
+					</charts:LineSeries>
+				</charts:XYChart>
+			</sampleBrowser:LabeledCardControl>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=IsAggregationEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=SelectedAggregationKind}" DisplayName="Aggregation kind" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows that the data rendered in a chart can be aggregated to reduce the number of data points, improving performance and readability.
+					Several built-in aggregation functions are provided, which include average, first, last, maximum, and minimum.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False"
+												ItemsSource="{Binding ElementName=rootSampleControl, Path=SelectedSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

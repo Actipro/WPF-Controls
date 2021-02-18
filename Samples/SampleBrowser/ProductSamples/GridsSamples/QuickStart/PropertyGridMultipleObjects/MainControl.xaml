@@ -1,0 +1,128 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMultipleObjects.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMultipleObjects"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+
+					<TextBlock Margin="0,10,0,5" Text="Objects to edit in the property grid:" TextWrapping="Wrap" />
+					<ListBox x:Name="objectsListBox" SelectionMode="Multiple" SelectedIndex="0" Background="Transparent" BorderThickness="0" Padding="0">
+						<ListBox.ItemContainerStyle>
+							<Style TargetType="{x:Type ListBoxItem}">
+								<Setter Property="Margin" Value="20, 0, 0, 3" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type ListBoxItem}">
+											<Border Background="Transparent">
+												<CheckBox Content="{TemplateBinding Content}"
+														IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+											</Border>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</ListBox.ItemContainerStyle>
+
+						<sample:FirstDerivedObject Name="First name" FirstOnly="Only appears on first" DerivedOnly="Appears on first and second" />
+						<sample:SecondDerivedObject Name="Second name" SecondOnly="Only appears on second" DerivedOnly="Appears on first and second" />
+						<sample:ThirdObject Name="Third name" ThirdOnly="Only appears on third" />
+					</ListBox>
+
+					<TextBlock Margin="0,10,0,5" Text="First Object Properties" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" MinWidth="80" />
+							<ColumnDefinition Width="7" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="4" Text="FirstOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].FirstOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+					</Grid>
+
+					<TextBlock Margin="0,10,0,5" Text="Second Object Properties" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" MinWidth="80" />
+							<ColumnDefinition Width="7" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="4" Text="SecondOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].SecondOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+					</Grid>
+
+					<TextBlock Margin="0,10,0,5" Text="Third Object Properties" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" MinWidth="80" />
+							<ColumnDefinition Width="7" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="ThirdOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].ThirdOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+					</Grid>
+
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The property grid can be used to modify multiple objects at the same time by setting the DataObjects property. 
+					When more than one object is set, then only properties common to all the objects are displayed.
+					<LineBreak /><LineBreak />
+					In this example, the First and Second objects share a common base class, which has Name and DerivedOnly properties defined. 
+					The Third object also has a Name property separately defined and derives directly from Object. 
+					In all cases, the Name property will be merged since the property definition has the same name and Type.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObjects="{Binding ElementName=objectsListBox, Path=SelectedItems}" IsCategorized="False" CanClearDataObjectOnUnload="True" />
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

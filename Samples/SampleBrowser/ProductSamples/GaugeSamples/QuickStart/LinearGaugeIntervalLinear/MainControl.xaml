@@ -1,0 +1,100 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="-100" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=Minimum}">
+						<gridseditors:DoublePropertyEditor Minimum="-100" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=Maximum}">
+						<gridseditors:DoublePropertyEditor Minimum="-100" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=IsReversed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=IntervalOrigin}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=MajorInterval}">
+						<gridseditors:DoublePropertyEditor Minimum="5" Maximum="50" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=tickSet, Path=MinorInterval}">
+						<gridseditors:DoublePropertyEditor Minimum="5" Maximum="50" SmallChange="1" LargeChange="5" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=majorTick, Path=MinimumTickVisibility}" DisplayName="Minimum tick visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=majorTick, Path=MaximumTickVisibility}" DisplayName="Maximum tick visibility" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The LinearGauge control uses the LinearTickSet to define the minimum and maximum values
+					used by the tick marks, tick labels, ranges, pointers. In addition, the LinearTickSet has options for
+					the major and minor intervals used by the tick marks and tick labels.
+					<LineBreak /><LineBreak />
+					The intervals define how often tick marks and tick labels appear and is defined as a value step. By default, the tick
+					marks/labels start at the minimum value and increase by the associated interval until the maximum value is reached.
+					The IntervalOrigin property can be used to alter the basis of the interval from the minimum value to
+					either zero or the maximum value.
+					<LineBreak /><LineBreak />
+					The options discussed above can be configured. Try setting the interval to an odd number and then adjust the
+					interval orgin.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:LinearGauge x:Name="gauge" Width="550" Height="55" HorizontalAlignment="Center" Background="#98B2AF"
+					RimBrush="#0E312D" FrameType="RectangleGradient">
+
+				<gauge:LinearGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:LinearGauge.LayoutTransform>
+
+				<gauge:LinearGauge.Scales>
+					<gauge:LinearScale BarExtent="90%" IsBarVisible="False">
+						<gauge:LinearScale.TickSets>
+							<gauge:LinearTickSet x:Name="tickSet" Minimum="-50" Maximum="50" MajorInterval="10"
+									MinorInterval="5">
+								<gauge:LinearTickSet.Ticks>
+									<gauge:LinearTickMarkMinor TickMarkExtent="8" TickMarkAscent="1"
+											TickMarkType="Rectangle" Background="Black" />
+									<gauge:LinearTickMarkMajor x:Name="majorTick" TickMarkExtent="12" TickMarkAscent="6"
+											TickMarkType="Diamond" Background="Black" />
+									<gauge:LinearTickLabelMinor FontFamily="Tahoma" FontSize="8" ScalePlacement="Inside"
+											ScaleOffset="8" Foreground="Black" />
+									<gauge:LinearTickLabelMajor FontFamily="Tahoma" FontSize="10" FontWeight="Bold"
+											ScalePlacement="Outside" ScaleOffset="8" Foreground="Black"
+											MaximumTickVisibility="{Binding ElementName=majorTick, Path=MaximumTickVisibility}"
+											MinimumTickVisibility="{Binding ElementName=majorTick, Path=MinimumTickVisibility}" />
+								</gauge:LinearTickSet.Ticks>
+								<gauge:LinearTickSet.Pointers>
+									<gauge:LinearPointerBar x:Name="bar" Background="#4F1717" BorderBrush="#907373" BorderWidth="1"
+											PointerExtent="5" Value="-21" BarOrigin="Zero" />
+								</gauge:LinearTickSet.Pointers>
+							</gauge:LinearTickSet>
+						</gauge:LinearScale.TickSets>
+					</gauge:LinearScale>
+				</gauge:LinearGauge.Scales>
+			</gauge:LinearGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

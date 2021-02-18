@@ -1,0 +1,271 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="DataGenerator" RandomSeed="71032093" StartAmount="0" AllowNegativeNumbers="True" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The micro charts markers have an enormous number of built-in display options.
+					You have full control over which kinds of markers are visible, if certain markers should be rendered with highlights (highs, lows, etc.),
+					and the shape of the marker.
+					Custom marker templates can also be assigned.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="All markers visible with normal style">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="First/last markers only">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="First,Last" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="High/low markers only with normal style">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="High,Low" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="High/low markers only">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="High,Low" MarkerStyleKinds="High,Low" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="First/last and high/low markers only">
+					<microcharts:MicroXYChart Width="100" Height="18">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="First,Last,High,Low" MarkerStyleKinds="All" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Negative markers only with normal style">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="Negative" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="All markers visible; negative highlighted">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="Negative" />
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Diamond shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Diamond" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Hexagon shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Hexagon" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Pentagon shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Pentagon" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Octagon shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Octagon" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Rectangle shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Rectangle" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="RoundedRectangle shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="RoundedRectangle" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star4Points shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Star4Points" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star5Points shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Star5Points" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star6Points shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Star6Points" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Star8Points shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Star8Points" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Triangle shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="ShapeKind" Value="Triangle" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Large Star5Points shape">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="Width" Value="11" />
+									<Setter Property="Height" Value="11" />
+									<Setter Property="ShapeKind" Value="Star5Points" />
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom shape template">
+					<microcharts:MicroXYChart Width="100" Height="18" IsAxisBaselineVisible="True">
+						<microcharts:MicroLineSeries ItemsSource="{StaticResource DataGenerator}" YPath="Amount"
+														MarkerVisibility="All" MarkerStyleKinds="All">
+							<microcharts:MicroLineSeries.MarkerStyle>
+								<Style TargetType="microcharts:MicroChartMarker">
+									<Setter Property="Width" Value="7" />
+									<Setter Property="Height" Value="7" />
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="microcharts:MicroChartMarker">
+												<Grid>
+													<Ellipse Fill="{TemplateBinding Background}" />
+													<Ellipse Margin="2" Fill="#ffffff" />
+												</Grid>
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</microcharts:MicroLineSeries.MarkerStyle>
+						</microcharts:MicroLineSeries>
+					</microcharts:MicroXYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

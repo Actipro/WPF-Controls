@@ -1,0 +1,66 @@
+<Window
+	x:Name="wizardDemo" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Title="Add Printer (Aero Wizard Demo)"
+	Width="600" Height="450"
+	WindowStartupLocation="CenterScreen"
+	themes:WindowChrome.TitleBarLeftContent="{Binding ElementName=wizard}"
+	FocusManager.FocusedElement="{Binding ElementName=wizard}"
+	>
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome HasIcon="False">
+			<themes:WindowChrome.TitleBarLeftContentTemplate>
+				<DataTemplate>
+					<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
+							ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
+							Command="{x:Static wizard:WizardCommands.PreviousPage}" CommandTarget="{Binding}" />
+				</DataTemplate>
+			</themes:WindowChrome.TitleBarLeftContentTemplate>
+		</themes:WindowChrome>
+	</themes:WindowChrome.Chrome>
+	
+	<wizard:AeroWizard x:Name="wizard" HelpButtonVisible="False" CancelButtonVisible="True" FinishButtonVisible="False"
+				   PageSequenceType="Stack" WindowTitleBaseText="Add Printer (Aero Wizard Demo)">
+		<wizard:Wizard.TransitionSelector>
+			<shared:MultiTransitionSelector>
+				<shared:SlideTransition IsFromContentPushed="True" />
+			</shared:MultiTransitionSelector>
+		</wizard:Wizard.TransitionSelector>
+		
+		<wizard:WizardPage Caption="Choose a local or network printer" NextButtonEnabled="False">
+			<StackPanel>
+				<wizard:CommandButton Command="wizard:WizardCommands.GoToPage" CommandParameter="localSetupPage" Title="Add a _local printer" IsDefault="True">
+					<TextBlock TextWrapping="Wrap" Text="Use this option only if you don't have a USB printer. (Windows automatically installs USB printers when you plug them in.)" />
+				</wizard:CommandButton>
+				<wizard:CommandButton Margin="0,20,0,0" Command="wizard:WizardCommands.GoToPage" CommandParameter="networkSetupPage" Title="Add a net_work, wireless, or Bluetooth printer">
+					<TextBlock TextWrapping="Wrap" Text="Make sure that your computer is connected to the network, or that your Bluetooth or wireless printer is turned on." />
+				</wizard:CommandButton>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<wizard:WizardPage x:Name="localSetupPage" Caption="Local Printer Setup" NextPage="finishPage">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">You have arrived on the local printer setup page.</TextBlock>
+				<TextBlock Margin="0,20,0,0" TextWrapping="Wrap">Note that even though this Wizard has an Aero wizard user interface, it still can make use of all the features found in the core Wizard control.  See the Features demo for samples of Wizard's features.</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<wizard:WizardPage x:Name="networkSetupPage" Caption="Network, Wireless, or Bluetooth Printer Setup" NextPage="finishPage">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">You have arrived on the network, wireless, or Bluetooth printer setup page.</TextBlock>
+				<TextBlock Margin="0,20,0,0" TextWrapping="Wrap">Note that even though this Wizard has an Aero wizard user interface, it still can make use of all the features found in the core Wizard control.  See the Features demo for samples of Wizard's features.</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<wizard:WizardPage x:Name="finishPage" Caption="Finish page" NextButtonVisible="False" FinishButtonVisible="True">
+			<TextBlock TextWrapping="Wrap">You have completed the setup of your printer.</TextBlock>
+		</wizard:WizardPage>
+		
+	</wizard:AeroWizard>
+	
+</Window>

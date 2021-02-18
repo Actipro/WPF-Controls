@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'VB' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageProject LanguageKey="VB" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.VB" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="XmlDocumentationComment" Description="XML Doc Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="XmlDocumentationTag" Description="XML Doc Tag" DefaultStyle="#FF808080" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default" DefaultCaseSensitivity="AutoCorrect">
+				<State.ChildStates>
+					<StateRef Key="String" />
+					<StateRef Key="InterpolatedString" />
+					<StateRef Key="XmlComment" />
+					<StateRef Key="Comment" />
+					<StateRef Key="PreprocessorDirective" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="ExitKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPattern Value="Exit Sub" />
+					<ExplicitPattern Value="Exit Function" />
+					<ExplicitPattern Value="Exit Property" />
+					<ExplicitPattern Value="Exit" />
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="SubKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Sub" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="FunctionKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Function" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="PropertyKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Property" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="ClassKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Class" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="InterfaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Interface" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EnumKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Enum" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="StructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Structure" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="ModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Module" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="NamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Namespace" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndSubKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Sub" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndFunctionKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Function" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndPropertyKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Property" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndClassKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Class" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndInterfaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Interface" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndEnumKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Enum" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndStructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Structure" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Module" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndNamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Namespace" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. ,
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="NativeType" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Boolean Byte Char Date Decimal Double Integer Long Object SByte Short Single String UShort UInteger
+						ULong
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						False True
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Me" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Me" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="OperatorKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						AddressOf And AndAlso GetType Is IsNot Mod Not Or OrElse Xor
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Alias Ansi As Assembly Async Auto Await ByRef ByVal AddHandler Call Case Catch Compare Const Abs
+						AppActivate Asc Atn Beep CallByName CBool CByte CChar CDate CDbl CDec ChDir ChDrive Choose Chr ChrW
+						CInt CLng CObj Command Continue Conversions Cos CreateObject CShort CSng CStr CType CurDir Custom
+						Default DirectCast Declare Delegate Dim Do Each Else ElseIf End Erase Error Event Explicit DateAdd
+						DateDiff DatePart DateSerial DateValue Day DDB DeleteSetting Dir Environ EOF ErrorToString Exp
+						Friend Handles Finally For Get Goto FileAttr FileClose FileCopy FileDateTime FileGet FileGetObject
+						FileLen FileOpen FilePut FilePutObject FileWidth Filter Fix Format FormatCurrency FormatDateTime
+						FormatNumber FormatPercent FreeFile FV GetAllSettings GetAttr GetChar GetException GetObject
+						GetSetting Hex Hour If Implements Imports In Inherits IIf Input InputBox InputString InStr InStrRev
+						Int IPmt IRR IsArray IsDate IsDBNull IsError IsNothing IsNumeric IsReference Iterator Join Kill
+						LBound LCase Left Len Lib LineInput Loc Lock LOF Log Loop LSet LTrim Mid Minute MIRR MkDir Month MonthName
+						MsgBox MustInherit MustOverride MyBase MyClass New Nothing NotInheritable NotOverridable Off
+						On Optional Overloads Overridable Overrides ParamArray Preserve Private Protected Public ReadOnly
+						Resume Next Of On Option RaiseEvent Randomize ReDim RemoveHandler Resume Return NPer NPV Oct Partial
+						Partition Pmt PPmt Print PrintLine PV QBColor Rate Rename Replace Reset RGB Right RmDir Rnd Round
+						RSet RTrim Select Set Stop Strict SyncLock SaveSetting Second Seek SetAttr Sgn Shadows Shared Shell
+						Sin SLN Space SPC Split Sqr Static Step Str StrComp StrConv StrDup StrReverse SYD SystemTypeName
+						TypeOf Unicode WithEvents WriteOnly Then Throw To Try Until Using While With TAB Tan TimeSerial
+						TimeValue Trim TypeName UBound UCase Unlock Val VarType VbTypeName WeekDay WeekDayName Write
+						WriteLine Year Yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="ContextualKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Aggregate Ascending By Descending Distinct Equals From Group Into Join Order Skip Take Where
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="ContextualKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{Whitespace}* \(">
+					<ExplicitPatterns><![CDATA[
+						NameOf When
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						= <> += -= *= /= \= ^= &= + - * / \ ^ & <= < >= > ?.
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexIntegerNumber" ClassificationTypeKey="Number" Pattern="&amp; [hH] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="Date" Pattern="\#.*\#" />
+			</State>
+			<!-- String state -->
+			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="StringEscapedCharacter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenKey="StringText" Pattern="[^\&quot;]+" />
+			</State>
+			<!-- InterpolatedString state -->
+			<State Key="InterpolatedString" DefaultTokenKey="InterpolatedStringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="InterpolatedStringStartDelimiter" Pattern="$&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="InterpolatedStringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="InterpolatedContent" />
+				</State.ChildStates>
+				<ExplicitPatternGroup TokenKey="InterpolatedStringEscapedOpenCurlyBrace" Pattern="{{" />
+				<ExplicitPatternGroup TokenKey="InterpolatedStringEscapedCloseCurlyBrace" Pattern="}}" />
+				<ExplicitPatternGroup TokenKey="InterpolatedStringEscapedCharacter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenKey="InterpolatedStringText" Pattern="[^\{\&quot;]+" />
+			</State>
+			<!-- InterpolatedContent state -->
+			<State Key="InterpolatedContent">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="InterpolatedContentStartDelimiter" Pattern="{" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="InterpolatedContentEndDelimiter" Pattern="}|\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="String" />
+					<StateRef Key="InterpolatedString" />
+					<StateRef Key="XmlComment" />
+					<StateRef Key="Comment" />
+					<StateRef Key="PreprocessorDirective" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="ExitKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPattern Value="Exit Sub" />
+					<ExplicitPattern Value="Exit Function" />
+					<ExplicitPattern Value="Exit Property" />
+					<ExplicitPattern Value="Exit" />
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="SubKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Sub" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="FunctionKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Function" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="PropertyKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Property" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="ClassKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Class" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="InterfaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Interface" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EnumKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Enum" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="StructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Structure" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="ModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Module" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="NamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Namespace" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndSubKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Sub" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndFunctionKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Function" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndPropertyKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Property" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndClassKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Class" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndInterfaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Interface" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndEnumKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Enum" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndStructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Structure" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Module" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="EndNamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Namespace" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. ,
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="NativeType" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Boolean Byte Char Date Decimal Double Integer Long Object SByte Short Single String UShort UInteger
+						ULong
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						False True
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Me" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="Me" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenKey="OperatorKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						AddressOf And AndAlso GetType Is IsNot Mod Not Or OrElse Xor
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Alias Ansi As Assembly Async Auto Await ByRef ByVal AddHandler Call Case Catch Compare Const Abs
+						AppActivate Asc Atn Beep CallByName CBool CByte CChar CDate CDbl CDec ChDir ChDrive Choose Chr ChrW
+						CInt CLng CObj Command Continue Conversions Cos CreateObject CShort CSng CStr CType CurDir Custom
+						Default DirectCast Declare Delegate Dim Do Each Else ElseIf End Erase Error Event Explicit DateAdd
+						DateDiff DatePart DateSerial DateValue Day DDB DeleteSetting Dir Environ EOF ErrorToString Exp
+						Friend Handles Finally For Get Goto FileAttr FileClose FileCopy FileDateTime FileGet FileGetObject
+						FileLen FileOpen FilePut FilePutObject FileWidth Filter Fix Format FormatCurrency FormatDateTime
+						FormatNumber FormatPercent FreeFile FV GetAllSettings GetAttr GetChar GetException GetObject
+						GetSetting Hex Hour If Implements Imports In Inherits IIf Input InputBox InputString InStr InStrRev
+						Int IPmt IRR IsArray IsDate IsDBNull IsError IsNothing IsNumeric IsReference Iterator Join Kill
+						LBound LCase Left Len Lib LineInput Loc Lock LOF Log Loop LSet LTrim Mid Minute MIRR MkDir Month MonthName
+						MsgBox MustInherit MustOverride MyBase MyClass New Nothing NotInheritable NotOverridable Off
+						On Optional Overloads Overridable Overrides ParamArray Preserve Private Protected Public ReadOnly
+						Resume Next Of On Option RaiseEvent Randomize ReDim RemoveHandler Resume Return NPer NPV Oct Partial
+						Partition Pmt PPmt Print PrintLine PV QBColor Rate Rename Replace Reset RGB Right RmDir Rnd Round
+						RSet RTrim Select Set Stop Strict SyncLock SaveSetting Second Seek SetAttr Sgn Shadows Shared Shell
+						Sin SLN Space SPC Split Sqr Static Step Str StrComp StrConv StrDup StrReverse SYD SystemTypeName
+						TypeOf Unicode WithEvents WriteOnly Then Throw To Try Until Using While With TAB Tan TimeSerial
+						TimeValue Trim TypeName UBound UCase Unlock Val VarType VbTypeName WeekDay WeekDayName Write
+						WriteLine Year Yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="ContextualKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Aggregate Ascending By Descending Distinct Equals From Group Into Join Order Skip Take Where
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="ContextualKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{Whitespace}* \(">
+					<ExplicitPatterns><![CDATA[
+						NameOf When
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						= <> += -= *= /= \= ^= &= + - * / \ ^ & <= < >= > ?.
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexIntegerNumber" ClassificationTypeKey="Number" Pattern="&amp; [hH] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="Date" Pattern="\#.*\#" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" LookBehindPattern="^|[^\.]" Pattern="REM" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+			</State>
+			<!-- XmlComment state -->
+			<State Key="XmlComment" DefaultTokenKey="XmlCommentText" DefaultClassificationTypeKey="XmlDocumentationComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="XMLCommentStartDelimiter" Pattern="'''" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="XMLCommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="XmlCommentStartTag" ClassificationTypeKey="XmlDocumentationTag" Pattern="&lt; [^\n&gt;]* &gt;?" />
+				<RegexPatternGroup TokenKey="XmlCommentEndTag" ClassificationTypeKey="XmlDocumentationTag" Pattern="&lt;/ [^\n&gt;]* &gt;?" />
+				<RegexPatternGroup TokenKey="XmlCommentLineTerminator" Pattern="{LineTerminator} {LineTerminatorWhitespace}* '''" />
+				<RegexPatternGroup TokenKey="XmlCommentText" Pattern="[^\n&lt;]+" />
+			</State>
+			<!-- PreprocessorDirective state -->
+			<State Key="PreprocessorDirective" DefaultTokenKey="PreprocessorDirectiveText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="RegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#Region" LookAheadPattern="{NonWord}|\z" CaseSensitivity="AutoCorrect" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="EndRegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#End Region" LookAheadPattern="{NonWord}|\z" CaseSensitivity="AutoCorrect" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PreprocessorDirectiveText" Pattern="{NonLineTerminator}+" />
+			</State>
+		</DynamicLexer>
+	</LanguageProject.Lexer>
+	<!-- Example text -->
+	<LanguageProject.ExampleText><![CDATA[''' <summary>
+''' Provides a helper class for generating random numbers.
+''' </summary>
+Public Class RandomHelper
+
+	''' <summary>
+	''' Returns a new random number.
+	''' </summary>
+	''' <param name="lowerBound">The lower bound of the number.</param>
+	''' <param name="upperBound">The upper bound of the number.</param>
+	''' <returns>The generated number.</returns>
+	Public Function GetRandom(lowerBound As Integer, upperBound As Integer) 
+		'Create a random number within the range
+		Randomize
+		GetRandom = CInt((upperBound - lowerBound) * Rnd + 1) 
+	End Function 
+
+	''' <summary>
+	''' Returns an array of random numbers in the range of <c>0</c> to <c>100</c>.
+	''' </summary>
+	''' <param name="arraySize">The number of random numbers to generate.</param>
+	''' <returns>The array of generated numbers.</returns>
+	Public Function RangedRandomArray(arraySize As Integer) 
+		Dim tempArray() As Integer  'storage for a working array 
+		Dim index As Integer
+		ReDim tempArray(arraySize) ' resize the tempArray to arraySize
+	    
+		For index = 1 To arraySize
+			tempArray(index) = GetRandom(0, 100)
+		Next index
+	    
+		'Return the array, populated with random integers to the caller of the function  
+		RangedRandomArray = tempArray 
+	End Function 
+	
+End Class
+]]></LanguageProject.ExampleText>
+</LanguageProject>

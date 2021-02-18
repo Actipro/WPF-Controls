@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ActiproSoftware.SampleBrowser.ExternalSampleOverlay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+			 Background="#40000000"
+			 >
+	<shared:ShadowChrome Margin="40" Elevation="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Border Background="#ffffff" CornerRadius="7" Padding="40,30">
+			<StackPanel>
+				<shared:RingSpinner Width="60" Height="60" BorderThickness="4" 
+									IsSpinning="{Binding RelativeSource={RelativeSource Self}, Path=IsVisible}"
+									IsTabStop="True" Focusable="True" FocusVisualStyle="{x:Null}" HorizontalAlignment="Center" />
+				<TextBlock Margin="0,10,0,0" Text="{Binding}" FontSize="36" TextAlignment="Center" TextWrapping="Wrap" />
+			</StackPanel>
+		</Border>
+	</shared:ShadowChrome>
+</UserControl>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'XML' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageProject LanguageKey="Xml" LanguageDescription="XML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Xml" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" />
+		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="XmlCDataSection" Description="XML CData Section" DefaultStyle="#FF808080" />
+		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" />
+		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FF800000" />
+		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FFFF00FF" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<DynamicLexer>
+			<DynamicLexer.Macros>
+				<Macro Key="NameStartChar" Pattern="[A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-���-��]" />
+				<Macro Key="NameChar" Pattern="[A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-���-��\-\.0-9:·̀-ͯ‿-⁀]" />
+				<Macro Key="Name" Pattern="{NameStartChar}({NameChar})*" />
+				<Macro Key="Word" Pattern="[A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-���-��\-\.0-9·̀-ͯ‿-⁀]" />
+				<Macro Key="NonWord" Pattern="[^A-Z_a-zÀ-ÖØ-öø-˿Ͱ-ͽͿ-῿‌-‍⁰-↏Ⰰ-⿯、-퟿豈-﷏ﷰ-���-��\-\.0-9·̀-ͯ‿-⁀]" />
+			</DynamicLexer.Macros>
+			<!-- Default state -->
+			<State Key="Default" DefaultTokenId="12000" DefaultTokenKey="Default">
+				<State.ChildStates>
+					<StateRef Key="EndTag" />
+					<StateRef Key="Comment" />
+					<StateRef Key="CDataSection" />
+					<StateRef Key="DocTypeDeclaration" />
+					<StateRef Key="Declaration" />
+					<StateRef Key="ProcessingInstruction" />
+					<StateRef Key="StartTag" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Entity" ClassificationTypeKey="XmlEntity" Pattern="&amp; \#? {Word}+ ;?" />
+				<RegexPatternGroup TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{LineTerminatorWhitespace}+" />
+				<ExplicitPatternGroup TokenKey="InvalidEndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" />
+				<ExplicitPatternGroup TokenKey="InvalidStartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" />
+			</State>
+			<!-- StartTag state -->
+			<State Key="StartTag" DefaultTokenKey="StartTagText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="{NameStartChar}" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="StartTagAttributeDoubleQuoteValue" />
+					<StateRef Key="StartTagAttributeSingleQuoteValue" />
+				</State.ChildStates>
+				<RegexPatternGroup Pattern="{LineTerminatorWhitespace}+" />
+				<RegexPatternGroup TokenKey="StartTagName" ClassificationTypeKey="XmlName" LookBehindPattern="\&lt;" Pattern="{Name}+" />
+				<RegexPatternGroup TokenKey="StartTagAttributeName" ClassificationTypeKey="XmlAttribute" Pattern="{Name}+" />
+				<RegexPatternGroup TokenKey="StartTagNextTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt; /?" />
+			</State>
+			<!-- StartTagAttributeDoubleQuoteValue state -->
+			<State Key="StartTagAttributeDoubleQuoteValue" DefaultTokenKey="StartTagAttributeValueText" DefaultClassificationTypeKey="XmlAttributeValue">
+				<State.Scopes>
+					<Scope IsAncestorEndScopeCheckEnabled="False">
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="StartTagAttributeValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}* \&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StartTagAttributeValueEndDelimiter" Pattern="\&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\&quot;]+" />
+			</State>
+			<!-- StartTagAttributeSingleQuoteValue state -->
+			<State Key="StartTagAttributeSingleQuoteValue" DefaultTokenKey="StartTagAttributeValueText" DefaultClassificationTypeKey="XmlAttributeValue">
+				<State.Scopes>
+					<Scope IsAncestorEndScopeCheckEnabled="False">
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="StartTagAttributeValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}* \'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StartTagAttributeValueEndDelimiter" Pattern="\'" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\']+" />
+			</State>
+			<!-- EndTag state -->
+			<State Key="EndTag" DefaultTokenKey="EndTagText" DefaultClassificationTypeKey="XmlName">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="{NameStartChar}" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="EndTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="[\s\n&gt;]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\s\n&gt;]+" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="XmlComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="&lt;!--" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentEndDelimiter" Pattern="--&gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\-]+" />
+			</State>
+			<!-- ProcessingInstruction state -->
+			<State Key="ProcessingInstruction" DefaultTokenKey="ProcessingInstructionText" DefaultClassificationTypeKey="XmlProcessingInstruction">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="ProcessingInstructionStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;?" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="ProcessingInstructionEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="?&gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\?]+" />
+			</State>
+			<!-- Declaration state -->
+			<State Key="Declaration" DefaultTokenKey="DeclarationText" DefaultClassificationTypeKey="XmlDeclaration">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="DeclarationStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;!" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="DeclarationEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^&gt;]+" />
+			</State>
+			<!-- CDataSection state -->
+			<State Key="CDataSection" DefaultTokenKey="CDataSectionText" DefaultClassificationTypeKey="XmlCDataSection">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CDataSectionStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;![CDATA[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="CDataSectionEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="]]&gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup Pattern="[^\]]+" />
+			</State>
+			<!-- DocTypeDeclaration state -->
+			<State Key="DocTypeDeclaration" DefaultTokenKey="DeclarationText" DefaultClassificationTypeKey="XmlDeclaration">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="DocTypeDeclarationStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;!" LookAheadPattern="DOCTYPE" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="DocTypeDeclarationEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="DocTypeDeclarationInternalSubset" />
+				</State.ChildStates>
+				<RegexPatternGroup Pattern="[^&gt;\[]+" />
+			</State>
+			<!-- DocTypeDeclarationInternalSubset state -->
+			<State Key="DocTypeDeclarationInternalSubset" DefaultTokenKey="DocTypeDeclarationInternalSubsetText">
+				<State.Scopes>
+					<Scope IsAncestorEndScopeCheckEnabled="False">
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="DocTypeDeclarationInternalSubsetStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="DocTypeDeclarationInternalSubsetEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<State.ChildStates>
+					<StateRef Key="Comment" />
+					<StateRef Key="Declaration" />
+					<StateRef Key="ProcessingInstruction" />
+				</State.ChildStates>
+				<RegexPatternGroup Pattern="[^&lt;\]]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageProject.Lexer>
+	<!-- Example text -->
+	<LanguageProject.ExampleText><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is a comment -->
+<parser version="1.0">
+	<somevalue>
+		<![CDATA[Character data]]]]><![CDATA[>
+	</somevalue>
+	Entities: &amp; &gt;
+	<singlevals>
+		<singleval value="true" anothervalue="2" />
+		<singleval value='false' anothervalue='3' />
+	</singlevals>
+</parser>
+]]></LanguageProject.ExampleText>
+</LanguageProject>

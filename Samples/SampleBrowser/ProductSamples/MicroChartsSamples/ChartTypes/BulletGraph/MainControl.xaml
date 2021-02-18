@@ -1,0 +1,123 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<shared:ConditionalConverter x:Key="WidthConverter" TrueValue="18" FalseValue="100">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+		<shared:ConditionalConverter x:Key="HeightConverter" TrueValue="100" FalseValue="18">
+			<shared:ConditionalConverter.ConditionValue>
+				<Orientation>Vertical</Orientation>
+			</shared:ConditionalConverter.ConditionValue>
+		</shared:ConditionalConverter>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Orientation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=FeaturedMeasureValue}">
+						<gridseditors:DoublePropertyEditor Minimum="-5" Maximum="15" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=FeaturedMeasureAscent}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<shared:Unit>33.3%</shared:Unit>
+									<shared:Unit>66.7%</shared:Unit>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=ComparativeMeasureValue}">
+						<gridseditors:DoublePropertyEditor Minimum="-5" Maximum="15" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=ComparativeMeasureAscent}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<shared:Unit>33.3%</shared:Unit>
+									<shared:Unit>66.7%</shared:Unit>
+									<shared:Unit>100%</shared:Unit>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=ComparativeMeasureExtent}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<shared:Unit>1</shared:Unit>
+									<shared:Unit>2</shared:Unit>
+									<shared:Unit>3</shared:Unit>
+									<shared:Unit>5</shared:Unit>
+									<shared:Unit>10</shared:Unit>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=ProjectedMeasureValue}">
+						<gridseditors:DoublePropertyEditor Minimum="-5" Maximum="15" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=Minimum}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<system:Double>NaN</system:Double>
+									<system:Double>1.0</system:Double>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="1" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A bullet graph is a special kind of bar chart used to display a single value and make comparisons to one or more related values.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<microcharts:MicroBulletGraph x:Name="chart" FeaturedMeasureValue="13" ComparativeMeasureValue="11" ProjectedMeasureValue="14" Maximum="15"
+											  Width="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource WidthConverter}}" 
+											  Height="{Binding RelativeSource={RelativeSource Self}, Path=Orientation, Converter={StaticResource HeightConverter}}">
+					<microcharts:MicroBulletGraph.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=chart, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</microcharts:MicroBulletGraph.LayoutTransform>
+					<microcharts:MicroBulletGraph.QualitativeRanges>
+						<microcharts:MicroQualitativeRange Value="5" />
+						<microcharts:MicroQualitativeRange Value="10" />
+						<microcharts:MicroQualitativeRange />
+					</microcharts:MicroBulletGraph.QualitativeRanges>
+				</microcharts:MicroBulletGraph>
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

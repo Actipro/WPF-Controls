@@ -1,0 +1,35 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsCustomDecorator"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[This QuickStart uses a lot of the same concepts introduced in the
+squiggles QuickStart.  However instead of displaying squiggle lines, 
+we've created a custom ITag class and created a custom adornment
+manager.  This adornment manager watches for CustomTag tags and
+when found, renders an animated line under the tagged text.
+
+The animated underline appears under any instance of the text
+'Actipro'. 
+
+Our CustomAdornmentManager inherits the DecorationAdornmentManagerBase
+base class.  This class is designed to make it extremely easy for you
+to add decorator adornments.  All you do is pass some arguments to the
+base class' constructor and override the AddAdornment method
+to add an adornment based on a located tag.  Everything else is handled
+for you.
+
+Go ahead and modify the text in this editor to add and remove the
+word 'Actipro' and see how decorators are added/removed appropriately.
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

@@ -1,0 +1,670 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+					xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+					xmlns:system="clr-namespace:System;assembly=mscorlib"
+					xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+					xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+                    >
+
+	
+	<!--
+	
+		MISC
+	
+	-->
+
+	<system:Double x:Key="DocumentMaxWidth">1100</system:Double>
+	<system:Double x:Key="SampleWideMaxWidth">1350</system:Double>
+	<system:Double x:Key="SampleNarrowMaxWidth">600</system:Double>
+	<system:Double x:Key="SampleThinMaxWidth">400</system:Double>
+
+	<system:Double x:Key="FontSizeLarge">24</system:Double>
+	<system:Double x:Key="FontSizeExtraLarge">40</system:Double>
+	
+	<SolidColorBrush x:Key="WarningBackgroundBrush" Color="#FF2400" />
+
+	
+	<!--
+	
+		CONVERTERS
+	
+	-->
+
+	<shared:ConditionalConverter x:Key="BlurbTextFontSizeConverter" TrueValue="14" FalseValue="0.5" />
+	<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+	<shared:ConditionalConverter x:Key="CheckedConditionalConverter">
+		<shared:ConditionalConverter.TrueValue>-1</shared:ConditionalConverter.TrueValue>
+		<shared:ConditionalConverter.FalseValue>1</shared:ConditionalConverter.FalseValue>
+	</shared:ConditionalConverter>
+	<shared:CharacterCasingConverter x:Key="UppercaseConverter" />
+
+
+	<!--
+	
+		HYPERLINK STYLES
+	
+	-->
+
+	<!-- HyperlinkStyle -->
+	<Style x:Key="HyperlinkStyle" TargetType="Hyperlink">
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.HyperlinkForegroundNormalBrushKey}}" />
+		<Setter Property="TextDecorations" Value="None" />
+
+		<Style.Triggers>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowDisabledBrushKey}}" />
+			</Trigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsEnabled" Value="True" />
+					<Condition Property="IsMouseOver" Value="True" />
+				</MultiTrigger.Conditions>
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.HyperlinkForegroundHoverBrushKey}}" />
+				<Setter Property="TextDecorations">
+					<Setter.Value>
+						<TextDecorationCollection>
+							<TextDecoration>
+								<TextDecoration.Pen>
+									<Pen Brush="{DynamicResource {x:Static themes:AssetResourceKeys.HyperlinkForegroundHoverBrushKey}}" />
+								</TextDecoration.Pen>
+							</TextDecoration>
+						</TextDecorationCollection>
+					</Setter.Value>
+				</Setter>
+			</MultiTrigger>
+		</Style.Triggers>
+	</Style>
+
+	<!-- HyperlinkTextBlockStyle -->
+	<Style x:Key="HyperlinkTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+		<Setter Property="Padding" Value="0,3" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+
+		<Style.Resources>
+			<Style TargetType="Hyperlink" BasedOn="{StaticResource HyperlinkStyle}">
+			</Style>
+		</Style.Resources>
+	</Style>
+
+	<!-- PlainHyperlinkTextBlockStyle -->
+	<Style x:Key="PlainHyperlinkTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource HyperlinkTextBlockStyle}">
+		<Style.Resources>
+			<Style TargetType="Hyperlink" BasedOn="{StaticResource HyperlinkStyle}">
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+			</Style>
+		</Style.Resources>
+	</Style>
+
+	<!-- ColumnHeaderHyperlinkTextBlockStyle -->
+	<Style x:Key="ColumnHeaderHyperlinkTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource HyperlinkTextBlockStyle}">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+	</Style>
+
+
+	<!--
+	
+		DOCUMENT STYLES
+	
+	-->
+
+	<!-- BasicTextBlockStyle -->
+	<Style x:Key="BasicTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="TextTrimming" Value="WordEllipsis" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
+
+	<!-- DocumentHeadingTextBlockStyle -->
+	<Style x:Key="DocumentHeadingTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextBlockStyle}">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge4FontSizeDoubleKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading1ForegroundNormalBrushKey}}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="LineHeight" Value="30" />
+		<Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+		<Setter Property="Margin" Value="0,0,0,20" />
+		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+	</Style>
+
+	<!-- DocumentSubHeadingTextBlockStyle -->
+	<Style x:Key="DocumentSubHeadingTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextBlockStyle}">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading2ForegroundNormalBrushKey}}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="LineHeight" Value="20" />
+		<Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+		<Setter Property="Margin" Value="0,0,0,20" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+	</Style>
+
+	<!-- DocumentSubHeading2TextBlockStyle -->
+	<Style x:Key="DocumentSubHeading2TextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource DocumentSubHeadingTextBlockStyle}">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading3ForegroundNormalBrushKey}}" />
+		<Setter Property="LineHeight" Value="15" />
+		<Setter Property="Margin" Value="0,0,0,20" />
+	</Style>
+
+	<!-- DocumentSubHeading2TextElementStyle -->
+	<Style x:Key="DocumentSubHeading2TextElementStyle" TargetType="Block">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}"/>
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading3ForegroundNormalBrushKey}}"/>
+		<Setter Property="Margin" Value="0,20,0,0"/>
+	</Style>
+
+	<!-- DocumentSectionHeadingTextBlockStyle -->
+	<Style x:Key="DocumentSectionHeadingTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
+
+	<!-- DocumentSectionHorizontalRuleStyle -->
+	<Style x:Key="DocumentSectionHorizontalRuleStyle" TargetType="Rectangle">
+		<Setter Property="Fill" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" />
+		<Setter Property="Margin" Value="0,10,0,30" />
+		<Setter Property="Height" Value="1" />
+	</Style>
+
+	<!-- DocumentParagraphTextBlockStyle -->
+	<Style x:Key="DocumentParagraphTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextBlockStyle}">
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentTextForegroundNormalBrushKey}}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="Margin" Value="0,0,0,20" />
+	</Style>
+
+	<!-- DocumentBulletPanelStyle -->
+	<Style x:Key="DocumentBulletPanelStyle" TargetType="Panel">
+		<Setter Property="Margin" Value="0,0,0,20" />
+	</Style>
+
+	<!-- DocumentContentPanelStyle -->
+	<Style x:Key="DocumentContentPanelStyle" TargetType="Panel">
+		<Setter Property="Margin" Value="50,50,50,30" />
+		<Setter Property="MaxWidth" Value="{StaticResource DocumentMaxWidth}" />
+	</Style>
+
+	<!-- DocumentPresenterStyle -->
+	<Style x:Key="DocumentPresenterStyle" TargetType="Control">
+		<Style.Resources>
+			<Style TargetType="views:InertiaScrollViewer">
+				<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentTextBackgroundNormalBrushKey}}" />
+				<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+				<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+				<Setter Property="TextElement.FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+				<Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentTextForegroundNormalBrushKey}}" />
+				<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+			</Style>
+		</Style.Resources>
+	</Style>
+
+
+	<!--
+	
+		BUTTON STYLES
+	
+	-->
+
+	<!-- SoftButtonStyle -->
+	<Style x:Key="SoftButtonStyle" TargetType="ButtonBase">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="FocusVisualStyle">
+			<Setter.Value>
+				<Style>
+					<Setter Property="Control.Template">
+						<Setter.Value>
+							<ControlTemplate>
+								<Rectangle Margin="3" StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowDisabledBrushKey}}" StrokeDashArray="1 2" 
+										   RadiusX="4" RadiusY="4" SnapsToDevicePixels="True" />
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+		<Setter Property="Padding" Value="15,10,15,10" />
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="7" />
+		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ButtonBase">
+					<shared:ShadowChrome x:Name="shadow" Elevation="4" 
+										 ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacityNormalDoubleKey}}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<Int32Animation Storyboard.TargetName="shadow" Storyboard.TargetProperty="Elevation" To="4" Duration="0:0:0.15" />
+										<DoubleAnimation Storyboard.TargetName="translateTransform" Storyboard.TargetProperty="Y" To="0" Duration="0:0:0.15" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="MouseOver">
+									<Storyboard>
+										<Int32Animation Storyboard.TargetName="shadow" Storyboard.TargetProperty="Elevation" To="8" Duration="0:0:0.15" />
+										<DoubleAnimation Storyboard.TargetName="translateTransform" Storyboard.TargetProperty="Y" To="-2" Duration="0:0:0.15" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<Int32Animation Storyboard.TargetName="shadow" Storyboard.TargetProperty="Elevation" To="2" Duration="0:0:0.15" />
+										<DoubleAnimation Storyboard.TargetName="translateTransform" Storyboard.TargetProperty="Y" To="0" Duration="0:0:0.15" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled">
+									<Storyboard>
+										<Int32Animation Storyboard.TargetName="shadow" Storyboard.TargetProperty="Elevation" To="2" Duration="0:0:0" />
+										<DoubleAnimation Storyboard.TargetName="translateTransform" Storyboard.TargetProperty="Y" To="0" Duration="0:0:0" />
+										<DoubleAnimation Storyboard.TargetName="presenter" Storyboard.TargetProperty="Opacity" To="0.4" Duration="0:0:0" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+
+						<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+								Padding="{TemplateBinding Padding}" CornerRadius="{TemplateBinding themes:ThemeProperties.CornerRadius}" RenderTransformOrigin="0.5,0.5">
+							<Border.RenderTransform>
+								<TranslateTransform x:Name="translateTransform" />
+							</Border.RenderTransform>
+							<shared:PixelSnapper VerticalRoundMode="CeilingToEven" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+								<ContentPresenter x:Name="presenter" />
+							</shared:PixelSnapper>
+						</Border>
+					</shared:ShadowChrome>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- ScreenshotSoftButtonStyle -->
+	<Style x:Key="ScreenshotSoftButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource SoftButtonStyle}">
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="0" />
+	</Style>
+
+	<!-- AccentButtonStyle -->
+	<Style x:Key="AccentButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource SoftButtonStyle}">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundMidNormalBrushKey}}" />
+	</Style>
+
+	<!-- FeatureSummaryAccentButtonStyle -->
+	<Style x:Key="FeatureSummaryAccentButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
+		<Setter Property="Command" Value="{Binding OpenUrlCommand}" />
+		<Setter Property="CommandParameter" Value="{Binding ViewItemInfo.ProductFamily.FeatureSummaryUrl}" />
+		<Setter Property="ContentTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Margin="0,-1,0,1" Text="Feature Summary" VerticalAlignment="Center" />
+						<ContentPresenter Margin="7,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" Opacity="0.5" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+					</StackPanel>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- ExternalSampleLauncherButtonContentTemplate -->
+	<DataTemplate x:Key="ExternalSampleLauncherButtonContentTemplate">
+		<DockPanel>
+			<TextBlock Text="Open External Sample" TextWrapping="Wrap" VerticalAlignment="Center" />
+			<Path Margin="10,2,0,0" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" StrokeThickness="2" Opacity="0.5"
+							  Data="M 9,7 L 1,7 L 1,23 L 17,23 L 17,15  M 9,15 L 21,3  M 13,3 L 21,3 L 21,11" VerticalAlignment="Center" SnapsToDevicePixels="False" />
+		</DockPanel>
+	</DataTemplate>
+
+	
+	<!--
+	
+		SAMPLE-RELATED STYLES
+	
+	-->
+
+	<!-- SampleInertiaScrollViewerStyle -->
+	<Style x:Key="SampleInertiaScrollViewerStyle" TargetType="views:InertiaScrollViewer">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+		<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+	</Style>
+
+	<!-- SampleScrollViewerStyle -->
+	<Style x:Key="SampleScrollViewerStyle" TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ScrollViewerStyleKey}}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+		<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+		<Setter Property="Padding" Value="0"/>
+	</Style>
+
+	<!-- SampleVerticalScrollViewerStyle -->
+	<Style x:Key="SampleVerticalScrollViewerStyle" TargetType="ScrollViewer" BasedOn="{StaticResource SampleScrollViewerStyle}">
+		<Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+	</Style>
+	
+	<!-- SampleHeaderExpanderStyle -->
+	<Style x:Key="SampleHeaderExpanderStyle" TargetType="Expander" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ExpanderStyleKey}}">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" />
+		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="IsExpanded" Value="True" />
+		<Setter Property="Padding" Value="20,0,20,20" />
+
+		<Setter Property="themes:HeaderedControlThemeProperties.HeaderBackground" Value="Transparent" />
+		<Setter Property="themes:HeaderedControlThemeProperties.HeaderForeground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+		<Setter Property="themes:HeaderedControlThemeProperties.HeaderGlyphTemplate" Value="{DynamicResource {x:Static themes:SharedResourceKeys.DownArrowGlyphTemplateKey}}" />
+		<Setter Property="themes:HeaderedControlThemeProperties.HeaderPadding" Value="20,15,11,15" />
+		<Setter Property="themes:HeaderedControlThemeProperties.HeaderStyle">
+			<Setter.Value>
+				<Style TargetType="ToggleButton">
+					<Setter Property="FocusVisualStyle">
+						<Setter.Value>
+							<Style>
+								<Setter Property="Control.Template">
+									<Setter.Value>
+										<ControlTemplate>
+											<Rectangle Margin="10,10" StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowDisabledBrushKey}}" StrokeDashArray="1 2" SnapsToDevicePixels="True" />
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Setter.Value>
+					</Setter>
+					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="ToggleButton">
+								<Border Background="Transparent">
+									<sampleBrowser:DropDownGlyphPanel x:Name="rootPanel" Margin="{TemplateBinding Padding}">
+										<shared:PixelSnapper VerticalRoundMode="CeilingToEven">
+											<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+															  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" />
+										</shared:PixelSnapper>
+
+										<shared:PixelSnapper MinWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" VerticalRoundMode="CeilingToEven">
+											<ContentPresenter x:Name="glyphPresenter" Margin="0,1,0,0" ContentTemplate="{TemplateBinding themes:HeaderedControlThemeProperties.HeaderGlyphTemplate}" 
+															  HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+												<ContentPresenter.RenderTransform>
+													<ScaleTransform ScaleY="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Converter={StaticResource CheckedConditionalConverter}}" />
+												</ContentPresenter.RenderTransform>
+											</ContentPresenter>
+										</shared:PixelSnapper>
+									</sampleBrowser:DropDownGlyphPanel>
+								</Border>
+
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsMouseOver" Value="True">
+										<Setter TargetName="rootPanel" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}" />
+									</Trigger>
+									<Trigger Property="IsPressed" Value="True">
+										<Setter TargetName="rootPanel" Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}" />
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- SampleHeaderDescriptionExpanderStyle -->
+	<Style x:Key="SampleHeaderDescriptionExpanderStyle" TargetType="Expander" BasedOn="{StaticResource SampleHeaderExpanderStyle}">
+		<Setter Property="Header" Value="DESCRIPTION" />
+	</Style>
+
+	<!-- SampleHeaderDescriptionTextBlockStyle -->
+	<Style x:Key="SampleHeaderDescriptionTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="TextTrimming" Value="WordEllipsis" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
+
+	<!-- SampleHeaderOptionsExpanderStyle -->
+	<Style x:Key="SampleHeaderOptionsExpanderStyle" TargetType="Expander" BasedOn="{StaticResource SampleHeaderExpanderStyle}">
+		<Setter Property="Header" Value="SAMPLE OPTIONS" />
+		<Setter Property="Padding" Value="20,0,20,20" />
+	</Style>
+
+	<!-- SampleOptionsActionButtonStyle -->
+	<Style x:Key="SampleOptionsActionButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ButtonBaseStyleKey}}">
+		<Setter Property="MinHeight" Value="30" />
+		<Setter Property="Padding" Value="10,5" />
+	</Style>
+	
+	<!-- SamplePanelFullStyle -->
+	<Style x:Key="SamplePanelFullStyle" TargetType="Panel">
+		<Setter Property="Margin" Value="50" />
+		<Setter Property="UseLayoutRounding" Value="True"/>
+	</Style>
+	
+	<!-- SamplePanelWideStyle -->
+	<Style x:Key="SamplePanelWideStyle" TargetType="Panel" BasedOn="{StaticResource SamplePanelFullStyle}">
+		<Setter Property="MaxWidth" Value="{StaticResource SampleWideMaxWidth}" />
+	</Style>
+	
+	<!-- SamplePanelNarrowStyle -->
+	<Style x:Key="SamplePanelNarrowStyle" TargetType="Panel" BasedOn="{StaticResource SamplePanelFullStyle}">
+		<Setter Property="MaxWidth" Value="{StaticResource SampleNarrowMaxWidth}" />
+	</Style>
+	
+	<!-- SamplePanelThinStyle -->
+	<Style x:Key="SamplePanelThinStyle" TargetType="Panel" BasedOn="{StaticResource SamplePanelFullStyle}">
+		<Setter Property="MaxWidth" Value="{StaticResource SampleThinMaxWidth}" />
+	</Style>
+	
+	<!-- SampleSectionHeadingTextBlockStyle -->
+	<Style x:Key="SampleSectionHeadingTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
+
+	<!-- SampleSectionHorizontalRuleStyle -->
+	<Style x:Key="SampleSectionHorizontalRuleStyle" TargetType="Separator">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="Margin" Value="0,30" />
+		<Setter Property="Height" Value="1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Separator">
+					<Rectangle Fill="{TemplateBinding Background}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- SampleSectionSmallHorizontalRuleStyle -->
+	<Style x:Key="SampleSectionSmallHorizontalRuleStyle" TargetType="Separator" BasedOn="{StaticResource SampleSectionHorizontalRuleStyle}">
+		<Setter Property="Margin" Value="0,20" />
+	</Style>
+
+	<!-- SampleFigureHeadingTextBlockStyle -->
+	<Style x:Key="SampleFigureHeadingTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+		<Setter Property="TextAlignment" Value="Center" />
+		<Setter Property="TextWrapping" Value="Wrap" />
+	</Style>
+
+	<!-- SampleLargeValueTextBlockStyle -->
+	<Style x:Key="SampleLargeValueTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+		<Setter Property="FontWeight" Value="Light" />
+		<Setter Property="TextAlignment" Value="Center" />
+	</Style>
+
+	<!-- SampleExtraLargeValueTextBlockStyle -->
+	<Style x:Key="SampleExtraLargeValueTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource SampleLargeValueTextBlockStyle}">
+		<Setter Property="FontSize" Value="{StaticResource FontSizeExtraLarge}" />
+	</Style>
+
+
+	<!--
+	
+		ITEMSCONTROL STYLES
+	
+	-->
+
+	<!-- FeaturedProductItemInfoItemsControlStyle -->
+	<Style x:Key="FeaturedProductItemInfoItemsControlStyle" TargetType="ItemsControl">
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<WrapPanel />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemTemplate">
+			<Setter.Value>
+				<DataTemplate>
+
+					<Button Margin="0,0,22,20" Padding="0" Style="{StaticResource SoftButtonStyle}" 
+							Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}" CommandParameter="{Binding TargetUri}">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" >
+								<Image Width="200" Height="150" Source="{Binding ImageSource}" />
+							</Border>
+
+							<Border Grid.Row="1" Padding="15,4" CornerRadius="0,0,4,4"
+									BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" 
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+								<shared:PixelSnapper>
+									<DockPanel>
+										<ContentPresenter DockPanel.Dock="Right" Margin="7,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" Opacity="0.3" 
+														  VerticalAlignment="Center" SnapsToDevicePixels="True" Visibility="{Binding IsExternal, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+										<TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+									</DockPanel>
+								</shared:PixelSnapper>
+							</Border>
+
+							<StackPanel Margin="0,20,-1,0" Height="18" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal"
+										Visibility="{Binding Path=HasBlurbText, Converter={StaticResource BooleanToVisibilityConverter}}">
+								<Path Data="M 10,0 L 0,0 L 5,5 L 0,10 L 10,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
+								<Border BorderThickness="0,0,1,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="3,0,8,2">
+									<shared:PixelSnapper>
+										<TextBlock Text="{Binding BlurbText, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
+												   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
+									</shared:PixelSnapper>
+								</Border>
+							</StackPanel>
+						</Grid>
+					</Button>
+
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- GroupedProductItemInfoItemsControlStyle -->
+	<Style x:Key="GroupedProductItemInfoItemsControlStyle" TargetType="ItemsControl">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+		<Setter Property="Grid.IsSharedSizeScope" Value="True" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="ItemTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<Grid Margin="0,0,0,20">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" SharedSizeGroup="GroupedSampleTitle" />
+							<ColumnDefinition Width="30" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock MaxWidth="145" Style="{StaticResource DocumentSectionHeadingTextBlockStyle}" Text="{Binding Key, Converter={StaticResource UppercaseConverter}}" />
+						<ItemsControl Grid.Column="2" ItemsSource="{Binding}" IsTabStop="False">
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<views:MultiColumnPanel ColumnMinWidth="225" MaxColumnCount="3" ColumnMargin="30" />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<sampleBrowser:BulletContentControl>
+										<TextBlock Style="{StaticResource HyperlinkTextBlockStyle}" Padding="0">
+											<Hyperlink Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl, AncestorLevel=2}, Path=DataContext.NavigateViewToItemInfoCommand}" CommandParameter="{Binding}">
+												<Run Text="{Binding BlurbText, StringFormat='{}{0} '}" FontSize="{Binding HasBlurbText, Converter={StaticResource BlurbTextFontSizeConverter}}" 
+													 Foreground="{StaticResource WarningBackgroundBrush}" /><Run Text="{Binding Title}" />
+											</Hyperlink>
+										</TextBlock>
+									</sampleBrowser:BulletContentControl>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</Grid>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- ProductFamilyInfoButtonItemsControlStyle -->
+	<Style x:Key="ProductFamilyInfoButtonItemsControlStyle" TargetType="ItemsControl">
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<WrapPanel Margin="0,0,-1,0" />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemTemplate">
+			<Setter.Value>
+				<DataTemplate>
+
+					<Button Margin="0,0,20,20" Width="294" Style="{StaticResource SoftButtonStyle}" HorizontalContentAlignment="Stretch"
+							Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}" CommandParameter="{Binding OverviewItem}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<Canvas Width="48" Height="48" VerticalAlignment="Center">
+								<Rectangle Width="48" Height="48" Fill="#40000000" RenderTransformOrigin="0.5,0.5" FlowDirection="LeftToRight">
+									<Rectangle.OpacityMask>
+										<ImageBrush ImageSource="{Binding Source={x:Reference image}, Path=Source}" />
+									</Rectangle.OpacityMask>
+									<Rectangle.RenderTransform>
+										<TransformGroup>
+											<TranslateTransform Y="1" />
+											<ScaleTransform ScaleX="1.02" ScaleY="1.02" />
+										</TransformGroup>
+									</Rectangle.RenderTransform>
+								</Rectangle>
+								<Image x:Name="image" Width="48" Height="48" Source="{Binding LogoImageSource}" />
+							</Canvas>
+							<StackPanel Grid.Column="1" Margin="10,0,0,0">
+								<TextBlock TextWrapping="Wrap">
+									<Run Text="{Binding Title, Mode=OneWay}" FontWeight="Bold" />
+									<Run Text="-" />
+									<Run Text="{Binding Summary, Mode=OneWay}" />
+								</TextBlock>
+							</StackPanel>
+
+							<StackPanel Grid.ColumnSpan="2" Margin="-16,0,0,-1" Height="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Horizontal"
+										Visibility="{Binding Path=HasBlurbText, Converter={StaticResource BooleanToVisibilityConverter}}">
+								<Border BorderThickness="1,0,0,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="8,0,3,2">
+									<shared:PixelSnapper>
+										<TextBlock Text="{Binding BlurbText, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
+												   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
+									</shared:PixelSnapper>
+								</Border>
+								<Path Data="M 0,0 L 10,0 L 5,5 L 10,10 L 0,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
+							</StackPanel>
+						</Grid>
+					</Button>
+
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+</ResourceDictionary>

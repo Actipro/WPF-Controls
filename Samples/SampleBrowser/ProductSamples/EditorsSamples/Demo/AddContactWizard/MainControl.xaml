@@ -1,0 +1,134 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	BorderBrush="Gray" BorderThickness="1" MaxWidth="600" MaxHeight="450">
+
+	<UserControl.Resources>
+
+		<system:String x:Key="PhoneNumberMask" xml:space="preserve">([(]\d\d\d[)] |(1-)?\d\d\d-)?\d\d\d-\d\d\d\d</system:String>
+
+	</UserControl.Resources>
+
+	<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+		<wizard:Wizard x:Name="wizard" HelpButtonVisible="False" CancelButtonVisible="True" PageSequenceType="Normal" WindowTitleBaseText="Add Contact (Editors Demo)"
+					   CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+			<wizard:Wizard.TransitionSelector>
+				<shared:MultiTransitionSelector>
+					<shared:SlideTransition IsFromContentPushed="True" />
+				</shared:MultiTransitionSelector>
+			</wizard:Wizard.TransitionSelector>
+
+			<wizard:WizardPage PageType="Interior" Caption="Name and Address"
+					Description="Enter the name, address, etc. of the contact." Title="Name and Address"
+					HeaderImage="/Images/Icons/User32.png">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<TextBlock Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Full Name" />
+					<TextBox Grid.Column="1" Margin="5,2,0,2" />
+
+					<TextBlock Grid.Row="2" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Social Security" />
+					<editors:MaskedTextBox Grid.Row="2" Grid.Column="1" Margin="5,2,0,2" Mask="\d\d\d-\d\d-\d\d\d\d" />
+
+					<TextBlock Grid.Row="3" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Birthday" />
+					<editors:DateEditBox Grid.Row="3" Grid.Column="1" Margin="5,2,0,2" Width="150" Format="MMMM dd, yyyy" HorizontalAlignment="Left" />
+
+					<!--Addresses -->
+					<DockPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,10,0,0" LastChildFill="True" Opacity="0.7">
+						<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text="Addresses" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" />
+						<Border Margin="5,0,0,0" VerticalAlignment="Center" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" BorderThickness="0,0.5,0,0" />
+					</DockPanel>
+
+					<TextBlock Grid.Row="5" Margin="7,2" HorizontalAlignment="Right" Text="Address 1" VerticalAlignment="Center" />
+					<TextBox Grid.Row="5" Grid.Column="1" Margin="5,2,0,2" />
+
+					<TextBlock Grid.Row="6" Margin="7,2" HorizontalAlignment="Right" Text="Address 2" VerticalAlignment="Center" />
+					<TextBox Grid.Row="6" Grid.Column="1" Margin="5,2,0,2" />
+
+					<TextBlock Grid.Row="7" Margin="7,2" HorizontalAlignment="Right" Text="City" VerticalAlignment="Center" />
+					<TextBox Grid.Row="7" Grid.Column="1" Margin="5,2,0,2" />
+
+					<TextBlock Grid.Row="8" Margin="7,2" HorizontalAlignment="Right" Text="State" VerticalAlignment="Center" />
+					<TextBox Grid.Row="8" Grid.Column="1" Margin="5,2,0,2" Width="60" MaxLength="2" HorizontalAlignment="Left" />
+
+					<TextBlock Grid.Row="9" Margin="7,2" HorizontalAlignment="Right" Text="Zip Code" VerticalAlignment="Center" />
+					<editors:MaskedTextBox Grid.Row="9" Grid.Column="1" Margin="5,2,0,2" Width="120" Mask="\d{5}(-\d{4})?" HorizontalAlignment="Left" />
+
+				</Grid>
+			</wizard:WizardPage>
+			<wizard:WizardPage PageType="Interior" Caption="Phone and Email"
+					Description="Enter the phone and email information for the contact." Title="Phone and Email"
+					HeaderImage="/Images/Icons/Call32.png">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<!--Phone Numbers -->
+					<DockPanel Grid.ColumnSpan="2" LastChildFill="True" Opacity="0.7">
+						<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text="Phone Numbers" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" />
+						<Border Margin="5,0,0,0" VerticalAlignment="Center" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" BorderThickness="0,0.5,0,0" />
+					</DockPanel>
+
+					<TextBlock Grid.Row="1" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Home:" />
+					<editors:MaskedTextBox Grid.Row="1" Grid.Column="1" Margin="5,2,0,2" Mask="{StaticResource PhoneNumberMask}" />
+
+					<TextBlock Grid.Row="2" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Work:" />
+					<editors:MaskedTextBox Grid.Row="2" Grid.Column="1" Margin="5,2,0,2" Mask="{StaticResource PhoneNumberMask}" />
+
+					<TextBlock Grid.Row="3" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Mobile:" />
+					<editors:MaskedTextBox Grid.Row="3" Grid.Column="1" Margin="5,2,0,2" Mask="{StaticResource PhoneNumberMask}" />
+
+					<TextBlock Grid.Row="4" Grid.Column="1" Margin="5,2" HorizontalAlignment="Left" FontStyle="Italic"
+							TextTrimming="CharacterEllipsis" Text="Examples: 555-1212, (703) 555-1212, 703-555-1212, 1-703-555-1212" />
+
+					<!--Internet -->
+					<DockPanel Grid.Row="5" Grid.ColumnSpan="2" Margin="0,10,0,0" LastChildFill="True" Opacity="0.7">
+						<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text="Internet" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" />
+						<Border Margin="5,0,0,0" VerticalAlignment="Center" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" BorderThickness="0,0.5,0,0" />
+					</DockPanel>
+
+					<TextBlock Grid.Row="6" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="E-mail:" />
+					<editors:MaskedTextBox Grid.Row="6" Grid.Column="1" Margin="5,2,0,2" Mask="\w+@\w+([.]\w+)+" />
+
+					<TextBlock Grid.Row="7" Margin="7,2" HorizontalAlignment="Right" VerticalAlignment="Center"
+							Text="Web page address:" />
+					<editors:MaskedTextBox Grid.Row="7" Grid.Column="1" Margin="5,2,0,2" Mask="http://\w+([./]\w+)+" />
+
+				</Grid>
+			</wizard:WizardPage>
+		</wizard:Wizard>
+	</shared:ShadowChrome>
+
+</UserControl>

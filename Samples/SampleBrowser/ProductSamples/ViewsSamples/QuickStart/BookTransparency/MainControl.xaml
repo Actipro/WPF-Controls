@@ -1,0 +1,151 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookTransparency.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookTransparency"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<LinearGradientBrush x:Key="CoverBackground" StartPoint="0,0" EndPoint="1,0">
+			<GradientStop Color="#245381" Offset="0.0" />
+			<GradientStop Color="#3b78aa" Offset="0.25" />
+			<GradientStop Color="#3b78aa" Offset="0.475" />
+			<GradientStop Color="#13294d" Offset="0.48" />
+			<GradientStop Color="#214371" Offset="0.49" />
+			<GradientStop Color="#214371" Offset="0.51" />
+			<GradientStop Color="#13294d" Offset="0.52" />
+			<GradientStop Color="#3b78aa" Offset="0.525" />
+			<GradientStop Color="#3b78aa" Offset="0.75" />
+			<GradientStop Color="#245381" Offset="1.0" />
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="CoverBorderBrush" Color="#351608" />
+
+		<Style x:Key="BackFacingPageStyle" TargetType="views:BookPage">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<Grid>
+							<Grid Background="WhiteSmoke" Height="45" VerticalAlignment="Top">
+								<TextBlock Text="{Binding Header}" FontWeight="Bold" HorizontalAlignment="Center"
+										VerticalAlignment="Center" />
+							</Grid>
+							<Image Source="{Binding ImageSource}" Stretch="Uniform" VerticalAlignment="Center"
+									RenderTransformOrigin="0.5,0.5">
+								<Image.RenderTransform>
+									<ScaleTransform ScaleX="-1" />
+								</Image.RenderTransform>
+							</Image>
+							<Grid Background="WhiteSmoke" Height="45" VerticalAlignment="Bottom">
+								<TextBlock Text="{Binding Footer}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+							</Grid>
+						</Grid>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Foreground" Value="#000000" />
+		</Style>
+
+		<Style x:Key="FrontFacingPageStyle" TargetType="views:BookPage">
+			<Setter Property="Background" Value="Transparent" />
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<Grid>
+							<Grid Background="WhiteSmoke" Height="45" VerticalAlignment="Top">
+								<TextBlock Text="{Binding Header}" FontWeight="Bold" HorizontalAlignment="Center"
+										VerticalAlignment="Center" />
+							</Grid>
+							<Image Source="{Binding ImageSource}" Stretch="Uniform" VerticalAlignment="Center" />
+							<Grid Background="WhiteSmoke" Height="45" VerticalAlignment="Bottom">
+								<TextBlock Text="{Binding Footer}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+							</Grid>
+						</Grid>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Foreground" Value="#000000" />
+		</Style>
+
+		<Style x:Key="CoverPageStyle" TargetType="views:BookPage" BasedOn="{StaticResource BackFacingPageStyle}">
+			<Setter Property="Background" Value="WhiteSmoke" />
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Foreground" Value="#000000" />
+		</Style>
+
+		<views:BookPageStyleSelector x:Key="BookPageStyleSelector" FirstPageStyle="{StaticResource CoverPageStyle}"
+				LastPageStyle="{StaticResource CoverPageStyle}" BackFacingPageStyle="{StaticResource BackFacingPageStyle}"
+				FrontFacingPageStyle="{StaticResource FrontFacingPageStyle}" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Book control supports transparent pages, which can be used to create some cool effects.
+					For performance reasons, the control will only load a few pages as needed.
+					This can be configured using the PageDepth property, which indicates how many pages should be loaded on each side.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		
+		<Viewbox>
+			<sampleBrowser:LabeledCardControl Background="{StaticResource CoverBackground}" BorderBrush="{StaticResource CoverBorderBrush}" BorderThickness="1" Padding="12">
+				<views:Book Width="600" Height="300" PageDepth="18" TextOptions.TextFormattingMode="Ideal"
+						ItemContainerStyleSelector="{StaticResource BookPageStyleSelector}">
+					<!-- Sheet that is bound to cover -->
+					<sample:TestObject ImageSource="Images/009.png" />
+
+					<!-- Sheet 1 -->
+					<sample:TestObject ImageSource="Images/001.png" Header="A Book of Transparencies"
+							Footer="By Actipro Software" />
+					<sample:TestObject ImageSource="Images/001.png" />
+
+					<!-- Sheet 2 -->
+					<sample:TestObject ImageSource="Images/002.png" Header="Once upon a time," />
+					<sample:TestObject ImageSource="Images/002.png" />
+
+					<!-- Sheet 3 -->
+					<sample:TestObject ImageSource="Images/003.png" Header="there was a Book control" />
+					<sample:TestObject ImageSource="Images/003.png" />
+
+					<!-- Sheet 4 -->
+					<sample:TestObject ImageSource="Images/004.png" Header="that supported transparent pages" />
+					<sample:TestObject ImageSource="Images/004.png" />
+
+					<!-- Sheet 5 -->
+					<sample:TestObject ImageSource="Images/005.png" Header="and enabled glorious effects" />
+					<sample:TestObject ImageSource="Images/005.png" />
+
+					<!-- Sheet 6 -->
+					<sample:TestObject ImageSource="Images/006.png" Header="like those presented in this sample." />
+					<sample:TestObject ImageSource="Images/006.png" />
+
+					<!-- Sheet 7 -->
+					<sample:TestObject ImageSource="Images/007.png" Header="And it was good." />
+					<sample:TestObject ImageSource="Images/007.png" />
+
+					<!-- Sheet 8 -->
+					<sample:TestObject ImageSource="Images/008.png" Header="The End" />
+					<sample:TestObject ImageSource="Images/008.png" />
+
+					<!-- Sheet that is bound to cover -->
+					<sample:TestObject ImageSource="Images/009.png" />
+
+				</views:Book>
+			</sampleBrowser:LabeledCardControl>
+		</Viewbox>
+			
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

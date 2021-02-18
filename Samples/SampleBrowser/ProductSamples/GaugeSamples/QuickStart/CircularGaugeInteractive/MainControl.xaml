@@ -1,0 +1,106 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="10" SmallChange="1" LargeChange="2" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=CanDrag}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=IsDraggingAnimated}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=IsSnappingEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=SnappingInterval}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox SelectedItem="{Binding Value}" Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+									<system:Double>0.1</system:Double>
+									<system:Double>0.5</system:Double>
+									<system:Double>1</system:Double>
+									<system:Double>2</system:Double>
+									<system:Double>3</system:Double>
+									<system:Double>4</system:Double>
+									<system:Double>5</system:Double>
+								</ComboBox>
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=SnappingMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Pointers can be changed interactively using the mouse, by dragging the pointer to a new value.
+					Additionally, the pointer value can be snapped to a customizable interval, regardless of whether the pointer is interactive.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" HorizontalAlignment="Center"
+					Background="#333333" RimBrush="#333333" FrameType="CircularOrb" IsBackgroundEffectEnabled="False"
+					IsRimEffectEnabled="True">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="85" StartAngle="135" SweepAngle="270" BarExtent="15"
+											Background="Transparent">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet Minimum="0" Maximum="10" MajorInterval="1" MinorInterval="0.5">
+								<gauge:CircularTickSet.Ranges>
+									<gauge:CircularRange Background="#FF00FBFF" BorderBrush="#FF5D63A1" BorderWidth="1"
+											StartValue="0" EndValue="10" StartExtent="50" EndExtent="50"
+											HasDropShadow="False" ScalePlacement="Inside" />
+								</gauge:CircularTickSet.Ranges>
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor TickMarkExtent="7" TickMarkAscent="3"
+											TickMarkType="RoundedRectangle"
+											Background="{shared:LinearGradientBrush DarkGray, Gray, GradientType=RightToLeft}" />
+									<gauge:CircularTickMarkMajor TickMarkExtent="10" TickMarkAscent="3"
+											TickMarkType="RoundedRectangle"
+											Background="{shared:LinearGradientBrush Gray, Gray, GradientType=RightToLeft}" />
+									<gauge:CircularTickLabelMajor Foreground="#888888" FontSize="12" FontWeight="Bold"
+											ScalePlacement="Outside" ScaleOffset="1" />
+								</gauge:CircularTickSet.Ticks>
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle x:Name="needle" NeedleType="Knob" PointerExtent="75"
+											PointerAscent="10" CanDrag="True" Focusable="True"
+											Background="{shared:LinearGradientBrush #666666, #AAAAAA, GradientType=LeftToRight, AdditionalStopCount=1}" />
+									<gauge:CircularPointerMarker MarkerType="Ellipse" PointerAscent="12" PointerExtent="12"
+											Background="#AAAAAA" BorderBrush="#666666" BorderWidth="1" ScaleOffset="-17"
+											HasDropShadow="False" IsHitTestVisible="False" DampeningMaximumDuration="0" DampeningMinimumDuration="0"
+											Value="{Binding ElementName=needle, Path=DisplayValue}" />
+								</gauge:CircularTickSet.Pointers>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

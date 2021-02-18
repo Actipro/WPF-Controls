@@ -1,0 +1,115 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator" PresetAmounts="60;28;17;5;2" PresetTitles="Sales;Accounting;Legal;Executive;HR" />
+		
+		<Style x:Key="ChartStyle" TargetType="charts:PieChart">
+			<Setter Property="Width" Value="350"/>
+			<Setter Property="Height" Value="200"/>
+		</Style>
+
+		<Style x:Key="SeriesStyle" TargetType="charts:PieSeries">
+			<Setter Property="ItemsSource" Value="{StaticResource PrimaryDataGenerator}"/>
+			<Setter Property="SliceStyleSelector">
+				<Setter.Value>
+					<charts:PieSlicePaletteStyleSelector>
+						<charts:Palette Kind="Rose" />
+					</charts:PieSlicePaletteStyleSelector>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="SliceValuePath" Value="Amount"/>
+			<Setter Property="SliceTitlePath" Value="Title"/>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Slice labels and tooltips can be used to easily identify the value of a particular slice.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="No labels, but has tooltips for slices">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" LabelBrush="White" SliceToolTipFormat="{}{2}: {1} ({0:P0})" />
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Inside labels (hide if don't fit)">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" 
+											AreLabelsVisible="True" LabelPosition="Inside" LabelInsideFitMode="Hide"
+											LabelBrush="White"/>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Inside labels (always show)">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" 
+											LabelPosition="Inside" LabelInsideFitMode="None" 
+											LabelBrush="White"/>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Side labels with large font">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" LabelPosition="Sides">
+							<charts:PieSeries.LabelStyle>
+								<Style TargetType="TextBlock">
+									<Setter Property="FontSize" Value="18" />
+								</Style>
+							</charts:PieSeries.LabelStyle>
+						</charts:PieSeries>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Side labels, values displayed">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" LabelPosition="Sides" SliceLabelFormat="{}{1}" />
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Side labels, titles displayed">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" LabelPosition="Sides" SliceLabelFormat="{}{2}" />
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Side labels, titles and values displayed">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" LabelPosition="Sides" SliceLabelFormat="{}{2} ({1})" />
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Inside labels (hide if don't fit), legend visible">
+					<charts:PieChart Style="{StaticResource ChartStyle}" IsLegendVisible="True">
+						<charts:PieSeries Style="{StaticResource SeriesStyle}" AreLabelsVisible="True" 
+											LabelPosition="Inside" LabelInsideFitMode="Hide"
+											LabelBrush="White"/>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

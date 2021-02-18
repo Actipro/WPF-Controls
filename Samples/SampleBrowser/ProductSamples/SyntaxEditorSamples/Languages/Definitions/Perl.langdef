@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Perl' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Perl" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="PerlComment" Description="Perl Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PerlIdentifier" Description="Perl Identifier" />
+		<ClassificationType Key="PerlKeyword" Description="Perl Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PerlNumber" Description="Perl Number" DefaultStyle="#FF800000" />
+		<ClassificationType Key="PerlOperator" Description="Perl Operator" />
+		<ClassificationType Key="PerlString" Description="Perl String" DefaultStyle=",True" />
+		<ClassificationType Key="PerlVariable" Description="Perl Variable" DefaultStyle="#FF800080" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="PrimaryString" />
+					<StateRef Key="AlternateString" />
+					<StateRef Key="SingleLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="PerlKeyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						-X abs accept alarm atan2 bind binmode bless caller chdir chmod chomp chop chown chroot chr closedir
+						close connect continue cos crypt dbmclose dbmopen defined delete die do dump each else elsif endgrent
+						endhostent endnetent endprotoent endpwent endservent eof eval exec exists exit exp fcntl fileno
+						flock foreach fork format formline for getc getgrent getgrgid getgrnam gethostbyaddr gethostbyname
+						gethostent getlogin getnetbyaddr getnetbyname getnetent getpeername getpgrp getppid getpriority
+						getprotobyname getprotobynumber getprotoent getpwent getpwnam getpwuid getservbyname getservbyport
+						getservent getsockname getsockopt glob gmtime goto grep hex if import index int ioctl join keys
+						kill last lcfirst lc length link listen localtime local lock log lstat m// map mkdir msgctl msgget
+						msgrcv msgsnd my next no oct opendir open ord our package pack pipe pop pos printf print prototype
+						push q/STRING/ qq/STRING/ qr/STRING/ quotemeta qw/STRING/ qx/STRING/ rand readdir readline
+						readlink readpipe read recv redo ref rename require reset return reverse rewinddir rindex rmdir
+						s/// scalar seekdir seek select semctl semget semop send setgrent sethostent setnetent setpgrp
+						setpriority setprotoent setpwent setservent setsockopt shift shmctl shmget shmread shmwrite
+						shutdown sin sleep socketpair socket sort splice split sprintf sqrt srand stat study substr sub
+						symlink syscall sysopen sysread sysseek system syswrite telldir tell tied tie times time tr///
+						truncate ucfirst uc umask undef unless unlink unpack unshift untie until use utime values vec waitpid
+						wait wantarray warn while write y/// __DATA__ __END__ __FILE__ __LINE__
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="PerlVariable">
+					<RegexPattern Value="\$+ (_ | {AlphaMacro})({WordMacro})*" />
+					<RegexPattern Value="@ (_ | {AlphaMacro})({WordMacro})*" />
+					<RegexPattern Value="% (_ | {AlphaMacro})({WordMacro})*" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="PerlIdentifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PerlOperator">
+					<ExplicitPatterns><![CDATA[
+						!= !~ ! %= % && &= & **= ** *= * ++ += + , -- -= -> - ... .. .= . /= / : << <=> <= < == => =~ = >= >> > ? x= \ ^= ^ |= || | ~
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PerlOperator" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						and cmp eq ge gt le lt ne not or xor x
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="PerlNumber" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="PerlNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="PerlNumber" Pattern="0x {HexDigit}+" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
+			</State>
+			<!-- PrimaryString state -->
+			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PerlString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+			</State>
+			<!-- AlternateString state -->
+			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PerlString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="'" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="AlternateStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
+			</State>
+			<!-- SingleLineComment state -->
+			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PerlComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[# Comment
+@values = split(/&/, $ENV{'QUERY_STRING'});
+$NUMBERVAR = 7
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

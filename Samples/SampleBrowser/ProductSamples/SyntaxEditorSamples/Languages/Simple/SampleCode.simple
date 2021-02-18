@@ -1,0 +1,20 @@
+/*
+	The Simple language demonstrates a C-like
+	language that only knows several keywords and 
+	operators.  All variables are integer numbers.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}

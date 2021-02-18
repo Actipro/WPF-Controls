@@ -1,0 +1,94 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxSelection.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemDataTemplate">
+			<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=SelectionMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=MultiSelectionKind}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=CanBlockNames}" DisplayName="Block selection of A-E names" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="SELECTION">
+				<StackPanel>
+					<TextBlock x:Name="selectedItemTextBlock" Margin="0,0,0,3" Text="Selected item:" TextWrapping="Wrap" />
+					<TextBlock Text="{Binding ElementName=treeListBox, Path=SelectedItem.Name, FallbackValue='(none)'}" FontWeight="Bold" />
+
+					<TextBlock Margin="0,10,0,3" Text="Selected items:" />
+					<ItemsControl ItemsSource="{Binding ElementName=treeListBox, Path=SelectedItems}" ItemTemplate="{StaticResource ItemDataTemplate}" FontWeight="Bold" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows many of the features related to item selection.
+					The control is single selection by default, but multiple and extended selection options are available.
+					Extended selection is a multi-select mode where the Ctrl and Shift keys can be used to toggle item selection and select ranges of items respectively.
+					<LineBreak /><LineBreak />
+					Options are availble to limit multiple selections to only items that are siblings, at the same depth, etc.
+					Alternatively, the ItemSelecting event can be handled to cancel specific items from being selected.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListBox x:Name="treeListBox" MaxWidth="{StaticResource SampleThinMaxWidth}"
+						   SelectionMode="Extended" 
+						   ItemTemplate="{StaticResource ItemDataTemplate}"
+						   ItemSelecting="OnTreeListBoxItemSelecting"
+						   SelectionChanged="OnTreeListBoxSelectionChanged"
+						   >
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+
+			<common:TreeNodeModel Name="Fruits">
+				<common:TreeNodeModel Name="Berries" IsExpanded="True">
+					<common:TreeNodeModel Name="Blackberry" />
+					<common:TreeNodeModel Name="Blueberry" />
+					<common:TreeNodeModel Name="Cranberry" />
+					<common:TreeNodeModel Name="Grapes" />
+					<common:TreeNodeModel Name="Raspberry" />
+					<common:TreeNodeModel Name="Strawberry" />
+				</common:TreeNodeModel>
+				<common:TreeNodeModel Name="Other" IsExpanded="True">
+					<common:TreeNodeModel Name="Apple" />
+					<common:TreeNodeModel Name="Banana" />
+					<common:TreeNodeModel Name="Cherry" />
+					<common:TreeNodeModel Name="Grapefruit" />
+					<common:TreeNodeModel Name="Guava" />
+					<common:TreeNodeModel Name="Lemon" />
+					<common:TreeNodeModel Name="Lime" />
+					<common:TreeNodeModel Name="Kiwi" />
+					<common:TreeNodeModel Name="Orange" />
+					<common:TreeNodeModel Name="Pineapple" />
+					<common:TreeNodeModel Name="Plum" />
+				</common:TreeNodeModel>
+			</common:TreeNodeModel>
+
+		</grids:TreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,51 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.AnimatedCanvasIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Add New" Click="OnAddItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Insert New (after selected)" Margin="0,5,0,0" Click="OnInsertItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Clear All" Margin="0,5,0,0" Click="OnClearAllClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Arrange Items" Margin="0,20,0,0" Click="OnArrangeItemsClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Scatter Items" Margin="0,5,0,0" Click="OnScatterItemsClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					AnimatedCanvas arranges elements using explicitly defined coordinates that are relative to the panel's bounds.
+					The arrange bounds, along with other properties, can be fully animated to provide a nice visual effect.
+					<LineBreak /><LineBreak />
+					This example randomly positions the items within the bounds of the panel.
+					In addition, the items can be dragged to a new location using the mouse.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		
+		<sampleBrowser:LabeledCardControl>
+			<ListBox x:Name="listBox" Background="Transparent" BorderThickness="0">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:AnimatedCanvas />
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</sampleBrowser:LabeledCardControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>
+
+

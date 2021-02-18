@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'RTF' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved. Actipro Software LLC
+
+-->
+<LanguageProject LanguageKey="Rtf" LanguageDescription="RTF" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Rtf" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v101\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" />
+		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" />
+		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<RegexPatternGroup TokenKey="ControlWordToken" ClassificationTypeKey="ControlWord" Pattern="(\\)({Alpha}+)((-)?({Digit}+)|{Digit}*)" />
+				<RegexPatternGroup TokenKey="ControlSymbolToken" ClassificationTypeKey="ControlSymbol" Pattern="\\ [^\p{C}\p{Z}]" />
+				<ExplicitPatternGroup TokenKey="BeginGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="{" />
+				<ExplicitPatternGroup TokenKey="EndGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="}" />
+			</State>
+		</DynamicLexer>
+	</LanguageProject.Lexer>
+	<!-- Example text -->
+	<LanguageProject.ExampleText><![CDATA[{\rtf 
+{\fonttbl {\f0 Times New Roman;}} 
+{\*\generator Actipro SyntaxEditor;}\f0\fs60 Hello, World! 
+}]]></LanguageProject.ExampleText>
+</LanguageProject>

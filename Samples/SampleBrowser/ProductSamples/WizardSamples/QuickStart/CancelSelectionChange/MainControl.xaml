@@ -1,0 +1,48 @@
+<UserControl 
+	x:Class="ActiproSoftware.ProductSamples.WizardSamples.Demo.CancelSelectionChange.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False"
+					SelectedPageChanged="wizard_SelectedPageChanged" SelectedPageChanging="wizard_SelectedPageChanging">
+
+					<!-- Cancel Selection Change -->
+					<wizard:WizardPage x:Name="cancelSelectionChangePage" PageType="Interior"
+							Caption="Easily Cancel Selection Changes" 
+							Description="Wizard's selection change events allow you to determine why a new page is being selected and also cancel the selected page change before it occurs."
+							Title="Step 3 (Navigation and Selected Page Changes Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock FontWeight="Bold">Selection Flags</TextBlock>
+							<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">This page was selected using the following selection flags:</TextBlock>
+							<TextBlock x:Name="selectionFlagsTextBlock" FontStyle="Italic" Margin="14,3,0,0"></TextBlock>
+							<TextBlock Margin="0,14,0,0" FontWeight="Bold">Cancel Page Change</TextBlock>
+							<TextBlock TextWrapping="Wrap" Margin="0,7,0,0">Easily cancel selected page changes before they occur.  Check the following box to prevent any navigation to other pages in the wizard.</TextBlock>
+							<CheckBox x:Name="cancelSelectionChangeCheckBox" Margin="14,7,0,0">Prevent any navigation away from this page</CheckBox>
+						</StackPanel>
+					</wizard:WizardPage>
+
+					<!-- Finish -->
+					<wizard:WizardPage x:Name="finishPage" 
+							Caption="QuickStart Complete"
+							Description="This is the finish page for this QuickStart." 
+							Title="QuickStart Complete">
+						<TextBlock TextWrapping="Wrap">Press the Back button to change more options for this QuickStart.</TextBlock>
+					</wizard:WizardPage>
+
+				</wizard:Wizard>
+
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+
+</UserControl>

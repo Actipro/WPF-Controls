@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.AddListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             >
+	<UserControl.Resources>
+		<ResourceDictionary Source="CommonResources.xaml" />
+	</UserControl.Resources>
+	
+	<Border Background="#80ffffff" TextElement.Foreground="#202020" CornerRadius="3">
+		<Grid>
+			<Button x:Name="addListButton" Content="Add a list..." Click="OnAddListButtonClick" Style="{StaticResource TransparentButtonStyle}" />
+		
+			<StackPanel x:Name="inputPanel" Visibility="Collapsed">
+				<Border Background="#ffffff" CornerRadius="3,3,0,0">
+					<TextBlock Margin="10,6,10,6" Text="Add a List" FontSize="14" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+				</Border>
+				
+				<TextBox x:Name="nameTextBox" Margin="10,10,10,5" />
+				
+				<StackPanel Margin="10,0,10,10" Orientation="Horizontal">
+					<Button MinWidth="80" Content="Save" Click="OnSaveButtonClick" IsDefault="True" />
+					<Button Margin="5,0,0,0" MinWidth="80" Content="Cancel" Click="OnCancelButtonClick" IsCancel="True" />
+				</StackPanel>
+			</StackPanel>
+	    </Grid>
+	</Border>
+</UserControl>

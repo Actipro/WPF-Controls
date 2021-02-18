@@ -1,0 +1,123 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:datagrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
+	xmlns:datagrideditors="http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleCommon="clr-namespace:ActiproSoftware.ProductSamples.DataGridSamples.Common"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:ConditionalConverter x:Key="ConditionalConverter" />
+		<shared:ThicknessConverter x:Key="ThicknessConverter" />
+
+		<!-- Control template to use for new row-->
+		<ControlTemplate x:Key="NewRowControlTemplate" TargetType="{x:Type DataGridRow}">
+			<Border x:Name="DGR_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+				<SelectiveScrollingGrid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+
+					<!-- This element is used to provide a visual divider between the new row and existing rows -->
+					<Border Grid.ColumnSpan="2" Height="4" Margin="0,-1,0,0"
+							Background="{Binding Background, ElementName=rowHeader}"
+							BorderBrush="{Binding BorderBrush, ElementName=rowHeader}" BorderThickness="0,1"
+							SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" />
+
+					<!-- To use a custom element, it must be added to the default control template for the DataGridCellsPresenter.
+					     If the ItemsPresenter is not included below, then the columns will be misaligned. This is due to the fact
+					     that the with of the button in the top-left of the grid (the select all button) is calculated by the
+					     ItemsPresenter. Therefore, we include it below, but keep it hidden. -->
+					<DataGridCellsPresenter Grid.Row="1" Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+						<DataGridCellsPresenter.Template>
+							<ControlTemplate TargetType="{x:Type DataGridCellsPresenter}">
+								<Grid>
+									<ItemsPresenter Visibility="Hidden" />
+									<DockPanel Margin="{Binding HorizontalScrollOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource ThicknessConverter}, ConverterParameter=Left}" VerticalAlignment="Center">
+										<shared:DynamicImage DockPanel.Dock="Left" Source="Images\Star.png" VerticalAlignment="Top" Margin="3,2,0,2" />
+										<TextBlock Text="Click here to add a new item..." Margin="3,0,0,0" VerticalAlignment="Center" />
+									</DockPanel>
+								</Grid>
+							</ControlTemplate>
+						</DataGridCellsPresenter.Template>
+					</DataGridCellsPresenter>
+
+					<!-- This element provides the button on the left side of each row. -->
+					<DataGridRowHeader x:Name="rowHeader" Grid.Row="1"
+							Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Row}}"
+							SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" />
+
+				</SelectiveScrollingGrid>
+			</Border>
+		</ControlTemplate>
+
+		<!-- Use themed ScrollBar style -->
+		<Style TargetType="ScrollBar" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ScrollBarStyleKey}}" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=datagrid, Path=(themes:ThemeProperties.UseAlternateStyle)}" DisplayName="Use alternate style for new row" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The WPF DataGrid can be used to insert new rows into the bound data source, provided that the data source
+					supports this feature. The end-user can add new rows by entering data in the last row, which by defaults looks like the
+					other rows.
+					<LineBreak /><LineBreak />
+					This example shows how this "new row" can be easily customized, to make it more visually appealing and intuitive, using
+					the NewRowTemplateBehavior attached behavior from the Actipro WPF DataGrid Contrib assembly.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+		
+		<datagrid:ThemedDataGrid x:Name="datagrid" AutoGenerateColumns="False" CanUserAddRows="True" themes:ThemeProperties.UseAlternateStyle="True"
+				CanUserResizeRows="False" CanUserDeleteRows="False"
+				ItemsSource="{Binding Source={x:Static sampleCommon:SampleData.Values}}" SelectionUnit="FullRow"
+				GridLinesVisibility="All">
+
+			<!-- The following MultiBinding is only needed so the alternate style can be disabled. Typically, the attached property would
+				    simply be set on the DataGrid above. -->
+			<datagrid:NewRowTemplateBehavior.Template>
+				<MultiBinding Converter="{StaticResource ConditionalConverter}">
+					<Binding Path="(themes:ThemeProperties.UseAlternateStyle)" ElementName="datagrid" />
+					<Binding Source="{StaticResource NewRowControlTemplate}" />
+					<Binding Source="{x:Null}" />
+				</MultiBinding>
+			</datagrid:NewRowTemplateBehavior.Template>
+
+			<datagrid:ThemedDataGrid.Columns>
+				<datagrideditors:DataGridInt32Column Binding="{Binding Integer}" Header="Integer" />
+				<DataGridTextColumn Binding="{Binding String}" Header="String" />
+				<datagrideditors:DataGridDateColumn Binding="{Binding DateTime}" Header="Date" />
+				<DataGridCheckBoxColumn Binding="{Binding Boolean}" Header="Boolean" />
+				<DataGridTextColumn Binding="{Binding LongString}" Header="Long String" />
+			</datagrid:ThemedDataGrid.Columns>
+		</datagrid:ThemedDataGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

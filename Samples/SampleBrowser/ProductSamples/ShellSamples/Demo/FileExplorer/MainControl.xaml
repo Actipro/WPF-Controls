@@ -1,0 +1,38 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ShellSamples.Demo.FileExplorer.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="300" MinWidth="70" MaxWidth="500" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<TextBlock Grid.ColumnSpan="3" Margin="0,0,0,20" FontStyle="Italic" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">
+			The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.
+		</TextBlock>
+		
+		<DockPanel Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,3">
+			<Button FocusManager.IsFocusScope="True" DockPanel.Dock="Left" Content="Move Up" Command="{Binding ElementName=treeListBox, Path=MoveUpCommand}" />
+			<TextBox x:Name="pathTextBox" Margin="6,0,0,0" Text="{Binding ElementName=treeListBox, Path=SelectedShellObjectEditingName}" KeyDown="OnPathTextBoxKeyDown" />
+		</DockPanel>
+
+		<shell:ShellTreeListBox x:Name="treeListBox" Grid.Row="2" RootSpecialFolderKind="Default" />
+		
+		<GridSplitter Grid.Row="2" Grid.Column="1" Width="6" ResizeBehavior="PreviousAndNext" />
+
+		<shell:ShellListView x:Name="listView" Grid.Row="2" Grid.Column="2" RootShellFolder="{Binding ElementName=treeListBox, Path=SelectedShellObject}" />
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

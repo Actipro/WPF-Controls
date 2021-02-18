@@ -1,0 +1,100 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlAdditionalItems.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<!--Converters -->
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		<shared:ConditionalConverter x:Key="ConditionalConverter" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Any custom items can be added to the top horizontal bar of the ZoomContentControl.
+					Styles are provided for Button, RadioButton, RepeatButton, ToggleButton and Separator, which allow
+					these elements to blend seemlessly into the view control pane.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+		
+		<navigation:ZoomContentControl x:Name="zoomContentControl" ZoomStep="0.5">
+
+			<!-- Add several additional buttons and a separator using built-in styles -->
+			<navigation:ZoomContentControl.HorizontalItems>
+
+				<RadioButton x:Name="logoRadioButton" Content="Logo" IsChecked="True" GroupName="Group1"
+						Style="{DynamicResource {x:Static navigation:ZoomContentControl.ButtonBaseStyleKey}}"
+						Checked="OnRadioButtonChecked" />
+				<RadioButton x:Name="buttonRadioButton" Content="Button" IsChecked="False" GroupName="Group1"
+						Style="{DynamicResource {x:Static navigation:ZoomContentControl.ButtonBaseStyleKey}}"
+						Checked="OnRadioButtonChecked" />
+
+				<Separator Style="{DynamicResource {x:Static navigation:ZoomContentControl.VerticalSeparatorStyleKey}}" />
+
+				<Button Content="Bounce" IsEnabled="{Binding IsChecked, ElementName=logoRadioButton}"
+						Style="{DynamicResource {x:Static navigation:ZoomContentControl.ButtonBaseStyleKey}}">
+					<Button.Triggers>
+						<EventTrigger RoutedEvent="Button.Click">
+							<EventTrigger.Actions>
+								<BeginStoryboard>
+									<Storyboard Storyboard.TargetName="reflection" FillBehavior="Stop">
+										<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Y" From="0" To="-15"
+												DecelerationRatio="0.5" AutoReverse="True" Duration="0:0:0.3" />
+										<DoubleAnimation Storyboard.TargetProperty="ReflectionMargin" From="0" To="30"
+												DecelerationRatio="0.5" AutoReverse="True" Duration="0:0:0.3" />
+
+										<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Y" From="0" To="-4"
+												DecelerationRatio="0.5" AutoReverse="True" BeginTime="0:0:0.6"
+												Duration="0:0:0.2" />
+										<DoubleAnimation Storyboard.TargetProperty="ReflectionMargin" From="0" To="8"
+												DecelerationRatio="0.5" AutoReverse="True" BeginTime="0:0:0.6"
+												Duration="0:0:0.2" />
+
+										<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Y" From="0" To="-1"
+												DecelerationRatio="0.5" AutoReverse="True" BeginTime="0:0:1"
+												Duration="0:0:0.1" />
+										<DoubleAnimation Storyboard.TargetProperty="ReflectionMargin" From="0" To="2"
+												DecelerationRatio="0.5" AutoReverse="True" BeginTime="0:0:1"
+												Duration="0:0:0.1" />
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger.Actions>
+						</EventTrigger>
+					</Button.Triggers>
+				</Button>
+
+			</navigation:ZoomContentControl.HorizontalItems>
+
+			<!-- Content will toggle between a ReflectionContentControl and a button -->
+			<Grid>
+				<shared:ReflectionContentControl x:Name="reflection" ReflectionHeight="50"
+						Visibility="{Binding IsChecked, ElementName=logoRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+					<shared:ReflectionContentControl.RenderTransform>
+						<TranslateTransform />
+					</shared:ReflectionContentControl.RenderTransform>
+					<shared:ActiproLogo />
+				</shared:ReflectionContentControl>
+				<Button Padding="10" Click="OnButtonClick" HorizontalAlignment="Center" VerticalAlignment="Center"
+						Visibility="{Binding IsChecked, ElementName=buttonRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+					A standard WPF Button
+				</Button>
+			</Grid>
+		</navigation:ZoomContentControl>
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

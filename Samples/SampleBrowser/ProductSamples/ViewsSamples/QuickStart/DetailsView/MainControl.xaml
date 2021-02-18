@@ -1,0 +1,140 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.DetailsView.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<shared:StringFormatConverter x:Key="StringFormatConverter" />
+
+		<LinearGradientBrush x:Key="PaletteBackground" StartPoint="0,0" EndPoint="0,1">
+			<GradientStop Offset="0.2" Color="#ffffff" />
+			<GradientStop Offset="0.5" Color="#f4f4f4" />
+			<GradientStop Offset="0.9" Color="#f8f8f8" />
+		</LinearGradientBrush>
+
+		<Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+			<Setter Property="Background" Value="{StaticResource PaletteBackground}" />
+			<Setter Property="BorderBrush" Value="#444444" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Foreground" Value="#000000" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBoxItem">
+						<Border x:Name="border" Margin="1" Padding="2" MinWidth="100" MinHeight="100" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" Opacity="0.8">
+							<Grid VerticalAlignment="Center">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition x:Name="column1" Width="*" />
+									<ColumnDefinition x:Name="column2" Width="0" />
+								</Grid.ColumnDefinitions>
+
+								<StackPanel Margin="10,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+									<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}" BorderThickness="1" VerticalAlignment="Center">
+										<Image Width="48" Height="48" Source="{Binding PhotoUri}" />
+									</Border>
+									<TextBlock x:Name="lastName" HorizontalAlignment="Center">
+										<TextBlock.Text>
+											<Binding Path="LastName" StringFormat="{}{0}," />
+										</TextBlock.Text>
+									</TextBlock>
+									<TextBlock x:Name="firstName" Text="{Binding FirstName}" HorizontalAlignment="Center" />
+								</StackPanel>
+
+								<StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+									<TextBlock Text="{Binding Position}" FontStyle="Italic" />
+									<StackPanel>
+										<TextBlock Margin="0,7,0,0" Text="{Binding Id, Converter={StaticResource StringFormatConverter}, ConverterParameter='Employee #{0}'}" Foreground="Gray" />
+										<TextBlock Text="{Binding HireDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='Hired: {0:yyyy-MM-dd}'}" Foreground="Gray" />
+									</StackPanel>
+								</StackPanel>
+							</Grid>
+						</Border>
+
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Trigger.EnterActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+										</Storyboard>
+									</BeginStoryboard>
+								</Trigger.EnterActions>
+								<Trigger.ExitActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Opacity" To="0.8" Duration="0:0:0.250" />
+										</Storyboard>
+									</BeginStoryboard>
+								</Trigger.ExitActions>
+							</Trigger>
+							<Trigger Property="IsSelected" Value="true">
+								<Setter TargetName="border" Property="Width" Value="202" />
+								<Setter TargetName="border" Property="BorderBrush" Value="Orange" />
+								<Setter TargetName="column1" Property="Width" Value="Auto" />
+								<Setter TargetName="lastName" Property="FontWeight" Value="Bold" />
+								<Setter TargetName="firstName" Property="FontWeight" Value="Bold" />
+								<Setter TargetName="column2" Property="Width" Value="*" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Reset List" Click="OnResetClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Remove Selected Item(s)" Margin="0,5,0,0" Click="OnRemoveItemsClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Content="Clear All" Margin="0,5,0,0" Click="OnClearAllClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The various panels included with the Views product animate changes in the arrange rectangles for the child elements.
+					This effect is used even if the size of a child element is increased due to items being shown or collapsed in the associated control template.
+					This example uses an AnimatedWrapPanel and shows how items can include additional information
+					when selected.
+					Use Ctrl and Shift keyboard modifiers to multi-select items.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<sampleBrowser:LabeledCardControl>
+			<ListBox x:Name="listBox" Background="Transparent" BorderThickness="0" ItemContainerStyle="{StaticResource ListBoxItemStyle}" SelectionMode="Extended"
+					 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:AnimatedWrapPanel>
+							<views:AnimatedWrapPanel.ArrangeAnimation>
+								<views:ArrangeAnimation EnterAnimation="Fade,Scale" LeaveAnimation="Fade,Scale"
+										ScaleEnterUniformScale="0.75" ScaleLeaveUniformScale="1.25">
+								</views:ArrangeAnimation>
+							</views:AnimatedWrapPanel.ArrangeAnimation>
+						</views:AnimatedWrapPanel>
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</sampleBrowser:LabeledCardControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>
+
+

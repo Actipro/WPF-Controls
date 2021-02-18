@@ -1,0 +1,72 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsCustom.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+    >
+    
+	<DockPanel>
+		<ToolBarTray DockPanel.Dock="Top">
+			<ToolBar>
+				<Button Click="OnAddIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Add16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Add Custom Indicator" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnClearIndicatorsButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Clear Indicators" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Separator />
+				<Button Click="OnGoToPreviousIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Back16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Previous Indicator" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnGoToNextIndicatorButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Next16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Next Indicator" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" IsIndicatorMarginVisible="True" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/* 
+
+This QuickStart shows how a custom indicator can be applied to a range
+of text.  Indicators can render a glyph in the indicator margin and
+apply special highlighting over the text range they cover.
+
+Select some text below and click the 'Add Custom Indicator' button above to
+create an indicator over the range.  Make edits in and around the indicator
+and note how the text changes move the indicator tags around with their 
+tracked text ranges.
+
+*/
+
+var labelString = 'Screen pixel count: ';
+
+function displayScreenPixelCount(screenWidth, screenHeight) {
+	// Write a paragraph with the screen's pixel count
+	document.write("<p>" + sampleString);
+	document.write(product(width, height));
+	document.write("</p>");
+}
+
+function product(x, y) {
+	return x * y;
+}
+]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'VBScript' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="VBScript" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default" DefaultCaseSensitivity="AutoCorrect">
+				<State.ChildStates>
+					<StateRef Key="String" />
+					<StateRef Key="Comment" />
+					<StateRef Key="PreprocessorDirective" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. ,
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="NativeType" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Boolean Byte Currency Date Double Integer Long Object Single String Time
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						False True
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="OperatorKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						And Eqv Imp Is Mod Not Or Xor
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						Abs Array Asc As Atn Call Case CBool CByte CCur CDate CDbl Chr CInt CLng Class Const Cos CreateObject CSng
+						CStr DateAdd DateDiff DatePart DateSerial DateValue Date Day Dim Do Each ElseIf Else Empty End Erase
+						Error Eval ExecuteGlobal Execute Exit Explicit Exp Filter Fix FormatCurrency FormatDateTime
+						FormatNumber FormatPercent For Function GetLocale GetObject GetRef Get Goto Hex Hour If InputBox
+						InStrRev InStr Int IsArray IsDate IsEmpty IsNull IsNumeric IsObject Join LBound LCase Left Len
+						Let LoadPicture Local Log Loop LTrim Mid Minute MonthName Month MsgBox New Next Nothing Now Null
+						Oct On Option Private Property Public Randomize ReDim Replace Resume RGB Right Rnd Round RTrim ScriptEngineBuildVersion
+						ScriptEngineMajorVersion ScriptEngineMinorVersion ScriptEngine Second Select SetLocale
+						Set Sgn Sin Space Split Sqr StrComp String StrReverse Sub Tan Then Timer TimeSerial TimeValue Time
+						To Trim TypeName UBound UCase VarType WeekDayName WeekDay Wend While With Year
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						& * + - / <= <> < = >= > \ ^
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexIntegerNumber" ClassificationTypeKey="Number" Pattern="&amp; [hH] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- String state -->
+			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StringEndDelimiter" Pattern="[\&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<ExplicitPatternGroup TokenKey="StringEscapedCharacter" Pattern="&quot;&quot;" />
+				<RegexPatternGroup TokenKey="StringText" Pattern="[^\&quot;\n]+" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" LookBehindPattern="^|[^\.]" Pattern="REM" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+			</State>
+			<!-- PreprocessorDirective state -->
+			<State Key="PreprocessorDirective" DefaultTokenKey="PreprocessorDirectiveText">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="RegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#Region" LookAheadPattern="{NonWord}|\z" CaseSensitivity="AutoCorrect" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="EndRegionPreprocessorDirective" ClassificationTypeKey="PreprocessorKeyword" Pattern="#End Region" LookAheadPattern="{NonWord}|\z" CaseSensitivity="AutoCorrect" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="PreprocessorDirectiveEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="PreprocessorDirectiveText" Pattern="{NonLineTerminator}+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[Function GetRandom(lowerBound, upperBound) 
+	'Create a random number within the range
+	Randomize
+	GetRandom = CInt((upperBound - lowerBound) * Rnd + 1) 
+End Function 
+ 
+document.writeln(CStr(GetRandom(1, 100)))
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

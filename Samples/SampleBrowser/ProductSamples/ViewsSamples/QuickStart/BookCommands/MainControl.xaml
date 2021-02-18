@@ -1,0 +1,77 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style TargetType="views:BookPage">
+			<Setter Property="Background" Value="WhiteSmoke" />
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Foreground" Value="#000000" />
+			<Setter Property="Padding" Value="15" />
+			<Setter Property="ContentTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="80" FontWeight="Bold"
+								Text="{Binding}" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button CommandTarget="{Binding ElementName=book}" Command="FirstPage" Style="{StaticResource SampleOptionsActionButtonStyle}">First Page</Button>
+					<Button Margin="0,5,0,0" CommandTarget="{Binding ElementName=book}" Command="PreviousPage" Style="{StaticResource SampleOptionsActionButtonStyle}">Previous Page</Button>
+					<Button Margin="0,5,0,0" CommandTarget="{Binding ElementName=book}" Command="NextPage" Style="{StaticResource SampleOptionsActionButtonStyle}">Next Page</Button>
+					<Button Margin="0,5,0,0" CommandTarget="{Binding ElementName=book}" Command="LastPage" Style="{StaticResource SampleOptionsActionButtonStyle}">Last Page</Button>
+
+					<editors:Int32EditBox x:Name="int32EditBox" Margin="0,20,0,0" MinWidth="50" Value="1" IsNullAllowed="False" Minimum="0" Maximum="9" SpinWrapping="Wrap" SpinnerVisibility="Visible" />
+					<Button Margin="0,5,0,0" CommandTarget="{Binding ElementName=book}" Command="GoToPage" 
+							CommandParameter="{Binding ElementName=int32EditBox, Path=Value}" Style="{StaticResource SampleOptionsActionButtonStyle}">Go to Page</Button>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Book control supports several routed commands for programmatic navigation.
+					The commands can be used to jump to any page in the Book and even include the page turn animation.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		
+		<Viewbox>
+			<views:Book x:Name="book" Width="600" Height="400" TextOptions.TextFormattingMode="Ideal">
+				<system:Int32>0</system:Int32>
+				<system:Int32>1</system:Int32>
+				<system:Int32>2</system:Int32>
+				<system:Int32>3</system:Int32>
+				<system:Int32>4</system:Int32>
+				<system:Int32>5</system:Int32>
+				<system:Int32>6</system:Int32>
+				<system:Int32>7</system:Int32>
+				<system:Int32>8</system:Int32>
+				<system:Int32>9</system:Int32>
+			</views:Book>
+		</Viewbox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>
+
+

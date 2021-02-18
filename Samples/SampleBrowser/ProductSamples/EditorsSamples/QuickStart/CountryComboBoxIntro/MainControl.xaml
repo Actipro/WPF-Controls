@@ -1,0 +1,80 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.CountryComboBoxIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CountryComboBox can be used to select a Country from a 
+					list of countries in the world. The SelectedValue will be a string that contains the 
+					two character country code associated with the selected Country.
+					<LineBreak /><LineBreak />
+					The country code can then be used with LINQ and CountryCurrencyMapping to query
+					the Currency that is used in that Country.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<editors:CountryComboBox x:Name="comboBox" MinWidth="300" SelectedValue="US" HorizontalAlignment="Center" 
+									 shared:HintProperties.Hint="Country" SelectionChanged="OnComboBoxSelectionChanged" />
+
+			<views:MultiColumnPanel MaxWidth="{StaticResource SampleNarrowMaxWidth}" MaxColumnCount="2" ColumnMinWidth="200">
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Selected alpha-2 country code:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=comboBox, Path=SelectedValue}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+				</StackPanel>
+				<StackPanel Margin="0,50,0,0">
+					<TextBlock Text="Selected alpha-3 country code:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+					<TextBlock Margin="0,3" Text="{Binding ElementName=comboBox, Path=SelectedItem.Alpha3Code}" FontStyle="Italic" TextTrimming="CharacterEllipsis" TextAlignment="Center"  />
+				</StackPanel>
+			</views:MultiColumnPanel>
+
+			<StackPanel Margin="0,20,0,0">
+				<TextBlock Text="Currencies used:" TextTrimming="CharacterEllipsis" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+				<ItemsControl x:Name="currenciesItemsControl" Margin="7,3,0,0" HorizontalAlignment="Center">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Margin="0,0,7,0" CornerRadius="3" BorderThickness="1" BorderBrush="#808080" Background="#20ffffff" Padding="5,2" Opacity="0.75">
+								<TextBlock Text="{Binding Code}" />
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="A filtered list of several European countries">
+					<editors:CountryComboBox ItemsSource="{Binding FilteredCountries}" SelectedValue="{Binding SelectedFilteredCountry}" 
+												MinWidth="300" shared:HintProperties.Hint="Country" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Placeholder text telling the user the kind of data to enter">
+					<editors:CountryComboBox MinWidth="300" shared:HintProperties.Hint="Country" HorizontalAlignment="Left" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

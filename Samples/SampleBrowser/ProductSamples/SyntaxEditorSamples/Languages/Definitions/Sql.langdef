@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Definition (.langdef)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'SQL' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageDefinition LanguageKey="Sql" LanguageDescription="SQL" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+	<!-- Classification types -->
+	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="SqlKeyword" Description="SQL Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="SqlFunction" Description="SQL Function" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="SqlOperator" Description="SQL Operator" DefaultStyle="#FF808080" />
+		<ClassificationType Key="SqlDataType" Description="SQL Data Type" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="SqlVariable" Description="SQL Variable" DefaultStyle="#FF008000" />
+		<ClassificationType Key="SqlSystemVariable" Description="SQL System Variable" DefaultStyle="#FF008000,True" />
+		<ClassificationType Key="SqlNumber" Description="SQL Number" DefaultStyle="#FF800000,True" />
+		<ClassificationType Key="SqlString" Description="SQL String" DefaultStyle="#FFFF0000" />
+		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" />
+	</LanguageDefinition.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageDefinition.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="String" />
+					<StateRef Key="SquareString" />
+					<StateRef Key="Comment" />
+					<StateRef Key="MultiLineComment" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="SqlKeyword" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ADD ALTER AS ASC AUTHORIZATION BACKUP BEGIN BREAK BROWSE BULK BY CASCADE CHECK CHECKPOINT CLOSE
+						CLUSTERED COLUMN COMMIT COMMITTED COMPUTE CONFIRM CONSTRAINT CONTAINS CONTINUE CONTROLROW CREATE
+						CROSS CURRENT CURRENT_DATE CURRENT_TIME CURSOR DATABASE DBCC DEALLOCATE DECLARE DEFAULT DELETE
+						DENY DESC DISK DISTINCT DISTRIBUTED DROP DUMMY DUMP ELSE END ERRLVL ERROREXIT ESCAPE EXCEPT EXEC
+						EXECUTE EXIT FETCH FILE FILLFACTOR FLOPPY FOR FOREIGN FREETEXT FROM FULL FUNCTION GO GOTO GRANT
+						GROUP HAVING HOLDLOCK IDENTITY_INSERT IDENTITYCOL IF INDEX INNER INSERT INTERSECT INTO IS ISOLATION
+						KEY KILL LEVEL LINENO LOAD MIRROREXIT NEXT NOCHECK NONCLUSTERED NULL OF OFF OFFSETS ON ONCE ONLY
+						OPEN OPENDATASOURCE OPTION ORDER OVER PERCENT PERM PERMANENT PIPE PLAN PREPARE PRIMARY PRINT PRIVILEGES
+						PROC PROCEDURE PROCESSEXIT PUBLIC RAISERROR READ READTEXT RECONFIGURE REFERENCES REPEATABLE
+						REPLICATION RESTORE RESTRICT RETURNS RETURN REVOKE ROLLBACK ROWCOUNT ROWGUIDCOL RULE SAVE SCHEMA
+						SELECT SERIALIZABLE SET SETUSER SHUTDOWN STATISTICS TABLE TAPE TEMP TEMPORARY TEXTSIZE THEN TO
+						TOP TRAN TRANSACTION TRIGGER TRUNCATE TSEQUAL UNCOMMITTED UNION UNIQUE UPDATE UPDATETEXT USE
+						VALUES VIEW WAITFOR WHEN WHERE WHILE WITH WORK WRITETEXT
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Function" ClassificationTypeKey="SqlFunction" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ABS ACOS APP_NAME ASCII ASIN ATAN ATN2 AVG CASE CAST CEILING CHARINDEX COALESCE COL_LENGTH COL_NAME
+						COLUMNPROPERTY CONTAINSTABLE CONVERT COS COT COUNT CURRENT_TIMESTAMP CURRENT_USER CURSOR_STATUS
+						DATABASEPROPERTY DATALENGTH DATEADD DATEDIFF DATENAME DATEPART DAY DB_ID DB_NAME DEGREES DIFFERENCE
+						EXP FILE_ID FILE_NAME FILEGROUP_ID FILEGROUP_NAME FILEGROUPPROPERTY FILEPROPERTY FLOOR FORMATMESSAGE
+						FREETEXTTABLE FULLTEXTCATALOGPROPERTY FULLTEXTSERVICEPROPERTY GETANSINULL GETDATE GROUPING
+						HOST_ID HOST_NAME IDENT_INCR IDENT_SEED IDENTITY INDEX_COL INDEXPROPERTY IS_MEMBER IS_SRVROLEMEMBER
+						ISDATE ISNULL ISNUMERIC LEN LOG LOG10 LOWER LTRIM MAX MIN MONTH NEWID NULLIF OBJECT_ID OBJECT_NAME
+						OBJECTPROPERTY OPENQUERY OPENROWSET PARSENAME PATINDEX PERMISSIONS PI POWER QUOTENAME RADIANS
+						RAND REPLACE REPLICATE REVERSE ROUND RTRIM SCOPE_IDENTITY SESSION_USER SIGN SIN SOUNDEX SPACE
+						SQRT SQUARE STATS_DATE STDEV STDEVP STR STUFF SUBSTRING SUM SUSER_ID SUSER_NAME SUSER_SID SUSER_SNAME
+						SYSTEM_USER TAN TEXTPTR TEXTVALID TYPEPROPERTY UNICODE UPPER USER USER_ID USER_NAME VAR VARP
+						YEAR
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="SqlOperator">
+					<ExplicitPatterns><![CDATA[
+						+ - * / % ~ & | ^ = > < >= <= <> != !> !<
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="SqlOperator" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						ALL AND ANY BETWEEN EXISTS IN LEFT JOIN LIKE NOT OR OUTER RIGHT SOME
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="DataType" ClassificationTypeKey="SqlDataType" LookAheadPattern="{NonWord}|\z">
+					<ExplicitPatterns><![CDATA[
+						bigint binary bit char character datetime dec decimal double float int integer image long money
+						national nchar ntext number nvarchar precision raw real single smalldatetime smallint smallmoney
+						text timestamp tinyint uniqueidentifier varbinary varchar varchar2 varying
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
+				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="SqlVariable" Pattern="@ {Word}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="SystemVariable" ClassificationTypeKey="SqlSystemVariable" Pattern="@@ {Word}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="Number" ClassificationTypeKey="SqlNumber" Pattern="{Digit}+ (\. {Digit}+)?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="SqlNumber" Pattern="0 [x | X] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- String state -->
+			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="SqlString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringEndDelimiter" Pattern="'" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="StringText" Pattern="[^']+" />
+			</State>
+			<!-- SquareString state -->
+			<State Key="SquareString" DefaultTokenKey="SquareStringText" DefaultClassificationTypeKey="SqlString">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="SquareStringStartDelimiter" Pattern="[" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="SquareStringEndDelimiter" Pattern="]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="SquareStringText" Pattern="[^\]]+" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="SqlComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="RegionStartDelimiter" Pattern="-- {Whitespace}* Region" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="EndRegionStartDelimiter" Pattern="-- {Whitespace}* End {Whitespace}? Region" LookAheadPattern="{NonWord}|\z" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="--" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+			</State>
+			<!-- MultiLineComment state -->
+			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="SqlComment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*]+" />
+			</State>
+		</DynamicLexer>
+	</LanguageDefinition.Lexer>
+	<!-- Example text -->
+	<LanguageDefinition.ExampleText><![CDATA[/* 
+ * Stored Procedure 
+ */		
+CREATE PROCEDURE titles_sum
+	@TITLE varchar(40) = '%',
+	@SUM money OUTPUT
+AS
+
+-- Region Variable Declarations
+declare @Unused int
+-- End Region
+
+-- Select records
+SELECT @SUM = SUM(price)
+FROM [book titles]
+WHERE title LIKE @TITLE
+IF @@ERROR <> 0
+	PRINT 'An error occurred'
+]]></LanguageDefinition.ExampleText>
+</LanguageDefinition>

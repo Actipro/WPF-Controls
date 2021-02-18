@@ -1,0 +1,180 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookInteractiveControls.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		<LinearGradientBrush x:Key="CoverBackground" StartPoint="0,0" EndPoint="0,1">
+			<GradientStop Color="#815324" Offset="0.0" />
+			<GradientStop Color="#aa783b" Offset="0.15" />
+			<GradientStop Color="#aa783b" Offset="0.485" />
+			<GradientStop Color="#4d2913" Offset="0.49" />
+			<GradientStop Color="#714321" Offset="0.495" />
+			<GradientStop Color="#714321" Offset="0.505" />
+			<GradientStop Color="#4d2913" Offset="0.51" />
+			<GradientStop Color="#aa783b" Offset="0.515" />
+			<GradientStop Color="#aa783b" Offset="0.85" />
+			<GradientStop Color="#815324" Offset="1.0" />
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="CoverBorderBrush" Color="#351608" />
+
+		<LinearGradientBrush x:Key="SeparatorBrush" StartPoint="0,0" EndPoint="1,0">
+			<GradientStop Color="#00000000" Offset="0.0" />
+			<GradientStop Color="#66000000" Offset="0.5" />
+			<GradientStop Color="#00000000" Offset="1.0" />
+		</LinearGradientBrush>
+
+		<Style TargetType="views:BookPage">
+			<Setter Property="Background" Value="WhiteSmoke" />
+			<Setter Property="BorderBrush" Value="DarkGray" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="Foreground" Value="#000000" />
+			<Setter Property="Padding" Value="15" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Book control can host any type of content, including controls such as buttons and list boxes.
+					This allows the Book to be an interactive experience, rather than for reading only.
+					<LineBreak /><LineBreak />
+					This QuickStart shows several controls embedded in the Book's pages and include notifications when an action is performed.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		
+		<Viewbox>
+			<Border Background="{StaticResource CoverBackground}" BorderBrush="{StaticResource CoverBorderBrush}"
+					BorderThickness="1" CornerRadius="5" Padding="8">
+				<views:Book Orientation="Vertical" Width="600" Height="400" TextOptions.TextFormattingMode="Ideal">
+
+					<views:BookPage>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="11" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="11" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<!-- Button -->
+							<TextBlock Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">Button</TextBlock>
+							<TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Click the Button</TextBlock>
+							<Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Top" Click="OnButtonClick">Click Me</Button>
+
+							<Rectangle Grid.Column="1" Grid.RowSpan="5" Margin="0,10" Width="1" HorizontalAlignment="Center"
+									VerticalAlignment="Stretch" Fill="{StaticResource SeparatorBrush}" />
+
+							<!-- ComboBox -->
+							<TextBlock Grid.Column="2" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">ComboBox</TextBlock>
+							<TextBlock Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Select an item from the ComboBox</TextBlock>
+							<ComboBox Grid.Column="2" Grid.Row="4" VerticalAlignment="Top"
+									SelectionChanged="OnComboBoxSelectionChanged">
+								<ComboBoxItem>Item 1</ComboBoxItem>
+								<ComboBoxItem>Item 2</ComboBoxItem>
+								<ComboBoxItem>Item 3</ComboBoxItem>
+							</ComboBox>
+
+							<Rectangle Grid.Column="3" Grid.RowSpan="5" Margin="0,10" Width="1" HorizontalAlignment="Center"
+									VerticalAlignment="Stretch" Fill="{StaticResource SeparatorBrush}" />
+
+							<!-- ListBox -->
+							<TextBlock Grid.Column="4" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">ListBox</TextBlock>
+							<TextBlock Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Select an item from the ListBox</TextBlock>
+							<ListBox Grid.Column="4" Grid.Row="4" VerticalAlignment="Top"
+									SelectionChanged="OnListBoxSelectionChanged">
+								<ListBoxItem>Item 1</ListBoxItem>
+								<ListBoxItem>Item 2</ListBoxItem>
+								<ListBoxItem>Item 3</ListBoxItem>
+							</ListBox>
+						</Grid>
+					</views:BookPage>
+
+					<views:BookPage>
+						<Grid>
+							<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13" FontStyle="Italic"
+									FontWeight="Bold" Foreground="DarkRed"
+									Text="{Binding ElementName=userControl, Path=AlertText}"
+									Opacity="{Binding ElementName=userControl, Path=AlertOpacity}" />
+						</Grid>
+					</views:BookPage>
+
+					<views:BookPage>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="11" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="11" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="5" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<!-- RadioButton -->
+							<TextBlock Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">RadioButton</TextBlock>
+							<TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Select an option from the RadioButton group</TextBlock>
+							<StackPanel Grid.Column="0" Grid.Row="4" VerticalAlignment="Top">
+								<RadioButton Checked="OnRadioButtonChecked" GroupName="RadioButtonGroup">Option 1</RadioButton>
+								<RadioButton Margin="0,5,0,0" Checked="OnRadioButtonChecked" GroupName="RadioButtonGroup">Option 2</RadioButton>
+								<RadioButton Margin="0,5,0,0" Checked="OnRadioButtonChecked" GroupName="RadioButtonGroup">Option 3</RadioButton>
+							</StackPanel>
+
+							<Rectangle Grid.Column="1" Grid.RowSpan="5" Margin="0,10" Width="1" HorizontalAlignment="Center"
+									VerticalAlignment="Stretch" Fill="{StaticResource SeparatorBrush}" />
+
+							<!-- TextBox -->
+							<TextBlock Grid.Column="2" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">TextBox</TextBlock>
+							<TextBlock Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Type into the TextBox</TextBlock>
+							<TextBox Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" TextChanged="OnTextBoxTextChanged" />
+
+							<Rectangle Grid.Column="3" Grid.RowSpan="5" Margin="0,10" Width="1" HorizontalAlignment="Center"
+									VerticalAlignment="Stretch" Fill="{StaticResource SeparatorBrush}" />
+
+							<!-- Slider -->
+							<TextBlock Grid.Column="4" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center">Slider</TextBlock>
+							<TextBlock Grid.Column="4" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap">Move the position of the Slider</TextBlock>
+							<Slider Grid.Column="4" Grid.Row="4" VerticalAlignment="Top" ValueChanged="OnSliderValueChanged" />
+						</Grid>
+					</views:BookPage>
+
+					<views:BookPage>
+						<Grid>
+							<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13" FontStyle="Italic"
+									FontWeight="Bold" Foreground="DarkRed"
+									Text="{Binding ElementName=userControl, Path=AlertText}"
+									Opacity="{Binding ElementName=userControl, Path=AlertOpacity}" />
+						</Grid>
+					</views:BookPage>
+
+				</views:Book>
+			</Border>
+		</Viewbox>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

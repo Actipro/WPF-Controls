@@ -1,0 +1,37 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		
+		<shared:PixelSnapper DockPanel.Dock="Top">
+			<DockPanel Margin="20,10">
+				<TextBlock DockPanel.Dock="Left" Text="Current document " VerticalAlignment="Center" />
+				
+				<ComboBox x:Name="documentComboBox" SelectedIndex="0">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding FileName}" />
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+					
+					<editor:EditorDocument FileName="Document #1" xml:space="preserve"><![CDATA[This is the first document.
+
+When you select a different IEditorDocument in the ComboBox above, the newly selected IEditorDocument will be swapped into the SyntaxEditor.  This is all accomplished in this sample via XAML bindings.
+
+Try typing in some of the documents and then switching to others and switching back.  You'll see your changes when a previously-modified document is restored into the editor.  This shows how you can hold multiple documents in memory and easily swap them in and out of a SyntaxEditor instance.]]></editor:EditorDocument>
+					<editor:EditorDocument FileName="Document #2" xml:space="preserve"><![CDATA[This is the second document.]]></editor:EditorDocument>
+					<editor:EditorDocument FileName="Document #3" xml:space="preserve"><![CDATA[This is the third document.]]></editor:EditorDocument>
+				</ComboBox>
+			</DockPanel>
+		</shared:PixelSnapper>
+		
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True" 
+							 Document="{Binding ElementName=documentComboBox, Path=SelectedItem}" />
+
+	</DockPanel>
+
+</UserControl>

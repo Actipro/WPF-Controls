@@ -1,0 +1,16 @@
+<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
+    
+	<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}" Color="#eef6f1" />
+	<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}" Color="#b2cbbb" />
+	<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ContainerForegroundMidLowNormalBrushKey}" Color="#323f37" />
+	
+	<Style x:Key="DialogButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ButtonBaseStyleKey}}">
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="2" />
+		<Setter Property="FontWeight" Value="Bold" />
+		<Setter Property="Padding" Value="15,7" />
+	</Style>
+	
+</ResourceDictionary>

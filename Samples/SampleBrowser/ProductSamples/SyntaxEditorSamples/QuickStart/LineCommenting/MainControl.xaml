@@ -1,0 +1,70 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.LineCommenting.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c"
+    >
+	
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10" FocusManager.IsFocusScope="true">
+			<DockPanel>
+				<WrapPanel DockPanel.Dock="Left" VerticalAlignment="Center">
+					<TextBlock Margin="0,0,5,0" Text="Line commenter" VerticalAlignment="Center" />
+					<ComboBox x:Name="lineCommentersComboBox" SelectionChanged="OnLineCommenterSelectionChangedEvent">
+						<ComboBoxItem Content="// (per-line)" />
+						<ComboBoxItem Content="/* */ (range)" />
+					</ComboBox>
+				</WrapPanel>
+
+				<WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+					<Button Margin="0,0,3,0" Content="Comment Lines" Command="editor:EditorCommands.CommentLines" CommandTarget="{Binding ElementName=editor}" />
+					<Button Content="Uncomment Lines" Command="editor:EditorCommands.UncommentLines" CommandTarget="{Binding ElementName=editor}" />
+				</WrapPanel>
+			</DockPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:SimpleSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[/*
+
+SyntaxEditor's languages supports a powerful line commenting interface that
+can both comment and uncomment lines.  There are two default implementation 
+of this interface.
+
+The RangeLineCommenter class can be used to surround a selection with a
+set of start/end delimiters when commenting.  The delimiters are removed
+when uncommenting.
+
+The LineBasedLineCommenter class can be used to insert a delimiter at the
+start of each line in the current selection.
+
+This QuickStart defines two line commenters, which may be selected from the
+drop-down above.  Use the Comment Lines and Uncomments Lines buttons to
+use the selected line commenter on the current selection in the editor.
+Select some code below and give it a try.
+
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Subtract(x, y) {
+	return x - y;
+}
+
+function Multiply(x, y) {
+	return x * y;
+}
+
+function Divide(x, y) {
+	return x / y;
+}
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</DockPanel>
+
+</UserControl>

@@ -1,0 +1,133 @@
+---
+title: "PopupButton"
+page-title: "PopupButton - Ribbon Controls"
+order: 8
+---
+# PopupButton
+
+The [PopupButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.PopupButton) class provides an implementation of buttons that display a popup when clicked.
+
+The popup content is usually a [Menu](../miscellaneous/menu.md), but instead may be any sort of content that you wish, including a `Panel` of mutiple controls or elements.
+
+> [!NOTE]
+> See the [Control Basics](../control-basics.md) topic for many implementation details that are common to the built-in controls such as this one.
+
+## Variants
+
+This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+
+| Context | Variant Size | Sample UI |
+|-----|-----|-----|
+| MenuItem | Large | ![Screenshot](../../images/popupbutton-menu-item-large.gif) |
+| MenuItem | Medium, Small | ![Screenshot](../../images/popupbutton-menu-item-medium.gif) |
+| (any other) | Large | ![Screenshot](../../images/popupbutton-large.gif) |
+| (any other) | Medium | ![Screenshot](../../images/popupbutton-medium.gif) |
+| (any other) | Small | ![Screenshot](../../images/popupbutton-small.gif) |
+| (any other) | Collapsed | ![Screenshot](../../images/popupbutton-collapsed.gif) (also has ImageSourceSmallSize set to 11,11 for this sample) |
+
+## Capabilities
+
+The following table gives an overview of the capabilities of the control.
+
+| Item | Details |
+|-----|-----|
+| Supports tall size (fills height of [Group](../miscellaneous/group.md)) | Yes. |
+| Supports normal size | Yes. |
+| Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
+| Base class | [PopupButtonBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase). |
+| Child items | Yes.  Single item set via the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  The content may be any object and can be templated if desired.  The most common content is a [Menu](../miscellaneous/menu.md) control. |
+| Has popup | Yes. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText) property. |
+| Is key tip scope | Yes. |
+| Click event trigger | None. |
+| Supports use outside of Ribbon | Yes. |
+| Supports commands | Yes, but for populating the user interface only. |
+| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
+| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | No. |
+| Default CommandParameter | None. |
+
+## Adding Popup Content
+
+Any sort of content may be displayed in the popup for this control.  Simply assign the content to the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  If the content is not a UI element and needs to be templated, you may use the [PopupContentTemplate](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplate) or [PopupContentTemplateSelector](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplateSelector) properties to do so.
+
+The most common content for a popup is a [Menu](../miscellaneous/menu.md) control, which renders its items as menu items:
+
+```xaml
+<ribbon:PopupButton ImageSourceLarge="/Resources/Images/Paste32.png" ImageSourceSmall="/Resources/Images/Paste16.png" Label="Paste" KeyTipAccessText="V">
+	<ribbon:Menu>
+		<ribbon:Button ImageSourceSmall="/Resources/Images/Paste16.png" Label="Paste" KeyTipAccessText="P" />
+		<ribbon:Button ImageSourceSmall="/Resources/Images/PasteSpecial16.png" Label="Paste Special" KeyTipAccessText="S" />
+		<ribbon:Button ImageSourceSmall="/Resources/Images/PasteHyperlink16.png" Label="Paste Hyperlink" KeyTipAccessText="H" />
+	</ribbon:Menu>
+</ribbon:PopupButton>
+```
+
+> [!NOTE]
+> To properly add multiple controls for use as popup content, use a `Panel` as the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent).  For instance, use a native WPF `StackPanel` to stack a popup header banner image on top of a [Menu](../miscellaneous/menu.md) of items.  By using techniques like this (also illustrated throughout the sample project), you can create complex layouts of popup content.
+
+See the [Working with Popups](../working-with-popups.md) topic for more detailed information on what you can do with popups.
+
+## Making the Popup Resizable
+
+### With a Contained PopupGallery
+
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+
+### Without a Contained PopupGallery
+
+There may be other scenarios where your popup content doesn't include a [PopupGallery](popupgallery.md) control but you still want the popup to be resizable.  In this case, leave the [PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property its default value of `None` and wrap your popup content with a [ResizableContentControl](xref:ActiproSoftware.Windows.Controls.ResizableContentControl) (located in the Shared Library).  This will add a gripper to the content allowing for resizing of the popup.
+
+This is very useful if you want to have a control like a native WPF `TextBox` be resizable in a [PopupButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.PopupButton)'s popup.
+
+Here is some XAML code showing a sample implementation:
+
+```xaml
+<ribbon:PopupButton ImageSourceLarge="/Resources/Images/Paste32.png" Label="Popup with Resizable Content">
+	<shared:ResizableContentControl MinWidth="250" MinHeight="50" MaxWidth="600" MaxHeight="400">
+		<TextBox Text="This popup can be resized." AcceptsReturn="True" 
+			BorderThickness="0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" />
+	</shared:ResizableContentControl>
+</ribbon:PopupButton>
+```
+
+## Disabling When Child Items Are All Disabled
+
+One of the ribbon UI design requirements is that when a popup button's child items are all disabled, the popup button must also be disabled.  Because of the way WPF commands work, the [PopupButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.PopupButton) control only examines child items if a command is assigned to its [Command](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Command) property.  So as long as you have a command set to the [PopupButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.PopupButton), this functionality will work.  If you need to use a temporary command while prototyping, use `ApplicationCommands.NotACommand`.
+
+If you would like to prevent this automated functionality from occurring, you can set the [AutoDisableWhenPopupContentIsDisabled](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.AutoDisableWhenPopupContentIsDisabled) to `false`.
+
+## Adding a Description for Large Menu Items
+
+Any [ButtonBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase)-derived control has a [MenuItemDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase.MenuItemDescription) property.  This property can be set to a string to display an extended description when used in a large menu context, such as in the application menu.
+
+When set, the `Label` of the control will be displayed in bold above the description.  The description will wrap to as many lines as needed to display itself.  This feature is best used on button-based controls that appear on a child menu of a root application menu item.
+
+## Changing the Image Size
+
+In any of the non-large variant sizes, you can set the [ImageSourceSmallSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase.ImageSourceSmallSize) property to the specific size image that you'd like to display.  By default, this is `16x16` however you could make it smaller or larger if you have a smaller or larger image.
+
+This functionality is typically used outside of the Ribbon in standalone use of the control.  If you wish to have a smaller control than the default, be sure to set `MinHeight` to `0` as well since the `MinHeight` for the `Medium` and `Small` variants of this control currently ensures the control is the proper height for usage in the Ribbon, per the requirements stated by Microsoft.
+
+## Preventing the Large Variant's Label from Word Wrapping
+
+Sometimes you may have a short couple of words that make up a button's label and you run across a case where instead of the button placing words on two separate lines, you would prefer to have them both on the same line.  Ribbon includes an easy way to accomplish this.
+
+Instead of using a normal space character between the words in your label, use a non-breaking space character like this:
+
+```xaml
+<ribbon:PopupButton Label="Data&#160;Set" />
+```
+
+## Sample XAML
+
+This code shows how to prototype this control in XAML-only:
+
+```xaml
+<ribbon:PopupButton ImageSourceLarge="/Images/Table32.png" Label="Table" KeyTipAccessText="T" />
+```
+
+This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+
+```xaml
+<ribbon:PopupButton Command="ApplicationCommands.Paste" KeyTipAccessText="P" />
+```

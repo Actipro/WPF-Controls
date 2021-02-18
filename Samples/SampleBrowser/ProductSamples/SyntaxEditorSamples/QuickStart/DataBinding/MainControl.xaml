@@ -1,0 +1,38 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    >
+	
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<shared:PixelSnapper Grid.Row="0" Margin="0,0,0,3">
+			<TextBlock Text="WPF TEXTBOX" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+		</shared:PixelSnapper>
+		<shared:PixelSnapper Grid.Row="1" Margin="0,0,0,3">
+			<TextBox x:Name="boundTextBox" Margin="0,3,0,0" TextWrapping="Wrap" AcceptsTab="True" AcceptsReturn="True" xml:space="preserve"><![CDATA[SyntaxEditor has a Text property that can be used to bind to other controls when the IsTextDataBindingEnabled is set to true. 
+
+In this QuickStart a WPF TextBox is TwoWay bound to a SyntaxEditor instance.  Type in either one to see updates in the other.
+
+For performance reasons, when programmatically getting document text or length, use ITextSnapshot members (via ITextDocument.CurrentSnapshot) to retrieve text.  When updating document text, use ITextDocument members.
+]]></TextBox>
+		</shared:PixelSnapper>
+		<shared:PixelSnapper Grid.Row="2" Margin="0,0,0,3">
+			<TextBlock Margin="0,7,0,0" Text="SYNTAXEDITOR" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+		</shared:PixelSnapper>
+
+		<shared:PixelSnapper Grid.Row="3" Margin="0,0,0,3">
+			<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True" AreLineModificationMarksVisible="False" 
+							 IsTextDataBindingEnabled="True" IsOutliningMarginVisible="False" IsSelectionMarginVisible="False"
+							 Text="{Binding ElementName=boundTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" />
+		</shared:PixelSnapper>
+	</Grid>
+
+</UserControl>

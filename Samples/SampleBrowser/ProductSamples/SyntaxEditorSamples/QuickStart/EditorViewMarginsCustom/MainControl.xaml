@@ -1,0 +1,20 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.EditorViewMarginsCustom"
+    >
+
+	<!-- SyntaxEditor that uses a custom editor margin factory -->
+	<editor:SyntaxEditor WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+		<editor:SyntaxEditor.ViewMarginFactories>
+			<sample:CustomMarginFactory />
+		</editor:SyntaxEditor.ViewMarginFactories>
+		
+		<editor:EditorDocument xml:space="preserve"><![CDATA[This QuickStart shows how to create an advanced custom vertical margin that displays the number of characters on each view line.  The foreground brush used to render the character count changes as the number of characters increases.
+		
+This is an excellent sample for seeing how to create a margin that renders custom content related directly to the visible view lines.]]></editor:EditorDocument>
+
+	</editor:SyntaxEditor>
+
+</UserControl>

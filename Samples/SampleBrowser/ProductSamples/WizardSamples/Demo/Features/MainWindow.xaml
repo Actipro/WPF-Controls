@@ -1,0 +1,1047 @@
+<Window 
+	x:Name="wizardDemo" 
+	x:Class="ActiproSoftware.ProductSamples.WizardSamples.Demo.Features.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:windows="clr-namespace:System.Windows;assembly=PresentationCore"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="600" MinHeight="450" 
+	WindowStartupLocation="CenterScreen"
+	SizeToContent="Height" 
+	ResizeMode="CanResize"
+	FocusManager.FocusedElement="{Binding ElementName=wizard}"
+	>
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome />
+	</themes:WindowChrome.Chrome>
+	
+	<Window.Resources>
+		<!-- Data Providers -->
+		<ObjectDataProvider x:Key="CancelButtonObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowCancelButton"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="DefaultButtonObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowDefaultButton"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="FlowDirectionObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="windows:FlowDirection"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="PageSequenceTypeObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardPageSequenceType"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="PageTypeObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardPageType"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="TransitionDirectionObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="shared:TransitionDirection"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="VisibilityObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="windows:Visibility"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		<ObjectDataProvider x:Key="WindowTitleBehaviorObjectDataProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+			<ObjectDataProvider.MethodParameters>
+				<x:Type TypeName="wizard:WizardWindowTitleBehavior"/>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
+	</Window.Resources>
+
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack" 
+				TransitionSelector="{Binding ElementName=transitions, Path=SelectedItem}" TransitionDefaultDirection="Forward" 
+				SelectedPageChanged="wizard_SelectedPageChanged" SelectedPageChanging="wizard_SelectedPageChanging" 
+				Help="wizard_Help" Cancel="wizard_Cancel" Finish="wizard_Finish">
+		
+		<!-- Welcome -->
+		<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
+				Caption="Welcome to the Wizard Sample Application"
+				Description="Thank you for downloading the Actipro Wizard control.  This sample application demonstrates many of the features of the Wizard control for use with the WPF platform." 
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<wizard:WizardPage.HeaderBackground>
+				<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,164,450" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/WelcomeBG.png" />
+			</wizard:WizardPage.HeaderBackground>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+					Visit our web site for new versions and licensing information:
+					<LineBreak />
+					<Hyperlink NavigateUri="http://www.actiprosoftware.com/" TargetName="_blank" Focusable="False">http://www.actiprosoftware.com/</Hyperlink>
+				</TextBlock>
+				<TextBlock Grid.Row="1" TextWrapping="Wrap">To continue, click Next.</TextBlock>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Demo Path -->
+		<wizard:WizardPage x:Name="demoPathPage" PageType="Interior" NextPage="pageTypesPage"
+				Caption="Demo Path Selection"
+				Description="This sample wizard includes numerous 'paths' through which you may traverse to see Wizard's large feature set." 
+				Title="Step 1" 
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<wizard:WizardPage.HeaderBackground>
+				<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,650,60" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/HeaderBG.png" />
+			</wizard:WizardPage.HeaderBackground>
+			
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<StackPanel>
+					<TextBlock TextWrapping="Wrap">There numerous demo feature paths in this wizard to show off features.  Pick a path to examine.  After you are done, you can return to this page to examine another feature set.</TextBlock>
+					<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">Choose the demo feature path to follow:</TextBlock>
+					<ListBox Margin="14,3,0,0" BorderBrush="Transparent" Background="Transparent"
+						SelectedValuePath="Tag" SelectedValue="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type wizard:WizardPage}}, Path=NextPage}">
+						<ListBox.Resources>
+							<Style x:Key="{x:Type ListBoxItem}" TargetType="{x:Type ListBoxItem}" >
+								<Setter Property="Margin" Value="2, 2, 2, 0" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate>
+											<StackPanel Background="Transparent" Margin="0,0,0,7">
+												<RadioButton IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}">
+													<RadioButton.Content>
+														<ContentPresenter Margin="6,0,0,0" Content="{TemplateBinding ListBoxItem.Content}" />															
+													</RadioButton.Content>
+												</RadioButton>
+											</StackPanel>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</ListBox.Resources>
+						<ListBoxItem Tag="pageTypesPage">
+							<StackPanel>
+								<TextBlock FontWeight="Bold">Pages and Buttons</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									Feature path shows
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="pageTypesPage">page types</Hyperlink>,
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="windowTitlesPage">window titles</Hyperlink>,
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="buttonStatesPage">button states</Hyperlink>,
+									<LineBreak />
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="processingPage">buttons disabled for processing</Hyperlink>, and
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="defaultCancelButtonsPage">default/cancel buttons</Hyperlink>
+								</TextBlock>
+							</StackPanel>
+						</ListBoxItem>
+						<ListBoxItem Tag="transitionEffectsPage">
+							<StackPanel>
+								<TextBlock FontWeight="Bold">Special Effects and Styles/Themes</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									Feature path shows
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="transitionEffectsPage">transition effects</Hyperlink>,
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="themesPage">themes</Hyperlink>,  and
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="customPage">custom page styles</Hyperlink>
+								</TextBlock>
+							</StackPanel>
+						</ListBoxItem>
+						<ListBoxItem Tag="navigationPage">
+							<StackPanel>
+								<TextBlock FontWeight="Bold">Navigation and Selected Page Changes</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									Feature path shows
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="navigationPage">page navigation</Hyperlink>,
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="cancelSelectionChangePage">selected page change cancellation</Hyperlink>,
+									<LineBreak />
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="pageSequenceTypePrePage">page sequence types</Hyperlink>, 
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="isEnabledPrePage">skipping disabled pages</Hyperlink>, and
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="navigationCommandsPage">navigation commands</Hyperlink>
+								</TextBlock>
+							</StackPanel>
+						</ListBoxItem>
+						<ListBoxItem Tag="automaticLayoutPage">
+							<StackPanel>
+								<TextBlock FontWeight="Bold">Layout and Globalization</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									Feature path shows
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="automaticLayoutPage">automatic layout</Hyperlink> and
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="flowDirectionPage">flow direction</Hyperlink>
+								</TextBlock>
+							</StackPanel>
+						</ListBoxItem>
+						<ListBoxItem Tag="loginSamplePage">
+							<StackPanel>
+								<TextBlock FontWeight="Bold">Sample Pages</TextBlock>
+								<TextBlock TextWrapping="Wrap">
+									Feature path shows
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="loginSamplePage">login page sample</Hyperlink> and
+									<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="customerInformationSamplePage">customer information sample</Hyperlink>
+								</TextBlock>
+							</StackPanel>
+						</ListBoxItem>
+					</ListBox>
+				</StackPanel>
+				<TextBlock Grid.Row="1" TextWrapping="Wrap">To start viewing features for the selected demo feature path, click Next.</TextBlock>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Page Types -->
+		<wizard:WizardPage x:Name="pageTypesPage" PageType="Interior" Caption="Multiple Page Types" PreviousPage="demoPathPage" 
+				Description="Wizard supports multiple page types, each with their own control style and template."
+				Title="Step 2 (Pages and Buttons Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+				
+					<StackPanel Grid.Column="0">
+						<TextBlock FontWeight="Bold">Render This Page As...</TextBlock>
+						<shared:RadioButtonList Margin="0,3,0,0" 
+							SelectedValue="{Binding ElementName=pageTypesPage, Path=PageType}" 			 
+							ItemsSource="{Binding Source={StaticResource PageTypeObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<StackPanel Grid.Column="1" Margin="30,0,0,0">
+						<TextBlock FontWeight="Bold">Page Type Descriptions</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Blank</Bold> page type renders a blank page allowing you to implement whatever you want inside of it.</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Interior</Bold> page type uses a header at the top of the page to display the page's caption and description.</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Exterior</Bold> page type uses a watermark area on the near side of the page to display an image and watermark background.  The page's caption and description are displayed near the top of the main content area.</TextBlock>
+					</StackPanel>
+				</Grid>
+				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Customize This Page</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Caption</TextBlock>
+					<TextBox Grid.Row="0" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Caption, UpdateSourceTrigger=PropertyChanged}" />
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Description</TextBlock>
+					<TextBox Grid.Row="1" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Description, UpdateSourceTrigger=PropertyChanged}" />
+					<TextBlock Grid.Row="2" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Title</TextBlock>
+					<TextBox Grid.Row="2" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Title, UpdateSourceTrigger=PropertyChanged}" />
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Window Titles -->
+		<wizard:WizardPage x:Name="windowTitlesPage" PageType="Interior" Caption="Automatically Update Window Titles" 
+				Description="Wizard can automatically update the containing Window's title based on the currently selected page."
+				Title="Step 3 (Pages and Buttons Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+				
+					<StackPanel Grid.Column="0">
+						<TextBlock FontWeight="Bold">Choose a title behavior...</TextBlock>
+						<shared:RadioButtonList Margin="0,3,0,0"
+							SelectedValue="{Binding ElementName=wizard, Path=WindowTitleBehavior}" 			 
+							ItemsSource="{Binding Source={StaticResource WindowTitleBehaviorObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<StackPanel Grid.Column="1" Margin="30,0,0,0">
+						<TextBlock TextWrapping="Wrap">A <Bold>Custom</Bold> title behavior will let you use a custom page text formatting string (see below).</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">Format indices <Bold>0</Bold> and <Bold>1</Bold> are the selected page's index (plus <Bold>1</Bold> for display purposes) and wizard's page count respectively.  These are only recommended for wizards that have a single linear execution path.</TextBlock>
+						<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">Format indices <Bold>2</Bold>, <Bold>3</Bold>, and <Bold>4</Bold> are the selected page's title, caption, and description respectively.</TextBlock>
+					</StackPanel>
+				</Grid>
+				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Customize The Window Title</TextBlock>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Window Title Base Text</TextBlock>
+					<TextBox Grid.Row="0" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=wizard, Path=WindowTitleBaseText, UpdateSourceTrigger=PropertyChanged}" />
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Window Title Custom Page Text</TextBlock>
+					<TextBox Grid.Row="1" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=wizard, Path=WindowTitleCustomPageText}" />
+					<TextBlock Grid.Row="2" Grid.Column="1" Margin="0,7,7,0" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"><Italic>Custom Page Text is only used when Custom title behavior is selected... tab off of it to see changes but ensure that it is a proper format string before doing so</Italic></TextBlock>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Button States -->
+		<wizard:WizardPage x:Name="buttonStatesPage" PageType="Interior" Caption="Button Visible/Enabled States" 
+				Description="Wizard allows you to set global defaults for standard button visible/enabled states as well as page-specific overrides."
+				Title="Step 4 (Pages and Buttons Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					Use the controls below to alter the global and instance settings for the button visible/enabled states.
+					Note the global settings will affect other pages in the wizard while the instance settings will only affect this page.
+				</TextBlock>
+				<Grid Margin="50,0,0,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					
+					<StackPanel>
+						<TextBlock Margin="0,14,0,0" FontWeight="Bold">Wizard Global Settings</TextBlock>
+						<CheckBox Margin="0,7,0,0" IsChecked="{Binding ElementName=wizard, Path=HelpButtonVisible}">Help button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=CancelButtonVisible}">Cancel button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=BackButtonVisible}">Back button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=NextButtonVisible}">Next button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=FinishButtonVisible}">Finish button visible</CheckBox>
+						<CheckBox Margin="0,7,0,0" IsChecked="{Binding ElementName=wizard, Path=HelpButtonEnabled}">Help button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsChecked="{Binding ElementName=wizard, Path=CancelButtonEnabled}">Cancel button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=BackButtonEnabled}">Back button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=NextButtonEnabled}">Next button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=wizard, Path=FinishButtonEnabled}">Finish button enabled</CheckBox>
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock Margin="0,14,0,0" FontWeight="Bold">WizardPage Instance Settings</TextBlock>
+						<CheckBox Margin="0,7,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=HelpButtonVisible}">Help button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=CancelButtonVisible}">Cancel button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=BackButtonVisible}">Back button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=NextButtonVisible}">Next button visible</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=FinishButtonVisible}">Finish button visible</CheckBox>
+						<CheckBox Margin="0,7,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=HelpButtonEnabled}">Help button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=CancelButtonEnabled}">Cancel button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=BackButtonEnabled}">Back button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=NextButtonEnabled}">Next button enabled</CheckBox>
+						<CheckBox Margin="0,3,0,0" IsThreeState="True" IsChecked="{Binding ElementName=buttonStatesPage, Path=FinishButtonEnabled}">Finish button enabled</CheckBox>
+					</StackPanel>
+				</Grid>				
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Processing -->
+		<wizard:WizardPage x:Name="processingPage" PageType="Interior" Caption="Buttons Disabled During Processing" 
+				Description="Wizard makes it easy to disable buttons during processing on a step and re-enable them when the processing is complete."
+				Title="Step 5 (Pages and Buttons Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock Margin="0,0,0,14" TextWrapping="Wrap">
+					Click the button below to perform processing using a <Bold>BackgroundWorker</Bold>.
+					During processing the buttons will be disabled.
+				</TextBlock>
+				<TextBlock x:Name="progressTextBlock" Margin="0,0,0,3" HorizontalAlignment="Center">Not started</TextBlock>
+				<ProgressBar x:Name="progressBar" Margin="0,0,0,7"  Width="200" Height="18" Value="0" />
+				<Button x:Name="startProcessingButton" Width="200" Click="startProcessingButton_Click">Start Processing</Button>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Default/Cancel Buttons -->
+		<wizard:WizardPage x:Name="defaultCancelButtonsPage" PageType="Interior" NextPage="finishPage"
+			Caption="Automated Default/Cancel Buttons"
+			Description="Wizard can automatically set the default and cancel buttons for the containing Window based on a property setting." 
+			Title="Step 6 (Pages and Buttons Path)"
+			HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+
+			<StackPanel HorizontalAlignment="Left">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					
+					<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,14" TextWrapping="Wrap">
+						Use the controls below to configure the default and cancel buttons for the containing Window.
+					</TextBlock>
+					
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="50,0,0,7" FontWeight="Bold">Default Button</TextBlock>
+					<TextBlock Grid.Row="1" Grid.Column="1" Margin="50,0,0,7" FontWeight="Bold">Cancel Button</TextBlock>
+					
+					<TextBlock Grid.Row="2" Grid.Column="0" Margin="50,0,0,7" TextWrapping="Wrap">The default button is clicked when the ENTER key is pressed in the Window.</TextBlock>
+					<TextBlock Grid.Row="2" Grid.Column="1" Margin="50,0,0,7" TextWrapping="Wrap">The cancel button is clicked when the ESCAPE key is pressed in the Window.</TextBlock>
+					
+					<StackPanel Grid.Row="3" Grid.Column="0" Margin="50,0,0,7">
+						<TextBlock>Button:</TextBlock>
+						<shared:RadioButtonList 
+							SelectedValue="{Binding ElementName=wizard, Path=WindowDefaultButton}" 			 
+							ItemsSource="{Binding Source={StaticResource DefaultButtonObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<StackPanel Grid.Row="3" Grid.Column="1" Margin="50,0,0,7">
+						<TextBlock>Button:</TextBlock>
+						<shared:RadioButtonList
+							SelectedValue="{Binding ElementName=wizard, Path=WindowCancelButton}" 			 
+							ItemsSource="{Binding Source={StaticResource CancelButtonObjectDataProvider}}"
+							/>
+					</StackPanel>
+					<TextBlock Grid.Row="4" Grid.ColumnSpan="2" Margin="50,7,0,0" TextWrapping="Wrap">Note that <Bold>FinishThenNext</Bold> and <Bold>NextThenFinish</Bold> are special settings. For example, the <Bold>FinishThenNext</Bold> setting tries to use the <Bold>Finish</Bold> button if it is visible and enabled.  Otherwise, the <Bold>Next</Bold> button becomes the default button.</TextBlock>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Transition Effects -->
+		<wizard:WizardPage x:Name="transitionEffectsPage" PageType="Interior" PreviousPage="demoPathPage" 
+				Caption="Page Transition Effects"
+				Description="Wizard supports numerous types of transition effects to add some extra dazzle to your wizard dialogs during selected page changes."
+				Title="Step 2 (Special Effects and Styles/Themes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel HorizontalAlignment="Left">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					
+					<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+						<TextBlock Margin="0,0,0,14" TextWrapping="Wrap">
+							Use the controls below to configure the transition effects applied for page changes.  
+							It's very easy to use a number of built-in transition effects or to create your own.
+							Different transition effects can be applied to forward and backward progress page changes too.  
+						</TextBlock>
+					</StackPanel>
+					
+					<StackPanel Grid.Row="1" Grid.Column="0" Margin="50,0,50,14">
+						<TextBlock>Transition Type:</TextBlock>
+						<ListBox x:Name="transitions" SelectedIndex="2" MaxWidth="350" MaxHeight="200">
+							<ListBox.Resources>
+								<DataTemplate DataType="{x:Type shared:MultiTransitionSelector}">
+									<TextBlock Text="{Binding (TextSearch.Text)}" />
+								</DataTemplate>
+							</ListBox.Resources>
+							
+							<shared:MultiTransitionSelector TextSearch.Text="Random (Uses all the following)">
+								<shared:FadeTransition TextSearch.Text="Fade" />
+								<shared:BarWipeTransition TextSearch.Text="Bar wipe" />
+								<shared:BarWipeTransition TextSearch.Text="Bar wipe w/no spread" Spread="0" />
+								<shared:BarWipeTransition TextSearch.Text="Bar wipe w/full spread" Spread="1" />
+								<shared:BarnDoorWipeTransition TextSearch.Text="Barn door wipe" />
+								<shared:BarnDoorWipeTransition TextSearch.Text="Barn door wipe w/no spread" Spread="0" />
+								<shared:BarnDoorWipeTransition TextSearch.Text="Barn door wipe w/full spread" Spread="1" />
+								<shared:BoxWipeTransition TextSearch.Text="Box wipe" />
+								<shared:FourBoxWipeTransition TextSearch.Text="Four box wipe" />
+								<shared:WedgeWipeTransition TextSearch.Text="Wedge wipe" />
+								<shared:SlideTransition TextSearch.Text="Slide" />
+								<shared:SlideTransition TextSearch.Text="Push" IsFromContentPushed="True" />
+								<shared:FadedZoomTransition TextSearch.Text="Faded zoom" />
+								<shared:FadedZoomTransition TextSearch.Text="Faded zoom w/clip" ClipToBounds="True" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Fade">
+								<shared:FadeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Bar wipe">
+								<shared:BarWipeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Bar wipe w/no spread">
+								<shared:BarWipeTransition Spread="0" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Bar wipe w/full spread">
+								<shared:BarWipeTransition Spread="1" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Barn door wipe">
+								<shared:BarnDoorWipeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Barn door wipe w/no spread">
+								<shared:BarnDoorWipeTransition Spread="0" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Barn door wipe w/full spread">
+								<shared:BarnDoorWipeTransition Spread="1" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Box wipe">
+								<shared:BoxWipeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Four box wipe">
+								<shared:FourBoxWipeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Wedge wipe">
+								<shared:WedgeWipeTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Slide">
+								<shared:SlideTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Push">
+								<shared:SlideTransition IsFromContentPushed="True" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Faded zoom">
+								<shared:FadedZoomTransition />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Faded zoom w/clip">
+								<shared:FadedZoomTransition ClipToBounds="True" />
+							</shared:MultiTransitionSelector>
+							<shared:MultiTransitionSelector TextSearch.Text="Custom (Spin fade in)">
+								<shared:StoryboardTransition ClipToBounds="True">
+									<shared:StoryboardTransition.ToContentStyle>
+										<Style TargetType="FrameworkElement">
+											<Setter Property="RenderTransform">
+												<Setter.Value>
+													<RotateTransform />
+												</Setter.Value>
+											</Setter>
+										</Style>
+									</shared:StoryboardTransition.ToContentStyle>
+									<shared:StoryboardTransition.ToContentStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1" />
+											<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="90" To="0" Duration="0:0:1" />
+										</Storyboard>
+									</shared:StoryboardTransition.ToContentStoryboard>
+								</shared:StoryboardTransition>
+							</shared:MultiTransitionSelector>
+						</ListBox>
+					</StackPanel>
+					
+					<StackPanel Grid.Row="1" Grid.Column="1" Margin="50,0,0,14">
+						<TextBlock>Direction:</TextBlock>
+						<ComboBox Margin="0,0,0,14" Width="125" HorizontalAlignment="Left" 
+							SelectedValue="{Binding ElementName=wizard, Path=TransitionDefaultDirection}" 			 
+							ItemsSource="{Binding Source={StaticResource TransitionDirectionObjectDataProvider}}">
+						</ComboBox>				
+						
+						<TextBlock>Backward Progress Duration:</TextBlock>
+						<TextBox Margin="0,0,0,14" Width="125" HorizontalAlignment="Left" Text="{Binding ElementName=wizard, Path=BackwardProgressTransitionDuration}" />
+
+						<TextBlock>Forward Progress Duration:</TextBlock>
+						<TextBox Width="125" HorizontalAlignment="Left" Text="{Binding ElementName=wizard, Path=ForwardProgressTransitionDuration}" />
+					</StackPanel>
+					
+					<StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+						<TextBlock TextWrapping="Wrap">
+							A forward progress page change generally occurs when using the Next button and a backward progress page 
+							change generally occurs when using the Back button.
+						</TextBlock>
+					</StackPanel>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Themes -->
+		<wizard:WizardPage x:Name="themesPage" PageType="Interior"
+					Caption="Wizard Supports Custom Styles and Themes" 
+					Description="Wizard supports customization of how all elements in the wizard are rendered."
+					Title="Step 3 (Special Effects and Styles/Themes Path)"
+					HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">Select the theme in the ListBox below to apply to the wizard and its pages.</TextBlock>
+				<Grid Margin="28,7,0,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					
+					<ListBox x:Name="themeListBox" MaxHeight="150" HorizontalAlignment="Left" SelectionChanged="themeListBox_SelectionChanged">
+						<ListBoxItem IsSelected="True">(Default)</ListBoxItem>
+						<ListBoxItem Tag="WizardMetalTheme.xaml">Brushed Metal Wizard</ListBoxItem>
+						<ListBoxItem Tag="WizardRedTheme.xaml">Red Wizard with Custom Button Style</ListBoxItem>
+						<ListBoxItem Tag="AlternateLayoutButtonContainerTheme.xaml">Alternate Layout for Button Container Template</ListBoxItem>
+						<ListBoxItem Tag="CustomButtonContainerTheme.xaml">Custom Button Container Template</ListBoxItem>
+						<ListBoxItem Tag="CustomExteriorPageTheme.xaml">Custom Exterior Page Template</ListBoxItem>
+						<ListBoxItem Tag="CustomInteriorPageTheme.xaml">Custom Interior Page Template</ListBoxItem>
+					</ListBox>
+					<StackPanel Grid.Column="1" Margin="28,0,0,0">
+						<TextBlock>Sample Exterior Page:</TextBlock>
+						<Border Margin="0,3,0,0" BorderBrush="Black" BorderThickness="1" Width="200" Height="150" HorizontalAlignment="Left">
+							<Border.Background>
+								<VisualBrush>
+									<VisualBrush.Visual>
+										<wizard:Wizard x:Name="sampleExteriorPageWizard" Width="600" Height="450">
+											<wizard:WizardPage PageType="Exterior" Caption="Sample Exterior Page" Description="This is a sample exterior page." />								
+										</wizard:Wizard>										
+									</VisualBrush.Visual>
+								</VisualBrush>
+							</Border.Background>
+						</Border>
+					</StackPanel>
+				</Grid>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">All the styles related to these sample themes are defined in the <Bold>Themes</Bold> folder of the sample project.</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">By defining custom styles, you can do anything from altering the look and feel of the wizard, to creating custom buttons and button layouts in the button container, and more.</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Custom Page -->
+		<wizard:WizardPage x:Name="customPage" PageType="Blank" NextPage="finishPage"
+						Caption="Custom Page Style"
+						Title="Step 4 (Special Effects and Styles/Themes Path)">
+			<Grid ClipToBounds="True">
+				<Rectangle>
+					<Rectangle.Fill>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+							<GradientStop Offset="0" Color="#B3CDED" />
+							<GradientStop Offset="0.75" Color="#6A8EBD" />
+							<GradientStop Offset="1" Color="#79A1D9" />
+						</LinearGradientBrush>
+					</Rectangle.Fill>
+				</Rectangle>
+				<Ellipse Fill="#6A8EBD" Opacity="0.15">
+					<Ellipse.RenderTransform>
+						<TransformGroup>
+							<TranslateTransform X="-100" Y="-10" />
+							<ScaleTransform ScaleX="3" ScaleY="3" />
+						</TransformGroup>
+					</Ellipse.RenderTransform>
+				</Ellipse>
+				<Ellipse Fill="#6A8EBD" Opacity="0.15">
+					<Ellipse.RenderTransform>
+						<TransformGroup>
+							<TranslateTransform X="-100" Y="-10" />
+							<ScaleTransform ScaleX="3" ScaleY="2.2" />
+						</TransformGroup>
+					</Ellipse.RenderTransform>
+				</Ellipse>
+				<shared:DropShadowChrome Margin="70,40,70,40" Color="#71000000">
+					<Border x:Name="customPageBorder" BorderBrush="Black" BorderThickness="1">
+						<StackPanel Background="#ffffff" TextElement.Foreground="#000000">
+							<TextBlock Margin="14" FontFamily="Cambria" FontSize="14pt" FontWeight="Bold" Foreground="#365F91" TextWrapping="Wrap" Text="{Binding ElementName=customPage, Path=Caption}" />
+							<TextBlock Margin="14,0,14,0" FontFamily="Calibri" FontSize="11pt" TextWrapping="Wrap">
+								This is a sample of a custom page style.
+								<LineBreak />
+								<LineBreak />
+								By using a page type of <Bold>Blank</Bold>, you can draw your pages however you like.
+								<LineBreak />
+								<LineBreak />
+								This particular sample uses several shapes like rectangles and ellipses to create the background.
+								The shapes are translate and scale transformed using a render transform.
+								<LineBreak />
+								<LineBreak />
+								The sky is the limit with what you can do with custom pages.
+							</TextBlock>
+						</StackPanel>
+					</Border>
+				</shared:DropShadowChrome>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Navigation -->
+		<wizard:WizardPage x:Name="navigationPage" PageType="Interior" NextPage="cancelSelectionChangePage" PreviousPage="demoPathPage" 
+				Caption="Navigate Pages Declaratively or Programmatically" 
+				Description="Wizard allows pages to be navigated declaratively through the use of commands or programmatically via code."
+				Title="Step 2 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock FontWeight="Bold">Declarative Navigation Samples</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
+					Go to the 
+					<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="0">first page</Hyperlink>
+					in the wizard declaratively via the GoToPage command with a page index parameter.
+				</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
+					Go to the 
+					<Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="cancelSelectionChangePage">cancel selection change page</Hyperlink>
+					in the wizard declaratively via the GoToPage command with a page name parameter.
+				</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
+					Go to the 
+					<Hyperlink Command="wizard:WizardCommands.PreviousPage">previous page</Hyperlink>
+					in the wizard declaratively via the PreviousPage command.
+				</TextBlock>
+				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Programmatic Navigation Samples</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
+					Go to the 
+					<Hyperlink Click="programmaticSelectedIndexNavigationSampleHyperlink_Click">second page</Hyperlink>
+					in the wizard programmatically by setting the <Bold>Wizard.SelectedIndex</Bold> property in the code-behind class.
+				</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
+					Go to the 
+					<Hyperlink Click="programmaticSelectedPageNavigationSampleHyperlink_Click">transition effect page</Hyperlink>
+					in the wizard programmatically by setting the <Bold>Wizard.SelectedPage</Bold> property in the code-behind class.
+				</TextBlock>
+				<TextBlock Margin="0,14,0,7" FontWeight="Bold">Declarative Control of Next/Previous Buttons</TextBlock>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Margin="0,0,14,0" TextWrapping="Wrap">
+						Each page has a <Bold>PreviousPage</Bold> and <Bold>NextPage</Bold> property, which optionally can be set to 
+						a page name, a page reference, or a page index within the wizard.  When set to one of those
+						values, it will control which page the Back and Next buttons switch to.
+						Leave those properties as null to use the default sequential previous/next page sequencing.
+					</TextBlock>
+					<StackPanel Grid.Column="1">
+						<TextBlock>Next button click will go to the...</TextBlock>
+						<shared:RadioButtonList Margin="0,3,0,0" 
+							SelectedValuePath="Tag" SelectedValue="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type wizard:WizardPage}}, Path=NextPage}"
+							>
+							<ListBoxItem Tag="cancelSelectionChangePage">Cancel Selection page via name</ListBoxItem>
+							<ListBoxItem Tag="{Binding ElementName=themesPage}">Themes page via a page reference</ListBoxItem>
+							<ListBoxItem Tag="0">Go to the first wizard page</ListBoxItem>
+						</shared:RadioButtonList>
+					</StackPanel>
+				</Grid>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Cancel Selection Change -->
+		<wizard:WizardPage x:Name="cancelSelectionChangePage" PageType="Interior"
+				Caption="Easily Cancel Selection Changes" 
+				Description="Wizard's selection change events allow you to determine why a new page is being selected and also cancel the selected page change before it occurs."
+				Title="Step 3 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock FontWeight="Bold">Selection Flags</TextBlock>
+				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">This page was selected using the following selection flags:</TextBlock>
+				<TextBlock x:Name="selectionFlagsTextBlock" FontStyle="Italic" Margin="14,3,0,0"></TextBlock>
+				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Cancel Page Change</TextBlock>
+				<TextBlock TextWrapping="Wrap" Margin="0,7,0,0">Easily cancel selected page changes before they occur.  Check the following box to prevent any navigation to other pages in the wizard.</TextBlock>
+				<CheckBox x:Name="cancelSelectionChangeCheckBox" Margin="14,7,0,0">Prevent any navigation away from this page</CheckBox>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Page Sequence Type Pre -->
+		<wizard:WizardPage x:Name="pageSequenceTypePrePage" PageType="Interior" NextPage="pageSequenceTypePostPage" 
+				Caption="Page Sequence Type - Start (Part 1/3)" 
+				Description="Wizard has two types of page sequencing methods.  Both operate the same when moving forward through the wizard pages, but their differences become apparent when using the Back button."
+				Title="Step 4 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					The <Bold>Normal</Bold> type simply goes to the previous page in sequential order when the Back button is pressed.
+					It doesn't matter whether the page has been visited yet or not.
+					<LineBreak />
+					<LineBreak />
+					The <Bold>Stack</Bold> type maintains a stack of page names that are visited.
+					Upon Back button presses, it will visit pages in reverse order from which they were visited.
+				</TextBlock>
+				<StackPanel Margin="28,14,0,0">
+					<TextBlock>Page Sequence Type:</TextBlock>
+					<shared:RadioButtonList
+						SelectedValue="{Binding ElementName=wizard, Path=PageSequenceType}" 			 
+						ItemsSource="{Binding Source={StaticResource PageSequenceTypeObjectDataProvider}}"
+						/>
+				</StackPanel>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">
+					To test the difference between the sequencing types, choose a type above and press the Next button.
+					You will be taken to the completion page for this feature.
+					If you chose <Bold>Normal</Bold> sequencing, then pressing Back on that page will take you to an intermediate page
+					before coming back to the page.
+					If you chose <Bold>Stack</Bold> sequencing, pressing Back on the completion page will bring you directly back to this page.
+					<LineBreak />
+					<LineBreak />
+					<Bold>Important Note:</Bold> Page sequencing is not designed to be altered at run-time like in this example.
+					It will clear the page stack any time the <Bold>PageSequenceType</Bold> property is changed.
+					So once you change it above, you will not be able to move back from this page under <Bold>PageStack</Bold> sequencing mode.
+					However this is not an issue if you set the wizard up to use that sequencing method when the wizard is created.
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Page Sequence Type Intermediate -->
+		<wizard:WizardPage x:Name="pageSequenceTypeTargetPage" PageType="Interior" 
+				Caption="Page Sequence Type - Intermediate (Part 2/3)" 
+				Description="Wizard has two types of page sequencing methods.  Both operate the same when moving forward through the wizard pages, but their differences become apparent when using the Back button."
+				Title="Step 5 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					If you are seeing this page, then you must have set the page sequence type to <Bold>Normal</Bold>
+					on the start page for this feature.
+					<LineBreak />
+					<LineBreak />
+					Click the Back button to view the start page for this feature again.
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Page Sequence Type Post -->
+		<wizard:WizardPage x:Name="pageSequenceTypePostPage" PageType="Interior"
+				Caption="Page Sequence Type - Completion (Part 3/3)" 
+				Description="Wizard has two types of page sequencing methods.  Both operate the same when moving forward through the wizard pages, but their differences become apparent when using the Back button."
+				Title="Step 6 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					This is the completion page for this feature.
+					<LineBreak />
+					<LineBreak />
+					Press the Back button to see how the page sequencing type you selected affects moving backwards through the wizard pages.
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- IsEnabled Pre -->
+		<wizard:WizardPage x:Name="isEnabledPrePage" PageType="Interior" 
+				Caption="Skip 'Disabled' Pages - Configuration (Part 1/3)" 
+				Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+				Title="Step 7 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					Unless the next/previous page is overridden, Wizard will progress sequentially through its pages.  
+					<LineBreak />
+					<LineBreak />
+					Each <Bold>WizardPage</Bold> has an <Bold>IsEnabled</Bold> property on it.
+					If that property is set to <Bold>False</Bold> then the page will be skipped during normal sequencing.
+					<LineBreak />
+					<LineBreak />
+					For an example, use the following <Bold>CheckBox</Bold> to determine whether the page that
+					follows this page in sequence has its <Bold>IsEnabled</Bold> property set or not.
+					If it is set to <Bold>True</Bold> then pressing the <Bold>Next</Bold> button will go to it next.
+					Otherwise the <Bold>Next</Bold> button will skip over it to the completion page for this feature.
+				</TextBlock>
+				<CheckBox Margin="14,7,0,0" IsChecked="{Binding ElementName=isEnabledTargetPage, Path=IsEnabled}">Next page is enabled</CheckBox>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- IsEnabled Target -->
+		<wizard:WizardPage x:Name="isEnabledTargetPage" PageType="Interior" 
+				Caption="Skip 'Disabled' Pages - Target (Part 2/3)" 
+				Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+				Title="Step 8 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					If you are seeing this page, then you must have left the <Bold>CheckBox</Bold> on the previous page checked.
+					<LineBreak />
+					<LineBreak />
+					That would mean that this page's <Bold>IsEnabled</Bold> property is still set to <Bold>True</Bold>.
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- IsEnabled Post -->
+		<wizard:WizardPage x:Name="isEnabledPostPage" PageType="Interior"
+				Caption="Skip 'Disabled' Pages - Completion (Part 3/3)" 
+				Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+				Title="Step 9 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					This is the completion page for this feature.
+					<LineBreak />
+					<LineBreak />
+					If you left the <Bold>CheckBox</Bold> checked on the configuration page for this feature then you would
+					have seen a target page in between the configuration page and this page.
+					Otherwise, you would have arrived here directly from the configuration page.
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Navigation Commands -->
+		<wizard:WizardPage x:Name="navigationCommandsPage" PageType="Interior" NextPage="finishPage" 
+				Caption="Navigation Commands" 
+				Description="Wizard has an option that determines whether the end user can navigate pages using the BrowseForward and BrowseBack NavigationCommands."
+				Title="Step 10 (Navigation and Selected Page Changes Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					Many of today's computer mice have two extended buttons on them, one for a "forward" action and one for a "backward" action.
+					These are extremely useful for web browsing.
+					<LineBreak />
+					<LineBreak />
+					Why not apply the same concept to wizards?
+					By setting an option on the Wizard control, Wizard will recognize unhandled forward/back mouse button clicks
+					and will execute the Wizard's Next or Back button as appropriate.
+					<LineBreak />
+					<LineBreak />
+					Try it if you have a mouse with these buttons.
+					<LineBreak />
+					<LineBreak />
+					Additionally, many new keyboards have "back" and "forward" buttons on them.  
+					They will also perform the appropriate action.
+				</TextBlock>
+				<CheckBox Margin="14,7,0,0" IsChecked="{Binding ElementName=wizard, Path=NavigationCommandsEnabled}">Navigation commands enabled</CheckBox>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Automatic Layout Direction -->
+		<wizard:WizardPage x:Name="automaticLayoutPage" PageType="Interior" Caption="Automatic Layout" PreviousPage="demoPathPage" 
+				Description="Wizard is designed from the ground up with automatic layout in mind."
+				Title="Step 2 (Layout and Globalization Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">
+					Automatic layout provides the ability to layout elements in an application 
+					that can be adjusted to fit the size requirements of different languages.
+					By putting a <Bold>Wizard</Bold> control in a <Bold>Window</Bold> with the <Bold>Window.Width</Bold>
+					set to some fixed value such as <Bold>600</Bold> and the <Bold>Window.SizeToContent</Bold> property
+					set to <Bold>Height</Bold>, <Bold>Wizard</Bold> will automatically adjust to the size of the content.
+				</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">
+					Automatic layout is useful in localization scenarios where one language's text may be much longer than another and therefore
+					requires more real estate on the page.  It is also useful in scenarios where additional room is needed 
+					for a control that is toggled visible on a page.
+				</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">
+					In the example below, a <Bold>TextBlock</Bold> containing "lorum ipsum" text will have its visibility
+					toggled by this radio button list.  Note how the <Bold>Window</Bold> adjusts its size to display the new content,
+					even on other pages, so that the height of the <Bold>Window</Bold> remains consistent throughout the usage of the wizard.
+				</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">Lorum Ipsum Visibility:</TextBlock>
+				<shared:RadioButtonList Margin="14,3,0,0"  
+					SelectedValue="{Binding ElementName=lorumIpsumTextBlock, Path=Visibility}" 			 
+					ItemsSource="{Binding Source={StaticResource VisibilityObjectDataProvider}}"
+					/>
+				<TextBlock x:Name="lorumIpsumTextBlock" Margin="0,14,0,0" TextWrapping="Wrap" Visibility="Collapsed">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam a mauris a purus convallis consectetuer. 
+					Vivamus dapibus nulla id turpis. Integer varius bibendum erat. Phasellus vitae dui. 
+					Integer nulla ante, ornare et, bibendum nec, ultricies quis, ligula. Curabitur laoreet cursus dui. 
+					Nunc hendrerit urna sed risus. Integer mi. Ut interdum eros eget purus. Duis a dolor. Suspendisse semper. 
+					Vestibulum erat augue, adipiscing sit amet, bibendum ac, vulputate nec, mauris. Nam rhoncus mollis lacus. 
+					Nam quis ipsum nec enim suscipit feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In dui. 
+					Mauris imperdiet posuere enim. Vestibulum posuere nunc eu nibh. 
+					Sed sed quam et nunc elementum posuere. Morbi nec augue. Sed nisl. 
+					Phasellus molestie, erat quis blandit iaculis, turpis enim fermentum risus, lacinia blandit risus tortor eget risus. 
+					Integer libero. Aliquam erat volutpat. Morbi dui massa, vehicula sit amet, iaculis ut, tristique a, quam. 
+					In lacinia consequat dui. Vivamus lacinia velit sit amet libero. Nam mattis lacinia magna. 
+					Sed nonummy nisi in risus. In ornare purus eu metus. Nam eu nisl feugiat dui fringilla pharetra. 
+					Vivamus sed erat a augue malesuada tincidunt. Nunc libero nulla, sodales eu, posuere ultricies, placerat vitae, lacus. 
+				</TextBlock>
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Flow Direction -->
+		<wizard:WizardPage x:Name="flowDirectionPage" PageType="Interior" Caption="Flow Direction" NextPage="finishPage" 
+				Description="Wizard supports both left-to-right and right-to-left layouts via a simple property switch."
+				Title="Step 3 (Layout and Globalization Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<StackPanel>
+				<TextBlock TextWrapping="Wrap">Wizard defaults to the flow direction indicated by the system but this can be altered by setting the FlowDirection property of the Wizard or its parent Window.</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">A right-to-left flow direction is used in languages such as Arabic.</TextBlock>
+				<TextBlock Margin="0,14,0,0" TextWrapping="Wrap">Select the flow direction for the wizard control:</TextBlock>
+				<shared:RadioButtonList x:Name="flowDirectionListBox" Margin="14,3,0,0" 
+					SelectedValue="{Binding ElementName=wizard, Path=FlowDirection}" 			 
+					ItemsSource="{Binding Source={StaticResource FlowDirectionObjectDataProvider}}"
+					 />
+			</StackPanel>
+		</wizard:WizardPage>
+		
+		<!-- Login Sample -->
+		<wizard:WizardPage x:Name="loginSamplePage" PageType="Interior" PreviousPage="demoPathPage"
+				Caption="Sample Login Page" Description="This page shows a sample login page."
+				Title="Step 2 (Sample Pages Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				
+				<TextBlock Margin="0,0,0,14">Please enter your login information below:</TextBlock>
+				<Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					
+					<Image Grid.RowSpan="2" Margin="0,0,7,0" Source="/ProductSamples/WizardSamples/Demo/Features/Images/Keys.png" Stretch="None" />
+					<Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">User Name:</Label>
+					<TextBox Grid.Row="0" Grid.Column="2" Width="100"></TextBox>
+					<Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,7,0,0">Password:</Label>
+					<PasswordBox Grid.Row="1" Grid.Column="2" Width="100" Margin="0,7,0,0"></PasswordBox>
+				</Grid>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Customer Information Sample -->
+		<wizard:WizardPage x:Name="customerInformationSamplePage" PageType="Interior" NextPage="finishPage"
+				Caption="Sample Cutomer Information Page" Description="This page shows a sample customer information collection page."
+				Title="Step 3 (Sample Pages Path)"
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				
+				<TextBlock Margin="0,0,0,14">Please enter your information below:</TextBlock>
+				<Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					
+					<Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">Name:</Label>
+					<TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="300"></TextBox>
+					<Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">Company:</Label>
+					<TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="300" Margin="0,7,0,0"></TextBox>
+					<Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="0,15,0,0">Address 1:</Label>
+					<TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="300" Margin="0,15,0,0"></TextBox>
+					<Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">Address 2:</Label>
+					<TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="300" Margin="0,7,0,0"></TextBox>
+					<Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">City:</Label>
+					<TextBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="200" Margin="0,7,0,0"></TextBox>
+					<Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">State:</Label>
+					<TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Width="40" Margin="0,7,0,0"></TextBox>
+					<Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">Postal Code:</Label>
+					<TextBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="0,7,0,0"></TextBox>
+					<Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="0,7,0,0">Country:</Label>
+					<TextBox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Width="200" Margin="0,7,0,0"></TextBox>
+				</Grid>
+			</Grid>
+		</wizard:WizardPage>
+		
+		<!-- Finish -->
+		<wizard:WizardPage x:Name="finishPage" PageType="Exterior" FinishButtonVisible="True" 
+				Caption="Wizard Demo Feature Path Completed"
+				Description="You have completed the demo feature path that you selected on the second page." 
+				HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<StackPanel Grid.Row="0">					
+					<TextBlock TextWrapping="Wrap">Click this button to jump back to the second page to select another set of features to demo:</TextBlock>
+					<Button HorizontalAlignment="Center" Command="wizard:WizardCommands.BacktrackToPage" CommandParameter="demoPathPage">
+						<StackPanel Margin="14">
+							<Image Source="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png" Stretch="None" />
+							<TextBlock Margin="0,7,0,0" TextAlignment="Center">Backtrack to select a<LineBreak />different demo feature path</TextBlock>
+						</StackPanel>
+					</Button>
+				</StackPanel>
+				<TextBlock Grid.Row="1" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">
+					Visit our web site for new versions and licensing information:
+					<LineBreak />
+					<Hyperlink NavigateUri="http://www.actiprosoftware.com/" TargetName="_blank">http://www.actiprosoftware.com/</Hyperlink>
+				</TextBlock>
+				<TextBlock Grid.Row="2" TextWrapping="Wrap">To close this sample, click Finish.</TextBlock>
+			</Grid>
+		</wizard:WizardPage>
+		
+	</wizard:Wizard>
+	
+</Window>

@@ -1,0 +1,42 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=zoomContentControl, Path=HorizontalScrollBarVisibility}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=zoomContentControl, Path=VerticalScrollBarVisibility}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ZoomContentControl includes horizontal and vertical scrollbars, which are
+					always displayed by default. Using the HorizontalScrollBarVisibility and
+					VerticalScrollBarVisibility properties, the scrollbars can be hidden.
+					<LineBreak /><LineBreak />
+					<Italic>Note: When using ScrollBarVisibility.Auto the view will shift when the scroll bar is
+					shown or hidden, as the viewport size is decreased or increased, respectively.</Italic>
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<navigation:ZoomContentControl x:Name="zoomContentControl" ZoomStep="0.5">
+			<shared:ActiproLogo />
+		</navigation:ZoomContentControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

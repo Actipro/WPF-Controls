@@ -1,0 +1,84 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.Demo.MusicCatalog.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		<shared:ConditionalConverter x:Key="BoldConditionalConverter">
+			<shared:ConditionalConverter.TrueValue>
+				<FontWeight>Bold</FontWeight>
+			</shared:ConditionalConverter.TrueValue>
+			<shared:ConditionalConverter.FalseValue>
+				<FontWeight>Normal</FontWeight>
+			</shared:ConditionalConverter.FalseValue>
+		</shared:ConditionalConverter>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows a music catalog hierarchy that consists of three levels: artist, album, and track.
+					<LineBreak /><LineBreak />
+					It has three columns.  The first uses Star (*) sizing and can grow up to 300px wide.
+					The second uses Auto sizing but has a minimum width.
+					The third has a specific width and shows use of micro charts in the cells.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListView x:Name="treeListView" RootItem="{Binding}" CanColumnsToggleVisibility="True">
+			<grids:TreeListView.ItemAdapter>
+				<grids:TreeListBoxItemAdapter 
+					ChildrenBinding="{Binding Children, Mode=OneTime}" 
+					IsExpandedBinding="{Binding IsExpanded, Mode=TwoWay}" 
+					IsSelectedBinding="{Binding IsSelected, Mode=TwoWay}" 
+					/>
+			</grids:TreeListView.ItemAdapter>
+			<grids:TreeListView.Columns>
+				<grids:TreeListViewColumn Header="Name" Width="*" MaxWidth="300">
+					<DataTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<shared:DynamicImage Margin="0,0,4,0" Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
+							<TextBlock Grid.Column="1" Margin="0,0,0,1" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+									   FontWeight="{Binding Path=IsArtist, Converter={StaticResource BoldConditionalConverter}}" />
+						</Grid>
+					</DataTemplate>
+				</grids:TreeListViewColumn>
+				<grids:TreeListViewColumn Header="Length" MinWidth="75" DisplayMemberBinding="{Binding Length}" HeaderHorizontalAlignment="Right" CellHorizontalAlignment="Right" />
+				<grids:TreeListViewColumn Header="Popularity" Width="74">
+					<DataTemplate>
+						<microcharts:MicroSegmentChart Total="10" Value="{Binding Popularity}" Visibility="{Binding HasPopularity, Converter={StaticResource BooleanToVisibilityConverter}}">
+							<microcharts:MicroSegmentChart.ItemContainerStyle>
+								<Style TargetType="microcharts:MicroSegmentChartItem">
+									<Setter Property="Background" Value="#40808080" />
+									<Setter Property="Margin" Value="0,2,1,2" />
+									<Setter Property="MinWidth" Value="5" />
+								</Style>
+							</microcharts:MicroSegmentChart.ItemContainerStyle>
+						</microcharts:MicroSegmentChart>
+					</DataTemplate>
+				</grids:TreeListViewColumn>
+			</grids:TreeListView.Columns>
+		</grids:TreeListView>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

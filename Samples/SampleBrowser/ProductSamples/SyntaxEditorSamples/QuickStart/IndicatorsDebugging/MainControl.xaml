@@ -1,0 +1,87 @@
+<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+    >
+    
+	<DockPanel>
+		<ToolBarTray DockPanel.Dock="Top">
+			<ToolBar>
+				<Button Click="OnToggleBreakpointButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Breakpoint16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Toggle Breakpoint" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnToggleBreakpointEnabledButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/BreakpointToggleEnabled16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Toggle Enabled" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button Click="OnClearBreakpointsButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Clear Breakpoints" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Separator />
+				<Button x:Name="startDebuggingButton" Click="OnStartDebuggingButtonClick">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Start16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Run" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+				<Button x:Name="stopDebuggingButton" Click="OnStopDebuggingButtonClick" IsEnabled="False">
+					<StackPanel Orientation="Horizontal">
+						<shared:DynamicImage Source="/Images/Icons/Stop16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						<TextBlock Margin="3,0,0,0" Text="Stop" VerticalAlignment="Center" />
+					</StackPanel>
+				</Button>
+			</ToolBar>
+		</ToolBarTray>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" IsIndicatorMarginVisible="True" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" IsReadOnly="True" xml:space="preserve"><![CDATA[/* 
+
+Breakpoint and current statement indicators are built into SyntaxEditor and 
+an object model is provided for making it easy to work with them.  Just wire 
+them up to your debugger and instantly have a full fledged debugging UI.
+
+This QuickStart shows a simulated debugging experience.  Toggle breakpoints
+on a statement via clicks in the indicator margin.  Breakpoints also support
+an enabled state.  When disabled, a breakpoint should be ignored by the
+debugger.  Press the 'Run' button to start the simulation.  A current
+statement indicator appears at the first enabled breakpoint.  Continue
+pressing the 'Run' button to continue to the next enabled breakpoint.
+
+*/
+
+string fileText;
+
+// Write date header
+Debug.Write("DATA READ AT");
+Debug.WriteLine(DateTime.Now.ToString());
+Debug.WriteLine(string.Empty);
+
+// Read the data file
+fileText = File.ReadAllText(@"C:\DataStorage\PreviousExecution.log");
+
+// Write length
+Debug.Write("File length: ");
+Debug.WriteLine(fileText.Length);
+Debug.WriteLine(string.Empty);
+			
+// Write text
+Debug.WriteLine(fileText);
+]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</sampleBrowser:ProductItemControl>

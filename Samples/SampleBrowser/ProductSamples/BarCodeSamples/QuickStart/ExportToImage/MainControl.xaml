@@ -1,0 +1,59 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarCodeSamples.QuickStart.ExportToImage.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					It's easy to generate a BitmapSource from a symbology, simply by calling its ToBitmap method.
+					When you have an image representation of a bar code, you can save it to a file or paste the image in other applications for usage.
+					<LineBreak /><LineBreak />
+					In this demo, press the Generate Image button to generate a Code 39 Extended
+					bitmap and display it in the output box.
+					Once the bitmap is generated, it can be saved to a file in any image format.
+					This demo shows how to encode a PNG file when the Save Image to File button is pressed.
+					WPF includes encoders for BMP, GIF, JPEG, and TIFF that could have been used instead.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<TextBlock Text="INPUT" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+
+			<sampleBrowser:SampleOptionsPropertyGrid Margin="0,20,0,0" MaxWidth="{StaticResource SampleThinMaxWidth}">
+				<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=Value}" />
+				<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=ValueDisplayStyle}" />
+				<grids:PropertyModel>
+					<grids:PropertyModel.ValueTemplate>
+						<DataTemplate>
+							<Button Content="Generate Image" HorizontalAlignment="Left" Click="OnGenerateImageButtonClick" />
+						</DataTemplate>
+					</grids:PropertyModel.ValueTemplate>
+				</grids:PropertyModel>
+			</sampleBrowser:SampleOptionsPropertyGrid>
+
+			<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+
+			<TextBlock Text="OUTPUT" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+
+			<sampleBrowser:LabeledCardControl Margin="0,20,0,0" Background="#ffffff" HorizontalAlignment="Center">
+				<Image x:Name="outputImage" Stretch="None" SnapsToDevicePixels="True" />
+			</sampleBrowser:LabeledCardControl>
+
+			<Button x:Name="saveImageButton" Margin="0,20,0,0" Content="Save Image to File" IsEnabled="False" HorizontalAlignment="Center" Click="OnSaveImageButtonClick" />
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

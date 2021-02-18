@@ -1,0 +1,81 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=pointerLabel, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=pointerLabel, Path=TextOrientation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The CircularGauge control supports a CircularPointerLabel. This allows you to display
+					text that appears at the desired location around the gauge, and adjust it as desired.
+					<LineBreak /><LineBreak />
+					This example shows a CircularPointerLabel that is bound to the same value as a needle, so they move
+					together. The text of the CircularPointerLabel is the target value that the needle and CircularPointerLabel
+					are heading or pointing toward.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" HorizontalAlignment="Center" Background="#4F4E56"
+					BackgroundRadiusRatio=".7" RimBrush="#3D3D41" FrameType="CircularOrb" GlassType="Circular">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="77" StartAngle="115" SweepAngle="310" Background="#4F4E56">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet MajorInterval="10" MinorInterval="2">
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor ScalePlacement="Outside" TickMarkType="RoundedRectangle" TickMarkAscent="1%" TickMarkExtent="15%"
+											Background="#4F4E56" />
+									<gauge:CircularTickMarkMajor TickMarkType="Ellipse" TickMarkAscent="15%" TickMarkExtent="15%"
+											Background="#4F4E56" />
+									<gauge:CircularTickLabelMajor ScalePlacement="Outside" ScaleOffset="5" FontSize="11" FontWeight="Bold" Foreground="#BDBDB3"  />
+								</gauge:CircularTickSet.Ticks>
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle NeedleType="SwordBlunt" PointerExtent="85%"
+											PointerAscent="30%" Value="{Binding Value, ElementName=pointerLabel}"
+											Background="{shared:LinearGradientBrush #7C633A, #514126, GradientType=TopToBottom, AdditionalStopCount=1}" />
+									<gauge:CircularPointerCap PointerExtent="40%" CapType="CircleConvex"
+											Background="#514126" />
+									<gauge:CircularPointerLabel x:Name="pointerLabel" Value="40" HasDropShadow="False"
+											TextOrientation="RotatedAdjusted" FontSize="14" Foreground="#d0d0d0"
+											ScalePlacement="Inside" ScaleOffset="35%" />
+								</gauge:CircularTickSet.Pointers>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

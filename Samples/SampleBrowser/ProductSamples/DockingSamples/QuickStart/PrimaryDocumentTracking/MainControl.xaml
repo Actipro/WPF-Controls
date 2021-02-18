@@ -1,0 +1,132 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.PrimaryDocumentTracking.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows how you can use the DockSite.PrimaryDocument property and 
+					PrimaryDocumentChanged event to track the primary document within the entire dock site hierarchy.
+					<LineBreak /><LineBreak />
+					The primary document is the last docking window in a MDI host that was selected.  
+					Even when the focus is moved from the MDI host, such as into a tool window, the primary document is maintained
+					<LineBreak /><LineBreak />
+					In this sample, the current primary document and active window are displayed in the status bar.  
+					Use the File/New menu item to add more documents.  
+					The Window menu has options for switching MDI styles and arranging documents in various layouts.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<!-- Menu -->
+		<shared:PixelSnapper>
+			<Menu>
+				<MenuItem Header="_File">
+					<MenuItem Header="New" Click="OnNewDocumentMenuItemClick" />
+					<MenuItem Header="Open..." Click="OnOpenDocumentMenuItemClick" />
+				</MenuItem>
+				<MenuItem Header="_Window">
+					<MenuItem Header="Close All Documents" Command="{Binding ElementName=dockSite, Path=CloseAllDocumentsCommand}" />
+					<Separator />
+					<MenuItem Header="Tabbed MDI" Command="{Binding ElementName=dockSite, Path=SetMdiKindCommand}">
+						<MenuItem.CommandParameter>
+							<docking:MdiKind>Tabbed</docking:MdiKind>
+						</MenuItem.CommandParameter>
+					</MenuItem>
+					<MenuItem Header="Standard MDI" Command="{Binding ElementName=dockSite, Path=SetMdiKindCommand}">
+						<MenuItem.CommandParameter>
+							<docking:MdiKind>Standard</docking:MdiKind>
+						</MenuItem.CommandParameter>
+					</MenuItem>
+					<Separator />
+					<MenuItem Header="Cascade" Command="{Binding ElementName=dockSite, Path=CascadeDocumentsCommand}" />
+					<MenuItem Header="Tile Horizontally" Command="{Binding ElementName=dockSite, Path=TileDocumentsHorizontallyCommand}" />
+					<MenuItem Header="Tile Vertically" Command="{Binding ElementName=dockSite, Path=TileDocumentsVerticallyCommand}" />
+				</MenuItem>
+			</Menu>
+		</shared:PixelSnapper>
+
+		<!-- DockSite -->
+		<docking:DockSite x:Name="dockSite" Grid.Row="1" CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI QuickStart" FloatingWindowIcon="/Images/Icons/Actipro.ico"
+						  WindowActivated="OnDockSiteWindowActivated" 
+						  WindowDeactivated="OnDockSiteWindowDeactivated" 
+						  PrimaryDocumentChanged="OnDockSitePrimaryDocumentChanged"
+						  >
+			<docking:SplitContainer>
+
+				<!-- Workspace -->
+				<docking:Workspace>
+					<docking:TabbedMdiHost>
+						<docking:TabbedMdiContainer>
+							<docking:DocumentWindow Title="Document1.txt" Description="Text document" FileName="Document1.txt"
+													ImageSource="/Images/Icons/TextDocument16.png">
+								<TextBox BorderThickness="0" Text="The first document." TextWrapping="Wrap" />
+							</docking:DocumentWindow>
+							<docking:DocumentWindow Title="Document2.txt" Description="Text document" FileName="Document2.txt"
+													ImageSource="/Images/Icons/TextDocument16.png">
+								<TextBox BorderThickness="0" Text="The second document." TextWrapping="Wrap" />
+							</docking:DocumentWindow>
+							<docking:DocumentWindow Title="Document3.txt" Description="Text document" FileName="Document3.txt"
+													ImageSource="/Images/Icons/TextDocument16.png">
+								<TextBox BorderThickness="0" Text="The third document." TextWrapping="Wrap" />
+							</docking:DocumentWindow>
+						</docking:TabbedMdiContainer>
+					</docking:TabbedMdiHost>
+				</docking:Workspace>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Tool Window" ImageSource="/Images/Icons/Properties16.png">
+						<TextBox BorderThickness="0" Text="This is a tool window." TextWrapping="Wrap" />
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+		</docking:DockSite>
+
+		<!-- StatusBar -->
+		<shared:PixelSnapper Grid.Row="2">
+			<StatusBar>
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+
+				<StatusBarItem>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Primary document:" Opacity="0.75" />
+						<TextBlock x:Name="primaryDocumentTextBlock" Margin="7,0,0,0" Text="(none)" />
+					</StackPanel>
+				</StatusBarItem>
+				<StatusBarItem Grid.Column="1">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Active window:" Opacity="0.75" />
+						<TextBlock x:Name="activeWindowTextBlock" Margin="7,0,0,0" Text="(none)" />
+					</StackPanel>
+				</StatusBarItem>
+			</StatusBar>
+		</shared:PixelSnapper>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

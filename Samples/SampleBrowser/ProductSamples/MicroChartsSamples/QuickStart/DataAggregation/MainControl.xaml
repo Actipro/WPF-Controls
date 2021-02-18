@@ -1,0 +1,69 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="microQuickStartDataAggregationUC" 
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.DataAggregation.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemTemplateKey">
+			<sampleBrowser:LabeledCardControl Label="{Binding}" UseLowerContrast="False">
+				<microcharts:MicroXYChart Width="200" Height="150" HorizontalAlignment="Center" IsHotTrackingEnabled="True" IsAxisBaselineVisible="True"
+						YAxisMaximum="{Binding ElementName=microQuickStartDataAggregationUC, Path=MaximumAmount}"
+						YAxisMinimum="{Binding ElementName=microQuickStartDataAggregationUC, Path=MinimumAmount}">
+					<microcharts:MicroLineSeries ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=Items}" YPath="Amount"
+							IsAggregationEnabled="{Binding IsEnabled}" PrimaryAggregationKind="{Binding Kind}" AggregationFactor="{Binding Factor}"
+							LegendStringFormat="{}{0:F3}" MarkerVisibility="All" MarkerStyleKinds="All" LineStyleKinds="All" />
+				</microcharts:MicroXYChart>
+			</sampleBrowser:LabeledCardControl>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows that the data rendered in a chart can be aggregated to reduce the number of data points, improving performance and readability.
+					Several built-in aggregation functions are provided, which include average, first, last, maximum, and minimum.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl BorderThickness="0" Label="NO AGGREGATION - Shows all 500 data points" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=NoneSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="AVERAGE AGGREGATION - Shows the average value of all the data points in each group" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=AverageSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="FIRST AGGREGATION - Shows the first value in a group of data points" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=FirstSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="LAST AGGREGATION - Shows the last value in a group of data points" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=LastSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="MAXIMUM AGGREGATION - Shows the maximum value of all the data points in each group" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=MaximumSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="MINIMUM AGGREGATION - Shows the minimum value of all the data points in each group" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=MinimumSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

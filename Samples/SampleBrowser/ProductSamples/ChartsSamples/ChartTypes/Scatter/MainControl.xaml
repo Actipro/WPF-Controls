@@ -1,0 +1,141 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.ChartTypes.Scatter.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<Style TargetType="charts:XYChart">
+			<Setter Property="Width" Value="300" />
+			<Setter Property="Height" Value="175" />
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="HorizontalAlignment" Value="Left" />
+		</Style>
+
+		<Style x:Key="SemiTransparentEllipseMarkerStyle" TargetType="charts:ChartMarker">
+			<Setter Property="Opacity" Value="0.65" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="charts:ChartMarker">
+						<Ellipse Fill="{TemplateBinding Background}" />
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Scatter charts render data points where each point is represented by a marker.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<StackPanel>
+					<TextBlock Margin="0,0,0,7" TextAlignment="Center" Style="{StaticResource SampleFigureHeadingTextBlockStyle}">Turn Signal Usage by Trip Length</TextBlock>
+					<charts:XYChart GridLineMajorVisibility="Y" GridStripeVisibility="Y" Width="520" Height="340"
+									IsLegendVisible="True" LegendHorizontalPosition="RightInside" LegendVerticalPosition="BottomInside">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" Title="Turn Signals Activated" />
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" Title="Trip Milage" />
+						</charts:XYChart.XAxes>
+						<charts:ScatterSeries Description="Women" ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y" 
+											  IsAggregationEnabled="False" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
+						<charts:ScatterSeries Description="Men" ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y" 
+											  IsAggregationEnabled="False" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
+					</charts:XYChart>
+				</StackPanel>
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<sampleBrowser:LabeledCardControl Label="Aggregation applied to same data in first example">
+					<charts:XYChart GridLineMajorVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" />
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" />
+						</charts:XYChart.XAxes>
+						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y" 
+												AggregationFactor="0.1" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
+						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y" 
+												AggregationFactor="0.1" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Markers rendered as squares; Mesa palette">
+					<charts:XYChart GridLineMajorVisibility="Y">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette Kind="Mesa" />
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="12 data points, random trends" DataPointCount="12" StartAmount="30" StepRange="10" />
+						</charts:XYChart.DataContext>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:ScatterSeries ItemsSource="{Binding}" XPath="Date.Year" YPath="Amount">
+							<charts:ScatterSeries.MarkerStyle>
+								<Style TargetType="charts:ChartMarker">
+									<Setter Property="Width" Value="18" />
+									<Setter Property="Height" Value="18" />
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="charts:ChartMarker">
+												<Rectangle x:Name="PART_Path" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}"
+												StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness.Left}" Stretch="Fill" />
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</charts:ScatterSeries.MarkerStyle>
+						</charts:ScatterSeries>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Range visible; Earth palette">
+					<charts:XYChart GridLineMajorVisibility="Y">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette Kind="Earth" />
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.DataContext>
+							<sampleData:TimeAggregatedDataGenerator Description="12 data points, trend upward" DataPointCount="12" StartAmount="20" StepRange="10" Trend="Upward" />
+						</charts:XYChart.DataContext>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" Maximum="60" AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="10" TickMinorInterval="5" AreLabelsVisible="True">
+								<charts:XYDoubleAxis.Ranges>
+									<charts:XYRange Minimum="25" Maximum="40" />
+								</charts:XYDoubleAxis.Ranges>
+							</charts:XYDoubleAxis>
+						</charts:XYChart.YAxes>
+						<charts:ScatterSeries ItemsSource="{Binding}" XPath="Date.Year" YPath="Amount" />
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

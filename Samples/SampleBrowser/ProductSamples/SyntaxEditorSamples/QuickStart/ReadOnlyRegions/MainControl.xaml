@@ -1,0 +1,50 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ReadOnlyRegions.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<StackPanel Margin="20,10" Orientation="Horizontal">
+			<CheckBox x:Name="highlightRegionsCheckBox" Content="Highlight read-only regions" IsChecked="True"
+					  Checked="OnHighlightRegionsCheckBoxCheckedChanged" Unchecked="OnHighlightRegionsCheckBoxCheckedChanged" VerticalAlignment="Center" />
+			
+			<Button Margin="50,0,0,0" Content="Make selection read-only" Click="OnMakeSelectionReadOnlyButtonClick" VerticalAlignment="Center" />
+		</StackPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor" Grid.Row="1">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace CSharpReadOnlyRegionsQuickStart {
+
+	/// <summary>
+	/// This QuickStart shows how a custom read-only region tagger can be used to mark
+	/// regions of a document as non-editable.
+	/// </summary>
+	public class ActiproReadOnlyRegionTest {
+
+		/// <summary>
+		/// To test how this works, select a range of text and then click the 
+		/// 'Make selection read-only' button above to make that range read-only.
+		/// From that point on, the text range won't be editable.
+		/// </summary>
+		/// <remarks>
+		/// The read-only text range can also optionally be rendered differently,
+		/// such as with a gray background, to visually denote the text range.
+		/// </remarks>
+		public int Actipro { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</Grid>
+
+</UserControl>

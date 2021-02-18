@@ -1,0 +1,55 @@
+<sampleBrowser:SimpleFlowDocument 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<Paragraph>
+		The numbered QuickStarts that follow this document show step-by-step how to construct a syntax language
+		from scratch that has these features and more:
+	</Paragraph>
+	<List>
+		<ListItem><Paragraph>Lexer (shows both dynamic and programmatic options)</Paragraph></ListItem>
+		<ListItem><Paragraph>Token tagger</Paragraph></ListItem>
+		<ListItem><Paragraph>Classification type provider</Paragraph></ListItem>
+		<ListItem><Paragraph>Parser based on the Actipro LL(*) Parser Framework, with customized tree construction and robust error handling</Paragraph></ListItem>
+		<ListItem><Paragraph>AST generation</Paragraph></ListItem>
+		<ListItem><Paragraph>Parse error reporting</Paragraph></ListItem>
+		<ListItem><Paragraph>Parse error display via squiggle lines</Paragraph></ListItem>
+		<ListItem><Paragraph>Parse error automated IntelliPrompt quick info</Paragraph></ListItem>
+		<ListItem><Paragraph>Code outlining based on the AST</Paragraph></ListItem>
+		<ListItem><Paragraph>Automated IntelliPrompt quick info for collapsed text</Paragraph></ListItem>
+		<ListItem><Paragraph>Line commenting</Paragraph></ListItem>
+		<ListItem><Paragraph>Language-specific context information generation for a specific offset</Paragraph></ListItem>
+		<ListItem><Paragraph>Contextual-based IntelliPrompt quick info</Paragraph></ListItem>
+		<ListItem><Paragraph>Contextual-based IntelliPrompt completion list and related Ctrl+Space support</Paragraph></ListItem>
+		<ListItem><Paragraph>Contextual-based IntelliPrompt parameter info</Paragraph></ListItem>
+		<ListItem><Paragraph>Smart indent provider</Paragraph></ListItem>
+		<ListItem><Paragraph>Text formatter</Paragraph></ListItem>
+		<ListItem><Paragraph>Delimiter (bracket) highlighting and auto-completion</Paragraph></ListItem>
+		<ListItem><Paragraph>Navigable symbol provider</Paragraph></ListItem>
+	</List>	
+	
+	<Paragraph>
+		The syntax language built in this series is for the 'Simple' language,
+		which is a simplified version of C and Javascript.
+		See the documentation for a description of the language and its EBNF.
+	</Paragraph>
+	
+	<Paragraph>
+		This series is the perfect place to start when building your own syntax language implementations
+		as it walks through the correct process to construct a syntax language, and shows
+		the power of the SyntaxEditor framework that can be harnessed by your language.
+		Our own advanced syntax language implementations (such as in the Web Languages Add-on)
+		use the same design techniques and fundamentals described here.
+	</Paragraph>
+		
+	<Paragraph>
+		We hope that you enjoy this series.
+		As you work through each step in the series, be sure to consult the related documentation
+		topics to learn more about each feature area being discussed.
+	</Paragraph>
+	
+</sampleBrowser:SimpleFlowDocument>

@@ -1,0 +1,321 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbPopulation.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbPopulation"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.DataContext>
+		<XmlDataProvider Source="Data.xml" />
+	</sampleBrowser:ProductItemControl.DataContext>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<local:DataImageConverter x:Key="DataImageConverter" />
+		<local:DataImageUriConverter x:Key="DataImageUriConverter" />
+
+		<!--- ******************************************* -->
+		<!--- ***** Using Styles to build hierarchy ***** -->
+
+		<!-- DataTemplates for MySubfolderElement -->
+		<DataTemplate x:Key="MySubfolderElementBreadcrumbItemTemplate">
+			<TextBlock Text="{Binding XPath=@SubfolderName}"
+					   TextTrimming="CharacterEllipsis"
+					   VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MySubfolderElementMenuItemNormalTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="{Binding XPath=@SubfolderName}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MySubfolderElementMenuItemExpandedTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="{Binding XPath=@SubfolderName}"
+					   FontWeight="Bold" />
+		</DataTemplate>
+
+		<!-- DataTemplates for MyFolderElement -->
+		<DataTemplate x:Key="MyFolderElementBreadcrumbItemTemplate">
+			<TextBlock Text="{Binding XPath=@FolderName}"
+					   TextTrimming="CharacterEllipsis"
+					   VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MyFolderElementMenuItemNormalTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="{Binding XPath=@FolderName}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MyFolderElementMenuItemExpandedTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="{Binding XPath=@FolderName}"
+					   FontWeight="Bold" />
+		</DataTemplate>
+
+		<!-- DataTemplates for MyRootElement -->
+		<DataTemplate x:Key="MyRootElementBreadcrumbItemTemplate">
+			<TextBlock Text="Root"
+					   TextTrimming="CharacterEllipsis"
+					   VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MyRootElementMenuItemNormalTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="Root" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="MyRootElementMenuItemExpandedTemplate">
+			<TextBlock Margin="2,0,0,0"
+					   Text="Root"
+					   FontWeight="Bold" />
+		</DataTemplate>
+
+		<!--- Style for MySubfolderElement, which just needs to set the ImageSource. -->
+		<Style x:Key="MySubfolderElementBreadcrumbItemStyle"
+			   TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource"
+					Value="/Images/Icons/FolderOpenGreen16.png" />
+		</Style>
+
+		<!--- Style for MyFolderElement, which needs to set the ImageSource and the ItemsSource. The latter is what builds
+		      the next level in the hierarchy. We also need to specify that child items should use the MySubfolderElement data
+		      template and style. -->
+		<Style x:Key="MyFolderElementBreadcrumbItemStyle"
+			   TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource"
+					Value="/Images/Icons/FolderOpen16.png" />
+			<Setter Property="ItemsSource"
+					Value="{Binding XPath=MySubfolderElement}" />
+
+			<Setter Property="ItemContainerStyle"
+					Value="{StaticResource MySubfolderElementBreadcrumbItemStyle}" />
+			<Setter Property="ItemTemplate"
+					Value="{StaticResource MySubfolderElementBreadcrumbItemTemplate}" />
+			<Setter Property="MenuItemTemplate"
+					Value="{StaticResource MySubfolderElementMenuItemNormalTemplate}" />
+			<Setter Property="MenuItemExpandedTemplate"
+					Value="{StaticResource MySubfolderElementMenuItemExpandedTemplate}" />
+		</Style>
+
+		<!--- Style for MyRootElement, which needs to set the ImageSource and the ItemsSource. The latter is what builds
+		      the next level in the hierarchy. We also need to specify that child items should use the MyFolderElement data
+		      template and style. -->
+		<Style x:Key="MyRootElementBreadcrumbItemStyle"
+			   TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource"
+					Value="/Images/Icons/Computer16.png" />
+			<Setter Property="ItemsSource"
+					Value="{Binding XPath=MyFolderElement}" />
+
+			<Setter Property="ItemContainerStyle"
+					Value="{StaticResource MyFolderElementBreadcrumbItemStyle}" />
+			<Setter Property="ItemTemplate"
+					Value="{StaticResource MyFolderElementBreadcrumbItemTemplate}" />
+			<Setter Property="MenuItemTemplate"
+					Value="{StaticResource MyFolderElementMenuItemNormalTemplate}" />
+			<Setter Property="MenuItemExpandedTemplate"
+					Value="{StaticResource MyFolderElementMenuItemExpandedTemplate}" />
+		</Style>
+
+		<!--- ************************************************************* -->
+		<!--- ***** Using HierarchicalDataTemplate to build hierarchy ***** -->
+
+		<!-- DataTemplates for MySubfolderElement -->
+
+		<!-- Since these are leaf nodes, we can reuse the DataTemplates defined above. -->
+
+		<!-- DataTemplates for MyFolderElement -->
+		<HierarchicalDataTemplate x:Key="MyFolderElementBreadcrumbItemHierTemplate"
+								  ItemsSource="{Binding XPath=MySubfolderElement}"
+								  ItemTemplate="{StaticResource MySubfolderElementBreadcrumbItemTemplate}">
+			<TextBlock Text="{Binding XPath=@FolderName}"
+					   TextTrimming="CharacterEllipsis"
+					   VerticalAlignment="Center" />
+		</HierarchicalDataTemplate>
+
+		<!-- We can reuse the MenuItem templates defined above. -->
+
+		<!-- DataTemplates for MyRootElement -->
+		<HierarchicalDataTemplate x:Key="MyRootElementBreadcrumbItemHierTemplate"
+								  ItemsSource="{Binding XPath=MyFolderElement}"
+								  ItemTemplate="{StaticResource MyFolderElementBreadcrumbItemHierTemplate}">
+			<TextBlock Text="Root"
+					   TextTrimming="CharacterEllipsis"
+					   VerticalAlignment="Center" />
+		</HierarchicalDataTemplate>
+
+		<!-- We can reuse the MenuItem templates defined above. -->
+
+		<!--- Style for MySubfolderElement, which just needs to set the ImageSource. -->
+
+		<!-- Since these are leaf nodes, we can reuse the Style defined above. -->
+
+		<!--- Style for MyFolderElement, which needs to set the ImageSource. We also need to specify the templates and styles
+		      for child items, which cannot be set using a HierarchicalDataTemplate. -->
+		<Style x:Key="MyFolderElementBreadcrumbItemHierStyle"
+			   TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource"
+					Value="/Images/Icons/FolderOpen16.png" />
+
+			<Setter Property="ItemContainerStyle"
+					Value="{StaticResource MySubfolderElementBreadcrumbItemStyle}" />
+			<Setter Property="MenuItemTemplate"
+					Value="{StaticResource MySubfolderElementMenuItemNormalTemplate}" />
+			<Setter Property="MenuItemExpandedTemplate"
+					Value="{StaticResource MySubfolderElementMenuItemExpandedTemplate}" />
+		</Style>
+
+		<!--- Style for MyRootElement, which needs to set the ImageSource. We also need to specify the templates and styles
+		      for child items, which cannot be set using a HierarchicalDataTemplate. -->
+		<Style x:Key="MyRootElementBreadcrumbItemHierStyle"
+			   TargetType="{x:Type navigation:BreadcrumbItem}">
+			<Setter Property="ImageSource"
+					Value="/Images/Icons/Computer16.png" />
+
+			<Setter Property="ItemContainerStyle"
+					Value="{StaticResource MyFolderElementBreadcrumbItemStyle}" />
+			<Setter Property="MenuItemTemplate"
+					Value="{StaticResource MyFolderElementMenuItemNormalTemplate}" />
+			<Setter Property="MenuItemExpandedTemplate"
+					Value="{StaticResource MyFolderElementMenuItemExpandedTemplate}" />
+		</Style>
+
+		<!--- ************************************************************* -->
+		<!--- ***** General MenuItem Style shared across all examples ***** -->
+
+		<!-- This Style will explicitly set the Icon property on a MenuItem and is shared between all the different
+		     elements in our data and both ways of setting the data. -->
+		<Style x:Key="MenuItemContainerStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+			<Setter Property="Icon" Value="{Binding Converter={StaticResource DataImageConverter}}" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The items presented by the Actipro Breadcrumb control can either be defined directly in XAML or can be constructed
+					from a hierarchical data source.
+					<LineBreak /><LineBreak />
+					When using a hierarchical data source, additional information is required so the Breadcrumb can traverse down the
+					hierarchy. This additional information can be set using custom defined Styles or using the
+					HierarchicalDataTemplate class.
+					<LineBreak /><LineBreak />
+					This quick-start shows how the Breadcrumb can be populated using these three methods.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		
+		<TextBlock Style="{StaticResource SampleSectionHeadingTextBlockStyle}">DEFINING ITEMS DIRECTLY IN XAML</TextBlock>
+		<shared:PixelSnapper>
+			<TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+				The items presented can be defined directly in XAML using BreadcrumbItem elements. This process is
+				identical to populating a TreeView, with a few exceptions. First, the Breadcrumb control can only
+				have a single root item, whereas the TreeView can have any number of root items. Second, the
+				PathEntry property on the BreadcrumbItem elements must be set. This property is used by the
+				Breadcrumb control to support directly editing the selected path.
+			</TextBlock>
+		</shared:PixelSnapper>
+		<navigation:Breadcrumb Margin="0,10,0,0"
+								AutoMinimizeItemCount="0"
+								ConvertItem="OnBreadcrumbConvertItem">
+			<navigation:BreadcrumbItem Header="Root"
+										PathEntry="Root"
+										ImageSource="/Images/Icons/Computer16.png">
+				<navigation:BreadcrumbItem Header="Folder 1"
+											PathEntry="Folder 1"
+											ImageSource="/Images/Icons/FolderOpen16.png">
+					<navigation:BreadcrumbItem Header="Subfolder 1"
+												PathEntry="Subfolder 1"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 2"
+												PathEntry="Subfolder 2"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 3"
+												PathEntry="Subfolder 3"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+				</navigation:BreadcrumbItem>
+				<navigation:BreadcrumbItem Header="Folder 2"
+											PathEntry="Folder 2"
+											ImageSource="/Images/Icons/FolderOpen16.png">
+					<navigation:BreadcrumbItem Header="Subfolder 1"
+												PathEntry="Subfolder 1"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 2"
+												PathEntry="Subfolder 2"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 3"
+												PathEntry="Subfolder 3"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+				</navigation:BreadcrumbItem>
+				<navigation:BreadcrumbItem Header="Folder 3"
+											PathEntry="Folder 3"
+											ImageSource="/Images/Icons/FolderOpen16.png">
+					<navigation:BreadcrumbItem Header="Subfolder 1"
+												PathEntry="Subfolder 1"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 2"
+												PathEntry="Subfolder 2"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+					<navigation:BreadcrumbItem Header="Subfolder 3"
+												PathEntry="Subfolder 3"
+												ImageSource="/Images/Icons/FolderOpenGreen16.png" />
+				</navigation:BreadcrumbItem>
+			</navigation:BreadcrumbItem>
+		</navigation:Breadcrumb>
+		
+		<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+
+		<TextBlock Style="{StaticResource SampleSectionHeadingTextBlockStyle}">USING AN XML DATA SOURCE AND STYLES</TextBlock>
+		<shared:PixelSnapper>
+			<TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+				Styles can be used to populate the Breadcrumb from a hierarchical data source by explicitly setting the
+				ItemsSource property on BreadcrumbItem elements, which are used as wrappers around the underlying data.
+			</TextBlock>
+		</shared:PixelSnapper>
+		<navigation:Breadcrumb Margin="0,10,0,0"
+								RootItem="{Binding XPath=MyRootElement}"
+								ItemContainerStyle="{StaticResource MyRootElementBreadcrumbItemStyle}"
+								ItemTemplate="{StaticResource MyRootElementBreadcrumbItemTemplate}"
+								MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+								MenuItemTemplate="{StaticResource MyRootElementMenuItemNormalTemplate}"
+								MenuItemExpandedTemplate="{StaticResource MyRootElementMenuItemExpandedTemplate}"
+								AutoMinimizeItemCount="0"
+								ConvertItem="OnBreadcrumbConvertItemXML" />
+
+		<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+		
+		<TextBlock Style="{StaticResource SampleSectionHeadingTextBlockStyle}">USING AN XML DATA SOURCE AND HIERARCHICALDATATEMPLATES</TextBlock>
+		<shared:PixelSnapper>
+			<TextBlock Margin="0,10,0,0" TextWrapping="Wrap">
+				The Breadcrumb control fully supports the HierarchicalDataTemplate class, by utilizing its ItemsSource property
+				and associated properties. Styles must still be used to set certain visual aspects of the data, such as the icon
+				shown on the context menus.
+			</TextBlock>
+		</shared:PixelSnapper>
+		<navigation:Breadcrumb Margin="0,10,0,0"
+								RootItem="{Binding XPath=MyRootElement}"
+								ItemContainerStyle="{StaticResource MyRootElementBreadcrumbItemStyle}"
+								ItemTemplate="{StaticResource MyRootElementBreadcrumbItemHierTemplate}"
+								MenuItemContainerStyle="{StaticResource MenuItemContainerStyle}"
+								MenuItemTemplate="{StaticResource MyRootElementMenuItemNormalTemplate}"
+								MenuItemExpandedTemplate="{StaticResource MyRootElementMenuItemExpandedTemplate}"
+								AutoMinimizeItemCount="0"
+								ConvertItem="OnBreadcrumbConvertItemXML" />
+
+	</StackPanel>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExpanderRoot>
+  <ExpanderGroup Text="Picture Tasks" Image="PictureTasks32.png" GhostImage="PictureTasks48.png"
+                 IsExpanded="True" UseAlternateStyle="True">
+    <ExpanderHyperlink Text="View as a slide show" Image="SlideShow16.png"/>
+    <ExpanderHyperlink Text="Order prints online" Image="PrintsOnline16.png"/>
+    <ExpanderHyperlink Text="Print this picture" Image="PicturePrint16.png"/>
+    <ExpanderHyperlink Text="Copy to CD" Image="CD16.png"/>
+  </ExpanderGroup>
+  <ExpanderGroup Text="File and Folder Tasks" IsExpanded="True">
+    <ExpanderHyperlink Text="Rename this file" Image="FileRename16.png"/>
+    <ExpanderHyperlink Text="Move this file" Image="FileMove16.png"/>
+    <ExpanderHyperlink Text="Copy this file" Image="Copy16.png"/>
+    <ExpanderHyperlink Text="Publish this file to the Web" Image="FilePublish16.png"/>
+    <ExpanderHyperlink Text="E-mail this file" Image="Mail16.png"/>
+    <ExpanderHyperlink Text="Delete this file" Image="Delete16.png"/>
+  </ExpanderGroup>
+  <ExpanderGroup Text="Other Places">
+    <ExpanderHyperlink Text="My Documents" Image="FolderClosed16.png"/>
+    <ExpanderHyperlink Text="Shared Documents" Image="FolderClosed16.png"/>
+    <ExpanderHyperlink Text="My Computer" Image="Computer16.png"/>
+    <ExpanderHyperlink Text="My Network Places" Image="Network16.png"/>
+  </ExpanderGroup>
+  <ExpanderGroup Text="Details" IsExpanded="True">
+    <ExpanderFileInfo Name="Save32.png" FileType="PNG Image" Image="Save32.png">
+      <ExpanderFileDetail Name="Dimensions" Value="32 x 32"/>
+      <ExpanderFileDetail Name="Size" Value="831 bytes"/>
+    </ExpanderFileInfo>
+  </ExpanderGroup>
+</ExpanderRoot>

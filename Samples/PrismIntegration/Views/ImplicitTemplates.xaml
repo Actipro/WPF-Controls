@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:sampleViewModels="clr-namespace:ActiproSoftware.Windows.PrismIntegration.ViewModels"
+		xmlns:sampleViews="clr-namespace:ActiproSoftware.Windows.PrismIntegration.Views">
+
+	<!-- Documents -->
+	<DataTemplate DataType="{x:Type sampleViewModels:TextDocumentItemViewModel}">
+		<sampleViews:TextDocumentItemView />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type sampleViewModels:WelcomeDocumentItemViewModel}">
+		<sampleViews:WelcomeDocumentItemView />
+	</DataTemplate>
+
+	<!-- Tools -->
+	<DataTemplate DataType="{x:Type sampleViewModels:ClassViewToolItemViewModel}">
+		<sampleViews:ClassViewToolItemView />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type sampleViewModels:SolutionExplorerToolItemViewModel}">
+		<sampleViews:SolutionExplorerToolItemView />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type sampleViewModels:ToolboxToolItemViewModel}">
+		<sampleViews:ToolboxToolItemView />
+	</DataTemplate>
+
+</ResourceDictionary>

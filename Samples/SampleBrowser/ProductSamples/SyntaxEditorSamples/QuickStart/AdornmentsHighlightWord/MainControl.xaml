@@ -1,0 +1,51 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightWord"
+    >
+    
+	<DockPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[using System;
+using System.Diagnostics;
+
+namespace Actipro.HighlightWordQuickStart {
+
+	/// <summary>
+	/// This QuickStart uses a custom IClassificationTag-based tagger 
+	/// that marks ranges of text and SyntaxEditor automatically adjusts
+	/// the rendering of those text ranges based on a highlighting
+	/// style registered for the classification.
+	/// </summary>
+	/// <remarks>
+	/// The style demos border rendering features.
+	/// </remarks>
+	public class ActiproTest {
+
+		/// <summary>
+		/// The tagger in this sample watches for view selection
+		/// changes and tags any instances of the same word
+		/// as the word that the caret is currently in.
+		/// </summary>
+		/// <remarks>
+		/// Move the caret into some words like "QuickStart"
+		/// that are used multiple times in this document's text
+		/// to see the background highlights.
+		/// </remarks>
+		public int Actipro { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

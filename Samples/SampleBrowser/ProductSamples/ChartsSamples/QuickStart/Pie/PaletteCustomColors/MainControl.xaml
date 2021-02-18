@@ -1,0 +1,74 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator" PresetAmounts="60;28;17" PresetTitles="Sales;Accounting;Legal" />
+
+		<Style x:Key="ChartStyle" TargetType="charts:PieChart">
+			<Setter Property="Width" Value="350" />
+			<Setter Property="Height" Value="200" />
+			<Setter Property="IsLegendVisible" Value="True" />
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Charts includes a very customizable palette-based style selector for all its rendered elements.
+					The core palette, or set of colors, used by the style selector can be set to use any of our built-in color sets.
+					Alternatively, custom colors can be defined as shown below.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="Default palette">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieChart.Series>
+							<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" SliceValuePath="Amount" SliceTitlePath="Title" />
+						</charts:PieChart.Series>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Custom palette">
+					<charts:PieChart Style="{StaticResource ChartStyle}">
+						<charts:PieChart.Series>
+							<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" SliceValuePath="Amount" SliceTitlePath="Title">
+								<charts:PieSeries.SliceStyleSelector>
+
+									<!-- A custom palette is defined by setting colors on PieSlicePaletteStyleSelector.Palette -->
+									<charts:PieSlicePaletteStyleSelector>
+										<charts:Palette>
+											<Color>#BA2A67</Color>
+											<Color>#D3B2AF</Color>
+											<Color>#8A9452</Color>
+										</charts:Palette>
+									</charts:PieSlicePaletteStyleSelector>
+
+								</charts:PieSeries.SliceStyleSelector>
+							</charts:PieSeries>
+						</charts:PieChart.Series>
+					</charts:PieChart>
+				</sampleBrowser:LabeledCardControl>
+				
+			</sampleBrowser:SampleGalleryControl>
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

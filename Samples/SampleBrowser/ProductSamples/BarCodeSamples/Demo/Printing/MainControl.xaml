@@ -1,0 +1,101 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.BarCodeSamples.Demo.Printing.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+	
+		<FixedPage x:Key="SampleFixedPage">
+
+			<TextBlock FixedPage.Left="40" FixedPage.Top="40" Style="{StaticResource DocumentHeadingTextBlockStyle}" Text="Bar Codes in a FixedDocument" />
+					
+			<barCode:BarCode FixedPage.Left="40" FixedPage.Top="120" Caption="EAN-13" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Ean13Symbology Value="003600029145" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="200" FixedPage.Top="120" Caption="EAN-8" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Ean8Symbology Value="5512345" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="460" FixedPage.Top="120" Caption="UPC-A" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:UpcASymbology Value="04210000526" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="620" FixedPage.Top="120" Caption="UPC-E" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:UpcESymbology Value="04252614" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="40" FixedPage.Top="260" Caption="Code 39" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code39Symbology Value="ABC-123" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="220" FixedPage.Top="260" Caption="Code 39 Extended" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code39ExtendedSymbology Value="abc-123" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+			
+			<barCode:BarCode FixedPage.Left="40" FixedPage.Top="360" Caption="Code 39 w/Checksum" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code39Symbology Value="ABC-123" IsChecksumEnabled="True" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="220" FixedPage.Top="360" Caption="Code 39 Extended w/Checksum" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code39ExtendedSymbology Value="abc-123" IsChecksumEnabled="True" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+			
+			<barCode:BarCode FixedPage.Left="460" FixedPage.Top="260" Caption="Code 93" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code93Symbology Value="ABC-123" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="460" FixedPage.Top="360" Caption="Code 93 Extended" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code93ExtendedSymbology Value="abc-123" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+			
+			<barCode:BarCode FixedPage.Left="40" FixedPage.Top="460" Caption="Code 128" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:Code128Symbology Value="ABC-123" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="460" FixedPage.Top="460" Caption="Codabar" BorderThickness="1" TextElement.FontWeight="Bold">
+				<barCode:CodabarSymbology Value="A12345678A" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="40" FixedPage.Top="560" Caption="Interleaved 2 of 5" BorderThickness="1" TextElement.FontWeight="Bold" Padding="5">
+				<barCode:Interleaved2of5Symbology Value="0123456789" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<barCode:BarCode FixedPage.Left="200" FixedPage.Top="560" Caption="Interleaved 2 of 5 w/Checksum" BorderThickness="1" TextElement.FontWeight="Bold" Padding="5">
+				<barCode:Interleaved2of5Symbology Value="123456789" IsChecksumEnabled="True" TextElement.FontWeight="Normal" />
+			</barCode:BarCode>
+
+			<TextBlock FixedPage.Left="40" FixedPage.Top="1000" FontStyle="Italic" Text="Note that the bar codes will be best recognized when using a laser printer." />
+			
+		</FixedPage>
+	
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Bar Code controls can be used in elements such as FixedDocument or FlowDocument objects.
+					Since Actipro's bar codes are vector-based, they are much, much clearer than bitmap-based bar codes produced by our competitors.
+					<LineBreak /><LineBreak />
+					In this demo, note that bar codes are included in the document.
+					Press the Print button in the document viewer to see how the bar codes look on paper.
+					Use the Zoom buttons to zoom in and see how clear the bar codes render because of their vector nature.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<sampleBrowser:LabeledCardControl themes:ThemeProperties.CornerRadius="0" Padding="0">
+			<DocumentViewer x:Name="docViewer"></DocumentViewer>
+		</sampleBrowser:LabeledCardControl>
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

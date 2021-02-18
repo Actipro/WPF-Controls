@@ -1,0 +1,576 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+			<Control x:Name="focusCaptureControl" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">10/28/2020 - Version 19.1.0687</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where setting DockingWindow.IsOpen to false within the XAML of a nested DockSite might not close the docking window." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where calling DockingWindow.DragMove on a closed docking window might not raise the DockSite.WindowsOpening/WindowsOpened events or update the IsOpen property." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the AutoCompleteBox.SelectedItem property to bind two-way by default." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where filtering might not work properly in a TreeListBox that displayed its root node." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a read-only PropertyGrid still allowed editable collection properties to have items added/removed." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a read-only PropertyGrid might not display uncategorized properties as read-only when appropriate." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated Windows shell libraries to support creating new folders." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where highlighted backgrounds for single line terminator characters didn't render." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a memory leak could occur when using IME support." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where setting an alternate e.DragEventArgs.Effect in a SyntaxEditor.PasteDragDrop event handler for PasteDragDropAction.DragOver didn't change the resolved effect." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where copying a block selection with zero-length didn't work." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the C# grammar didn't always handle invalid object creation expressions correctly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the VB parser didn't perform well when there were many line terminators in a row." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where packages and modules whose names began with an underscore were not included in IntelliPrompt." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+			
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">8/13/2020 - Version 19.1.0686</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the AdvancedTabControl.TabDragReordered event, which is raised after a tab is reordered with internal drag/drop." />
+				<sampleBrowser:BulletContentControl Content="Improved the UI automation peer tree related to auto-hidden tool windows." />
+				<sampleBrowser:BulletContentControl Content="Updated Shift+Esc to close the active tool window." />
+				<sampleBrowser:BulletContentControl Content="Updated docking window close focus-moving logic to not possibly move focus into an auto-hidden tool window." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where clicking a new tab button in a tabbed MDI container could open a document in another container that previously held the primary document." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where dynamically setting an image source on an auto-hidden ToolWindow wouldn't update the tab in a certain scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where an auto-hidden tool window might not render its child controls with the correct foreground." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where docking windows in high DPI could initially float in the wrong location when dragged." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where dock guides could render in the wrong location in a scenario when using .NET 4.8 and PerMonitorV2 DPI awareness." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where SplitContainer didn't properly establish its child logical tree." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where switcher activation keys used wouldn't work when a non-hosted auto-hide popup had focus." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where quickly dragging to float a dock host using previews may keep the preview visible." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where dock guides and non-hosted auto-hide popups could appear in the wrong location in certain per-monitor high DPI scenarios." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added an IsNullAllowed property to DatePicker, DateTimePicker, and TimePicker, and changed their Value property type to be nullable DateTime.  When null is allowed, a Clear button appears on the MonthCalendar." />
+				<sampleBrowser:BulletContentControl Content="Improved how numeric edit boxes parse whitespace within custom format string literals." />
+				<sampleBrowser:BulletContentControl Content="Updated the AutoCompleteBox.Text property to bind two-way by default." />
+				<sampleBrowser:BulletContentControl Content="Updated AutoCompleteBox to properly capture mouse events when the popup is open." />
+				<sampleBrowser:BulletContentControl Content="Updated Calculator to commit any pending operations when focus is lost." />
+				<sampleBrowser:BulletContentControl Content="Updated Calculator's handling and display of decimal points and trailing zeros." />
+				<sampleBrowser:BulletContentControl Content="Updated Calculator's handling of data entry following its Value property being changed externally." />
+				<sampleBrowser:BulletContentControl Content="Updated MaskedTextBox to always move the caret immediately after the last matched character when the mouse tries to start selection in the prompt area." />
+				<sampleBrowser:BulletContentControl Content="Updated MaskedTextBox to move the caret past the literal characters in the mask when gaining focus." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where Calculator didn't always detect its out-of-range state properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where DoubleEditBox wasn't parsing percentage values correctly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where DoublePicker, SinglePicker, and Int64Picker might not increment values correctly when there was an enormous range allowed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated PropertyGrid to prevent ObservableCollection property model refreshing when an item is replaced." />
+				<sampleBrowser:BulletContentControl Content="Improved the performance of moving a tree node to another location in the tree." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a BrushEditBox used in PropertyGrid wouldn't always raise the PropertyValueChanged event." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where hidden columns wouldn't allow star width columns to size correctly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in how TreeListBox notified of multiple item removal." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the mini-toolbar to not close when unfocused and the Ctrl or Shift modifier keys are pressed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the ShellListView.SortDirection and SortShellPropertyKey properties, which determine how the list is sorted." />
+				<sampleBrowser:BulletContentControl Content="Added the ShellListView.CanResetSortOnRootShellFolderChange property, which can be set to false to prevent sort reset when the root folder changes." />
+				<sampleBrowser:BulletContentControl Content="Added the ShellListView.UpdateColumns method and added support for the CanColumnsToggleVisibility property." />
+				<sampleBrowser:BulletContentControl Content="Significantly improved the speed by which ShellListView can sort Windows shell objects by property." />
+				<sampleBrowser:BulletContentControl Content="Updated ShellListView to visually refresh property data like modified dates as changes occur." />
+				<sampleBrowser:BulletContentControl Content="Updated the logic used to retrieve the IShellObject.FileSystemPath for Windows shell libraries." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where sorting or renaming a shell object in a ShellListView with a non-Details layout mode could throw an exception." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the 'Adornments - Squiggles Intro' QuickStart to show a more realistic scenario of tracking developer-specified tagged ranges." />
+				<sampleBrowser:BulletContentControl Content="Updated the CollectionTagger.Clear method to accurately report the changed text range in the TagsChanged event when there are fewer than 100 tags being removed.  Otherwise, the entire snapshot range is returned as before." />
+				<sampleBrowser:BulletContentControl Content="Updated the SyntaxEditor.FontFamily property to be set in its default Style." />
+				<sampleBrowser:BulletContentControl Content="Updated the virtual CodeSnippetSelectionSession.OnCompletionSessionInitializing method to perform sorting and be called after items have been added to the session, so that completion items and/or sorting can be customized prior to opening." />
+				<sampleBrowser:BulletContentControl Content="Updated touch taps over a collapsed outlining node to select the node's text range." />
+				<sampleBrowser:BulletContentControl Content="Adjusted the order of logic that executes when the SyntaxEditor.Document property is set." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a tagger that derived from TaggerBase didn't clear its Document property value when the attached document's syntax language was changed." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where Shift+Clicking a scrollbar wouldn't scroll the editor properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where collapsed region adornments may flicker when a SyntaxEditor with word wrap enabled would resize." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a collapsed region adornment that was word wrapped to the start of another view line would show a duplicate expander box in the outlining margin." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a collapsed region adornment that was word wrapped to the start of another view line would show its quick info in the wrong location." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where caret movement didn't work properly around a collapsed region adornment at the end of a document." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the current line highlight bounds included any intra-line adornments." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a code snippet without any SnippetTypes specified should have been allowed anywhere." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where using the mouse to commit a code snippet selection session might not focus the view afterward." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where reconnecting to a remote desktop session with a SyntaxEditor loaded in a certain scenario could lead to an exception." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the resolver wasn't properly resolving interpolated string expressions." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where C# event accessor declarations didn't support lambda expression bodies." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated how WindowChrome's shadow is tracked with its owner Window, which prevents the shadow from showing up on other virtual desktops." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated InertiaScrollViewer to not handle various events for another inner ScrollViewer." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated PopupButton to prevent mouse wheel events from bubbling up when the popup is open." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/25/2020 - Version 19.1.0685</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the StandardSwitcher.DocumentsColumnTitle and ToolWindowsColumnTitle properties to allow for easier customization of the column titles." />
+				<sampleBrowser:BulletContentControl Content="Added the AdvancedTabControl.HeaderBackground property that fills the header area behind tabs and buttons." />
+				<sampleBrowser:BulletContentControl Content="Updated when the DockingWindow.IsOpen property is changed during layout changes to more closely match the DockSite.WindowsOpened/WindowsClosed events." />
+				<sampleBrowser:BulletContentControl Content="Updated how the adornment Window that hosts dock guides is closed to prevent a possible exception." />
+				<sampleBrowser:BulletContentControl Content="Updated the Prism Integration samples to use Prism v7.2." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the DockSite.WindowsOpening/WindowsOpened events didn't fire when programmatically docking or floating a closed docking window in several scenarios." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the ElementName-based bindings from within the DockSite.Child's content to a named element outside of the DockSite would fail if the DockSite wasn't yet loaded." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where an AdvancedTabControl with left/right tab placement didn't always measure the tabs correctly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where an AdvancedTabControl didn't always scroll overflowed tabs into view properly when a tab was closed." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where focus might not be moved into another docking window when a focused floating docking window is programmatically closed." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where failing to touch-drag a docking window successfully with UseDragFloatPreviews enabled could leave a drop target artifact on screen." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the AutoCompleteBox.HasClearButton property, which determines whether a clear button appears when the control is focused and there is text." />
+				<sampleBrowser:BulletContentControl Content="Added a HasText property to the BrushEditBox and ColorEditBox controls, allowing the text portion of the edit box to be hidden for swatch-only display." />
+				<sampleBrowser:BulletContentControl Content="Improved DateEditBox and TimeEditBox to accept delimiter-less input for several additional custom formats." />
+				<sampleBrowser:BulletContentControl Content="Updated how edit boxes listen for focus loss scenarios." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where edit boxes might not commit pending typed changes when in a focus scope (like a toolbar) and focus is moved back to the main focus scope." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where setting DateTimeEditBox.Value to a DateTime that is out of range of the current calendar could throw an exception." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a Spinner in horizontal orientation had the buttons flipped." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a BorderThickness property to the property editors that integrate various Editors controls with PropertyGrid." />
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox and TreeListView to support an optional AlternationCount of 2 for alternating row background colors." />
+				<sampleBrowser:BulletContentControl Content="Updated PropertyGrid interop with Editors to display a red border when a property value fails data validation." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a tree node being edited wouldn't scroll into view." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where setting TreeListBox.RootItem to null while a filter is active would call into the filter with a null item reference." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where refreshing TreeListView items in code-behind could trigger extra layout cycles." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where resetting a PropertyGrid value wouldn't raise the PropertyGrid.PropertyValueChanged event." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where changing the PropertyModel.IsExpanded property wasn't properly updating the PropertyGrid in a certain scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where selecting a TreeListBox item right after adding it might not properly set focus to the item." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Navigation</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Breadcrumb's caret to use the theme brush so that it renders well in dark themes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a menu item SplitButton didn't handle its disabled state properly." />
+				<sampleBrowser:BulletContentControl Content="Adjusted how the default 'Segoe UI' font is set on various Ribbon controls, allowing for easier customization if desired." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where an exception could occur when externally deleting a file in a folder being examined by TreeListView in non-Details layout mode." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved search overlay pane logic related to the selection scope range." />
+				<sampleBrowser:BulletContentControl Content="Updated the search overlay pane when opened to not auto-search for tabs that may surround a zero-length selection." />
+				<sampleBrowser:BulletContentControl Content="Updated the search views to allow Ctrl+Enter to execute a Find All search operation when the Find textbox has focus and IsFindAllButtonVisible is true." />
+				<sampleBrowser:BulletContentControl Content="Updated mouse wheel scrolling to still work when the related scrollbar is hidden.  It is recommended to set SyntaxEditor.CanScrollPastDocumentEnd to false when hiding the vertical scrollbar." />
+				<sampleBrowser:BulletContentControl Content="Updated the SyntaxEditor.PasteDragDrop event to fire for drops within the same control, so that the accepted operation can be forced to Copy if desired." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where collapsible region highlights didn't render in the correct vertical location in a certain scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in the language service sorting logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug introduced in the previous build where opening an IntelliPrompt quick info session could throw an exception in a certain scenario." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where certain generic method constraints could prevent the method from showing in IntelliPrompt." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a syntax error could occur when using a C# null-coalescing operator in a certain scenario." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated native TextBox and RichTextBox context menus to be themed when using the ThemeManager.AreNativeThemesEnabled feature." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a column or card added to TaskBoard might not be rendered in the correct position." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/10/2020 - Version 19.1.0684</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the AdvancedTabControl tab layout logic when using shrink overflow to help ensure tabs fully fill the control extent." />
+				<sampleBrowser:BulletContentControl Content="Updated the tab overflow menu to check the menu item for the currently-selected tab." />
+				<sampleBrowser:BulletContentControl Content="Updated StandardSwitcher to not reserve space for docking window images when they aren't available." />
+				<sampleBrowser:BulletContentControl Content="Added the DockHost.GetVisibleToolWindowContainerCount method, which is useful for determining if there is are multiple ToolWindowContainers within a floating DockHost." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug caused by a previous update where tabs using shrink overflow might not fully render the tabs in a certain scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a deserialized floating window on high DPI systems might open offset from its proper location." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where deserializing a layout containing a SplitContainer with no current visible children could incorrectly show a splitter." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the StandardSwitcher allowed the selected window's header image to render at its default size instead of a fixed size." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the AutoCompleteBox.SelectedItemChanged event." />
+				<sampleBrowser:BulletContentControl Content="Added the AutoCompleteBox.InputMode property, which determines control usage behavior." />
+				<sampleBrowser:BulletContentControl Content="Updated numeric edit boxes to support large incremental changes when holding Shift while pressing Up/Down, using the spinner, or rotating the mouse wheel." />
+				<sampleBrowser:BulletContentControl Content="Updated several numeric edit boxes to support custom format strings with semi-colon conditional format specifiers." />
+				<sampleBrowser:BulletContentControl Content="Updated AutoCompleteBox to dispatch filter application after property changes, thereby ensuring all data-bound properties are updated when the filter executes." />
+				<sampleBrowser:BulletContentControl Content="Updated the ColorPicker.Value property to be a nullable Color, so that it doesn't display an initial color when used within a nullable ColorEditBox." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the PropertyGrid.RequestRefresh method that can request that the property grid refreshes its contents." />
+				<sampleBrowser:BulletContentControl Content="Added the PropertyDescriptorPropertyModel.PropertyDescriptor property." />
+				<sampleBrowser:BulletContentControl Content="Updated PropertyDescriptorPropertyModel to watch for changes to non-value PropertyDescriptor properties like DisplayName when the descriptor implements INotifyPropertyChanged." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where using the keyboard to attempt to select a TreeListBox item that triggers a scroll might not always focus the correct item." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where using multiple TreeListView star-sized columns could result in the last column's right edge being cut off by a pixel." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Customizing Context Menus QuickStart to work properly with recent changes made to ContextMenu auto-generation logic for controls within Ribbon." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the Backstage close button wouldn't be fully visible if the containing RibbonWindow's IsTitleBarVislble property was set to false." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where setting the SplitButton and PopupButton.BorderBrush properties wouldn't update the default transparent outer border." />
+				<sampleBrowser:BulletContentControl Content="Fixed a possible exception that could occur when drawing RibbonWindow title bar text." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a new background that renders the search range when the search overlay pane is in Selection scope mode." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.HasSearchOverlayPaneKeyBindings property, which can be set to false when using external search UI to prevent access to the built-in search overlay pane." />
+				<sampleBrowser:BulletContentControl Content="Added the ICompletionItemCollection.CreateBatch and AddRange methods, which when used to add completion items can dramatically improve item-adding performance.  Updated all premium add-on completion providers to use the new methods." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.CanScrollPastDocumentEnd property back with a default of true.  It should only be changed to false if the editors doesn't use multiple font families/sizes or intra-line adornments." />
+				<sampleBrowser:BulletContentControl Content="Flipped the order of the Guides and Highlights adornment layers." />
+				<sampleBrowser:BulletContentControl Content="Improved search overlay pane logic related to the selection scope range." />
+				<sampleBrowser:BulletContentControl Content="Improved the IntelliPrompt popup placement rectangle determination logic for target text ranges." />
+				<sampleBrowser:BulletContentControl Content="Updated the IntelliPrompt quick info and parameter info tips to have a max height of half the screen height." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt code snippets to convert tabs to spaces when ITextDocument.AutoConvertTabsToSpaces is set to true." />
+				<sampleBrowser:BulletContentControl Content="Updated PgDn logic to prevent scrolling past the document end." />
+				<sampleBrowser:BulletContentControl Content="Updated logic so that when changing the SyntaxEditor.IsVirtualSpaceAtLineEndEnabled property to false, a virtual selection will be moved to document offsets." />
+				<sampleBrowser:BulletContentControl Content="Updated the 'Adornments 8 - Color Preview' QuickStart to render the adornments using a draw callback method instead of UIElements." />
+				<sampleBrowser:BulletContentControl Content="Updated several static members on HtmlContentProvider to be methods that take a IHighlightingStyleRegistry parameter, thereby allowing the content provider to do highlighting style lookups in the same registry used by a target view." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where word-wrapped lines might not arrange properly in a certain scenario with multiple sequential SyntaxEditor size changes." />
+				<sampleBrowser:BulletContentControl Content="Fixed several language services that were previously allowed to function on inactive views." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the C# and VB context factories for improved IntelliPrompt parameter info." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the resolver wouldn't resolve classes defined below the current class in the same document." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Web Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the XML parser could throw an exception in a scenario where a syntax error occurred in header or footer text." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome logic to help prevent an issue where a chromed Window may occasionally open up without fully rendering itself." />
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome's outer glow to delay showing itself until input is ready on the chromed Window." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the ConditionalConverter to support strings and other non-boolean objects as conditions." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">10/2/2019 - Version 19.1.0683</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated DockSite to raise the WindowsDragging/WindowsDragged events after a tab reorder in the same docking window container occurs." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the DoublePicker, Int16Picker, Int32Picker, Int64Picker, and SinglePicker controls so a full rotation increments 1,000 values when the min-to-max range is larger than 1,000." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a new section to the PropertyGrid 'Data Models and Factories' documentation topic that talks about best practices for clearing the DataObject property when the PropertyGrid is no longer needed to prevent memory leaks." />
+				<sampleBrowser:BulletContentControl Content="Added the PropertyGrid.CanClearDataObjectOnUnload property that can be set to true to automatically clear the DataObject property when the control is unloaded.  Clear the DataObject property manually when CanClearDataObjectOnUnload cannot not used." />
+				<sampleBrowser:BulletContentControl Content="Improved how PropertyGrid watches property value changes to help prevent memory leaks." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Navigation</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the Breadcrumb.ComboBoxDropDownToolTip property that sets the tooltip for the Breadcrumb's drop-down button." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the shell object name sort logic to use better natural sorting, where digits in the names are considered as numerical content rather than text." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added support for triple-clicks to select an entire view line.  Dragging the pointer on the final click will extend the selection by view line." />
+				<sampleBrowser:BulletContentControl Content="Added theme-oriented resource dictionaries to prevent unnecessary theme assembly lookup." />
+				<sampleBrowser:BulletContentControl Content="Improved the search result highlighting logic." />
+				<sampleBrowser:BulletContentControl Content="Improved the logic in CollapsedRegionQuickInfoProvider." />
+				<sampleBrowser:BulletContentControl Content="Improved the caret movement for change character casing edit actions when there is no selection." />
+				<sampleBrowser:BulletContentControl Content="Improved editor view searching and search result highlighting logic, including offloading some pieces to worker tasks for better performance." />
+				<sampleBrowser:BulletContentControl Content="Updated the search overlay pane's find textbox to have a red border when no match for the find text is located." />
+				<sampleBrowser:BulletContentControl Content="Updated search result highlights to toggle immediately when the SyntaxEditor.IsSearchResultHighlightingEnabled property is changed." />
+				<sampleBrowser:BulletContentControl Content="Updated how line commenters adjust selections during their text changes." />
+				<sampleBrowser:BulletContentControl Content="Updated the TextStylePreview control to use a weak event handler for watching IHighlightingStyle changes." />
+				<sampleBrowser:BulletContentControl Content="Updated the UserInterfaceUpdate event to delay-fire after the SyntaxEditor.Document property is changed." />
+				<sampleBrowser:BulletContentControl Content="Updated all IntelliPrompt completion list samples to use custom completion providers, which is the recommended way to add completion to a syntax language." />
+				<sampleBrowser:BulletContentControl Content="Updated mouse wheel scrolling to only work if the related directional scrollbar visibility is Auto or Visible." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the caret wasn't at the proper offset following a redo of a typing change." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the IME input prompt might not always reposition itself correctly as character input is received." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where IME input wouldn't work in a rehosted workflow designer." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser and resolver to support C# 7.3 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the VB parser and resolver to support VB 15.8 syntax." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">8/20/2019 - Version 19.1.0682</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved window dragging logic for slower machines." />
+				<sampleBrowser:BulletContentControl Content="Improved tabbed MDI rendering in the high contrast theme." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where a tool window wouldn't restore to the MDI area properly when deserializing tool windows-only using serialization IDs." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the DockSite.ActiveWindow property might not be properly updated after closing multiple windows." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the RoundingDecimalPlace property that controls which decimal place at which to round to the CornerRadiusEditBox, DoubleEditBox, PointEditBox, RectEditBox, SingleEditBox, SizeEditBox, ThicknessEditBox, VectorEditBox, and related picker controls." />
+				<sampleBrowser:BulletContentControl Content="Removed prior logic where small numbers wouldn't be rounded, since now the RoundingDecimalPlace can be specified.  Set the property to null to prevent rounding." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in ColorPicker where using a pointer to select a color after the initial color was black might not show the correct RGB values." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated a focused TreeListBox to focus a newly selected item that is set programmatically." />
+				<sampleBrowser:BulletContentControl Content="Updated how TreeListBox handles selection updates when filtering is applied." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where using aggregation with certain data point types like UInt32 could trigger an exception." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the shell object name sort logic to use StringComparison.OrdinalIgnoreCase instead of CurrentCulture." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where renaming a folder didn't refresh its children's paths." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved scrolling, zooming, and selection for touch-based input." />
+				<sampleBrowser:BulletContentControl Content="Improved DefaultWordBreakFinder's logic for handling surrogate pairs and symbols." />
+				<sampleBrowser:BulletContentControl Content="Improved the editor to more efficiently update itself on highlighting style registry changes." />
+				<sampleBrowser:BulletContentControl Content="Improved the search overview pane to immediately search again when a search option button is toggled, similar to how typing in the find what textbox already behaved." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt quick info and parameter info tips to use the same background as the editor." />
+				<sampleBrowser:BulletContentControl Content="Added the HtmlContentProvider.BackgroundColorHint property that can be set to automatically select Metro light or dark-themed images based on the background lightness." />
+				<sampleBrowser:BulletContentControl Content="Improved a particular editing scenario to help keep view lines around the caret visible." />
+				<sampleBrowser:BulletContentControl Content="Improved the indent and outdent edit action logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug introduced in a recent build where the caret may not be at the correct offset following a replace operation such as an auto-indent." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in the add-on and sample text formatters where a selection was incorrectly being set via the Apply method." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where syntax errors at the end of lines were no longer rendering." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where empty IntelliPrompt sessions that were opened could possibly throw an exception." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in the 'Adornments 5 - Alternating Rows' QuickStart due to recent adornments API updates." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the EditorView.TextInput event wasn't being flagged as handled." />
+				<sampleBrowser:BulletContentControl Content="Fixed several bugs related to the search overlay pane and search result highlights." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug with view line cache management logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where move selected lines up/down could run into a loop when executed at the end of the document." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where move selected lines up didn't work properly when the collapsed selection caret was at the end of a line." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved resolver logic related to partial types." />
+				<sampleBrowser:BulletContentControl Content="Improved resolver logic related to member return types." />
+				<sampleBrowser:BulletContentControl Content="Improved resolver logic related to lambda parameters." />
+				<sampleBrowser:BulletContentControl Content="Updated the optional Roslyn add-on to target .NET 4.6.1 and use Roslyn v3.2.0." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in the optional Roslyn add-on where it could load type references to internal type definitions." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved resolver performance when the resolver searches for a bound name." />
+				<sampleBrowser:BulletContentControl Content="Improved resolution of inherited classes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Wizard</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the WizardPage.HeaderImageMargin property that can adjust the margin around the header image on interior and exterior pages." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug in EditableContentControl where showing the ContextMenu while editing would stop edit mode." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">6/8/2019 - Version 19.1.0681</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the virtual Ribbon.CreateContextMenu method that can be overridden to customize a context menu." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a 'Multiple Selections / Carets' QuickStart." />
+				<sampleBrowser:BulletContentControl Content="Improved typing in the search overlay pane's find what textbox to select the next match in the editor view." />
+				<sampleBrowser:BulletContentControl Content="Improved keyboard shortcut processing logic in the search overlay pane." />
+				<sampleBrowser:BulletContentControl Content="Updated all language add-on IntelliPrompt quick info and parameter info tips to use current syntax highlighting colors." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt quick info and parameter info tips in the Metro Dark theme to use a dark background." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt quick info and parameter info tips to use new AssetResourceKeys.IntelliPromptToolTip* brush resources." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where IntelliPrompt complete list filter tab foregrounds didn't render properly in the Metro Dark theme." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where typing in long complete-line tokens could lead to invalid incremental lexing context data." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">5/29/2019 - Version 19.1.0680</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Cross-Platform Design</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="The internals of SyntaxEditor have been heavily refactored to support a cross-platform API across the WPF, UWP, and WinForms platforms.  This allows SyntaxEditor features for the three platforms to be kept in sync moving forward." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Scrolling and Zooming</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added smooth inertia-based touch scrolling." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.ZoomModesAllowed property, which uses a ZoomModes flags enum to select the input options (keyboard, mouse, touch) for zooming." />
+				<sampleBrowser:BulletContentControl Content="The SyntaxEditor.HorizontalScrollBarVisibility and VerticalScrollBarVisibility properties now support an Auto mode that hides the related scrollbar when it isn't needed." />
+				<sampleBrowser:BulletContentControl Content="Added support for Shift+MouseWheel to scroll editor views horizontally." />
+				<sampleBrowser:BulletContentControl Content="Added the IEditorViewScroller.ScrollTo method that scrolls the view to a certain view line, which can easily be displayed to the top, center, or bottom of the view via options in the supplied TextViewScrollState struct." />
+				<sampleBrowser:BulletContentControl Content="Added the IEditorViewScroller.ScrollByPixels and ScrollHorizontallyByPixels methods, allowing for diagonal and horizontal scrolling by pixels respectively." />
+				<sampleBrowser:BulletContentControl Content="When resizing a view that is scrolled to the right, the horizontal scroll amount can adjust to ensure that there isn't too much empty space on the text area's right side." />
+				<sampleBrowser:BulletContentControl Content="The view now remembers maximum line widths better, which prevents horizontal scrollbar maximum changing as much when scrolling vertically through lines that have very different widths." />
+				<sampleBrowser:BulletContentControl Content="Updated the NavigableSymbolSelector control to scroll the target offset to the middle of the view if scrolling is required when a symbol is selected." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Carets and Selection</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Multiple selections, each with their own caret, are now supported as long as the new SyntaxEditor.AreMultipleSelectionRangesEnabled property is true.  A new selection can be added by holding the Ctrl key when clicking in the text area or clicking on the selection or line number margins." />
+				<sampleBrowser:BulletContentControl Content="Properties on the IEditorView.Selection object continue to operate on the primary selection range.  A new Ranges property has been added to the IEditorView.Selection object that allows for enumeration of all selection ranges." />
+				<sampleBrowser:BulletContentControl Content="Multiple selections can be set with the new IEditorView.Selection.SelectRanges method, or a new selection can be added with the AddRange method." />
+				<sampleBrowser:BulletContentControl Content="Most edit actions have been refactored to fully support multiple selections.  For instance, pressing Shift+Right Arrow will extend all of the selections by one character." />
+				<sampleBrowser:BulletContentControl Content="Copying text from multiple selections unions the selected text, joining each range's text with a line terminator." />
+				<sampleBrowser:BulletContentControl Content="Pasting multi-line text into a view with the same number of selections as text lines being pasted will replace each selection with a related line from the pasted text." />
+				<sampleBrowser:BulletContentControl Content="The IEditorView.DeleteSelectedText and ReplaceSelectedText methods have been refactored to support applying to multiple selections when the EditorViewTextChangeOptions.CanApplyToMultipleSelections flag is set." />
+				<sampleBrowser:BulletContentControl Content="Selection grippers will show for the primary selection when touch input is used." />
+				<sampleBrowser:BulletContentControl Content="Carets now support movement at both the start and end of word wrapped lines." />
+				<sampleBrowser:BulletContentControl Content="Virtual space is now supported at the end of lines when SyntaxEditor.IsVirtualSpaceAtLineEndEnabled is true." />
+				<sampleBrowser:BulletContentControl Content="Block selections can be made in virtual space at the end of lines, even without line end virtual space being enabled.  This prevents the caret from snapping to an offset when making a block selection, which can sometimes be problematic." />
+				<sampleBrowser:BulletContentControl Content="Added the ITextChange.PostSelectionPositionRanges property that indicates the exact selection ranges for the source view after the text change is applied." />
+				<sampleBrowser:BulletContentControl Content="Added the EditorViewSelectionEventArgs.PreviousSelectionRanges property that contains a snapshot of all selection ranges prior to the selection change." />
+				<sampleBrowser:BulletContentControl Content="Added collapse selection left and collapse selection right edit actions." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Searching</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="A new search overlay pane displays over the upper-right of the active editor view when Ctrl+F (find mode) or Ctrl+H (replace mode) are pressed in a multi-line editor.  Related edit actions added." />
+				<sampleBrowser:BulletContentControl Content="A toggle mode button on the search overlay pane switches between find and replace modes, and all common search options are supported via toggle buttons and other controls." />
+				<sampleBrowser:BulletContentControl Content="The search overlay pane can be closed by clicking the X button or by pressing Esc." />
+				<sampleBrowser:BulletContentControl Content="Ctrl+F3 will open the search overlay pane without focusing it, and will search forward for the currently-selected text.  Ctrl+Shift+F3 will do the same but will search backwards.  Related edit actions added." />
+				<sampleBrowser:BulletContentControl Content="F3 will search for the next match of the previously-used search options.  Shift+F3 will search for the previous match of the previously-used search options.  Related edit actions added." />
+				<sampleBrowser:BulletContentControl Content="If the SyntaxEditor.IsSearchResultHighlightingEnabled property is true, the search results will be highlighted while the search overlay pane is open.  Closing the search overlay pane, clears the search result highlights." />
+				<sampleBrowser:BulletContentControl Content="Holding the Ctrl key will make the search overlay pane semi-transparent so that you can see the text behind it." />
+				<sampleBrowser:BulletContentControl Content="The new SyntaxEditor.OverlayPaneOpened and OverlayPaneClosed events fire when the search overlay pane is opened or closed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Splitting</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the scrollbar splitter button with a larger appearance." />
+				<sampleBrowser:BulletContentControl Content="Drag a view splitter to the bottom of the view to remove the split and keep the top view." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Margins</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the ITextViewLineNumberProvider language service with a DefaultTextViewLineNumberProvider implementation that allows for complete customization of how line numbers are rendered in the line number margin.  Added the IEditorDocument.LineNumberOrigin property that sets the line number for the first line in the document, and defaults to one." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Indicators</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the IIndicatorTag interface to use the fast new rendering mechanism for drawing glyphs instead of making UI elements." />
+				<sampleBrowser:BulletContentControl Content="Improved the rendering of built-in indicator glyphs." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Input and Editing</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the PerformTyping, PerformInsertTyping, and PerformOverwriteTyping methods to the IEditorViewTextChangeActions interface that simulate typing." />
+				<sampleBrowser:BulletContentControl Content="Added the IEditorViewTextChangeActions.FormatDocument and FormatSelection methods, which call the related edit commands." />
+				<sampleBrowser:BulletContentControl Content="Improved the open line above and open line below edit actions to use the current language's indent provider for caret positioning." />
+				<sampleBrowser:BulletContentControl Content="Renamed the DuplicateLine edit action to Duplicate and improved it to only duplicate the selected text if there is a selection." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">IntelliPrompt</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="IntelliPrompt UI reworked across all platforms." />
+				<sampleBrowser:BulletContentControl Content="The Metro Light and Metro Dark common image sets are now in vector form and render beautifully in high DPI." />
+				<sampleBrowser:BulletContentControl Content="Updated completion filters so when there are multiple active filters with the same ICompletionFilter.GroupName, any one of those filters can includes an item." />
+				<sampleBrowser:BulletContentControl Content="Changed toggle button completion filters to appear unchecked when they aren't active, which is more natural." />
+				<sampleBrowser:BulletContentControl Content="Refactored and centralized the logic for making IntelliPrompt popups and the new search overlay pane semi-transparent when the Ctrl key is held.  Added a brief delay before the opacity change occurs." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Text Rendering</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the text rendering of long lines." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Miscellaneous</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="The SyntaxEditor.IsDefaultContextMenuEnabled property determines if the default context menu is enabled.  The default context menu is initialized and passed into the new SyntaxEditor.MenuRequested when a menu is requested for display.  Handle the MenuRequested event to update the menu's items before it is opened." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.IsWordWrapEnabled property for easy binding in menu items." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.TextAreaFontSize property that can adjust the text area's font size without affecting overlay panes or IntelliPrompt." />
+				<sampleBrowser:BulletContentControl Content="Language and view services are now tracked and retrieved in a new, more efficient mechanism." />
+				<sampleBrowser:BulletContentControl Content="Added the ParseErrorTagger.MaximumParseErrorCount property that indicates the maximum number of parse errors to tag in a document.  An enormous number of parse errors can slow down editing performance, so this property defaults to 5,000." />
+				<sampleBrowser:BulletContentControl Content="Moved TextStylePreview and NavigableSymbolSelector controls up to primary SyntaxEditor namespace." />
+				<sampleBrowser:BulletContentControl Content="Added the TextStylePreview.Text property to allow changing of displayed text." />
+				<sampleBrowser:BulletContentControl Content="Refactored UI automation peers and moved the ITextProvider implementation from the SyntaxEditor peer to the IEditorView peer." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added IntelliPrompt completion list toggle button filters for the various kinds of items displayed in the list." />
+				<sampleBrowser:BulletContentControl Content="The IntelliPrompt completion filter UI (toggle buttons and tabs) only shows based on the available items in the unfiltered list.  For instance, if there are no types in the list, no 'Types' toggle button filter is visible." />
+				<sampleBrowser:BulletContentControl Content="Updated the optional Roslyn add-on to use Roslyn v3.0.0." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added IntelliPrompt completion list toggle button filters for the various kinds of items displayed in the list." />
+				<sampleBrowser:BulletContentControl Content="The IntelliPrompt completion filter UI (toggle buttons and tabs) only shows based on the available items in the unfiltered list.  For instance, if there are no classes in the list, no 'Classes' toggle button filter is visible." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">ANTLR Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the ANTLR add-on to use ANTLR v3.5.1." />
+				<sampleBrowser:BulletContentControl Content="The ANTLR integration sample project is no longer installed by default.  Use an installer option to install it." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Irony Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Irony add-on to use Irony v1.1." />
+				<sampleBrowser:BulletContentControl Content="The Irony integration sample projects are no longer installed by default.  Use an installer option to install them." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Oslo Dataflow Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Removed the Oslo Dataflow Add-on since support for that technology by Microsoft was ended many years ago." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Breaking Changes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Some breaking changes were made to accommodate the new SyntaxEditor cross-platform API, and for improved API clarity.  See the 'Converting to 2019.1' documentation topic for information on any breaking changes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Switched all product source projects to use the new SDK style of .csproj files." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
+			<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}"><Italic>
+				Use the navigation arrows in the header above to see the release histories for other versions.
+			</Italic></TextBlock>
+
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

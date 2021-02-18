@@ -1,0 +1,82 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=PointerDirection}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
+						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					When using a CircularGauge with a sweep angle of 360 degrees, the rotational direction of the pointers can be customized.
+					By default, the pointers will not cross over the minimum/maximum value. Other options include only moving in clockwise or
+					counter-clockwise directions, or taking the shortest distance even if that means crossing over the minimum/maximum value.
+					<LineBreak /><LineBreak />
+					The direction can be configured to see how it affects the pointer. Try jumping from 0 to 100, and back again, with the various options.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<gauge:CircularGauge x:Name="gauge" Width="220" Height="220" Radius="110" HorizontalAlignment="Center"
+					BackgroundType="CircularDarkEdge" Background="#FFEEEEE3" BackgroundRadiusRatio="0.9"
+					RimBrush="#FFF4F3F8" RimType="ClippedRectangle">
+
+				<gauge:CircularGauge.LayoutTransform>
+					<ScaleTransform ScaleX="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}" />
+				</gauge:CircularGauge.LayoutTransform>
+
+				<gauge:CircularGauge.Scales>
+					<gauge:CircularScale Radius="70%" StartAngle="270" SweepAngle="360" BarExtent="15"
+							Background="Transparent" BorderBrush="Black" BorderWidth="1">
+						<gauge:CircularScale.TickSets>
+							<gauge:CircularTickSet MajorInterval="10" MinorInterval="2">
+								<gauge:CircularTickSet.Ticks>
+									<gauge:CircularTickMarkMinor TickMarkExtent="7" TickMarkAscent="3"
+											TickMarkType="RoundedRectangle"
+											Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=LeftToRight}" />
+									<gauge:CircularTickMarkMajor TickMarkExtent="10" TickMarkAscent="4"
+											TickMarkType="RoundedRectangle"
+											Background="{shared:LinearGradientBrush Black, DarkGray, GradientType=LeftToRight}" />
+									<gauge:CircularTickLabelMajor Foreground="Black" FontSize="9" FontWeight="Bold"
+											ScalePlacement="Outside" ScaleOffset="2" />
+								</gauge:CircularTickSet.Ticks>
+								<gauge:CircularTickSet.Pointers>
+									<gauge:CircularPointerNeedle x:Name="needle" NeedleType="TriangleBlunt"
+											PointerExtent="90%" PointerAscent="10%"
+											Background="{shared:LinearGradientBrush Red, DarkRed, GradientType=LeftToRight}" />
+									<gauge:CircularPointerCap PointerExtent="20%" CapType="CircleShiny" Background="#FF9A1225" />
+								</gauge:CircularTickSet.Pointers>
+							</gauge:CircularTickSet>
+						</gauge:CircularScale.TickSets>
+					</gauge:CircularScale>
+				</gauge:CircularGauge.Scales>
+
+			</gauge:CircularGauge>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

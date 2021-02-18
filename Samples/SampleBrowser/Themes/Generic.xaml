@@ -1,0 +1,384 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+					xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+					xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+					xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+					xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+                    >
+
+	<shared:CornerRadiusConverter x:Key="CornerRadiusConverter" />
+	<shared:ThicknessConverter x:Key="ThicknessConverter" />
+	
+	
+	<!-- sampleBrowser:BulletContentControl -->
+	<Style x:Key="{x:Type sampleBrowser:BulletContentControl}" TargetType="sampleBrowser:BulletContentControl">
+		<Setter Property="ContentTemplateSelector">
+			<Setter.Value>
+				<sampleBrowser:BulletContentControlTemplateSelector>
+					<sampleBrowser:BulletContentControlTemplateSelector.StringTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding}" TextWrapping="Wrap" />
+						</DataTemplate>
+					</sampleBrowser:BulletContentControlTemplateSelector.StringTemplate>
+				</sampleBrowser:BulletContentControlTemplateSelector>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Margin" Value="20,0,0,0" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ContentControl">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<TextBlock Text="&#9726;" Margin="0,0,5,0" FontWeight="Normal" Foreground="#e37700" />
+						<ContentPresenter Grid.Column="1" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- sampleBrowser:LabeledCardControl -->
+	<Style x:Key="{x:Type sampleBrowser:LabeledCardControl}" TargetType="sampleBrowser:LabeledCardControl">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowMutedBrushKey}}" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="LabelBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}" />
+		<Setter Property="Padding" Value="20" />
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="5" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:LabeledCardControl">
+					
+					<shared:ShadowChrome x:Name="shadow" Elevation="8" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+						<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" 
+								CornerRadius="{TemplateBinding themes:ThemeProperties.CornerRadius}">
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+							
+								<ContentPresenter x:Name="presenter" Grid.Column="1" Margin="{TemplateBinding Padding}" Content="{TemplateBinding Child}" />
+							
+								<Border x:Name="labelBorder" Grid.Row="1" Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="{TemplateBinding BorderBrush}"
+										CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(themes:ThemeProperties.CornerRadius), Converter={StaticResource CornerRadiusConverter}, ConverterParameter='Bottom'}"
+										Background="{TemplateBinding LabelBackground}">
+									<TextBlock Margin="20,7" Text="{TemplateBinding Label}" TextWrapping="Wrap" VerticalAlignment="Center" />
+								</Border>
+							</Grid>
+						</Border>
+					</shared:ShadowChrome>
+				
+					<ControlTemplate.Triggers>
+						<Trigger Property="Orientation" Value="Horizontal">
+							<Setter TargetName="presenter" Property="Grid.Column" Value="0" />
+							<Setter TargetName="labelBorder" Property="Grid.Row" Value="0" />
+							<Setter TargetName="labelBorder" Property="BorderThickness" Value="1,0,0,0" />
+							<Setter TargetName="labelBorder" Property="CornerRadius" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(themes:ThemeProperties.CornerRadius), Converter={StaticResource CornerRadiusConverter}, ConverterParameter='Right'}" />
+						</Trigger>
+						<Trigger Property="UseLowerContrast" Value="True">
+							<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}" />
+							<Setter Property="LabelBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+							<Setter TargetName="shadow" Property="Elevation" Value="4" />
+						</Trigger>
+						<Trigger Property="Label" Value="{x:Null}">
+							<Setter TargetName="labelBorder" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:ScreenshotControl -->
+	<Style x:Key="{x:Type sampleBrowser:ScreenshotControl}" TargetType="sampleBrowser:ScreenshotControl">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:ScreenshotControl">
+					
+					<shared:ShadowChrome Elevation="8" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+						<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" 
+								CornerRadius="{TemplateBinding themes:ThemeProperties.CornerRadius}">
+							<Image Stretch="None" Source="{TemplateBinding ImageSource}" />
+						</Border>
+					</shared:ShadowChrome>
+					
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:ProductItemControl -->
+	<Style x:Key="{x:Type sampleBrowser:ProductItemControl}" TargetType="sampleBrowser:ProductItemControl">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:ProductItemControl">
+					
+					<Grid Background="{TemplateBinding Background}">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						
+						<ContentPresenter Content="{TemplateBinding Child}" />
+						
+						<shared:AnimatedExpanderDecorator x:Name="sideBar" Grid.Column="1" ExpandDirection="Left" IsExpanded="True" CollapsedVisibility="Collapsed">
+							<Border x:Name="sideBarBorder" Width="{TemplateBinding SideBarWidth}" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" 
+									BorderThickness="1,0,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}">
+								<ScrollViewer Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" 
+											  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="0">
+									<ContentPresenter Content="{TemplateBinding SideBarContent}" VerticalAlignment="Top" />
+								</ScrollViewer>
+							</Border>
+						</shared:AnimatedExpanderDecorator>
+						
+						<Button x:Name="sideBarVisibilityButton" Grid.Column="1" Margin="0,8,20,0" Width="30" Height="30" 
+								Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}"
+								Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}" HorizontalAlignment="Right" VerticalAlignment="Top"
+								Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToggleIsSideBarVisibleCommand}" ToolTip="Close the sidebar"
+								FontFamily="Segoe UI Symbol">
+							<Button.ContentTemplate>
+								<DataTemplate>
+									<Path Width="10" Height="10" Data="M 0,0 L 10,10 M 0,10 L 10,0" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" />
+								</DataTemplate>
+							</Button.ContentTemplate>
+						</Button>
+					</Grid>
+					
+					<ControlTemplate.Triggers>
+						<Trigger Property="SideBarContent" Value="{x:Null}">
+							<Setter TargetName="sideBar" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="sideBar" Property="IsExpanded" Value="False" />
+							<Setter TargetName="sideBarVisibilityButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="IsSideBarVisible" Value="False">
+							<Setter TargetName="sideBar" Property="IsExpanded" Value="False" />
+							<Setter TargetName="sideBarVisibilityButton" Property="Grid.Column" Value="0" />
+							<Setter TargetName="sideBarVisibilityButton" Property="ContentTemplate">
+								<Setter.Value>
+									<DataTemplate>
+									   <Canvas Width="16" Height="16">
+											<Ellipse Width="16" Height="16" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" />
+											<Ellipse Canvas.Left="7" Canvas.Top="3" Width="2" Height="2" Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" />
+											<Path Canvas.Left="0" Canvas.Top="0" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" StrokeThickness="2" Data="M 8,13 L 8,7"  />
+										</Canvas>
+									</DataTemplate>
+								</Setter.Value>
+							</Setter>
+							<Setter TargetName="sideBarVisibilityButton" Property="ToolTip" Value="Open the sidebar" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:SampleGalleryControl -->
+	<Style x:Key="{x:Type sampleBrowser:SampleGalleryControl}" TargetType="sampleBrowser:SampleGalleryControl">
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="BorderThickness" Value="0,1,0,0" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Margin" Value="0,50,0,0" />
+		<Setter Property="Padding" Value="0,20,-20,-20" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<WrapPanel />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:SampleGalleryControl">
+					<ControlTemplate.Resources>
+						<Style TargetType="sampleBrowser:LabeledCardControl">
+							<Setter Property="UseLowerContrast" Value="True" />
+						</Style>
+					</ControlTemplate.Resources>
+					
+					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+						<StackPanel Margin="{TemplateBinding Padding}">
+							<TextBlock x:Name="label" Text="{TemplateBinding Label}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" TextWrapping="Wrap" />
+							<ItemsPresenter x:Name="presenter" Margin="0,20,0,0" />
+						</StackPanel>
+					</Border>
+					
+					<ControlTemplate.Triggers>
+						<Trigger Property="Label" Value="{x:Null}">
+							<Setter Property="BorderThickness" Value="0" />
+							<Setter TargetName="label" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="presenter" Property="Margin" Value="0" />
+						</Trigger>
+						<Trigger Property="BorderThickness" Value="0">
+							<Setter Property="Margin" Value="0" />
+							<Setter Property="Padding" Value="0,0,-20,-20" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:SampleOptionsPropertyGrid -->
+	<Style x:Key="{x:Type sampleBrowser:SampleOptionsPropertyGrid}" TargetType="sampleBrowser:SampleOptionsPropertyGrid"
+		   BasedOn="{StaticResource {x:Type grids:PropertyGrid}}">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" />
+		<Setter Property="BorderThickness" Value="0,1,0,0" />
+		<Setter Property="CanClearDataObjectOnUnload" Value="True" />
+		<Setter Property="DefaultPropertyItemContainerStyle">
+			<Setter.Value>
+				<Style TargetType="grids:PropertyGridItem">
+					<Setter Property="GridLineBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" />
+					<Setter Property="IsInactiveSelectionVisible" Value="False" />
+					<Setter Property="IsTabStop" Value="False" />
+				</Style>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="IsCategorized" Value="False" />
+		<Setter Property="IsSummaryToggleAllowed" Value="False" />
+		<Setter Property="IsSummaryVisible" Value="False" />
+		<Setter Property="SortComparer" Value="{x:Null}" />
+		<Setter Property="TopLevelIndent" Value="0" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:SampleOptionsPropertyGrid">
+					<ControlTemplate.Resources>
+						<Style TargetType="shared:EmbeddedTextBox">
+							<Style.Triggers>
+								<MultiTrigger>
+									<MultiTrigger.Conditions>
+										<Condition Property="IsEnabled" Value="True" />
+										<Condition Property="IsReadOnly" Value="False" />
+									</MultiTrigger.Conditions>
+									<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundNormalBrushKey}}" />
+								</MultiTrigger>
+								<Trigger Property="Validation.HasError" Value="True">
+									<Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)/ErrorContent}" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+						<Style TargetType="editors:DoubleEditBox">
+							<Style.Triggers>
+								<Trigger Property="IsEditable" Value="False">
+									<Setter Property="Background" Value="Transparent" />
+									<Setter Property="themes:ThemeProperties.UseBackgroundStates" Value="False" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+						<Style TargetType="editors:EnumEditBox">
+							<Style.Triggers>
+								<Trigger Property="IsEditable" Value="False">
+									<Setter Property="Background" Value="Transparent" />
+									<Setter Property="themes:ThemeProperties.UseBackgroundStates" Value="False" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+						<Style TargetType="editors:Int32EditBox">
+							<Style.Triggers>
+								<Trigger Property="IsEditable" Value="False">
+									<Setter Property="Background" Value="Transparent" />
+									<Setter Property="themes:ThemeProperties.UseBackgroundStates" Value="False" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</ControlTemplate.Resources>
+					
+					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+						<ItemsPresenter />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:SampleSearchAutoCompleteBox -->
+	<Style x:Key="{x:Type sampleBrowser:SampleSearchAutoCompleteBox}" TargetType="sampleBrowser:SampleSearchAutoCompleteBox" BasedOn="{StaticResource {x:Type editors:AutoCompleteBox}}">
+		<Setter Property="HasClearButton" Value="True" />
+		<Setter Property="HasPopupButton" Value="False" />
+		<Setter Property="ItemsSource" Value="{Binding SearchResults}" />
+		<Setter Property="PlaceholderText" Value="Search samples" />
+		<Setter Property="Text" Value="{Binding SearchText}" />
+		<Setter Property="ItemTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<shared:PixelSnapper VerticalRoundMode="CeilingToEven">
+						<DockPanel Margin="7">
+							<Canvas DockPanel.Dock="Left" Width="24" Height="24" VerticalAlignment="Center">
+								<Rectangle Width="24" Height="24" Fill="#70000000" RenderTransformOrigin="0.5,0.5">
+									<Rectangle.OpacityMask>
+										<ImageBrush ImageSource="{Binding Source={x:Reference image}, Path=Source}" />
+									</Rectangle.OpacityMask>
+									<Rectangle.RenderTransform>
+										<TransformGroup>
+											<TranslateTransform Y="1" />
+											<ScaleTransform ScaleX="1.02" ScaleY="1.02" />
+										</TransformGroup>
+									</Rectangle.RenderTransform>
+								</Rectangle>
+								<Image x:Name="image" Width="24" Height="24" Source="{Binding ProductFamily.LogoImageSource}" />
+							</Canvas>
+							<StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+								<StackPanel Orientation="Horizontal" TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}"
+											TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}">
+									<TextBlock Text="{Binding ProductFamily.Title}"  />
+									<TextBlock Text=" / " />
+									<TextBlock Text="{Binding Category}" />
+								</StackPanel>
+								<TextBlock Text="{Binding Title}" />
+							</StackPanel>
+						</DockPanel>
+					</shared:PixelSnapper>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<!-- sampleBrowser:SimpleFlowDocument-->
+	<Style x:Key="{x:Type sampleBrowser:SimpleFlowDocument}" TargetType="sampleBrowser:SimpleFlowDocument">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+		<Setter Property="ColumnWidth" Value="{DynamicResource DocumentMaxWidth}" />
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+		<Setter Property="MaxPageWidth" Value="{DynamicResource DocumentMaxWidth}" />
+		<Setter Property="PagePadding" Value="50,30" />
+	</Style>
+	
+	<!-- sampleBrowser:SimpleFlowDocumentReader -->
+	<Style x:Key="{x:Type sampleBrowser:SimpleFlowDocumentReader}" TargetType="sampleBrowser:SimpleFlowDocumentReader">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+		<Setter Property="IsFindEnabled" Value="False" />
+		<Setter Property="MaxZoom" Value="100" />
+		<Setter Property="MinZoom" Value="100" />
+		<Setter Property="ViewingMode" Value="Scroll" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="sampleBrowser:SimpleFlowDocumentReader">
+					<Grid Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+						<Border x:Name="PART_FindToolBarHost" />
+						<Border x:Name="PART_ContentHost" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+</ResourceDictionary>

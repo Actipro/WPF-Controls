@@ -1,0 +1,70 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.SwitchPanelIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="ACTIVE CONTROLLER PANEL">
+				<ListBox SelectedIndex="{Binding ElementName=rootSampleControl, Path=ActiveIndex, Mode=TwoWay}">
+					<ListBoxItem Content="Canvas" />
+					<ListBoxItem Content="Dock" />
+					<ListBoxItem Content="Stack (Horizontal)" />
+					<ListBoxItem Content="Stack (Vertical)" />
+					<ListBoxItem Content="Wrap (Horizontal)" />
+					<ListBoxItem Content="Wrap (Horizontal+Evenly Spaced)" />
+					<ListBoxItem Content="Wrap (Vertical)" />
+					<ListBoxItem Content="Wrap (Horizontal+Evenly Spaced)" />
+				</ListBox>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Add New" Click="OnAddItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Insert New (after selected)" Click="OnInsertItemClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+					<Button Margin="0,5,0,0" Content="Clear All" Click="OnClearAllClick" Style="{StaticResource SampleOptionsActionButtonStyle}" />
+				</StackPanel>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					SwitchPanel delegates the measurement and arrangement of its elements to one or more
+					controller panels. This allows the layout logic to be dynamically changed during runtime.
+					The arrange bounds, along with other properties, can be fully animated to provide a nice visual effect.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		
+		<sampleBrowser:LabeledCardControl>
+			<ListBox x:Name="listBox" Background="Transparent" BorderThickness="0">
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<views:SwitchPanel ActiveIndex="{Binding ElementName=rootSampleControl, Path=ActiveIndex}">
+							<views:SwitchPanel.Panels>
+								<views:AnimatedCanvas />
+								<views:AnimatedDockPanel />
+								<views:AnimatedStackPanel Orientation="Horizontal" />
+								<views:AnimatedStackPanel Orientation="Vertical" />
+								<views:AnimatedWrapPanel Orientation="Horizontal" />
+								<views:AnimatedWrapPanel Orientation="Horizontal" IsEmptySpaceEvenlyDistributed="True" />
+								<views:AnimatedWrapPanel Orientation="Vertical" />
+								<views:AnimatedWrapPanel Orientation="Vertical" IsEmptySpaceEvenlyDistributed="True" />
+							</views:SwitchPanel.Panels>
+						</views:SwitchPanel>
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</sampleBrowser:LabeledCardControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

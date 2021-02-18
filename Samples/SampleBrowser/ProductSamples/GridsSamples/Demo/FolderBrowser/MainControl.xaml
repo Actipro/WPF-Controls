@@ -1,0 +1,83 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.Demo.FolderBrowser.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+		<shared:ConditionalConverter x:Key="InverseBooleanToVisibilityConverter">
+			<shared:ConditionalConverter.TrueValue>
+				<Visibility>Collapsed</Visibility>
+			</shared:ConditionalConverter.TrueValue>
+			<shared:ConditionalConverter.FalseValue>
+				<Visibility>Visible</Visibility>
+			</shared:ConditionalConverter.FalseValue>
+		</shared:ConditionalConverter>
+
+		<DataTemplate x:Key="FolderNameDataTemplate">
+			<StackPanel Orientation="Horizontal">
+				<shared:RingSpinner Width="16" Height="16" Padding="1" IsSpinning="{Binding IsLoading}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+				<shared:DynamicImage Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center"
+									 Visibility="{Binding Path=IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
+				<TextBlock Margin="4,0,0,0" Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+			</StackPanel>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=MaxDelay}" DisplayName="Maximum expansion delay">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="5000" SmallChange="1000" LargeChange="1000" Format="0' ms'" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how TreeListBox can be used to provide a folder browser experience for your PC's file system.
+					<LineBreak /><LineBreak />
+					Child folders are set to not be queried until an expansion of the parent occurs.
+					Thus all node items initially have expanders, even those for empty folders.
+					When a node item is expanded, if there are no child folders, the expander will disappear to indicate an empty folder.
+					<LineBreak /><LineBreak />
+					This sample also demonstrates how child data can be loaded asynchronously in a worker thread.
+					An artificial thread pause is implemented in the logic that looks for child folders.
+					Set the delay value to zero to remove the pause altogether.
+					<LineBreak /><LineBreak />
+					A RingSpinner control is temporarily displayed to tell the user that an async load is occurring.
+					Once the load completes, the RingSpinner is hidden.
+					The tree UI remains fully accessible and interactive while loading occurs since the work is performed in a separate thread.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListBox x:Name="treeListBox" MaxWidth="{StaticResource SampleThinMaxWidth}"
+						   IsRootItemVisible="True" TopLevelIndent="0"
+						   ItemTemplate="{StaticResource FolderNameDataTemplate}"
+						   ItemExpanding="OnTreeListBoxItemExpanding"
+						   >
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter ChildrenQueryModeDefault="OnExpansion" TopLevelExpandabilityDefault="Never" />
+			</grids:TreeListBox.ItemAdapter>
+		</grids:TreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

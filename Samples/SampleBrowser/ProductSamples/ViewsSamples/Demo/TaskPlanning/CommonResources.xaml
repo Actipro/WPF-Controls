@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+					>
+	
+	<LinearGradientBrush x:Key="BackgroundGradient1Brush" EndPoint="1,0.5" Opacity="0.7">
+		<GradientStop Offset="0" Color="#7e433b" />
+		<GradientStop Offset="0.25" Color="#c2664f" />
+		<GradientStop Offset="0.5" Color="#422e47" />
+		<GradientStop Offset="0.75" Color="#465c4a" />
+		<GradientStop Offset="1" Color="#111f39" />
+	</LinearGradientBrush>
+	
+	<LinearGradientBrush x:Key="BackgroundGradient2Brush" EndPoint="0.5,0.9" Opacity="0.5">
+		<GradientStop Offset="0" Color="#c68c54" />
+		<GradientStop Offset="0.25" Color="#dd8f56" />
+		<GradientStop Offset="0.5" Color="#b06a5c" />
+		<GradientStop Offset="0.75" Color="#8c9e65" />
+		<GradientStop Offset="1" Color="#34534e" />
+	</LinearGradientBrush>
+    
+	<Style x:Key="TransparentButtonStyle" TargetType="Button">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="#606060" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border Background="{TemplateBinding Background}" CornerRadius="3">
+						<shared:PixelSnapper>
+							<ContentPresenter Margin="10,6,10,6" TextElement.FontSize="14" TextElement.Foreground="{TemplateBinding Foreground}" />
+						</shared:PixelSnapper>
+					</Border>
+						
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="#80ffffff" />
+							<Setter Property="Foreground" Value="#202020" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="Background" Value="#c0ffffff" />
+							<Setter Property="Foreground" Value="#202020" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+</ResourceDictionary>

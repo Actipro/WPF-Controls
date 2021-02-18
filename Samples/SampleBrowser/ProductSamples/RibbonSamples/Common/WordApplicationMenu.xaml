@@ -1,0 +1,83 @@
+<ribbon:ApplicationMenu x:Class="ActiproSoftware.ProductSamples.RibbonSamples.Common.WordApplicationMenu" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	Label="Home" KeyTipAccessText="F"
+    >
+
+	<!-- Application Menu Items -->
+	<ribbon:Button Id="New" ImageSourceLarge="/Images/Icons/New32.png" Label="New" KeyTipAccessText="N" />
+	<ribbon:Button Id="Open" ImageSourceLarge="/Images/Icons/Open32.png" Label="Open" KeyTipAccessText="O" />
+	<ribbon:Button Id="Save" ImageSourceLarge="/Images/Icons/Save32.png" Label="Save" KeyTipAccessText="S" />
+	<ribbon:SplitButton ImageSourceLarge="/Images/Icons/SaveAs32.png" Label="Save As" KeyTipAccessText="A">
+		<ribbon:Menu>
+			<ribbon:Separator Label="Save As Sub-Menu" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" />
+		</ribbon:Menu>
+	</ribbon:SplitButton>
+	<ribbon:Separator />
+	<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Print32.png" Label="Print" KeyTipAccessText="P">
+		<ribbon:Menu>
+			<ribbon:Separator Label="Menu with Overflow" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" MenuItemDescription="A description of the first item." KeyTipAccessText="N" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" MenuItemDescription="The second item's description." KeyTipAccessText="O" />
+			<ribbon:Separator />
+			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Save32.png" Label="Another Sub-menu" KeyTipAccessText="S">
+				<ribbon:Menu ItemVariantSize="Medium">
+					<ribbon:Separator Label="Sub-Menu Header Label" />
+					<ribbon:Button ImageSourceSmall="/Images/Icons/Cut16.png" Label="Item 1" KeyTipAccessText="X" />
+					<ribbon:Button ImageSourceSmall="/Images/Icons/Copy16.png" Label="Item 2" KeyTipAccessText="C" />
+					<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Item 3" KeyTipAccessText="P" />
+				</ribbon:Menu>
+			</ribbon:PopupButton>
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" />
+			<ribbon:Separator Label="Header in Middle of Menu" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 3" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 4" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 5" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 6" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 7" />
+		</ribbon:Menu>
+	</ribbon:SplitButton>
+	<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ManageVersions32.png" Label="Prepare" KeyTipAccessText="E">
+		<ribbon:Menu>
+			<ribbon:Separator Label="Prepare Sub-Menu" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" />
+		</ribbon:Menu>
+	</ribbon:PopupButton>
+	<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Mail32.png" Label="Send" KeyTipAccessText="D">
+		<ribbon:Menu>
+			<ribbon:Separator Label="Send Sub-Menu" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" />
+		</ribbon:Menu>
+	</ribbon:PopupButton>
+	<ribbon:PopupButton ImageSourceLarge="/Images/Icons/PublishPost32.png" Label="Publish" KeyTipAccessText="U">
+		<ribbon:Menu>
+			<ribbon:Separator Label="Publish Sub-Menu" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" />
+		</ribbon:Menu>
+	</ribbon:PopupButton>
+	<ribbon:Separator />
+	<ribbon:Button ImageSourceLarge="/Images/Icons/Close32.png" Label="Close" KeyTipAccessText="C" />
+
+	<!-- Additional Content (Right side of application menu) -->
+	<ribbon:ApplicationMenu.AdditionalContent>
+		<ribbon:RecentDocumentMenu x:Name="recentDocMenu">
+			<shared:RecentDocumentManager x:Name="recentDocManager" />
+		</ribbon:RecentDocumentMenu>
+	</ribbon:ApplicationMenu.AdditionalContent>
+	
+	<!-- Application Menu Footer Buttons -->
+	<ribbon:ApplicationMenu.FooterButtons>
+		<ribbon:Button ImageSourceSmall="/Images/Icons/Options16.png" Label="Disabled Button" IsEnabled="False" />
+		<ribbon:Button ImageSourceSmall="/Images/Icons/Options16.png" Label="Options" KeyTipAccessText="I" />
+		<ribbon:Button ImageSourceSmall="/Images/Icons/Exit16.png" Label="Exit Sample"  KeyTipAccessText="X" />
+	</ribbon:ApplicationMenu.FooterButtons>
+
+</ribbon:ApplicationMenu>

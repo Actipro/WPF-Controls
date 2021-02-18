@@ -1,0 +1,93 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted10.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted10"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+    >
+
+	<docking:DockSite>
+			
+		<docking:SplitContainer Orientation="Vertical">
+			
+			<docking:Workspace>
+				
+				<DockPanel>
+					<ToolBarTray Margin="0,0,0,5" DockPanel.Dock="Top">
+						<ToolBar>
+							<Button Command="editor:EditorCommands.CommentLines" ToolTip="Comment out the selected lines" CommandTarget="{Binding ElementName=editor}">
+								<shared:DynamicImage Source="/Images/Icons/CommentLines16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							</Button>
+							<Button Command="editor:EditorCommands.UncommentLines" ToolTip="Uncomment the selected lines" CommandTarget="{Binding ElementName=editor}">
+								<shared:DynamicImage Source="/Images/Icons/UncommentLines16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							</Button>
+							<Separator />
+							<Button Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" ToolTip="Display completion list" CommandTarget="{Binding ElementName=editor}">
+								<shared:DynamicImage Source="/Images/Icons/IntelliPromptCompletion16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							</Button>
+							<Button Command="editor:EditorCommands.RequestIntelliPromptQuickInfoSession" ToolTip="Display quick info" CommandTarget="{Binding ElementName=editor}">
+								<shared:DynamicImage Source="/Images/Icons/IntelliPromptQuickInfo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							</Button>
+							<Button Command="editor:EditorCommands.RequestIntelliPromptAutoComplete" ToolTip="Display word completion" CommandTarget="{Binding ElementName=editor}">
+								<shared:DynamicImage Source="/Images/Icons/IntelliPromptAutoComplete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+							</Button>
+						</ToolBar>
+					</ToolBarTray>
+					
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor" 
+										 DocumentParseDataChanged="OnEditorDocumentParseDataChanged"
+										 UserInterfaceUpdate="OnEditorUserInterfaceUpdate">
+						<editor:EditorDocument xml:space="preserve">
+							<editor:EditorDocument.Language>
+								<sample:SimpleSyntaxLanguage />
+							</editor:EditorDocument.Language><![CDATA[/*
+	In this sample we've registered an IntelliPrompt completion provider service on the language.
+	This service uses the context data from step 8 to determine what to show in the completion
+	list based on the caret's current location.
+	
+	Move down into the code below and press Ctrl+Space.  When outside of a function, a 'function'
+	keyword item  will be in the completion list.  When inside a function body, the 'return' and 
+	'var' keyword items will be in the list, along with items for each declared function.
+*/
+
+function Add(x, y) {
+	return x + y;
+}
+
+function Increment(x) {
+	return (x + 1);
+}
+
+function IncrementAndMultiply(x, y) {
+	// This function calls another function
+	var result;
+	result = Increment(x);
+	return result * y;
+}
+]]></editor:EditorDocument>
+
+					</editor:SyntaxEditor>					
+				</DockPanel>
+
+			</docking:Workspace>
+
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Error List" ImageSource="/Images/Icons/ErrorList16.png" CanClose="False" ContainerDockedSize="200,150">
+					<ListView x:Name="errorListView" BorderThickness="0" MouseDoubleClick="OnErrorListViewDoubleClick">
+						<ListView.View>
+							<GridView>
+								<GridViewColumn Header="Line" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayLine}" />
+								<GridViewColumn Header="Char" Width="40" DisplayMemberBinding="{Binding Path=PositionRange.StartPosition.DisplayCharacter}" />
+								<GridViewColumn Header="Description" Width="300" DisplayMemberBinding="{Binding Path=Description}" />
+							</GridView>
+						</ListView.View>
+					</ListView>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+		</docking:SplitContainer>
+				
+	</docking:DockSite>
+
+</UserControl>

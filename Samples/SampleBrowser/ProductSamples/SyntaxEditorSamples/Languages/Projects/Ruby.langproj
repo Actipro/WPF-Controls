@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Actipro Syntax Language Project (.langproj)
+  For use with Actipro SyntaxEditor and related products.
+  http://www.actiprosoftware.com
+
+'Ruby' language created by Actipro Software LLC.
+  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+
+-->
+<LanguageProject LanguageKey="Ruby" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Ruby" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v102\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+	<!-- Classification types -->
+	<LanguageProject.ClassificationTypes>
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="RubyVariable" Description="Ruby Variable" DefaultStyle="#FF008080" />
+		<ClassificationType Key="RubyIgnored" Description="Ruby Ignored Code" DefaultStyle="#FFA0A0A0" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Number" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+	</LanguageProject.ClassificationTypes>
+	<!-- Lexer -->
+	<LanguageProject.Lexer>
+		<DynamicLexer>
+			<!-- Default state -->
+			<State Key="Default">
+				<State.ChildStates>
+					<StateRef Key="String" />
+					<StateRef Key="Comment" />
+					<StateRef Key="BeginEnd" />
+					<StateRef Key="End" />
+				</State.ChildStates>
+				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<RegexPatternGroup TokenKey="BackSlash" Pattern="\\" LookAheadPattern="{Whitespace}* $" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup Key="OpenCurlyBracePatternGroup" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup Key="CloseCurlyBracePatternGroup" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenKey="Punctuation">
+					<ExplicitPatterns><![CDATA[
+						. , : ; `
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Sensitive">
+					<ExplicitPatterns><![CDATA[
+						alias and BEGIN begin break case class def defined do else elsif END end ensure false for if in module
+						next nil not or redo rescue retry return self super then true undef unless until when while yield
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="DecoratedMethodIdentifier" Pattern="(_ | {Alpha})({Word})*([?!=])" />
+				<RegexPatternGroup TokenKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="GlobalVariable" ClassificationTypeKey="RubyVariable" Pattern="\$(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="ClassVariable" ClassificationTypeKey="RubyVariable" Pattern="@@(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenKey="InstanceVariable" ClassificationTypeKey="RubyVariable" Pattern="@(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="Operator">
+					<ExplicitPatterns><![CDATA[
+						== != = += -= *= //= /= %= + - ** * // / % &= |= ^= & | ^ ~ <<= >>= **= << >> <> <= < >= >
+					]]></ExplicitPatterns>
+				</ExplicitPatternGroup>
+				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [Jj]?" />
+					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [Jj]?" />
+				</RegexPatternGroup>
+				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="[1-9]+ {Digit}* [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="OctalNumber" ClassificationTypeKey="Number" Pattern="0 [0-7]+ [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigit}+ [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
+			</State>
+			<!-- String state -->
+			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="'" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StringEndDelimiter" Pattern="['\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="&quot;" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="StringEndDelimiter" Pattern="[&quot;\n]" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\x {HexDigit}{1,4}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\u {HexDigit}{4,4}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\U {HexDigit}{8,8}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\ {Digit}{3}" />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenKey="StringEscapedCharacter" Pattern="\\\n" />
+				<RegexPatternGroup TokenKey="StringText" Pattern="[^\\\&quot;'\n]+" />
+			</State>
+			<!-- Comment state -->
+			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="#" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<RegexPatternGroup TokenKey="CommentEndDelimiter" Pattern="{LineTerminator}" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+			</State>
+			<!-- BeginEnd state -->
+			<State Key="BeginEnd" DefaultTokenKey="BeginEndText" DefaultClassificationTypeKey="RubyIgnored">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<ExplicitPatternGroup TokenKey="BeginEndStartDelimiter" Pattern="=begin" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup TokenKey="BeginEndEndDelimiter" Pattern="=end" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+			</State>
+			<!-- End state -->
+			<State Key="End" DefaultTokenKey="EndText" DefaultClassificationTypeKey="RubyIgnored">
+				<State.Scopes>
+					<Scope>
+						<Scope.StartPatternGroup>
+							<RegexPatternGroup TokenKey="EndStartDelimiter" ClassificationTypeKey="Keyword" Pattern="^(__END__)$" />
+						</Scope.StartPatternGroup>
+						<Scope.EndPatternGroup>
+							<ExplicitPatternGroup Pattern="(Enter end pattern)" />
+						</Scope.EndPatternGroup>
+					</Scope>
+				</State.Scopes>
+				<RegexPatternGroup TokenKey="EndTextLine" Pattern="[^\n]+" />
+				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+			</State>
+		</DynamicLexer>
+	</LanguageProject.Lexer>
+	<!-- Example text -->
+	<LanguageProject.ExampleText><![CDATA[
+#
+# Ruby code sample
+#
+
+class String
+    def NullOrEmpty?
+    (self == nil || self == "")
+    end
+end
+puts "test".NullOrEmpty?
+puts "".NullOrEmpty? 
+
+a = 1  # no semicolon and no type declaration
+b = 2; c = 3 # two statements on one line
+@someStr = "this is a string"
+someOtherStr = "this is a \
+string" # this is a string that was continued over more than one line of code
+
+puts "#@someStr"
+
+=begin
+These lines are ignored.
+It is a way of doing a multiline comment.
+=end
+
+puts "#{someOtherStr}"
+
+__END__
+Lines after __END__ are ignored.
+]]></LanguageProject.ExampleText>
+</LanguageProject>

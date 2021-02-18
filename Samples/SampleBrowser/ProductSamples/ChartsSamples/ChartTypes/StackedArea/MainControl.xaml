@@ -1,0 +1,119 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<x:Array x:Key="PrimaryDataGenerator" Type="sampleData:TimeAggregatedDataGenerator">
+			<sampleData:TimeAggregatedDataGenerator Description="Random trends" />
+			<sampleData:TimeAggregatedDataGenerator Description="Upward trend" Trend="Upward" />
+			<sampleData:TimeAggregatedDataGenerator Description="Downward trend" Trend="Downward" />
+		</x:Array>
+
+		<x:Array x:Key="SecondaryDataGenerator" Type="sampleData:TimeAggregatedDataGenerator">
+			<sampleData:TimeAggregatedDataGenerator Description="Random trends" />
+			<sampleData:TimeAggregatedDataGenerator Description="Upward trend" Trend="Upward" />
+			<sampleData:TimeAggregatedDataGenerator Description="Downward trend" Trend="Downward" />
+		</x:Array>
+
+		<Style TargetType="charts:XYChart">
+			<Setter Property="Width" Value="390"/>
+			<Setter Property="Height" Value="250" />
+			<Setter Property="PaddingPercentage" Value="0" />
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series1, Path=ItemsSource}" DisplayName="Series 1 generated data"
+										 StandardValues="{StaticResource PrimaryDataGenerator}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox DisplayMemberPath="Description" ItemsSource="{StaticResource PrimaryDataGenerator}" SelectedItem="{Binding Value}" SelectedIndex="1"
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding Mode=OneWay, ElementName=series1, Path=ItemsSource}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Regenerate Data" Command="{Binding Value.GenerateCommand}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=series2, Path=ItemsSource}" DisplayName="Series 2 generated data"
+										 StandardValues="{StaticResource PrimaryDataGenerator}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<ComboBox DisplayMemberPath="Description" ItemsSource="{StaticResource SecondaryDataGenerator}" SelectedItem="{Binding Value}" SelectedIndex="0"
+										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+					<grids:PropertyModel Value="{Binding Mode=OneWay, ElementName=series2, Path=ItemsSource}">
+						<grids:PropertyModel.ValueTemplate>
+							<DataTemplate>
+								<Button Content="Regenerate Data" Command="{Binding Value.GenerateCommand}" HorizontalAlignment="Left" />
+							</DataTemplate>
+						</grids:PropertyModel.ValueTemplate>
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A stacked area chart combines multiple area series to represent cumulative totals.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
+
+				<sampleBrowser:LabeledCardControl Label="No stacking">
+					<charts:XYChart GridLineMajorVisibility="Y" GridStripeVisibility="Y" IsLegendVisible="True">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" LabelFormat="{}{0:c0}" />
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries x:Name="series1" Description="Product A" YPath="Amount" StackKind="None" XPath="Date.Year" LineKind="Spline"/>
+						<charts:AreaSeries x:Name="series2" Description="Product B" YPath="Amount" StackKind="None" XPath="Date.Year" LineKind="Spline"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Normal stacking">
+					<charts:XYChart GridLineMajorVisibility="Y" GridStripeVisibility="Y" IsLegendVisible="True">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis Minimum="0" LabelFormat="{}{0:c0}" />
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Description="Product A" ItemsSource="{Binding ElementName=series1, Path=ItemsSource}" YPath="Amount" StackKind="Normal" XPath="Date.Year" LineKind="Spline"/>
+						<charts:AreaSeries Description="Product B" ItemsSource="{Binding ElementName=series2, Path=ItemsSource}" YPath="Amount" StackKind="Normal" XPath="Date.Year" LineKind="Spline"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Label="Percentage stacking (100%)">
+					<charts:XYChart GridLineMajorVisibility="Y" GridStripeVisibility="Y" IsLegendVisible="True">
+						<charts:AreaSeries Description="Product A" ItemsSource="{Binding ElementName=series1, Path=ItemsSource}" YPath="Amount" StackKind="Percentage" XPath="Date.Year" LineKind="Spline"/>
+						<charts:AreaSeries Description="Product B" ItemsSource="{Binding ElementName=series2, Path=ItemsSource}" YPath="Amount" StackKind="Percentage" XPath="Date.Year" LineKind="Spline"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

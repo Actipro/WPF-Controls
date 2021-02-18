@@ -1,0 +1,132 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.MiniToolBar.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<ribbon:MiniToolBar x:Key="SimpleMiniToolBar">
+			<ribbon:MiniToolBar.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="2" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+				</ItemsPanelTemplate>
+			</ribbon:MiniToolBar.ItemsPanel>
+			
+			<ribbon:FontFamilyComboBox MinWidth="70" />
+			<ribbon:ButtonGroup Grid.Column="1">
+				<ribbon:FontSizeComboBox Width="40" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/GrowFont16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/ShrinkFont16.png" />
+				<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ChangeCase16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/FormatPainter16.png" />
+			</ribbon:ButtonGroup>
+
+			<ribbon:ButtonGroup Grid.Row="2" Grid.ColumnSpan="2">
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/TextHighlightColor16.png" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/FontColor16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/DecreaseIndent16.png" />
+				<ribbon:Button ImageSourceSmall="/Images/Icons/IncreaseIndent16.png" />
+				<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Bullets16.png" />
+			</ribbon:ButtonGroup>
+						
+		</ribbon:MiniToolBar>
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The mini-toolbar is a great new concept introduced in Office 2007.
+					Any controls, including galleries, can be used on the mini-toolbar.
+					It has two modes of operation.
+					<LineBreak /><LineBreak />
+					First, when a selection is made in a document, the mini-toolbar semi-transparently appears above the mouse.
+					As the end user moves the mouse closer to the mini-toolbar, it becomes more opaque.
+					Moving the mouse farther away makes the mini-toolbar more transparent until a point where the mini-toolbar disappears completely.
+					After a certain threshold distance is passed, the mini-toolbar is closed completely and does not reappear until another selection is made.
+					<LineBreak /><LineBreak />
+					Second, the mini-toolbar can be paired and displayed with any context menu.
+					Normally the mini-toolbar appears above the context menu.  
+					If a menu item on the context menu is chosen, both the context menu and mini-toolbar close.
+					Alternatively, if the end user clicks a control on the mini-toolbar, the mini-toolbar remains open but the context menu closes.
+					After this point the mini-toolbar behaves as in the first case.
+					<LineBreak /><LineBreak />
+					This QuickStart simply shows how to create and show the mini-toolbar for both scenarios listed above.
+					The controls on the mini-toolbar in this sample are not wired up to commands and therefore don't do anything when clicked.
+					To see a fully working example, run the Document Editor demo since many of the controls on that demo's mini-toolbar
+					do interact with the document.
+					<LineBreak /><LineBreak />
+					To show a mini-toolbar after a mouse selection in a RichTextBox, simply attach to the RichTextBox's
+					PreviewMouseUp event.  In the handler, if there is a selection, call the MiniToolBarService.Show
+					method and pass it the mini-toolbar to display and the location at which to show it.
+					It's as easy as that.  Actipro Ribbon handles the rest for you.
+					<LineBreak /><LineBreak />
+					The ContextMenu control that comes with Actipro Ribbon has a MiniToolBar property on it.
+					To associate a mini-toolbar with a context menu, simply set the mini-toolbar to that property.
+					After that, Actipro Ribbon handles the display and management of the mini-toolbar for you.  
+					It will show up when the mouse is used to display the context menu and will have all the functionality described above.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				
+				<sampleBrowser:RichTextBox x:Name="editor" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderNormalBrushKey}}"
+										   PreviewMouseUp="OnPreviewMouseUp">
+					<sampleBrowser:SimpleFlowDocument FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}">
+						<Paragraph>
+							First, select some text in this document.  Once you release the left mouse button, you'll notice the mini-toolbar appears
+							faintly above the mouse.  Move the mouse close to it to see it become more opaque.
+							Notice that you can move the mouse away and it will fade out.
+						</Paragraph>
+						<Paragraph>
+							Second, right-click the mouse in the document.  You'll see the context menu for the document and the mini-toolbar 
+							displayed above or below it.  Try clicking on the mini-toolbar and notice how it stays active while the context menu disappears.
+						</Paragraph>
+					</sampleBrowser:SimpleFlowDocument>
+					
+					<sampleBrowser:RichTextBox.ContextMenu>
+						<ribbon:ContextMenu MiniToolBar="{StaticResource SimpleMiniToolBar}">
+							<ribbon:Menu>
+								<ribbon:Button Label="Undo" ImageSourceSmall="/Images/Icons/Undo16.png" />
+								<ribbon:Button Label="Redo" ImageSourceSmall="/Images/Icons/Redo16.png" />
+								<ribbon:Separator />
+								<ribbon:Button Label="Cut" ImageSourceSmall="/Images/Icons/Cut16.png" />
+								<ribbon:Button Label="Copy" ImageSourceSmall="/Images/Icons/Copy16.png" />
+								<ribbon:Button Label="Paste" ImageSourceSmall="/Images/Icons/Paste16.png" />
+							</ribbon:Menu>
+						</ribbon:ContextMenu>
+					</sampleBrowser:RichTextBox.ContextMenu>
+				</sampleBrowser:RichTextBox>
+			
+			</Border>
+		</shared:ShadowChrome>
+		
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

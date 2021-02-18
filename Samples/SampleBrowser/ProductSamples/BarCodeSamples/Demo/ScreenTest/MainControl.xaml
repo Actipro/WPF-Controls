@@ -1,0 +1,89 @@
+<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.BarCodeSamples.Demo.ScreenTest.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"	
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Use Actipro Bar Code to generate crisp bar codes that can easily be read directly off the screen.
+					This enables you to allow an end user to quickly input data by presenting one or more bar codes
+					on the current monitor or on a second monitor.
+					Since Actipro Bar Code renders bar codes using vectors, you can scale them to be as large as needed to be read
+					properly by your wand.
+					<LineBreak /><LineBreak />
+					This demo shows a random string value encoded in the selected bar code symbology.
+					If you have a bar code wand available, set focus to the input textbox,
+					choose a symbology that your wand supports, and try reading the bar code right off the screen.
+					<LineBreak /><LineBreak />
+					Please note that some bar code readers may not be able to read all of the available symbologies.
+					Even if they can, you may need to program your reader to be able to recognize them first.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<TextBlock Text="INPUT" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+
+			<TextBlock Margin="50,20,50,0" Text="Ensure this textbox has focus and use a wand to scan the bar code:" TextWrapping="Wrap" />
+			<TextBox x:Name="inputTextBox" Margin="50,5,50,0" Background="LightBlue" />
+			
+			<sampleBrowser:SampleOptionsPropertyGrid Margin="0,20,0,0" MaxWidth="{StaticResource SampleThinMaxWidth}">
+				<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=barCode, Path=Symbology}">
+					<grids:PropertyModel.ValueTemplate>
+						<DataTemplate>
+							<ComboBox SelectedIndex="4" SelectedItem="{Binding Value}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}">
+								<ComboBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding DisplayName}" />
+									</DataTemplate>					
+								</ComboBox.ItemTemplate>
+							
+								<barCode:Ean13Symbology Value="285817571555" />
+								<barCode:Ean8Symbology Value="5512345" />
+								<barCode:UpcASymbology Value="04210000526" />
+								<barCode:PostnetSymbology Value="80122" />
+								<barCode:Code39Symbology Value="123456789" />
+								<barCode:Code93Symbology Value="123456789" />
+								<barCode:Code128Symbology Value="123456789" />
+								<barCode:CodabarSymbology Value="A123456789B" />
+								<barCode:Interleaved2of5Symbology Value="123456789" />
+							</ComboBox>
+						</DataTemplate>
+					</grids:PropertyModel.ValueTemplate>
+				</grids:PropertyModel>
+				<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=barCode, Path=(themes:ThemeProperties.ZoomLevel)}">
+					<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="1" LargeChange="1" Format="P0" IsEditable="False" />
+				</grids:PropertyModel>
+			</sampleBrowser:SampleOptionsPropertyGrid>
+
+			<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+
+			<TextBlock Text="OUTPUT" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+
+			<sampleBrowser:LabeledCardControl Margin="0,20,0,0" Background="#ffffff" HorizontalAlignment="Center">
+				<barCode:BarCode x:Name="barCode" themes:ThemeProperties.ZoomLevel="2">
+					<barCode:BarCode.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=barCode, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=barCode, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</barCode:BarCode.LayoutTransform>
+					<barCode:CodabarSymbology x:Name="symbology" Value="A12345678A" />
+				</barCode:BarCode>
+			</sampleBrowser:LabeledCardControl>
+			
+			<ListBox x:Name="resultsListBox" Margin="50,20,50,0" MinHeight="16" MaxHeight="100" />
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,281 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<charts:SeriesPaletteStyleSelector x:Key="SequentialSeriesStyleSelector">
+			<charts:Palette Kind="Mesa" ColorSelectionHint="Sequential" />
+		</charts:SeriesPaletteStyleSelector>
+
+		<charts:SeriesPaletteStyleSelector x:Key="UniformDistributionSeriesStyleSelector">
+			<charts:Palette Kind="Mesa" ColorSelectionHint="UniformDistribution" />
+		</charts:SeriesPaletteStyleSelector>
+
+		<Style x:Key="ChartStyle" TargetType="charts:XYChart">
+			<Setter Property="Width" Value="260"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="PaddingPercentage" Value="0"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+
+		<Style x:Key="ChartSequentialStyle" TargetType="charts:XYChart" BasedOn="{StaticResource ChartStyle}">
+			<Setter Property="SeriesStyleSelector" Value="{StaticResource SequentialSeriesStyleSelector}"/>
+		</Style>
+
+		<Style x:Key="ChartUniformStyle" TargetType="charts:XYChart" BasedOn="{StaticResource ChartStyle}">
+			<Setter Property="SeriesStyleSelector" Value="{StaticResource UniformDistributionSeriesStyleSelector}"/>
+		</Style>
+
+		<Style x:Key="AreaSeries" TargetType="charts:AreaSeries">
+			<Setter Property="XPath" Value="Date.Year"/>
+			<Setter Property="YPath" Value="Amount"/>
+			<Setter Property="StackKind" Value="Normal"/>
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="AreaSeries1" TargetType="charts:AreaSeries" BasedOn="{StaticResource AreaSeries}">
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="AreaSeries2" TargetType="charts:AreaSeries" BasedOn="{StaticResource AreaSeries}">
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="AreaSeries3" TargetType="charts:AreaSeries" BasedOn="{StaticResource AreaSeries}">
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="AreaSeries4" TargetType="charts:AreaSeries" BasedOn="{StaticResource AreaSeries}">
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="AreaSeries5" TargetType="charts:AreaSeries" BasedOn="{StaticResource AreaSeries}">
+			<Setter Property="ItemsSource">
+				<Setter.Value>
+					<sampleData:TimeAggregatedDataGenerator StartAmount="10" StepRange="3" Trend="Random" />
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="PALETTE COLORS">
+				<ItemsControl ItemsSource="{Binding Source={StaticResource SequentialSeriesStyleSelector}, Path=Palette.BaseColors}" VerticalAlignment="Center">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Margin="0,0,1,0" Orientation="Horizontal" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Width="20" Height="20" Margin="1,1,0,1" BorderBrush="#CCCCCC" BorderThickness="1">
+								<Border.Background>
+									<SolidColorBrush Color="{Binding}" />
+								</Border.Background>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This QuickStart shows the same data rendered in multiple charts, each in the same color palette.
+					The left column of charts shows the palette color selection when the sequential color selection hint is set,
+					while the right column of charts shows the palette color selection when the uniform distribution color selection hint is set.
+					Note how the palette colors used for each series can differ in certain series count scenarios with the two hint settings.
+					Uniform distribution is a better hint setting for palettes that have gradient transitions of colors since 
+					when there are smaller numbers of series, it will spread the color usage out.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<Grid HorizontalAlignment="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+
+				<TextBlock Grid.Column="0" Margin="0,0,0,10" Style="{StaticResource SampleSectionHeadingTextBlockStyle}">SEQUENTIAL</TextBlock>
+				<TextBlock Grid.Column="2" Margin="0,0,0,10" Style="{StaticResource SampleSectionHeadingTextBlockStyle}">UNIFORM DISTRIBUTION</TextBlock>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="1" Grid.Column="0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="200" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries4}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries5}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>				
+				<sampleBrowser:LabeledCardControl Grid.Row="1" Grid.Column="2">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="200" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries4}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries5}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="2" Grid.Column="0" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="200" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries4}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+				<sampleBrowser:LabeledCardControl Grid.Row="2" Grid.Column="2" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="200" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries4}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="3" Grid.Column="0" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="185" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+				<sampleBrowser:LabeledCardControl Grid.Row="3" Grid.Column="2" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="185" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries3}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="4" Grid.Column="0" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="170" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+				<sampleBrowser:LabeledCardControl Grid.Row="4" Grid.Column="2" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="170" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries2}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="5" Grid.Column="0" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="150" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+				<sampleBrowser:LabeledCardControl Grid.Row="5" Grid.Column="2" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="150" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+						<charts:AreaSeries Style="{StaticResource AreaSeries1}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
+				<sampleBrowser:LabeledCardControl Grid.Row="6" Grid.Column="0" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartSequentialStyle}" Height="130" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+				<sampleBrowser:LabeledCardControl Grid.Row="6" Grid.Column="2" Margin="0,20,0,0">
+					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="130" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="10" AreLabelsVisible="True"/>
+						</charts:XYChart.YAxes>
+						<charts:AreaSeries Style="{StaticResource AreaSeries}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+			</Grid>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

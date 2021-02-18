@@ -1,0 +1,63 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/MicroChartsSamples/Demo/CallCenter/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/MicroCharts-CallCenter-190x150.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/MicroChartsSamples/Demo/Gallery/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/MicroCharts-Gallery-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/MicroChartsSamples/Demo/StockReport/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/MicroCharts-StockReport-190x150.png" />
+					</Button>
+					
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/MicroChartsSamples/ChartTypes/HeatMap/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/MicroCharts-HeatMap-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Micro Charts is a set of charts that visualize quantitative data and are designed to render clearly in compact spaces.
+					Many chart types are supported, from basic line and bar charts to stacked area charts. 
+					The sparkline chart controls include numerous useful features such as multiple series, stacking, hot tracking, customizable palettes, and data aggregation.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Other included controls are box plots, bullet graphs, candlestick charts, heat maps, segment charts, and trend indicators. 
+					Basically everything you need to create enhanced compact data displays.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

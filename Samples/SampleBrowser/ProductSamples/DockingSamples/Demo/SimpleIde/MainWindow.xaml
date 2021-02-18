@@ -1,0 +1,22 @@
+<Window x:Name="window" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.Demo.SimpleIde"
+	Icon="/Images/Icons/Actipro.ico"
+	Title="Actipro Docking &amp; MDI Simple IDE Demo"	
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+    >
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome />
+	</themes:WindowChrome.Chrome>
+	
+	<!--
+	
+		NOTE: Normally the Docking control code would be placed directly within this MainWindow.xaml definition instead.
+
+	-->	
+	<sample:MainControl />
+	
+</Window>

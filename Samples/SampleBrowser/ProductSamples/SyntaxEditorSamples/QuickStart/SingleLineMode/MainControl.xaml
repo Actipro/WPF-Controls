@@ -1,0 +1,49 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SingleLineMode.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+	<UserControl.Resources>
+		
+	</UserControl.Resources>
+
+	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		<shared:PixelSnapper>
+			<TextBlock Text="SyntaxEditor supports an optional single-line edit mode, activated when its IsMultiLine property is false.  This mode allows SyntaxEditor to simulate a regular single-line TextBox but with the full editing capabilities of SyntaxEditor and its languages." TextWrapping="Wrap" />
+		</shared:PixelSnapper>
+		
+		<shared:PixelSnapper Margin="0,10,0,0">
+			<TextBlock x:Name="xmlEditorLabel" Text="This SyntaxEditor is using the advanced XML language implementation in the Web Languages Add-on (sold separately) to edit XHTML with automated IntelliPrompt (hover over element names or press Ctrl+Space) and syntax error reporting features:" TextWrapping="Wrap" />
+		</shared:PixelSnapper>
+		
+		<editor:SyntaxEditor x:Name="xmlEditor" Margin="0,3,0,0" IsMultiLine="False" FontFamily="{Binding ElementName=xmlEditorLabel, Path=FontFamily}">
+			<editor:EditorDocument>
+				<editor:EditorDocument.Language>
+					<editor:XmlSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[<html><head><title>XHTML Editing</title></head><body>Edit with full automated IntelliPrompt!</body></html>]]>
+			</editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+		<shared:PixelSnapper Margin="0,20,0,0">
+			<TextBlock Text="This is another SyntaxEditor in read-only mode:" TextWrapping="Wrap" />
+		</shared:PixelSnapper>
+		
+		<editor:SyntaxEditor x:Name="cSharpEditor" Margin="0,3,0,0" IsMultiLine="False">
+			<editor:EditorDocument IsReadOnly="True">
+				<![CDATA[int i = 50;  // Use ReadOnly mode for copyable code snippets]]>
+			</editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+		<shared:PixelSnapper Margin="0,20,0,0">
+			<TextBlock Text="Here is a SyntaxEditor in single-line mode with word wrap, and also with view line measuring enabled:" TextWrapping="Wrap" />
+		</shared:PixelSnapper>
+		
+		<editor:SyntaxEditor Margin="0,3,0,0" IsMultiLine="False" WordWrapMode="Word" IsViewLineMeasureEnabled="True">
+			<editor:EditorDocument>
+				<![CDATA[This editor will grow vertically as needed when you type additional text into it.  It will word wrap but not allow line feeds to be inserted since it is in single-line mode.]]>
+			</editor:EditorDocument>
+		</editor:SyntaxEditor>
+	</StackPanel>
+
+</UserControl>

@@ -1,0 +1,70 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxInlineEditing.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemDataTemplate">
+			<StackPanel Orientation="Horizontal">
+				<shared:DynamicImage Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
+				<shared:EditableContentControl Margin="2,0,0,0" Content="{Binding Name, Mode=TwoWay}" IsEditing="{Binding IsEditing, Mode=TwoWay}" />
+			</StackPanel>
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Items support inline editing, which means being able to press F2 or single tap a selected item's name to switch the text display into an inline editor.
+					Once editing begins, Enter can be used to commit the value or Esc can be used to cancel the change.
+					<LineBreak /><LineBreak />
+					Editing can be supported on a per-item basis.
+					In this sample, the name folder items aren't editable, but all of the name items are editable.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListBox x:Name="treeListBox" MaxWidth="{StaticResource SampleThinMaxWidth}" ItemTemplate="{StaticResource ItemDataTemplate}">
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+
+			<common:TreeNodeModel Name="Names">
+				<common:FolderTreeNodeModel Name="Boy Names" IsExpanded="True">
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Noah" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Liam" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Mason" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Ethan" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Michael" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Jacob" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/MaleSymbol16.png" Name="Alexander" IsEditable="True" />
+				</common:FolderTreeNodeModel>
+				<common:FolderTreeNodeModel Name="Girl Names" IsExpanded="True">
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Emma" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Olivia" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Sophia" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Isabella" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Ava" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Mia" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Emily" IsEditable="True" />
+					<common:TreeNodeModel ImageSource="/Images/Icons/FemaleSymbol16.png" Name="Abigail" IsEditable="True" />
+				</common:FolderTreeNodeModel>
+			</common:TreeNodeModel>
+		</grids:TreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

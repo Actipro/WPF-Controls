@@ -1,0 +1,269 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.AssetStyleOverride.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	
+	<sampleBrowser:ProductItemControl.Resources>
+		
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows two features of the Actipro Themes design.
+					First, common assets such as brushes, thicknesses, etc. can be altered by redefining the assets in control or application-level resources.
+					These changes then flow down into any styles and template that use those common asset keys.
+					Second, implicit styles can be redefined to flow into any controls that use them.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<TextBlock Text="NORMAL TOOLBAR" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+			<sampleBrowser:LabeledCardControl Margin="0,20,0,0">
+				<sampleBrowser:LabeledCardControl.Label>
+					This toolbar is a native WPF ToolBar control that is inheriting the special Actipro implicit style, 
+					as long as the 'Native Controls Themed' option is checked in the 'Change Theme' button's menu above.
+				</sampleBrowser:LabeledCardControl.Label>
+				<ToolBarTray>
+					<ToolBar>
+						<Button ToolTip="New">
+							<shared:DynamicImage Source="/Images/Icons/New16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Open">
+							<shared:DynamicImage Source="/Images/Icons/Open16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Save">
+							<shared:DynamicImage Source="/Images/Icons/Save16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Cut">
+							<shared:DynamicImage Source="/Images/Icons/Cut16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Copy">
+							<shared:DynamicImage Source="/Images/Icons/Copy16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Paste">
+							<shared:DynamicImage Source="/Images/Icons/Paste16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Delete">
+							<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Undo">
+							<shared:DynamicImage Source="/Images/Icons/Undo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Redo">
+							<shared:DynamicImage Source="/Images/Icons/Redo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<TextBlock Margin="0,0,5,0" Text="Find" VerticalAlignment="Center" />
+						<ComboBox Width="100" />
+					</ToolBar>
+				</ToolBarTray>
+			</sampleBrowser:LabeledCardControl>
+			
+			<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+		
+			<TextBlock Text="TOOLBAR WITH ASSET OVERRIDES" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+			<sampleBrowser:LabeledCardControl Margin="0,20,0,0">
+				<sampleBrowser:LabeledCardControl.Label>
+					This toolbar is defined exactly the same way as the normal toolbar above. 
+					The only difference is that several of Actipro's brush and padding assets were redefined in this instance's ToolBarTray.Resources. 
+					The result is the same template for the control but with some other colors and size.
+				</sampleBrowser:LabeledCardControl.Label>
+				<ToolBarTray>
+					<ToolBarTray.Resources>
+				
+						<!-- 
+				
+							NOTE: You can redefine brushes like this in the Application.Resources to apply the updates application-wide
+				
+						-->
+					
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarTrayBackgroundNormalBrushKey}" Color="#d0d0d0" />
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarHorizontalBackgroundNormalBrushKey}" Color="#efefef" />
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarHorizontalBorderNormalBrushKey}" Color="#b1b1b1" />
+						<Thickness x:Key="{x:Static themes:AssetResourceKeys.ToolBarHorizontalPaddingNormalThicknessKey}">3</Thickness>
+				
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarGripperForegroundNormalBrushKey}" Color="#989898" />
+
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarOverflowButtonHorizontalBackgroundNormalBrushKey}" Color="#b1b1b1" />
+						<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarOverflowButtonForegroundNormalBrushKey}" Color="#000000" />
+				
+						<CornerRadius x:Key="{x:Static themes:AssetResourceKeys.ToolBarEditBorderNormalCornerRadiusKey}">5</CornerRadius>
+						<CornerRadius x:Key="{x:Static themes:AssetResourceKeys.ToolBarDropDownBorderNormalCornerRadiusKey}">0,5,5,0</CornerRadius>
+		
+						<LinearGradientBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarEditBackgroundNormalBrushKey}" EndPoint="0,1">
+							<GradientStop Offset="0" Color="#e8e8e8" />
+							<GradientStop Offset="0.6" Color="#ffffff" />
+						</LinearGradientBrush>
+						<LinearGradientBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarEditBackgroundHoverBrushKey}" EndPoint="0,1">
+							<GradientStop Offset="0" Color="#f0f0f0" />
+							<GradientStop Offset="0.6" Color="#ffffff" />
+						</LinearGradientBrush>
+
+					</ToolBarTray.Resources>
+				
+					<ToolBar>
+						<Button ToolTip="New">
+							<Image Source="/Images/Icons/New16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Open">
+							<Image Source="/Images/Icons/Open16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Save">
+							<Image Source="/Images/Icons/Save16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Cut">
+							<Image Source="/Images/Icons/Cut16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Copy">
+							<Image Source="/Images/Icons/Copy16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Paste">
+							<Image Source="/Images/Icons/Paste16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Delete">
+							<Image Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Undo">
+							<Image Source="/Images/Icons/Undo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Redo">
+							<Image Source="/Images/Icons/Redo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<TextBlock Margin="5,0,5,0" Text="Find" VerticalAlignment="Center" />
+						<ComboBox Width="100" IsEditable="True" />
+					</ToolBar>
+				</ToolBarTray>
+			</sampleBrowser:LabeledCardControl>
+			
+			<Separator Style="{StaticResource SampleSectionHorizontalRuleStyle}" />
+		
+			<TextBlock Text="TOOLBAR WITH STYLE OVERRIDES" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
+			<sampleBrowser:LabeledCardControl Margin="0,20,0,0">
+				<sampleBrowser:LabeledCardControl.Label>
+					This toolbar is defined exactly the same way as the normal toolbar above. 
+					The only difference is that the styles used for the Button and Separator controls has been redefined. 
+					Buttons have a larger corner radius and more padding.  Separators use wavy lines.
+				</sampleBrowser:LabeledCardControl.Label>
+				<ToolBarTray>
+					<ToolBarTray.Resources>
+				
+						<!-- 
+				
+							NOTE: You can redefine styles like this in the Application.Resources to apply the updates application-wide
+				
+						-->
+					
+						<Style x:Key="{x:Static themes:SharedResourceKeys.ToolBarEmbeddedButtonBaseStyleKey}" TargetType="{x:Type ButtonBase}"
+								BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}">
+
+							<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundNormalBrushKey}}" />
+							<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonBorderNormalBrushKey}}" />
+							<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonForegroundNormalBrushKey}}" />
+
+							<Setter Property="Focusable" Value="True" />
+							<Setter Property="IsTabStop" Value="True" />
+		
+							<Setter Property="MinHeight" Value="24" />
+							<Setter Property="MinWidth" Value="24" />
+		
+							<Setter Property="themes:ThemeProperties.CornerRadius" Value="5" />
+							<Setter Property="Padding" Value="4" />
+							
+						</Style>
+							
+						<Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ToolBarEmbeddedButtonBaseStyleKey}}" />
+							
+						<Style x:Key="{x:Static themes:SharedResourceKeys.ToolBarEmbeddedSeparatorStyleKey}" TargetType="{x:Type Separator}">
+							<Setter Property="Margin" Value="2" />
+							<Setter Property="Width" Value="3" />
+
+							<Setter Property="Template">
+								<Setter.Value>
+									<ControlTemplate TargetType="{x:Type Separator}">
+										<Rectangle SnapsToDevicePixels="true">
+											<Rectangle.Fill>
+												<DrawingBrush Viewport="0,0,3,4" ViewportUnits="Absolute" TileMode="Tile">
+													<DrawingBrush.Drawing>
+														<GeometryDrawing Brush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarSeparatorBackgroundNormalBrushKey}}">
+															<GeometryDrawing.Geometry>
+																<GeometryGroup>
+																	<RectangleGeometry Rect="1,0,1,1" />
+																	<RectangleGeometry Rect="2,1,1,1" />
+																	<RectangleGeometry Rect="1,2,1,1" />
+																	<RectangleGeometry Rect="0,3,1,1" />
+																</GeometryGroup>
+															</GeometryDrawing.Geometry>
+														</GeometryDrawing>
+													</DrawingBrush.Drawing>
+												</DrawingBrush>
+											</Rectangle.Fill>
+										</Rectangle>
+									</ControlTemplate>
+								</Setter.Value>
+							</Setter>
+						</Style>
+
+						<Style x:Key="{x:Static ToolBar.SeparatorStyleKey}" TargetType="{x:Type Separator}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ToolBarEmbeddedSeparatorStyleKey}}" />
+						
+					</ToolBarTray.Resources>
+				
+					<ToolBar>
+						<Button ToolTip="New">
+							<shared:DynamicImage Source="/Images/Icons/New16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Open">
+							<shared:DynamicImage Source="/Images/Icons/Open16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Save">
+							<shared:DynamicImage Source="/Images/Icons/Save16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Cut">
+							<shared:DynamicImage Source="/Images/Icons/Cut16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Copy">
+							<shared:DynamicImage Source="/Images/Icons/Copy16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Paste">
+							<shared:DynamicImage Source="/Images/Icons/Paste16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Delete">
+							<shared:DynamicImage Source="/Images/Icons/Delete16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<Button ToolTip="Undo">
+							<shared:DynamicImage Source="/Images/Icons/Undo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Button ToolTip="Redo">
+							<shared:DynamicImage Source="/Images/Icons/Redo16.png" Width="16" Height="16" Stretch="UniformToFill" />
+						</Button>
+						<Separator />
+						<TextBlock Margin="0,0,5,0" Text="Find" VerticalAlignment="Center" />
+						<ComboBox Width="100" />
+					</ToolBar>
+				</ToolBarTray>
+			</sampleBrowser:LabeledCardControl>
+		
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

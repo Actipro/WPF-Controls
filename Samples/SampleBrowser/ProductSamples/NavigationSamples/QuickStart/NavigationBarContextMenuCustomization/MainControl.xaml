@@ -1,0 +1,38 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="userControl" 
+	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.NavigationBarContextMenuCustomization.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"     
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    >
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The NavigationBar control raises a CustomizeButtonClick event whenever its customize button is clicked.
+					The event arguments contain the ContextMenu that was created by default.
+					<LineBreak /><LineBreak />
+					You can modify the context menu's items as needed or even add your own.
+					This sample shows how to add a Separator and custom menu item below it at the end of the context menu.
+					<LineBreak /><LineBreak />
+					If you have any themes defined for native ContextMenu or MenuItem controls, the generated context menu should pick those up automatically.
+					Alternatively, you could assign a Style to the context menu programmatically.
+					Or you could even provide a completely different ContextMenu to display.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+			
+		<navigation:NavigationBar ContentWidth="200" HorizontalAlignment="Center" CustomizeButtonClick="OnNavigationBarCustomizeButtonClick">
+			<navigation:NavigationPane Title="Mail" ImageSourceLarge="/Images/Icons/Mail32.png" ImageSourceSmall="/Images/Icons/Mail16.png" />
+		</navigation:NavigationBar>
+
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>For</Title>
+			<Shortcut>For</Shortcut>
+			<Description>Builds a 'For' loop</Description>
+			<Author>Actipro Software LLC</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>index</ID>
+					<Default>index</Default>
+					<ToolTip>Index</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>type</ID>
+					<Default>Integer</Default>
+					<ToolTip>The Type to use for the index</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>minvalue</ID>
+					<Default>1</Default>
+					<ToolTip>Minimum value</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>maxvalue</ID>
+					<Default>10</Default>
+					<ToolTip>Maximum value</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>statements</ID>
+					<Default>' Add code to be executed on each iteration.</Default>
+					<ToolTip>Interior statements</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="VB">
+<![CDATA[For $index$ As $type$ = $minvalue$ To $maxvalue$
+	$statements$
+	$selected$$end$
+Next]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

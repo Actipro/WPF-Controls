@@ -1,0 +1,94 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDragDrop.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDragDrop"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemDataTemplate">
+			<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=CanDragItems}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=AllowDrop}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=MultiDragKind}" DisplayName="Multi-drag kind" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=HasTreeLines}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderExpanderStyle}" Header="TEXTBOX FOR TESTING DROPS">
+				<TextBox AllowDrop="True" shared:HintProperties.Hint="Drop an item here" />
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how drag and drop can be achieved within a TreeListBox control.
+					The drag and drop features support interaction in the control itself as well as with external controls.
+					<LineBreak /><LineBreak />
+					For item drag support, the CanDragItems property must be set to true and the adapter's InitializeDataObject
+					method can be overridden to include more than just the items themselves.
+					This is useful for scenarios such as including a text representation of the dragged items.
+					By default, dragging is only supported for single selections.  
+					But multiple items can be dragged as well, with intelligent criteria options such as only siblings, same depth, any, etc.
+					<LineBreak /><LineBreak />
+					For drop support on the control, the AllowDrop property must be set to true and the adapter's
+					OnDragOver and OnDrop methods must be overridden with custom logic for how to handle the data being dragged and dropped.
+					Built-in drop indicator UI can be rendered to give the end user a visual cue as to where drops will occur.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListBox x:Name="treeListBox" MaxWidth="{StaticResource SampleThinMaxWidth}"
+						   SelectionMode="Extended" AllowDrop="True" CanDragItems="True" HasTreeLines="True"
+						   ItemTemplate="{StaticResource ItemDataTemplate}"
+						   >
+			<grids:TreeListBox.ItemAdapter>
+				<sample:CustomTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+
+			<common:TreeNodeModel Name="Fruits">
+				<common:TreeNodeModel Name="Berries" IsExpanded="True">
+					<common:TreeNodeModel Name="Blackberry" />
+					<common:TreeNodeModel Name="Blueberry" />
+					<common:TreeNodeModel Name="Cranberry" />
+					<common:TreeNodeModel Name="Grapes" />
+					<common:TreeNodeModel Name="Raspberry" />
+					<common:TreeNodeModel Name="Strawberry" />
+				</common:TreeNodeModel>
+				<common:TreeNodeModel Name="Other" IsExpanded="True">
+					<common:TreeNodeModel Name="Apple" />
+					<common:TreeNodeModel Name="Banana" />
+					<common:TreeNodeModel Name="Cherry" />
+					<common:TreeNodeModel Name="Grapefruit" />
+					<common:TreeNodeModel Name="Guava" />
+					<common:TreeNodeModel Name="Lemon" />
+					<common:TreeNodeModel Name="Lime" />
+					<common:TreeNodeModel Name="Kiwi" />
+					<common:TreeNodeModel Name="Orange" />
+					<common:TreeNodeModel Name="Pineapple" />
+					<common:TreeNodeModel Name="Plum" />
+				</common:TreeNodeModel>
+			</common:TreeNodeModel>
+
+		</grids:TreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

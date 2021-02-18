@@ -1,0 +1,80 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<!-- IsEnabled Pre -->
+					<wizard:WizardPage x:Name="isEnabledPrePage" PageType="Interior" 
+							Caption="Skip 'Disabled' Pages - Configuration (Part 1/3)" 
+							Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+							Title="Step 7 (Navigation and Selected Page Changes Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock TextWrapping="Wrap">
+								Unless the next/previous page is overridden, Wizard will progress sequentially through its pages.  
+								<LineBreak />
+								<LineBreak />
+								Each <Bold>WizardPage</Bold> has an <Bold>IsEnabled</Bold> property on it.
+								If that property is set to <Bold>False</Bold> then the page will be skipped during normal sequencing.
+								<LineBreak />
+								<LineBreak />
+								For an example, use the following <Bold>CheckBox</Bold> to determine whether the page that
+								follows this page in sequence has its <Bold>IsEnabled</Bold> property set or not.
+								If it is set to <Bold>True</Bold> then pressing the <Bold>Next</Bold> button will go to it next.
+								Otherwise the <Bold>Next</Bold> button will skip over it to the completion page for this feature.
+							</TextBlock>
+							<CheckBox Margin="14,7,0,0" IsChecked="{Binding ElementName=isEnabledTargetPage, Path=IsEnabled}">Next page is enabled</CheckBox>
+						</StackPanel>
+					</wizard:WizardPage>
+
+					<!-- IsEnabled Target -->
+					<wizard:WizardPage x:Name="isEnabledTargetPage" PageType="Interior" 
+							Caption="Skip 'Disabled' Pages - Target (Part 2/3)" 
+							Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+							Title="Step 8 (Navigation and Selected Page Changes Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock TextWrapping="Wrap">
+								If you are seeing this page, then you must have left the <Bold>CheckBox</Bold> on the previous page checked.
+								<LineBreak />
+								<LineBreak />
+								That would mean that this page's <Bold>IsEnabled</Bold> property is still set to <Bold>True</Bold>.
+							</TextBlock>
+						</StackPanel>
+					</wizard:WizardPage>
+
+					<!-- IsEnabled Post -->
+					<wizard:WizardPage x:Name="isEnabledPostPage" PageType="Interior"
+							Caption="Skip 'Disabled' Pages - Completion (Part 3/3)" 
+							Description="Wizard skips pages that are disabled when moving sequentially through the pages."
+							Title="Step 9 (Navigation and Selected Page Changes Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<StackPanel>
+							<TextBlock TextWrapping="Wrap">
+								This is the completion page for this feature.
+								<LineBreak />
+								<LineBreak />
+								If you left the <Bold>CheckBox</Bold> checked on the configuration page for this feature then you would
+								have seen a target page in between the configuration page and this page.
+								Otherwise, you would have arrived here directly from the configuration page.
+							</TextBlock>
+						</StackPanel>
+					</wizard:WizardPage>
+
+				</wizard:Wizard>
+
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+
+</UserControl>

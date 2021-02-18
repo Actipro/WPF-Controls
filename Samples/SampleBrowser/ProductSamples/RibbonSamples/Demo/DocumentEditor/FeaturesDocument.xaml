@@ -1,0 +1,200 @@
+<sampleBrowser:SimpleFlowDocument Background="#ffffff" Foreground="#000000"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
+	<Paragraph>
+		<Span FontSize="22" FontWeight="Bold">Actipro Ribbon: <Span Foreground="Silver">Control Suite for WPF</Span></Span>
+		<Figure Width="170" Height="90" Margin="0">
+			<BlockUIContainer>
+				<shared:ReflectionContentControl>
+					<shared:ReflectionContentControl.LayoutTransform>
+						<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+					</shared:ReflectionContentControl.LayoutTransform>
+					<shared:ActiproLogo />
+				</shared:ReflectionContentControl>
+			</BlockUIContainer>
+		</Figure><LineBreak /><LineBreak />
+		Welcome, Actipro Ribbon for WPF is a comprehensive implementation of the Office user interface,
+		meeting all of the core Microsoft ribbon UI design requirements.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}" Foreground="#808080">
+		Features at a Glance
+	</Paragraph>
+	<Paragraph>
+		<Bold>Dynamic Control Layouts</Bold><LineBreak />
+		Actipro Ribbon has the most robust control layout code found in any product of its type... and it's fast too!
+		As you resize the Ribbon, you designate how groups and their child controls move through a sequence of progressively smaller variants.
+		All the controls included with Ribbon support multiple variant styles and
+		several panel controls are provided that support variant changes from large to smaller items, along with managing multiple rows of items.
+		Unlike our competition, Actipro's Ribbon's layout features allow you to exactly mimic the layout behavior found in Office.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Integrates with WPF Command Model</Bold><LineBreak />
+		All of the controls included with Ribbon are designed specifically for use with the WPF command model (routed commands, ICommandSource, etc).
+		Commands can manage live previews, assign values (font families, sizes, etc.), and 
+		can even globally assign user interface elements such as images, labels, and screen tip data to controls that use them.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Numerous Built-In Controls</Bold><LineBreak />
+		Actipro Ribbon is bundled with numerous advanced controls that can be both inside and outside of the Ribbon.
+		Controls range from simple buttons, checkboxes, and radio buttons, to popup and split buttons.
+		There are galleries, comboboxes (regular, font family, and font size variations), textboxes, 
+		several layout controls and more.
+	</Paragraph>
+	<Paragraph>
+		<Bold>In-Ribbon and Popup Galleries</Bold><LineBreak />
+		Galleries are controls that are designed to present a choice to the end user visually.
+		Galleries are often used to render things like styles, colors, underlines, etc. that may be applied to a document.
+		Both in-ribbon and popup galleries are included with Ribbon.
+		In-ribbon galleries always show items within a parent Group, and can optionally scale their width to show items based on the available width.
+		Any control that has a popup (such as a popup button, split button, or in-ribbon gallery) can have a popup gallery on it.
+		Popup galleries support categorization, filtering, zoomed-in items on mouse over, and popup resizing.
+		Any gallery item can be rendered via templates or custom drawn via code.
+		Gallery items support selection tracking and live preview as well.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Color Picker Galleries</Bold><LineBreak />
+		Color picker galleries are generally used in popups and present a defined list of colors to the end user.
+		The gallery can optionally auto-generate groups of lighter/darker shades for base colors you specify.
+		Multiple categories of colors may be added to a single gallery, and optional filtering can be applied.
+		These galleries have all the features found in popup galleries, such as color item screen tips, selection tracking and live preview.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Advanced Popups Supporting Any Content, Resizing, Multiple Menu Columns, and More</Bold><LineBreak />
+		The popups used in Ribbon allow for complete flexibility for your design.
+		You can place any sort of content within a popup, not just menu items.
+		Any sort of complex panel layouts are possible, including popup headers, multiple columns of menu items, etc.
+		A common use of this is to place popup galleries on a popup with menu items above and/or below the gallery.
+		Ribbon also includes a ContextMenu-based control that supports all of these advanced features and may be 
+		used anywhere that a regular ContextMenu can be used.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Backstage / Application Menu / Recent Documents Management</Bold><LineBreak />
+		The application menu is where application-level buttons and menu items are generally located.
+		Complete support for the Office 2010-like Backstage menu with tabs and buttons is included.
+		Alternatively Ribbon supports the more traditional Office 2007-like applicaiton menu with
+		large menu items, footer buttons, and additional content display on its right side.
+		Generally recent documents are listed in the additional content area, and Ribbon even comes packed with a control for
+		managing and displaying recent documents, along with pinning capabilities.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Quick Access ToolBar</Bold><LineBreak />
+		The Quick Access ToolBar (QAT) may be located above the Ribbon, below the Ribbon or hidden completely.
+		It is always visible no matter which Tab is selected.
+		The QAT has a customize menu that you may add custom items to, and will overflow items to a popup when space is limited.
+		Ribbon has a cloning framework for supporting run-time QAT customizations and persisting changes between application sessions.
+		The complete source code for a fully-functional Customize QAT dialog page is included.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Mini-ToolBar</Bold><LineBreak />
+		The mini-toolbar semi-transparently appears near the mouse when a selection is made, offering controls related to the selection.
+		It becomes more opaque as the mouse moves closer to it and becomes less opaque as the mouse moves away from it.
+		Mini-toolbars can also be paired with context menus so that they display above or below the context menu, 
+		providing additional options that aren't normally on the context menu.
+		Any controls, including galleries, can be used on the mini-toolbar.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Ribbon Minimization</Bold><LineBreak />
+		The Ribbon may be minimized to increase the screen real estate.  When in minimized mode, only the Ribbon's Tabs are 
+		visible.  A Tab may be clicked to display its groups in a popup.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Key Tips and Screen Tips</Bold><LineBreak />
+		Ribbon implements key tips provide easy keyboard access to any control on the Ribbon or in its popups.
+		Ribbon also implements screen tips, which are similar to tool tips except that they support some automated layout features,
+		along with contextual help.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Contextual Tab Groups</Bold><LineBreak />
+		Contextual tab groups may be displayed when the context of the selection is appropriate for them to be visible.
+		For instance a Picture Tools contextual tab group's Tabs may become active when a picture is selected in a document.
+		Each group may be assigned a separate base tab/background color for visual differentiation.
+	</Paragraph>
+	<Paragraph>
+		<Bold>RibbonWindow (Office-like Window)</Bold><LineBreak />
+		The RibbonWindow class mimics the window user interface found in Office, with its rounded corners and custom title bar.
+		When used in Windows versions with glass enabled, it automatically changes to draw using glass transparency effects behind the QAT and title bar area.
+		RibbonWindow may be used with or without an embedded Ribbon control.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Office Styles for Native WPF Controls</Bold><LineBreak />
+		Since Actipro recognizes the need for developers to have a consistent look and feel throughout their application, 
+		we have included many Office-like styles for native WPF controls.
+		You can easily apply these themes to scrollbars, statusbars, etc.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Theming</Bold><LineBreak />
+		Multiple built-in themes that mimic Office's blue, black and silver themes, as well as all Windows system themes are included.
+		However you can also generate a completely custom theme with a single line of code.  
+		Individual theme brushes may also be altered as needed.
+		For advanced developers who want even more customization possibilities, we've made all our controls so that they can be styled and templated
+		and all primitive elements that are used in our built-in control templates are public.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Right-to-left, Localization, and Scaling</Bold><LineBreak />
+		All Ribbon UI supports right-to-left layouts and all text in the user interface may be localized to other languages.
+		The Ribbon and RibbonWindow may be scaled up so that the UI appears larger to the end user while still retaining 
+		precise vector-based clarity.
+	</Paragraph>
+	<Paragraph>
+		<Bold>Extensive Documentation and Samples</Bold><LineBreak />
+		Actipro has spent a lot of time refining the design of Ribbon to take advantage of WPF best practices.
+		We realize that a good product is only part of the equation though and have also worked very hard to
+		write detailed documentation on the product.
+		In addition to that, Ribbon ships with the full source for many QuickStart examples that each focus on learning a specific Ribbon feature.
+	</Paragraph>
+
+
+	<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}" Foreground="#808080">
+		Some Things to Try in This Demo...
+	</Paragraph>
+	<List>
+		<ListItem>
+			<Paragraph>Resize the window width so you can see how the control layouts scale</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Compare the Home and Insert tabs to Microsoft Word's tabs, they adjust layouts the exact same way</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select some text in this RichTextBox and hover over font family/size drop-down items to see live preview</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select some text in this RichTextBox and hover over text highlight color or font color gallery items to see live preview</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Show the underline split button popup to see a gallery with vertical resizing and custom rendered items via code.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Show the bullets split button popup to see gallery categorization, filtering, and even zoom of items on mouse over.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Press and release the Alt key to enter key tip mode</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Use context menus to add controls to and remove controls from to the Quick Access Toolbar (QAT)</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Look at all the tabs to see the variety of built-in controls that can be used anywhere, including menus</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select a different theme on the Ribbon Demos tab or even use a color picker to build your own</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Look at the Edit tab to see a fully functional date time editor (with month calendar drop-down) control that can be used in-Ribbon or in your own Windows</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Toggle the visibility of some contextual tab groups on the Ribbon Demos tab</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Check out the recent documents list control on the application menu</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select some text or right-click in the document to see the mini-toolbar.</Paragraph>
+		</ListItem>
+	</List>
+
+</sampleBrowser:SimpleFlowDocument>

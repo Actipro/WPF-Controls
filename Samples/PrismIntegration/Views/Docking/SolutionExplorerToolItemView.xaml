@@ -1,0 +1,15 @@
+<UserControl x:Name="userControl" x:Class="ActiproSoftware.Windows.PrismIntegration.Views.SolutionExplorerToolItemView"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<TreeView BorderThickness="0">
+		<TreeViewItem Header="Solution 'WPFControlsSample' (1 project)" IsExpanded="True">
+			<TreeViewItem Header="WPFControlsSample" IsExpanded="True">
+				<TreeViewItem Header="Properties" />
+				<TreeViewItem Header="References" />
+				<TreeViewItem Header="Demo.cs" />
+			</TreeViewItem>
+		</TreeViewItem>
+	</TreeView>
+
+</UserControl>

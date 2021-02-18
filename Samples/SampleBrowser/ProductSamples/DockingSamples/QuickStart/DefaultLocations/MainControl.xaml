@@ -1,0 +1,54 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.DefaultLocations.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					When a tool window has already been in the dock site layout and then is closed, it leaves a breadcrumb behind so that it knows exactly where to appear when reopened later.
+					For tool windows that are being opened for the first time and don't yet have a breadcrumb available, default location information is requested.
+					<LineBreak /><LineBreak />
+					This sample creates a number of tool windows is code behind.
+					It shows off the various ways, everything from simple properties to events, 
+					to provide default location information when a tool window is told to open without being passed specific location information.
+					This concept is especially important in MVVM scenarios.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<!-- DockSite -->
+	<docking:DockSite x:Name="dockSite" WindowDefaultLocationRequested="OnDockSiteWindowDefaultLocationRequested">
+		<docking:Workspace>
+			<docking:TabbedMdiHost>
+				<docking:TabbedMdiContainer>
+					<docking:DocumentWindow Title="Notes">
+						<ScrollViewer>
+							<TextBlock Margin="5" TextWrapping="Wrap">
+								The DockingWindow.WindowGroupName property can be set on tool windows that have an affinity.
+								Each window in a 'group' should have the same property value.
+								A window being opened for the first time will look for other open members of the group in the same state so that it can attach to them.
+								<LineBreak /><LineBreak />
+								DockingWindow also has a DefaultLocationRequestAction property that can be set to a lambda
+								that is passed a DockingWindowDefaultLocationEventArgs instance.
+								The event args allows you to programmatically designate a dock target (such as a dock host or other tool window) and optional side upon which to dock.
+								Then the DockSite.WindowDefaultLocationRequested event fires and allows for the similar logic to be applied.
+								<LineBreak /><LineBreak />
+								If no dock target is designated by the action or event, then the window will dock against the primary dock host
+								using the side specified by the window's DefaultDockSide property.
+							</TextBlock>
+						</ScrollViewer>
+					</docking:DocumentWindow>
+				</docking:TabbedMdiContainer>
+			</docking:TabbedMdiHost>
+		</docking:Workspace>
+	</docking:DockSite>
+
+</sampleBrowser:ProductItemControl>

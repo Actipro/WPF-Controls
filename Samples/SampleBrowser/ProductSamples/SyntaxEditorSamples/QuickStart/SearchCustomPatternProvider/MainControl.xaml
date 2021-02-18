@@ -1,0 +1,78 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SearchCustomPatternProvider.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:text="clr-namespace:ActiproSoftware.Text;assembly=ActiproSoftware.Text.Wpf"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SearchCustomPatternProvider"
+    >
+	<UserControl.Resources>
+		
+		<!-- Search options -->
+		<editor:EditorSearchOptions x:Key="EditorSearchOptions" FindText="_._+"
+									PatternProvider="{x:Static sample:CustomSearchPatternProvider.Instance}" />
+		
+		<!-- Custom pattern provider factory -->
+		<sample:CustomSearchPatternProviderFactory x:Key="CustomSearchPatternProviderFactory" />
+		
+	</UserControl.Resources>
+	
+	<docking:DockSite>
+		<docking:SplitContainer Orientation="Horizontal">
+			<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+						
+				<!-- SyntaxEditor -->
+				<editor:SyntaxEditor x:Name="editor" HasSearchOverlayPaneKeyBindings="False">
+					<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+namespace SearchCustomPatternProvider {
+
+	/// <summary>
+	/// This QuickStart shows how to create a custom search
+	/// pattern provider and plug it into a EditorSearchView.
+	/// </summary>
+	public class FindReplace {
+
+		/// <summary>
+		/// The custom search pattern provider converts find
+		/// and replace patterns from a custom format to a
+		/// regular expression equivalent because the core
+		/// search engine uses regular expressions.
+		/// </summary>
+		/// <remarks>
+		/// This QuickStart's custom provider converts '_'
+		/// characters to mean any digit, and allows '+' and
+		/// '*' to have their normal regex meanings.  All other
+		/// characters are treated as normal text.
+		/// Click the Find button to search for decimal numbers.
+		/// </remarks>
+		public void Foo {
+			double a = 1.1;
+			double b = 2.5;
+			double c = a * b;
+		}
+
+	}
+}]]></editor:EditorDocument>
+
+				</editor:SyntaxEditor>
+				
+			</docking:Workspace>
+			
+			<docking:ToolWindowContainer>
+				<docking:ToolWindow Title="Find and Replace" CanClose="False" ContainerDockedSize="220,200">
+					<ScrollViewer VerticalScrollBarVisibility="Auto">
+						<editor:EditorSearchView SearchOptions="{StaticResource EditorSearchOptions}" SyntaxEditor="{Binding ElementName=editor}"
+												 IsOptionsPanelExpanded="True"
+												 SearchPatternProviderFactory="{StaticResource CustomSearchPatternProviderFactory}" />
+					</ScrollViewer>
+				</docking:ToolWindow>
+			</docking:ToolWindowContainer>
+			
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+    
+</UserControl>

@@ -1,0 +1,71 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+	
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+			
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<!-- Page Types -->
+					<wizard:WizardPage x:Name="pageTypesPage" PageType="Interior" Caption="Multiple Page Types" PreviousPage="demoPathPage" 
+							Description="Wizard supports multiple page types, each with their own control style and template."
+							Title="Step 2 (Pages and Buttons Path)"
+							HeaderImage="/ProductSamples/WizardSamples/Demo/Features/Images/HatLogo.png">
+						<wizard:WizardPage.HeaderBackground>
+							<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,650,60" ViewportUnits="Absolute" ImageSource="/ProductSamples/WizardSamples/Demo/Features/Images/HeaderBG.png" />
+						</wizard:WizardPage.HeaderBackground>
+						<StackPanel>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+						
+								<StackPanel Grid.Column="0">
+									<TextBlock FontWeight="Bold">Render This Page As...</TextBlock>
+									<editors:EnumEditBox Margin="0,3,0,0" Value="{Binding ElementName=pageTypesPage, Path=PageType}" />
+								</StackPanel>
+								<StackPanel Grid.Column="1" Margin="30,0,0,0">
+									<TextBlock FontWeight="Bold">Page Type Descriptions</TextBlock>
+									<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Blank</Bold> page type renders a blank page allowing you to implement whatever you want inside of it.</TextBlock>
+									<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Interior</Bold> page type uses a header at the top of the page to display the page's caption and description.</TextBlock>
+									<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">The <Bold>Exterior</Bold> page type uses a watermark area on the near side of the page to display an image and watermark background.  The page's caption and description are displayed near the top of the main content area.</TextBlock>
+								</StackPanel>
+							</Grid>
+							<TextBlock Margin="0,14,0,0" FontWeight="Bold">Customize This Page</TextBlock>
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition />
+									<RowDefinition />
+									<RowDefinition />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+							
+								<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Caption</TextBlock>
+								<TextBox Grid.Row="0" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Caption, UpdateSourceTrigger=PropertyChanged}" />
+								<TextBlock Grid.Row="1" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Description</TextBlock>
+								<TextBox Grid.Row="1" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Description, UpdateSourceTrigger=PropertyChanged}" />
+								<TextBlock Grid.Row="2" Grid.Column="0" Margin="0,7,7,0" HorizontalAlignment="Right" VerticalAlignment="Center">Title</TextBlock>
+								<TextBox Grid.Row="2" Grid.Column="1" Margin="0,7,0,0" Text="{Binding ElementName=pageTypesPage, Path=Title, UpdateSourceTrigger=PropertyChanged}" />
+							</Grid>
+						</StackPanel>
+					</wizard:WizardPage>
+				
+				</wizard:Wizard>
+			
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+	
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mammal xmlns="http://ActiproSoftware/Mammals"
+        species="Dog" locomotion="terrestrial">
+    
+    <!--
+		This sample shows how the XML syntax language in the 
+		Web Languages Add-on (sold separately), can be used to 
+		provide validation, automated IntelliPrompt, and code 
+		outlining for any custom XML document.  Just load an 
+		XML schema and the add-on takes care of the rest.
+	-->
+    
+    <hair length="2.2cm">
+        <colors>
+            <color>brown</color>
+            <color>yellow</color>
+            <color>black</color>
+            <color>red</color>
+            <color>tan</color>
+            <color>white</color>
+            <color>gray</color>
+        </colors>
+    </hair>
+
+    <diet>
+        Dogs can adapt to a wide variety of diets and do not require meat-specific 
+        protein or large quantities of protein. Dogs can digest many foods well, 
+        including <component>vegetables</component>, <component>grains</component>, 
+        and <component>meats</component>.
+    </diet>
+
+    <population health="healthy">
+        <locations>
+            <location>Anywhere</location>
+        </locations>
+    </population>
+
+    <behavior offspring="raises">
+        <communal alpha="true" migratory="false"  />
+    </behavior>
+    
+</mammal> 

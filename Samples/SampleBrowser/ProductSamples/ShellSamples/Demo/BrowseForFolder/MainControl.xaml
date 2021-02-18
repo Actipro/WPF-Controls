@@ -1,0 +1,66 @@
+﻿<sampleBrowser:ProductItemControl
+	x:Class="ActiproSoftware.ProductSamples.ShellSamples.Demo.BrowseForFolder.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
+					<LineBreak /><LineBreak />
+					It's easy to use ShellTreeListBox in a dialog window to provide a fully customizable Browse for Folder dialog.
+					<LineBreak /><LineBreak />
+					In this sample, we show an example implementation of an in-line dialog.  
+					In real world usage, you would put the content in a normal WPF dialog Window instead.
+					<LineBreak /><LineBreak />
+					Press the 'OK' button to see information about the selected folder.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<docking:WindowControl Title="Browse for Folder" MaxWidth="{StaticResource SampleThinMaxWidth}">
+				<Grid Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<shared:PixelSnapper>
+						<TextBlock Text="Select a folder:" TextWrapping="Wrap" />
+					</shared:PixelSnapper>
+
+					<shell:ShellTreeListBox x:Name="treeListBox" Grid.Row="1" Margin="0,5,0,10" RootSpecialFolderKind="Default" IsNewFolderContextMenuItemAllowed="True" />
+
+					<Grid Grid.Row="2">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+					
+						<Button MinWidth="120" Content="Make New Folder" Command="{Binding ElementName=treeListBox, Path=SelectedItem.CreateChildFolderCommand}" />
+					
+						<StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+							<Button Margin="15,0,0,0" MinWidth="75" Content="OK" IsDefault="True" Click="OnOkButtonClick" />
+							<Button Margin="7,0,0,0" MinWidth="75" Content="Cancel" IsCancel="True" Click="OnCancelButtonClick" />
+						</StackPanel>
+					</Grid>
+				</Grid>
+			</docking:WindowControl>
+		</shared:ShadowChrome>
+	</Grid>
+	
+</sampleBrowser:ProductItemControl>

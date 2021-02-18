@@ -1,0 +1,38 @@
+<UserControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsAlternatingRows"
+    >
+
+	<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[using System;
+using System.Diagnostics;
+
+namespace Actipro.AlternatingRowsQuickStart {
+
+	/// <summary>
+	/// This QuickStart uses a custom adornment manager that inherits the
+	/// built-in AdornmentManagerBase class and creates backgrounds for
+	/// all even-numbered document lines in the editor.  This renders
+	/// an alternating-rows visual effect.
+	/// </summary>
+	public class ActiproTest {
+
+		/// <summary>
+		/// Go ahead and modify the text in this editor to see how the line
+		/// adornments update appropriately after text changes.
+		/// </summary>
+		public int Actipro { get; set; }
+
+	}
+}
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

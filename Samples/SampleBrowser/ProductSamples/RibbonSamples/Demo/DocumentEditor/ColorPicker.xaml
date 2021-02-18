@@ -1,0 +1,43 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor.ColorPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    >
+
+	<Grid>
+		<Grid.Resources>
+			<shared:ColorToStringConverter x:Key="ColorToStringConverter" />
+		</Grid.Resources>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+
+		<shared:SpectrumColorPicker x:Name="spectrumColorPicker" Grid.RowSpan="5" Margin="0,0,10,0" IsInitialColorVisible="False" SelectedColor="#ADAD58" />
+
+		<Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">R:</Label>
+		<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3" 
+			Text="{Binding ElementName=spectrumColorPicker, Path=R}" />
+		<Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">G:</Label>
+		<TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3" 
+			Text="{Binding ElementName=spectrumColorPicker, Path=G}" />
+		<Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">B:</Label>
+		<TextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3" 
+			Text="{Binding ElementName=spectrumColorPicker, Path=B}"></TextBox>
+		<TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" 
+			Margin="0,0,0,21" MinWidth="70" MaxLength="9" 
+			Text="{Binding ElementName=spectrumColorPicker, Path=SelectedColor, Converter={StaticResource ColorToStringConverter}, ConverterParameter=False}" />
+		
+		<Button Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Right" MinWidth="70" Click="OnApplyClick">Apply</Button>
+	</Grid>
+		
+</UserControl>

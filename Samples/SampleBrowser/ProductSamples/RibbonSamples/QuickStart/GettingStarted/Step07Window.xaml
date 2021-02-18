@@ -1,0 +1,156 @@
+<ribbon:RibbonWindow x:Name="window"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="800" Height="600"
+	WindowStartupLocation="CenterScreen"
+	ApplicationName="Actipro Ribbon QuickStart"	
+	DocumentName="Getting Started #7"	
+    >
+	
+	<DockPanel>
+		
+		<!-- Ribbon Control -->
+		<ribbon:Ribbon x:Name="ribbon" DockPanel.Dock="Top">
+			
+			<!-- Tabs -->
+			<ribbon:Ribbon.Tabs>
+			
+				<ribbon:Tab Label="Home" KeyTipAccessText="H">
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Paste16.png" Label="Clipboard" KeyTipAccessText="ZC">
+						<ribbon:SplitButton ImageSourceLarge="/Images/Icons/Paste32.png" ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="V">
+							<ribbon:Menu>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Paste16.png" Label="Paste" KeyTipAccessText="P" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteSpecial16.png" Label="Paste Special" KeyTipAccessText="S" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/PasteHyperlink16.png" Label="Paste Hyperlink" KeyTipAccessText="H" />
+							</ribbon:Menu>
+						</ribbon:SplitButton>
+						<ribbon:StackPanel ItemVariantBehavior="MediumThenSmallWhenSmall">
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Cut16.png" Label="Cut" KeyTipAccessText="X" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Copy16.png" Label="Copy" KeyTipAccessText="C" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/FormatPainter16.png" Label="Format Painter" KeyTipAccessText="FP" />
+						</ribbon:StackPanel>
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font" KeyTipAccessText="ZF">
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,3,2,5,4,1">
+							<ribbon:ButtonGroup HasBorder="False">
+								<ribbon:FontFamilyComboBox Width="135" Command="sample:ApplicationCommands.FontFamily" KeyTipAccessText="FF" />
+								<ribbon:FontSizeComboBox Width="40" Command="sample:ApplicationCommands.FontSize" KeyTipAccessText="FS" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/GrowFont16.png" Label="Grow Font" KeyTipAccessText="FG" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ShrinkFont16.png" Label="Shrink Font" KeyTipAccessText="FK" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ClearFormatting16.png" Label="Clear Formatting" KeyTipAccessText="E" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Bold16.png" Label="Bold" KeyTipAccessText="1" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Italic16.png" Label="Italic" KeyTipAccessText="2" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Underline16.png" Label="Underline" KeyTipAccessText="3" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Strikethrough16.png" Label="Strikethrough" KeyTipAccessText="4" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Subscript16.png" Label="Subscript" KeyTipAccessText="5" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Superscript16.png" Label="Superscript" KeyTipAccessText="6" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/ChangeCase16.png" Label="Change Case" KeyTipAccessText="7" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/TextHighlightColor16.png" Label="Text Highlight Color" KeyTipAccessText="I" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/FontColor16.png" Label="Font Color" KeyTipAccessText="FC" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" KeyTipAccessText="ZP">
+						<ribbon:RowPanel ThreeRowItemSortOrder="0,1,4,5,6,2,3">
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Bullets16.png" Label="Bullets" KeyTipAccessText="U" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Numbering16.png" Label="Numbering" KeyTipAccessText="N" />
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/MultilevelList16.png" Label="Multilevel List" KeyTipAccessText="M" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/DecreaseIndent16.png" Label="Decrease Indent" KeyTipAccessText="AO" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/IncreaseIndent16.png" Label="Increase Indent" KeyTipAccessText="AI" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/Sort16.png" Label="Sort" KeyTipAccessText="SO" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/ToggleSymbols16.png" Label="Show/Hide Symbols" KeyTipAccessText="8" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextLeft16.png" Label="Align Text Left" KeyTipAccessText="AL" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Center" KeyTipAccessText="AC" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextRight16.png" Label="Align Text Right" KeyTipAccessText="AR" />
+								<ribbon:Button ImageSourceSmall="/Images/Icons/AlignTextJustify16.png" Label="Justify" KeyTipAccessText="AJ" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:PopupButton ImageSourceSmall="/Images/Icons/LineSpacing16.png" Label="Line Spacing" KeyTipAccessText="K" />
+							</ribbon:ButtonGroup>
+							<ribbon:ButtonGroup>
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Shading16.png" Label="Shading" KeyTipAccessText="H" />
+								<ribbon:SplitButton ImageSourceSmall="/Images/Icons/BorderBottom16.png" Label="Borders" KeyTipAccessText="B" />
+							</ribbon:ButtonGroup>						
+						</ribbon:RowPanel>					
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/QuickStyles16.png" Label="Styles" KeyTipAccessText="ZS">
+						<ribbon:PopupButton ImageSourceLarge="/Images/Icons/ChangeStyles32.png" Label="Change Styles" KeyTipAccessText="G" />
+					</ribbon:Group>
+					
+					<ribbon:Group ImageSourceSmall="/Images/Icons/Find16.png" Label="Editing" KeyTipAccessText="ZN">
+						<ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+							<ribbon:SplitButton ImageSourceSmall="/Images/Icons/Find16.png" Label="Find" KeyTipAccessText="FD" />
+							<ribbon:Button ImageSourceSmall="/Images/Icons/Replace16.png" Label="Replace" KeyTipAccessText="R" />
+							<ribbon:PopupButton ImageSourceSmall="/Images/Icons/Select16.png" Label="Select" KeyTipAccessText="SL" />
+						</ribbon:StackPanel>					
+					</ribbon:Group>
+				</ribbon:Tab>
+				
+				<ribbon:Tab Label="Insert" KeyTipAccessText="N" />
+				<ribbon:Tab Label="Page Layout" KeyTipAccessText="P" />
+				<ribbon:Tab Label="References" KeyTipAccessText="S" />
+				<ribbon:Tab Label="Mailings" KeyTipAccessText="M" />
+				<ribbon:Tab Label="Review" KeyTipAccessText="R" />
+				<ribbon:Tab Label="View" KeyTipAccessText="W" />
+			</ribbon:Ribbon.Tabs>
+			
+		</ribbon:Ribbon>
+		
+		<RichTextBox x:Name="editor" Margin="7" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Visible">
+			<RichTextBox.Resources>
+				<!-- Make the scroll viewer in the RichTextBox use the custom scrollbar style -->
+				<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
+			</RichTextBox.Resources>
+			
+			<FlowDocument>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">Add Other Group Items</Paragraph>
+				<Paragraph>
+					In this step we have added items to the other remaining groups on the <Bold>Home</Bold> tab,
+					using all the techniques previously described.
+					We have left out the in-ribbon gallery on the <Bold>Styles</Bold> tab for now since that will be added
+					in a later step.
+				</Paragraph>
+				<Paragraph>
+					Note that the ribbon automatically resizes groups and will collapse them as necessary.
+					By default it will resize groups in sequential order starting from the back towards the front.
+					However what we want to do on our <Bold>Home</Bold> tab is specify the exact order in which groups resize
+					and control the group variant sizes that they resize to.
+					Actipro Ribbon lets you do this very easily.
+				</Paragraph>
+				<Paragraph Style="{StaticResource DocumentSubHeading2TextElementStyle}">What's Next</Paragraph>
+				<Paragraph>
+					In the next <Bold>Getting Started</Bold> step, we will define variant sizes for each group
+					so that we have total control over ribbon resizing behavior on the <Bold>Home</Bold> tab.
+				</Paragraph>
+			</FlowDocument>								
+		</RichTextBox>
+			
+	</DockPanel>
+			
+</ribbon:RibbonWindow>

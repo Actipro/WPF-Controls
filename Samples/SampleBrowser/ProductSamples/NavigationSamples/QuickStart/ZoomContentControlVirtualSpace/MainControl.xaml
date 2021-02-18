@@ -1,0 +1,40 @@
+﻿<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=zoomContentControl, Path=IsVirtualSpaceEnabled}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Virtual space can be added around the content of a ZoomContentControl so that
+					every point of the content can be centered in the view. By default, there is no virtual space
+					so the horizontal and vertical scrolling is restricted.
+					<LineBreak /><LineBreak />
+					Try panning around the edges of the content with virtual space enabled and disabled.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<navigation:ZoomContentControl x:Name="zoomContentControl" MinZoomLevel="1" MaxZoomLevel="10" ZoomLevel="3"
+				ZoomStep="0.5">
+			<Rectangle Width="100" Height="100" Stroke="#0063b1" StrokeThickness="5" Fill="#83beec" />
+		</navigation:ZoomContentControl>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

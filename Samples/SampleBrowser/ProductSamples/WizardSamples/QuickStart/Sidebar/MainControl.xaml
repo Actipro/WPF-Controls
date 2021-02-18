@@ -1,0 +1,98 @@
+<UserControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
+	
+	<UserControl.Resources>
+		
+		<!-- Sidebar ListBox style -->
+		<Style x:Key="SidebarListBoxStyle" TargetType="ListBox">
+			<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}" />
+			<Setter Property="BorderThickness" Value="0" />
+			<Setter Property="Focusable" Value="False" />
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.WindowForegroundNormalBrushKey}}" />
+			<Setter Property="IsHitTestVisible" Value="False" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="ItemTemplate">
+				<Setter.Value>
+					<DataTemplate DataType="wizard:WizardPage">
+						<TextBlock FontSize="12" Text="{Binding Title}" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ListBox">
+						<Border Background="{TemplateBinding Background}">
+							<DockPanel LastChildFill="True">
+								<TextBlock DockPanel.Dock="Top" Margin="10" FontWeight="Bold" FontSize="12" Text="Current Step:" />
+								<ItemsPresenter Margin="10,0,10,10" />
+							</DockPanel>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+			
+		<!-- Wizard style with sidebar -->
+		<Style TargetType="wizard:Wizard">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type wizard:Wizard}">
+						<Grid Background="{TemplateBinding Background}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="200" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<DockPanel LastChildFill="True">
+								<Rectangle DockPanel.Dock="Right" Width="1" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" SnapsToDevicePixels="True" />
+								<ListBox Style="{StaticResource SidebarListBoxStyle}" 
+									ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Items}"
+									SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedPage}"
+									/>
+							</DockPanel>
+							
+							<wizard:WizardPagePresenter x:Name="PART_TransitionPresenter" Grid.Column="1" 
+								DefaultDirection="{TemplateBinding TransitionDefaultDirection}" 
+								TransitionSelector="{TemplateBinding TransitionSelector}" />
+
+							<wizard:WizardButtonContainer x:Name="PART_ButtonContainer" Grid.Row="1" Grid.ColumnSpan="2" />
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</UserControl.Resources>
+	
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border Width="600" Height="450" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+			
+				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False">
+
+					<wizard:WizardPage Caption="First Step" Description="This is the first step." Title="1: First step">
+						<TextBlock TextWrapping="Wrap">
+							This QuickStart shows how easy it is to retemplate Wizard to show a sidebar that contains a list of the
+							pages.  The sidebar highlights the currently selected page.
+						</TextBlock>
+					</wizard:WizardPage>
+					<wizard:WizardPage Caption="Second Step" Description="This is the second step." Title="2: Another step" />
+					<wizard:WizardPage Caption="Third Step" Description="This is the third step." Title="3: Yet another step" />
+				
+				</wizard:Wizard>
+			
+			</Border>
+		</shared:ShadowChrome>
+	</ScrollViewer>
+	
+</UserControl>

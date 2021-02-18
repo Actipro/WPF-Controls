@@ -1,0 +1,416 @@
+<Window 
+	x:Name="window" 
+	x:Class="ActiproSoftware.SampleBrowser.RootWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    Title="Actipro WPF Controls"
+	Icon="/Images/Icons/Actipro.ico"
+	Width="1024" Height="725"
+	MinWidth="800" MinHeight="480"
+	ResizeMode="CanResizeWithGrip"
+	WindowStartupLocation="CenterScreen"
+	TextOptions.TextFormattingMode="Display"
+	themes:WindowChrome.TitleBarHeader="{x:Null}"
+	themes:WindowChrome.TitleBarLeftContent="{Binding}"
+	themes:WindowChrome.TitleBarRightContent="{Binding}"
+	>
+	
+	<Window.DataContext>
+		<sampleBrowser:ApplicationViewModel ProductData="{StaticResource ProductData}" />
+	</Window.DataContext>
+	
+	<Window.Resources>
+		
+		<shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		<shared:BooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" IsInverted="True" />
+		<sampleBrowser:ThemeDefinitionImageConverter x:Key="ThemeDefinitionImageConverter" />
+		<shared:ThicknessConverter x:Key="ThicknessConverter" />
+		
+		<Style x:Key="TitleBarBackstageToggleButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}">
+			<Setter Property="Command" Value="{Binding ToggleIsBackstageOpenCommand}" />
+			<Setter Property="Padding" Value="14,7" />
+		</Style>
+		
+		<Style x:Key="TitleBarButtonGlyphStyle" TargetType="Path">
+			<Setter Property="Height" Value="16" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="Margin" Value="2" />
+			<Setter Property="Width" Value="16" />
+		</Style>
+		
+		<Style x:Key="TitleBarButtonLargeTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="18" />
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="LineHeight" Value="20" />
+			<Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+		</Style>
+		
+		<Style x:Key="TitleBarButtonSmallTextBlockStyle" TargetType="TextBlock">
+			<Setter Property="FontSize" Value="12" />
+			<Setter Property="LineHeight" Value="16" />
+			<Setter Property="Opacity" Value="0.75" />
+		</Style>
+		
+		<Style x:Key="TitleBarButtonSmallAccessTextStyle" TargetType="AccessText">
+			<Setter Property="FontSize" Value="12" />
+			<Setter Property="LineHeight" Value="16" />
+			<Setter Property="Opacity" Value="0.75" />
+		</Style>
+		
+		<Style x:Key="TitleBarThemeSettingMenuItemStyle" TargetType="MenuItem" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+			<Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
+			<Setter Property="Command" Value="{Binding SetApplicationThemeCommand}" />
+			<Setter Property="Icon" Value="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource ThemeDefinitionImageConverter}}" />
+		</Style>
+		
+		<DataTemplate x:Key="BackstageButtonTemplate">
+			<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+				<DockPanel>
+					<Canvas DockPanel.Dock="Left" Margin="0,0,10,0" Width="24" Height="24" VerticalAlignment="Center">
+						<Rectangle Width="24" Height="24" Fill="#70000000" RenderTransformOrigin="0.5,0.5" FlowDirection="LeftToRight">
+							<Rectangle.OpacityMask>
+								<ImageBrush ImageSource="{Binding Source={x:Reference image}, Path=Source}" />
+							</Rectangle.OpacityMask>
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<TranslateTransform Y="1" />
+									<ScaleTransform ScaleX="1.02" ScaleY="1.02" />
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+						<Image x:Name="image" Width="24" Height="24" Source="{Binding ViewImageSource}" />
+					</Canvas>
+								
+					<StackPanel VerticalAlignment="Center">
+						<TextBlock Text="{Binding ViewSubTitle}" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" TextTrimming="CharacterEllipsis" />
+						<sampleBrowser:DropDownGlyphPanel>
+							<TextBlock Text="{Binding ViewTitle}" Style="{StaticResource TitleBarButtonLargeTextBlockStyle}" TextTrimming="CharacterEllipsis" />
+							<ContentPresenter Margin="4,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.DropDownArrowGlyphTemplateKey}}" VerticalAlignment="Center" />
+						</sampleBrowser:DropDownGlyphPanel>
+					</StackPanel>
+				</DockPanel>
+			</shared:PixelSnapper>
+		</DataTemplate>
+		
+	</Window.Resources>
+	
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome HasIcon="False" TitleBarLeftContentMaxWidthOverflowPercentage="0.5" TitleBarHeaderAlignment="Center">
+			
+			<!-- This template selector picks which UI to display for overlays based on the data passed in -->
+			<themes:WindowChrome.OverlayContentTemplateSelector>
+				<sampleBrowser:ApplicationOverlayContentTemplateSelector>
+					<sampleBrowser:ApplicationOverlayContentTemplateSelector.ExternalSampleTemplate>
+						<DataTemplate>
+							<sampleBrowser:ExternalSampleOverlay />
+						</DataTemplate>
+					</sampleBrowser:ApplicationOverlayContentTemplateSelector.ExternalSampleTemplate>
+					<sampleBrowser:ApplicationOverlayContentTemplateSelector.HomeBackstageOverlay>
+						<DataTemplate>
+							<sampleBrowser:HomeBackstageOverlay Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}" />
+						</DataTemplate>
+					</sampleBrowser:ApplicationOverlayContentTemplateSelector.HomeBackstageOverlay>
+					<sampleBrowser:ApplicationOverlayContentTemplateSelector.ProductItemInfoBackstageOverlay>
+						<DataTemplate>
+							<sampleBrowser:ProductItemInfoBackstageOverlay Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}" />
+						</DataTemplate>
+					</sampleBrowser:ApplicationOverlayContentTemplateSelector.ProductItemInfoBackstageOverlay>
+					<sampleBrowser:ApplicationOverlayContentTemplateSelector.ReleaseHistoryBackstageOverlay>
+						<DataTemplate>
+							<sampleBrowser:ReleaseHistoryBackstageOverlay Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}" />
+						</DataTemplate>
+					</sampleBrowser:ApplicationOverlayContentTemplateSelector.ReleaseHistoryBackstageOverlay>
+					<sampleBrowser:ApplicationOverlayContentTemplateSelector.UtilitiesBackstageOverlay>
+						<DataTemplate>
+							<sampleBrowser:UtilitiesBackstageOverlay Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}" />
+						</DataTemplate>
+					</sampleBrowser:ApplicationOverlayContentTemplateSelector.UtilitiesBackstageOverlay>
+				</sampleBrowser:ApplicationOverlayContentTemplateSelector>
+			</themes:WindowChrome.OverlayContentTemplateSelector>
+			
+			<themes:WindowChrome.TitleBarLeftContentTemplate>
+				<DataTemplate>
+					<Grid>
+						<!-- Open Backstage button -->
+						<Button Style="{StaticResource TitleBarBackstageToggleButtonStyle}" 
+								ContentTemplate="{StaticResource BackstageButtonTemplate}" Content="{Binding}"
+								Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+								Visibility="{Binding IsBackstageOpen, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" />
+
+						<!-- Close Backstage button -->
+						<Grid Visibility="{Binding IsBackstageOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+							<Button Style="{StaticResource TitleBarBackstageToggleButtonStyle}" 
+									ContentTemplate="{StaticResource BackstageButtonTemplate}" Content="{Binding}"
+									Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+									themes:ThemeProperties.UseAlternateStyle="True" />
+						</Grid>
+					</Grid>
+				</DataTemplate>
+			</themes:WindowChrome.TitleBarLeftContentTemplate>
+			
+			<themes:WindowChrome.TitleBarRightContentTemplate>
+				<DataTemplate>
+					<!-- Centered menu buttons... MenuItem styles below are only specified to ensure proper styling if Native Control Themes are disabled by the user -->
+					<shared:AutoCollapseStackPanel Margin="0,2,10,2" Visibility="{Binding IsBackstageOpen, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+						
+						<Button Style="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+								Command="{Binding NavigateViewToHomeCommand}"
+								Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+								Visibility="{Binding ViewHasNavigationButtons, Converter={StaticResource BooleanToVisibilityConverter}}">
+							<Button.ContentTemplate>
+								<DataTemplate>
+									<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+										<StackPanel VerticalAlignment="Center">
+											<Path Style="{StaticResource TitleBarButtonGlyphStyle}" StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+												  Data="M 0,8.5 L 8,0.5 L 16,8.5  M 1.5,7 L 1.5,15.5 L 6.5,15.5 L 6.5,10.5 L 9.5,10.5 L 9.5,15.5 L 14.5,15.5 L 14.5,7" />
+											<TextBlock Text="Home" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" />
+										</StackPanel>
+									</shared:PixelSnapper>
+								</DataTemplate>
+							</Button.ContentTemplate>
+						</Button>
+						
+						<Button Style="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+								Command="{Binding NavigateViewToPreviousItemInfoCommand}"
+								Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+								Visibility="{Binding ViewHasNavigationButtons, Converter={StaticResource BooleanToVisibilityConverter}}">
+							<Button.ContentTemplate>
+								<DataTemplate>
+									<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+										<StackPanel VerticalAlignment="Center">
+											<Path Style="{StaticResource TitleBarButtonGlyphStyle}" StrokeThickness="2" Stroke="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+												  Data="M 15,1.5 L 8,8.5 L 15,15.5  M 8,1.5 L 1,8.5 L 8,15.5" />
+											<TextBlock Text="Previous" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" />
+										</StackPanel>
+									</shared:PixelSnapper>
+								</DataTemplate>
+							</Button.ContentTemplate>
+						</Button>
+						
+						<Button Style="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+								Command="{Binding NavigateViewToNextItemInfoCommand}"
+								Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+								Visibility="{Binding ViewHasNavigationButtons, Converter={StaticResource BooleanToVisibilityConverter}}">
+							<Button.ContentTemplate>
+								<DataTemplate>
+									<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+										<StackPanel VerticalAlignment="Center">
+											<Path Style="{StaticResource TitleBarButtonGlyphStyle}" StrokeThickness="2" Stroke="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+												  Data="M 1,1.5 L 8,8.5 L 1,15.5  M 8,1.5 L 15,8.5 L 8,15.5" />
+											<TextBlock Text="Next" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" />
+										</StackPanel>
+									</shared:PixelSnapper>
+								</DataTemplate>
+							</Button.ContentTemplate>
+						</Button>
+						
+						<shared:PopupButton Style="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+											Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+											PopupMenuDataContext="{Binding}">
+							<shared:PopupButton.ContentTemplate>
+								<DataTemplate>
+									<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+										<StackPanel VerticalAlignment="Center">
+											<Path Style="{StaticResource TitleBarButtonGlyphStyle}" Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+												  Data="M8,1C12.415,1 16,4.585 16,9C16,10.457 15.853,11.745 13.5,11.5C12.832,11.47 9.511,10.204 9.546,11.23C9.592,12.634 10.642,12.839 10.145,14.854C10.053,15.167 9.908,16 8,16C3.585,16 0,13.415 0,9C0,4.585 3.585,1 8,1Z  M 5,10 A 1.5,1.5 180 1 0 5.1,10 Z  M 4,6 A 1.5,1.5 180 1 0 4.1,6 Z  M 7.5,3 A 1.5,1.5 180 1 0 7.51,3 Z  M 11.5,5 A 1.5,1.5 180 1 0 11.51,5 Z" />
+											<StackPanel Orientation="Horizontal">
+												<TextBlock Text="Theme" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" />
+												<ContentPresenter Margin="4,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.SmallDropDownArrowGlyphTemplateKey}}" VerticalAlignment="Center" />
+											</StackPanel>
+										</StackPanel>
+									</shared:PixelSnapper>
+								</DataTemplate>
+							</shared:PopupButton.ContentTemplate>
+							
+							<shared:PopupButton.PopupMenu>
+								<ContextMenu Style="{StaticResource {x:Static themes:SharedResourceKeys.ContextMenuStyleKey}}">
+									<MenuItem Header="Application Theme" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem Header="Standard Themes" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" >
+										<MenuItem Header="Black" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Black}" />
+										<MenuItem Header="Dark" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Dark}" />
+										<MenuItem Header="Light" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Light}" />
+										<MenuItem Header="White" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.White}" />
+									</MenuItem>
+									<MenuItem Header="Metro Themes" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" >
+										<MenuItem Header="Metro Black" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.MetroBlack}" />
+										<MenuItem Header="Metro Dark" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.MetroDark}" />
+										<MenuItem Header="Metro Light" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.MetroLight}" />
+										<MenuItem Header="Metro White" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.MetroWhite}" />
+									</MenuItem>
+									<MenuItem Header="Office Colorful" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" >
+										<MenuItem Header="Blue Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulBlue}" />
+										<MenuItem Header="Green Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulGreen}" />
+										<MenuItem Header="Indigo Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulIndigo}" />
+										<MenuItem Header="Orange Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulOrange}" />
+										<MenuItem Header="Pink Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulPink}" />
+										<MenuItem Header="Purple Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulPurple}" />
+										<MenuItem Header="Red Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulRed}" />
+										<MenuItem Header="Teal Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulTeal}" />
+										<MenuItem Header="Yellow Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeColorfulYellow}" />
+									</MenuItem>
+									<MenuItem Header="Office White" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+										<MenuItem Header="Blue Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteBlue}" />
+										<MenuItem Header="Green Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteGreen}" />
+										<MenuItem Header="Indigo Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteIndigo}" />
+										<MenuItem Header="Orange Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteOrange}" />
+										<MenuItem Header="Pink Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhitePink}" />
+										<MenuItem Header="Purple Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhitePurple}" />
+										<MenuItem Header="Red Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteRed}" />
+										<MenuItem Header="Teal Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteTeal}" />
+										<MenuItem Header="Yellow Accent" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.OfficeWhiteYellow}" />
+									</MenuItem>
+									<MenuItem Header="Aero-Style Themes" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}">
+										<MenuItem Header="Aero" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.AeroNormalColor}" />
+										<MenuItem Header="Office 2010 Black" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Office2010Black}" />
+										<MenuItem Header="Office 2010 Blue" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Office2010Blue}" />
+										<MenuItem Header="Office 2010 Silver" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Office2010Silver}" />
+									</MenuItem>
+									<MenuItem Header="Custom (Slate)" Style="{StaticResource TitleBarThemeSettingMenuItemStyle}" Tag="{x:Static themes:ThemeNames.Custom}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Options" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem IsChecked="{Binding IsUsingAutomaticThemes, Mode=OneWay}" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Command="{Binding ToggleAutomaticThemesCommand}">
+										<MenuItem.HeaderTemplate>
+											<DataTemplate>
+												<StackPanel>
+													<TextBlock TextWrapping="Wrap" Text="Match Windows Settings" />
+													<TextBlock Margin="0,1,0,0" MaxWidth="230" TextWrapping="Wrap" Text="Auto-switch themes to match the light/dark or high-contrast Windows setting" Opacity="0.6" />
+												</StackPanel>
+											</DataTemplate>
+										</MenuItem.HeaderTemplate>
+									</MenuItem>
+									<MenuItem Header="Native Controls Themed" IsChecked="True" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Command="{Binding ToggleNativeThemesCommand}" />
+								</ContextMenu>
+							</shared:PopupButton.PopupMenu>
+						</shared:PopupButton>
+						
+						<shared:PopupButton Style="{StaticResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+											Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+											PopupMenuDataContext="{Binding}">
+							<shared:PopupButton.ContentTemplate>
+								<DataTemplate>
+									<shared:PixelSnapper HorizontalRoundMode="CeilingToEven">
+										<StackPanel VerticalAlignment="Center">
+											<Path Style="{StaticResource TitleBarButtonGlyphStyle}" StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+												  Data="M 1.5,4.5 L 11.5,4.5 L 11.5,15.5 L 1.5,15.5 Z  M 3.5,4.5 L 3.5,1.5 L 14.5,1.5 L 14.5,13.5 L 11.5,13.5  M 3.5,7.5 L 8.5,7.5  M 3.5,9.5 L 9.5,9.5  M 3.5,11.5 L 7.5,11.5" />
+											<StackPanel Orientation="Horizontal">
+												<TextBlock Text="View" Style="{StaticResource TitleBarButtonSmallTextBlockStyle}" />
+												<ContentPresenter Margin="4,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.SmallDropDownArrowGlyphTemplateKey}}" VerticalAlignment="Center" />
+											</StackPanel>
+										</StackPanel>
+									</shared:PixelSnapper>
+								</DataTemplate>
+							</shared:PopupButton.ContentTemplate>
+							
+							<shared:PopupButton.PopupMenu>
+								<ContextMenu Style="{StaticResource {x:Static themes:SharedResourceKeys.ContextMenuStyleKey}}">
+									<MenuItem Header="WPF Controls" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem Header="Release History" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding ProductData.ReleaseHistory.FirstItem}" Command="{Binding NavigateViewToItemInfoCommand}" />
+									<MenuItem Header="Product Documentation" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" Command="{Binding OpenDocumentationCommand}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Purchase Licenses" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding WpfPurchaseLicensesUrl}" Command="{Binding OpenUrlCommand}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Sample Code" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem Header="View Source Code for This Sample" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" Command="{Binding OpenSampleCodeCommand}" />
+									<MenuItem Header="Open Folder Containing This Sample" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" Command="{Binding OpenSampleFolderCommand}" />
+									<MenuItem Header="Open Visual Studio Sample Browser Project" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" Command="{Binding OpenSampleProjectCommand}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Utilities" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem Header="Color Browser" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="https://ActiproSoftware/SampleBrowser/Utilities/ColorBrowser/MainControl" Command="{Binding NavigateViewToItemInfoCommand}" />
+									<MenuItem Header="String Resource Browser" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="https://ActiproSoftware/SampleBrowser/Utilities/StringResourceBrowser/MainControl" Command="{Binding NavigateViewToItemInfoCommand}" />
+									<MenuItem Header="System Parameters Browser" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="https://ActiproSoftware/SampleBrowser/Utilities/SystemParametersBrowser/MainControl" Command="{Binding NavigateViewToItemInfoCommand}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Actipro Software" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
+									<MenuItem Header="Actipro Web Site" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding WpfProductsUrl}" Command="{Binding OpenUrlCommand}" />
+									<MenuItem Header="The Actipro Blog" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding ActiproBlogUrl}" Command="{Binding OpenUrlCommand}" />
+									<MenuItem Header="@Actipro on Twitter" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding ActiproTwitterUrl}" Command="{Binding OpenUrlCommand}" />
+									<Separator Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuEmbeddedSeparatorStyleKey}}" />
+									<MenuItem Header="Contact Us" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" CommandParameter="{Binding ActiproContactUrl}" Command="{Binding OpenUrlCommand}" />
+								</ContextMenu>
+							</shared:PopupButton.PopupMenu>
+						</shared:PopupButton>
+						
+					</shared:AutoCollapseStackPanel>
+				</DataTemplate>
+			</themes:WindowChrome.TitleBarRightContentTemplate>
+			
+		</themes:WindowChrome>
+	</themes:WindowChrome.Chrome>
+
+	<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" BorderThickness="0,1,0,0">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+		
+			<!-- Content -->
+			<shared:TransitionPresenter x:Name="rootPresenter" Content="{Binding ViewElement}" DefaultDirection="{Binding ViewTransitionDirection}" 
+										KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle"
+										TransitionCompleted="OnTransitionPresenterTransitionCompleted">
+				<shared:TransitionPresenter.Transition>
+					<shared:SlideTransition IsFromContentPushed="True" />
+				</shared:TransitionPresenter.Transition>
+			</shared:TransitionPresenter>
+
+			<!-- Status bar -->
+			<StatusBar x:Name="statusBar" Grid.Row="1" themes:WindowChrome.ElementKind="ClientArea" Visibility="{Binding ViewHasCustomStatusBar, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+					   FocusManager.IsFocusScope="True">
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="16" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+			
+				<StatusBarItem x:Name="primaryStatusBarItem">
+					<TextBlock Text="{Binding StatusMessage}" />
+				</StatusBarItem>
+				<StatusBarItem Grid.Column="1">
+					<ribbon:Button x:Name="viewCodeButton" Context="StatusBarItem" Margin="0,1,0,-1" Padding="6,0" VariantSize="Small"
+						ScreenTipHeader="View Source Code for This Sample"
+						Command="{Binding OpenSampleCodeCommand}">
+						<ribbon:Button.ImageSourceSmall>
+							<DrawingImage shared:ImageProvider.CanAdapt="False">
+								<DrawingImage.Drawing>
+									<GeometryDrawing>
+										<GeometryDrawing.Pen>
+											<Pen Thickness="1" Brush="{DynamicResource {x:Static themes:AssetResourceKeys.StatusBarForegroundNormalBrushKey}}" />
+										</GeometryDrawing.Pen>
+										<GeometryDrawing.Geometry>
+											<PathGeometry Figures="M 6,13 L 10,3  M 4.5,4 L 0.5,8 L 4.5,12  M 11.5,4 L 15.5,8 L 11.5,12" />
+										</GeometryDrawing.Geometry>
+									</GeometryDrawing>
+								</DrawingImage.Drawing>
+							</DrawingImage>
+						</ribbon:Button.ImageSourceSmall>
+					</ribbon:Button>
+				</StatusBarItem>
+				<StatusBarItem Grid.Column="2">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding ProductData.ProductVersionWithBuildText}" />
+						<TextBlock Text=" on " />
+						<TextBlock Text="{Binding ProductData.BuildDateText}" />
+					</StackPanel>
+				</StatusBarItem>
+			</StatusBar>
+		
+		</Grid>	
+	</Border>
+	
+</Window>

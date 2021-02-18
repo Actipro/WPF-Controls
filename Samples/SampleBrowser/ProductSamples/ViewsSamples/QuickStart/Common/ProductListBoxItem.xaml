@@ -1,0 +1,178 @@
+<ListBoxItem x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.Common.ProductListBoxItem"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.Common"
+		xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+		xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+		xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+		Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" 
+		BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderHighBrushKey}}" 
+		BorderThickness="1" 
+		Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" 
+		MinWidth="120" MinHeight="100" Margin="1" Padding="0">
+	<ListBoxItem.Template>
+		<ControlTemplate TargetType="ListBoxItem">
+			<ControlTemplate.Resources>
+				
+				<Style x:Key="{x:Type shared:PopupButton}" TargetType="{x:Type shared:PopupButton}">
+					<Setter Property="Focusable" Value="false" />
+					<Setter Property="IsTransparencyModeEnabled" Value="true" />
+					<Setter Property="DisplayMode" Value="ButtonOnly" />
+				</Style>
+				
+			</ControlTemplate.Resources>
+
+			<Border x:Name="border" Padding="2" Background="{TemplateBinding Background}"
+					BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+					CornerRadius="2">
+				<DockPanel>
+					<DockPanel.Resources>
+						<shared:StringFormatConverter x:Key="StringFormatConverter" />
+					</DockPanel.Resources>
+					
+					<DockPanel DockPanel.Dock="Top">
+						<shared:PopupButton x:Name="deleteButton" DockPanel.Dock="Right" Click="OnDeleteButtonClick"
+								ToolTipService.ToolTip="Delete Item" Opacity="0">
+							<Canvas Width="11" Height="11">
+								<Path StrokeThickness="0.5" Width="11" Height="11" 
+									  Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" 
+									  Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}"
+									  Data="M 0.5,1.5 L 1.5,0.5 L 5.5,4.5 L 9.5,0.5 L 10.5,1.5 L 6.5,5.5 L 10.5,9.5 L 9.5,10.5 L 5.5,6.5 L 1.5,10.5 L 0.5,9.5 L 4.5,5.5 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<TextBlock Margin="5,0" Text="{Binding Path=ProductFamily.Title, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" />
+					</DockPanel>
+
+					<TextBlock x:Name="dockText" DockPanel.Dock="Bottom" Visibility="Collapsed"
+							Text="{Binding Path=(views:AnimatedDockPanel.Dock), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource StringFormatConverter}, ConverterParameter='Dock={0}'}" />
+
+					<DockPanel>
+						<shared:PopupButton x:Name="dockLeftButton" DockPanel.Dock="Left" Visibility="Collapsed"
+								Click="OnDockLeftButtonClick" ToolTipService.ToolTip="Dock Item Left" Opacity="0">
+							<Canvas Width="5" Height="8" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}"
+									  Data="M 1,3.5 L 5,0.5 L 5,6.5 Z M 0,0 L 0.5,0 L 0.5,7 L 0,7 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<shared:PopupButton x:Name="dockRightButton" DockPanel.Dock="Right" Visibility="Collapsed"
+								Click="OnDockRightButtonClick" ToolTipService.ToolTip="Dock Item Right" Opacity="0">
+							<Canvas Width="5" Height="8" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}"
+									  Data="M 0,0.5 L 4,3.5 L 0,6.5 Z M 4.5,0 5,0 L 5,7 L 4.5,7 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<shared:PopupButton x:Name="dockTopButton" DockPanel.Dock="Top" Visibility="Collapsed"
+								Click="OnDockTopButtonClick" ToolTipService.ToolTip="Dock Item Top" Opacity="0">
+							<Canvas Width="8" Height="5" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}"
+									  Data="M 3.5,1 L 6.5,5 L 0.5,5 Z M 0,0 L 7,0 L 7,0.5 L 0,0.5 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<shared:PopupButton x:Name="dockBottomButton" DockPanel.Dock="Bottom" Visibility="Collapsed"
+								Click="OnDockBottomButtonClick" ToolTipService.ToolTip="Dock Item Bottom" Opacity="0">
+							<Canvas Width="5" Height="8" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}"
+									  Data="M 0.5,0 L 6.5,0 L 3.5,4 Z M 0,4.5 L 7,4.5 L 7,5 L 0,5 Z" />
+							</Canvas>
+						</shared:PopupButton>
+
+						<shared:PopupButton x:Name="moveLeftButton" DockPanel.Dock="Left" Click="OnMoveLeftButtonClick"
+								ToolTipService.ToolTip="Move Item Left" Opacity="0">
+							<Canvas Width="5" Height="8" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" 
+									  Data="M 0.5,3.5 L 4.5,0.5 L 4.5,6.5 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<shared:PopupButton x:Name="moveRightButton" DockPanel.Dock="Right" Click="OnMoveRightButtonClick"
+								ToolTipService.ToolTip="Move Item Right" Opacity="0">
+							<Canvas Width="5" Height="8" HorizontalAlignment="Center">
+								<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" 
+									  Data="M 0.5,0.5 L 4.5,3.5 L 0.5,6.5 Z" />
+							</Canvas>
+						</shared:PopupButton>
+						<Viewbox Height="70" Width="70">
+							<Image Source="{Binding ProductFamily.LogoImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+						</Viewbox>
+					</DockPanel>
+				</DockPanel>
+			</Border>
+			
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Trigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="deleteButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</Trigger.EnterActions>
+					<Trigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="deleteButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</Trigger.ExitActions>
+				</Trigger>
+				<Trigger Property="common:ProductListBoxItem.IsDockable" Value="true">
+					<Setter TargetName="dockText" Property="Visibility" Value="Visible" />
+					<Setter TargetName="dockLeftButton" Property="Visibility" Value="Visible" />
+					<Setter TargetName="dockRightButton" Property="Visibility" Value="Visible" />
+					<Setter TargetName="dockTopButton" Property="Visibility" Value="Visible" />
+					<Setter TargetName="dockBottomButton" Property="Visibility" Value="Visible" />
+				</Trigger>
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsMouseOver" Value="true" />
+						<Condition Property="common:ProductListBoxItem.IsDockable" Value="true" />
+					</MultiTrigger.Conditions>
+					<MultiTrigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="dockLeftButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockRightButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockTopButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockBottomButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</MultiTrigger.EnterActions>
+					<MultiTrigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="dockLeftButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockRightButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockTopButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="dockBottomButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</MultiTrigger.ExitActions>
+				</MultiTrigger>
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsMouseOver" Value="true" />
+						<Condition Property="common:ProductListBoxItem.IsMovable" Value="true" />
+					</MultiTrigger.Conditions>
+					<MultiTrigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="moveLeftButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="moveRightButton" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</MultiTrigger.EnterActions>
+					<MultiTrigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard>
+								<DoubleAnimation Storyboard.TargetName="moveLeftButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+								<DoubleAnimation Storyboard.TargetName="moveRightButton" Storyboard.TargetProperty="Opacity" To="0.0" Duration="0:0:0.250" />
+							</Storyboard>
+						</BeginStoryboard>
+					</MultiTrigger.ExitActions>
+				</MultiTrigger>
+				<Trigger Property="IsSelected" Value="true">
+					<Setter TargetName="border" Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}" />
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+	</ListBoxItem.Template>
+</ListBoxItem>

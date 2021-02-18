@@ -1,0 +1,56 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSorting.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSorting"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<sample:TestObject x:Key="TestObject" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<Button Content="Toggle category B sort order" Click="OnToggleSortOrderButtonClick" />
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Items in a property grid will by default sort by sort importance (category, property), then sort order, and finally by display name.
+					This can be altered by setting a custom sort comparer either on the property grid (which will apply to all IDataModel instances),
+					or on any IDataModel instance to only sort within that instance.
+					<LineBreak /><LineBreak />
+					This sample shows usage of a custom root sort comparer that places the "Z" category before other categories.
+					The properties in "Z" category are sorted in default alphabetical display name order.
+					The properties in "A" category use DisplayAttribute's Order property to sort them.
+					The properties in "B" category use a custom display name numeric value comparer whose sort order can be toggled.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
+							DataObject="{StaticResource TestObject}" CanClearDataObjectOnUnload="True"
+							CanSummaryAutoSize="True" SummaryHeight="Auto">
+			<grids:PropertyGrid.DataFactory>
+				<sample:CustomDataFactory />
+			</grids:PropertyGrid.DataFactory>
+			<grids:PropertyGrid.SortComparer>
+				<sample:CategoryComparer />
+			</grids:PropertyGrid.SortComparer>
+		</grids:PropertyGrid>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

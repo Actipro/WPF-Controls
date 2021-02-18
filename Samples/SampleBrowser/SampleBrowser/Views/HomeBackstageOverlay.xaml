@@ -1,0 +1,67 @@
+﻿<sampleBrowser:BackstageOverlayBase 
+	x:Class="ActiproSoftware.SampleBrowser.HomeBackstageOverlay"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800"
+	Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+	BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+	FontSize="14"
+	>
+	
+	<views:InertiaScrollViewer x:Name="scrollViewer" Style="{DynamicResource SampleInertiaScrollViewerStyle}">
+		
+		<StackPanel>
+
+			<Grid Margin="50,30,35,30" MaxWidth="{StaticResource SampleWideMaxWidth}" TextElement.FontSize="16">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				
+				<TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+					Licenses for the Actipro WPF Controls can be purchased for individual products, or via one of two bundles that offer significant discounts over purchasing individual product licenses. 
+					Licenses are perpetual, royalty-free, and include a one-year subscription with free updates and priority support.
+				</TextBlock>
+				
+				<Button Grid.Column="1" Margin="50,0,0,0" Style="{StaticResource AccentButtonStyle}" 
+						CommandParameter="{Binding WpfPurchaseLicensesUrl}" Command="{Binding OpenUrlCommand}" VerticalAlignment="Center">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Margin="0,-1,0,1" Text="Purchase Licenses" VerticalAlignment="Center" />
+						<ContentPresenter Margin="7,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" Opacity="0.5" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+					</StackPanel>
+				</Button>
+				
+				<Button Grid.Column="2" Margin="20,0,0,0" Content="Release History" Style="{StaticResource SoftButtonStyle}" 
+						CommandParameter="{Binding ProductData.ReleaseHistory.FirstItem}" Command="{Binding NavigateViewToItemInfoCommand}" VerticalAlignment="Center" />
+			</Grid>
+			
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel MaxWidth="{StaticResource SampleWideMaxWidth}">
+					<Grid Margin="50,30,50,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="2*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+			
+						<TextBlock Margin="0,0,20,0" Text="DISCOVER OUR WPF CONTROLS" Style="{StaticResource DocumentSectionHeadingTextBlockStyle}" />
+						<sampleBrowser:SampleSearchAutoCompleteBox Grid.Column="2" Margin="0,0,-17,0" />
+					</Grid>
+			
+					<ItemsControl Margin="50,20,7,10" ItemsSource="{Binding ProductData.ProductFamilies}"
+								  Style="{StaticResource ProductFamilyInfoButtonItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+		
+	</views:InertiaScrollViewer>
+</sampleBrowser:BackstageOverlayBase>

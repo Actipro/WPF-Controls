@@ -1,0 +1,46 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl" 
+	x:Class="ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.LiveData.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=Interval}">
+						<gridseditors:DoublePropertyEditor Minimum="25" Maximum="1000" SmallChange="25" LargeChange="100" Format="0'ms'" HasPopup="True" PickerKind="Default" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A micro chart's data can be fixed or based on a live feed, such as a stock ticker.
+					This example shows two data sources that are updated at a specified interval using random data.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<sampleBrowser:LabeledCardControl>
+				<microcharts:MicroXYChart Height="60" AxisBaselineValue="100">
+					<microcharts:MicroLineSeries ItemsSource="{Binding ElementName=rootSampleControl, Path=Data1}" />
+					<microcharts:MicroLineSeries ItemsSource="{Binding ElementName=rootSampleControl, Path=Data2}" />
+				</microcharts:MicroXYChart>
+			</sampleBrowser:LabeledCardControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

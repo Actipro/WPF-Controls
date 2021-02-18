@@ -1,0 +1,156 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LinkedDockSites.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By default, docking windows cannot be dragged to other dock sites.
+					However by linking two or more dock sites together, docking windows can be dragged between the dock sites.
+					<LineBreak /><LineBreak />
+					In this QuickStart, we have linked the two dock sites together in code-behind.
+					Drag the tool windows around and dock them on another dock site.
+					Note how this is not possible in the Side-by-Side Dock Sites QuickStart since the dock sites in that sample are not linked.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<Border Margin="0,0,0,2" Padding="10,3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+				BorderThickness="0,0,1,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}">
+			<TextBlock Text="DockSite #1" FontWeight="Bold" TextAlignment="Center" />
+		</Border>
+
+		<!-- DockSite #1 -->
+		<docking:DockSite x:Name="dockSite1" Grid.Row="1">
+			<docking:DockSite.AutoHideLeftContainers>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="DockSite 1-3" />
+					<docking:ToolWindow Title="DockSite 1-4" />
+				</docking:ToolWindowContainer>
+			</docking:DockSite.AutoHideLeftContainers>
+
+			<docking:SplitContainer>
+				<docking:Workspace>
+					<docking:TabbedMdiHost />
+				</docking:Workspace>
+
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="DockSite 1-1">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<TextBlock Margin="10" Text="These tool windows are registered with DockSite 1:" TextWrapping="Wrap" />
+
+							<ListBox Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding ElementName=dockSite1, Path=ToolWindows}" BorderThickness="0">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding Title}" />
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</Grid>
+					</docking:ToolWindow>
+					<docking:ToolWindow x:Name="toolWindow12" Title="DockSite 1-2">
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<StackPanel Margin="20">
+								<TextBlock Text="Can tool windows drag to linked dock sites?" TextWrapping="Wrap" />
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=dockSite1, Path=CanToolWindowsDragToLinkedDockSites, Mode=TwoWay}">
+									<TextBlock Text="DockSite #1's global option" TextWrapping="Wrap" />
+								</CheckBox>
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=toolWindow12, Path=CanDragToLinkedDockSites, Mode=TwoWay}" IsThreeState="True">
+									<TextBlock Text="This tool window's instance option" TextWrapping="Wrap" />
+								</CheckBox>
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=toolWindow12, Path=CanDragToLinkedDockSitesResolved, Mode=OneWay}" IsEnabled="False">
+									<TextBlock Text="This tool window's resolved setting" TextWrapping="Wrap" />
+								</CheckBox>
+							</StackPanel>
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+		</docking:DockSite>
+
+		<Border Grid.Column="2" Margin="0,0,0,2" Padding="10,3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+				BorderThickness="1,0,0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}">
+			<TextBlock Text="DockSite #2" FontWeight="Bold" TextAlignment="Center" />
+		</Border>
+
+		<!-- DockSite #2 -->
+		<docking:DockSite x:Name="dockSite2" Grid.Row="1" Grid.Column="2">
+			<docking:DockSite.AutoHideRightContainers>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="DockSite 2-3" />
+					<docking:ToolWindow Title="DockSite 2-4" />
+				</docking:ToolWindowContainer>
+			</docking:DockSite.AutoHideRightContainers>
+
+			<docking:SplitContainer>
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="DockSite 2-1">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<TextBlock Margin="10" Text="These tool windows are registered with DockSite 2:" TextWrapping="Wrap" />
+
+							<ListBox Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding ElementName=dockSite2, Path=ToolWindows}" BorderThickness="0">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding Title}" />
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</Grid>
+					</docking:ToolWindow>
+					<docking:ToolWindow x:Name="toolWindow22" Title="DockSite 2-2">
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<StackPanel Margin="20">
+								<TextBlock Text="Can tool windows drag to linked dock sites?" TextWrapping="Wrap" />
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=dockSite2, Path=CanToolWindowsDragToLinkedDockSites, Mode=TwoWay}">
+									<TextBlock Text="DockSite #2's global option" TextWrapping="Wrap" />
+								</CheckBox>
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=toolWindow22, Path=CanDragToLinkedDockSites, Mode=TwoWay}" IsThreeState="True">
+									<TextBlock Text="This tool window's instance option" TextWrapping="Wrap" />
+								</CheckBox>
+								<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=toolWindow22, Path=CanDragToLinkedDockSitesResolved, Mode=OneWay}" IsEnabled="False">
+									<TextBlock Text="This tool window's resolved setting" TextWrapping="Wrap" />
+								</CheckBox>
+							</StackPanel>
+						</ScrollViewer>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+
+				<docking:Workspace>
+					<docking:TabbedMdiHost />
+				</docking:Workspace>
+			</docking:SplitContainer>
+		</docking:DockSite>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>
