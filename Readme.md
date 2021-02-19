@@ -50,6 +50,8 @@ Follow these steps to run the application:
 
 [Product documentation](https://www.actiprosoftware.com/docs/controls/wpf/index) is available on our web site.
 
+[![Sample Browser](.github/image-content/sample-browser.png)](https://www.actiprosoftware.com/docs/controls/wpf/index)
+
 The Markdown source code for the product documentation is contained within this repo's `Documentation\topics` folder.  The documentation is built with [DocFx](https://github.com/dotnet/docfx). 
 
 ### Viewing Related Open-Source Projects
