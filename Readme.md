@@ -49,7 +49,7 @@ The Markdown source code for the product documentation is contained within this 
 
 ### Viewing Related Open-Source Projects
 
-This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Open-Source.sln` solution:
+This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Libraries.sln` solution:
 
 - `DataGrid.Contrib` - Several enhancements for the native Microsoft WPF DataGrid control.
 - `Editors.Interop.DataGrid` - Integration of Actipro Editors with the Microsoft WPF DataGrid control.
