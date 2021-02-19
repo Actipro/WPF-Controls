@@ -38,7 +38,7 @@ Samples, documentation, and other related open-source projects for [Actipro WPF 
 
 The Sample Browser application allows you to examine all of the Actipro WPF controls and their feature sets via hundreds of included demos and QuickStarts.
 
-![image](https://user-images.githubusercontent.com/5760058/108441933-1dd7c080-7224-11eb-83cc-91dc447fa3ef.png)
+![Sample Browser](.github/image-content/sample-browser.png)
 
 Follow these steps to run the application:
 
