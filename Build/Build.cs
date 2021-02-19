@@ -75,6 +75,8 @@ namespace ActiproSoftware.Tools.Builds {
 						key.SetValue("Licensee", "Actipro Customer");
 						key.SetValue("LicenseKey", LicenseKey);
 					}
+
+					Logger.Normal("License key installed.");
 				}
 				else
 					Logger.Normal("No license key installed.");
