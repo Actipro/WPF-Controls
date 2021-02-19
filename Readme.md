@@ -36,7 +36,11 @@ Samples, documentation, and other related open-source projects for [Actipro WPF 
 
 ### Running the Sample Browser Application
 
-The Sample Browser application allows you to examine all of the Actipro WPF controls and their feature sets via hundreds of included demos and QuickStarts.  Follow these steps to run the application:
+The Sample Browser application allows you to examine all of the Actipro WPF controls and their feature sets via hundreds of included demos and QuickStarts.
+
+![Sample Browser](.github/image-content/sample-browser.png)
+
+Follow these steps to run the application:
 
 - Check out the repo.
 - Open the `Samples\SampleBrowser\SampleBrowser.sln` solution in Visual Studio.
@@ -46,11 +50,13 @@ The Sample Browser application allows you to examine all of the Actipro WPF cont
 
 [Product documentation](https://www.actiprosoftware.com/docs/controls/wpf/index) is available on our web site.
 
+[![Sample Browser](.github/image-content/documentation.png)](https://www.actiprosoftware.com/docs/controls/wpf/index)
+
 The Markdown source code for the product documentation is contained within this repo's `Documentation\topics` folder.  The documentation is built with [DocFx](https://github.com/dotnet/docfx). 
 
 ### Viewing Related Open-Source Projects
 
-This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Open-Source.sln` solution:
+This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Libraries.sln` solution:
 
 - `DataGrid.Contrib` - Several enhancements for the native Microsoft WPF DataGrid control.
 - `Editors.Interop.DataGrid` - Integration of Actipro Editors with the Microsoft WPF DataGrid control.
