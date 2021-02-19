@@ -13,6 +13,7 @@ jobs:
 
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      LICENSEKEY: ${{ secrets.ACTIPRO_CONTROLS_WPF_V21_1_LICENSEKEY }}
 
     steps:
     - name: Checkout
@@ -20,7 +21,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Run build project
-      run: dotnet run --project ./Build/Build.csproj -- --target IntegrationBuild
+      run: dotnet run --project ./Build/Build.csproj -- --target IntegrationBuild --licensekey "$env:LICENSEKEY"
     - name: Notify Slack
       if: always()
       uses: act10ns/slack@v1

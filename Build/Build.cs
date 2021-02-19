@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using Nuke.Common;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
@@ -17,6 +18,9 @@ namespace ActiproSoftware.Tools.Builds {
 
 		[Parameter("Configuration to build ('Debug' or 'Release')")]
 		readonly Configuration Configuration = Configuration.Debug;
+
+		[Parameter("The license key to use")]
+		readonly string LicenseKey = null;
 
 		#endregion
 
@@ -57,6 +61,28 @@ namespace ActiproSoftware.Tools.Builds {
 
 		#endregion
 
+		#region Licensing
+
+		Target InstallLicense => _ => _
+			.Unlisted()
+			.Executes(() => {
+
+				if ((!string.IsNullOrEmpty(LicenseKey)) && (LicenseKey.Length > 6)) {
+					var majorVersion = int.Parse(LicenseKey.Substring(3, 2));
+					var minorVersion = int.Parse(LicenseKey.Substring(5, 1));
+
+					using (var key = Registry.LocalMachine.CreateSubKey($@"SOFTWARE\Actipro Software\WPF Controls\{majorVersion}.{minorVersion}")) {
+						key.SetValue("Licensee", "Actipro Customer");
+						key.SetValue("LicenseKey", LicenseKey);
+					}
+				}
+				else
+					Logger.Normal("No license key installed.");
+
+			});
+
+		#endregion
+
 		#region Compile Targets
 
 		Target CompileSourceProjects => _ => _
@@ -75,6 +101,7 @@ namespace ActiproSoftware.Tools.Builds {
 
 		Target CompileSampleProjects => _ => _
 			.Unlisted()
+			.DependsOn(InstallLicense)
 			.After(CompileSourceProjects)
 			.Executes(() => {
 
