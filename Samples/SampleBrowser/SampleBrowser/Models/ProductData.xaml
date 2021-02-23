@@ -23,7 +23,7 @@
 
 		<sampleBrowser:ProductData.FeaturedSamples>
 			<sampleBrowser:ListItemInfo Title="SyntaxEditor" ImageSource="/Images/Screenshots/SyntaxEditor-SdiCodeEditor-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/OverviewDocument?action=open" />
-			<sampleBrowser:ListItemInfo BlurbText="UPDATED!" Title="Ribbon" ImageSource="/Images/Screenshots/Ribbon-DocumentEditor-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument?action=open" />
+			<sampleBrowser:ListItemInfo Title="Ribbon" ImageSource="/Images/Screenshots/Ribbon-DocumentEditor-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument?action=open" />
 			<sampleBrowser:ListItemInfo Title="Docking / MDI" ImageSource="/Images/Screenshots/Docking-SimpleIde-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/DockingSamples/Demo/SimpleIde/OverviewDocument?action=open" />
 			<sampleBrowser:ListItemInfo Title="Grids" ImageSource="/Images/Screenshots/Grids-PropertyGrid-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/PropertyGridGettingStarted/MainControl" />
 		</sampleBrowser:ProductData.FeaturedSamples>
@@ -311,6 +311,10 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Grids" Title="Grids" LogoImageSource="{x:Static grids:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Advanced property grid and tree controls with an amazing level of customizability">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Toolbox demo" TargetUri="https://ActiproSoftware/ProductSamples/GridsSamples/Demo/Toolbox/MainControl" />
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Grids" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -333,7 +337,7 @@
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Dictionary Data Factory" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridDictionaryDataFactory/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Dynamic Properties" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridDynamicProperties/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Editors Integration" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridEditorsIntegration/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="PropertyGrid QuickStarts" Title="Explicit Properties" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridExplicitProperties/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Explicit Properties" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridExplicitProperties/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Filters (Built-in)" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridFiltersBuiltin/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Filters (Custom)" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridFiltersCustom/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="PropertyGrid QuickStarts" Title="Item Menu Customization" Path="/ProductSamples/GridsSamples/QuickStart/PropertyGridItemMenuCustomization/MainControl"/>
@@ -367,18 +371,14 @@
 		<!--
 			Ribbon
 		-->
-		<sampleBrowser:ProductFamilyInfo BlurbText="Updated!" ShortTitle="Ribbon" Title="Ribbon" LogoImageSource="{x:Static ribbon:AssemblyInfo.ProductLogoImageSource}"
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Ribbon" Title="Ribbon" LogoImageSource="{x:Static ribbon:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Office-like user interface that implements all of Microsoft's Ribbon UI specs">
-
-			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="Latest Office appearance with new subtle animations" TargetUri="https://ActiproSoftware/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument" />
-			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Ribbon" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
 
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Demos" Title="Document Editor (similar to Word)" Path="/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Document Editor (similar to Word)" Path="/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument"/>
 
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Getting Started Series" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/GettingStarted/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Add/Remove Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/AddRemoveControls/MainControl"/>
@@ -412,6 +412,10 @@
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Shell" Title="Shell" LogoImageSource="{x:Static shell:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Controls for interacting with the Windows shell and/or any custom folder hierarchy">
+
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Updated Custom Shell Objects QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/ShellSamples/QuickStart/CustomShellObjects/MainControl" />
+			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Shell" />
@@ -665,12 +669,8 @@
 		<!--
 			Views
 		-->
-		<sampleBrowser:ProductFamilyInfo BlurbText="Updated!" ShortTitle="Views" Title="Views" LogoImageSource="{x:Static views:AssemblyInfo.ProductLogoImageSource}"
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Views" Title="Views" LogoImageSource="{x:Static views:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Animated panels to add some sizzle to your user interface">
-
-			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="New MultiColumnPanel control" TargetUri="https://ActiproSoftware/ProductSamples/ViewsSamples/QuickStart/MultiColumnPanelIntro/MainControl" />
-			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Views" />
@@ -693,7 +693,7 @@
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="AnimatedWrapPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/AnimatedWrapPanelIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="SwitchPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/SwitchPanelIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="FanPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/FanPanelIntro/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Panels" Title="MultiColumnPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/MultiColumnPanelIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Panels" Title="MultiColumnPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/MultiColumnPanelIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="ZapPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/ZapPanelIntro/MainControl"/>
 
 			<sampleBrowser:ProductItemInfo Category="Book QuickStarts" Title="Introduction" Path="/ProductSamples/ViewsSamples/QuickStart/BookIntro/MainControl"/>
@@ -765,61 +765,47 @@
 		<!--
 			Themes
 		-->
-		<sampleBrowser:ProductFamilyInfo BlurbText="Updated!" ShortTitle="Themes" Title="Themes" LogoImageSource="{x:Static shared:AssemblyInfo.ThemesLogoImageSource}"
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Themes" Title="Themes" LogoImageSource="{x:Static shared:AssemblyInfo.ThemesLogoImageSource}"
 										 Summary="Themes for Actipro, custom, and native WPF controls">
-
-			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="WindowChrome application menu overlay" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeApplicationMenuOverlay/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome processing overlay" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeProcessingOverlay/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome system menu customization" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeSystemMenuCustomization/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome title bar back button" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarBackButton/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome title bar header customization" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarHeaderCustomization/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome title bar menu" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMenu/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome title bar merging" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMerging/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="WindowChrome title bar user profile button" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarUserProfileButton/OverviewDocument" />
-				<sampleBrowser:ListItemInfo Title="Flexible theme generation system based on theme definitions" />
-				<sampleBrowser:ListItemInfo Title="Theme Designer application to create custom themes" />
-				<sampleBrowser:ListItemInfo Title="Themed styles/templates updated for all native WPF controls" />
-				<sampleBrowser:ListItemInfo Title="All pre-defined themes updated" />
-			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Themes" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
 
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Demos" Title="Notepad Enhanced" CanFocusOnLoad="False" Path="/ProductSamples/ThemesSamples/Demo/NotepadEnhanced/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Demos" Title="Metro IDE Window" Path="/ProductSamples/ThemesSamples/Demo/MetroIdeWindow/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Notepad Enhanced" CanFocusOnLoad="False" Path="/ProductSamples/ThemesSamples/Demo/NotepadEnhanced/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Metro IDE Window" Path="/ProductSamples/ThemesSamples/Demo/MetroIdeWindow/OverviewDocument"/>
 
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Asset/Style Override" SideBarWidth="Narrow" Path="/ProductSamples/ThemesSamples/QuickStart/AssetStyleOverride/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Native Control Themes" CanFocusOnLoad="False" SideBarWidth="Narrow" Path="/ProductSamples/ThemesSamples/QuickStart/NativeControlThemes/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Theme Override" Path="/ProductSamples/ThemesSamples/QuickStart/ThemeOverride/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Theme Reuse" Path="/ProductSamples/ThemesSamples/QuickStart/ThemeReuse/MainControl"/>
 
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Introduction" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeIntro/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Application Menu Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeApplicationMenuOverlay/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Processing Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeProcessingOverlay/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="System Menu Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeSystemMenuCustomization/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Title Bar Back Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarBackButton/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Title Bar Header Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarHeaderCustomization/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Title Bar Menu" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMenu/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Title Bar Merging" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMerging/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Title Bar User Profile Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarUserProfileButton/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Introduction" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeIntro/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Application Menu Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeApplicationMenuOverlay/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Processing Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeProcessingOverlay/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="System Menu Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeSystemMenuCustomization/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Back Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarBackButton/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Header Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarHeaderCustomization/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Menu" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMenu/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Merging" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarMerging/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar User Profile Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarUserProfileButton/OverviewDocument"/>
 
 		</sampleBrowser:ProductFamilyInfo>
 
 		<!--
 			Shared Library
 		-->
-		<sampleBrowser:ProductFamilyInfo BlurbText="Updated!" ShortTitle="Shared" Title="Shared Library" LogoImageSource="{x:Static shared:AssemblyInfo.ProductLogoImageSource}"
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Shared" Title="Shared Library" LogoImageSource="{x:Static shared:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Useful components and controls for the WPF framework">
 
 			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="ShadowChrome control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/ShadowChromeIntro/MainControl" />
-				<sampleBrowser:ListItemInfo Title="PopupButton enhancements" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/PopupButtonIntro/MainControl" />
-				<sampleBrowser:ListItemInfo Title="DynamicImage control that adapts for theme/DPI" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl" />
-				<sampleBrowser:ListItemInfo Title="Fresh new design for the sample application" />
-				<sampleBrowser:ListItemInfo Title="Optional .NET Core 3.0 variations of assemblies" />
-				<sampleBrowser:ListItemInfo Title="NuGet packages for WPF Control products" />
+				<sampleBrowser:ListItemInfo Title="Minimum .NET Core version updated to v3.1" />
+				<sampleBrowser:ListItemInfo Title="Minimum .NET Framework version updated to v4.5.2" />
+				<sampleBrowser:ListItemInfo Title=".NET 5 compatibility verified" />
+				<sampleBrowser:ListItemInfo Title="Modernized product documentation" />
+				<sampleBrowser:ListItemInfo Title="Online docs available on the Actipro web site" />
+				<sampleBrowser:ListItemInfo Title="GitHub repository with source for samples and docs" />
+				<sampleBrowser:ListItemInfo Title="Separate Windows Workflow Designer Integration sample project" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -833,18 +819,18 @@
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Animated ProgressBar" Path="/ProductSamples/SharedSamples/QuickStart/AnimatedProgressBarIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Color Selection" Path="/ProductSamples/SharedSamples/QuickStart/ColorSelection/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Drop Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/DropShadowChromeIntro/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Dynamic Image" Path="/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Dynamic Image" Path="/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Gradient Brush Slider" Path="/ProductSamples/SharedSamples/QuickStart/GradientBrushSliderIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Horizontal ListBox" Path="/ProductSamples/SharedSamples/QuickStart/HorizontalListBoxIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Pixel Snapper" Path="/ProductSamples/SharedSamples/QuickStart/PixelSnapperIntro/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Control QuickStarts" Title="Popup Button" Path="/ProductSamples/SharedSamples/QuickStart/PopupButtonIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Popup Button" Path="/ProductSamples/SharedSamples/QuickStart/PopupButtonIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Progress Spinners" Path="/ProductSamples/SharedSamples/QuickStart/ProgressSpinners/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Radial Slider" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/RadialSliderIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Radio Button List" Path="/ProductSamples/SharedSamples/QuickStart/RadioButtonListIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Reflection ContentControl" Path="/ProductSamples/SharedSamples/QuickStart/ReflectionContentControlIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Resizable ContentControl" Path="/ProductSamples/SharedSamples/QuickStart/ResizableContentControl/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Ring Slice" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/RingSliceIntro/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/ShadowChromeIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/ShadowChromeIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Shapes" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/ShapesIntro/MainControl" />
 
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Comparison" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/TransitionComparison/MainControl"/>
