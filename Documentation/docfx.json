@@ -97,7 +97,7 @@
 			"_docsProductHref": "https://www.actiprosoftware.com/products/controls/wpf",
 			"_docsProductName": "WPF Controls",
 			"_docsProductVersion": "21.1",
-			"_disableContribution": false,
+			"_disableContribution": true,
 			"_enableNewTab": true,
 			"_gitContribute": {
 				"repo": "https://github.com/Actipro/WPF-Controls",

@@ -65,7 +65,7 @@ namespace ActiproSoftware.SampleBrowser {
 		/// <value>The product version text.</value>
 		public string ProductVersionText {
 			get {
-				return "v20" + ActiproSoftware.Products.Shared.AssemblyInfo.Instance.Version.Substring(0, 4);
+				return "v" + ActiproSoftware.Products.Shared.AssemblyInfo.Instance.Version.Substring(0, 4);
 			}
 		}
 

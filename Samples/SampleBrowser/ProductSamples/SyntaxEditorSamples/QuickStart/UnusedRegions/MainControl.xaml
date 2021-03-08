@@ -1,0 +1,43 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.UnusedRegions.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.UnusedRegions"
+    >
+
+	<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve" IsReadOnly="True">
+				<editor:EditorDocument.Language>
+					<sample:CustomSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+
+/// <summary>
+/// This sample shows off the ability to mark unused sections of code via <c>IUnusedRegionTag</c>.
+/// Notice how a <c>using</c> statement above is faded, along with variable declarations below.
+/// </summary>
+public class UnusedRegions {
+	
+	/// <summary>
+	/// This method declares variables that are never referenced.
+	/// </summary>
+	public void TestMethod() {
+		int unusedVariable;
+		int anotherUnusedVariable;
+		
+		Debug.WriteLine(DateTime.Now + ": Unused region visualization is great!");
+		
+		/*
+			The code for this read-only editor sample uses a syntax language that inherits our C# syntax 
+			language, and wraps its default parser with one that also returns the ranges of unused regions.
+			Then a tagger uses the information returned by the parser to tag these regions, and the editor
+			renders them using normal syntax highlighting, but with a semi-transparent foreground opacity.
+		*/
+	}
+	
+}
+]]></editor:EditorDocument>
+	</editor:SyntaxEditor>
+	
+</UserControl>

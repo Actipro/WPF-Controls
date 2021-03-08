@@ -87,6 +87,21 @@ Token tags are typically handled completely internally by the text/parsing frame
 </td>
 </tr>
 
+<tr>
+<td>
+
+[IUnusedRegionTag](xref:ActiproSoftware.Text.Tagging.IUnusedRegionTag)
+
+</td>
+<td>
+
+A tag that indicates a text range is unused, such as when the code can safely be removed or will never execute.
+
+Text ranges tagged with this tag will render with their normal syntax highlighting colors, but with reduced opacity.  This feature is described in more detail in the [Syntax Highlighting](../../user-interface/adornment/syntax-highlighting.md) topic.
+
+</td>
+</tr>
+
 </tbody>
 </table>
 

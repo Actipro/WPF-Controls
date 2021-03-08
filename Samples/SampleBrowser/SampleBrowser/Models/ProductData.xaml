@@ -61,6 +61,10 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="SyntaxEditor" Title="SyntaxEditor" LogoImageSource="{x:Static syntaxEditor:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="The ultimate syntax-highlighting code editor control">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Unused Regions QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/UnusedRegions/MainControl" />
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/SyntaxEditor" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -155,6 +159,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Text Changes - Canceling" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/TextChangesCancelling/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Text Statistics" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/TextStatistics/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Undo/Redo" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/UndoRedo/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Unused Regions" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/UnusedRegions/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Whitespace Display" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/WhitespaceDisplay/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Word Wrap" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/WordWrap/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Zooming" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Zooming/MainControl"/>
@@ -414,7 +419,7 @@
 										 Summary="Controls for interacting with the Windows shell and/or any custom folder hierarchy">
 
 			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="Updated Custom Shell Objects QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/ShellSamples/QuickStart/CustomShellObjects/MainControl" />
+				<sampleBrowser:ListItemInfo Title="Custom Shell Objects QuickStart (updated)" TargetUri="https://ActiproSoftware/ProductSamples/ShellSamples/QuickStart/CustomShellObjects/MainControl" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>

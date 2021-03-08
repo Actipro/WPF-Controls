@@ -9,6 +9,24 @@
 		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
 			<Control x:Name="focusCaptureControl" />
 
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/8/2021 - Version 21.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated how the Backstage's close button visibility is bound to its CanClose property." />
+				<sampleBrowser:BulletContentControl Content="Updated the Name automation property on the application button, Backstage close button, and toggle minimization button." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a new IUnusedRegionTag that can be applied to ranges of unused code that should be rendered using partial transparency." />
+				<sampleBrowser:BulletContentControl Content="Added a new Unused Regions QuickStart to demonstrate the new unused regions feature." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where referencing the NuGet packages in projects that used packages.config would also incorrectly reference the design-time assemblies." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
 			
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/18/2021 - Version 21.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>

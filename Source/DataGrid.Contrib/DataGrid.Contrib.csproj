@@ -10,9 +10,9 @@
 		<Description>Common extensions, behaviors, and themes for the WPF DataGrid control.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML DataGrid</PackageTags>
 
-		<AssemblyVersion>21.1.0.0</AssemblyVersion>
-		<InformationalVersion>21.1.0.0</InformationalVersion>
-		<PackageVersion>21.1.0.0</PackageVersion>
+		<AssemblyVersion>21.1.1.0</AssemblyVersion>
+		<InformationalVersion>21.1.1.0</InformationalVersion>
+		<PackageVersion>21.1.1.0</PackageVersion>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -37,15 +37,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="21.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="21.1.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Resource Include="Products\DataGrid\Contrib\Cursors\ColumnResize.cur" />
 		<Resource Include="Products\DataGrid\Contrib\Cursors\RowResize.cur" />
 		<Resource Include="Products\DataGrid\Contrib\Images\DataGridLogo.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
+		  <SubType>Designer</SubType>
+		  <Generator>MSBuild:Compile</Generator>
 		</Resource>
 		<EmbeddedResource Include="Products\DataGrid\Contrib\Toolbox\ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid.icon.png" />
 	</ItemGroup>
