@@ -10,16 +10,16 @@ namespace ActiproSoftware.SampleBrowser {
 	/// <summary>
 	/// Represents the application.
 	/// </summary>
-	public partial class WindowsApp : Application {
+	public partial class App : Application {
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
-		/// Initializes an instance of the <c>WindowsApp</c> class.
+		/// Initializes an instance of the <c>App</c> class.
 		/// </summary>
-		public WindowsApp() {
+		public App() {
 			InitializeComponent();
 		}
 		

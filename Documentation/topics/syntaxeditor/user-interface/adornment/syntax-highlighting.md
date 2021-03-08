@@ -31,3 +31,17 @@ Sometimes it is desirable to override default lexer-based highlighting.  Instanc
 As mentioned above, the text rendering layers already use a tag aggregator to watch for updates to [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) ranges.  When update occur, the text is repainted. [Classification taggers](../../text-parsing/tagging/taggers.md) (implementations of `ITagger<IClassificationTag>`) can be ordered.  It is very important that classification taggers are set to be ordered before the [TaggerKeys](xref:ActiproSoftware.Text.Tagging.TaggerKeys).[Token](xref:ActiproSoftware.Text.Tagging.TaggerKeys.Token) tagger, which is the key for the lexer-based syntax highlighting.  Otherwise the syntax highlighting derived from the classification tag ranges will appear under the lexer-based syntax highlighting, where it likely would not be seen.
 
 Several QuickStarts show how to implement taggers that alter syntax highlighting.
+
+## Unused Regions
+
+It's sometimes handy to render certain portions of code semi-transparently, such as unused code or regions of code that will not execute due to conditional compilation.
+
+![Screenshot](../../images/unused-regions.png)
+
+*Several unused regions*
+
+SyntaxEditor provides a special [IUnusedRegionTag](xref:ActiproSoftware.Text.Tagging.IUnusedRegionTag) that can be provided over text ranges (via an `ITagger<IUnusedRegionTag>` implementation) that should be considered unused.  The text rendering logic uses an internal tag aggregator to watch for those tagged regions and renders contained text in a semi-transparent foreground, while retaining the default syntax highlighting that was applied to the text.
+
+See the [Taggers and Tagger Providers](../../text-parsing/tagging/taggers.md) topic for more information on tagging.
+
+The default rendering opacity for unused regions is 70%.  This value may be altered by changing the [IHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry).[UnusedRegionForegroundOpacity](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry.UnusedRegionForegroundOpacity) property.

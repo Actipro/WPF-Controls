@@ -11,7 +11,7 @@
     <OutputType>winexe</OutputType>
     <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <StartupObject>ActiproSoftware.SampleBrowser.WindowsApp</StartupObject>
+    <StartupObject>ActiproSoftware.SampleBrowser.App</StartupObject>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -57,13 +57,13 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ActiproSoftware.Controls.WPF" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="21.1.0" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="21.1.0" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="21.1.1" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -1772,6 +1772,10 @@
     <Page Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSmokeText\MainControl.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\MainControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSquigglesIntro\MainControl.xaml">
       <SubType>Designer</SubType>
@@ -3696,6 +3700,14 @@
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsIntraTextNotes\ReviewStatus.cs" />
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSmokeText\CustomSyntaxLanguage.cs" />
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSmokeText\SmokeTextAdornmentManager.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\CustomParser.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\CustomDotNetParseData.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\UnusedRegionTag.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\CustomUnusedRegionTagger.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\CustomSyntaxLanguage.cs" />
+    <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\UnusedRegions\MainControl.xaml.cs">
+      <DependentUpon>MainControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSquigglesIntro\CustomSquiggleTagger.cs" />
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSquigglesIntro\CustomSyntaxLanguage.cs" />
     <Compile Include="ProductSamples\SyntaxEditorSamples\QuickStart\AdornmentsSquigglesIntro\MainControl.xaml.cs">
@@ -4323,8 +4335,8 @@
     <Compile Include="SampleBrowser\Views\UtilitiesBackstageOverlay.xaml.cs">
       <DependentUpon>UtilitiesBackstageOverlay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SampleBrowser\WindowsApp.xaml.cs">
-      <DependentUpon>WindowsApp.xaml</DependentUpon>
+    <Compile Include="SampleBrowser\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -4554,7 +4566,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="SampleBrowser\WindowsApp.xaml">
+    <ApplicationDefinition Include="SampleBrowser\App.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </ApplicationDefinition>
