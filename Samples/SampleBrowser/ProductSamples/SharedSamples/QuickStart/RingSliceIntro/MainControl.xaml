@@ -5,6 +5,7 @@
 	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	>
 
 	<sampleBrowser:ProductItemControl.SideBarContent>
@@ -57,9 +58,9 @@
 					<Grid>
 						<shared:RingSlice Stroke="#6ef046" Radius="60" StartAngle="2" EndAngle="88" />
 						<shared:RingSlice Stroke="#6ef046" Radius="60" StartAngle="92" EndAngle="178" />
-						<shared:RingSlice Stroke="#d0d0d0" Radius="60" StartAngle="182" EndAngle="268" />
-						<shared:RingSlice Stroke="#d0d0d0" Radius="60" StartAngle="272" EndAngle="358" />
-						<TextBlock Foreground="#606060" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="50%" />
+						<shared:RingSlice Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" Radius="60" StartAngle="182" EndAngle="268" />
+						<shared:RingSlice Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" Radius="60" StartAngle="272" EndAngle="358" />
+						<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundMidMutedBrushKey}}" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="50%" />
 					</Grid>
 				</sampleBrowser:LabeledCardControl>
 

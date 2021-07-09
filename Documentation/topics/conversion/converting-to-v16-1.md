@@ -299,6 +299,7 @@ The list below is the entire detailed update log, including breaking changes.
 - Newer, simplified samples for basic MVVM design without the need for an external behavior class as in the previous version.
 - DockSite.ItemContainerRetentionMode property removed since it is no longer needed due to restructuring of DockingWindow control hierarchy.
 - Docking windows can be defined in XAML and have their IsOpen property set to false to close them on initial dock site load, but leave behind a breadcrumb for future restoration.
+- DockingWindowItemType enumeration renamed to DockingWindowItemKind.
 
 ### Switcher
 

@@ -41,9 +41,9 @@
     <StartupObject>ActiproSoftware.Windows.WindowsWorkflowIntegration.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="21.1.1" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor" Version="21.1.1" />
-    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="21.1.1" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="21.1.2" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor" Version="21.1.2" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="21.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

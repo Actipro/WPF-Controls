@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Data;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
@@ -147,12 +148,7 @@ End Class
 						var assemblyLoader = new BackgroundWorker();
 						assemblyLoader.DoWork += (sender, e) => {
 							// Add some common assemblies for reflection (any custom assemblies could be added using various Add overloads instead)
-							cSharpProjectAssembly.AssemblyReferences.AddMsCorLib();
-							#if !NETCORE
-							cSharpProjectAssembly.AssemblyReferences.Add("System");
-							cSharpProjectAssembly.AssemblyReferences.Add("System.Core");
-							cSharpProjectAssembly.AssemblyReferences.Add("System.Xml");
-							#endif
+							SyntaxEditorHelper.AddCommonDotNetSystemAssemblyReferences(cSharpProjectAssembly);
 						};
 						assemblyLoader.RunWorkerAsync();
 						cSharpSyntaxLanguage.RegisterProjectAssembly(cSharpProjectAssembly);
@@ -174,12 +170,7 @@ End Class
 						var assemblyLoader = new BackgroundWorker();
 						assemblyLoader.DoWork += (sender, e) => {
 							// Add some common assemblies for reflection (any custom assemblies could be added using various Add overloads instead)
-							vbProjectAssembly.AssemblyReferences.AddMsCorLib();
-							#if !NETCORE
-							vbProjectAssembly.AssemblyReferences.Add("System");
-							vbProjectAssembly.AssemblyReferences.Add("System.Core");
-							vbProjectAssembly.AssemblyReferences.Add("System.Xml");
-							#endif
+							SyntaxEditorHelper.AddCommonDotNetSystemAssemblyReferences(vbProjectAssembly);
 						};
 						assemblyLoader.RunWorkerAsync();
 						vbSyntaxLanguage.RegisterProjectAssembly(vbProjectAssembly);

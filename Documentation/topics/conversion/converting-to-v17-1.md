@@ -337,9 +337,9 @@ While the data model API has been redesigned, many of the new interfaces and cla
 - `ImmutablePropertyDescriptorDataAccessor` class is no longer needed.
 - `PropertyGridPropertyItem` (a class you could use to directly define a property in XAML) is now `PropertyModel`.  Instances can be added to the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[Properties](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.Properties) collection.
 - `ICategoryDataAccessor` interface is now `ICategoryModel`.
-- `CategoryDataAccessor` class is now `ICategoryModel`.
+- `CategoryDataAccessor` class is now `CategoryModel`.
 - `PropertyGridCategoryItem` (a class you could use to directly define a category in XAML) is removed.  Instead, add `PropertyModel` instances to the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[Properties](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.Properties) collection and assign the proper category name to each `PropertyModel`.  The properties will be automatically categorized by the data factory.
-- `ICategoryEditorDataAccessor` interface is now `CategoryModel`.
+- `ICategoryEditorDataAccessor` interface is now `ICategoryEditorModel`.
 - `CategoryEditorDataAccessor` class is now `CategoryEditorModel`.
 
 ### PropertyGridDataAccessorItem Removed and Binding Changes

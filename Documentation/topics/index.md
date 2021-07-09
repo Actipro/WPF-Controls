@@ -15,7 +15,7 @@ The Actipro WPF Controls are a vast set of UI controls and components for buildi
 
 [Actipro SyntaxEditor](syntaxeditor/index.md) is a powerful text editing control that is packed with features for efficient code editing, including syntax highlighting, line numbers, block selection, IntelliPrompt UI, code outlining, parsing, split views, zooming, bi-di support, and much more.  It has many of the same code editing features found in the Visual Studio code editor.
 
-SyntaxEditor is built on top of our next-generation extensible text/parsing framework.  While over free 20 sample languages are available to get you started (such as C#, VB, XML, and more), custom language definitions can be developed and distributed with your applications as well.  SyntaxEditor is designed for use in IDE (integrated development environment) applications, however there are many other applications out there than can take advantage of such a control.
+SyntaxEditor is built on top of our next-generation extensible text/parsing framework.  While over 20 free sample languages are available to get you started (such as C#, VB, XML, and more), custom language definitions can be developed and distributed with your applications as well.  SyntaxEditor is designed for use in IDE (integrated development environment) applications, however there are many other applications out there that can take advantage of such a control.
 
 These free add-ons are included with SyntaxEditor:
 
@@ -167,7 +167,7 @@ All of these features are built right into the Actipro Shared Library, which mea
 
 The [Actipro Shared Library](shared/index.md) is a common control library referenced by all of our WPF controls.  It contains a number of very useful controls and components that can be used in your projects.
 
-The Shared Library components are free for use by any licensed customers of our WPF controls products.
+The Shared Library components are free for use by any licensed customers of our WPF control products.
 
 ## The WPF Studio Bundle
 

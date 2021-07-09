@@ -12,9 +12,8 @@ using System.Collections.Generic;
 namespace DotNetLanguagesAddon {
 
 	/// <summary>
-	/// The automated IntelliPrompt completion from the 
-	/// .NET Languages Add-on for Actipro SyntaxEditor
-	/// can be completely customized.
+	/// The automated IntelliPrompt completion from the .NET Languages Add-on 
+	/// for Actipro SyntaxEditor can be completely customized.
 	///	</summary>
 	public class CSharpCustomizedCompletion {
 	
@@ -24,11 +23,10 @@ namespace DotNetLanguagesAddon {
 		/// <param name="number">A parameter.</param>
 		public void DemoTest(int number) {
 		
-			// Press Ctrl+Space on the next line to see
-			// automated completion with namespaces,
-			// parameters, and code snippets filtered out.
-			// Also, a custom item has been added to the
-			// top of the list:
+			// Press Ctrl+Space on the next line to see automated completion 
+			// with namespaces, parameters, and code snippets filtered out.
+			// Types will render their namespace using an inline description.
+			// Also, a custom item has been added to the top of the list:
 			
 			
 			

@@ -46,14 +46,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonCSh
 		
 		private void DotNetProjectAssemblyReferenceLoader(object sender, DoWorkEventArgs e) {
 			// Add some common assemblies for reflection (any custom assemblies could be added using various Add overloads instead)
-			projectAssembly.AssemblyReferences.AddMsCorLib();
-			#if !NETCORE
-			projectAssembly.AssemblyReferences.Add("System");
-			projectAssembly.AssemblyReferences.Add("System.Core");
-			projectAssembly.AssemblyReferences.Add("System.Xml");
-			#endif
+			SyntaxEditorHelper.AddCommonDotNetSystemAssemblyReferences(projectAssembly);
 		}
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

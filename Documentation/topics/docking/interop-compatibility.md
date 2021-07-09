@@ -22,6 +22,8 @@ If you don't wish to read the details below, the way to enable maximum compatibi
 
 - Set the [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property on all `HwndHost` instances (like `WindowsFormsHost`, etc.) to `true`.
 
+- Ensure any `WindowsFormsHost` control is contained by a WPF control that has a non-transparent background.  Note that [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow), [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow), and [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) have a transparent background by default.
+
 Read the following sections for more information on interop compatibility.
 
 ## Using Non-Hosted Popups
@@ -44,9 +46,30 @@ There are known issues in core WPF with how it tracks and reports focus movement
 
 We provide a workaround for most of these issues in the form of an [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property that should be set on any `HwndHost`-based control, such as `WindowsFormsHost`, WPF `WebBrowser`, etc.  Set that attached property to `true` on such controls in your docking window hierarchy to enable our workarounds.
 
+## Impact of Transparent Backgrounds on Performance
+
+As a quick aside, we've noticed in certain scenarios that if you wrap a `WindowsFormsHost` with a control that has a `Transparent` background, core WPF can cause performance degradation in layout cycles due to how it's attempting to blend backgrounds with interop content.  This sample XAML code shows the scenario:
+
+```xaml
+xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+...
+					
+<Border Background="Transparent">
+	<WindowsFormsHost docking:InteropFocusTracking.IsEnabled="True">
+		<winforms:WebBrowser Url="http://www.actiprosoftware.com" />
+	</WindowsFormsHost>
+</Border>
+```
+
+If the `Background` is left its default null value, or is set to a solid color, performance is significantly better.  This can occur anywhere in WPF (not just the Docking/MDI product), and we wanted to pass along the tip.
+
+It's important to note that [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow), [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow), and [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) have a transparent background by default.  Therefore any `WindowsFormsHost` control in them should be wrapped with a `Border` that has a solid background set.  Or alternatively, set the `Background` properties of those controls to a solid brush.
+
+Some side effects of using transparent backgrounds around `WindowsFormsHost` may be seeing the size of the control resize and paint itself before the location of the control is updated and repainted, thereby creating a flicker effect.
+
 ## How to Embed WinForms Content in a Docking Window
 
-This sample XAML code shows how to create a document window that contains a Windows Forms `WebBrowser` control embedded in it.  Note that any WinForms controls must be wrapped with a `WindowsFormsHost`.  Set the attached [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` property on the `WindowsFormsHost`.
+This sample XAML code shows how to create a document window that contains a Windows Forms `WebBrowser` control embedded in it.  Note that any WinForms controls must be wrapped with a `WindowsFormsHost`.  Set the attached [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` property on the `WindowsFormsHost`.  And set a solid brush background on the containing control to prevent layout performance issues.
 
 ```xaml
 xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
@@ -56,7 +79,7 @@ xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms
 	<docking:Workspace>
 		<docking:TabbedMdiHost>
 			<docking:TabbedMdiContainer>
-				<docking:DocumentWindow Title="Document1">
+				<docking:DocumentWindow Title="Document1" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
 					<WindowsFormsHost docking:InteropFocusTracking.IsEnabled="True">
 						<winforms:WebBrowser Url="http://www.actiprosoftware.com" />
 					</WindowsFormsHost>
@@ -66,22 +89,3 @@ xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms
 	</docking:Workspace>
 </docking:DockSite>
 ```
-
-## Impact of Transparent Backgrounds on Performance
-
-As a quick aside, we've noticed in certain scenarios that if you wrap a `WindowsFormsHost` with a control that has a `Transparent` background, core WPF can cause performance degradation in layout cycles due to how it's attempting to blend backgrounds with interop content.  This sample XAML code shows the scenario:
-
-```xaml
-xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-...
-					
-<docking:DocumentWindow Title="Document1">
-	<Border Background="Transparent">
-		<WindowsFormsHost docking:InteropFocusTracking.IsEnabled="True">
-			<winforms:WebBrowser Url="http://www.actiprosoftware.com" />
-		</WindowsFormsHost>
-	</Border>
-</docking:DocumentWindow>
-```
-
-If the `Background` is left its default null value, or is set to a solid color, performance is significantly better.  This can occur anywhere in WPF (not just the Docking/MDI product), and we wanted to pass along the tip.

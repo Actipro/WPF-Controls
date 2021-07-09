@@ -11,7 +11,7 @@ The Docking & MDI for WPF product can easily be integrated into an application t
 
 ## Requirements
 
-The open source Prism integration functionality is located in the 'PrismIntegration' sample that ships with the Actipro WPF controls.  This sample project contains our code that integrates Docking & MDI with Prism and also shows a small real-world usage example.
+The open source Prism integration functionality is located in the [PrismIntegration sample](https://github.com/Actipro/WPF-Controls/tree/develop/Samples/PrismIntegration) that ships with the Actipro WPF controls.  This sample project contains our code that integrates Docking & MDI with Prism and also shows a small real-world usage example.
 
 These are the requirements for the sample:
 

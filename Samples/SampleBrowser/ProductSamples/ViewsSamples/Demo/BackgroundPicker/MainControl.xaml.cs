@@ -78,10 +78,8 @@ namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.BackgroundPicker {
 				return baseColor;
 			}
 			set {
-				if (baseColor != null) {
-					baseColor = value;
-					this.UpdateBrushes();
-				}
+				baseColor = value;
+				this.UpdateBrushes();
 			}
 		}
 

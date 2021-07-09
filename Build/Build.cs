@@ -19,6 +19,7 @@ namespace ActiproSoftware.Tools.Builds {
 		[Parameter("Configuration to build ('Debug' or 'Release')")]
 		readonly Configuration Configuration = Configuration.Debug;
 
+		[Secret]
 		[Parameter("The license key to use")]
 		readonly string LicenseKey = null;
 

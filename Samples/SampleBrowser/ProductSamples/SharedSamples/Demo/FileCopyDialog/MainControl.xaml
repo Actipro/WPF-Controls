@@ -176,13 +176,7 @@
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="*"/>
 							</Grid.ColumnDefinitions>
-							<Expander x:Name="moreInfoExpander" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="22,0,0,0" 
-									  themes:HeaderedControlThemeProperties.HeaderBackground="Transparent">
-								<themes:HeaderedControlThemeProperties.HeaderStyle>
-									<Style TargetType="ContentControl">
-										<Setter Property="BorderBrush" Value="Transparent" />
-									</Style>
-								</themes:HeaderedControlThemeProperties.HeaderStyle>
+							<Expander x:Name="moreInfoExpander" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="22,0,0,0">
 								<Expander.Header>
 									<MultiBinding Converter="{StaticResource ConditionalConverter}">
 										<Binding RelativeSource="{RelativeSource Self}" Path="IsExpanded" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using ActiproSoftware.Text.Languages.DotNet;
+using ActiproSoftware.Text.Languages.DotNet.Reflection;
 using ActiproSoftware.Text.Languages.DotNet.Resolution;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
@@ -43,14 +44,24 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 			// Loop through items from the base completion provider
 			for (var index = session.Items.Count - 1; index >= 0; index--) {
 				// If the item is a namespace, parameter, or code snippet (we filter out these as an example)...
+				var tag = session.Items[index].Tag;
 				if (
-					(session.Items[index].Tag is INamespaceResolverResult) ||
-					(session.Items[index].Tag is IParameterResolverResult) ||
-					(session.Items[index].Tag is ICodeSnippetMetadata)
+					(tag is INamespaceResolverResult) ||
+					(tag is IParameterResolverResult) ||
+					(tag is ICodeSnippetMetadata)
 					) {
 
 					// Remove the item
 					session.Items.RemoveAt(index);
+				}
+				else {
+					// For types, use the namespace as the inline description
+					var typeResult = tag as ITypeResolverResult;
+					if (typeResult != null) {
+						var typeDef = typeResult.Type as ITypeDefinition;
+						if (typeDef != null)
+							((CompletionItem)session.Items[index]).InlineDescription = typeDef.Namespace;
+					}
 				}
 			}
 

@@ -46,7 +46,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 			if ((editor == null) || (e == null) || (e.TextChange == null) || (e.TextChange.Source != editor.ActiveView))
 				return;
 
-			// The e.TypedText is not null only when a Typing change occurs with a single operation that inserts text,
+			// The e.TypedText is not null only when a Typing change occurs that inserts text,
 			//   so we can check that to display the completion list when "<" is typed
 			switch (e.TypedText) {
 				case "<":

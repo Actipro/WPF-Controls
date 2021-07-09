@@ -27,6 +27,10 @@ Vertical scrolling can be performed by spinning the mouse wheel.  Each wheel not
 
 Horizontal scrolling can be performed by holding the `Shift` key and spinning the mouse wheel.
 
+### Preventing Scrolling Over Unfocused Editor Views
+
+The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CanPointerWheelScrollUnfocusedViews](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CanPointerWheelScrollUnfocusedViews) property can be set to `false` to prevent the mouse wheel from scrolling editor views that don't contain focus.  This property is `true` by default, which means scroll any editor view under the mouse pointer, whether it has focus or not.
+
 ## Scrolling Via Touch
 
 SyntaxEditor supports smooth inertia-based touch scrolling.

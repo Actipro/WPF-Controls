@@ -79,7 +79,7 @@ Completion lists are often opened in response to a typed character by the end us
 
 ### Watching Typed Characters
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[DocumentTextChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.DocumentTextChanged) event is the best place to watch for specific characters being typed.  Its event args, [EditorSnapshotChangedEventArgs](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs), has a special helper property called [TypedText](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs.TypedText) that is normally a null value but is filled in only when the text change is [TextChangeTypes](xref:ActiproSoftware.Text.TextChangeTypes).[Typing](xref:ActiproSoftware.Text.TextChangeTypes.Typing), and there is a single insert operation in the change.
+The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[DocumentTextChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.DocumentTextChanged) event is the best place to watch for specific characters being typed.  Its event args, [EditorSnapshotChangedEventArgs](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs), has a special helper property called [TypedText](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs.TypedText) that is normally a null value but is filled in only when the text change is [TextChangeTypes](xref:ActiproSoftware.Text.TextChangeTypes).[Typing](xref:ActiproSoftware.Text.TextChangeTypes.Typing), and the change is not an undo/redo.
 
 If your app allows two or more SyntaxEditor controls to operate on the same document, then all of the samples below should be wrapped with a check to ensure that the view in which the text change occurred is the same editor's view in which the completion session will be requested:
 
@@ -150,7 +150,7 @@ When a completion provider service is registered for a language, the [IEditorVie
 
 As an example, if a syntax language has an event sink registered that watches for the `.` key to be typed, it may wish to request that a completion session be opened if appropriate.  In that case the event sink handler should call [RequestCompletionSession](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) and if a completion provider is available to handle the request, a completion list will display.
 
-## Completion List Items (Images, Text, etc.)
+## Completion List Items (Images, Text, Descriptions, etc.)
 
 All completion list items implement the [ICompletionItem](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem) interface, which is realized by the [CompletionItem](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionItem) class.
 
@@ -216,6 +216,15 @@ Gets an [IImageSourceProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEdito
 > See the [Image Source Providers](image-source-providers.md) topic for details on the [IImageSourceProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.IImageSourceProvider) interface and the available built-in implementations.
 
 </td>
+</tr>
+
+<tr>
+<td>
+
+[InlineDescription](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.InlineDescription) Property
+
+</td>
+<td>Gets or sets the optional inline description that is displayed next to an item's text.  For instance, this feature can be used to display a namespace for a type completion item.</td>
 </tr>
 
 <tr>
@@ -466,6 +475,10 @@ The [Content](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.I
 ### Combining buttons and tabs
 
 Button and tab filters can be used at the same time.  There is no problem with implementing things this way.
+
+### Keyboard Shortcuts
+
+Button and tab filters both have a [KeyGesture](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.KeyGesture) property that can be set to a shortcut to toggle/activate the related UI via the keyboard.  For instance, a "Properties" filter may use an `Alt+P` key gesture.  The key gesture text will be automatically added to the button/tab's tooltip if the tooltip is a string.
 
 ## Filtering Unmatched Items (Auto-Shrink)
 

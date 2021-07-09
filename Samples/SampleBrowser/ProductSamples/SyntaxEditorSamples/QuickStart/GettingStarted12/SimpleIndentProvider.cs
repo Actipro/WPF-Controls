@@ -132,7 +132,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingS
 		/// <param name="e">The <c>EditorSnapshotChangedEventArgs</c> that contains the event data.</param>
 		protected override void OnDocumentTextChanged(SyntaxEditor editor, EditorSnapshotChangedEventArgs e) {
 			// If the user is typing a '}' character...
-			if (e.TypedText == "}") {
+			if ((e.TextChange.Operations.Count == 1) && (e.TypedText == "}")) {
 				// Ensure the '}' is the first non-whitespace character on the line
 				ITextSnapshotLine startLine = e.ChangedSnapshotRange.StartLine;
 				if (startLine.FirstNonWhitespaceCharacterOffset != e.ChangedSnapshotRange.StartOffset)
