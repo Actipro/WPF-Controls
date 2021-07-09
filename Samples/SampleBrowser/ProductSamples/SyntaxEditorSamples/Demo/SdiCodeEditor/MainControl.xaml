@@ -5,7 +5,7 @@
 	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
 	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
-	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	Background="{x:Null}"
     >
@@ -43,7 +43,7 @@
 					</docking:ToolWindow>
 					<docking:ToolWindow Title="Events" ImageSource="/Images/Icons/Output16.png" CanClose="False">
 						<!-- Events ListBox -->
-						<ListBox x:Name="eventsListBox" BorderThickness="0" />						
+						<ListBox x:Name="eventsListBox" BorderThickness="0" />
 					</docking:ToolWindow>
 				</docking:ToolWindowContainer>
 			</docking:DockSite.AutoHideBottomContainers>
@@ -108,7 +108,7 @@
 		<!-- Main Menu -->
 		<shared:PixelSnapper Panel.ZIndex="1">
 			<Menu>
-				<MenuItem Header="File">
+				<MenuItem Header="_File">
 					<MenuItem Header="New" Command="ApplicationCommands.New" Icon="{Binding Source='New16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem Header="Open..." Command="ApplicationCommands.Open" Icon="{Binding Source='Open16.png', Converter={StaticResource ImageConverter}}" />
 					<Separator />
@@ -121,7 +121,7 @@
 					<Separator />
 					<MenuItem Header="Exit" Click="OnFileExitMenuItemClick" />
 				</MenuItem>
-				<MenuItem Header="Edit">
+				<MenuItem Header="_Edit">
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Undo" Icon="{Binding Source='Undo16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="ApplicationCommands.Redo" Icon="{Binding Source='Redo16.png', Converter={StaticResource ImageConverter}}" />
 					<Separator />
@@ -134,7 +134,7 @@
 					<Separator />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.SelectAll" />
 				</MenuItem>
-				<MenuItem Header="Advanced">
+				<MenuItem Header="_Advanced">
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatDocument" Icon="{Binding Source='FormatDocument16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.FormatSelection" Icon="{Binding Source='FormatSelection16.png', Converter={StaticResource ImageConverter}}" />
 					<Separator />
@@ -171,7 +171,7 @@
 					<Separator />
 					<MenuItem Header="Insert Lorem Ipsum" Click="OnInsertLoremIpsumMenuItemClick" />
 				</MenuItem>
-				<MenuItem Header="IntelliPrompt">
+				<MenuItem Header="_IntelliPrompt">
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptCompletionSession" Icon="{Binding Source='IntelliPromptCompletion16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptParameterInfoSession" Icon="{Binding Source='IntelliPromptParameterInfo16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptQuickInfoSession" Icon="{Binding Source='IntelliPromptQuickInfo16.png', Converter={StaticResource ImageConverter}}" />
@@ -180,7 +180,7 @@
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptInsertSnippetSession" Icon="{Binding Source='IntelliPromptCodeSnippetSelection16.png', Converter={StaticResource ImageConverter}}" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RequestIntelliPromptSurroundWithSession" Icon="{Binding Source='IntelliPromptCodeSnippetSelection16.png', Converter={StaticResource ImageConverter}}" />
 				</MenuItem>
-				<MenuItem Header="View">
+				<MenuItem Header="_View">
 					<MenuItem Header="Indicator Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsIndicatorMarginVisible, Mode=TwoWay}" />
 					<MenuItem Header="Line Number Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsLineNumberMarginVisible, Mode=TwoWay}" />
 					<MenuItem Header="Outlining Margin Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsOutliningMarginVisible, Mode=TwoWay}" />
@@ -203,7 +203,7 @@
 					<Separator />
 					<MenuItem x:Name="toggleTokenInfoMenuItem" Header="Toggle Token Info in Status Bar" IsCheckable="True" Click="OnToggleTokenInfoMenuItemClick" />
 				</MenuItem>
-				<MenuItem Header="Outlining">
+				<MenuItem Header="_Outlining">
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CollapseToDefinitions" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.HideSelection" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.ToggleOutliningExpansion" />
@@ -212,7 +212,7 @@
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.StopHidingCurrent" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.StartAutomaticOutlining" />
 				</MenuItem>
-				<MenuItem Header="Language">
+				<MenuItem Header="_Language">
 					<MenuItem Header="Plain text" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="Optional Add-on Languages (sold separately)" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
 					<MenuItem Header="C# (in .NET Languages Add-on)" Click="OnLanguageMenuItemClick" />
@@ -250,7 +250,7 @@
 					<MenuItem Header="XAML" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="XML" Click="OnLanguageMenuItemClick" />
 				</MenuItem>
-				<MenuItem Header="Macros">
+				<MenuItem Header="_Macros">
 					<MenuItem Header="Run Recorded Macro" Icon="{Binding Source='MacroRecordingRun16.png', Converter={StaticResource ImageConverter}}"  
 							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.RunMacro" />
 					<MenuItem x:Name="recordMacroMenuItem" Header="Record Macro" Icon="{Binding Source='MacroRecordingRecord16.png', Converter={StaticResource ImageConverter}}"  
@@ -260,7 +260,7 @@
 					<MenuItem Header="Cancel Recording" Icon="{Binding Source='MacroRecordingCancel16.png', Converter={StaticResource ImageConverter}}"  
 							  CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.CancelMacroRecording" />
 				</MenuItem>
-				<MenuItem Header="Window">
+				<MenuItem Header="_Window">
 					<MenuItem Header="Can Split Horizontally" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=CanSplitHorizontally, Mode=TwoWay}" />
 					<MenuItem Header="Has Horizontal Split" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=HasHorizontalSplit, Mode=TwoWay}" />
 					<Separator />

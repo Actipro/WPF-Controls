@@ -51,7 +51,7 @@ One of the nicest features of the task panes are the listboxes that allow you to
 
 Almost all of the task panes have little "i" characters with a circle around them (see the screenshot below within the red circle).  If you hover over these information icons with your mouse, helpful tooltips appear that explain more about the controls next to them.
 
-![Screenshot](images/vs-task-pane-info-tool-tip.gif)
+![Screenshot](images/vs-task-pane-info-tooltip.gif)
 
 *The mouse hovering and showing the info tooltip for the Tab's Label property*
 

@@ -75,8 +75,9 @@ These methods on the event sink receive the event notifications:
 | [NotifyDeclarationActivated](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifyDeclarationActivated*) Method | Notifies when a new declaration in the session's code snippet is activated. |
 | [NotifyDeclarationDeactivated](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifyDeclarationDeactivated*) Method | Notifies when a declaration in the session's code snippet is deactivated. |
 | [NotifyDeclarationTextChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifyDeclarationTextChanged*) Method | Notifies when the text value of the active declaration in the session's code snippet is changed. |
-| [NotifySessionClosed](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifySessionClosed*) Method | Notifies when a session is closed. |
-| [NotifySessionOpened](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifySessionOpened*) Method | Notifies when a session is opened. |
+| [NotifySessionClosed](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifySessionClosed*) Method | Notifies after a session is closed. |
+| [NotifySessionOpened](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifySessionOpened*) Method | Notifies after a session is opened. |
+| [NotifySessionOpening](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink.NotifySessionOpening*) Method | Notifies before a session is opened. |
 
 See the [Event Sinks](../../language-creation/event-sinks.md) topic for more information on event sinks in general.
 

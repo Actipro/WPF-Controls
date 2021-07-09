@@ -370,7 +370,16 @@ Similar to how title bar customization works, behind the scenes, a `ContentContr
 
 The overlay is not made visible until the attached `WindowChrome.IsOverlayVisible` property is set to `true`.  Set the attached property back to `false` to hide the overlay.
 
-A [IsOverlayVisibleChanged](xref:ActiproSoftware.Windows.Themes.WindowChrome.IsOverlayVisibleChanged) event fires when the property changes.  This event handler to make any programmatic changes to the UI needed for an overlay visibility change, such as showing/hiding title bar controls that should only be visible when the overlay is displayed.
+It may be desired to bind the attached `WindowChrome.IsOverlayVisible` property to other properties or a view-model. The following example demonstrates how a view-model with the property `IsWindowOverlayVisible` can be bound to the attached `WindowChrome.IsOverlayVisible` property of a window, where the default `DataContext` is assumed to be an instance of the view-model:
+
+```xaml
+<Window x:Name="window" ...
+	themes:WindowChrome.IsOverlayVisible="{Binding IsWindowOverlayVisible}}">
+```
+
+For convenience, the static [WindowChrome](xref:ActiproSoftware.Windows.Themes.WindowChrome).[SetIsOverlayVisible](xref:ActiproSoftware.Windows.Themes.WindowChrome.SetIsOverlayVisible*) method can also be called from code to set the current value of the attached property.
+
+An [IsOverlayVisibleChanged](xref:ActiproSoftware.Windows.Themes.WindowChrome.IsOverlayVisibleChanged) event fires when the property changes.  This event handler to make any programmatic changes to the UI needed for an overlay visibility change, such as showing/hiding title bar controls that should only be visible when the overlay is displayed.
 
 A static [ToggleIsOverlayVisibleCommand](xref:ActiproSoftware.Windows.Themes.WindowChrome.ToggleIsOverlayVisibleCommand) property is available, which returns an `ICommand` that can toggle the `WindowChrome.IsOverlayVisible` property.
 

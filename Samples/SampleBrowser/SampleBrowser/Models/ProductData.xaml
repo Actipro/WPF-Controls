@@ -62,6 +62,7 @@
 										 Summary="The ultimate syntax-highlighting code editor control">
 
 			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Completion item inline descriptions" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonCompletionOverride/MainControl" />
 				<sampleBrowser:ListItemInfo Title="Unused Regions QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/UnusedRegions/MainControl" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
@@ -110,6 +111,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Adornments 8 - Color Preview" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/AdornmentsColorPreview/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Adornments 9 - Intra-Line Code Lens" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/AdornmentsIntraLineCodeLens/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Adornments 10 - Intra-Line Viewport" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/AdornmentsIntraLineViewport/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Adornments 11 - Highlight Range" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/AdornmentsHighlightRange/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Caret / Selection Brushes" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CaretSelectionBrushes/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Classification - Layered" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ClassificationLayered/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Classification - Line Start" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ClassificationLineStart/MainControl"/>
@@ -178,7 +180,7 @@
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="C# Getting Started 02" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonCSharpGettingStarted02/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Visual Basic Getting Started 01" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonVBGettingStarted01/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Visual Basic Getting Started 02" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonVBGettingStarted02/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="IntelliPrompt Completion Override" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonCompletionOverride/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category=".NET Languages Add-on QuickStarts" Title="IntelliPrompt Completion Override" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonCompletionOverride/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Server Tags" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddOnServerTags/MainControl"/>
 
 			<sampleBrowser:ProductItemInfo Category="Web Languages Add-on QuickStarts" Title="JavaScript Getting Started" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/WebAddonJavaScriptGettingStarted/MainControl"/>

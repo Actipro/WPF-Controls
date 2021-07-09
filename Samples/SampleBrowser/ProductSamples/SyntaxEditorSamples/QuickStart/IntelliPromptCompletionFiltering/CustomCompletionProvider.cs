@@ -1,8 +1,11 @@
 using System;
+using System.Windows.Input;
 using System.Windows.Controls;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation;
+using VKey = System.Windows.Input.Key;
+using VModifierKeys = System.Windows.Input.ModifierKeys;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionFiltering {
 
@@ -79,7 +82,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 			if ((editor == null) || (e == null) || (e.TextChange == null) || (e.TextChange.Source != editor.ActiveView))
 				return;
 
-			// The e.TypedText is not null only when a Typing change occurs with a single operation that inserts text,
+			// The e.TypedText is not null only when a Typing change occurs that inserts text,
 			//   so we can check that to display the completion list when "." is typed
 			switch (e.TypedText) {
 				case ".": {
@@ -168,7 +171,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 						DisplayMode = CompletionFilterDisplayMode.ToggleButton,
 						GroupName = "MemberType",
 						ToolTip = "Events",
-						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.EventPublic).GetImageSource() }
+						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.EventPublic).GetImageSource() },
+						KeyGesture = new KeyGesture(VKey.E, VModifierKeys.Alt)
 					});
 				session.Filters.Add(new CompletionFilter("Fields",
 					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().StartsWith("Field"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
@@ -176,7 +180,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 						DisplayMode = CompletionFilterDisplayMode.ToggleButton,
 						GroupName = "MemberType",
 						ToolTip = "Fields",
-						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.FieldPublic).GetImageSource() }
+						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.FieldPublic).GetImageSource() },
+						KeyGesture = new KeyGesture(VKey.F, VModifierKeys.Alt)
 					});
 				session.Filters.Add(new CompletionFilter("Methods",
 					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().StartsWith("Method"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
@@ -184,7 +189,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 						DisplayMode = CompletionFilterDisplayMode.ToggleButton,
 						GroupName = "MemberType",
 						ToolTip = "Methods",
-						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.MethodPublic).GetImageSource() }
+						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.MethodPublic).GetImageSource() },
+						KeyGesture = new KeyGesture(VKey.M, VModifierKeys.Alt)
 					});
 				session.Filters.Add(new CompletionFilter("Properties",
 					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().StartsWith("Property"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
@@ -192,7 +198,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 						DisplayMode = CompletionFilterDisplayMode.ToggleButton,
 						GroupName = "MemberType",
 						ToolTip = "Properties",
-						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.PropertyPublic).GetImageSource() }
+						Content = new Image() { Width = 16, Height = 16, Source = new CommonImageSourceProvider(CommonImageKind.PropertyPublic).GetImageSource() },
+						KeyGesture = new KeyGesture(VKey.P, VModifierKeys.Alt)
 					});
 			}
 
@@ -203,7 +210,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 						DisplayMode = CompletionFilterDisplayMode.ToggleButton,
 						GroupName = "Inherited",
 						ToolTip = "Inherited members",
-						Content = "Inherited"
+						Content = "Inherited",
+						KeyGesture = new KeyGesture(VKey.I, VModifierKeys.Alt)
 					});
 			}
 
@@ -213,13 +221,17 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().EndsWith("Public"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
 					) {
 						DisplayMode = CompletionFilterDisplayMode.AllTab,
+						ToolTip = "All members",
 						Content = "All members",
+						KeyGesture = new KeyGesture(VKey.A, VModifierKeys.Alt)
 					});
 				session.Filters.Add(new CompletionFilter("Public",
 					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().EndsWith("Public"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
 					) {
 						DisplayMode = CompletionFilterDisplayMode.Tab,
-						Content = "Public members"
+						ToolTip = "Public members",
+						Content = "Public members",
+						KeyGesture = new KeyGesture(VKey.B, VModifierKeys.Alt)
 					});
 			}
 

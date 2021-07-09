@@ -22,7 +22,7 @@
 		<ribbon:Menu>
 			<ribbon:Separator Label="Menu with Overflow" />
 			<ribbon:Button ImageSourceLarge="/Images/Icons/New32.png" Label="Item 1" MenuItemDescription="A description of the first item." KeyTipAccessText="N" />
-			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" MenuItemDescription="The second item's description." KeyTipAccessText="O" />
+			<ribbon:Button ImageSourceLarge="/Images/Icons/Open32.png" Label="Item 2" MenuItemDescription="The second item's description, which is very long." KeyTipAccessText="O" />
 			<ribbon:Separator />
 			<ribbon:PopupButton ImageSourceLarge="/Images/Icons/Save32.png" Label="Another Sub-menu" KeyTipAccessText="S">
 				<ribbon:Menu ItemVariantSize="Medium">

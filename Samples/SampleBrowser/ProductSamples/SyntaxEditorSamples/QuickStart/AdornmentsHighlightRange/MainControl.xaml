@@ -1,0 +1,47 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightRange.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightRange"
+    >
+    
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="20,10">
+			<Button Margin="3,0,0,0" Content="Highlight Selection" Click="OnHighlightSelectionButtonClick" />
+			<Button Margin="3,0,0,0" Content="Clear All Highlights" Click="OnClearButtonClick" />
+		</StackPanel>
+		
+		<!-- SyntaxEditor -->
+		<editor:SyntaxEditor x:Name="editor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve">
+				<editor:EditorDocument.Language>
+					<sample:HighlightRangeSyntaxLanguage />
+				</editor:EditorDocument.Language><![CDATA[using System;
+using System.Diagnostics;
+
+namespace Actipro.AdornmentsHighlightRange {
+
+	/// <summary>
+	/// This QuickStart shows how any classification can be applied to a range
+	/// of text. The sample uses a custom CollectionTagger combined with a custom
+	/// IClassificationTag to "tag" a range of text with a classification style.
+	/// </summary>
+	public class ActiproTest {
+
+		/// <summary>
+		/// To demonstrate:
+		/// - Select some text over which you'd like to highlight with a custom style.
+		/// - Click the "Highlight Selection" button to apply the highlight.
+		/// Multiple, overlapping ranges can be highlighted throughout the document.
+		/// </summary>
+		public int Actipro { get; set; }
+
+	}
+}]]></editor:EditorDocument>
+
+		</editor:SyntaxEditor>
+
+	</DockPanel>
+
+</UserControl>

@@ -12,7 +12,7 @@ The controls ship with over 25 professionally-designed themes, and custom themes
 
 | An Office Colorful Theme | A Custom Dark Slate Theme |
 | ------------- | ------------- |
-| ![Sample Browser](.github/image-content/theme-light.png) | ![Sample Browser](.github/image-content/theme-dark.png) |
+| ![Light Theme](.github/image-content/theme-light.png) | ![Dark Theme](.github/image-content/theme-dark.png) |
 
 ## Table of Contents
 
@@ -67,7 +67,7 @@ Follow these steps to run the application:
 
 Complete [product documentation](https://www.actiprosoftware.com/docs/controls/wpf/index) is available on our web site.
 
-[![Sample Browser](.github/image-content/documentation.png)](https://www.actiprosoftware.com/docs/controls/wpf/index)
+[![Online Documentation](.github/image-content/documentation.png)](https://www.actiprosoftware.com/docs/controls/wpf/index)
 
 The Markdown source code for the product documentation is contained within this repo's `Documentation\topics` folder.  The documentation is built with [DocFx](https://github.com/dotnet/docfx). 
 

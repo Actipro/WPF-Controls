@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Xml;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Implementation;
+using ActiproSoftware.Text.Languages.DotNet.Reflection;
 using ActiproSoftware.Text.Languages.JavaScript.Implementation;
-using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
@@ -28,6 +27,24 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 		public const string XmlSchemasPath = "ActiproSoftware.ProductSamples.SyntaxEditorSamples.Languages.XmlSchemas.";
 
 		private static bool isDarkThemeActive;
+
+		/// <summary>
+		/// Adds common "System" assembly references to a .NET <see cref="IProjectAssembly"/> to enable IntelliPrompt
+		/// for commonly used types.
+		/// </summary>
+		/// <param name="projectAssembly">The .NET project assembly.</param>
+		public static void AddCommonDotNetSystemAssemblyReferences(IProjectAssembly projectAssembly) {
+			if (projectAssembly is null)
+				throw new ArgumentNullException(nameof(projectAssembly));
+
+			// Iterate the assemblies in the AppDomain and load all "System" assemblies
+			foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
+				if ((assembly.FullName.StartsWith("System", StringComparison.OrdinalIgnoreCase)) ||
+					(assembly.FullName.StartsWith("mscorlib", StringComparison.OrdinalIgnoreCase))) {
+					projectAssembly.AssemblyReferences.Add(assembly);
+				}
+			}
+		}
 
 		/// <summary>
 		/// Returns whether a dark theme is currently active.

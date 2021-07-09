@@ -78,18 +78,10 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor 
 			// Add some common assemblies for reflection (any custom assemblies could be added using various Add overloads instead)
 
 			cSharpProjectAssembly.AssemblyReferences.AddMsCorLib();
-			#if !NETCORE
-			cSharpProjectAssembly.AssemblyReferences.Add("System");
-			cSharpProjectAssembly.AssemblyReferences.Add("System.Core");
-			cSharpProjectAssembly.AssemblyReferences.Add("System.Xml");
-			#endif
+			SyntaxEditorHelper.AddCommonDotNetSystemAssemblyReferences(cSharpProjectAssembly);
 
 			vbProjectAssembly.AssemblyReferences.AddMsCorLib();
-			#if !NETCORE
-			vbProjectAssembly.AssemblyReferences.Add("System");
-			vbProjectAssembly.AssemblyReferences.Add("System.Core");
-			vbProjectAssembly.AssemblyReferences.Add("System.Xml");
-			#endif
+			SyntaxEditorHelper.AddCommonDotNetSystemAssemblyReferences(vbProjectAssembly);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

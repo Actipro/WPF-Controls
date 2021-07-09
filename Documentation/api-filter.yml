@@ -21,3 +21,6 @@ apiRules:
 - exclude:
     uidRegex: ^System\.
     type: Namespace
+- exclude:
+    uidRegex: ^XamlGeneratedNamespace
+    type: Namespace

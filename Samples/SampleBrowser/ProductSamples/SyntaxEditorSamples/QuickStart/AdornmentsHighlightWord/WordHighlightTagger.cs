@@ -91,6 +91,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			// If the current word changed...
 			if (oldCurrentWord != currentWord) {
 				// Notify that tags changed
+				// NOTE: You generally want to minimize the range passed to TagsChanged events, but in this case we don't know beforehand where word matches are made throughout the document
 				this.OnTagsChanged(new TagsChangedEventArgs(new TextSnapshotRange(view.SyntaxEditor.Document.CurrentSnapshot, view.SyntaxEditor.Document.CurrentSnapshot.TextRange)));
 			}
 		}

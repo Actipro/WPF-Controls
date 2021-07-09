@@ -5,6 +5,7 @@
 	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SharedSamples.QuickStart.RadialSliderIntro"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	>
 
 	<sampleBrowser:ProductItemControl.Resources>
@@ -40,7 +41,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Allows wrapping">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#ca5656" EndAngle="{Binding ElementName=wrappingSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="wrappingSlider" Radius="100" Value="245" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=wrappingSlider, Path=Value}" />
@@ -49,7 +50,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Minimum = 90, maximum = 520">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#5aabac" EndAngle="{Binding ElementName=minMaxSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="minMaxSlider" Radius="100" Minimum="90" Maximum="520" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=minMaxSlider, Path=Value}" />
@@ -58,7 +59,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Allows one cycle positive or negative">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice x:Name="fullCirclePositiveSlice" Radius="80" Stroke="#62d847" 
 													EndAngle="{Binding ElementName=fullCircleSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RingSlice x:Name="fullCircleNegativeSlice" Radius="80" Stroke="#69ac5a" Opacity="0"
@@ -75,7 +76,7 @@
 								<TranslateTransform X="-120" Y="120" />
 							</Grid.RenderTransform>
 
-							<shared:RingSlice Radius="80" Stroke="#f0f0f0" StartAngle="15" EndAngle="75" />
+							<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" StartAngle="15" EndAngle="75" />
 							<shared:RingSlice Radius="80" Stroke="#9e5aac" StartAngle="{Binding ElementName=cornerSlider, Path=IntermediateValue, Mode=TwoWay}" EndAngle="75" />
 							<shared:RadialSlider x:Name="cornerSlider" Radius="100" Value="45" Minimum="15" Maximum="75" />
 						</Grid>
@@ -85,7 +86,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Snaps to increments of 30">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#df9238" EndAngle="{Binding ElementName=snappingSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="snappingSlider" Radius="100" Value="120" LargeChange="90" SmallChange="30" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=snappingSlider, Path=Value}" />
@@ -94,18 +95,18 @@
 
 				<sampleBrowser:LabeledCardControl Label="Snaps to segmented background w/value converter">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="-12" EndAngle="12" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="18" EndAngle="42" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="48" EndAngle="72" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="78" EndAngle="102" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="108" EndAngle="132" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="138" EndAngle="162" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="168" EndAngle="192" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="198" EndAngle="222" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="228" EndAngle="252" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="258" EndAngle="282" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="288" EndAngle="312" />
-						<shared:RingSlice Radius="80" Stroke="#d0d0d0" StartAngle="318" EndAngle="342" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="-12" EndAngle="12" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="18" EndAngle="42" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="48" EndAngle="72" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="78" EndAngle="102" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="108" EndAngle="132" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="138" EndAngle="162" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="168" EndAngle="192" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="198" EndAngle="222" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="228" EndAngle="252" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="258" EndAngle="282" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="288" EndAngle="312" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" StartAngle="318" EndAngle="342" />
 						<shared:RadialSlider x:Name="snappingSlider2" Radius="100" Value="120" LargeChange="30" SmallChange="30" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" 
 									Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}" />
@@ -114,7 +115,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Semi-circle">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" StartAngle="270" EndAngle="450" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" StartAngle="270" EndAngle="450" />
 						<shared:RingSlice Radius="80" Stroke="#dd38df" StartAngle="270" EndAngle="{Binding ElementName=semiCircleSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="semiCircleSlider" Radius="100" Value="300" Minimum="270" Maximum="450" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=semiCircleSlider, Path=Value}" />
@@ -134,7 +135,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Thumb on the inside, large rim">
 					<Grid>
-						<shared:RingSlice Radius="125" StrokeThickness="45" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="125" StrokeThickness="45" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="125" StrokeThickness="45" Stroke="#e5dd5d" EndAngle="{Binding ElementName=innerThumbSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="innerThumbSlider" Radius="60" Value="245" ThumbArrowAngle="0" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=innerThumbSlider, Path=Value}" />
@@ -143,7 +144,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Two sliders to make a range">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#a2df38" 
 											StartAngle="{Binding ElementName=rangeSlider1, Path=IntermediateValue, Mode=TwoWay}"
 											EndAngle="{Binding ElementName=rangeSlider2, Path=IntermediateValue, Mode=TwoWay}" />
@@ -157,7 +158,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Custom thumb normal background">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#77b4c3" EndAngle="{Binding ElementName=customThumbBGSlider, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="customThumbBGSlider" Radius="100" Value="245" ThumbBackground="#c1dfe6" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=customThumbBGSlider, Path=Value}" />
@@ -166,7 +167,7 @@
 
 				<sampleBrowser:LabeledCardControl Label="Custom thumb pressed background">
 					<Grid>
-						<shared:RingSlice Radius="80" Stroke="#f0f0f0" />
+						<shared:RingSlice Radius="80" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
 						<shared:RingSlice Radius="80" Stroke="#7d6ce2" EndAngle="{Binding ElementName=customThumbBGSlider2, Path=IntermediateValue, Mode=TwoWay}" />
 						<shared:RadialSlider x:Name="customThumbBGSlider2" Radius="100" Value="245" ThumbPressedBackground="#968fbf" />
 						<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=customThumbBGSlider2, Path=Value}" />
