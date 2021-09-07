@@ -60,7 +60,7 @@ The property can be set to `false` to prevent the above circumstances from scrol
 
 The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[HorizontalScrollBarVisibility](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.HorizontalScrollBarVisibility) and [VerticalScrollBarVisibility](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.VerticalScrollBarVisibility) properties determine the logic behind scrollbar visibility.
 
-- `Visible` - Always show the scrollbar.  This is generally the default.
+- `Visible` - Always show the scrollbar.  This is generally the default.  See the [Word Wrap](word-wrap.md) topic for an example of hiding the scrollbar when word wrap is enabled.
 
 - `Auto` - Only show the scrollbar when it is necessary.
 

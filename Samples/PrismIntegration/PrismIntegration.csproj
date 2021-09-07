@@ -39,7 +39,7 @@
     <ApplicationIcon>Actipro.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="21.1.2" />
+    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="21.1.3" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -12,7 +12,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 	/// </summary>
 	public class CodeLensTagger : TaggerBase<IIntraLineSpacerTag> {
 
-		private List<CodeLensDeclaration> cachedDeclarations = new List<CodeLensDeclaration>();
+		private readonly List<CodeLensDeclaration> cachedDeclarations = new List<CodeLensDeclaration>();
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -23,6 +23,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		/// </summary>
 		/// <param name="document">The document to which this tagger is attached.</param>
 		public CodeLensTagger(ICodeDocument document) : base("CodeLensTagger", null, document, true) {
+			// Initialize declarations and tags from the current document
+			CacheDeclarationsAndInvalidateTags();
+
 			// Watch for parse data changes
 			document.ParseDataChanged += this.OnDocumentParseDataChanged;
 		}
@@ -71,17 +74,15 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		}
 		
 		/// <summary>
-		/// Occurs when the document parse data is changed.
+		/// Caches parsed declarations and invalidates tags.
 		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <c>ParseDataPropertyChangedEventArgs</c> that contains the event data.</param>
-		private void OnDocumentParseDataChanged(object sender, ParseDataPropertyChangedEventArgs e) {
+		private void CacheDeclarationsAndInvalidateTags() {
 			if (this.Document == null)
 				return;
 
 			var snapshot = this.Document.CurrentSnapshot;
 
-			var parseData = e.NewValue as CodeLensParseData;
+			var parseData = this.Document.ParseData as CodeLensParseData;
 			if (parseData != null) {
 				int? invalidStartOffset = null;
 				int? invalidEndOffset = null;
@@ -154,6 +155,16 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			}
 		}
 
+		/// <summary>
+		/// Occurs when the document parse data is changed.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">A <c>ParseDataPropertyChangedEventArgs</c> that contains the event data.</param>
+		private void OnDocumentParseDataChanged(object sender, ParseDataPropertyChangedEventArgs e) {
+			// Refresh declarations and tags after parse
+			CacheDeclarationsAndInvalidateTags();
+		}
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,9 +188,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 						var startOffset = declaration.VersionRange.Translate(snapshotRange.Snapshot).StartOffset;
 						if (snapshotRange.Contains(startOffset)) {
 							yield return new TagSnapshotRange<IIntraLineSpacerTag>(new TextSnapshotRange(snapshotRange.Snapshot, startOffset),
-								new CodeLensTag() { 
+								new CodeLensTag() {
 									Declaration = declaration,
-									TopMargin = 12 
+									TopMargin = 12
 								});
 						}
 					}

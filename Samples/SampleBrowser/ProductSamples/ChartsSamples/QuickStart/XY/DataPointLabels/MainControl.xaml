@@ -146,6 +146,21 @@
 					</charts:XYChart>
 				</sampleBrowser:LabeledCardControl>
 
+				<sampleBrowser:LabeledCardControl Label="Closest label visible on mouse hover near data point">
+					<charts:XYChart Style="{StaticResource ChartStyle}">
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis x:Name="yAxis7" AreMajorTicksVisible="True" TickMajorInterval="5"/>
+							<charts:XYDoubleAxis x:Name="yAxis8" AreMajorTicksVisible="True" TickMajorInterval="5000" 
+													Position="FarEdge" Minimum="-15000" Maximum="25000"/>
+						</charts:XYChart.YAxes>
+						<charts:XYChart.XAxes>
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"/>
+						</charts:XYChart.XAxes>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle}" LabelVisibility="PointerProximitySingle" YAxis="{Binding ElementName=yAxis7}"/>
+						<charts:LineSeries Style="{StaticResource LineSeriesStyle2}" LabelVisibility="PointerProximitySingle" YAxis="{Binding ElementName=yAxis8}"/>
+					</charts:XYChart>
+				</sampleBrowser:LabeledCardControl>
+
 				<sampleBrowser:LabeledCardControl Label="Angled labels">
 					<StackPanel>
 						<charts:XYChart Style="{StaticResource ChartStyle}">
