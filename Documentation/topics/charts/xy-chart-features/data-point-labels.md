@@ -35,6 +35,12 @@ This is an example of setting LabelVisibility to `PointerProximity`, in which la
 <charts:BarSeries LabelVisibility="PointerProximity" .../>
 ```
 
+LabelVisibility can also be `PointerProximitySingle`, where only the closest data point label to the mouse pointer is visible.
+
+```xaml
+<charts:BarSeries LabelVisibility="PointerProximitySingle" .../>
+```
+
 ## Style
 
 The sytle of the data point labels can be changed using [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelStyle](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelStyle).  The style `TargetType` must be [DataPointLabel](xref:ActiproSoftware.Windows.Controls.Charts.DataPointLabel).

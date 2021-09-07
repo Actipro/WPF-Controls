@@ -10,6 +10,45 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/7/2021 - Version 21.1.3</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the LabelVisibility.PointerProximitySingle option, which only shows the label closest to the pointer." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved IntelliPrompt UI to reposition itself when the view's text area layout is updated, such as when scrolling." />
+				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.WordWrapModeChanged event that is raised when the SyntaxEditor.WordWrapMode property is changed." />
+				<sampleBrowser:BulletContentControl Content="Updated the horizontal ScrollBar to remain visible in word wrap mode when the SyntaxEditor.HorizontalScrollBarVisibility property is Visible (the default), which matches Visual Studio behavior.  This ensures any horizontal ScrollBar tray content can remain visible in word wrap mode.  Use the new WordWrapModeChanged event to alter the HorizontalScrollBarVisibility property as needed if you still wish the horizontal ScrollBar to be hidden when word wrapping." />
+				<sampleBrowser:BulletContentControl Content="Updated the completion list to reduce flicker when filtering unmatched items." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where clicking right of the last character in the line could select a collapsed outlining node at the document start." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the C# text formatter logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where AssemblyRepositoryBase.LoadFrom tried to use reflection-only load in .NET Core." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the C# parser might not parse tuple types used as generic type parameters properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the VB parser might not parse character literals properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the resolver wasn't locking a merged type definition when enumerating its partial types." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the binary assembly loader might not load array types properly when used as generic type arguments." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the binary assembly serializer could throw an exception in a certain scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where FileBasedAssemblyRepository might not search the current location of an assembly when resolving documentation." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated gallery items to not show a default context menu if a ContextMenu is defined on the GalleryItem." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the ThemeManager.GetIsAnimationEnabled utility method that examines a visual to see if its attached ThemeProperties.IsAnimationEnabled property is true, it's loaded in UI, and ThemeManager.IsAnimationSupported is true." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a bug where the PopupButton.PopupHorizontalOffset and PopupVerticalOffset properties weren't being applied to the popup." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">7/9/2021 - Version 21.1.2</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking/MDI</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

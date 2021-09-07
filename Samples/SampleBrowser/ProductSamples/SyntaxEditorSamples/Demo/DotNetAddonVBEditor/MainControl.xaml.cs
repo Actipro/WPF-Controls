@@ -94,30 +94,12 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonVBE
 			dialog.Multiselect = false;
 			dialog.Filter = "Assemblies (*.dll)|*.dll|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
-				using (Stream stream = dialog.OpenFile()) {
-					// Read the file
-					byte[] buffer = new byte[stream.Length];
-					stream.Read(buffer, 0, buffer.Length);
-
-					// Create an assembly
-					try {
-						var assembly = Assembly.ReflectionOnlyLoad(buffer);
-						if (assembly != null) {
-							// Add to references
-							projectAssembly.AssemblyReferences.Add(assembly);
-
-							// Reset list
-							referencesListView.ItemsSource = null;
-							referencesListView.ItemsSource = projectAssembly.AssemblyReferences;
-						}
-					}
-					catch (FileLoadException ex) {
-						MessageBox.Show("A file load exception occurred: " + ex.Message, "Error Loading Assembly", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-					}
-					catch (SecurityException) {
-						MessageBox.Show("Sorry but this application must be run in full trust for this to work.", "Error Loading Assembly", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-					}
+				try {
+					// Add to references
+					projectAssembly.AssemblyReferences.AddFrom(dialog.FileName);
+				}
+				catch (Exception ex) {
+					MessageBox.Show("An exception occurred: " + ex.Message, "Error Loading Assembly", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				}
 			}
 		}
@@ -130,6 +112,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonVBE
 		private void OnAssemblyReferencesChanged(object sender, Text.Utility.CollectionChangeEventArgs<IProjectAssemblyReference> e) {
 			this.Dispatcher.BeginInvoke(DispatcherPriority.Send, (DispatcherOperationCallback)delegate(object arg) {
 				// Update list view items source on main dispatcher
+				referencesListView.ItemsSource = null;
 				referencesListView.ItemsSource = projectAssembly.AssemblyReferences;
 				return null;
 			}, null);		

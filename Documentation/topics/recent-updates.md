@@ -9,6 +9,10 @@ WPF Studio's documentation has frequent updates so this topic is the best place 
 
 If you are looking for a list of recently-added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v21.1.3
+
+- **SyntaxEditor:** Updated the [Word Wrap](syntaxeditor/user-interface/editor-view/word-wrap.md) topic with information on a new event and how to ensure the horizontal `ScrollBar` remains hidden when word wrap is enabled.
+
 ## Updates for v21.1.1
 
 - **SyntaxEditor:** Updated the [Tags and Classification Types](syntaxeditor/text-parsing/tagging/basic-concepts.md) and [Syntax Highlighting](syntaxeditor/user-interface/adornment/syntax-highlighting.md) topics with information on the new unused regions features.

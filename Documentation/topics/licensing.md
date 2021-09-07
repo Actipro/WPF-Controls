@@ -69,7 +69,7 @@ The following code calls the `ActiproLicenseManager.RegisterLicense` method usin
 ```csharp
 public partial class App : Application {
 	protected override void OnStartup(StartupEventArgs e) {
-		// TODO: Set "licensee" and "licenseKey" variables to your license information
+		// NOTE: Set "licensee" and "licenseKey" variables to your license information
 		ActiproSoftware.Products.ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
 		base.OnStartup(e);
 	}
@@ -141,7 +141,7 @@ The contents of a "licenses.licx" file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro WPF control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=21.1.2.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=21.1.3.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 ### Notes on Build Machines When Using Licenses.licx Files
