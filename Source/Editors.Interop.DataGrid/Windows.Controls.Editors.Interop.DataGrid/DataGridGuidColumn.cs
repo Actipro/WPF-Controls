@@ -16,7 +16,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridGuidColumn), new PropertyMetadata("D"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridGuidColumn), new PropertyMetadata("D", NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

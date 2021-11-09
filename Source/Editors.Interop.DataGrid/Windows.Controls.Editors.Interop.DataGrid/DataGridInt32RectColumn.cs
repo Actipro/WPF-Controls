@@ -16,37 +16,37 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(0, 0, 0, 0)));
+		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(0, 0, 0, 0), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridInt32RectColumn), new PropertyMetadata("G"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridInt32RectColumn), new PropertyMetadata("G", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="LargeChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="LargeChange"/> dependency property.</value>
-		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(5, 5, 5, 5)));
+		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(5, 5, 5, 5), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(100000, 100000, 100000, 100000)));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(100000, 100000, 100000, 100000), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(-100000, -100000, 0, 0)));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(-100000, -100000, 0, 0), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="SmallChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SmallChange"/> dependency property.</value>
-		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(1, 1, 1, 1)));
+		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Int32Rect), typeof(DataGridInt32RectColumn), new PropertyMetadata(new Int32Rect(1, 1, 1, 1), NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

@@ -16,67 +16,67 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)0));
+		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)0, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridSingleColumn), new PropertyMetadata("G"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridSingleColumn), new PropertyMetadata("G", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsNaNAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsNaNAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsNaNAllowedProperty = DependencyProperty.Register("IsNaNAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsNaNAllowedProperty = DependencyProperty.Register("IsNaNAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsNegativeInfinityAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsNegativeInfinityAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsNegativeInfinityAllowedProperty = DependencyProperty.Register("IsNegativeInfinityAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsNegativeInfinityAllowedProperty = DependencyProperty.Register("IsNegativeInfinityAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsPositiveInfinityAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsPositiveInfinityAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsPositiveInfinityAllowedProperty = DependencyProperty.Register("IsPositiveInfinityAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsPositiveInfinityAllowedProperty = DependencyProperty.Register("IsPositiveInfinityAllowed", typeof(bool), typeof(DataGridSingleColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="LargeChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="LargeChange"/> dependency property.</value>
-		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)5.0));
+		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)5.0, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata(Single.MaxValue));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata(Single.MaxValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata(Single.MinValue));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata(Single.MinValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="PickerKind"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="PickerKind"/> dependency property.</value>
-		public static readonly DependencyProperty PickerKindProperty = DependencyProperty.Register("PickerKind", typeof(SingleEditBoxPickerKind), typeof(DataGridSingleColumn), new PropertyMetadata(SingleEditBoxPickerKind.Default));
+		public static readonly DependencyProperty PickerKindProperty = DependencyProperty.Register("PickerKind", typeof(SingleEditBoxPickerKind), typeof(DataGridSingleColumn), new PropertyMetadata(SingleEditBoxPickerKind.Default, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="RoundingDecimalPlace"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="RoundingDecimalPlace"/> dependency property.</value>
-		public static readonly DependencyProperty RoundingDecimalPlaceProperty = DependencyProperty.Register("RoundingDecimalPlace", typeof(int?), typeof(DataGridSingleColumn), new PropertyMetadata(8));
+		public static readonly DependencyProperty RoundingDecimalPlaceProperty = DependencyProperty.Register("RoundingDecimalPlace", typeof(int?), typeof(DataGridSingleColumn), new PropertyMetadata(8, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="SmallChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SmallChange"/> dependency property.</value>
-		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)1.0));
+		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Single), typeof(DataGridSingleColumn), new PropertyMetadata((Single)1.0, NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

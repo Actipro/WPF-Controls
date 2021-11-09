@@ -11,37 +11,37 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsCaseAutoCorrected"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "AutoCorrected")]
-		public static readonly DependencyProperty IsCaseAutoCorrectedProperty = DependencyProperty.Register("IsCaseAutoCorrected", typeof(bool), typeof(DataGridMaskedStringColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsCaseAutoCorrectedProperty = DependencyProperty.Register("IsCaseAutoCorrected", typeof(bool), typeof(DataGridMaskedStringColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsCaseSensitive"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsCaseSensitive"/> dependency property.</value>
-		public static readonly DependencyProperty IsCaseSensitiveProperty = DependencyProperty.Register("IsCaseSensitive", typeof(bool), typeof(DataGridMaskedStringColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsCaseSensitiveProperty = DependencyProperty.Register("IsCaseSensitive", typeof(bool), typeof(DataGridMaskedStringColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Mask"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Mask"/> dependency property.</value>
-		public static readonly DependencyProperty MaskProperty = DependencyProperty.Register("Mask", typeof(string), typeof(DataGridMaskedStringColumn), new PropertyMetadata(null));
+		public static readonly DependencyProperty MaskProperty = DependencyProperty.Register("Mask", typeof(string), typeof(DataGridMaskedStringColumn), new PropertyMetadata(null, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="MaskKind"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="MaskKind"/> dependency property.</value>
-		public static readonly DependencyProperty MaskKindProperty = DependencyProperty.Register("MaskKind", typeof(MaskKind), typeof(DataGridMaskedStringColumn), new PropertyMetadata(MaskKind.Regex));
+		public static readonly DependencyProperty MaskKindProperty = DependencyProperty.Register("MaskKind", typeof(MaskKind), typeof(DataGridMaskedStringColumn), new PropertyMetadata(MaskKind.Regex, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="PromptChar"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="PromptChar"/> dependency property.</value>
-		public static readonly DependencyProperty PromptCharProperty = DependencyProperty.Register("PromptChar", typeof(char), typeof(DataGridMaskedStringColumn), new PropertyMetadata('\u2022'));
+		public static readonly DependencyProperty PromptCharProperty = DependencyProperty.Register("PromptChar", typeof(char), typeof(DataGridMaskedStringColumn), new PropertyMetadata('\u2022', NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="PromptVisibility"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="PromptVisibility"/> dependency property.</value>
-		public static readonly DependencyProperty PromptVisibilityProperty = DependencyProperty.Register("PromptVisibility", typeof(MaskPromptVisibility), typeof(DataGridMaskedStringColumn), new PropertyMetadata(MaskPromptVisibility.FocusedOnly));
+		public static readonly DependencyProperty PromptVisibilityProperty = DependencyProperty.Register("PromptVisibility", typeof(MaskPromptVisibility), typeof(DataGridMaskedStringColumn), new PropertyMetadata(MaskPromptVisibility.FocusedOnly, NotifyPropertyChangeForRefreshContent));
 
 		#endregion
 

@@ -16,37 +16,37 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.Zero));
+		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.Zero, NotifyPropertyChangeForRefreshContent));
 			
 		/// <summary>
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridTimeSpanColumn), new PropertyMetadata("g"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridTimeSpanColumn), new PropertyMetadata("g", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="LargeChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="LargeChange"/> dependency property.</value>
-		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(new TimeSpan(7, 3, 5, 5, 50)));
+		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(new TimeSpan(7, 3, 5, 5, 50), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.MaxValue));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.MaxValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.MinValue));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(TimeSpan.MinValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="SmallChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SmallChange"/> dependency property.</value>
-		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(new TimeSpan(1, 1, 1, 1, 1)));
+		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(TimeSpan), typeof(DataGridTimeSpanColumn), new PropertyMetadata(new TimeSpan(1, 1, 1, 1, 1), NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

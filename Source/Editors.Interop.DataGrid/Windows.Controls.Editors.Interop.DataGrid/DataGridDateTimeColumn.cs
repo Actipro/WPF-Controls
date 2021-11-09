@@ -16,19 +16,19 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridDateTimeColumn), new PropertyMetadata("g"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridDateTimeColumn), new PropertyMetadata("g", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(DateTime), typeof(DataGridDateTimeColumn), new PropertyMetadata(new DateTime(9998, 12, 31)));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(DateTime), typeof(DataGridDateTimeColumn), new PropertyMetadata(new DateTime(9998, 12, 31), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(DateTime), typeof(DataGridDateTimeColumn), new PropertyMetadata(new DateTime(1753, 1, 1)));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(DateTime), typeof(DataGridDateTimeColumn), new PropertyMetadata(new DateTime(1753, 1, 1), NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 
