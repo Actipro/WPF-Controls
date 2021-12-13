@@ -15,7 +15,7 @@ When filtering is active, the control will iterate over every item in the tree a
 
 - **Included** - The item passed all filter conditions and is included in the filter.  Tree descendants will also be examined by the filter.
 
-- **IncludedWithDescendants** - The item passed all filter conditions and is included in the filter.  Tree descendants will not be examined by the filter, but will all be included as well.
+- **IncludedWithDescendants** - The item passed all filter conditions and is included in the filter.  Tree descendants may also be examined by the filter, but only for determining if their ancestors require expansion.  Tree descendants will be included in the filter regardless of their own filter result.
 
 - **IncludedByDescendants** - The item did not pass all filter conditions and will only be included in the filter if one or more of its tree descendants are included.  Tree descendants will also be examined by the filter.
 

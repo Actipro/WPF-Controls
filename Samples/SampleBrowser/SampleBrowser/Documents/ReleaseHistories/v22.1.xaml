@@ -42,6 +42,7 @@
 				<sampleBrowser:BulletContentControl Content="Added the TreeListBox.FilterApplied event that is raised after the current filtering state has been applied to all of the control's items, generally occurring when DataFilter is changed, or filtering is enabled or disabled." />
 				<sampleBrowser:BulletContentControl Content="Added a TreeListBoxItemAdapter.GetAbsolutePath method that can be implemented to improve performance in large trees when searching for a tree node." />
 				<sampleBrowser:BulletContentControl Content="Improved TreeListBox item focus tracking in response to selection changes." />
+				<sampleBrowser:BulletContentControl Content="Improved TreeListBox when filtering with DataFilterResult.IncludedWithDescendants to only ensure items included by the filter are made visible via expansion, instead of all descendants." />
 				<sampleBrowser:BulletContentControl Content="Improved PropertyGrid to support watching collection properties that use EnableCollectionSynchronization." />
 				<sampleBrowser:BulletContentControl Content="Fixed a bug where the TreeListBox.InvalidateChildren method didn't properly reinitialize the node's children in a certain scenario." />
 				<sampleBrowser:BulletContentControl Content="Fixed a bug where the PropertyGrid.ChildPropertyRemoved event wasn't being raised appropriately." />
