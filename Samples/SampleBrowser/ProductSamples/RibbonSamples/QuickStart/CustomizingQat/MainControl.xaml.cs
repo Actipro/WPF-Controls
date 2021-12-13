@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingQat {
 
 	/// <summary>

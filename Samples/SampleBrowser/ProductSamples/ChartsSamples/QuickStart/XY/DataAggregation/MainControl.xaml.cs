@@ -1,5 +1,6 @@
 ﻿using ActiproSoftware.SampleBrowser.SampleData;
 using ActiproSoftware.Windows.Controls.Charts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -103,6 +104,12 @@ namespace ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.DataAggrega
 				SelectedSettings = MaximumSettings;
 			else if (aggregationKind == AggregationKind.Minimum)
 				SelectedSettings = MinimumSettings;
+			else if (aggregationKind == AggregationKind.SignedMaximum)
+				SelectedSettings = SignedMaximumSettings;
+			else if (aggregationKind == AggregationKind.SignedMinimum)
+				SelectedSettings = SignedMinimumSettings;
+			else
+				throw new NotImplementedException();
 		}
 
 		#endregion NON-PUBLIC PROCEDURES
@@ -247,6 +254,36 @@ namespace ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.DataAggrega
 		public IEnumerable<AggregationSetting> SelectedSettings {
 			get { return (IEnumerable<AggregationSetting>)GetValue(SelectedSettingsProperty); }
 			set { SetValue(SelectedSettingsProperty, value); }
+		}
+
+		/// <summary>
+		/// Gets the aggregation settings for the sample.
+		/// </summary>
+		/// <value>The aggregation settings for the sample.</value>
+		public static IEnumerable<AggregationSetting> SignedMaximumSettings {
+			get {
+				return new[] {
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMaximum, Factor = 0.05 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMaximum, Factor = 0.10 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMaximum, Factor = 0.25 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMaximum, Factor = 0.50 }
+				};
+			}
+		}
+
+		/// <summary>
+		/// Gets the aggregation settings for the sample.
+		/// </summary>
+		/// <value>The aggregation settings for the sample.</value>
+		public static IEnumerable<AggregationSetting> SignedMinimumSettings {
+			get {
+				return new[] {
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMinimum, Factor = 0.05 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMinimum, Factor = 0.10 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMinimum, Factor = 0.25 },
+					new AggregationSetting { IsEnabled = true, Kind = AggregationKind.SignedMinimum, Factor = 0.50 }
+				};
+			}
 		}
 
 		#endregion PUBLIC PROCEDURES

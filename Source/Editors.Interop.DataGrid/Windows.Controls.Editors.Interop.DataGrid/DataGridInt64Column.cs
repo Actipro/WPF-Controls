@@ -16,43 +16,43 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)0));
+		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)0, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridInt64Column), new PropertyMetadata("D"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridInt64Column), new PropertyMetadata("D", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="LargeChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="LargeChange"/> dependency property.</value>
-		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)5));
+		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)5, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata(Int64.MaxValue));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata(Int64.MaxValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata(Int64.MinValue));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata(Int64.MinValue, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="PickerKind"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="PickerKind"/> dependency property.</value>
-		public static readonly DependencyProperty PickerKindProperty = DependencyProperty.Register("PickerKind", typeof(Int64EditBoxPickerKind), typeof(DataGridInt64Column), new PropertyMetadata(Int64EditBoxPickerKind.Default));
+		public static readonly DependencyProperty PickerKindProperty = DependencyProperty.Register("PickerKind", typeof(Int64EditBoxPickerKind), typeof(DataGridInt64Column), new PropertyMetadata(Int64EditBoxPickerKind.Default, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="SmallChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SmallChange"/> dependency property.</value>
-		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)1));
+		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Int64), typeof(DataGridInt64Column), new PropertyMetadata((Int64)1, NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

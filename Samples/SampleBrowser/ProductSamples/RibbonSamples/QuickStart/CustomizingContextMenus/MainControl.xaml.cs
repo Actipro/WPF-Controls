@@ -5,6 +5,10 @@ using System.Windows;
 using System.Windows.Input;
 using RibbonControls = ActiproSoftware.Windows.Controls.Ribbon.Controls;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingContextMenus {
 
 	/// <summary>

@@ -1,0 +1,185 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DragAndDrop.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DragAndDrop"
+    >
+	<UserControl.Resources>
+		
+		
+	</UserControl.Resources>
+	
+	<docking:DockSite>
+		<docking:SplitContainer Orientation="Horizontal">
+			<docking:Workspace Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+
+				<DockPanel>
+					<Grid DockPanel.Dock="Top" Margin="20">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						
+						<TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="0">Allow:</TextBlock>
+						<CheckBox x:Name="shouldAllowDrag" Grid.Column="1" Grid.Row="0" Margin="20,4,0,4" Content="Drag" VerticalAlignment="Center" IsChecked="{Binding ElementName=editor, Path=AllowDrag}" />
+						<CheckBox x:Name="shouldAllowDrop" Grid.Column="2" Grid.Row="0" Margin="20,4,0,4" Content="Drop" VerticalAlignment="Center" IsChecked="{Binding ElementName=editor, Path=AllowDrop}" />
+
+						<TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0">Populate drag with:</TextBlock>
+						<CheckBox x:Name="shouldDragIncludeHtml" Grid.Column="1" Grid.Row="1" Margin="20,4,0,4" Content="HTML" VerticalAlignment="Center" IsChecked="{Binding ElementName=editor, Path=CanCutCopyDragWithHtml}" />
+						<CheckBox x:Name="shouldDragIncludeRtf" Grid.Column="2" Grid.Row="1" Margin="20,4,0,4" Content="RTF" VerticalAlignment="Center" IsChecked="{Binding ElementName=editor, Path=CanCutCopyDragWithRtf}" />
+
+						<TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="0">Override with custom text:</TextBlock>
+						<CheckBox x:Name="shouldOverrideDragText" Grid.Column="1" Grid.Row="2" Margin="20,4,0,4" Content="Drag" IsChecked="False" />
+						<TextBox x:Name="overrideDragText" Grid.Column="2" Grid.Row="2" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Custom Drag Text" Width="125" IsEnabled="{Binding ElementName=shouldOverrideDragText, Path=IsChecked}" />
+						<CheckBox x:Name="shouldOverrideDropText" Grid.Column="1" Grid.Row="3" Margin="20,4,0,4" Content="Drop" IsChecked="False" />
+						<TextBox x:Name="overrideDropText" Grid.Column="2" Grid.Row="3" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Custom Drop Text" Width="125" IsEnabled="{Binding ElementName=shouldOverrideDropText, Path=IsChecked}" />
+						
+						<CheckBox x:Name="shouldReselectTextAfterDrop" Grid.Column="0" Grid.Row="4" Margin="0,4" Content="Re-select text after drop" IsChecked="{Binding ElementName=editor, Path=IsDragDropTextReselectEnabled}" />
+						<CheckBox x:Name="shouldCancelDrop" Grid.Column="1" Grid.Row="4" Margin="20,4,0,4" Content="Cancel drop" />
+						<CheckBox x:Name="isDocumentReadOnly" Grid.Column="2" Grid.Row="4" Margin="20,4,0,4" Content="Read-only document" IsChecked="{Binding ElementName=editor, Path=Document.IsReadOnly}" />
+
+						<Grid Grid.Column="3" Grid.RowSpan="5">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*" />
+								<RowDefinition Height="12" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Border Grid.Row="0" BorderThickness="1" Margin="10,0,0,0"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+									BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+									PreviewMouseLeftButtonDown="OnStringDragSourcePreviewMouseLeftButtonDown"
+									>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0"
+										   FontStyle="Italic" TextWrapping="Wrap"
+										   Text="Drag from Here for String Data"
+										   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+							</Border>
+							<Border Grid.Row="2" BorderThickness="1" Margin="10,0,0,0"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+									BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+									PreviewMouseLeftButtonDown="OnCustomDragSourcePreviewMouseLeftButtonDown"
+									>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="10,0"
+										   FontStyle="Italic" TextWrapping="Wrap"
+										   Text="Drag from Here for Object Data"
+										   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+							</Border>
+						</Grid>
+					</Grid>
+
+					
+					<!-- SyntaxEditor -->
+					<editor:SyntaxEditor x:Name="editor" IsOutliningMarginVisible="False"
+										 CutCopyDrag="OnEditorCutCopyDrag" PasteDragDrop="OnEditorPasteDragDrop">
+						<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[using System;
+
+/*
+ * SyntaxEditor provides rich support of drag-and-drop functionality within the
+ * control itself and through interaction with other controls. In addition to
+ * default text DataFormats (UnicodeText, Text, and String), SyntaxEditor also
+ * supports populating clipboard and drag data with HTML and RTF-formatted text
+ * based on the syntax highlighting within the editor.
+ */
+
+namespace Actipro.DragAndDropQuickStart {
+	
+	public class ActiproTest {
+		
+		/// <summary>
+		/// The Toolbox tool window in this sample demonstrates how to enable
+		/// drag-and-drop from any control within your application by simply
+		///	making sure the IDataObject is properly initialized. Drag any item
+		/// from the Toolbox tool window and drop it on the editor to insert a
+		/// text snippet.
+		/// </summary>
+		public ActiproTest() {
+			
+		}
+		
+		/// <summary>
+		/// Drag a selection of text to the RichTextBox in this sample (or a
+		/// supported application like MS Word or Outlook) and the inserted
+		/// text will include the source syntax highlighting.
+		/// </summary>
+		public override string ToString() {
+			
+		}
+		
+		/// <summary>
+		/// SyntaxEditor also provides an event model for beginning and ending
+		/// a drag-and-drop operation. Try dragging a file from Windows
+		/// Explorer and dropping it on the editor and an event handler will
+		/// prompt you to insert the contents of the file. For read-only
+		/// documents where text cannot be inserted, you will be prompted to
+		/// open the file instead.
+		/// </summary>
+		public void FileDrop() {
+			
+		}
+		
+	}
+
+}]]></editor:EditorDocument>
+
+					</editor:SyntaxEditor>
+
+				</DockPanel>
+				
+			</docking:Workspace>
+
+			<docking:SplitContainer Orientation="Vertical">
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Toolbox" CanClose="False" ContainerDockedSize="220,200">
+						<DockPanel>
+							<Border DockPanel.Dock="Top" Padding="10,2" BorderThickness="0,1"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+									BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" >
+								<TextBlock FontStyle="Italic" HorizontalAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}">Drag items to the editor</TextBlock>
+							</Border>
+							<ListBox x:Name="toolbox" BorderThickness="0" PreviewMouseLeftButtonDown="OnToolboxPreviewMouseLeftButtonDown">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding DisplayText}" />
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
+						</DockPanel>
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+				
+				<docking:ToolWindowContainer>
+					<docking:ToolWindow Title="Rich Text" CanClose="False" ContainerDockedSize="220,200">
+						<RichTextBox AllowDrop="True" BorderThickness="0">
+							<FlowDocument>
+								<Paragraph>
+									<Run>Use this RichTextBox to test outside drag and drop with SyntaxEditor.</Run>
+								</Paragraph>
+								<Paragraph>
+									<Run>When enabled, RTF syntax highlighting will be preserved when dropping on targets which support RTF.</Run>
+								</Paragraph>
+							</FlowDocument>
+						</RichTextBox>
+					</docking:ToolWindow>
+					<docking:ToolWindow Title="Plain Text" CanClose="False" ContainerDockedSize="220,200">
+						<TextBox AllowDrop="True" BorderThickness="0" TextWrapping="Wrap" Text="Use this TextBox to test outside drag and drop with SyntaxEditor." />
+					</docking:ToolWindow>
+				</docking:ToolWindowContainer>
+			</docking:SplitContainer>
+			
+		</docking:SplitContainer>
+
+	</docking:DockSite>
+    
+</UserControl>

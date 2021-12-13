@@ -9,11 +9,12 @@
 	<DockPanel>
 		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
 			<StackPanel>
-				<CheckBox IsChecked="{Binding ElementName=editor, Path=Document.IsReadOnly}" Content="Document is read-only" />
+				<CheckBox x:Name="isReadOnlyCheckBox" Content="Document is read-only" />
 			</StackPanel>
 		</shared:PixelSnapper>
 
-		<editor:SyntaxEditor x:Name="editor" IsLineNumberMarginVisible="True" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+		<editor:SyntaxEditor IsDocumentReadOnly="{Binding ElementName=isReadOnlyCheckBox, Path=IsChecked, Mode=TwoWay}"
+							 IsLineNumberMarginVisible="True" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
 			<editor:EditorDocument IsReadOnly="True" xml:space="preserve"><![CDATA[Documents can be made read-only by setting their IsReadOnly
 property to true.
 

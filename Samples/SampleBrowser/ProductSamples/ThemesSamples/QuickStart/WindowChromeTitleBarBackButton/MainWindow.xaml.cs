@@ -2,6 +2,10 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.WindowChromeTitleBarBackButton {
 
 	/// <summary>

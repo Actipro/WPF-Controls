@@ -217,10 +217,10 @@
 					<MenuItem Header="Optional Add-on Languages (sold separately)" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
 					<MenuItem Header="C# (in .NET Languages Add-on)" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="VB (in .NET Languages Add-on)" Click="OnLanguageMenuItemClick" />
-					<MenuItem Header="Python v2.x (in Python Language Add-on)" Click="OnLanguageMenuItemClick" />
-					<MenuItem Header="Python v3.x (in Python Language Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="Python (in Python Language Add-on)" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="JavaScript (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="JSON (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
+					<MenuItem Header="JSON with Comments (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="XML (in Web Languages Add-on)" Click="OnLanguageMenuItemClick" />
 					<MenuItem Header="Free Language Definitions" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuHeadingStyleKey}}" />
 					<MenuItem Header="Custom..." Click="OnLanguageMenuItemClick" />

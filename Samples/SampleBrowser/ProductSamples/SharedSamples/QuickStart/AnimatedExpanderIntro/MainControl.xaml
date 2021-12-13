@@ -98,7 +98,8 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="Auto-focus the child control on expand">
-					<shared:AnimatedExpander Header="Expand to Focus Child Control" IsAutoFocusOnExpandEnabled="True" IsAutoExpandOnFocusEnabled="True">
+					<shared:AnimatedExpander Width="{StaticResource SampleThinMaxWidth}" Header="Expand to Focus Child Control" 
+											 IsAutoFocusOnExpandEnabled="True" IsAutoExpandOnFocusEnabled="True">
 						<TextBox BorderThickness="0" Padding="5" TextWrapping="Wrap" Text="This TextBox will be auto-focused when the expansion completes." />
 					</shared:AnimatedExpander>
 				</sampleBrowser:LabeledCardControl>

@@ -22,6 +22,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.SampleBrowser {
 
 	/// <summary>

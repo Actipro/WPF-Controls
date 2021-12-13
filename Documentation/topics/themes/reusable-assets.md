@@ -132,6 +132,7 @@ These are the generated asset keys:
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[ExtraSmallFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.ExtraSmallFontSizeDoubleKey)
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[SmallFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.SmallFontSizeDoubleKey)
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[MediumFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.MediumFontSizeDoubleKey) - The base font size, which defaults to 12.
+- [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[MediumLargeFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.MediumLargeFontSizeDoubleKey) - A half-step between the medium and large font sizes.
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[LargeFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.LargeFontSizeDoubleKey)
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[ExtraLargeFontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.ExtraLargeFontSizeDoubleKey)
 - [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys).[ExtraLarge2FontSizeDoubleKey](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys.ExtraLarge2FontSizeDoubleKey)

@@ -8,7 +8,7 @@ order: 1
 The advanced Python syntax language implementation in the SyntaxEditor Python Language Add-on includes everything from code outlining to syntax error reporting.
 
 > [!NOTE]
-> The syntax language and its parser support both Python v3.4.1 and Python v2.7.6 syntax, toggleable via a flag when creating the syntax language.
+> The syntax language and its parser support Python v3.9.5 syntax.
 
 ## Features
 

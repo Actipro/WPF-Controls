@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security;
 using System.Windows.Markup;
 
@@ -24,6 +25,10 @@ using System.Windows.Markup;
 [assembly: CLSCompliant(true)]
 [assembly: NeutralResourcesLanguage("en")]
 
+#if NET
+[assembly: SupportedOSPlatform("windows")]
+#endif
+
 [assembly: XmlnsPrefix("http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors", "datagrideditors")]
 [assembly: XmlnsDefinition("http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors", "ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid")]
 
@@ -38,5 +43,5 @@ using System.Windows.Markup;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("21.1.3.0")]  // WPF
-[assembly: AssemblyInformationalVersion("21.1.3.0")]  // WPF
+[assembly: AssemblyVersion("22.1.0.0")]  // WPF
+[assembly: AssemblyInformationalVersion("22.1.0.0")]  // WPF

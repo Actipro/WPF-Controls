@@ -15,7 +15,7 @@ When filtering is active, the control will iterate over every item in the tree a
 
 - **Included** - The item passed all filter conditions and is included in the filter.  Tree descendants will also be examined by the filter.
 
-- **IncludedWithDescendants** - The item passed all filter conditions and is included in the filter.  Tree descendants will not be examined by the filter, but will all be included as well.
+- **IncludedWithDescendants** - The item passed all filter conditions and is included in the filter.  Tree descendants may also be examined by the filter, but only for determining if their ancestors require expansion.  Tree descendants will be included in the filter regardless of their own filter result.
 
 - **IncludedByDescendants** - The item did not pass all filter conditions and will only be included in the filter if one or more of its tree descendants are included.  Tree descendants will also be examined by the filter.
 
@@ -34,6 +34,8 @@ Another benefit of using [IDataFilter](xref:ActiproSoftware.Windows.Data.Filteri
 
 > [!TIP]
 > It is most efficient to set and configure the [DataFilter](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.DataFilter) property prior to setting the [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).[IsFilterActive](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.IsFilterActive) property to `true`.
+
+The [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).[FilterApplied](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.FilterApplied) event is raised after the current filtering state has been applied to all of the control's items, generally occurring when [DataFilter](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.DataFilter) is changed, or filtering is enabled or disabled.
 
 ## Automatically Including Descendants
 

@@ -12,70 +12,70 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives {
 		/// </summary>
 		/// <value>The identifier for the <see cref="CommitTriggers"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty CommitTriggersProperty = DependencyProperty.Register("CommitTriggers", typeof(PartEditBoxCommitTriggers), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(PartEditBoxCommitTriggers.Default));
+		public static readonly DependencyProperty CommitTriggersProperty = DependencyProperty.Register("CommitTriggers", typeof(PartEditBoxCommitTriggers), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(PartEditBoxCommitTriggers.Default, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="HasPopup"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="HasPopup"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty HasPopupProperty = DependencyProperty.Register("HasPopup", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true));
+		public static readonly DependencyProperty HasPopupProperty = DependencyProperty.Register("HasPopup", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsArrowKeyPartNavigationEnabled"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsArrowKeyPartNavigationEnabled"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty IsArrowKeyPartNavigationEnabledProperty = DependencyProperty.Register("IsArrowKeyPartNavigationEnabled", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true));
+		public static readonly DependencyProperty IsArrowKeyPartNavigationEnabledProperty = DependencyProperty.Register("IsArrowKeyPartNavigationEnabled", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsEditable"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsEditable"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty IsEditableProperty = DependencyProperty.Register("IsEditable", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true));
+		public static readonly DependencyProperty IsEditableProperty = DependencyProperty.Register("IsEditable", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsNullAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsNullAllowed"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty IsNullAllowedProperty = DependencyProperty.Register("IsNullAllowed", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsNullAllowedProperty = DependencyProperty.Register("IsNullAllowed", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsUndoEnabled"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsUndoEnabled"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty IsUndoEnabledProperty = DependencyProperty.Register("IsUndoEnabled", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true));
+		public static readonly DependencyProperty IsUndoEnabledProperty = DependencyProperty.Register("IsUndoEnabled", typeof(bool), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="PlaceholderText"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="PlaceholderText"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty PlaceholderTextProperty = DependencyProperty.Register("PlaceholderText", typeof(string), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(null));
+		public static readonly DependencyProperty PlaceholderTextProperty = DependencyProperty.Register("PlaceholderText", typeof(string), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(null, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="SpinnerVisibility"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SpinnerVisibility"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty SpinnerVisibilityProperty = DependencyProperty.Register("SpinnerVisibility", typeof(SpinnerVisibility), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(SpinnerVisibility.Collapsed));
+		public static readonly DependencyProperty SpinnerVisibilityProperty = DependencyProperty.Register("SpinnerVisibility", typeof(SpinnerVisibility), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(SpinnerVisibility.Collapsed, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="SpinWrapping"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SpinWrapping"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty SpinWrappingProperty = DependencyProperty.Register("SpinWrapping", typeof(SpinWrapping), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(SpinWrapping.NoWrap));
+		public static readonly DependencyProperty SpinWrappingProperty = DependencyProperty.Register("SpinWrapping", typeof(SpinWrapping), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(SpinWrapping.NoWrap, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="TextAlignment"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="TextAlignment"/> dependency property.</value>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
-		public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(TextAlignment.Left));
+		public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(DataGridPartEditBoxColumnBase<T>), new PropertyMetadata(TextAlignment.Left, NotifyPropertyChangeForRefreshContent));
 
 		#endregion
 

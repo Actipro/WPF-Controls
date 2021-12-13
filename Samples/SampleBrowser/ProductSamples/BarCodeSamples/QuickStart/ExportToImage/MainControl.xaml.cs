@@ -5,6 +5,10 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.BarCodeSamples.QuickStart.ExportToImage {
 
 	/// <summary>

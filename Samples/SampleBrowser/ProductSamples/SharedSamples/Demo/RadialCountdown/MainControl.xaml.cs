@@ -13,6 +13,10 @@ using System.Windows;
 using System.Windows.Threading;
 #endif
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SharedSamples.Demo.RadialCountdown {
 
 	/// <summary>

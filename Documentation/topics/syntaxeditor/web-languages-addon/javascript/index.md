@@ -9,6 +9,9 @@ The advanced JavaScript syntax language implementation in the SyntaxEditor Web L
 
 ![Screenshot](../../images/web-addon-javascript.png)
 
+> [!NOTE]
+> The syntax language and its parser supports ECMAScript 2021 (12th Edition) syntax.
+
 ## Features
 
 The JavaScript language is packed with features, including:

@@ -5,6 +5,10 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.GridsSamples.Demo.Toolbox {
 
 	/// <summary>

@@ -19,11 +19,11 @@ The main focus of this interface is its [GetTags](xref:ActiproSoftware.Text.Tagg
 
 Since taggers generally attach to various events on a document or other objects, they have the notion of a lifecycle.  The lifecycle starts when the tagger is created and ends when the tagger is closed.
 
-The [ITagger<T>](xref:ActiproSoftware.Text.Tagging.ITagger`1).[Close](xref:ActiproSoftware.Text.Tagging.ITagger`1.Close*) method can be used to close a tagger.  When a tagger is closed, its [Closed](xref:ActiproSoftware.Text.Tagging.ITagger`1.Closed) event fires.
+The [ITagger<T>](xref:ActiproSoftware.Text.Tagging.ITagger`1).[Close](xref:ActiproSoftware.Text.Tagging.ITaggerBase.Close*) method can be used to close a tagger.  When a tagger is closed, its [Closed](xref:ActiproSoftware.Text.Tagging.ITaggerBase.Closed) event fires.
 
 ### Notification of Tag Changes
 
-Sometimes the data that a tagger monitors is updated in such a way that its tag results are affected.  The tagger's [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagger`1.TagsChanged) event can be raised to notify any watchers, such as [tag aggregators](tag-aggregators.md), that the tag data that can be retrieved has been updated.
+Sometimes the data that a tagger monitors is updated in such a way that its tag results are affected.  The tagger's [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITaggerBase.TagsChanged) event can be raised to notify any watchers, such as [tag aggregators](tag-aggregators.md), that the tag data that can be retrieved has been updated.
 
 The event arguments should indicate the snapshot range that was updated.  If the entire document was updated, pass a snapshot range that starts at offset `0` and goes through the snapshot length.
 
@@ -88,7 +88,7 @@ Two [Toggle](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1.Toggle*) meth
 
 ### Batch Updates
 
-The tagger will fire off a [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagger`1.TagsChanged) event any time the collection is modified.  When adding multiple tagged ranges, this is not efficient.  Therefore, batches are supported.  A batch can be created by calling the [CreateBatch](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1.CreateBatch*) method.  This returns an `IDisposable` object.  When the object gets disposed, the batch is ended and the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagger`1.TagsChanged) event is raised.  Therefore this disposible object is ideal for use within a C# `using` block.
+The tagger will fire off a [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITaggerBase.TagsChanged) event any time the collection is modified.  When adding multiple tagged ranges, this is not efficient.  Therefore, batches are supported.  A batch can be created by calling the [CreateBatch](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1.CreateBatch*) method.  This returns an `IDisposable` object.  When the object gets disposed, the batch is ended and the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITaggerBase.TagsChanged) event is raised.  Therefore this disposible object is ideal for use within a C# `using` block.
 
 This code shows how to wrap tagger modification code in a batch update:
 

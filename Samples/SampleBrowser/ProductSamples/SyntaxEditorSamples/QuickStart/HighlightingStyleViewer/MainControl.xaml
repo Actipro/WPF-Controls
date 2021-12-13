@@ -65,8 +65,8 @@
 					<ColumnDefinition Width="7" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
-		
-				<editor:SyntaxEditor x:Name="editor" Grid.Column="0" AreIndentationGuidesVisible="True">
+
+				<editor:SyntaxEditor x:Name="editor" Grid.Column="0" AreIndentationGuidesVisible="True" IsCurrentLineHighlightingEnabled="True">
 					<editor:EditorDocument xml:space="preserve">
 						<editor:EditorDocument.Language>
 							<addonCSharp:CSharpSyntaxLanguage />
@@ -83,6 +83,7 @@ namespace HighlightingStyleRegistries {
 	/// affect SyntaxEditor instances that use that registry.
 	/// </summary>
 	public class QuickStart {
+		
 	}
 }
 ]]></editor:EditorDocument>

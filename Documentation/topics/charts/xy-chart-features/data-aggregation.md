@@ -27,92 +27,12 @@ The `PrimaryAggregationKind` is typically used for the Y values, but for vertica
 
 The following table lists the supported aggregation kinds:
 
-<table>
-<thead>
-
-<tr>
-<th>Aggregation Kind</th>
-<th>Description</th>
-</tr>
-
-
-</thead>
-<tbody>
-
-<tr>
-<td>
-
-`Average`
-
-</td>
-<td>
-
-![Screenshot](../images/data-aggregation-average10.png)
-
-Averages all the values in the group and uses that as the aggregated value.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`First`
-
-</td>
-<td>
-
-![Screenshot](../images/data-aggregation-first10.png)
-
-Uses the first value in the group as the aggregated value.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`Last`
-
-</td>
-<td>
-
-![Screenshot](../images/data-aggregation-last10.png)
-
-Uses the last value in the group as the aggregated value.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`Maximum`
-
-</td>
-<td>
-
-![Screenshot](../images/data-aggregation-maximum10.png)
-
-Uses the maximum value in the group as the aggregated value.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`Minimum`
-
-</td>
-<td>
-
-![Screenshot](../images/data-aggregation-minimum10.png)
-
-Uses the minimum value in the group as the aggregated value.
-
-</td>
-</tr>
-
-</tbody>
-</table>
+| Aggregation Kind | Description |
+|-----|-----|
+| `Average` | Averages all the values in the group and uses that as the aggregated value. |
+| `First` | Uses the first value in the group as the aggregated value. |
+| `Last` | Uses the last value in the group as the aggregated value. |
+| `Maximum` | Uses the maximum value in the group as the aggregated value. |
+| `Minimum` | Uses the minimum value in the group as the aggregated value. |
+| `SignedMaximum` | Uses the value with the maximum absolute value in the group as the aggregated value. For example, `4` is greater than `-5`, but `-5` has a greater absolute value. |
+| `SignedMinimum` | Uses the value with the minimum absolute value in the group as the aggregated value. For example, `-4` is less than `3`, but `3` has a lesser absolute value. |

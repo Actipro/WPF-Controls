@@ -17,25 +17,25 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="HasSwatch"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="HasSwatch"/> dependency property.</value>
-		public static readonly DependencyProperty HasSwatchProperty = DependencyProperty.Register("HasSwatch", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true));
+		public static readonly DependencyProperty HasSwatchProperty = DependencyProperty.Register("HasSwatch", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="HasText"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="HasText"/> dependency property.</value>
-		public static readonly DependencyProperty HasTextProperty = DependencyProperty.Register("HasText", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true));
+		public static readonly DependencyProperty HasTextProperty = DependencyProperty.Register("HasText", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsAlphaEnabled"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsAlphaEnabled"/> dependency property.</value>
-		public static readonly DependencyProperty IsAlphaEnabledProperty = DependencyProperty.Register("IsAlphaEnabled", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true));
+		public static readonly DependencyProperty IsAlphaEnabledProperty = DependencyProperty.Register("IsAlphaEnabled", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="IsGradientAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsGradientAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsGradientAllowedProperty = DependencyProperty.Register("IsGradientAllowed", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true));
+		public static readonly DependencyProperty IsGradientAllowedProperty = DependencyProperty.Register("IsGradientAllowed", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

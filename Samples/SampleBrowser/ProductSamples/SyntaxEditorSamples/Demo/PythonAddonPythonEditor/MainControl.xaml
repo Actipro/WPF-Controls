@@ -15,11 +15,6 @@
 		<shared:PixelSnapper DockPanel.Dock="Top" Margin="0,5,0,0">
 			<ToolBarTray>
 				<ToolBar>
-					<ComboBox x:Name="versionComboBox" SelectionChanged="OnVersionComboBoxSelectionChanged">
-						<ComboBoxItem>Python v3.x</ComboBoxItem>
-						<ComboBoxItem>Python v2.x</ComboBoxItem>
-					</ComboBox>
-					<Separator />
 					<Button Click="OnOpenStandardLibraryButtonClick">
 						<TextBlock Margin="7,0,7,0" Text="Locate Standard Lib" VerticalAlignment="Center" />
 					</Button>
@@ -96,7 +91,10 @@
 													DocumentParseDataChanged="OnCodeEditorDocumentParseDataChanged" 
 													UserInterfaceUpdate="OnCodeEditorUserInterfaceUpdate"
 													ViewSelectionChanged="OnCodeEditorViewSelectionChanged">
-								<editor:EditorDocument xml:space="preserve" FileName="mymodule.py" TabSize="4" AutoConvertTabsToSpaces="True"><![CDATA[# Advanced Python code editing for your end users with the 
+								<editor:EditorDocument xml:space="preserve" FileName="mymodule.py" TabSize="4" AutoConvertTabsToSpaces="True">
+									<editor:EditorDocument.Language>
+										<editor:PythonSyntaxLanguage />
+								</editor:EditorDocument.Language><![CDATA[# Advanced Python code editing for your end users with the 
 # Python Language Add-on for Actipro SyntaxEditor.
 #
 # Both v3.x and v2.x are supported.  Select the version from the

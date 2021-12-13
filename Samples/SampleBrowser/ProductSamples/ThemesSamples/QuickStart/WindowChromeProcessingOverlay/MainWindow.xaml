@@ -26,7 +26,7 @@
 	<themes:WindowChrome.OverlayContent>
 		<Grid Background="#80000000">
 			<shared:ShadowChrome Elevation="20" HorizontalAlignment="Center" VerticalAlignment="Center">
-				<Border Background="#ffffff" CornerRadius="7" Padding="40,30">
+				<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" CornerRadius="7" Padding="40,30">
 					<StackPanel Orientation="Horizontal">
 						<shared:RingSpinner x:Name="progressSpinner" Width="60" Height="60" BorderThickness="4" IsSpinning="{Binding ElementName=window, Path=(themes:WindowChrome.IsOverlayVisible)}"
 											IsTabStop="True" Focusable="True" FocusVisualStyle="{x:Null}" />

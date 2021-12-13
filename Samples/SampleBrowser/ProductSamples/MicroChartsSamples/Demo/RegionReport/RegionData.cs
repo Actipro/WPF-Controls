@@ -34,7 +34,7 @@ namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.RegionReport {
 		/// <summary>
 		/// Gets or sets the min sales.
 		/// </summary>
-		/// <value>THe min sales.</value>
+		/// <value>The min sales.</value>
 		public double MinSales { get; set; }
 
 		/// <summary>

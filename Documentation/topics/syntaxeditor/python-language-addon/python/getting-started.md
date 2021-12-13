@@ -64,24 +64,15 @@ protected override void OnStartup(StartupEventArgs e) {
 
 The next step is to create an instance of the [PythonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonSyntaxLanguage) class and configure its project.
 
-> [!NOTE]
-> Since Python v3.x has breaking syntax changes from v2.x, you can pass a [PythonVersion](xref:ActiproSoftware.Text.Languages.Python.PythonVersion) parameter into the language constructor to designate which version should be supported.
-
-This code creates a [PythonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonSyntaxLanguage) for editing Python v3.x code:
+This code creates a [PythonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonSyntaxLanguage):
 
 ```csharp
-var language = new PythonSyntaxLanguage(PythonVersion.Version3);
-```
-
-Alternatively, this code creates a [PythonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonSyntaxLanguage) for editing Python v2.x code:
-
-```csharp
-var language = new PythonSyntaxLanguage(PythonVersion.Version2);
+var language = new PythonSyntaxLanguage();
 ```
 
 ## Configure the Python Project
 
-Each language has a [IProject](xref:ActiproSoftware.Text.Languages.Python.Reflection.IProject) registered as a service on it that provides information such as which modules are actively being edited in a SyntaxEditor, the collection of paths to search for external packages, and the Python version.
+Each language has a [IProject](xref:ActiproSoftware.Text.Languages.Python.Reflection.IProject) registered as a service on it that provides information such as which modules are actively being edited in a SyntaxEditor and the collection of paths to search for external packages.
 
 If you wish to support automated IntelliPrompt for external modules, it is important to add search paths to the project.  This tells the resolver where to look for `.py` files.  Note that the resolver will recursively search through child folders of specified paths as long as the folder names are valid Python identifiers.
 

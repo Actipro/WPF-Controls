@@ -20,6 +20,7 @@ The JSON language is packed with features, including:
 - Text formatting.
 - Code block selection.
 - Delimiter (bracket) highlighting and auto-completion.
+- Optional JavaScript style comment support.
 
 ## Licensing
 

@@ -6,6 +6,10 @@ using ActiproSoftware.Windows.Controls.Docking;
 using System;
 using ActiproSoftware.SampleBrowser;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.BrowserUI {
 
 	/// <summary>

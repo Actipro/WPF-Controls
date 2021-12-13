@@ -6,6 +6,10 @@ using ActiproSoftware.Windows.Controls.Grids;
 using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Controls.Grids.PropertyData;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDataValidation {
 
 	/// <summary>

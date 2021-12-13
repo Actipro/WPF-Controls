@@ -52,7 +52,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The ToggleSwitch includes a circular and a flat look, both of which can be animated and customized.
+					The FlipSwitch includes a circular and a flat look, both of which can be animated and customized.
 					<LineBreak /><LineBreak />
 					<Italic>Note: Special effects are only available when a solid color brush is used.</Italic>
 					<LineBreak /><LineBreak />
@@ -66,12 +66,12 @@
 	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
 		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
 
-			<!--- ToggleSwitch -->
-			<gauge:ToggleSwitch x:Name="switch" Width="200" Height="200" SwitchType="Flat" IsThreeState="True" HorizontalAlignment="Center">
-				<gauge:ToggleSwitch.LayoutTransform>
+			<!--- FlipSwitch -->
+			<gauge:FlipSwitch x:Name="switch" Width="200" Height="200" SwitchType="Flat" IsThreeState="True" HorizontalAlignment="Center">
+				<gauge:FlipSwitch.LayoutTransform>
 					<ScaleTransform ScaleX="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" />
-				</gauge:ToggleSwitch.LayoutTransform>
-			</gauge:ToggleSwitch>
+				</gauge:FlipSwitch.LayoutTransform>
+			</gauge:FlipSwitch>
 
 		</StackPanel>
 	</ScrollViewer>

@@ -2,6 +2,10 @@
 using System.Windows.Input;
 using ActiproSoftware.Windows.Input;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomTitleBarContent {
 
 	/// <summary>

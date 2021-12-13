@@ -429,6 +429,13 @@
 		<Setter Property="Padding" Value="20,0,20,20" />
 	</Style>
 
+	<!-- SampleHeaderAdvancedOptionsExpanderStyle -->
+	<Style x:Key="SampleHeaderAdvancedOptionsExpanderStyle" TargetType="Expander" BasedOn="{StaticResource SampleHeaderExpanderStyle}">
+		<Setter Property="Header" Value="ADVANCED OPTIONS" />
+		<Setter Property="Padding" Value="20,0,20,20" />
+		<Setter Property="IsExpanded" Value="False" />
+	</Style>
+
 	<!-- SampleOptionsActionButtonStyle -->
 	<Style x:Key="SampleOptionsActionButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ButtonBaseStyleKey}}">
 		<Setter Property="MinHeight" Value="30" />

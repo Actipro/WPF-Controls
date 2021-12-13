@@ -87,15 +87,15 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 </gauge:LinearGauge>
 ```
 
-## Getting Started with ToggleSwitch
+## Getting Started with FlipSwitch
 
-This code shows the base XAML that you can use to create a simple [ToggleSwitch](xref:ActiproSoftware.Windows.Controls.Gauge.ToggleSwitch):
+This code shows the base XAML that you can use to create a simple [FlipSwitch](xref:ActiproSoftware.Windows.Controls.Gauge.FlipSwitch):
 
 ```xaml
 xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
 ...
 
-<gauge:ToggleSwitch Width="100" Height="100" IsChecked="true" />
+<gauge:FlipSwitch Width="100" Height="100" IsChecked="true" />
 ```
 
 ## Further Study

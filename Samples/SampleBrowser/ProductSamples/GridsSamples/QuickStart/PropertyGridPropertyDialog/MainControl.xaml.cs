@@ -3,6 +3,10 @@ using Microsoft.Win32;
 using ActiproSoftware.Windows.Controls.Grids.PropertyData;
 using ActiproSoftware.Windows.Input;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyDialog {
 
 	/// <summary>

@@ -93,6 +93,8 @@ This sample code shows how to make the application use the the Metro Dark theme:
 ThemeManager.CurrentTheme = ThemeNames.MetroDark
 ```
 
+The [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property setter will throw an exception if the specified theme name is not for a predefined theme or a registered custom theme, thereby warning you that you have not registered a custom theme properly before attempting to use it.  The [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[IsThemeSupported](xref:ActiproSoftware.Windows.Themes.ThemeManager.IsThemeSupported*) method provides a quick check for whether a theme is currently supported.
+
 ## Enabling Application-Wide Native Control Theming
 
 By default, the native WPF controls will not be implicitly themed.  To enable this behavior for your application, the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[AreNativeThemesEnabled](xref:ActiproSoftware.Windows.Themes.ThemeManager.AreNativeThemesEnabled) property must be set to `true`.  This ensures that your entire application consisting of Actipro and native WPF controls renders with a similar professional appearance.

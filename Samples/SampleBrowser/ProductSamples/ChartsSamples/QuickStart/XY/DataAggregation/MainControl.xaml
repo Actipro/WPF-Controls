@@ -56,7 +56,7 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					This QuickStart shows that the data rendered in a chart can be aggregated to reduce the number of data points, improving performance and readability.
-					Several built-in aggregation functions are provided, which include average, first, last, maximum, and minimum.
+					Several built-in aggregation functions are provided, which include average, first, last, maximum, minimum, signed maximum, and signed minimum.
 				</TextBlock>
 			</Expander>
 

@@ -29,7 +29,7 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					This QuickStart shows that the data rendered in a chart can be aggregated to reduce the number of data points, improving performance and readability.
-					Several built-in aggregation functions are provided, which include average, first, last, maximum, and minimum.
+					Several built-in aggregation functions are provided, which include average, first, last, maximum, minimum, signed maximum, and signed minimum.
 				</TextBlock>
 			</Expander>
 
@@ -61,6 +61,14 @@
 
 			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="MINIMUM AGGREGATION - Shows the minimum value of all the data points in each group" 
 												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=MinimumSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="SIGNED MAXIMUM AGGREGATION - Shows the signed maximum absolute value of all the data points in each group" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=SignedMaximumSettings}"
+												ItemTemplate="{StaticResource ItemTemplateKey}" />
+
+			<sampleBrowser:SampleGalleryControl Margin="0,20,0,0" Label="SIGNED MINIMUM AGGREGATION - Shows the signed minimum absolute value of all the data points in each group" 
+												ItemsSource="{Binding ElementName=microQuickStartDataAggregationUC, Path=SignedMinimumSettings}"
 												ItemTemplate="{StaticResource ItemTemplateKey}" />
 
 		</StackPanel>

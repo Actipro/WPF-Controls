@@ -4,6 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using RibbonControls = ActiproSoftware.Windows.Controls.Ribbon.Controls;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.AddRemoveControls {
 
 	/// <summary>

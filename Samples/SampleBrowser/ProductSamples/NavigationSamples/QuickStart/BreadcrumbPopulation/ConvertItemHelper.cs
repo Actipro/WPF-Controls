@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Xml;
-
 using ActiproSoftware.Windows.Controls.Navigation;
+
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
 
 namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbPopulation {
 	/// <summary>

@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 
 		<!--
-		<TargetFrameworks>netcoreapp3.1;net50-windows;net462</TargetFrameworks>
+		<TargetFrameworks>netcoreapp3.1;net5.0-windows;net6.0-windows;net462</TargetFrameworks>
 		-->
 		<TargetFrameworks>netcoreapp3.1;net462</TargetFrameworks>
 
@@ -13,10 +13,11 @@
 
 		<AssemblyName>SampleBrowser</AssemblyName>
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
+		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 
-		<AssemblyVersion>21.1.3.0</AssemblyVersion>
-		<InformationalVersion>21.1.3.0</InformationalVersion>
-		<PackageVersion>21.1.3.0</PackageVersion>
+		<AssemblyVersion>22.1.0.0</AssemblyVersion>
+		<InformationalVersion>22.1.0.0</InformationalVersion>
+		<PackageVersion>22.1.0.0</PackageVersion>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 
@@ -44,6 +45,10 @@
 		<EmbeddedResource Include="ProductSamples\SyntaxEditorSamples\Languages\XmlSchemas\**\*.xslt" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="ProductSamples\SyntaxEditorSamples\Languages\Projects\**\*.langproj" />
+	</ItemGroup>
+
 	<ItemGroup Label="External Assembly References">
 		<Reference Include="TransitionEffects">
 			<HintPath>ReferencedAssemblies\TransitionEffects-2.0\TransitionEffects.dll</HintPath>
@@ -55,15 +60,19 @@
 		<Reference Include="System.ComponentModel.DataAnnotations" />
 		<Reference Include="System.Printing" />
 	</ItemGroup>
+
+	<ItemGroup Label=".NET Core References" Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
+		<PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="21.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="21.1.3" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="22.1.0" />
 	</ItemGroup>
 	
 </Project>

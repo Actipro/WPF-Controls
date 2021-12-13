@@ -12,6 +12,10 @@ using ActiproSoftware.SampleBrowser.SampleData;
 using ActiproSoftware.Windows.Controls.Editors;
 #endif
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.AutoCompleteBoxIntro {
 
 	/// <summary>

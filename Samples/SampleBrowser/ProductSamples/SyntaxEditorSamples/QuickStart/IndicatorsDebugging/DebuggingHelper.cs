@@ -5,6 +5,10 @@ using ActiproSoftware.Text.Languages.DotNet.Ast.Implementation;
 using ActiproSoftware.Text.Parsing;
 using ActiproSoftware.Text.Tagging.Implementation;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging {
 	
 	/// <summary>

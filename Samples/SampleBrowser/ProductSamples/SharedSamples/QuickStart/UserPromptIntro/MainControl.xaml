@@ -1,0 +1,648 @@
+<sampleBrowser:ProductItemControl
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntro.MainControl"
+	x:Name="root"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.SharedSamples.Common"
+	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntro"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Converters -->
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		<shared:ImageKeyToImageSourceConverter x:Key="ImageKeyToImageSourceConverter" />
+
+		<!-- Styles -->
+		<Style x:Key="ShowDialogButton" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.ButtonBaseStyleKey}}">
+			<Setter Property="Margin" Value="10,20,10,0" />
+			<Setter Property="Padding" Value="20,10" />
+			<Setter Property="Content" Value="Show Sample as Dialog" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+		</Style>
+		<Style x:Key="CustomUserPromptButtonFocusVisual">
+			<Setter Property="Control.Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border>
+							<Rectangle Margin="3" RadiusX="12" RadiusY="12"
+									   StrokeThickness="1" Stroke="{TemplateBinding TextElement.Foreground}" StrokeDashArray="1 2" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="CustomUserPromptButtonStyle" TargetType="{x:Type Button}">
+			<Setter Property="SnapsToDevicePixels" Value="True" />
+			<Setter Property="Width" Value="80" />
+			<Setter Property="Height" Value="30" />
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="FocusVisualStyle" Value="{StaticResource CustomUserPromptButtonFocusVisual}" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border x:Name="border" CornerRadius="15"
+								Width="{TemplateBinding Width}"
+								Height="{TemplateBinding Height}"
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="TextElement.FontWeight" Value="Bold" />
+				</Trigger>
+				<Trigger Property="shared:UserPromptControl.ButtonResult" Value="{x:Static shared:UserPromptStandardResult.Yes}">
+					<Setter Property="Content" Value="Always" />
+					<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowBrushKey}}" />
+					<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundMidBrushKey}}" />
+				</Trigger>
+				<Trigger Property="shared:UserPromptControl.ButtonResult" Value="{x:Static shared:UserPromptStandardResult.No}">
+					<Setter Property="Content" Value="Never" />
+					<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundLowBrushKey}}" />
+					<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidBrushKey}}" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		
+		<!-- General Assets -->
+		<sample:ConfirmationCommand x:Key="ConfirmationCommand" />
+		<sys:String x:Key="StackTraceSampleText" xml:space="preserve"><![CDATA[System.InvalidOperationException: Something bad happened
+   at ActiproSamples.SomeObject.OtherMethod() in C:\Samples\SomeObject.cs:line 24
+   at ActiproSamples.SomeObject..ctor() in C:\Samples\SomeObject.cs:line 14
+   --- End of inner exception stack trace ---
+   at ActiproSamples.SomeObject..ctor() in C:\Samples\SomeObject.cs:line 18
+   at ActiproSamples.Program.DoSomething() in C:\Samples\Program.cs:line 23
+   at ActiproSamples.Program.Main(String[] args) in C:\Samples\Program.cs:line 13]]></sys:String>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=StandardButtons}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=StandardStatusImage}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=Header}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=Content}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=Footer}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=ExpandedInformationContent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=ExpandedInformationCollapsedHeaderText}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=ExpandedInformationExpandedHeaderText}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=CheckBoxContent}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=IsAnimationEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=IsExpanded}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=IsChecked}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=ButtonItemsHorizontalAlignment}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=Foreground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=Background}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=BorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=TrayForeground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=TrayBackground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HeaderFontSize}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HeaderForeground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HeaderBackground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HeaderBorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HeaderBorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=CornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=HorizontalScrollBarVisibility}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=userPrompt, Path=VerticalScrollBarVisibility}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					User Prompt provides a modern replacement for traditional MessageBox or Task Dialog functionality with full support
+					for Actipro Themes.
+					<LineBreak /><LineBreak />
+					UserPromptControl defines the core functionality with support for advanced content (e.g. header, footer, checkbox). This
+					control is typically hosted in a modal UserPromptWindow, but can be also be used in scenarios like a window overlay.
+					<LineBreak /><LineBreak />
+					ThemedMessageBox is a drop-in replacement for MessageBox. It uses the same API as MessageBox to make it easy to
+					convert any application.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<shared:UserPromptControl x:Name="userPrompt" BorderThickness="1" MinWidth="500"
+								   StandardButtons="OKCancel"
+								   StandardStatusImage="Information"
+								   Header="Main instruction"
+								   Content="This is the content of my message"
+								   Footer="Additional text can be placed in the footer"
+								   ExpandedInformationContent="Optionally define additional information behind an expander"
+								   ExpandedInformationCollapsedHeaderText="Show more information"
+								   ExpandedInformationExpandedHeaderText="Show less information"
+								   CheckBoxContent="_Don't show this message again"
+								   FooterImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Question}, Converter={StaticResource ImageKeyToImageSourceConverter}}"
+								   >
+				</shared:UserPromptControl>
+			</sampleBrowser:LabeledCardControl>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+			
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: ThemedMessageBox -->
+				<sampleBrowser:LabeledCardControl Label="Drop-in replacement for MessageBox" Width="540">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="0,10,0,20">
+							<Bold>ThemedMessageBox</Bold> can be used just like a native MessageBox. Use the options below to configure a prompt
+							and compare the native MessageBox with ThemedMessageBox.
+							<LineBreak /><LineBreak />
+							Try changing to a dark theme to see how native MessageBox stands apart from the rest of the application
+							while ThemedMessageBox provides a consistent experience.
+						</TextBlock>
+
+						<Label Grid.Row="1" Grid.Column="0" Margin="0,4,4,4" Content="Caption:"/>
+						<TextBox x:Name="messageBoxCaption" Grid.Row="1" Grid.Column="1" Text="Message Title" VerticalAlignment="Center" />
+
+						<Label Grid.Row="2" Grid.Column="0" Margin="0,4,4,4" Content="Text:"/>
+						<TextBox x:Name="messageBoxText" Grid.Row="2" Grid.Column="1" Text="This is the message that will be displayed." VerticalAlignment="Center" />
+
+						<Label Grid.Row="3" Grid.Column="0" Margin="0,4,4,4" Content="Buttons:"/>
+						<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+							<ComboBox x:Name="messageBoxButton" MinWidth="150" IsReadOnly="True" SelectedIndex="0" VerticalAlignment="Center">
+								<ComboBox.Items>
+									<ComboBoxItem Content="OK">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxButton.OK" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="OKCancel">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxButton.OKCancel" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="YesNo">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxButton.YesNo" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="YesNoCancel">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxButton.YesNoCancel" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+								</ComboBox.Items>
+							</ComboBox>
+							<CheckBox x:Name="addHelpButton" Margin="10,0,0,0" IsChecked="False" VerticalAlignment="Center" Content="Add 'Help' button (Actipro only)" ToolTip="(Actipro Only) Optionally add a Help button that is available through Win32 MessageBox API's but not exposed by WPF MessageBox." />
+						</StackPanel>
+
+						<Label Grid.Row="4" Grid.Column="0" Margin="0,4,4,4" Content="Image:"/>
+						<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" >
+							<ComboBox x:Name="messageBoxImage" MinWidth="150" IsReadOnly="True" SelectedIndex="1" VerticalAlignment="Center">
+								<ComboBox.Items>
+									<ComboBoxItem Content="None">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxImage.None" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="Asterisk/Information">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxImage.Asterisk" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="Question">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxImage.Question" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="Exclamation/Warning">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxImage.Exclamation" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+									<ComboBoxItem Content="Stop/Hand/Error">
+										<ComboBoxItem.Tag>
+											<x:Static Member="windows:MessageBoxImage.Hand" />
+										</ComboBoxItem.Tag>
+									</ComboBoxItem>
+								</ComboBox.Items>
+							</ComboBox>
+							<CheckBox x:Name="useSystemImages" Margin="10,0,0,0" IsChecked="False" VerticalAlignment="Center" Content="Use system icons" ToolTip="Optionally use default system icons instead of the modern icons used by default." />
+						</StackPanel>
+
+						<Label Grid.Row="5" Grid.Column="0" Margin="0,4,4,4" Content="Default:"/>
+						<ComboBox x:Name="messageBoxDefaultResult" Grid.Row="5" Grid.Column="1" IsReadOnly="True" SelectedIndex="0" VerticalAlignment="Center">
+							<ComboBox.Items>
+								<ComboBoxItem Content="None">
+									<ComboBoxItem.Tag>
+										<x:Static Member="windows:MessageBoxResult.None" />
+									</ComboBoxItem.Tag>
+								</ComboBoxItem>
+								<ComboBoxItem Content="OK">
+									<ComboBoxItem.Tag>
+										<x:Static Member="windows:MessageBoxResult.OK" />
+									</ComboBoxItem.Tag>
+								</ComboBoxItem>
+								<ComboBoxItem Content="Cancel">
+									<ComboBoxItem.Tag>
+										<x:Static Member="windows:MessageBoxResult.Cancel" />
+									</ComboBoxItem.Tag>
+								</ComboBoxItem>
+								<ComboBoxItem Content="Yes">
+									<ComboBoxItem.Tag>
+										<x:Static Member="windows:MessageBoxResult.Yes" />
+									</ComboBoxItem.Tag>
+								</ComboBoxItem>
+								<ComboBoxItem Content="No">
+									<ComboBoxItem.Tag>
+										<x:Static Member="windows:MessageBoxResult.No" />
+									</ComboBoxItem.Tag>
+								</ComboBoxItem>
+							</ComboBox.Items>
+						</ComboBox>
+
+						<Label Grid.Row="6" Grid.Column="0" Margin="0,4,4,4" Content="Result:"/>
+						<TextBlock x:Name="messageBoxResult" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" />
+
+						<Grid Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,10" HorizontalAlignment="Stretch">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Button Grid.Column="0" Padding="10" Content="Show Native MessageBox" Click="OnShowNativeMessageBoxButtonClick" />
+							<Button Grid.Column="2" Padding="10" Content="Show Actipro ThemedMessageBox" Click="OnShowThemedMessageBoxButtonClick" />
+						</Grid>
+						
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Customize the header and content -->
+				<sampleBrowser:LabeledCardControl Label="Customize the header and content" >
+					<StackPanel>
+						<shared:UserPromptControl Header="Exporting Project (Sample Project)"
+												  HeaderForeground="White"
+												  StatusImageSource="/Images/Icons/Save32.png"
+												  StandardButtons="Cancel"
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.HeaderBackground>
+								<LinearGradientBrush>
+									<LinearGradientBrush.GradientStops>
+										<GradientStop Offset="0" Color="#094C75" />
+										<GradientStop Offset="1" Color="#066F5C" />
+									</LinearGradientBrush.GradientStops>
+								</LinearGradientBrush>
+							</shared:UserPromptControl.HeaderBackground>
+							<shared:UserPromptControl.Content>
+								<StackPanel>
+									<TextBlock>to <Bold>Project Templates</Bold> (C:\Templates\ProjectTemplates)</TextBlock>
+									<TextBlock Margin="0,2">Estimated time remaining: 1 minute</TextBlock>
+									<shared:AnimatedProgressBar Margin="0,5,0,0" Minimum="0" Maximum="100" Value="25" Height="20" State="Normal" />
+								</StackPanel>
+							</shared:UserPromptControl.Content>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCustomHeaderAndContentClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Customize the footer content -->
+				<sampleBrowser:LabeledCardControl Label="Customize the footer content" >
+					<StackPanel>
+						<shared:UserPromptControl Header="Customize the footer content"
+												  Content="A footer can be used to provide additional context for a prompt. This sample demonstrates using a hyperlink to provide contextual help."
+												  FooterImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Question}, Converter={StaticResource ImageKeyToImageSourceConverter}}"
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.Footer>
+								<TextBlock>Click <Hyperlink Click="OnGenericHyperlinkClick">here</Hyperlink> for more information</TextBlock>
+							</shared:UserPromptControl.Footer>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCustomFooterContentClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Standard checkbox -->
+				<sampleBrowser:LabeledCardControl Label="Use the checkbox to allow user feedback">
+					<StackPanel>
+						<shared:UserPromptControl Header="Use the checkbox to allow user feedback"
+												  Content="A common scenario is to allow the user to opt out of future prompts."
+												  CheckBoxContent="_Stop showing messages like this"
+												  IsChecked="False"
+												  Width="500" BorderThickness="1">
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogStandardCheckBoxClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Checkbox custom content -->
+				<sampleBrowser:LabeledCardControl Label="The checkbox can support custom content">
+					<StackPanel>
+						<shared:UserPromptControl Header="The checkbox can support custom content"
+												  Content="The content of the checkbox can be customized. Here a right-aligned hyperlink has been added to demonstrate an option to open a settings dialog that configures which messages are displayed."
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.CheckBoxContent>
+								<DockPanel>
+									<TextBlock DockPanel.Dock="Right"><Hyperlink Click="OnOpenMessageSettingsHyperlinkClick">Open message settings</Hyperlink></TextBlock>
+									<AccessText>_Stop showing messages like this</AccessText>
+								</DockPanel>
+							</shared:UserPromptControl.CheckBoxContent>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCheckBoxCustomContentClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Expanded information error -->
+				<sampleBrowser:LabeledCardControl Label="Use expanded information to show details like this error message">
+					<StackPanel>
+						<shared:UserPromptControl StatusImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Error}, Converter={StaticResource ImageKeyToImageSourceConverter}}"
+												  Header="Error processing request"
+												  ExpandedInformationCollapsedHeaderText="Show details"
+												  ExpandedInformationExpandedHeaderText="Hide details"
+												  Content="Here is where you might normally show an error message. Use the 'Show details' button to toggle a stack trace."
+												  Width="500" BorderThickness="1"
+												  >
+							<shared:UserPromptControl.ExpandedInformationContent>
+								<StackPanel>
+									<TextBlock Text="Stack Trace:" FontWeight="Bold" Margin="0,0,0,3" />
+									<TextBox IsReadOnly="True" MaxLines="5" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+											 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Text="{StaticResource StackTraceSampleText}" />
+								</StackPanel>
+							</shared:UserPromptControl.ExpandedInformationContent>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogExpandedInformationErrorClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Expanded information in content-->
+				<sampleBrowser:LabeledCardControl Label="Use expanded information to toggle details directly within content">
+					<StackPanel>
+						<shared:UserPromptControl Header="Overwrite file?"
+												  StandardButtons="YesNoCancel"
+												  StandardStatusImage="Question"												  
+												  ExpandedInformationCollapsedHeaderText="Show details"
+												  ExpandedInformationExpandedHeaderText="Hide details"
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.Content>
+								<StackPanel>
+									<TextBlock TextWrapping="Wrap">A file named <Italic>DeLorean.txt</Italic> already exists in this location. Do you want to overwrite the file?</TextBlock>
+									<shared:AnimatedExpanderDecorator IsExpanded="{Binding RelativeSource={RelativeSource AncestorType=shared:UserPromptControl}, Path=IsExpanded}"
+																	  IsAnimationEnabled="{Binding RelativeSource={RelativeSource AncestorType=shared:UserPromptControl}, Path=IsAnimationEnabled}">
+										<StackPanel>
+											<TextBlock FontWeight="Bold" Text="Original File:" Margin="0,10,0,5" />
+											<StackPanel Margin="10,0,0,0">
+												<TextBlock Text="File size: 88 MB" />
+												<TextBlock Text="Last modified: October 26, 1985" />
+											</StackPanel>
+											<TextBlock FontWeight="Bold" Text="Replace With:" Margin="0,10,0,5" />
+											<StackPanel Margin="10,0,0,0">
+												<TextBlock Text="File size: 1.21 GB" />
+												<TextBlock Text="Last modified: October 21, 2015" />
+											</StackPanel>
+										</StackPanel>
+									</shared:AnimatedExpanderDecorator>
+								</StackPanel>
+							</shared:UserPromptControl.Content>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogExpandedInformationInContentClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Integrated help -->
+				<sampleBrowser:LabeledCardControl Label="Built-in support for a 'Help' button">
+					<StackPanel>
+						<shared:UserPromptControl Header="Built-in support for a 'Help' button" StandardButtons="OK,Help"
+												  Width="500" BorderThickness="1"
+												  HelpCommand="{Binding ElementName=root, Path=ContextualHelpCommand}"
+												  HelpCommandParameter="SampleIntegratedHelp"
+												  >
+							<shared:UserPromptControl.Content>
+								<TextBlock TextWrapping="Wrap" xml:space="preserve"><![CDATA[A built-in 'Help' button can be displayed prominently in the button tray that, when invoked, can handle displaying contextual help without closing the dialog.
+
+The 'Help' button is not supported by the WPF MessageBox API, but is supported by Windows Forms and the Win32 MessageBox API's.]]></TextBlock>
+							</shared:UserPromptControl.Content>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogHelpButtonClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom button content -->
+				<sampleBrowser:LabeledCardControl Label="Use any content for buttons">
+					<StackPanel>
+						<shared:UserPromptControl Header="Full support for custom button content"
+												  Content="Buttons can have any content, including images. This sample shows images used as content and demonstrates changing the horizontal alignment of all buttons from right (default) to center."
+												  DefaultResult="Cancel"
+												  ButtonItemsHorizontalAlignment="Center"
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.ButtonItems>
+								<x:Array Type="Button">
+									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
+										<StackPanel Orientation="Horizontal">
+											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,4,0" VerticalAlignment="Center" />
+											<AccessText VerticalAlignment="Center">_Left Image</AccessText>
+										</StackPanel>
+									</Button>
+									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
+										<StackPanel Orientation="Horizontal">
+											<AccessText VerticalAlignment="Center">_Right Image</AccessText>
+											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="4,0,0,0" VerticalAlignment="Center" />
+										</StackPanel>
+									</Button>
+									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
+										<StackPanel Orientation="Vertical">
+											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,0,4" HorizontalAlignment="Center" />
+											<AccessText HorizontalAlignment="Center">_Center Image</AccessText>
+										</StackPanel>
+									</Button>
+								</x:Array>
+							</shared:UserPromptControl.ButtonItems>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCustomButtonContentClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom button styles -->
+				<sampleBrowser:LabeledCardControl Label="Use any style for buttons">
+					<StackPanel>
+						<shared:UserPromptControl Header="Use any style for buttons"
+												  Content="This sample has applied a custom style to buttons that changes the overall shape and gives the Yes and No buttons a distinctive color scheme with non-default labels."
+												  ButtonStyle="{StaticResource CustomUserPromptButtonStyle}"
+												  StandardButtons="YesNo"
+												  Width="500" BorderThickness="1">
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogButtonStylesClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom button commands -->
+				<sampleBrowser:LabeledCardControl Label="Each button can have its own command">
+					<StackPanel>
+						<shared:UserPromptControl Header="Each button can have its own command"
+											Content="The default command for a button will notify the UserPromptControl of the response for that button, but you can define your own command instead. This sample demonstrates how to define custom commands by associating each button with a command that will confirm the response before submitting it."
+											Width="500 " BorderThickness="1">
+							<shared:UserPromptControl.ButtonItems>
+								<x:Array Type="sys:Object">
+									<Button Command="{StaticResource ConfirmationCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+											Content="_Yes"
+											shared:UserPromptControl.ButtonResult="Yes"/>
+									<Button Command="{StaticResource ConfirmationCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+											Content="_No"
+											shared:UserPromptControl.ButtonResult="No"/>
+								</x:Array>
+							</shared:UserPromptControl.ButtonItems>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCustomButtonCommandsClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Image adaption -->
+				<sampleBrowser:LabeledCardControl Label="Images can automatically adapt to dark themes or keep the original image">
+					<StackPanel>
+						<shared:UserPromptControl Header="Control which images adapt to dark theme"
+												  Width="500" BorderThickness="1">
+							<shared:UserPromptControl.Content>
+								<TextBlock TextWrapping="Wrap" xml:space="preserve"><![CDATA[This sample demonstrates how the ImageProvider can be used to control if images adapt to the dark theme. Adaption is turned on, by default, in this sample application, but images can individually opt in or out of adaption as desired.
+
+The content icon is configured to not change in dark themes, but the footer icon will.]]></TextBlock>
+							</shared:UserPromptControl.Content>
+							<shared:UserPromptControl.Footer>
+								<TextBlock>
+									Click 
+									<Hyperlink Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl">here</Hyperlink>
+									for more samples working with DynamicImage and ImageProvider.
+								</TextBlock>
+							</shared:UserPromptControl.Footer>
+							<shared:UserPromptControl.StatusImageSource>
+								<BitmapImage UriSource="/Images/Icons/Actipro.ico" shared:ImageProvider.CanAdapt="False" />
+							</shared:UserPromptControl.StatusImageSource>
+							<shared:UserPromptControl.FooterImageSource>
+								<BitmapImage UriSource="/Images/Icons/Help16.png" shared:ImageProvider.CanAdapt="True" />
+							</shared:UserPromptControl.FooterImageSource>
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogImageAdaptionClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Copy to clipboard -->
+				<sampleBrowser:LabeledCardControl Label="Copy details to the clipboard">
+					<StackPanel>
+						<shared:UserPromptControl Header="Copy details to the clipboard"
+												  Content="When displayed as a dialog, the Copy command (CTRL+C) can be invoked to copy the details of the prompt to the clipboard. This sample demonstrates the clipboard functionality and how to customize the text that is placed on the clipboard for various UI elements."
+												  StandardButtons="YesNoCancel"
+												  Footer="Click 'Show Sample as Dialog' button and then press 'CTRL+C'"
+												  FooterClipboardText="The 'Content' property is auto-converted to clipboard text, but the footer is configured to use this custom text instead."
+												  FooterImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Question}, Converter={StaticResource ImageKeyToImageSourceConverter}}"
+												  ExpandedInformationCollapsedHeaderText="Show more"
+												  ExpandedInformationExpandedHeaderText="Show less"
+												  ExpandedInformationContent="Clipboard text can be customized for 'Header', 'Content', 'Footer', 'ButtonItems', 'ExpandedInformationContent', and 'CheckBoxContent'."
+												  ExpandedInformationContentClipboardText="Use the 'HeaderClipboardText', 'ContentClipboardText', 'FooterClipboardText', 'ButtonItemsClipboardText', 'ExpandedInformationContentClipboardText', and 'CheckBoxContentClipboardText' properties to explicitly set clipboard text."
+												  IsExpanded="True"
+												  CheckBoxContent="This checked state is reflected on the clipboard"
+												  IsChecked="True"
+												  Width="500" BorderThickness="1">
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCopyDetailsToClipboardClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Cancel response -->
+				<sampleBrowser:LabeledCardControl Label="Programmatically cancel the response">
+					<StackPanel>
+						<shared:UserPromptControl Header="Programmatically cancel the response"
+												  Content="An event is raised when a response is triggered for a prompt. The result can be changed or set to NULL to cancel the response."
+												  StandardButtons="YesNo"
+												  IsChecked="True"
+												  CheckBoxContent="Check to cancel the response"
+												  Responding="OnUserPromptControlRespondingCancelWhenVerifieid"
+												  Width="500" BorderThickness="1">
+						</shared:UserPromptControl>
+						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCancelResponseClick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Customize appearance -->
+				<sampleBrowser:LabeledCardControl Label="Customize the appearance of a prompt based on the type of message displayed">
+					<StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<Button x:Name="customizedAppearanceInformationButton" Margin="5" Width="115" Height="100" Click="OnSampleShowDialogCustomAppearanceClick">
+								<StackPanel>
+									<shared:DynamicImage Width="32" Height="32" HorizontalAlignment="Center" Margin="5" Source="{Binding Source={x:Static shared:SharedImageSourceKeys.Information}, Converter={StaticResource ImageKeyToImageSourceConverter}}" />
+									<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Show Information Themed Dialog</TextBlock>
+								</StackPanel>
+							</Button>
+							<Button x:Name="customizedAppearanceQuestionButton" Margin="5" Width="115" Height="100" Click="OnSampleShowDialogCustomAppearanceClick">
+								<StackPanel>
+									<shared:DynamicImage Width="32" Height="32" HorizontalAlignment="Center" Margin="5" Source="{Binding Source={x:Static shared:SharedImageSourceKeys.Question}, Converter={StaticResource ImageKeyToImageSourceConverter}}" />
+									<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Show Question Themed Dialog</TextBlock>
+								</StackPanel>
+							</Button>
+							<Button x:Name="customizedAppearanceWarningButton" Margin="5" Width="115" Height="100" Click="OnSampleShowDialogCustomAppearanceClick">
+								<StackPanel>
+									<shared:DynamicImage Width="32" Height="32" HorizontalAlignment="Center" Margin="5" Source="{Binding Source={x:Static shared:SharedImageSourceKeys.Warning}, Converter={StaticResource ImageKeyToImageSourceConverter}}" />
+									<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Show Warning Themed Dialog</TextBlock>
+								</StackPanel>
+							</Button>
+							<Button x:Name="customizedAppearanceErrorButton" Margin="5" Width="115" Height="100" Click="OnSampleShowDialogCustomAppearanceClick">
+								<StackPanel>
+									<shared:DynamicImage Width="32" Height="32" HorizontalAlignment="Center" Margin="5" Source="{Binding Source={x:Static shared:SharedImageSourceKeys.Error}, Converter={StaticResource ImageKeyToImageSourceConverter}}" />
+									<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">Show Error Themed Dialog</TextBlock>
+								</StackPanel>
+							</Button>
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

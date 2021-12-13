@@ -16,61 +16,61 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(0, 0)));
+		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(0, 0), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Format"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Format"/> dependency property.</value>
-		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridSizeColumn), new PropertyMetadata("G"));
+		public static readonly DependencyProperty FormatProperty = DependencyProperty.Register("Format", typeof(string), typeof(DataGridSizeColumn), new PropertyMetadata("G", NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsNaNAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsNaNAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsNaNAllowedProperty = DependencyProperty.Register("IsNaNAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsNaNAllowedProperty = DependencyProperty.Register("IsNaNAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsNegativeInfinityAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsNegativeInfinityAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsNegativeInfinityAllowedProperty = DependencyProperty.Register("IsNegativeInfinityAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsNegativeInfinityAllowedProperty = DependencyProperty.Register("IsNegativeInfinityAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="IsPositiveInfinityAllowed"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="IsPositiveInfinityAllowed"/> dependency property.</value>
-		public static readonly DependencyProperty IsPositiveInfinityAllowedProperty = DependencyProperty.Register("IsPositiveInfinityAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty IsPositiveInfinityAllowedProperty = DependencyProperty.Register("IsPositiveInfinityAllowed", typeof(bool), typeof(DataGridSizeColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="LargeChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="LargeChange"/> dependency property.</value>
-		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(5, 5)));
+		public static readonly DependencyProperty LargeChangeProperty = DependencyProperty.Register("LargeChange", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(5, 5), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Maximum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Maximum"/> dependency property.</value>
-		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(100000, 100000)));
+		public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(100000, 100000), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="Minimum"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="Minimum"/> dependency property.</value>
-		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(0, 0)));
+		public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(0, 0), NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="RoundingDecimalPlace"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="RoundingDecimalPlace"/> dependency property.</value>
-		public static readonly DependencyProperty RoundingDecimalPlaceProperty = DependencyProperty.Register("RoundingDecimalPlace", typeof(int?), typeof(DataGridSizeColumn), new PropertyMetadata(8));
+		public static readonly DependencyProperty RoundingDecimalPlaceProperty = DependencyProperty.Register("RoundingDecimalPlace", typeof(int?), typeof(DataGridSizeColumn), new PropertyMetadata(8, NotifyPropertyChangeForRefreshContent));
 		
 		/// <summary>
 		/// Identifies the <see cref="SmallChange"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="SmallChange"/> dependency property.</value>
-		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(1, 1)));
+		public static readonly DependencyProperty SmallChangeProperty = DependencyProperty.Register("SmallChange", typeof(Size), typeof(DataGridSizeColumn), new PropertyMetadata(new Size(1, 1), NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

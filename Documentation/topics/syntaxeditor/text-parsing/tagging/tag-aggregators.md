@@ -29,4 +29,4 @@ When either of these methods are called, the tag aggregator examines all of the 
 
 ## Notification of Tag Changes
 
-Whenever one of the taggers being monitored by a tag aggregator raises an event that notifies its tags have changed, the tag aggregator bubbles the event up as well via the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagAggregator`1.TagsChanged) event.  Thus any listeners to this event can refresh themselves by requesting the updated tags in the affected range.
+Whenever one of the taggers being monitored by a tag aggregator raises an event that notifies its tags have changed, the tag aggregator bubbles the event up as well via the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagAggregatorBase.TagsChanged) event.  Thus any listeners to this event can refresh themselves by requesting the updated tags in the affected range.

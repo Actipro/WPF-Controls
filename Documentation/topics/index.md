@@ -79,9 +79,9 @@ The ShellTreeListBox control presents a shell folder hierarchy in a tree structu
 
 ![Screenshot](images/card-gauge.png)
 
-[Actipro Gauge](gauge/index.md) provides a complete set of circular, linear, and digital gauge controls, along with LED lights and toggle switches.  Each control is fully customizable and is packed with features.
+[Actipro Gauge](gauge/index.md) provides a complete set of circular, linear, and digital gauge controls, along with LED lights and flip switches.  Each control is fully customizable and is packed with features.
 
-The circular and linear gauge controls include support for tick marks, labels, pointers, ranges, and much more.  The digital gauge control can be used to display text using segmented or matrix characters.  The LED control mimics an LED light and presents simple states.  The toggle switch can be used in place of a WPF CheckBox, while providing the look and feel of a real-life switch.
+The circular and linear gauge controls include support for tick marks, labels, pointers, ranges, and much more.  The digital gauge control can be used to display text using segmented or matrix characters.  The LED control mimics an LED light and presents simple states.  The flip switch can be used in place of a WPF CheckBox, while providing the look and feel of a real-life switch.
 
 ### Charts
 

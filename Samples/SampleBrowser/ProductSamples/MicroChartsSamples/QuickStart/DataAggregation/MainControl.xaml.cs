@@ -149,5 +149,35 @@ namespace ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.DataAggre
 			}
 		}
 
+		/// <summary>
+		/// Gets the aggregation settings for the sample.
+		/// </summary>
+		/// <value>The aggregation settings for the sample.</value>
+		public static IEnumerable<AggregationSetting> SignedMaximumSettings {
+			get {
+				return new AggregationSetting[] {
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.05 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.10 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.25 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.50 },
+				};
+			}
+		}
+
+		/// <summary>
+		/// Gets the aggregation settings for the sample.
+		/// </summary>
+		/// <value>The aggregation settings for the sample.</value>
+		public static IEnumerable<AggregationSetting> SignedMinimumSettings {
+			get {
+				return new AggregationSetting[] {
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.05 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.10 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.25 },
+					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.50 },
+				};
+			}
+		}
+
 	}
 }

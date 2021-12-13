@@ -30,13 +30,23 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives {
 		/// <summary>
 		/// Gets the <c>DependencyProperty</c> associated with the specified name.
 		/// </summary>
+		/// <param name="ownerType">The owner type.</param>
 		/// <param name="propertyName">Name of the property.</param>
 		/// <returns>The <c>DependencyProperty</c> associated with the specified name.</returns>
-		private DependencyProperty GetProperty(string propertyName) {
-			var propertyDescriptor = DependencyPropertyDescriptor.FromName(propertyName, this.GetType(), this.GetType());
+		private DependencyProperty GetProperty(Type ownerType, string propertyName) {
+			var propertyDescriptor = DependencyPropertyDescriptor.FromName(propertyName, ownerType, ownerType);
 			return (propertyDescriptor != null ? propertyDescriptor.DependencyProperty : null);
 		}
-		
+
+		/// <summary>
+		/// Notifies that a property changed and the content needs to refresh.
+		/// </summary>
+		/// <param name="obj">The <see cref="DependencyObject"/> whose property is changed.</param>
+		/// <param name="e">A <see cref="DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
+		internal static void NotifyPropertyChangeForRefreshContent(DependencyObject obj, DependencyPropertyChangedEventArgs e) {
+			((DataGridBoundColumnBase)obj).NotifyPropertyChanged(e.Property.Name);
+		}
+
 		/// <summary>
 		/// Updates the source of the <c>BindingExpression</c> associated with the specified element/property.
 		/// </summary>
@@ -115,9 +125,12 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives {
 			if (cell != null) {
 				var targetElement = cell.Content as FrameworkElement;
 				if (targetElement != null) {
-					var property = this.GetProperty(propertyName);
-					if (property != null)
-						this.ApplyValue(property, targetElement, property);
+					var sourceProperty = this.GetProperty(this.GetType(), propertyName);
+					if (sourceProperty != null) {
+						var targetProperty = this.GetProperty(targetElement.GetType(), propertyName);
+						if (targetProperty != null)
+							this.ApplyValue(sourceProperty, targetElement, targetProperty);
+					}
 				}
 			}
 

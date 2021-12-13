@@ -3,6 +3,10 @@ using System.Windows;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CollapsedRegionsIntro {
 
 	/// <summary>

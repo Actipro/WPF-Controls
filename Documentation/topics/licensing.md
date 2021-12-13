@@ -78,6 +78,9 @@ public partial class App : Application {
 
 When using this licensing option, do NOT include any Actipro entries in your application's "licenses.licx" file.
 
+> [!NOTE]
+> It is important to protect your licensee and license key combination from decompilers.  We highly recommend using some form of string encryption on the "licensee" and "licenseKey" values passed into the `ActiproLicenseManager.RegisterLicense` method.  Many obfuscators include string encryption as an option, or you can use other custom logic to scramble/descramble the strings.
+
 ## Licensing Via a Licenses.licx File
 
 This licensing option is the classic style of implementing licensing in .NET Framework applications, and is what Actipro exclusively used prior to v2020.1.  Note that .NET Framework applications can either use this licensing option or the `RegisterLicense` call licensing option described above.
@@ -141,7 +144,7 @@ The contents of a "licenses.licx" file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro WPF control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=21.1.3.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 ### Notes on Build Machines When Using Licenses.licx Files

@@ -7,105 +7,59 @@ order: 14
 
 The [ActiproSoftware.Windows.Data](xref:ActiproSoftware.Windows.Data), [ActiproSoftware.Windows.Controls](xref:ActiproSoftware.Windows.Controls), [ActiproSoftware.Windows.Media](xref:ActiproSoftware.Windows.Media) namespaces contain numerous value converters that can be used in XAML for working with data.
 
-<table>
-<thead>
+## BooleanAndConverter Class
 
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
+The [BooleanAndConverter](xref:ActiproSoftware.Windows.Data.BooleanAndConverter) represents a multi-value converter that performs a logical AND (&&) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
 
+## BooleanNotConverter Class
 
-</thead>
-<tbody>
+The [BooleanNotConverter](xref:ActiproSoftware.Windows.Data.BooleanNotConverter) represents a value converter that performs a NOT (!) operation on a specified `Boolean` value.
 
-<tr>
-<td>
+## BooleanOrConverter Class
 
-[BooleanAndConverter](xref:ActiproSoftware.Windows.Data.BooleanAndConverter)
+The [BooleanOrConverter](xref:ActiproSoftware.Windows.Data.BooleanOrConverter) represents a multi-value converter that performs a logical OR (||) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
 
-</td>
-<td>
+## BorderChildClipConverter Class
 
-Represents a multi-value converter that performs a logical AND (&&) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
+The [BorderChildClipConverter](xref:ActiproSoftware.Windows.Media.BorderChildClipConverter) multi-value converter can be applied to a `Border.Child` element's `Clip` property to ensure the child element is properly clipped based on the `Border.CornerRadius` value.
 
-</td>
-</tr>
+This is useful when the `Border.Child` element or another element within its hierarchy has a background that renders into the portion of the parent `Border` that is normally rounded off by the corner radius.
 
-<tr>
-<td>
+Four values must be passed into the converter using a `MultiBinding`.  The first two are the width and height of the child element.  The third is the `BorderThickness` of the parent `Border`.  The fourth is the `CornerRadius` of the parent `Border`.
 
-[BooleanNotConverter](xref:ActiproSoftware.Windows.Data.BooleanNotConverter)
+This XAML shows an example of using the converter:
 
-</td>
-<td>
+```xaml
+<Border x:Name="outerBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="8">
+    <Grid>
+        <Grid.Clip>
+            <MultiBinding Converter="{StaticResource BorderClipConverter}">
+                <Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
+                <Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+                <Binding ElementName="outerBorder" Path="BorderThickness" />
+                <Binding ElementName="outerBorder" Path="CornerRadius" />
+            </MultiBinding>
+        </Grid.Clip>
+        <!-- Grid child controls here -->
+    </Grid>
+</Border>
+```
 
-Represents a value converter that performs a NOT (!) operation on a specified `Boolean` value.
+## BrushOpacityConverter Class
 
-</td>
-</tr>
+The [BrushOpacityConverter](xref:ActiproSoftware.Windows.Media.BrushOpacityConverter) represents a value converter that clones a specified `Brush` and updates the `Brush.Opacity` property based on the converter's parameter.
 
-<tr>
-<td>
+## CharacterCasingConverter Class
 
-[BooleanOrConverter](xref:ActiproSoftware.Windows.Data.BooleanOrConverter)
+The [CharacterCasingConverter](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter) represents a value converter that can be used to change a string's character casing to uppercase or lowercase.  Set the [CharacterCasingConverter](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter).[CharacterCasing](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter.CharacterCasing) property to either `Upper` (the default) or `Lower` to specify the casing mode.
 
-</td>
-<td>
+## CoalesceConverter Class
 
-Represents a multi-value converter that performs a logical OR (||) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
+The [CoalesceConverter](xref:ActiproSoftware.Windows.Data.CoalesceConverter) represents a value converter that returns the value if it is non-null; otherwise, the value of the converter's parameter.  This converter can also be used in a `MultiBinding`, in which case the first non-null value is returned; otherwise, the converter's parameter is returned.
 
-</td>
-</tr>
+## ColorInterpolationConverter Class
 
-<tr>
-<td>
-
-[BrushOpacityConverter](xref:ActiproSoftware.Windows.Media.BrushOpacityConverter)
-
-</td>
-<td>
-
-Represents a value converter that clones a specified `Brush` and updates the `Brush.Opacity` property based on the converter's parameter.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[CharacterCasingConverter](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter)
-
-</td>
-<td>
-
-Represents a value converter that can be used to change a string's character casing to uppercase or lowercase.  Set the [CharacterCasingConverter](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter).[CharacterCasing](xref:ActiproSoftware.Windows.Data.CharacterCasingConverter.CharacterCasing) property to either `Upper` (the default) or `Lower` to specify the casing mode.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[CoalesceConverter](xref:ActiproSoftware.Windows.Data.CoalesceConverter)
-
-</td>
-<td>
-
-Represents a value converter that returns the value if it is non-null; otherwise, the value of the converter's parameter.  This converter can also be used in a `MultiBinding`, in which case the first non-null value is returned; otherwise, the converter's parameter is returned.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[ColorInterpolationConverter](xref:ActiproSoftware.Windows.Media.ColorInterpolationConverter)
-
-</td>
-<td>
-
-This converter can be used in XAML bindings to return the linear `Color` value that is the specified percentage between the value of two `Color` objects.
+The [ColorInterpolationConverter](xref:ActiproSoftware.Windows.Media.ColorInterpolationConverter) can be used in XAML bindings to return the linear `Color` value that is the specified percentage between the value of two `Color` objects.
 
 The optional percentage is indicated in the converter parameter.  If not specified, the default of `0.5` (50%) will be used.
 
@@ -120,18 +74,9 @@ This XAML shows how to use the converter to find a color that is between the sys
 </MultiBinding>
 ```
 
-</td>
-</tr>
+## ConditionalConverter Class
 
-<tr>
-<td>
-
-[ConditionalConverter](xref:ActiproSoftware.Windows.Data.ConditionalConverter)
-
-</td>
-<td>
-
-Represents a value and multi-value converter that provides if-else functionality for `Binding` and `MultiBinding` objects.
+The [ConditionalConverter](xref:ActiproSoftware.Windows.Data.ConditionalConverter) represents a value and multi-value converter that provides if-else functionality for `Binding` and `MultiBinding` objects.
 
 This converter expects the following source values to be specified:
 
@@ -159,74 +104,29 @@ This sample code shows how to use the converter in a `Binding` in XAML:
 
 If the condition is not a boolean, other condition evaluation logic executes as follows.  Strings evaluate true if they are not null or empty.  Non-null objects also return true.
 
-</td>
-</tr>
+## CornerRadiusConverter Class
 
-<tr>
-<td>
-
-[CornerRadiusConverter](xref:ActiproSoftware.Windows.Data.CornerRadiusConverter)
-
-</td>
-<td>
-
-Represents a value converter that converts between a `CornerRadius` and a number.
+The [CornerRadiusConverter](xref:ActiproSoftware.Windows.Data.CornerRadiusConverter) represents a value converter that converts between a `CornerRadius` and a number.
 
 ```xaml
 ... Value="{Binding Path=Number, Converter={StaticResource CornerRadiusConverter}}" ...
 ```
 
-</td>
-</tr>
+## DelegateConverter Class
 
-<tr>
-<td>
+The [DelegateConverter](xref:ActiproSoftware.Windows.Data.DelegateConverter) represents a value converter that uses delegates to perform the underlying conversion to/from the source.  Set the [ConvertCallback](xref:ActiproSoftware.Windows.Data.DelegateConverter.ConvertCallback) and [ConvertBackCallback](xref:ActiproSoftware.Windows.Data.DelegateConverter.ConvertBackCallback) properties to the delegates to use for conversion and back conversion respectively.
 
-[DelegateConverter](xref:ActiproSoftware.Windows.Data.DelegateConverter)
+## DurationToMillisecondConverter Class
 
-</td>
-<td>
+The [DurationToMillisecondConverter](xref:ActiproSoftware.Windows.Data.DurationToMillisecondConverter) represents a value converter that converts between a `Duration` and a number of milliseconds.
 
-Represents a value converter that uses delegates to perform the underlying conversion to/from the source.  Set the [ConvertCallback](xref:ActiproSoftware.Windows.Data.DelegateConverter.ConvertCallback) and [ConvertBackCallback](xref:ActiproSoftware.Windows.Data.DelegateConverter.ConvertBackCallback) properties to the delegates to use for conversion and back conversion respectively.
+## EnumDescriptionConverter Class
 
-</td>
-</tr>
+The [EnumDescriptionConverter](xref:ActiproSoftware.Windows.Data.EnumDescriptionConverter) represents a value converter that uses the `DescriptionAttribute` for the string representation of the enumeration values, when available.
 
-<tr>
-<td>
+## ImageConverter Class
 
-[DurationToMillisecondConverter](xref:ActiproSoftware.Windows.Data.DurationToMillisecondConverter)
-
-</td>
-<td>
-
-Represents a value converter that converts between a `Duration` and a number of milliseconds.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[EnumDescriptionConverter](xref:ActiproSoftware.Windows.Data.EnumDescriptionConverter)
-
-</td>
-<td>
-
-Represents a value converter that uses the `DescriptionAttribute` for the string representation of the enumeration values, when available.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[ImageConverter](xref:ActiproSoftware.Windows.Controls.ImageConverter)
-
-</td>
-<td>
-
-Represents a value converter that returns a new [DynamicImage](windows-controls/dynamicimage.md) (inherits `Image`) control instance created using a specified URI or `BitmapSource`.
+The [ImageConverter](xref:ActiproSoftware.Windows.Controls.ImageConverter) represents a value converter that returns a new [DynamicImage](windows-controls/dynamicimage.md) (inherits `Image`) control instance created using a specified URI or `BitmapSource`.
 
 This converter expects the source value to be a `Uri`, a URI `String`, or a `BitmapSource` that can be used to create a new [DynamicImage](windows-controls/dynamicimage.md) instance. A prefix can be defined in [UriPrefix](xref:ActiproSoftware.Windows.Controls.ImageConverter.UriPrefix) which will be prepended to all source values of type `String` before the [DynamicImage](windows-controls/dynamicimage.md) is created.
 
@@ -234,118 +134,57 @@ The `Width` and `Height` properties can optionally be set to set the related pro
 
 The [ImageProvider](xref:ActiproSoftware.Windows.Controls.ImageConverter.ImageProvider) property can optionally be set to a specific [ImageProvider](../themes/image-provider.md) to assign to the `ImageSource` created by the converter.  Leave the property its default value of `null` to use the static default [ImageProvider](../themes/image-provider.md) instance.
 
-</td>
-</tr>
+## ImageKeyToImageSourceConverter Class
 
-<tr>
-<td>
+The [ImageKeyToImageSourceConverter](xref:ActiproSoftware.Windows.Media.ImageKeyToImageSourceConverter) represents a value converter that uses an [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider) to lookup an `ImageSource` associated with a specified key.
 
-[InverseConverter](xref:ActiproSoftware.Windows.Data.InverseConverter)
+This converter expects the source value to be a `String` that is a key recognized by [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider).
 
-</td>
-<td>
+Optionally set the converter parameter to a specific instance of [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider). Otherwise, the instance defined by [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider).[Default](xref:ActiproSoftware.Windows.Media.ImageProvider.Default) will be used.
 
-Represents a value converter that inverts another value converter.  Set an instance of the `IValueConverter` to invert in the [Converter](xref:ActiproSoftware.Windows.Data.InverseConverter.Converter) property.
+```xaml
+<... ImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Warning}, Converter={StaticResource ImageKeyToImageSourceConverter}}" ...
+```
 
-</td>
-</tr>
+## InverseConverter Class
 
-<tr>
-<td>
+The [InverseConverter](xref:ActiproSoftware.Windows.Data.InverseConverter) represents a value converter that inverts another value converter.  Set an instance of the `IValueConverter` to invert in the [Converter](xref:ActiproSoftware.Windows.Data.InverseConverter.Converter) property.
 
-[IsEnumFlagSetConverter](xref:ActiproSoftware.Windows.Data.IsEnumFlagSetConverter)
+## IsEnumFlagSetConverter Class
 
-</td>
-<td>Represents a value converter that returns whether the specified enumeration value has the flag, specified by the converter's parameter, set.</td>
-</tr>
+The [IsEnumFlagSetConverter](xref:ActiproSoftware.Windows.Data.IsEnumFlagSetConverter) represents a value converter that returns whether the specified enumeration value has the flag, specified by the converter's parameter, set.
 
-<tr>
-<td>
+## IsNullOrEmptyConverter Class
 
-[IsNullOrEmptyConverter](xref:ActiproSoftware.Windows.Data.IsNullOrEmptyConverter)
+The [IsNullOrEmptyConverter](xref:ActiproSoftware.Windows.Data.IsNullOrEmptyConverter) represents a value converter that returns whether the specified value is `null`, and if it is a string, also if it is `null` or empty.
 
-</td>
-<td>
+## IsTypeConverter Class
 
-Represents a value converter that returns whether the specified value is `null`, and if it is a string, also if it is `null` or empty.
+The [IsTypeConverter](xref:ActiproSoftware.Windows.Data.IsTypeConverter) represents a value converter that returns whether the specified object is the `Type` indicated in the converter's parameter.
 
-</td>
-</tr>
+## MultiplicationConverter Class
 
-<tr>
-<td>
+The [MultiplicationConverter](xref:ActiproSoftware.Windows.Data.MultiplicationConverter) represents a single and multi-value converter that multiplies all the source values provided, and optionally the converter's parameter.
 
-[IsTypeConverter](xref:ActiproSoftware.Windows.Data.IsTypeConverter)
+## NoOpConverter Class
 
-</td>
-<td>
-
-Represents a value converter that returns whether the specified object is the `Type` indicated in the converter's parameter.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[MultiplicationConverter](xref:ActiproSoftware.Windows.Data.MultiplicationConverter)
-
-</td>
-<td>Represents a single and multi-value converter that multiplies all the source values provided, and optionally the converter's parameter.</td>
-</tr>
-
-<tr>
-<td>
-
-[NoOpConverter](xref:ActiproSoftware.Windows.Data.NoOpConverter)
-
-</td>
-<td>
-
-Represents a value converter that does not alter the value in any way (e.g. no operation).
+The [NoOpConverter](xref:ActiproSoftware.Windows.Data.NoOpConverter) represents a value converter that does not alter the value in any way (e.g. no operation).
 
 This converter can be used to bypass an issue that arises from an optimization present in the WPF binding system.
 
-</td>
-</tr>
+## ParallaxConverter Class
 
-<tr>
-<td>
-
-[ParallaxConverter](xref:ActiproSoftware.Windows.Data.ParallaxConverter)
-
-</td>
-<td>
-
-Represents a value converter that can be used to create a parallax background scrolling effect.
+The [ParallaxConverter](xref:ActiproSoftware.Windows.Data.ParallaxConverter) represents a value converter that can be used to create a parallax background scrolling effect.
 
 Use the converter in a binding on a background element's `RenderTransform`'s `TranslateTransform.X` or `Y` property, and bind to a related `ScrollViewer.HorizontalOffset` or `VerticalOffset` property.
 
-</td>
-</tr>
+## PercentageConverter Class
 
-<tr>
-<td>
+The [PercentageConverter](xref:ActiproSoftware.Windows.Data.PercentageConverter) represents a value converter that converts between a number and a percentage.  The percentage is simply the number multiplied by `100`.
 
-[PercentageConverter](xref:ActiproSoftware.Windows.Data.PercentageConverter)
+## StringFormatConverter Class
 
-</td>
-<td>
-
-Represents a value converter that converts between a number and a percentage.  The percentage is simply the number multiplied by `100`.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[StringFormatConverter](xref:ActiproSoftware.Windows.Data.StringFormatConverter)
-
-</td>
-<td>
-
-Represents a multi-value converter that provides `String.Format` functionality for both simple `Binding` and `MultiBinding` objects.
+The [StringFormatConverter](xref:ActiproSoftware.Windows.Data.StringFormatConverter) represents a multi-value converter that provides `String.Format` functionality for both simple `Binding` and `MultiBinding` objects.
 
 Pass the format string in the converter's parameter.  Since `{` characters are normally interpreted as markup extension starts, you can escape them by placing `{}` before the format string like this:
 
@@ -353,18 +192,9 @@ Pass the format string in the converter's parameter.  Since `{` characters are n
 <MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}{0} of {1}">...
 ```
 
-</td>
-</tr>
+## ThicknessConverter Class
 
-<tr>
-<td>
-
-[ThicknessConverter](xref:ActiproSoftware.Windows.Data.ThicknessConverter)
-
-</td>
-<td>
-
-Represents a value converter that converts between a `Thickness` and a number.
+The [ThicknessConverter](xref:ActiproSoftware.Windows.Data.ThicknessConverter) represents a value converter that converts between a `Thickness` and a number.
 
 By default, the `Thickness` returned will have all four sides (`Thickness.Left`, `Thickness.Top`, `Thickness.Right`, and `Thickness.Bottom`) set to the specified number. An optional parameter of type [Sides](xref:ActiproSoftware.Windows.Controls.Sides) can be specified, which can be used to customize the sides that are set.
 
@@ -376,66 +206,28 @@ By default, the `Thickness` returned will have all four sides (`Thickness.Left`,
 ... Value="{Binding Path=Number, Converter={StaticResource ThicknessConverter}, ConverterParameter='Left,Right'}" ...
 ```
 
-</td>
-</tr>
+## TypeNameConverter Class
 
-<tr>
-<td>
+The [TypeNameConverter](xref:ActiproSoftware.Windows.Data.TypeNameConverter) represents a value converter that converts a value to a `String` of its short type name.
 
-[TypeNameConverter](xref:ActiproSoftware.Windows.Data.TypeNameConverter)
+## UnitToDoubleConverter Class
 
-</td>
-<td>
-
-Represents a value converter that converts a value to a `String` of its short type name.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[UnitToDoubleConverter](xref:ActiproSoftware.Windows.Data.UnitToDoubleConverter)
-
-</td>
-<td>
-
-Represents a value converter that converts between a [Unit](xref:ActiproSoftware.Windows.Unit) and a `Double`.
+The [UnitToDoubleConverter](xref:ActiproSoftware.Windows.Data.UnitToDoubleConverter) represents a value converter that converts between a [Unit](xref:ActiproSoftware.Windows.Unit) and a `Double`.
 
 This converter needs additional information in order to convert a `Double` into a [Unit](xref:ActiproSoftware.Windows.Unit).  Specifically, it needs to the know whether the value is measured in pixels or as a percentage. To accommodate this need, the property [Type](xref:ActiproSoftware.Windows.Data.UnitToDoubleConverter.Type) is used to specify the type of measurement.
 
-</td>
-</tr>
+## UriConverter Class
 
-<tr>
-<td>
-
-[UriConverter](xref:ActiproSoftware.Windows.Data.UriConverter)
-
-</td>
-<td>
-
-Represents a value converter that returns a new `Uri` instance created using the specified URI string combined with an optional URI prefix.
+The [UriConverter](xref:ActiproSoftware.Windows.Data.UriConverter) represents a value converter that returns a new `Uri` instance created using the specified URI string combined with an optional URI prefix.
 
 This converter expects the source value to be a `String` which, when combined with the [UriPrefix](xref:ActiproSoftware.Windows.Data.UriConverter.UriPrefix), can be used to create a new `Uri` instance.
 
-</td>
-</tr>
+## UserPromptUIDialogButtonTextConverter Class
 
-<tr>
-<td>
+The [UserPromptUIDialogButtonTextConverter](xref:ActiproSoftware.Windows.Controls.UserPromptUIDialogButtonTextConverter) represents a value converter that translates a [UserPromptStandardResult](xref:ActiproSoftware.Windows.Controls.UserPromptStandardResult) into the equivalent text which can describe that button in a user interface dialog.
 
-[ZoomLevelToTextFormattingModeConverter](xref:ActiproSoftware.Windows.Data.ZoomLevelToTextFormattingModeConverter)
+## ZoomLevelToTextFormattingModeConverter Class
 
-</td>
-<td>
-
-Represents a value converter that alters the `TextFormattingMode` based on the specified zoom level.
+The [ZoomLevelToTextFormattingModeConverter](xref:ActiproSoftware.Windows.Data.ZoomLevelToTextFormattingModeConverter) represents a value converter that alters the `TextFormattingMode` based on the specified zoom level.
 
 `Display` mode is used when the zoom level is `1.0`. `Ideal` mode is used when the zoom level is increased.
-
-</td>
-</tr>
-
-</tbody>
-</table>

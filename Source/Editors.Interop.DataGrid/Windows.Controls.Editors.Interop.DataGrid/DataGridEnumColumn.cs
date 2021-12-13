@@ -17,19 +17,19 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Identifies the <see cref="EnumSortComparer"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="EnumSortComparer"/> dependency property.</value>
-		public static readonly DependencyProperty EnumSortComparerProperty = DependencyProperty.Register("EnumSortComparer", typeof(IComparer<Enum>), typeof(DataGridEnumColumn), new PropertyMetadata(null));
+		public static readonly DependencyProperty EnumSortComparerProperty = DependencyProperty.Register("EnumSortComparer", typeof(IComparer<Enum>), typeof(DataGridEnumColumn), new PropertyMetadata(null, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="EnumType"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="EnumType"/> dependency property.</value>
-		public static readonly DependencyProperty EnumTypeProperty = DependencyProperty.Register("EnumType", typeof(Type), typeof(DataGridEnumColumn), new PropertyMetadata(null));
+		public static readonly DependencyProperty EnumTypeProperty = DependencyProperty.Register("EnumType", typeof(Type), typeof(DataGridEnumColumn), new PropertyMetadata(null, NotifyPropertyChangeForRefreshContent));
 
 		/// <summary>
 		/// Identifies the <see cref="UseDisplayAttributes"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="UseDisplayAttributes"/> dependency property.</value>
-		public static readonly DependencyProperty UseDisplayAttributesProperty = DependencyProperty.Register("UseDisplayAttributes", typeof(bool), typeof(DataGridEnumColumn), new PropertyMetadata(false));
+		public static readonly DependencyProperty UseDisplayAttributesProperty = DependencyProperty.Register("UseDisplayAttributes", typeof(bool), typeof(DataGridEnumColumn), new PropertyMetadata(false, NotifyPropertyChangeForRefreshContent));
 		
 		#endregion
 

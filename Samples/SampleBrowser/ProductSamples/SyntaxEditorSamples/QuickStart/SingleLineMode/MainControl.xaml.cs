@@ -22,8 +22,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SingleLi
 		public MainControl() {
 			InitializeComponent();
 
-			// Load a language from a language definition
+			// Load languages from language definition files
 			cSharpEditor.Document.Language = SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
+			formulaEditor.Document.Language = SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CustomFormula.langdef");
 
 			// For the HTML text box that uses the Web Languages Add-on, the following code is needed:
 
@@ -33,7 +34,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SingleLi
 			//   application OnStartup code, and add related cleanup in your application OnExit code.  
 			//   These steps are essential to having the add-on perform well.
 			//
-			
+
 			// Register the schema resolver service with the XML language (needed to support IntelliPrompt for HTML)
 			XmlSchemaResolver resolver = new XmlSchemaResolver();
 			resolver.DefaultNamespace = "http://www.w3.org/1999/xhtml";
