@@ -5,6 +5,10 @@ using System.Windows.Media;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CollapsedRegionsAdvanced {
 
 	/// <summary>

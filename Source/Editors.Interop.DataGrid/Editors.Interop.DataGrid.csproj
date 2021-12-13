@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+		<TargetFrameworks>net452;netcoreapp3.1;net5.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 
 		<AssemblyName>ActiproSoftware.Editors.Interop.DataGrid.Wpf</AssemblyName>
@@ -10,9 +10,9 @@
 		<Description>Provides interoperability between Actipro's WPF Editors product and the WPF DataGrid.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML Editors DataGrid</PackageTags>
 
-		<AssemblyVersion>21.1.3.0</AssemblyVersion>
-		<InformationalVersion>21.1.3.0</InformationalVersion>
-		<PackageVersion>21.1.3.0</PackageVersion>
+		<AssemblyVersion>22.1.0.0</AssemblyVersion>
+		<InformationalVersion>22.1.0.0</InformationalVersion>
+		<PackageVersion>22.1.0.0</PackageVersion>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -37,7 +37,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="21.1.3" />
+	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="21.1.4" />
 	</ItemGroup>
 
 </Project>

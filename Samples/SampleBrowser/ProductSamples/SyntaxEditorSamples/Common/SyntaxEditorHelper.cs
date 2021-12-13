@@ -209,10 +209,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 				new DotNetClassificationTypeProvider().RegisterAll();
 				new JavaScriptClassificationTypeProvider().RegisterAll();
 
-				// Load HTML, Markdown, and XAML languages just so their custom classification types get re-registered
+				// Load HTML, Markdown, XAML, and Formula languages just so their custom classification types get re-registered
 				LoadLanguageDefinitionFromResourceStream("Html.langdef");
 				LoadLanguageDefinitionFromResourceStream("Markdown.langdef");
 				LoadLanguageDefinitionFromResourceStream("Xaml.langdef");
+				LoadLanguageDefinitionFromResourceStream("CustomFormula.langdef");
 				// NOTE: Any other languages that are active would need to reload to ensure their custom classification types get re-registered as well
 
 				if (isDarkThemeActive) {

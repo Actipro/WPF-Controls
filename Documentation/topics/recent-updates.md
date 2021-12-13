@@ -9,6 +9,24 @@ WPF Studio's documentation has frequent updates so this topic is the best place 
 
 If you are looking for a list of recently-added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v22.1.0
+
+- **Charts:** Added documentation for new [AggregationKind](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind).[SignedMaximum](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind.SignedMaximum) and [AggregationKind](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind).[SignedMinimum](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind.SignedMinimum) options to the [XY Chart Data Aggregation](charts/xy-chart-features/data-aggregation.md) topic.
+
+- **Editors:** Added the [Converting to v22.1](conversion/converting-to-v22-1.md) topic with information on [PartEditBoxCommitTriggers](xref:ActiproSoftware.Windows.Controls.Editors.PartEditBoxCommitTriggers) enumeration changes.
+
+- **MicroCharts:** Added documentation for new [MicroAggregationKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind).[SignedMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind.SignedMaximum) and [MicroAggregationKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind).[SignedMinimum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind.SignedMinimum) options to the [Data Aggregation](microcharts/data-sources/data-aggregation.md) topic.
+
+- **SyntaxEditor:** Updated the [Drag and Drop](syntaxeditor/user-interface/input-output/drag-drop.md) topic with additional details about supported text formats, code samples, and customizing operations.
+
+- **SyntaxEditor Python Language Add-on:** Added the [Converting to v22.1](conversion/converting-to-v22-1.md) topic with information on API changes related to dropping support for the legacy Python v2.x syntax.
+
+- **SyntaxEditor Web Languages Add-on:** Updated the [JSON Getting Started](syntaxeditor/web-languages-addon/json/getting-started.md) topic with information on the new syntax language constructor overload that can provide optional comment support.
+
+- **Themes:** Updated the [WindowChrome](themes/windowchrome.md) topic with information on the new corner kind option.
+
+- **Shared:** Added documentation for the new [ToggleSwitch](shared/windows-controls/toggle-switch.md) and [User Prompt](shared/windows-controls/user-prompt.md) controls.
+
 ## Updates for v21.1.3
 
 - **SyntaxEditor:** Updated the [Word Wrap](syntaxeditor/user-interface/editor-view/word-wrap.md) topic with information on a new event and how to ensure the horizontal `ScrollBar` remains hidden when word wrap is enabled.

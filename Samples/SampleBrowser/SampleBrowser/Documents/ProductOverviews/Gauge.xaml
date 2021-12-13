@@ -36,7 +36,7 @@
 				</StackPanel>
 
 				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
-					Gauge contains a complete set of circular, linear, and digital gauge controls, along with LED lights and toggle switches.
+					Gauge contains a complete set of circular, linear, and digital gauge controls, along with LED lights and flip switches.
 				</TextBlock>
 				
 				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">

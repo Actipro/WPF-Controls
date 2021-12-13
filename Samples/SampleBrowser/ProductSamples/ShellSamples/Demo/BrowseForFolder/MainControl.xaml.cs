@@ -1,6 +1,10 @@
 ﻿using ActiproSoftware.Windows.Controls.Shell;
 using System.Windows;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.ShellSamples.Demo.BrowseForFolder {
 
 	/// <summary>

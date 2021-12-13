@@ -11,6 +11,10 @@ using ActiproSoftware.Windows.Controls.Ribbon.Customization;
 using ActiproSoftware.Windows.Controls.Ribbon.UI;
 using ActiproSoftware.Windows.Media;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 
 	/// <summary>

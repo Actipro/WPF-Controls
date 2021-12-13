@@ -12,6 +12,10 @@ using System.Windows.Media.Imaging;
 using ActiproSoftware.Windows.Input;
 #endif
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxChecking {
 	
 	/// <summary>

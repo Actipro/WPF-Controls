@@ -15,6 +15,10 @@ using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.EditActions;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.EditActions {
 
 	/// <summary>

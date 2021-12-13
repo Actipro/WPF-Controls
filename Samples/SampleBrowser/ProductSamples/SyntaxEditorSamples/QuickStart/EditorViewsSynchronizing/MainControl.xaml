@@ -1,0 +1,77 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.EditorViewsSynchronizing.MainControl"
+						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+						 xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+						 >
+    
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<editor:SyntaxEditor x:Name="leftEditor">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[------------------------------------------------------------------------------------------------------------------------
+This sample shows two different editors sharing the
+same document and keeping their views synchronized.
+
+Things to try:
+- Vertical scrolling
+- Horizontal scrolling
+- Add splitter
+- Move splitter
+- Remove splitter
+- Zoom in/out (CTRL + MouseWheel)
+------------------------------------------------------------------------------------------------------------------------
+				
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+aliqua. Sed blandit libero volutpat sed cras. Donec adipiscing tristique risus nec feugiat in. Adipiscing elit
+pellentesque habitant morbi. Mi sit amet mauris commodo. Nam at lectus urna duis convallis convallis tellus id. Aliquet
+nec ullamcorper sit amet risus nullam eget. Blandit turpis cursus in hac habitasse platea. Sagittis vitae et leo duis ut
+diam quam nulla porttitor. Pharetra pharetra massa massa ultricies mi quis. In ante metus dictum at. Vitae aliquet nec
+ullamcorper sit. Faucibus turpis in eu mi bibendum neque egestas. Mattis rhoncus urna neque viverra justo nec ultrices
+dui. Ultrices in iaculis nunc sed augue. Pulvinar sapien et ligula ullamcorper. Risus viverra adipiscing at in tellus
+integer feugiat scelerisque. Ullamcorper sit amet risus nullam eget felis eget nunc. Vestibulum rhoncus est pellentesque
+elit ullamcorper dignissim.
+
+Lacus viverra vitae congue eu consequat ac felis. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Viverra orci sagittis eu volutpat odio facilisis mauris sit
+amet. Fringilla urna porttitor rhoncus dolor. Diam volutpat commodo sed egestas. Sed elementum tempus egestas sed.
+Placerat orci nulla pellentesque dignissim enim sit amet venenatis urna. Ultricies integer quis auctor elit. Egestas erat
+imperdiet sed euismod nisi porta lorem. Sollicitudin nibh sit amet commodo. Orci sagittis eu volutpat odio facilisis
+mauris sit. Proin nibh nisl condimentum id venenatis. Vitae purus faucibus ornare suspendisse sed nisi lacus. Diam ut
+venenatis tellus in metus vulputate eu scelerisque. Tortor posuere ac ut consequat semper.
+
+Tempor commodo ullamcorper a lacus vestibulum sed. Ut aliquam purus sit amet luctus venenatis. Turpis massa sed
+elementum tempus egestas sed sed risus pretium. At lectus urna duis convallis convallis. Sit amet consectetur adipiscing
+elit ut aliquam. Sit amet est placerat in egestas. Magna fermentum iaculis eu non diam phasellus vestibulum lorem. Urna
+nec tincidunt praesent semper feugiat nibh sed pulvinar. Est sit amet facilisis magna etiam tempor. Ut eu sem integer
+vitae justo eget magna. Id ornare arcu odio ut sem nulla. Diam volutpat commodo sed egestas. Quisque egestas diam in arcu
+cursus euismod quis viverra. Eu feugiat pretium nibh ipsum. Scelerisque viverra mauris in aliquam sem fringilla ut morbi
+tincidunt. Interdum velit laoreet id donec ultrices. Enim praesent elementum facilisis leo vel fringilla est ullamcorper.
+Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt.
+
+Blandit cursus risus at ultrices mi tempus imperdiet nulla. Urna nec tincidunt praesent semper feugiat nibh. Pellentesque
+massa placerat duis ultricies lacus sed turpis tincidunt id. Egestas pretium aenean pharetra magna ac placerat vestibulum
+lectus. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur. Feugiat nisl pretium fusce id velit ut
+tortor pretium. Fermentum dui faucibus in ornare. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet
+commodo. Sagittis orci a scelerisque purus semper eget duis. Sit amet mauris commodo quis imperdiet massa tincidunt.
+Mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Ac placerat vestibulum lectus mauris ultrices.
+Bibendum enim facilisis gravida neque convallis.
+
+Ac orci phasellus egestas tellus rutrum. Quisque non tellus orci ac auctor augue mauris. Aliquet risus feugiat in ante
+metus dictum. In mollis nunc sed id. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Elementum nisi
+quis eleifend quam adipiscing vitae proin. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Urna molestie at
+elementum eu facilisis. Amet mattis vulputate enim nulla aliquet. Dui id ornare arcu odio ut sem nulla. Quis enim
+lobortis scelerisque fermentum dui faucibus. Egestas sed sed risus pretium quam vulputate dignissim. In fermentum et
+sollicitudin ac. Euismod quis viverra nibh cras pulvinar mattis nunc. Feugiat nisl pretium fusce id. Sagittis vitae et
+leo duis ut diam. Proin gravida hendrerit lectus a.]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+
+		<editor:SyntaxEditor x:Name="rightEditor" Grid.Column="2"
+							 Document="{Binding ElementName=document}" />
+	</Grid>
+
+</UserControl>

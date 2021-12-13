@@ -3,6 +3,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Resources;
 using System.Globalization;
 using System.Windows;
@@ -21,6 +22,10 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
+
+#if NET
+[assembly: SupportedOSPlatform("windows")]
+#endif
 
 //In order to begin building localizable applications, set 
 //<UICulture>CultureYouAreCodingWith</UICulture> in your .csproj file
@@ -59,5 +64,5 @@ using System.Windows;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("21.1.3.0")]
-[assembly: AssemblyInformationalVersion("21.1.3.0 - 20210709")]
+[assembly: AssemblyVersion("22.1.0.0")]
+[assembly: AssemblyInformationalVersion("22.1.0.0 - 20210908")]

@@ -8,6 +8,10 @@ using System.Windows.Interop;
 using RibbonControls = ActiproSoftware.Windows.Controls.Ribbon.Controls;
 using ActiproSoftware.Windows.Controls.Ribbon.UI;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.ScreenTips {
 
 	/// <summary>

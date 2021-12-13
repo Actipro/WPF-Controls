@@ -13,6 +13,10 @@ using ActiproSoftware.Text.Parsing;
 using ActiproSoftware.Text.Parsing.LLParser;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.PythonAddonPythonEditor {
 
 	/// <summary>
@@ -40,7 +44,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.PythonAddonPyt
 			//   application OnExit code.  These steps are essential to having the add-on perform well.
 			//
 			
-			versionComboBox.SelectedIndex = 0;
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -199,22 +202,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.PythonAddonPyt
 				catch (ArgumentException) {}
 				catch (IOException) {}
 				catch (SecurityException) {}
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the selection changes.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="SelectionChangedEventArgs"/> that contains the event data.</param>
-		private void OnVersionComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e) {
-			switch (versionComboBox.SelectedIndex) {
-				case 0:
-					codeEditor.Document.Language = new PythonSyntaxLanguage(PythonVersion.Version3);
-					break;
-				case 1:
-					codeEditor.Document.Language = new PythonSyntaxLanguage(PythonVersion.Version2);
-					break;
 			}
 		}
 

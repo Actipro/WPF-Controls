@@ -3,6 +3,10 @@ using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsBookmark {
 
 	/// <summary>

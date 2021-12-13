@@ -13,6 +13,10 @@ using ActiproSoftware.Windows.DocumentManagement;
 using ActiproSoftware.Windows.Media;
 using ActiproSoftware.ProductSamples.RibbonSamples.Common;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.BackstageIntro {
 
 	/// <summary>

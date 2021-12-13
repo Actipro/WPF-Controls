@@ -21,6 +21,10 @@ using ActiproSoftware.Windows.Media;
 using ActiproSoftware.ProductSamples.RibbonSamples.Common;
 using ActiproSoftware.Windows.Themes;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 
 	/// <summary>

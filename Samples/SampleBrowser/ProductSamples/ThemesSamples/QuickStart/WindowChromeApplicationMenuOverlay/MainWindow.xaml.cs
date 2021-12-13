@@ -3,6 +3,10 @@ using System.Windows;
 using System.Windows.Input;
 using ActiproSoftware.Windows.Themes;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.WindowChromeApplicationMenuOverlay {
 
 	/// <summary>

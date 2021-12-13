@@ -10,6 +10,10 @@ using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation;
 using AstImpl = ActiproSoftware.Text.Languages.DotNet.Ast.Implementation;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineCodeLens {
 
     /// <summary>

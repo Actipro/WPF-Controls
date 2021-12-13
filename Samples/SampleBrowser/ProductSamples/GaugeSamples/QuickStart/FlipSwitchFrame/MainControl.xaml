@@ -50,7 +50,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The ToggleSwitch control includes several built-in frames to choose from, each with a special effect.
+					The FlipSwitch control includes several built-in frames to choose from, each with a special effect.
 					The various colors and effects can be customized as desired, or you can render your own frame.
 					<LineBreak /><LineBreak />
 					<Italic>Note: Special effects are only available when a solid color brush is used.</Italic>
@@ -66,25 +66,25 @@
 	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}">
 		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
 
-			<gauge:ToggleSwitch x:Name="switch" Width="200" Height="200" SwitchType="Circular" IsThreeState="True" HorizontalAlignment="Center">
-				<gauge:ToggleSwitch.BackgroundGeometry>
+			<gauge:FlipSwitch x:Name="switch" Width="200" Height="200" SwitchType="Circular" IsThreeState="True" HorizontalAlignment="Center">
+				<gauge:FlipSwitch.BackgroundGeometry>
 					<Geometry>M 1,0 L 2,0 L 3,1 L 3,2 L 2,3 L 1,3 L 0,2 L 0,1 Z</Geometry>
-				</gauge:ToggleSwitch.BackgroundGeometry>
-				<gauge:ToggleSwitch.RimGeometry>
+				</gauge:FlipSwitch.BackgroundGeometry>
+				<gauge:FlipSwitch.RimGeometry>
 					<Geometry>M 1,0 L 2,0 L 3,1 L 3,2 L 2,3 L 1,3 L 0,2 L 0,1 Z</Geometry>
-				</gauge:ToggleSwitch.RimGeometry>
+				</gauge:FlipSwitch.RimGeometry>
 
-				<gauge:ToggleSwitch.LayoutTransform>
+				<gauge:FlipSwitch.LayoutTransform>
 					<ScaleTransform ScaleX="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=switch, Path=(themes:ThemeProperties.ZoomLevel)}" />
-				</gauge:ToggleSwitch.LayoutTransform>
+				</gauge:FlipSwitch.LayoutTransform>
 
-				<gauge:ToggleSwitch.Items>
+				<gauge:FlipSwitch.Items>
 					<TextBlock x:Name="textBlock" gauge:CircularGauge.Y="-85" Text="ON" FontWeight="Bold"
 							Foreground="#AAAAAAAA" FontSize="17" />
 					<TextBlock gauge:CircularGauge.Y="83" Text="OFF" FontWeight="Bold" Foreground="#AAAAAAAA"
 							FontSize="17" />
-				</gauge:ToggleSwitch.Items>
-			</gauge:ToggleSwitch>
+				</gauge:FlipSwitch.Items>
+			</gauge:FlipSwitch>
 
 		</StackPanel>
 	</ScrollViewer>

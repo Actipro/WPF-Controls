@@ -66,3 +66,5 @@ If you are going to use one of our premium language add-ons (sold separately), i
 - [XML](web-languages-addon/xml/getting-started.md) syntax language in the Web Languages Add-on
 
 - [JavaScript](web-languages-addon/javascript/getting-started.md) syntax language in the Web Languages Add-on
+
+- [JSON](web-languages-addon/json/getting-started.md) (with and without comments) syntax language in the Web Languages Add-on

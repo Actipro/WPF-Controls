@@ -50,6 +50,9 @@ This code creates a [JsonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Jav
 var language = new JsonSyntaxLanguage();
 ```
 
+> [!NOTE]
+> If your JSON data needs to support JavaScript style comments (such as when editing JSONC files), pass `true` to the [JsonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JsonSyntaxLanguage) constructor overload that indicates whether comments should be supported by the lexer.
+
 ## Use the JsonSyntaxLanguage
 
 Next, use the language on the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) instances that will be editing JSON code.

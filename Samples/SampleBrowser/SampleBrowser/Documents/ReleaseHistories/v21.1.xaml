@@ -21,6 +21,7 @@
 				<sampleBrowser:BulletContentControl Content="Added the SyntaxEditor.WordWrapModeChanged event that is raised when the SyntaxEditor.WordWrapMode property is changed." />
 				<sampleBrowser:BulletContentControl Content="Updated the horizontal ScrollBar to remain visible in word wrap mode when the SyntaxEditor.HorizontalScrollBarVisibility property is Visible (the default), which matches Visual Studio behavior.  This ensures any horizontal ScrollBar tray content can remain visible in word wrap mode.  Use the new WordWrapModeChanged event to alter the HorizontalScrollBarVisibility property as needed if you still wish the horizontal ScrollBar to be hidden when word wrapping." />
 				<sampleBrowser:BulletContentControl Content="Updated the completion list to reduce flicker when filtering unmatched items." />
+				<sampleBrowser:BulletContentControl Content="Fixed a bug introduced in the previous build where AutoCorrectorBase logic may not function correctly." />
 				<sampleBrowser:BulletContentControl Content="Fixed a bug where clicking right of the last character in the line could select a collapsed outlining node at the document start." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>

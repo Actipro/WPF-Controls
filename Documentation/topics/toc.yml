@@ -438,13 +438,13 @@ items:
       href: gauge/linear-gauge-features/ranges.md
     - name: "Pointers"
       href: gauge/linear-gauge-features/pointers.md
-  - name: "ToggleSwitch Features"
-    href: gauge/toggle-switch-features/index.md
+  - name: "FlipSwitch Features"
+    href: gauge/flip-switch-features/index.md
     items:
     - name: "Overview"
-      href: gauge/toggle-switch-features/index.md
+      href: gauge/flip-switch-features/index.md
     - name: "Switch"
-      href: gauge/toggle-switch-features/switch.md
+      href: gauge/flip-switch-features/switch.md
   - name: "Advanced Features"
     href: gauge/advanced-features/index.md
     items:
@@ -1599,6 +1599,10 @@ items:
       href: shared/windows-controls/ringslice.md
     - name: "ShadowChrome"
       href: shared/windows-controls/shadowchrome.md
+    - name: "ToggleSwitch"
+      href: shared/windows-controls/toggle-switch.md
+    - name: "User Prompt"
+      href: shared/windows-controls/user-prompt.md
     - name: "ZeroSizeContentControl"
       href: shared/windows-controls/zerosizecontentcontrol.md
     - name: "Progress Spinners"
@@ -1649,6 +1653,8 @@ items:
   items:
   - name: "Overview"
     href: conversion/index.md
+  - name: "Converting to v22.1"
+    href: conversion/converting-to-v22-1.md
   - name: "Converting to v21.1"
     href: conversion/converting-to-v21-1.md
   - name: "Converting to v20.1"

@@ -5,6 +5,10 @@ using ActiproSoftware.Text;
 using ActiproSoftware.Windows.Controls.Docking;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.ThemesSamples.Demo.NotepadEnhanced {
 
 	/// <summary>

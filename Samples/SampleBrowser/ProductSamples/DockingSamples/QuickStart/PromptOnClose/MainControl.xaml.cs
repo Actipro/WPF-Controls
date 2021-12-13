@@ -4,6 +4,10 @@ using System.Windows;
 using ActiproSoftware.ProductSamples.DockingSamples.Common;
 using ActiproSoftware.Windows.Controls.Docking;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.PromptOnClose {
 
 	/// <summary>

@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +30,10 @@ using ActiproSoftware.Windows.Themes;
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
+#if NET
+[assembly: SupportedOSPlatform("windows")]
+#endif
+
 [assembly: XmlnsPrefix("http://schemas.actiprosoftware.com/winfx/xaml/datagrid", "datagrid")]
 [assembly: XmlnsDefinition("http://schemas.actiprosoftware.com/winfx/xaml/datagrid", "ActiproSoftware.Products.DataGrid.Contrib")]
 [assembly: XmlnsDefinition("http://schemas.actiprosoftware.com/winfx/xaml/datagrid", "ActiproSoftware.Windows.Controls.DataGrid")]
@@ -47,8 +52,8 @@ using ActiproSoftware.Windows.Themes;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("21.1.3.0")]  // WPF
-[assembly: AssemblyInformationalVersion("21.1.3.0")]  // WPF
+[assembly: AssemblyVersion("22.1.0.0")]  // WPF
+[assembly: AssemblyInformationalVersion("22.1.0.0")]  // WPF
 
 namespace ActiproSoftware.Products.DataGrid.Contrib {
 

@@ -5,6 +5,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using ActiproSoftware.Windows.Controls;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.ThemesSamples.QuickStart.WindowChromeSystemMenuCustomization {
 
 	/// <summary>

@@ -1,6 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Threading;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlAdditionalItems {
 
 	/// <summary>

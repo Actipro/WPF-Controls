@@ -14,6 +14,10 @@ using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Themes;
 using ActiproSoftware.Windows.Controls.Docking;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CodeSummary {
 
 	/// <summary>

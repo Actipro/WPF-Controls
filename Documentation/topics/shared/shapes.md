@@ -13,29 +13,9 @@ It can be imported with this XML namespace import:
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 ```
 
-## Available Shapes
+## SemiEllipse Class
 
-<table>
-<thead>
-
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-
-
-</thead>
-<tbody>
-
-<tr>
-<td>
-
-[SemiEllipse](xref:ActiproSoftware.Windows.Shapes.SemiEllipse)
-
-</td>
-<td>
-
-A half ellipse shape.
+The [SemiEllipse](xref:ActiproSoftware.Windows.Shapes.SemiEllipse) class defines a half ellipse shape.
 
 These properties are important:
 
@@ -46,18 +26,9 @@ These properties are important:
 <shared:SemiEllipse Width="40" Height="20" ApexSide="Top" Fill="Red" />
 ```
 
-</td>
-</tr>
+## Triangle Class
 
-<tr>
-<td>
-
-[Triangle](xref:ActiproSoftware.Windows.Shapes.Triangle)
-
-</td>
-<td>
-
-A triangle shape.
+The [Triangle](xref:ActiproSoftware.Windows.Shapes.Triangle) class defines a triangle shape.
 
 These properties are important:
 
@@ -68,18 +39,9 @@ These properties are important:
 <shared:Triangle Width="20" Height="20" ApexSide="Top" Fill="Red" />
 ```
 
-</td>
-</tr>
+## Wave Class
 
-<tr>
-<td>
-
-[Wave](xref:ActiproSoftware.Windows.Shapes.Wave)
-
-</td>
-<td>
-
-A wave shape.
+The [Wave](xref:ActiproSoftware.Windows.Shapes.Wave) class defines a wave shape.
 
 These properties are important:
 
@@ -91,18 +53,9 @@ These properties are important:
 <shared:Wave Width="200" Height="10" ApexSide="Top" ApexCount="10" Stroke="Red" StrokeThickness="1" />
 ```
 
-</td>
-</tr>
+## ZigZag Class
 
-<tr>
-<td>
-
-[ZigZag](xref:ActiproSoftware.Windows.Shapes.ZigZag)
-
-</td>
-<td>
-
-A zig-zag shape.
+The [ZigZag](xref:ActiproSoftware.Windows.Shapes.ZigZag) class defines a zig-zag shape.
 
 These properties are important:
 
@@ -113,9 +66,3 @@ These properties are important:
 ```xaml
 <shared:ZigZag Width="200" Height="10" ApexSide="Top" ApexCount="10" Stroke="Red" StrokeThickness="1" />
 ```
-
-</td>
-</tr>
-
-</tbody>
-</table>

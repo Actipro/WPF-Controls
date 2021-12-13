@@ -5,6 +5,10 @@ using System.Windows.Media.Imaging;
 using ActiproSoftware.Windows.Controls.Docking;
 using ActiproSoftware.Windows.Controls.Docking.Serialization;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LayoutSerialization {
 
 	/// <summary>

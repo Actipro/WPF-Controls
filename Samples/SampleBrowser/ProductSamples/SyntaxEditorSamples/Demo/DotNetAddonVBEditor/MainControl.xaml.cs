@@ -21,6 +21,10 @@ using ActiproSoftware.Windows.Controls.Docking;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonVBEditor {
 
 	/// <summary>

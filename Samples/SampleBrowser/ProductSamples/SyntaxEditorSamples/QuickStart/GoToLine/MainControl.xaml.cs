@@ -3,6 +3,10 @@ using System.Windows;
 using System.Windows.Controls;
 using ActiproSoftware.Text;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GoToLine {
 
 	/// <summary>

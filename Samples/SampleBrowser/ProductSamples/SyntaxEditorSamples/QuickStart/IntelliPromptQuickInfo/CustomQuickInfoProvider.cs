@@ -29,7 +29,74 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// NESTED TYPES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		#region CustomQuickInfoSession
+
+		/// <summary>
+		/// Represents an IntelliPrompt quick info session.
+		/// </summary>
+		private class CustomQuickInfoSession : QuickInfoSession {
 			
+			/////////////////////////////////////////////////////////////////////////////////////////////////////
+			// PUBLIC PROCEDURES
+			/////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+			/// <summary>
+			/// Returns the placement rectangle for the line number margin quick info session.
+			/// </summary>
+			/// <param name="view">The containing <see cref="IEditorView"/>.</param>
+			/// <param name="marginContext">The margin context.</param>
+			/// <returns>The placement rectangle for the line number margin quick info session.</returns>
+			public Rect? GetLineNumberMarginPlacementRectangle(IEditorView view, LineNumberMarginContext marginContext) {
+				if ((view != null) && (marginContext != null)) {
+					// Get the margin
+					IEditorViewMargin margin = view.Margins[EditorViewMarginKeys.LineNumber];
+
+					// Get the view line that contains the line
+					ITextViewLine viewLine = view.GetViewLine(new TextPosition(marginContext.LineIndex, 0));
+					if ((margin != null) && (viewLine != null) && (viewLine.Visibility != TextViewLineVisibility.Hidden)) {
+						// Get line bounds relative to the margin
+						var bounds = view.TransformFromTextArea(viewLine.Bounds);
+						bounds.X = 0;
+						bounds.Width = margin.VisualElement.ActualWidth;
+						return bounds;
+					}
+				}
+		
+				return null;
+			}
+			
+			/// <summary>
+			/// Notifies the session that it should reposition its user interface.
+			/// </summary>
+			public override void Reposition() {
+				if (this.IsOpen) {
+					var marginContext = this.Context as LineNumberMarginContext;
+					if (marginContext != null) {
+						// Get the placement rectangle
+						var placementRectangle = this.GetLineNumberMarginPlacementRectangle(this.View, marginContext);
+						if (placementRectangle.HasValue) {
+							// Update the session's placement rectangle
+							this.PlacementRectangle = placementRectangle.Value;
+						}
+						else {
+							// Cancel if no placement rectangle is available
+							this.Close(true);
+							return;
+						}
+					}
+				}
+
+				// Call the base method
+				base.Reposition();
+			}
+
+		}
+
+		#endregion
+
+		#region TextRangeContext
+
 		/// <summary>
 		/// Contains context information for the text area.
 		/// </summary>
@@ -65,6 +132,10 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 
 		}
 
+		#endregion
+
+		#region LineNumberMarginContext
+
 		/// <summary>
 		/// Contains context information for the line number margin.
 		/// </summary>
@@ -99,6 +170,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 			}
 
 		}
+
+		#endregion
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -174,8 +247,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 		/// <c>true</c> if a session was opened; otherwise, <c>false</c>.
 		/// </returns>
 		protected override bool RequestSession(IEditorView view, object context) {
-			// Create a session and assign a context that can be used to identify it
-			QuickInfoSession session = new QuickInfoSession();
+			// Create a session and assign a context that can be used to identify it... a custom session type is used to support non-text range contexts
+			CustomQuickInfoSession session = new CustomQuickInfoSession();
 			session.Context = context;
 
 			TextRangeContext textRangeContext = context as TextRangeContext;
@@ -202,19 +275,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 					// Create some marked-up content indicating the line number
 					session.Content = new HtmlContentProvider(String.Format("Line number: <b>{0}</b>", marginContext.LineIndex + 1), view.DefaultBackgroundColor).GetContent();
 
-					// Get the margin
-					IEditorViewMargin margin = view.Margins[EditorViewMarginKeys.LineNumber];
-
-					// Get the view line that contains the line
-					ITextViewLine viewLine = view.GetViewLine(new TextPosition(marginContext.LineIndex, 0));
-					if ((margin != null) && (viewLine != null)) {
-						// Get line bounds relative to the margin
-						Rect bounds = view.TransformFromTextArea(viewLine.Bounds);
-						bounds.X = 0;
-						bounds.Width = margin.VisualElement.RenderSize.Width;
-
+					// Get the placement rectangle
+					var placementRectangle = session.GetLineNumberMarginPlacementRectangle(view, marginContext);
+					if (placementRectangle.HasValue) {
 						// Open the session
-						session.Open(view, PlacementMode.Bottom, view.VisualElement, bounds);
+						session.Open(view, PlacementMode.Bottom, view.VisualElement, placementRectangle.Value);
 						return true;
 					}
 				}
@@ -222,6 +287,5 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 			return false;
 		}
 	}
-
 
 }

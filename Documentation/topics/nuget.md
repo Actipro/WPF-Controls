@@ -7,7 +7,7 @@ order: 22
 
 Actipro provides NuGet packages for its WPF Control assemblies so that they can easily be consumed by .NET projects and later updated.
 
-The NuGet packages include both .NET Core and .NET Framework variations of the assemblies.  When a package is referenced, NuGet will use the best variation for your target platform.  A .NET Core-based application will use .NET Core/Standard assemblies and a .NET Framework-based application will use .NET Framework assemblies.
+The NuGet packages include .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+ variations of the assemblies.  When a package is referenced, NuGet will use the best variation for your target platform.
 
 ## Actipro NuGet Packages
 

@@ -18,7 +18,7 @@ jobs:
 
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      LICENSEKEY: ${{ secrets.ACTIPRO_CONTROLS_WPF_V21_1_LICENSEKEY }}
+      LICENSEKEY: ${{ secrets.ACTIPRO_CONTROLS_WPF_V22_1_LICENSEKEY }}
 
     steps:
     - name: Cancel duplicate runs

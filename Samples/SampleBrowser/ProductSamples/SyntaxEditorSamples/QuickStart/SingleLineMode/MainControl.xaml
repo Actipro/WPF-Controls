@@ -26,6 +26,16 @@
 		</editor:SyntaxEditor>
 		
 		<shared:PixelSnapper Margin="0,20,0,0">
+			<TextBlock Text="This SyntaxEditor is using a dynamic language definition where nested parenthesis alternate to a different color and could be used as a formula editor:" TextWrapping="Wrap" />
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="formulaEditor" Margin="0,3,0,0" IsMultiLine="False">
+			<editor:EditorDocument>
+				<![CDATA[AVERAGE(100, ABS(x2 - (x1 + 1)))]]>
+			</editor:EditorDocument>
+		</editor:SyntaxEditor>
+
+		<shared:PixelSnapper Margin="0,20,0,0">
 			<TextBlock Text="This is another SyntaxEditor in read-only mode:" TextWrapping="Wrap" />
 		</shared:PixelSnapper>
 		
@@ -34,7 +44,7 @@
 				<![CDATA[int i = 50;  // Use ReadOnly mode for copyable code snippets]]>
 			</editor:EditorDocument>
 		</editor:SyntaxEditor>
-		
+
 		<shared:PixelSnapper Margin="0,20,0,0">
 			<TextBlock Text="Here is a SyntaxEditor in single-line mode with word wrap, and also with view line measuring enabled:" TextWrapping="Wrap" />
 		</shared:PixelSnapper>

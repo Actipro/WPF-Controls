@@ -18,11 +18,17 @@ There also are some product-specific troubleshooting topics that provide informa
 
 If this error message occurs the first time you attempt to compile and run the Sample Browser project in Visual Studio, simply Clean the solution and then Rebuild it.  That should resolve the problem.
 
-## Designer Doesn't Load When Opening XAML File in Sample Browser
+## Designer Functionality Not Working
 
-The first time you open the sample browser project and try to open a XAML file, you may encounter designer errors where the designer doesn't load properly.  This is due to the Sample Browser never being compiled on your system yet.
+The first time you open the sample browser project and try to open a XAML file, you may encounter Visual Studio designer errors where the designer doesn't load properly.  This can be due to the Sample Browser never being compiled on your system yet.
 
 To resolve this issue, simply close the XAML files, rebuild the Sample Browser solution, and reopen them.  Everything should work fine from that point on.
+
+If that is not the problem, Visual Studio looks for the Actipro design-time functionality assemblies in a "Design" folder under the folder that contains the referenced Actipro control product assembly.  If you referenced Actipro assemblies from a file path location that doesn't have the "Design" child folder containing related design-time functionality assemblies, then Visual Studio will not have designer support for Actipro controls.
+
+When referencing the special code-signed copies of our product assemblies, or referencing our product assemblies from any other custom path that is not the default installed location, you must manually copy the "Design" folder to be a child folder of the folder containing the product assemblies.
+
+If referencing our product assemblies via our NuGet packages, you should not need to worry about file paths since the NuGet packages include the design-time functionality assemblies in them.
 
 ## Designer Errors Reported That Don't Occur At Run-Time
 
@@ -97,19 +103,14 @@ Second, I'd reemphasize that if there was indeed a problem, you would see it in 
 
 So just to reiterate, the data binding error messages are not problems with our code, and are simple warnings due to data bindings trying to resolve themselves before WPF has created their targets' visual trees.  You may safely ignore these error messages.
 
-## Using WPF Controls in Windows Forms Applications
+## Using WPF Controls in Interop Applications (Windows Forms, C++, etc.)
 
-Some customers embed controls like the WPF SyntaxEditor in their Windows Forms applications.  In cases where Image embedded resources are used (such as in SyntaxEditor IntelliPrompt popups), the pack:// URI syntax will fail with a `NotSupportedException` and message "The URI prefix is not recognized."
+Some customers embed controls like the WPF SyntaxEditor in their Windows Forms, C++, or other non-WPF applications.  While this is generally allowed and should work, there are a couple initializations that should take place in app startup.  Otherwise, the themes of the controls may not be correct, and in another case, some `Image` embedded resources may not load.
 
-This is due to no WPF `Application` object being created by default in Windows Forms applications and thus the pack:// syntax isn't supported.  The WPF `Application` object can be programmatically created in your application startup before any UI is created like this:
+Symptoms of the related issues are:
 
-```csharp
-if (System.Windows.Application.Current == null) {
-	wpfApplication = new System.Windows.Application();
-	wpfApplication.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
-}
-```
+- Control themes don't look the same as they do in a native WPF application.
+- Themes do not change properly when the theme is changed on [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).
+- A `NotSupportedException` occurs with message "The URI prefix is not recognized." when using some built-in `Image` embedded resources like the images used in SyntaxEditor's IntelliPrompt popups.
 
-The `wpfApplication` variable should be stored at your static Windows Forms application level and in your application shutdown code, the `wpfApplication.Shutdown()` method should be called to explicitly close the WPF `Application`.
-
-The reason we need to use `ShutdownMode.OnExplicitShutdown` above is that by default, the last WPF window that closes will shut down the WPF application and it will be as if no application was created, breaking pack:// syntax and causing the `NotSupportedException` exception.  If you are still in evaluation mode, the Actipro evaluation dialog for the WPF Controls could trigger this when it closes.  By explicitly controlling the lifetime of the WPF application, you prevent that scenario from occurring.
+See the [Themes Troubleshooting](themes/troubleshooting.md) topic for detailed steps on how to resolve these issues.

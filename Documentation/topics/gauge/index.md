@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Actipro Gauge provides circular, linear, and digital gauge controls, as well as led and toggle switch controls, all natively written for the Windows Presentation Foundation framework. Use these controls in your applications to more effectively present various data.
+Actipro Gauge provides circular, linear, and digital gauge controls, as well as led and flip switch controls, all natively written for the Windows Presentation Foundation framework. Use these controls in your applications to more effectively present various data.
 
 ![Screenshot](images/gauge-teaser.gif)
 
@@ -19,7 +19,7 @@ DigitalGauge is a control that presents any string value using 7 or 14 segment d
 
 Led is a control that mimics an led light, which can be turned on or off, or can be set to blink.  The control supports color customization and animation, as well as several shapes.  Examples of led lights include power buttons on computers and monitors.
 
-ToggleSwitch is a control that mimics a light switch, which can be turned on or off, or can be set to indeterminate.  The control supports color customization and animation, and includes a circular and a flat look.  Examples of toggle switches include every day light switches.
+FlipSwitch is a control that mimics a light switch, which can be turned on or off, or can be set to indeterminate.  The control supports color customization and animation, and includes a circular and a flat look.  Examples of flip switches include every day light switches.
 
 ## What is a Gauge?
 
@@ -94,10 +94,10 @@ The most common example of gauges is seen in the dashboard of a car, which indic
 - Ability to include any number of [ranges](linear-gauge-features/ranges.md), which can highlight areas of interest.
 - [Refresh rate](linear-gauge-features/pointers.md) can be used to limit the number of updates made to a pointer, which gives the user enough time to see the updated values.
 
-### ToggleSwitch Features
+### FlipSwitch Features
 
 - Includes several built-in [frame rims and backgrounds](circular-gauge-features/frames.md), each with a unique effect.
-- Supports two [switch](toggle-switch-features/switch.md) types and customizable colors.
-- Allows for two or three [checked states](toggle-switch-features/switch.md), with smooth animations used when transitioning between states.
+- Supports two [switch](flip-switch-features/switch.md) types and customizable colors.
+- Allows for two or three [checked states](flip-switch-features/switch.md), with smooth animations used when transitioning between states.
 
 *This product is written in 100% pure C#, and includes detailed documentation and samples.*

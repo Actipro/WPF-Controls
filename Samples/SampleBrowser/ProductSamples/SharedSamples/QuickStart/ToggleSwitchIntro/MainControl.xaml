@@ -1,0 +1,794 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- 
+	
+		STYLES
+	
+		-->
+		
+		<!-- Windows 10 Style -->
+		<Style x:Key="Windows10ToggleSwitch" TargetType="shared:ToggleSwitch">
+			<Setter Property="ContentPlacement" Value="Far" />
+			<Setter Property="KnobExtent" Value="10" />
+			<Setter Property="KnobAscent" Value="10" />
+			<Setter Property="KnobMargin" Value="5,0" />
+			<Setter Property="KnobBorderThickness" Value="0" />
+			<Setter Property="IndeterminateKnobBackground" Value="White" />
+			<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}" />
+			<Setter Property="OnKnobBackground" Value="White" />
+			<Setter Property="TrackExtent" Value="44" />
+			<Setter Property="TrackAscent" Value="20" />
+			<Setter Property="TrackBorderThickness" Value="2" />
+			<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackIndeterminateNormalBrushKey}}" />
+			<Setter Property="IndeterminateTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackIndeterminateNormalBrushKey}}" />
+			<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+			<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}" />
+			<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackOnNormalBrushKey}}" />
+			<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackOnNormalBrushKey}}" />
+			<Style.Triggers>
+
+				<!-- Disabled-->
+				<Trigger Property="IsEnabled" Value="False" >
+					<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHigherBrushKey}}"/>
+					<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="IndeterminateTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestDisabledBrushKey}}" />
+					<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestDisabledBrushKey}}" />
+					<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHigherBrushKey}}"/>
+					<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+				</Trigger>
+
+				<!-- Hover -->
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsEnabled" Value="True" />
+						<Condition Property="IsMouseOver" Value="True" />
+						<Condition Property="IsPressed" Value="False" />
+					</MultiTrigger.Conditions>
+					<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackIndeterminateHoverBrushKey}}" />
+					<Setter Property="IndeterminateTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackIndeterminateHoverBrushKey}}" />
+					<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+					<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+					<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackOnHoverBrushKey}}" />
+					<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchTrackOnHoverBrushKey}}" />
+				</MultiTrigger>
+
+				<!-- Pressed -->
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+					<Setter Property="IndeterminateTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+					<Setter Property="OffKnobBackground" Value="White" />
+					<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+					<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+					<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+					<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}" />
+				</Trigger>
+
+			</Style.Triggers>
+		</Style>
+
+		<!-- Material Design Style -->
+		<Style x:Key="MaterialDesignToggleSwitch" TargetType="shared:ToggleSwitch">
+
+			<Setter Property="ContentPlacement" Value="None" />
+			<Setter Property="TrackExtent" Value="36" />
+			<Setter Property="TrackAscent" Value="14" />
+			<Setter Property="TrackCornerRadius" Value="7" />
+			<Setter Property="TrackOpacity" Value="0.5" />
+			<Setter Property="TrackBorderThickness" Value="0" />
+			<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}" />
+			<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHigherBrushKey}}" />
+			<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHigherBrushKey}}" />
+			<Setter Property="KnobExtent" Value="20" />
+			<Setter Property="KnobAscent" Value="20" />
+			<Setter Property="KnobMargin" Value="0" />
+			<Setter Property="KnobCornerRadius" Value="10" />
+			<Setter Property="KnobBorderThickness" Value="0" />
+			<Setter Property="IsKnobShadowEnabled" Value="True" />
+			<Setter Property="KnobShadowDirection" Value="270" />
+			<Setter Property="KnobShadowElevation" Value="2" />
+			<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}" />
+			<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+			<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHigherBrushKey}}" />
+			<Style.Triggers>
+				
+				<!-- Disabled -->
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+				</Trigger>
+				
+				<!-- Hover -->
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsMouseOver" Value="True" />
+						<Condition Property="IsPressed" Value="False" />
+					</MultiTrigger.Conditions>
+					<Setter Property="KnobShadowElevation" Value="4"/>
+				</MultiTrigger>
+				
+				<!-- Pressed -->
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="KnobShadowElevation" Value="2"/>
+				</Trigger>
+				
+			</Style.Triggers>
+		</Style>
+
+		<!-- Apple iOS Style -->
+		<Style x:Key="AppleToggleSwitch" TargetType="shared:ToggleSwitch">
+			<Setter Property="ContentPlacement" Value="None" />
+			<Setter Property="KnobExtent" Value="20" />
+			<Setter Property="KnobAscent" Value="20" />
+			<Setter Property="MaxKnobAscent" Value="20" />
+			<Setter Property="MaxKnobExtent" Value="26" />
+			<Setter Property="KnobCornerRadius" Value="10" />
+			<Setter Property="KnobBorderThickness" Value="0" />
+			<Setter Property="KnobMargin" Value="2,0" />
+			<Setter Property="KnobShadowDirection" Value="180" />
+			<Setter Property="IsKnobShadowEnabled" Value="True" />
+			<Setter Property="KnobShadowElevation" Value="3" />
+			<Setter Property="KnobShadowOpacity" Value="0.1" />
+			<Setter Property="IndeterminateKnobBackground" Value="White" />
+			<Setter Property="OffKnobBackground" Value="White" />
+			<Setter Property="OnKnobBackground" Value="White" />
+			<Setter Property="TrackExtent" Value="40" />
+			<Setter Property="TrackAscent" Value="24" />
+			<Setter Property="TrackCornerRadius" Value="12" />
+			<Setter Property="TrackBorderThickness" Value="1" />
+			<Setter Property="IndeterminateTrackBackground" Value="#4CD864" />
+			<Setter Property="IndeterminateTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" />
+			<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" />
+			<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" />
+			<Setter Property="OnTrackBackground" Value="#4CD864" />
+			<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidLowBrushKey}}" />
+			<Style.Triggers>
+				
+				<!-- Off -->
+				<Trigger Property="IsChecked" Value="False">
+					<Setter Property="KnobShadowDirection" Value="0" />
+				</Trigger>
+				
+				<!-- Disabled -->
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+					<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidHighBrushKey}}" />
+					<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+				</Trigger>
+				
+				<!-- Hover -->
+				<MultiTrigger>
+					<MultiTrigger.Conditions>
+						<Condition Property="IsMouseOver" Value="True" />
+						<Condition Property="IsPressed" Value="False" />
+					</MultiTrigger.Conditions>
+					<Setter Property="KnobExtent" Value="22" />
+				</MultiTrigger>
+				
+				<!-- Pressed -->
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="KnobExtent" Value="26" />
+				</Trigger>
+				
+			</Style.Triggers>
+		</Style>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IsThreeState}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=Orientation}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=ContentPlacement}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IsKnobShadowEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobShadowElevation}">
+							<gridseditors:Int32PropertyEditor Minimum="0" Maximum="24" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=(themes:ThemeProperties.ZoomLevel)}">
+							<gridseditors:DoublePropertyEditor Minimum="1" Maximum="10" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IsAnimationEnabled}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IsEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IsChecked}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=OnContent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=OffContent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=IndeterminateContent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=NearContentMargin}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=FarContentMargin}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=TrackCornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=TrackExtent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=TrackAscent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=TrackOpacity}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" Format="P0" SmallChange="0.05" LargeChange="0.1" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobCornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobMargin}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobExtent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobAscent}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobOpacity}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" Format="P0" SmallChange="0.05" LargeChange="0.1" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobShadowOpacity}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="1" Format="P0" SmallChange="0.05" LargeChange="0.1" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=toggleSwitch, Path=KnobShadowDirection}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="360" SmallChange="15" LargeChange="45" SpinWrapping="Wrap" />
+						</grids:PropertyModel>
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The ToggleSwitch is a visually-rich control used by modern applications as an alternative to a CheckBox. Toggle switches are composed of a knob which
+					slides between 2 or 3 positions on a track, where each position has a clear meaning (e.g. On/Off).
+					<LineBreak /><LineBreak />
+					A toggle switches support three states, smooth animations, customizable labels, knob drop shadows, explicit brushes for different states, and much more.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<shared:ToggleSwitch x:Name="toggleSwitch" TextOptions.TextFormattingMode="Ideal" IsKnobShadowEnabled="False" KnobShadowElevation="2">
+					<shared:ToggleSwitch.LayoutTransform>
+						<ScaleTransform ScaleX="{Binding ElementName=toggleSwitch, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=toggleSwitch, Path=(themes:ThemeProperties.ZoomLevel)}" />
+					</shared:ToggleSwitch.LayoutTransform>
+				</shared:ToggleSwitch>
+			</sampleBrowser:LabeledCardControl>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: Multiple control states (using default style) -->
+				<sampleBrowser:LabeledCardControl Label="Multiple control states (default style)" >
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="shared:ToggleSwitch">
+							<Setter Property="Margin" Value="2" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<StackPanel Margin="0,0,40,0">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Enabled</TextBlock>
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=defaultThreeState, Path=IsChecked}" IsChecked="True" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=defaultThreeState, Path=IsChecked}" IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=defaultThreeState, Path=IsChecked}" IsChecked="False" />
+							</StackPanel>
+							<StackPanel IsEnabled="False">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Disabled</TextBlock>
+								<shared:ToggleSwitch IsChecked="True" />
+								<shared:ToggleSwitch IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsChecked="False" />
+							</StackPanel>
+						</StackPanel>
+						<CheckBox x:Name="defaultThreeState" Margin="0,10,0,0" IsChecked="False" Content="Three-state" HorizontalAlignment="Center" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Multiple control states (using custom Windows 10 style defined above) -->
+				<sampleBrowser:LabeledCardControl Label="Custom Windows 10 style">
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="shared:ToggleSwitch" BasedOn="{StaticResource Windows10ToggleSwitch}">
+							<Setter Property="Margin" Value="2" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<StackPanel Margin="0,0,40,0">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Enabled</TextBlock>
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=win10ThreeState, Path=IsChecked}" IsChecked="True" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=win10ThreeState, Path=IsChecked}" IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=win10ThreeState, Path=IsChecked}" IsChecked="False" />
+							</StackPanel>
+							<StackPanel IsEnabled="False">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Disabled</TextBlock>
+								<shared:ToggleSwitch IsChecked="True" />
+								<shared:ToggleSwitch IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsChecked="False" />
+							</StackPanel>
+						</StackPanel>
+						<CheckBox x:Name="win10ThreeState" Margin="0,10,0,0" IsChecked="False" Content="Three-state" HorizontalAlignment="Center" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Multiple control states (using custom material design style defined above) -->
+				<sampleBrowser:LabeledCardControl Label="Custom material design style with drop shadow on knob">
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="shared:ToggleSwitch" BasedOn="{StaticResource MaterialDesignToggleSwitch}">
+							<Setter Property="Margin" Value="4" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<StackPanel Margin="0,0,40,0">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Enabled</TextBlock>
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=materialDesignThreeState, Path=IsChecked}" IsChecked="True" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=materialDesignThreeState, Path=IsChecked}" IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=materialDesignThreeState, Path=IsChecked}" IsChecked="False" />
+							</StackPanel>
+							<StackPanel IsEnabled="False">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Disabled</TextBlock>
+								<shared:ToggleSwitch IsChecked="True" />
+								<shared:ToggleSwitch IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsChecked="False" />
+							</StackPanel>
+						</StackPanel>
+						<CheckBox x:Name="materialDesignThreeState" Margin="0,10,0,0" IsChecked="False" Content="Three-state" HorizontalAlignment="Center" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Multiple control states (using custom Apple iOS style defined above) -->
+				<sampleBrowser:LabeledCardControl Label="Custom Apple iOS style">
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="shared:ToggleSwitch" BasedOn="{StaticResource AppleToggleSwitch}">
+							<Setter Property="Margin" Value="2" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<StackPanel Margin="0,0,40,0">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Enabled</TextBlock>
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=iOSThreeState, Path=IsChecked}" IsChecked="True" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=iOSThreeState, Path=IsChecked}" IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=iOSThreeState, Path=IsChecked}" IsChecked="False" />
+							</StackPanel>
+							<StackPanel IsEnabled="False">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Disabled</TextBlock>
+								<shared:ToggleSwitch IsChecked="True" />
+								<shared:ToggleSwitch IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsChecked="False" />
+							</StackPanel>
+						</StackPanel>
+						<CheckBox x:Name="iOSThreeState" Margin="0,10,0,0" IsChecked="False" Content="Three-state" HorizontalAlignment="Center" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Alter the knob and track colors based on state -->
+				<sampleBrowser:LabeledCardControl Label="Alter the colors based on state">
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="shared:ToggleSwitch">
+							<Setter Property="Margin" Value="2" />
+							<Setter Property="KnobBorderThickness" Value="0" />
+							<Setter Property="TrackBorderThickness" Value="0" />
+							<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteYellowBackgroundLowestBrushKey}}" />
+							<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteYellowBackgroundHighBrushKey}}" />
+							<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundLowestBrushKey}}" />
+							<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" />
+							<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowestBrushKey}}" />
+							<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" />
+							<Style.Triggers>
+								<Trigger Property="IsEnabled" Value="False">
+									<Setter Property="IndeterminateKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowerDisabledBrushKey}}" />
+									<Setter Property="IndeterminateTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteYellowBackgroundLowBrushKey}}" />
+									<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowerDisabledBrushKey}}" />
+									<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundLowBrushKey}}" />
+									<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowerDisabledBrushKey}}" />
+									<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowBrushKey}}" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<StackPanel Margin="8,0">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Enabled</TextBlock>
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=multiColorThreeState, Path=IsChecked}" IsChecked="True" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=multiColorThreeState, Path=IsChecked}" IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsThreeState="{Binding ElementName=multiColorThreeState, Path=IsChecked}" IsChecked="False" />
+							</StackPanel>
+							<StackPanel Margin="8,0" IsEnabled="False">
+								<TextBlock HorizontalAlignment="Center" Margin="0,0,0,4">Disabled</TextBlock>
+								<shared:ToggleSwitch IsChecked="True" />
+								<shared:ToggleSwitch IsChecked="{x:Null}" />
+								<shared:ToggleSwitch IsChecked="False" />
+							</StackPanel>
+						</StackPanel>
+						<CheckBox x:Name="multiColorThreeState" Margin="0,10,0,0" IsChecked="False" Content="Three-state" HorizontalAlignment="Center" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Settings panel layout -->
+				<sampleBrowser:LabeledCardControl Label="Use within a settings panel as alternative to checkbox" >
+					<Grid HorizontalAlignment="Stretch">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.ColumnSpan="2">Visible white space characters:</TextBlock>
+
+						<TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0">Spaces</TextBlock>
+						<shared:ToggleSwitch Grid.Column="1" Grid.Row="1" IsChecked="True" HorizontalAlignment="Right" ContentPlacement="None" Margin="0,2" />
+
+						<TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,0,0">Tabs</TextBlock>
+						<shared:ToggleSwitch Grid.Column="1" Grid.Row="2" IsChecked="True" HorizontalAlignment="Right" ContentPlacement="None" Margin="0,2" />
+
+						<TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="10,0,0,0">NewLines</TextBlock>
+						<shared:ToggleSwitch Grid.Column="1" Grid.Row="3" IsChecked="False" HorizontalAlignment="Right" ContentPlacement="None" Margin="0,2" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Vertical orientation -->
+				<sampleBrowser:LabeledCardControl Label="Full support for vertical orientation" Grid.IsSharedSizeScope="True">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="20" />
+							<ColumnDefinition Width="*" SharedSizeGroup="Switch" />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="*" SharedSizeGroup="Switch"  />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="*" SharedSizeGroup="Switch"  />
+							<ColumnDefinition Width="10" />
+							<ColumnDefinition Width="*" SharedSizeGroup="Switch"  />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="4" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<TextBlock Grid.Column="0" Grid.Row="0">Lights:</TextBlock>
+					
+						<TextBlock Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center">Kitchen</TextBlock>
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="2" Orientation="Vertical" IsChecked="True" ContentPlacement="None"/>
+
+						<TextBlock Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center">Bedroom</TextBlock>
+						<shared:ToggleSwitch Grid.Column="4" Grid.Row="2" Orientation="Vertical" IsChecked="True" ContentPlacement="None"/>
+
+						<TextBlock Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center">Bathroom</TextBlock>
+						<shared:ToggleSwitch Grid.Column="6" Grid.Row="2" Orientation="Vertical" IsChecked="False" ContentPlacement="None"/>
+
+						<TextBlock Grid.Column="8" Grid.Row="0" HorizontalAlignment="Center">Garage</TextBlock>
+						<shared:ToggleSwitch Grid.Column="8" Grid.Row="2" Orientation="Vertical" IsChecked="True" ContentPlacement="None"/>
+					</Grid>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Customize content text -->
+				<sampleBrowser:LabeledCardControl Label="Use alternate content labels when appropriate">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock VerticalAlignment="Center">Pressing tab key inserts:</TextBlock>
+						<shared:ToggleSwitch IsThreeState="True" IsChecked="{x:Null}" ContentPlacement="NearAndFar" OffContent="Tabs" OnContent="Spaces" Margin="8,2" HorizontalAlignment="Left" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Customize the position of content -->
+				<sampleBrowser:LabeledCardControl Label="Customize the position of content">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="8" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Both sides:</TextBlock>
+						<shared:ToggleSwitch Grid.Row="0" Grid.Column="2" IsChecked="True" ContentPlacement="NearAndFar" Margin="8,2" HorizontalAlignment="Left" />
+
+						<TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Near side:</TextBlock>
+						<shared:ToggleSwitch Grid.Row="1" Grid.Column="2" IsChecked="True" ContentPlacement="Near" Margin="8,2" HorizontalAlignment="Left" />
+
+						<TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Far side:</TextBlock>
+						<shared:ToggleSwitch Grid.Row="2" Grid.Column="2" IsChecked="True" ContentPlacement="Far" Margin="7,2" HorizontalAlignment="Right" />
+
+						<!--
+							Track-based content may require adjusting the default settings for the desired look.
+							- Font size reduced so "On" and "Off" text are fully visible after knob width animates on hover (could have also disabled animation).
+							- Foreground changed for "On" and "Off" content to match the color of the knob.
+						-->
+						<TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Track:</TextBlock>
+						<shared:ToggleSwitch Grid.Row="3" Grid.Column="2" IsChecked="True" ContentPlacement="Track" Margin="1,2,0,2" HorizontalAlignment="Center" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraSmallFontSizeDoubleKey}}">
+							<shared:ToggleSwitch.OnContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchKnobOnBrushKey}}">On</TextBlock>
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchKnobOffBrushKey}}">Off</TextBlock>
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+						<TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">No content:</TextBlock>
+						<shared:ToggleSwitch Grid.Row="4" Grid.Column="2" IsChecked="True" ContentPlacement="None" Margin="1,2,0,2" HorizontalAlignment="Center" />
+
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Adjust the corner radius for a square look -->
+				<sampleBrowser:LabeledCardControl Label="Adjust the corner radius for a square look" >
+					<shared:ToggleSwitch IsThreeState="True" TrackCornerRadius="0" KnobCornerRadius="0" Margin="0,4" />
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Apply multiple customizations for a unique style -->
+				<sampleBrowser:LabeledCardControl Label="Apply multiple customizations for a unique style">
+
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="20" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+
+						<!-- Style 1 -->
+						<TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Text="Style 1:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="0" IsChecked="True" IsThreeState="True" ContentPlacement="Near" Margin="8" HorizontalAlignment="Left"
+											 TrackAscent="4" TrackCornerRadius="0" TrackOpacity="0.5"
+											 KnobExtent="10" MaxKnobExtent="10" KnobAscent="20" KnobMargin="0" KnobBorderThickness="0" KnobCornerRadius="0"
+											 IsKnobShadowEnabled="True" KnobShadowElevation="4"
+											 OnKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}"
+											 IndeterminateKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}"
+											 />
+
+						<!-- Style 2 -->
+						<TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Text="Style 2:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="1" IsChecked="True" IsThreeState="True" ContentPlacement="Near" Margin="8" HorizontalAlignment="Left"
+											 TrackAscent="2" TrackCornerRadius="0" TrackOpacity="0.5"
+											 KnobBorderThickness="0" KnobMargin="0"
+											 IsKnobShadowEnabled="True" KnobShadowElevation="4"
+											 OnKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}"
+											 IndeterminateKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundMidHighBrushKey}}"
+											 />
+
+						<!-- Style 3 -->
+						<TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Text="Style 3:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="2" IsChecked="True" ContentPlacement="NearAndFar" Margin="8" HorizontalAlignment="Left" >
+							<shared:ToggleSwitch.OnContent>
+								<Image Source="/Images/Icons/ZoomIn16.png" />
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<Image Source="/Images/Icons/ZoomOut16.png" />
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+						<!-- Style 4 -->
+						<TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Text="Style 4:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="3" IsChecked="True" ContentPlacement="Track" Margin="8" HorizontalAlignment="Left"
+											 KnobBorderThickness="0"
+											 TrackExtent="60" TrackBorderThickness="1"
+											 TrackContentMargin="8,0"
+											 TextElement.FontWeight="Bold"
+											 OnKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundHighestNormalBrushKey}}"
+											 OffKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}"
+											 OnTrackBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}"
+											 OffTrackBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+											 OnTrackBorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighestBrushKey}}"
+											 OffTrackBorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}"
+											 >
+							<shared:ToggleSwitch.OnContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundHighestMutedBrushKey}}">Dark</TextBlock>
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}">Light</TextBlock>
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+						<!-- Style 5 -->
+						<TextBlock Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Text="Style 5:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="4" IsChecked="True" ContentPlacement="Far" Margin="8" HorizontalAlignment="Left"
+											 TrackExtent="60" TrackAscent="20" TrackCornerRadius="10"
+											 KnobExtent="30" KnobAscent="18" KnobMargin="0,0,1,0" KnobBorderThickness="1" KnobCornerRadius="9"
+											 />
+
+						<!-- Style 6 -->
+						<TextBlock Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Text="Style 6:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="5" IsChecked="True" ContentPlacement="Track" Margin="8" HorizontalAlignment="Left"
+											 KnobBorderThickness="0"
+											 TrackBorderThickness="0"
+											 TrackContentMargin="8,0"
+											 OnKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHigherBrushKey}}"
+											 OnTrackBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundLowBrushKey}}"
+											 OffKnobBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+											 OffTrackBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundHighBrushKey}}"
+											 >
+							<shared:ToggleSwitch.OnContent>
+								<Path Width="8" Height="8" SnapsToDevicePixels="True"
+									  Stroke="White" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+									  Data="M 0,5 2,7 7,2" />
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<Path Width="8" Height="8" SnapsToDevicePixels="True"
+									  Stroke="White" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+									  Data="M 0,4 8,4" />
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+						<!-- Style 7 -->
+						<TextBlock Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" Text="Style 7:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="6" IsChecked="True" ContentPlacement="Far" Margin="8" HorizontalAlignment="Left"
+											 FarContentMargin="4,0,0,0"
+											 KnobExtent="16" KnobAscent="16" KnobBorderThickness="1"
+											 TrackExtent="32" TrackBorderThickness="1"
+											 OnTrackBorderBrush="DarkGreen"
+											 OffTrackBorderBrush="DarkRed"
+											 OnKnobBorderBrush="DarkGreen"
+											 OffKnobBorderBrush="DarkRed"
+											 >
+							<shared:ToggleSwitch.OnTrackBackground>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+									<GradientStop Color="LightGreen" Offset="0" />
+									<GradientStop Color="DarkGreen" Offset="1" />
+								</LinearGradientBrush>
+							</shared:ToggleSwitch.OnTrackBackground>
+							<shared:ToggleSwitch.OffTrackBackground>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+									<GradientStop Color="Pink" Offset="0" />
+									<GradientStop Color="DarkRed" Offset="1" />
+								</LinearGradientBrush>
+							</shared:ToggleSwitch.OffTrackBackground>
+							<shared:ToggleSwitch.OnKnobBackground>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+									<GradientStop Color="DarkGray" Offset="0" />
+									<GradientStop Color="White" Offset="1" />
+								</LinearGradientBrush>
+							</shared:ToggleSwitch.OnKnobBackground>
+							<shared:ToggleSwitch.OffKnobBackground>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+									<GradientStop Color="DarkGray" Offset="0" />
+									<GradientStop Color="White" Offset="1" />
+								</LinearGradientBrush>
+							</shared:ToggleSwitch.OffKnobBackground>
+							<shared:ToggleSwitch.OnContent>
+								<Path Width="8" Height="8" SnapsToDevicePixels="True"
+									  Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+									  Data="M 0,5 2,7 7,2" />
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<Path Width="8" Height="8" SnapsToDevicePixels="True"
+									  Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+									  Data="M 0,0 8,8 M 0,8 8,0" />
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+						<!-- Style 8 -->
+						<TextBlock Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" Text="Style 8:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="7" IsChecked="True" Margin="8" HorizontalAlignment="Left">
+							<shared:ToggleSwitch.Style>
+								<Style TargetType="shared:ToggleSwitch">
+									<Style.Triggers>
+										<Trigger Property="IsMouseOver" Value="True">
+											<Setter Property="KnobExtent" Value="35" />
+										</Trigger>
+									</Style.Triggers>
+									<Setter Property="ContentPlacement" Value="Track" />
+									<Setter Property="KnobExtent" Value="32" />
+									<Setter Property="MaxKnobExtent" Value="35" />
+									<Setter Property="KnobAscent" Value="32" />
+									<Setter Property="KnobCornerRadius" Value="16" />
+									<Setter Property="KnobBorderThickness" Value="1" />
+									<Setter Property="KnobMargin" Value="0" />
+									<Setter Property="TrackExtent" Value="64" />
+									<Setter Property="TrackAscent" Value="32" />
+									<Setter Property="TrackCornerRadius" Value="16" />
+									<Setter Property="TrackBorderThickness" Value="1" />
+									<Setter Property="TrackContentMargin" Value="10,0" />
+									<Setter Property="OnKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowestBrushKey}}" />
+									<Setter Property="OnKnobBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" />
+									<Setter Property="OnTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundMidBrushKey}}" />
+									<Setter Property="OnTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" />
+									<Setter Property="OffKnobBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundLowestBrushKey}}" />
+									<Setter Property="OffKnobBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" />
+									<Setter Property="OffTrackBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidBrushKey}}" />
+									<Setter Property="OffTrackBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" />
+									<Setter Property="OnContent">
+										<Setter.Value>
+											<Path Width="16" Height="16" SnapsToDevicePixels="True"
+													Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighestBrushKey}}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+													Data="M 1,10 5,14 15,4" />
+										</Setter.Value>
+									</Setter>
+									<Setter Property="OffContent">
+										<Setter.Value>
+											<Path Width="16" Height="16" SnapsToDevicePixels="True"
+													Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighestBrushKey}}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+													Data="M 0,0 16,16 M 0,16 16,0" />
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</shared:ToggleSwitch.Style>
+						</shared:ToggleSwitch>
+
+						<!-- Style 9 -->
+						<TextBlock Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" Text="Style 9:" />
+						<Grid Grid.Column="2" Grid.Row="8" Margin="8" HorizontalAlignment="Left" TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraSmallFontSizeDoubleKey}}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<shared:ToggleSwitch ContentPlacement="None" HorizontalAlignment="Left" TrackContentMargin="0" NearContentMargin="0" FarContentMargin="0" Margin="0" />
+							<TextBlock Grid.Row="1" Text="OFF" HorizontalAlignment="Left" />
+							<TextBlock Grid.Row="1" Text="ON" HorizontalAlignment="Right" />
+						</Grid>
+
+						<!-- Style 10 -->
+						<TextBlock Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" Text="Style 10:" />
+						<shared:ToggleSwitch Grid.Column="2" Grid.Row="9" IsChecked="True" ContentPlacement="Track" Margin="8" HorizontalAlignment="Left"
+											 FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraSmallFontSizeDoubleKey}}"
+											 TrackCornerRadius="0" KnobCornerRadius="0"
+											 TrackExtent="42"
+											 KnobExtent="16" KnobAscent="16" KnobMargin="2,0"
+											 >
+							<shared:ToggleSwitch.OnContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchKnobOnBrushKey}}">ON</TextBlock>
+							</shared:ToggleSwitch.OnContent>
+							<shared:ToggleSwitch.OffContent>
+								<TextBlock Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ToggleSwitchKnobOffBrushKey}}">OFF</TextBlock>
+							</shared:ToggleSwitch.OffContent>
+						</shared:ToggleSwitch>
+
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+
+			</sampleBrowser:SampleGalleryControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

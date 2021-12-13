@@ -35,6 +35,8 @@ Another benefit of using [IDataFilter](xref:ActiproSoftware.Windows.Data.Filteri
 > [!TIP]
 > It is most efficient to set and configure the [DataFilter](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.DataFilter) property prior to setting the [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).[IsFilterActive](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.IsFilterActive) property to `true`.
 
+The [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).[FilterApplied](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.FilterApplied) event is raised after the current filtering state has been applied to all of the control's items, generally occurring when [DataFilter](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.DataFilter) is changed, or filtering is enabled or disabled.
+
 ## Automatically Including Descendants
 
 The [DataFilterBase](xref:ActiproSoftware.Windows.Data.Filtering.DataFilterBase) class, used as a base class for the default [IDataFilter](xref:ActiproSoftware.Windows.Data.Filtering.IDataFilter) implementations, has a [IncludedFilterResult](xref:ActiproSoftware.Windows.Data.Filtering.DataFilterBase.IncludedFilterResult) property that returns the filter result to use when an item is included in the filter.  This defaults to `DataFilterResult.Included` but can alternatively be set to `DataFilterResult.IncludedWithDescendants` if you wish for all descendant items automatically be included without needing to pass the filter themselves.

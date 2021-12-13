@@ -4,6 +4,10 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.PopupButtonIntro {
 
 	/// <summary>

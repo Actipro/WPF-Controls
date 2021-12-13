@@ -7,6 +7,10 @@ using System.Windows.Threading;
 using ActiproSoftware.ProductSamples.GridsSamples.Common;
 using ActiproSoftware.Windows.Controls.Grids;
 
+#if WPF
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
+#endif
+
 namespace ActiproSoftware.ProductSamples.GridsSamples.Demo.Toolbox {
 
 	/// <summary>

@@ -31,8 +31,10 @@ Features include:
 - Ability to set the minimum title bar height
 - Retrieve the final arranged title bar height, and left/right content widths
 - Alternate title bar and title bar button styles
-- Normal border, or single pixel-border with outer glow effects
-- Outer glow areas support window resizing
+- Normal border, or single pixel-border with outer glow / drop shadow effects
+- Outer glow / drop shadow areas support window resizing
+- System-rendered rounded corner, border, and drop shadow support on Windows 11 or later
+- Snap layout menu support on Windows 11 or later
 - Optionally extend the window content itself, or just the background, to render in the title bar area
 - Full Aero-snap support
 - Full interop (WinForms, etc.) and ClearType support
@@ -129,6 +131,18 @@ These properties on the [WindowChrome](xref:ActiproSoftware.Windows.Themes.Windo
 - [HasRestoreButton](xref:ActiproSoftware.Windows.Themes.WindowChrome.HasRestoreButton)
 - [HasMaximizeButton](xref:ActiproSoftware.Windows.Themes.WindowChrome.HasMaximizeButton)
 - [HasCloseButton](xref:ActiproSoftware.Windows.Themes.WindowChrome.HasCloseButton)
+
+## Rounded Corners (Windows 11 or later)
+
+The [CornerKind](xref:ActiproSoftware.Windows.Themes.WindowChrome.CornerKind) property allows rounded corners to be supported on Windows 11 or later.  The default value of `Rounded` uses the Windows system to render rounded corners, along with a border and drop shadow that is consistent with all other normal windows.  Similarly, a value of `SmallRounded` uses the system to render smaller rounded corners, a border, and drop shadow for tool windows.
+
+> [!NOTE]
+> When the Windows system is rendering the drop shadows via one of the round corner kind settings, setting the [HasOuterGlow](xref:ActiproSoftware.Windows.Themes.WindowChrome.HasOuterGlow) property to `false` (not recommended for most themes) will not hide the drop shadow.  The only effect it will have is that window resizing will not be supported when the pointer is in the shadow area outside of the outer window border.
+
+The `Square` value does not use the Windows system to round any corners, or render the border or drop shadow.  It uses [WindowChrome](xref:ActiproSoftware.Windows.Themes.WindowChrome) rendering for the the border and drop shadow instead.
+
+> [!NOTE]
+> When on a Windows 10 or earlier system, the corner kind is coerced to `Square`, since the system rounded corner feature isn't available until Windows 11.
 
 ## Title Bar Text Display
 
