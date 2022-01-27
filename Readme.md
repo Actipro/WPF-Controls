@@ -61,7 +61,7 @@ Follow these steps to run the application:
 
 - Check out the repo.
 - Open the `Samples\SampleBrowser\SampleBrowser.sln` solution in Visual Studio.
-- Build and run the solution's application project, which currently targets .NET Framework 4.6.2.
+- Build and run the solution's application project.
 
 ### Browsing Documentation
 
@@ -87,7 +87,7 @@ This repo also contains the following open-source projects, which can be opened 
 
 ## NuGet Packages
 
-[Packages for the Actipro WPF Controls](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF) are published on nuget.org, all beginning with the `ActiproSoftware.Controls.WPF` name prefix.
+[Packages for the Actipro WPF Controls](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF) are published on nuget.org, all beginning with the `ActiproSoftware.Controls.WPF` name prefix.  They contain .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+ variations of the product assemblies.
 
 ### All WPF Controls Metapackage
 
