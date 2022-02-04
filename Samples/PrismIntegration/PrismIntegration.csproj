@@ -1,185 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAEF5743-59E2-4C83-8E3B-319553AACF1C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActiproSoftware.Windows.PrismIntegration</RootNamespace>
-    <AssemblyName>PrismIntegration</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Actipro.ico</ApplicationIcon>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="ViewModels\Docking\Core\ToolItemDefaultLocation.cs" />
-    <Compile Include="ViewModels\Docking\ToolBoxToolItemViewModel.cs" />
-    <Compile Include="ViewModels\Docking\ClassViewToolItemViewModel.cs" />
-    <Compile Include="ViewModels\Docking\Core\DockingItemViewModelBase.cs" />
-    <Compile Include="ViewModels\Docking\SolutionExplorerToolItemViewModel.cs" />
-    <Compile Include="Views\Docking\ClassViewToolItemView.xaml.cs">
-      <DependentUpon>ClassViewToolItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Docking\SolutionExplorerToolItemView.xaml.cs">
-      <DependentUpon>SolutionExplorerToolItemView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\Docking\ToolboxToolItemView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Docking\WelcomeDocumentItemView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Docking\TextDocumentItemView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ImplicitTemplates.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Shell.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="Regions\Behaviors\DockSiteRegionBehavior.cs" />
-    <Compile Include="Regions\DockSiteRegionViewKinds.cs" />
-    <Compile Include="Regions\DockSiteRegionAdapter.cs" />
-    <Compile Include="Regions\ToolItemDockSideConverter.cs" />
-    <Compile Include="Regions\ToolItemStateConverter.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controls\RichTextBox.cs" />
-    <Compile Include="MainModule.cs" />
-    <Compile Include="Regions\DockingWindowBindingExtensions.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\Docking\Core\DocumentItemViewModel.cs" />
-    <Compile Include="ViewModels\Docking\WelcomeDocumentItemViewModel.cs" />
-    <Compile Include="ViewModels\Docking\TextDocumentItemViewModel.cs" />
-    <Compile Include="ViewModels\Docking\Core\ToolItemDockSide.cs" />
-    <Compile Include="ViewModels\Docking\Core\ToolItemState.cs" />
-    <Compile Include="ViewModels\Docking\Core\ToolItemViewModel.cs" />
-    <Compile Include="Views\Docking\ToolboxToolItemView.xaml.cs">
-      <DependentUpon>ToolboxToolItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Docking\WelcomeDocumentItemView.xaml.cs">
-      <DependentUpon>WelcomeDocumentItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Docking\TextDocumentItemView.xaml.cs">
-      <DependentUpon>TextDocumentItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shell.xaml.cs">
-      <DependentUpon>Shell.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Views\Docking\ClassViewToolItemView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Docking\SolutionExplorerToolItemView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\ClassView16.png" />
-    <Resource Include="Resources\Images\RichTextDocument16.png" />
-    <Resource Include="Resources\Images\SolutionExplorer16.png" />
-    <Resource Include="Resources\Images\TextDocument16.png" />
-    <Resource Include="Resources\Images\Toolbox16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Actipro.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.5</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Unity">
-      <Version>7.2.0.1422</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
-      <Version>4.7.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Threading.Tasks.Extensions">
-      <Version>4.5.4</Version>
-    </PackageReference>
-    <PackageReference Include="Unity.Abstractions">
-      <Version>5.11.4</Version>
-    </PackageReference>
-    <PackageReference Include="Unity.Container">
-      <Version>5.11.5</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<UseWPF>true</UseWPF>
+
+		<TargetFramework>net462</TargetFramework>
+
+		<ApplicationIcon>Actipro.ico</ApplicationIcon>
+
+		<Version>22.1.0.0</Version>
+
+		<RootNamespace>ActiproSoftware.Windows.PrismIntegration</RootNamespace>
+		<Company>Actipro Software LLC</Company>
+		<Copyright>Copyright (c) 2008-2021 Actipro Software LLC.  All rights reserved.</Copyright>
+		<Title>Prism (Unity) Integration Sample</Title>
+		<Product>$(Title)</Product>
+		<Description>Sample application to demonstrate integrating into a Prism (Unity) application.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Actipro.ico" />
+		<Resource Include="Resources\Images\*.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Readme.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+	</ItemGroup>
+
+	<ItemGroup Label="Actipro References">
+	    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.0" />
+	</ItemGroup>
+
 </Project>
