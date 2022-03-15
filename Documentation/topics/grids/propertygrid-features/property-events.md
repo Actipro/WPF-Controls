@@ -8,13 +8,13 @@ order: 27
 The property grid has several property events that get raised in various scenarios.
 
 > [!NOTE]
-> Since [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid) indirectly inherits [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox), all of the events described for that control such as those related to [selection](../tree-control-features/selection.md), [expansion](../tree-control-features/expandability.md), etc. apply to property grid as well.
+> Since [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) indirectly inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox), all of the events described for that control such as those related to [selection](../tree-control-features/selection.md), [expansion](../tree-control-features/expandability.md), etc. apply to property grid as well.
 
 ## Property Change Events
 
-The [OnPropertyValueChanging](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.OnPropertyValueChanging*) and [PropertyValueChanged](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.PropertyValueChanged) events are raised before and after, respectively, a property's value is updated through the property grid.  The event arguments for both events include the [PropertyModelValueChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelValueChangeEventArgs).[PropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelValueChangeEventArgs.PropertyModel) being changed and the new [Value](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelValueChangeEventArgs.Value).
+The [OnPropertyValueChanging](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.OnPropertyValueChanging*) and [PropertyValueChanged](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyValueChanged) events are raised before and after, respectively, a property's value is updated through the property grid.  The event arguments for both events include the [PropertyModelValueChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelValueChangeEventArgs).[PropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyModelValueChangeEventArgs.PropertyModel) being changed and the new [Value](xref:@ActiproUIRoot.Controls.Grids.PropertyModelValueChangeEventArgs.Value).
 
-To cancel an update to the property value, handle the [OnPropertyValueChanging](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.OnPropertyValueChanging*) event and set `e.Cancel` to `true`.  This will prevent the new value from being assigned and will not raise the [PropertyValueChanged](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.PropertyValueChanged) event.
+To cancel an update to the property value, handle the [OnPropertyValueChanging](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.OnPropertyValueChanging*) event and set `e.Cancel` to `true`.  This will prevent the new value from being assigned and will not raise the [PropertyValueChanged](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyValueChanged) event.
 
 ## Collection Change Events
 

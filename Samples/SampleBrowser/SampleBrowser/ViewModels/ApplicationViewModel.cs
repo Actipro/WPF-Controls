@@ -76,7 +76,7 @@ namespace ActiproSoftware.SampleBrowser {
 
 		private const string DefaultSampleUri = null;
 		// private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
-		// private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/ViewsSamples/QuickStart/MultiColumnPanelIntro/MainControl";
+		// private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/TreeListViewFlatList/MainControl";
 		
 		private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
 

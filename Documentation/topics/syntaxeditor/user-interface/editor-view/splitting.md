@@ -25,7 +25,7 @@ These members control splitting features:
 
 | Member | Description |
 |-----|-----|
-| [CanSplitHorizontally](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CanSplitHorizontally) Property | Gets or sets whether the editor can be split horizontally to show more than one view.  The default value is `true`. |
+| [CanSplitHorizontally](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanSplitHorizontally) Property | Gets or sets whether the editor can be split horizontally to show more than one view.  The default value is `true`. |
 
 ## Split State and Locations
 
@@ -33,8 +33,8 @@ The following properties are used to determine if there is currently a split in 
 
 | Member | Description |
 |-----|-----|
-| [HasHorizontalSplit](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.HasHorizontalSplit) Property | Gets or sets whether the editor is currently split horizontally to show more than one view. |
-| [HorizontalSplitPercentage](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.HorizontalSplitPercentage) Property | Gets or sets the percentage across the width of the editor at which the horizontal split is located.  The value must be between `0` and `1`, where `0` indicates no split. |
+| [HasHorizontalSplit](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.HasHorizontalSplit) Property | Gets or sets whether the editor is currently split horizontally to show more than one view. |
+| [HorizontalSplitPercentage](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.HorizontalSplitPercentage) Property | Gets or sets the percentage across the width of the editor at which the horizontal split is located.  The value must be between `0` and `1`, where `0` indicates no split. |
 
 This code creates a horizontal split:
 
@@ -44,8 +44,8 @@ editor.HasHorizontalSplit = true;
 
 ## Resetting Splits
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ResetViews](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ResetViews*) method can be used to reset the editor to showing a single view.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ResetViews](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ResetViews*) method can be used to reset the editor to showing a single view.
 
 ## View Placement
 
-The [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[Placement](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.Placement) property returns an [EditorViewPlacement](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorViewPlacement) enumeration value indicating where a view is currently located within the editor.
+The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Placement](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.Placement) property returns an [EditorViewPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewPlacement) enumeration value indicating where a view is currently located within the editor.

@@ -17,17 +17,17 @@ In general, the rule of thumb is: if you are going to search a document that is 
 
 ## Accessing the View Search Model
 
-The "view" search model is accessed via the [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[Searcher](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.Searcher) property.  This property returns an [IEditorViewSearcher](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSearcher) instance, which has find/replace functionality built-in.
+The "view" search model is accessed via the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Searcher](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.Searcher) property.  This property returns an [IEditorViewSearcher](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSearcher) instance, which has find/replace functionality built-in.
 
 Since the view search model is accessed for a particular view, it interacts with the owner view's selection.
 
 ## Editor Search Options
 
-The [IEditorSearchOptions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorSearchOptions) interface specifies the options type that must be passed into the view search model methods.  It inherits the low-level [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) interface, which is described in the [Low-Level Searching Operations](../../text-parsing/advanced-text/searching.md) topic.
+The [IEditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorSearchOptions) interface specifies the options type that must be passed into the view search model methods.  It inherits the low-level [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) interface, which is described in the [Low-Level Searching Operations](../../text-parsing/advanced-text/searching.md) topic.
 
-This view search model options interface adds a [Scope](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorSearchOptions.Scope) property, which is an enumeration value of type [EditorSearchScope](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorSearchScope).  It specifies whether the search is performed within the entire document or in the current selection only.
+This view search model options interface adds a [Scope](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorSearchOptions.Scope) property, which is an enumeration value of type [EditorSearchScope](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorSearchScope).  It specifies whether the search is performed within the entire document or in the current selection only.
 
-The [EditorSearchOptions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation.EditorSearchOptions) is an implementation of the [IEditorSearchOptions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorSearchOptions) interface and can be used in your code.
+The [EditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.EditorSearchOptions) is an implementation of the [IEditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorSearchOptions) interface and can be used in your code.
 
 ## Search Result Sets
 

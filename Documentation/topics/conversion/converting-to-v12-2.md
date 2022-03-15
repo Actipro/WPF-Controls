@@ -15,7 +15,7 @@ The [Themes' Getting Started](../themes/getting-started.md) topic walks through 
 
 ## Renamed Assets
 
-These [AssetResourceKeys](xref:ActiproSoftware.Windows.Themes.AssetResourceKeys) have been renamed:
+These [AssetResourceKeys](xref:@ActiproUIRoot.Themes.AssetResourceKeys) have been renamed:
 
 - `RaftingWindowBorderNormalBrushKey` renamed to `RaftingWindowBorderInactiveBrushKey`.
 

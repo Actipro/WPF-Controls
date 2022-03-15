@@ -25,14 +25,13 @@ This table shows several of the most popular built-in transitions operating on a
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[FadeTransition](xref:ActiproSoftware.Windows.Media.Animation.FadeTransition)
+[FadeTransition](xref:@ActiproUIRoot.Media.Animation.FadeTransition)
 
 </td>
 <td>
@@ -47,7 +46,7 @@ Fades in the new selected page.
 <tr>
 <td>
 
-[SlideTransition](xref:ActiproSoftware.Windows.Media.Animation.SlideTransition)
+[SlideTransition](xref:@ActiproUIRoot.Media.Animation.SlideTransition)
 
 </td>
 <td>
@@ -62,7 +61,7 @@ Slides in the new selected page to hide the old one behind it.  Slide transition
 <tr>
 <td>
 
-[BarWipeTransition](xref:ActiproSoftware.Windows.Media.Animation.BarWipeTransition)
+[BarWipeTransition](xref:@ActiproUIRoot.Media.Animation.BarWipeTransition)
 
 </td>
 <td>
@@ -79,20 +78,20 @@ Wipes from the old selected page to the new.  Wipe transitions use a direction p
 
 ## Wizard Transition Settings
 
-These [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) properties are used to configure the transition effects:
+These [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) properties are used to configure the transition effects:
 
 | Member | Description |
 |-----|-----|
-| [BackwardProgressTransitionDuration](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BackwardProgressTransitionDuration) Property | Gets or sets a `Duration` indicating the duration of backward progress page transitions. |
-| [ForwardProgressTransitionDuration](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.ForwardProgressTransitionDuration) Property | Gets or sets a `Duration` indicating the duration of forward progress page transitions. |
-| [TransitionDefaultDirection](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.TransitionDefaultDirection) Property | Gets or sets a [TransitionDirection](xref:ActiproSoftware.Windows.Media.Animation.TransitionDirection) that specifies the default direction for a transition between two pages.  Most transitions do make use of a [TransitionDirection](xref:ActiproSoftware.Windows.Media.Animation.TransitionDirection), however not all do. |
-| [TransitionSelector](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.TransitionSelector) Property | Gets or sets a [TransitionSelector](xref:ActiproSoftware.Windows.Media.Animation.TransitionSelector) that is used to select the [Transition](xref:ActiproSoftware.Windows.Media.Animation.Transition) to use between two pages.  By default, no transition is performed.  Add a [MultiTransitionSelector](xref:ActiproSoftware.Windows.Media.Animation.MultiTransitionSelector) with one child [Transition](xref:ActiproSoftware.Windows.Media.Animation.Transition) to only use one transition.  Add a [MultiTransitionSelector](xref:ActiproSoftware.Windows.Media.Animation.MultiTransitionSelector) with more than one child [Transition](xref:ActiproSoftware.Windows.Media.Animation.Transition) to randomly choose a transition to use. |
+| [BackwardProgressTransitionDuration](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BackwardProgressTransitionDuration) Property | Gets or sets a `Duration` indicating the duration of backward progress page transitions. |
+| [ForwardProgressTransitionDuration](xref:@ActiproUIRoot.Controls.Wizard.Wizard.ForwardProgressTransitionDuration) Property | Gets or sets a `Duration` indicating the duration of forward progress page transitions. |
+| [TransitionDefaultDirection](xref:@ActiproUIRoot.Controls.Wizard.Wizard.TransitionDefaultDirection) Property | Gets or sets a [TransitionDirection](xref:@ActiproUIRoot.Media.Animation.TransitionDirection) that specifies the default direction for a transition between two pages.  Most transitions do make use of a [TransitionDirection](xref:@ActiproUIRoot.Media.Animation.TransitionDirection), however not all do. |
+| [TransitionSelector](xref:@ActiproUIRoot.Controls.Wizard.Wizard.TransitionSelector) Property | Gets or sets a [TransitionSelector](xref:@ActiproUIRoot.Media.Animation.TransitionSelector) that is used to select the [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) to use between two pages.  By default, no transition is performed.  Add a [MultiTransitionSelector](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector) with one child [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) to only use one transition.  Add a [MultiTransitionSelector](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector) with more than one child [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) to randomly choose a transition to use. |
 
 Each transition uses a `Duration` to determine how long the effect animates.  Many transitions also support the concept of effect directions and other options that can be configured.
 
 ## Using a Single Transition Effect
 
-This XAML code shows how to use a single diagonal [BarWipeTransition](xref:ActiproSoftware.Windows.Media.Animation.BarWipeTransition) for page transitions:
+This XAML code shows how to use a single diagonal [BarWipeTransition](xref:@ActiproUIRoot.Media.Animation.BarWipeTransition) for page transitions:
 
 ```xaml
 <Window x:Class="Sample.Application.Window"
@@ -113,7 +112,7 @@ This XAML code shows how to use a single diagonal [BarWipeTransition](xref:Actip
 
 ## Using a Random Transition Effect
 
-This XAML code shows how to have a [Transition](xref:ActiproSoftware.Windows.Media.Animation.Transition) randomly selected at run-time for each page change from a supplied list of transitions:
+This XAML code shows how to have a [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) randomly selected at run-time for each page change from a supplied list of transitions:
 
 ```xaml
 <Window x:Class="Sample.Application.Window"
@@ -147,7 +146,7 @@ This XAML code shows how to have a [Transition](xref:ActiproSoftware.Windows.Med
 
 ## Adding Custom Logic for Transition Selection
 
-Although the [MultiTransitionSelector](xref:ActiproSoftware.Windows.Media.Animation.MultiTransitionSelector) generally provides the transition selection functionality you need, sometimes there may be cases where you would like to write more robust code to select transitions.  To do this, create a class that inherits [TransitionSelector](xref:ActiproSoftware.Windows.Media.Animation.TransitionSelector) and implement its [SelectTransition](xref:ActiproSoftware.Windows.Media.Animation.TransitionSelector.SelectTransition*) method.  Then assign your custom selector to the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[TransitionSelector](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.TransitionSelector) property.
+Although the [MultiTransitionSelector](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector) generally provides the transition selection functionality you need, sometimes there may be cases where you would like to write more robust code to select transitions.  To do this, create a class that inherits [TransitionSelector](xref:@ActiproUIRoot.Media.Animation.TransitionSelector) and implement its [SelectTransition](xref:@ActiproUIRoot.Media.Animation.TransitionSelector.SelectTransition*) method.  Then assign your custom selector to the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[TransitionSelector](xref:@ActiproUIRoot.Controls.Wizard.Wizard.TransitionSelector) property.
 
 ## Transition Performance When In Debug Mode
 

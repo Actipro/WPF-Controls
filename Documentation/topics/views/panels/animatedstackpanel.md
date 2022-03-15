@@ -14,7 +14,7 @@ This panel allows child elements to be positioned in sequential order, either ho
 
 ## Overview
 
-Child elements are positioned or "stacked" based on the order that the elements were added to the panel, or more specifically, their position in the `Children` collection.  Elements can be stacked either vertically or horizontally, which is determined by the [AnimatedStackPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel).[Orientation](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel.Orientation) property.
+Child elements are positioned or "stacked" based on the order that the elements were added to the panel, or more specifically, their position in the `Children` collection.  Elements can be stacked either vertically or horizontally, which is determined by the [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel).[Orientation](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel.Orientation) property.
 
 ![Screenshot](../images/animatedstackpanel-vertical.png)![Screenshot](../images/animatedstackpanel-horizontal.png)
 
@@ -24,7 +24,7 @@ Like the native WPF `StackPanel`, the `AnimatedStackPanel` implents `IScrollInfo
 
 ## Getting Started with AnimatedStackPanel
 
-This code shows typical XAML code used to position elements in an [AnimatedStackPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel):
+This code shows typical XAML code used to position elements in an [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel):
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
@@ -38,8 +38,8 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 
 ## Important Members
 
-The following [AnimatedStackPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel) members are key to its use:
+The following [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel) members are key to its use:
 
 | Member | Description |
 |-----|-----|
-| [Orientation](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel.Orientation) Property | Gets or sets the orientation that the child elements are arranged. |
+| [Orientation](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel.Orientation) Property | Gets or sets the orientation that the child elements are arranged. |

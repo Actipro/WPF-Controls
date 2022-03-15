@@ -13,10 +13,14 @@ UI virtualization means that if many property grid items (categories, properties
 
 Since property grid uses a selector to switch styles/templates for items (between properties, categories, etc.), "Standard" virtualization mode is used by default instead of "Recycling".
 
+@if (wpf) {
+
 > [!NOTE]
 > "Recycling" virtualization mode is not used since it can run into display issues on older .NET framework versions.
 
-For more information on UI virtualization and the related features inherited via [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox), please see the tree control [Virtualization](../tree-control-features/virtualization.md) topic.
+}
+
+For more information on UI virtualization and the related features inherited via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox), please see the tree control [Virtualization](../tree-control-features/virtualization.md) topic.
 
 ## Lazy Loading
 

@@ -9,7 +9,7 @@ order: 20
 
 A string resource is a text string that generally can be displayed in the user interface of our products.
 
-For instance, when hovering the mouse over the [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) control's customize button, a tooltip whose default text is `Configure Buttons` is displayed.  The string `Configure Buttons` is defined as a string resource in the Navigation product's assembly.
+For instance, when hovering the mouse over the [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) control's customize button, a tooltip whose default text is `Configure Buttons` is displayed.  The string `Configure Buttons` is defined as a string resource in the Navigation product's assembly.
 
 All WPF Studio products that have displayable strings have string resources defined for those items.  You can view all the string resources in our products with the [String Resource Browser](utilities/string-resource-browser.md).
 

@@ -9,7 +9,7 @@ This panel delegates the positioning of child elements to one or more child pane
 
 ## Overview
 
-The [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel) relies on one or more [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase)-derived panels to provide the current layout logic. These delegate panels are specified in the [Panels](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.Panels) collection. The active delegate panel is determined by the [ActiveIndex](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.ActiveIndex) property, which specifies an index into the `Panels` collection.
+The [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel) relies on one or more [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase)-derived panels to provide the current layout logic. These delegate panels are specified in the [Panels](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.Panels) collection. The active delegate panel is determined by the [ActiveIndex](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.ActiveIndex) property, which specifies an index into the `Panels` collection.
 
 Once configured, the layout logic of the `SwitchPanel` can be quickly altered by updating the `ActiveIndex` property.
 
@@ -19,7 +19,7 @@ Once configured, the layout logic of the `SwitchPanel` can be quickly altered by
 
 ## Getting Started with SwitchPanel
 
-This code shows typical XAML code used to position elements in an [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel):
+This code shows typical XAML code used to position elements in an [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel):
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
@@ -38,10 +38,10 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 
 ## Important Members
 
-The following [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel) members are key to its use:
+The following [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel) members are key to its use:
 
 | Member | Description |
 |-----|-----|
-| [ActiveIndex](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.ActiveIndex) Property | Gets or sets the index of the [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) from the [Panels](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.Panels) collection that is active. |
-| [ActivePanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.ActivePanel) Property | Gets the [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) from the [Panels](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.Panels) collection that is active. collection that is active. |
-| [Panels](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel.Panels) Property | Gets or sets the panels that can be used to layout the children. |
+| [ActiveIndex](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.ActiveIndex) Property | Gets or sets the index of the [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) from the [Panels](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.Panels) collection that is active. |
+| [ActivePanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.ActivePanel) Property | Gets the [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) from the [Panels](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.Panels) collection that is active. collection that is active. |
+| [Panels](xref:@ActiproUIRoot.Controls.Views.SwitchPanel.Panels) Property | Gets or sets the panels that can be used to layout the children. |

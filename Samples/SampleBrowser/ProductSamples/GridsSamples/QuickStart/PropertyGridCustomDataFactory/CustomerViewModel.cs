@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Collections.Generic;
 using ActiproSoftware.Windows;
 
@@ -12,6 +12,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCus
 		private IList<ReferralSourceViewModel> availableReferrals = new List<ReferralSourceViewModel>();
 		private string countryName;
 		private string customerName;
+		private IDictionary<string, string> dataItems = new Dictionary<string, string>();
 		private PhoneNumbersViewModel phoneNumbers;
 		private ReferralSourceViewModel referredBy;
 
@@ -25,6 +26,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCus
 		/// Gets the list of available referrals.
 		/// </summary>
 		/// <value>The list of available referrals.</value>
+		[DisplayName("Available referrals")]
 		public IList<ReferralSourceViewModel> AvailableReferrals {
 			get {
 				return availableReferrals;
@@ -58,6 +60,17 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCus
 			set {
 				customerName = value;
 				this.NotifyPropertyChanged("CustomerName");
+			}
+		}
+		
+		/// <summary>
+		/// Gets the list of data items.
+		/// </summary>
+		/// <value>The list of data items.</value>
+		[DisplayName("Data items")]
+		public IDictionary<string, string> DataItems {
+			get {
+				return dataItems;
 			}
 		}
 		

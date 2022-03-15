@@ -5,7 +5,7 @@ order: 17
 ---
 # Int32Picker
 
-The [Int32EditBox](xref:ActiproSoftware.Windows.Controls.Editors.Int32EditBox) control allows for the input of an `Int32` (32-bit integer) value.  It is generally intended for display within a popup, such as for the [Int32EditBox](../editboxes/int32editbox.md) control.
+The [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox) control allows for the input of an `Int32` (32-bit integer) value.  It is generally intended for display within a popup, such as for the [Int32EditBox](../editboxes/int32editbox.md) control.
 
 ![Screenshot](../images/int32picker.png)
 
@@ -17,13 +17,13 @@ Negative values have a distinct appearance from positive values.
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.Int32Picker.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.Int32Picker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Int32Picker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Int32Picker.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.Int32Picker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Int32Picker.SmallChange) property.
 
 ## Sample XAML
 

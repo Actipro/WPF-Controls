@@ -17,7 +17,7 @@ All public properties on classes used in this product are categorized for use in
 
 ## Task Pane Introduction
 
-Whenever you select a [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon) or one of several types of ribbon controls in the designer, a task pane adorner may appear in the upper right area of the control.
+Whenever you select a [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) or one of several types of ribbon controls in the designer, a task pane adorner may appear in the upper right area of the control.
 
 ![Screenshot](images/designer-adorner.gif)
 
@@ -27,23 +27,23 @@ When you click this adorner, a task pane for the control appears, giving you acc
 
 These control types currently have task panes available when they are selected in the Visual Studio designer:
 
-- [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon)
-- [ApplicationMenu](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ApplicationMenu)
-- [Button](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Button)
-- [ButtonGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ButtonGroup)
-- [CheckBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.CheckBox)
-- [ComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox)
-- [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup)
-- [Group](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Group)
-- [Menu](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Menu)
-- [PopupButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.PopupButton)
-- [RadioButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RadioButton)
-- [RibbonGallery](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RibbonGallery)
-- [RowPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RowPanel)
-- [SplitButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.SplitButton)
-- [StackPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel)
-- [Tab](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Tab)
-- [TextBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.TextBox)
+- [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon)
+- [ApplicationMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ApplicationMenu)
+- [Button](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Button)
+- [ButtonGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ButtonGroup)
+- [CheckBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.CheckBox)
+- [ComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox)
+- [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup)
+- [Group](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group)
+- [Menu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Menu)
+- [PopupButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.PopupButton)
+- [RadioButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RadioButton)
+- [RibbonGallery](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RibbonGallery)
+- [RowPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel)
+- [SplitButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.SplitButton)
+- [StackPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel)
+- [Tab](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Tab)
+- [TextBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TextBox)
 
 Nearly all of the task panes have links for quickly adding new child controls to the selected control.  Ribbon is very intelligent and adds additional controls as appropriate to increase your productivity.  For instance, when adding a contextual tab group, a tab will also be added to that contextual tab group with a single group already in the tab, ready for design.  This saves on several clicks for tasks you would have performed anyhow.
 
@@ -67,7 +67,7 @@ When a selected folder in a project contains images, they will be displayed alon
 
 ## Ribbon Task Pane
 
-The Ribbon task pane provides quick access for adding new child controls to the [Tabs](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.Tabs), [ContextualTabGroups](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.ContextualTabGroups), [TabPanelItems](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.TabPanelItems), and [QuickAccessToolBarItems](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.QuickAccessToolBarItems) collections.  It also allows for the reordering of items in all those collections, along with the configuration of several common options.
+The Ribbon task pane provides quick access for adding new child controls to the [Tabs](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.Tabs), [ContextualTabGroups](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.ContextualTabGroups), [TabPanelItems](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.TabPanelItems), and [QuickAccessToolBarItems](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarItems) collections.  It also allows for the reordering of items in all those collections, along with the configuration of several common options.
 
 ![Screenshot](images/vs-ribbon-task-pane.png)
 
@@ -75,7 +75,7 @@ The Ribbon task pane provides quick access for adding new child controls to the 
 
 Click a tab in the tabs list to select it in the ribbon and make its contents visible.  Alternatively, click on a tab in the designer itself to select it.
 
-In addition, the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[ApplicationMenu](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.ApplicationMenu) property can be quickly set to a new instance of [Backstage](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Backstage) (Office 2010) or [ApplicationMenu](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ApplicationMenu) (Office 2007).
+In addition, the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[ApplicationMenu](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.ApplicationMenu) property can be quickly set to a new instance of [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage) (Office 2010) or [ApplicationMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ApplicationMenu) (Office 2007).
 
 ## Button, CheckBox, ComboBox, PopupButton, RadioButton, SplitButton, and TextBox Task Panes
 
@@ -220,7 +220,7 @@ If you choose not to define specific Group variants, the make sure you leave the
 
 ## Changing the Selected Tab
 
-The [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[SelectedTab](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.SelectedTab) property in the Properties window has a special drop-down list that allows for selection of a tab within the Ribbon.  This allows you to jump directly to a specific tab clicking on it in the list.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[SelectedTab](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.SelectedTab) property in the Properties window has a special drop-down list that allows for selection of a tab within the Ribbon.  This allows you to jump directly to a specific tab clicking on it in the list.
 
 But actually the easier way to change the currently selected tab is to simply click on another tab in the designer.  The tab you click on will become selected both in the ribbon and in the designer.
 
@@ -254,7 +254,7 @@ The property grid is very flexible and we've engineered Ribbon so that a lot of 
 
 *Visual Studio displaying the collection editor for ribbon tabs*
 
-For instance, to edit the tabs in a ribbon, use the collection editor for the [Tabs](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.Tabs) property.  From that collection editor you can select a [Tab](controls/miscellaneous/tab.md), edit its `Items` collection and add groups.
+For instance, to edit the tabs in a ribbon, use the collection editor for the [Tabs](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.Tabs) property.  From that collection editor you can select a [Tab](controls/miscellaneous/tab.md), edit its `Items` collection and add groups.
 
 Although a lot of the ribbon UI can be configured using the property grid and its dialogs, there are some limits on how far you can traverse, thus requiring you to code in XAML for certain UI features.
 

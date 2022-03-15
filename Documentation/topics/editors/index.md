@@ -33,7 +33,9 @@ Each of the controls features unique designs that have been specifically crafted
 - .NET Types Supported
   
   - Brush - Shows brush swatch and optionally allows alpha component and gradients.
+  @if (wpf) {
   - Byte - Display format, min/max values, and small/large change values supported.
+  }
   - Color - Shows color swatch and optionally allows alpha component.
   - CornerRadius - Display format, min/max values, and small/large change values supported.
   - Date - Display format, and min/max values supported.  Can optionally retain time component.
@@ -43,7 +45,9 @@ Each of the controls features unique designs that have been specifically crafted
   - Guid - New GUID generation button.
   - Int16 - Display format, min/max values, and small/large change values supported.
   - Int32 - Display format, min/max values, and small/large change values supported.
+  @if (wpf) {
   - Int32Rect - Display format, min/max values, and small/large change values supported.
+  }
   - Int64 - Display format, min/max values, and small/large change values supported.
   - Point - Display format, min/max values, and small/large change values supported.
   - Rect - Display format, min/max values, and small/large change values supported.
@@ -51,7 +55,9 @@ Each of the controls features unique designs that have been specifically crafted
   - Thickness - Display format, min/max values, and small/large change values supported.
   - Time - Display format, and min/max values supported.
   - TimeSpan - Display format, min/max values, and small/large change values supported.
+  @if (wpf) {
   - Vector - Display format, min/max values, and small/large change values supported.
+  }
 
 ### Pickers
 
@@ -63,7 +69,9 @@ Each of the controls features unique designs that have been specifically crafted
 - .NET Types Supported
   
   - Brush - Combines a ColorPicker with GradientStopSlider for brush entry.
+  @if (wpf) {
   - Byte - Uses a radial slider or calculator.
+  }
   - Color - Combines a HsbColorPicker with multiple Int32EditBox controls for ARGB component entry.
   - CornerRadius - Uses tabbed radial sliders.
   - Date - Users a MonthCalendar.
@@ -72,7 +80,9 @@ Each of the controls features unique designs that have been specifically crafted
   - Enum - Uses an EnumListBox.
   - Int16 - Uses a radial slider or calculator.
   - Int32 - Uses a radial slider or calculator.
+  @if (wpf) {
   - Int32Rect - Uses tabbed radial sliders.
+  }
   - Int64 - Uses a radial slider or calculator.
   - Point - Uses tabbed radial sliders.
   - Rect - Uses tabbed radial sliders.
@@ -81,7 +91,9 @@ Each of the controls features unique designs that have been specifically crafted
   - Thickness - Uses tabbed radial sliders.
   - Time - Uses radial sliders to input hour and minute values, similar to an analog clock.
   - TimeSpan - Uses tabbed radial sliders.
+  @if (wpf) {
   - Vector - Uses tabbed radial sliders.
+  }
 
 ### Other Controls
 

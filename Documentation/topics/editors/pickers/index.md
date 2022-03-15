@@ -19,7 +19,6 @@ This table shows the picker controls that are included in the product:
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -38,6 +37,7 @@ Allows for the input of a `Brush` value.
 </td>
 </tr>
 
+@if (wpf) {
 <tr>
 <td>
 
@@ -52,6 +52,7 @@ Allows for the input of a `Byte` (8-bit positive integer) value.
 
 </td>
 </tr>
+}
 
 <tr>
 <td>
@@ -188,6 +189,7 @@ Allows for the input of an `Int32` (32-bit integer) value.
 </td>
 </tr>
 
+@if (wpf) {
 <tr>
 <td>
 
@@ -202,6 +204,7 @@ Allows for the input of an `Int32Rect` (X, Y, width, height) value.
 
 </td>
 </tr>
+}
 
 <tr>
 <td>
@@ -353,6 +356,7 @@ Allows for the input of a `TimeSpan` (days, hours, minutes, seconds, millisecond
 </td>
 </tr>
 
+@if (wpf) {
 <tr>
 <td>
 
@@ -367,6 +371,7 @@ Allows for the input of a `Vector` (X, Y) value.
 
 </td>
 </tr>
+}
 
 </tbody>
 </table>

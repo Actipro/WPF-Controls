@@ -12,9 +12,9 @@ This topic contains troubleshooting data specific to the Docking & MDI product.
 
 ## Document/Tool Window Content Sizing Is Incorrect
 
-A common mistake is to set the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, or `MaxHeight` properties of a docking window ([ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) or [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow)) instance.  Since the docking elements need to dynamically change their size based on their location, these properties should never be set by you.
+A common mistake is to set the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, or `MaxHeight` properties of a docking window ([ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) or [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow)) instance.  Since the docking elements need to dynamically change their size based on their location, these properties should never be set by you.
 
-Instead, you can set the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerDockedSize), [ContainerMinSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMinSize), [ContainerMaxSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMaxSize), and [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[ContainerAutoHideSize](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.ContainerAutoHideSize) properties as appropriate for your needs.
+Instead, you can set the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerDockedSize), [ContainerMinSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMinSize), [ContainerMaxSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMaxSize), and [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[ContainerAutoHideSize](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.ContainerAutoHideSize) properties as appropriate for your needs.
 
 See the [Lifecycle and Docking Management](docking-window-features/lifecycle-and-docking-management.md) topic for details on using these properties.
 
@@ -26,12 +26,12 @@ When the root element has loaded, that means that all the templates of the contr
 
 ## Document/ToolWindow DataContext Cleared On Layout Changes
 
-In many common app design scenarios, you set a data context on a root container in your element hierarchy.  Naturally you expect it to inherit down the tree of elements and into the [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) and [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow).`DataContext` properties.
+In many common app design scenarios, you set a data context on a root container in your element hierarchy.  Naturally you expect it to inherit down the tree of elements and into the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).`DataContext` properties.
 
 While that may work on initial load, the problem is that as soon as the layout changes, such as when an end user drags a tool window to float, the `DataContext` will clear.  This is because the tool window has now moved to a new root container, and the data context is no longer inheriting down.
 
 > [!NOTE]
-> This issue is not present when using our [MVVM Features](mvvm-features.md) since in that case, the `DataContext` of each docking window becomes the item you bound in the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ToolItemsSource](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolItemsSource) or [DocumentItemsSource](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentItemsSource) properties.
+> This issue is not present when using our [MVVM Features](mvvm-features.md) since in that case, the `DataContext` of each docking window becomes the item you bound in the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolItemsSource) or [DocumentItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentItemsSource) properties.
 
 If the content of your docking windows will rely on a data context that normally would be inherited down, you should explicitly bind your docking window's `DataContext` property to the dock site's `DataContext` like this:
 
@@ -52,14 +52,22 @@ By doing that, you ensure that the docking window data contexts will still match
 
 The same concept applies if you have a [Workspace](workspace-mdi-features/workspace.md) that has direct content (no MDI) and that content relies on an inherited data context.  Changing the docking window layout around the workspace will briefly cause the workspace to be removed from and added back into the layout.  Both are actions that temporarily change the inherited data context.  By using a binding as above on the workspace's data context, that can be prevented.
 
+@if (wpf) {
+
 ## Active Window is Incorrect With Interop Controls
 
-The [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ActiveWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ActiveWindow) property might not be correct when clicking into interop (WinForms, ActiveX, etc.) controls.  This is due to issues WPF has with tracking focus that enters `HwndHost` controls, and then properly reporting it back in WPF events.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) property might not be correct when clicking into interop (WinForms, ActiveX, etc.) controls.  This is due to issues WPF has with tracking focus that enters `HwndHost` controls, and then properly reporting it back in WPF events.
 
 We include a helper that is generally able to work around the focus tracking issues.  See the [Interop Compatibility](interop-compatibility.md) topic for details.
 
+}
+
+@if (wpf) {
+
 ## Implicit Style/DataTemplate Is Not Always Applied
 
-The [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) leverages one or more `Window` instances that contain a [DockHost](xref:ActiproSoftware.Windows.Controls.Docking.DockHost) for floating document and/or tool windows when [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.UseHostedFloatingWindows) is `false` (the default).  Therefore, any implicit `Style` or `DataTemplate` definitions must be defined in the application resources, so they will be available to the main window and any floating windows.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) leverages one or more `Window` instances that contain a [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost) for floating document and/or tool windows when [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedFloatingWindows) is `false` (the default).  Therefore, any implicit `Style` or `DataTemplate` definitions must be defined in the application resources, so they will be available to the main window and any floating windows.
 
-Alternatively, the implicit `Style` or `DataTemplate` definitions can be redefined/merged in the resources of a floating [DockHost](xref:ActiproSoftware.Windows.Controls.Docking.DockHost).  This can be accomplished in a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[FloatingWindowOpening](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.FloatingWindowOpening) event handler.
+Alternatively, the implicit `Style` or `DataTemplate` definitions can be redefined/merged in the resources of a floating [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost).  This can be accomplished in a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOpening) event handler.
+
+}

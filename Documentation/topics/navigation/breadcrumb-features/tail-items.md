@@ -5,7 +5,7 @@ order: 12
 ---
 # Tail Items
 
-By default, the last item displayed is the selected item. However, the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) control can be configured to display any number of tail items.
+By default, the last item displayed is the selected item. However, the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control can be configured to display any number of tail items.
 
 Tail items are items that were part of the last selected branch, meaning they were either selected or contained the selection, and are below the currently selected item. In the image below, the *Actipro Software* item was selected and then the selection was changed to the *Desktop* item. In this scenario, the selection moved up the current branch. By retaining the tail items in the current branch, the user can quickly navigate back down.
 
@@ -17,17 +17,17 @@ If the selection is changed to a different branch, then the tail items below the
 
 ## Setting Tail Item Count
 
-The number of tail items is controlled by the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).[MaxTailItemCount](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.MaxTailItemCount) property. This number counts down from the selected item.
+The number of tail items is controlled by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[MaxTailItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.MaxTailItemCount) property. This number counts down from the selected item.
 
-For example, if [MaxTailItemCount](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.MaxTailItemCount) is set to `1` then only one tail item will ever be displayed.
+For example, if [MaxTailItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.MaxTailItemCount) is set to `1` then only one tail item will ever be displayed.
 
 ## Customizing Tail Items
 
 By default, tail items are display with an `Opacity` of `0.5`, or 50%, but this look can be fully customized using various properties.
 
-The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).[TailItemOpacity](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.TailItemOpacity) property, can be used to quickly customize the opacity and more complex customization can be accomplish using a `Style`.
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[TailItemOpacity](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.TailItemOpacity) property, can be used to quickly customize the opacity and more complex customization can be accomplish using a `Style`.
 
-This sample code shows how more complex looks can be achieved by using the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).[ItemContainerStyle](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.ItemContainerStyle) property:
+This sample code shows how more complex looks can be achieved by using the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[ItemContainerStyle](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ItemContainerStyle) property:
 
 ```xaml
 xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
@@ -52,16 +52,16 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 
 ## Associated Members
 
-The following [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) members are associated with tail items:
+The following [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) members are associated with tail items:
 
 | Member | Description |
 |-----|-----|
-| [MaxTailItemCount](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.MaxTailItemCount) Property | Gets or sets the number of items that will be automatically minimized, starting from root item.  The default is `1`. |
-| [TailItemOpacity](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.TailItemOpacity) Property | Gets or sets the opacity of the tail items.  The default is `0.5`. |
+| [MaxTailItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.MaxTailItemCount) Property | Gets or sets the number of items that will be automatically minimized, starting from root item.  The default is `1`. |
+| [TailItemOpacity](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.TailItemOpacity) Property | Gets or sets the opacity of the tail items.  The default is `0.5`. |
 
-The following [BreadcrumbItem](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem) members are associated with tail items:
+The following [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) members are associated with tail items:
 
 | Member | Description |
 |-----|-----|
-| [IsTailItem](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem.IsTailItem) Property | Gets a value indicating whether the item is a tail item. |
-| [TailIndex](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem.TailIndex) Property | Gets the position of the tail item below the selected item. If the item is selected or contains the selection, then this index will be -1. |
+| [IsTailItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.IsTailItem) Property | Gets a value indicating whether the item is a tail item. |
+| [TailIndex](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.TailIndex) Property | Gets the position of the tail item below the selected item. If the item is selected or contains the selection, then this index will be -1. |

@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an AST.  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser (such as ANTLR) can be called.
+Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an AST.  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser @if (wpf) {(such as ANTLR)} can be called.
 
 ## Parse Requests and Dispatchers
 
@@ -19,7 +19,7 @@ See the [Parse Requests and Dispatchers](parse-requests-and-dispatchers.md) topi
 
 Parsers are objects that take in a parser request and output some sort of parse data.  They are generally called via worker threads to prevent the blocking of the main UI thread.
 
-The parse data returned by a parser is a result of performing syntax and/or semantic analysis on some text indicated by a parse request.  Parsers can optionally be implemented to call into other parsing frameworks (Irony, ANTLR, etc.) and return their results.
+The parse data returned by a parser is a result of performing syntax and/or semantic analysis on some text indicated by a parse request.  Parsers can optionally be implemented to call into other parsing frameworks @if (wpf) {(Irony, ANTLR, etc.)} and return their results.
 
 See the [Parsers](parsers.md) topic for more information.
 
@@ -41,9 +41,13 @@ Actipro offers a very robust parser framework that makes it simple to build pars
 
 See the [LL(*) Parser Framework](../../ll-parser-framework/index.md) section for more information.
 
+@if (wpf) {
+
 ## Free Integration with Popular Third-Party Parsers
 
 There are two free add-ons that come with SyntaxEditor that make it easy to integrate with popular third-party parsers:
 
 - [ANTLR Add-on](../../antlr-addon/index.md)
 - [Irony Add-on](../../irony-addon/index.md)
+
+}

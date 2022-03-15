@@ -5,7 +5,7 @@ order: 6
 ---
 # Hierarchical Data
 
-When binding a WPF control, such as the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) or `TreeView` controls, to a hierarchical data source you must specify how to locate the "child" items. This allows the WPF control to walk down the hierarchy and is typically done using the `HierarchicalDataTemplate` class. Although, this can also be accomplished using a `Style`.
+When binding a WPF control, such as the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) or `TreeView` controls, to a hierarchical data source you must specify how to locate the "child" items. This allows the WPF control to walk down the hierarchy and is typically done using the `HierarchicalDataTemplate` class. Although, this can also be accomplished using a `Style`.
 
 ## Using a HierarchicalDataTemplate
 
@@ -72,7 +72,7 @@ As you can see, we now define a `HierarchicalDataTemplate` for each distinct XML
 
 ## Using a Style
 
-A `Style` can also be used to to define the look of the data, using a `DataTemplate`, and how to locate any child items. This can be accomplished by setting the `ItemsSource` and `ItemTemplate` directly on the container elements, typically an `ItemsControl`-derived class, created for each data object. Examples of container elements include [BreadcrumbItem](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem) and `TreeViewItem`.
+A `Style` can also be used to to define the look of the data, using a `DataTemplate`, and how to locate any child items. This can be accomplished by setting the `ItemsSource` and `ItemTemplate` directly on the container elements, typically an `ItemsControl`-derived class, created for each data object. Examples of container elements include [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) and `TreeViewItem`.
 
 This sample code shows how to define a `Style` for the sample XML data below:
 
@@ -153,6 +153,6 @@ As you can see, we now define a `Style` for each distinct XML element and assign
 
 ## Breadcrumb Considerations
 
-The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) control supports both methods of defining the data hierarchy, as does the `TreeView` control and others. The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) control does differ slightly, in that the same data can be presented in more than one area of the control. For example, a data object can be displayed in a [BreadcrumbItem](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem) control, a `MenuItem` when in a context menu, and a `ComboBoxItem` when display in the drop-down list.
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control supports both methods of defining the data hierarchy, as does the `TreeView` control and others. The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control does differ slightly, in that the same data can be presented in more than one area of the control. For example, a data object can be displayed in a [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) control, a `MenuItem` when in a context menu, and a `ComboBoxItem` when display in the drop-down list.
 
-If the data source of the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) will be shared with another hiearchical control, then using a `HierarchicalDataTemplate` class would allow the look of the data to be shared. But typically, a `Style` is still be required to set properties not supported by the `HierarchicalDataTemplate` class, such as [MenuItemExpandedTemplate](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.MenuItemExpandedTemplate).
+If the data source of the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) will be shared with another hiearchical control, then using a `HierarchicalDataTemplate` class would allow the look of the data to be shared. But typically, a `Style` is still be required to set properties not supported by the `HierarchicalDataTemplate` class, such as [MenuItemExpandedTemplate](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.MenuItemExpandedTemplate).

@@ -42,7 +42,6 @@ This table shows the product assemblies that may be redistributed based on indiv
 <th>Redistributable Assemblies and Related NuGet Packages</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -249,7 +248,6 @@ This table shows the two bundles that allow groups of Actipro control products t
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -309,7 +307,6 @@ Legacy assemblies contain old deprecated code that is intended for backwards com
 <th>Name</th>
 <th>Description</th>
 </tr>
-
 
 </thead>
 <tbody>
@@ -400,13 +397,13 @@ Licensed for customers who have licensed PropertyGrid (predecessor to Grids) ind
 
 ## Default Assembly Install Folders
 
-When the WPF Controls installer is run on a machine, .NET Framework redistributable assemblies are all installed to this folder by default:
+When the @@PlatformName Controls installer is run on a machine, .NET Framework redistributable assemblies are all installed to this folder by default:
 
 `[Drive]:\Program Files (x86)\Actipro Software\WPF-Controls\[Version]\Assemblies\`
 
 If you require code-signed versions of the assemblies, they are located in a "CodeSigned" child folder, if optionally installed.
 
-Note that .NET Core assemblies are not included in the WPF Controls installer.  The .NET Core assemblies are available in the [NuGet packages](nuget.md).  The .NET Framework assemblies are contained in the [NuGet packages](nuget.md) as well.
+Note that .NET Core assemblies are not included in the @@PlatformName Controls installer.  The .NET Core assemblies are available in the [NuGet packages](nuget.md).  The .NET Framework assemblies are contained in the [NuGet packages](nuget.md) as well.
 
 ## Other Deployment Notes
 

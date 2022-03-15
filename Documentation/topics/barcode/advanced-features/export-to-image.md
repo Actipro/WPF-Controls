@@ -7,7 +7,7 @@ order: 3
 
 Bar codes can easily be exported to any image format supported by WPF, including PNG, BMP, GIF, JPEG, and TIFF image formats.
 
-It's easy to generate a `BitmapSource` from a symbology, simply by calling its [ToBitmap](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.ToBitmap*) method.  When you have an image representation of a bar code, you can save it to a file or paste the image in other applications for usage.
+It's easy to generate a `BitmapSource` from a symbology, simply by calling its [ToBitmap](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.ToBitmap*) method.  When you have an image representation of a bar code, you can save it to a file or paste the image in other applications for usage.
 
 ## Sample Code
 

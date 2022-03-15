@@ -6,10 +6,10 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'C' language created by Actipro Software LLC.
-  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="C" LanguageDescription="C" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.C" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v101\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="C" LanguageDescription="C" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.C" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v101\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />

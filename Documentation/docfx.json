@@ -93,10 +93,10 @@
 			"_appTitle": "Actipro WPF Controls Docs",
 			"_docsCompanyHref": "https://www.actiprosoftware.com/products/controls/wpf",
 			"_docsCompanyName": "Actipro Software LLC",
-			"_docsCopyrightYears": "1999-2021",
+			"_docsCopyrightYears": "1999-2022",
 			"_docsProductHref": "https://www.actiprosoftware.com/products/controls/wpf",
 			"_docsProductName": "WPF Controls",
-			"_docsProductVersion": "21.1",
+			"_docsProductVersion": "22.1",
 			"_disableContribution": true,
 			"_enableNewTab": true,
 			"_gitContribute": {
@@ -105,6 +105,16 @@
 				"path": "Documentation/topics",
 				"apiSpecFolder": "Documentation/topics/apidoc"
 			},
+			"_conditionalFlags": "wpf",
+			"_replaceTokens": {
+				"PlatformAssemblySuffix": "Wpf",
+				"PlatformName": "WPF",
+				"PlatformTitle": "WPF"
+			},
+			"_rootNamespaceAliases": {
+				"ActiproUIRoot": "ActiproSoftware.Windows",
+				"WindowsUIRoot": "System.Windows"
+			}
 		},
 		"globalMetadataFiles": [],
 		"fileMetadataFiles": [],

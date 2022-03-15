@@ -13,7 +13,7 @@ The NavigationBar supports a minimized mode in which it is collapsed to be very 
 
 ## Related Members
 
-The [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) has several members related to minimization:
+The [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) has several members related to minimization:
 
 <table>
 <thead>
@@ -23,19 +23,18 @@ The [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationB
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[Expanded](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.Expanded) Event
+[Expanded](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.Expanded) Event
 
 </td>
 <td>
 
-Occurs when the [IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsMinimized) property changes to `false`.
+Occurs when the [IsMinimized](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimized) property changes to `false`.
 
 </td>
 </tr>
@@ -43,7 +42,7 @@ Occurs when the [IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.N
 <tr>
 <td>
 
-[IsMinimizable](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsMinimizable) Property
+[IsMinimizable](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimizable) Property
 
 </td>
 <td>
@@ -56,7 +55,7 @@ Gets or sets whether the navigation bar can be minimized.  The default value is 
 <tr>
 <td>
 
-[IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsMinimized) Property
+[IsMinimized](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimized) Property
 
 </td>
 <td>
@@ -69,7 +68,7 @@ Gets or sets whether the navigation bar is currently minimized.  The default val
 <tr>
 <td>
 
-[IsPopupEnabled](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsPopupEnabled) Property
+[IsPopupEnabled](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsPopupEnabled) Property
 
 </td>
 <td>Gets or sets whether the navigation bar's minimized popup is currently enabled.</td>
@@ -78,7 +77,7 @@ Gets or sets whether the navigation bar is currently minimized.  The default val
 <tr>
 <td>
 
-[IsPopupOpen](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsPopupOpen) Property
+[IsPopupOpen](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsPopupOpen) Property
 
 </td>
 <td>Gets or sets whether the navigation bar's minimized popup is currently displayed.</td>
@@ -87,12 +86,12 @@ Gets or sets whether the navigation bar is currently minimized.  The default val
 <tr>
 <td>
 
-[Minimized](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.Minimized) Event
+[Minimized](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.Minimized) Event
 
 </td>
 <td>
 
-Occurs when the [IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsMinimized) property changes to `true`.
+Occurs when the [IsMinimized](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimized) property changes to `true`.
 
 </td>
 </tr>
@@ -100,7 +99,7 @@ Occurs when the [IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.N
 <tr>
 <td>
 
-[MinimizedTitle](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.MinimizedTitle) Property
+[MinimizedTitle](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.MinimizedTitle) Property
 
 </td>
 <td>Gets or sets the title of the navigation bar when the navigation bar is minimized.</td>
@@ -109,7 +108,7 @@ Occurs when the [IsMinimized](xref:ActiproSoftware.Windows.Controls.Navigation.N
 <tr>
 <td>
 
-[MinimizesLeftProperty](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.MinimizesLeftProperty) Property
+[MinimizesLeftProperty](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.MinimizesLeftProperty) Property
 
 </td>
 <td>
@@ -124,25 +123,12 @@ Set this property to `false` when docking the navigation bar on the right side o
 <tr>
 <td>
 
-[PopupClosed](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.PopupClosed) Event
+[PopupClosed](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.PopupClosed) Event
 
 </td>
 <td>
 
-Occurs when the [IsPopupOpen](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsPopupOpen) property changes to `false`.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[PopupOpened](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.PopupOpened) Event
-
-</td>
-<td>
-
-Occurs when the [IsPopupOpen](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsPopupOpen) property changes to `true`.
+Occurs when the [IsPopupOpen](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsPopupOpen) property changes to `false`.
 
 </td>
 </tr>
@@ -150,12 +136,25 @@ Occurs when the [IsPopupOpen](xref:ActiproSoftware.Windows.Controls.Navigation.N
 <tr>
 <td>
 
-[PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.PopupResizeMode) Property
+[PopupOpened](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.PopupOpened) Event
 
 </td>
 <td>
 
-Gets or sets a [ControlResizeMode](xref:ActiproSoftware.Windows.Controls.ControlResizeMode) that indicates the type of resizing that the popup performs.
+Occurs when the [IsPopupOpen](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsPopupOpen) property changes to `true`.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[PopupResizeMode](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.PopupResizeMode) Property
+
+</td>
+<td>
+
+Gets or sets a [ControlResizeMode](xref:@ActiproUIRoot.Controls.ControlResizeMode) that indicates the type of resizing that the popup performs.
 
 The default value is `ControlResizeMode.Both`.
 
@@ -165,16 +164,16 @@ The default value is `ControlResizeMode.Both`.
 </tbody>
 </table>
 
-The [NavigationPane](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane) has several members related to minimization:
+The [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) has several members related to minimization:
 
 | Member | Description |
 |-----|-----|
-| [PopupPadding](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane.PopupPadding) Property | Gets or sets the amount of padding added around the pane's content, when displayed in a popup.  The default value is `0,0,0,0`. |
+| [PopupPadding](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.PopupPadding) Property | Gets or sets the amount of padding added around the pane's content, when displayed in a popup.  The default value is `0,0,0,0`. |
 
 ## Preventing Minimization
 
-When the [IsMinimizable](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.IsMinimizable) property is `false`, no minimize button will be visible in the NavigationBar's header.
+When the [IsMinimizable](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimizable) property is `false`, no minimize button will be visible in the NavigationBar's header.
 
 ## Changing the Popup Resize Mode
 
-The [PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.PopupResizeMode) property lets you configure whether and how the minimized popup can be resized.
+The [PopupResizeMode](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.PopupResizeMode) property lets you configure whether and how the minimized popup can be resized.

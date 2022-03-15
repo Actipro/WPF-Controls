@@ -9,12 +9,12 @@ The document text rendered within a view is drawn using two adornment layers, on
 
 ## Text Rendering Layers
 
-Syntax highlighting is divided into two adornment layers, a foreground and a background.  A reference to the text foreground can be obtained via the [AdornmentLayerDefinitions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions).[TextForeground](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions.TextForeground) property and a reference to the text background can be obtained via the [AdornmentLayerDefinitions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions).[TextBackground](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions.TextBackground) property.
+Syntax highlighting is divided into two adornment layers, a foreground and a background.  A reference to the text foreground can be obtained via the [AdornmentLayerDefinitions](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions).[TextForeground](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions.TextForeground) property and a reference to the text background can be obtained via the [AdornmentLayerDefinitions](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions).[TextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinitions.TextBackground) property.
 
 The background is separated out so that the selection layer can overlay the text background when the selection extends to text ranges that have a background set.
 
 > [!NOTE]
-> The two text rendering layers cannot be returned via the [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[GetAdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.GetAdornmentLayer*) method.  If you wish to add custom adornments around text, you should make your own [adornment layer](adornment-layers.md) and order it relative to the built-in adornment layers.
+> The two text rendering layers cannot be returned via the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[GetAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.GetAdornmentLayer*) method.  If you wish to add custom adornments around text, you should make your own [adornment layer](adornment-layers.md) and order it relative to the built-in adornment layers.
 
 ## Lexer-Based Syntax Highlighting
 
@@ -44,4 +44,4 @@ SyntaxEditor provides a special [IUnusedRegionTag](xref:ActiproSoftware.Text.Tag
 
 See the [Taggers and Tagger Providers](../../text-parsing/tagging/taggers.md) topic for more information on tagging.
 
-The default rendering opacity for unused regions is 70%.  This value may be altered by changing the [IHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry).[UnusedRegionForegroundOpacity](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry.UnusedRegionForegroundOpacity) property.
+The default rendering opacity for unused regions is 70%.  This value may be altered by changing the [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry).[UnusedRegionForegroundOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry.UnusedRegionForegroundOpacity) property.

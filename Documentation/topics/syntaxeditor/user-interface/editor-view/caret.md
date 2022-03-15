@@ -9,7 +9,7 @@ The SyntaxEditor caret is the bar that blinks within an editor view and marks th
 
 ## Accessing the Caret
 
-The primary selection's caret and its functionality described below is available via the [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection) interface, which can be retrieved from the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ActiveView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ActiveView).[Selection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.Selection) property.
+The primary selection's caret and its functionality described below is available via the [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection) interface, which can be retrieved from the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ActiveView](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ActiveView).[Selection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.Selection) property.
 
 ## Determining and Moving the Caret Location
 
@@ -17,10 +17,10 @@ The primary selection has several properties for determining its caret location.
 
 | Member | Description |
 |-----|-----|
-| [CaretCharacterColumn](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn) Property | Gets the character column of the primary caret within the active view. |
-| [CaretDisplayCharacterColumn](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the the active view.  and adds one to the value for display purposes within a status bar. |
-| [CaretOffset](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset) Property | Gets or sets the offset of the primary caret within the active view. |
-| [CaretPosition](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) Property | Gets or sets the [TextPosition](xref:ActiproSoftware.Text.TextPosition) of the primary caret within the active view. |
+| [CaretCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn) Property | Gets the character column of the primary caret within the active view. |
+| [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the the active view.  and adds one to the value for display purposes within a status bar. |
+| [CaretOffset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset) Property | Gets or sets the offset of the primary caret within the active view. |
+| [CaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) Property | Gets or sets the [TextPosition](xref:ActiproSoftware.Text.TextPosition) of the primary caret within the active view. |
 
 This code moves the caret to the start of the third line (the value is zero-based):
 
@@ -32,7 +32,7 @@ Text positions are zero-based by default.  Use the one-based [TextPosition](xref
 
 ## Multiple Selections and Carets
 
-A caret appears at the end of each editor view selection.  Multiple selections are supported when the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[AreMultipleSelectionRangesEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.AreMultipleSelectionRangesEnabled) property is `true`.
+A caret appears at the end of each editor view selection.  Multiple selections are supported when the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreMultipleSelectionRangesEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreMultipleSelectionRangesEnabled) property is `true`.
 
 See the [Selection](selection.md) topic for more information on working with multiple selections and how end users can add selections at run-time.
 
@@ -40,7 +40,7 @@ See the [Selection](selection.md) topic for more information on working with mul
 
 The caret blink interval is set by default to `500ms`.
 
-Use the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CaretBlinkInterval](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretBlinkInterval) property to change the blink interval to be faster or slower.  The value indicates the millisecond delay between blinks.
+Use the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CaretBlinkInterval](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretBlinkInterval) property to change the blink interval to be faster or slower.  The value indicates the millisecond delay between blinks.
 
 This code changes the blink interval to one second:
 
@@ -52,19 +52,27 @@ editor.CaretBlinkInterval = 1000;
 
 The caret can be in one of two modes: insert and overwrite.  Insert mode is the traditional mode where typed text is inserted directly at the caret's offset.  Overwrite mode will insert text at the caret's offset but will first remove any existing character on the line that is already at that offset.
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CaretInsertWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretInsertWidth) and [CaretOverwriteWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteWidth) properties can be used to tweak the width of the caret in each respective mode.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CaretInsertWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretInsertWidth) and [CaretOverwriteWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteWidth) properties can be used to tweak the width of the caret in each respective mode.
 
-The [CaretInsertKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretInsertKind) and [CaretOverwriteKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteKind) properties accept a [CaretKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.CaretKind) value.  This value determines the shape/alignment of the caret and can be `VerticalLine`, `HorizontalUnderline`, or `Block`.
+The [CaretInsertKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretInsertKind) and [CaretOverwriteKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteKind) properties accept a [CaretKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.CaretKind) value.  This value determines the shape/alignment of the caret and can be `VerticalLine`, `HorizontalUnderline`, or `Block`.
+
+@if (winforms) {
+
+## High-Contrast Inversion
+
+The caret normally renders in a single color that contrasts with the editor's background.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[UseInvertedCaret](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.UseInvertedCaret) property can be set to `true`, which causes the caret to invert everything behind it.  This inversion is high-contrast and its appearance was commonly used in classic code editors.
+
+}
 
 ## Temporarily Suspending Blinking
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[SuspendCaretBlinking](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.SuspendCaretBlinking*) method can be used to temporarily suspend blinking of the caret.  It accepts a boolean parameter indicating whether to display the caret while suspended or not.  Generally, `false` is passed to this method.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[SuspendCaretBlinking](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.SuspendCaretBlinking*) method can be used to temporarily suspend blinking of the caret.  It accepts a boolean parameter indicating whether to display the caret while suspended or not.  Generally, `false` is passed to this method.
 
-When the caret should resume blinking, call the [ResumeCaretBlinking](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ResumeCaretBlinking*) method.
+When the caret should resume blinking, call the [ResumeCaretBlinking](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ResumeCaretBlinking*) method.
 
 ## Caret Move Event
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ViewSelectionChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ViewSelectionChanged) event is raised whenever the caret moves, since the caret is always in sync with the end of the selection.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSelectionChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSelectionChanged) event is raised whenever the caret moves, since the caret is always in sync with the end of the selection.
 
 See the [Selection](selection.md) topic for more information on this event.
 
@@ -78,9 +86,9 @@ using (var batch = editor.ActiveView.Selection.CreateBatch(EditorViewSelectionBa
 }
 ```
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ScrollToCaretOnSelectAll](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ScrollToCaretOnSelectAll) property that determines whether to scroll to the caret when a select all operation is performed.  It defaults to `true`.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ScrollToCaretOnSelectAll](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ScrollToCaretOnSelectAll) property that determines whether to scroll to the caret when a select all operation is performed.  It defaults to `true`.
 
-The [IEditorViewScroller](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewScroller) interface defines a [ScrollToCaret](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewScroller.ScrollToCaret*) method that can be called manually to scroll to the caret.  This code scrolls the active view to the caret:
+The [IEditorViewScroller](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller) interface defines a [ScrollToCaret](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller.ScrollToCaret*) method that can be called manually to scroll to the caret.  This code scrolls the active view to the caret:
 
 ```csharp
 editor.ActiveView.Scroller.ScrollToCaret();

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 #if WINRT
 using Windows.UI.Xaml.Markup;
 using Windows.UI.Xaml.Media;
 using ActiproSoftware.UI.Xaml;
-using ActiproSoftware.UI.Xaml.Input;
 #else
 using System.Windows.Markup;
 using System.Windows.Media;
 using ActiproSoftware.Windows;
-using ActiproSoftware.Windows.Input;
 #endif
 
 namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
@@ -26,7 +25,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 	public class TreeNodeModel : ObservableObjectBase {
 		
 		private ObservableCollection<TreeNodeModel> children = new ObservableCollection<TreeNodeModel>();
-		private DelegateCommand<object> defaultActionCommand;
+		private ICommand defaultActionCommand;
 		private ImageSource imageSource;
 		private bool isDraggable = true;
 		private bool isEditable;
@@ -59,7 +58,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 		/// Gets or sets the default action command.
 		/// </summary>
 		/// <value>The default action command.</value>
-		public DelegateCommand<object> DefaultActionCommand {
+		public ICommand DefaultActionCommand {
 			get {
 				return defaultActionCommand;
 			}

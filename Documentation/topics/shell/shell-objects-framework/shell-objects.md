@@ -45,7 +45,7 @@ The [RelativeParsingName](xref:ActiproSoftware.Shell.IShellObject.RelativeParsin
 
 Some examples are "::\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" for the system's OneDrive folder, and "OneDrive" for the same folder accessed through the C: drive.
 
-This property is used when building up a "full path" for Grids' [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).  It is returned as the path segment for the shell object in the [ShellObjectItemAdapter](xref:ActiproSoftware.Windows.Controls.Shell.ShellObjectItemAdapter).[GetPath](xref:ActiproSoftware.Windows.Controls.Shell.ShellObjectItemAdapter.GetPath*) method.
+This property is used when building up a "full path" for Grids' [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).  It is returned as the path segment for the shell object in the [ShellObjectItemAdapter](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter).[GetPath](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter.GetPath*) method.
 
 ## Kind
 
@@ -77,7 +77,7 @@ Shell objects provide several size variations of thumbnail images, each of which
 
 - [ExtraLargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeThumbnail) - The extra large thumbnail image, which is generally 256x256 size.
 
-Thumbnail images can be used in a [ShellListView](../shelllistview.md) control when its [CanUseThumbnails](xref:ActiproSoftware.Windows.Controls.Shell.ShellListView.CanUseThumbnails) property is `true`.  In that case, a thumbnail image is used in certain larger layout modes when one is available.  If no thumbnail image is available, an icon of the same size is used instead.
+Thumbnail images can be used in a [ShellListView](../shelllistview.md) control when its [CanUseThumbnails](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanUseThumbnails) property is `true`.  In that case, a thumbnail image is used in certain larger layout modes when one is available.  If no thumbnail image is available, an icon of the same size is used instead.
 
 ## Tool Tip
 

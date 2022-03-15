@@ -11,7 +11,7 @@ This topic's information will assume you are using Visual Studio to write your X
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Navigation.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Navigation.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates for Navigation Controls
 
@@ -23,7 +23,7 @@ The use of item templates is the fastest way to get started with our products in
 
 ## Getting Started with Breadcrumb
 
-This code shows the base XAML that you can use to create a simple [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) with a few items:
+This code shows the base XAML that you can use to create a simple [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) with a few items:
 
 ```xaml
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"     
@@ -46,7 +46,7 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 
 ## Getting Started with ExplorerBar
 
-This code shows the base XAML that you can use to create a simple [ExplorerBar](xref:ActiproSoftware.Windows.Controls.Navigation.ExplorerBar) with two panes:
+This code shows the base XAML that you can use to create a simple [ExplorerBar](xref:@ActiproUIRoot.Controls.Navigation.ExplorerBar) with two panes:
 
 ```xaml
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"     
@@ -64,7 +64,7 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 
 ## Getting Started with NavigationBar
 
-This code shows the base XAML that you can use to create a simple [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) with two panes:
+This code shows the base XAML that you can use to create a simple [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) with two panes:
 
 ```xaml
 xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"     
@@ -81,7 +81,7 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 
 ## Getting Started with ZoomContentControl
 
-This code shows the base XAML that you can use to create a simple [ZoomContentControl](xref:ActiproSoftware.Windows.Controls.Navigation.ZoomContentControl) with a few items:
+This code shows the base XAML that you can use to create a simple [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) with a few items:
 
 ```xaml
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"     

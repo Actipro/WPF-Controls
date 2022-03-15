@@ -12,7 +12,7 @@ The ANTLR Add-on makes it possible in just a few lines of code to create a synta
 
 ## Basic Concepts
 
-The ANTLR Add-on exposes two main types that allow you to easily support automated calls to ANTLR for a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control.  This section talks about the types.  See the sample section later in this topic for a walkthrough of creating an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that uses the classes.
+The ANTLR Add-on exposes two main types that allow you to easily support automated calls to ANTLR for a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control.  This section talks about the types.  See the sample section later in this topic for a walkthrough of creating an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that uses the classes.
 
 ### About Core ANTLR Lexers/Parsers
 
@@ -96,9 +96,9 @@ language.RegisterParser(parser);
 
 ### Attach to a SyntaxEditor's Document to Provide ANTLR Parsing
 
-The final step is to use the [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that was created above with a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).
+The final step is to use the [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that was created above with a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).
 
-This code applies the language that was created to a document being edited by a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) declared in the variable `editor`:
+This code applies the language that was created to a document being edited by a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) declared in the variable `editor`:
 
 ```csharp
 editor.Document.Language = language;

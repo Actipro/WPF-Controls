@@ -5,11 +5,11 @@ order: 2
 ---
 # ButtonGroup
 
-The [ButtonGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ButtonGroup) class provides a container for buttons or other controls and is most often used within a [RowPanel](rowpanel.md) or `StatusBarItem`.
+The [ButtonGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ButtonGroup) class provides a container for buttons or other controls and is most often used within a [RowPanel](rowpanel.md) or `StatusBarItem`.
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -20,4 +20,4 @@ This control supports numerous UI styles (called variants) based on its [Context
 
 By default, a border is drawn around the items in the button group.  Sometimes when the group's items are controls like a [ComboBox](../interactive/combobox.md), you don't want to display the border.
 
-Set the [HasBorder](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ButtonGroup.HasBorder) property to `false` to hide it.
+Set the [HasBorder](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ButtonGroup.HasBorder) property to `false` to hide it.

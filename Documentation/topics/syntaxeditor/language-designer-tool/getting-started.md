@@ -9,10 +9,10 @@ This topic covers essential information about using the application, such as how
 
 ## Running the Application
 
-Go to your Windows' Programs menu group for the WPF controls and click the **Run SyntaxEditor Language Designer** menu item.  This will run the application.  If the application previously had a language project open, it will be reopened.  Otherwise a Start Actions task pane will be visible with several options for creating a new language project or opening an existing one.
+Go to your Windows' Programs menu group for the @@PlatformName controls and click the **Run SyntaxEditor Language Designer** menu item.  This will run the application.  If the application previously had a language project open, it will be reopened.  Otherwise a Start Actions task pane will be visible with several options for creating a new language project or opening an existing one.
 
 > [!NOTE]
-> If you do not see the menu item to run the application, ensure that you kept the option to install it checked during the WPF controls setup process.
+> If you do not see the menu item to run the application, ensure that you kept the option to install it checked during the @@PlatformName controls setup process.
 
 ## Language Projects vs. Language Definitions
 

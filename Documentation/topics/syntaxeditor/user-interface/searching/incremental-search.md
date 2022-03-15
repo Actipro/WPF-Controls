@@ -21,9 +21,9 @@ Continue typing characters to append to the find text. `Backspace` can be used t
 
 The application UI should provide some sort of status indicator when incremental search events occur.
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ViewSearch](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ViewSearch) event fires whenever any editor view search occurs, including when incremental searches take place.  In this scenario, the result set's [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet).[OperationType](xref:ActiproSoftware.Text.Searching.ISearchResultSet.OperationType) property will be `FindNextIncremental`.  UI such as a statusbar can be updated in an event handler to indicate that incremental search is active and what the find text is.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSearch](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSearch) event fires whenever any editor view search occurs, including when incremental searches take place.  In this scenario, the result set's [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet).[OperationType](xref:ActiproSoftware.Text.Searching.ISearchResultSet.OperationType) property will be `FindNextIncremental`.  UI such as a statusbar can be updated in an event handler to indicate that incremental search is active and what the find text is.
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ViewIsIncrementalSearchActiveChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ViewIsIncrementalSearchActiveChanged) event fires whenever incremental search mode is activated or deactivated.  It's a great place to clear out any UI that indicates incremental search is active.  The [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[IsIncrementalSearchActive](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.IsIncrementalSearchActive) property is used to know if incremental search mode is active.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewIsIncrementalSearchActiveChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewIsIncrementalSearchActiveChanged) event fires whenever incremental search mode is activated or deactivated.  It's a great place to clear out any UI that indicates incremental search is active.  The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[IsIncrementalSearchActive](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.IsIncrementalSearchActive) property is used to know if incremental search mode is active.
 
 This code shows how a statusbar panel could be updated in response to the events mentioned above:
 
@@ -48,17 +48,28 @@ private void OnSyntaxEditorViewSearch(object sender, EditorViewSearchEventArgs e
 }
 ```
 
+@if (wpf) {
+
 > [!NOTE]
 > Incremental search also automatically sets a custom mouse cursor while it is active.
 
+}
+
+@if (winrt) {
+
+> [!NOTE]
+> Incremental search also automatically sets a custom mouse cursor while it is active, as long as the cursor has been registered according to the instructions in the [Custom Cursors](../editor-view/custom-cursors.md) topic.
+
+}
+
 ## Trimming Unmatched Find Text
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CanIncrementalSearchTrimUnmatchedFindText](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CanIncrementalSearchTrimUnmatchedFindText), which defaults to `true`, determines whether characters typed by the end user while incremental search is active will be appended to the find text in scenarios where the previous find text didn't match anything.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanIncrementalSearchTrimUnmatchedFindText](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanIncrementalSearchTrimUnmatchedFindText), which defaults to `true`, determines whether characters typed by the end user while incremental search is active will be appended to the find text in scenarios where the previous find text didn't match anything.
 
-For instance, say incremental search mode is active and the end user types "int".  This finds a match.  Then the user types "e" but no match is found.  At this point, if [CanIncrementalSearchTrimUnmatchedFindText](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CanIncrementalSearchTrimUnmatchedFindText) is `true` and another character like "g" is typed, it will be ignored and not appended to the find text.  If the property is `false` instead, the "g" would be appended to the find text.
+For instance, say incremental search mode is active and the end user types "int".  This finds a match.  Then the user types "e" but no match is found.  At this point, if [CanIncrementalSearchTrimUnmatchedFindText](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanIncrementalSearchTrimUnmatchedFindText) is `true` and another character like "g" is typed, it will be ignored and not appended to the find text.  If the property is `false` instead, the "g" would be appended to the find text.
 
 ## Disabling Incremental Search
 
 Incremental search features are on by default and can be accessed by the end user via the `Ctrl+I` and `Ctrl+Shift+I` key bindings.
 
-To prevent the end user from activating incremental search mode, remove the appropriate entries from the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).`InputBindings` collection.
+To prevent the end user from activating incremental search mode, remove the appropriate entries from the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).`InputBindings` collection.

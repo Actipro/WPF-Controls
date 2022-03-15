@@ -15,7 +15,11 @@ The `Style` for each native control can be applied either explicitly or implicit
 
 ### Implicit Styles
 
-The native control styles can be applied implicitly by simply setting [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[AreNativeThemesEnabled](xref:ActiproSoftware.Windows.Themes.ThemeManager.AreNativeThemesEnabled) to `true`.  The theme manager will automatically load the necessary implicit styles into the application resources, which will therefore be used by your entire application.
+The native control styles can be applied implicitly by simply setting [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[AreNativeThemesEnabled](xref:@ActiproUIRoot.Themes.ThemeManager.AreNativeThemesEnabled) to `true`.  The theme manager will automatically load the necessary implicit styles into the application resources, which will therefore be used by your entire application.
+
+```csharp
+ThemeManager.AreNativeThemesEnabled = true;
+```
 
 > [!NOTE]
 > See the [Getting Started](getting-started.md) topic for a complete example of how to use this setting, as well as how to combine it with other settings.
@@ -28,9 +32,9 @@ ThemeManager.SetAreNativeThemesEnabled(myControl, true);
 
 ### Explicit Styles
 
-The native control styles can also be applied explicitly on each individual control, using an associated `ComponentResourceKey` defined in the [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys) class.
+The native control styles can also be applied explicitly on each individual control, using an associated `ComponentResourceKey` defined in the [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys) class.
 
-For example, the [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys).[ButtonBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ButtonBaseStyleKey) can be applied a `RepeatButton` like so:
+For example, the [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys).[ButtonBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ButtonBaseStyleKey) can be applied a `RepeatButton` like so:
 
 ```xaml
 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -42,7 +46,7 @@ For a complete list of the support native control styles, see the table in the f
 
 ## Style Keys for Native Controls
 
-This list shows the style resource keys that are available in [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys) for use with native controls:
+This list shows the style resource keys that are available in [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys) for use with native controls:
 
 <table>
 <thead>
@@ -52,14 +56,13 @@ This list shows the style resource keys that are available in [SharedResourceKey
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[ButtonBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ButtonBaseStyleKey)
+[ButtonBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ButtonBaseStyleKey)
 
 </td>
 <td>
@@ -72,7 +75,7 @@ Applies to `ButtonBase` controls and its derivations, which includes `Button`, `
 <tr>
 <td>
 
-[CheckBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.CheckBoxStyleKey)
+[CheckBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.CheckBoxStyleKey)
 
 </td>
 <td>
@@ -85,7 +88,7 @@ Applies to `CheckBox` controls.
 <tr>
 <td>
 
-[ComboBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ComboBoxStyleKey)
+[ComboBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ComboBoxStyleKey)
 
 </td>
 <td>
@@ -98,7 +101,7 @@ Applies to `ComboBox` controls.
 <tr>
 <td>
 
-[ComboBoxItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ComboBoxItemStyleKey)
+[ComboBoxItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ComboBoxItemStyleKey)
 
 </td>
 <td>
@@ -111,7 +114,7 @@ Applies to `ComboBoxItem` controls.
 <tr>
 <td>
 
-[ContextMenuStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ContextMenuStyleKey)
+[ContextMenuStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ContextMenuStyleKey)
 
 </td>
 <td>
@@ -124,7 +127,7 @@ Applies to `ContextMenu` controls.
 <tr>
 <td>
 
-[DocumentViewerStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.DocumentViewerStyleKey)
+[DocumentViewerStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.DocumentViewerStyleKey)
 
 </td>
 <td>
@@ -137,7 +140,7 @@ Applies to `DocumentViewer` controls.
 <tr>
 <td>
 
-[ExpanderStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ExpanderStyleKey)
+[ExpanderStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ExpanderStyleKey)
 
 </td>
 <td>
@@ -150,7 +153,7 @@ Applies to `Expander` controls.
 <tr>
 <td>
 
-[GridSplitterStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.GridSplitterStyleKey)
+[GridSplitterStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.GridSplitterStyleKey)
 
 </td>
 <td>
@@ -163,7 +166,7 @@ Applies to `GridSplitter` controls.
 <tr>
 <td>
 
-[GridViewColumnHeaderStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.GridViewColumnHeaderStyleKey)
+[GridViewColumnHeaderStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.GridViewColumnHeaderStyleKey)
 
 </td>
 <td>
@@ -176,7 +179,7 @@ Applies to `GridViewColumnHeader` controls.
 <tr>
 <td>
 
-[GroupBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.GroupBoxStyleKey)
+[GroupBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.GroupBoxStyleKey)
 
 </td>
 <td>
@@ -189,7 +192,7 @@ Applies to `GroupBox` controls.
 <tr>
 <td>
 
-[HyperlinkStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.HyperlinkStyleKey)
+[HyperlinkStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.HyperlinkStyleKey)
 
 </td>
 <td>
@@ -202,7 +205,7 @@ Applies to `Hyperlink` controls.
 <tr>
 <td>
 
-[LabelStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.LabelStyleKey)
+[LabelStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.LabelStyleKey)
 
 </td>
 <td>
@@ -215,7 +218,7 @@ Applies to `Label`.
 <tr>
 <td>
 
-[ListBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ListBoxStyleKey)
+[ListBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ListBoxStyleKey)
 
 </td>
 <td>
@@ -228,7 +231,7 @@ Applies to `ListBox` controls.
 <tr>
 <td>
 
-[ListBoxItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ListBoxItemStyleKey)
+[ListBoxItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ListBoxItemStyleKey)
 
 </td>
 <td>
@@ -241,7 +244,7 @@ Applies to `ListBoxItem` controls.
 <tr>
 <td>
 
-[ListViewStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ListViewStyleKey)
+[ListViewStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ListViewStyleKey)
 
 </td>
 <td>
@@ -254,7 +257,7 @@ Applies to `ListView` controls.
 <tr>
 <td>
 
-[ListViewItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ListViewItemStyleKey)
+[ListViewItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ListViewItemStyleKey)
 
 </td>
 <td>
@@ -267,7 +270,7 @@ Applies to `ListViewItem` controls.
 <tr>
 <td>
 
-[MenuStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuStyleKey)
+[MenuStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuStyleKey)
 
 </td>
 <td>
@@ -280,18 +283,18 @@ Applies to `Menu` controls.
 <tr>
 <td>
 
-[MenuItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemStyleKey)
+[MenuItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemStyleKey)
 
 </td>
 <td>
 
 Applies to `MenuItem` controls. In addition, there are several keys that reference control templates for the various types of menu items:
 
-- [MenuItemTopLevelHeaderTemplateKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemTopLevelHeaderTemplateKey)
-- [MenuItemTopLevelItemTemplateKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemTopLevelItemTemplateKey)
-- [MenuItemSubmenuContentTemplateKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemSubmenuContentTemplateKey)
-- [MenuItemSubmenuHeaderTemplateKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemSubmenuHeaderTemplateKey)
-- [MenuItemSubmenuItemTemplateKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuItemSubmenuItemTemplateKey)
+- [MenuItemTopLevelHeaderTemplateKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemTopLevelHeaderTemplateKey)
+- [MenuItemTopLevelItemTemplateKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemTopLevelItemTemplateKey)
+- [MenuItemSubmenuContentTemplateKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemSubmenuContentTemplateKey)
+- [MenuItemSubmenuHeaderTemplateKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemSubmenuHeaderTemplateKey)
+- [MenuItemSubmenuItemTemplateKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuItemSubmenuItemTemplateKey)
 
 </td>
 </tr>
@@ -299,7 +302,7 @@ Applies to `MenuItem` controls. In addition, there are several keys that referen
 <tr>
 <td>
 
-[PasswordBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.PasswordBoxStyleKey)
+[PasswordBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.PasswordBoxStyleKey)
 
 </td>
 <td>
@@ -312,7 +315,7 @@ Applies to `PasswordBox` controls.
 <tr>
 <td>
 
-[ProgressBarStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ProgressBarStyleKey)
+[ProgressBarStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ProgressBarStyleKey)
 
 </td>
 <td>
@@ -325,7 +328,7 @@ Applies to `ProgressBar` controls.
 <tr>
 <td>
 
-[RadioButtonStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.RadioButtonStyleKey)
+[RadioButtonStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.RadioButtonStyleKey)
 
 </td>
 <td>
@@ -338,7 +341,7 @@ Applies to `RadioButton` controls.
 <tr>
 <td>
 
-[ResizeGripStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ResizeGripStyleKey)
+[ResizeGripStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ResizeGripStyleKey)
 
 </td>
 <td>
@@ -351,7 +354,7 @@ Applies to `ResizeGrip` controls.
 <tr>
 <td>
 
-[ScrollBarStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ScrollBarStyleKey)
+[ScrollBarStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ScrollBarStyleKey)
 
 </td>
 <td>
@@ -364,7 +367,7 @@ Applies to `ScrollBar` controls.
 <tr>
 <td>
 
-[ScrollViewerStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ScrollViewerStyleKey)
+[ScrollViewerStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ScrollViewerStyleKey)
 
 </td>
 <td>
@@ -377,7 +380,7 @@ Applies to `ScrollViewer` controls.
 <tr>
 <td>
 
-[SeparatorStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.SeparatorStyleKey)
+[SeparatorStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.SeparatorStyleKey)
 
 </td>
 <td>
@@ -390,7 +393,7 @@ Applies to `Separator` controls.
 <tr>
 <td>
 
-[SliderStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.SliderStyleKey)
+[SliderStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.SliderStyleKey)
 
 </td>
 <td>
@@ -403,7 +406,7 @@ Applies to `Slider` controls.
 <tr>
 <td>
 
-[StatusBarStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarStyleKey)
+[StatusBarStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarStyleKey)
 
 </td>
 <td>
@@ -416,7 +419,7 @@ Applies to `StatusBar` controls.
 <tr>
 <td>
 
-[StatusBarItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarItemStyleKey)
+[StatusBarItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarItemStyleKey)
 
 </td>
 <td>
@@ -429,7 +432,7 @@ Applies to `StatusBarItem` controls.
 <tr>
 <td>
 
-[TabControlStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.TabControlStyleKey)
+[TabControlStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.TabControlStyleKey)
 
 </td>
 <td>
@@ -442,7 +445,7 @@ Applies to `TabControl` controls.
 <tr>
 <td>
 
-[TabItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.TabItemStyleKey)
+[TabItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.TabItemStyleKey)
 
 </td>
 <td>
@@ -455,7 +458,7 @@ Applies to `TabItem` controls.
 <tr>
 <td>
 
-[TextBoxBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.TextBoxBaseStyleKey)
+[TextBoxBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.TextBoxBaseStyleKey)
 
 </td>
 <td>
@@ -468,7 +471,7 @@ Applies to `TextBoxBase` controls and its derivations, which includes `TextBox` 
 <tr>
 <td>
 
-[ThumbStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ThumbStyleKey)
+[ThumbStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ThumbStyleKey)
 
 </td>
 <td>
@@ -481,7 +484,7 @@ Applies to `Thumb` controls.
 <tr>
 <td>
 
-[ToolBarStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarStyleKey)
+[ToolBarStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarStyleKey)
 
 </td>
 <td>
@@ -494,7 +497,7 @@ Applies to `ToolBar` controls.
 <tr>
 <td>
 
-[ToolBarTrayStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarTrayStyleKey)
+[ToolBarTrayStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarTrayStyleKey)
 
 </td>
 <td>
@@ -507,7 +510,7 @@ Applies to `ToolBarTray` controls.
 <tr>
 <td>
 
-[ToolTipStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolTipStyleKey)
+[ToolTipStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolTipStyleKey)
 
 </td>
 <td>
@@ -520,7 +523,7 @@ Applies to `ToolTip` controls.
 <tr>
 <td>
 
-[TreeViewStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.TreeViewStyleKey)
+[TreeViewStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.TreeViewStyleKey)
 
 </td>
 <td>
@@ -533,7 +536,7 @@ Applies to `TreeView` controls.
 <tr>
 <td>
 
-[TreeViewItemStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.TreeViewItemStyleKey)
+[TreeViewItemStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.TreeViewItemStyleKey)
 
 </td>
 <td>
@@ -546,7 +549,7 @@ Applies to `TreeViewItem` controls and its derivations.
 <tr>
 <td>
 
-[WindowStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.WindowStyleKey)
+[WindowStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.WindowStyleKey)
 
 </td>
 <td>
@@ -565,34 +568,34 @@ Several native controls, such as `ToolBar`, require different styles for control
 
 ### Menu
 
-This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys) for use with `Menu` controls:
+This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys) for use with `Menu` controls:
 
 | Style Resource Key | Description |
 |-----|-----|
-| [MenuEmbeddedScrollViewerStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuEmbeddedScrollViewerStyleKey) | Applies to `ScrollViewer` controls. |
-| [MenuEmbeddedSeparatorStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.MenuEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
+| [MenuEmbeddedScrollViewerStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuEmbeddedScrollViewerStyleKey) | Applies to `ScrollViewer` controls. |
+| [MenuEmbeddedSeparatorStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.MenuEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
 
 ### StatusBar
 
-This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys) for use with `StatusBar` controls:
+This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys) for use with `StatusBar` controls:
 
 | Style Resource Key | Description |
 |-----|-----|
-| [StatusBarEmbeddedResizeGripStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarEmbeddedResizeGripStyleKey) | Applies to `ResizeGrip` controls. |
-| [StatusBarEmbeddedSeparatorStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
-| [StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
-| [StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
-| [StatusBarEmbeddedSliderStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.StatusBarEmbeddedSliderStyleKey) | Applies to `Slider` controls. |
+| [StatusBarEmbeddedResizeGripStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarEmbeddedResizeGripStyleKey) | Applies to `ResizeGrip` controls. |
+| [StatusBarEmbeddedSeparatorStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
+| [StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarEmbeddedSliderDecreaseButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
+| [StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarEmbeddedSliderIncreaseButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
+| [StatusBarEmbeddedSliderStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.StatusBarEmbeddedSliderStyleKey) | Applies to `Slider` controls. |
 
 ### ToolBar
 
-This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys) for use with `ToolBar` controls:
+This list shows the embedded style resource keys that are available in [SharedResourceKeys](xref:@ActiproUIRoot.Themes.SharedResourceKeys) for use with `ToolBar` controls:
 
 | Style Resource Key | Description |
 |-----|-----|
-| [ToolBarEmbeddedButtonBaseStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
-| [ToolBarEmbeddedComboBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedComboBoxStyleKey) | Applies to `ComboBox` controls. |
-| [ToolBarEmbeddedMenuStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedMenuStyleKey) | Applies to `Menu` controls. |
-| [ToolBarEmbeddedPopupButtonStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedPopupButtonStyleKey) | Applies to [PopupButton](xref:ActiproSoftware.Windows.Controls.PopupButton) controls. |
-| [ToolBarEmbeddedSeparatorStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
-| [ToolBarEmbeddedTextBoxStyleKey](xref:ActiproSoftware.Windows.Themes.SharedResourceKeys.ToolBarEmbeddedTextBoxStyleKey) | Applies to `TextBox` controls. |
+| [ToolBarEmbeddedButtonBaseStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedButtonBaseStyleKey) | Applies to `ButtonBase` controls and its derivations, which includes `Button`, `RepeatButton`, and `ToggleButton`. |
+| [ToolBarEmbeddedComboBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedComboBoxStyleKey) | Applies to `ComboBox` controls. |
+| [ToolBarEmbeddedMenuStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedMenuStyleKey) | Applies to `Menu` controls. |
+| [ToolBarEmbeddedPopupButtonStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedPopupButtonStyleKey) | Applies to [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) controls. |
+| [ToolBarEmbeddedSeparatorStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedSeparatorStyleKey) | Applies to `Separator` controls. |
+| [ToolBarEmbeddedTextBoxStyleKey](xref:@ActiproUIRoot.Themes.SharedResourceKeys.ToolBarEmbeddedTextBoxStyleKey) | Applies to `TextBox` controls. |

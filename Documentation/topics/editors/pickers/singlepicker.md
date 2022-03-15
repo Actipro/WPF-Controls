@@ -5,7 +5,7 @@ order: 25
 ---
 # SinglePicker
 
-The [SinglePicker](xref:ActiproSoftware.Windows.Controls.Editors.SinglePicker) control allows for the input of a `Single` (floating-point number) value.  It is generally intended for display within a popup, such as for the [SingleEditBox](../editboxes/singleeditbox.md) control, and is also used within many other [pickers](index.md).
+The [SinglePicker](xref:@ActiproUIRoot.Controls.Editors.SinglePicker) control allows for the input of a `Single` (floating-point number) value.  It is generally intended for display within a popup, such as for the [SingleEditBox](../editboxes/singleeditbox.md) control, and is also used within many other [pickers](index.md).
 
 ![Screenshot](../images/doublepicker.png)
 
@@ -17,17 +17,17 @@ Negative values have a distinct appearance from positive values.
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.SinglePicker.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.SinglePicker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.SinglePicker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.SmallChange) property.
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:ActiproSoftware.Windows.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7`, but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7`, but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
 
 ## Sample XAML
 

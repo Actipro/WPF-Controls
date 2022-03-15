@@ -9,17 +9,43 @@ Getting up and running with Docking & MDI controls is extremely easy.
 
 This topic's information will assume you are using Visual Studio to write your XAML code for control that will contain docking windows and/or MDI.
 
+@if (winrt) {
+
+## Add Extension SDK Reference
+
+In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" and add the "Actipro Universal Windows Controls" SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.
+
+}
+
+@if (wpf) {
+
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Docking.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Docking.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+
+}
 
 ## Getting Started with Docking & MDI
+
+@if (winrt) {
+
+This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
+
+```xaml
+xmlns:docking="using:ActiproSoftware.UI.Xaml.Controls.Docking"
+```
+
+}
+
+@if (wpf) {
 
 This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
 
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 ```
+
+}
 
 This code shows the base XAML that you can use to create a simple docking window layout with several windows:
 
@@ -56,6 +82,8 @@ This code shows the base XAML that you can use to create a simple docking window
 
 Several ways of opening the windows are shown in the MVVM examples found in our Sample Browser.
 
+@if (wpf) {
+
 ## The Visual Studio Item Templates
 
 If you have Visual Studio, several item templates named `Docking & Standard MDI Window (WPF)`, `Docking & Standard MDI Page (WPF)`, `Docking & Tabbed MDI Window (WPF)`, `Docking & Tabbed MDI Page (WPF)`, `Docking Inner Fill Window (WPF)`, and `Docking Inner Fill Page (WPF)` should have been installed during the WPF Studio installation procedure.
@@ -63,6 +91,8 @@ If you have Visual Studio, several item templates named `Docking & Standard MDI 
 When you wish to create a new `Window` or `Page` with a tabbed MDI, standard MDI, or inner fill in your application, simply choose `Add New Item` in Visual Studio and select the appropriate item template.  A `DockSite` with several tool and documents already defined will be added to your project and opened.
 
 The use of item templates is the fastest way to get started with our products in your own applications.
+
+}
 
 ## Further Study
 

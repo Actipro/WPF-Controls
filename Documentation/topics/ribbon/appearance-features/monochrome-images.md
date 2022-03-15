@@ -34,4 +34,4 @@ It is best to use Metro-themed images that don't contain gradients as a basis fo
 
 In some cases, such as for a vector icon that has a portion showing a selected color, you may not wish to convert the selected color portion to monochrome.  Yet you may wish for the entire rest of the image to be converted.
 
-This can be achieved by setting the attached [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider).`CanAdapt` property to `false` on the portion for the selected color.  That will tell the converter to skip over converting colors within that portion of the image.
+This can be achieved by setting the attached [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).`CanAdapt` property to `false` on the portion for the selected color.  That will tell the converter to skip over converting colors within that portion of the image.

@@ -6,10 +6,10 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'XML' language created by Actipro Software LLC.
-  Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Xml" LanguageDescription="XML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Xml" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2021 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Xml" LanguageDescription="XML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Xml" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" />

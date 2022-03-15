@@ -21,6 +21,6 @@ See the [Highlighting Style Registries](highlighting-style-registries.md) topic 
 
 ## TextStylePreview Control
 
-The TextStylePreview control is a small control that is used on options dialogs to show the end user a preview of how an [IHighlightingStyle](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) will render.
+The TextStylePreview control is a small control that is used on options dialogs to show the end user a preview of how an [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) will render.
 
 See the [TextStylePreview Control](text-style-preview.md) topic for more information.

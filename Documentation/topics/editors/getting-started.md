@@ -7,11 +7,35 @@ order: 2
 
 Getting started with Editors is simple. Follow the steps below to build your first chart.
 
+@if (winrt) {
+
+## Add Extension SDK Reference
+
+In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" and add the "Actipro Universal Windows Controls" SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.
+
+}
+
+@if (wpf) {
+
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Editors.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Editors.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+
+}
 
 ## Add Any Editor Control
+
+@if (winrt) {
+
+This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
+
+```xaml
+xmlns:editors="using:ActiproSoftware.UI.Xaml.Controls.Editors"
+```
+
+}
+
+@if (wpf) {
 
 This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
 
@@ -19,15 +43,17 @@ This 'xmlns' declaration in your root XAML control allows access to the various 
 xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 ```
 
+}
+
 Then find the parent element that will contain the editor.  This could be a `UserControl` or any other type of `UIElement`.
 
-Next, add an editor control to the desired parent element.  In this sample we will add a [Int32EditBox](xref:ActiproSoftware.Windows.Controls.Editors.Int32EditBox):
+Next, add an editor control to the desired parent element.  In this sample we will add a [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox):
 
 ```xaml
 <editors:Int32EditBox Minimum="1" Maximum="100" />
 ```
 
-Next configure the control's options, set up a binding to the [Value](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property, and you are all done.
+Next configure the control's options, set up a binding to the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property, and you are all done.
 
 ![Screenshot](images/int32editbox-opened.png)
 

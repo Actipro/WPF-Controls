@@ -5,7 +5,7 @@ order: 8
 ---
 # Using Custom Controls
 
-Actipro Ribbon has been designed so that nearly any control can be used within the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon) itself, in ribbon menus, or in popups.
+Actipro Ribbon has been designed so that nearly any control can be used within the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) itself, in ribbon menus, or in popups.
 
 For the purposes of this topic, we will use the term "custom control" to mean any non-ribbon control.  This could be a `UserControl`, any native WPF control, or any control from a third-party.
 
@@ -68,7 +68,7 @@ Here is some XAML code showing how the screenshot above was created.
 
 The use of custom controls in popups is fully supported.  Popups are used by the [PopupButton](interactive/popupbutton.md), [RibbonGallery](interactive/ribbongallery.md), and [SplitButton](interactive/splitbutton.md) controls.
 
-To use a custom control in a popup, set it to the popup anchor's [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  In the case of [PopupButton](interactive/popupbutton.md) and [SplitButton](interactive/splitbutton.md), this can be done in XAML by inserting the popup content as a child direcly within the `PopupButton` and `SplitButton` tags.
+To use a custom control in a popup, set it to the popup anchor's [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  In the case of [PopupButton](interactive/popupbutton.md) and [SplitButton](interactive/splitbutton.md), this can be done in XAML by inserting the popup content as a child direcly within the `PopupButton` and `SplitButton` tags.
 
 Here is some XAML code showing the use of a custom color picker `UserControl` within a `PopupButton`.  This code is used in the Document Editor demo and is displayed in the screenshot above.
 

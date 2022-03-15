@@ -9,9 +9,9 @@ This topic covers several methods for programmatically arranging and resizing th
 
 ## Resizing Split Container Slots
 
-The [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) control is used to arrange the various docking elements vertically or horizontally, while also allowing dynamic resizing.  The child elements of the [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) are arranged into slots, which allows the elements to be sized proportionally as the [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) is sized.
+The [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) control is used to arrange the various docking elements vertically or horizontally, while also allowing dynamic resizing.  The child elements of the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) are arranged into slots, which allows the elements to be sized proportionally as the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) is sized.
 
-The [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer).[ResizeSlots](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer.ResizeSlots*) method can be used to resize the associated slots, and therefore the underlying docking elements.  The `ResizeSlots` method accepts zero or more ratios, represented by a `double` array.  The ratios are used to calculate new sizes for the associated slots.
+The [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer).[ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method can be used to resize the associated slots, and therefore the underlying docking elements.  The `ResizeSlots` method accepts zero or more ratios, represented by a `double` array.  The ratios are used to calculate new sizes for the associated slots.
 
 For example, this code shows a `SplitContainer` with two child elements, therefore the `SplitContainer` has two slots:
 
@@ -46,26 +46,34 @@ splitContainer.ResizeSlots(2, 1);
 
 The only restriction on the ratios passed is that they be greater than `0`.  If there are more ratios than there are slots, then the extra ratios will be ignored.  If there are more slots than there are ratios, then the last ratio will be repeated for the remaining slots.  As a result, passing a single ratio is equivalent to not passing any ratios, since all the slots will share the same ratio.
 
-There is no way to indicate that one slot should use star ('\*') sizing.  Instead, take into account the current size of the split container and adjust the ratios passed to the [ResizeSlots](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer.ResizeSlots*) method to get child controls into their desired sizes.
+There is no way to indicate that one slot should use star ('\*') sizing.  Instead, take into account the current size of the split container and adjust the ratios passed to the [ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method to get child controls into their desired sizes.
 
-The above code shows how to call the [ResizeSlots](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer.ResizeSlots*) method, but does not illustrate how the reference to the [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) was obtained.
+The above code shows how to call the [ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method, but does not illustrate how the reference to the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) was obtained.
 
 > [!NOTE]
 > You should never used XAML name references to obtain a specific `SplitContainer`, as these elements are created and destroyed dynamically as changes are made to the docking layout.
 
-The `VisualTreeHelper` and [VisualTreeHelperExtended](xref:ActiproSoftware.Windows.Media.VisualTreeHelperExtended) can be used to locate the various [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) elements currently used. [VisualTreeHelperExtended](xref:ActiproSoftware.Windows.Media.VisualTreeHelperExtended) offers several helper methods for walking up and down the visual tree.
+The `VisualTreeHelper` and [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) can be used to locate the various [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) elements currently used. [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) offers several helper methods for walking up and down the visual tree.
 
-See the [Media](../../shared/windows-media.md) topic for more information on [VisualTreeHelperExtended](xref:ActiproSoftware.Windows.Media.VisualTreeHelperExtended).
+@if (wpf) {
+
+See the [Media](../../shared/windows-media.md) topic for more information on [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended). 
+
+}
+
+@if (wpf) {
 
 ## Reversing Split Container Slots
 
-A [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer).[ReverseSlots](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer.ReverseSlots*) helper method is available that reverses the order of all the children in the container.
+A [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer).[ReverseSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ReverseSlots*) helper method is available that reverses the order of all the children in the container.
 
-This code reverses the order of the [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer)'s children:
+This code reverses the order of the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer)'s children:
 
 ```csharp
 splitContainer.ReverseSlots();
 ```
+
+}
 
 ## Arranging Tabbed MDI Windows
 

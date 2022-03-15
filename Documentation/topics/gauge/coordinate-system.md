@@ -29,7 +29,7 @@ Percentage based sizes can be specified by appending the percent character (%) a
 
 ## Coordinate Origin
 
-By default, the origin point of the X/Y coordinates is the center of the gauge. The origin point can be changed to any one of nine locations, defined by [CoordinateOrigin](xref:ActiproSoftware.Windows.Controls.Gauge.CoordinateOrigin).
+By default, the origin point of the X/Y coordinates is the center of the gauge. The origin point can be changed to any one of nine locations, defined by [CoordinateOrigin](xref:@ActiproUIRoot.Controls.Gauge.CoordinateOrigin).
 
 ![Screenshot](images/circular-gauge-coordinate-origins.gif)
 
@@ -49,9 +49,9 @@ By default, the origin point of the X/Y coordinates is the center of the gauge. 
 
 ## Z-Order
 
-The z-order of the elements presented by the gauge controls is determined by the [ZIndexProperty](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeElement.ZIndexProperty) attached property. An element with a higher z-index will be rendered on top of an element with a lower z-index.
+The z-order of the elements presented by the gauge controls is determined by the [ZIndexProperty](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeElement.ZIndexProperty) attached property. An element with a higher z-index will be rendered on top of an element with a lower z-index.
 
 > [!NOTE]
-> The gauge elements all derive from [GaugeElement](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeElement), which exposes the [ZIndex](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeElement.ZIndex) property. Therefore, the z-index of the gauge elements can be set without having to use the attached property syntax.
+> The gauge elements all derive from [GaugeElement](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeElement), which exposes the [ZIndex](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeElement.ZIndex) property. Therefore, the z-index of the gauge elements can be set without having to use the attached property syntax.
 
 When one or more elements have the same z-index value, then the last one added to the gauge control will be rendered on top.

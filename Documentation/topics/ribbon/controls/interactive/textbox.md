@@ -5,14 +5,14 @@ order: 14
 ---
 # TextBox
 
-The [TextBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.TextBox) class provides an implementation of native WPF `TextBox` that has enhanced functionality for use in a ribbon.
+The [TextBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TextBox) class provides an implementation of native WPF `TextBox` that has enhanced functionality for use in a ribbon.
 
 > [!NOTE]
 > See the [Control Basics](../control-basics.md) topic for many implementation details that are common to the built-in controls such as this one.
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -29,21 +29,21 @@ The following table gives an overview of the capabilities of the control.
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | No.  When in the ribbon, it should be placed in a [StackPanel](../layout/stackpanel.md) that is in a `Medium` variant or smaller. |
 | Supports normal size | Yes. |
 | Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
-| Base class | [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase). |
+| Base class | [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase). |
 | Child items | No. |
 | Has popup | No. |
-| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.KeyTipAccessText) property. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
 | Click event trigger | When the `Enter` key is pressed while in the control or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
-| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
-| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the value of the `TextBox`. |
-| Default CommandParameter | [StringValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.StringValueCommandParameter). |
+| Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
+| Supports [IValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the value of the `TextBox`. |
+| Default CommandParameter | [StringValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.StringValueCommandParameter). |
 
 ## Managing the Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the value of the control.  By default an [ObjectValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the value of the control.  By default an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value.
 

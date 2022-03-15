@@ -5,9 +5,9 @@ order: 13
 ---
 # MaskedTextBox
 
-The [MaskedTextBox](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox) control can be used to restrict user input based on a specified regular expression mask.  Support for input prompts and literal completion is included.
+The [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) control can be used to restrict user input based on a specified regular expression mask.  Support for input prompts and literal completion is included.
 
-Since the [MaskedTextBox](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox) control inherits the native `TextBox` control, it fully supports features such as UI automation, IME input, etc.
+Since the [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) control inherits the native `TextBox` control, it fully supports features such as UI automation, IME input, etc.
 
 When typing text data, the control will attempt to move the caret past any literal (fixed) characters it encounters in the mask.
 
@@ -17,29 +17,29 @@ When typing text data, the control will attempt to move the caret past any liter
 
 ## Mask, Text, and MatchedText
 
-The [Mask](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.Mask) property can be used to define the desired mask pattern that must be input.  It defaults to using a regular expression pattern.  Any characters or input that violate this mask will be discarded.  This ensures that only data in the proper format is entered.
+The [Mask](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.Mask) property can be used to define the desired mask pattern that must be input.  It defaults to using a regular expression pattern.  Any characters or input that violate this mask will be discarded.  This ensures that only data in the proper format is entered.
 
-The [MaskKind](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.MaskKind) property indicates whether the [Mask](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.Mask) is a regular expression (the default) or wildcard pattern.  See the reference below for more details on each mask kind, as they have different pattern syntax.
+The [MaskKind](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MaskKind) property indicates whether the [Mask](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.Mask) is a regular expression (the default) or wildcard pattern.  See the reference below for more details on each mask kind, as they have different pattern syntax.
 
 The `Text` property can be used to retrieve any text entered by the end user, along with any prompt text that is currently displayed.
 
-The [MatchedText](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.MatchedText) property can be used to get/set the text entered by the end user, without any prompt text that is currently displayed.  This is typically the property you want to data-bind against, instead of `Text`.
+The [MatchedText](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MatchedText) property can be used to get/set the text entered by the end user, without any prompt text that is currently displayed.  This is typically the property you want to data-bind against, instead of `Text`.
 
 ## Prompts
 
-Prompts can be appended to the end of the text in scenarios where further text input is required to properly match a mask.  The prompts do their best to indicate literal characters as themselves.  Any time there is a choice in character, a prompt character specified by the [PromptChar](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.PromptChar) is inserted.
+Prompts can be appended to the end of the text in scenarios where further text input is required to properly match a mask.  The prompts do their best to indicate literal characters as themselves.  Any time there is a choice in character, a prompt character specified by the [PromptChar](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.PromptChar) is inserted.
 
-By default the prompts will only be appended when the control has focus.  The [PromptVisibility](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.PromptVisibility) property can be changed to `Always` to always show prompts, even when the control doesn't has focus.  The `Never` option prevents prompts from ever showing.
+By default the prompts will only be appended when the control has focus.  The [PromptVisibility](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.PromptVisibility) property can be changed to `Always` to always show prompts, even when the control doesn't has focus.  The `Never` option prevents prompts from ever showing.
 
 ## Case Sensitivity and Case-Correction
 
-The control attempts to match the mask in a case-insensitive way by default, meaning that both 'A' and 'a' will match an "a" pattern.  If you wish to force your mask to be case sensitive, set the [IsCaseSensitive](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.IsCaseSensitive) property to `true`.
+The control attempts to match the mask in a case-insensitive way by default, meaning that both 'A' and 'a' will match an "a" pattern.  If you wish to force your mask to be case sensitive, set the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property to `true`.
 
-If you wish to allow case-insensitivity and also coerce characters to match the pattern, set the [IsCaseAutoCorrected](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.IsCaseAutoCorrected) property to `true`.  When this property is set, the [IsCaseSensitive](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.IsCaseSensitive) property is ignored.  Say the mask pattern is "(Male|Female)".  This means only one of the two strings can be typed.  If the user types a 'm' into the control, it will convert the typed character to 'M'.  The control also will automatically insert the rest of the text, making it read "Male" since the "ale" characters are considered literals at those character offsets.  Note that this last feature occurs regardless of case options.
+If you wish to allow case-insensitivity and also coerce characters to match the pattern, set the [IsCaseAutoCorrected](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseAutoCorrected) property to `true`.  When this property is set, the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property is ignored.  Say the mask pattern is "(Male|Female)".  This means only one of the two strings can be typed.  If the user types a 'm' into the control, it will convert the typed character to 'M'.  The control also will automatically insert the rest of the text, making it read "Male" since the "ale" characters are considered literals at those character offsets.  Note that this last feature occurs regardless of case options.
 
 ## Regular Expression Mask Syntax
 
-The [MaskedTextBox](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox) uses a custom regular expression engine implementation with full support for Unicode categories.  The engine includes support for most common regular expression constructs, as described below, when the [MaskKind](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.MaskKind) property is `Regex`.
+The [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) uses a custom regular expression engine implementation with full support for Unicode categories.  The engine includes support for most common regular expression constructs, as described below, when the [MaskKind](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MaskKind) property is `Regex`.
 
 ### Literals
 
@@ -149,7 +149,7 @@ Additional special categories are supported that represent a set of Unicode char
 
 ## Wildcard Mask Syntax
 
-Wildcard based patterns are supported when the [MaskKind](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.MaskKind) property is `Wildcard`.  In this mode, the wildcard pattern is converted to an equivalent regular expression pattern behind the scenes.
+Wildcard based patterns are supported when the [MaskKind](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MaskKind) property is `Wildcard`.  In this mode, the wildcard pattern is converted to an equivalent regular expression pattern behind the scenes.
 
 Wildcard pattern providers search for text by using "wildcard" pattern matching.  The following wildcard patterns are recognized:
 

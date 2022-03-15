@@ -5,13 +5,13 @@ order: 1
 ---
 # Overview
 
-The animation of the child elements of a [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) is delegated to an instance of [IArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.IArrangeAnimation). The `PanelBase`.[ArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeAnimation) property determines the `IArrangeAnimation` used. By default, this property is initialized to an instance of [ArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.ArrangeAnimation).
+The animation of the child elements of a [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) is delegated to an instance of [IArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.IArrangeAnimation). The `PanelBase`.[ArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeAnimation) property determines the `IArrangeAnimation` used. By default, this property is initialized to an instance of [ArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation).
 
 ## IArrangeAnimation
 
-The [IArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.IArrangeAnimation) interface defines the base requirements for an object that can animate the arrangement of a PanelBase's children. The interface defines a single method, [GetStoryboard](xref:ActiproSoftware.Windows.Controls.Views.IArrangeAnimation.GetStoryboard*), which is used to get a `Storyboard` used to animate one or more properties.
+The [IArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.IArrangeAnimation) interface defines the base requirements for an object that can animate the arrangement of a PanelBase's children. The interface defines a single method, [GetStoryboard](xref:@ActiproUIRoot.Controls.Views.IArrangeAnimation.GetStoryboard*), which is used to get a `Storyboard` used to animate one or more properties.
 
-The [ArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.ArrangeAnimation), described below, provides a default implementation of the `IArrangeAnimation`.
+The [ArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation), described below, provides a default implementation of the `IArrangeAnimation`.
 
 ## ArrangeAnimation
 

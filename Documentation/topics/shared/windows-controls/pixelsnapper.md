@@ -5,7 +5,7 @@ order: 23
 ---
 # PixelSnapper
 
-The [PixelSnapper](xref:ActiproSoftware.Windows.Controls.PixelSnapper) decorator snaps the measurement of its child content to integer values, thereby helping to prevent blurry images and borders that may appear after it.
+The [PixelSnapper](xref:@ActiproUIRoot.Controls.PixelSnapper) decorator snaps the measurement of its child content to integer values, thereby helping to prevent blurry images and borders that may appear after it.
 
 ## The Issue: Blurry Images and Lines in WPF
 
@@ -17,7 +17,7 @@ The control directly under the `Menu` will start at vertical location `16.5`.  I
 
 ## A Visual Sample
 
-In the screenshot below, we have a `Border` with a [PixelSnapper](xref:ActiproSoftware.Windows.Controls.PixelSnapper) surrounding it.  In the left sample, the `PixelSnapper` has snapped its contents to integers, the default behavior.  In the right sample, the `PixelSnapper` functionality has been disabled.
+In the screenshot below, we have a `Border` with a [PixelSnapper](xref:@ActiproUIRoot.Controls.PixelSnapper) surrounding it.  In the left sample, the `PixelSnapper` has snapped its contents to integers, the default behavior.  In the right sample, the `PixelSnapper` functionality has been disabled.
 
 ![Screenshot](../images/pixelsnapper.gif)
 
@@ -31,16 +31,16 @@ Where should you use `PixelSnapper`?  Generally, text elements like `TextBlock` 
 
 ## Important Members
 
-The [PixelSnapper](xref:ActiproSoftware.Windows.Controls.PixelSnapper) class has these important members:
+The [PixelSnapper](xref:@ActiproUIRoot.Controls.PixelSnapper) class has these important members:
 
 | Member | Description |
 |-----|-----|
-| [HorizontalRoundMode](xref:ActiproSoftware.Windows.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.Windows.Controls.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is `RoundMode.Ceiling`. |
-| [VerticalRoundMode](xref:ActiproSoftware.Windows.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.Windows.Controls.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is `RoundMode.Ceiling`. |
+| [HorizontalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is `RoundMode.Ceiling`. |
+| [VerticalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is `RoundMode.Ceiling`. |
 
 ## RoundMode Enumeration
 
-The [RoundMode](xref:ActiproSoftware.Windows.Controls.RoundMode) enumeration has these values:
+The [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration has these values:
 
 | Value | Description |
 |-----|-----|

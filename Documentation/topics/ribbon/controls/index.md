@@ -27,7 +27,6 @@ Interactive controls are controls that are located throughout the ribbon user in
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -231,7 +230,7 @@ A control that presents one or more categories of colors within a popup, support
 
 ## Built-in Layout Controls
 
-Layout controls govern where other controls are placed within a [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).
+Layout controls govern where other controls are placed within a [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).
 
 <table>
 <thead>
@@ -240,7 +239,6 @@ Layout controls govern where other controls are placed within a [Ribbon](xref:Ac
 <th>Control Type</th>
 <th>Description</th>
 </tr>
-
 
 </thead>
 <tbody>
@@ -323,7 +321,7 @@ See the [Customizing the QAT](customizing-the-qat.md) topic for more information
 
 ## Using Custom Controls
 
-Actipro Ribbon has been designed so that nearly any control can be used within the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon) itself, in ribbon menus, or in popups.
+Actipro Ribbon has been designed so that nearly any control can be used within the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) itself, in ribbon menus, or in popups.
 
 See the [Custom Controls](custom-controls.md) topic for more information on adding custom controls to the ribbon user interface.
 
@@ -341,6 +339,6 @@ See the [Standalone Control Usage](standalone-control-usage.md) topic for more d
 
 ## RibbonWindow
 
-Actipro Ribbon includes a [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow) class, which is an implementation of the `Window` class that provides a custom window user interface much like that found in Office.
+Actipro Ribbon includes a [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow) class, which is an implementation of the `Window` class that provides a custom window user interface much like that found in Office.
 
 See the [RibbonWindow](ribbonwindow.md) topic for more information on using the `RibbonWindow` class, even without a `Ribbon` control inside of it.

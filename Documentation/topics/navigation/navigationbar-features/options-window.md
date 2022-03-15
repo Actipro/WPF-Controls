@@ -15,17 +15,17 @@ The window offers the end-user the ability to reorder navigation pane buttons by
 
 ## Showing the Options Window
 
-The default overflow menu has a menu item for displaying the Options window.  This is executed via the [NavigationBarCommands](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBarCommands).[ShowOptionsWindow](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBarCommands.ShowOptionsWindow) command.
+The default overflow menu has a menu item for displaying the Options window.  This is executed via the [NavigationBarCommands](xref:@ActiproUIRoot.Controls.Navigation.NavigationBarCommands).[ShowOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBarCommands.ShowOptionsWindow) command.
 
-However you can manually show the Options window by calling [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar).[ShowOptionsWindow](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.ShowOptionsWindow*).
+However you can manually show the Options window by calling [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar).[ShowOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.ShowOptionsWindow*).
 
-That method calls [GetOptionsWindow](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.GetOptionsWindow*) first to get a reference to an Options window instance.  By creating a class that inherits [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) you can override that method to return any sort of custom `Window` that you'd like to use for the options.
+That method calls [GetOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.GetOptionsWindow*) first to get a reference to an Options window instance.  By creating a class that inherits [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) you can override that method to return any sort of custom `Window` that you'd like to use for the options.
 
-The [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar).[Title](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.Title) property is what determines the title of the navigation bar that is displayed in Options window UI.
+The [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar).[Title](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.Title) property is what determines the title of the navigation bar that is displayed in Options window UI.
 
 ## Controlling Reset Button Functionality
 
-The Reset button on the window is used to reset the panes to their original order and active state.  There are a couple properties on [NavigationPane](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane) that the window uses to determine how to do this.
+The Reset button on the window is used to reset the panes to their original order and active state.  There are a couple properties on [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) that the window uses to determine how to do this.
 
 <table>
 <thead>
@@ -35,14 +35,13 @@ The Reset button on the window is used to reset the panes to their original orde
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[DefaultSortOrder](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane.DefaultSortOrder) Property
+[DefaultSortOrder](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.DefaultSortOrder) Property
 
 </td>
 <td>
@@ -57,7 +56,7 @@ Leave the value `-1` to have it auto-configured the first time the options windo
 <tr>
 <td>
 
-[DefaultVisibility](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane.DefaultVisibility) Property
+[DefaultVisibility](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.DefaultVisibility) Property
 
 </td>
 <td>

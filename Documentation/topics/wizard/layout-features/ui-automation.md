@@ -11,6 +11,6 @@ Wizard follows the WPF accessibility model for UI automation.
 
 Microsoft UI Automation is the new accessibility framework for Microsoft Windows.  It addresses the needs of assistive technology products and automated test frameworks by providing programmatic access to information about the user interface (UI).
 
-Wizard implements automation peers for the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard), [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage), and [WizardButtonContainer](xref:ActiproSoftware.Windows.Controls.Wizard.WizardButtonContainer) controls.  These automation peers allow for programmatic access to those UI elements and their child controls.
+Wizard implements automation peers for the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard), [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage), and [WizardButtonContainer](xref:@ActiproUIRoot.Controls.Wizard.WizardButtonContainer) controls.  These automation peers allow for programmatic access to those UI elements and their child controls.
 
-[Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) implements a selection control pattern and [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) implements a selection item pattern.  Selection change events raise the appropriate events on the automation peers.
+[Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) implements a selection control pattern and [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) implements a selection item pattern.  Selection change events raise the appropriate events on the automation peers.

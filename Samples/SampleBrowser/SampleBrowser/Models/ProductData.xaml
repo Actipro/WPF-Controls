@@ -70,6 +70,8 @@
 				<sampleBrowser:ListItemInfo Title="New Drag and Drop QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl" />
 				<sampleBrowser:ListItemInfo Title="New Editor Views Synchronizing QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewsSynchronizing/MainControl" />
 				<sampleBrowser:ListItemInfo Title="New Go To Definition QuickStart (.NET Languages)" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonGoToDefinition/MainControl" />
+				<sampleBrowser:ListItemInfo Title="New Compare Files QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl" />
+				<sampleBrowser:ListItemInfo Title="New Column Guides QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -128,6 +130,8 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Code Summary" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CodeSummary/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Collapsed Regions - Intro" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CollapsedRegionsIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Collapsed Regions - Advanced" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CollapsedRegionsAdvanced/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Compare Files" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Column Guides" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Current Line Highlighting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CurrentLineHighlighting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Data Binding" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DataBinding/MainControl"/>
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Drag and Drop" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl"/>

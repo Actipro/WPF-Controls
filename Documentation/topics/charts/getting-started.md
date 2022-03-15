@@ -9,13 +9,13 @@ Getting started with Charts is simple. Follow the steps below to build your firs
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Charts.Wpf.dll` assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Charts.@@PlatformAssemblySuffix.dll" assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the XYChart Control
 
 Then find the parent element that will contain the chart.  This could be a `UserControl` or any other type of `UIElement`.
 
-Next, add a [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart) control to the desired parent element.  In this sample we will add the [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart) to a `UserControl`:
+Next, add a [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart) control to the desired parent element.  In this sample we will add the [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart) to a `UserControl`:
 
 ```xaml
 <UserControl 
@@ -28,7 +28,7 @@ Next, add a [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart) cont
 
 ## Add a Series
 
-Now we need to add a series, which renders a single set of data points on the chart.  In this sample we will add a [AreaSeries](xref:ActiproSoftware.Windows.Controls.Charts.AreaSeries) series, but the other types are added in a similar manner.
+Now we need to add a series, which renders a single set of data points on the chart.  In this sample we will add a [AreaSeries](xref:@ActiproUIRoot.Controls.Charts.AreaSeries) series, but the other types are added in a similar manner.
 
 ```xaml
 <UserControl 

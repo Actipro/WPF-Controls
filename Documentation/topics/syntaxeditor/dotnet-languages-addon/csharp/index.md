@@ -38,7 +38,7 @@ The C# language is packed with features, including:
 
 ## Licensing
 
-Even though the .NET Languages Add-on is distributed and demoed with the WPF controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and licenses are all Enterprise licenses, meaning they cover your entire organization.
+Even though the .NET Languages Add-on is distributed and demoed with the @@PlatformName controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and licenses are all Enterprise licenses, meaning they cover your entire organization.
 
 See the [Assemblies and Add-on Licensing](../../assemblies.md) topic for more information.
 

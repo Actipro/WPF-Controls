@@ -9,7 +9,7 @@ Delimiter auto-completion occurs when the end user types a start delimiter and a
 
 ## Activating Delimiter Auto-Completion
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsDelimiterAutoCompleteEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsDelimiterAutoCompleteEnabled) property can be set to `true` to allow SyntaxEditor to perform delimiter auto-completion, as long as the current syntax language supports the feature.  Delimiter auto-completion is enabled on SyntaxEditor by default.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsDelimiterAutoCompleteEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsDelimiterAutoCompleteEnabled) property can be set to `true` to allow SyntaxEditor to perform delimiter auto-completion, as long as the current syntax language supports the feature.  Delimiter auto-completion is enabled on SyntaxEditor by default.
 
 ## Auto-Completion Logic
 

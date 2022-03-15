@@ -5,7 +5,7 @@ order: 3
 ---
 # Themes
 
-Acitpro WPF DataGrid Contrib adds the [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid), which supports dynamic theme changing, sharper looking system themes, as well was Office themes.
+Acitpro WPF DataGrid Contrib adds the [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid), which supports dynamic theme changing, sharper looking system themes, as well was Office themes.
 
 ![Screenshot](./images/themed-datagrid-themes.png)
 

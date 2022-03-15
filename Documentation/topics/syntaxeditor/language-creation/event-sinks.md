@@ -5,7 +5,7 @@ order: 8
 ---
 # Event Sink Services
 
-Event sinks are interfaces that allow a language to be notified of events that occur to a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) or [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This could be anything from input events to text change events.  The language can choose to process these events and optionally block editor views from receiving them.
+Event sinks are interfaces that allow a language to be notified of events that occur to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) or [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This could be anything from input events to text change events.  The language can choose to process these events and optionally block editor views from receiving them.
 
 Event sinks use the service locator architecture and thus are managed as services.  This design has several benefits:
 
@@ -23,26 +23,26 @@ This table lists the built-in event sink service types that can be used with [IS
 
 | Service Type | Description |
 |-----|-----|
-| [IActiveEditorViewChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IActiveEditorViewChangeEventSink) | An object that can be notified of [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[ActiveView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ActiveView) change events. |
+| [IActiveEditorViewChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IActiveEditorViewChangeEventSink) | An object that can be notified of [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ActiveView](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ActiveView) change events. |
 | [ICodeDocumentLifecycleEventSink](xref:ActiproSoftware.Text.ICodeDocumentLifecycleEventSink) | An object that can be notified of when an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) becomes associated and disassociated with a language, via events such as a language change. |
 | [ICodeDocumentPropertyChangeEventSink](xref:ActiproSoftware.Text.ICodeDocumentPropertyChangeEventSink) | An object that can be notified of when attached [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) properties, such as [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) or [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName), are changed. |
-| [ICodeSnippetTemplateSessionEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink) | An object that can be notified of various events occur related to a code snippet template session.  See the [Code Snippets](../user-interface/intelliprompt/code-snippets.md) documentation for more information. |
-| [IEditorDocumentTextChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) | An object that can be notified of [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) text change events, both before and after a text change occurs. |
-| [IEditorViewKeyInputEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewKeyInputEventSink) | An object that can be notified of [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView) keyboard input events, both key down and up.  These input events can be intercepted before the editor view ever receives them. |
-| [IEditorViewPointerInputEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) | An object that can be notified of [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView) pointer input events, including all standard mouse events.  These input events can be intercepted before the editor view ever receives them. |
-| [IEditorViewSelectionChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelectionChangeEventSink) | An object that can be notified of [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView) selection change events. |
-| [IEditorViewTextInputEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewTextInputEventSink) | An object that can be notified of [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView) text input events.  These input events can be intercepted before the editor view ever receives them. |
-| [ITextViewLifecycleEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLifecycleEventSink) | An object that can be notified of when an [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView) becomes associated and disassociated with a language, via events such as view open/close, document change, or language change. |
+| [ICodeSnippetTemplateSessionEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink) | An object that can be notified of various events occur related to a code snippet template session.  See the [Code Snippets](../user-interface/intelliprompt/code-snippets.md) documentation for more information. |
+| [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) | An object that can be notified of [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) text change events, both before and after a text change occurs. |
+| [IEditorViewKeyInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewKeyInputEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) keyboard input events, both key down and up.  These input events can be intercepted before the editor view ever receives them. |
+| [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) pointer input events, including all standard mouse events.  These input events can be intercepted before the editor view ever receives them. |
+| [IEditorViewSelectionChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelectionChangeEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) selection change events. |
+| [IEditorViewTextInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewTextInputEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) text input events.  These input events can be intercepted before the editor view ever receives them. |
+| [ITextViewLifecycleEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLifecycleEventSink) | An object that can be notified of when an [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView) becomes associated and disassociated with a language, via events such as view open/close, document change, or language change. |
 
 ## Sample: Implementing an Event Sink for Listening to Text Changes
 
-For this sample, assume that you are implementing an HTML language and wish to watch for `<` being typed so that you know when to show a [completion list](../user-interface/intelliprompt/completion-list.md) of HTML tags.  To do this, we'll work with the [IEditorDocumentTextChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink), which notifies after text changes occur.  We examine typed text to look for `<` characters.
+For this sample, assume that you are implementing an HTML language and wish to watch for `<` being typed so that you know when to show a [completion list](../user-interface/intelliprompt/completion-list.md) of HTML tags.  To do this, we'll work with the [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink), which notifies after text changes occur.  We examine typed text to look for `<` characters.
 
 ### Registering the Event Sink
 
-As mentioned above, event sinks use the [service locator architecture](service-locator-architecture.md).  In this sample, we'll have our language class itself implement the [IEditorDocumentTextChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) interface and in the language's constructor, we'll register itself as a service for that service type.
+As mentioned above, event sinks use the [service locator architecture](service-locator-architecture.md).  In this sample, we'll have our language class itself implement the [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) interface and in the language's constructor, we'll register itself as a service for that service type.
 
-This code registers the language itself as an [IEditorDocumentTextChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service:
+This code registers the language itself as an [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service:
 
 ```csharp
 public class HtmlSyntaxLanguage : SyntaxLanguage, IEditorDocumentTextChangeEventSink }

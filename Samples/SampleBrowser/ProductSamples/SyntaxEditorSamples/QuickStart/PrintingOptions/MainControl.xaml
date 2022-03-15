@@ -31,6 +31,7 @@
 					<CheckBox x:Name="isSyntaxHighlightingEnabledCheckBox" Content="Is syntax highlighting enabled" Margin="0,3,0,0" IsChecked="True" />
 					<CheckBox x:Name="isWhitespaceVisibleCheckBox" Content="Is whitespace visible" Margin="0,3,0,0" IsChecked="True" />
 					<CheckBox x:Name="areCollapsedOutliningNodesAllowedCheckBox" Content="Are collapsed outlining nodes allowed" Margin="0,3,0,0" IsChecked="False" />
+					<CheckBox x:Name="areColumnGuidesVisibleCheckBox" Content="Are column guides visible" Margin="0,3,0,0" IsChecked="False" />
 					<CheckBox x:Name="areIndentationGuidesVisibleCheckBox" Content="Are indentation guides visible" Margin="0,3,0,0" IsChecked="False" />
 					<CheckBox x:Name="areSquiggleLinesVisibleCheckBox" Content="Are squiggle lines visible" Margin="0,3,0,0" IsChecked="False" />
 				</StackPanel>

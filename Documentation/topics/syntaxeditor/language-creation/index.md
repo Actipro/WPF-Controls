@@ -13,7 +13,7 @@ To better illustrate, lets examine the flow that occurs when text is typed into 
 
 *A diagram that illustrates the general flow of logic from input through to display*
 
-A [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control is a code editor that accept input.  When typing occurs, it creates a [text change](../text-parsing/core-text/text-changes.md) and applies it on the attached [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This creates a new immutable [snapshot](../text-parsing/core-text/documents-snapshots-versions.md).  The snapshot text is analyzed by a [lexer](../text-parsing/lexing/index.md) and [tokens](../text-parsing/lexing/tokens.md) are generated.  These tokens are "tagged" by a [token tagger](../text-parsing/tagging/taggers.md) and back in the UI layer, the classifications are translated to related [highlighting styles](../user-interface/styles/highlighting-styles.md) via a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  These highlighting styles are then used to tell SyntaxEditor how to render text.
+A [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is a code editor that accept input.  When typing occurs, it creates a [text change](../text-parsing/core-text/text-changes.md) and applies it on the attached [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This creates a new immutable [snapshot](../text-parsing/core-text/documents-snapshots-versions.md).  The snapshot text is analyzed by a [lexer](../text-parsing/lexing/index.md) and [tokens](../text-parsing/lexing/tokens.md) are generated.  These tokens are "tagged" by a [token tagger](../text-parsing/tagging/taggers.md) and back in the UI layer, the classifications are translated to related [highlighting styles](../user-interface/styles/highlighting-styles.md) via a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  These highlighting styles are then used to tell SyntaxEditor how to render text.
 
 ## Step-by-Step Walkthrough
 
@@ -55,7 +55,7 @@ See the [Provider Services](provider-services/index.md) topic for more informati
 
 ## Event Sink Services
 
-Event sinks are interfaces that allow a language to be notified of events that occur to a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) or [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This could be anything from input events to text change events.  The language can choose to process these events and optionally block editor views from receiving them.
+Event sinks are interfaces that allow a language to be notified of events that occur to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) or [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).  This could be anything from input events to text change events.  The language can choose to process these events and optionally block editor views from receiving them.
 
 See the [Event Sinks](event-sinks.md) topic for more information.
 

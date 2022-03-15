@@ -11,11 +11,13 @@ In this mode, nearly all of SyntaxEditor's features remain available, such as sy
 
 ## Activating Single-Line Mode
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsMultiLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsMultiLine) property can be set to `false` to activate single-line mode.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsMultiLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsMultiLine) property can be set to `false` to activate single-line mode.
 
 When that property is set to `false`, these properties are also automatically adjusted:
 
-- [AcceptsTab](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.AcceptsTab) is set to `false`.
-- [IsOutliningMarginVisible](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsOutliningMarginVisible) is set to `false`.
-- [IsSelectionMarginVisible](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsSelectionMarginVisible) is set to `false`.
-- [InactiveSelectedTextBackground](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) is set to null.
+- [AcceptsTab](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AcceptsTab) is set to `false`.
+- [IsOutliningMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsOutliningMarginVisible) is set to `false`.
+- [IsSelectionMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsSelectionMarginVisible) is set to `false`.
+@if (winrt wpf) {
+- [InactiveSelectedTextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) is set to null.
+}

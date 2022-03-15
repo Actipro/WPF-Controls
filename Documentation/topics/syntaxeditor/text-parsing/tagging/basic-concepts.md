@@ -21,7 +21,6 @@ There are several built-in tag types are are used to drive various functionality
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

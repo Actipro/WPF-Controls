@@ -19,7 +19,6 @@ Since text snapshots provide immutable views on a text document, the [ITextSnaps
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -69,7 +68,6 @@ Since text change operations typically originate from a document, the [ITextDocu
 <th>Member</th>
 <th>Description</th>
 </tr>
-
 
 </thead>
 <tbody>

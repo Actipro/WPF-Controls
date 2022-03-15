@@ -9,21 +9,21 @@ All of the Navigation controls' text properties have the `Localizability` attrib
 
 ## Localizable NavigationBar Properties
 
-The following properties on the [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) control are localizable:
+The following properties on the [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) control are localizable:
 
-- [Title](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar.Title)
+- [Title](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.Title)
 
 ## Localizable NavigationPane Properties
 
-The following properties on the [NavigationPane](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane) control are localizable:
+The following properties on the [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) control are localizable:
 
-- [Title](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane.Title)
+- [Title](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.Title)
 
 ## Localizable BreadcrumbItem Properties
 
-The following properties on the [BreadcrumbItem](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem) control are localizable:
+The following properties on the [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) control are localizable:
 
-- [PathEntry](xref:ActiproSoftware.Windows.Controls.Navigation.BreadcrumbItem.PathEntry)
+- [PathEntry](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.PathEntry)
 
 ## Customizing String Resources
 

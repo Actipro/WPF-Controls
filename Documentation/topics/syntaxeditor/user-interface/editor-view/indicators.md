@@ -20,7 +20,7 @@ Indicators use the same [tagging mechanism](../../text-parsing/tagging/index.md)
 The indicator margin is where glyphs from indicators are displayed.  Glyphs are drawn programmatically and render on the first view line that contains the related indicator.  The [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag).[DrawGlyph](xref:ActiproSoftware.Text.Tagging.IIndicatorTag.DrawGlyph*) method is responsible for rendering the glyph.
 
 > [!IMPORTANT]
-> The indicator margin is hidden by default and should be made visible via the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsIndicatorMarginVisible](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsIndicatorMarginVisible) property when indicators are used.  Otherwise, no glyphs will render in the editor.
+> The indicator margin is hidden by default and should be made visible via the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsIndicatorMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsIndicatorMarginVisible) property when indicators are used.  Otherwise, no glyphs will render in the editor.
 
 It is recommended that glyphs be restricted to 16x16 size.  See the custom indicators example for a sample of creating a glyph.
 
@@ -36,9 +36,9 @@ Any [ITagger<T>](xref:ActiproSoftware.Text.Tagging.ITagger`1) can provide indica
 
 Say you wish to support bookmark indicators in your editor.  You would add a bookmark indicator tag for each bookmark instance to the [ICollectionTagger<T>](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1).  If the end user toggles off a bookmark, the related tag should be removed from the tagger.
 
-SyntaxEditor provides a helpful indicator manager ([IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager) interface, accessible via the [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[IndicatorManager](xref:ActiproSoftware.Text.IEditorDocument.IndicatorManager) property) that wraps up much of the functionality of creating/accessing a tagger behind the scenes.  The manager has a number of generic methods that can be used to interact with indicators at a very high level.  When a method on the indicator manager is accessed, it will go see if a related tagger is found on the document.  For methods like [Add](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.Add*) and [Toggle](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.Toggle*), where it is your intention to add an indicator, the manager will install an appropriate [ICollectionTagger<T>](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1) on the document if one is not already present.  This is helpful because it means that a tagger provider language service doesn't need to be set up on your languages for each kind of indicator you wish to use.
+SyntaxEditor provides a helpful indicator manager ([IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager) interface, accessible via the [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[IndicatorManager](xref:ActiproSoftware.Text.IEditorDocument.IndicatorManager) property) that wraps up much of the functionality of creating/accessing a tagger behind the scenes.  The manager has a number of generic methods that can be used to interact with indicators at a very high level.  When a method on the indicator manager is accessed, it will go see if a related tagger is found on the document.  For methods like [Add](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.Add*) and [Toggle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.Toggle*), where it is your intention to add an indicator, the manager will install an appropriate [ICollectionTagger<T>](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1) on the document if one is not already present.  This is helpful because it means that a tagger provider language service doesn't need to be set up on your languages for each kind of indicator you wish to use.
 
-[IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager) also provides access to some sub-managers (e.g. via the [Breakpoints](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.Breakpoints) property) which are even friendlier ways to work directly with the related indicator type.
+[IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager) also provides access to some sub-managers (e.g. via the [Breakpoints](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.Breakpoints) property) which are even friendlier ways to work directly with the related indicator type.
 
 See below for examples of working with the indicator manager.
 
@@ -54,7 +54,7 @@ A text range-based indicator is one that is applied to a text snapshot range (st
 
 Bookmarks are line-based indicators that render a small bookmark glyph in the indicator margin to mark an area of interest for the end user.  An app generally supports navigation between the bookmarks so the end user can jump the caret between them.
 
-Bookmarks can be easily managed via the [IBookmarkIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IBookmarkIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager).[Bookmarks](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.Bookmarks) property.
+Bookmarks can be easily managed via the [IBookmarkIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IBookmarkIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager).[Bookmarks](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.Bookmarks) property.
 
 This code shows how to toggle a bookmark on the current line that contains the caret:
 
@@ -93,7 +93,7 @@ if (tagRange != null) {
 
 Breakpoints are text range-based indicators that render a red circle glyph in the indicator margin and also highlight the contained text range with a red background.  Breakpoint indicators can be used to visually represent a code execution breakpoint when working with an external debugger.
 
-Breakpoints can be easily managed via the [IBreakpointIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IBreakpointIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager).[Breakpoints](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.Breakpoints) property.
+Breakpoints can be easily managed via the [IBreakpointIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IBreakpointIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager).[Breakpoints](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.Breakpoints) property.
 
 This code shows how to toggle a breakpoint over a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) (which generally is the text range of a statement):
 
@@ -121,7 +121,7 @@ if (tagRange != null)
 
 Current statement indicators are text range-based indicators that render a yellow arrow glyph in the indicator margin and also highlight the contained text range with a yellow background.  Current statement indicators can be used to visually represent the current code execution point in a debugging session.
 
-Current statement indicators can be easily managed via the [ICurrentStatementIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.ICurrentStatementIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager).[CurrentStatement](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager.CurrentStatement) property.  Note that this particular indicator manager is geared towards managing at most a single indicator instance at a time for a document.  The reason is that there can only be a single current location in any debugging session.
+Current statement indicators can be easily managed via the [ICurrentStatementIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.ICurrentStatementIndicatorManager) interface, which is accessible via the [IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager).[CurrentStatement](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager.CurrentStatement) property.  Note that this particular indicator manager is geared towards managing at most a single indicator instance at a time for a document.  The reason is that there can only be a single current location in any debugging session.
 
 This code shows how to set the current statement indicator over a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) (which generally is the text range of a statement):
 
@@ -169,7 +169,7 @@ public CustomIndicatorTagger(ICodeDocument document) :
 
 ### Indicator Manager
 
-As mentioned above, the [IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager) interface has a number of helpful method for working with indicators, even custom ones.  For custom indicators, the generic methods directly on [IIndicatorManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Indicators.IIndicatorManager) should be used.  Each of these methods takes two generic type arguments:  the type of tagger and the type of tag.
+As mentioned above, the [IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager) interface has a number of helpful method for working with indicators, even custom ones.  For custom indicators, the generic methods directly on [IIndicatorManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Indicators.IIndicatorManager) should be used.  Each of these methods takes two generic type arguments:  the type of tagger and the type of tag.
 
 This code shows how to create a custom tag, set its quick info content provider, and add it to a certain [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange):
 
@@ -186,12 +186,12 @@ editor.Document.IndicatorManager.Add<CustomIndicatorTagger, CustomIndicatorTag>(
 
 IntelliPrompt quick info can be added for the glyphs in the indicator margin.  This means that when the mouse hovers over the glyph, a tooltip will display.
 
-The quick info comes from the [IContentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.IContentProvider) that is set in the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.IIndicatorTag.ContentProvider) property.  The content provider can return simple text, complex markup, etc. as described in the [Content Providers](../intelliprompt/popup-content-providers.md) topic.
+The quick info comes from the [IContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IContentProvider) that is set in the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.IIndicatorTag.ContentProvider) property.  The content provider can return simple text, complex markup, etc. as described in the [Content Providers](../intelliprompt/popup-content-providers.md) topic.
 
 > [!NOTE]
-> There is one requirement for this functionality to work.  A special [IndicatorQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service must be registered on the language.  This quick info provider has built-in functionality to watch for the mouse being over indicator glyphs and use their related content provider for the quick info tip content.
+> There is one requirement for this functionality to work.  A special [IndicatorQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service must be registered on the language.  This quick info provider has built-in functionality to watch for the mouse being over indicator glyphs and use their related content provider for the quick info tip content.
 
-This code shows how to register an [IndicatorQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service on a language:
+This code shows how to register an [IndicatorQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service on a language:
 
 ```csharp
 language.RegisterService(new IndicatorQuickInfoProvider());
@@ -199,6 +199,6 @@ language.RegisterService(new IndicatorQuickInfoProvider());
 
 ## Handling Pointer Events in the Indicator Margin
 
-Mouse events in the indicator margin can be handled via an [IEditorViewPointerInputEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) language service.
+Mouse events in the indicator margin can be handled via an [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) language service.
 
 For instance, if your app supports a debugging experience, you may wish to allow clicks in the indicator margin to toggle whether a breakpoint is defined on the statement at that line.  A full example of implementing this kind of behavior is given in the debugging-related indicators sample.

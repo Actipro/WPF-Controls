@@ -30,6 +30,7 @@
 					</grids:PropertyModel>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsCaseSensitive}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsCaseAutoCorrected}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=(shared:HintProperties.Hint)}" DisplayName="Hint (if no prompt)" />
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>
 
@@ -51,7 +52,7 @@
 		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
 
 			<StackPanel HorizontalAlignment="Center">
-				<editors:MaskedTextBox x:Name="textBox" Width="200" Mask="(\(\d{3}\) |(1-)?\d{3}-)?\d{3}-\d{4}" Text="12" />
+				<editors:MaskedTextBox x:Name="textBox" Width="200" Mask="(\(\d{3}\) |(1-)?\d{3}-)?\d{3}-\d{4}" Text="12" shared:HintProperties.Hint="Phone number" />
 				<CheckBox Margin="0,10,0,0" IsChecked="{Binding ElementName=textBox, Path=IsMatched, Mode=OneWay}" Content="Text matches mask" IsEnabled="False" />
 			</StackPanel>
 

@@ -5,7 +5,7 @@ order: 11
 ---
 # Heat Map
 
-A heat map is a grid where each cell renders color and/or size differences to reflect data values.  The [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) control is the marker used in each heat map cell, and automatically handles the color and/or size rendering for its particular data value representation.
+A heat map is a grid where each cell renders color and/or size differences to reflect data values.  The [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) control is the marker used in each heat map cell, and automatically handles the color and/or size rendering for its particular data value representation.
 
 ## What is a Heat Map?
 
@@ -15,11 +15,11 @@ Heat maps are charts made up of individual markers that use changing color and/o
 
 In the example above the markers are changing color and size to represent their two values. The smaller the values represented by color are shown with lighter markers, and the smaller the values represented by size are shown with smaller markers. The two values are independent of one another, meaning a large marker can be very light and a small marker can be very dark.
 
-The [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) control provides this dynamic functionality for a single marker.  Multiple instances can be used to create a heat map. In the example, each single circle is one [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) control, with its own color and size values.
+The [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) control provides this dynamic functionality for a single marker.  Multiple instances can be used to create a heat map. In the example, each single circle is one [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) control, with its own color and size values.
 
 ## Reusing Styles
 
-Generally a group of [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) controls will all use the same values for their [GradientStops](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property, minimum and maximum values, [LegendStringFormat](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.LegendStringFormat) (for tooltips) property, [IsSizingEnabled](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property, and `Height` and `Width` properties. Instead of setting these properties for each individual control it is much more practical to set a style that the controls can inherit from. The style can be set in the `Resources` property of the container for the elements, such as a `Grid` or `Border`.
+Generally a group of [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) controls will all use the same values for their [GradientStops](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property, minimum and maximum values, [LegendStringFormat](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.LegendStringFormat) (for tooltips) property, [IsSizingEnabled](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property, and `Height` and `Width` properties. Instead of setting these properties for each individual control it is much more practical to set a style that the controls can inherit from. The style can be set in the `Resources` property of the container for the elements, such as a `Grid` or `Border`.
 
 ```xaml
 <Border>
@@ -60,11 +60,11 @@ Generally a group of [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Contro
 </Border>
 ```
 
-The sample code above sets the style used in the example from the "What is a Heat Map?" section. Note that the [ColorMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum) and [SizeMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.SizeMaximum) properties are hard-coded in.  Generally these values will come from data and not be set in the style, unless the range is known regardless of the data. This style is applied to each [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) within the `Border`.  This can be repeated for several different containers on a page to create multiple charts, or the style can be put into the `App.Resources` to apply to all [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) controls in the application.
+The sample code above sets the style used in the example from the "What is a Heat Map?" section. Note that the [ColorMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum) and [SizeMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.SizeMaximum) properties are hard-coded in.  Generally these values will come from data and not be set in the style, unless the range is known regardless of the data. This style is applied to each [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) within the `Border`.  This can be repeated for several different containers on a page to create multiple charts, or the style can be put into the `App.Resources` to apply to all [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) controls in the application.
 
 ## Color Changing Ability
 
-The [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter).[GradientStops](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property can be set to a `GradientStopsCollection` from which it will select a color based on its [ColorValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue).  The control will select its color based on the `GradientStop`(s) with the offset value(s) closest to the percentage of the [ColorValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue) from the [ColorMinimum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorMinimum) to the [ColorMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum).  If the percentage lies within two offsets the control will find and use the color at the proper point between the two colors.  If the [GradientStops](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property is not defined then the control will display black.
+The [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter).[GradientStops](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property can be set to a `GradientStopsCollection` from which it will select a color based on its [ColorValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue).  The control will select its color based on the `GradientStop`(s) with the offset value(s) closest to the percentage of the [ColorValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue) from the [ColorMinimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorMinimum) to the [ColorMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum).  If the percentage lies within two offsets the control will find and use the color at the proper point between the two colors.  If the [GradientStops](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property is not defined then the control will display black.
 
 Below is an example of initializing the color variables so the control will find its place in the range between the min and max and render at a color selected from the gradient specified.
 
@@ -85,9 +85,9 @@ Below is an example of initializing the color variables so the control will find
 
 ## Sizing Ability
 
-By default the [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) will size to fit its container. The control can be set to change size to reflect data by setting the [IsSizingEnabled](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property to true. The marker will then render at a percentage of its normal size equal to the percentage of its [SizeValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.SizeValue) from the [SizeMinimum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.SizeMinimum) to the [SizeMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.SizeMaximum).  If the [SizeValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.SizeValue) is equal to the maximum it will render at the full defined size, and if it is equal to the minimum it will not render visibly.
+By default the [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) will size to fit its container. The control can be set to change size to reflect data by setting the [IsSizingEnabled](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property to true. The marker will then render at a percentage of its normal size equal to the percentage of its [SizeValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.SizeValue) from the [SizeMinimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.SizeMinimum) to the [SizeMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.SizeMaximum).  If the [SizeValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.SizeValue) is equal to the maximum it will render at the full defined size, and if it is equal to the minimum it will not render visibly.
 
-Below is an example of a [MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter) with its [IsSizingEnabled](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property set to true. Note that the [GradientStops](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property is not set, so the control will render black for a sizing-only effect.
+Below is an example of a [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) with its [IsSizingEnabled](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property set to true. Note that the [GradientStops](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property is not set, so the control will render black for a sizing-only effect.
 
 ```xaml
 <microcharts:MicroHeatMapPresenter SizeValue="1250" SizeMinimum="100" SizeMaximum="10000" Width = “20” Height = “20” IsSizingEnabled="True"/>
@@ -114,7 +114,7 @@ The marker of the control supports several built in shape kinds, which include:
 
 ## Tooltips
 
-[MicroHeatMapPresenter](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter)s support tooltips that can be custom formatted and can display the color and size value as well as the color and size minimums and maximums.
+[MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter)s support tooltips that can be custom formatted and can display the color and size value as well as the color and size minimums and maximums.
 
 | Format Parameter | Description |
 |-----|-----|
@@ -125,7 +125,7 @@ The marker of the control supports several built in shape kinds, which include:
 | \{4} | The minimum size value. |
 | \{5} | The maximum size value. |
 
-This example displays the [ColorValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue) as well as the [ColorMinimum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorMinimum) and the [ColorMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum) to show the range.  Note how numeric formatting is used on the [ColorValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue).
+This example displays the [ColorValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue) as well as the [ColorMinimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorMinimum) and the [ColorMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorMaximum) to show the range.  Note how numeric formatting is used on the [ColorValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.ColorValue).
 
 ```xaml
 <microcharts:MicroHeatMapPresenter ... LegendStringFormat="Temperature: {0:F2}&#176;C  (Range: {1}-{2}&#176;C)" />

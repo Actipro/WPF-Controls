@@ -5,7 +5,7 @@ order: 3
 ---
 # Nested Dock Sites
 
-Dock sites are completely self-contained and can be nested, where a child [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) is placed within a document window or tool window of an ancestor [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+Dock sites are completely self-contained and can be nested, where a child [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) is placed within a document window or tool window of an ancestor [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
 ![Screenshot](../images/nested-dock-sites.png)
 
@@ -15,11 +15,15 @@ Many other competitive docking products don't support this feature.
 
 ## Configuration and Features
 
-The creation of a nested dock site scenario is very easy.  Just create a root [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) then add a couple document windows.  Within the first document window, place another inner [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) control and add docking windows to it.  Note that you could have chosen to place the child dock site in a tool window instead.
+The creation of a nested dock site scenario is very easy.  Just create a root [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) then add a couple document windows.  Within the first document window, place another inner [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) control and add docking windows to it.  Note that you could have chosen to place the child dock site in a tool window instead.
 
-Now, when you drag tool windows around from the dock sites, notice how they remain self-contained within their own ancestor [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+Now, when you drag tool windows around from the dock sites, notice how they remain self-contained within their own ancestor [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
-Also try to float a tool window from within the inner dock site.  Then switch to the other document window.  Notice how the floating tool window automatically closes.  When you switch back to the original document window, the rafted window automatically reappears.  This auto-close behavior can be disabled by setting the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[CanFloatingDockHostsHideOnDockSiteUnload](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.CanFloatingDockHostsHideOnDockSiteUnload) property to `false`.
+@if (wpf) {
+
+Also try to float a tool window from within the inner dock site.  Then switch to the other document window.  Notice how the floating tool window automatically closes.  When you switch back to the original document window, the rafted window automatically reappears.  This auto-close behavior can be disabled by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[CanFloatingDockHostsHideOnDockSiteUnload](xref:@ActiproUIRoot.Controls.Docking.DockSite.CanFloatingDockHostsHideOnDockSiteUnload) property to `false`. 
+
+}
 
 ## A XAML Example
 

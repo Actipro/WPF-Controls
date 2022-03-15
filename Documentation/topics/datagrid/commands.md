@@ -5,10 +5,10 @@ order: 5
 ---
 # Commands
 
-The Acitpro WPF DataGrid Contrib assembly includes routed commands defined in the [DataGridCommands](xref:ActiproSoftware.Windows.Controls.DataGrid.DataGridCommands) static class, which are described in this topic.
+The Acitpro WPF DataGrid Contrib assembly includes routed commands defined in the [DataGridCommands](xref:@ActiproUIRoot.Controls.DataGrid.DataGridCommands) static class, which are described in this topic.
 
 > [!NOTE]
-> The commands described in this topic can be applied to the WPF `DataGrid` or the [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid) .
+> The commands described in this topic can be applied to the WPF `DataGrid` or the [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid) .
 
 ## ToggleFrozenColumn Command
 

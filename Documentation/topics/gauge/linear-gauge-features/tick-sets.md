@@ -5,7 +5,7 @@ order: 4
 ---
 # Tick Sets
 
-[LinearTickSet](xref:ActiproSoftware.Windows.Controls.Gauge.LinearTickSet) is used to specify the minimum value, maximum value, and intervals used by the tick marks, tick labels, pointers, and ranges.
+[LinearTickSet](xref:@ActiproUIRoot.Controls.Gauge.LinearTickSet) is used to specify the minimum value, maximum value, and intervals used by the tick marks, tick labels, pointers, and ranges.
 
 ## Value Range
 
@@ -13,7 +13,7 @@ The value range determines the overall range of values supported, as well as the
 
 ### Minimum/Maximum
 
-The value range is defined by the [Minimum](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.Minimum) and [Maximum](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.Maximum) properties, much like a `ProgressBar` control.
+The value range is defined by the [Minimum](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.Maximum) properties, much like a `ProgressBar` control.
 
 ![Screenshot](../images/linear-tick-set.png)
 
@@ -21,7 +21,7 @@ The value range is defined by the [Minimum](xref:ActiproSoftware.Windows.Control
 
 ### Reversing Range
 
-By default, the values start from the minimum value and move clock-wise to the maximum value. It is possible to reverse this direction by setting the [IsReversed](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.IsReversed) property to `true`.
+By default, the values start from the minimum value and move clock-wise to the maximum value. It is possible to reverse this direction by setting the [IsReversed](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.IsReversed) property to `true`.
 
 ![Screenshot](../images/linear-tick-set-reversed.png)
 
@@ -29,7 +29,7 @@ By default, the values start from the minimum value and move clock-wise to the m
 
 ### Logarithmic Range
 
-A logarithmic value range can be specified by setting [IsLogarithmic](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.IsLogarithmic) to `true`. The logarithmic base can be changed by setting [LogarithmicBase](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.LogarithmicBase), which defaults to `10`.
+A logarithmic value range can be specified by setting [IsLogarithmic](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.IsLogarithmic) to `true`. The logarithmic base can be changed by setting [LogarithmicBase](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.LogarithmicBase), which defaults to `10`.
 
 > [!NOTE]
 > When using a logarithmic value range, the minimum value will be coerced to be greater than or equal to zero, and the maximum value will be coerced to be greater than or equal to one.
@@ -57,7 +57,7 @@ The interval origin determines the value used as a basis for the intervals. By d
 
 As you can see from the image above, the intervals start counting with the minimum value and work up to the maximum value. The first major tick is placed at `-50` (minimum value), then the next major tick is placed at `-37` (minimum value + major interval), and so on.
 
-The basis, or origin, of the intervals can be altered by setting the [IntervalOrigin](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.IntervalOrigin) property to one of three values: `Minimum` (default), `Zero`, or `Maximum`.
+The basis, or origin, of the intervals can be altered by setting the [IntervalOrigin](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.IntervalOrigin) property to one of three values: `Minimum` (default), `Zero`, or `Maximum`.
 
 ![Screenshot](../images/linear-tick-set-interval-origin-zero.png)![Screenshot](../images/linear-tick-set-interval-origin-maximum.png)
 
@@ -74,7 +74,7 @@ When the interval origin is et to `Maximum`, the intervals will be subtracted in
 
 By default, the intervals will added/subtracted cumulatively (or linearly) to the interval origin. As seen above, if the major interval is `13` and using the minimum value (`-50`) as the origin, major ticks would be placed at `-50`, `-37`, `-24`, etc.
 
-The major and minor intervals can be set using [MajorInterval](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.MajorInterval) and [MinorInterval](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.MinorInterval), respectively. Both these properties support any positive value.
+The major and minor intervals can be set using [MajorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MajorInterval) and [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval), respectively. Both these properties support any positive value.
 
 ### Logarithmic Intervals
 
@@ -82,4 +82,4 @@ When `IsLogarithmic` is set to `true`, logarithmic intervals will also be used. 
 
 As an example, assume a tick-set has a minimum value of `1`, a maximum value of `100`, a major interval of `10`, and an interval origin of `Zero`. The first tick will be placed at `1` (`0 + 10⁰`), the second tick will be placed at `10` (`0 + 10¹`), and the last tick will be placed at `100` (`0 + 10²`).  Therefore, the forumla equates to `0 + intervalⁿ` for an interval origin of `Zero`, `minimum value + intervalⁿ` for an interval origin of `Minimum`, and `maximum value - intervalⁿ` for an interval origin of `Maximum`, where `n` starts at zero and is incremented by one, until the minimum/maximum value is reached, or exceeded.
 
-The major and minor intervals can be set using [MajorInterval](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.MajorInterval) and [MinorInterval](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.TickSetBase.MinorInterval), respectively. Both these properties support any positive value, or can be set to `Double.NaN` to use the `LinearTickSet.LogarithmicBase`.
+The major and minor intervals can be set using [MajorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MajorInterval) and [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval), respectively. Both these properties support any positive value, or can be set to `Double.NaN` to use the `LinearTickSet.LogarithmicBase`.

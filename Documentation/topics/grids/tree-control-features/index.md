@@ -5,12 +5,16 @@ order: 1
 ---
 # Overview
 
-The [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox) control is a single-column tree control with many advanced features, similar to the Visual Studio Solution Explorer tree control.  The [TreeListView](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView) control is a multi-column variant of [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox) that renders similar to a standard `ListView` but has additional features.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) control is a single-column tree control with many advanced features, similar to the Visual Studio Solution Explorer tree control.  The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control is a multi-column variant of [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) that renders similar to a standard `ListView` but has additional features.
 
-While [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox) may initially appear similar to a native `TreeView` control, and [TreeListView](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView) may appear similar to a native `ListView` control, they offer many more features than what is found in the native controls.  See the Features list below for a summary of what they can do.
+@if (wpf) {
+
+While [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) may initially appear similar to a native `TreeView` control, and [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) may appear similar to a native `ListView` control, they offer many more features than what is found in the native controls.  See the Features list below for a summary of what they can do. 
+
+}
 
 > [!NOTE]
-> Since the [TreeListView](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView) control inherits [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox), all of the documentation related to [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox) also applies to [TreeListView](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView).
+> Since the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox), all of the documentation related to [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) also applies to [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).
 
 ## Features
 
@@ -66,7 +70,7 @@ See the [Getting Started](getting-started.md) topic for more information.
 
 ## Columns (TreeListView)
 
-The [TreeListView](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView) control supports one or more columns of cells that can be displayed within each item (row).  Columns can be resized, reordered, hidden, frozen, and much more.
+The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control supports one or more columns of cells that can be displayed within each item (row).  Columns can be resized, reordered, hidden, frozen, and much more.
 
 See the [Columns (TreeListView)](tree-list-view-columns.md) topic for more information.
 

@@ -21,9 +21,9 @@ The application is available via a shortcut in the Windows Programs menu group c
 
 The Theme Definition tool window contains a property grid that allows for configuring the current theme's definition.  Any changes made to the theme definition trigger a new theme to be generated and for the application to immediately use that new theme.  This allows you to see how the theme definition looks in a real application.
 
-It's important to set a custom [Name](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Name) for your theme.  This name should be unique since it is what will be referenced later when setting the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property to switch application themes.
+It's important to set a custom [Name](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Name) for your theme.  This name should be unique since it is what will be referenced later when setting the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to switch application themes.
 
-It's also important to set the [Intent](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Intent) to indicate if the theme is meant to be a black, dark, light, or white theme.  That setting affects grayscale and color family shade generation, among other things.
+It's also important to set the [Intent](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Intent) to indicate if the theme is meant to be a black, dark, light, or white theme.  That setting affects grayscale and color family shade generation, among other things.
 
 Beyond those settings, any of the other theme definition properties can optionally be altered.
 
@@ -37,7 +37,7 @@ The Presets menu has an Entire Themes section where selecting a theme item will 
 
 This is a great feature to use when first starting out on a new theme definition since it can provide a starting point for your theme definition.  Note that choosing one of these presets will reset any custom options you've set on your theme.  If you mistakenly select one of these presets, use the undo feature to return your theme definition back to its previous state.
 
-Various theme presets use special theme definition classes.  For instance, Metro themes use the [MetroThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.MetroThemeDefinition) class since that pre-initializes a number of theme definition option defaults (like square corners) that are used by all Metro themes.
+Various theme presets use special theme definition classes.  For instance, Metro themes use the [MetroThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.MetroThemeDefinition) class since that pre-initializes a number of theme definition option defaults (like square corners) that are used by all Metro themes.
 
 ## Using Pieces and Parts Presets
 
@@ -61,11 +61,11 @@ Use the Window menu's Open All Sample UI Documents item to open all sample UI ta
 
 The Code tab displays generated C# code that can be pasted into your own application to replicate the current theme based on its theme definition configuration.
 
-The generated [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager)-related code should be pasted into your application's `OnStartup` logic and executed prior to any UI being displayed.
+The generated [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager)-related code should be pasted into your application's `OnStartup` logic and executed prior to any UI being displayed.
 
 ### Generated Code Overview
 
-The generated code effectively creates a new [ThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition) object, sets its properties to duplicate the current configuration in the Theme Designer application, and registers the theme definition with the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).  Next it sets the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[AreNativeThemesEnabled](xref:ActiproSoftware.Windows.Themes.ThemeManager.AreNativeThemesEnabled) property to indicate that native WPF controls should also use the theme.  And finally it updates [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) to the name of the theme to activate it.
+The generated code effectively creates a new [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) object, sets its properties to duplicate the current configuration in the Theme Designer application, and registers the theme definition with the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).  Next it sets the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[AreNativeThemesEnabled](xref:@ActiproUIRoot.Themes.ThemeManager.AreNativeThemesEnabled) property to indicate that native WPF controls should also use the theme.  And finally it updates [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) to the name of the theme to activate it.
 
 Note that per the [Architecture](architecture.md) topic, you can optionally register more than one theme.  This is often the case if you end up designing both a light and dark theme for your application.
 
@@ -90,7 +90,7 @@ The Resource Browser contains a list of the theme's asset resources, displaying 
 
 ### Reusing Brush Resources in Your Application
 
-If you would like to reuse a certain asset resource in your own application, a copy to clipboard button is available below the asset resource list.  Select the asset resource to reuse, press the copy button, and paste the generated `DynamicResource` string into any XAML property value in your application.  That property will then use whatever asset resource value is provided by the current theme in the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).  If you change the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme), then the property value will be updated to the new asset resource value.
+If you would like to reuse a certain asset resource in your own application, a copy to clipboard button is available below the asset resource list.  Select the asset resource to reuse, press the copy button, and paste the generated `DynamicResource` string into any XAML property value in your application.  That property will then use whatever asset resource value is provided by the current theme in the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).  If you change the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme), then the property value will be updated to the new asset resource value.
 
 The copied value looks like this:
 

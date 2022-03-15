@@ -67,22 +67,22 @@ The complete sample code is:
 
 ### Configuring the AeroWizard
 
-The [AeroWizard](xref:ActiproSoftware.Windows.Controls.Wizard.AeroWizard) class inherits [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) directly and as such, inherits all of the great features found in wizard that are described in this documentation.
+The [AeroWizard](xref:@ActiproUIRoot.Controls.Wizard.AeroWizard) class inherits [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) directly and as such, inherits all of the great features found in wizard that are described in this documentation.
 
-The title bar text should be assigned with the [AeroWizard](xref:ActiproSoftware.Windows.Controls.Wizard.AeroWizard).[WindowTitleBaseText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.WindowTitleBaseText) property as described in the [Page Captions, Descriptions, and Titles](../page-button-features/page-titles.md) topic.
+The title bar text should be assigned with the [AeroWizard](xref:@ActiproUIRoot.Controls.Wizard.AeroWizard).[WindowTitleBaseText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.WindowTitleBaseText) property as described in the [Page Captions, Descriptions, and Titles](../page-button-features/page-titles.md) topic.
 
 That's all that is needed to configure an Aero Wizard.  Just use the information in the rest of the Wizard documentation to harness the power of Wizard's large feature set.
 
 ## Command Buttons
 
-The screenshot above shows two [CommandButton](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton) controls in the wizard's page.  These are special buttons with a title and content.  They have smooth animations that change state when the mouse moves over them or when they are clicked.
+The screenshot above shows two [CommandButton](xref:@ActiproUIRoot.Controls.Wizard.CommandButton) controls in the wizard's page.  These are special buttons with a title and content.  They have smooth animations that change state when the mouse moves over them or when they are clicked.
 
 They usually are presented on pages where large branching choices must be made.  In this scenario, disable the Next button for that page and allow the command buttons to choose the wizard's path instead.
 
-The [CommandButton](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton).[Title](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton.Title) property lets you specify the large title for the button and the button's `Content` is what appears below the title.
+The [CommandButton](xref:@ActiproUIRoot.Controls.Wizard.CommandButton).[Title](xref:@ActiproUIRoot.Controls.Wizard.CommandButton.Title) property lets you specify the large title for the button and the button's `Content` is what appears below the title.
 
-The [CommandButton](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton).[BulletTemplate](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton.BulletTemplate) property will contain an arrow by default, but can be changed.
+The [CommandButton](xref:@ActiproUIRoot.Controls.Wizard.CommandButton).[BulletTemplate](xref:@ActiproUIRoot.Controls.Wizard.CommandButton.BulletTemplate) property will contain an arrow by default, but can be changed.
 
-Use the [BackgroundHover](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton.BackgroundHover) and [BackgroundPressed](xref:ActiproSoftware.Windows.Controls.Wizard.CommandButton.BackgroundPressed) properties to further customize the backgrounds that are faded in and out during mouse hover and press events.
+Use the [BackgroundHover](xref:@ActiproUIRoot.Controls.Wizard.CommandButton.BackgroundHover) and [BackgroundPressed](xref:@ActiproUIRoot.Controls.Wizard.CommandButton.BackgroundPressed) properties to further customize the backgrounds that are faded in and out during mouse hover and press events.
 
 You can reuse the command buttons outside of wizard if you wish.  This is great in case you want to place them on a custom task dialog.

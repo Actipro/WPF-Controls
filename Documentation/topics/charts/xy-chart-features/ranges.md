@@ -13,7 +13,7 @@ Specific value ranges of the chart can be highlighted to convey additional infor
 
 ## Orientation
 
-By default, ranges will be aligned horizontally, which means they highlight value ranges along the Y-axis.  A vertical range can be created by setting the [Orientation](xref:ActiproSoftware.Windows.Controls.Charts.XYRange.Orientation) property to `Vertical`.  Vertical ranges highlight value ranges along the X-axis.
+By default, ranges will be aligned horizontally, which means they highlight value ranges along the Y-axis.  A vertical range can be created by setting the [Orientation](xref:@ActiproUIRoot.Controls.Charts.XYRange.Orientation) property to `Vertical`.  Vertical ranges highlight value ranges along the X-axis.
 
 ![Screenshot](../images/appearance-ranges2.png)
 
@@ -40,7 +40,7 @@ In this example, the line series is set to a collection of doubles. Therefore, t
 
 ## Minimum and Maximum Values
 
-The values of a range are specified using the [Maximum](xref:ActiproSoftware.Windows.Controls.Charts.XYRange.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Charts.XYRange.Minimum) properties.
+The values of a range are specified using the [Maximum](xref:@ActiproUIRoot.Controls.Charts.XYRange.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Charts.XYRange.Minimum) properties.
 
 If either of these properties is unset (or set to `null`), then it's value will be auto-calculated based on the data points from all series.  The `Maximum` will run to the highest value and likewise the `Minimum` will run to the lowest value.
 

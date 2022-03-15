@@ -9,13 +9,13 @@ ExplorerBar has several configuration options for the display of its expander pa
 
 ## Headers
 
-For pane headers, the `Expander.Header` can be set to either a string or an [ImageTextInfo](xref:ActiproSoftware.Windows.Controls.ImageTextInfo) object.
+For pane headers, the `Expander.Header` can be set to either a string or an [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo) object.
 
-If the header is a string, it will be displayed like `File and Folder Tasks` in the screenshot above.  Alternatively, the [ImageTextInfo](xref:ActiproSoftware.Windows.Controls.ImageTextInfo) class gives you the option of displaying text and an image.
+If the header is a string, it will be displayed like `File and Folder Tasks` in the screenshot above.  Alternatively, the [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo) class gives you the option of displaying text and an image.
 
 ## Image/Text and Alternate Pane Style Example
 
-This sample shows how to create an expander pane with an alternate style (which attracts attention and is sometimes used for the first pane item).  It also has an image in the header, showing the use of [ImageTextInfo](xref:ActiproSoftware.Windows.Controls.ImageTextInfo).  Note how some extra margin space is defined for the top of the pane since the image will stretch into the margin area.
+This sample shows how to create an expander pane with an alternate style (which attracts attention and is sometimes used for the first pane item).  It also has an image in the header, showing the use of [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo).  Note how some extra margin space is defined for the top of the pane since the image will stretch into the margin area.
 
 ```xaml
 <navigation:ExplorerBar>

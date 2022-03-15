@@ -11,75 +11,75 @@ All user interface text properties have the `Localizability` attribute applied t
 
 The following text properties are flagged as localizable via the `Localizability` attribute:
 
-- [ButtonBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase).[MenuItemDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase.MenuItemDescription)
+- [ButtonBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase).[MenuItemDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.MenuItemDescription)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[Hint](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.Hint)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[Hint](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.Hint)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.Label)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.Label)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipDescription)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipDescription)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipFooter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipFooter)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipFooter)
 
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipHeader](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipHeader)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.ScreenTipHeader)
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText)
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Label)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Label)
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipDescription)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipDescription)
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipFooter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipFooter)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipFooter)
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipHeader](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipHeader)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipHeader)
 
-- [GalleryItem](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem).[ScreenTipDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem.ScreenTipDescription)
+- [GalleryItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem).[ScreenTipDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem.ScreenTipDescription)
 
-- [GalleryItem](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem).[ScreenTipFooter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem.ScreenTipFooter)
+- [GalleryItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem.ScreenTipFooter)
 
-- [GalleryItem](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem).[ScreenTipHeader](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.GalleryItem.ScreenTipHeader)
+- [GalleryItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GalleryItem.ScreenTipHeader)
 
-- [Group](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Group).[DialogLauncherKeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Group.DialogLauncherKeyTipAccessText)
+- [Group](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group).[DialogLauncherKeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group.DialogLauncherKeyTipAccessText)
 
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase.KeyTipAccessText)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.KeyTipAccessText)
 
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase.Label)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.Label)
 
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipDescription)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipDescription)
 
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipFooter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipFooter)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipFooter)
 
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipHeader](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipHeader)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.ScreenTipHeader)
 
-- [RecentDocumentMenu](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RecentDocumentMenu).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RecentDocumentMenu.Label)
+- [RecentDocumentMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RecentDocumentMenu).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RecentDocumentMenu.Label)
 
-- [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[ApplicationButtonLabel](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.ApplicationButtonLabel)
+- [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[ApplicationButtonLabel](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.ApplicationButtonLabel)
 
-- [RibbonCommand](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommand).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommand.KeyTipAccessText)
+- [RibbonCommand](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommand).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommand.KeyTipAccessText)
 
-- [RibbonCommand](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommand).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommand.Label)
+- [RibbonCommand](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommand).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommand.Label)
 
-- [RibbonCommandUIProvider](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommandUIProvider).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommandUIProvider.KeyTipAccessText)
+- [RibbonCommandUIProvider](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommandUIProvider).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommandUIProvider.KeyTipAccessText)
 
-- [RibbonCommandUIProvider](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommandUIProvider).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommandUIProvider.Label)
+- [RibbonCommandUIProvider](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommandUIProvider).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommandUIProvider.Label)
 
-- [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow).[ApplicationName](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow.ApplicationName)
+- [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow).[ApplicationName](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow.ApplicationName)
 
-- [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow).[DocumentName](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow.DocumentName)
+- [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow).[DocumentName](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow.DocumentName)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[Hint](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.Hint)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[Hint](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.Hint)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.KeyTipAccessText)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.KeyTipAccessText)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.Label)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.Label)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipDescription)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipDescription)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipFooter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipFooter)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipFooter)
 
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipHeader](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipHeader)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.ScreenTipHeader)
 
 ## Customizing String Resources
 

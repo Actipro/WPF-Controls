@@ -82,7 +82,6 @@ There is an enormous amount of functionality available to be implemented via lan
 <th>Notes</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -94,7 +93,7 @@ This functionality is the ability for a lexer to tokenize text and use that info
 
 Requires an [ILexer](feature-services/lexer.md) feature service and a token tagger provider service.  The token tagger (created for each document by the provider service) tags ranges of text as tokens with a certain [IClassificationType](xref:ActiproSoftware.Text.IClassificationType).
 
-The classification types that are tagged by the [token tagger](../text-parsing/tagging/taggers.md) must be mapped to [highlighting styles](../user-interface/styles/highlighting-styles.md) in a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  Generally the [AmbientHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is used for the mappings.
+The classification types that are tagged by the [token tagger](../text-parsing/tagging/taggers.md) must be mapped to [highlighting styles](../user-interface/styles/highlighting-styles.md) in a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  Generally the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is used for the mappings.
 
 To sum up, the lexer tokenizes text, the token tagger flags ranges of text with tokens/classification types, and the highlighting style registry tells SyntaxEditor how to convert tagged ranges to syntax highlighted markup.
 
@@ -111,7 +110,7 @@ While lexers generally provide the core syntax highlighting (via the functionali
 
 To accomplish this a tagger provider service must be used that creates a tagger for [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) objects.  The [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) interface specifies a [IClassificationType](xref:ActiproSoftware.Text.IClassificationType).  The tagger needs to be set up to be ordered before the [TaggerKeys](xref:ActiproSoftware.Text.Tagging.TaggerKeys).[Token](xref:ActiproSoftware.Text.Tagging.TaggerKeys.Token) tagger, accomplished via the [IOrderable](xref:ActiproSoftware.Text.Utility.IOrderable) interface, so that its classification types merge into and can override the lexer's existing classifications.
 
-Similar to above, the classification types that are tagged by the tagger must be mapped to [highlighting styles](../user-interface/styles/highlighting-styles.md) in a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  Generally the [AmbientHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is used for the mappings.
+Similar to above, the classification types that are tagged by the tagger must be mapped to [highlighting styles](../user-interface/styles/highlighting-styles.md) in a [highlighting style registry](../user-interface/styles/highlighting-style-registries.md).  Generally the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is used for the mappings.
 
 The result is that syntax highlighting can be overridden.  Multiple layers of customized syntax highlighting can be achieved using this same mechanism.
 
@@ -132,10 +131,14 @@ Actipro offers a very robust [LL(*) Parser Framework](../ll-parser-framework/ind
 
 Alternatively, since a parser just has to implement the [IParser](feature-services/parser.md) interface, any sort of custom parsing can be performed with our generic parsing mechanism.
 
+@if (wpf) {
+
 There are free add-ons that come with SyntaxEditor that make it easy to integrate with popular third-party parsers:
 
 - [ANTLR Add-on](../antlr-addon/index.md)
 - [Irony Add-on](../irony-addon/index.md)
+
+}
 
 </td>
 </tr>
@@ -146,7 +149,7 @@ There are free add-ons that come with SyntaxEditor that make it easy to integrat
 
 Automatic outlining is where the document text is scanned and an outlining node hierarchy is constructed based on its contents.  The outlining node tree is rendered visually in the editor's outlining margin and end users can expand/collapse nodes.  As further text changes occur, the outlining node tree is incrementally updated.
 
-The [IOutliningManager](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliningManager) is the object that maintains the outlining node hierarhcy.  When a language has an [IOutliner](feature-services/outliner.md) service registered, the outlining manager knows that the language is capable of performing automatic outlining.  The outlining manager uses the outliner service to retrieve an [IOutliningSource](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliningSource) whenever it needs to update.  The outlining source is capable of examining an offset and returning whether an outlining node should start or end there, or neither.  There are several base classes included with SyntaxEditor that make it easy to create an outlining source.
+The [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager) is the object that maintains the outlining node hierarhcy.  When a language has an [IOutliner](feature-services/outliner.md) service registered, the outlining manager knows that the language is capable of performing automatic outlining.  The outlining manager uses the outliner service to retrieve an [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) whenever it needs to update.  The outlining source is capable of examining an offset and returning whether an outlining node should start or end there, or neither.  There are several base classes included with SyntaxEditor that make it easy to create an outlining source.
 
 An [Outliner](feature-services/outliner.md) service is required for automatic outlining support.  The [Outlining and Collapsing Features](../user-interface/outlining/index.md) series of topics talk about how create outlining sources and define nodes.
 
@@ -157,7 +160,7 @@ An [Outliner](feature-services/outliner.md) service is required for automatic ou
 <td>Quick info tips for mouse hovers over collapsed regions</td>
 <td>
 
-The built-in [CollapsedRegionQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) service can be registered on a language to allow quick info tips to be automatically displayed when the end user hovers over a collapsed outlining node adornment, such as the "..." blocks.
+The built-in [CollapsedRegionQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) service can be registered on a language to allow quick info tips to be automatically displayed when the end user hovers over a collapsed outlining node adornment, such as the "..." blocks.
 
 </td>
 </tr>
@@ -207,7 +210,7 @@ Syntax languages have several ways they can be set up to provide automated Intel
 
 One or more [ICompletionProvider](provider-services/completion-provider.md) services may be registered on the language.  These provider services can be ordered.  When a completion provider service is on the language, any `Ctrl+Space` keys typed by the end user will call the first completion provider to see if it can open a completion session.  If it can't, the next provider is checked, and so on.  When opening a session, the completion providers determine if auto-complete is allowed, what features are enabled (filtering, auto-shrink, text matching algorithms, etc).  The completion provider must also populate the items in the completion session prior to opening it.  Completion providers often use a mix of looking at any available document [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) and [token scanning](../text-parsing/core-text/scanning-text.md) to detemine which sort of items should be in the session, based on the current editor view caret location.
 
-Completion sessions can also be requested when the end user begins to type a new word.  This involves having the language register an [IEditorDocumentTextChangeEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service and in the text changed event notification, check a helper property on the event args that indicates if a new word is being typed.  If so, request a completion session.  A full sample of this is included in the "Opening a Session in Response to a Typed Character" section of the [Completion List](../user-interface/intelliprompt/completion-list.md) topic.
+Completion sessions can also be requested when the end user begins to type a new word.  This involves having the language register an [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service and in the text changed event notification, check a helper property on the event args that indicates if a new word is being typed.  If so, request a completion session.  A full sample of this is included in the "Opening a Session in Response to a Typed Character" section of the [Completion List](../user-interface/intelliprompt/completion-list.md) topic.
 
 </td>
 </tr>
@@ -268,7 +271,7 @@ There is a built-in tagger called [ParseErrorTagger](xref:ActiproSoftware.Text.T
 
 When this parse error tagger is attached to a document, it will monitor the document's parse data for changes.  If the parse data is updated, it will automatically get the list of parse errors from it (assuming the parse data implements [IParseErrorProvider](xref:ActiproSoftware.Text.Parsing.IParseErrorProvider)) and will return [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag) tags for each one.  This automatically drives the squiggle line display when used in an editor.
 
-The [SquiggleTagQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.SquiggleTagQuickInfoProvider) is an [IQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) that presents a [Quick Info](../user-interface/intelliprompt/quick-info.md) popup with the contents of [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.ISquiggleTag.ContentProvider).  When registered with a language along with a [ParseErrorTagger](xref:ActiproSoftware.Text.Tagging.Implementation.ParseErrorTagger), it will provide the description of a parsing error when you hover the mouse over a text range that is tagged by an [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag).
+The [SquiggleTagQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.SquiggleTagQuickInfoProvider) is an [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) that presents a [Quick Info](../user-interface/intelliprompt/quick-info.md) popup with the contents of [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.ISquiggleTag.ContentProvider).  When registered with a language along with a [ParseErrorTagger](xref:ActiproSoftware.Text.Tagging.Implementation.ParseErrorTagger), it will provide the description of a parsing error when you hover the mouse over a text range that is tagged by an [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag).
 
 </td>
 </tr>
@@ -277,7 +280,7 @@ The [SquiggleTagQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxE
 <td>Add custom adornments to a view's text area</td>
 <td>
 
-An example of adornments that are not related directly to document text content are alternating row highlights.  To implement this sort of feature, a custom adornment manager is created that inherits [AdornmentManagerBase<T>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1).  The manager attaches to the view's [TextAreaLayout](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.TextAreaLayout) event and updates its `Rectangle` higlight adornments based on the document line numbers of the view lines that need adornments.
+An example of adornments that are not related directly to document text content are alternating row highlights.  To implement this sort of feature, a custom adornment manager is created that inherits [AdornmentManagerBase<T>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1).  The manager attaches to the view's [TextAreaLayout](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TextAreaLayout) event and updates its `Rectangle` higlight adornments based on the document line numbers of the view lines that need adornments.
 
 An [adornment manager provider](provider-services/adornment-manager-provider.md) service is required to create adornment manager instances for each view that should use them.
 
@@ -288,7 +291,7 @@ An [adornment manager provider](provider-services/adornment-manager-provider.md)
 <td>Add custom decoration adornments to specific text ranges</td>
 <td>
 
-An example of adornments that are related directly to text spans are borders around certain text ranges that indicate find operation results.  For scenarios like this, a custom adornment manager is created that inherits [DecorationAdornmentManagerBase<T, U>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2).  The base class handles the determination of when to add/update/remove adornments.  When a new adornment needs to be added, the [AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2.AddAdornment*) method is called.  This method is overridden in your inheriting class and the code you implement calls [IAdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) to add an adornment to the layer.
+An example of adornments that are related directly to text spans are borders around certain text ranges that indicate find operation results.  For scenarios like this, a custom adornment manager is created that inherits [DecorationAdornmentManagerBase<T, U>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2).  The base class handles the determination of when to add/update/remove adornments.  When a new adornment needs to be added, the [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2.AddAdornment*) method is called.  This method is overridden in your inheriting class and the code you implement calls [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) to add an adornment to the layer.
 
 An [adornment manager provider](provider-services/adornment-manager-provider.md) service is required to create adornment manager instances for each view that should use them.
 

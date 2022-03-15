@@ -15,7 +15,7 @@ See the [Sessions](sessions.md) topic for more information.
 
 ## Quick Info
 
-IntelliPrompt quick info displays helpful popup hints about what is under the mouse or next to the caret.  Tip content can include any WPF control and it's easy to generate richly-formatted content using an HTML-like syntax.
+IntelliPrompt quick info displays helpful popup hints about what is under the mouse or next to the caret.  Tip content can include any @@PlatformName control and it's easy to generate richly-formatted content using an HTML-like syntax.
 
 See the [Quick Info](quick-info.md) topic for more information.
 
@@ -27,7 +27,7 @@ See the [Completion List](completion-list.md) topic for more information.
 
 ## Parameter Info
 
-IntelliPrompt parameter info displays helpful popup hints about an invocation that is being typed, and its parameters.  Tip content can include any WPF control and it's easy to generate richly-formatted content using an HTML-like syntax.
+IntelliPrompt parameter info displays helpful popup hints about an invocation that is being typed, and its parameters.  Tip content can include any @@PlatformName control and it's easy to generate richly-formatted content using an HTML-like syntax.
 
 See the [Parameter Info](parameter-info.md) topic for more information.
 
@@ -51,8 +51,8 @@ See the [Image Source Providers](image-source-providers.md) topic for more infor
 
 ## Navigable Symbol Selector
 
-The [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) control displays two side-by-side drop-downs similar to the type/member drop-downs above the code editor in Visual Studio.  One drop-down shows all available root symbols (generally types), and the other shows all available member symbols within the currently selected root symbol.
+The [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) control displays two side-by-side drop-downs similar to the type/member drop-downs above the code editor in Visual Studio.  One drop-down shows all available root symbols (generally types), and the other shows all available member symbols within the currently selected root symbol.
 
-As the caret in a bound [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) instance is moved, the selections in the [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) update to indicate the enclosing symbols (types/members).  The end user can also select a different symbol from the drop-downs to navigate directly to the related symbol declaration.
+As the caret in a bound [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) instance is moved, the selections in the [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) update to indicate the enclosing symbols (types/members).  The end user can also select a different symbol from the drop-downs to navigate directly to the related symbol declaration.
 
 See the [Navigable Symbol Selector](navigable-symbol-selector.md) topic for more information.

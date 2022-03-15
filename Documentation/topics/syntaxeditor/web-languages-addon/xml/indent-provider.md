@@ -9,7 +9,7 @@ An indent provider enables support for smart indent features when pressing ENTER
 
 The [Indent Providers](../../user-interface/input-output/indent-providers.md) topic talks about indent providers in general and how to register them as a "feature" language service.
 
-The [XmlIndentProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlIndentProvider) class is the default implementation of an [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) service for this language.
+The [XmlIndentProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlIndentProvider) class is the default implementation of an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service for this language.
 
 ## Feature Summary
 
@@ -37,7 +37,7 @@ Note how the end tag is moved to the line below the caret and is properly indent
 
 ## Registering with a Syntax Language
 
-Any object that implements [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) service on the language.
+Any object that implements [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service on the language.
 
 The [XmlSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSyntaxLanguage) class automatically registers a [XmlIndentProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlIndentProvider) with itself when it is created, so normally indent providers never need to be set on an XML language unless a custom one is made.
 

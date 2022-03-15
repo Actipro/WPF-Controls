@@ -18,11 +18,23 @@ One or more worker threads are then used to perform parsing operations, one by o
 > [!IMPORTANT]
 > By default, no ambient [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) is installed meaning parsing from code documents (explained in next section) will be done in the main UI thread.  Configure an ambient parse request dispatcher (see below) to ensure parsing operations are offloaded into worker threads.
 
+@if (winrt) {
+
+### TaskBasedParseRequestDispatcher
+
+[TaskBasedParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.Implementation.TaskBasedParseRequestDispatcher) is the default implementation of an [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) that ships with the parsing framework.  It is capable of handling parse requests on one or more worker threads.
+
+}
+
+@if (wpf winforms) {
+
 ### ThreadedParseRequestDispatcher
 
 [ThreadedParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.Implementation.ThreadedParseRequestDispatcher) is the default implementation of an [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) that ships with the parsing framework.  It is capable of handling parse requests on one or more worker threads.
 
 By default it creates a maximum number of worker threads that is equal to your machine's processor core count minus one.  Thus on a quad-core machine, up to three worker threads may be created.  If a worker thread is not used for some time, it will be disposed of.
+
+}
 
 ### Configuring the Ambient Parse Request Dispatcher
 
@@ -30,11 +42,25 @@ As described below, code documents are capable of making automatic parse request
 
 The [AmbientParseRequestDispatcherProvider](xref:ActiproSoftware.Text.Parsing.AmbientParseRequestDispatcherProvider) class is used to indicate which [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) should be used by default.  Code documents look at the [AmbientParseRequestDispatcherProvider](xref:ActiproSoftware.Text.Parsing.AmbientParseRequestDispatcherProvider), and any manual parse requests should too.
 
+@if (winrt) {
+
+This code is executed at application startup and creates a [TaskBasedParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.Implementation.TaskBasedParseRequestDispatcher) for use as the ambient parse request dispatcher.
+
+```csharp
+AmbientParseRequestDispatcherProvider.Dispatcher = new TaskBasedParseRequestDispatcher();
+```
+
+}
+
+@if (wpf winforms) {
+
 This code is executed at application startup and creates a [ThreadedParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.Implementation.ThreadedParseRequestDispatcher) for use as the ambient parse request dispatcher.
 
 ```csharp
 AmbientParseRequestDispatcherProvider.Dispatcher = new ThreadedParseRequestDispatcher();
 ```
+
+}
 
 Once the code above is executed, worker threads will now be used to execute parsing operations.
 

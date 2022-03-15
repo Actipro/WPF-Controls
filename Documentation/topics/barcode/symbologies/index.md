@@ -15,7 +15,6 @@ Actipro Bar Code includes a number of built-in common symbology implementations.
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

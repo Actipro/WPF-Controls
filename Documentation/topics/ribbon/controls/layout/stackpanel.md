@@ -5,7 +5,7 @@ order: 4
 ---
 # StackPanel
 
-The [StackPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel) is a layout control that is heavily involved in providing alternate layouts of child controls for [ribbon resizing](../../layout-features/ribbon-resizing.md).
+The [StackPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel) is a layout control that is heavily involved in providing alternate layouts of child controls for [ribbon resizing](../../layout-features/ribbon-resizing.md).
 
 ## Variants
 
@@ -17,15 +17,15 @@ This control supports three variants.  The parent [Group](../miscellaneous/group
 
 ## Resizing Behavior
 
-By default, `StackPanel` displays up to three child controls horizontally using a `Large`[VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.VariantSize).  As the group size decreases, the panel shifts to a vertical stack of its children using `Medium` variants.  For buttons and many other child controls, the control's label is still visible in this variant.  As the group size decreases further, the panel removes the labels from the child items.  This behavior can be completely overridden to meet your own requirements.
+By default, `StackPanel` displays up to three child controls horizontally using a `Large`[VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.VariantSize).  As the group size decreases, the panel shifts to a vertical stack of its children using `Medium` variants.  For buttons and many other child controls, the control's label is still visible in this variant.  As the group size decreases further, the panel removes the labels from the child items.  This behavior can be completely overridden to meet your own requirements.
 
 The [ribbon resizing](../../layout-features/ribbon-resizing.md) topic discusses in detail how and when group variants change and how the variant size updates `StackPanel`.
 
 ## Item Variant Behavior
 
-As previously mentioned, the layout of the panel's child items can be set up to depend on the variant size of the parent [Group](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Group).
+As previously mentioned, the layout of the panel's child items can be set up to depend on the variant size of the parent [Group](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group).
 
-The [StackPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel).[ItemVariantBehavior](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel.ItemVariantBehavior) property determines how the `StackPanel` reacts to parent group variant size changes (which in turn sets the `StackPanel`'s own `VariantSize` property).  It accepts a value of type [StackPanelItemVariantBehavior](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanelItemVariantBehavior) whose values are defined as:
+The [StackPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel).[ItemVariantBehavior](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel.ItemVariantBehavior) property determines how the `StackPanel` reacts to parent group variant size changes (which in turn sets the `StackPanel`'s own `VariantSize` property).  It accepts a value of type [StackPanelItemVariantBehavior](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanelItemVariantBehavior) whose values are defined as:
 
 | Value | Description |
 |-----|-----|
@@ -54,13 +54,13 @@ So say for instance you wanted to have your stack panel always show medium varia
 
 Stack panels normally show three child controls however when there is only one or two child controls, you have a choice as to how the controls are aligned vertically.  You can either align them to the top or to the center.
 
-The [RowAlignment](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel.RowAlignment) property takes a [StackPanelRowAlignment](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanelRowAlignment) that indicates which layout style to use.
+The [RowAlignment](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel.RowAlignment) property takes a [StackPanelRowAlignment](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanelRowAlignment) that indicates which layout style to use.
 
 ## Horizontal Item Alignment
 
 When stack panels show items in a vertical layout, the items will by default align to the left side of the control.
 
-The [HorizontalContentAlignment](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.StackPanel.HorizontalContentAlignment) property can be set to `Stretch` to have the items all align to be the same width.
+The [HorizontalContentAlignment](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel.HorizontalContentAlignment) property can be set to `Stretch` to have the items all align to be the same width.
 
 ## Layout Samples
 

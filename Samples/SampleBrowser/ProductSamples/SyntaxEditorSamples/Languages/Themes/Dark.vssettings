@@ -15,6 +15,7 @@
 							<Item Name="Code Snippet Dependent Field" Foreground="0x02000000" Background="0x003d61b6" BoldFont="No"/>
 							<Item Name="Collapsible Text" Foreground="0x00808080" Background="0x02000000" BoldFont="No"/>
 							<Item Name="Collapsible Region" Foreground="0x00303030" Background="0x00232323" BoldFont="No"/>
+							<Item Name="Column Guides" Foreground="0x02000000" Background="0x00333333" BoldFont="No"/>
 							<Item Name="Current Line" Foreground="0x02000000" Background="0x02000000" BoldFont="No"/>
 							<Item Name="Delimiter Matching" Foreground="0x02000000" Background="0x0083450E" BoldFont="No"/>
 							<Item Name="Find Match Highlight" Foreground="0x02000000" Background="0x00003877" BoldFont="No"/>
@@ -75,6 +76,12 @@
 
 							<Item Name="XML Doc Comment" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
 							<Item Name="XML Doc Tag" Foreground="0x004E8B60" Background="0x02000000" BoldFont="No"/>
+
+							<Item Name="deltadiff.add.word" Foreground="0x003C9276" Background="0x002C3515" BoldFont="No" />
+							<Item Name="deltadiff.remove.word" Foreground="0x006666FF" Background="0x0000002D" BoldFont="No" />
+							<Item Name="deltadiff.add.line" Foreground="0x02000000" Background="0x004D5E26" BoldFont="No" />
+							<Item Name="deltadiff.remove.line" Foreground="0x02000000" Background="0x0000003C" BoldFont="No" />
+							<Item Name="deltadiff.imaginary" Foreground="0x003D3D3D" Background="0x02000000" BoldFont="No" />
 						</Items>
 					</Category>
 				</Categories>

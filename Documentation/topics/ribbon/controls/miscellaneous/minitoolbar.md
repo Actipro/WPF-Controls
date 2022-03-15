@@ -15,11 +15,11 @@ Mini-toolbars are typically used in two scenarios:  following a mouse selection 
 
 ## Adding Controls to the Mini-ToolBar
 
-The [MiniToolBar](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.MiniToolBar) control inherits `ItemsControl` and therefore adding controls to it is extremely easy, however we do have some layout tips.  Any control can be added to the mini-toolbar.
+The [MiniToolBar](xref:@ActiproUIRoot.Controls.Ribbon.Controls.MiniToolBar) control inherits `ItemsControl` and therefore adding controls to it is extremely easy, however we do have some layout tips.  Any control can be added to the mini-toolbar.
 
 ### Use a Grid as the ItemsPanel
 
-The [MiniToolBar](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.MiniToolBar) will use a `WrapPanel` by default for the items panel however we typically using a more advanced `Grid` control instead.  This yields several benefits, which are apparent in the screenshot above.
+The [MiniToolBar](xref:@ActiproUIRoot.Controls.Ribbon.Controls.MiniToolBar) will use a `WrapPanel` by default for the items panel however we typically using a more advanced `Grid` control instead.  This yields several benefits, which are apparent in the screenshot above.
 
 First, multiple rows of items are supported by using a `Grid`.
 
@@ -84,7 +84,7 @@ When a selection is made in a document, a mini-toolbar can be made to semi-trans
 
 *A mini-toolbar displayed after a selection showing how it changes from semi-transparent to opaque when the mouse moves over it*
 
-To show a mini-toolbar after a mouse selection in a `RichTextBox` for example, simply attach to the `RichTextBox`'s `PreviewMouseUp` event.  In the handler, if there is a selection, call the [MiniToolBarService](xref:ActiproSoftware.Windows.Controls.Ribbon.UI.MiniToolBarService).[Show](xref:ActiproSoftware.Windows.Controls.Ribbon.UI.MiniToolBarService.Show*) method and pass it the [MiniToolBar](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.MiniToolBar) to display and the location at which to show it.  It's as easy as that.  Actipro Ribbon handles the rest for you.
+To show a mini-toolbar after a mouse selection in a `RichTextBox` for example, simply attach to the `RichTextBox`'s `PreviewMouseUp` event.  In the handler, if there is a selection, call the [MiniToolBarService](xref:@ActiproUIRoot.Controls.Ribbon.UI.MiniToolBarService).[Show](xref:@ActiproUIRoot.Controls.Ribbon.UI.MiniToolBarService.Show*) method and pass it the [MiniToolBar](xref:@ActiproUIRoot.Controls.Ribbon.Controls.MiniToolBar) to display and the location at which to show it.  It's as easy as that.  Actipro Ribbon handles the rest for you.
 
 ## Configuring a Mini-ToolBar for Pairing With a Context Menu
 
@@ -120,4 +120,4 @@ This code sample shows how to define a simple mini-toolbar for a `RichTextBox`'s
 </RichTextBox>
 ```
 
-The [ContextMenu](contextmenu.md) control that comes with Actipro Ribbon has a [MiniToolBar](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextMenu.MiniToolBar) property on it.  To associate a [MiniToolBar](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.MiniToolBar) with a context menu, simply set the mini-toolbar to that property.  After that, Actipro Ribbon handles the display and management of the mini-toolbar for you.  It will show up when the mouse is used to display the context menu and will have all the functionality described above.
+The [ContextMenu](contextmenu.md) control that comes with Actipro Ribbon has a [MiniToolBar](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextMenu.MiniToolBar) property on it.  To associate a [MiniToolBar](xref:@ActiproUIRoot.Controls.Ribbon.Controls.MiniToolBar) with a context menu, simply set the mini-toolbar to that property.  After that, Actipro Ribbon handles the display and management of the mini-toolbar for you.  It will show up when the mouse is used to display the context menu and will have all the functionality described above.

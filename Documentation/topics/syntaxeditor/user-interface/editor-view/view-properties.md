@@ -5,7 +5,7 @@ order: 27
 ---
 # View Properties
 
-The [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[Properties](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.Properties) property provides a dictionary-like object that can store any sort of custom data that should be associated with the view.
+The [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) property provides a dictionary-like object that can store any sort of custom data that should be associated with the view.
 
 The property returns an [PropertyDictionary](xref:ActiproSoftware.Text.Utility.PropertyDictionary) object, which supports any object type as a key or value.
 

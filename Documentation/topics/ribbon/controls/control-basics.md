@@ -11,22 +11,22 @@ All of the [built-in interactive ribbon controls](interactive/index.md) and seve
 
 Almost all of the controls described in the following sections inherit one of these four abstract base classes:
 
-- [ControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase)
-- [ItemsControlBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ItemsControlBase)
-- [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase)
-- [TextBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.TextBoxBase)
+- [ControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase)
+- [ItemsControlBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase)
+- [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase)
+- [TextBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase)
 
-These base classes all implement a number of attached properties from classes like [RibbonControlService](xref:ActiproSoftware.Windows.Controls.Ribbon.UI.RibbonControlService).
+These base classes all implement a number of attached properties from classes like [RibbonControlService](xref:@ActiproUIRoot.Controls.Ribbon.UI.RibbonControlService).
 
 ## Context and Variant Size
 
 Each control is associated with a context that describes how the control is currently being used.  This allows a control to alter its appearance and/or behavior if it is on the ribbon vs. on a menu item.
 
-The context is available via the [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) property, which returns an enumeration value of type [ControlContext](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ControlContext).
+The context is available via the [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) property, which returns an enumeration value of type [ControlContext](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ControlContext).
 
 Many controls also support the concept of a variant.  A variant is a different look for a control that can be applied while in the same context.  For instance, [Button](interactive/button.md) controls have three variant sizes that are used for most cases, like when they are in the ribbon.  The large variant size is a tall button with a large image and text underneath it.  The medium variant size is a more normal size button with a small image and text label to the right of it.  The small variant size is like the medium variant size except that the label disappears.
 
-The variant size is available via the [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property, which returns an enumeration value of type [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.VariantSize).
+The variant size is available via the [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property, which returns an enumeration value of type [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.VariantSize).
 
 All of the controls that support multiple variants use triggers in their styles to switch templates based on their current context and variant size settings.
 
@@ -40,11 +40,11 @@ These members on the base classes relate to user interface elements:
 
 | Member | Description |
 |-----|-----|
-| [HasImage](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.HasImage) Property | Gets whether the control has an image available for display. |
-| [HasLabel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.HasLabel) Property | Gets whether the control has a label available for display. |
-| [ImageSourceLarge](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.ImageSourceLarge) Property | Gets or sets the `ImageSource` for the 32x32 image to display for the control. |
-| [ImageSourceSmall](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.ImageSourceSmall) Property | Gets or sets the `ImageSource` for the 16x16 image to display for the control. |
-| [Label](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Label) Property | Gets or sets the text label to display for the control. |
+| [HasImage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.HasImage) Property | Gets whether the control has an image available for display. |
+| [HasLabel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.HasLabel) Property | Gets whether the control has a label available for display. |
+| [ImageSourceLarge](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ImageSourceLarge) Property | Gets or sets the `ImageSource` for the 32x32 image to display for the control. |
+| [ImageSourceSmall](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ImageSourceSmall) Property | Gets or sets the `ImageSource` for the 16x16 image to display for the control. |
+| [Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Label) Property | Gets or sets the text label to display for the control. |
 
 ## Commands
 

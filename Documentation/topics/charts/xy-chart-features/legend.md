@@ -9,11 +9,11 @@ A chart legend is a reference that shows a description of each data set and the 
 
 ## Description
 
-The [XYSeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase).[Description](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.Description) property determines the textual description that is used in the legend to represent each series.
+The [XYSeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase).[Description](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.Description) property determines the textual description that is used in the legend to represent each series.
 
 ## Visibility
 
-The visibility of the legend can be controlled using [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[IsLegendVisible](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.IsLegendVisible).
+The visibility of the legend can be controlled using [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[IsLegendVisible](xref:@ActiproUIRoot.Controls.Charts.XYChart.IsLegendVisible).
 
 ![Screenshot](../images/appearance-legend1.png)
 
@@ -25,7 +25,7 @@ This is an example of setting IsLegendVisible to `true`.
 
 ## Position
 
-The position of the legend can be controlled using [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[LegendHorizontalPosition](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.LegendHorizontalPosition) and [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[LegendVerticalPosition](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:ActiproSoftware.Windows.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:ActiproSoftware.Windows.Controls.Charts.LegendVerticalPosition.TopOutside). `Inside` means the legend will be positioned relative to the chart drawing area, and `Outside` means the legend will be positioned relative to the entire chart control.  So `CenterInside` will be in the center of the chart drawing area, wheras `CenterOutside` will be in the center of the entire chart control.
+The position of the legend can be controlled using [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendHorizontalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendHorizontalPosition) and [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendVerticalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:@ActiproUIRoot.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:@ActiproUIRoot.Controls.Charts.LegendVerticalPosition.TopOutside). `Inside` means the legend will be positioned relative to the chart drawing area, and `Outside` means the legend will be positioned relative to the entire chart control.  So `CenterInside` will be in the center of the chart drawing area, wheras `CenterOutside` will be in the center of the entire chart control.
 
 ![Screenshot](../images/appearance-legend2.png)
 
@@ -45,7 +45,7 @@ This is an example of setting `LegendHorizontalPosition` to `LeftInside` and `Le
 
 ## Legend Customization
 
-The legend can be styled using [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[LegendStyle](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.LegendStyle).  The style you provide should have a `TargetType` of `ItemsControl`.
+The legend can be styled using [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendStyle).  The style you provide should have a `TargetType` of `ItemsControl`.
 
 ![Screenshot](../images/appearance-legend4.png)
 
@@ -83,7 +83,7 @@ This is an example of providing a custom `LegendStyle`.
 
 ## Legend Item Customization
 
-Each individual legend item can be retemplated by setting `ItemTemplate` in [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[LegendStyle](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.LegendStyle).  The data source for the template is [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey).[Label](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey.Label) and [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey.LegendMarkerStyle).
+Each individual legend item can be retemplated by setting `ItemTemplate` in [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendStyle).  The data source for the template is [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[Label](xref:@ActiproUIRoot.Controls.Charts.LegendKey.Label) and [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:@ActiproUIRoot.Controls.Charts.LegendKey.LegendMarkerStyle).
 
 ![Screenshot](../images/appearance-legend5.png)
 

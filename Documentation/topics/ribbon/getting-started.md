@@ -13,7 +13,7 @@ This documentation file contains a lot of information about using Ribbon and its
 
 ## Start with the Sample Project's "Getting Started" QuickStart Series
 
-The sample project includes a series of "Getting Started" QuickStart windows that walk you through the creation of a ribbon for an application window, step by step.  The first step starts with simple creation of a [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow) without a [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon) control on it.  The steps proceed to add a [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon), configuring a new feature in each step until at the last step, there is a fully-functional ribbon.  Since the XAML code for a ribbon implementation can get quite large, we chose to put all our sample code in the Getting Started series of quick starts instead of in this documentation file.
+The sample project includes a series of "Getting Started" QuickStart windows that walk you through the creation of a ribbon for an application window, step by step.  The first step starts with simple creation of a [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow) without a [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) control on it.  The steps proceed to add a [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon), configuring a new feature in each step until at the last step, there is a fully-functional ribbon.  Since the XAML code for a ribbon implementation can get quite large, we chose to put all our sample code in the Getting Started series of quick starts instead of in this documentation file.
 
 The Getting Started series is probably the best place to go for quickly getting up and running.  All of the "Getting Started" windows can be run from the Sample Browser and their source code (the most important thing) is located in the sample browser's project.
 
@@ -25,7 +25,7 @@ We've spent a lot of time adding numerous QuickStarts for Ribbon that are locate
 
 ## Add Assembly References
 
-Once you are ready to add Ribbon to your own application, first add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Ribbon.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+Once you are ready to add Ribbon to your own application, first add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Ribbon.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates (Ribbon Window, Ribbon Page)
 

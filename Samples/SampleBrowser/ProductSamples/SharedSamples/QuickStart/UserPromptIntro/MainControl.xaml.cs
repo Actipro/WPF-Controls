@@ -129,11 +129,12 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 		/// <param name="text">The text, if any, to be used as the button label.</param>
 		/// <param name="imageSource">The source, if any, of an image to be placed within the button.</param>
 		/// <param name="imageAlignment">The alignment to be used for any images added to the button.</param>
+		/// <param name="isDefault"><c>true</c> if the button should be configured as the default button.</param>
 		/// <returns>A new <see cref="Button"/> control.</returns>
-		private Button CreateButton(UserPromptStandardResult result, string text = null, ImageSource imageSource = null, HorizontalAlignment imageAlignment = HorizontalAlignment.Left) {
+		private Button CreateButton(UserPromptStandardResult result, string text = null, ImageSource imageSource = null, HorizontalAlignment imageAlignment = HorizontalAlignment.Left, bool isDefault = false) {
 
 			// Initialize the button
-			var button = new Button();
+			var button = new Button() { IsDefault = isDefault };
 
 			// Set the attached property for the result associated with the button
 			UserPromptControl.SetButtonResult(button, result);
@@ -536,10 +537,9 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 				Content = "Buttons can have any content, including images. This sample shows images used as content and demonstrates changing the horizontal alignment of all buttons from right (default) to center.",
 				ButtonItems = new Button[] {
 					CreateButton(UserPromptStandardResult.CustomButton, "_Left Image", imageSource, HorizontalAlignment.Left),
-					CreateButton(UserPromptStandardResult.CustomButton, "_Right Image", imageSource, HorizontalAlignment.Right),
+					CreateButton(UserPromptStandardResult.CustomButton, "_Right Image", imageSource, HorizontalAlignment.Right, isDefault: true),
 					CreateButton(UserPromptStandardResult.CustomButton, "_Center Image", imageSource, HorizontalAlignment.Center),
 				},
-				DefaultResult = UserPromptStandardResult.Cancel,
 				ButtonItemsHorizontalAlignment = HorizontalAlignment.Center,
 			};
 			ShowDialog(userPromptControl);
@@ -668,6 +668,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			var userPromptControl = new UserPromptControl() {
 				Header = "Overwrite file?",
 				StandardButtons = UserPromptStandardButtons.YesNoCancel,
+				DefaultResult = UserPromptStandardResult.Cancel,
 				StandardStatusImage = UserPromptStandardImage.Question,
 				ExpandedInformationCollapsedHeaderText = "Show details",
 				ExpandedInformationExpandedHeaderText = "Hide details",

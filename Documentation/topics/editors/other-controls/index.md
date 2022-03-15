@@ -19,7 +19,6 @@ This table shows the additional controls that are included in the product:
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

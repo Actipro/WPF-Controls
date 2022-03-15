@@ -17,15 +17,15 @@ Document windows on the other hand can only be used within the MDI area.  Since 
 
 ## Creation and Destruction
 
-When a [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow) has been associated with a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite), it is considered created.  Note that at this time it may not yet be opened (accessible in the user interface).
+When a [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) has been associated with a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite), it is considered created.  Note that at this time it may not yet be opened (accessible in the user interface).
 
-After a docking window ceases to be managed by a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite), it is considered destroyed.
+After a docking window ceases to be managed by a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite), it is considered destroyed.
 
-While being tracked by a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite), tool windows will be contained in its [ToolWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolWindows) collection and document windows will be contained in its [DocumentWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentWindows) collection.
+While being tracked by a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite), tool windows will be contained in its [ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) collection and document windows will be contained in its [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collection.
 
 ### Creating Tool Window
 
-Use this code to create a tool window.  Always use a constructor that accepts a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) parameter since this associates the tool window with that [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+Use this code to create a tool window.  Always use a constructor that accepts a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) parameter since this associates the tool window with that [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
 ```csharp
 TextBox tb = new TextBox();
@@ -34,12 +34,12 @@ ToolWindow window = new ToolWindow(dockSite, "MyToolWindow1", "My First Tool Win
 	new BitmapImage(new Uri("/Resources/Images/Properties16.png", UriKind.Relative)), tb);
 ```
 
-When using the constructor in the example above, the first parameter is the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) that will manage the window.
+When using the constructor in the example above, the first parameter is the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) that will manage the window.
 
 The second is the value to be assigned to the `Name` property.
 
 > [!NOTE]
-> A unique `Name` or [SerializationId](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SerializationId) must be assigned to each tool window if layout serialization will be used in your application.  The `Name` property must be a valid C#/VB identifier (underscore, letter, and number characters only), while the [SerializationId](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SerializationId) is more flexible and can consist of any characters.
+> A unique `Name` or [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) must be assigned to each tool window if layout serialization will be used in your application.  The `Name` property must be a valid C#/VB identifier (underscore, letter, and number characters only), while the [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) is more flexible and can consist of any characters.
 
 The third and fourth parameters are the title text and `ImageSource` respectively that will be displayed in the UI for the tool window.
 
@@ -47,7 +47,7 @@ The final parameter is the content that will be placed in the tool window.
 
 ### Creating Document Windows
 
-Use this code to create a document window.  Always use a constructor that accepts a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) parameter since this associates the document window with that [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+Use this code to create a document window.  Always use a constructor that accepts a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) parameter since this associates the document window with that [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
 ```csharp
 TextBox tb = new TextBox();
@@ -60,9 +60,9 @@ The same notes above regarding constructor parameters apply to document windows 
 
 ### Destroying Docking Windows
 
-Both tool and document windows may be destroyed by calling the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Destroy](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Destroy*) method.
+Both tool and document windows may be destroyed by calling the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Destroy](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Destroy*) method.
 
-This closes them out of the UI (if currently open) and removes them from their managing [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+This closes them out of the UI (if currently open) and removes them from their managing [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
 > [!NOTE]
 > By default, document windows auto-destroy themselves when closed.  See the following section for more information.
@@ -71,7 +71,7 @@ This closes them out of the UI (if currently open) and removes them from their m
 
 By default, document windows are only alive while open and will destroy themselves after being closed.  This is the default because normally once a document is closed, it is no longer needed unless the the end user specifically chooses to open it again, which may or may not ever occur.
 
-You can alter this behavior by changing the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property to `false`.  When `false`, document windows will continue to be associated with the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) and will remain within its [DocumentWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentWindows) collection, allowing them to be retrived for later reopening.
+You can alter this behavior by changing the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property to `false`.  When `false`, document windows will continue to be associated with the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and will remain within its [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collection, allowing them to be retrived for later reopening.
 
 ## Opening and Closing
 
@@ -82,35 +82,35 @@ When open, a docking window is accessible in the user interface.  When closed, i
 
 ### Opening Docking Windows
 
-Docking windows aren't added to the user interface until specifically opened.  A call to the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Open](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Open*) method will restore the docking window to its previous state and location, if known.  If the docking window doesn't have a prior location breadcrumb available, it will restore to a default location based on its property settings.
+Docking windows aren't added to the user interface until specifically opened.  A call to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method will restore the docking window to its previous state and location, if known.  If the docking window doesn't have a prior location breadcrumb available, it will restore to a default location based on its property settings.
 
-Setting the [IsOpen](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsOpen) property to `true` is the same as calling the parameterless [Open](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Open*) method.  This property can be bound to in MVVM scenarios.
+Setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `true` is the same as calling the parameterless [Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method.  This property can be bound to in MVVM scenarios.
 
 ### Closing Docking Windows
 
-Docking windows can be removed from the user interface by a call to their [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Close](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Close*) method.
+Docking windows can be removed from the user interface by a call to their [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Close](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Close*) method.
 
-Setting the [IsOpen](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsOpen) property to `false` is the same as calling the [Close](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Close*) method.  This property can be bound to in MVVM scenarios.
+Setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `false` is the same as calling the [Close](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Close*) method.  This property can be bound to in MVVM scenarios.
 
-When closed, tool windows remain in the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ToolWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolWindows) collection until destroyed.  However when document windows are closed, by default they will be destroyed as well unless the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property is set to `false`.
+When closed, tool windows remain in the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) collection until destroyed.  However when document windows are closed, by default they will be destroyed as well unless the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property is set to `false`.
 
 ## Activating and Focusing
 
-Activating is a superset of the Open functionality.  When the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Activate](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Activate*) method is called, if the docking window is currently closed, it will be opened.  Additionally if it is open but in a tabbed scenario where it is not the selected tab, its tab will be selected.
+Activating is a superset of the Open functionality.  When the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method is called, if the docking window is currently closed, it will be opened.  Additionally if it is open but in a tabbed scenario where it is not the selected tab, its tab will be selected.
 
-The [Activate](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Activate*) method also has an overload for whether to set focus to the docking window's content.
+The [Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method also has an overload for whether to set focus to the docking window's content.
 
-Setting the [IsActive](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsActive) property to `true` is the same as calling the parameterless [Activate](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Activate*) method.  This property can be bound to in MVVM scenarios.
+Setting the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActive) property to `true` is the same as calling the parameterless [Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method.  This property can be bound to in MVVM scenarios.
 
-The [LastActiveDateTime](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.LastActiveDateTime) property is updated every time the docking window is activated, either programmatically or by focus moving within it.  Sorting docking windows by this property value allows you to determine the sequence in which the docking windows were last active.
+The [LastActiveDateTime](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.LastActiveDateTime) property is updated every time the docking window is activated, either programmatically or by focus moving within it.  Sorting docking windows by this property value allows you to determine the sequence in which the docking windows were last active.
 
-The [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ActiveWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[WindowActivated](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowActivated) event fires in response.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event fires in response.
 
 ## Default Initial Size
 
-Docking windows default to a desired initial size of `200,200`.  Sometimes you may wish to set a different default initial size for docking windows.  This can be done by using the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerDockedSize) property.
+Docking windows default to a desired initial size of `200,200`.  Sometimes you may wish to set a different default initial size for docking windows.  This can be done by using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerDockedSize) property.
 
-This example shows the property being set that will request that the [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) have an initial size of `300, 150`:
+This example shows the property being set that will request that the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) have an initial size of `300, 150`:
 
 ```xaml
 ... <docking:ToolWindow Title="Wide" ContainerDockedSize="300,150"> ...
@@ -121,7 +121,7 @@ This example shows the property being set that will request that the [ToolWindow
 
 ## Minimum and Maximum Size
 
-Docking windows default to a minimum size of `30,30` and a maximum size of positive infinity.  Sometimes you may wish to designate some restrictions on size, such as a tool window's container should always try to be a minimum of `180` high.  This can be done by using the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[ContainerMinSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMinSize) and [ContainerMaxSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMaxSize) properties.
+Docking windows default to a minimum size of `30,30` and a maximum size of positive infinity.  Sometimes you may wish to designate some restrictions on size, such as a tool window's container should always try to be a minimum of `180` high.  This can be done by using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ContainerMinSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMinSize) and [ContainerMaxSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMaxSize) properties.
 
 This example shows how to request a minimum container height of `180`:
 
@@ -140,19 +140,19 @@ By setting the minimum size to the same thing as the maximum height, you can ach
 
 ## Default Locations
 
-When a docking window is opened via calling its [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Open](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Open*) method or by setting the [IsOpen](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsOpen) property to `true`, it will first attempt to restore to a previous location where a related breadcrumb was left.  If no breadcrumb is found, it will restore to a default location instead.
+When a docking window is opened via calling its [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method or by setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `true`, it will first attempt to restore to a previous location where a related breadcrumb was left.  If no breadcrumb is found, it will restore to a default location instead.
 
 This is how a default location is determined:
 
-- First, if a [WindowGroupName](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.WindowGroupName) value is specified, the docking window will try to find another open docking window that has the same window group name.
+- First, if a [WindowGroupName](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.WindowGroupName) value is specified, the docking window will try to find another open docking window that has the same window group name.
 
-- Second, the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[DefaultLocationRequested](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.DefaultLocationRequested) event fires with the [DockingWindowDefaultLocationEventArgs](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindowDefaultLocationEventArgs).[Target](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindowDefaultLocationEventArgs.Target) property initialized to the docking window found in the same window group, if any.
+- Second, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[DefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.DefaultLocationRequested) event fires with the [DockingWindowDefaultLocationEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs).[Target](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs.Target) property initialized to the docking window found in the same window group, if any.
 
-- Third, the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[WindowDefaultLocationRequested](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowDefaultLocationRequested) event fires with the same event arguments.
+- Third, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowDefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowDefaultLocationRequested) event fires with the same event arguments.
 
 - Both of these events allow you to programmatically indicate the window should float (and optionally a specific floating location), or alternatively customize where the default location for the window will be.  You can indicate a dock target and optional side around which it should dock.  Passing `null` as the side will trigger an attach.
 
-- If a dock target isn't set by an event handler, the docking window will fall back to opening in a default side specified by the [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[DefaultDockSide](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.DefaultDockSide) property.  If an existing root level container is found at that side, the docking window will attach to that container.
+- If a dock target isn't set by an event handler, the docking window will fall back to opening in a default side specified by the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[DefaultDockSide](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.DefaultDockSide) property.  If an existing root level container is found at that side, the docking window will attach to that container.
 
 ## Programmatically Changing States and Docking
 
@@ -160,7 +160,7 @@ It's very easy to move document and tool windows to anywhere in the layout progr
 
 ### State Change and Docking Members
 
-The [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow) class has a number of methods that make it easy to programmatically move a docking window to another state.
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) class has a number of methods that make it easy to programmatically move a docking window to another state.
 
 <table>
 <thead>
@@ -170,14 +170,13 @@ The [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow)
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[Float](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Float*) Method
+[Float](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Float*) Method
 
 </td>
 <td>
@@ -187,9 +186,9 @@ Moves the tool or document window into a floating dock host.
 One overload of this method restores the docking window back to its default floating bounds, and others let you optionally specify location and size.
 
 > [!NOTE]
-> If you wish for the docking window to auto-size itself to its content when floated, update the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[SizeToContentModes](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SizeToContentModes) property to contain the [SizeToContentModes](xref:ActiproSoftware.Windows.Controls.Docking.SizeToContentModes).[Floating](xref:ActiproSoftware.Windows.Controls.Docking.SizeToContentModes.Floating) flag.
+> If you wish for the docking window to auto-size itself to its content when floated, update the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[SizeToContentModes](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SizeToContentModes) property to contain the [SizeToContentModes](xref:@ActiproUIRoot.Controls.Docking.SizeToContentModes).[Floating](xref:@ActiproUIRoot.Controls.Docking.SizeToContentModes.Floating) flag.
 
-This method will keep the docking window in its current [State](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.State), but it will be contained within a new floating dock host.
+This method will keep the docking window in its current [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State), but it will be contained within a new floating dock host.
 
 </td>
 </tr>
@@ -197,7 +196,7 @@ This method will keep the docking window in its current [State](xref:ActiproSoft
 <tr>
 <td>
 
-[MoveToMdi](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.MoveToMdi*) Method
+[MoveToMdi](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.MoveToMdi*) Method
 
 </td>
 <td>
@@ -214,7 +213,7 @@ This method changes the docking window into a `Document` state.
 </tbody>
 </table>
 
-The [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) class defines additional methods that can be used to move a tool window to any state at either a default or target location.
+The [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) class defines additional methods that can be used to move a tool window to any state at either a default or target location.
 
 <table>
 <thead>
@@ -224,14 +223,13 @@ The [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) class
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[Attach](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.Attach*) Method
+[Attach](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.Attach*) Method
 
 </td>
 <td>
@@ -246,7 +244,7 @@ This method changes the tool window into the state defined by the dock target.
 <tr>
 <td>
 
-[AutoHide](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.AutoHide*) Method
+[AutoHide](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.AutoHide*) Method
 
 </td>
 <td>
@@ -263,7 +261,7 @@ This method changes the tool window into an `AutoHide` state.
 <tr>
 <td>
 
-[Dock](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.Dock*) Method
+[Dock](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.Dock*) Method
 
 </td>
 <td>
@@ -280,12 +278,12 @@ This method changes the tool window into a `Docked` state.
 </tbody>
 </table>
 
-The [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) class defines additional methods that can be used to move a document window to a target location.
+The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) class defines additional methods that can be used to move a document window to a target location.
 
 | Member | Description |
 |-----|-----|
-| [Attach](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow.Attach*) Method | Attaches the document window to the specified dock target, which could be another tabbed document window or tabbed MDI container. |
-| [Dock](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow.Dock*) Method | Docks the document window to the side of a specified target, which could be another tabbed document window or tabbed MDI container. |
+| [Attach](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow.Attach*) Method | Attaches the document window to the specified dock target, which could be another tabbed document window or tabbed MDI container. |
+| [Dock](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow.Dock*) Method | Docks the document window to the side of a specified target, which could be another tabbed document window or tabbed MDI container. |
 
 ### Example: Docking to the Top of a Target
 
@@ -322,15 +320,15 @@ solutionExplorerToolWindow.Float();
 
 ## Determining the Location of a Tool Window in Relation to the Workspace
 
-The [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) class has a [GetCurrentSide](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.GetCurrentSide*) method that returns a [Side](xref:ActiproSoftware.Windows.Controls.Side) specifying where the tool window currently is in relation to the workspace, if one is in use.
+The [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) class has a [GetCurrentSide](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.GetCurrentSide*) method that returns a [Side](xref:@ActiproUIRoot.Controls.Side) specifying where the tool window currently is in relation to the workspace, if one is in use.
 
-If the tool window is open in a `Document` state, `null` is returned.  If the tool window is open in an `AutoHide` state, a [Side](xref:ActiproSoftware.Windows.Controls.Side) indicating the auto-hide dock side is returned.  If the tool window is open in a `Docked` state and a workspace is in use in the dock site (no tool window inner-fill), a [Side](xref:ActiproSoftware.Windows.Controls.Side) indicating the location of the tool window relative to the workspace is returned.  If the tool window is open in a `Docked` state and the containing dock host does not has a workspace (tool window inner-fill is active), a [Side](xref:ActiproSoftware.Windows.Controls.Side) indicating the location of the tool window's midpoint relative to the dock host's bounds is returned.  Otherwise, if the tool window is closed, `null` is returned.
+If the tool window is open in a `Document` state, `null` is returned.  If the tool window is open in an `AutoHide` state, a [Side](xref:@ActiproUIRoot.Controls.Side) indicating the auto-hide dock side is returned.  If the tool window is open in a `Docked` state and a workspace is in use in the dock site (no tool window inner-fill), a [Side](xref:@ActiproUIRoot.Controls.Side) indicating the location of the tool window relative to the workspace is returned.  If the tool window is open in a `Docked` state and the containing dock host does not has a workspace (tool window inner-fill is active), a [Side](xref:@ActiproUIRoot.Controls.Side) indicating the location of the tool window's midpoint relative to the dock host's bounds is returned.  Otherwise, if the tool window is closed, `null` is returned.
 
 ## Programmatically Starting a Drag
 
-It is possible to programmatically start a drag operation on [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow), [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow), or [ToolWindowContainer](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindowContainer), by calling the associated `DragMove` method.
+It is possible to programmatically start a drag operation on [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow), [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), or [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer), by calling the associated `DragMove` method.
 
-The only requirements are that the `DocumentWindow`/`ToolWindow` be registered with a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) and that the left mouse button be pressed when the method is called.  This means that the method can even be called on windows that are not currently selected, in the auto-hide state, or in a standard MDI host.  Also note that a [InputPointerButtonEventArgs](xref:ActiproSoftware.Windows.Input.InputPointerButtonEventArgs) must be passed so that the related pointer can be captured.
+The only requirements are that the `DocumentWindow`/`ToolWindow` be registered with a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and that the left mouse button be pressed when the method is called.  This means that the method can even be called on windows that are not currently selected, in the auto-hide state, or in a standard MDI host.  Also note that a [InputPointerButtonEventArgs](xref:@ActiproUIRoot.Input.InputPointerButtonEventArgs) must be passed so that the related pointer can be captured.
 
 In this example we trigger a programmatic drag on a tool window in the `window` variable from within an event handler for its primary pointer button being down:
 
@@ -340,6 +338,6 @@ window.DragMove(new InputPointerButtonEventArgs(e, InputPointerButtonKind.Primar
 
 ## Splitter Drag Kinds
 
-Live splitting is enabled by default, meaning that when a splitter is dragged, the surrounding containers will immediately resize.  This feature can be turned off by setting the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  When `false`, highlights are dragged instead and the containers only resize when the splitter is dropped.
+Live splitting is enabled by default, meaning that when a splitter is dragged, the surrounding containers will immediately resize.  This feature can be turned off by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:@ActiproUIRoot.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  When `false`, highlights are dragged instead and the containers only resize when the splitter is dropped.
 
 While the live splitting feature is desirable for most scenarios, if your docking window content has very complex element trees that don't measure/arrange fast, turning off live splitting will improve performance when the end user uses splitters.

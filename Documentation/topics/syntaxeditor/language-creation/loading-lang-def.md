@@ -65,6 +65,8 @@ EcmaScriptSyntaxLanguage language = new EcmaScriptSyntaxLanguage();
 
 The [SyntaxLanguageDefinitionSerializer](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer) class has:
 
-- An [InitializeFromFile](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromFile*) method for initializing an existing syntax language from a file, and
+@if (wpf winforms) {
+- An [InitializeFromFile](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromFile*) method for initializing an existing syntax language from a file, and 
+}
 
 - An [InitializeFromStream](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromStream*) method for initializing an existing syntax language from a `Stream`, and

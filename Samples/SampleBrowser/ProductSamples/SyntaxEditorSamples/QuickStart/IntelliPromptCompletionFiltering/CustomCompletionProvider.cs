@@ -218,7 +218,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 			if (this.FilterTabsVisible == true) {
 				// Add access filters
 				session.Filters.Add(new CompletionFilter("All",
-					(mysession, item) => (((item.Text == null) || (((CommonImageSourceProvider)item.ImageSourceProvider).ImageKind.ToString().EndsWith("Public"))) ? CompletionFilterResult.Included : CompletionFilterResult.Excluded)
+					(mysession, item) => CompletionFilterResult.Included
 					) {
 						DisplayMode = CompletionFilterDisplayMode.AllTab,
 						ToolTip = "All members",

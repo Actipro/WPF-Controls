@@ -128,7 +128,6 @@ There are several classes that can be used as base classes for tagger implementa
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -239,7 +238,6 @@ These types are built-in classes that can be registered as services on syntax la
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -270,7 +268,7 @@ If no "singleton" object is is passed to the tagger provider, a new tagger class
 
 Creates a tagger is associated with a specific text view.  This type is only available when an editor is used.
 
-A constructor overload accepts a "singleton" object key that can be used to persist any created tagger into the [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[Properties](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.Properties) dictionary using the key.  In this case, if the view's document or the document's language changes, the tagger is automatically closed and removed from the properties dictionary.  The tagger associated with the view can be retrieved via the properties dictionary while it is active.
+A constructor overload accepts a "singleton" object key that can be used to persist any created tagger into the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) dictionary using the key.  In this case, if the view's document or the document's language changes, the tagger is automatically closed and removed from the properties dictionary.  The tagger associated with the view can be retrieved via the properties dictionary while it is active.
 
 If no "singleton" object is is passed to the tagger provider, a new tagger class instance will be created each time a [tag aggregator](tag-aggregators.md) requests one.
 

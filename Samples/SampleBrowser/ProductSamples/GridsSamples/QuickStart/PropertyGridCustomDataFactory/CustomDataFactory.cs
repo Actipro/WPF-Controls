@@ -50,6 +50,9 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCus
 				propertyModel.CustomStandardValues = customer.AvailableReferrals;
 				propertyModel.StandardValuesDisplayMemberPath = "Name";
 				propertyModels.Add(propertyModel);
+
+				// Add data items dictionary as read-only, also with read-only item values
+				propertyModels.Add(new CollectionPropertyDescriptorPropertyModel(customer, customerPropertyDescriptors["DataItems"], true, true));
 	
 				return propertyModels;
 			}

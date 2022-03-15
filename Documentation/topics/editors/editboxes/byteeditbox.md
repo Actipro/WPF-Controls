@@ -5,7 +5,7 @@ order: 4
 ---
 # ByteEditBox
 
-The [ByteEditBox](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox) control allows for the input of a `Byte` (8-bit positive integer) value.  It uses the [BytePicker](../pickers/bytepicker.md) control in its popup.
+The [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) control allows for the input of a `Byte` (8-bit positive integer) value.  It uses the [BytePicker](../pickers/bytepicker.md) control in its popup.
 
 ![Screenshot](../images/int32editbox-opened.png)
 
@@ -13,21 +13,77 @@ The [ByteEditBox](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox) con
 
 Each of the features listed in the table below describe functionality that is common to most edit boxes.  Please see the [Edit Box Basics](parteditboxbase.md) topic for details on each of these options and how to set them.
 
-| Feature | Description |
-|-----|-----|
-| Has a spinner | Yes, and can be hidden or optionally displayed only when the control is active. |
-| Has a popup | Yes, and can be hidden or its picker appearance customized. |
-| Null value allowed | Yes, and can be prevented. |
-| Read-only mode supported | Yes. |
-| Non-editable mode supported | Yes. |
-| Has multiple parts | No. |
-| Placeholder text supported | Yes, and overlays the control. |
-| Header content supported | Yes, and appears above the control. |
-| Default spin behavior | No wrap. |
+<table>
+<thead>
+
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+
+</thead>
+<tbody>
+
+@if (winrt) {
+<tr>
+<td>Has a clear button</td>
+<td>Yes, and can be hidden.</td>
+</tr>
+}
+
+@if (wpf) {
+<tr>
+<td>Has a spinner</td>
+<td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
+</tr>
+}
+
+<tr>
+<td>Has a popup</td>
+<td>Yes, and can be hidden or its picker appearance customized.</td>
+</tr>
+
+<tr>
+<td>Null value allowed</td>
+<td>Yes, and can be prevented.</td>
+</tr>
+
+<tr>
+<td>Read-only mode supported</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td>Non-editable mode supported</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td>Has multiple parts</td>
+<td>No.</td>
+</tr>
+
+<tr>
+<td>Placeholder text supported</td>
+<td>Yes, and overlays the control.</td>
+</tr>
+
+<tr>
+<td>Header content supported</td>
+<td>Yes, and appears above the control.</td>
+</tr>
+
+<tr>
+<td>Default spin behavior</td>
+<td>No wrap.</td>
+</tr>
+
+</tbody>
+</table>
 
 ## Number Formats
 
-[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.Format) property and affect the textual value display.  These formats are recommended:
+[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
 - C0 (currency without decimals)
 - D
@@ -43,7 +99,7 @@ Basic custom numeric formats are also supported, such as:
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
@@ -53,15 +109,25 @@ This edit box has a single part.
 
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
 
-Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.SmallChange) property.  Large value changes alter the current number component by `8`, which is the default for the [LargeChange](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.LargeChange) property.
+Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.SmallChange) property.  Large value changes alter the current number component by `8`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.LargeChange) property.
 
-The [DefaultValue](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
 
 ## Built-in Picker Kinds
 
-This edit box has multiple built-in picker kinds that can be set via the [ByteEditBox](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox).[PickerKind](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBox.PickerKind) property, which is of type [ByteEditBoxPickerKind](xref:ActiproSoftware.Windows.Controls.Editors.ByteEditBoxPickerKind).
+This edit box has multiple built-in picker kinds that can be set via the [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox).[PickerKind](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.PickerKind) property, which is of type [ByteEditBoxPickerKind](xref:@ActiproUIRoot.Controls.Editors.ByteEditBoxPickerKind).
 
-The default value in WPF is `Calculator`.
+@if (wpf) {
+
+The default value in WPF is `Calculator`. 
+
+}
+
+@if (winrt) {
+
+The default value in UWP is `Default`. 
+
+}
 
 The `Default` picker kind renders using a radial slider, while the `Calculator` picker kind utilizes the [Calculator](../other-controls/calculator.md) control.
 

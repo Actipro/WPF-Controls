@@ -36,8 +36,9 @@
 					and leaves out the AvailableReferrals and SecretData properties.  
 					The CountryName property is told to use a specific value DataTemplate defined in this sample.
 					The two phone number properties are from a sub-object but are re-routed to be at the same level as the root customer view model.
-					Finally, a set of standard values are added to the ReferredBy property, bound to the hidden AvailableReferrals collection.
+					A set of standard values are added to the ReferredBy property, bound to the hidden AvailableReferrals collection.
 					The standard values use a display member path to determine which text to show in the drop-down.
+					Finally, a data items dictionary is added as read-only, and with read-only item values.
 				</TextBlock>
 			</Expander>
 

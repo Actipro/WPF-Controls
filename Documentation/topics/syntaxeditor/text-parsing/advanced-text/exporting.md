@@ -21,7 +21,6 @@ The text framework has four formats for exporting HTML, all available as methods
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -96,7 +95,7 @@ The [TextExporterFactory](xref:ActiproSoftware.Text.Exporters.TextExporterFactor
 
 ## Using a Custom IHighlightingStyleRegistry
 
-The constructor of the [TextExporterFactory](xref:ActiproSoftware.Text.Exporters.TextExporterFactory) class optionally takes an [IHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) argument.  If specified, that registry will be used for converting classification types to styles.  Otherwise, the [AmbientHighlightingStyleRegistry](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) will be used.
+The constructor of the [TextExporterFactory](xref:ActiproSoftware.Text.Exporters.TextExporterFactory) class optionally takes an [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) argument.  If specified, that registry will be used for converting classification types to styles.  Otherwise, the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) will be used.
 
 ## Exporting to a String
 
@@ -107,6 +106,8 @@ This code shows how to export the contents of an [ITextSnapshot](xref:ActiproSof
 ```csharp
 string text = document.CurrentSnapshot.Export(new TextExporterFactory().CreateRtf());
 ```
+
+@if (wpf winforms) {
 
 ## Exporting to a File
 
@@ -119,9 +120,11 @@ string path = @"C:\output.rtf";
 document.CurrentSnapshot.ExportToFile(new TextExporterFactory().CreateRtf(), path);
 ```
 
+}
+
 ## Exporting Selected Text in a SyntaxEditor View
 
-Exporting to the selected text in a SyntaxEditor view to a string is done via the [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[ExportSelectedText](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.ExportSelectedText*) method.
+Exporting to the selected text in a SyntaxEditor view to a string is done via the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[ExportSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.ExportSelectedText*) method.
 
 This code shows how to export the selected text in the active view to a string in RTF format:
 

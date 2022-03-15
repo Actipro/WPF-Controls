@@ -142,7 +142,7 @@
 				</Menu>
 
 				<!-- External UI for maximized windows -->
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Panel.ZIndex="1"
 							Visibility="{Binding ElementName=standardMdiHost, Path=IsExternalMaximizedUIRequired, Converter={StaticResource BooleanToVisibilityConverter}}">
 					<!-- Minimize -->
 					<Button MinWidth="17" MinHeight="17" Padding="2" Style="{DynamicResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}"

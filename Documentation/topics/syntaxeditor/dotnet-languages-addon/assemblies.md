@@ -49,6 +49,28 @@ Any object that implements [IProjectAssembly](xref:ActiproSoftware.Text.Language
 
 Appropriate default [IProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssembly) instances are pre-registered on the built-in C#/VB syntax languages but need to be configured with source files and/or assembly references to be useful.  Alternatively, you can create and configure a new project assembly instance and then register it on the language.
 
+@if (winrt) {
+
+This code creates a new C# project assembly and registers it with the [CSharpSyntaxLanguage](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpSyntaxLanguage) that is already declared in the `language` variable:
+
+```csharp
+CSharpProjectAssembly project = new CSharpProjectAssembly("Sample");
+language.RegisterProjectAssembly(project);
+```
+
+Then as the page is loaded, assembly references are added asynchronously (see following sections for more information on why),
+
+```csharp
+private async void OnLoaded(object sender, RoutedEventArgs e) {
+	await project.AssemblyReferences.AddMsCorLibAsync();
+	await project.AssemblyReferences.AddAsync("System");
+}
+```
+
+}
+
+@if (wpf winforms) {
+
 This code creates a new C# project assembly, uses a `BackgroundWorker` to adds some references asynchronously (see following sections for more information on why), and registers it with the [CSharpSyntaxLanguage](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpSyntaxLanguage) that is already declared in the `language` variable:
 
 ```csharp
@@ -61,6 +83,8 @@ assemblyLoader.DoWork += (sender, e) => {
 assemblyLoader.RunWorkerAsync();
 language.RegisterProjectAssembly(project);
 ```
+
+}
 
 > [!NOTE]
 > The [DotNetSyntaxLanguageExtensions](xref:ActiproSoftware.Text.Languages.DotNet.DotNetSyntaxLanguageExtensions).[RegisterProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.DotNetSyntaxLanguageExtensions.RegisterProjectAssembly*) method in the code snippet above is a helper extension method that gets added to [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) objects when the `ActiproSoftware.Text.Languages.DotNet` namespace is imported.  See the [Service Locator Architecture](../language-creation/service-locator-architecture.md) topic for details on registering and retrieving various service object instances, both via extension methods and generically, as there are some additional requirements for using the extension methods.
@@ -83,7 +107,6 @@ These methods can add references to a project assembly:
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -103,7 +126,7 @@ Adds a new reference for the specified [IAssembly](xref:ActiproSoftware.Text.Lan
 <tr>
 <td>
 
-[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(Assembly) Method
+@if (winrt) {[AddAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddAsync)(Assembly) Method}@if (wpf winforms) {[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(Assembly) Method}
 
 </td>
 <td>
@@ -116,7 +139,7 @@ Adds a new reference to an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages
 <tr>
 <td>
 
-[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(Assembly, [IAssemblyName](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyName)) Method
+@if (winrt) {[AddAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddAsync)(Assembly, [IAssemblyName](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyName)) Method}@if (wpf winforms) {[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(Assembly, [IAssemblyName](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyName)) Method}
 
 </td>
 <td>
@@ -129,7 +152,7 @@ Adds a new reference to an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages
 <tr>
 <td>
 
-[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(string) Method
+@if (winrt) {[AddAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddAsync)(string) Method}@if (wpf winforms) {[Add](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.Add*)(string) Method}
 
 </td>
 <td>
@@ -141,6 +164,7 @@ While using the simple assembly name may work in some simple cases (such as `Sys
 </td>
 </tr>
 
+@if (wpf winforms) {
 <tr>
 <td>
 
@@ -153,7 +177,9 @@ Adds a new reference to an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages
 
 </td>
 </tr>
+}
 
+@if (wpf winforms) {
 <tr>
 <td>
 
@@ -168,11 +194,12 @@ This method is only recommended for testing purposes since a properly-designed a
 
 </td>
 </tr>
+}
 
 <tr>
 <td>
 
-[AddMsCorLib](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLib*)() Method
+@if (winrt) {[AddMsCorLibAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLibAsync)() Method}@if (wpf winforms) {[AddMsCorLib](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLib*)() Method}
 
 </td>
 <td>
@@ -184,6 +211,28 @@ Adds a new reference to an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages
 
 </tbody>
 </table>
+
+@if (winrt) {
+
+This code shows how to add assembly references to an [IProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssembly) in the `project` variable using a variety of methods:
+
+```csharp
+// Add mscorlib (should always add at a minimum)
+await project.AssemblyReferences.AddMsCorLibAsync();
+
+// Add 'System.dll' via a direct Assembly
+await project.AssemblyReferences.AddAsync(typeof(System.Uri).Assembly);
+
+// Add 'System.Core.dll' via its full name
+await project.AssemblyReferences.AddAsync("System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
+
+// Add another IProjectAssembly that was previously loaded elsewhere
+project.AssemblyReferences.Add(anotherProject);
+```
+
+}
+
+@if (wpf winforms) {
 
 This code shows how to add assembly references to an [IProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssembly) in the `project` variable using a variety of methods:
 
@@ -201,6 +250,10 @@ project.AssemblyReferences.Add("System.Core, Version=3.5.0.0, Culture=neutral, P
 project.AssemblyReferences.Add(anotherProject);
 ```
 
+}
+
+@if (wpf winforms) {
+
 This code shows a couple other ways to add assembly references to an [IProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssembly) in the `project` variable:
 
 ```csharp
@@ -210,6 +263,8 @@ project.AssemblyReferences.AddFrom(@"C:\MyAssembly.dll");
 // Only for testing - add all assemblies in the current AppDomain
 // project.AssemblyReferences.AddAllInAppDomain();
 ```
+
+}
 
 ## Assembly Reference Cleanup
 
@@ -255,7 +310,6 @@ There are several ways to programmatically append source files to a project asse
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -292,7 +346,7 @@ The parsing operation will occur in a worker thread and will not block the calli
 <tr>
 <td>
 
-[QueueFile](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ISourceFileCollection.QueueFile*) Method
+@if (winrt) {[QueueFileAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ISourceFileCollection.QueueFileAsync) Method}@if (wpf winforms) {[QueueFile](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ISourceFileCollection.QueueFile*) Method}
 
 </td>
 <td>
@@ -307,12 +361,27 @@ The parsing operation will occur in a worker thread and will not block the calli
 </tbody>
 </table>
 
+@if (winrt) {
+
+This code shows how to queue up parsing to create source files for a project assembly defined in `project`:
+
+```csharp
+project.SourceFiles.QueueCode(cSharpSyntaxLanguage, "MyFile1.cs", "class Foo { public void Bar() {} }");
+await project.SourceFiles.QueueFileAsync(cSharpSyntaxLanguage, @"C:\MyFile2.cs");
+```
+
+}
+
+@if (wpf winforms) {
+
 This code shows how to queue up parsing to create source files for a project assembly defined in `project`:
 
 ```csharp
 project.SourceFiles.QueueCode(cSharpSyntaxLanguage, "MyFile1.cs", "class Foo { public void Bar() {} }");
 project.SourceFiles.QueueFile(cSharpSyntaxLanguage, @"C:\MyFile2.cs");
 ```
+
+}
 
 Again, make sure an [ambient parse request dispatcher](../text-parsing/parsing/parse-requests-and-dispatchers.md) is set up so parsing occurs in a worker thread.
 
@@ -328,15 +397,21 @@ Similar to project assemblies, binary assemblies also have their own references 
 
 [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) instances can be created for an `Assembly` using any of the methods described in the 'Managing Assembly References' section earlier in this topic.  Similar loading methods are available on [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository) that can be used to load an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) without adding it as a reference to a project.  The assembly reference add methods internally call these various [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository) load methods.
 
+@if (wpf winforms) {
+
 ### Limitations of .NET Reflection
 
 While using .NET reflection to load binary assembly data is fast, there are some circumstances where problems can occur.  .NET reflection requires that referenced assemblies are able to be resolved and loaded.  There might be other cases where .NET reflection data for an assembly was already loaded into a binary assembly from a location, the file assembly was rebuilt, and the binary assembly data tried to reload but couldn't.  .NET reflection locks the file and only allows it to be loaded once.
 
-In scenarios like this, it might be useful to take advantage of the optional Roslyn extensions we provide that ship in the `ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf` assembly.  Roslyn is a set of assemblies produced by Microsoft that can examine .NET assemblies for reflection data without many of the restrictions of using normal .NET reflection.  For instance, references don't need to be loaded and assembly files aren't locked.
+In scenarios like this, it might be useful to take advantage of the optional Roslyn extensions we provide that ship in the `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly.  Roslyn is a set of assemblies produced by Microsoft that can examine .NET assemblies for reflection data without many of the restrictions of using normal .NET reflection.  For instance, references don't need to be loaded and assembly files aren't locked.
+
+}
+
+@if (wpf winforms) {
 
 ## Loading Binary Assemblies with Roslyn Extensions
 
-Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.1 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
+Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.1 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
 
 This code shows how to load a binary assembly with our Roslyn extensions and then add it as a reference to a project assembly:
 
@@ -346,18 +421,20 @@ var binaryAssembly = loader.LoadFrom(pathToAssemblyFile);
 project.AssemblyReferences.Add(binaryAssembly);
 ```
 
+}
+
 ## Assembly Repositories
 
 Assembly repositories provide a way to store loaded binary assemblies and possibly cache their data so that it can be retrieved much faster in the future.  They are represented by the [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository) interface and the [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) class provides the implementation used by most applications.
 
-Assembly repositories have several [Load](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.Load*) methods for loading an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) from a reflection `Assembly`.  If the assembly repository implementation supports caching, the loaded assembly data is cached from these load method calls.  The various methods for adding references to project assemblies mentioned in previous sections call these load methods.
+Assembly repositories have several @if (winrt) {[LoadAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.LoadAsync)}@if (wpf winforms) {[Load](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.Load*)} methods for loading an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) from a reflection `Assembly`.  If the assembly repository implementation supports caching, the loaded assembly data is cached from these load method calls.  The various methods for adding references to project assemblies mentioned in previous sections call these load methods.
 
 ### Pruning the Cache
 
-The assembly repository's cache may write to files or some other mechanism depending on the implementation.  Regardless it is important to call the [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*) method to prune invalid data from the cache upon application shutdown.
+The assembly repository's cache may write to files or some other mechanism depending on the implementation.  Regardless it is important to call the @if (winrt) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCacheAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCacheAsync)}@if (wpf winforms) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*)} method to prune invalid data from the cache upon application shutdown.
 
 > [!NOTE]
-> Since assemblies can change over time (when a .dll is recompiled or deleted), it is important to make sure the cache removes data that is no longer valid via a call to [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*) when the application is shut down.
+> Since assemblies can change over time (when a .dll is recompiled or deleted), it is important to make sure the cache removes data that is no longer valid via a call to @if (winrt) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCacheAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCacheAsync)}@if (wpf winforms) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*)} when the application is shut down.
 
 ### Reference Tracking
 
@@ -371,13 +448,21 @@ Use of this repository type as the ambient assembly repository is recommended si
 
 If no cache path is set on the repository then it will not attempt to save or load any assembly data cache files.  However it still will perform reference tracking, which significantly helps performance when multiple project assemblies are used.
 
-This table illustrates the preferred catch path settings for [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) based on the type of application and its trust level.
+@if (wpf) {
+
+This table illustrates the preferred catch path settings for [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) based on the type of application and its trust level. 
+
+}
+
+@if (wpf) {
 
 | Platform | Trust Level | Notes |
 |-----|-----|-----|
 | WPF (application) | Full | Use a cache path that is accessible for read/write by the application, such as in a subfolder within the `Environment.SpecialFolder.LocalApplicationData` special folder. |
 | WPF (XBAP) | Sandboxed | Sandboxed XBAPs don't support file I/O features that are needed for caching so just pass null as the cache path. |
 | WPF (XBAP) | Full | Use a cache path that is accessible for read/write by the application, such as in a subfolder within the `Environment.SpecialFolder.LocalApplicationData` special folder. |
+
+}
 
 ## Ambient Assembly Repository
 
@@ -388,6 +473,19 @@ By using an ambient assembly repository, the loaded binary assembly instances ar
 > [!IMPORTANT]
 > By default, no ambient [IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository) is installed meaning that more than one project assembly will use unncessary extra memory when referencing various binary assemblies, since those instances will not be shared among the project assemblies.  Also, no caching will occur for binary assemblies if there is no ambient assembly repository, thus affecting application performance when adding references to project assemblies.
 
+@if (winrt) {
+
+This code is executed at application startup and creates a [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) for use as the ambient assembly repository.  Note that it uses an application-specific data folder path that you should update as appropriate for your application.
+
+```csharp
+string appDataPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Assembly Repository");
+AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(appDataPath);
+```
+
+}
+
+@if (wpf winforms) {
+
 This code is executed at application startup and creates a [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) for use as the ambient assembly repository.  Note that it uses an application-specific data folder path that you should update as appropriate for your application.
 
 ```csharp
@@ -395,6 +493,22 @@ string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialF
 	@"YourCompanyName\YourApplicationName\Assembly Repository");
 AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(appDataPath);
 ```
+
+}
+
+@if (winrt) {
+
+At application shutdown, this code can be used to prune cache data that is no longer valid.
+
+```csharp
+var repository = AmbientAssemblyRepositoryProvider.Repository;
+if (repository != null)
+	await repository.PruneCacheAsync();
+```
+
+}
+
+@if (wpf winforms) {
 
 At application shutdown, this code can be used to prune cache data that is no longer valid.
 
@@ -404,11 +518,15 @@ if (repository != null)
 	repository.PruneCache();
 ```
 
+}
+
+@if (winrt wpf) {
+
 ## Loading Pre-Defined Binary Assembly Cache Data
 
-Many of the add reference methods described above in the "Managing Assembly References" section will load the assemblies for the current platform version.  Say that your application is a Silverlight application and you call the [IProjectAssemblyReferenceCollection](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection).[AddMsCorLib](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLib*) method.  In this case, the Silverlight `MsCorLib` assembly will be added.
+Many of the add reference methods described above in the "Managing Assembly References" section will load the assemblies for the current platform version.  Say that your application is a .NET Core application and you call the @if (winrt) {[IProjectAssemblyReferenceCollection](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection).[AddMsCorLibAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLibAsync)}@if (wpf winforms) {[IProjectAssemblyReferenceCollection](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection).[AddMsCorLib](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssemblyReferenceCollection.AddMsCorLib*)} method.  In this case, the .NET Core `MsCorLib` assembly will be added.
 
-But what if you are developing a Silverlight application that is for a .NET 2.0 WinForms development IDE?  First, Silverlight's `MsCorLib` has slightly different API than .NET 2.0's `MsCorLib` does.  Second, you can't load .NET 2.0 assemblies into Silverlight applications for reflection.  Luckily the .NET Languages Add-on has a mechanism to support this scenario.
+But what if you are developing a .NET Core application that is for a .NET Framework-based development IDE?  First, .NET Core's `MsCorLib` has slightly different API than .NET Framework's `MsCorLib` does.  Second, you can't load .NET Framework assemblies into .NET Core applications for reflection.  Luckily the .NET Languages Add-on has a mechanism to support this scenario.
 
 When using the [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) as the ambient assembly repository, as described in previous sections, you can set a cache path.  After loading the appropriate assembly once, you can go to this cache folder and find the related cache file for the assembly.
 
@@ -427,7 +545,7 @@ project.AssemblyReferences.AddFrom(Path.Combine(appPath, "WpfApplication1.exe"))
 
 After running the application, in the 'bin/Debug' folder there should now be a 'Cache' folder.  That folder will contain files named something like 'mscorlib-v2.0-d7ffa534.Reflection.dat'.  Each '...Reflection.dat' file is the reflection data file for an assembly.
 
-If you copy a '...Reflection.dat' file to your application and make it accessible as a `Stream` (perhaps by making it an Embedded Resource), it can be loaded to create an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) instance, even if it was created on a completely different platform (WPF vs. Silverlight, etc.).
+If you copy a '...Reflection.dat' file to your application and make it accessible as a `Stream` (perhaps by making it an Embedded Resource), it can be loaded to create an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) instance, even if it was created on a completely different platform or framework (WPF vs. WinForms, .NET Core vs. .NET Framework etc.).
 
 This code creates a [BinaryAssemblySerializer](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.BinaryAssemblySerializer) and loads an [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) from a `Stream` located in the `resourceStreamName` resource path.
 
@@ -441,4 +559,6 @@ using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(re
 ```
 
 > [!NOTE]
-> Assembly cache files all contain version numbers.  While these version numbers generally remain constant, they are incremented when there are additions/changes made to the serialized data so that it can be properly loaded.  Trying to load a cache file with an older version into a newer [BinaryAssemblySerializer](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.BinaryAssemblySerializer) will result in no [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) being created.  The Language Designer's .NET Languages Add-on assemblies should always be in sync with this version in regards to codebases.  So for Silverlight and UWP controls, it is best to use the Language Designer's WPF assemblies to generate the reflection data files.
+> Assembly cache files all contain version numbers.  While these version numbers generally remain constant, they are incremented when there are additions/changes made to the serialized data so that it can be properly loaded.  Trying to load a cache file with an older version into a newer [BinaryAssemblySerializer](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.BinaryAssemblySerializer) will result in no [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) being created.  The Language Designer's .NET Languages Add-on assemblies should always be in sync with this version in regards to codebases.  So for WinForms and UWP controls, it is best to use the Language Designer's WPF assemblies to generate the reflection data files.
+
+}

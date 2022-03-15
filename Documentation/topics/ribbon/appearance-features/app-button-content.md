@@ -17,7 +17,7 @@ By default the application button in ribbon will display in Scenic style with th
 
 ## Scenic Style with Image Content
 
-Ribbon includes a standard image that can be easily set to the Scenic application button in place of the default `File` text.  To use the built-in application button image, set the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[ApplicationButtonImageSource](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.ApplicationButtonImageSource) property to:
+Ribbon includes a standard image that can be easily set to the Scenic application button in place of the default `File` text.  To use the built-in application button image, set the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[ApplicationButtonImageSource](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.ApplicationButtonImageSource) property to:
 
 `ApplicationButtonImageSource="/ActiproSoftware.Ribbon.Wpf;component/Products/Ribbon/Images/ApplicationButtonDefault16.png"`
 

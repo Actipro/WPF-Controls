@@ -13,8 +13,8 @@ By turning off various options on a specific tool window, you can completely pre
 
 A fixed tool window like the one in the screenshot can be created by setting:
 
-- [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[CanAttach](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.CanAttach) = `false`
-- [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[CanDragTab](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.CanDragTab) = `false`
-- [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[HasTitleBar](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.HasTitleBar) = `false`
+- [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[CanAttach](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanAttach) = `false`
+- [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[CanDragTab](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanDragTab) = `false`
+- [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[HasTitleBar](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.HasTitleBar) = `false`
 
 Those settings prevent other tool windows from attaching (creating tabbed groups) to the tool window, being dragged anywhere, and having a title bar.

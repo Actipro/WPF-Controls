@@ -12,4 +12,4 @@ IME is a Window feature that allows users to enter characters and symbols not fo
 > [!NOTE]
 > SyntaxEditor's IME features are not available in XBAP applications since they require the use of Windows API calls.
 
-IME support is enabled by default.  To disable it for any reason, set the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsImeEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsImeEnabled) property to `false`.
+IME support is enabled by default.  To disable it for any reason, set the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsImeEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsImeEnabled) property to `false`.

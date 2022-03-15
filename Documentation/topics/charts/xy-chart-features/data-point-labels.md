@@ -9,7 +9,7 @@ Data point labels allow you to show the values of a given data point.
 
 ## Visibility
 
-Visibility of data point labels can be controlled using [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelVisibility](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelVisibility).  LabelVisibility defaults to `Hidden`, in which no labels are visible.
+Visibility of data point labels can be controlled using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelVisibility).  LabelVisibility defaults to `Hidden`, in which no labels are visible.
 
 ![Screenshot](../images/appearance-data-point-labels1.png)
 
@@ -43,11 +43,11 @@ LabelVisibility can also be `PointerProximitySingle`, where only the closest dat
 
 ## Style
 
-The sytle of the data point labels can be changed using [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelStyle](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelStyle).  The style `TargetType` must be [DataPointLabel](xref:ActiproSoftware.Windows.Controls.Charts.DataPointLabel).
+The sytle of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelStyle](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelStyle).  The style `TargetType` must be [DataPointLabel](xref:@ActiproUIRoot.Controls.Charts.DataPointLabel).
 
 ![Screenshot](../images/appearance-data-point-labels4.png)
 
-This is an example of a custom data point label style. Note how the default label color is available by binding to [DataPointLabel](xref:ActiproSoftware.Windows.Controls.Charts.DataPointLabel).[SeriesDefaultBrush](xref:ActiproSoftware.Windows.Controls.Charts.DataPointLabel.SeriesDefaultBrush).
+This is an example of a custom data point label style. Note how the default label color is available by binding to [DataPointLabel](xref:@ActiproUIRoot.Controls.Charts.DataPointLabel).[SeriesDefaultBrush](xref:@ActiproUIRoot.Controls.Charts.DataPointLabel.SeriesDefaultBrush).
 
 ```xaml
 <charts:BarSeries ItemsSource="11;2;3;14;20" LabelVisibility="Visible">
@@ -70,7 +70,7 @@ This is an example of a custom data point label style. Note how the default labe
 
 ## Formatting
 
-The formatting of the data point labels can be changed using [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelFormat).  Label format provides four parameters:
+The formatting of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelFormat).  Label format provides four parameters:
 
 - \{0} is the value on the primary axis.
 - \{1} is the value on the secondary axis.
@@ -87,7 +87,7 @@ This is an example of a custom data point label format. The label format is "X:\
 
 ## Advanced Customization
 
-There may be situations where [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelFormat) is not sufficient for your needs. In those cases, you can use [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelFunc](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelFunc) to create custom labels using a custom function. `LabelFunc` is a `Func<object,object,object,object,object,string>`. It has the following parameters: primary axis value, secondary axis value, X axis value, Y axis value, and original value. The string that is returned is used for the data point label.
+There may be situations where [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelFormat) is not sufficient for your needs. In those cases, you can use [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelFunc](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelFunc) to create custom labels using a custom function. `LabelFunc` is a `Func<object,object,object,object,object,string>`. It has the following parameters: primary axis value, secondary axis value, X axis value, Y axis value, and original value. The string that is returned is used for the data point label.
 
 ![Screenshot](../images/appearance-data-point-labels-label-func.png)
 
@@ -113,7 +113,7 @@ public static string GetCustomLabel(object primaryValue, object secondaryValue, 
 
 ## Angle
 
-The angle of data point labels can be changed using [SeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase).[LabelAngle](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.LabelAngle).
+The angle of data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelAngle](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelAngle).
 
 ![Screenshot](../images/appearance-data-point-labels6.png)
 
@@ -125,7 +125,7 @@ This is an example of a custom data point label angle at 45 degrees.
 
 ## Layout
 
-Each series uses the best method for determining label position by default, but this can be customized when needed.  You can set `LabelPositioningMode` on [BarSeries](xref:ActiproSoftware.Windows.Controls.Charts.BarSeries), [LineSeries](xref:ActiproSoftware.Windows.Controls.Charts.LineSeries), [AreaSeries](xref:ActiproSoftware.Windows.Controls.Charts.AreaSeries), or [ScatterSeries](xref:ActiproSoftware.Windows.Controls.Charts.ScatterSeries) to determine how labels are positioned. The two possible values are [LabelPositioningMode](xref:ActiproSoftware.Windows.Controls.Charts.LabelPositioningMode).[FromBaseline](xref:ActiproSoftware.Windows.Controls.Charts.LabelPositioningMode.FromBaseline), which positions labels away from the baseline, and [LabelPositioningMode](xref:ActiproSoftware.Windows.Controls.Charts.LabelPositioningMode).[FromAverage](xref:ActiproSoftware.Windows.Controls.Charts.LabelPositioningMode.FromAverage), which positions labels away from the average value of the primary axis.
+Each series uses the best method for determining label position by default, but this can be customized when needed.  You can set `LabelPositioningMode` on [BarSeries](xref:@ActiproUIRoot.Controls.Charts.BarSeries), [LineSeries](xref:@ActiproUIRoot.Controls.Charts.LineSeries), [AreaSeries](xref:@ActiproUIRoot.Controls.Charts.AreaSeries), or [ScatterSeries](xref:@ActiproUIRoot.Controls.Charts.ScatterSeries) to determine how labels are positioned. The two possible values are [LabelPositioningMode](xref:@ActiproUIRoot.Controls.Charts.LabelPositioningMode).[FromBaseline](xref:@ActiproUIRoot.Controls.Charts.LabelPositioningMode.FromBaseline), which positions labels away from the baseline, and [LabelPositioningMode](xref:@ActiproUIRoot.Controls.Charts.LabelPositioningMode).[FromAverage](xref:@ActiproUIRoot.Controls.Charts.LabelPositioningMode.FromAverage), which positions labels away from the average value of the primary axis.
 
 ## Collision Avoidance
 
@@ -133,7 +133,7 @@ By default, data point labels have collision detection enabled and will attempt 
 
 ![Screenshot](../images/appearance-data-point-labels7.png)
 
-If you want to disable this behavior, you can use [XYChart](xref:ActiproSoftware.Windows.Controls.Charts.XYChart).[LabelCollisionMode](xref:ActiproSoftware.Windows.Controls.Charts.XYChart.LabelCollisionMode) and set it to [None](xref:ActiproSoftware.Windows.Controls.Charts.LabelCollisionMode.None).
+If you want to disable this behavior, you can use [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LabelCollisionMode](xref:@ActiproUIRoot.Controls.Charts.XYChart.LabelCollisionMode) and set it to [None](xref:@ActiproUIRoot.Controls.Charts.LabelCollisionMode.None).
 
 ![Screenshot](../images/appearance-data-point-labels8.png)
 

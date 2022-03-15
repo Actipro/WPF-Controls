@@ -16,35 +16,35 @@ The two primary issues are:
 
 If you don't wish to read the details below, the way to enable maximum compatibility with interop controls is to:
 
-- Set the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[UseHostedPopups](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.UseHostedPopups) property to `false`.
+- Set the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedPopups](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedPopups) property to `false`.
 
-- Set the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.
+- Set the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:@ActiproUIRoot.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.
 
-- Set the [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property on all `HwndHost` instances (like `WindowsFormsHost`, etc.) to `true`.
+- Set the [InteropFocusTracking](xref:@ActiproUIRoot.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property on all `HwndHost` instances (like `WindowsFormsHost`, etc.) to `true`.
 
-- Ensure any `WindowsFormsHost` control is contained by a WPF control that has a non-transparent background.  Note that [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow), [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow), and [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) have a transparent background by default.
+- Ensure any `WindowsFormsHost` control is contained by a WPF control that has a non-transparent background.  Note that [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow), and [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) have a transparent background by default.
 
 Read the following sections for more information on interop compatibility.
 
 ## Using Non-Hosted Popups
 
-Due to the airspace rendering issue mentioned above, if your application will host interop content, set the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[UseHostedPopups](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.UseHostedPopups) property to `false`.  Setting that to `false` will allow auto-hide popups and splitters to properly appear above interop content.
+Due to the airspace rendering issue mentioned above, if your application will host interop content, set the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedPopups](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedPopups) property to `false`.  Setting that to `false` will allow auto-hide popups and splitters to properly appear above interop content.
 
 This will also allow interop content to appear properly in the auto-hide popups because it will disable auto-hide popup animation, which sometimes causes rendering glitches in interop controls.
 
-If you do not plan on having interop content in your application, we recommend leaving the [UseHostedPopups](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.UseHostedPopups) property as its default value of `true`.
+If you do not plan on having interop content in your application, we recommend leaving the [UseHostedPopups](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedPopups) property as its default value of `true`.
 
 ## Live Splitting
 
 By default, live splitting is enabled meaning that there is no preview highlight when dragging a splitter.  The surrounding containers are immediately resized during splitter drags in this mode.
 
-Sometimes this mode doesn't work well with interop controls since they could have glitchy rendering as they are resized.  It's recommended to disable live splitting by setting the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  In that mode, the splitters in the dock site will only resize the content when the drag operation has been completed.  A preview of the split location is shown as the user drags to indicate the relative sizes of the content if the user releases the pointer.  This allows complex UI to only be rendered once, after the drag operation is completed.
+Sometimes this mode doesn't work well with interop controls since they could have glitchy rendering as they are resized.  It's recommended to disable live splitting by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:@ActiproUIRoot.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  In that mode, the splitters in the dock site will only resize the content when the drag operation has been completed.  A preview of the split location is shown as the user drags to indicate the relative sizes of the content if the user releases the pointer.  This allows complex UI to only be rendered once, after the drag operation is completed.
 
 ## Handling Focus Issues
 
 There are known issues in core WPF with how it tracks and reports focus movement in and out of `HwndHost`.  This makes it difficult to use standard WPF-based focus events when dealing with `HwndHost`-based scenarios, because the events don't fire properly.
 
-We provide a workaround for most of these issues in the form of an [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property that should be set on any `HwndHost`-based control, such as `WindowsFormsHost`, WPF `WebBrowser`, etc.  Set that attached property to `true` on such controls in your docking window hierarchy to enable our workarounds.
+We provide a workaround for most of these issues in the form of an [InteropFocusTracking](xref:@ActiproUIRoot.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property that should be set on any `HwndHost`-based control, such as `WindowsFormsHost`, WPF `WebBrowser`, etc.  Set that attached property to `true` on such controls in your docking window hierarchy to enable our workarounds.
 
 ## Impact of Transparent Backgrounds on Performance
 
@@ -63,13 +63,13 @@ xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms
 
 If the `Background` is left its default null value, or is set to a solid color, performance is significantly better.  This can occur anywhere in WPF (not just the Docking/MDI product), and we wanted to pass along the tip.
 
-It's important to note that [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow), [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow), and [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) have a transparent background by default.  Therefore any `WindowsFormsHost` control in them should be wrapped with a `Border` that has a solid background set.  Or alternatively, set the `Background` properties of those controls to a solid brush.
+It's important to note that [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow), and [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) have a transparent background by default.  Therefore any `WindowsFormsHost` control in them should be wrapped with a `Border` that has a solid background set.  Or alternatively, set the `Background` properties of those controls to a solid brush.
 
 Some side effects of using transparent backgrounds around `WindowsFormsHost` may be seeing the size of the control resize and paint itself before the location of the control is updated and repainted, thereby creating a flicker effect.
 
 ## How to Embed WinForms Content in a Docking Window
 
-This sample XAML code shows how to create a document window that contains a Windows Forms `WebBrowser` control embedded in it.  Note that any WinForms controls must be wrapped with a `WindowsFormsHost`.  Set the attached [InteropFocusTracking](xref:ActiproSoftware.Windows.Controls.Docking.InteropFocusTracking).`IsEnabled` property on the `WindowsFormsHost`.  And set a solid brush background on the containing control to prevent layout performance issues.
+This sample XAML code shows how to create a document window that contains a Windows Forms `WebBrowser` control embedded in it.  Note that any WinForms controls must be wrapped with a `WindowsFormsHost`.  Set the attached [InteropFocusTracking](xref:@ActiproUIRoot.Controls.Docking.InteropFocusTracking).`IsEnabled` property on the `WindowsFormsHost`.  And set a solid brush background on the containing control to prevent layout performance issues.
 
 ```xaml
 xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"

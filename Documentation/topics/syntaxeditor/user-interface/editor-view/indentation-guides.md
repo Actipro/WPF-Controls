@@ -11,7 +11,7 @@ Indentation guides are subtle vertical lines that render at each tab stop on lin
 
 ## Activating Indentation Guides
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[AreIndentationGuidesVisible](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.AreIndentationGuidesVisible) property can be set to `true` to activate indentation guides.  Guides are not visible by default.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreIndentationGuidesVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreIndentationGuidesVisible) property can be set to `true` to activate indentation guides.  Guides are not visible by default.
 
 ## Changing the Indentation Guide Brush
 

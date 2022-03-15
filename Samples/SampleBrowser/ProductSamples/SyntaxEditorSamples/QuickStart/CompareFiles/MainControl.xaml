@@ -1,0 +1,115 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles.MainControl"
+			 x:Name="root"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+			 xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+			 xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles"
+			 >
+    
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<editor:SyntaxEditor x:Name="oldEditor" Grid.Row="2" Grid.Column="0"
+							 CanScrollPastDocumentEnd="True"
+							 CanSplitHorizontally="False"
+							 IsIndicatorMarginVisible="False"
+							 IsLineNumberMarginVisible="True"
+							 IsOutliningMarginVisible="False"
+							 IsWordWrapEnabled="False">
+			<editor:EditorDocument xml:space="preserve"><editor:EditorDocument.Language>
+				<sample:CustomSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[// This QuickStart demonstrates using two SyntaxEditor controls
+// to visualize the difference between two files.
+// When either editor is modified, the differences between
+// the two documents are updated in real-time.
+using System;
+
+namespace Actipro.CompareFiles {
+	/// <summary>
+	/// This QuickStart uses intra-line adornments to create
+	/// spacers for added/removed lines to keep the side-by-
+	/// side views aligned.
+	/// </summary>
+	public class ActiproTest {
+				
+		private int differenceTest;
+
+		/// <summary>
+		/// The code behind for this sample uses a simple
+		/// comparison engine to detect the differences between
+		/// two files. The code behind also includes an example
+		/// of how to integrate with 3rd party libraries.
+		/// </summary>
+		public int DifferenceTest {
+			get => differenceTest;
+			set => differenceTest = value;
+		}
+
+		/// <summary>
+		/// Adornments are used to change the background color
+		/// of changes.
+			/// </summary>
+		public void Foo() { }
+
+	}
+}]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+
+		<editor:SyntaxEditor x:Name="newEditor" Grid.Row="1" Grid.Column="2"
+							 CanScrollPastDocumentEnd="True"
+							 CanSplitHorizontally="False"
+							 IsIndicatorMarginVisible="False"
+							 IsLineNumberMarginVisible="True"
+							 IsOutliningMarginVisible="False"
+							 IsWordWrapEnabled="False">
+			<editor:EditorDocument xml:space="preserve"><editor:EditorDocument.Language>
+				<sample:CustomSyntaxLanguage />
+			</editor:EditorDocument.Language><![CDATA[// This QuickStart demonstrates using two SyntaxEditor controls
+// to visualize the difference between two files.
+// When either editor is modified, the differences between
+// the two documents are updated in real-time.
+using System;
+
+namespace Actipro.CompareFiles {
+	/// <summary>
+	/// This QuickStart uses intra-line adornments to create
+	/// spacers for added/removed lines to keep the side-by-
+	/// side views aligned.
+	/// </summary>
+	public class ActiproTest {
+				
+		/// <summary>
+		/// The code behind for this sample uses a simple
+		/// comparison engine to detect the differences between
+		/// two files. The code behind also includes an example
+		/// of how to integrate with 3rd party libraries.
+		/// </summary>
+		public int DifferenceTest { get; set; }
+
+		/// <summary>
+		/// Adornments are used to change the background color
+		/// of changes.
+		/// </summary>
+		public void Bar() {
+			throw new NotImplementedException();
+		}
+
+	}
+}]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+
+		<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,10">
+			<CheckBox Content="Ignore white space" IsChecked="{Binding ElementName=root, Path=IgnoreWhiteSpace}" />
+		</StackPanel>
+
+	</Grid>
+
+</UserControl>

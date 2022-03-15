@@ -15,6 +15,20 @@ The language's parser does a lot of processing when text changes occur.  To ensu
 
 The ambient parse request dispatcher should be set up in your application startup code as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
+@if (winrt) {
+
+```csharp
+protected override void OnStartup(StartupEventArgs e) {
+	...
+	AmbientParseRequestDispatcherProvider.Dispatcher = new TaskBasedParseRequestDispatcher();
+	...
+}
+```
+
+}
+
+@if (wpf winforms) {
+
 ```csharp
 protected override void OnStartup(StartupEventArgs e) {
 	...
@@ -22,6 +36,8 @@ protected override void OnStartup(StartupEventArgs e) {
 	...
 }
 ```
+
+}
 
 Likewise it should be shut down on application exit, also as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
@@ -44,7 +60,22 @@ protected override void OnExit(ExitEventArgs e) {
 
 An ambient assembly repository should always be set up to ensure that the application reuses binary assembly reflection data whenever appropriate and that binary assembly references added to a project assembly are cached for future loading performance gains.
 
-The ambient assembly repository should be set up in your application startup code as described in the [Assemblies](../assemblies.md) topic.  The [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) class is the default implementation of an assembly repository, which supports the writing of binary assembly data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder (usually requires full trust).  If the application is a sandboxed XBAP, it can pass null as the cache path instead.
+The ambient assembly repository should be set up in your application startup code as described in the [Assemblies](../assemblies.md) topic.  The [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) class is the default implementation of an assembly repository, which supports the writing of binary assembly data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder @if (winrt) {(the app's data folder is advised). }@if (wpf) {(usually requires full trust).  If the application is a sandboxed XBAP, it can pass null as the cache path instead. }
+
+@if (winrt) {
+
+```csharp
+protected override void OnStartup(StartupEventArgs e) {
+	...
+	string appDataPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Assembly Repository");
+	AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(appDataPath);
+	...
+}
+```
+
+}
+
+@if (wpf winforms) {
 
 ```csharp
 protected override void OnStartup(StartupEventArgs e) {
@@ -56,6 +87,8 @@ protected override void OnStartup(StartupEventArgs e) {
 	...
 }
 ```
+
+}
 
 Likewise on application exit, the assembly repository's cache should be pruned, also as described in the [Assemblies](../assemblies.md) topic.
 
@@ -104,7 +137,7 @@ project.AssemblyReferences.Clear();
 
 Next, use the language on the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) instances that will be editing C# code.
 
-This code applies the language to a document in a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
+This code applies the language to a document in a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
 
 ```csharp
 editor.Document.Language = language;
@@ -119,7 +152,7 @@ It is a good practice to set the [FileName](xref:ActiproSoftware.Text.ITextDocum
 
 If the filename is left empty, the add-on will fall back to using the document's unique ID (a GUID value) to identify its contents in the project assembly.
 
-This code sets the filename for a document in a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
+This code sets the filename for a document in a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
 
 ```csharp
 editor.Document.FileName = @"C:\Code.cs";
@@ -131,9 +164,9 @@ The following list indicates the assemblies that are used with the C# syntax lan
 
 | Assembly | Required | Author | Licensed With | Description |
 |-----|-----|-----|-----|-----|
-| ActiproSoftware.Text.Wpf.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for SyntaxEditor |
-| ActiproSoftware.Text.LLParser.Wpf.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
-| ActiproSoftware.Shared.Wpf.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro WPF controls |
-| ActiproSoftware.SyntaxEditor.Wpf.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for WPF control |
-| ActiproSoftware.Text.Addons.DotNet.Wpf.dll | Yes | Actipro | .NET Languages Add-on | Core text/parsing for the C# language |
-| ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll | Yes | Actipro | .NET Languages Add-on | SyntaxEditor for WPF advanced C# syntax language implementation |
+| ActiproSoftware.Text.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for SyntaxEditor |
+| ActiproSoftware.Text.LLParser.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
+| ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro @@PlatformName controls |
+| ActiproSoftware.SyntaxEditor.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for @@PlatformName control |
+| ActiproSoftware.Text.Addons.DotNet.@@PlatformAssemblySuffix.dll | Yes | Actipro | .NET Languages Add-on | Core text/parsing for the C# language |
+| ActiproSoftware.SyntaxEditor.Addons.DotNet.@@PlatformAssemblySuffix.dll | Yes | Actipro | .NET Languages Add-on | SyntaxEditor for @@PlatformName advanced C# syntax language implementation |

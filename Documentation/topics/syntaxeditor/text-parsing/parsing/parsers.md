@@ -7,7 +7,7 @@ order: 3
 
 Parsers are objects that take in a parser request and output some sort of parse data.  They are generally called via worker threads to prevent the blocking of the main UI thread.
 
-The parse data returned by a parser is a result of performing syntax and/or semantic analysis on some text indicated by a parse request.  Parsers can optionally be implemented to call into other parsing frameworks (Irony, ANTLR, etc.) and return their results.
+The parse data returned by a parser is a result of performing syntax and/or semantic analysis on some text indicated by a parse request.  Parsers can optionally be implemented to call into other parsing frameworks @if (wpf) {(Irony, ANTLR, etc.)} and return their results.
 
 ## What Does a Parser Do?
 
@@ -38,7 +38,7 @@ The [IParser](xref:ActiproSoftware.Text.Parsing.IParser) interface is very simpl
 > [!NOTE]
 > See the [Parse Requests and Dispatchers](parse-requests-and-dispatchers.md) topic for more information on parse requests.
 
-What does a parser actually do?  Well it's entirely up to you.  Generally, it calls some sort of external parser such as Irony, ANTLR, etc. to examine the text in the request and return some sort of result.
+What does a parser actually do?  Well it's entirely up to you.  Generally, it calls some sort of external parser @if (wpf) {such as Irony, ANTLR, etc.} to examine the text in the request and return some sort of result.
 
 However the parser could be implemented to simply execute your own custom code instead.  Maybe you don't need to run a complicated parser that builds an AST and you simply want to build a list of variables defined and where they are defined.  Anything is possible by scanning the text.
 

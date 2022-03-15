@@ -29,7 +29,11 @@ See the [Printing Features](printing/index.md) topic for more information.
 
 SyntaxEditor's view search model interacts with the view's selection and provides extensive find/replace functionality.  A built-in search overlay pane makes this functionality accessible to end users.
 
-A standalone [EditorSearchView](searching/editor-search-view.md) control can be used to instantly recreate a classic Visual Studio-like search experience for end users.
+@if (winrt wpf) {
+
+A standalone [EditorSearchView](searching/editor-search-view.md) control can be used to instantly recreate a classic Visual Studio-like search experience for end users. 
+
+}
 
 See the [Searching (Find/Replace) Features](searching/index.md) topic for more information.
 
@@ -63,6 +67,6 @@ See the [Outlining and Collapsing](outlining/index.md) topic for more informatio
 
 ## Globalization and Accessibility Features
 
-SyntaxEditor has full support for editing bi-directional Unicode text, is completely localizable, and implements UI automation.
+SyntaxEditor has full support for editing @if (wpf winforms) {bi-directional} Unicode text, is completely localizable, and implements UI automation.
 
 See the [Globalization and Accessibility Features](globalization/index.md) topic for more information.

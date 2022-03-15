@@ -5,20 +5,20 @@ order: 9
 ---
 # Layout Serialization
 
-A NavigationBar layout is defined as the selected pane, buttons visible, pane order, and pane visibility for a [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) control.
+A NavigationBar layout is defined as the selected pane, buttons visible, pane order, and pane visibility for a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) control.
 
 Sometimes it is useful to save the layout state of a NavigationBar and restore it later.  This allows for end users to retain their customizations across multiple application executions.  The way to do this is to persist the NavigationBar layout data.
 
 > [!NOTE]
-> When persisting layouts, each [NavigationPane](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationPane) must have a unique value assigned to its `Name` property, otherwise the layout cannot be created.
+> When persisting layouts, each [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) must have a unique value assigned to its `Name` property, otherwise the layout cannot be created.
 
 ## Saving Layout Data
 
 NavigationBar layout data can be persisted in XML format and loaded at a later time.  Probably the two most common ways to store layouts are in files and in a database.
 
-The [NavigationBarLayoutSerializer](xref:ActiproSoftware.Windows.Controls.Navigation.Serialization.NavigationBarLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for saving to files, string, etc.
+The [NavigationBarLayoutSerializer](xref:@ActiproUIRoot.Controls.Navigation.Serialization.NavigationBarLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for saving to files, string, etc.
 
-This sample code shows how to save a [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) layout to an XML string:
+This sample code shows how to save a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) layout to an XML string:
 
 ```csharp
 string layout = new NavigationBarLayoutSerializer().SaveToString(navBar);
@@ -28,11 +28,11 @@ string layout = new NavigationBarLayoutSerializer().SaveToString(navBar);
 
 When loaded, NavigationBar layout data restores the order and visibility states of the panes being managed by the NavigationBar control.  It also determines the number of large buttons to display and selects the pane that was selected when the layout was saved.
 
-The layout data loading code matches the `Name` of panes that were stored in the layout data to the `Name` of panes contained in the [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar).
+The layout data loading code matches the `Name` of panes that were stored in the layout data to the `Name` of panes contained in the [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar).
 
-The [NavigationBarLayoutSerializer](xref:ActiproSoftware.Windows.Controls.Navigation.Serialization.NavigationBarLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for loading from files, string, etc.
+The [NavigationBarLayoutSerializer](xref:@ActiproUIRoot.Controls.Navigation.Serialization.NavigationBarLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for loading from files, string, etc.
 
-This sample code shows how to load a [NavigationBar](xref:ActiproSoftware.Windows.Controls.Navigation.NavigationBar) layout from the XML string:
+This sample code shows how to load a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) layout from the XML string:
 
 ```csharp
 new NavigationBarLayoutSerializer().LoadFromString(layout, navBar);

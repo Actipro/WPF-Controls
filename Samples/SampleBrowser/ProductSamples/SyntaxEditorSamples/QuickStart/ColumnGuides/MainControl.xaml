@@ -1,0 +1,67 @@
+<UserControl x:Class="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ColumnGuides.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
+    >
+    
+	<DockPanel>
+		<shared:PixelSnapper DockPanel.Dock="Top" Margin="20,10">
+			<StackPanel Orientation="Horizontal">
+				<CheckBox VerticalAlignment="Center" IsChecked="{Binding ElementName=editor, Path=AreColumnGuidesVisible}">Are column guides visible</CheckBox>
+				<Button Margin="10,0" Content="Toggle Column Guide at Caret Position" Click="OnToggleColumnGuideClick" />
+				<Button Margin="10,0" Content="Reset Column Guides" Click="OnResetClick" />
+			</StackPanel>
+		</shared:PixelSnapper>
+
+		<editor:SyntaxEditor x:Name="editor" IsRulerMarginVisible="True" IsOutliningMarginVisible="False">
+			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[000001**************************************************************************
+000002*
+000003*    This sample demonstrates using Column Guides to help
+000004*    identify where code should be typed on a line.
+000005*
+000006*    Any lines like this that are longer than 80 characters are easy to identify.
+000007*                                                                           ^ Oops!
+000008*    Thankfully punch cards are no longer in use, but even modern
+000009*    languages promote avoiding very long lines. Column Guides can
+000010*    provide a visual indicator of when lines are too long.
+000011*
+000020**************************************************************************
+000021*
+000022* The COBOL language was originally developed for use with
+000023* punch cards that were limited to 80 characters. The 80 available
+000024* columns were divided into specific purposes:
+000025*    Cols   1-6: Sequence
+000026*    Cols     7: Indicator (like the * used for this comment line)
+000027*    Cols  8-11: Area A
+000028*    Cols 12-72: Area B
+000029*    Cols 73-80: Identification
+000030*
+000040**************************************************************************
+000099
+000100 IDENTIFICATION DIVISION.
+000200 PROGRAM-ID.     HELLO WORLD.
+000300
+000400 ENVIRONMENT DIVISION.
+000500 CONFIGURATION SECTION.
+000600 SOURCE-COMPUTER. RM-COBOL.
+000700 OBJECT-COMPUTER. RM-COBOL.
+000800
+009000 DATA DIVISION.
+001000 FILE SECTION.
+001100
+100000 PROCEDURE DIVISION.
+100100
+100200 MAIN-LOGIC SECTION.
+100300 BEGIN.
+100400     DISPLAY " " LINE 1 POSITION 1 ERASE EOS.
+100500     DISPLAY "Hello world!" LINE 15 POSITION 10.
+100600     STOP RUN
+100700 MAIN-LOGIC-EXIT.
+100800     EXIT.
+]]></editor:EditorDocument>
+		</editor:SyntaxEditor>
+		
+	</DockPanel>
+	
+</UserControl>

@@ -122,7 +122,7 @@ namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.Breadcrumb
 		/// <param name="sender">The sender.</param>
 		/// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
 		private void OnSelectLeafItemClick(object sender, RoutedEventArgs e) {
-			this.breadcrumb.SelectedPath = "Desktop\\Computer\\Local Disk (C:)\\Program Files\\Actipro Software\\WPFStudio";
+			this.breadcrumb.SelectedPath = "Desktop\\Computer\\Local Disk (C:)\\Program Files\\Actipro Software\\WPF Controls";
 		}
 	}
 }

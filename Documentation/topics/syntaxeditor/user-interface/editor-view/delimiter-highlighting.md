@@ -11,7 +11,7 @@ While delimiter pairs such as `{...}`, and `(...)` are most commonly highlighted
 
 ## Activating Delimiter Highlighting
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsDelimiterHighlightingEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsDelimiterHighlightingEnabled) property can be set to `true` to allow SyntaxEditor to render delimiter highlighting, as long as the current syntax language supports the feature.  Delimiter highlighting is enabled on SyntaxEditor by default.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsDelimiterHighlightingEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsDelimiterHighlightingEnabled) property can be set to `true` to allow SyntaxEditor to render delimiter highlighting, as long as the current syntax language supports the feature.  Delimiter highlighting is enabled on SyntaxEditor by default.
 
 ## Required Language Services
 

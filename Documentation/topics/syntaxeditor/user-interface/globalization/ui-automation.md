@@ -13,6 +13,6 @@ Microsoft UI Automation is the new accessibility framework for Microsoft Windows
 
 SyntaxEditor implements automation peers for the following classes:
 
-- The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) class, which provides access to the current document text, current selection, and various other abilities.
+- The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) class, which provides access to the current document text@if (wpf) {, current selection}, and various other abilities.
 
-- The [EditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Primitives.EditorView) class, which provides simple scrolling abilities.
+- The [EditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.EditorView) class, which provides simple scrolling abilities.
