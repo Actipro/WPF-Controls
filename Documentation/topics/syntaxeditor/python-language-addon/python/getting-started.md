@@ -15,6 +15,20 @@ The language's parser does a lot of processing when text changes occur.  To ensu
 
 The ambient parse request dispatcher should be set up in your application startup code as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
+@if (winrt) {
+
+```csharp
+protected override void OnStartup(StartupEventArgs e) {
+	...
+	AmbientParseRequestDispatcherProvider.Dispatcher = new TaskBasedParseRequestDispatcher();
+	...
+}
+```
+
+}
+
+@if (wpf winforms) {
+
 ```csharp
 protected override void OnStartup(StartupEventArgs e) {
 	...
@@ -22,6 +36,8 @@ protected override void OnStartup(StartupEventArgs e) {
 	...
 }
 ```
+
+}
 
 Likewise it should be shut down on application exit, also as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
@@ -44,7 +60,22 @@ protected override void OnExit(ExitEventArgs e) {
 
 An ambient package repository should always be set up to ensure that the application is able to use and cache package data from all packages within the Python project's search paths.  A Python project (see below) normally adds search paths for the root of your project's `.py` files, along with external libraries such as the Python standard library's `Lib` folder.  When a search path is added to a project, it will search the cache path to see if the cached data there is up-to-date with the related source package.  If not, cache data is added to the package repository via a worker thread.
 
-The ambient package repository should be set up in your application startup code.  The [FileBasedPackageRepository](xref:ActiproSoftware.Text.Languages.Python.Reflection.Implementation.FileBasedPackageRepository) class is the default implementation of a package repository, which supports the writing of binary package data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder (usually requires full trust).
+The ambient package repository should be set up in your application startup code.  The [FileBasedPackageRepository](xref:ActiproSoftware.Text.Languages.Python.Reflection.Implementation.FileBasedPackageRepository) class is the default implementation of a package repository, which supports the writing of binary package data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder @if (winrt) {(the app's data folder is advised). }@if (wpf winforms) {(usually requires full trust). }
+
+@if (winrt) {
+
+```csharp
+protected override void OnStartup(StartupEventArgs e) {
+	...
+	string appDataPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Package Repository");
+	AmbientPackageRepositoryProvider.Repository = new FileBasedPackageRepository(appDataPath);
+	...
+}
+```
+
+}
+
+@if (wpf winforms) {
 
 ```csharp
 protected override void OnStartup(StartupEventArgs e) {
@@ -56,6 +87,8 @@ protected override void OnStartup(StartupEventArgs e) {
 	...
 }
 ```
+
+}
 
 > [!NOTE]
 > Failure to set up an ambient package repository provider will result in IntelliPrompt features not working for module internals.
@@ -92,11 +125,18 @@ project.SearchPaths.Add(@"C:\Python\Platform34\Lib");
 project.SearchPaths.Add(@"C:\Python\Platform34\Lib\site-packages");
 ```
 
+@if (winrt) {
+
+> [!NOTE]
+> Due to the security sandbox restrictions of the file system in Windows apps, take care to ensure that the search paths you add are fully accessible to the app.  The app's data folder is advised.
+
+}
+
 ## Use the PythonSyntaxLanguage
 
 Next, use the language on the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) instances that will be editing Python code.
 
-This code applies the language to a document in a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
+This code applies the language to a document in a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
 
 ```csharp
 editor.Document.Language = language;
@@ -114,7 +154,7 @@ It is a good practice to set the [FileName](xref:ActiproSoftware.Text.ITextDocum
 
 Python also generally prefers that spaces are used in place of tabs for indentation.  Set the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[AutoConvertTabsToSpaces](xref:ActiproSoftware.Text.ITextDocument.AutoConvertTabsToSpaces) property to `true` to force the use of spaces.
 
-This code sets the filename and tab options for a document in a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
+This code sets the filename and tab options for a document in a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
 
 ```csharp
 editor.Document.FileName = @"C:\mymodule.py";
@@ -128,9 +168,9 @@ The following list indicates the assemblies that are used with the Python syntax
 
 | Assembly | Required | Author | Licensed With | Description |
 |-----|-----|-----|-----|-----|
-| ActiproSoftware.Text.Wpf.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for WPF |
-| ActiproSoftware.Text.LLParser.Wpf.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
-| ActiproSoftware.Shared.Wpf.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro WPF controls |
-| ActiproSoftware.SyntaxEditor.Wpf.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for WPF control |
-| ActiproSoftware.Text.Addons.Python.Wpf.dll | Yes | Actipro | Python Language Add-on | Core text/parsing for the Python languages |
-| ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll | Yes | Actipro | Python Language Add-on | SyntaxEditor for WPF advanced Python syntax language implementations |
+| ActiproSoftware.Text.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for @@PlatformName |
+| ActiproSoftware.Text.LLParser.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
+| ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro @@PlatformName controls |
+| ActiproSoftware.SyntaxEditor.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for @@PlatformName control |
+| ActiproSoftware.Text.Addons.Python.@@PlatformAssemblySuffix.dll | Yes | Actipro | Python Language Add-on | Core text/parsing for the Python languages |
+| ActiproSoftware.SyntaxEditor.Addons.Python.@@PlatformAssemblySuffix.dll | Yes | Actipro | Python Language Add-on | SyntaxEditor for @@PlatformName advanced Python syntax language implementations |

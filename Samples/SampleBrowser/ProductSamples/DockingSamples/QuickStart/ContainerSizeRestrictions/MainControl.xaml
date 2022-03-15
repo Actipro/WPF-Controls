@@ -25,7 +25,7 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 
 	<!-- DockSite -->
-	<docking:DockSite x:Name="dockSite">
+	<docking:DockSite x:Name="dockSite" CanDocumentWindowsFloat="True">
 		<docking:DockSite.AutoHideLeftContainers>
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow Title="Auto-Hide Default Width" ContainerAutoHideSize="350,200">
@@ -37,16 +37,25 @@
 		<docking:SplitContainer Orientation="Vertical">
 			<docking:SplitContainer>
 				<docking:Workspace>
-					<docking:TabbedMdiHost />
+					<docking:TabbedMdiHost>
+						<docking:TabbedMdiContainer>
+							<docking:DocumentWindow Title="Document1.txt" ContainerMinSize="200,100">
+								<TextBox BorderThickness="0" Text="This document window has a minimum size of 200,100 specified.  Try to resize its width smaller via splitters." TextWrapping="Wrap" />
+							</docking:DocumentWindow>
+							<docking:DocumentWindow Title="Document2.txt">
+								<TextBox BorderThickness="0" Text="This document window has no restrictions.  It can be resized to any width/height as long as it's not affecting nearby docking windows' size restrictions." TextWrapping="Wrap" />
+							</docking:DocumentWindow>
+						</docking:TabbedMdiContainer>
+					</docking:TabbedMdiHost>
 				</docking:Workspace>
 
 				<docking:SplitContainer Orientation="Vertical">
 					<docking:ToolWindowContainer>
 						<docking:ToolWindow Title="Has Minimum Width" ContainerMinSize="170,30" ContainerDockedSize="250,200">
-							<TextBox BorderThickness="0" Text="This tool window has a minimum width of 170 specified.  Try to resize its with smaller via splitters." TextWrapping="Wrap" />
+							<TextBox BorderThickness="0" Text="This tool window has a minimum width of 170 specified.  Try to resize its width smaller via splitters." TextWrapping="Wrap" />
 						</docking:ToolWindow>
 						<docking:ToolWindow Title="Normal">
-							<TextBox BorderThickness="0" Text="This tool window has no restrictions.  It can be resized to any width/height as long as it's not affecting nearby tool windows' size restrictions." TextWrapping="Wrap" />
+							<TextBox BorderThickness="0" Text="This tool window has no restrictions.  It can be resized to any width/height as long as it's not affecting nearby docking windows' size restrictions." TextWrapping="Wrap" />
 						</docking:ToolWindow>
 					</docking:ToolWindowContainer>
 					<docking:ToolWindowContainer>

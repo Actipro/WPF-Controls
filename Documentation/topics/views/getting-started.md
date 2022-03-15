@@ -11,11 +11,11 @@ This topic's information will assume you are using Visual Studio to write your X
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Views.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Views.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Getting Started with Views
 
-This code shows the base XAML that you can use to create a simple [AnimatedStackPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel):
+This code shows the base XAML that you can use to create a simple [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel):
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
@@ -26,7 +26,7 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 </views:AnimatedStackPanel>
 ```
 
-This code shows the base XAML that you can use to use a [AnimatedStackPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedStackPanel) in a `ListBox`:
+This code shows the base XAML that you can use to use a [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel) in a `ListBox`:
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"

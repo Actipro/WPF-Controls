@@ -11,6 +11,6 @@ All user interface text properties have the `Localizability` attribute applied t
 
 The following text properties are flagged as localizable via the `Localizability` attribute:
 
-- [CircularTickLabelCustom](xref:ActiproSoftware.Windows.Controls.Gauge.CircularTickLabelCustom).[Text](xref:ActiproSoftware.Windows.Controls.Gauge.CircularTickLabelCustom.Text)
+- [CircularTickLabelCustom](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom).[Text](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom.Text)
 
-- [LinearTickLabelCustom](xref:ActiproSoftware.Windows.Controls.Gauge.LinearTickLabelCustom).[Text](xref:ActiproSoftware.Windows.Controls.Gauge.LinearTickLabelCustom.Text)
+- [LinearTickLabelCustom](xref:@ActiproUIRoot.Controls.Gauge.LinearTickLabelCustom).[Text](xref:@ActiproUIRoot.Controls.Gauge.LinearTickLabelCustom.Text)

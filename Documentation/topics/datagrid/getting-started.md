@@ -50,7 +50,7 @@ xmlns:datagrideditors="http://schemas.actiprosoftware.com/winfx/xaml/datagridedi
 
 ## Further Study
 
-It's very easy to use the WPF DataGrid and [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid) controls and there are probably a lot of great features that you aren't aware of.
+It's very easy to use the WPF DataGrid and [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid) controls and there are probably a lot of great features that you aren't aware of.
 
 Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough and the sample project demonstrates almost every feature of the controls.
 

@@ -15,6 +15,20 @@ The language's parser does a lot of processing when text changes occur.  To ensu
 
 The ambient parse request dispatcher should be set up in your application startup code as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
+@if (winrt) {
+
+```csharp
+protected override void OnStartup(StartupEventArgs e) {
+	...
+	AmbientParseRequestDispatcherProvider.Dispatcher = new TaskBasedParseRequestDispatcher();
+	...
+}
+```
+
+}
+
+@if (wpf winforms) {
+
 ```csharp
 protected override void OnStartup(StartupEventArgs e) {
 	...
@@ -22,6 +36,8 @@ protected override void OnStartup(StartupEventArgs e) {
 	...
 }
 ```
+
+}
 
 Likewise it should be shut down on application exit, also as described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
@@ -90,7 +106,7 @@ language.RegisterXmlValidator(validator);  // If DTD validation support is desir
 
 The final step is to use the language on the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) instances that will be editing XML.
 
-This code applies the language to a document in a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
+This code applies the language to a document in a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), whose instance is in the `editor` variable:
 
 ```csharp
 editor.Document.Language = language;
@@ -102,9 +118,9 @@ The following list indicates the assemblies that are used with the XML syntax la
 
 | Assembly | Required | Author | Licensed With | Description |
 |-----|-----|-----|-----|-----|
-| ActiproSoftware.Text.Wpf.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for WPF |
-| ActiproSoftware.Text.LLParser.Wpf.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
-| ActiproSoftware.Shared.Wpf.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro WPF controls |
-| ActiproSoftware.SyntaxEditor.Wpf.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for WPF control |
-| ActiproSoftware.Text.Addons.Xml.Wpf.dll | Yes | Actipro | Web Languages Add-on | Core text/parsing for the XML language |
-| ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll | Yes | Actipro | Web Languages Add-on | SyntaxEditor for WPF advanced XML syntax language implementation |
+| ActiproSoftware.Text.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core text/parsing framework for @@PlatformName |
+| ActiproSoftware.Text.LLParser.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | LL parser framework implementation |
+| ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | Core framework for all Actipro @@PlatformName controls |
+| ActiproSoftware.SyntaxEditor.@@PlatformAssemblySuffix.dll | Yes | Actipro | SyntaxEditor | SyntaxEditor for @@PlatformName control |
+| ActiproSoftware.Text.Addons.Xml.@@PlatformAssemblySuffix.dll | Yes | Actipro | Web Languages Add-on | Core text/parsing for the XML language |
+| ActiproSoftware.SyntaxEditor.Addons.Xml.@@PlatformAssemblySuffix.dll | Yes | Actipro | Web Languages Add-on | SyntaxEditor for @@PlatformName advanced XML syntax language implementation |

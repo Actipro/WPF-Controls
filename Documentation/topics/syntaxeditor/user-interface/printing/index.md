@@ -25,8 +25,12 @@ While the SyntaxEditor printer views have numerous built-in margins (document ti
 
 See the [Printer View Margins](printer-view-margins.md) topic for more information.
 
+@if (wpf) {
+
 ## Printing to XPS
 
 Any SyntaxEditor document content can be printed out to XPS format with a few lines of code.
 
 See the [Printing to XPS](xps.md) topic for more information.
+
+}

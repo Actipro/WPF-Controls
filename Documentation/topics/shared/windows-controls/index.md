@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The [ActiproSoftware.Windows.Controls](xref:ActiproSoftware.Windows.Controls) namespace contains various user interface controls that may be used in your applications.
+The [ActiproSoftware.Windows.Controls](xref:@ActiproUIRoot.Controls) namespace contains various user interface controls that may be used in your applications.
 
 ## The AdvancedTextBlock Control
 
@@ -21,7 +21,7 @@ The [AnimatedProgressBar](animatedprogressbar.md) control includes all the featu
 
 ## The CustomDrawElement FrameworkElement
 
-The [CustomDrawElement](customdrawelement.md) element is a simple `FrameworkElement` that provides a [CustomDraw](xref:ActiproSoftware.Windows.Controls.CustomDrawElement.CustomDraw) event, allowing for easy, event-based custom rendering.
+The [CustomDrawElement](customdrawelement.md) element is a simple `FrameworkElement` that provides a [CustomDraw](xref:@ActiproUIRoot.Controls.CustomDrawElement.CustomDraw) event, allowing for easy, event-based custom rendering.
 
 ## The DropShadowChrome Decorator
 
@@ -29,7 +29,7 @@ The [DropShadowChrome](dropshadowchrome.md) decorator draws a drop-shadow or out
 
 ## The DynamicImage Control
 
-The [DynamicImage](xref:ActiproSoftware.Windows.Controls.DynamicImage) control is a drop-in replacement for `Image` that is the primary UI mechanism for interfacing with [ImageProvider](xref:ActiproSoftware.Windows.Media.ImageProvider) and its features, supporting:
+The [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) control is a drop-in replacement for `Image` that is the primary UI mechanism for interfacing with [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) and its features, supporting:
 
 - Chromatic adaptation (color shifting) for images, which allows images designed for light themes to be automatically adjusted for use in dark themes.
 - Conversion of a monochrome vector image to render in the current foreground color.

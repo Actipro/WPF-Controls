@@ -5,14 +5,14 @@ order: 20
 ---
 # Building a Custom Panel
 
-This topic describes step-by-step how to create a custom panel that supports animation and [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel).  Specifically, the panel created in this tutorial will randomly arrange its child elements.
+This topic describes step-by-step how to create a custom panel that supports animation and [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel).  Specifically, the panel created in this tutorial will randomly arrange its child elements.
 
 > [!NOTE]
 > The complete source code for this tutorial can be found in the associated Sample Browser.
 
 ## Step 1: Class Declaration
 
-The panel will be named `RandomPanel` and needs to derive from [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).
+The panel will be named `RandomPanel` and needs to derive from [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).
 
 The `using` statements listed below have been included as they will all be needed to complete this tutorial.  But, Visual Studio can be used to automatically add the appropriate `using` statements for unknown types.  Since this panel can be found in the associated samples, the same namespace is used here.
 
@@ -48,9 +48,9 @@ private Random random = new Random(Environment.TickCount);
 
 ## Step 3: Override MeasureElements
 
-The [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).[MeasureElements](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.MeasureElements*) method must be overridden to measure the associated elements.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).[MeasureElements](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.MeasureElements*) method must be overridden to measure the associated elements.
 
-Typically, a `Panel` will measure/arrange the elements found in the `Children` collection.  In order to support [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel), the panel must measure/arrange the list of elements provided as a method parameter.  When the `RandomPanel` is used by a `SwitchPanel`, the list includes the elements contained in the `SwitchPanel`.  When the `RandomPanel` is used independently, the list simply references the `Children` collection.
+Typically, a `Panel` will measure/arrange the elements found in the `Children` collection.  In order to support [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel), the panel must measure/arrange the list of elements provided as a method parameter.  When the `RandomPanel` is used by a `SwitchPanel`, the list includes the elements contained in the `SwitchPanel`.  When the `RandomPanel` is used independently, the list simply references the `Children` collection.
 
 Add the following inside the `Random` class:
 
@@ -93,7 +93,7 @@ return desiredSize;
 
 ## Step 5: Override ArrangeElements
 
-The [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).[ArrangeElements](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeElements*) method must be overridden to arrange the associated elements.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).[ArrangeElements](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeElements*) method must be overridden to arrange the associated elements.
 
 Just like the measure phase, the specified list of elements should be arranged, not the elements in the `Children` collection.  The `RandomPanel` will always take as much space as it's given, since it returns `finalSize` unaltered.
 
@@ -118,7 +118,7 @@ public override Size ArrangeElements(IList<UIElement> elements, Size finalSize) 
 
 ## Step 6: Arrangement Logic - Check IsLayoutUpdatePending
 
-The [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).[IsLayoutUpdatePending](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.IsLayoutUpdatePending) property is used to flag when the layout logic of the `RandomPanel`, or the associated `SwitchPanel`, has changed.  The animations used for a change in a layout logic change can be configured differently than standard arrange rectangle changes.  These two distinct states are represented by [ArrangeStatus](xref:ActiproSoftware.Windows.Controls.Views.ArrangeStatus).`LayoutUpdating` and `ArrangeStatus`.`ArrangeUpdating`, respectively.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).[IsLayoutUpdatePending](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.IsLayoutUpdatePending) property is used to flag when the layout logic of the `RandomPanel`, or the associated `SwitchPanel`, has changed.  The animations used for a change in a layout logic change can be configured differently than standard arrange rectangle changes.  These two distinct states are represented by [ArrangeStatus](xref:@ActiproUIRoot.Controls.Views.ArrangeStatus).`LayoutUpdating` and `ArrangeStatus`.`ArrangeUpdating`, respectively.
 
 Derived panels are responsible for checking and using the `IsLayoutUpdatePending` flag, so both statuses are correctly applied.
 
@@ -158,7 +158,7 @@ foreach (UIElement element in elements) {
 
 ## Step 8: Arrangement Logic - Update ArrangeState
 
-Instead of directly arranging elements, derivations of `PanelBase` update the "arrange state".  This information is captured in an instance of [ArrangeState](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState) and is set on an element via an attached property.
+Instead of directly arranging elements, derivations of `PanelBase` update the "arrange state".  This information is captured in an instance of [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState) and is set on an element via an attached property.
 
 The `PanelBase` will then watch for state changes and animate an element based on its state (i.e. entering the view, leaving the view, updating location, etc) and the current animation settings.
 

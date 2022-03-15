@@ -9,7 +9,7 @@ An outliner returns a language-specific outlining source for a particular [IText
 
 ## Basic Concepts
 
-Outliners are classes implementing [IOutliner](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliner) that provide outlining manager with [IOutliningSource](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliningSource) objects upon request.  Each outliner designated whether the automatic outlining should be performed in the main UI thread when any text change occurs, or if it should be performed in response to a parse data update.
+Outliners are classes implementing [IOutliner](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliner) that provide outlining manager with [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) objects upon request.  Each outliner designated whether the automatic outlining should be performed in the main UI thread when any text change occurs, or if it should be performed in response to a parse data update.
 
 See the [Outlining Sources and Outliners](../../user-interface/outlining/outlining-sources.md) topic for details on how to create and work with outlining sources and outliners.
 
@@ -17,9 +17,9 @@ When an outliner is associated with a syntax language, SyntaxEditor knows that t
 
 ## Registering with a Language
 
-Any object that implements [IOutliner](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliner) can be associated with a syntax language by registering it as an [IOutliner](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliner) service on the language.
+Any object that implements [IOutliner](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliner) can be associated with a syntax language by registering it as an [IOutliner](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliner) service on the language.
 
-This code creates an outliner for a [TokenOutliningSourceBase](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.Implementation.TokenOutliningSourceBase)-based outlining source named `JavascriptOutliningSource`, and registers it with the syntax language that is already declared in the `language` variable:
+This code creates an outliner for a [TokenOutliningSourceBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.Implementation.TokenOutliningSourceBase)-based outlining source named `JavascriptOutliningSource`, and registers it with the syntax language that is already declared in the `language` variable:
 
 ```csharp
 TokenOutliner<JavascriptOutliningSource> source = new TokenOutliner<JavascriptOutliningSource>();

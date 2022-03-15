@@ -27,7 +27,7 @@ The part edit box infrastructure was completely rewritten in the 17.1 version to
 
 The old version's part edit boxes had a three tier infrastructure: edit box, part groups, and parts.  Now part edit boxes have two-tiers: edit box and parts.
 
-Edit boxes no longer work like an items control in terms of how UI is constructed (there are no more placement slots).  Some edit boxes have templates that contain preview swatches (like for `Brush` or `Color` display) that are left-aligned.  All edit boxes have a `TextBox` that allows text entry of a string representation of the object being edited.  Many edit boxes have an optional drop-down button that shows if the [HasPopup](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.HasPopup) property is `true`.  The template of each edit box can be customized if additional buttons or UI needs to be added.
+Edit boxes no longer work like an items control in terms of how UI is constructed (there are no more placement slots).  Some edit boxes have templates that contain preview swatches (like for `Brush` or `Color` display) that are left-aligned.  All edit boxes have a `TextBox` that allows text entry of a string representation of the object being edited.  Many edit boxes have an optional drop-down button that shows if the [HasPopup](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.HasPopup) property is `true`.  The template of each edit box can be customized if additional buttons or UI needs to be added.
 
 - In an effort to simplify the object model, part groups no longer exist in the new version. `ArePartGroupsDisabledWhenUnchecked`, `ArePartGroupsSelectable`, and `DefaultPartGroupVisibility` properties removed.
 
@@ -41,19 +41,19 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - The drop-down button is now defined in each edit box control's template so placement properties no longer apply. `DropDownButtonInactiveVisibility`, `DropDownButtonMargin`, `DropDownButtonPlacementOrder`, `DropDownButtonPlacementSlotSpinnerTemplate`, `DropDownButtonTemplate`, `DropDownHorizontalAlignment`, and `DropDownStaysOpen` properties removed.
 
-- `DropDownButtonVisibility` property removed.  Use [HasPopup](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.HasPopup) property instead.
+- `DropDownButtonVisibility` property removed.  Use [HasPopup](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.HasPopup) property instead.
 
 - `DropDownClosed` and `DropDownOpened` events removed.
 
-- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e. [DatePicker](xref:ActiproSoftware.Windows.Controls.Editors.DatePicker) for [DateEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
+- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e. [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) for [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
 
 - `Focus` (overload) and `SelectFirstGroup` methods removed.  Use the normal Focus method instead.
 
-- `Hint`, `HintTemplate`, `HintTemplateSelector`, `IsHintTransitioningEnabled`, and `IsHintVisible` properties removed.  Use [PlaceholderText](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PlaceholderText) property instead.
+- `Hint`, `HintTemplate`, `HintTemplateSelector`, `IsHintTransitioningEnabled`, and `IsHintVisible` properties removed.  Use [PlaceholderText](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PlaceholderText) property instead.
 
-- `IsDropDownButtonTransparencyModeEnabled` property removed.  Use [UsageContext](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.UsageContext) property instead.
+- `IsDropDownButtonTransparencyModeEnabled` property removed.  Use [UsageContext](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.UsageContext) property instead.
 
-- `IsDropDownOpen` property removed.  Use [IsPopupOpen](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.IsPopupOpen) property instead.
+- `IsDropDownOpen` property removed.  Use [IsPopupOpen](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsPopupOpen) property instead.
 
 - `IsFocusMovedOnTerminalMatches` property removed.
 
@@ -67,31 +67,31 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - `SelectFirstGroup` method removed. `SelectAll` method can be used instead.
 
-- `SpinBehavior` property renamed to [SpinWrapping](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.SpinWrapping) and related `SpinBehavior` enum renamed to `SpinWrapping`.
+- `SpinBehavior` property renamed to [SpinWrapping](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.SpinWrapping) and related `SpinBehavior` enum renamed to `SpinWrapping`.
 
-- `SpinnerInactiveVisibility` property removed and `SpinnerVisibility` property return value changed to cover both former properties.  Use the revised [SpinnerVisibility](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.SpinnerVisibility) property instead.
+- `SpinnerInactiveVisibility` property removed and `SpinnerVisibility` property return value changed to cover both former properties.  Use the revised [SpinnerVisibility](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.SpinnerVisibility) property instead.
 
 - Spinner is now defined in each edit box control's template so placement properties no longer apply. `SpinnerMargin`, `SpinnerPlacementOrder`, `SpinnerPlacementSlot`, and `SpinnerTemplate` properties removed.
 
 In addition to the above, some number-oriented edit boxs have had these property changes:
 
-- `StepValue` property renamed to [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.SmallChange), which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new [LargeChange](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.LargeChange) property is used for `PgUp`/`PgDn` incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:ActiproSoftware.Windows.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
+- `StepValue` property renamed to [SmallChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.SmallChange), which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new [LargeChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.LargeChange) property is used for `PgUp`/`PgDn` incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
 
-- [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.Minimum) and [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.Maximum) now use non-nullable types instead of the same type as the `Value` property.  So for a [DoubleEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox) (which has a `Value` of type `Nullable<Double>`), the type for those two properties will be `Double`.
+- [Minimum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Maximum) now use non-nullable types instead of the same type as the `Value` property.  So for a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) (which has a `Value` of type `Nullable<Double>`), the type for those two properties will be `Double`.
 
-- `AllowInfinity` and `AllowNaN` properties are now available only on [DoubleEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox) and [SingleEditBox](xref:ActiproSoftware.Windows.Controls.Editors.SingleEditBox) as [IsPositiveInfinityAllowed](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.IsPositiveInfinityAllowed), [IsNegativeInfinityAllowed](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.IsNegativeInfinityAllowed), and [IsNaNAllowed](xref:ActiproSoftware.Windows.Controls.Editors.DoubleEditBox.IsNaNAllowed) properties.
+- `AllowInfinity` and `AllowNaN` properties are now available only on [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) and [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) as [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsPositiveInfinityAllowed), [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsNegativeInfinityAllowed), and [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsNaNAllowed) properties.
 
 ### PropertyGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
-The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
+The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
 ### DataGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll" assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
+The new "ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll" assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
 
-The [Editors and DataGrid Interoperability](../editors/interoperability/datagrid.md) topic covers the column classes that are available, including additional ones like [DataGridDateColumn](xref:ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.DataGridDateColumn), to integrate edit boxes with DataGrid.
+The [Editors and DataGrid Interoperability](../editors/interoperability/datagrid.md) topic covers the column classes that are available, including additional ones like [DataGridDateColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDateColumn), to integrate edit boxes with DataGrid.
 
 ### Ribbon Integration Updates
 
@@ -101,50 +101,50 @@ The [Editors and Ribbon Interoperability](../editors/interoperability/ribbon.md)
 
 ### AnalogClock Changed to TimePicker
 
-The `AnalogClock` control has been removed.  Use the new [TimePicker](xref:ActiproSoftware.Windows.Controls.Editors.TimePicker) control instead.
+The `AnalogClock` control has been removed.  Use the new [TimePicker](xref:@ActiproUIRoot.Controls.Editors.TimePicker) control instead.
 
 ### BrushEditBox Updates
 
-- `AllowGradientBrushes` property renamed to [IsGradientAllowed](xref:ActiproSoftware.Windows.Controls.Editors.BrushEditBox.IsGradientAllowed).
-- `BrushEditorStyle` property renamed to [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
+- `AllowGradientBrushes` property renamed to [IsGradientAllowed](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.IsGradientAllowed).
+- `BrushEditorStyle` property renamed to [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
 - `BrushPreviewInactiveVisibility` property removed and swatch is always visible now.
-- `BrushPreviewMargin` property renamed to [SwatchMargin](xref:ActiproSoftware.Windows.Controls.Editors.BrushEditBox.SwatchMargin).
+- `BrushPreviewMargin` property renamed to [SwatchMargin](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.SwatchMargin).
 - `BrushPreviewPlacementOrder` property removed.
 - `BrushPreviewPlacementSlot` property removed.
 - `BrushPreviewTemplate` property removed.
-- `BrushPreviewVisibility` property renamed to [HasSwatch](xref:ActiproSoftware.Windows.Controls.Editors.BrushEditBox.HasSwatch).
+- `BrushPreviewVisibility` property renamed to [HasSwatch](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.HasSwatch).
 - `IsAlphaComponentEditable` property removed.
-- `IsAlphaComponentVisible` property renamed to [IsAlphaEnabled](xref:ActiproSoftware.Windows.Controls.Editors.BrushEditBox.IsAlphaEnabled).
+- `IsAlphaComponentVisible` property renamed to [IsAlphaEnabled](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.IsAlphaEnabled).
 
 ### BrushEditor Changed to BrushPicker
 
-The `BrushEditor` and `BrushPreviewControl` controls have been removed.  Use the new [BrushPicker](xref:ActiproSoftware.Windows.Controls.Editors.BrushPicker) control instead.
+The `BrushEditor` and `BrushPreviewControl` controls have been removed.  Use the new [BrushPicker](xref:@ActiproUIRoot.Controls.Editors.BrushPicker) control instead.
 
 ### Calculator Updates
 
-- `DisplayMode` property removed in favor of new [HasDisplay](xref:ActiproSoftware.Windows.Controls.Editors.Calculator.HasDisplay) and [HasMemoryButtons](xref:ActiproSoftware.Windows.Controls.Editors.Calculator.HasMemoryButtons) properties.
+- `DisplayMode` property removed in favor of new [HasDisplay](xref:@ActiproUIRoot.Controls.Editors.Calculator.HasDisplay) and [HasMemoryButtons](xref:@ActiproUIRoot.Controls.Editors.Calculator.HasMemoryButtons) properties.
 
-- `DisplayString` property renamed to [DisplayText](xref:ActiproSoftware.Windows.Controls.Editors.Calculator.DisplayText).
+- `DisplayString` property renamed to [DisplayText](xref:@ActiproUIRoot.Controls.Editors.Calculator.DisplayText).
 
-- `CalculatorCommands` class removed in favor of new command properties directly on [Calculator](xref:ActiproSoftware.Windows.Controls.Editors.Calculator).
+- `CalculatorCommands` class removed in favor of new command properties directly on [Calculator](xref:@ActiproUIRoot.Controls.Editors.Calculator).
 
 ### ColorEditBox Updates
 
-- `ColorEditorStyle` property renamed to [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
+- `ColorEditorStyle` property renamed to [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
 - `ColorPreviewInactiveVisibility` property removed and swatch is always visible now.
-- `ColorPreviewMargin` property renamed to [SwatchMargin](xref:ActiproSoftware.Windows.Controls.Editors.ColorEditBox.SwatchMargin).
+- `ColorPreviewMargin` property renamed to [SwatchMargin](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.SwatchMargin).
 - `ColorPreviewPlacementOrder` property removed.
 - `ColorPreviewPlacementSlot` property removed.
 - `ColorPreviewTemplate` property removed.
-- `ColorPreviewVisibility` property renamed to [HasSwatch](xref:ActiproSoftware.Windows.Controls.Editors.ColorEditBox.HasSwatch).
+- `ColorPreviewVisibility` property renamed to [HasSwatch](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.HasSwatch).
 - `EditableParts` property and related `ColorEditableParts` enumeration removed.
 - `ExportFormat` property removed.
 - `Format` property removed.
-- `IsAlphaComponentVisible` property renamed to [IsAlphaEnabled](xref:ActiproSoftware.Windows.Controls.Editors.ColorEditBox.IsAlphaEnabled).
+- `IsAlphaComponentVisible` property renamed to [IsAlphaEnabled](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.IsAlphaEnabled).
 
 ### ColorEditor Changed to ColorPicker
 
-The `ColorEditor` control has been removed.  Use the new [ColorPicker](xref:ActiproSoftware.Windows.Controls.Editors.ColorPicker) control instead.
+The `ColorEditor` control has been removed.  Use the new [ColorPicker](xref:@ActiproUIRoot.Controls.Editors.ColorPicker) control instead.
 
 ### CornerRadiusEditBox Updates
 
@@ -152,11 +152,11 @@ The `ColorEditor` control has been removed.  Use the new [ColorPicker](xref:Acti
 
 ### DateTimeEditBox Updates
 
-- `AnalogClockStyle` and `MonthCalendarStyle` properties removed.  Use [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle) with a [DateTimePicker](xref:ActiproSoftware.Windows.Controls.Editors.DateTimePicker) style instead.
+- `AnalogClockStyle` and `MonthCalendarStyle` properties removed.  Use [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle) with a [DateTimePicker](xref:@ActiproUIRoot.Controls.Editors.DateTimePicker) style instead.
 
-- `DateValue` property removed.  Use the new [DateEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DateEditBox) control when doing date-only selection.
+- `DateValue` property removed.  Use the new [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) control when doing date-only selection.
 
-- `DefaultDropdownContentType` property removed since there are separate [DateTimeEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DateTimeEditBox), [DateEditBox](xref:ActiproSoftware.Windows.Controls.Editors.DateEditBox), and [TimeEditBox](xref:ActiproSoftware.Windows.Controls.Editors.TimeEditBox) controls now.
+- `DefaultDropdownContentType` property removed since there are separate [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox), [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox), and [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) controls now.
 
 - `EditableParts` property and related `DateTimeEditableParts` enumeration removed.
 
@@ -164,19 +164,19 @@ The `ColorEditor` control has been removed.  Use the new [ColorPicker](xref:Acti
 
 ### DateTimeEditor Changed to DateTimePicker
 
-The `DateTimeEditor` control has been removed.  Use the new [DateTimePicker](xref:ActiproSoftware.Windows.Controls.Editors.DateTimePicker) control instead.
+The `DateTimeEditor` control has been removed.  Use the new [DateTimePicker](xref:@ActiproUIRoot.Controls.Editors.DateTimePicker) control instead.
 
 ### EnumEditBox Updates
 
-- `EnumListBoxStyle` property renamed to [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
-- `UseDescriptionAttributes` property renamed to [UseDisplayAttributes](xref:ActiproSoftware.Windows.Controls.Editors.EnumEditBox.UseDisplayAttributes).  Both `DescriptionAttribute` and `DisplayAttribute` are now supported.
+- `EnumListBoxStyle` property renamed to [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
+- `UseDescriptionAttributes` property renamed to [UseDisplayAttributes](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.UseDisplayAttributes).  Both `DescriptionAttribute` and `DisplayAttribute` are now supported.
 
 ### EnumListBox Updates
 
 - `DisplayMode` property and related `EnumListBoxDisplayMode` enumeration removed.
 - `IsItemsSourceAutoUpdated` property removed.
-- `EnumListBoxStyle` property renamed to [PopupPickerStyle](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
-- `UseDescriptionAttributes` property renamed to [UseDisplayAttributes](xref:ActiproSoftware.Windows.Controls.Editors.EnumListBox.UseDisplayAttributes).  Both `DescriptionAttribute` and `DisplayAttribute` are now supported.
+- `EnumListBoxStyle` property renamed to [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).
+- `UseDescriptionAttributes` property renamed to [UseDisplayAttributes](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.UseDisplayAttributes).  Both `DescriptionAttribute` and `DisplayAttribute` are now supported.
 
 ### EnumListBoxItem Updates
 
@@ -190,8 +190,8 @@ The `DateTimeEditor` control has been removed.  Use the new [DateTimePicker](xre
 - `NewGuidButtonPlacementOrder` property removed.
 - `NewGuidButtonPlacementSlot` property removed.
 - `NewGuidButtonTemplate` property removed.
-- `NewGuidButtonVisibility` property removed.  Set [IsReadOnly](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.PartEditBoxBase`1.IsReadOnly) to `true` to hide the button.
-- `SetValueToNewGuid` property renamed to [NewGuidCommand](xref:ActiproSoftware.Windows.Controls.Editors.GuidEditBox.NewGuidCommand).
+- `NewGuidButtonVisibility` property removed.  Set [IsReadOnly](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsReadOnly) to `true` to hide the button.
+- `SetValueToNewGuid` property renamed to [NewGuidCommand](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox.NewGuidCommand).
 
 ### Int32RectEditBox Updates
 
@@ -202,8 +202,8 @@ The `DateTimeEditor` control has been removed.  Use the new [DateTimePicker](xre
 - `MaskedTextBox` changed to inherit the native `TextBox` control.
 - `IsMatchedChanged` event changed to be an `EventHandler`.
 - `IsMatchedTerminally` property and `IsMatchedTerminallyChanged` event removed
-- `MaskType` property renamed to [MaskKind](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox.MaskKind), and related `MaskType` enumeration renamed to [MaskKind](xref:ActiproSoftware.Windows.Controls.Editors.MaskKind).
-- `PromptBrush`, `PromptGeometry`, and `PromptIndicatorType` properties removed since [MaskedTextBox](xref:ActiproSoftware.Windows.Controls.Editors.MaskedTextBox) now inherits the native `TextBox` instead of rendering prompt glyphs itself.
+- `MaskType` property renamed to [MaskKind](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MaskKind), and related `MaskType` enumeration renamed to [MaskKind](xref:@ActiproUIRoot.Controls.Editors.MaskKind).
+- `PromptBrush`, `PromptGeometry`, and `PromptIndicatorType` properties removed since [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) now inherits the native `TextBox` instead of rendering prompt glyphs itself.
 - `TextChanged` and `TextChanging` events changed to use the native `TextBox` versions, since `MaskedTextBox` how inherits `TextBox`.
 
 ### MonthCalendar Updates
@@ -244,7 +244,7 @@ Use the native `PasswordBox` control instead.
 
 ### RatingItem Updates
 
-- `HoverGlyphTemplate`, `SelectedAlternateBackgroundGlyphTemplate`, and `SelectedAlternateForegroundGlyphTemplate` properties replaced by the [ActiveGlyphTemplate](xref:ActiproSoftware.Windows.Controls.Editors.RatingItem.ActiveGlyphTemplate) and [AverageGlyphTemplate](xref:ActiproSoftware.Windows.Controls.Editors.RatingItem.AverageGlyphTemplate) properties.
+- `HoverGlyphTemplate`, `SelectedAlternateBackgroundGlyphTemplate`, and `SelectedAlternateForegroundGlyphTemplate` properties replaced by the [ActiveGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.ActiveGlyphTemplate) and [AverageGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.AverageGlyphTemplate) properties.
 
 ### RectEditBox Updates
 
@@ -257,8 +257,8 @@ Use the native `PasswordBox` control instead.
 ### Spinner Updates
 
 - `CommandTarget` property removed.
-- `DecrementValue` property renamed to [DecrementCommand](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.Spinner.DecrementCommand).
-- `IncrementValue` property renamed to [IncrementCommand](xref:ActiproSoftware.Windows.Controls.Editors.Primitives.Spinner.IncrementCommand).
+- `DecrementValue` property renamed to [DecrementCommand](xref:@ActiproUIRoot.Controls.Editors.Primitives.Spinner.DecrementCommand).
+- `IncrementValue` property renamed to [IncrementCommand](xref:@ActiproUIRoot.Controls.Editors.Primitives.Spinner.IncrementCommand).
 
 ### TextBox Removed
 
@@ -270,7 +270,7 @@ Use the native `TextBox` control instead.
 
 ### TimeEditor Changed to TimePicker
 
-The `TimeEditor` control has been removed.  Use the new [TimePicker](xref:ActiproSoftware.Windows.Controls.Editors.TimePicker) control instead.
+The `TimeEditor` control has been removed.  Use the new [TimePicker](xref:@ActiproUIRoot.Controls.Editors.TimePicker) control instead.
 
 ### TimeSpanEditBox Updates
 
@@ -312,19 +312,19 @@ While we fully encourage you to upgrade your existing applications that use the 
 
 In the 17.1 version, the entire core infrastructure of the control hierarchy for property grid was redesigned.  It now is based on our new tree controls (`TreeListBox` and `TreeListView`) and is much faster as a result.
 
-The new tree controls allow custom columns to be inserted and the ability to resize columns can be disabled by setting the [CanColumnsResize](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView.CanColumnsResize) property (formerly named `AreDefaultColumnsResizable`) to `false`.  See the [Columns](../grids/propertygrid-features/columns.md) topic for details on columns, resizing, and creating custom columns.
+The new tree controls allow custom columns to be inserted and the ability to resize columns can be disabled by setting the [CanColumnsResize](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsResize) property (formerly named `AreDefaultColumnsResizable`) to `false`.  See the [Columns](../grids/propertygrid-features/columns.md) topic for details on columns, resizing, and creating custom columns.
 
 ### SelectedObject(s) Properties Renamed to DataObject(s)
 
-Since the new base tree controls have a number of "Select*" properties like [SelectedItem](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectedItem) that generally correspond to which "row" ([PropertyGridItem](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGridItem)) is selected, we renamed the former `SelectedObject` and `SelectedObjects` properties to [DataObject](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DataObject) and [DataObjects](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DataObjects) respectively.
+Since the new base tree controls have a number of "Select*" properties like [SelectedItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItem) that generally correspond to which "row" ([PropertyGridItem](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItem)) is selected, we renamed the former `SelectedObject` and `SelectedObjects` properties to [DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject) and [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjects) respectively.
 
 ### Data Accessors and Factories Redesigned
 
-The former data accessors (now called data models) and data factories have been redesigned.  The concepts behind them are similar to before but there are different class names used (all in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData) namespace) and some properties on the data models may be different to accommodate new features and general API cleanup.  The [Data Models and Factories](../grids/propertygrid-features/data-models.md) topic digs into these areas in detail.
+The former data accessors (now called data models) and data factories have been redesigned.  The concepts behind them are similar to before but there are different class names used (all in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace) and some properties on the data models may be different to accommodate new features and general API cleanup.  The [Data Models and Factories](../grids/propertygrid-features/data-models.md) topic digs into these areas in detail.
 
 ### Interface and Class Mappings
 
-While the data model API has been redesigned, many of the new interfaces and classes generally resemble the old ones.  Data model types are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData) namespace.  Here are some quick notes on conversion:
+While the data model API has been redesigned, many of the new interfaces and classes generally resemble the old ones.  Data model types are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.  Here are some quick notes on conversion:
 
 - `IDataAccessor` interface is now `IDataModel`.
 - `DataAccessorBase` class is now `DataModelBase`.
@@ -335,10 +335,10 @@ While the data model API has been redesigned, many of the new interfaces and cla
 - `CollectionPropertyDescriptorDataAccessor` class is now `CollectionPropertyDescriptorPropertyModel`.
 - `MergedPropertyDataAccessor` class is now `MergedPropertyModel`.
 - `ImmutablePropertyDescriptorDataAccessor` class is no longer needed.
-- `PropertyGridPropertyItem` (a class you could use to directly define a property in XAML) is now `PropertyModel`.  Instances can be added to the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[Properties](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.Properties) collection.
+- `PropertyGridPropertyItem` (a class you could use to directly define a property in XAML) is now `PropertyModel`.  Instances can be added to the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[Properties](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.Properties) collection.
 - `ICategoryDataAccessor` interface is now `ICategoryModel`.
 - `CategoryDataAccessor` class is now `CategoryModel`.
-- `PropertyGridCategoryItem` (a class you could use to directly define a category in XAML) is removed.  Instead, add `PropertyModel` instances to the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[Properties](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.Properties) collection and assign the proper category name to each `PropertyModel`.  The properties will be automatically categorized by the data factory.
+- `PropertyGridCategoryItem` (a class you could use to directly define a category in XAML) is removed.  Instead, add `PropertyModel` instances to the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[Properties](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.Properties) collection and assign the proper category name to each `PropertyModel`.  The properties will be automatically categorized by the data factory.
 - `ICategoryEditorDataAccessor` interface is now `ICategoryEditorModel`.
 - `CategoryEditorDataAccessor` class is now `CategoryEditorModel`.
 
@@ -346,7 +346,7 @@ While the data model API has been redesigned, many of the new interfaces and cla
 
 In the old version, each `IPropertyDataAccessor` you supplied to the property grid either via a data factory or directly as `PropertyGridPropertyItem` was "wrapped" by a `PropertyGridDataAccessorItem`.  Bindings in name and value data templates used to need to have `RelativeSource={RelativeSource AncestorType={x:Type propgridPrimitives:IPropertyDataAccessor}}`, which would locate and return the wrapper `PropertyGridDataAccessorItem`.  While the wrapper exposed most common properties to the data templates, if you needed direct access to the "wrapped" data accessor, you could look at the `DataContext` of the `PropertyGridDataAccessorItem`.  Needless to say, this design was confusing and not performant due to all bindings needing to do ancestor searching.
 
-The new data model API is much more straightforward, faster, and the idea of `PropertyGridDataAccessorItem` has been removed.  Any `IPropertyModel` supplied to the property grid either via a data factory or directly via [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[Properties](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.Properties) is used as the data context for all name and value data templates.  This means that all control bindings work directly off the source property model with no ancestor searching needed.
+The new data model API is much more straightforward, faster, and the idea of `PropertyGridDataAccessorItem` has been removed.  Any `IPropertyModel` supplied to the property grid either via a data factory or directly via [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[Properties](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.Properties) is used as the data context for all name and value data templates.  This means that all control bindings work directly off the source property model with no ancestor searching needed.
 
 ### Data Accessor Properties
 
@@ -361,45 +361,45 @@ Here are some quick notes on conversion:
 - `Reset` method is now `ResetValue`.
 - `ValueName` property is now `Name`.
 
-The property structure for property models to indicate read-only state has changed.  In the old data accessors, there was an `IsReadOnly` property that returned whether the data accessor was read-only and then in the property editor value template, triggers examined that along with a lookup to the ancestor `PropertyGrid` to see if it was read-only.  If either of those were `true`, setters would make the controls in the template read-only or disabled as appropriate.  In the new property model API, the [IPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel).[IsReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.IsReadOnly) property now returns a resolved result of whether the property is read-only, by looking at the [IsHostReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.IsHostReadOnly) property (which comes from [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[IsReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.IsReadOnly)) and the [IsValueReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.IsValueReadOnly) property (which returns whether the property value itself is read-only.  This is a nicer design since the one resolved [IsReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.IsReadOnly) can be bound directly to controls in property editor value templates.  Any logic that used to be in old data accessor's `IsReadOnly` property should be moved to determine the [IsValueReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.IsValueReadOnly) property value now.
+The property structure for property models to indicate read-only state has changed.  In the old data accessors, there was an `IsReadOnly` property that returned whether the data accessor was read-only and then in the property editor value template, triggers examined that along with a lookup to the ancestor `PropertyGrid` to see if it was read-only.  If either of those were `true`, setters would make the controls in the template read-only or disabled as appropriate.  In the new property model API, the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).[IsReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.IsReadOnly) property now returns a resolved result of whether the property is read-only, by looking at the [IsHostReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.IsHostReadOnly) property (which comes from [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[IsReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.IsReadOnly)) and the [IsValueReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.IsValueReadOnly) property (which returns whether the property value itself is read-only.  This is a nicer design since the one resolved [IsReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.IsReadOnly) can be bound directly to controls in property editor value templates.  Any logic that used to be in old data accessor's `IsReadOnly` property should be moved to determine the [IsValueReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.IsValueReadOnly) property value now.
 
 ### Data Factories
 
-In regards to data factories, the abstract `DataFactory` class is now `DataFactoryBase` and the `TypeDescriptorFactory` class is still named `TypeDescriptorFactory`, but has an updated API.  There is no need for `TypeReflectionFactory` any more, so it has been removed.  Data factory types are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData) namespace.
+In regards to data factories, the abstract `DataFactory` class is now `DataFactoryBase` and the `TypeDescriptorFactory` class is still named `TypeDescriptorFactory`, but has an updated API.  There is no need for `TypeReflectionFactory` any more, so it has been removed.  Data factory types are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
 
 ### Property Editors Changes
 
-Property editors have been reworked to an extent.  Instead of the old `BuiltinEditors` class that had resource key properties, there are now numerous properties on [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid) like [DefaultStringNameTemplate](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DefaultStringNameTemplate) and [DefaultStringValueTemplate](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DefaultStringValueTemplate) that can be changed to customize the appearance of all built-in name/value editors.
+Property editors have been reworked to an extent.  Instead of the old `BuiltinEditors` class that had resource key properties, there are now numerous properties on [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) like [DefaultStringNameTemplate](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultStringNameTemplate) and [DefaultStringValueTemplate](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultStringValueTemplate) that can be changed to customize the appearance of all built-in name/value editors.
 
-The global `BuiltinEditors.PropertyEditors` collection is renamed to [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[DefaultPropertyEditors](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DefaultPropertyEditors).  The `PropertyEditorModifier` class and its related actions have had some API changes to make them easier to use.  The former `PropertyEditorModifier` concept is now implemented through the [PropertyGridPropertyEditorsModifier](xref:ActiproSoftware.Windows.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier) class and its updated API explained in detail in the [Property Editors](../grids/propertygrid-features/property-editors.md) topic.
+The global `BuiltinEditors.PropertyEditors` collection is renamed to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DefaultPropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultPropertyEditors).  The `PropertyEditorModifier` class and its related actions have had some API changes to make them easier to use.  The former `PropertyEditorModifier` concept is now implemented through the [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier) class and its updated API explained in detail in the [Property Editors](../grids/propertygrid-features/property-editors.md) topic.
 
-In the past, a custom `DataTemplate` used for value editors would have to use FindAncestor bindings to bind to the value and other data model properties.  The actual data context for the `DataTemplate` was the [PropertyEditor](xref:ActiproSoftware.Windows.Controls.Grids.PropertyEditors.PropertyEditor) object.  In the new version, the data context for the `DataTemplate` is now the [IPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel), making it much easier to bind to any property on the data model.  Additionally, the [PropertyEditor](xref:ActiproSoftware.Windows.Controls.Grids.PropertyEditors.PropertyEditor) used to display the `DataTemplate`, if any, is available via the [IPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel).[ValuePropertyEditor](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel.ValuePropertyEditor) property.  Each `DataTemplate` is now much smaller and simpler, which helps improve property grid performance.
+In the past, a custom `DataTemplate` used for value editors would have to use FindAncestor bindings to bind to the value and other data model properties.  The actual data context for the `DataTemplate` was the [PropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor) object.  In the new version, the data context for the `DataTemplate` is now the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel), making it much easier to bind to any property on the data model.  Additionally, the [PropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor) used to display the `DataTemplate`, if any, is available via the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).[ValuePropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.ValuePropertyEditor) property.  Each `DataTemplate` is now much smaller and simpler, which helps improve property grid performance.
 
 See the [Property Editors](../grids/propertygrid-features/property-editors.md) topic for detailed information on how property editors work in the new version and how to completely customize them.
 
 ### Integration with Editors Updated
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
-The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:ActiproSoftware.Windows.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
+The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
 ### Events Renamed
 
 While we rebuilt the infrastructure, we took some time to clarify and rename events as well.
 
-- `ItemContextMenuOpening` event renamed to [ItemMenuRequested](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.ItemMenuRequested) and now uses [TreeListBoxItemMenuEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBoxItemMenuEventArgs).
+- `ItemContextMenuOpening` event renamed to [ItemMenuRequested](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemMenuRequested) and now uses [TreeListBoxItemMenuEventArgs](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemMenuEventArgs).
 
-- `PropertyChanged` event renamed to [PropertyValueChanged](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.PropertyValueChanged) and now uses [PropertyModelValueChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelValueChangeEventArgs).
+- `PropertyChanged` event renamed to [PropertyValueChanged](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyValueChanged) and now uses [PropertyModelValueChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelValueChangeEventArgs).
 
-- `PropertyChanging` event renamed to [PropertyValueChanging](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.PropertyValueChanging) and now uses [PropertyModelValueChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelValueChangeEventArgs).
+- `PropertyChanging` event renamed to [PropertyValueChanging](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyValueChanging) and now uses [PropertyModelValueChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelValueChangeEventArgs).
 
-- `PropertyChildAdded` event renamed to [ChildPropertyAdded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ChildPropertyAdded) and now uses [PropertyModelChildChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelChildChangeEventArgs).
+- `PropertyChildAdded` event renamed to [ChildPropertyAdded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ChildPropertyAdded) and now uses [PropertyModelChildChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelChildChangeEventArgs).
 
-- `PropertyChildAdding` event renamed to [ChildPropertyAdding](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ChildPropertyAdding) and now uses [PropertyModelChildChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelChildChangeEventArgs).
+- `PropertyChildAdding` event renamed to [ChildPropertyAdding](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ChildPropertyAdding) and now uses [PropertyModelChildChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelChildChangeEventArgs).
 
-- `PropertyChildRemoved` event renamed to [ChildPropertyRemoved](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ChildPropertyRemoved) and now uses [PropertyModelChildChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelChildChangeEventArgs).
+- `PropertyChildRemoved` event renamed to [ChildPropertyRemoved](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ChildPropertyRemoved) and now uses [PropertyModelChildChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelChildChangeEventArgs).
 
-- `PropertyChildRemoving` event renamed to [ChildPropertyRemoving](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ChildPropertyRemoving) and now uses [PropertyModelChildChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Grids.PropertyModelChildChangeEventArgs).
+- `PropertyChildRemoving` event renamed to [ChildPropertyRemoving](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ChildPropertyRemoving) and now uses [PropertyModelChildChangeEventArgs](xref:@ActiproUIRoot.Controls.Grids.PropertyModelChildChangeEventArgs).
 
 - `SelectedObjectsChanged` event removed.
 
@@ -409,15 +409,15 @@ In an effort to maximize performance and simplify the elements and logic in the 
 
 ### Sorting Changes
 
-The way data models at each level are sorted has changed.  The `AreDefaultSortDescriptionsEnabled` and `SortDescriptions` properties have been removed.  Use the [SortComparer](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.SortComparer) property instead, which requires an instance of [DataModelSortComparer](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.DataModelSortComparer) or a derived class.  The property can be set to `null` to disable default sorting.
+The way data models at each level are sorted has changed.  The `AreDefaultSortDescriptionsEnabled` and `SortDescriptions` properties have been removed.  Use the [SortComparer](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.SortComparer) property instead, which requires an instance of [DataModelSortComparer](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataModelSortComparer) or a derived class.  The property can be set to `null` to disable default sorting.
 
 ### Filtering Changes
 
-The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:ActiproSoftware.Windows.Data.Filtering) namespace.  The property grid-specific filters (e.g. [PropertyModelStringFilter](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData) namespace.
+The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:@ActiproUIRoot.Data.Filtering) namespace.  The property grid-specific filters (e.g. [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
 
 ### Summary Area Changes
 
-The `SummaryCanAutoSize` property was renamed to [CanSummaryAutoSize](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.CanSummaryAutoSize).  The `SummaryTransitionDuration` and `SummaryTransitionSelector` properties were removed, since transitions are no longer used in the summary area in an effort to simply the default templates.
+The `SummaryCanAutoSize` property was renamed to [CanSummaryAutoSize](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CanSummaryAutoSize).  The `SummaryTransitionDuration` and `SummaryTransitionSelector` properties were removed, since transitions are no longer used in the summary area in an effort to simply the default templates.
 
 ### List Modifiers Removed
 
@@ -429,12 +429,12 @@ These other miscellaneous changes were made to the `PropertyGrid` class:
 
 - `AreEmptyAccessorsFiltered` property removed, as it is no longer needed.
 - `BeginUpdate` and `EndUpdate` optimization methods removed, since performance is very fast in the new version even without them.
-- `CollectionConverter` property removed, which was used by `CollectionPropertyDescriptorDataAccessor`.  The new virtual [CollectionPropertyDescriptorPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel).[CreateExpandableCollectionConverter](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method now creates the [ExpandableCollectionConverter](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.ExpandableCollectionConverter) to use.
-- `CollectionDisplayMode` property renamed to [CollectionPropertyDisplayMode](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) and related `PropertyGridCollectionDisplayMode` enum renamed to [CollectionPropertyDisplayMode](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.CollectionPropertyDisplayMode).
-- `CommitPendingChanges` method renamed to [TryCommitPropertyValueEdit](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.TryCommitPropertyValueEdit*).
-- `EscapeKeyDownDelegates` property renamed to [CancelPropertyValueEditHandlers](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.CancelPropertyValueEditHandlers) and the dictionary values are now of type [PropertyGridItemActionHandler](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGridItemActionHandler).
-- `TextInputFocusDelegates` property renamed to [StartPropertyValueEditHandlers](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.StartPropertyValueEditHandlers) and the dictionary values are now of type [PropertyGridItemActionHandler](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGridItemActionHandler).
-- `Hint`, `HintTemplate`, and `HintTemplateSelector` properties removed.  Use the new [EmptyContent](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.EmptyContent) and [EmptyContentTemplate](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.EmptyContentTemplate) properties instead.
+- `CollectionConverter` property removed, which was used by `CollectionPropertyDescriptorDataAccessor`.  The new virtual [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel).[CreateExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method now creates the [ExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ExpandableCollectionConverter) to use.
+- `CollectionDisplayMode` property renamed to [CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) and related `PropertyGridCollectionDisplayMode` enum renamed to [CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDisplayMode).
+- `CommitPendingChanges` method renamed to [TryCommitPropertyValueEdit](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.TryCommitPropertyValueEdit*).
+- `EscapeKeyDownDelegates` property renamed to [CancelPropertyValueEditHandlers](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CancelPropertyValueEditHandlers) and the dictionary values are now of type [PropertyGridItemActionHandler](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItemActionHandler).
+- `TextInputFocusDelegates` property renamed to [StartPropertyValueEditHandlers](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.StartPropertyValueEditHandlers) and the dictionary values are now of type [PropertyGridItemActionHandler](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItemActionHandler).
+- `Hint`, `HintTemplate`, and `HintTemplateSelector` properties removed.  Use the new [EmptyContent](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.EmptyContent) and [EmptyContentTemplate](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.EmptyContentTemplate) properties instead.
 - `IsAsynchronous` and `IsItemsSourceAutoUpdated` properties removed since they are no longer needed due to performance improvements.
 - The `NameCellContainerStyle`, `NameTemplateSelector`, `ValueCellContainerStyle`, and `ValueTemplateSelector` properties have been replaced by a new infrastructure.  See the [Property Editors](../grids/propertygrid-features/property-editors.md) topic for an explanation of how things work in the new version.
 - The static `ShowPropertyDialogCommand` property has been removed, which helped support dialog display buttons.  This feature is still present but in an improved design.  See the "Property Dialogs" section in the [Property Editors](../grids/propertygrid-features/property-editors.md) topic for more information on how to implement property dialogs.

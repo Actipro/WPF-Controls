@@ -21,9 +21,9 @@ Adornment managers are used for rendering many built-in features of SyntaxEditor
 
 ## Registering with a Syntax Language
 
-As described in the [Adornment Layers](../../user-interface/adornment/adornment-layers.md) topic, [AdornmentManagerProvider<T>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerProvider`1) objects can be used as language services to provide adornment managers to any text view that requests them.
+As described in the [Adornment Layers](../../user-interface/adornment/adornment-layers.md) topic, [AdornmentManagerProvider<T>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerProvider`1) objects can be used as language services to provide adornment managers to any text view that requests them.
 
-This code shows how to register an adornment manager provider language service that returns `AlternatingRowsAdornmentManager` objects (defined in a QuickStart to provide alternating row highlights).  for views that use the language.  Note that we are also passing a "singleton" key so that the adornment manager that is created for any view using the language is persisted in the views's [Properties](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.Properties) dictionary while it is active.
+This code shows how to register an adornment manager provider language service that returns `AlternatingRowsAdornmentManager` objects (defined in a QuickStart to provide alternating row highlights).  for views that use the language.  Note that we are also passing a "singleton" key so that the adornment manager that is created for any view using the language is persisted in the views's [Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) dictionary while it is active.
 
 ```csharp
 language.RegisterService(new AdornmentManagerProvider<AlternatingRowsAdornmentManager>(typeof(AlternatingRowsAdornmentManager)));

@@ -15,7 +15,6 @@ Actipro Micro Charts includes a number of built-in chart types.
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

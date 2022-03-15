@@ -13,7 +13,7 @@ This panel can render child elements in multiple columns, collapsing columns dow
 
 ## Overview
 
-The [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel) control provides a way to arrange child elements in one or more columns based on the available width.  You specify the maximum number of columns to support, the minimum width of each column, and the margin between each column.  Given those parameters, the panel will determine how many columns can fit within the available space.
+The [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) control provides a way to arrange child elements in one or more columns based on the available width.  You specify the maximum number of columns to support, the minimum width of each column, and the margin between each column.  Given those parameters, the panel will determine how many columns can fit within the available space.
 
 When arranging elements, the panel will first determine the number of columns that can display in the available width.  Once that is determined, the columns are made equal size with the margin space between them.  Then elements are arranged downward in order until an average height is reached.  Subsequent elements are arranged on the next column and the process repeats.
 
@@ -21,7 +21,7 @@ The measure/arrange algorithm works best when the child elements are all relativ
 
 ## Important Members
 
-The following [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel) members are key to its use:
+The following [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) members are key to its use:
 
 <table>
 <thead>
@@ -31,21 +31,20 @@ The following [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Views.Mul
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[CanRemoveEmptyColumns](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel.CanRemoveEmptyColumns) Property
+[CanRemoveEmptyColumns](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel.CanRemoveEmptyColumns) Property
 
 </td>
 <td>
 
 Gets or sets whether columns without any items can be removed, with remaining columns filling in, thereby maximizing use of available width.  The default value is `false`.
 
-When using multiple [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel) instances in a stack where columns should always be aligned, leave this property its default of `false`.  Alternatively when wanting to maximize use of available width, set this property to `true`.
+When using multiple [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) instances in a stack where columns should always be aligned, leave this property its default of `false`.  Alternatively when wanting to maximize use of available width, set this property to `true`.
 
 </td>
 </tr>
@@ -53,7 +52,7 @@ When using multiple [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Vie
 <tr>
 <td>
 
-[ColumnMargin](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel.ColumnMargin) Property
+[ColumnMargin](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel.ColumnMargin) Property
 
 </td>
 <td>
@@ -66,7 +65,7 @@ Gets or sets the margin width between columns.  The default value is `50`.
 <tr>
 <td>
 
-[ColumnMinWidth](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel.ColumnMinWidth) Property
+[ColumnMinWidth](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel.ColumnMinWidth) Property
 
 </td>
 <td>
@@ -79,7 +78,7 @@ Gets or sets the minimum column width needed for another column to be added.  Th
 <tr>
 <td>
 
-[MaxColumnCount](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel.MaxColumnCount) Property
+[MaxColumnCount](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel.MaxColumnCount) Property
 
 </td>
 <td>

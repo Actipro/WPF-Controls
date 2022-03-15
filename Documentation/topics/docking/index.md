@@ -7,9 +7,21 @@ order: 1
 
 Actipro Docking & MDI is a complete solution for easily adding a docking tool window and/or multiple document interface to your applications.
 
+@if (winrt) {
+
+![Screenshot](images/docking-teaser.png)
+
+*Docking windows and tabbed MDI provided by this product*
+
+}
+
+@if (wpf) {
+
 ![Screenshot](images/docking.png)
 
 *Docking windows and tabbed MDI provided by this product*
+
+}
 
 Docking & MDI has been implemented with flexibility in mind.  It has more appearance and functionality options than nearly any other competitive product out there, and while it supports all the types of standard layouts you find in most docking window products, it also supports unique extended functionality.
 
@@ -46,11 +58,15 @@ Nest dock sites (create a self-contained set of docking windows within another d
 
 ### Appearance Features
 
+@if (wpf) {
 - Built-in Metro, Office, and Windows system themes.
+}
 - Subtle fluid animations that occur throughout use of the product.
 - Ability to create hosted floating windows that can fade out with inactivity.
 - Create tool windows that don't have a title bar and/or cannot be moved.
+@if (wpf) {
 - Easily integrates with Actipro Ribbon to make a unique user interface.
+}
 - An implementation of a control that mimics a standard Window but can be used in any control context.
 - Specify custom contextual content (status indicators, buttons, etc.) within tabs or title bars.
 - Tint specific docking window tabs.
@@ -76,7 +92,9 @@ Nest dock sites (create a self-contained set of docking windows within another d
 - Layout logic does its best to adhere to optional specified desired, minimum, and maximum container sizes.
 - Size-to-content support for floating windows and standard MDI documents when displayed.
 - Use any pointer such as mouse, touch, or pen to interact with docking windows.
+@if (wpf) {
 - Support for interop content such as WinForms or ActiveX controls.
+}
 - AdvancedTabControl control included that extends the standard TabControl with powerful capabilities.
 - Right-to-left support is fully integrated for languages such as Hebrew or Arabic.
 - All text properties use localization attributes, and string resources may be customized.

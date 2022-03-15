@@ -19,11 +19,11 @@ When expanding, the pane's content slides down and fades in.  When collapsing, t
 
 ## Changing Animation Durations
 
-If your `Expander` items are instances of [AnimatedExpander](xref:ActiproSoftware.Windows.Controls.AnimatedExpander) (which inherits `Expander`), you can specify the [ExpandDuration](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.ExpandDuration) and [CollapseDuration](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.CollapseDuration) times.
+If your `Expander` items are instances of [AnimatedExpander](xref:@ActiproUIRoot.Controls.AnimatedExpander) (which inherits `Expander`), you can specify the [ExpandDuration](xref:@ActiproUIRoot.Controls.AnimatedExpander.ExpandDuration) and [CollapseDuration](xref:@ActiproUIRoot.Controls.AnimatedExpander.CollapseDuration) times.
 
 ## Only Allowing a Single Pane to be Expanded
 
-You can optionally set the [ExplorerBar](xref:ActiproSoftware.Windows.Controls.Navigation.ExplorerBar).[CanExpandMultiple](xref:ActiproSoftware.Windows.Controls.Navigation.ExpanderBar.CanExpandMultiple) to `false` to make ExplorerBar only allow one pane to be expanded at a time.  In this mode, if the end user tries to expand another pane, the currently-expanded pane will collapse.
+You can optionally set the [ExplorerBar](xref:@ActiproUIRoot.Controls.Navigation.ExplorerBar).[CanExpandMultiple](xref:@ActiproUIRoot.Controls.Navigation.ExpanderBar.CanExpandMultiple) to `false` to make ExplorerBar only allow one pane to be expanded at a time.  In this mode, if the end user tries to expand another pane, the currently-expanded pane will collapse.
 
 ## Overflow
 

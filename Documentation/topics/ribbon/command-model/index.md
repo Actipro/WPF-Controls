@@ -7,9 +7,9 @@ order: 1
 
 Actipro Ribbon is designed to be tightly integrated with the great command model found in WPF.
 
-Every ribbon control implements `ICommandSource`, meaning that it has [Command](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Command), [CommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.CommandParameter), and [CommandTarget](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.CommandTarget) properties.  The `ICommand` that is assigned to a ribbon control can be any command, including those defined in the WPF framework in the `System.Windows.Input` namespace.
+Every ribbon control implements `ICommandSource`, meaning that it has [Command](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Command), [CommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.CommandParameter), and [CommandTarget](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.CommandTarget) properties.  The `ICommand` that is assigned to a ribbon control can be any command, including those defined in the WPF framework in the `System.Windows.Input` namespace.
 
-Ribbon controls also can use commands to provide several user interface elements for the controls that use them.  These user interface elements include labels, images and screen tip data.  Any command can provide this functionality although an extra step is needed for commands that don't implement [IRibbonCommandUIProvider](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IRibbonCommandUIProvider).
+Ribbon controls also can use commands to provide several user interface elements for the controls that use them.  These user interface elements include labels, images and screen tip data.  Any command can provide this functionality although an extra step is needed for commands that don't implement [IRibbonCommandUIProvider](xref:@ActiproUIRoot.Controls.Ribbon.Input.IRibbonCommandUIProvider).
 
 Once you read through this topic, please see these topics for more an explanation of some more advanced things you can do with commands:
 
@@ -48,7 +48,7 @@ public class ApplicationCommands {
 }
 ```
 
-Note that the command is of type [RibbonCommand](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.RibbonCommand) (which implements [IRibbonCommandUIProvider](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IRibbonCommandUIProvider)) and therefore is capable of providing some user interface elements to any control that uses it.  In the example, we have provided a label, small image, and a screen tip description.
+Note that the command is of type [RibbonCommand](xref:@ActiproUIRoot.Controls.Ribbon.Input.RibbonCommand) (which implements [IRibbonCommandUIProvider](xref:@ActiproUIRoot.Controls.Ribbon.Input.IRibbonCommandUIProvider)) and therefore is capable of providing some user interface elements to any control that uses it.  In the example, we have provided a label, small image, and a screen tip description.
 
 Now say that we have a `RichTextBox` class override named `RichTextBoxExtended`.  In the override, we want to add a handler for a custom `ToggleStrikethrough` command like so:
 
@@ -66,4 +66,4 @@ private void OnToggleStrikethroughExecute(object sender, ExecutedRoutedEventArgs
 }
 ```
 
-The `OnToggleStrikethroughCanExecute` implementation can be made to update the checked state of any attached ribbon control that supports working with [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter).  For a sample of this type of code, see the [Interaction with Checkable Controls](checkable-controls.md) topic.
+The `OnToggleStrikethroughCanExecute` implementation can be made to update the checked state of any attached ribbon control that supports working with [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter).  For a sample of this type of code, see the [Interaction with Checkable Controls](checkable-controls.md) topic.

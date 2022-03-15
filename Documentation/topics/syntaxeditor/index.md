@@ -7,9 +7,21 @@ order: 1
 
 SyntaxEditor is a powerful text editing control that is packed with features for efficient code editing, including syntax highlighting, code outlining, parsing, line numbers, block selection, IntelliPrompt UI, split views, adornments, bi-di support, and much more.  It has many of the same code editing features found in the Visual Studio code editor.
 
+@if (winrt) {
+
+![Screenshot](images/syntaxeditor-teaser.png)
+
+*The SyntaxEditor control editing a Javascript file with outlining enabled*
+
+}
+
+@if (wpf) {
+
 ![Screenshot](images/sdi-code-editor-themed.png)
 
 *The SyntaxEditor control in the SDI Code Editor demo with a custom theme loaded*
+
+}
 
 SyntaxEditor is built on top of our next-generation extensible text/parsing framework.  While over 20 sample languages are available to get you started (such as C#, VB, XML, and more), custom language definitions can be developed and distributed with your applications as well.  SyntaxEditor is designed for use in IDE (integrated development environment) applications, however there are many other applications out there than can take advantage of such a control.
 
@@ -25,7 +37,7 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Edit multiple lines at the same time with block selection.
 - Line selection in the selection margin.
 - Clipboard operations and drag/drop natively supported (cut, copy, paste), with support for any DataObject.
-- Complete extended Unicode character, IME (Input Method Editor), and bi-directional editing support.
+- Complete extended Unicode character@if (wpf winforms) {, IME (Input Method Editor)}, and bi-directional editing support.
 - Over 100 edit actions including everything found in Visual Studio such as caret movement, selection, indenting, tabification, transposition, and more.
 - Block, none, and customizable smart auto-indent modes when pressing Enter.
 - Current line and delimiter (bracket) highlighting.
@@ -43,12 +55,18 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Indicators (bookmarks, breakpoints, current statement, etc.).
 - Ability to create custom margins and place them anywhere in the editor view.
 - Ability to inject any custom adornment elements into the text area surface, or even inline between characters or view lines.
+@if (wpf winrt) {
 - Fully compatible with XAML styles/templates.
+}
 - Multiple font support.
 - Horizontal split views.
 - Scrollbar visibility options, including an auto mode.
+@if (wpf winrt) {
 - Customizable scrollbar tray areas that allow for embedding of custom controls next to scrollbars.
+}
+@if (wpf winrt) {
 - Animated zoom in and out, via keyboard, mouse wheel, or pinch.
+}
 - Smooth inertia-based touch scrolling.
 - Mouse wheel vertical scrolling, with horizontal scrolling supported when holding Shift.
 - Squiggle lines for marking errors and spelling mistakes.
@@ -89,14 +107,18 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Lazy load images and content used in IntelliPrompt popups.
 - Optional mini-HTML markup supported for popup content.
 - NavigableSymbolSelector control that provides functionality similar to the VS type/member drop-downs.
+@if (wpf winrt) {
 - Vector-based images for clarity in high DPI monitors.
+}
 
 ### Printing Features
 
-- WYSIWYG printing and print preview with print-specific format settings.
+- WYSIWYG printing @if (wpf) {and print preview} with print-specific format settings.
 - Optional document title, line number, word wrap glyph, and page number margins.
 - Ability to create custom margins and place them anywhere in a printed page.
+@if (wpf) {
 - Easy export to XPS.
+}
 
 ### Searching (Find/Replace) Features
 
@@ -107,7 +129,9 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Incremental search mode that automatically searches the entire document as characters are typed.
 - In-line search result highlights.
 - Search overlay pane integrated on the editor surface that responds to Ctrl+F, Ctrl+H, and F3 key variations.
+@if (wpf winrt) {
 - EditorSearchView control that provides an implementation of a Visual Studio-like search dialog with animations.
+}
 
 ### Other Features
 
@@ -123,8 +147,12 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 ### Free Add-ons
 
 - Actipro's advanced [LL(*) Parser Framework](ll-parser-framework/index.md) can be used to build custom grammar-based parsers written in C#/VB using EBNF-like notation, customizable AST construction, advanced error handling/reporting, easy code injection, a complete debugger UI, and much more.
+@if (wpf) {
 - Integration with [ANTLR](antlr-addon/index.md)-based DSL parsers, which can perform syntax/semantic parsing and AST building.
+}
+@if (wpf) {
 - Integration with [Irony](irony-addon/index.md)-based DSL parsers, which can perform syntax/semantic parsing, AST building, and error reporting.
+}
 
 ### Optional Premium Add-ons
 

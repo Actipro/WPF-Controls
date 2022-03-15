@@ -19,7 +19,6 @@ In this topic, we provide the complete list of categorized terms found in this p
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

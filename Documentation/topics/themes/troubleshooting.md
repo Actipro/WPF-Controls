@@ -12,10 +12,10 @@ This topic contains troubleshooting data specific to the Actipro Themes product.
 
 ## Aero or Office 2010 Themes Are Not Working
 
-There are two steps that must be performed in order to leverage the Aero-style (Aero and Office 2010) themes in your application.  So if you try to set the current theme to one of the supported Aero-style themes, but the colors do not update accordingly, then please ensure the following steps have been performed.
+There are two steps that must be performed in order to leverage the Aero-style (Aero and Office 2010) themes in your application.  So, if you try to set the current theme to one of the supported Aero-style themes, but the colors do not update accordingly, then please ensure the following steps have been performed.
 
 > [!NOTE]
-> Tinted themes that are based on one of the Aero-style themes can also be affected, if the source theme is not registered correctly.
+> Tinted themes that are based on one of the Aero-style themes can also be affected if the source theme is not registered correctly.
 
 The Aero-style themes are located in a separate assembly, to help reduce the install base size for customers that do not use it.  Therefore, you must first ensure that your application has a reference to the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.
 
@@ -30,7 +30,7 @@ ThemesAeroThemeCatalogRegistrar.Register();
 
 ## ListView Controls are Displaying Items Incorrectly
 
-The native WPF `ListView` control comes in two forms.  In it's simplest form, it acts just like a `ListBox`, which is its base class.  To display tabular data, a `ListView` can be assigned a `GridView` which contains one or more column definitions.  Our native theme support for the `ListView` is limited to this latter form, due to the style extensibility of the `ListView`.
+The native WPF `ListView` control comes in two forms.  In its simplest form, it acts just like a `ListBox`, which is its base class.  To display tabular data, a `ListView` can be assigned a `GridView` which contains one or more column definitions.  Our native theme support for the `ListView` is limited to this latter form, due to the style extensibility of the `ListView`.
 
 Therefore, in cases where a `ListView` is being used without an associated `GridView` would need to be replaced with an instance of `ListBox`.  There should be no loss of functionality by making this change.
 
@@ -57,14 +57,18 @@ The reason we need to use `ShutdownMode.OnExplicitShutdown` above is that by def
 
 ### Ensuring ThemeManager Is Initialized
 
-The Actipro [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager) is initialized in a `Send`-priority dispatched call when it is first used.  This initialization can be triggered manually, but also happens automatically when themed Actipro WPF Controls are first loaded.
+The Actipro [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) is initialized in a `Send`-priority dispatched call when it is first used.  This initialization can be triggered manually, but also happens automatically when themed Actipro WPF Controls are first loaded.
 
 The initialization is important because it is what makes the various Actipro theme resources like brushes available to all the themed controls.  If the initialization didn't occur yet, some WPF Controls used in interop may not render with their normal appearance.
 
 In this interop scenario, it might be required to manually trigger the initialization to ensure that theme resources like brushes are loaded properly when the first window of the application is displayed.
 
-This sample code used in the application startup logic (and after ensuring `Application.Current` is initialized) sets the current theme, which will tell [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager) to initialize as well, prior to UI being loaded:
+This sample code used in the application startup logic (and after ensuring `Application.Current` is initialized) sets the current theme, which will tell [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) to initialize as well, prior to UI being loaded:
 
 ```csharp
 ThemeManager.CurrentTheme = ThemeNames.MetroDark
 ```
+
+## Snap Layout Menus Do Not Appear
+
+Windows 11 added a new feature to show a Snap Layouts Menu when the user hovers the mouse over the Maximize or Restore button in the application title bar. This feature is fully supported by `WindowChrome`.  If you do not see the Snap Layouts Menu on Windows 11, make sure your application has explicitly declared Windows 11 as a supported operating system in the `app.manifest` file. Refer to the [WindowChrome](windowchrome.md) topic for more information about declaring operating system support.

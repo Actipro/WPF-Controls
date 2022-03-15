@@ -110,7 +110,7 @@ Some customers embed controls like the WPF SyntaxEditor in their Windows Forms, 
 Symptoms of the related issues are:
 
 - Control themes don't look the same as they do in a native WPF application.
-- Themes do not change properly when the theme is changed on [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).
+- Themes do not change properly when the theme is changed on [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).
 - A `NotSupportedException` occurs with message "The URI prefix is not recognized." when using some built-in `Image` embedded resources like the images used in SyntaxEditor's IntelliPrompt popups.
 
 See the [Themes Troubleshooting](themes/troubleshooting.md) topic for detailed steps on how to resolve these issues.

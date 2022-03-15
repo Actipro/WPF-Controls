@@ -11,7 +11,7 @@ The 'Complete Update Details' section in this topic gives information on the bre
 
 ## Theme Name Changes
 
-The old `ThemeName` enumeration that had all our predefined themes has been marked obsolete and a new static [ThemeNames](xref:ActiproSoftware.Windows.Themes.ThemeNames) class with constant theme names has been added in its place.  The use of string constants is better than prior use of an enumeration, since a `ToString` call on the values is no longer necessary.
+The old `ThemeName` enumeration that had all our predefined themes has been marked obsolete and a new static [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class with constant theme names has been added in its place.  The use of string constants is better than prior use of an enumeration, since a `ToString` call on the values is no longer necessary.
 
 As part of this change, we updated a number of built-in theme names for clarity per the list below:
 
@@ -35,7 +35,7 @@ As part of this change, we updated a number of built-in theme names for clarity 
 - `OfficeBlue` - Renamed the optional old Aero-style Office 2010 blue theme to `Office2010Blue` so as not to be confused with modern Office themes.  See the "Aero and Office 2010 Theme Updates" section below for notes on using this theme.
 - `OfficeSilver` - Renamed the optional old Aero-style Office 2010 silver theme to `Office2010Silver` so as not to be confused with modern Office themes.  See the "Aero and Office 2010 Theme Updates" section below for notes on using this theme.
 
-Other new predefined theme names were added to the [ThemeNames](xref:ActiproSoftware.Windows.Themes.ThemeNames) enumeration as well.
+Other new predefined theme names were added to the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) enumeration as well.
 
 ## ThemeManager Enhancements and Theme Definitions
 
@@ -99,7 +99,7 @@ New shared glyph resources have been added and control templates throughout the 
 
 ### Menus and Popups
 
-A new [TitleBarMenu](xref:ActiproSoftware.Windows.Controls.TitleBarMenu) control was added, which is a `Menu` control that is tailored for usage in window title bars.  It updates its top-level menu items to render properly in title bars, and wraps menu items to new lines in overflow scenarios so that they all remain accessible.
+A new [TitleBarMenu](xref:@ActiproUIRoot.Controls.TitleBarMenu) control was added, which is a `Menu` control that is tailored for usage in window title bars.  It updates its top-level menu items to render properly in title bars, and wraps menu items to new lines in overflow scenarios so that they all remain accessible.
 
 Styles for native menu items have been improved by increasing their size, adjusting element alignment, and rendering input gesture text in a lower-contrast color.  Theme definition options are available for menu corner radius and padding, along with menu item column widths and padding.
 
@@ -131,15 +131,15 @@ Various Button, ToolBar, Expander, Slider, and other related control templates w
 
 The Shared Library's [PopupButton](../shared/windows-controls/popupbutton.md) was one of our oldest controls and we took time to modernize it for this version.
 
-The control's popup used to be built completely via code and didn't have a default border/background.  In this version, we updated the control template to include the `Popup` right in the template, and with a default border/background defined.  New [PopupBackground](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupBackground), [PopupBorderBrush](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupBorderBrush), [PopupBorderThickness](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupBorderThickness), [PopupCornerRadius](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupCornerRadius), and [PopupPadding](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupPadding) properties were added to support this.
+The control's popup used to be built completely via code and didn't have a default border/background.  In this version, we updated the control template to include the `Popup` right in the template, and with a default border/background defined.  New [PopupBackground](xref:@ActiproUIRoot.Controls.PopupButton.PopupBackground), [PopupBorderBrush](xref:@ActiproUIRoot.Controls.PopupButton.PopupBorderBrush), [PopupBorderThickness](xref:@ActiproUIRoot.Controls.PopupButton.PopupBorderThickness), [PopupCornerRadius](xref:@ActiproUIRoot.Controls.PopupButton.PopupCornerRadius), and [PopupPadding](xref:@ActiproUIRoot.Controls.PopupButton.PopupPadding) properties were added to support this.
 
-If you customized the control's template, you must now include a `Popup` with name `PART_Popup`.  Only bind the `Popup.IsOpen` property to [IsPopupOpen](xref:ActiproSoftware.Windows.Controls.PopupButton.IsPopupOpen) when the [PopupMenu](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupMenu) property is `null`.
+If you customized the control's template, you must now include a `Popup` with name `PART_Popup`.  Only bind the `Popup.IsOpen` property to [IsPopupOpen](xref:@ActiproUIRoot.Controls.PopupButton.IsPopupOpen) when the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property is `null`.
 
-If the [PopupMenu](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupMenu) property is specified, it will now take priority over popup content supplied via [PopupContent](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupContent), [PopupContentTemplate](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupContentTemplate), and [PopupContentTemplateSelector](xref:ActiproSoftware.Windows.Controls.PopupButton.PopupContentTemplateSelector).
+If the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property is specified, it will now take priority over popup content supplied via [PopupContent](xref:@ActiproUIRoot.Controls.PopupButton.PopupContent), [PopupContentTemplate](xref:@ActiproUIRoot.Controls.PopupButton.PopupContentTemplate), and [PopupContentTemplateSelector](xref:@ActiproUIRoot.Controls.PopupButton.PopupContentTemplateSelector).
 
-The [DisplayMode](xref:ActiproSoftware.Windows.Controls.PopupButton.DisplayMode) property default was changed from `Split` to `Merged`, which is a far more common use of the control.  A new `CenterMerged` option was added to the [PopupButtonDisplayMode](xref:ActiproSoftware.Windows.Controls.PopupButtonDisplayMode) enumeration that renders similar to `Merged` but centers the content and indicator instead of the indicator being on the right side.  The `ButtonOnly` option now will show a popup/menu like other modes and renders like `Merged` other than not showing a popup indicator.
+The [DisplayMode](xref:@ActiproUIRoot.Controls.PopupButton.DisplayMode) property default was changed from `Split` to `Merged`, which is a far more common use of the control.  A new `CenterMerged` option was added to the [PopupButtonDisplayMode](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode) enumeration that renders similar to `Merged` but centers the content and indicator instead of the indicator being on the right side.  The `ButtonOnly` option now will show a popup/menu like other modes and renders like `Merged` other than not showing a popup indicator.
 
-The [IsAutoFocusOnOpenEnabled](xref:ActiproSoftware.Windows.Controls.PopupButton.IsAutoFocusOnOpenEnabled) property default was changed to `true`, which is the most common usage.
+The [IsAutoFocusOnOpenEnabled](xref:@ActiproUIRoot.Controls.PopupButton.IsAutoFocusOnOpenEnabled) property default was changed to `true`, which is the most common usage.
 
 The `IsPreviewMouseDownHandled` property was removed since it wasn't used.  The `IsRounded` property was removed, and can be replaced by setting the attached `themes:ThemeProperties.CornerRadius` property to `0` to mimic a `false` setting.  The static `ClosePopup` property was renamed to `ClosePopupCommand` for clarity.
 
@@ -223,14 +223,14 @@ Updated the glyph and added directly into the `Ribbon` to automatically show whe
 
 ## Docking/MDI
 
-The new [ShadowChrome](xref:ActiproSoftware.Windows.Controls.Primitives.ShadowChrome) class was placed in certain Docking/MDI templates in place of the older `DropShadowChrome`.  Certain properties changed as a result.
+The new [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome) class was placed in certain Docking/MDI templates in place of the older `DropShadowChrome`.  Certain properties changed as a result.
 
-- [StandardSwitcher](xref:ActiproSoftware.Windows.Controls.Docking.StandardSwitcher)'s `DropShadowZOffset` property was removed.  A new `ShadowElevation` property was added.
-- [WindowControl](xref:ActiproSoftware.Windows.Controls.Docking.WindowControl)'s `DropShadowColor` and `DropShadowZOffset` properties were removed.  A new `ShadowElevation` property was added.
+- [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher)'s `DropShadowZOffset` property was removed.  A new `ShadowElevation` property was added.
+- [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl)'s `DropShadowColor` and `DropShadowZOffset` properties were removed.  A new `ShadowElevation` property was added.
 
 ## Views
 
-The new [MultiColumnPanel](xref:ActiproSoftware.Windows.Controls.Views.MultiColumnPanel) control can arrange child elements in columns based on available width.
+The new [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) control can arrange child elements in columns based on available width.
 
 ## Font Size Theme Resources
 

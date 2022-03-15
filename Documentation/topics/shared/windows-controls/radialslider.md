@@ -5,7 +5,7 @@ order: 27
 ---
 # RadialSlider
 
-The [RadialSlider](xref:ActiproSoftware.Windows.Controls.RadialSlider) control is a circular slider that allows for quick selection of a degree value, which can easily be converted to some form of scalar value.
+The [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) control is a circular slider that allows for quick selection of a degree value, which can easily be converted to some form of scalar value.
 
 Radial sliders function just like normal linear sliders however instead of moving the slider thumb in a straight line, the thumb can move in a circular fashion around the slider's center point.  This sort of UI allows for additional precision when compared to linear sliders, especially with touch interaction.
 
@@ -15,13 +15,13 @@ Radial sliders are often paired with [RingSlice](ringslice.md) controls, which a
 
 *A RadialSlider that uses RingSlice controls for rendering of the track and value.*
 
-[RadialSlider](xref:ActiproSoftware.Windows.Controls.RadialSlider) supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.  While the control is ideal for touch-based input, it also fully accepts mouse and keyboard input.  Combine two RadialSlider controls on top of each other to enable range-based selection.
+[RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.  While the control is ideal for touch-based input, it also fully accepts mouse and keyboard input.  Combine two RadialSlider controls on top of each other to enable range-based selection.
 
 ## Values
 
-Values in the [RadialSlider](xref:ActiproSoftware.Windows.Controls.RadialSlider) are expressed in terms of degrees, where `0` is upward and the degree values increase as they go clockwise, meaning `90` degrees is to the right.
+Values in the [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) are expressed in terms of degrees, where `0` is upward and the degree values increase as they go clockwise, meaning `90` degrees is to the right.
 
-There are two value properties exposed by this control.  The first is the `Value` property, which inherits from `RangeBase`.  This property contains the final 'snapped' degree value as the radial slider is interacted with by the end user.  The second is [IntermediateValue](xref:ActiproSoftware.Windows.Controls.RadialSlider.IntermediateValue), which is the exact degree value as the radial slider is interacted with by the end user.  They generally will be the same value however they can be different in cases where the user is dragging the slider's thumb off of a snap point (see below).
+There are two value properties exposed by this control.  The first is the `Value` property, which inherits from `RangeBase`.  This property contains the final 'snapped' degree value as the radial slider is interacted with by the end user.  The second is [IntermediateValue](xref:@ActiproUIRoot.Controls.RadialSlider.IntermediateValue), which is the exact degree value as the radial slider is interacted with by the end user.  They generally will be the same value however they can be different in cases where the user is dragging the slider's thumb off of a snap point (see below).
 
 ## Input and Value Snapping
 
@@ -33,7 +33,7 @@ The slider is designed to accept all forms of input (touch, mouse, and keyboard)
 
 ### Dragging
 
-When dragging the slider's thumb via touch or mouse, the `Value` property will snap to the closest `SmallChange` interval, while the [IntermediateValue](xref:ActiproSoftware.Windows.Controls.RadialSlider.IntermediateValue) will be directly under the drag location.  When the thumb is released, it will animate [IntermediateValue](xref:ActiproSoftware.Windows.Controls.RadialSlider.IntermediateValue) over to the `Value` property.
+When dragging the slider's thumb via touch or mouse, the `Value` property will snap to the closest `SmallChange` interval, while the [IntermediateValue](xref:@ActiproUIRoot.Controls.RadialSlider.IntermediateValue) will be directly under the drag location.  When the thumb is released, it will animate [IntermediateValue](xref:@ActiproUIRoot.Controls.RadialSlider.IntermediateValue) over to the `Value` property.
 
 ### Mouse Wheel
 
@@ -78,20 +78,20 @@ Other ranges can allow for creative input scenarios too.  A `Minimum` of `-360` 
 
 ## Radius
 
-The [RadialSlider](xref:ActiproSoftware.Windows.Controls.RadialSlider).[Radius](xref:ActiproSoftware.Windows.Controls.RadialSlider.Radius) property indicates the radius of the invisible track over which the thumb will rotate.  A radius of `40` means the circle will be `80x80` in size.
+The [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider).[Radius](xref:@ActiproUIRoot.Controls.RadialSlider.Radius) property indicates the radius of the invisible track over which the thumb will rotate.  A radius of `40` means the circle will be `80x80` in size.
 
 ## Customizing the Thumb
 
-The thumb, represented by the [CircularThumb](xref:ActiproSoftware.Windows.Controls.Primitives.CircularThumb) primitive control, is the only visible portion of the slider.  It is what the end user interacts with and drags to change the slider's value.
+The thumb, represented by the [CircularThumb](xref:@ActiproUIRoot.Controls.Primitives.CircularThumb) primitive control, is the only visible portion of the slider.  It is what the end user interacts with and drags to change the slider's value.
 
-These members on [RadialSlider](xref:ActiproSoftware.Windows.Controls.RadialSlider) are related to altering the appearance of the thumb:
+These members on [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) are related to altering the appearance of the thumb:
 
 | Member | Description |
 |-----|-----|
-| [ThumbArrowAngle](xref:ActiproSoftware.Windows.Controls.RadialSlider.ThumbArrowAngle) Property | Gets or sets the thumb's arrow angle.  The default value is `180`, meaning it will face down when up at `0` degrees in the slider. |
-| [ThumbBackground](xref:ActiproSoftware.Windows.Controls.RadialSlider.ThumbBackground) Property | Gets or sets the background `Brush` to render when the thumb is in a normal state. |
-| [ThumbPressedBackground](xref:ActiproSoftware.Windows.Controls.RadialSlider.ThumbPressedBackground) Property | Gets or sets the background `Brush` to render when the thumb is pressed. |
-| [ThumbStyle](xref:ActiproSoftware.Windows.Controls.RadialSlider.ThumbStyle) Property | Gets or sets the `Style` to use for the thumb.  Use this property if a custom thumb `Style` is desired. |
+| [ThumbArrowAngle](xref:@ActiproUIRoot.Controls.RadialSlider.ThumbArrowAngle) Property | Gets or sets the thumb's arrow angle.  The default value is `180`, meaning it will face down when up at `0` degrees in the slider. |
+| [ThumbBackground](xref:@ActiproUIRoot.Controls.RadialSlider.ThumbBackground) Property | Gets or sets the background `Brush` to render when the thumb is in a normal state. |
+| [ThumbPressedBackground](xref:@ActiproUIRoot.Controls.RadialSlider.ThumbPressedBackground) Property | Gets or sets the background `Brush` to render when the thumb is pressed. |
+| [ThumbStyle](xref:@ActiproUIRoot.Controls.RadialSlider.ThumbStyle) Property | Gets or sets the `Style` to use for the thumb.  Use this property if a custom thumb `Style` is desired. |
 
 ## Combining Multiple Sliders
 

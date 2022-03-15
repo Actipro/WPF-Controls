@@ -9,7 +9,7 @@ Bar Charts can be customized to have a unique look that fits your needs.
 
 ## Brushes & Styling
 
-Bar Series can have custom styles applied to the bars using [BarSeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.BarSeriesBase).[BarStyle](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.BarSeriesBase.BarStyle).
+Bar Series can have custom styles applied to the bars using [BarSeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase).[BarStyle](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase.BarStyle).
 
 ![Screenshot](../images/appearance-bar-style1.png)
 
@@ -35,7 +35,7 @@ This example shows a chart the bars styled uniquely.
 
 ## Custom Template
 
-For a more dramatic change, you can retemplate the bar content completely by using [BarSeriesBase](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.BarSeriesBase).[BarTemplate](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.BarSeriesBase.BarTemplate).
+For a more dramatic change, you can retemplate the bar content completely by using [BarSeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase).[BarTemplate](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase.BarTemplate).
 
 ![Screenshot](../images/appearance-bar-style2.png)
 

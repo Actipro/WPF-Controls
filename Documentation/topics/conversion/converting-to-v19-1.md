@@ -21,7 +21,7 @@ To simplify the highlighting style API and make it more cross-platform compatibl
 
 ### Brushes Replaced by Colors
 
-The `IHighlightingStyle.BorderBrush`, `StrikethroughBrush`, and `UnderlineBrush` properties were renamed to [IHighlightingStyle](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderColor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderColor), [StrikethroughColor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.StrikethroughColor), and [UnderlineColor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.UnderlineColor) respectively.  The `Brush` property values were replaced by `Color`.
+The `IHighlightingStyle.BorderBrush`, `StrikethroughBrush`, and `UnderlineBrush` properties were renamed to [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderColor](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderColor), [StrikethroughColor](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.StrikethroughColor), and [UnderlineColor](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.UnderlineColor) respectively.  The `Brush` property values were replaced by `Color`.
 
 ### Highlighting Style Viewer QuickStart Updated
 
@@ -29,11 +29,11 @@ The "Highlighting Style Viewer" QuickStart has been updated to use controls for 
 
 ### Enumeration Changes
 
-The new cross-platform rendering framework used by SyntaxEditor has [LineKind](xref:ActiproSoftware.Windows.Controls.Rendering.LineKind) and [TextLineWeight](xref:ActiproSoftware.Windows.Controls.Rendering.TextLineWeight) enumerations, both defined in the Shared Library.  The `HighlightingStyleLineStyle` enumeration was replaced with [LineKind](xref:ActiproSoftware.Windows.Controls.Rendering.LineKind).  Please use the `LineKind.None` value in scenarios where `HighlightingStyleLineStyle.Default` was previously used.  Likewise, the `HighlightingStyleLineWeight` enumeration was replaced with [TextLineWeight](xref:ActiproSoftware.Windows.Controls.Rendering.TextLineWeight).
+The new cross-platform rendering framework used by SyntaxEditor has [LineKind](xref:@ActiproUIRoot.Controls.Rendering.LineKind) and [TextLineWeight](xref:@ActiproUIRoot.Controls.Rendering.TextLineWeight) enumerations, both defined in the Shared Library.  The `HighlightingStyleLineStyle` enumeration was replaced with [LineKind](xref:@ActiproUIRoot.Controls.Rendering.LineKind).  Please use the `LineKind.None` value in scenarios where `HighlightingStyleLineStyle.Default` was previously used.  Likewise, the `HighlightingStyleLineWeight` enumeration was replaced with [TextLineWeight](xref:@ActiproUIRoot.Controls.Rendering.TextLineWeight).
 
-The `IHighlightingStyle.BorderStyle`, `StrikethroughStyle`, and `UnderlineStyle` properties were renamed to [IHighlightingStyle](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderKind), [StrikethroughKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.StrikethroughKind), and [UnderlineKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.UnderlineKind) respectively and updated to use the [LineKind](xref:ActiproSoftware.Windows.Controls.Rendering.LineKind) property.
+The `IHighlightingStyle.BorderStyle`, `StrikethroughStyle`, and `UnderlineStyle` properties were renamed to [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderKind), [StrikethroughKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.StrikethroughKind), and [UnderlineKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.UnderlineKind) respectively and updated to use the [LineKind](xref:@ActiproUIRoot.Controls.Rendering.LineKind) property.
 
-The `HighlightingStyleBorderCornerStyle` enumeration was renamed to [HighlightingStyleBorderCornerKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.HighlightingStyleBorderCornerKind), and the `SinglePixelRounded` value was renamed to `Rounded`.  The `IHighlightingStyle.BorderCornerStyle` property was renamed to [IHighlightingStyle](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderCornerKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderCornerKind).
+The `HighlightingStyleBorderCornerStyle` enumeration was renamed to [HighlightingStyleBorderCornerKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.HighlightingStyleBorderCornerKind), and the `SinglePixelRounded` value was renamed to `Rounded`.  The `IHighlightingStyle.BorderCornerStyle` property was renamed to [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle).[BorderCornerKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BorderCornerKind).
 
 ## Selection and Caret Changes
 
@@ -43,27 +43,27 @@ The caret is always at the "end" of an editor view selection.  Prior SyntaxEdito
 
 The `SyntaxEditor.Caret` property has been removed and caret location-related information is now available via the selection API.
 
-The `SyntaxEditor.Caret.CharacterColumn`, `DisplayCharacterColumn`, `Offset`, and `Position` properties have moved to the [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[CaretCharacterColumn](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn), the [CaretDisplayCharacterColumn](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn), the [CaretOffset](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset), and the [CaretPosition](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) properties respectively, accessible via `editor.ActiveView.Selection`.
+The `SyntaxEditor.Caret.CharacterColumn`, `DisplayCharacterColumn`, `Offset`, and `Position` properties have moved to the [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[CaretCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn), the [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn), the [CaretOffset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset), and the [CaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) properties respectively, accessible via `editor.ActiveView.Selection`.
 
-The properties above return the primary selection/caret's information.  Multiple selections can be enumerated via the view's [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[Ranges](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.Ranges) collection property.  There is one entry for each selection within that collection, and the entries give the position ranges of the selections.  The "end" position is where the caret is for each selection.
+The properties above return the primary selection/caret's information.  Multiple selections can be enumerated via the view's [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[Ranges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.Ranges) collection property.  There is one entry for each selection within that collection, and the entries give the position ranges of the selections.  The "end" position is where the caret is for each selection.
 
-The `SyntaxEditor.Caret.BlinkInterval`, `InsertStyle`, `InsertWidth`, `OverwriteStyle`, and `OverwriteWidth` properties have moved to the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CaretBlinkInterval](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretBlinkInterval), the [CaretInsertKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretInsertKind), the [CaretInsertWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretInsertWidth), the [CaretOverwriteKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteKind), and the [CaretOverwriteWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteWidth) properties respectively,
+The `SyntaxEditor.Caret.BlinkInterval`, `InsertStyle`, `InsertWidth`, `OverwriteStyle`, and `OverwriteWidth` properties have moved to the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CaretBlinkInterval](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretBlinkInterval), the [CaretInsertKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretInsertKind), the [CaretInsertWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretInsertWidth), the [CaretOverwriteKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteKind), and the [CaretOverwriteWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CaretOverwriteWidth) properties respectively,
 
-The `CaretStyle` enumeration was renamed to [CaretKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.CaretKind) for better compatibility with XAML terminology.
+The `CaretStyle` enumeration was renamed to [CaretKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.CaretKind) for better compatibility with XAML terminology.
 
 ### Selection Changes for Multiple Selections
 
-The `IEditorViewSelection.PreferredHorizontalLocation` property was changed to a [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[GetPreferredCaretHorizontalLocations](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.GetPreferredCaretHorizontalLocations*) method.  The [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[SelectRange](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.SelectRange*) method overloads that take an "updatePreferredHorizontalLocation" parameter have been removed since this information is pulled on-demand now based on [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method options.
+The `IEditorViewSelection.PreferredHorizontalLocation` property was changed to a [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[GetPreferredCaretHorizontalLocations](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.GetPreferredCaretHorizontalLocations*) method.  The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[SelectRange](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.SelectRange*) method overloads that take an "updatePreferredHorizontalLocation" parameter have been removed since this information is pulled on-demand now based on [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method options.
 
-The `IEditorViewSelection.GetCharacterIndexRanges` method was removed.  Use the [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[GetCharacterIndexRanges](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.GetCharacterIndexRanges*) method instead, which has had its "allowWholeLines" parameter removed.
+The `IEditorViewSelection.GetCharacterIndexRanges` method was removed.  Use the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[GetCharacterIndexRanges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.GetCharacterIndexRanges*) method instead, which has had its "allowWholeLines" parameter removed.
 
 ### Selection Changes for Batches
 
-A new [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method has been added that allows for passing options and grouping multiple selection changes into a single transaction.
+A new [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method has been added that allows for passing options and grouping multiple selection changes into a single transaction.
 
 The `IEditorView.ScrollToCaretOnSelectionChange` property was removed.  A batch option for preventing scroll-to-caret can be specified when creating a batch.
 
-The new [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method can wrap multiple selection changes to ensure that only one selection change event occurs, as the outermost batch is completed.  Related to this, the old `IEditorView.AreSelectionEventsSuspended`, `ResumeSelectionEvents`, and `SuspendSelectionEvents` members have been removed.
+The new [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[CreateBatch](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CreateBatch*) method can wrap multiple selection changes to ensure that only one selection change event occurs, as the outermost batch is completed.  Related to this, the old `IEditorView.AreSelectionEventsSuspended`, `ResumeSelectionEvents`, and `SuspendSelectionEvents` members have been removed.
 
 ### Text Change Selections
 
@@ -75,17 +75,17 @@ The `UndoHistory.ApplySelectionPositionRange` method was removed and can be repl
 
 ### Event Arguments
 
-The `EditorViewSelectionEventArgs.LastCaretPosition` property was renamed to [EditorViewSelectionEventArgs](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorViewSelectionEventArgs).[PreviousCaretPosition](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorViewSelectionEventArgs.PreviousCaretPosition).
+The `EditorViewSelectionEventArgs.LastCaretPosition` property was renamed to [EditorViewSelectionEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewSelectionEventArgs).[PreviousCaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewSelectionEventArgs.PreviousCaretPosition).
 
 ## IntelliPrompt Changes
 
-For improving the clarity of the property result, the `CommonImage` enumeration was renamed to [CommonImageKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageKind), and the `CommonImageSourceProvider.ImageType` property was renamed to [CommonImageSourceProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider).[ImageKind](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider.ImageKind).
+For improving the clarity of the property result, the `CommonImage` enumeration was renamed to [CommonImageKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageKind), and the `CommonImageSourceProvider.ImageType` property was renamed to [CommonImageSourceProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider).[ImageKind](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider.ImageKind).
 
-The `QuickInfoProviderBase.CanTrackMouseInput` property was renamed to [QuickInfoProviderBase](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase).[CanTrackPointerInput](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase.CanTrackPointerInput).
+The `QuickInfoProviderBase.CanTrackMouseInput` property was renamed to [QuickInfoProviderBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase).[CanTrackPointerInput](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase.CanTrackPointerInput).
 
-The [ICompletionItemCollection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionItemCollection) interface was updated to implement `INotifyCollectionChanged`.
+The [ICompletionItemCollection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItemCollection) interface was updated to implement `INotifyCollectionChanged`.
 
-The [ICompletionFilter](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionFilter).[Filter](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionFilter.Filter*) method and the [CompletionFilterPredicate](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilterPredicate) delegate were updated to use a new [CompletionFilterResult](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.CompletionFilterResult) enumeration so that the intended result is clearer.
+The [ICompletionFilter](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionFilter).[Filter](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionFilter.Filter*) method and the [CompletionFilterPredicate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilterPredicate) delegate were updated to use a new [CompletionFilterResult](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.CompletionFilterResult) enumeration so that the intended result is clearer.
 
 ### Quick Info and Parameter Info Theme Support
 
@@ -93,37 +93,41 @@ Quick info and parameter info tips now render their backgrounds based on the [cu
 
 To support this change, it is recommended that foreground colors used in [Content Providers](../syntaxeditor/user-interface/intelliprompt/popup-content-providers.md) are based on the current theme in the SyntaxEditor control (assuming SyntaxEditor is rendering in a theme similar to the application theme), or at least are set to render well in the current application theme.
 
-The [HtmlContentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) class has several static properties for common foreground colors such as neutral, comment, keyword, and type names.  These properties access the related classification type entries in the ambient highlighting style registry and return the foreground color.
+The [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) class has several static properties for common foreground colors such as neutral, comment, keyword, and type names.  These properties access the related classification type entries in the ambient highlighting style registry and return the foreground color.
 
 ## Adornments Changes
 
 ### Change Reasons
 
-A new [AdornmentChangeReason](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) enumeration has been added, allowing add/remove adornment calls to indicate the reason behind the change.
+A new [AdornmentChangeReason](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) enumeration has been added, allowing add/remove adornment calls to indicate the reason behind the change.
 
-The [IAdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*), [RemoveAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAdornment*), [RemoveAdornments](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAdornments*), and [RemoveAllAdornments](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAllAdornments*) methods have all been updated with a reason parameter.
+The [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*), [RemoveAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAdornment*), [RemoveAdornments](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAdornments*), and [RemoveAllAdornments](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.RemoveAllAdornments*) methods have all been updated with a reason parameter.
 
-The [IntraTextAdornmentManagerBase<T, U>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2) and [DecorationAdornmentManagerBase<T, U>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2)'s `AddAdornment` methods were updated with a reason parameter.
+The [IntraTextAdornmentManagerBase<T, U>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2) and [DecorationAdornmentManagerBase<T, U>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2)'s `AddAdornment` methods were updated with a reason parameter.
 
 ### Adornment View Line Associations
 
-The [IAdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) overload that accepts a snapshot range has been updated with a new [ITextViewLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine) parameter that can be specified if the adornment is associated with a certain view line.  The value flows into the new [IAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornment).[ViewLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornment.ViewLine) property.
+The [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) overload that accepts a snapshot range has been updated with a new [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) parameter that can be specified if the adornment is associated with a certain view line.  The value flows into the new [IAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment).[ViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment.ViewLine) property.
 
 ### Element-Based and Draw-Based Adornments
 
-When updating how SyntaxEditor renders itself to support the same codebase across multiple platforms (WPF, UWP, and WinForms), we had to alter how adornments render.  Most of our pre-defined adornments now use a new draw-based mechanism where they render themselves in the rendering pipeline instead of using UI elements to render themselves.  New [IAdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) overloads support the creation of draw-based adornments.
+When updating how SyntaxEditor renders itself to support the same codebase across multiple platforms (WPF, UWP, and WinForms), we had to alter how adornments render.  Most of our pre-defined adornments now use a new draw-based mechanism where they render themselves in the rendering pipeline instead of using UI elements to render themselves.  New [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) overloads support the creation of draw-based adornments.
 
 While adornment layers still stack in the same order as before, element-based adornments will always render "on top" of draw-based adornments since the elements are stacked on top of the drawing canvas element.  Adornments like alternating row highlights should be draw-based so that they stack appropriately with other pre-defined adornment layers.  Adornments like intra-line controls can remain element-based since they generally appear on top of other view content anyhow.
+
+@if (wpf) {
 
 ## Vertical View Split Option Removed
 
 With the advent of advanced tabbed docking windows, we simplified our internal structures by removing support for vertical splits.  Horizontal splits are still supported.
 
-The [EditorViewPlacement](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorViewPlacement) enumeration now only has `Lower` and `Upper` values.  The `SyntaxEditor.CanSplitVertically`, `HasVerticalSplit`, and `VerticalSplitPercentage` properties were removed.
+The [EditorViewPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewPlacement) enumeration now only has `Lower` and `Upper` values.  The `SyntaxEditor.CanSplitVertically`, `HasVerticalSplit`, and `VerticalSplitPercentage` properties were removed.
+
+}
 
 ## IEditorView Scroll State Changes
 
-The `IEditorView.FirstVisibleX` and `FirstVisiblePosition` properties were removed and replaced with a new read-only [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[ScrollState](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.ScrollState) property that returns a [TextViewScrollState](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.TextViewScrollState) object.  To set the scroll state, use the new [IEditorViewScroller](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewScroller).[ScrollTo](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewScroller.ScrollTo*) method, accessible via `editor.ActiveView.Scroller.ScrollTo`.
+The `IEditorView.FirstVisibleX` and `FirstVisiblePosition` properties were removed and replaced with a new read-only [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[ScrollState](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.ScrollState) property that returns a [TextViewScrollState](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewScrollState) object.  To set the scroll state, use the new [IEditorViewScroller](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller).[ScrollTo](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller.ScrollTo*) method, accessible via `editor.ActiveView.Scroller.ScrollTo`.
 
 ## Indicator Changes
 
@@ -135,39 +139,39 @@ See the "CustomIndicatorTag" class in the "Indicators - Custom" QuickStart for a
 
 ### IEditorViewLine and IPrinterViewLine Interfaces Merged Into ITextViewLine
 
-The former `IEditorViewLine` and `IPrinterViewLine` interfaces have been merged into their base [ITextViewLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine) interface.
+The former `IEditorViewLine` and `IPrinterViewLine` interfaces have been merged into their base [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) interface.
 
-The same is true of the `IEditorViewLineCollection` and `IPrinterViewLineCollection` interfaces being merged into their base [ITextViewLineCollection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLineCollection) interface.
+The same is true of the `IEditorViewLineCollection` and `IPrinterViewLineCollection` interfaces being merged into their base [ITextViewLineCollection](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLineCollection) interface.
 
 ### Bounds and Size Properties Changed
 
-For better clarity, the [ITextViewLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine).[Bounds](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.Bounds) and [Size](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.Size) properties have been updated to include the height of the top/bottom intra-line adornment margins.
+For better clarity, the [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine).[Bounds](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.Bounds) and [Size](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.Size) properties have been updated to include the height of the top/bottom intra-line adornment margins.
 
-New [TextBounds](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.TextBounds) and [TextSize](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.TextSize) properties were added, with the former return values of the `Bounds` and `Size` properties that exclude adornment margin space.
+New [TextBounds](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.TextBounds) and [TextSize](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.TextSize) properties were added, with the former return values of the `Bounds` and `Size` properties that exclude adornment margin space.
 
 ### VisibleStartPosition Property Added
 
-A new [ITextViewLine](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine).[VisibleStartPosition](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.VisibleStartPosition) property was added that returns the first visible position on the view line.  Replace any prior `ITextViewLine.DisplayLineNumber` property call with the new `ITextViewLine.VisibleStartPosition.DisplayLine` property.
+A new [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine).[VisibleStartPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.VisibleStartPosition) property was added that returns the first visible position on the view line.  Replace any prior `ITextViewLine.DisplayLineNumber` property call with the new `ITextViewLine.VisibleStartPosition.DisplayLine` property.
 
 ## Selection Brush Property Changes
 
-The `SyntaxEditor.SelectionBackgroundActive` and `SelectionBackgroundInactive` properties were renamed to [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[SelectedTextBackground](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.SelectedTextBackground) and [InactiveSelectedTextBackground](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) respectively.
+The `SyntaxEditor.SelectionBackgroundActive` and `SelectionBackgroundInactive` properties were renamed to [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[SelectedTextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.SelectedTextBackground) and [InactiveSelectedTextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) respectively.
 
 The `SyntaxEditor.SelectionBorderActiveBrush` and `SelectionBorderInactiveBrush` properties were removed since selection borders are no longer supported.
 
 ## Searching Changes
 
-The `SyntaxEditor.IsIncrementalSearchResultHighlightingEnabled` property was renamed to [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsSearchResultHighlightingEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsSearchResultHighlightingEnabled).
+The `SyntaxEditor.IsIncrementalSearchResultHighlightingEnabled` property was renamed to [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsSearchResultHighlightingEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsSearchResultHighlightingEnabled).
 
-The `EditorSearchView.IsModeToolBarVisible` property was renamed to [CanToggleReplace](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Primitives.SearchViewBase.CanToggleReplace), and the `Mode` property was renamed to [IsReplaceVisible](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Primitives.SearchViewBase.IsReplaceVisible).  The boolean property is easier to bind with.  The `EditorSearchMode` enumeration was removed.
+The `EditorSearchView.IsModeToolBarVisible` property was renamed to [CanToggleReplace](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.CanToggleReplace), and the `Mode` property was renamed to [IsReplaceVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.IsReplaceVisible).  The boolean property is easier to bind with.  The `EditorSearchMode` enumeration was removed.
 
 ## Input Changes
 
-The `IEditorViewMouseInputEventSink` interface was renamed to [IEditorViewPointerInputEventSink](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewPointerInputEventSink), and the interface members were updated to use a more generic naming convention along with cross-platform compatible event arguments.
+The `IEditorViewMouseInputEventSink` interface was renamed to [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink), and the interface members were updated to use a more generic naming convention along with cross-platform compatible event arguments.
 
-The `IEditorView.StartMouseSelection` method was renamed to [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).[StartPointerSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView.StartPointerSelection*) and its parameter type was changed.
+The `IEditorView.StartMouseSelection` method was renamed to [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[StartPointerSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.StartPointerSelection*) and its parameter type was changed.
 
-The `SyntaxEditor.CanMoveCaretOnMouseRightClick` property was renamed to [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[CanMoveCaretForSecondaryPointerButton](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.CanMoveCaretForSecondaryPointerButton).
+The `SyntaxEditor.CanMoveCaretOnMouseRightClick` property was renamed to [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanMoveCaretForSecondaryPointerButton](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanMoveCaretForSecondaryPointerButton).
 
 Code block selection features (available in some languages) changed keyboard shortcuts from `Ctrl++` to `Ctrl+Shift++` for expansion, and `Ctrl+-` to `Ctrl+Shift+-` for contraction.
 
@@ -231,9 +235,9 @@ The old `DuplicateLine` edit action has been updated to work with selected text 
 
 The `TextChangeTypes.DuplicateLine` property was renamed to [TextChangeTypes](xref:ActiproSoftware.Text.TextChangeTypes).[Duplicate](xref:ActiproSoftware.Text.TextChangeTypes.Duplicate).
 
-The `EditorCommands.DuplicateLine` property was renamed to [EditorCommands](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorCommands).[Duplicate](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditorCommands.Duplicate).
+The `EditorCommands.DuplicateLine` property was renamed to [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands).[Duplicate](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands.Duplicate).
 
-The `DuplicateLineAction` class was renamed to [DuplicateAction](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.EditActions.DuplicateAction) and the corresponding `IEditorViewTextChangeActions.DuplicateLine` method was renamed to [IEditorViewTextChangeActions](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewTextChangeActions).[Duplicate](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewTextChangeActions.Duplicate*).
+The `DuplicateLineAction` class was renamed to [DuplicateAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.DuplicateAction) and the corresponding `IEditorViewTextChangeActions.DuplicateLine` method was renamed to [IEditorViewTextChangeActions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewTextChangeActions).[Duplicate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewTextChangeActions.Duplicate*).
 
 ## ANTLR and Irony Add-ons Not Installed By Default
 
@@ -241,18 +245,18 @@ The optional add-ons that integrate ANTLR v3 And Irony parsers with SyntaxEditor
 
 ## TextStylePreview and NavigableSymbolSelector Namespace Changed
 
-The [TextStylePreview](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.TextStylePreview) and [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) controls have been moved from the `SyntaxEditor.Primitives` namespace up to primary `SyntaxEditor` namespace where the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control is located.
+The [TextStylePreview](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextStylePreview) and [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) controls have been moved from the `SyntaxEditor.Primitives` namespace up to primary `SyntaxEditor` namespace where the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is located.
 
 ## Other Miscellaneous Changes
 
-The `SyntaxEditor.CharacterWidth`, `LineHeight`, and `SpaceWidth` properties were replaced with [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[DefaultCharacterWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.DefaultCharacterWidth), [DefaultLineHeight](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.DefaultLineHeight), and [DefaultSpaceWidth](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.DefaultSpaceWidth) properties respectively.
+The `SyntaxEditor.CharacterWidth`, `LineHeight`, and `SpaceWidth` properties were replaced with [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[DefaultCharacterWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.DefaultCharacterWidth), [DefaultLineHeight](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.DefaultLineHeight), and [DefaultSpaceWidth](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.DefaultSpaceWidth) properties respectively.
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsOverwriteModeActiveChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsOverwriteModeActiveChanged) event arguments were updated.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsOverwriteModeActiveChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsOverwriteModeActiveChanged) event arguments were updated.
 
 The `SyntaxEditor.CanScrollPastDocumentEnd` property was flipped to a default of `true` since view lines can support variable heights via font options and intra-line adornments.  Scrolling past document end can be turned back off if those features are not being used.
 
-The `SyntaxEditor.IsMouseWheelZoomEnabled` property was removed in favor of the new [ZoomModesAllowed](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.ZoomModesAllowed) property.
+The `SyntaxEditor.IsMouseWheelZoomEnabled` property was removed in favor of the new [ZoomModesAllowed](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ZoomModesAllowed) property.
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[LineNumberMarginFontSize](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.LineNumberMarginFontSize) property's default was changed to `0`.  When `0`, it will use the same font size as `SyntaxEditor.FontSize`.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[LineNumberMarginFontSize](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.LineNumberMarginFontSize) property's default was changed to `0`.  When `0`, it will use the same font size as `SyntaxEditor.FontSize`.
 
 The `SyntaxEditor.ZoomLevelIndicatorTemplate` property and default indicator were removed since zoom level is usually indicated in external UI.

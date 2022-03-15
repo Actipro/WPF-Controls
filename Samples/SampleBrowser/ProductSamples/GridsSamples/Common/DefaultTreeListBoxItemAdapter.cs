@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Windows.Input;
 
 #if WINRT
 using ActiproSoftware.UI.Xaml.Controls.Grids;
@@ -49,6 +50,24 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 			return (model != null ? model.Children : null);
 		}
 		
+		/// <summary>
+		/// Returns the default action command.
+		/// </summary>
+		/// <param name="ownerControl">The owner control.</param>
+		/// <param name="item">The item to examine.</param>
+		/// <returns>
+		/// The <see cref="ICommand"/> to execute as a default action.
+		/// </returns>
+		/// <remarks>
+		/// The <see cref="DefaultActionCommandBinding"/> property can be set for a pure XAML-based implementation of this method.
+		/// Please note that bindings aren't as performant as code, so for large trees or if you see performance issues,
+		/// it is recommended to override this method instead with custom logic to retrieve the appropriate value.
+		/// </remarks>
+		public override ICommand GetDefaultActionCommand(TreeListBox ownerControl, object item) {
+			var model = item as TreeNodeModel;
+			return (model != null ? model.DefaultActionCommand : null);
+		}
+
 		/// <summary>
 		/// Returns whether the specified item is draggable.
 		/// </summary>

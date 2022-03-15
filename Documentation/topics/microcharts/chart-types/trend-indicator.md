@@ -15,7 +15,7 @@ If the values are updating live, the indicator changes use a pleasing animation 
 
 ## Basic Usage
 
-Simply bind the control's [OriginValue](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroTrendIndicator.OriginValue) property to the original value (or previous value) and the [Value](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroTrendIndicator.Value) property to the current value.  The control will animate and display one of three indicator templates.
+Simply bind the control's [OriginValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroTrendIndicator.OriginValue) property to the original value (or previous value) and the [Value](xref:@ActiproUIRoot.Controls.MicroCharts.MicroTrendIndicator.Value) property to the current value.  The control will animate and display one of three indicator templates.
 
 ```xaml
 <microcharts:MicroTrendIndicator OriginValue="{Binding OriginValue}" Value="{Binding CurrentValue}" />
@@ -23,7 +23,7 @@ Simply bind the control's [OriginValue](xref:ActiproSoftware.Windows.Controls.Mi
 
 ## Appearance Customization
 
-The [MicroTrendIndicator](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroTrendIndicator) control can display custom indicator templates for each of its three states.
+The [MicroTrendIndicator](xref:@ActiproUIRoot.Controls.MicroCharts.MicroTrendIndicator) control can display custom indicator templates for each of its three states.
 
 This code alters the indicator templates to all use circles:
 

@@ -5,7 +5,7 @@ order: 6
 ---
 # CornerRadiusPicker
 
-The [CornerRadiusPicker](xref:ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker) control allows for the input of a `CornerRadius` (top-left, top-right, bottom-right, bottom-left) value.  It is generally intended for display within a popup, such as for the [CornerRadiusEditBox](../editboxes/cornerradiuseditbox.md) control.
+The [CornerRadiusPicker](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusPicker) control allows for the input of a `CornerRadius` (top-left, top-right, bottom-right, bottom-left) value.  It is generally intended for display within a popup, such as for the [CornerRadiusEditBox](../editboxes/cornerradiuseditbox.md) control.
 
 ![Screenshot](../images/cornerradiuspicker.png)
 
@@ -13,17 +13,17 @@ The toggle at the top determines whether the embedded [DoublePicker](doublepicke
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusPicker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusPicker.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusPicker.SmallChange) property.
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:ActiproSoftware.Windows.Controls.Editors.CornerRadiusPicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `8`, but can be set to any value in the range `0` to `15`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusPicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `8`, but can be set to any value in the range `0` to `15`.  Or set the value to `null` to prevent rounding.
 
 ## Sample XAML
 

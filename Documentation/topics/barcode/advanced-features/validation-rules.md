@@ -7,11 +7,11 @@ order: 4
 
 Each symbology included with Actipro Bar code has a related `ValidationRule` implementation that may be used when data binding in XAML to ensure that a value supplied is supported by the symbology.
 
-All the validation rules are located in the [ActiproSoftware.Windows.Controls.BarCode.ValidationRules](xref:ActiproSoftware.Windows.Controls.BarCode.ValidationRules) namespace.
+All the validation rules are located in the [ActiproSoftware.Windows.Controls.BarCode.ValidationRules](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules) namespace.
 
 ## Using a ValidationRule
 
-This sample XAML code shows how to use the validation rule for `Code 39 Extended`, [Code39ExtendedValidationRule](xref:ActiproSoftware.Windows.Controls.BarCode.ValidationRules.Code39ExtendedValidationRule), to ensure that the value that is bound to a `TextBox` is valid for that symbology.  When the value is not valid, the error message will be set to a `ToolTip` on the `TextBox`.
+This sample XAML code shows how to use the validation rule for `Code 39 Extended`, [Code39ExtendedValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code39ExtendedValidationRule), to ensure that the value that is bound to a `TextBox` is valid for that symbology.  When the value is not valid, the error message will be set to a `ToolTip` on the `TextBox`.
 
 ```xaml
 <StackPanel>

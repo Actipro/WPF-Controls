@@ -37,11 +37,11 @@ This table lists the built-in single-instance service types that can be used whe
 | [IAutoCorrector](xref:ActiproSoftware.Text.Analysis.IAutoCorrector) | Designates the [auto-corrector](feature-services/auto-corrector.md) that can perform additional edits after text changes, such as auto-case correcting language keywords. |
 | [IDelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.IDelimiterAutoCompleter) | Designates the [delimiter auto-completer](feature-services/delimiter-auto-completer.md) that can insert end delimiters when a start delimiter is typed by the end user. |
 | [IExampleTextProvider](xref:ActiproSoftware.Text.IExampleTextProvider) | Designates the [example text provider](feature-services/example-text.md) that returns a code snippet which can be displayed in an application to show sample code syntax. |
-| [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) | Designates the [indent provider](feature-services/indent-provider.md) that performs automatic indentation of text when the Enter key is pressed. |
+| [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) | Designates the [indent provider](feature-services/indent-provider.md) that performs automatic indentation of text when the Enter key is pressed. |
 | [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) | Designates the [lexer](feature-services/lexer.md) that tokenizes text for the language. |
 | [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) | Designates the [line commenter](feature-services/line-commenter.md) that is capable of commenting and uncommenting lines or a range of text. |
-| [INavigableSymbolProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbolProvider) | Designates the [navigable symbol provider](feature-services/navigable-symbol-provider.md) that lists the accessible symbols within a document. |
-| [IOutliner](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Outlining.IOutliner) | Designates the [outliner](feature-services/outliner.md) that allows a language to provide automatic outlining (code folding) for a document. |
+| [INavigableSymbolProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbolProvider) | Designates the [navigable symbol provider](feature-services/navigable-symbol-provider.md) that lists the accessible symbols within a document. |
+| [IOutliner](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliner) | Designates the [outliner](feature-services/outliner.md) that allows a language to provide automatic outlining (code folding) for a document. |
 | [IParser](xref:ActiproSoftware.Text.Parsing.IParser) | Designates the [parser](feature-services/parser.md) that performs syntax and/or semantic analysis on code and often returns parse data such as an abstract syntax tree (AST), list of syntax errors, symbol table, etc. |
 | [IStructureMatcher](xref:ActiproSoftware.Text.Analysis.IStructureMatcher) | Designates the [structure matcher](feature-services/structure-matcher.md) that can locate matching structural text delimiters, such as brackets. |
 | [ITextFormatter](xref:ActiproSoftware.Text.ITextFormatter) | Designates the [text formatter](feature-services/text-formatter.md) that adjusts whitespace and other symbols such as braces on a specified text range to make code more readable. |
@@ -58,10 +58,10 @@ This table lists the built-in multiple-instance service types that can be used w
 
 | Service Type | Description |
 |-----|-----|
-| [ICodeSnippetProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) | Designates the [code snippet provider](provider-services/code-snippet-provider.md) that can open display available code snippets for selection and activate a [code snippet template session](../user-interface/intelliprompt/code-snippets.md) within an editor view. |
-| [ICompletionProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider) | Designates the [completion provider](provider-services/completion-provider.md) that can open an [IntelliPrompt completion session](../user-interface/intelliprompt/completion-list.md) within an editor view, generally initiated by a `Ctrl+Space`. |
-| [IParameterInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoProvider) | Designates the [parameter info provider](provider-services/parameter-info-provider.md) that can open an [IntelliPrompt parameter info session](../user-interface/intelliprompt/parameter-info.md) within an editor view. |
-| [IQuickInfoProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) | Designates the [quick info provider](provider-services/quick-info-provider.md) that can open an [IntelliPrompt quick info session](../user-interface/intelliprompt/quick-info.md) within an editor view, generally initiated by mouse hovering. |
+| [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) | Designates the [code snippet provider](provider-services/code-snippet-provider.md) that can open display available code snippets for selection and activate a [code snippet template session](../user-interface/intelliprompt/code-snippets.md) within an editor view. |
+| [ICompletionProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider) | Designates the [completion provider](provider-services/completion-provider.md) that can open an [IntelliPrompt completion session](../user-interface/intelliprompt/completion-list.md) within an editor view, generally initiated by a `Ctrl+Space`. |
+| [IParameterInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoProvider) | Designates the [parameter info provider](provider-services/parameter-info-provider.md) that can open an [IntelliPrompt parameter info session](../user-interface/intelliprompt/parameter-info.md) within an editor view. |
+| [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) | Designates the [quick info provider](provider-services/quick-info-provider.md) that can open an [IntelliPrompt quick info session](../user-interface/intelliprompt/quick-info.md) within an editor view, generally initiated by mouse hovering. |
 
 ### Event Sink Service Types
 
@@ -118,7 +118,7 @@ ILexer lexer = language.GetService<ILexer>();
 
 ## Sample: Registering a Completion Provider
 
-This section shows how to register an object as a service that implements [ICompletionProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider).  Note that since languages can have mutiple objects registered that implement this interface, we will register the service using the object's type.
+This section shows how to register an object as a service that implements [ICompletionProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider).  Note that since languages can have mutiple objects registered that implement this interface, we will register the service using the object's type.
 
 This code registers an object of type `CustomCompletionProvider` in the `myCompletionProvider` variable with a language, using its type:
 

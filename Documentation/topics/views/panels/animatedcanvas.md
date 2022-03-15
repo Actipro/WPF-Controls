@@ -14,18 +14,18 @@ This panel allows child elements to be precisely positioned using coordinates th
 
 ## Overview
 
-The [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas) does not have any inherent layout logic.  Child elements are positioned at the specified loctaions, and are always allotted their desired size.
+The [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas) does not have any inherent layout logic.  Child elements are positioned at the specified loctaions, and are always allotted their desired size.
 
 The `Panel.ZIndex` property is used to determine the order of child elements that overlap.  Elements with a higher `ZIndex` will appear on top of elements with a lower value.
 
-Child elements are positioned using the attached properties [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas).[LeftProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.LeftProperty), [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas).[TopProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.TopProperty), [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas).[RightProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.RightProperty), and/or [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas).[BottomProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.BottomProperty).  The `LeftProperty` indicates the offset of the element from the left edge of the panel, using either a positive (moving to the right) or a negative (moving offscreen to the left) value.  The `TopProperty` indicates the offset of the element from the top edge of the panel, using either a positive (moving downwards) or a negative (moving upwards and offscreen) value.  Likewise, the `RightProperty` and `BottomProperty` specify the offset of the element from the right and bottom edges, respectively.
+Child elements are positioned using the attached properties [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas).[LeftProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.LeftProperty), [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas).[TopProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.TopProperty), [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas).[RightProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.RightProperty), and/or [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas).[BottomProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.BottomProperty).  The `LeftProperty` indicates the offset of the element from the left edge of the panel, using either a positive (moving to the right) or a negative (moving offscreen to the left) value.  The `TopProperty` indicates the offset of the element from the top edge of the panel, using either a positive (moving downwards) or a negative (moving upwards and offscreen) value.  Likewise, the `RightProperty` and `BottomProperty` specify the offset of the element from the right and bottom edges, respectively.
 
 > [!NOTE]
 > If both the `LeftProperty` and `RightProperty` are specified on an element, then the `LeftProperty` takes precedence and the `RightProperty` is ignored. Similarly, the `TopProperty` takes precedence over the `BottomProperty`.
 
 ## Getting Started with AnimatedCanvas
 
-This code shows typical XAML code used to position elements in an [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas):
+This code shows typical XAML code used to position elements in an [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas):
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
@@ -40,12 +40,12 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 
 ## Important Members
 
-The following [AnimatedCanvas](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas) members are key to its use:
+The following [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas) members are key to its use:
 
 | Member | Description |
 |-----|-----|
-| [BottomProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.BottomProperty) Attached Property | Gets or sets the offset of the element from the bottom edge of the panel. |
-| [LeftProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.LeftProperty) Attached Property | Gets or sets the offset of the element from the left edge of the panel. |
-| [RightProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.RightProperty) Attached Property | Gets or sets the offset of the element from the right edge of the panel. |
-| [TopProperty](xref:ActiproSoftware.Windows.Controls.Views.AnimatedCanvas.TopProperty) Attached Property | Gets or sets the offset of the element from the top edge of the panel. |
+| [BottomProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.BottomProperty) Attached Property | Gets or sets the offset of the element from the bottom edge of the panel. |
+| [LeftProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.LeftProperty) Attached Property | Gets or sets the offset of the element from the left edge of the panel. |
+| [RightProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.RightProperty) Attached Property | Gets or sets the offset of the element from the right edge of the panel. |
+| [TopProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas.TopProperty) Attached Property | Gets or sets the offset of the element from the top edge of the panel. |
 | `ZIndex` Attached Property (defined on `Panel`) | Gets or sets the z-order of the element in the panel. |

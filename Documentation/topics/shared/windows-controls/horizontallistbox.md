@@ -5,7 +5,7 @@ order: 19
 ---
 # HorizontalListBox
 
-The [HorizontalListBox](xref:ActiproSoftware.Windows.Controls.HorizontalListBox) control is a restyled native `ListBox` that arranges its items in a uniform width horizontally, and without a `ScrollBar`.
+The [HorizontalListBox](xref:@ActiproUIRoot.Controls.HorizontalListBox) control is a restyled native `ListBox` that arranges its items in a uniform width horizontally, and without a `ScrollBar`.
 
 ![Screenshot](../images/horizontallistbox-gender.png)
 

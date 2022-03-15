@@ -41,6 +41,6 @@ The class has a special [Filter](xref:ActiproSoftware.Text.Analysis.Implementati
 
 ## Programmatic Execution
 
-The [IEditorViewSelection](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection) interface defines two methods ([CodeBlockExpand](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CodeBlockExpand*) and [CodeBlockContract](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorViewSelection.CodeBlockContract*)) that can be used to programmatically invoke code block selection functionality.
+The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection) interface defines two methods ([CodeBlockExpand](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CodeBlockExpand*) and [CodeBlockContract](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CodeBlockContract*)) that can be used to programmatically invoke code block selection functionality.
 
 Again, these methods only function if an [ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) service is registered on the current language.

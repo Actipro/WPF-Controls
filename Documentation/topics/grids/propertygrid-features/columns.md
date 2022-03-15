@@ -13,7 +13,7 @@ The property grid contains two resizable columns by default (a name and a value 
 
 ## Resizing Support
 
-By default, the columns in the property grid are resizable within their defined bounds.  The [CanColumnsResize](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView.CanColumnsResize) property can be set to `false` to prevent resizing.
+By default, the columns in the property grid are resizable within their defined bounds.  The [CanColumnsResize](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsResize) property can be set to `false` to prevent resizing.
 
 ## Default Columns and Widths
 
@@ -23,15 +23,15 @@ The two columns have certain width settings and restrictions configured by defau
 
 The name column and value column are set to use star (*) sizing, similar to as in a `Grid` where each one is equal width.  However with the goals of keeping the name column cells readable and maximizing editing space in the value column cells, there are certain minimum and maximum width restrictions on each column.
 
-The name column has a minimum width of `100` and a maximum width of [NameColumnMaxWidth](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.NameColumnMaxWidth), which defaults to `180`.  This means that the name column will always stay within the range of `100` to `180` pixels wide.  This is a good range to keep display name text visible.
+The name column has a minimum width of `100` and a maximum width of [NameColumnMaxWidth](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.NameColumnMaxWidth), which defaults to `180`.  This means that the name column will always stay within the range of `100` to `180` pixels wide.  This is a good range to keep display name text visible.
 
 The value column has a minimum width of `60` and no maximum width.
 
-If you wish to allow the end user to make the name column larger, you can increase the value of the [NameColumnMaxWidth](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.NameColumnMaxWidth) property.  You also can examine the [Columns](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView.Columns) collection yourself to locate the appropriate column and manually tweak any of the width values to suit your needs.
+If you wish to allow the end user to make the name column larger, you can increase the value of the [NameColumnMaxWidth](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.NameColumnMaxWidth) property.  You also can examine the [Columns](xref:@ActiproUIRoot.Controls.Grids.TreeListView.Columns) collection yourself to locate the appropriate column and manually tweak any of the width values to suit your needs.
 
 ## Adding a Custom Column
 
-It's very easy to add a custom column.  Simply initialize a new [TreeListViewColumn](xref:ActiproSoftware.Windows.Controls.Grids.TreeListViewColumn) object and add it to the [Columns](xref:ActiproSoftware.Windows.Controls.Grids.TreeListView.Columns) collection.
+It's very easy to add a custom column.  Simply initialize a new [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn) object and add it to the [Columns](xref:@ActiproUIRoot.Controls.Grids.TreeListView.Columns) collection.
 
 This code shows how to add a custom column that renders a red dot for any modified properties:
 

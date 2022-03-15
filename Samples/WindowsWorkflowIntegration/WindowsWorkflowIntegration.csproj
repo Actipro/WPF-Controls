@@ -7,11 +7,11 @@
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>22.1.0.0</Version>
+		<Version>22.1.1.0</Version>
 
 		<RootNamespace>ActiproSoftware.Windows.WindowsWorkflowIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>
-		<Copyright>Copyright (c) 2020-2021 Actipro Software LLC.  All rights reserved.</Copyright>
+		<Copyright>Copyright (c) 2020-2022 Actipro Software LLC.  All rights reserved.</Copyright>
 		<Title>Windows Workflow Integration Sample</Title>
 		<Product>$(Title)</Product>
 		<Description>Sample application to demonstrate integrating into a Windows Workflow application.</Description>
@@ -30,10 +30,10 @@
 		<Reference Include="System.Activities.Core.Presentation" />
 		<Reference Include="System.Activities.Presentation" />
 	</ItemGroup>
-
+	
 	<ItemGroup Label="Actipro References">
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.1" />
 	</ItemGroup>
-
+	
 </Project>

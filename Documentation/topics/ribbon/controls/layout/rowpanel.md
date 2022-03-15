@@ -5,7 +5,7 @@ order: 3
 ---
 # RowPanel
 
-The [RowPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RowPanel) is a layout control that displays child controls in somewhat of a toolbar-ish style and is involved in providing alternate layouts of child controls for [ribbon resizing](../../layout-features/ribbon-resizing.md).
+The [RowPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel) is a layout control that displays child controls in somewhat of a toolbar-ish style and is involved in providing alternate layouts of child controls for [ribbon resizing](../../layout-features/ribbon-resizing.md).
 
 ## Variants
 
@@ -17,7 +17,7 @@ This control supports two variants: two- and three- row display of items.  The p
 
 ## Resizing Behavior
 
-By default, `RowPanel` displays two rows of child controls.  As the parent group's size decreases, the `RowPanel` can shift to a three row layout that uses less overall width.  This normally occurs when the parent group changes to a `Medium`[VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.VariantSize), however you have control over where this change occurs via the [ThreeRowVariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RowPanel.ThreeRowVariantSize) property.
+By default, `RowPanel` displays two rows of child controls.  As the parent group's size decreases, the `RowPanel` can shift to a three row layout that uses less overall width.  This normally occurs when the parent group changes to a `Medium`[VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.VariantSize), however you have control over where this change occurs via the [ThreeRowVariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel.ThreeRowVariantSize) property.
 
 The [ribbon resizing](../../layout-features/ribbon-resizing.md) topic discusses in detail how and when group variants change and how the variant size updates `RowPanel`.
 
@@ -27,7 +27,7 @@ When in the two-row variant, the items are layed out in the same order that they
 
 ### Three-Row Variants
 
-When in the three-row variant, the items are layed out in the order specified by the [RowPanel](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RowPanel).[ThreeRowItemSortOrder](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.RowPanel.ThreeRowItemSortOrder) property.  This property is an integer collection where there is one entry for each item in the `RowPanel`.  Each entry points to the index of the item within the `RowPanel`'s `Children` collection.
+When in the three-row variant, the items are layed out in the order specified by the [RowPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel).[ThreeRowItemSortOrder](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel.ThreeRowItemSortOrder) property.  This property is an integer collection where there is one entry for each item in the `RowPanel`.  Each entry points to the index of the item within the `RowPanel`'s `Children` collection.
 
 As an example say there were three items in a `RowPanel` and the `ThreeRowItemSortOrder` was set to `1,2,0`.  This means that the first item (index 0) in `Children` collection (which is displayed first in the two-row variant) should be displayed in the bottom row of the three-row variant.  The second item (index 1) in the `Children` collection will appear on the top row and the third item in the `Children` collection will appear in the middle row.
 

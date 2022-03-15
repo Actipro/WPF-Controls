@@ -9,7 +9,7 @@ SyntaxEditor supports highlighting of the current editor view line, meaning the 
 
 ## Activating Current Line Highlighting
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsCurrentLineHighlightingEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsCurrentLineHighlightingEnabled) property can be set to `true` to activate current line highlighting.  It is off by default.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsCurrentLineHighlightingEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsCurrentLineHighlightingEnabled) property can be set to `true` to activate current line highlighting.  It is off by default.
 
 ## Changing the Highlight Brush
 

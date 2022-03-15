@@ -17,9 +17,9 @@ This information is used when building the [context](context.md) for an offset.
 
 ## Parse Errors
 
-Parse errors are reported from the parserand the validator.  They are passed back in the [IXmlParseData](xref:ActiproSoftware.Text.Languages.Xml.Implementation.IXmlParseData).[Errors](xref:ActiproSoftware.Text.Parsing.IParseErrorProvider.Errors) property.
+Parse errors are reported from the parser and the validator.  They are passed back in the [IXmlParseData](xref:ActiproSoftware.Text.Languages.Xml.Implementation.IXmlParseData).[Errors](xref:ActiproSoftware.Text.Parsing.IParseErrorProvider.Errors) property.
 
-The parser reports errors as it performs syntax and semantic analysis of document text. The [validator](validator.md) for the language can also report errors when the XML doesn't conform to the schemas loaded in the [ schema resolver](schema-resolver.md).
+The parser reports errors as it performs syntax and semantic analysis of document text.  The [validator](validator.md) for the language can also report errors when the XML doesn't conform to the schemas loaded in the [ schema resolver](schema-resolver.md).
 
 When the language is used in a SyntaxEditor control, the parse errors will have squiggle lines under them and mouse hovering over the squiggle lines will show IntelliPrompt quick info tips with error descriptions.
 

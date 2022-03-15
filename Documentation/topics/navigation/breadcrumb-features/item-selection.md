@@ -5,7 +5,7 @@ order: 9
 ---
 # Item Selection
 
-The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) control allows a single item from a hierarchy of data to be selected. The selection can be change interactively using the keyboard or mouse, or programmtically by setting various properties.
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control allows a single item from a hierarchy of data to be selected. The selection can be change interactively using the keyboard or mouse, or programmtically by setting various properties.
 
 ## Interactive Selection
 
@@ -35,6 +35,6 @@ The user can select and item or path from the [drop-down list](edit-mode.md).
 
 ## Programmatic Selection
 
-The selected item can be changed by setting the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).[SelectedItem](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.SelectedItem) or [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).[SelectedPath](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.SelectedPath) properties.
+The selected item can be changed by setting the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[SelectedItem](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.SelectedItem) or [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[SelectedPath](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.SelectedPath) properties.
 
 Note that for these features to work when using data items, you will need to support [item conversion](item-conversion.md) so that the Breadcrumb control knows how to obtain a trail.

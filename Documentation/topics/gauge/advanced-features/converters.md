@@ -9,11 +9,11 @@ Actipro Gauge comes with a few built-in converters that provide additional featu
 
 ## Average Value
 
-The [DoubleAverageConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleAverageConverter) class can be used to calculate the average of any number of values. It returns the running average of all the `Double` values that it has been used to convert. When calculating the running average, the entire set of previous values is not required. Therefore, calculating the running average only requires a few bytes of storage in memory.
+The [DoubleAverageConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleAverageConverter) class can be used to calculate the average of any number of values. It returns the running average of all the `Double` values that it has been used to convert. When calculating the running average, the entire set of previous values is not required. Therefore, calculating the running average only requires a few bytes of storage in memory.
 
-[DoubleAverageConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleAverageConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleAverageConverter.ValueCount).
+[DoubleAverageConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleAverageConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:@ActiproUIRoot.Controls.Gauge.DoubleAverageConverter.ValueCount).
 
-This code shows how a [DoubleAverageConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleAverageConverter) can be declared and used to calculate the average of the last 100 values of the bar pointer:
+This code shows how a [DoubleAverageConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleAverageConverter) can be declared and used to calculate the average of the last 100 values of the bar pointer:
 
 ```xaml
 xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
@@ -43,11 +43,11 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 
 ## Maximum Value
 
-The [DoubleMaximumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMaximumConverter) class can be used to calculate the maximum value of any number of values.
+The [DoubleMaximumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMaximumConverter) class can be used to calculate the maximum value of any number of values.
 
-[DoubleMaximumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMaximumConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMaximumConverter.ValueCount).
+[DoubleMaximumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMaximumConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:@ActiproUIRoot.Controls.Gauge.DoubleMaximumConverter.ValueCount).
 
-This code shows how a [DoubleMaximumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMaximumConverter) can be declared and used to calculate the maximum value of the last 100 values of the bar pointer:
+This code shows how a [DoubleMaximumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMaximumConverter) can be declared and used to calculate the maximum value of the last 100 values of the bar pointer:
 
 ```xaml
 xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
@@ -77,11 +77,11 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 
 ## Minimum Value
 
-The [DoubleMinimumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMinimumConverter) class can be used to calculate the minimum value of any number of values.
+The [DoubleMinimumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMinimumConverter) class can be used to calculate the minimum value of any number of values.
 
-[DoubleMinimumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMinimumConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMinimumConverter.ValueCount).
+[DoubleMinimumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMinimumConverter) can be configured to only use the last `N` items, where `N` is controlled by [ValueCount](xref:@ActiproUIRoot.Controls.Gauge.DoubleMinimumConverter.ValueCount).
 
-This code shows how a [DoubleMinimumConverter](xref:ActiproSoftware.Windows.Controls.Gauge.DoubleMinimumConverter) can be declared and used to calculate the minimum value of the last 100 values of the bar pointer:
+This code shows how a [DoubleMinimumConverter](xref:@ActiproUIRoot.Controls.Gauge.DoubleMinimumConverter) can be declared and used to calculate the minimum value of the last 100 values of the bar pointer:
 
 ```xaml
 xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
@@ -111,6 +111,6 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 
 ## Boolean to LedState
 
-The [BooleanToLedStateConverter](xref:ActiproSoftware.Windows.Controls.Gauge.BooleanToLedStateConverter) class can be used to bind an [LedState](xref:ActiproSoftware.Windows.Controls.Gauge.LedState) property to a `Boolean` property.
+The [BooleanToLedStateConverter](xref:@ActiproUIRoot.Controls.Gauge.BooleanToLedStateConverter) class can be used to bind an [LedState](xref:@ActiproUIRoot.Controls.Gauge.LedState) property to a `Boolean` property.
 
-`BooleanToLedStateConverter` contains two properties: [TrueState](xref:ActiproSoftware.Windows.Controls.Gauge.BooleanToLedStateConverter.TrueState) and [FalseState](xref:ActiproSoftware.Windows.Controls.Gauge.BooleanToLedStateConverter.FalseState), which indicate what `LedState` enumeration value to return when convert to/from `true` and `false` (and `null` for `bool?` types), respectively.
+`BooleanToLedStateConverter` contains two properties: [TrueState](xref:@ActiproUIRoot.Controls.Gauge.BooleanToLedStateConverter.TrueState) and [FalseState](xref:@ActiproUIRoot.Controls.Gauge.BooleanToLedStateConverter.FalseState), which indicate what `LedState` enumeration value to return when convert to/from `true` and `false` (and `null` for `bool?` types), respectively.

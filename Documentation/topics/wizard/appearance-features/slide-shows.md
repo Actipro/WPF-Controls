@@ -11,6 +11,6 @@ Since Actipro Wizard can completely be restyled and templated, it is possible to
 
 *A Wizard with a custom template that allows it to function property for a slide show presentation*
 
-The screenshot above was made by applying custom styles to the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) and [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) classes.  The [WizardButtonContainer](xref:ActiproSoftware.Windows.Controls.Wizard.WizardButtonContainer) was also retemplated so that the back and next buttons appear as arrows, are the only ones present in the wizard, and hide when disabled.  The back button is hidden in the screenshot since that is the first "title" slide in the slide show.
+The screenshot above was made by applying custom styles to the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) and [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) classes.  The [WizardButtonContainer](xref:@ActiproUIRoot.Controls.Wizard.WizardButtonContainer) was also retemplated so that the back and next buttons appear as arrows, are the only ones present in the wizard, and hide when disabled.  The back button is hidden in the screenshot since that is the first "title" slide in the slide show.
 
-The Shared Library's [ReflectionContentControl](xref:ActiproSoftware.Windows.Controls.ReflectionContentControl) is used to provide the reflection effect for the slide title.
+The Shared Library's [ReflectionContentControl](xref:@ActiproUIRoot.Controls.ReflectionContentControl) is used to provide the reflection effect for the slide title.

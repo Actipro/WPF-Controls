@@ -15,9 +15,7 @@
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 
-		<AssemblyVersion>22.1.0.0</AssemblyVersion>
-		<InformationalVersion>22.1.0.0</InformationalVersion>
-		<PackageVersion>22.1.0.0</PackageVersion>
+		<Version>22.1.1.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 
@@ -65,14 +63,18 @@
 		<PackageReference Include="System.Drawing.Common" Version="4.7.0" />
 	</ItemGroup>
 	
+	<ItemGroup Label="Microsoft Logging" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*MS_LOGGING(;.*)*$'))">
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+	</ItemGroup>
+
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="22.1.0" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="22.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="22.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="22.1.1" />
 	</ItemGroup>
 	
 </Project>

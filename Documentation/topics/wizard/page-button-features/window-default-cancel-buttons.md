@@ -11,7 +11,7 @@ Wizard makes it easy to set the default or cancel buttons of a containing `Windo
 
 The `Window`'s default button is clicked whenever the `Enter` key is pressed on the keyboard.
 
-The default button can be set to one of the wizard buttons by setting the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[WindowDefaultButton](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.WindowDefaultButton) property to one of these [WizardWindowDefaultButton](xref:ActiproSoftware.Windows.Controls.Wizard.WizardWindowDefaultButton) values:
+The default button can be set to one of the wizard buttons by setting the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[WindowDefaultButton](xref:@ActiproUIRoot.Controls.Wizard.Wizard.WindowDefaultButton) property to one of these [WizardWindowDefaultButton](xref:@ActiproUIRoot.Controls.Wizard.WizardWindowDefaultButton) values:
 
 | Value | Description |
 |-----|-----|
@@ -33,7 +33,7 @@ This XAML code shows how to turn off the automatic wizard default button so that
 
 The `Window`'s cancel button is clicked whenever the `Escape` key is pressed on the keyboard.
 
-The cancel button can be set to one of the wizard buttons by setting the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[WindowCancelButton](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.WindowCancelButton) property to one of these [WizardWindowCancelButton](xref:ActiproSoftware.Windows.Controls.Wizard.WizardWindowCancelButton) values:
+The cancel button can be set to one of the wizard buttons by setting the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[WindowCancelButton](xref:@ActiproUIRoot.Controls.Wizard.Wizard.WindowCancelButton) property to one of these [WizardWindowCancelButton](xref:@ActiproUIRoot.Controls.Wizard.WizardWindowCancelButton) values:
 
 | Value | Description |
 |-----|-----|

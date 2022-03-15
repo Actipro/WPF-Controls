@@ -9,9 +9,9 @@ Several properties allow you to change the colors used for the pie slices, along
 
 ## Built-In Palettes
 
-Style selectors determine what style will be applied to each pie slice. To change the style selector, set [PieSeries](xref:ActiproSoftware.Windows.Controls.Charts.PieSeries).[SliceStyleSelector](xref:ActiproSoftware.Windows.Controls.Charts.PieSeries.SliceStyleSelector) to an instance of [PieSlicePaletteStyleSelector](xref:ActiproSoftware.Windows.Controls.Charts.Palettes.PieSlicePaletteStyleSelector), or a custom implementation of [IPieSliceStyleSelector](xref:ActiproSoftware.Windows.Controls.Charts.IPieSliceStyleSelector).
+Style selectors determine what style will be applied to each pie slice. To change the style selector, set [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries).[SliceStyleSelector](xref:@ActiproUIRoot.Controls.Charts.PieSeries.SliceStyleSelector) to an instance of [PieSlicePaletteStyleSelector](xref:@ActiproUIRoot.Controls.Charts.Palettes.PieSlicePaletteStyleSelector), or a custom implementation of [IPieSliceStyleSelector](xref:@ActiproUIRoot.Controls.Charts.IPieSliceStyleSelector).
 
-[PieSlicePaletteStyleSelector](xref:ActiproSoftware.Windows.Controls.Charts.Palettes.PieSlicePaletteStyleSelector) contains several built-in palettes to make styling your pie chart or donut chart easier. The full list can be found in the [PaletteKind](xref:ActiproSoftware.Windows.Controls.Charts.Palettes.PaletteKind) enumeration.
+[PieSlicePaletteStyleSelector](xref:@ActiproUIRoot.Controls.Charts.Palettes.PieSlicePaletteStyleSelector) contains several built-in palettes to make styling your pie chart or donut chart easier. The full list can be found in the [PaletteKind](xref:@ActiproUIRoot.Controls.Charts.Palettes.PaletteKind) enumeration.
 
 ![Screenshot](../images/built-in-palettes.png)
 
@@ -33,7 +33,7 @@ A built-in palette can be assigned to a pie / donut chart like this (in this cas
 
 ## Custom Palettes
 
-Custom palettes can be assigned by specifying your own colors on an instance of [Palette](xref:ActiproSoftware.Windows.Controls.Charts.Palettes.Palette).
+Custom palettes can be assigned by specifying your own colors on an instance of [Palette](xref:@ActiproUIRoot.Controls.Charts.Palettes.Palette).
 
 ```xaml
 <charts:PieChart>
@@ -58,7 +58,7 @@ Custom palettes can be assigned by specifying your own colors on an instance of 
 
 ## Chart Border
 
-The color and thickness of a pie / donut chart border can be changed using the [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).BorderBrush and [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).BorderThickness properties, respectively.
+The color and thickness of a pie / donut chart border can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).BorderBrush and [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).BorderThickness properties, respectively.
 
 ```xaml
 <charts:PieChart BorderBrush="DarkSlateGray" BorderThickness="3"/>
@@ -68,7 +68,7 @@ The color and thickness of a pie / donut chart border can be changed using the [
 
 ## Chart Background
 
-The color of a pie / donut chart background can be changed using the [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).Background property.
+The color of a pie / donut chart background can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).Background property.
 
 ```xaml
 <charts:PieChart Background="DimGray"/>

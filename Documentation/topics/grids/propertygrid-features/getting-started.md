@@ -5,7 +5,7 @@ order: 2
 ---
 # Getting Started
 
-It's very easy to get up and running with the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid) control.  In fact, setting a single property is often enough to start.
+It's very easy to get up and running with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  In fact, setting a single property is often enough to start.
 
 `PropertyGrid` is extremely customizable and allows you to alter everything from sorting, to filtering, to even the properties that are allowed to display.  Be sure to read through this and other documentation topics to learn all about the advanced capabilities property grid supports.
 
@@ -13,13 +13,13 @@ The various Actipro Editors [edit box](../../editors/editboxes/index.md) and [Ma
 
 ## Displaying Properties of a Data Object
 
-This code shows the base XAML that creates a simple [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid) used to modify the properties of a .NET object, which is the most common usage scenario:
+This code shows the base XAML that creates a simple [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) used to modify the properties of a .NET object, which is the most common usage scenario:
 
 ```xaml
 <grids:PropertyGrid DataObject="{Binding YourVMProperty}" />
 ```
 
-The [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[DataObject](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DataObject) property allows for a single data object's properties to be displayed in the control.  If multiple data objects need their common properties displayed, bind to the [DataObjects](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.DataObjects) property instead.
+The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject) property allows for a single data object's properties to be displayed in the control.  If multiple data objects need their common properties displayed, bind to the [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjects) property instead.
 
 > [!NOTE]
 > There are other ways to populate property items, such as explictly defining them, all of which are described in the [Data Models and Factories](data-models.md) topic.
@@ -32,4 +32,4 @@ While most property grid usage scenarios involve wanting end users to be able to
 
 *The PropertyGrid control in read-only mode*
 
-Set the [PropertyGrid](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid).[IsReadOnly](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.IsReadOnly) property to `true` to prevent any values from being changed.
+Set the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[IsReadOnly](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.IsReadOnly) property to `true` to prevent any values from being changed.

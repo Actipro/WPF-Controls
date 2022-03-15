@@ -5,17 +5,17 @@ order: 22
 ---
 # NuGet Packages and Feeds
 
-Actipro provides NuGet packages for its WPF Control assemblies so that they can easily be consumed by .NET projects and later updated.
+Actipro provides NuGet packages for its @@PlatformName Control assemblies so that they can easily be consumed by .NET projects and later updated.
 
 The NuGet packages include .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+ variations of the assemblies.  When a package is referenced, NuGet will use the best variation for your target platform.
 
 ## Actipro NuGet Packages
 
-The following are Actipro's NuGet packages for WPF and each one's package dependencies.  See the [Deployment](deployment.md) topic for a mapping of each Actipro product to redistributable assemblies, and their containing NuGet package where appropriate.
+The following are Actipro's NuGet packages for @@PlatformName and each one's package dependencies.  See the [Deployment](deployment.md) topic for a mapping of each Actipro product to redistributable assemblies, and their containing NuGet package where appropriate.
 
 ### ActiproSoftware.Controls.WPF Package
 
-A quick way to reference all of Actipro's WPF Control product packages ([view on nuget.org](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF)).  Dependencies include:
+A quick way to reference all of Actipro's @@PlatformName Control product packages ([view on nuget.org](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF)).  Dependencies include:
 
 - `ActiproSoftware.Controls.WPF.BarCode`
 - `ActiproSoftware.Controls.WPF.Charts`
@@ -36,7 +36,7 @@ A quick way to reference all of Actipro's WPF Control product packages ([view on
 
 ### ActiproSoftware.Controls.WPF.Shared Package
 
-The Shared Library, included with all other WPF control products ([view on nuget.org](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Shared)).
+The Shared Library, included with all other @@PlatformName control products ([view on nuget.org](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Shared)).
 
 ### ActiproSoftware.Controls.WPF.BarCode Package
 
@@ -168,9 +168,9 @@ The Wizard product ([view on nuget.org](https://www.nuget.org/packages/ActiproSo
 
 ## Using the nuget.org Package Source
 
-Actipro publishes its WPF Control NuGet packages to nuget.org, which is the most popular package source, run by Microsoft and natively supported by Visual Studio.
+Actipro publishes its @@PlatformName Control NuGet packages to nuget.org, which is the most popular package source, run by Microsoft and natively supported by Visual Studio.
 
-Actipro's packages can be found at ([https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF)) since all of Actipro's WPF Control NuGet package names begin with "ActiproSoftware.Controls.WPF".
+Actipro's packages can be found at ([https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF)) since all of Actipro's @@PlatformName Control NuGet package names begin with "ActiproSoftware.Controls.WPF".
 
 Visual Studio should have the nuget.org package source defined by default, which will allow the Actipro packages to be found.  This can be verified by selecting Visual Studio's "Tools / NuGet Package Manager / Package Manager Settings" menu item and on the dialog that appears, select "Package Sources" in the tree on the left, and the available package sources will be listed on the right.  The nuget.org package source entry should point to "https://api.nuget.org/v3/index.json".  Please make sure this entry exists.
 
@@ -184,7 +184,7 @@ The Actipro NuGet packages can be downloaded directly from the package pages lin
 
 ## Managing NuGet Packages
 
-To find and install an Actipro package, right click on your solution in Visual Studio's Solution Explorer tool window, and select the "Manage NuGet Packages for Solution..." menu item.  In the document that appears, ensure the package source on the upper right points to the package source that contains Actipro NuGet packages (e.g. nuget.org).  Then enter "ActiproSoftware.Controls.WPF" (without quotes) in the "Browse" tab's search box to see available WPF Control packages.
+To find and install an Actipro package, right click on your solution in Visual Studio's Solution Explorer tool window, and select the "Manage NuGet Packages for Solution..." menu item.  In the document that appears, ensure the package source on the upper right points to the package source that contains Actipro NuGet packages (e.g. nuget.org).  Then enter "ActiproSoftware.Controls.WPF" (without quotes) in the "Browse" tab's search box to see available @@PlatformName Control packages.
 
 Select the package in the package list that you wish to add to a project.  On the right side, check the project(s) that should have the target project added.  Choose the version to install and click the "Install" button.
 
@@ -201,6 +201,6 @@ When new Actipro NuGet package versions are later released, they will appear on 
 Select the package to update in the list on the left, and the pick the desired version on the right.  Then click the "Update" button to update to the selected version.
 
 > [!NOTE]
-> Never mix versions of Actipro WPF Control NuGet packages.  If you reference multiple packages and change to a different version of one, make sure you update all the other Actipro packages to match the same version.
+> Never mix versions of Actipro @@PlatformName Control NuGet packages.  If you reference multiple packages and change to a different version of one, make sure you update all the other Actipro packages to match the same version.
 
 More detailed instructions on using Visual Studio's NuGet Package Manager are available on Microsoft's documentation site ([https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio#update-a-package](https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio#update-a-package)).

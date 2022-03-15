@@ -32,6 +32,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Printing
 		public MainControl() {
 			InitializeComponent();
 
+			editor.ColumnGuides.Add(80);
+
 			if (BrowserInteropHelper.IsBrowserHosted) {
 				Grid.SetColumnSpan(refreshPrintPreviewButton, 2);
 				showPrintPreviewDialogButton.Visibility = Visibility.Collapsed;
@@ -86,6 +88,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Printing
 			editor.PrintSettings.IsWordWrapGlyphMarginVisible = (isWordWrapGlyphMarginVisibleCheckBox.IsChecked == true);
 			editor.PrintSettings.IsWhitespaceVisible = (isWhitespaceVisibleCheckBox.IsChecked == true);
 			editor.PrintSettings.AreCollapsedOutliningNodesAllowed = (areCollapsedOutliningNodesAllowedCheckBox.IsChecked == true);
+			editor.PrintSettings.AreColumnGuidesVisible = (areColumnGuidesVisibleCheckBox.IsChecked == true);
 			editor.PrintSettings.AreIndentationGuidesVisible = (areIndentationGuidesVisibleCheckBox.IsChecked == true);
 			editor.PrintSettings.AreSquiggleLinesVisible = (areSquiggleLinesVisibleCheckBox.IsChecked == true);
 

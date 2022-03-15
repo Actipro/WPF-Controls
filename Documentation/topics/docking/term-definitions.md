@@ -17,7 +17,6 @@ There are some key terms and concepts to understand when working with this produ
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -25,7 +24,7 @@ There are some key terms and concepts to understand when working with this produ
 <td>Docking Window</td>
 <td>
 
-A docking window (represented by the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow) class) is a general term that could mean either a tool window or a document window, since both of those inherit the base docking window functionality.
+A docking window (represented by the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) class) is a general term that could mean either a tool window or a document window, since both of those inherit the base docking window functionality.
 
 </td>
 </tr>
@@ -34,7 +33,7 @@ A docking window (represented by the [DockingWindow](xref:ActiproSoftware.Window
 <td>Dock Site</td>
 <td>
 
-A dock site (represented by the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) class) is the root control that contains a tool window hierarchy and/or MDI, and provides management functionality for all contained docking-related controls.
+A dock site (represented by the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) class) is the root control that contains a tool window hierarchy and/or MDI, and provides management functionality for all contained docking-related controls.
 
 </td>
 </tr>
@@ -48,7 +47,7 @@ A dock site (represented by the [DockSite](xref:ActiproSoftware.Windows.Controls
 <td>Document Window</td>
 <td>
 
-A document window (represented by the [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) class) is a docking window that is restricted to only be used within a MDI area.
+A document window (represented by the [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) class) is a docking window that is restricted to only be used within a MDI area.
 
 By default it is destroyed after it is closed, however this behavior can be changed.
 
@@ -80,7 +79,7 @@ The two built-in types of MDI are Tabbed MDI and Standard MDI.
 <td>Nested Dock Sites</td>
 <td>
 
-Nested dock sites is when you have one [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) that is contained within a docking window that belongs to a parent [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).
+Nested dock sites is when you have one [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) that is contained within a docking window that belongs to a parent [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
 In this scenario, the docking windows may only be moved within their respective owner dock sites.
 
@@ -91,7 +90,7 @@ In this scenario, the docking windows may only be moved within their respective 
 <td>Standard MDI</td>
 <td>
 
-Standard MDI (implemented via the [StandardMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.StandardMdiHost) class and its children) is the windowed variation of MDI, where each document is represented by a window that can be moved around within the workspace.  Windows can be cascaded or tiled.
+Standard MDI (implemented via the [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) class and its children) is the windowed variation of MDI, where each document is represented by a window that can be moved around within the workspace.  Windows can be cascaded or tiled.
 
 </td>
 </tr>
@@ -100,7 +99,7 @@ Standard MDI (implemented via the [StandardMdiHost](xref:ActiproSoftware.Windows
 <td>Tabbed MDI</td>
 <td>
 
-Tabbed MDI (implemented via the [TabbedMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.TabbedMdiHost) class and its children) is where the full size of the workspace is filled with one or more tabbed containers, with each tab representing a document. Windows can be cascaded or tiled.
+Tabbed MDI (implemented via the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) class and its children) is where the full size of the workspace is filled with one or more tabbed containers, with each tab representing a document. Windows can be cascaded or tiled.
 
 </td>
 </tr>
@@ -109,7 +108,7 @@ Tabbed MDI (implemented via the [TabbedMdiHost](xref:ActiproSoftware.Windows.Con
 <td>Tool Window</td>
 <td>
 
-A tool window (represented by the [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) class) is a docking window that can be used in a number of states, including within the MDI area.
+A tool window (represented by the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) class) is a docking window that can be used in a number of states, including within the MDI area.
 
 Tool windows usually continue to exist after being closed and can be reactivated later.
 
@@ -120,7 +119,7 @@ Tool windows usually continue to exist after being closed and can be reactivated
 <td>Tool Window Inner-Fill</td>
 <td>
 
-Tool window inner-fill occurs when there is no [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) within a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite), and the dock site hierarchy consists only of tool windows that fill its content area.
+Tool window inner-fill occurs when there is no [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) within a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite), and the dock site hierarchy consists only of tool windows that fill its content area.
 
 </td>
 </tr>
@@ -129,11 +128,11 @@ Tool window inner-fill occurs when there is no [Workspace](xref:ActiproSoftware.
 <td>Workspace</td>
 <td>
 
-A workspace (represented by the [Workspace](xref:ActiproSoftware.Windows.Controls.Docking.Workspace) class) is the area around which tool windows may be docked.
+A workspace (represented by the [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) class) is the area around which tool windows may be docked.
 
-If the workspace's content is a [TabbedMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.TabbedMdiHost), then tabbed MDI is in use.  If the workspace's content is a [StandardMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.StandardMdiHost), then standard MDI is in use.  The workspace's content can be set to anything else when MDI is not needed and custom content should be displayed.
+If the workspace's content is a [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost), then tabbed MDI is in use.  If the workspace's content is a [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost), then standard MDI is in use.  The workspace's content can be set to anything else when MDI is not needed and custom content should be displayed.
 
-By not including a workspace within a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) hierarchy, tool window inner-fill mode is activated.
+By not including a workspace within a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) hierarchy, tool window inner-fill mode is activated.
 
 </td>
 </tr>
@@ -170,7 +169,6 @@ By not including a workspace within a [DockSite](xref:ActiproSoftware.Windows.Co
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
@@ -178,7 +176,7 @@ By not including a workspace within a [DockSite](xref:ActiproSoftware.Windows.Co
 <td>Dock Host</td>
 <td>
 
-A dock host (represented by the [DockHost](xref:ActiproSoftware.Windows.Controls.Docking.DockHost) class) is the actual root hierarchy container.  A primary dock host is implicitly created within a dock site, while other dock hosts are created behind-the-scenes whenever docking windows are floated.  Dock hosts should never be explicitly created by you.
+A dock host (represented by the [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost) class) is the actual root hierarchy container.  A primary dock host is implicitly created within a dock site, while other dock hosts are created behind-the-scenes whenever docking windows are floated.  Dock hosts should never be explicitly created by you.
 
 </td>
 </tr>
@@ -187,7 +185,7 @@ A dock host (represented by the [DockHost](xref:ActiproSoftware.Windows.Controls
 <td>Split Container</td>
 <td>
 
-A split container (represented by the [SplitContainer](xref:ActiproSoftware.Windows.Controls.Docking.SplitContainer) class) is used to hold one or more other docking containers and provide splitter-based resizing capabilities between them.  Split containers can be oriented horizontally or vertically.
+A split container (represented by the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) class) is used to hold one or more other docking containers and provide splitter-based resizing capabilities between them.  Split containers can be oriented horizontally or vertically.
 
 </td>
 </tr>
@@ -196,7 +194,7 @@ A split container (represented by the [SplitContainer](xref:ActiproSoftware.Wind
 <td>Standard MDI Host</td>
 <td>
 
-A standard MDI host (represented by the [StandardMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.StandardMdiHost) class) is the root container for standard MDI implementation, that is placed as the direct child of a workspace.
+A standard MDI host (represented by the [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) class) is the root container for standard MDI implementation, that is placed as the direct child of a workspace.
 
 </td>
 </tr>
@@ -205,7 +203,7 @@ A standard MDI host (represented by the [StandardMdiHost](xref:ActiproSoftware.W
 <td>Tabbed MDI Container</td>
 <td>
 
-A tabbed MDI container (represented by the [TabbedMdiContainer](xref:ActiproSoftware.Windows.Controls.Docking.TabbedMdiContainer) class) is the direct parent of one or more docking windows that are in tabbed MDI.
+A tabbed MDI container (represented by the [TabbedMdiContainer](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiContainer) class) is the direct parent of one or more docking windows that are in tabbed MDI.
 
 </td>
 </tr>
@@ -214,7 +212,7 @@ A tabbed MDI container (represented by the [TabbedMdiContainer](xref:ActiproSoft
 <td>Tabbed MDI Host</td>
 <td>
 
-A tabbed MDI host (represented by the [TabbedMdiHost](xref:ActiproSoftware.Windows.Controls.Docking.TabbedMdiHost) class) is the root container for tabbed MDI implementation, that is placed as the direct child of a workspace.
+A tabbed MDI host (represented by the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) class) is the root container for tabbed MDI implementation, that is placed as the direct child of a workspace.
 
 </td>
 </tr>
@@ -223,7 +221,7 @@ A tabbed MDI host (represented by the [TabbedMdiHost](xref:ActiproSoftware.Windo
 <td>Tool Window Container</td>
 <td>
 
-A tool window container (represented by the [ToolWindowContainer](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindowContainer) class) is the direct parent of one or more tool windows that are docked or auto-hidden.
+A tool window container (represented by the [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) class) is the direct parent of one or more tool windows that are docked or auto-hidden.
 
 This container provides a title area displaying the selected tool window's title.  When more than one tool windows are included, it also contains tabs for selecting the other tool windows.
 

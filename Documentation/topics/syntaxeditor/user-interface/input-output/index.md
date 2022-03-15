@@ -15,7 +15,7 @@ See the [Document Swapping](document-swapping.md) topic for more information.
 
 ## Clipboard Operations
 
-SyntaxEditor makes use the Windows clipboard as a temporary repository for data for cut/copy/paste operations. SyntaxEditor places text on the clipboard using the `DataFormats.UnicodeText` and `DataFormats.Text` formats.
+SyntaxEditor makes use the Windows clipboard as a temporary repository for data for cut/copy/paste operations. @if (wpf winforms) {SyntaxEditor places text on the clipboard using the `DataFormats.UnicodeText` and `DataFormats.Text` formats.}
 
 See the [Clipboard Operations](clipboard-operations.md) topic for more information.
 
@@ -27,7 +27,7 @@ See the [Drag and Drop](drag-drop.md) topic for more information.
 
 ## Edit Actions
 
-Edit actions are classes that implement [IEditAction](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditAction) and contain code to perform different simple tasks related to a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).  They are effectively commands with can-execute and executed handlers that perform all the work.
+Edit actions are classes that implement [IEditAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditAction) and contain code to perform different simple tasks related to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  They are effectively commands with can-execute and executed handlers that perform all the work.
 
 See the [Edit Actions](edit-actions.md) topic for more information.
 
@@ -51,7 +51,7 @@ See the [Data Binding](data-binding.md) topic for more information.
 
 ## Indent Providers (Auto-Indent)
 
-Indent providers are classes that implement [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the Enter key is pressed.
+Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the Enter key is pressed.
 
 See the [Indent Providers (Auto-Indent)](indent-providers.md) topic for more information.
 

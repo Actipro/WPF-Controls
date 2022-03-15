@@ -22,7 +22,7 @@ using ActiproSoftware.Windows.Themes;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Actipro Software LLC")]
 [assembly: AssemblyProduct("DataGrid.Contrib")]
-[assembly: AssemblyCopyright("Copyright (c) 2009-2021 Actipro Software LLC.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2022 Actipro Software LLC.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 [assembly: ComVisible(false)]
@@ -52,8 +52,8 @@ using ActiproSoftware.Windows.Themes;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("22.1.0.0")]  // WPF
-[assembly: AssemblyInformationalVersion("22.1.0.0")]  // WPF
+[assembly: AssemblyVersion("22.1.1.0")]  // WPF
+[assembly: AssemblyInformationalVersion("22.1.1.0")]  // WPF
 
 namespace ActiproSoftware.Products.DataGrid.Contrib {
 

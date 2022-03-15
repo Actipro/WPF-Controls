@@ -9,13 +9,13 @@ We've engineered bar code to be extremely easy to use.
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.BarCode.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.BarCode.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the BarCode Control
 
 Then find the parent element that will contain the bar code.  This could be a `Window`, a `UserControl`, a `FlowDocument`, a `FixedDocument`, or any other type of WPF `UIElement`.
 
-Next, add a [BarCode](xref:ActiproSoftware.Windows.Controls.BarCode.BarCode) control to the desired parent element.  In this sample we will add the [BarCode](xref:ActiproSoftware.Windows.Controls.BarCode.BarCode) to a `FlowDocument`:
+Next, add a [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) control to the desired parent element.  In this sample we will add the [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) to a `FlowDocument`:
 
 ```xaml
 <FlowDocument 
@@ -46,7 +46,7 @@ Now we need to set the type of symbology that we wish to use.  In this sample we
 </FlowDocument>
 ```
 
-Note that we have also set a couple options like the [BarCodeSymbology](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology).[Value](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.Value) of the symbology (the value that is encoded) and the height of the bars (via [LinearBarCodeSymbology](xref:ActiproSoftware.Windows.Controls.BarCode.LinearBarCodeSymbology).[BarHeight](xref:ActiproSoftware.Windows.Controls.BarCode.LinearBarCodeSymbology.BarHeight)).
+Note that we have also set a couple options like the [BarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology).[Value](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Value) of the symbology (the value that is encoded) and the height of the bars (via [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology).[BarHeight](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology.BarHeight)).
 
 That's all we need to do!  You can optionally configure many other settings for the bar code and/or its symbology.  See the other topics in this documentation to see which features are available.
 

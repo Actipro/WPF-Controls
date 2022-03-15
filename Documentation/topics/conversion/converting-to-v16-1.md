@@ -17,17 +17,17 @@ The 'Complete Update Details' section in this topic gives information on the bre
 
 ### Docking Window Role in UI
 
-In the old version, the [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) and [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) classes were rendered in UI as tabs.  This wasn't the best design since sometimes they weren't visible, even though their content was.
+In the old version, the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) classes were rendered in UI as tabs.  This wasn't the best design since sometimes they weren't visible, even though their content was.
 
-In this version, [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) and [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) now are simple containers of the content they display.  That means that they are effectively used like a `ContentControl` and are always visible in the UI if their content is visible.  This allows both the visual and UI automation trees to be more representative of the intended hierarchy.
+In this version, [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) now are simple containers of the content they display.  That means that they are effectively used like a `ContentControl` and are always visible in the UI if their content is visible.  This allows both the visual and UI automation trees to be more representative of the intended hierarchy.
 
 ### Docking Window SerializationId Set in Constructor Instead of Name
 
-This version adds a new [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[SerializationId](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SerializationId) property that can optionally be used instead of the `Name` property when [serializing/deserializing layouts](../docking/layout-features/layout-serialization.md).  The new property is better than `Name` because it can hold any text data and isn't limited to .NET identifier syntax.  It also can be fully two-way data bound.
+This version adds a new [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) property that can optionally be used instead of the `Name` property when [serializing/deserializing layouts](../docking/layout-features/layout-serialization.md).  The new property is better than `Name` because it can hold any text data and isn't limited to .NET identifier syntax.  It also can be fully two-way data bound.
 
-Since [SerializationId](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SerializationId) is a better property to use than `Name` for serialization purposes, although `Name` can still be used, we have updated the constructors for both [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) and [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) that used to accept a `Name` parameter to switch that parameter to assign the [SerializationId](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.SerializationId) property instead.
+Since [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) is a better property to use than `Name` for serialization purposes, although `Name` can still be used, we have updated the constructors for both [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) that used to accept a `Name` parameter to switch that parameter to assign the [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) property instead.
 
-The only real negative side effect of this is that an indexer of the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ToolWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolWindows) and [DocumentWindows](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentWindows) collections works off of `Name`.  Since that property won't be set directly any more by using the constructor that used to set it, indexer calls off those collections may return a null value unless you manually set the `Name` property on each docking window instance.
+The only real negative side effect of this is that an indexer of the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) and [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collections works off of `Name`.  Since that property won't be set directly any more by using the constructor that used to set it, indexer calls off those collections may return a null value unless you manually set the `Name` property on each docking window instance.
 
 ### Programmatic Layout Updates Don't Work Until Loaded
 
@@ -35,55 +35,55 @@ Sometimes docking windows are programmatically added to a layout (via opening, d
 
 When the root element has loaded, that means that all the templates of the control hierarchy within the dock site have been properly loaded and applied as well.  The dock site and its features are then ready for programmatic interaction.
 
-The old version did allow some limited programmatic interaction with a layout before the dock site was fully loaded due to the heavy use of inherited dependency properties to register various docking hierarchy controls with the dock site.  This version has eliminated all use of inherited dependency properties since they slow things down, but a side effect of that is that not all docking hierarchy controls get their templates applied or are registered with the owner dock site until after the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite)'s (or one of its containers') `Loaded` event has fired.
+The old version did allow some limited programmatic interaction with a layout before the dock site was fully loaded due to the heavy use of inherited dependency properties to register various docking hierarchy controls with the dock site.  This version has eliminated all use of inherited dependency properties since they slow things down, but a side effect of that is that not all docking hierarchy controls get their templates applied or are registered with the owner dock site until after the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite)'s (or one of its containers') `Loaded` event has fired.
 
 ### All Styles and Templates Rebuilt
 
-In this version, all styles and templates for the docking controls have been rebuilt from scratch.  They are now much simpler, use better composition of primitive controls (such as the new [AdvancedTabControl](xref:ActiproSoftware.Windows.Controls.Docking.AdvancedTabControl)), and are far easier to customize.
+In this version, all styles and templates for the docking controls have been rebuilt from scratch.  They are now much simpler, use better composition of primitive controls (such as the new [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl)), and are far easier to customize.
 
 Any styles designed for the old version will NOT work with this version and will need to be reimplemented.  Several primitive controls, such as `ReverseMeasureDockPanel` that were used in the old version and are no longer needed in this version, have been removed.
 
 ### DockSite.ControlSize Attached Property Removed
 
-In the old verison, a `DockSite.ControlSize` property could be set to containers like [ToolWindowContainer](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindowContainer) to designate their initial size.
+In the old verison, a `DockSite.ControlSize` property could be set to containers like [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) to designate their initial size.
 
-In this version, that property has been removed and new properties directly on docking windows themselves have been added.  The [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerDockedSize) property can be set for docked scenarios.  It is encouraged to set the same value to all docking windows in the same container.  The [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[ContainerAutoHideSize](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.ContainerAutoHideSize) property can be set for auto-hide popup size.
+In this version, that property has been removed and new properties directly on docking windows themselves have been added.  The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ContainerDockedSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerDockedSize) property can be set for docked scenarios.  It is encouraged to set the same value to all docking windows in the same container.  The [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[ContainerAutoHideSize](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.ContainerAutoHideSize) property can be set for auto-hide popup size.
 
-There are also new [ContainerMinSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMinSize) and [ContainerMaxSize](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ContainerMaxSize) properties that allow you to set a desired minimum and maximum size to which a container can be resized.
+There are also new [ContainerMinSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMinSize) and [ContainerMaxSize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ContainerMaxSize) properties that allow you to set a desired minimum and maximum size to which a container can be resized.
 
 ### LastActiveDocument and LastActiveToolWindow Removed
 
 The old `LastActiveDocument`, `LastActiveToolWindow`, and related property change events have been removed in this version.
 
-Use the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ActiveWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ActiveWindow) to know which window is currently active, and watch the [WindowDeactivated](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowDeactivated) and [WindowActivated](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowActivated) events to know when that changes.
+Use the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) to know which window is currently active, and watch the [WindowDeactivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowDeactivated) and [WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) events to know when that changes.
 
-Use the new [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[PrimaryDocument](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.PrimaryDocument) property to know which document is currently the primary document.  This value will be the same as [ActiveWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ActiveWindow) if the active window is a document.  If the active window is a tool window outside of the MDI area instead, the primary document will refer to the last open document that was active.  The [PrimaryDocumentChanged](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.PrimaryDocumentChanged) event fires when the related property value changes.
+Use the new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) property to know which document is currently the primary document.  This value will be the same as [ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) if the active window is a document.  If the active window is a tool window outside of the MDI area instead, the primary document will refer to the last open document that was active.  The [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event fires when the related property value changes.
 
-All docking windows now have a [LastActiveDateTime](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.LastActiveDateTime) property that you can examine to sort them by when they were last active.
+All docking windows now have a [LastActiveDateTime](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.LastActiveDateTime) property that you can examine to sort them by when they were last active.
 
 ### Clicking a Tab Close Button Won't Focus Within Container
 
 In the old version, if the focus was in one container (such as a docked tool window) and then the close X button on a document tab was clicked, the tab would be closed and the next document tab in that tabbed MDI container would become active.  In vNext in this same scenario, focus remains in the original container (docked tool window) instead of activating the next tabbed document.
 
-This means that the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[WindowActivated](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowActivated) event won't fire for the next tabbed document.  If you relied on this event to know when a new document became the primary document, switch over to using the new [PrimaryDocumentChanged](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.PrimaryDocumentChanged) event instead, which is described inthe previous section.  The new [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[PrimaryDocument](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.PrimaryDocument) returns the open document that is currently active, or was last active in the case where a non-document is currently active.
+This means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event won't fire for the next tabbed document.  If you relied on this event to know when a new document became the primary document, switch over to using the new [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event instead, which is described inthe previous section.  The new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) returns the open document that is currently active, or was last active in the case where a non-document is currently active.
 
 ### Renamed Rafting to Floating
 
 In the previous version, the term "rafting" was used in a number of property names.  In this version, all instances of "rafting" are now named as "floating".
 
-An example is the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite)`.CanDocumentWindowsRaft` property is now named [CanDocumentWindowsFloat](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.CanDocumentWindowsFloat).
+An example is the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite)`.CanDocumentWindowsRaft` property is now named [CanDocumentWindowsFloat](xref:@ActiproUIRoot.Controls.Docking.DockSite.CanDocumentWindowsFloat).
 
 ### Multiple DockSite Events Changed to Pass Multiple Docking Windows
 
-Several [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) events have been slightly renamed to a plural name to account for the fact that they now pass multiple affected docking windows instead of a single docking window.  The renamed events are: [WindowsClosing](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsClosing), [WindowsClosed](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsClosed), [WindowsOpening](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsOpening), [WindowsOpened](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsOpened), and [WindowsStateChanged](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsStateChanged).
+Several [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) events have been slightly renamed to a plural name to account for the fact that they now pass multiple affected docking windows instead of a single docking window.  The renamed events are: [WindowsClosing](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsClosing), [WindowsClosed](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsClosed), [WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening), [WindowsOpened](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpened), and [WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged).
 
-The revised [WindowsClosing](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsClosing) event is handy in particular because when the Close All Documents and Close Others menu items are used, a single dialog with all windows listed can be presented to the user to check whether to close the windows.
+The revised [WindowsClosing](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsClosing) event is handy in particular because when the Close All Documents and Close Others menu items are used, a single dialog with all windows listed can be presented to the user to check whether to close the windows.
 
 ### DockingWindowState.Floating Value Removed
 
-The [DockingWindowState](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindowState) enumeration no longer has a `Floating` value.  The reason is that now floating dock hosts can have docked, auto-hidden or document-oriented docking windows in them, so that option no longer fit.
+The [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration no longer has a `Floating` value.  The reason is that now floating dock hosts can have docked, auto-hidden or document-oriented docking windows in them, so that option no longer fit.
 
-In addition, this change means that the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[WindowsStateChanged](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowsStateChanged) event will no longer fire when a docking window is moved to or from a floating dock host, unless doing so is a transition between the docked, auto-hide, or document states.
+In addition, this change means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged) event will no longer fire when a docking window is moved to or from a floating dock host, unless doing so is a transition between the docked, auto-hide, or document states.
 
 ### Tool Window Transitions Removed
 
@@ -91,19 +91,19 @@ Tool window content animated transitions have been removed since they aren't use
 
 ### DockSiteViewModelBehavior Removed from MVVM Samples
 
-The old `DockSiteViewModelBehavior` class has been removed from all MVVM samples since it is no longer needed due to new MVVM-friendly features.  Two way data binding on [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[IsOpen](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsOpen), [IsActive](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsActive), [IsSelected](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.IsSelected), and [State](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.State) are all supported.
+The old `DockSiteViewModelBehavior` class has been removed from all MVVM samples since it is no longer needed due to new MVVM-friendly features.  Two way data binding on [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen), [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActive), [IsSelected](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsSelected), and [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) are all supported.
 
 In addition, there are numerous new features described in the [Lifecycle and Docking Management](../docking/docking-window-features/lifecycle-and-docking-management.md) topic that deal with adjusting (even dynamically) the default location for opened windows.
 
-Finally, there are new built-in features for the dock site to automatically remove a view model item from the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ToolItemsSource](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolItemsSource) or [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[DocumentItemsSource](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentItemsSource) collections when the related container docking window is destroyed.  This is possible only if the items source property is assigned a collection that is an editable list.  If another non-editable collection is used instead, you must attach to the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[WindowUnregistered](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.WindowUnregistered) event and remove the related item from the items source yourself.
+Finally, there are new built-in features for the dock site to automatically remove a view model item from the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolItemsSource) or [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[DocumentItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentItemsSource) collections when the related container docking window is destroyed.  This is possible only if the items source property is assigned a collection that is an editable list.  If another non-editable collection is used instead, you must attach to the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowUnregistered](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowUnregistered) event and remove the related item from the items source yourself.
 
 ### DockingCommands Class Removed
 
-The old `DockingCommands` class that contained static properties with docking window-related commands has been removed.  Command properties have been moved to their appropriate target class instead, such as the [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[ActivateCommand](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ActivateCommand) property.
+The old `DockingCommands` class that contained static properties with docking window-related commands has been removed.  Command properties have been moved to their appropriate target class instead, such as the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ActivateCommand](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ActivateCommand) property.
 
 ### Tabbed MDI Tab Title Editing Feature Removed
 
-The tabbed MDI tab title editing feature (`DockSite.CanDocumentWindowsEditTitles`) has been removed since it is rarely used and would add much more complexity to the [AdvancedTabItem](xref:ActiproSoftware.Windows.Controls.Docking.AdvancedTabItem) control template.  If you used this feature in the old version, we recommend adding a context menu item to tabs via the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[MenuOpening](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.MenuOpening) event that when clicked, triggers a title text editing dialog.
+The tabbed MDI tab title editing feature (`DockSite.CanDocumentWindowsEditTitles`) has been removed since it is rarely used and would add much more complexity to the [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem) control template.  If you used this feature in the old version, we recommend adding a context menu item to tabs via the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MenuOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.MenuOpening) event that when clicked, triggers a title text editing dialog.
 
 ### DockSite.FullScreen Property Removed
 
@@ -115,7 +115,7 @@ The `SingleTabLayoutBehavior.Stretch` option has been removed.  If a similar fea
 
 ### ToolWindowTabFlashBehavior Sample Class Removed
 
-The `ToolWindowTabFlashBehavior` attached behavior class that used to be in the Sample Browser has been removed.  That class allowed for animated tinting of tabs to achieve a flash effect, but is no longer needed since new properties are now available directly on [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow) that support this feature.
+The `ToolWindowTabFlashBehavior` attached behavior class that used to be in the Sample Browser has been removed.  That class allowed for animated tinting of tabs to achieve a flash effect, but is no longer needed since new properties are now available directly on [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) that support this feature.
 
 See the [Docking Window Capabilities](../docking/docking-window-features/docking-window-capabilities.md) topic for more information on tab flashing features.
 
@@ -123,9 +123,9 @@ See the [Docking Window Capabilities](../docking/docking-window-features/docking
 
 The previous version had `Header` and `HeaderTemplate` properties that could be used to provide custom content for tabs, since the tab templates themselves were the docking windows.
 
-In this version, docking windows are no longer represented in UI as tabs themselves, and are instead simple containers around their actual child content when in UI.  The [AdvancedTabControl](xref:ActiproSoftware.Windows.Controls.Docking.AdvancedTabControl) primitive control is now used to render tab UI for docking windows where appropriate.  See the `Docking Window Role in UI` section above for more detail.
+In this version, docking windows are no longer represented in UI as tabs themselves, and are instead simple containers around their actual child content when in UI.  The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) primitive control is now used to render tab UI for docking windows where appropriate.  See the `Docking Window Role in UI` section above for more detail.
 
-While properties like [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[Title](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.Title), [TabText](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.TabText), and [ImageSource](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.ImageSource) can be used to indicate tab content, sometimes you also want to be able to include additional contextual content.  This could be anything from status indicators, buttons, etc.  The [Contextual Content](../docking/docking-window-features/contextual-content.md) topic talks about how you can provide various `DataTemplate` values to inject custom content into tabs in multiple locations throughout the docking UI.
+While properties like [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabText), and [ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) can be used to indicate tab content, sometimes you also want to be able to include additional contextual content.  This could be anything from status indicators, buttons, etc.  The [Contextual Content](../docking/docking-window-features/contextual-content.md) topic talks about how you can provide various `DataTemplate` values to inject custom content into tabs in multiple locations throughout the docking UI.
 
 ### Prism Integration Changes
 
@@ -370,13 +370,13 @@ With the rise in popularity of Metro-like themes in general due to Windows 10/8.
 
 Since they are located directly in the Shared Library now, Metro themes no longer need to be explicitly registered via a call to the `ThemesMetroThemeCatalogRegistrar.Register` method.
 
-Also, now Windows 10 and 8.x systems will default to Metro Light theme unless otherwise overridden by setting the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property.  This ensures that a theme will be used on those operating systems that matches overall appearance.
+Also, now Windows 10 and 8.x systems will default to Metro Light theme unless otherwise overridden by setting the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property.  This ensures that a theme will be used on those operating systems that matches overall appearance.
 
 To handle the breaking changes above:
 
 - Remove any references to the `ActiproSoftware.Themes.Metro.Wpf.dll` assembly.
 - Remove any calls to the `ThemesMetroThemeCatalogRegistrar.Register` method.
-- Continue setting the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property to any Metro theme listed in the [Themes Getting Started](../themes/getting-started.md) topic as appropriate.  Or specifically set the current theme to another non-Metro theme if you always wish for a non-Metro theme to be used on Windows 10/8.x systems.
+- Continue setting the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to any Metro theme listed in the [Themes Getting Started](../themes/getting-started.md) topic as appropriate.  Or specifically set the current theme to another non-Metro theme if you always wish for a non-Metro theme to be used on Windows 10/8.x systems.
 
 The updates for v16.1 also include multiple new Metro Light and Metro White accent themes that render similar to the Office 2016 apps.
 
@@ -388,12 +388,12 @@ If you wish to use these deprecated XP-like themes in your application, you must
 
 - Add a reference to the `ActiproSoftware.Themes.Luna.Wpf.dll` assembly.
 - Call the `ThemesLunaThemeCatalogRegistrar.Register` method during app startup.
-- Set the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property to an appropriate Luna theme.
+- Set the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to an appropriate Luna theme.
 
 It is recommended that most applications move to one of the Metro themes from Luna, since those provide a more modern appearance.
 
 > [!NOTE]
-> Now that the Luna themes are in a separate assembly, they will no longer be automatically applied to applications running on Windows XP when [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) hasn't been explicitly set.  Instead, the `Classic` theme will be invoked in Windows XP in that scenario.  You must write code in your application startup to see if the application is running on Windows XP, and then set [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) to the appropriate Luna theme.
+> Now that the Luna themes are in a separate assembly, they will no longer be automatically applied to applications running on Windows XP when [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) hasn't been explicitly set.  Instead, the `Classic` theme will be invoked in Windows XP in that scenario.  You must write code in your application startup to see if the application is running on Windows XP, and then set [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) to the appropriate Luna theme.
 
 ## WindowChrome Updated to Only Allow Aero Glass on Windows 7 and Vista
 
@@ -401,9 +401,9 @@ In the previous version, Aero glass effects were allowed on Windows 8.x and 10. 
 
 ## RibbonWindow.IsGlassEnabled Is No Longer Nullable and Defaults to False
 
-With Metro themes becoming most popular with recent Windows versions and in an effort to have the [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow)'s Aero glass enabled state match that of [WindowChrome](xref:ActiproSoftware.Windows.Themes.WindowChrome), the `RibbonWindow.IsGlassEnabled` property is now a `bool` (instead of nullable `bool`) and defaults to `false`.
+With Metro themes becoming most popular with recent Windows versions and in an effort to have the [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow)'s Aero glass enabled state match that of [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome), the `RibbonWindow.IsGlassEnabled` property is now a `bool` (instead of nullable `bool`) and defaults to `false`.
 
-If your app uses a non-Metro theme (like `AeroNormalColor`) and you would like to continue using Aero glass on your [RibbonWindow](xref:ActiproSoftware.Windows.Controls.Ribbon.RibbonWindow) instances, set the `RibbonWindow.IsGlassEnabled` property to `true`.  Note that even when that property is `true`, Aero glass will only be active on Windows 7 and Vista systems since Windows 8.x and later systems don't use Aero glass.
+If your app uses a non-Metro theme (like `AeroNormalColor`) and you would like to continue using Aero glass on your [RibbonWindow](xref:@ActiproUIRoot.Controls.Ribbon.RibbonWindow) instances, set the `RibbonWindow.IsGlassEnabled` property to `true`.  Note that even when that property is `true`, Aero glass will only be active on Windows 7 and Vista systems since Windows 8.x and later systems don't use Aero glass.
 
 ## Ribbon Button Images Auto-Convert To White Monochrome When Appropriate
 

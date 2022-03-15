@@ -995,6 +995,8 @@ items:
         href: syntaxeditor/user-interface/editor-view/indicators.md
       - name: "Indentation Guides"
         href: syntaxeditor/user-interface/editor-view/indentation-guides.md
+      - name: "Column Guides"
+        href: syntaxeditor/user-interface/editor-view/column-guides.md
       - name: "Scrolling"
         href: syntaxeditor/user-interface/editor-view/scrolling.md
       - name: "Hit Testing"

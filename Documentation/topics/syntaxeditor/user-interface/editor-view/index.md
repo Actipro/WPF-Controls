@@ -24,7 +24,7 @@ See the [Selection and Block Selection](selection.md) topic for more information
 
 ## Locations, Offsets, and Positions
 
-There are several ways to reference the location of characters within an [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView), each with their own benefits.
+There are several ways to reference the location of characters within an [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView), each with their own benefits.
 
 See the [Locations, Offsets, and Positions](locations-offsets-positions.md) topic for more information.
 
@@ -58,11 +58,15 @@ Word wrapping is a powerful feature that  allows users to view all text for a li
 
 See the [Word Wrap](word-wrap.md) topic for more information.
 
+@if (winrt wpf) {
+
 ## Zooming
 
 SyntaxEditor supports animated zooming in and out of views, which is a great feature to use when giving overhead presentations.  Only the scrollable area content of each view is zoomed, not the scrollbars.
 
 See the [Zooming](zooming.md) topic for more information.
+
+}
 
 ## Current Line Highlighting
 
@@ -110,7 +114,11 @@ Scrollbars can optionally be hidden in the views, or even automatically hidden w
 
 Scrollbar acceleration allows scrolling speed to increase the longer a scrollbar button is held.
 
-Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates.
+@if (winrt wpf) {
+
+Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates. 
+
+}
 
 See the [Scrolling](scrolling.md) topic for more information.
 
@@ -134,7 +142,7 @@ See the [Delayed UI Updates](delayedui-updates.md) topic for more information.
 
 ## View Properties
 
-The [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[Properties](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.Properties) property provides a dictionary-like object that can store any sort of custom data that should be associated with the view.
+The [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) property provides a dictionary-like object that can store any sort of custom data that should be associated with the view.
 
 The property returns an [PropertyDictionary](xref:ActiproSoftware.Text.Utility.PropertyDictionary) object, which supports any object type as a key or value.
 
@@ -147,3 +155,13 @@ SyntaxEditor is a multi-line editor by default, but also supports a single-line 
 In this mode, nearly all of SyntaxEditor's features remain available, such as syntax highlighting, syntax error squiggle lines, and automated IntelliPrompt.
 
 See the [Single-Line Mode](single-line-mode.md) topic for more information.
+
+@if (winrt) {
+
+## Custom Cursors
+
+WinRT doesn't allow custom mouse cursors to be included natively via .NET, however they can be included via C++ .res files.  Several custom cursors have been created for use with SyntaxEditor but must be properly registered at app startup.
+
+See the [Custom Cursors](custom-cursors.md) topic for more information.
+
+}

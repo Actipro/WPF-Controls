@@ -5,7 +5,7 @@ order: 30
 ---
 # TimeSpanPicker
 
-The [TimeSpanPicker](xref:ActiproSoftware.Windows.Controls.Editors.TimeSpanPicker) control allows for the input of a `TimeSpan` (days, hours, minutes, seconds, milliseconds) value.  It is generally intended for display within a popup, such as for the [TimeSpanEditBox](../editboxes/timespaneditbox.md) control.
+The [TimeSpanPicker](xref:@ActiproUIRoot.Controls.Editors.TimeSpanPicker) control allows for the input of a `TimeSpan` (days, hours, minutes, seconds, milliseconds) value.  It is generally intended for display within a popup, such as for the [TimeSpanEditBox](../editboxes/timespaneditbox.md) control.
 
 ![Screenshot](../images/timespanpicker.png)
 
@@ -13,13 +13,13 @@ The toggle at the top determines whether the embedded [Int32Picker](int32picker.
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.TimeSpanPicker.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.TimeSpanPicker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.TimeSpanPicker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.TimeSpanPicker.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.TimeSpanPicker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.TimeSpanPicker.SmallChange) property.
 
 ## Sample XAML
 

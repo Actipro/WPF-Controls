@@ -5,7 +5,7 @@ order: 19
 ---
 # Int64Picker
 
-The [Int64EditBox](xref:ActiproSoftware.Windows.Controls.Editors.Int64EditBox) control allows for the input of an `Int64` (64-bit integer) value.  It is generally intended for display within a popup, such as for the [Int64EditBox](../editboxes/int64editbox.md) control.
+The [Int64EditBox](xref:@ActiproUIRoot.Controls.Editors.Int64EditBox) control allows for the input of an `Int64` (64-bit integer) value.  It is generally intended for display within a popup, such as for the [Int64EditBox](../editboxes/int64editbox.md) control.
 
 ![Screenshot](../images/int32picker.png)
 
@@ -17,13 +17,13 @@ Negative values have a distinct appearance from positive values.
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:ActiproSoftware.Windows.Controls.Editors.Int64Picker.Maximum) and [Minimum](xref:ActiproSoftware.Windows.Controls.Editors.Int64Picker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Int64Picker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Int64Picker.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:ActiproSoftware.Windows.Controls.Editors.Int64Picker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Int64Picker.SmallChange) property.
 
 ## Sample XAML
 

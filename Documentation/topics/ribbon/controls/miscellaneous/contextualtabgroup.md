@@ -7,7 +7,7 @@ order: 4
 
 The controls used most often in an application are always available on the Ribbon.  However sometimes a specific object is selected in the document (such as a picture, table, or chart) that requires additional controls for proper interaction with the object.  This is where contextual tabs come in since they contain the controls that relate to the selected object.
 
-Contextual tabs are the same as normal tabs except that they are contained by a [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup) and are only displayed when the parent [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup) is active.
+Contextual tabs are the same as normal tabs except that they are contained by a [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) and are only displayed when the parent [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) is active.
 
 ![Screenshot](../../images/contextualtabgroups.png)
 
@@ -17,7 +17,7 @@ Since contextual tabs are typically more important to the end user while they ar
 
 ## Defining a Contextual Tab Group
 
-Contextual tab groups are defined in the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[ContextualTabGroups](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.ContextualTabGroups) collection.  Each [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup) can contain one or more [Tab](tab.md) controls.
+Contextual tab groups are defined in the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[ContextualTabGroups](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.ContextualTabGroups) collection.  Each [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) can contain one or more [Tab](tab.md) controls.
 
 This code sample shows how to define a contextual tab group for a ribbon.
 
@@ -47,9 +47,9 @@ This code sample shows how to define a contextual tab group for a ribbon.
 
 ## Showing / Hiding a ContextualTabGroup
 
-When a [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup) is activated, all of its child [Tab](tab.md) controls are displayed.  Likewise, deactivating a [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup) hides all of its child tabs.
+When a [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) is activated, all of its child [Tab](tab.md) controls are displayed.  Likewise, deactivating a [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) hides all of its child tabs.
 
-The [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup).[IsActive](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup.IsActive) property controls whether a contextual tab group and its tabs are visible.  Set it to `true` to display a contextual tab group.  This code displays a contextual tab group:
+The [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup).[IsActive](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup.IsActive) property controls whether a contextual tab group and its tabs are visible.  Set it to `true` to display a contextual tab group.  This code displays a contextual tab group:
 
 ```csharp
 ribbon.ContextualTabGroups["Header & Footer Tools"].IsActive = true;
@@ -61,4 +61,4 @@ In some cases (please see the Contextual Tabs notes at the bottom of the [Micros
 ribbon.SelectedTab = (Tab)contextualTabGroup.Items[0];
 ```
 
-The [ContextualTabGroup](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup).[IsActiveChanged](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup.IsActiveChanged) event is raised when the value of the [IsActive](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ContextualTabGroup.IsActive) property changes.
+The [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup).[IsActiveChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup.IsActiveChanged) event is raised when the value of the [IsActive](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup.IsActive) property changes.

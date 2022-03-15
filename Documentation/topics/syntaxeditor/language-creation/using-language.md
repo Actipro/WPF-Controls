@@ -24,7 +24,7 @@ The [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[LanguageChanged](x
 
 ### Using with a SyntaxEditor
 
-Since [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) is the property type for the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[Document](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.Document) property, assigning an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) to be used for a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control is done the same way.
+Since [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) is the property type for the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[Document](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.Document) property, assigning an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) to be used for a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is done the same way.
 
 In that scenario, the SyntaxEditor's document is assigned the language like this:
 
@@ -32,7 +32,7 @@ In that scenario, the SyntaxEditor's document is assigned the language like this
 editor.Document.Language = language;
 ```
 
-The [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[DocumentLanguageChanged](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.DocumentLanguageChanged) event wraps the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[LanguageChanged](xref:ActiproSoftware.Text.ICodeDocument.LanguageChanged) event and is an easy way to be notified whenever a new language is assigned to the document currently being edited in a SyntaxEditor.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[DocumentLanguageChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.DocumentLanguageChanged) event wraps the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[LanguageChanged](xref:ActiproSoftware.Text.ICodeDocument.LanguageChanged) event and is an easy way to be notified whenever a new language is assigned to the document currently being edited in a SyntaxEditor.
 
 ## Packaging Options
 
@@ -52,4 +52,4 @@ This option is similar to the previous one where the language is in its own asse
 
 The first assembly contains only the core text and parsing related classes.  This keeps it truly platform independent since there are no references to any UI platforms (WPF, WinForms, etc.) in the code.
 
-The second assembly is platform dependent and includes code specifically for working with SyntaxEditor for WPF, etc.  Language functionality that interacts with IntelliPrompt would be included here.
+The second assembly is platform dependent and includes code specifically for working with SyntaxEditor for @@PlatformName, etc.  Language functionality that interacts with IntelliPrompt would be included here.

@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Layout controls govern where other controls are placed within a [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).
+Layout controls govern where other controls are placed within a [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).
 
 <table>
 <thead>
@@ -14,7 +14,6 @@ Layout controls govern where other controls are placed within a [Ribbon](xref:Ac
 <th>Control Type</th>
 <th>Description</th>
 </tr>
-
 
 </thead>
 <tbody>

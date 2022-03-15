@@ -9,9 +9,9 @@ Many controls (such as [Button](../controls/interactive/button.md)) supoort a ch
 
 An example is the `ToggleBold` command.  There might be an instance of a `ToggleBold` button in the ribbon and another in the [Quick Access Toolbar](../controls/miscellaneous/quickaccesstoolbar.md).  They both need to be synced up so that when the selection in the document is bold, the two controls appear checked.
 
-This is done via a [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter).  By default, the built-in checkable controls assign a [CheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.CheckableCommandParameter) instance (which implements [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter)) to their `CommandParameter` property.
+This is done via a [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter).  By default, the built-in checkable controls assign a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) instance (which implements [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter)) to their `CommandParameter` property.
 
-When the `CanExecute` event of the command is handled in your code, set the [Handled](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter.Handled) property of the parameter to `true` and set the [IsChecked](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter.IsChecked) property to the checked state value.
+When the `CanExecute` event of the command is handled in your code, set the [Handled](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter.Handled) property of the parameter to `true` and set the [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter.IsChecked) property to the checked state value.
 
 This code shows how to handle a `ToggleBold` command's `CanExecute` handler to set the checked state of a ribbon control.  Note that in this sample code, the `SelectionBold` property is assumed to return whether the selection in the document is currently bold.
 

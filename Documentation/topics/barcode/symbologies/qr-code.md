@@ -24,8 +24,8 @@ The following table gives an overview of the characteristics of the symbology.
 
 | Item | Details |
 |-----|-----|
-| Implementation Class | [QrCodeSymbology](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology) |
-| Base Class | [Grid2DBarCodeSymbology](xref:ActiproSoftware.Windows.Controls.BarCode.Grid2DBarCodeSymbology) |
+| Implementation Class | [QrCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology) |
+| Base Class | [Grid2DBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.Grid2DBarCodeSymbology) |
 | Encodable Characters | Number characters, alphanumeric characters, and bytes. |
 | Supports Error Correction | Yes.  The implementation will auto-calculate and insert error correction data. |
 | Fixed Length Requirements | No.  The maximum length of the value varies depending on the type of data being encoded, the symbol version selected, and the error correction level selected. |
@@ -42,14 +42,13 @@ This symbology has these important members:
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[AllowLowercase](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology.AllowLowercase) Property
+[AllowLowercase](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.AllowLowercase) Property
 
 </td>
 <td>
@@ -64,7 +63,7 @@ The QR code specification does not allow lowercase characters when using the alp
 <tr>
 <td>
 
-[Background](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.Background) Property
+[Background](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Background) Property
 
 </td>
 <td>
@@ -77,7 +76,7 @@ Gets or sets the `Brush` to use for rendering the background.
 <tr>
 <td>
 
-[CellSize](xref:ActiproSoftware.Windows.Controls.BarCode.Grid2DBarCodeSymbology.CellSize) Property
+[CellSize](xref:@ActiproUIRoot.Controls.BarCode.Grid2DBarCodeSymbology.CellSize) Property
 
 </td>
 <td>Gets or sets the size in pixels of each cell.</td>
@@ -86,7 +85,7 @@ Gets or sets the `Brush` to use for rendering the background.
 <tr>
 <td>
 
-[DisplayName](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.DisplayName) Property
+[DisplayName](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.DisplayName) Property
 
 </td>
 <td>Gets the display name of the symbology.</td>
@@ -95,7 +94,7 @@ Gets or sets the `Brush` to use for rendering the background.
 <tr>
 <td>
 
-[EncodingMode](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology.EncodingMode) Property
+[EncodingMode](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.EncodingMode) Property
 
 </td>
 <td>
@@ -108,7 +107,7 @@ Gets the mode in which the value will be encoded. The default value is `null`, w
 <tr>
 <td>
 
-[ErrorCorrectionLevel](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology.ErrorCorrectionLevel) Property
+[ErrorCorrectionLevel](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.ErrorCorrectionLevel) Property
 
 </td>
 <td>Gets the level of error correction that will be added to the encoded data. The higher the error correction level is, the lower the quantity of data that can be encoded is.</td>
@@ -117,7 +116,7 @@ Gets the mode in which the value will be encoded. The default value is `null`, w
 <tr>
 <td>
 
-[Foreground](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.Foreground) Property
+[Foreground](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Foreground) Property
 
 </td>
 <td>
@@ -130,7 +129,7 @@ Gets or sets the `Brush` to use for rendering the foreground.
 <tr>
 <td>
 
-[MaskIndex](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology.MaskIndex) Property
+[MaskIndex](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.MaskIndex) Property
 
 </td>
 <td>
@@ -143,7 +142,7 @@ Gets or sets the QR mask applied to the code. The default value is `null`, which
 <tr>
 <td>
 
-[MeasureDesiredSize](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.MeasureDesiredSize*) Method
+[MeasureDesiredSize](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.MeasureDesiredSize*) Method
 
 </td>
 <td>Measures the desired size of the symbology, based on the specified available size.</td>
@@ -152,7 +151,7 @@ Gets or sets the QR mask applied to the code. The default value is `null`, which
 <tr>
 <td>
 
-[Render](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.Render*) Method
+[Render](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Render*) Method
 
 </td>
 <td>
@@ -165,7 +164,7 @@ Renders the symbology to the specified `DrawingContext`.
 <tr>
 <td>
 
-[ToBitmap](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.ToBitmap*) Method
+[ToBitmap](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.ToBitmap*) Method
 
 </td>
 <td>
@@ -178,7 +177,7 @@ Creates a `BitmapSource` based on the contents of the symbology.
 <tr>
 <td>
 
-[ValidateValue](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.ValidateValue*) Method
+[ValidateValue](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.ValidateValue*) Method
 
 </td>
 <td>Validates that the symbology can parse the specified value.</td>
@@ -187,7 +186,7 @@ Creates a `BitmapSource` based on the contents of the symbology.
 <tr>
 <td>
 
-[Value](xref:ActiproSoftware.Windows.Controls.BarCode.BarCodeSymbology.Value) Property
+[Value](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Value) Property
 
 </td>
 <td>Gets or sets the value to encode in the bar code.</td>
@@ -196,7 +195,7 @@ Creates a `BitmapSource` based on the contents of the symbology.
 <tr>
 <td>
 
-[QuietZoneThickness](xref:ActiproSoftware.Windows.Controls.BarCode.Grid2DBarCodeSymbology.QuietZoneThickness) Property
+[QuietZoneThickness](xref:@ActiproUIRoot.Controls.BarCode.Grid2DBarCodeSymbology.QuietZoneThickness) Property
 
 </td>
 <td>Gets the thickness of the margin on each side of the rendered symbol.</td>
@@ -205,7 +204,7 @@ Creates a `BitmapSource` based on the contents of the symbology.
 <tr>
 <td>
 
-[Version](xref:ActiproSoftware.Windows.Controls.BarCode.QrCodeSymbology.Version) Property
+[Version](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.Version) Property
 
 </td>
 <td>
@@ -220,7 +219,7 @@ Gets the symbol version that should be rendered. The default value is `null`, wh
 
 ## Sample XAML
 
-This sample XAML code shows how to create a [BarCode](xref:ActiproSoftware.Windows.Controls.BarCode.BarCode) using this symbology.
+This sample XAML code shows how to create a [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) using this symbology.
 
 ```xaml
 <barCode:BarCode>

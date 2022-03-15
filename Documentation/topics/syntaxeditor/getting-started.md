@@ -7,6 +7,16 @@ order: 3
 
 Although SyntaxEditor is a massive product, it is pretty simple to get up and running fast.  Use the tips in this topic to get started.
 
+@if (winrt) {
+
+## App Must Target Fall Creators Update or Later
+
+The Actipro @@PlatformName Controls target 'Windows 10 Fall Creators Update (10.0; Build 16299)'.  Any apps using them must also set the project's target version AND minimum version to the same or newer, or errors may occur.
+
+The controls also use Microsoft's 'Win2D.uwp' NuGet package, which must also be referenced.  Please see the Readme file for a detailed chart specifying which Windows 10 target versions are compatible with the various NuGet package requirement versions.
+
+}
+
 ## Understanding Abstraction (Interfaces and Implementation)
 
 The entire product has been abstracted out into an interface-based object model.  This provides for a more open object model that can easily be extended in a number of places.
@@ -40,11 +50,23 @@ The [Term Definitions](term-definitions.md) topic provides an extensive list of 
 
 The [How To...](how-to.md) topic provides a great jump off point for where to find information on performing the most common tasks with SyntaxEditor.  It's a great resource.
 
+@if (winrt) {
+
+## Add Extension SDK Reference
+
+In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" and add the "Actipro Universal Windows Controls" SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.
+
+}
+
+@if (wpf) {
+
 ## Add Assembly References
 
-Once you are ready to add SyntaxEditor to your own application, you'll need to add references in your project to the proper assemblies. The assemblies should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+Once you are ready to add SyntaxEditor to your own application, you'll need to add references in your project to the proper assemblies.  The assemblies should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 Look at the [Assemblies and Add-on Licensing](assemblies.md) topic for details on the appropriate assemblies to reference in your project.
+
+}
 
 ## Copy Code from the Sample Project
 

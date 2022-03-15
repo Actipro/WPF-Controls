@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Reflection;
 using ActiproSoftware.Text.Languages.JavaScript.Implementation;
+using ActiproSoftware.Text.Languages.Python.Implementation;
+using ActiproSoftware.Text.Languages.Xml.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
@@ -204,10 +207,13 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 				foreach (var classificationType in classificationTypes)
 					AmbientHighlightingStyleRegistry.Instance.Unregister(classificationType);
 
-				// Re-register common classification types
+				// Re-register common classification types for general display (plain text, margins, etc.) and add-ons (which also include common ones like keywords, strings, etc.)
 				new DisplayItemClassificationTypeProvider().RegisterAll();
 				new DotNetClassificationTypeProvider().RegisterAll();
 				new JavaScriptClassificationTypeProvider().RegisterAll();
+				new PythonClassificationTypeProvider().RegisterAll();
+				new XmlClassificationTypeProvider().RegisterAll();
+				new CompareFilesClassificationTypeProvider().RegisterAll();
 
 				// Load HTML, Markdown, XAML, and Formula languages just so their custom classification types get re-registered
 				LoadLanguageDefinitionFromResourceStream("Html.langdef");

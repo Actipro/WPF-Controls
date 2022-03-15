@@ -5,7 +5,7 @@ order: 22
 ---
 # RadialHuePicker
 
-The [RadialHuePicker](xref:ActiproSoftware.Windows.Controls.Editors.RadialHuePicker) control renders a circular gradient of the color spectrum and uses a radial slider to select a color hue.
+The [RadialHuePicker](xref:@ActiproUIRoot.Controls.Editors.RadialHuePicker) control renders a circular gradient of the color spectrum and uses a radial slider to select a color hue.
 
 ![Screenshot](../images/radialhuepicker.png)
 

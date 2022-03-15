@@ -5,14 +5,14 @@ order: 5
 ---
 # ComboBox
 
-The [ComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox) class provides an implementation of native WPF `ComboBox` that has enhanced functionality for use in a ribbon.
+The [ComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox) class provides an implementation of native WPF `ComboBox` that has enhanced functionality for use in a ribbon.
 
 > [!NOTE]
 > See the [Control Basics](../control-basics.md) topic for many implementation details that are common to the built-in controls such as this one.
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -29,35 +29,35 @@ The following table gives an overview of the capabilities of the control.
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | No.  When in the ribbon, it should be placed in a [StackPanel](../layout/stackpanel.md) that is in a `Medium` variant or smaller. |
 | Supports normal size | Yes. |
 | Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
-| Base class | [ComboBoxBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase). |
+| Base class | [ComboBoxBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase). |
 | Child items | Yes.  The items collection inherits from the native WPF `ComboBox` class and data binding to `ItemsSource` is fully supported. |
 | Has popup | Yes.  The items are displayed in the popup. |
-| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
 | Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
-| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
-| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
-| Default CommandParameter | [ObjectValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ObjectValueCommandParameter). |
+| Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
+| Supports [IValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
+| Default CommandParameter | [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter). |
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [ObjectValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 
 ## Supporting Live Preview
 
-When the mouse moves over an item, the item becomes the [ActiveItem](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox.ActiveItem).  Many applications use the currently "active" item to supply a live preview to the end user of what would happen if the item was clicked.  Live preview for comboboxes can be implemented in one of two ways.
+When the mouse moves over an item, the item becomes the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItem).  Many applications use the currently "active" item to supply a live preview to the end user of what would happen if the item was clicked.  Live preview for comboboxes can be implemented in one of two ways.
 
 If you are using commands, the [Interaction with Value Controls](../../command-model/value-controls.md) topic explains how to support live preview using command can-execute handlers.
 
-Alternatively, if you would rather use events, the [ActiveItemChanged](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox.ActiveItemChanged) event fires whenever the [ActiveItem](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox.ActiveItem) property is changed.
+Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItemChanged) event fires whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItem) property is changed.
 
 ## Text to Value Conversion
 
-When the ComboBox is flagged as editable (via `IsEditable`), the [TextToValueConverter](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox.TextToValueConverter) property should be set to a converter that is capable of converting from a string to your target item type like a `Brush`, etc.  This allows you to type in values that don't necessarily exist in the ComboBox's list and use the new value.
+When the ComboBox is flagged as editable (via `IsEditable`), the [TextToValueConverter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.TextToValueConverter) property should be set to a converter that is capable of converting from a string to your target item type like a `Brush`, etc.  This allows you to type in values that don't necessarily exist in the ComboBox's list and use the new value.
 
 Note that when the items in the ComboBox are strings, no converter is necessary.
 

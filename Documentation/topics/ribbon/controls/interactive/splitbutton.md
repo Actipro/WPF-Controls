@@ -5,7 +5,7 @@ order: 13
 ---
 # SplitButton
 
-The [SplitButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.SplitButton) class provides an implementation of a button that has two clickable areas.  The button portion of the split button acts like a normal button or checkable button.  The drop-down portion of the split button displays a popup.
+The [SplitButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.SplitButton) class provides an implementation of a button that has two clickable areas.  The button portion of the split button acts like a normal button or checkable button.  The drop-down portion of the split button displays a popup.
 
 The popup content is usually a [Menu](../miscellaneous/menu.md), but instead may be any sort of content that you wish, including a `Panel` of mutiple controls or elements.
 
@@ -14,7 +14,7 @@ The popup content is usually a [Menu](../miscellaneous/menu.md), but instead may
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -34,27 +34,27 @@ The following table gives an overview of the capabilities of the control.
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | Yes. |
 | Supports normal size | Yes. |
 | Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
-| Base class | [PopupButtonBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase). |
-| Child items | Yes.  Single item set via the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  The content may be any object and can be templated if desired.  The most common content is a [Menu](../miscellaneous/menu.md) control. |
+| Base class | [PopupButtonBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase). |
+| Child items | Yes.  Single item set via the [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  The content may be any object and can be templated if desired.  The most common content is a [Menu](../miscellaneous/menu.md) control. |
 | Has popup | Yes. |
-| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText) property. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText) property. |
 | Is key tip scope | Yes. |
 | Click event trigger | None. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
-| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | Yes.  Controls the checked state of the button. |
-| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | No. |
-| Default CommandParameter | [CheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.CheckableCommandParameter). |
+| Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | Yes.  Controls the checked state of the button. |
+| Supports [IValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.IValueCommandParameter) | No. |
+| Default CommandParameter | [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter). |
 
 ## Managing the Checked State
 
-This control is designed to use the WPF command model to maintain the checked state of the control.  By default a [CheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF command model to maintain the checked state of the control.  By default a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Command Model](../../command-model/index.md) topic for detailed information on using this command parameter to manage the checked state.
 
 ## Adding Popup Content
 
-Any sort of content may be displayed in the popup for this control.  Simply assign the content to the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  If the content is not a UI element and needs to be templated, you may use the [PopupContentTemplate](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplate) or [PopupContentTemplateSelector](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplateSelector) properties to do so.
+Any sort of content may be displayed in the popup for this control.  Simply assign the content to the [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent) property.  If the content is not a UI element and needs to be templated, you may use the [PopupContentTemplate](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplate) or [PopupContentTemplateSelector](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContentTemplateSelector) properties to do so.
 
 The most common content for a popup is a [Menu](../miscellaneous/menu.md) control, which renders its items as menu items:
 
@@ -69,7 +69,7 @@ The most common content for a popup is a [Menu](../miscellaneous/menu.md) contro
 ```
 
 > [!NOTE]
-> To properly add multiple controls for use as popup content, use a `Panel` as the [PopupContent](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent).  For instance, use a native WPF `StackPanel` to stack a popup header banner image on top of a [Menu](../miscellaneous/menu.md) of items.  By using techniques like this (also illustrated throughout the sample project), you can create complex layouts of popup content.
+> To properly add multiple controls for use as popup content, use a `Panel` as the [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent).  For instance, use a native WPF `StackPanel` to stack a popup header banner image on top of a [Menu](../miscellaneous/menu.md) of items.  By using techniques like this (also illustrated throughout the sample project), you can create complex layouts of popup content.
 
 See the [Working with Popups](../working-with-popups.md) topic for more detailed information on what you can do with popups.
 
@@ -77,13 +77,13 @@ See the [Working with Popups](../working-with-popups.md) topic for more detailed
 
 ### With a Contained PopupGallery
 
-The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
 
 ### Without a Contained PopupGallery
 
-There may be other scenarios where your popup content doesn't include a [PopupGallery](popupgallery.md) control but you still want the popup to be resizable.  In this case, leave the [PopupResizeMode](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property its default value of `None` and wrap your popup content with a [ResizableContentControl](xref:ActiproSoftware.Windows.Controls.ResizableContentControl) (located in the Shared Library).  This will add a gripper to the content allowing for resizing of the popup.
+There may be other scenarios where your popup content doesn't include a [PopupGallery](popupgallery.md) control but you still want the popup to be resizable.  In this case, leave the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property its default value of `None` and wrap your popup content with a [ResizableContentControl](xref:@ActiproUIRoot.Controls.ResizableContentControl) (located in the Shared Library).  This will add a gripper to the content allowing for resizing of the popup.
 
-This is very useful if you want to have a control like a native WPF `TextBox` be resizable in a [SplitButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.SplitButton)'s popup.
+This is very useful if you want to have a control like a native WPF `TextBox` be resizable in a [SplitButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.SplitButton)'s popup.
 
 Here is some XAML code showing a sample implementation:
 
@@ -98,19 +98,19 @@ Here is some XAML code showing a sample implementation:
 
 ## Disabling When Child Items Are All Disabled
 
-One of the ribbon UI design requirements is that when a split button's child items are all disabled, the split button must also be disabled.  Because of the way WPF commands work, the [SplitButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.SplitButton) control only examines child items if a command is assigned to its [Command](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Command) property.  So as long as you have a command set to the [SplitButton](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.SplitButton), this functionality will work.  If you need to use a temporary command while prototyping, use `ApplicationCommands.NotACommand`.
+One of the ribbon UI design requirements is that when a split button's child items are all disabled, the split button must also be disabled.  Because of the way WPF commands work, the [SplitButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.SplitButton) control only examines child items if a command is assigned to its [Command](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Command) property.  So as long as you have a command set to the [SplitButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.SplitButton), this functionality will work.  If you need to use a temporary command while prototyping, use `ApplicationCommands.NotACommand`.
 
-If you would like to prevent this automated functionality from occurring, you can set the [AutoDisableWhenPopupContentIsDisabled](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.PopupButtonBase.AutoDisableWhenPopupContentIsDisabled) to `false`.
+If you would like to prevent this automated functionality from occurring, you can set the [AutoDisableWhenPopupContentIsDisabled](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.AutoDisableWhenPopupContentIsDisabled) to `false`.
 
 ## Adding a Description for Large Menu Items
 
-Any [ButtonBase](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase)-derived control has a [MenuItemDescription](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase.MenuItemDescription) property.  This property can be set to a string to display an extended description when used in a large menu context, such as in the application menu.
+Any [ButtonBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase)-derived control has a [MenuItemDescription](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.MenuItemDescription) property.  This property can be set to a string to display an extended description when used in a large menu context, such as in the application menu.
 
 When set, the `Label` of the control will be displayed in bold above the description.  The description will wrap to as many lines as needed to display itself.  This feature is best used on button-based controls that appear on a child menu of a root application menu item.
 
 ## Changing the Image Size
 
-In any of the non-large variant sizes, you can set the [ImageSourceSmallSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ButtonBase.ImageSourceSmallSize) property to the specific size image that you'd like to display.  By default, this is `16x16` however you could make it smaller or larger if you have a smaller or larger image.
+In any of the non-large variant sizes, you can set the [ImageSourceSmallSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.ImageSourceSmallSize) property to the specific size image that you'd like to display.  By default, this is `16x16` however you could make it smaller or larger if you have a smaller or larger image.
 
 This functionality is typically used outside of the Ribbon in standalone use of the control.  If you wish to have a smaller control than the default, be sure to set `MinHeight` to `0` as well since the `MinHeight` for the `Medium` and `Small` variants of this control currently ensures the control is the proper height for usage in the Ribbon, per the requirements stated by Microsoft.
 

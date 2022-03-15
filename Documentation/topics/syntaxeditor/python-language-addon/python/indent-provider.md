@@ -9,7 +9,7 @@ An indent provider enables support for smart indent features when pressing ENTER
 
 The [Indent Providers](../../user-interface/input-output/indent-providers.md) topic talks about indent providers in general and how to register them as a "feature" language service.
 
-The [PythonIndentProvider](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonIndentProvider) class is the default implementation of an [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) service for this language.
+The [PythonIndentProvider](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonIndentProvider) class is the default implementation of an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service for this language.
 
 ## Feature Summary
 
@@ -21,7 +21,7 @@ For instance, pressing ENTER after a `:` will cause the next line to be indented
 
 ## Registering with a Syntax Language
 
-Any object that implements [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) service on the language.
+Any object that implements [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service on the language.
 
 The [PythonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonSyntaxLanguage) class automatically registers a [PythonIndentProvider](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonIndentProvider) with itself when it is created, so normally indent providers never need to be set on a Python language unless a custom one is made.
 

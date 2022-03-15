@@ -129,7 +129,7 @@ The following detailed steps indicate how to install and license Actipro product
     
     - Open your project in Visual Studio and ensure that there is a "licenses.licx" file in it.  If your project does not contain a "licenses.licx" file, follow the steps in the "Troubleshooting / No licenses.licx file exists in my project" section below to create a "licenses.licx" file manually.
     
-    - Ensure that the "licenses.licx" has a correct entry for Actipro's WPF control products.  The valid entry is listed below in this topic.  Ensure the version numbers in the entry always match the deployed assembly version, especially after upgrading to a new version or build.
+    - Ensure that the "licenses.licx" has a correct entry for Actipro's @@PlatformName control products.  The valid entry is listed below in this topic.  Ensure the version numbers in the entry always match the deployed assembly version, especially after upgrading to a new version or build.
 
 1. In Visual Studio, execute "Clean Solution" and then "Rebuild Solution".
 
@@ -139,12 +139,12 @@ After following these steps, licensing will be properly applied to your applicat
 
 A "licenses.licx" file is a file that Visual Studio maintains to know what third-party licensed components and controls are included in a project.  Visual Studio then uses that information to know what license data it needs to include in the output assembly for your project.  Therefore, if you use a third-party component and don't have the proper entries in your project's "licenses.licx" file, no licensing information will be included in your project's output assembly and licensing popup windows will display when your application is run on end user computers.
 
-The contents of a "licenses.licx" file are pretty simple.  It needs a single line that supplies license information to all Actipro WPF control products for which you are licensed.  Make sure that the version numbers, including build, match exactly with the version number of the control that is installed.
+The contents of a "licenses.licx" file are pretty simple.  It needs a single line that supplies license information to all Actipro @@PlatformName control products for which you are licensed.  Make sure that the version numbers, including build, match exactly with the version number of the control that is installed.
 
-This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro WPF control or SyntaxEditor add-on products:
+This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.1.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 ### Notes on Build Machines When Using Licenses.licx Files

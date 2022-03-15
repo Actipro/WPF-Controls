@@ -4,9 +4,9 @@ using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.MSBuild;
 using Nuke.Common.Tools.NuGet;
+using Serilog;
 using System;
 using System.Linq;
-using static Nuke.Common.ControlFlow;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 
@@ -77,10 +77,10 @@ namespace ActiproSoftware.Tools.Builds {
 						key.SetValue("LicenseKey", LicenseKey);
 					}
 
-					Logger.Normal("License key installed.");
+					Log.Debug("License key installed.");
 				}
 				else
-					Logger.Normal("No license key installed.");
+					Log.Debug("No license key installed.");
 
 			});
 
@@ -97,7 +97,7 @@ namespace ActiproSoftware.Tools.Builds {
 						.SetProjectFile(solution)
 						.SetConfiguration(Configuration)
 					);
-					Logger.Normal();
+					Log.Debug(string.Empty);
 				}
 
 			});
@@ -120,7 +120,7 @@ namespace ActiproSoftware.Tools.Builds {
 						.SetMaxCpuCount(Environment.ProcessorCount)
 						.SetProperty("BuildInParallel", "true")
 					);
-					Logger.Normal();
+					Log.Debug(string.Empty);
 				}
 
 			});

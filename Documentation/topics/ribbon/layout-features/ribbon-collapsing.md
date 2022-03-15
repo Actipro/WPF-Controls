@@ -19,11 +19,11 @@ The automatic collapsing behavior can be disabled and the threshold size can be 
 
 ## Related Members
 
-The [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon) defines several members that relate to collapsing.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) defines several members that relate to collapsing.
 
 | Member | Description |
 |-----|-----|
-| [CollapseThresholdSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.CollapseThresholdSize) Property | Gets or sets the threshold `Size` that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.  The default threshold size is `300, 250`. |
-| [IsCollapsed](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.IsCollapsed) Property | Gets or sets whether the ribbon is currently collapsed.  This property should not need to be called by your code under normal circumstances. |
-| [IsCollapsedChanged](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.IsCollapsedChanged) Event | Occurs when the [IsCollapsed](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.IsCollapsed) property value has changed. |
-| [IsCollapsible](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.IsCollapsible) Property | Gets or sets whether the ribbon collapses when it becomes smaller than a minimum threshold width/height as specified by the [CollapseThresholdSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.CollapseThresholdSize) property. |
+| [CollapseThresholdSize](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.CollapseThresholdSize) Property | Gets or sets the threshold `Size` that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.  The default threshold size is `300, 250`. |
+| [IsCollapsed](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsed) Property | Gets or sets whether the ribbon is currently collapsed.  This property should not need to be called by your code under normal circumstances. |
+| [IsCollapsedChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsedChanged) Event | Occurs when the [IsCollapsed](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsed) property value has changed. |
+| [IsCollapsible](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsible) Property | Gets or sets whether the ribbon collapses when it becomes smaller than a minimum threshold width/height as specified by the [CollapseThresholdSize](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.CollapseThresholdSize) property. |

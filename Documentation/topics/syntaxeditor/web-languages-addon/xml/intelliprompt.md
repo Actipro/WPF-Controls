@@ -25,7 +25,7 @@ IntelliPrompt quick info features are implemented by the [XmlQuickInfoProvider](
 
 ## Navigable Symbol Selector
 
-The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).  It shows the elements and attributes that currently enclose or are nearest the caret, and allows the end user to select other elements/attributes within the same document via a dropdown, and to navigate to those members upon selection.
+The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  It shows the elements and attributes that currently enclose or are nearest the caret, and allows the end user to select other elements/attributes within the same document via a dropdown, and to navigate to those members upon selection.
 
 This control populates its symbol lists by the [XmlNavigableSymbolProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlNavigableSymbolProvider) language service.
 

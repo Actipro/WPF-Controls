@@ -9,7 +9,7 @@ Candlestick charts are designed to visualize a change in value over an interval 
 
 A candlestick chart displays an opening, closing, highest, and lowest price value for a time interval.  The chart consists of a box with two lines, known as wicks, that extend out of either end of it.  The wicks extend to the highest and lowest values reached during the interval. The edges of the box are defined by the opening and closing values. If the closing value is less than the opening value then the box is shaded and filled in with the color selected to display loss. If the closing value is greater than the opening value than the box remains unshaded, or is optionally filled in with an alternate color selected to display gain.
 
-The [MicroCandlestickChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart) control accepts values for the opening, closing, high, and low values. The control will determine if there is a gain or loss based on the opening and closing values and display the parts using the appropriate style. Note that if the high value is equal to either the opening or closing values, the upper wick will not be displayed; similarly the lower wick will not be displayed if the low value is equal to either the opening or closing values. An example of giving the parts values	is shown below.
+The [MicroCandlestickChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart) control accepts values for the opening, closing, high, and low values. The control will determine if there is a gain or loss based on the opening and closing values and display the parts using the appropriate style. Note that if the high value is equal to either the opening or closing values, the upper wick will not be displayed; similarly the lower wick will not be displayed if the low value is equal to either the opening or closing values. An example of giving the parts values	is shown below.
 
 ```xaml
 <microcharts:MicroCandlestickChart HighValue="60" LowValue="5" OpenValue="15" CloseValue="33" />
@@ -23,11 +23,11 @@ Setting the minimum and maximum chart values can be useful for putting group of 
 
 ## Orientation
 
-The [MicroCandlestickChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart).[Orientation](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart.Orientation) property is `Horizontal` by default, but can be set to `Vertical` as well. Setting the chart's orientation to vertical effectively rotates the control 90 degrees counter-clockwise, so the minimum value is on the bottom and the maximum is at the top of the control.
+The [MicroCandlestickChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart).[Orientation](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart.Orientation) property is `Horizontal` by default, but can be set to `Vertical` as well. Setting the chart's orientation to vertical effectively rotates the control 90 degrees counter-clockwise, so the minimum value is on the bottom and the maximum is at the top of the control.
 
 ## Appearance Customization
 
-The [MicroCandlestickChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart) control has a [GainStyle](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart.GainStyle) and [LossStyle](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart.LossStyle) property that can be customized to alter the appearance of the chart. Note that both styles should be set for a `Shape`. The control uses the gain style if the closing value is greater than the opening value and the loss style if the closing	value is less than the opening value. The selected style is applied wicks and the box of the control, the stroke defining the color of the wicks and box outline and the fill defining the color inside the box. If [GainStyle](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart.GainStyle) is not given a value then [LossStyle](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart.LossStyle) will be used with the fill being set to `Transparent` instead. By default the stroke and fill of the loss style are black and the gain style is not given a value.
+The [MicroCandlestickChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart) control has a [GainStyle](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart.GainStyle) and [LossStyle](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart.LossStyle) property that can be customized to alter the appearance of the chart. Note that both styles should be set for a `Shape`. The control uses the gain style if the closing value is greater than the opening value and the loss style if the closing	value is less than the opening value. The selected style is applied wicks and the box of the control, the stroke defining the color of the wicks and box outline and the fill defining the color inside the box. If [GainStyle](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart.GainStyle) is not given a value then [LossStyle](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart.LossStyle) will be used with the fill being set to `Transparent` instead. By default the stroke and fill of the loss style are black and the gain style is not given a value.
 
 ```xaml
 <microcharts:MicroCandlestickChart ... >
@@ -47,7 +47,7 @@ The above example shows how to set a style for the chart and the appearance of a
 
 ## Tool Tips
 
-[MicroCandlestickChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroCandlestickChart)s support tooltips that can be custom formatted and can display the low, high, open, and close values.
+[MicroCandlestickChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroCandlestickChart)s support tooltips that can be custom formatted and can display the low, high, open, and close values.
 
 | Format Parameter | Description |
 |-----|-----|

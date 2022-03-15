@@ -7,16 +7,16 @@ order: 5
 
 Wizard makes extensive use of the style and template features provided in the WPF framework.
 
-Everything from pages to the button container can be completely customized on multiple levels.  You may choose to apply certain types of images and backgrounds to pages via our simple [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage)-level properties.  You may wish to define more of a theme for all the pages in your wizard.  Or you may even want to redefine the way the pages or the button container look via templates.  By doing this, you can determine which controls are in a page's header or in the button container and add your own as needed.
+Everything from pages to the button container can be completely customized on multiple levels.  You may choose to apply certain types of images and backgrounds to pages via our simple [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage)-level properties.  You may wish to define more of a theme for all the pages in your wizard.  Or you may even want to redefine the way the pages or the button container look via templates.  By doing this, you can determine which controls are in a page's header or in the button container and add your own as needed.
 
 ## WizardPage Properties
 
-The [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) has a couple properties that control the visual style of the header on the page.  For an interior page, the header is the area that is at the top of the page.  For an exterior page, the header is the watermark area on the left side of the page.
+The [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) has a couple properties that control the visual style of the header on the page.  For an interior page, the header is the area that is at the top of the page.  For an exterior page, the header is the watermark area on the left side of the page.
 
 | Member | Description |
 |-----|-----|
-| [HeaderBackground](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.HeaderBackground) Property | Gets or sets the `Brush` used to draw the background that is displayed in the page header. |
-| [HeaderImage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.HeaderImage) Property | Gets or sets the `ImageSource` that is displayed at the right side of the page header. |
+| [HeaderBackground](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.HeaderBackground) Property | Gets or sets the `Brush` used to draw the background that is displayed in the page header. |
+| [HeaderImage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.HeaderImage) Property | Gets or sets the `ImageSource` that is displayed at the right side of the page header. |
 
 This XAML code shows how to load a header image and header background for a page.  Both images are specified using pack:// syntax (see the WPF documentation for more info).  In this code snippet, the image `HatLogo.png` is a resource in an assembly named `Sample` and is in an `Images` folder.  The image `WelcomeBG.png` is located in the same folder as a resource.
 
@@ -45,7 +45,7 @@ The WPF documentation does a great job of explaining how styles may be applied t
 
 ## Styling the Button Container
 
-It's a little easier to style the button container.  For that control, simply target the [WizardButtonContainer](xref:ActiproSoftware.Windows.Controls.Wizard.WizardButtonContainer) type.
+It's a little easier to style the button container.  For that control, simply target the [WizardButtonContainer](xref:@ActiproUIRoot.Controls.Wizard.WizardButtonContainer) type.
 
 This XAML code shows a style for the button container to apply a gradient background and a new border:
 
@@ -79,7 +79,7 @@ The real power of templates becomes apparent when you start rearranging where te
 
 Some developers prefer to have the Help button on the right side or the button container and others prefer to have the Next and Finish buttons share the same space.  In this scenario, the Finish button is only visible on a finish page.
 
-This code shows how to alter the [WizardButtonContainer](xref:ActiproSoftware.Windows.Controls.Wizard.WizardButtonContainer) template:
+This code shows how to alter the [WizardButtonContainer](xref:@ActiproUIRoot.Controls.Wizard.WizardButtonContainer) template:
 
 ```xaml
 <Style x:Key="{x:Type wizard:WizardButtonContainer}" TargetType="wizard:WizardButtonContainer">
@@ -116,4 +116,4 @@ This code shows how to alter the [WizardButtonContainer](xref:ActiproSoftware.Wi
 
 ```
 
-Here are some tips for the Next/Finish button sharing space feature.  Apply a custom button container template that makes the Next and Finish buttons either share the same space (as in a `Grid`) or stack them directly next to each other, perhaps with a `StackPanel`.  Set the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard). [FinishButtonVisible](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.FinishButtonVisible) property to `false`, which means the `Finish` button will be hidden by default.  Then on the finish page for the wizard, set [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage). [FinishButtonVisible](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.FinishButtonVisible) property to `true` to override the default value and set the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage). [NextButtonVisible](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.NextButtonVisible) property to `false` to hide the Next button on that page.  That's it!
+Here are some tips for the Next/Finish button sharing space feature.  Apply a custom button container template that makes the Next and Finish buttons either share the same space (as in a `Grid`) or stack them directly next to each other, perhaps with a `StackPanel`.  Set the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard). [FinishButtonVisible](xref:@ActiproUIRoot.Controls.Wizard.Wizard.FinishButtonVisible) property to `false`, which means the `Finish` button will be hidden by default.  Then on the finish page for the wizard, set [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage). [FinishButtonVisible](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.FinishButtonVisible) property to `true` to override the default value and set the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage). [NextButtonVisible](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextButtonVisible) property to `false` to hide the Next button on that page.  That's it!

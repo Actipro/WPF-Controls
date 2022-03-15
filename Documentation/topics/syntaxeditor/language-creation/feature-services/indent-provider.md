@@ -9,7 +9,7 @@ Syntax languages support indent providers, which provide functionality for auto-
 
 ## Basic Concepts
 
-Indent providers are classes that implement [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) that can automatically indent text when the Enter key is pressed.
+Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) that can automatically indent text when the Enter key is pressed.
 
 See the [Indent Providers](../../user-interface/input-output/indent-providers.md) topic for details on how to create and work with indent provider classes.
 
@@ -17,7 +17,7 @@ When an indent provider is associated with a syntax language, SyntaxEditor can t
 
 ## Registering with a Language
 
-Any object that implements [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IIndentProvider) service on the language.
+Any object that implements [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) can be associated with a syntax language by registering it as an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service on the language.
 
 This code creates an XML indent provider and registers it with the syntax language that is already declared in the `language` variable:
 

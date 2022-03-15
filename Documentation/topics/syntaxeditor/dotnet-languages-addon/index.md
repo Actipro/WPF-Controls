@@ -12,7 +12,7 @@ The add-on has been built from the ground up by Actipro to take advantage of bes
 > [!NOTE]
 > Be sure to read through each language's "Getting Started" topics and follow each step in them exactly to ensure that the add-on's features will operate properly.  While it only takes several lines of code to get up and running, those lines are very important and may prevent the add-on from working correctly if they are not present.
 
-Although the add-on is distributed and demoed with the WPF controls, it is sold separately.
+Although the add-on is distributed and demoed with the @@PlatformName controls, it is sold separately.
 
 ## Assemblies
 

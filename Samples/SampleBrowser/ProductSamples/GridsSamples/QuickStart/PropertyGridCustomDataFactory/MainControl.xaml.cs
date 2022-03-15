@@ -1,4 +1,6 @@
-﻿namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory {
+﻿using System;
+
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory {
 
 	/// <summary>
 	/// Provides the main user control for this sample.
@@ -27,8 +29,10 @@
 			customer.AvailableReferrals.Add(new ReferralSourceViewModel() { Id = 99, Name = "Other" });
 			customer.CustomerName = "ABC Machinery, Inc.";
 			customer.CountryName = "United States";
+			customer.DataItems["Last contact"] = DateTime.Now.Subtract(TimeSpan.FromDays(20)).ToShortDateString();
+			customer.DataItems["Total YTD sales"] = "$19,064";
 			customer.PhoneNumbers = phoneNumbers;
-			customer.ReferredBy = customer.AvailableReferrals[0];
+			customer.ReferredBy = customer.AvailableReferrals[1];
 
 			this.DataContext = customer;
 		}

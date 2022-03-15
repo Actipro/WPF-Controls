@@ -9,28 +9,28 @@ All of Wizard's text properties have the `Localizability` attribute applied to t
 
 ## Localizable Wizard Properties
 
-The following properties on the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control are localizable:
+The following properties on the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control are localizable:
 
-- [BackButtonText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BackButtonText)
+- [BackButtonText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BackButtonText)
 
-- [CancelButtonText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.CancelButtonText)
+- [CancelButtonText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.CancelButtonText)
 
-- [FinishButtonText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.FinishButtonText)
+- [FinishButtonText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.FinishButtonText)
 
-- [HelpButtonText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.HelpButtonText)
+- [HelpButtonText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.HelpButtonText)
 
-- [NextButtonText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.NextButtonText)
+- [NextButtonText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.NextButtonText)
 
-- [WindowTitleBaseText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.WindowTitleBaseText)
+- [WindowTitleBaseText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.WindowTitleBaseText)
 
-- [WindowTitleCustomPageText](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.WindowTitleCustomPageText)
+- [WindowTitleCustomPageText](xref:@ActiproUIRoot.Controls.Wizard.Wizard.WindowTitleCustomPageText)
 
 ## Localizable WizardPage Properties
 
-The following properties on the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) control are localizable:
+The following properties on the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) control are localizable:
 
-- [Caption](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Caption)
+- [Caption](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Caption)
 
-- [Description](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Description)
+- [Description](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Description)
 
-- [Title](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Title)
+- [Title](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Title)

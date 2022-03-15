@@ -5,7 +5,7 @@ order: 12
 ---
 # DropShadowChrome
 
-The [DropShadowChrome](xref:ActiproSoftware.Windows.Controls.DropShadowChrome) decorator draws a drop-shadow or outer glow around its content.
+The [DropShadowChrome](xref:@ActiproUIRoot.Controls.DropShadowChrome) decorator draws a drop-shadow or outer glow around its content.
 
 The shadow is rendered purely via WPF and does not use shader effects.  The child element must be rectangular, but a corner radius can be specified.  The X, Y, and Z offsets can all be configured to create drop shadow or outer glow effects.
 
@@ -17,7 +17,7 @@ For a modern drop shadow that appears more realistic and can also apply the shad
 
 ## Important Members
 
-The [DropShadowChrome](xref:ActiproSoftware.Windows.Controls.DropShadowChrome) class has these important members:
+The [DropShadowChrome](xref:@ActiproUIRoot.Controls.DropShadowChrome) class has these important members:
 
 <table>
 <thead>
@@ -27,14 +27,13 @@ The [DropShadowChrome](xref:ActiproSoftware.Windows.Controls.DropShadowChrome) c
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[BorderThickness](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.BorderThickness) Property
+[BorderThickness](xref:@ActiproUIRoot.Controls.DropShadowChrome.BorderThickness) Property
 
 </td>
 <td>
@@ -47,7 +46,7 @@ Gets or sets the `Thickness` of the drop shadow borders.  The default value is `
 <tr>
 <td>
 
-[Color](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.Color) Property
+[Color](xref:@ActiproUIRoot.Controls.DropShadowChrome.Color) Property
 
 </td>
 <td>
@@ -60,14 +59,14 @@ Gets or sets the color of the drop shadow.  The default value is `#71000000`.
 <tr>
 <td>
 
-[CornerRadius](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.CornerRadius) Property
+[CornerRadius](xref:@ActiproUIRoot.Controls.DropShadowChrome.CornerRadius) Property
 
 </td>
 <td>
 
 Gets or sets the `CornerRadius` of the drop shadow borders.  The default value is `0`.
 
-When setting a non-zero corner radius, please use a uniform value and also use a uniform [BorderThickness](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.BorderThickness) value as well.
+When setting a non-zero corner radius, please use a uniform value and also use a uniform [BorderThickness](xref:@ActiproUIRoot.Controls.DropShadowChrome.BorderThickness) value as well.
 
 </td>
 </tr>
@@ -75,7 +74,7 @@ When setting a non-zero corner radius, please use a uniform value and also use a
 <tr>
 <td>
 
-[XOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.XOffset) Property
+[XOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.XOffset) Property
 
 </td>
 <td>
@@ -88,7 +87,7 @@ Gets or sets the horizontal offset of the drop shadow behind its content.  The d
 <tr>
 <td>
 
-[YOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.YOffset) Property
+[YOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.YOffset) Property
 
 </td>
 <td>
@@ -101,7 +100,7 @@ Gets or sets the vertical offset of the drop shadow behind its content.  The def
 <tr>
 <td>
 
-[ZOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.ZOffset) Property
+[ZOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.ZOffset) Property
 
 </td>
 <td>
@@ -118,10 +117,10 @@ Gets or sets the z-offset of the drop shadow behind its content.  The default va
 
 The standard type of drop shadow is an offset shadow.  This effect is shown in the top screenshot above.
 
-To accomplish this, use the [XOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.XOffset) and [YOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.YOffset) properties, and keep [ZOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.ZOffset) = `0`.
+To accomplish this, use the [XOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.XOffset) and [YOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.YOffset) properties, and keep [ZOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.ZOffset) = `0`.
 
 ## Creating an Outer Glow
 
 An alternate type of drop shadow is an outer glow.  This effect is shown in the bottom screenshot above.
 
-To accomplish this, keep both [XOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.XOffset) and [YOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.YOffset) properties = `0`.  Then set the [ZOffset](xref:ActiproSoftware.Windows.Controls.DropShadowChrome.ZOffset) to a value greater than `0`.
+To accomplish this, keep both [XOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.XOffset) and [YOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.YOffset) properties = `0`.  Then set the [ZOffset](xref:@ActiproUIRoot.Controls.DropShadowChrome.ZOffset) to a value greater than `0`.

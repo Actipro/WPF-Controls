@@ -41,7 +41,7 @@
 			</Grid.RowDefinitions>
 		
 			<TextBlock Grid.Row="2" Margin="0,20,0,3" Text="FRAGMENT CODE" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
-			<editor:SyntaxEditor x:Name="fragmentEditor" Grid.Row="3" IsLineNumberMarginVisible="True" IsOutliningMarginVisible="False" CanSplitHorizontally="False">
+			<editor:SyntaxEditor x:Name="fragmentEditor" Grid.Row="3" IsLineNumberMarginVisible="True" CanSplitHorizontally="False">
 				<editor:EditorDocument xml:space="preserve"><![CDATA[// If there is at least one item in the list...
 if (list.Count > 0) {
 	// Write it to the Console

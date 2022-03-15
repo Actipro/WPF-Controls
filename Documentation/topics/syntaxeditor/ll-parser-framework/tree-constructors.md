@@ -89,7 +89,6 @@ There are several types of tree construction:
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

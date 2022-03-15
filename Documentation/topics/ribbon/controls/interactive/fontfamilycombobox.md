@@ -5,14 +5,14 @@ order: 6
 ---
 # FontFamilyComboBox
 
-The [FontFamilyComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox) class provides an implementation of a `ComboBox` that allows for selection of a font family.  The font family list is automatically populated.
+The [FontFamilyComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox) class provides an implementation of a `ComboBox` that allows for selection of a font family.  The font family list is automatically populated.
 
 > [!NOTE]
 > See the [Control Basics](../control-basics.md) topic for many implementation details that are common to the built-in controls such as this one.
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -29,21 +29,21 @@ The following table gives an overview of the capabilities of the control.
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | No.  When in the ribbon, it should be placed in a [StackPanel](../layout/stackpanel.md) that is in a `Medium` variant or smaller. |
 | Supports normal size | Yes. |
 | Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
-| Base class | [ComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox). |
+| Base class | [ComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox). |
 | Child items | Yes.  The items collection inherits from the native WPF `ComboBox` class and data binding to `ItemsSource` is fully supported. |
 | Has popup | Yes.  The items are displayed in the popup. |
-| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
 | Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
-| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
-| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
-| Default CommandParameter | [FontFamilyValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.FontFamilyValueCommandParameter). |
+| Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
+| Supports [IValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
+| Default CommandParameter | [FontFamilyValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.FontFamilyValueCommandParameter). |
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [FontFamilyValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.FontFamilyValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [FontFamilyValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.FontFamilyValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 
@@ -59,7 +59,7 @@ The ribbon `FontFamilyComboBox` indirectly inherits the native WPF `ComboBox` co
 
 Please see the MSDN documentation on the native WPF `ComboBox` for more details on its capabilities.
 
-You can also use the `SelectedValue` property to get/set the actual selected `FontFamily` value.  The static [FontFamilyComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox).[GetFontFamily](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox.GetFontFamily*) method can be used to retrieve a `FontFamily` from a font family name, allowing you to set the control's value manually like this:
+You can also use the `SelectedValue` property to get/set the actual selected `FontFamily` value.  The static [FontFamilyComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox).[GetFontFamily](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox.GetFontFamily*) method can be used to retrieve a `FontFamily` from a font family name, allowing you to set the control's value manually like this:
 
 ```csharp
 myFontFamilyComboBox.SelectedValue = FontFamilyComboBox.GetFontFamily("Courier New");
@@ -67,13 +67,13 @@ myFontFamilyComboBox.SelectedValue = FontFamilyComboBox.GetFontFamily("Courier N
 
 ## Setting Whether Items Display Text Using the Font Family
 
-By default each item in the drop-down will draw its font family name in the actual `FontFamily` that it represents.  This behavior can be disabled by setting the [FontFamilyComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox).[UsePreviewInItemRendering](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox.UsePreviewInItemRendering) property to `false`.
+By default each item in the drop-down will draw its font family name in the actual `FontFamily` that it represents.  This behavior can be disabled by setting the [FontFamilyComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox).[UsePreviewInItemRendering](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox.UsePreviewInItemRendering) property to `false`.
 
 When this feature is disabled, each item will draw the font family name in the standard UI font.
 
 ## Validating Typefaces
 
-The control has a [IsTypefaceValidationEnabled](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontFamilyComboBox.IsTypefaceValidationEnabled) property that defaults to `false`.  When set to `true`, it will examine each font family's typefaces as the font family is being added to the combobox.  If the font family's typefaces cannot be loaded for some reason (which can occur with some Adobe fonts), it will not be added to the control.  The downside of this feature is that it can potentially cause a couple second delay during window load time, thus it is disabled by default.
+The control has a [IsTypefaceValidationEnabled](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox.IsTypefaceValidationEnabled) property that defaults to `false`.  When set to `true`, it will examine each font family's typefaces as the font family is being added to the combobox.  If the font family's typefaces cannot be loaded for some reason (which can occur with some Adobe fonts), it will not be added to the control.  The downside of this feature is that it can potentially cause a couple second delay during window load time, thus it is disabled by default.
 
 ## Sample XAML
 

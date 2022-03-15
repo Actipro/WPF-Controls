@@ -11,7 +11,7 @@ The built-in Windows shell functionality can be customized/extended.  Or in othe
 
 The built-in [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) class interacts with the Windows shell, attempting to return the same data you find in Windows Explorer.
 
-There may be cases where you wish to filter out certain shell objects, change certain shell object properties, etc. from what is returned by default.  In these cases, you need to make a class that inherits [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) and set the new instance to your shell UI control's [DefaultShellService](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
+There may be cases where you wish to filter out certain shell objects, change certain shell object properties, etc. from what is returned by default.  In these cases, you need to make a class that inherits [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) and set the new instance to your shell UI control's [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
 
 ### Filtering Out Shell Objects
 
@@ -37,7 +37,7 @@ Be sure to also override the [GetPropertyValue](xref:ActiproSoftware.Shell.IShel
 
 A custom-written shell service allows for working with any file system.  A great example of this is the remote file system for a FTP client application.  By using the Shell Object Framework to implement a custom shell service, the same shell UI controls can be used to render a Windows file system as well as another kind of custom file system.
 
-To author a custom shell service, make a class that implements [IShellService](xref:ActiproSoftware.Shell.IShellService) and set a new instance to your shell UI control's [DefaultShellService](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
+To author a custom shell service, make a class that implements [IShellService](xref:ActiproSoftware.Shell.IShellService) and set a new instance to your shell UI control's [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
 
 All of the members described in the [Shell Services](shell-services.md) documentation topic should be implemented to ensure that the attached shell UI controls can behave as expected.
 

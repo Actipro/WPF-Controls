@@ -15,11 +15,11 @@ To sum up, think of tags as data.  Taggers are the data providers.  Tag aggregat
 
 ## Document- or View-Oriented Tag Aggregators
 
-As discussed in the [Taggers and Tagger Providers](taggers.md) topic, tagger providers can be oriented to create taggers either for an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) or for an [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).  Similarly, tag aggregators can be document- or view-oriented.
+As discussed in the [Taggers and Tagger Providers](taggers.md) topic, tagger providers can be oriented to create taggers either for an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) or for an [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).  Similarly, tag aggregators can be document- or view-oriented.
 
 Document-oriented tag aggregators are created by calling the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[CreateTagAggregator](xref:ActiproSoftware.Text.ICodeDocument.CreateTagAggregator*) method.  The type of tag to collect is indicated as a type parameter to that method.  The tag aggregator collects all the appropriate tags from any taggers associated with the document.
 
-View-oriented tag aggregators are created by calling the [ITextView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView).[CreateTagAggregator](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextView.CreateTagAggregator*) method.  The type of tag to collect is indicated as a type parameter to that method.  The tag aggregator collects all the appropriate tags from any taggers associated with the view's document or with that specific view.
+View-oriented tag aggregators are created by calling the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[CreateTagAggregator](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.CreateTagAggregator*) method.  The type of tag to collect is indicated as a type parameter to that method.  The tag aggregator collects all the appropriate tags from any taggers associated with the view's document or with that specific view.
 
 ## Collecting Tags
 

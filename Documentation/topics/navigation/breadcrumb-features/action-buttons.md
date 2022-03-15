@@ -5,7 +5,7 @@ order: 2
 ---
 # Action Buttons
 
-The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) control supports custom action buttons, which are presented on the right side of the control. These buttons can be used to perform any operation, however for proper usage their purpose should be related to the nodes represented in the [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb).
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control supports custom action buttons, which are presented on the right side of the control. These buttons can be used to perform any operation, however for proper usage their purpose should be related to the nodes represented in the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).
 
 ![Screenshot](../images/breadcrumb-action-buttons-aero-normal-color.gif)
 
@@ -13,7 +13,7 @@ The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) co
 
 ## Adding an Action Button
 
-Any `Button`, or `Button` derived class, can be added to the [ActionButtons](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.ActionButtons) collection property using XAML (as shown below) or by calling the `Add` or `Insert` methods directly. Because the embedded [progress bar](progressbar.md) can be shown under the action buttons, it is recommended that the [PopupButton](xref:ActiproSoftware.Windows.Controls.PopupButton) control (with its transparency mode enabled) be used for action buttons.
+Any `Button`, or `Button` derived class, can be added to the [ActionButtons](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ActionButtons) collection property using XAML (as shown below) or by calling the `Add` or `Insert` methods directly. Because the embedded [progress bar](progressbar.md) can be shown under the action buttons, it is recommended that the [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control (with its transparency mode enabled) be used for action buttons.
 
 This sample code shows how to add an action button:
 
@@ -34,7 +34,7 @@ xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 
 ## Supported Commands
 
-The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) supports the following `NavigationCommands`:
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) supports the following `NavigationCommands`:
 
 | Routed Command | Action Performed |
 |-----|-----|
@@ -47,8 +47,8 @@ The [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) su
 
 ## Associated Members
 
-The following [Breadcrumb](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb) members are associated with action buttons:
+The following [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) members are associated with action buttons:
 
 | Member | Description |
 |-----|-----|
-| [ActionButtons](xref:ActiproSoftware.Windows.Controls.Navigation.Breadcrumb.ActionButtons) Property | Gets the action buttons shown on the right side of the breadcrumb control. |
+| [ActionButtons](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ActionButtons) Property | Gets the action buttons shown on the right side of the breadcrumb control. |

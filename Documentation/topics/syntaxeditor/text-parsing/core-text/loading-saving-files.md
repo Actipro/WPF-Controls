@@ -11,11 +11,23 @@ It's very easy to load document text from a file, stream, or string.  Likewise, 
 
 Document text may be loaded from files using one of the overloads of the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method.
 
-Use of a [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  Use of the [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method overloads that accept a path parameter will auto-update the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property with the file path.
+Use of a [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  Use of the [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method overloads that accept @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter will auto-update the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property with the file path.
 
 ### Load from File System Using UTF-8 Encoding
 
-The first overload of [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) simply accepts a path parameter. It loads files using standard UTF-8 encoding.
+The first overload of [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) simply accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter. It loads files using standard UTF-8 encoding.
+
+@if (winrt) {
+
+This code loads text from a file using UTF-8 encoding:
+
+```csharp
+await document.LoadFileAsync(storageFile);
+```
+
+}
+
+@if (wpf winforms) {
 
 This code loads text from a file using UTF-8 encoding:
 
@@ -23,15 +35,31 @@ This code loads text from a file using UTF-8 encoding:
 document.LoadFile(@"C:\Code.cs");
 ```
 
+}
+
 ### Load from File System Using a Specified Encoding
 
-The second overload of [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) accepts a path parameter as well as an `Encoding` parameter.  It loads files using the `Encoding` that you specify.  This allows for easy loading of non-UTF-8 encoded files.
+The second overload of [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter as well as an `Encoding` parameter.  It loads files using the `Encoding` that you specify.  This allows for easy loading of non-UTF-8 encoded files.
+
+@if (winrt) {
+
+This code loads text from a file using ASCII encoding:
+
+```csharp
+await document.LoadFileAsync(storageFile, Encoding.ASCII);
+```
+
+}
+
+@if (wpf winforms) {
 
 This code loads text from a file using ASCII encoding:
 
 ```csharp
 document.LoadFile(@"C:\Code.cs", Encoding.ASCII);
 ```
+
+}
 
 ### Load from Stream Using a Specified Encoding
 
@@ -71,7 +99,19 @@ Document text may be saved to files using one of the overloads of the [ITextDocu
 
 ### Save to File Using UTI-8 Encoding
 
-The first overload simply accepts a path parameter and a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter.  It saves files using standard UTF-8 encoding.
+The first overload simply accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter and a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter.  It saves files using standard UTF-8 encoding.
+
+@if (winrt) {
+
+This code saves document text to a file using UTF-8 encoding:
+
+```csharp
+await document.SaveFileAsync(storageFile, LineTerminator.CarriageReturnNewline);
+```
+
+}
+
+@if (wpf winforms) {
 
 This code saves document text to a file using UTF-8 encoding:
 
@@ -79,15 +119,31 @@ This code saves document text to a file using UTF-8 encoding:
 document.SaveFile("C:\Code.cs", LineTerminator.CarriageReturnNewline);
 ```
 
+}
+
 ### Save to File Using a Specified Encoding
 
-The second overload accepts a path parameter, a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter, as well as an `Encoding` parameter.  It saves files using the `Encoding` that you specify.  This allows for easy saving of non-UTF-8 encoded files.
+The second overload accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter, a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter, as well as an `Encoding` parameter.  It saves files using the `Encoding` that you specify.  This allows for easy saving of non-UTF-8 encoded files.
+
+@if (winrt) {
+
+This code saves document text to a file using ASCII encoding:
+
+```csharp
+await document.SaveFileAsync(storageFile, Encoding.ASCII, LineTerminator.CarriageReturnNewline);
+```
+
+}
+
+@if (wpf winforms) {
 
 This code saves document text to a file using ASCII encoding:
 
 ```csharp
 document.SaveFile("C:\Code.cs", Encoding.ASCII, LineTerminator.CarriageReturnNewline);
 ```
+
+}
 
 ### Save to Stream Using a Specified Encoding
 

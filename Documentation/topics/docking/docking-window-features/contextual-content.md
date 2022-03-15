@@ -17,17 +17,70 @@ There are five locations that support contextual content.  Each of the propertie
 
 The data context of the `DataTemplate` will be the `DataContext` of the docking window, unless the `DataContext` is a `UIElement`.  In that case, no data context is passed since it could otherwise lead to logical tree issues.
 
-| Member | Description |
-|-----|-----|
-| [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[AutoHideTabContextContentTemplate](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.AutoHideTabContextContentTemplate) Property | The tab of an auto-hidden tool window. |
-| [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[StandardMdiTitleBarContextContentTemplate](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.StandardMdiTitleBarContextContentTemplate) Property | The title bar of a standard MDI document. |
-| [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow).[TabbedMdiTabContextContentTemplate](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow.TabbedMdiTabContextContentTemplate) Property | The tab of a tabbed MDI document. |
-| [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[ToolWindowContainerTabContextContentTemplate](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.ToolWindowContainerTabContextContentTemplate) Property | The tab of a docked tool window. |
-| [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow).[ToolWindowContainerTitleBarContextContentTemplate](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow.ToolWindowContainerTitleBarContextContentTemplate) Property | The title bar of a docked tool window. |
+<table>
+<thead>
+
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>
+
+[ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[AutoHideTabContextContentTemplate](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.AutoHideTabContextContentTemplate) Property
+
+</td>
+<td>The tab of an auto-hidden tool window.</td>
+</tr>
+
+<tr>
+<td>
+
+[DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[StandardMdiTitleBarContextContentTemplate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.StandardMdiTitleBarContextContentTemplate) Property
+
+</td>
+<td>The title bar of a standard MDI document.</td>
+</tr>
+
+@if (wpf) {
+<tr>
+<td>
+
+[DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabbedMdiTabContextContentTemplate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabbedMdiTabContextContentTemplate) Property
+
+</td>
+<td>The tab of a tabbed MDI document.</td>
+</tr>
+}
+
+<tr>
+<td>
+
+[ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[ToolWindowContainerTabContextContentTemplate](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.ToolWindowContainerTabContextContentTemplate) Property
+
+</td>
+<td>The tab of a docked tool window.</td>
+</tr>
+
+<tr>
+<td>
+
+[ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[ToolWindowContainerTitleBarContextContentTemplate](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.ToolWindowContainerTitleBarContextContentTemplate) Property
+
+</td>
+<td>The title bar of a docked tool window.</td>
+</tr>
+
+</tbody>
+</table>
 
 ## Tool Window Container Title Bar Alignment
 
-The [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[ToolWindowsTitleBarContextContentAlignment](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolWindowsTitleBarContextContentAlignment) property can be set to a [ContextContentAlignment](xref:ActiproSoftware.Windows.Controls.Docking.ContextContentAlignment) that indicates if the context content is aligned to the near (left) side of the title, or to the far (right) side.  The far side is just left of any title bar buttons, and is the default alignment.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsTitleBarContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsTitleBarContextContentAlignment) property can be set to a [ContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.ContextContentAlignment) that indicates if the context content is aligned to the near (left) side of the title, or to the far (right) side.  The far side is just left of any title bar buttons, and is the default alignment.
 
 ## Status Indicator Example
 
@@ -59,6 +112,8 @@ This XAML within a dock site shows how a tool widnow could be defined to use the
 </docking:ToolWindow>
 ```
 
+@if (wpf) {
+
 ## Tool Window Title Bar Buttons
 
 Buttons can be embedded in tool window title bar containers.  To achieve the same appearance as the built-in buttons, define the button with these properties:
@@ -78,3 +133,5 @@ Buttons can be embedded in tool window title bar containers.  To achieve the sam
 ```
 
 The sample above produces a button with a search icon.
+
+}

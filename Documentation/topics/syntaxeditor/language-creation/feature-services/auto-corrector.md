@@ -47,4 +47,4 @@ language.RegisterAutoCorrector(corrector);
 
 ## Disabling Auto-Correct
 
-Auto-correct can be disabled within a SyntaxEditor instance by setting the [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor).[IsAutoCorrectEnabled](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor.IsAutoCorrectEnabled) property to `false`.
+Auto-correct can be disabled within a SyntaxEditor instance by setting the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsAutoCorrectEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsAutoCorrectEnabled) property to `false`.

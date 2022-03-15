@@ -5,7 +5,7 @@ order: 3
 ---
 # ShellTreeListBox Control
 
-The [ShellTreeListBox](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox) control presents a shell folder hierarchy in a tree structure, similar to what you see in the left side of Windows Explorer.
+The [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control presents a shell folder hierarchy in a tree structure, similar to what you see in the left side of Windows Explorer.
 
 ![Screenshot](images/browse-for-folder.png)
 
@@ -13,9 +13,9 @@ It is designed as a standalone control, so it can be used to build 'Browse for F
 
 ## Getting Started
 
-First, add references to the `ActiproSoftware.Shell.Wpf.dll`, `ActiproSoftware.Grids.Wpf.dll`, `ActiproSoftware.Editors.Wpf.dll` assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
-This sample code shows how a [ShellTreeListBox](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox) control pointing to a default root shell folder can be added to any XAML:
+This sample code shows how a [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control pointing to a default root shell folder can be added to any XAML:
 
 ```xaml
 xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
@@ -25,7 +25,7 @@ xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
 
 ## Default Shell Service
 
-The [DefaultShellService](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.DefaultShellService) property is set to an instance of [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) by default.  This allows the control to support Windows shell interaction out of the box.
+The [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.DefaultShellService) property is set to an instance of [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) by default.  This allows the control to support Windows shell interaction out of the box.
 
 > [!NOTE]
 > Please see the [Memory Management](memory-management.md) topic for notes on handling shell service changes, since they sometimes use unmanaged resources.
@@ -34,11 +34,11 @@ The [DefaultShellService](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeL
 
 A root shell folder must be set on the control so that it can display that root folder's hierarchy.  The root shell folder may be set via three different properties:
 
-- [RootShellFolder](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolder) - A [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that must be a shell folder.  Setting this property updates the [RootShellFolderParsingName](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) and [RootSpecialFolderKind](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) properties to remain in sync.
+- [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolder) - A [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that must be a shell folder.  Setting this property updates the [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) and [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) properties to remain in sync.
 
-- [RootShellFolderParsingName](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) - A [parsing name](shell-objects-framework/shell-objects.md) (generally a file system path like "C:\\Program Files") that indicates the root shell folder.  Setting this property updates the [RootShellFolder](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolder) and [RootSpecialFolderKind](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) properties to remain in sync.
+- [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) - A [parsing name](shell-objects-framework/shell-objects.md) (generally a file system path like "C:\\Program Files") that indicates the root shell folder.  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolder) and [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) properties to remain in sync.
 
-- [RootSpecialFolderKind](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) - An enum value of type [SpecialFolderKind](xref:ActiproSoftware.Shell.SpecialFolderKind) that indicates a special Windows folder kind ("Computer", "ThisPC", and so on).  Setting this property updates the [RootShellFolder](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolder) and [RootShellFolderParsingName](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) properties to remain in sync.
+- [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootSpecialFolderKind) - An enum value of type [SpecialFolderKind](xref:ActiproSoftware.Shell.SpecialFolderKind) that indicates a special Windows folder kind ("Computer", "ThisPC", and so on).  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolder) and [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.RootShellFolderParsingName) properties to remain in sync.
 
 > [!NOTE]
 > Please see the [Memory Management](memory-management.md) topic for notes on handling root shell folder changes, since they sometimes use unmanaged resources.
@@ -47,21 +47,21 @@ A root shell folder must be set on the control so that it can display that root 
 
 There are several display option properties that affect features and functionality:
 
-- [CanIncludeFiles](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.CanIncludeFiles) - Whether files should be displayed.  The default value is `false`.  Set this to `true` to also show files in the tree.
+- [CanIncludeFiles](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.CanIncludeFiles) - Whether files should be displayed.  The default value is `false`.  Set this to `true` to also show files in the tree.
 
-- [CanIncludeLinks](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.CanIncludeLinks) - Whether links should be displayed.  The default value is `false`.
+- [CanIncludeLinks](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.CanIncludeLinks) - Whether links should be displayed.  The default value is `false`.
 
-- [IsRootItemVisible](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.IsRootItemVisible) - Whether the root item is visible.  The default value is `false`.
+- [IsRootItemVisible](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.IsRootItemVisible) - Whether the root item is visible.  The default value is `false`.
 
 ## Selection
 
-Since this control inherits [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox), it also inherits that control's [SelectedItem](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectedItem), [SelectedItems](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectedItems), and [SelectionMode](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectionMode) properties, and the [SelectionChanged](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectionChanged) event.  The "items" in this shell UI control are of type [ShellObjectViewModel](xref:ActiproSoftware.Windows.Controls.Shell.ShellObjectViewModel), as described in the [Grids Foundation and Item Adapter](grids-foundation.md) topic, so the [SelectedItem](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectedItem) and [SelectedItems](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectedItems) properties will return a value of that type.  The [SelectionMode](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.SelectionMode) property determines whether single or multi-selection modes are enabled.  For [ShellTreeListBox](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox), this is generally left as a single selection.
+Since this control inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox), it also inherits that control's [SelectedItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItem), [SelectedItems](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItems), and [SelectionMode](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectionMode) properties, and the [SelectionChanged](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectionChanged) event.  The "items" in this shell UI control are of type [ShellObjectViewModel](xref:@ActiproUIRoot.Controls.Shell.ShellObjectViewModel), as described in the [Grids Foundation and Item Adapter](grids-foundation.md) topic, so the [SelectedItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItem) and [SelectedItems](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItems) properties will return a value of that type.  The [SelectionMode](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectionMode) property determines whether single or multi-selection modes are enabled.  For [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox), this is generally left as a single selection.
 
-The [ShellTreeListBox](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox) control also defines selection-related properties that are more specific to shell objects.
+The [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control also defines selection-related properties that are more specific to shell objects.
 
-The [SelectedShellObject](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.SelectedShellObject) property gets or sets the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that is selected in the control.  This property is effectively the same as binding to the `SelectedItem.Model` property.  It is often bound directly to the [RootShellFolder](xref:ActiproSoftware.Windows.Controls.Shell.ShellListView.RootShellFolder) property of a paired [ShellListView](xref:ActiproSoftware.Windows.Controls.Shell.ShellListView) control so that control tracks with the selection in the tree.
+The [SelectedShellObject](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObject) property gets or sets the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that is selected in the control.  This property is effectively the same as binding to the `SelectedItem.Model` property.  It is often bound directly to the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) property of a paired [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control so that control tracks with the selection in the tree.
 
-The [SelectedShellObjectEditingName](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.SelectedShellObjectEditingName) property gets or sets the selected shell object's full user-friendly [editing name](shell-objects-framework/shell-objects.md) (commonly the same as the file system path), if known.  This property can be bound to a path `TextBox`, which allows the user to type in a file system path (i.e. "C:\\Program Files") and have the related shell object get selected in the tree.
+The [SelectedShellObjectEditingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObjectEditingName) property gets or sets the selected shell object's full user-friendly [editing name](shell-objects-framework/shell-objects.md) (commonly the same as the file system path), if known.  This property can be bound to a path `TextBox`, which allows the user to type in a file system path (i.e. "C:\\Program Files") and have the related shell object get selected in the tree.
 
 ## Item Templates
 
@@ -90,15 +90,15 @@ Change the `ItemTemplate` property to use an alternate `DataTemplate`.  Also not
 
 These properties help determine context menu behavior:
 
-- [IsDefaultItemContextMenuEnabled](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.IsDefaultItemContextMenuEnabled) - Whether the default context menu is enabled for shell objects.  The default value is `true`.
+- [IsDefaultItemContextMenuEnabled](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.IsDefaultItemContextMenuEnabled) - Whether the default context menu is enabled for shell objects.  The default value is `true`.
 
-- [IsNewFolderContextMenuItemAllowed](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.IsNewFolderContextMenuItemAllowed) - Whether a "New / Folder" menu item can be injected into the context menu for file system folders.  The default value is `false`.
+- [IsNewFolderContextMenuItemAllowed](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.IsNewFolderContextMenuItemAllowed) - Whether a "New / Folder" menu item can be injected into the context menu for file system folders.  The default value is `false`.
 
-The context menus themselves are provided by the [ShellObjectItemAdapter](xref:ActiproSoftware.Windows.Controls.Shell.ShellObjectItemAdapter).  Please see the [Grids Foundation and Item Adapter](grids-foundation.md) topic for more information on how to customize the context menus for both the selection view-models and for the background of the control.
+The context menus themselves are provided by the [ShellObjectItemAdapter](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter).  Please see the [Grids Foundation and Item Adapter](grids-foundation.md) topic for more information on how to customize the context menus for both the selection view-models and for the background of the control.
 
 ## Inline Renaming
 
-The control supports inline renaming if the [IsRenamingEnabled](xref:ActiproSoftware.Windows.Controls.Shell.ShellTreeListBox.IsRenamingEnabled) property is `true`, which is the default value.  Note that the shell object to be renamed must also support renaming via the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[CanRename](xref:ActiproSoftware.Shell.IShellObject.CanRename) property.
+The control supports inline renaming if the [IsRenamingEnabled](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.IsRenamingEnabled) property is `true`, which is the default value.  Note that the shell object to be renamed must also support renaming via the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[CanRename](xref:ActiproSoftware.Shell.IShellObject.CanRename) property.
 
 Renaming begins when single clicking on the shell object name, or by selecting an item and pressing `F2`.
 

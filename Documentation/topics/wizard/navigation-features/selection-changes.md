@@ -9,73 +9,73 @@ The selected page in the Wizard can be changed programmatically and numerous can
 
 ## Programmatically Getting or Setting the Selected Page
 
-[Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) has several members that are essential for getting or setting the currently selected page programmatically:
+[Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) has several members that are essential for getting or setting the currently selected page programmatically:
 
 | Member | Description |
 |-----|-----|
-| [BacktrackToPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BacktrackToPage*) Method | Selects the specified page using backward progress. |
-| [BacktrackToPreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BacktrackToPreviousPage*) Method | Selects the previous page using backward progress. |
-| [GoToNextPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.GoToNextPage*) Method | Selects the next page using forward progress. |
-| [GoToPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.GoToPage*) Method | Selects the specified page using forward progress. |
-| [SelectedIndex](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedIndex) Property | Gets or sets the index of the selected page within the `Items` collection.  Setting this property uses a [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) value of `Default`. |
-| [SelectedPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedPage) Property | Gets or sets the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) that is currently selected.  Setting this property uses a [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) value of `Default`. |
-| [SetSelectedIndex](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SetSelectedIndex*) Method | Sets the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[SelectedIndex](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedIndex) property using the specified [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) value. |
-| [SetSelectedPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SetSelectedPage*) Method | Sets the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[SelectedPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedPage) property using the specified [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) value. |
+| [BacktrackToPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BacktrackToPage*) Method | Selects the specified page using backward progress. |
+| [BacktrackToPreviousPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BacktrackToPreviousPage*) Method | Selects the previous page using backward progress. |
+| [GoToNextPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.GoToNextPage*) Method | Selects the next page using forward progress. |
+| [GoToPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.GoToPage*) Method | Selects the specified page using forward progress. |
+| [SelectedIndex](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedIndex) Property | Gets or sets the index of the selected page within the `Items` collection.  Setting this property uses a [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) value of `Default`. |
+| [SelectedPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedPage) Property | Gets or sets the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) that is currently selected.  Setting this property uses a [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) value of `Default`. |
+| [SetSelectedIndex](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SetSelectedIndex*) Method | Sets the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[SelectedIndex](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedIndex) property using the specified [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) value. |
+| [SetSelectedPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SetSelectedPage*) Method | Sets the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[SelectedPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedPage) property using the specified [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) value. |
 
 ## Page Change Event Sequence
 
 Whenever a selected page change occurs, regardless of what caused it, numerous events fire.  The event sequence is designed so that you can process the selection change events at either the wizard or page-specific levels.
 
-All of the events receive an informative event argument of type [WizardSelectedPageChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs) that has these important members:
+All of the events receive an informative event argument of type [WizardSelectedPageChangeEventArgs](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs) that has these important members:
 
 | Member | Description |
 |-----|-----|
-| [Cancel](xref:ActiproSoftware.Windows.CancelRoutedEventArgs.Cancel) Property | Gets or sets whether to cancel the selected page change.  This property is only useful in the page changing events that fire before the page change occurs. |
-| [NewSelectedPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs.NewSelectedPage) Property | Gets the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) that is about to be selected. |
-| [OldSelectedPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs.OldSelectedPage) Property | Gets the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) that is currently selected. |
-| [SelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs.SelectionFlags) Property | Gets a [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) indicating information about the page selection. |
+| [Cancel](xref:@ActiproUIRoot.CancelRoutedEventArgs.Cancel) Property | Gets or sets whether to cancel the selected page change.  This property is only useful in the page changing events that fire before the page change occurs. |
+| [NewSelectedPage](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.NewSelectedPage) Property | Gets the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) that is about to be selected. |
+| [OldSelectedPage](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.OldSelectedPage) Property | Gets the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) that is currently selected. |
+| [SelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.SelectionFlags) Property | Gets a [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) indicating information about the page selection. |
 
 The first events that fire upon a page change request are page changing events.  These are cancellable events and if the `Cancel` property is set in these, then the page change will be cancelled and no new selected page will be set.
 
 Page changing events fire in this order:
 
-- [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[PreviewSelectedPageChanging](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.PreviewSelectedPageChanging)
+- [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewSelectedPageChanging](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewSelectedPageChanging)
 
-- [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Unselecting](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Unselecting) on the old selected page
+- [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Unselecting](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Unselecting) on the old selected page
 
-- [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Selecting](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Selecting) on the new selected page
+- [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Selecting](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Selecting) on the new selected page
 
-- [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[SelectedPageChanging](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedPageChanging)
+- [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[SelectedPageChanging](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedPageChanging)
 
 If the page change is not cancelled, then the actual page change will occur and a series of page changed events fire.
 
 Page changed events fire in this order:
 
-- [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[PreviewSelectedPageChanged](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.PreviewSelectedPageChanged)
+- [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewSelectedPageChanged](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewSelectedPageChanged)
 
-- [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Unselected](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Unselected) on the old selected page
+- [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Unselected](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Unselected) on the old selected page
 
-- [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Selected](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Selected) on the new selected page
+- [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Selected](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Selected) on the new selected page
 
-- [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[SelectedPageChanged](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.SelectedPageChanged)
+- [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[SelectedPageChanged](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedPageChanged)
 
 Page changed events are a great place to add code to initialize a page that is about to be displayed.
 
 ## Page Selection Flags
 
-The [WizardSelectedPageChangeEventArgs](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs).[SelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardSelectedPageChangeEventArgs.SelectionFlags) property of the event arguments gives you a lot of information about why the selected page change occurred.  This lets you better determine whether you may want to take some sort of programmatic action to override or cancel a page change.
+The [WizardSelectedPageChangeEventArgs](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs).[SelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.SelectionFlags) property of the event arguments gives you a lot of information about why the selected page change occurred.  This lets you better determine whether you may want to take some sort of programmatic action to override or cancel a page change.
 
-The [WizardPageSelectionFlags](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPageSelectionFlags) flags enumeration has these values:
+The [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) flags enumeration has these values:
 
 | Value | Description |
 |-----|-----|
 | `BackwardProgress` | The page selection is backward progress. |
 | `ForwardProgress` | The page selection is forward progress. |
 | `Programmatic` | The page selection was made programmatically. |
-| `NextPageCommand` | The page selection was made via the [WizardCommands](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands).[NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.NextPage) command. |
-| `PreviousPageCommand` | The page selection was made via the [WizardCommands](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands).[PreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.PreviousPage) command. |
-| `GoToPageCommand` | The page selection was made via the [WizardCommands](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands).[GoToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.GoToPage) command. |
-| `BacktrackToPageCommand` | The page selection was made via the [WizardCommands](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands).[BacktrackToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.BacktrackToPage) command. |
+| `NextPageCommand` | The page selection was made via the [WizardCommands](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands).[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.NextPage) command. |
+| `PreviousPageCommand` | The page selection was made via the [WizardCommands](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands).[PreviousPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.PreviousPage) command. |
+| `GoToPageCommand` | The page selection was made via the [WizardCommands](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands).[GoToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.GoToPage) command. |
+| `BacktrackToPageCommand` | The page selection was made via the [WizardCommands](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands).[BacktrackToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.BacktrackToPage) command. |
 | `Default` | The default flags of `Programmatic` and `ForwardProgress`. |
 
 ## Forward and Backward Progress

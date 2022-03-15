@@ -425,6 +425,7 @@
 					<StackPanel>
 						<shared:UserPromptControl Header="Overwrite file?"
 												  StandardButtons="YesNoCancel"
+												  DefaultResult="Cancel"
 												  StandardStatusImage="Question"												  
 												  ExpandedInformationCollapsedHeaderText="Show details"
 												  ExpandedInformationExpandedHeaderText="Hide details"
@@ -477,7 +478,6 @@ The 'Help' button is not supported by the WPF MessageBox API, but is supported b
 					<StackPanel>
 						<shared:UserPromptControl Header="Full support for custom button content"
 												  Content="Buttons can have any content, including images. This sample shows images used as content and demonstrates changing the horizontal alignment of all buttons from right (default) to center."
-												  DefaultResult="Cancel"
 												  ButtonItemsHorizontalAlignment="Center"
 												  Width="500" BorderThickness="1">
 							<shared:UserPromptControl.ButtonItems>
@@ -488,7 +488,7 @@ The 'Help' button is not supported by the WPF MessageBox API, but is supported b
 											<AccessText VerticalAlignment="Center">_Left Image</AccessText>
 										</StackPanel>
 									</Button>
-									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
+									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}" IsDefault="True">
 										<StackPanel Orientation="Horizontal">
 											<AccessText VerticalAlignment="Center">_Right Image</AccessText>
 											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="4,0,0,0" VerticalAlignment="Center" />

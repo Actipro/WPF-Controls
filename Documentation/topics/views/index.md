@@ -38,7 +38,6 @@ Other controls are included such as a TaskBoard for visually organizing tasks, B
 - [Custom panels](panels/building-a-custom-panel.md) can be built which automatically support animation and can be used in AnimatedSwitchPanel.
 - [SwitchPanel](panels/switchpanel.md) can be used to dynamically change the measure/arrange logic without moving child elements.
 - [AnimatedWrapPanel](panels/animatedwrappanel.md) allows empty space to be evenly distributed along the oriented axis.
-- Code base is largely compatible between WPF and Silverlight.
 
 ### Animation Features
 

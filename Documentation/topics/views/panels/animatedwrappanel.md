@@ -14,7 +14,7 @@ This panel allows child elements to be positioned in sequential order, either ho
 
 ## Overview
 
-Child elements are positioned or "stacked" based on the order that the elements were added to the panel, or more specifically, their position in the `Children` collection.  Elements can be stacked either vertically or horizontally, which is determined by the [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel).[Orientation](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.Orientation) property.
+Child elements are positioned or "stacked" based on the order that the elements were added to the panel, or more specifically, their position in the `Children` collection.  Elements can be stacked either vertically or horizontally, which is determined by the [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel).[Orientation](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.Orientation) property.
 
 ![Screenshot](../images/animatedwrappanel-horizontal.png)![Screenshot](../images/animatedwrappanel-vertical.png)
 
@@ -22,13 +22,13 @@ Child elements are positioned or "stacked" based on the order that the elements 
 
 ## Item Size
 
-Elements will be given as much, or as little, space as they request during the measure phase.  The height and/or width of the elements can be fixed using the [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel).[ItemHeight](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.ItemHeight) and/or [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel).[ItemWidth](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.ItemWidth) properties.  When one or both of these properties are set to a valid number, then the elements will be restricted to the specified size.
+Elements will be given as much, or as little, space as they request during the measure phase.  The height and/or width of the elements can be fixed using the [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel).[ItemHeight](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.ItemHeight) and/or [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel).[ItemWidth](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.ItemWidth) properties.  When one or both of these properties are set to a valid number, then the elements will be restricted to the specified size.
 
 ## Empty Space
 
 By default, elements will be stacked next to each other and wrap to the next row/column when needed.  This can leave a lot of extra space in each row/column.  The `AnimatedWrapPanel` can be configured to evenly distribute the empty space along the oriented axis.
 
-By setting the [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel).[IsEmptySpaceEvenlyDistributed](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.IsEmptySpaceEvenlyDistributed) property to `true`, the space will be divided up evenly between the items.
+By setting the [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel).[IsEmptySpaceEvenlyDistributed](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.IsEmptySpaceEvenlyDistributed) property to `true`, the space will be divided up evenly between the items.
 
 ![Screenshot](../images/animatedwrappanel-horizontal-evenly-spaced.png)
 
@@ -42,7 +42,7 @@ To disabled scrolling, the `ScrollViewer.HorizontalScrollBarVisibility` or `Scro
 
 ## Getting Started with AnimatedWrapPanel
 
-This code shows typical XAML code used to position elements in an [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel):
+This code shows typical XAML code used to position elements in an [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel):
 
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
@@ -56,11 +56,11 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 
 ## Important Members
 
-The following [AnimatedWrapPanel](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel) members are key to its use:
+The following [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel) members are key to its use:
 
 | Member | Description |
 |-----|-----|
-| [IsEmptySpaceEvenlyDistributed](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.IsEmptySpaceEvenlyDistributed) Property | Gets or sets a value indicating whether any empty space in a row/column will be evenly distributed around the elements. |
-| [ItemHeight](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.ItemHeight) Property | Gets or sets a value that specifies the height of all items. |
-| [ItemWidth](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.ItemWidth) Property | Gets or sets a value that specifies the width of all items. |
-| [Orientation](xref:ActiproSoftware.Windows.Controls.Views.AnimatedWrapPanel.Orientation) Property | Gets or sets the orientation that the child elements are arranged. |
+| [IsEmptySpaceEvenlyDistributed](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.IsEmptySpaceEvenlyDistributed) Property | Gets or sets a value indicating whether any empty space in a row/column will be evenly distributed around the elements. |
+| [ItemHeight](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.ItemHeight) Property | Gets or sets a value that specifies the height of all items. |
+| [ItemWidth](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.ItemWidth) Property | Gets or sets a value that specifies the width of all items. |
+| [Orientation](xref:@ActiproUIRoot.Controls.Views.AnimatedWrapPanel.Orientation) Property | Gets or sets the orientation that the child elements are arranged. |

@@ -7,11 +7,11 @@ order: 2
 
 Wizard is designed to use the WPF command model for all wizard functions, which separates the action implementation from the user interface control that executes it.  This allows for multiple and disparate sources to invoke the same centralized command logic.
 
-All of the wizard buttons are hooked up to the appropriate command.  For instance the Next button uses the [NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.NextPage).
+All of the wizard buttons are hooked up to the appropriate command.  For instance the Next button uses the [NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.NextPage).
 
 ## Command List
 
-All of these commands are available via static properties on the [WizardCommands](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands) class:
+All of these commands are available via static properties on the [WizardCommands](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands) class:
 
 <table>
 <thead>
@@ -21,21 +21,20 @@ All of these commands are available via static properties on the [WizardCommands
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[BacktrackToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.BacktrackToPage) Property
+[BacktrackToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.BacktrackToPage) Property
 
 </td>
 <td>
 
 Gets the command that is used to backtrack to the specified page.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[BacktrackToPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BacktrackToPage*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[BacktrackToPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BacktrackToPage*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -43,14 +42,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[BacktrackToPa
 <tr>
 <td>
 
-[Cancel](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.Cancel) Property
+[Cancel](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.Cancel) Property
 
 </td>
 <td>
 
 Gets the command that is used to cancel the wizard.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteCancel](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.ExecuteCancel*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[ExecuteCancel](xref:@ActiproUIRoot.Controls.Wizard.Wizard.ExecuteCancel*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -58,14 +57,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteCancel
 <tr>
 <td>
 
-[Finish](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.Finish) Property
+[Finish](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.Finish) Property
 
 </td>
 <td>
 
 Gets the command that is used to finish the wizard.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteFinish](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.ExecuteFinish*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[ExecuteFinish](xref:@ActiproUIRoot.Controls.Wizard.Wizard.ExecuteFinish*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -73,14 +72,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteFinish
 <tr>
 <td>
 
-[GoToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.GoToPage) Property
+[GoToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.GoToPage) Property
 
 </td>
 <td>
 
 Gets the command that is used to go directly to the specified page.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[GoToPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.GoToPage*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[GoToPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.GoToPage*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -88,14 +87,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[GoToPage](xre
 <tr>
 <td>
 
-[Help](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.Help) Property
+[Help](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.Help) Property
 
 </td>
 <td>
 
 Gets the command that is used to display help for the wizard.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteHelp](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.ExecuteHelp*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[ExecuteHelp](xref:@ActiproUIRoot.Controls.Wizard.Wizard.ExecuteHelp*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -103,14 +102,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[ExecuteHelp](
 <tr>
 <td>
 
-[NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.NextPage) Property
+[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.NextPage) Property
 
 </td>
 <td>
 
 Gets the command that is used to advance to the next wizard page.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[GoToNextPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.GoToNextPage*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[GoToNextPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.GoToNextPage*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -118,14 +117,14 @@ The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[GoToNextPage]
 <tr>
 <td>
 
-[PreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.PreviousPage) Property
+[PreviousPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.PreviousPage) Property
 
 </td>
 <td>
 
 Gets the command that is used to backtrack to the previous wizard page.
 
-The [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[BacktrackToPreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.BacktrackToPreviousPage*) method provides a wrapper for executing this command.
+The [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[BacktrackToPreviousPage](xref:@ActiproUIRoot.Controls.Wizard.Wizard.BacktrackToPreviousPage*) method provides a wrapper for executing this command.
 
 </td>
 </tr>
@@ -139,23 +138,23 @@ These commands are used by the wizard's Next and Back buttons.
 
 The next page command follows these execution steps:
 
-- If a [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.NextPage) value is set on the selected page, that page is navigated to using forward progress and the command logic quits.
+- If a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextPage) value is set on the selected page, that page is navigated to using forward progress and the command logic quits.
 
 - Otherwise, the next enabled sequential page, if any, will be navigated to using forward progress.
 
-The next page command examines the page-specific [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[NextButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.NextButtonEnabled) property to determine whether it is enabled.  If that property is `null`, the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.NextPage) property of the selected page will be examined to see if a specified next page is available.  If that property is `null`, a check will be made to see if there is another enabled wizard page in sequential order after the selected page.
+The next page command examines the page-specific [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[NextButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextButtonEnabled) property to determine whether it is enabled.  If that property is `null`, the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextPage) property of the selected page will be examined to see if a specified next page is available.  If that property is `null`, a check will be made to see if there is another enabled wizard page in sequential order after the selected page.
 
 The previous page command follows these execution steps:
 
-- If a [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[PreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.PreviousPage) value is set on the selected page, that page is navigated to using backward progress and the command logic quits.
+- If a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[PreviousPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.PreviousPage) value is set on the selected page, that page is navigated to using backward progress and the command logic quits.
 
 - Otherwise, the previous enabled sequential page, if any, will be navigated to using backward progress.
 
-The previous page command examines the page-specific [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[BackButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.BackButtonEnabled) property to determine whether it is enabled.  If that property is `null`, the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[PreviousPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.PreviousPage) property of the selected page will be examined to see if a specified previous page is available.  If that property is `null`, a check will be made to see if there is another enabled wizard page in sequential order before the selected page.
+The previous page command examines the page-specific [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[BackButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.BackButtonEnabled) property to determine whether it is enabled.  If that property is `null`, the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[PreviousPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.PreviousPage) property of the selected page will be examined to see if a specified previous page is available.  If that property is `null`, a check will be made to see if there is another enabled wizard page in sequential order before the selected page.
 
 Both commands raise the appropriate selection changed events when a page change occurs.
 
-This XAML code shows how to use the [NextPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.NextPage) command on a `Button`:
+This XAML code shows how to use the [NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.NextPage) command on a `Button`:
 
 ```xaml
 <Button Command="wizard:WizardCommands.Next">Next</Button>
@@ -167,29 +166,29 @@ These commands are used by the wizard's Finish and Cancel buttons.
 
 The finish command follows these execution steps:
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[PreviewFinish](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.PreviewFinish) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewFinish](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewFinish) event.
 
-- Raises the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Finish](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Finish) event on the selected page.
+- Raises the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Finish](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Finish) event on the selected page.
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[Finish](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.Finish) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[Finish](xref:@ActiproUIRoot.Controls.Wizard.Wizard.Finish) event.
 
 - If the event was not cancelled, the `DialogResult` of the containing `Window` will attempt to be set to `true`, and the `Window` will attempt to close.
 
-The finish command resolves between the page-specific [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[FinishButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.FinishButtonEnabled) property and the wizard-default [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[FinishButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.FinishButtonEnabled) property to determine whether it is enabled.
+The finish command resolves between the page-specific [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[FinishButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.FinishButtonEnabled) property and the wizard-default [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[FinishButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.Wizard.FinishButtonEnabled) property to determine whether it is enabled.
 
 The cancel command follows these execution steps:
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[PreviewCancel](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.PreviewCancel) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewCancel](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewCancel) event.
 
-- Raises the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Cancel](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Cancel) event on the selected page.
+- Raises the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Cancel](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Cancel) event on the selected page.
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[Cancel](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.Cancel) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[Cancel](xref:@ActiproUIRoot.Controls.Wizard.Wizard.Cancel) event.
 
 - If the event was not cancelled, the `DialogResult` of the containing `Window` will attempt to be set to `false`, and the `Window` will attempt to close.
 
-The cancel command resolves between the page-specific [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[CancelButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.CancelButtonEnabled) property and the wizard-default [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[CancelButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.CancelButtonEnabled) property to determine whether it is enabled.
+The cancel command resolves between the page-specific [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[CancelButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.CancelButtonEnabled) property and the wizard-default [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[CancelButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.Wizard.CancelButtonEnabled) property to determine whether it is enabled.
 
-This XAML code shows how to use the [Finish](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.Finish) command on a `Button`:
+This XAML code shows how to use the [Finish](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.Finish) command on a `Button`:
 
 ```xaml
 <Button Command="wizard:WizardCommands.Finish">Finish</Button>
@@ -201,15 +200,15 @@ This command is used by the wizard's Help button.
 
 The help command follows these execution steps:
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[PreviewHelp](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.PreviewHelp) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewHelp](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewHelp) event.
 
-- Raises the [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[Help](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Help) event on the selected page.
+- Raises the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[Help](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Help) event on the selected page.
 
-- Raises the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[Help](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.Help) event.
+- Raises the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[Help](xref:@ActiproUIRoot.Controls.Wizard.Wizard.Help) event.
 
-The help command resolves between the page-specific [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage).[HelpButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.HelpButtonEnabled) property and the wizard-default [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).[HelpButtonEnabled](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard.HelpButtonEnabled) property to determine whether it is enabled.
+The help command resolves between the page-specific [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[HelpButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.HelpButtonEnabled) property and the wizard-default [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[HelpButtonEnabled](xref:@ActiproUIRoot.Controls.Wizard.Wizard.HelpButtonEnabled) property to determine whether it is enabled.
 
-This XAML code shows how to use the [Help](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.Help) command on a `Button`:
+This XAML code shows how to use the [Help](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.Help) command on a `Button`:
 
 ```xaml
 <Button Command="wizard:WizardCommands.Help">Help</Button>
@@ -221,11 +220,11 @@ These commands make it extremely easy to navigate directly to a specific page by
 
 The go to page and backtrack to page commands both use a command parameter.  The command's parameter may be set to three different types of data:
 
-- A reference to a [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) within the parent [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).
+- A reference to a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) within the parent [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).
 
-- The name of another [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) within the parent [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).
+- The name of another [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) within the parent [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).
 
-- An integer indicating the index of a [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) within the parent [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard).
+- An integer indicating the index of a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) within the parent [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).
 
 The go to page command follows these execution steps:
 
@@ -241,13 +240,13 @@ The backtrack to page command examines the supplied command parameter to determi
 
 Both commands raise the appropriate selection changed events when a page change occurs.
 
-This XAML code shows how to use the [GoToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.GoToPage) command on a `Hyperlink` to automatically jump to a page with a `Name` of `targetPage`:
+This XAML code shows how to use the [GoToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.GoToPage) command on a `Hyperlink` to automatically jump to a page with a `Name` of `targetPage`:
 
 ```xaml
 <TextBlock><Hyperlink Command="wizard:WizardCommands.GoToPage" CommandParameter="targetPage">Go to the target page</Hyperlink></TextBlock>
 ```
 
-This XAML code shows how to use the [BacktrackToPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardCommands.BacktrackToPage) command on a `Hyperlink` to automatically jump back to the first page in the wizard:
+This XAML code shows how to use the [BacktrackToPage](xref:@ActiproUIRoot.Controls.Wizard.WizardCommands.BacktrackToPage) command on a `Hyperlink` to automatically jump back to the first page in the wizard:
 
 ```xaml
 <TextBlock><Hyperlink Command="wizard:WizardCommands.BacktrackToPage" CommandParameter="0">Go to the first page</Hyperlink></TextBlock>

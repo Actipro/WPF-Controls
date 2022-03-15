@@ -5,14 +5,14 @@ order: 7
 ---
 # FontSizeComboBox
 
-The [FontSizeComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.FontSizeComboBox) class provides an implementation of a `ComboBox` that allows for selection of a font size.  The font size list is automatically populated.
+The [FontSizeComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontSizeComboBox) class provides an implementation of a `ComboBox` that allows for selection of a font size.  The font size list is automatically populated.
 
 > [!NOTE]
 > See the [Control Basics](../control-basics.md) topic for many implementation details that are common to the built-in controls such as this one.
 
 ## Variants
 
-This control supports numerous UI styles (called variants) based on its [Context](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
+This control supports numerous UI styles (called variants) based on its [Context](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Context) and [VariantSize](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.VariantSize) property settings.
 
 | Context | Variant Size | Sample UI |
 |-----|-----|-----|
@@ -29,21 +29,21 @@ The following table gives an overview of the capabilities of the control.
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | No.  When in the ribbon, it should be placed in a [StackPanel](../layout/stackpanel.md) that is in a `Medium` variant or smaller. |
 | Supports normal size | Yes. |
 | Supports use in a [Menu](../miscellaneous/menu.md) | Yes. |
-| Base class | [ComboBox](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.ComboBox). |
+| Base class | [ComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox). |
 | Child items | Yes.  The items collection inherits from the native WPF `ComboBox` class and data binding to `ItemsSource` is fully supported. |
 | Has popup | Yes.  The items are displayed in the popup. |
-| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:ActiproSoftware.Windows.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
+| Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
 | Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
-| Supports [ICheckableCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
-| Supports [IValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
-| Default CommandParameter | [DoubleValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.DoubleValueCommandParameter). |
+| Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
+| Supports [IValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.IValueCommandParameter) | Yes.  Controls the selected value of the `ComboBox` and supports live preview. |
+| Default CommandParameter | [DoubleValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.DoubleValueCommandParameter). |
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [DoubleValueCommandParameter](xref:ActiproSoftware.Windows.Controls.Ribbon.Input.DoubleValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [DoubleValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.DoubleValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 

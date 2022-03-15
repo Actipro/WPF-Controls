@@ -9,13 +9,13 @@ It's easy to get started using Micro Charts.  Simply follow the steps below to b
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.MicroCharts.Wpf.dll` assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll" assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the MicroXYChart Control
 
 Then find the parent element that will contain the micro chart.  This could be a `UserControl` or any other type of `UIElement`.
 
-Next, add a [MicroXYChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroXYChart) control to the desired parent element.  In this sample we will add the [MicroXYChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroXYChart) to a `UserControl`:
+Next, add a [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart) control to the desired parent element.  In this sample we will add the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart) to a `UserControl`:
 
 ```xaml
 <UserControl 
@@ -30,7 +30,7 @@ Next, add a [MicroXYChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.Mic
 
 ## Add a Series
 
-Now we need to add a series, which renders a single set of data points on the chart.  In this sample we will add a [MicroAreaSeries](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAreaSeries) series, but the other types are added in a similar manner.
+Now we need to add a series, which renders a single set of data points on the chart.  In this sample we will add a [MicroAreaSeries](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAreaSeries) series, but the other types are added in a similar manner.
 
 ```xaml
 <UserControl 

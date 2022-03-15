@@ -21,12 +21,12 @@ See the [Tabbed MDI](tabbed-mdi.md) topic for more information.
 
 ## Standard MDI
 
-A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a [WindowControl](xref:ActiproSoftware.Windows.Controls.Docking.WindowControl) control that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
+A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) control that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
 
 See the [Standard MDI](standard-mdi.md) topic for more information.
 
 ## Working with Documents
 
-All documents can be easily managed via [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) properties and methods, regardless of whether tabbed or standard MDI is in use.  This allows your document-related code to remain the same regardless of the style of MDI in use.
+All documents can be easily managed via [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) properties and methods, regardless of whether tabbed or standard MDI is in use.  This allows your document-related code to remain the same regardless of the style of MDI in use.
 
 See the [Working with Documents](working-with-documents.md) topic for more information.

@@ -33,7 +33,7 @@ See the [Tagging](tagging/index.md) topic for more information.
 
 ## Parsing
 
-Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an AST.  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser (such as ANTLR) can be called.
+Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an AST.  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser @if (wpf) {(such as ANTLR)} can be called.
 
 See the [Parsing](parsing/index.md) topic for more information.
 

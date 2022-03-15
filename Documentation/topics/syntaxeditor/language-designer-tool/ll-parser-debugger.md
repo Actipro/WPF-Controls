@@ -9,6 +9,26 @@ The LL Parser Debugger allows you to load an assembly which contains a non-abstr
 
 Opening the LL Parser Debugger pane shows a new contextual tab group on the ribbon.
 
+@if (winrt winforms) {
+
+## Important Platform Assembly Notes
+
+Before digging into the debugger UI, there are some important things to know about its ability to load various assemblies.  Since the Language Designer is written in WPF and has its own set of WPF SyntaxEditor assemblies, it is unable to load @@PlatformTitle assemblies for debugging in the LL Parser Debugger.
+
+When you wish to debug a @@PlatformTitle-based language parser written using the [LL(*) Parser Framework](../ll-parser-framework/index.md), you must clone the classes to a .NET class library that uses the related WPF SyntaxEditor .dll files as references, and compile a .dll of them.  Then load that assembly instead of the @@PlatformTitle-based one.
+
+This allows you to debug the grammar since you are no longer trying to load @@PlatformTitle assemblies into the WPF-based application.  The @@PlatformTitle version's LL(*) Parser Framework is object model compatible with the WPF version of SyntaxEditor, thus making this possible.
+
+Follow these steps to create a WPF class library containing your parser that can be debugged:
+
+- Create a new .NET class library project.
+- Reference the `ActiproSoftware.Text.Wpf.dll` and `ActiproSoftware.Text.LLParser.Wpf.dll` assemblies, which are WPF versions.  They are shipped in the same folder as the Language Designer application.
+- Add the classes you need for your LL(*) Parser Framework parser to run, such as lexer, token ID classes, token reader, grammar, parser, etc.
+- Compile the project to ensure an assembly is produced.
+- Use that assembly with the LL Parser Debugger.
+
+}
+
 ## Debugger Layout
 
 The debugger comes with a number of panels that contain useful information about your grammar. Some of them are only used when stepping through the process of parsing the example text.

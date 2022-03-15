@@ -43,9 +43,9 @@ As mentioned above, the Prism integration functionality is contained in the 'Pri
       
       - **ToolItemDefaultLocation** - Specifies a tool item view's default location.
       
-      - **ToolItemDockSide** - Specifies a dock side for a tool item's view.  This is analogous to the [Side](xref:ActiproSoftware.Windows.Controls.Side) enumeration.
+      - **ToolItemDockSide** - Specifies a dock side for a tool item's view.  This is analogous to the [Side](xref:@ActiproUIRoot.Controls.Side) enumeration.
       
-      - **ToolItemState** - Specifies the state of a tool item's view.  This is analogous to the [DockingWindowState](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindowState) enumeration.
+      - **ToolItemState** - Specifies the state of a tool item's view.  This is analogous to the [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration.
 
 - **\\Views** - Folder containing all views.
   
@@ -57,7 +57,7 @@ As mentioned above, the Prism integration functionality is contained in the 'Pri
 
 - **\\Regions** - Folder containing code that ties the view-models to generated containers (docking windows) and manages Prism integration.
   
-  - **DockSiteRegionAdapter** - Implements a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) region adapter.
+  - **DockSiteRegionAdapter** - Implements a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) region adapter.
   
   - **DockSiteRegionViewKinds** - An enumeration indicating the kinds of view kinds (document, tool, or both) that are permitted.  Both is the default.
   
@@ -69,14 +69,14 @@ As mentioned above, the Prism integration functionality is contained in the 'Pri
   
   - **\\Behaviors** - Folder containing Prism behaviors.
     
-    - **DockSiteRegionBehavior** - Implements a [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) region behavior, which provides the main integration logic with Prism.
+    - **DockSiteRegionBehavior** - Implements a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) region behavior, which provides the main integration logic with Prism.
 
 > [!NOTE]
 > When copying the classes in the folders above, be sure to update the namespaces to match your application's naming scheme.
 
 ## Register Region Adapter
 
-The [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) can be configured as a named region, and thus allow views to be added to it.  To support this, the `DockSiteRegionAdapter` class, a custom region adapter, was created.  In order to use a `DockSite` as a region, the region adapter must be registered.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) can be configured as a named region, and thus allow views to be added to it.  To support this, the `DockSiteRegionAdapter` class, a custom region adapter, was created.  In order to use a `DockSite` as a region, the region adapter must be registered.
 
 The [Create a Custom Region Adapter (external)](http://msdn.microsoft.com/en-us/library/dd458901.aspx) MSDN article describes how a custom region adapter can be registered.  Effectively, the `DockSite` type must be mapped to an instance of `DockSiteRegionAdapter`.
 
@@ -94,7 +94,7 @@ If using Unity, or some other IoC/DI product, then the registration code above m
 
 ## Define DockSite Region
 
-After registering the region adapter, instances of [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) can be setup as regions.  In Prism, a region is simply a placeholder whichs allows a developer to specify where views will be displayed in the application's user interface.  Therefore, one or more objects (such as view-models or UIElements) can be added to the `DockSite` via Prism's view discovery or injection.  These objects will then be presented as either document (default) or tool windows.
+After registering the region adapter, instances of [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) can be setup as regions.  In Prism, a region is simply a placeholder whichs allows a developer to specify where views will be displayed in the application's user interface.  Therefore, one or more objects (such as view-models or UIElements) can be added to the `DockSite` via Prism's view discovery or injection.  These objects will then be presented as either document (default) or tool windows.
 
 The [Add a Region (external)](http://msdn.microsoft.com/en-us/library/ff921164(PandP.20).aspx) MSDN article describes how to define a control as a region.  Effecitvely, the `RegionManager.RegionNameProperty` attached property must be set on the `DockSite` using a constant/known string name.
 
@@ -113,7 +113,7 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 
 ## Add Views To DockSite
 
-After defining the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite) as a region, one or more views can be added to it.  By default, these views will become document windows. In order to create tool windows, see the "Working with View-Models" section below.
+After defining the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) as a region, one or more views can be added to it.  By default, these views will become document windows. In order to create tool windows, see the "Working with View-Models" section below.
 
 The [Show a View in a Region Using View Discovery UI Composition (external)](http://msdn.microsoft.com/en-us/library/ff921103(v=PandP.20).aspx) and [Show a View in a Region Using View Injection UI Composition (external)](http://msdn.microsoft.com/en-us/library/ff921076(v=PandP.20).aspx) MSDN articles describe how to add a view to a region.  When using view discovery, the view object's type (whether it be a view-model or a WPF visual) is mapped the the constant/known region name used previously.  When using view injection, instances of the view are added directly to the region, which is obtained using the constant/known region name used previously.
 
@@ -180,7 +180,7 @@ public class MyModule : IModule {
 
 ### Selecting the Appropriate View Model
 
-The `DockSiteRegionAdapter` is set up to generate a container [DocumentWindow](xref:ActiproSoftware.Windows.Controls.Docking.DocumentWindow) for any view-models that inherit `DocumentItemViewModel`.  Likewise, it will generate a container [ToolWindow](xref:ActiproSoftware.Windows.Controls.Docking.ToolWindow) for any view-models that inherit `ToolItemViewModel`.  Thus it is important for you to select an appropriate base view-model depending on which type of container docking window you wish to generate.
+The `DockSiteRegionAdapter` is set up to generate a container [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) for any view-models that inherit `DocumentItemViewModel`.  Likewise, it will generate a container [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) for any view-models that inherit `ToolItemViewModel`.  Thus it is important for you to select an appropriate base view-model depending on which type of container docking window you wish to generate.
 
 If you aren't using our base classes for your view-models, then the `DockSiteRegionAdapter.GetDockingWindowItemKind` method would need to be updated with custom logic for selecting the kind of container to generate.
 
@@ -201,10 +201,10 @@ The `DockingWindowBindingExtensions` class has methods the set and clear two-way
 
 In our sample, the `ImplicitTemplates.xaml` file contains implicit `DataTemplate`s that are applied to the container docking windows based on the view-model type in use.  This sort of file needs to be included in your `Application.Resources`.
 
-Another way to select templates is by using the [DockSite](xref:ActiproSoftware.Windows.Controls.Docking.DockSite).[DocumentItemTemplateSelector](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.DocumentItemTemplateSelector) and [ToolItemTemplateSelector](xref:ActiproSoftware.Windows.Controls.Docking.DockSite.ToolItemTemplateSelector) properties, and assigning an appropriate template selector class to them.
+Another way to select templates is by using the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[DocumentItemTemplateSelector](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentItemTemplateSelector) and [ToolItemTemplateSelector](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolItemTemplateSelector) properties, and assigning an appropriate template selector class to them.
 
 ### Views and Container Open States
 
-The core view-models we provide include properties like `IsOpen`, `IsSelected`, and `IsActive` that bind to the related [DockingWindow](xref:ActiproSoftware.Windows.Controls.Docking.DockingWindow) properties.  These properties may be checked at any time to learn the current state of a view-model's generated container.  Open means the view is in the layout.  Selected means the view is a selected tab in the layout when open.  Active means the view is currently focused in the layout.
+The core view-models we provide include properties like `IsOpen`, `IsSelected`, and `IsActive` that bind to the related [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) properties.  These properties may be checked at any time to learn the current state of a view-model's generated container.  Open means the view is in the layout.  Selected means the view is a selected tab in the layout when open.  Active means the view is currently focused in the layout.
 
 While a docking window is open in the layout, its view-model should be present in the containing region's `Views` collection.  Code in the Prism integration attempts to keep this collection and the `ActiveViews` collection in sync with the layout.

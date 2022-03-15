@@ -9,7 +9,7 @@ The chart control supports multiple series which can be optionally stacked on to
 
 ## Multiple Series
 
-Any number of series can be added to the chart, which will simply render one on top of each (in z-order) Simply add the series to the [MicroXYChart](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroXYChart).[Series](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroXYChart.Series) collection that you would like to be rendered.
+Any number of series can be added to the chart, which will simply render one on top of each (in z-order) Simply add the series to the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart).[Series](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.Series) collection that you would like to be rendered.
 
 In this example, we display a bar and line series in the same chart:
 
@@ -43,7 +43,7 @@ This results in the following chart, which has extended the line series beyond t
 
 Two or more series can be stacked one on top of the other to convey cumlative values to the end user.
 
-By setting [StackKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Normal`, the values of each series will be added to the previous stacked series.
+By setting [StackKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Normal`, the values of each series will be added to the previous stacked series.
 
 ![Screenshot](../images/micro-area-series-stacked-normal.png)
 
@@ -60,7 +60,7 @@ In this sample the second series will be stacked on top of the first series.
 
 Two or more area series can be stacked one on top of the other to convey proportional values to the end user.  In this mode, the series render to fill the chart height.  At any given location, the height of each rendered series indicates its value percentage relative to the total.
 
-By setting [StackKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Percentage`, the values of each series will be added to the previous stacked series and a percentage of the total value will be used.
+By setting [StackKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Percentage`, the values of each series will be added to the previous stacked series and a percentage of the total value will be used.
 
 ![Screenshot](../images/micro-area-series-stacked100.png)
 

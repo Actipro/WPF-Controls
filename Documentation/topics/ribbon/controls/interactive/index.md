@@ -15,7 +15,6 @@ Interactive controls are controls that are located throughout the ribbon user in
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 

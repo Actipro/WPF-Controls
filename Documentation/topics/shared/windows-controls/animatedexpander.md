@@ -5,9 +5,9 @@ order: 4
 ---
 # AnimatedExpander
 
-The [AnimatedExpander](xref:ActiproSoftware.Windows.Controls.AnimatedExpander) is a regular `Expander` that provides optional animated expansion functionality.  The animation consists of crossfade and slide behavior.
+The [AnimatedExpander](xref:@ActiproUIRoot.Controls.AnimatedExpander) is a regular `Expander` that provides optional animated expansion functionality.  The animation consists of crossfade and slide behavior.
 
-The [AnimatedExpander](xref:ActiproSoftware.Windows.Controls.AnimatedExpander) class has these important members:
+The [AnimatedExpander](xref:@ActiproUIRoot.Controls.AnimatedExpander) class has these important members:
 
 <table>
 <thead>
@@ -17,14 +17,13 @@ The [AnimatedExpander](xref:ActiproSoftware.Windows.Controls.AnimatedExpander) c
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[CanMeasureCollapsedContent](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.CanMeasureCollapsedContent) Property
+[CanMeasureCollapsedContent](xref:@ActiproUIRoot.Controls.AnimatedExpander.CanMeasureCollapsedContent) Property
 
 </td>
 <td>
@@ -39,7 +38,7 @@ When `true`, a consistent width will be maintained when collapsed.  When `false`
 <tr>
 <td>
 
-[CollapseDuration](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.CollapseDuration) Property
+[CollapseDuration](xref:@ActiproUIRoot.Controls.AnimatedExpander.CollapseDuration) Property
 
 </td>
 <td>
@@ -65,7 +64,7 @@ Gets or sets the `ExpandDirection` of the expand animation.  The default value i
 <tr>
 <td>
 
-[ExpandDuration](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.ExpandDuration) Property
+[ExpandDuration](xref:@ActiproUIRoot.Controls.AnimatedExpander.ExpandDuration) Property
 
 </td>
 <td>
@@ -78,7 +77,7 @@ Gets or sets the `Duration` of the expand animation.  The default value is `150`
 <tr>
 <td>
 
-[HeaderContextMenu](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.HeaderContextMenu) Property
+[HeaderContextMenu](xref:@ActiproUIRoot.Controls.AnimatedExpander.HeaderContextMenu) Property
 
 </td>
 <td>Gets or sets the context menu used for the header.</td>
@@ -87,7 +86,7 @@ Gets or sets the `Duration` of the expand animation.  The default value is `150`
 <tr>
 <td>
 
-[HeaderCornerRadius](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.HeaderCornerRadius) Property
+[HeaderCornerRadius](xref:@ActiproUIRoot.Controls.AnimatedExpander.HeaderCornerRadius) Property
 
 </td>
 <td>Gets or sets the corner radius used by the header.</td>
@@ -96,7 +95,7 @@ Gets or sets the `Duration` of the expand animation.  The default value is `150`
 <tr>
 <td>
 
-[HeaderPadding](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.HeaderPadding) Property
+[HeaderPadding](xref:@ActiproUIRoot.Controls.AnimatedExpander.HeaderPadding) Property
 
 </td>
 <td>
@@ -109,7 +108,7 @@ Gets or sets the `Thickness` of the padding around header content.
 <tr>
 <td>
 
-[IsAutoCollapseOnBlurEnabled](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.IsAutoCollapseOnBlurEnabled) Property
+[IsAutoCollapseOnBlurEnabled](xref:@ActiproUIRoot.Controls.AnimatedExpander.IsAutoCollapseOnBlurEnabled) Property
 
 </td>
 <td>
@@ -122,7 +121,7 @@ Gets or sets whether the expander will auto-collapse when focus leaves it.  The 
 <tr>
 <td>
 
-[IsAutoExpandOnFocusEnabled](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.IsAutoExpandOnFocusEnabled) Property
+[IsAutoExpandOnFocusEnabled](xref:@ActiproUIRoot.Controls.AnimatedExpander.IsAutoExpandOnFocusEnabled) Property
 
 </td>
 <td>
@@ -135,7 +134,7 @@ Gets or sets whether the expander will auto-expand when focus enters it.  The de
 <tr>
 <td>
 
-[IsAutoFocusOnExpandEnabled](xref:ActiproSoftware.Windows.Controls.AnimatedExpander.IsAutoFocusOnExpandEnabled) Property
+[IsAutoFocusOnExpandEnabled](xref:@ActiproUIRoot.Controls.AnimatedExpander.IsAutoFocusOnExpandEnabled) Property
 
 </td>
 <td>
@@ -148,4 +147,4 @@ Gets or sets whether focus will attempt to be set in the content of the expander
 </tbody>
 </table>
 
-The [AnimatedExpanderDecorator](xref:ActiproSoftware.Windows.Controls.AnimatedExpanderDecorator) decorator is used in the template for the [AnimatedExpander](xref:ActiproSoftware.Windows.Controls.AnimatedExpander) to provide the actual animation behavior.
+The [AnimatedExpanderDecorator](xref:@ActiproUIRoot.Controls.AnimatedExpanderDecorator) decorator is used in the template for the [AnimatedExpander](xref:@ActiproUIRoot.Controls.AnimatedExpander) to provide the actual animation behavior.

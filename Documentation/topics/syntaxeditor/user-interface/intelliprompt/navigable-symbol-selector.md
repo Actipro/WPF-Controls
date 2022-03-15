@@ -5,17 +5,17 @@ order: 9
 ---
 # Navigable Symbol Selector
 
-The [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) control displays two side-by-side drop-downs similar to the type/member drop-downs above the code editor in Visual Studio.  One drop-down shows all available root symbols (generally types), and the other shows all available member symbols within the currently selected root symbol.
+The [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) control displays two side-by-side drop-downs similar to the type/member drop-downs above the code editor in Visual Studio.  One drop-down shows all available root symbols (generally types), and the other shows all available member symbols within the currently selected root symbol.
 
-As the caret in a bound [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) instance is moved, the selections in the [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) update to indicate the enclosing symbols (types/members).  The end user can also select a different symbol from the drop-downs to navigate directly to the related symbol declaration.
+As the caret in a bound [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) instance is moved, the selections in the [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) update to indicate the enclosing symbols (types/members).  The end user can also select a different symbol from the drop-downs to navigate directly to the related symbol declaration.
 
 ## Attaching to a SyntaxEditor Instance
 
-[NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) controls must be bound to a single [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control instance.  The selector will watch for various events on the bound editor and will respond accordingly.
+[NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) controls must be bound to a single [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control instance.  The selector will watch for various events on the bound editor and will respond accordingly.
 
 For instance, when the caret moves, the selector will find the appropriate symbols to select in its drop-downs based on which ones most closely enclose or are near the caret.  Likewise, when the end user picks another symbol from one of the drop-downs, the bound editor's caret will move to its declaration.
 
-[NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) controls generally appear directly above the bound [SyntaxEditor](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.SyntaxEditor) control like in this example within a `Grid`:
+[NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) controls generally appear directly above the bound [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control like in this example within a `Grid`:
 
 ```xaml
 <Grid>
@@ -30,7 +30,7 @@ For instance, when the caret moves, the selector will find the appropriate symbo
 
 ## Populating the NavigableSymbolSelector
 
-While it's extremely simple to get a [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector) working in an app per binding it to an editor (as above), the current syntax language needs to support telling the selector what symbols are available in the document.
+While it's extremely simple to get a [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector) working in an app per binding it to an editor (as above), the current syntax language needs to support telling the selector what symbols are available in the document.
 
 The [Navigable Symbol Provider](../../language-creation/feature-services/navigable-symbol-provider.md) topic describes the special language service that must be implemented so that a selector knows how to populate its drop-downs with symbols.
 
@@ -44,10 +44,10 @@ The selector has an additional feature where the selected symbol grays out when 
 
 Some languages may not support members and may only need to have a single drop-down to display root symbols, instead of an additional drop-down to display member symbols.
 
-For these scenarios, set the [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector).[AreMemberSymbolsSupported](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector.AreMemberSymbolsSupported) property to `false`.
+For these scenarios, set the [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector).[AreMemberSymbolsSupported](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector.AreMemberSymbolsSupported) property to `false`.
 
 ## Member Symbol-Only Display
 
 Some languages may wish to only show members and have a single drop-down to display member symbols, instead of an additional drop-down to display root symbols.
 
-For these scenarios, set the [NavigableSymbolSelector](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector).[AreRootSymbolsSupported](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.NavigableSymbolSelector.AreRootSymbolsSupported) property to `false`.
+For these scenarios, set the [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector).[AreRootSymbolsSupported](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector.AreRootSymbolsSupported) property to `false`.

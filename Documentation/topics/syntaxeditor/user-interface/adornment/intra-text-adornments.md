@@ -46,19 +46,18 @@ There are several members that can be useful for working with intra-text spacers
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[GetIntraTextSpacerBounds](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerBounds*)
+[GetIntraTextSpacerBounds](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerBounds*)
 
 </td>
 <td>
 
-Returns a [TextBounds](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.TextBounds) representing the bounds of the specified intra-text spacer.
+Returns a [TextBounds](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextBounds) representing the bounds of the specified intra-text spacer.
 
 The object passed as an argument is the value of the desired tag's [Key](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Key) property.
 
@@ -68,7 +67,7 @@ The object passed as an argument is the value of the desired tag's [Key](xref:Ac
 <tr>
 <td>
 
-[GetIntraTextSpacerTag](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerTag*)
+[GetIntraTextSpacerTag](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerTag*)
 
 </td>
 <td>
@@ -83,7 +82,7 @@ Spacer characters are embedded in between other real text characters.  While spa
 <tr>
 <td>
 
-[GetIntraTextSpacerTags](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerTags*)
+[GetIntraTextSpacerTags](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine.GetIntraTextSpacerTags*)
 
 </td>
 <td>Returns a collection of intra-text spacer tag ranges on the line that are of the specified type.</td>
@@ -94,15 +93,15 @@ Spacer characters are embedded in between other real text characters.  While spa
 
 ## Creating an Intra-Text Adornment Manager
 
-Now that intra-text spacers have been created, it's time to fill their space with adornments.  SyntaxEditor includes a handy base class called [IntraTextAdornmentManagerBase<T, U>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2) that makes it very easy to fill your pre-defined intra-text spacers with adornments.
+Now that intra-text spacers have been created, it's time to fill their space with adornments.  SyntaxEditor includes a handy base class called [IntraTextAdornmentManagerBase<T, U>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2) that makes it very easy to fill your pre-defined intra-text spacers with adornments.
 
 > [!NOTE]
 > It is important to understand the core concepts for adornments and adornment layers described in the [Adornment Layers](adornment-layers.md) topic, since many of them apply here.
 
-To make an intra-text adornment manager, create a new class that inherits [IntraTextAdornmentManagerBase<T, U>](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2).  The first type parameter you pass the base class is the type of view to support, such as [IEditorView](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IEditorView).  The second type parameter you pass the base class is the type of tag to aggregate.  For instance if your intra-text spacer tagger returns an `IconTag`, which for this discussion we will assume that `IconTag` implements [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag), you would pass the `IconTag` type to the base class.
+To make an intra-text adornment manager, create a new class that inherits [IntraTextAdornmentManagerBase<T, U>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2).  The first type parameter you pass the base class is the type of view to support, such as [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).  The second type parameter you pass the base class is the type of tag to aggregate.  For instance if your intra-text spacer tagger returns an `IconTag`, which for this discussion we will assume that `IconTag` implements [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag), you would pass the `IconTag` type to the base class.
 
-Next, have the intra-text adornment manager class constructor pass the target view instance and [AdornmentLayerDefinition](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinition) to use to the base class constructor.
+Next, have the intra-text adornment manager class constructor pass the target view instance and [AdornmentLayerDefinition](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinition) to use to the base class constructor.
 
-Then override the base class' [AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2.AddAdornment*) method.  That method passes the view line being examined, the tag and its range for which to create an adornment, and the bounds in which a related intra-text spacer has been placed.  Your implementation of the method should create the appropriate adornment, whether it be an image or other shape/control.  Then add it to the adornment layer via the layer's [AddAdornment](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) method, being sure to pass the [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag).[Key](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Key) value in the "tag" argument to that method.  The adornment layer can be retrieved using the [AdornmentLayer](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.AdornmentLayer) property on the base class.
+Then override the base class' [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.IntraTextAdornmentManagerBase`2.AddAdornment*) method.  That method passes the view line being examined, the tag and its range for which to create an adornment, and the bounds in which a related intra-text spacer has been placed.  Your implementation of the method should create the appropriate adornment, whether it be an image or other shape/control.  Then add it to the adornment layer via the layer's [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) method, being sure to pass the [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag).[Key](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Key) value in the "tag" argument to that method.  The adornment layer can be retrieved using the [AdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.AdornmentLayer) property on the base class.
 
 Finally register an adornment manager provider (described in the [Adornment Layers](adornment-layers.md) topic) as a language service.  Your views should now be rendering adornments in your intra-text spacers.

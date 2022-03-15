@@ -5,7 +5,7 @@ order: 13
 ---
 # HsbColorPicker
 
-The [HsbColorPicker](xref:ActiproSoftware.Windows.Controls.Editors.HsbColorPicker) control combines several primitives ([RadialHuePicker](radialhuepicker.md) and [SaturationBrightnessPicker](saturationbrightness.md)) together to create a control that allows for easy selection of a HSB (hue, saturation, brightness) color.
+The [HsbColorPicker](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker) control combines several primitives ([RadialHuePicker](radialhuepicker.md) and [SaturationBrightnessPicker](saturationbrightness.md)) together to create a control that allows for easy selection of a HSB (hue, saturation, brightness) color.
 
 ![Screenshot](../images/hsbcolorpicker.png)
 
@@ -13,7 +13,7 @@ The outer ring of the control is a radial slider for selecting the hue.  The inn
 
 ## Comparison Value
 
-The [HsbColorPicker](xref:ActiproSoftware.Windows.Controls.Editors.HsbColorPicker).[IsComparisonValueVisible](xref:ActiproSoftware.Windows.Controls.Editors.HsbColorPicker.IsComparisonValueVisible) property can be set to `true` to display a comparison color value on the left side of the hue ring's fill area.  The color displayed is specified by the [ComparisonValue](xref:ActiproSoftware.Windows.Controls.Editors.HsbColorPicker.ComparisonValue) property.
+The [HsbColorPicker](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker).[IsComparisonValueVisible](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker.IsComparisonValueVisible) property can be set to `true` to display a comparison color value on the left side of the hue ring's fill area.  The color displayed is specified by the [ComparisonValue](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker.ComparisonValue) property.
 
 This is useful when setting up a comparison of old/new color values.
 

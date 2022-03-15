@@ -9,7 +9,7 @@ There are several panels provided, with some that replicate and enhance the layo
 
 ## PanelBase
 
-All animated panels derive from [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).  This includes most of the animation framework, leaving the derived classes to simply implement their layout logic.
+All animated panels derive from [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).  This includes most of the animation framework, leaving the derived classes to simply implement their layout logic.
 
 See the [PanelBase](panelbase.md) topic for more information.
 
@@ -63,6 +63,6 @@ See the [ZapPanel](zappanel.md) topic for more information.
 
 ## Building a Custom Panel
 
-Custom panels can easily be created that support animations and can be used in [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel).
+Custom panels can easily be created that support animations and can be used in [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel).
 
 See the [Building a Custom Panel](building-a-custom-panel.md) topic for more information.

@@ -9,7 +9,7 @@ A legend can provide context for what each pie slice represents.  Legends are fu
 
 ## Getting Started
 
-The legend will display the title of each pie slice in the pie chart, along with the color of each pie slice as a key in the legend.  To display a legend on a pie / donut chart, set [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[IsLegendVisible](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.IsLegendVisible) to `true`.
+The legend will display the title of each pie slice in the pie chart, along with the color of each pie slice as a key in the legend.  To display a legend on a pie / donut chart, set [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[IsLegendVisible](xref:@ActiproUIRoot.Controls.Charts.PieChart.IsLegendVisible) to `true`.
 
 ```xaml
 <charts:PieChart IsLegendVisible="true"/>
@@ -19,7 +19,7 @@ The legend will display the title of each pie slice in the pie chart, along with
 
 ## Legend Position
 
-The position of the legend can be controlled using [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendHorizontalPosition](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendHorizontalPosition) and [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendVerticalPosition](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:ActiproSoftware.Windows.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:ActiproSoftware.Windows.Controls.Charts.LegendVerticalPosition.TopOutside).
+The position of the legend can be controlled using [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendHorizontalPosition](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendHorizontalPosition) and [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendVerticalPosition](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:@ActiproUIRoot.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:@ActiproUIRoot.Controls.Charts.LegendVerticalPosition.TopOutside).
 
 `Inside` means the legend will be positioned within the pie chart drawing area and may overlap labels and other elements. `Outside` means the legend will be positioned outside of the pie chart drawing area and space will be made so that it does not overlap the pie chart or labels.
 
@@ -39,7 +39,7 @@ This is a legend displayed at `TopInside` and `RightOutside`.  Note how room is 
 
 ![Screenshot](../images/pie-legend3.png)
 
-Legend position can also be fine-tuned using [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendMargin](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendMargin).  LegendMargin is a `Thickness` that determines how the legend is placed after [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendHorizontalPosition](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendHorizontalPosition) and [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendVerticalPosition](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendVerticalPosition) are applied.
+Legend position can also be fine-tuned using [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendMargin](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendMargin).  LegendMargin is a `Thickness` that determines how the legend is placed after [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendHorizontalPosition](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendHorizontalPosition) and [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendVerticalPosition](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendVerticalPosition) are applied.
 
 This is a legend displayed at `TopInside` and `RightInside`, with a `LegendMargin` of `0,40,0,0`.  Note how the legend is placed 40 pixels lower than it normally would be without the margin.
 
@@ -52,7 +52,7 @@ This is a legend displayed at `TopInside` and `RightInside`, with a `LegendMargi
 
 ## Styling Legend
 
-The legend can be styled using [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendStyle](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendStyle).  The style you provide should have a `TargetType` of `ItemsControl`.
+The legend can be styled using [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendStyle).  The style you provide should have a `TargetType` of `ItemsControl`.
 
 ![Screenshot](../images/pie-legend5.png)
 
@@ -90,7 +90,7 @@ This is an example of providing a custom `LegendStyle`.
 
 ## Legend Item Customization
 
-Each individual legend item can be retemplated by setting `ItemTemplate` in [PieChart](xref:ActiproSoftware.Windows.Controls.Charts.PieChart).[LegendStyle](xref:ActiproSoftware.Windows.Controls.Charts.PieChart.LegendStyle).  The data source for the template is [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey).[Label](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey.Label) and [LegendKey](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:ActiproSoftware.Windows.Controls.Charts.LegendKey.LegendMarkerStyle).
+Each individual legend item can be retemplated by setting `ItemTemplate` in [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.PieChart.LegendStyle).  The data source for the template is [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[Label](xref:@ActiproUIRoot.Controls.Charts.LegendKey.Label) and [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:@ActiproUIRoot.Controls.Charts.LegendKey.LegendMarkerStyle).
 
 ![Screenshot](../images/pie-legend6.png)
 

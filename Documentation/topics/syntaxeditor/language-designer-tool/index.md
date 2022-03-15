@@ -5,11 +5,14 @@ order: 1
 ---
 # Overview
 
-The Language Designer tool is an application that has many helpful features for quickly developing language definitions.  It is an option when installing the WPF controls.
+The Language Designer tool is an application that has many helpful features for quickly developing language definitions.  It is an option when installing the @@PlatformName controls.
 
 This application uses several of the WPF Studio control products, such as Ribbon, Docking & MDI, Editors, Navigation, PropertyGrid, and SyntaxEditor, and is a nice showcase of what you can do with our products.
 
 Its main goal is to provide you with a user interface for creating a language project, which is essentially a profile about a syntax language.  Various language features such as a lexer and classification types can be configured and in some cases tested right within the application.  Then code generation can be performed to output code files that allow for a related syntax language to be used in your own applications with the SyntaxEditor control.
+
+> [!NOTE]
+> Since the Language Designer is written in WPF and thus runs on .NET Framework, it can only load other .NET Framework assemblies for debugging in the LL Parser Debugger.  This is described in more detail in the [LL Parser Debugger](ll-parser-debugger.md) topic.
 
 ## Getting Started
 

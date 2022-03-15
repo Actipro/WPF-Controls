@@ -17,7 +17,7 @@ Themes are resource dictionaries that define styles and templates for a group of
 
 Some resource dictionaries may be used to provide the styles and templates for controls, while others may simply define asset resources, such as brushes and pens.  Still others may tie those combinations together to provide a complete theme implementation.
 
-The Actipro [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager) allows you to specify a particular theme to use for all Actipro controls, and optionally native WPF controls as well.
+The Actipro [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) allows you to specify a particular theme to use for all Actipro controls, and optionally native WPF controls as well.
 
 ## Theme Generation
 
@@ -27,7 +27,7 @@ Note that the optional Aero-style themes still use the older design of loading a
 
 ## Theme Definition Overview
 
-Theme definitions are represented by the [ThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition) class.  They have many options that are interpreted by the Actipro theme generator when dynamically building a resource dictionary containing assets for a theme.
+Theme definitions are represented by the [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) class.  They have many options that are interpreted by the Actipro theme generator when dynamically building a resource dictionary containing assets for a theme.
 
 Theme definitions allow for easy configuration of these kinds of options:
 
@@ -43,7 +43,7 @@ Theme definitions allow for easy configuration of these kinds of options:
 
 ## Registering and Using a Theme Definition
 
-This sample code shows how to create a basic [ThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition) whose name is "Custom", register it with the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager), and then tell the theme manager to use it as the current theme.  Note that we also tell the theme manager to theme native WPF controls.  The generated theme will be dark colors with green accents.
+This sample code shows how to create a basic [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) whose name is "Custom", register it with the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager), and then tell the theme manager to use it as the current theme.  Note that we also tell the theme manager to theme native WPF controls.  The generated theme will be dark colors with green accents.
 
 ```csharp
 public partial class App : Application {
@@ -77,13 +77,13 @@ public partial class App : Application {
 }
 ```
 
-Call the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[RegisterThemeDefinition](xref:ActiproSoftware.Windows.Themes.ThemeManager.RegisterThemeDefinition*) method for each theme definition to register.  Multiple theme definitions can be registered with the theme manager, but make sure each theme definition has a unique name.  The [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property is later set to the name of the theme to load for the application.  The names of predefined themes is available as constants in the [ThemeNames](xref:ActiproSoftware.Windows.Themes.ThemeNames) class.
+Call the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterThemeDefinition](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterThemeDefinition*) method for each theme definition to register.  Multiple theme definitions can be registered with the theme manager, but make sure each theme definition has a unique name.  The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property is later set to the name of the theme to load for the application.  The names of predefined themes is available as constants in the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class.
 
 ## Automatic Light and Dark Theme Switching
 
 Windows has a system setting where the user can indicate if they prefer light or dark themed applications.  Say that you've created and registered two theme definitions (light and dark) for your application and you wish for those themes to follow the Windows system setting.  This is easily done with the Actipro theme manager.
 
-This sample code shows how two theme definitions could be registered (replace the ellipses with appropriate theme definition property settings) and the theme manager told to select a theme based on the Windows system preference setting for light or dark apps.  Note that no call to the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property is needed in this scenario.  The [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[RegisterAutomaticThemes](xref:ActiproSoftware.Windows.Themes.ThemeManager.RegisterAutomaticThemes*) call will switch the theme if necessary.
+This sample code shows how two theme definitions could be registered (replace the ellipses with appropriate theme definition property settings) and the theme manager told to select a theme based on the Windows system preference setting for light or dark apps.  Note that no call to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property is needed in this scenario.  The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterAutomaticThemes](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterAutomaticThemes*) call will switch the theme if necessary.
 
 ```csharp
 ThemeManager.RegisterThemeDefinition(new ThemeDefinition("MyLightTheme") { ... });
@@ -91,40 +91,40 @@ ThemeManager.RegisterThemeDefinition(new ThemeDefinition("MyDarkTheme") { ... })
 ThemeManager.RegisterAutomaticThemes("MyLightTheme", "MyDarkTheme", ThemeNames.HighContrast);
 ```
 
-Behind the scenes, [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager) attaches a Win32 message hook on the `Application.MainWindow` to listen for messages from the system that indicate theme changes.  When one is detected the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[SystemApplicationMode](xref:ActiproSoftware.Windows.Themes.ThemeManager.SystemApplicationMode) property is updated and if automatic theme switching is enabled, the theme is changed.
+Behind the scenes, [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) attaches a Win32 message hook on the `Application.MainWindow` to listen for messages from the system that indicate theme changes.  When one is detected the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property is updated and if automatic theme switching is enabled, the theme is changed.
 
-Note that if you use a splash screen for your application, the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager) may initially attach its hook to that splash screen `Window` since it would be the value in `Application.MainWindow`.  WPF's `Application` class doesn't notify when `Application.MainWindow` changes.  If you later set a new main `Window` to `Application.MainWindow`, the hook can be updated to that `Window` by a call to the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[RegisterAutomaticThemes](xref:ActiproSoftware.Windows.Themes.ThemeManager.RegisterAutomaticThemes*) method, which ensures the hook is attached to the current `Application.MainWindow`.
+Note that if you use a splash screen for your application, the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) may initially attach its hook to that splash screen `Window` since it would be the value in `Application.MainWindow`.  WPF's `Application` class doesn't notify when `Application.MainWindow` changes.  If you later set a new main `Window` to `Application.MainWindow`, the hook can be updated to that `Window` by a call to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterAutomaticThemes](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterAutomaticThemes*) method, which ensures the hook is attached to the current `Application.MainWindow`.
 
 ## High-Contrast Support
 
-The Actipro theme generator has complete support for high-contrast themes.  When the [ThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition).[Intent](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Intent) property is set to `HighContrast`, only system colors will be used for generated brush resource assets.  This allows your application to be rendered properly for end users who require high-contrast.
+The Actipro theme generator has complete support for high-contrast themes.  When the [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition).[Intent](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Intent) property is set to `HighContrast`, only system colors will be used for generated brush resource assets.  This allows your application to be rendered properly for end users who require high-contrast.
 
 > [!NOTE]
 > A `HighContrast` theme intent should only ever be used when Windows itself is in high-contrast mode.
 
-The [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[RegisterAutomaticThemes](xref:ActiproSoftware.Windows.Themes.ThemeManager.RegisterAutomaticThemes*) method described in the previous section has a third parameter that allows for a high-contrast theme name to be specified, which generally is `ThemeNames.HighContrast`.  When a theme name is passed in, the theme manager will watch for the system to change into high-contrast mode and will automatically activate/deactivate that theme as appropriate.
+The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterAutomaticThemes](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterAutomaticThemes*) method described in the previous section has a third parameter that allows for a high-contrast theme name to be specified, which generally is `ThemeNames.HighContrast`.  When a theme name is passed in, the theme manager will watch for the system to change into high-contrast mode and will automatically activate/deactivate that theme as appropriate.
 
 ## Theme Definition Base Classes
 
 There are several theme definition classes that provide their own set of default values.  It's best to use the base class that is closest to the look you wish to achieve with your theme, so fewer options need to be set.
 
-- [ThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition) - Default themes with a modern appearance and some rounded corners.
-- [MetroThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.MetroThemeDefinition) - Flat Metro themes that have an accented status bar and resemble apps like Visual Studio.
-- [OfficeColorfulThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.OfficeColorfulThemeDefinition) - Office Colorful themes with an accented title bar.
-- [OfficeWhiteThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.OfficeWhiteThemeDefinition) - Office White themes with an accented status bar.
-- [HighContrastThemeDefinition](xref:ActiproSoftware.Windows.Themes.Generation.HighContrastThemeDefinition) - High-contrast themes that use system colors; only for use when Windows itself is in high-contrast mode.
+- [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) - Default themes with a modern appearance and some rounded corners.
+- [MetroThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.MetroThemeDefinition) - Flat Metro themes that have an accented status bar and resemble apps like Visual Studio.
+- [OfficeColorfulThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.OfficeColorfulThemeDefinition) - Office Colorful themes with an accented title bar.
+- [OfficeWhiteThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.OfficeWhiteThemeDefinition) - Office White themes with an accented status bar.
+- [HighContrastThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.HighContrastThemeDefinition) - High-contrast themes that use system colors; only for use when Windows itself is in high-contrast mode.
 
 ## Theme Definition Important Options
 
-The most important options of a theme definition are its [Name](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Name) and [Intent](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Intent).
+The most important options of a theme definition are its [Name](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Name) and [Intent](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Intent).
 
-The [Name](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Name) property must be a string that uniquely identifies the theme definition.  Once the theme definition is registered with the theme manager, it can be used to generate a theme when its name is set to the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[CurrentTheme](xref:ActiproSoftware.Windows.Themes.ThemeManager.CurrentTheme) property.
+The [Name](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Name) property must be a string that uniquely identifies the theme definition.  Once the theme definition is registered with the theme manager, it can be used to generate a theme when its name is set to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property.
 
-The [Intent](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.Intent) property specifies a [ThemeIntent](xref:ActiproSoftware.Windows.Themes.Generation.ThemeIntent) enumeration value that indicates if the theme definition is intended to be a black, dark, light, or white theme.  This setting heavily affects the grayscale and color shades that are used in the theme.
+The [Intent](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.Intent) property specifies a [ThemeIntent](xref:@ActiproUIRoot.Themes.Generation.ThemeIntent) enumeration value that indicates if the theme definition is intended to be a black, dark, light, or white theme.  This setting heavily affects the grayscale and color shades that are used in the theme.
 
 ## Theme Definition Color Palette Options
 
-Each theme definition generates multiple shades of colors in various color families.  The [ColorPaletteKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ColorPaletteKind) property specifies a [ColorPaletteKind](xref:ActiproSoftware.Windows.Themes.Generation.ColorPaletteKind) enumeration value that indicates the default color palette to use for the generated color families.
+Each theme definition generates multiple shades of colors in various color families.  The [ColorPaletteKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ColorPaletteKind) property specifies a [ColorPaletteKind](xref:@ActiproUIRoot.Themes.Generation.ColorPaletteKind) enumeration value that indicates the default color palette to use for the generated color families.
 
 - Vibrant - Bright colors.
 - Office - Colors are similar to slightly more muted Office colors.
@@ -133,41 +133,41 @@ The properties for the base colors used to generate each color family can be alt
 
 The base colors for each color family is listed below:
 
-- [BaseColorBlue](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorBlue) - Base color for the blue color family.
-- [BaseColorGreen](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorGreen) - Base color for the green color family.
-- [BaseColorIndigo](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorIndigo) - Base color for the indigo color family.
-- [BaseColorOrange](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorOrange) - Base color for the orange color family.
-- [BaseColorPink](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorPink) - Base color for the pink color family.
-- [BaseColorPurple](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorPurple) - Base color for the purple color family.
-- [BaseColorRed](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorRed) - Base color for the red color family.
-- [BaseColorTeal](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorTeal) - Base color for the teal color family.
-- [BaseColorYellow](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseColorYellow) - Base color for the yellow color family.
+- [BaseColorBlue](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorBlue) - Base color for the blue color family.
+- [BaseColorGreen](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorGreen) - Base color for the green color family.
+- [BaseColorIndigo](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorIndigo) - Base color for the indigo color family.
+- [BaseColorOrange](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorOrange) - Base color for the orange color family.
+- [BaseColorPink](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorPink) - Base color for the pink color family.
+- [BaseColorPurple](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorPurple) - Base color for the purple color family.
+- [BaseColorRed](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorRed) - Base color for the red color family.
+- [BaseColorTeal](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorTeal) - Base color for the teal color family.
+- [BaseColorYellow](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorYellow) - Base color for the yellow color family.
 
 ## Theme Definition Grayscale Palette Options
 
-All grayscale (silver and gray shades) are tinted twoards a particular color hue.  The [BaseGrayscaleHue](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseGrayscaleHue) property determines this hue value in degrees from `0` to `359`.
+All grayscale (silver and gray shades) are tinted twoards a particular color hue.  The [BaseGrayscaleHue](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseGrayscaleHue) property determines this hue value in degrees from `0` to `359`.
 
-The [BaseGrayscaleSaturation](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseGrayscaleSaturation) property determines the level at which the color hue is saturated into the grayscale shades.  A higher number means a higher saturation level.
+The [BaseGrayscaleSaturation](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseGrayscaleSaturation) property determines the level at which the color hue is saturated into the grayscale shades.  A higher number means a higher saturation level.
 
-The [GrayMin](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.GrayMin) and [SilverMax](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.SilverMax) properties indicate the minimum and maximum component values to use for the generated grayscale shades.  Raise the gray minimum to not have as dark of a theme.  The silver maximum generally remains `255` to ensure white can be used.
+The [GrayMin](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.GrayMin) and [SilverMax](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.SilverMax) properties indicate the minimum and maximum component values to use for the generated grayscale shades.  Raise the gray minimum to not have as dark of a theme.  The silver maximum generally remains `255` to ensure white can be used.
 
-The [GraySilverRatio](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.GraySilverRatio) is a ratio percentage indicating how the gray shades and silver shades share the entire grayscale spectrum.  The default value is `0.5`, meaning they share the spectrum equally.
+The [GraySilverRatio](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.GraySilverRatio) is a ratio percentage indicating how the gray shades and silver shades share the entire grayscale spectrum.  The default value is `0.5`, meaning they share the spectrum equally.
 
 ## Theme Definition Color Family Usage Options
 
-Several options let you select the color family to use for various UI areas.  For instance, if you want the primary accent color for hover states, etc. in your application to be green, you'd alter the [PrimaryAccentColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PrimaryAccentColorFamilyName) property.
+Several options let you select the color family to use for various UI areas.  For instance, if you want the primary accent color for hover states, etc. in your application to be green, you'd alter the [PrimaryAccentColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PrimaryAccentColorFamilyName) property.
 
-- [DockGuideColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.DockGuideColorFamilyName) - Docking window dock guides.
-- [PreviewTabColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PreviewTabColorFamilyName) - Tabbed MDI preview tabs.
-- [PrimaryAccentColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PrimaryAccentColorFamilyName) - Primary accent.
-- [ProgressColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ProgressColorFamilyName) - Progress bar fill.
-- [WindowColorFamilyName](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.WindowColorFamilyName) - Window title background and border.
+- [DockGuideColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.DockGuideColorFamilyName) - Docking window dock guides.
+- [PreviewTabColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PreviewTabColorFamilyName) - Tabbed MDI preview tabs.
+- [PrimaryAccentColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PrimaryAccentColorFamilyName) - Primary accent.
+- [ProgressColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ProgressColorFamilyName) - Progress bar fill.
+- [WindowColorFamilyName](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.WindowColorFamilyName) - Window title background and border.
 
 ## Theme Definition Font Options
 
-The [DefaultFontFamily](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.DefaultFontFamily) property specifies the default font family to apply to all top-level elements like `Window`, `ContextMenu`, and `ToolTip` controls.  When left its default value of a null value, the system-defined result of the `SystemFonts.MessageFontFamily` property is used.  On English systems, this default value is generally "Segoe UI".  It is recommended to not specify the default font family unless you have a specific stylistic need for another font family.
+The [DefaultFontFamily](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.DefaultFontFamily) property specifies the default font family to apply to all top-level elements like `Window`, `ContextMenu`, and `ToolTip` controls.  When left its default value of a null value, the system-defined result of the `SystemFonts.MessageFontFamily` property is used.  On English systems, this default value is generally "Segoe UI".  It is recommended to not specify the default font family unless you have a specific stylistic need for another font family.
 
-The [BaseFontSize](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BaseFontSize) property indicates the base font size to use for most UI.  Window titles (when using [WindowChrome](windowchrome.md)) will use the relative font size specified in the [WindowTitleFontSizeKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.WindowTitleFontSizeKind) property.  Likewise, tool window titles will use the relative font specified in the [ToolWindowContainerTitleFontSizeKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ToolWindowContainerTitleFontSizeKind) property.
+The [BaseFontSize](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseFontSize) property indicates the base font size to use for most UI.  Window titles (when using [WindowChrome](windowchrome.md)) will use the relative font size specified in the [WindowTitleFontSizeKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.WindowTitleFontSizeKind) property.  Likewise, tool window titles will use the relative font specified in the [ToolWindowContainerTitleFontSizeKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ToolWindowContainerTitleFontSizeKind) property.
 
 ## Theme Definition Other Options
 
@@ -175,51 +175,51 @@ There are many other appearance options that can be configured as well.
 
 ### Arrow Kinds
 
-The [ArrowKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ArrowKind) property specifies an [ArrowKind](xref:ActiproSoftware.Windows.Themes.Generation.ArrowKind) enumeration value that indicates whether chevron or filled triangle arrows should be used throughout the UI.
+The [ArrowKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ArrowKind) property specifies an [ArrowKind](xref:@ActiproUIRoot.Themes.Generation.ArrowKind) enumeration value that indicates whether chevron or filled triangle arrows should be used throughout the UI.
 
 ### Borders
 
-The [RequireDarkerBorders](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.RequireDarkerBorders) property specifies whether dark-oriented themes should use darker-than-background borders instead of lighter-than-background borders.  When this property is `true` in a dark theme, it's best to use a higher [GrayMin](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.GrayMin), which will allow the darker borders to be more distinctive.  The [GraySilverRatio](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.GraySilverRatio) can optionally be slightly increased to reduce overall border contrast.
+The [RequireDarkerBorders](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.RequireDarkerBorders) property specifies whether dark-oriented themes should use darker-than-background borders instead of lighter-than-background borders.  When this property is `true` in a dark theme, it's best to use a higher [GrayMin](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.GrayMin), which will allow the darker borders to be more distinctive.  The [GraySilverRatio](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.GraySilverRatio) can optionally be slightly increased to reduce overall border contrast.
 
 ### Bullets
 
-Several options like [BulletBorderWidth](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BulletBorderWidth), [BulletGlyphKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BulletGlyphKind), [BulletRelativeSize](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BulletRelativeSize), and [CheckBoxCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.CheckBoxCornerRadius) determine how `CheckBox` and `RadioButton` bullets render.
+Several options like [BulletBorderWidth](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BulletBorderWidth), [BulletGlyphKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BulletGlyphKind), [BulletRelativeSize](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BulletRelativeSize), and [CheckBoxCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.CheckBoxCornerRadius) determine how `CheckBox` and `RadioButton` bullets render.
 
 ### Buttons and Bar Items
 
-Several options like [BarItemBackgroundGradientKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BarItemBackgroundGradientKind), [BarItemBackgroundStateKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BarItemBackgroundStateKind), [BarItemBorderContrastKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.BarItemBorderContrastKind), [ButtonBackgroundGradientKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ButtonBackgroundGradientKind), [ButtonBorderContrastKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ButtonBorderContrastKind), [ButtonCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ButtonCornerRadius), [ButtonPadding](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ButtonPadding), and [ToolBarButtonCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ToolBarButtonCornerRadius) determine how buttons render.
+Several options like [BarItemBackgroundGradientKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BarItemBackgroundGradientKind), [BarItemBackgroundStateKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BarItemBackgroundStateKind), [BarItemBorderContrastKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BarItemBorderContrastKind), [ButtonBackgroundGradientKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ButtonBackgroundGradientKind), [ButtonBorderContrastKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ButtonBorderContrastKind), [ButtonCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ButtonCornerRadius), [ButtonPadding](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ButtonPadding), and [ToolBarButtonCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ToolBarButtonCornerRadius) determine how buttons render.
 
 ### Containers
 
-The [ContainerBorderContrastKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ContainerBorderContrastKind) property alters how container borders render.
+The [ContainerBorderContrastKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ContainerBorderContrastKind) property alters how container borders render.
 
 ### List Items
 
-Several options like [ListItemBackgroundGradientKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ListItemBackgroundGradientKind), [ListItemBackgroundStateKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ListItemBackgroundStateKind), and [ListItemBorderContrastKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ListItemBorderContrastKind) determine how list items render.
+Several options like [ListItemBackgroundGradientKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ListItemBackgroundGradientKind), [ListItemBackgroundStateKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ListItemBackgroundStateKind), and [ListItemBorderContrastKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ListItemBorderContrastKind) determine how list items render.
 
 ### Menus
 
-Several options like [MenuItemLargeIconColumnWidth](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.MenuItemLargeIconColumnWidth), [MenuItemIconColumnWidth](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.MenuItemIconColumnWidth), [MenuItemPopupColumnWidth](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.MenuItemPopupColumnWidth), [MenuItemPadding](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.MenuItemPadding), and [MenuPopupCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.MenuPopupCornerRadius) determine how menus render.
+Several options like [MenuItemLargeIconColumnWidth](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.MenuItemLargeIconColumnWidth), [MenuItemIconColumnWidth](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.MenuItemIconColumnWidth), [MenuItemPopupColumnWidth](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.MenuItemPopupColumnWidth), [MenuItemPadding](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.MenuItemPadding), and [MenuPopupCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.MenuPopupCornerRadius) determine how menus render.
 
 ### Popups
 
-Several options like [PopupBorderContrastKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PopupBorderContrastKind), [PopupCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PopupCornerRadius), and [PopupShadowDirection](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.PopupShadowDirection) determine how popups render.
+Several options like [PopupBorderContrastKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PopupBorderContrastKind), [PopupCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PopupCornerRadius), and [PopupShadowDirection](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.PopupShadowDirection) determine how popups render.
 
 ### Scroll Bars
 
-Several options like [ScrollBarHasButtons](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ScrollBarHasButtons), [ScrollBarThumbCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ScrollBarThumbCornerRadius), and [ScrollBarThumbMargin](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.ScrollBarThumbMargin) determine how scroll bars render.
+Several options like [ScrollBarHasButtons](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ScrollBarHasButtons), [ScrollBarThumbCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ScrollBarThumbCornerRadius), and [ScrollBarThumbMargin](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.ScrollBarThumbMargin) determine how scroll bars render.
 
 ### Status Bars
 
-The [StatusBarBackgroundKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.StatusBarBackgroundKind) property alters how status bars render.
+The [StatusBarBackgroundKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.StatusBarBackgroundKind) property alters how status bars render.
 
 ### Tabs
 
-The [TabCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.TabCornerRadius) property alters how tabs render.
+The [TabCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.TabCornerRadius) property alters how tabs render.
 
 ### Windows and Title Bars
 
-Several options like [WindowTitleBarBackgroundKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.WindowTitleBarBackgroundKind), [TitleBarCornerRadius](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.TitleBarCornerRadius), and [WindowBorderKind](xref:ActiproSoftware.Windows.Themes.Generation.ThemeDefinition.WindowBorderKind) determine how windows and title bars render.
+Several options like [WindowTitleBarBackgroundKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.WindowTitleBarBackgroundKind), [TitleBarCornerRadius](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.TitleBarCornerRadius), and [WindowBorderKind](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.WindowBorderKind) determine how windows and title bars render.
 
 ## Traditional WPF Themes (System-Based Switching)
 
@@ -246,15 +246,15 @@ Theme catalogs can be used to indicate which resource dictionaries should be loa
 
 Each of these resource dictionaries can contain many assets, such as brushes, specific to a theme.  For instance, you may wish to override some brushes used in one of the predefined themes.  To do this, you would make a resource dictionary with the brush overrides, then register that resource dictionary with a theme catalog to load for the target theme name.
 
-Resource dictionary references are represented by instances of [ThemedResourceDictionaryReference](xref:ActiproSoftware.Windows.Themes.ThemedResourceDictionaryReference), which include a `Uri` to the XAML file for the `ResourceDictionary` and a list of associated theme names.  Therefore, a single reference can indicate a single XAML file should be loaded for multiple themes.
+Resource dictionary references are represented by instances of [ThemedResourceDictionaryReference](xref:@ActiproUIRoot.Themes.ThemedResourceDictionaryReference), which include a `Uri` to the XAML file for the `ResourceDictionary` and a list of associated theme names.  Therefore, a single reference can indicate a single XAML file should be loaded for multiple themes.
 
 ### Registration
 
-Theme catalogs can be manually registered using the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[RegisterThemeCatalog](xref:ActiproSoftware.Windows.Themes.ThemeManager.RegisterThemeCatalog*) method.  They can also be unregistered using the [ThemeManager](xref:ActiproSoftware.Windows.Themes.ThemeManager).[UnregisterThemeCatalog](xref:ActiproSoftware.Windows.Themes.ThemeManager.UnregisterThemeCatalog*) method.  A key can be used to uniquely identify a theme catalog during registration, so it can be more easily removed later.
+Theme catalogs can be manually registered using the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterThemeCatalog](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterThemeCatalog*) method.  They can also be unregistered using the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[UnregisterThemeCatalog](xref:@ActiproUIRoot.Themes.ThemeManager.UnregisterThemeCatalog*) method.  A key can be used to uniquely identify a theme catalog during registration, so it can be more easily removed later.
 
-Custom registrars, which derive from [ThemeCatalogRegistrarBase<T>](xref:ActiproSoftware.Windows.Themes.ThemeCatalogRegistrarBase`1), can be used to automatically register a system theme catalog with the theme manager when WPF loads the system themes for an assembly.
+Custom registrars, which derive from [ThemeCatalogRegistrarBase<T>](xref:@ActiproUIRoot.Themes.ThemeCatalogRegistrarBase`1), can be used to automatically register a system theme catalog with the theme manager when WPF loads the system themes for an assembly.
 
-To accomplish this, a custom [ThemeCatalogRegistrarBase<T>](xref:ActiproSoftware.Windows.Themes.ThemeCatalogRegistrarBase`1) is created that passes the desired theme catalog type as the type parameter.  This registrar can then be included in the XAML files loaded by WPF and it will automatically register the theme catalog when loaded.
+To accomplish this, a custom [ThemeCatalogRegistrarBase<T>](xref:@ActiproUIRoot.Themes.ThemeCatalogRegistrarBase`1) is created that passes the desired theme catalog type as the type parameter.  This registrar can then be included in the XAML files loaded by WPF and it will automatically register the theme catalog when loaded.
 
 > [!NOTE]
 > It is a best practice to register custom theme catalogs upfront in the application startup code.  The tradeoff is that registering a theme catalog at app startup will force that assembly to load immediately, and will incur the time cost of loading the assembly, but will prevent templates from being reapplied later during app usage when a themed control from a control library is first used.

@@ -7,11 +7,11 @@ order: 2
 
 Getting up and running with Wizard is extremely easy.  Wizard provides all the wizard-related user interface features right out of the box, saving you hours of work.
 
-This topic's information will assume you are using Visual Studio to write your XAML code for a WPF `Window` that will contain a [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control.
+This topic's information will assume you are using Visual Studio to write your XAML code for a WPF `Window` that will contain a [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control.
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.Wpf.dll` and `ActiproSoftware.Wizard.Wpf.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Wizard.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates (Wizard, Aero Wizard)
 
@@ -35,7 +35,7 @@ Next, create a new empty WPF `Window` that looks like this:
 </Window>
 ```
 
-Note that by using those `Width`, `SizeToContent`, and `ResizeMode` settings, the `Window` will keep a fixed width of `600` pixels but will grow vertically as needed to fit the contents of the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) we will add next.
+Note that by using those `Width`, `SizeToContent`, and `ResizeMode` settings, the `Window` will keep a fixed width of `600` pixels but will grow vertically as needed to fit the contents of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) we will add next.
 
 ## Declare the Wizard XML Namespace
 
@@ -57,7 +57,7 @@ The xmlns attribute declares that the use of the `wizard` namespace in this `Win
 
 ## Add a Wizard Control
 
-Next, add a [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control as the sole child of the `Window`:
+Next, add a [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control as the sole child of the `Window`:
 
 ```xaml
 	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack" 
@@ -72,11 +72,11 @@ Next, add a [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) contro
 	</wizard:Wizard>
 ```
 
-Note that several optional attributes were also added, making the Wizard add the current page's [Title](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage.Title) property to the `Window`'s title, setting up [stack-based page sequencing](navigation-features/page-sequencing.md), and activating half-second wipe [transition effects](appearance-features/transition-effects.md).
+Note that several optional attributes were also added, making the Wizard add the current page's [Title](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.Title) property to the `Window`'s title, setting up [stack-based page sequencing](navigation-features/page-sequencing.md), and activating half-second wipe [transition effects](appearance-features/transition-effects.md).
 
 ## Add a Welcome Page
 
-Next, add a welcome [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control:
+Next, add a welcome [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control:
 
 ```xaml
 <wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
@@ -97,7 +97,7 @@ The welcome page is an [exterior page](page-button-features/page-types.md), whic
 
 ## Add an Interior Page
 
-Next, add an interior [WizardPage](xref:ActiproSoftware.Windows.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control after the existing welcome page:
+Next, add an interior [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control after the existing welcome page:
 
 ```xaml
 		<wizard:WizardPage x:Name="interiorPage" 
@@ -114,7 +114,7 @@ Now simply customize these pages by adding more content and perhaps some images.
 
 As the sample currently stands, it will iterate through the pages in sequential order and will enable the Finish button on the final page.
 
-Also ensure that the wizard is set up to receive focus when the `Window` opens.  This is accomplished by setting the attached `FocusManager.FocusedElement` property to the [Wizard](xref:ActiproSoftware.Windows.Controls.Wizard.Wizard) control instance.  When the wizard control or its visual descendants have focus, changing pages will move focus within the newly-selected page.
+Also ensure that the wizard is set up to receive focus when the `Window` opens.  This is accomplished by setting the attached `FocusManager.FocusedElement` property to the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control instance.  When the wizard control or its visual descendants have focus, changing pages will move focus within the newly-selected page.
 
 The complete sample code is:
 

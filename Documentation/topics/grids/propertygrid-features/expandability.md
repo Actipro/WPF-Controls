@@ -9,7 +9,7 @@ Certain complex properties are capable of being expandable in the property grid.
 
 ## Determining Property Expandability
 
-The [PropertyExpandability](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.PropertyExpandability) option helps guide if and when a property is deemed expandable.  The [PropertyExpandability](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.PropertyExpandability) enumeration returned by that property has these values:
+The [PropertyExpandability](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyExpandability) option helps guide if and when a property is deemed expandable.  The [PropertyExpandability](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyExpandability) enumeration returned by that property has these values:
 
 | Value | Description |
 |-----|-----|
@@ -33,18 +33,28 @@ public class Foo {
 
 ## Category Auto-Expansion
 
-Categories auto-expand by default, revealing the properties within them.  The [AreCategoriesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) property can be set to `false` to not auto-expand categories.
+Categories auto-expand by default, revealing the properties within them.  The [AreCategoriesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) property can be set to `false` to not auto-expand categories.
 
 ## Property Auto-Expansion
 
-Expandable properties don't auto-expand by default.  The [ArePropertiesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) property can be set to `true` to auto-expand all expandable properties.
+Expandable properties don't auto-expand by default.  The [ArePropertiesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) property can be set to `true` to auto-expand all expandable properties.
 
 ## Selectively Expanding Categories or Properties
 
-Data factories generate the data models (categories, properties, etc.) that the property grid consumes when building its user interface.  The [IDataModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IDataModel).[IsExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IDataModel.IsExpanded) property determines if a data model is expanded.  It defaults to false, but as mentioned above, the [AreCategoriesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) and [ArePropertiesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) properties can alter the defaults for categories and properties respectively.
+Data factories generate the data models (categories, properties, etc.) that the property grid consumes when building its user interface.  The [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[IsExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.IsExpanded) property determines if a data model is expanded.  It defaults to false, but as mentioned above, the [AreCategoriesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) and [ArePropertiesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) properties can alter the defaults for categories and properties respectively.
 
-There may be certain scenarios where you wish to only expand certain categories or properties.  In these cases, set [AreCategoriesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) or and [ArePropertiesAutoExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) (whichever is appropriate) to `false` and then make a [custom data factory](data-models.md).
+There may be certain scenarios where you wish to only expand certain categories or properties.  In these cases, set [AreCategoriesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.AreCategoriesAutoExpanded) or and [ArePropertiesAutoExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.ArePropertiesAutoExpanded) (whichever is appropriate) to `false` and then make a [custom data factory](data-models.md).
 
-In the WPF platform, the custom data factory should inherit [TypeDescriptorFactory](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.TypeDescriptorFactory).  Override the [CreatePropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.TypeDescriptorFactory.CreatePropertyModel*) or [CreateCollectionPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.TypeDescriptorFactory.CreateCollectionPropertyModel*) methods as appropriate and call their base methods.  If the [IPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel) result is for a property that should be expanded, set its [IsExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IDataModel.IsExpanded) property to `true`.
+@if (winrt) {
 
-Note that you could alternatively add this logic in a more generalized [GetDataModels](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.DataFactoryBase.GetDataModels*) method override.  In that case, call the base method and iterate through the [IPropertyModel](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IPropertyModel) results.  Look for properties that should be expanded and set their [IsExpanded](xref:ActiproSoftware.Windows.Controls.Grids.PropertyData.IDataModel.IsExpanded) properties to `true`.
+In the @@PlatformName platform, the custom data factory should inherit [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory).  Override the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreatePropertyModel) or [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreateCollectionPropertyModel) methods as appropriate and call their base methods.  If the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel) result is for a property that should be expanded, set its [IsExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.IsExpanded) property to `true`. 
+
+}
+
+@if (wpf) {
+
+In the @@PlatformName platform, the custom data factory should inherit [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory).  Override the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreatePropertyModel*) or [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreateCollectionPropertyModel*) methods as appropriate and call their base methods.  If the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel) result is for a property that should be expanded, set its [IsExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.IsExpanded) property to `true`. 
+
+}
+
+Note that you could alternatively add this logic in a more generalized [GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.GetDataModels*) method override.  In that case, call the base method and iterate through the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel) results.  Look for properties that should be expanded and set their [IsExpanded](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.IsExpanded) properties to `true`.

@@ -5,17 +5,25 @@ order: 3
 ---
 # Recent Documentation Updates
 
-WPF Studio's documentation has frequent updates so this topic is the best place to get caught up on recent major new documentation updates for each of the products.
+WPF Studio's documentation has frequent updates, so this topic is the best place to get caught up on recent major new documentation updates for each of the products.
 
-If you are looking for a list of recently-added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
+If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
+
+## Updates for v22.1.1
+
+- **Ribbon:** Updated the [RibbonWindow](ribbon/controls/ribbonwindow.md) topic with sample code for how to apply templates (e.g., custom title bar content) to the `WindowChrome` pre-installed with `RibbonWindow`.
+
+- **SyntaxEditor:** Added the [Column Guides](syntaxeditor/user-interface/editor-view/column-guides.md) topic with information on the new feature.
+
+- **Themes:** Updated the [Window Chrome](themes/windowchrome.md) topic with additional information on declaring operating system support for some modern features.
 
 ## Updates for v22.1.0
 
-- **Charts:** Added documentation for new [AggregationKind](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind).[SignedMaximum](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind.SignedMaximum) and [AggregationKind](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind).[SignedMinimum](xref:ActiproSoftware.Windows.Controls.Charts.AggregationKind.SignedMinimum) options to the [XY Chart Data Aggregation](charts/xy-chart-features/data-aggregation.md) topic.
+- **Charts:** Added documentation for new [AggregationKind](xref:@ActiproUIRoot.Controls.Charts.AggregationKind).[SignedMaximum](xref:@ActiproUIRoot.Controls.Charts.AggregationKind.SignedMaximum) and [AggregationKind](xref:@ActiproUIRoot.Controls.Charts.AggregationKind).[SignedMinimum](xref:@ActiproUIRoot.Controls.Charts.AggregationKind.SignedMinimum) options to the [XY Chart Data Aggregation](charts/xy-chart-features/data-aggregation.md) topic.
 
-- **Editors:** Added the [Converting to v22.1](conversion/converting-to-v22-1.md) topic with information on [PartEditBoxCommitTriggers](xref:ActiproSoftware.Windows.Controls.Editors.PartEditBoxCommitTriggers) enumeration changes.
+- **Editors:** Added the [Converting to v22.1](conversion/converting-to-v22-1.md) topic with information on [PartEditBoxCommitTriggers](xref:@ActiproUIRoot.Controls.Editors.PartEditBoxCommitTriggers) enumeration changes.
 
-- **MicroCharts:** Added documentation for new [MicroAggregationKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind).[SignedMaximum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind.SignedMaximum) and [MicroAggregationKind](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind).[SignedMinimum](xref:ActiproSoftware.Windows.Controls.MicroCharts.MicroAggregationKind.SignedMinimum) options to the [Data Aggregation](microcharts/data-sources/data-aggregation.md) topic.
+- **MicroCharts:** Added documentation for new [MicroAggregationKind](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAggregationKind).[SignedMaximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAggregationKind.SignedMaximum) and [MicroAggregationKind](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAggregationKind).[SignedMinimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAggregationKind.SignedMinimum) options to the [Data Aggregation](microcharts/data-sources/data-aggregation.md) topic.
 
 - **SyntaxEditor:** Updated the [Drag and Drop](syntaxeditor/user-interface/input-output/drag-drop.md) topic with additional details about supported text formats, code samples, and customizing operations.
 
@@ -77,7 +85,7 @@ If you are looking for a list of recently-added major new features to WPF Studio
 
 - **Editors:** Updated several numeric edit box and picker topics with information about the new `RoundingDecimalPlace` property.
 
-- **SyntaxEditor:** Updated the [Content Providers](syntaxeditor/user-interface/intelliprompt/popup-content-providers.md) topic with information on the new ability for [HtmlContentProvider](xref:ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) to be supplied a background color hint, which can result in the best Metro image set (light or dark) being used when Metro images are active.
+- **SyntaxEditor:** Updated the [Content Providers](syntaxeditor/user-interface/intelliprompt/popup-content-providers.md) topic with information on the new ability for [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) to be supplied a background color hint, which can result in the best Metro image set (light or dark) being used when Metro images are active.
 
 ## Updates for v19.1.0680
 

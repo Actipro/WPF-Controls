@@ -7,7 +7,7 @@ order: 2
 
 ## Experience
 
-Actipro Software has been developing Windows Forms components since .NET was first released, and has been working on commercial WPF control development since WPF was first introduced in 2006.  Actipro began development of Silverlight controls in 2009.
+Actipro Software has been developing Windows Forms components since .NET was first released, and has been working on commercial WPF control development since WPF was first introduced in 2006.
 
 > [!NOTE]
 > Actipro Wizard was the very first commercial UI control for WPF from any component vendor, released back in December 2006.

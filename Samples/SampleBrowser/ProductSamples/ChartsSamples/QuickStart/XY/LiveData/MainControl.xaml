@@ -7,6 +7,7 @@
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	>
 
 	<sampleBrowser:ProductItemControl.SideBarContent>
@@ -31,22 +32,25 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 
 	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
-		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+		<StackPanel x:Name="rootPanel" Style="{StaticResource SamplePanelWideStyle}">
 
 			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
-				<charts:XYChart IsLegendVisible="True" PaddingPercentage="0" LegendHorizontalPosition="LeftInside"
-								GridLineMajorVisibility="Y" Width="480" Height="300">
-					<charts:XYChart.SeriesStyleSelector>
-						<charts:SeriesPaletteStyleSelector>
-							<charts:Palette Kind="Roman"/>
-						</charts:SeriesPaletteStyleSelector>
-					</charts:XYChart.SeriesStyleSelector>
-					<charts:XYChart.YAxes>
-						<charts:XYDoubleAxis x:Name="yAxis" Position="FarEdge" AreMajorTicksVisible="True" Minimum="0.0" Maximum="80.0" TickMajorInterval="10.0" Title="Stock Value"/>
-					</charts:XYChart.YAxes>
-					<charts:LineSeries ItemsSource="{Binding ElementName=liveDataMainControl, Path=ChartData1}" YAxis="{Binding ElementName=yAxis}" Description="Cyberdyne" YPath="Amount" XPath="Index"/>
-					<charts:LineSeries ItemsSource="{Binding ElementName=liveDataMainControl, Path=ChartData2}" YAxis="{Binding ElementName=yAxis}" Description="Initech" YPath="Amount" XPath="Index"/>
-				</charts:XYChart>
+				<shared:ResizableContentControl Width="480" Height="300" MinWidth="200" MinHeight="150" 
+												MaxWidth="550" MaxHeight="500">
+					<charts:XYChart IsLegendVisible="True" PaddingPercentage="0" LegendHorizontalPosition="LeftInside"
+									GridLineMajorVisibility="Y">
+						<charts:XYChart.SeriesStyleSelector>
+							<charts:SeriesPaletteStyleSelector>
+								<charts:Palette Kind="Roman"/>
+							</charts:SeriesPaletteStyleSelector>
+						</charts:XYChart.SeriesStyleSelector>
+						<charts:XYChart.YAxes>
+							<charts:XYDoubleAxis x:Name="yAxis" Position="FarEdge" AreMajorTicksVisible="True" Minimum="0.0" Maximum="80.0" TickMajorInterval="10.0" Title="Stock Value"/>
+						</charts:XYChart.YAxes>
+						<charts:LineSeries ItemsSource="{Binding ElementName=liveDataMainControl, Path=ChartData1}" YAxis="{Binding ElementName=yAxis}" Description="Cyberdyne" YPath="Amount" XPath="Index"/>
+						<charts:LineSeries ItemsSource="{Binding ElementName=liveDataMainControl, Path=ChartData2}" YAxis="{Binding ElementName=yAxis}" Description="Initech" YPath="Amount" XPath="Index"/>
+					</charts:XYChart>
+				</shared:ResizableContentControl>
 			</sampleBrowser:LabeledCardControl>
 			
 		</StackPanel>

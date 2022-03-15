@@ -152,17 +152,17 @@
 				<sampleBrowser:LabeledCardControl Label="Editors">
 					<StackPanel>
 						<StackPanel Orientation="Horizontal">
-							<TextBox Text="TextBox" Width="100" />
+							<TextBox Text="TextBox" Width="100" shared:HintProperties.Hint="Full name" />
 							<TextBox Margin="10,0,0,0" Text="TextBox" Width="100" IsEnabled="False" />
 						</StackPanel>
 						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
 						<StackPanel Orientation="Horizontal">
-							<PasswordBox Password="Password" Width="100" />
+							<PasswordBox Password="Password" Width="100" shared:HintProperties.Hint="Password" />
 							<PasswordBox Margin="10,0,0,0" Password="Password" Width="100" IsEnabled="False" />
 						</StackPanel>
 						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
 						<StackPanel Orientation="Horizontal">
-							<RichTextBox Width="100">
+							<RichTextBox Width="100" shared:HintProperties.Hint="Formatted text">
 								<RichTextBox.Document>
 									<FlowDocument TextAlignment="Left">
 										<Paragraph>

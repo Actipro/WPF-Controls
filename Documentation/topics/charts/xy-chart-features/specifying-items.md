@@ -41,18 +41,18 @@ When the X or Y axis values are of these data types, then the values can be mapp
 
 ## Other Axis Types
 
-For all other types of data, including complex objects and `String`, they will be mapped using [XYGroupedAxis](xref:ActiproSoftware.Windows.Controls.Charts.XYGroupedAxis).
+For all other types of data, including complex objects and `String`, they will be mapped using [XYGroupedAxis](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis).
 
-When using [XYGroupedAxis](xref:ActiproSoftware.Windows.Controls.Charts.XYGroupedAxis), items will be grouped based on object equality by default. Items can be grouped using custom logic by specifying [XYGroupedAxis](xref:ActiproSoftware.Windows.Controls.Charts.XYGroupedAxis).[GroupingFunc](xref:ActiproSoftware.Windows.Controls.Charts.XYGroupedAxis.GroupingFunc).
+When using [XYGroupedAxis](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis), items will be grouped based on object equality by default. Items can be grouped using custom logic by specifying [XYGroupedAxis](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis).[GroupingFunc](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis.GroupingFunc).
 
 ## Setting ItemsSource
 
-Each series in a chart control can be bound to a separate data source, or to different properties on the same data source.  The [ItemsSource](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.SeriesBase.ItemsSource) property on each series can be set to any collection of objects, including custom objects, as long as the collection implements `IEnumerable`.
+Each series in a chart control can be bound to a separate data source, or to different properties on the same data source.  The [ItemsSource](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.ItemsSource) property on each series can be set to any collection of objects, including custom objects, as long as the collection implements `IEnumerable`.
 
-In this case, the [XPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.XPath) and/or [YPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.YPath) properties must be set to the name of a property on the objects in the collection.
+In this case, the [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) and/or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) properties must be set to the name of a property on the objects in the collection.
 
 > [!NOTE]
-> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (".").  For example you can set [XPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like "MyProperty.MyOtherProperty.MyDoubleValue", similar to how binding paths work in XAML.
+> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (".").  For example you can set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like "MyProperty.MyOtherProperty.MyDoubleValue", similar to how binding paths work in XAML.
 
 For example, consider the following custom object:
 
@@ -103,6 +103,6 @@ public class SalesData {
 }
 ```
 
-We can specify that the Y values should be pulled from the `Amount` property by setting [YPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.YPath) to `"Amount"`.  If we want to use the index in the collection as our X values, then we do not need to set [XPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.XPath).
+We can specify that the Y values should be pulled from the `Amount` property by setting [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to `"Amount"`.  If we want to use the index in the collection as our X values, then we do not need to set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath).
 
-If instead we want the X values to be pulled from the `Date` property, then we would need to set [XPath](xref:ActiproSoftware.Windows.Controls.Charts.Primitives.XYSeriesBase.XPath) to `"Date"`.
+If instead we want the X values to be pulled from the `Date` property, then we would need to set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) to `"Date"`.

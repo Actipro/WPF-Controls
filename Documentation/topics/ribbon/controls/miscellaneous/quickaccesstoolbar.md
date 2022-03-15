@@ -13,7 +13,7 @@ The ribbon's quick access toolbar can be displayed either above the ribbon (in t
 
 ## Defining a Quick Access Toolbar Items
 
-Quick access toolbar (QAT) items are defined in the [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[QuickAccessToolBarItems](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.QuickAccessToolBarItems) collection.  The quick access toolbar items may be defined in XAML if you like.
+Quick access toolbar (QAT) items are defined in the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarItems](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarItems) collection.  The quick access toolbar items may be defined in XAML if you like.
 
 This code sample shows how to define the quick access toolbar items for a ribbon.  Note that the buttons listed are tied to commands that express their user interface.
 
@@ -29,17 +29,17 @@ This code sample shows how to define the quick access toolbar items for a ribbon
 
 ## Quick Access Toolbar Location
 
-The QAT can be located either above or below the ribbon. The [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocation](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.QuickAccessToolBarLocation) property gets and sets the location of the QAT.  It takes an enueration of type [QuickAccessToolBarLocation](xref:ActiproSoftware.Windows.Controls.Ribbon.QuickAccessToolBarLocation).
+The QAT can be located either above or below the ribbon. The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarLocation) property gets and sets the location of the QAT.  It takes an enueration of type [QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Ribbon.QuickAccessToolBarLocation).
 
-The [Ribbon](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocationChanged](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.QuickAccessToolBarLocationChanged) event fires when the location changes.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocationChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarLocationChanged) event fires when the location changes.
 
 ## Hiding the Quick Access Toolbar
 
-The [QuickAccessToolBarLocation](xref:ActiproSoftware.Windows.Controls.Ribbon.QuickAccessToolBarLocation) property described above also has a `None` option that when used will hide the QAT completely.
+The [QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Ribbon.QuickAccessToolBarLocation) property described above also has a `None` option that when used will hide the QAT completely.
 
 ## Hiding the QAT Customize Button
 
-The [IsQuickAccessToolBarCustomizeButtonVisible](xref:ActiproSoftware.Windows.Controls.Ribbon.Ribbon.IsQuickAccessToolBarCustomizeButtonVisible) property can be set to `false` to hide the customize button that appears next to the QAT.
+The [IsQuickAccessToolBarCustomizeButtonVisible](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsQuickAccessToolBarCustomizeButtonVisible) property can be set to `false` to hide the customize button that appears next to the QAT.
 
 ## Customizing the Customize Button's Menu
 

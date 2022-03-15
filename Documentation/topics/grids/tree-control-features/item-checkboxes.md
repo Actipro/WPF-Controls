@@ -30,7 +30,7 @@ Here's an example of a `DataTemplate` that includes a `CheckBox`.  This example 
 
 Default actions are executed when an item is double-tapped or `Enter` is pressed.  When using `CheckBox` controls in item templates, it's generally good practice to handle item [default actions](default-actions.md) and toggle the item's `IsChecked` property appropriately.
 
-This example code shows how to handle a default action (via the [TreeListBox](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox).[ItemDefaultActionExecuting](xref:ActiproSoftware.Windows.Controls.Grids.TreeListBox.ItemDefaultActionExecuting) event) and toggle the checked state on a `CheckableTreeNodeModel` item type that has `IsCheckable`, `IsThreeState`, and `IsChecked` properties.
+This example code shows how to handle a default action (via the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemDefaultActionExecuting](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemDefaultActionExecuting) event) and toggle the checked state on a `CheckableTreeNodeModel` item type that has `IsCheckable`, `IsThreeState`, and `IsChecked` properties.
 
 ```csharp
 private void OnTreeListBoxItemDefaultActionExecuting(object sender, TreeListBoxItemEventArgs e) {

@@ -9,9 +9,9 @@ Any `UIElement` can be embedded and precisely placed inside any of the gauge con
 
 ## Adding/Removing UIElements
 
-`UIElement` objects can be added or removed from the gauge controls using the [Items](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeBase.Items) collection property.
+`UIElement` objects can be added or removed from the gauge controls using the [Items](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.Items) collection property.
 
-This code shows how a `TextBlock` can be added to a [DigitalGauge](xref:ActiproSoftware.Windows.Controls.Gauge.DigitalGauge):
+This code shows how a `TextBlock` can be added to a [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge):
 
 ```xaml
 xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
@@ -26,7 +26,7 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 
 ## Positioning UIElements
 
-By default, `UIElement` objects will be centered in the associated gauge control, but it's position can be specified using the [XProperty](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeBase.XProperty), [YProperty](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeBase.YProperty), [OriginProperty](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeBase.OriginProperty), and [ZIndexProperty](xref:ActiproSoftware.Windows.Controls.Gauge.Primitives.GaugeElement.ZIndexProperty) attached properties.
+By default, `UIElement` objects will be centered in the associated gauge control, but it's position can be specified using the [XProperty](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.XProperty), [YProperty](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.YProperty), [OriginProperty](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.OriginProperty), and [ZIndexProperty](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeElement.ZIndexProperty) attached properties.
 
 Continuing from the example above, this code shows how the `TextBlock` can be positioned 10-pixels to the right and 10-pixels down from the top-left corner:
 

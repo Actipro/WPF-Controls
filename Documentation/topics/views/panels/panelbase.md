@@ -5,11 +5,11 @@ order: 2
 ---
 # PanelBase
 
-This is the base class for all the panels provided by the Views product. It allows custom panels to be built that animate the arrangement of the child elements, and can be used in the [SwitchPanel](xref:ActiproSoftware.Windows.Controls.Views.SwitchPanel).
+This is the base class for all the panels provided by the Views product. It allows custom panels to be built that animate the arrangement of the child elements, and can be used in the [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel).
 
 ## Overview
 
-The [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) provides base functionality of all animated panels. It provides attached properties for storing state information, as well as the current animation rectangle.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) provides base functionality of all animated panels. It provides attached properties for storing state information, as well as the current animation rectangle.
 
 When building a custom panel that derives from the native `Panel`, the `ArrangeOverride` and `MeasureOverride` methods are overridden.  Similarly, when building a custom panel that derives from the `PanelBase`, the `ArrangeElements` and `MeasureElements` methods should be overridden. Additionally, the panel should not reference the `Children` collection, but instead arrange the list of elements specified. This allows the panel's layout logic to be leveraged by the `SwitchPanel`.
 
@@ -17,9 +17,9 @@ See the [Building a Custom Panel](building-a-custom-panel.md) topic for more inf
 
 ## Arrange State
 
-The [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) uses the [ArrangeStateProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeStateProperty) attached property to storage state information about its child elements.  The state is represented by an instance of [ArrangeState](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState), and captures the current status, current arrange rectangle, previous arrange rectangle, and an optional "from" point.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) uses the [ArrangeStateProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeStateProperty) attached property to storage state information about its child elements.  The state is represented by an instance of [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState), and captures the current status, current arrange rectangle, previous arrange rectangle, and an optional "from" point.
 
-The [ArrangeState](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState).[ArrangeStatus](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState.ArrangeStatus) indicates the current status of the element. The valid statuses are: `Entering`, `Leaving`, `ArrangeUpdating`, and `LayoutUpdating`.
+The [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState).[ArrangeStatus](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeStatus) indicates the current status of the element. The valid statuses are: `Entering`, `Leaving`, `ArrangeUpdating`, and `LayoutUpdating`.
 
 | Member | Description |
 |-----|-----|
@@ -28,17 +28,17 @@ The [ArrangeState](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState).[Ar
 | `ArrangeUpdating` Field | Indicates that the element is changing position or size in the panel due to the standard arrange phase. |
 | `LayoutUpdating` Field | Indicates that the element is changing position or size because the layout logic of the panel changed (e.g. the orientation is changed). |
 
-The current and previous arrange rectangels are captured in the [ArrangeRect](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState.ArrangeRect) and [PreviousArrangeRect](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState.PreviousArrangeRect) properties, respectively.
+The current and previous arrange rectangels are captured in the [ArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeRect) and [PreviousArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.PreviousArrangeRect) properties, respectively.
 
-Finally, the [ArrangeFromPoint](xref:ActiproSoftware.Windows.Controls.Views.ArrangeState.ArrangeFromPoint) can be used to optionally change the location that an element starts it's "move" animation from. This is usually leveraged by custom panels to customize the movement of elements.
+Finally, the [ArrangeFromPoint](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeFromPoint) can be used to optionally change the location that an element starts it's "move" animation from. This is usually leveraged by custom panels to customize the movement of elements.
 
 ## Disabling Animations Per Element
 
-Using the [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase).[IsAnimatedProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.IsAnimatedProperty) attached property, animations can be selectively disabled for individual elements.  This property defaults to `true` and is supported by all panels that derive from `PanelBase`.
+Using the [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).[IsAnimatedProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.IsAnimatedProperty) attached property, animations can be selectively disabled for individual elements.  This property defaults to `true` and is supported by all panels that derive from `PanelBase`.
 
 ## Important Members
 
-The following [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase) members are key to its use:
+The following [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) members are key to its use:
 
 <table>
 <thead>
@@ -48,19 +48,18 @@ The following [PanelBase](xref:ActiproSoftware.Windows.Controls.Views.Primitives
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[ArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeAnimation) Property
+[ArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeAnimation) Property
 
 </td>
 <td>
 
-Gets or sets the [IArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views.IArrangeAnimation) that controls the animation of elements when arranging.
+Gets or sets the [IArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.IArrangeAnimation) that controls the animation of elements when arranging.
 
 </td>
 </tr>
@@ -68,7 +67,7 @@ Gets or sets the [IArrangeAnimation](xref:ActiproSoftware.Windows.Controls.Views
 <tr>
 <td>
 
-[ArrangeElement](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeElement*) Method
+[ArrangeElement](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeElement*) Method
 
 </td>
 <td>
@@ -83,7 +82,7 @@ This can be used to force an element to arrange using it's current arrange locat
 <tr>
 <td>
 
-[ArrangeElements](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeElements*) Method
+[ArrangeElements](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeElements*) Method
 
 </td>
 <td>
@@ -98,7 +97,7 @@ This method must be implemented by derivations of `PanelBase`, and determines th
 <tr>
 <td>
 
-[ArrangeHeightAnimatedProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeHeightAnimatedProperty) Attached Property
+[ArrangeHeightAnimatedProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeHeightAnimatedProperty) Attached Property
 
 </td>
 <td>
@@ -114,7 +113,7 @@ Gets or sets the height used when arranging the associated element.
 <tr>
 <td>
 
-[ArrangeStateProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeStateProperty) Attached Property
+[ArrangeStateProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeStateProperty) Attached Property
 
 </td>
 <td>Gets or sets the current state of the associated element, which can include an updated arrange rectangle.</td>
@@ -123,7 +122,7 @@ Gets or sets the height used when arranging the associated element.
 <tr>
 <td>
 
-[ArrangeWidthAnimatedProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeWidthAnimatedProperty) Attached Property
+[ArrangeWidthAnimatedProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeWidthAnimatedProperty) Attached Property
 
 </td>
 <td>
@@ -139,7 +138,7 @@ Gets or sets the width used when arranging the associated element.
 <tr>
 <td>
 
-[ArrangeXAnimatedProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeXAnimatedProperty) Attached Property
+[ArrangeXAnimatedProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeXAnimatedProperty) Attached Property
 
 </td>
 <td>
@@ -155,7 +154,7 @@ Gets or sets the position along the X-axis of the parent panel used when arrangi
 <tr>
 <td>
 
-[ArrangeYAnimatedProperty](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.ArrangeYAnimatedProperty) Attached Property
+[ArrangeYAnimatedProperty](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.ArrangeYAnimatedProperty) Attached Property
 
 </td>
 <td>
@@ -171,7 +170,7 @@ Gets or sets the position along the Y-axis of the parent panel used when arrangi
 <tr>
 <td>
 
-[IsLayoutUpdatePending](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.IsLayoutUpdatePending) Property
+[IsLayoutUpdatePending](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.IsLayoutUpdatePending) Property
 
 </td>
 <td>
@@ -186,7 +185,7 @@ This is typically used to distingush between the `ArrangeStatus.ArrangeUpdating`
 <tr>
 <td>
 
-[MeasureElements](xref:ActiproSoftware.Windows.Controls.Views.Primitives.PanelBase.MeasureElements*) Method
+[MeasureElements](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase.MeasureElements*) Method
 
 </td>
 <td>

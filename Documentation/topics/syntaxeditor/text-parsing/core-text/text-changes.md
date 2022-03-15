@@ -34,97 +34,70 @@ If you were just going to append some text to the end of the document, you'd use
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) interface provides a number of helper methods that quickly create and instantly apply single-operation text changes:
 
-<table>
-<thead>
+### AppendText Method
 
-<tr>
-<th>Member</th>
-<th>Description</th>
-</tr>
-
-
-</thead>
-<tbody>
-
-<tr>
-<td>
-
-[AppendText](xref:ActiproSoftware.Text.ITextDocument.AppendText*) Method
-
-</td>
-<td>
-
-Appends text to the end of the current snapshot's text.
+The [AppendText](xref:ActiproSoftware.Text.ITextDocument.AppendText*) method appends text to the end of the current snapshot's text.
 
 There are two overloads of this method.  One overload accepts an [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) parameter.
 
-</td>
-</tr>
+This code appends text to the end of the document while also defining an option to keep the current selection:
 
-<tr>
-<td>
+```csharp
+TextChangeOptions options = new TextChangeOptions();
+options.RetainSelection = true;
+document.AppendText(TextChangeTypes.Custom, "This text appended to the end of the document.", options);
+```
 
-[DeleteText](xref:ActiproSoftware.Text.ITextDocument.DeleteText*) Method
+### DeleteText Method
 
-</td>
-<td>
-
-Performs a delete text change in the current snapshot.
+The [DeleteText](xref:ActiproSoftware.Text.ITextDocument.DeleteText*) method performs a delete text change in the current snapshot.
 
 There are four overloads of this method.  Various overloads accept offset/length parameters vs. a [TextRange](xref:ActiproSoftware.Text.TextRange) parameter.  Two overloads accept an [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) parameter.
 
-</td>
-</tr>
+This code deletes the first 5 characters in a document:
 
-<tr>
-<td>
+```csharp
+document.DeleteText(TextChangeTypes.Custom, 0, 5);
+```
 
-[InsertText](xref:ActiproSoftware.Text.ITextDocument.InsertText*) Method
+### InsertText Method
 
-</td>
-<td>
-
-Performs an insert text change in the current snapshot at the specified offset.
+The [InsertText](xref:ActiproSoftware.Text.ITextDocument.InsertText*) method performs an insert text change in the current snapshot at the specified offset.
 
 There are two overloads of this method.  One overload accepts an [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) parameter.
 
-</td>
-</tr>
+This code demonstrates commenting the first line of a document by inserting comment characters:
 
-<tr>
-<td>
+```csharp
+document.InsertText(TextChangeTypes.CommentLines, 0, "//");
+```
 
-[ReplaceText](xref:ActiproSoftware.Text.ITextDocument.ReplaceText*) Method
+### ReplaceText Method
 
-</td>
-<td>
-
-Performs a replace text change in the current snapshot at the specified offset.
+The [ReplaceText](xref:ActiproSoftware.Text.ITextDocument.ReplaceText*) method performs a replace text change in the current snapshot at the specified offset.
 
 There are four overloads of this method.  Various overloads accept offset/length parameters vs. a [TextRange](xref:ActiproSoftware.Text.TextRange) parameter.  Two overloads accept an [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) parameter.
 
-</td>
-</tr>
+This code demonstrates replacing 4 characters at the beginning of a document with a single tab character (i.e., replacing spaces with tabs):
 
-<tr>
-<td>
+```csharp
+document.ReplaceText(TextChangeTypes.AutoFormat, 0, 4, "\t");
+```
 
-[SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) Method
+### SetText Method
 
-</td>
-<td>
-
-Replaces all the text in the current snapshot.
+The [SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) method replaces all the text in the current snapshot.
 
 There are three overloads of this method.  The simplest overload that only accepts a `String` parameter replaces all the text in the current snapshot and also clears the [undo history](../advanced-text/undo-history.md).  One overload accepts an [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) parameter.
 
-</td>
-</tr>
+This code demonstrates replacing all text in a document:
 
-</tbody>
-</table>
+```csharp
+document.SetText(TextChangeTypes.Custom, "New document text.");
+```
 
-When using the methods above, you do not interact directly with an [ITextChange](xref:ActiproSoftware.Text.ITextChange) since it is created and applied behind the scenes for you.
+> [!TIP]
+> When using the methods above, you do not interact directly with an [ITextChange](xref:ActiproSoftware.Text.ITextChange) since it is created and applied behind the scenes for you.
 
 ## Multiple-Operation Text Changes
 
@@ -184,6 +157,9 @@ change.Apply();
 ## Text Change Options
 
 All methods that either quickly perform a single-operation text change or create an [ITextChange](xref:ActiproSoftware.Text.ITextChange) have an overload that accepts an optional [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) object.  This object allows you to specify some additional settings that are used when the text change is applied.
+
+> [!TIP]
+> The [TextChangeOptions](xref:ActiproSoftware.Text.Implementation.TextChangeOptions) class provides a default implementation of the [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) interface.
 
 ### Custom Data
 

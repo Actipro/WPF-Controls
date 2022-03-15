@@ -5,7 +5,7 @@ order: 7
 ---
 # AnimatedProgressBar
 
-The [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar) includes all the features of the native WPF `ProgressBar`, plus the following features:
+The [AnimatedProgressBar](xref:@ActiproUIRoot.Controls.AnimatedProgressBar) includes all the features of the native WPF `ProgressBar`, plus the following features:
 
 - Support for multiple states
 - Smooth animation of value changes
@@ -25,11 +25,11 @@ The [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgress
 
 *The AnimatedProgressBar control using the Luna NormalColor theme showing a segmented indicator and a continuous indicator*
 
-The [OperationState](xref:ActiproSoftware.Windows.Controls.OperationState) enumeration holds all the valid states, each of which is rendered using a distinct color.
+The [OperationState](xref:@ActiproUIRoot.Controls.OperationState) enumeration holds all the valid states, each of which is rendered using a distinct color.
 
-By default, the [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar) will animate `Value` changes. This differs from the native WPF `ProgressBar`, which "jumps" to the new `Value`. The smooth animation of the [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar) can be disabled by setting [IsAnimationEnabled](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.IsAnimationEnabled) to `false`. In which case, the [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar) will also "jump" to the new `Value`.
+By default, the [AnimatedProgressBar](xref:@ActiproUIRoot.Controls.AnimatedProgressBar) will animate `Value` changes. This differs from the native WPF `ProgressBar`, which "jumps" to the new `Value`. The smooth animation of the [AnimatedProgressBar](xref:@ActiproUIRoot.Controls.AnimatedProgressBar) can be disabled by setting [IsAnimationEnabled](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.IsAnimationEnabled) to `false`. In which case, the [AnimatedProgressBar](xref:@ActiproUIRoot.Controls.AnimatedProgressBar) will also "jump" to the new `Value`.
 
-The [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar) class has these important members:
+The [AnimatedProgressBar](xref:@ActiproUIRoot.Controls.AnimatedProgressBar) class has these important members:
 
 <table>
 <thead>
@@ -39,14 +39,13 @@ The [AnimatedProgressBar](xref:ActiproSoftware.Windows.Controls.AnimatedProgress
 <th>Description</th>
 </tr>
 
-
 </thead>
 <tbody>
 
 <tr>
 <td>
 
-[DecreaseDuration](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.DecreaseDuration) Property
+[DecreaseDuration](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.DecreaseDuration) Property
 
 </td>
 <td>
@@ -59,7 +58,7 @@ Gets or sets the Duration of the decrease animation.  The default value is `500`
 <tr>
 <td>
 
-[IncreaseDuration](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.IncreaseDuration) Property
+[IncreaseDuration](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.IncreaseDuration) Property
 
 </td>
 <td>
@@ -72,7 +71,7 @@ Gets or sets the Duration of the increase animation.  The default value is `500`
 <tr>
 <td>
 
-[IsAnimationEnabled](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.IsAnimationEnabled) Property
+[IsAnimationEnabled](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.IsAnimationEnabled) Property
 
 </td>
 <td>
@@ -85,7 +84,7 @@ Gets or sets value indicating whether the progress bar should animate `Value` ch
 <tr>
 <td>
 
-[IsContinuous](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.IsContinuous) Property
+[IsContinuous](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.IsContinuous) Property
 
 </td>
 <td>
@@ -100,7 +99,7 @@ Gets or sets value indicating whether the progress bar should render a continuou
 <tr>
 <td>
 
-[State](xref:ActiproSoftware.Windows.Controls.AnimatedProgressBar.State) Property
+[State](xref:@ActiproUIRoot.Controls.AnimatedProgressBar.State) Property
 
 </td>
 <td>

@@ -11,9 +11,9 @@ The Microsoft WPF DataGrid can be used to display various data in a grid of rows
 
 *A ThemedDataGrid control using a customized theme provided by Actipro*
 
-The Actipro WPF DataGrid Contrib add-on offers the [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid) control, which extends the WPF DataGrid control to provide customized Aero and Office (blue, black, and silver) themes.  The themes are integrated into the Shared Library's ThemeManager, which allows for dynamic theme changing.  The add-on also provides extension methods, attached behaviors, and commands that can be used by [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid) or the WPF DataGrid.
+The Actipro WPF DataGrid Contrib add-on offers the [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid) control, which extends the WPF DataGrid control to provide customized Aero and Office (blue, black, and silver) themes.  The themes are integrated into the Shared Library's ThemeManager, which allows for dynamic theme changing.  The add-on also provides extension methods, attached behaviors, and commands that can be used by [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid) or the WPF DataGrid.
 
-The Actipro Editors/DataGrid Interop add-on allows controls from the Actipro Editors for WPF product to be quickly and easily integrated into the WPF DataGrid or [ThemedDataGrid](xref:ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid).  This allows the cells in a DataGrid to leverage parts-based and masked text editors, which make data entry faster and more intuitive.
+The Actipro Editors/DataGrid Interop add-on allows controls from the Actipro Editors for WPF product to be quickly and easily integrated into the WPF DataGrid or [ThemedDataGrid](xref:@ActiproUIRoot.Controls.DataGrid.ThemedDataGrid).  This allows the cells in a DataGrid to leverage parts-based and masked text editors, which make data entry faster and more intuitive.
 
 ## Features
 
