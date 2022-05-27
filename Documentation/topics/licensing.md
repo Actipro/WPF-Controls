@@ -56,11 +56,11 @@ There are two ways to apply licensing once you have purchased licenses for Actip
 
 The first licensing option is to make a method call at app startup before any UI is referenced to register your license information.  This option is quick and easy, and works best for scenarios where Actipro [NuGet packages](nuget.md) or build servers are used.  See the "Licensing Via a RegisterLicense Call" section below for detailed information on this option.
 
-The second licensing option is to provide licensing via a licenses.licx file.  This is the classic style of implementing licensing in .NET Framework applications, and is what Actipro exclusively used prior to v2020.1.  See the "Licensing Via a Licenses.licx File" section below for detailed information on this option.
+The second licensing option is to provide licensing via a licenses.licx file.  This option is only available for classic .NET Framework applications that have direct assembly references, and is what Actipro exclusively used prior to v20.1.  See the "Licensing Via a Licenses.licx File" section below for detailed information on this option.
 
 ## Licensing Via a RegisterLicense Call
 
-This licensing option is ideal when Actipro [NuGet packages](nuget.md) or build servers are used.
+This licensing option is required when Actipro [NuGet packages](nuget.md) are used.  It is also ideal when build servers are used for classic .NET Framework applications with direct assembly references.
 
 In this licensing option, we make a single code-based call to the `ActiproLicenseManager.RegisterLicense` method at application startup, before any UI is referenced.  This static call registers your license information globally throughout your application.
 
@@ -83,7 +83,7 @@ When using this licensing option, do NOT include any Actipro entries in your app
 
 ## Licensing Via a Licenses.licx File
 
-This licensing option is the classic style of implementing licensing in .NET Framework applications, and is what Actipro exclusively used prior to v2020.1.  Note that .NET Framework applications can either use this licensing option or the `RegisterLicense` call licensing option described above.
+This licensing option is only available for classic .NET Framework applications, and is what Actipro exclusively used prior to v20.1.  Note that .NET Framework applications with direct assembly references can either use this licensing option or the `RegisterLicense` call licensing option described above.
 
 ### Summary of Licenses.licx File Licensing Steps
 
@@ -144,7 +144,7 @@ The contents of a "licenses.licx" file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.1.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.2.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 ### Notes on Build Machines When Using Licenses.licx Files

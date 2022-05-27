@@ -145,7 +145,7 @@ Applies to `DocumentViewer` controls.
 </td>
 <td>
 
-Applies to `Expander` controls.
+Applies to `Expander` controls.  Note that this style uses expand/collapse animation by default, which can lead to performance issues while expanding/collapsing when there are an enormous number of elements within the expanded content.  Set the attached `ThemeProperties.IsAnimationEnabled` dependency property to `false` on the `Expander` to prevent animation.
 
 </td>
 </tr>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -645,10 +646,12 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor 
 			if (!e.View.IsActive)
 				return;
 
-			// Update line, col, and character display
-			linePanel.Text = String.Format("Ln {0}", e.CaretPosition.DisplayLine);
-			columnPanel.Text = String.Format("Col {0}", e.CaretDisplayCharacterColumn);
-			characterPanel.Text = String.Format("Ch {0}", e.CaretPosition.DisplayCharacter);
+			// The line, col, and character display are updated using XAML bindings in the view, but the
+			// following could also be used to programatically update the status of the caret position:
+			Debug.WriteLineIf(false, string.Format("Ln {0}  Col {1}  Ch {2}",
+				e.CaretPosition.DisplayLine,
+				e.CaretDisplayCharacterColumn,
+				e.CaretPosition.DisplayCharacter));
 
 			// If token info should be displayed in the statusbar...
 			if (toggleTokenInfoMenuItem.IsChecked) {

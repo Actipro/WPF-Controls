@@ -7,7 +7,7 @@
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>22.1.1.0</Version>
+		<Version>22.1.2.0</Version>
 
 		<RootNamespace>ActiproSoftware.Windows.PrismIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -27,11 +27,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
+		<PackageReference Include="Prism.Unity" Version="8.1.97" />
 	</ItemGroup>
 
 	<ItemGroup Label="Actipro References">
-	    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.1" />
+	    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="22.1.2" />
 	</ItemGroup>
 
 </Project>

@@ -780,6 +780,10 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Themes" Title="Themes" LogoImageSource="{x:Static shared:AssemblyInfo.ThemesLogoImageSource}"
 										 Summary="Themes for Actipro, custom, and native WPF controls">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="WindowChrome backdrop (Mica, Acrylic)" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeBackdrop/OverviewDocument" />
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Themes" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -794,6 +798,7 @@
 
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Introduction" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeIntro/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Application Menu Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeApplicationMenuOverlay/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Backdrop" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeBackdrop/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Processing Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeProcessingOverlay/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="System Menu Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeSystemMenuCustomization/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Back Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarBackButton/OverviewDocument"/>

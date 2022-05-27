@@ -12,36 +12,36 @@ Actipro Syntax Language Definition (.langdef)
 <LanguageDefinition LanguageKey="Php" LanguageDescription="PHP" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
-		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
-		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
-		<ClassificationType Key="PhpNumber" Description="PHP Number" />
-		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
-		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
 		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
+		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PhpNumber" Description="PHP Number" />
+		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
+		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
+		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="PrimaryString" />
 					<StateRef Key="AlternateString" />
 					<StateRef Key="SingleLineComment" />
 					<StateRef Key="MultiLineComment" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
-				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
-				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
-				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
-				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
-				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
-				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
-				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenKey="ReservedWord" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenId="5" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenId="6" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenId="7" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenId="8" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="ReservedWord" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						abstract array as break case catch cfunction class clone const continue declare default die done
 						do echo elseif else empty enddeclare endforeach endfor endif endswitch endwhile eval exception
@@ -50,18 +50,18 @@ Actipro Syntax Language Definition (.langdef)
 						static switch throw try unset use var while
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="PrimitiveType" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="10" TokenKey="PrimitiveType" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						boolean callback double float integer mixed number object resource string
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Null" ClassificationTypeKey="PhpKeyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
-				<ExplicitPatternGroup TokenKey="Boolean" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="11" TokenKey="Null" ClassificationTypeKey="PhpKeyword" Pattern="null" LookAheadPattern="{NonWord}|\z" />
+				<ExplicitPatternGroup TokenId="12" TokenKey="Boolean" ClassificationTypeKey="PhpKeyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						TRUE FALSE
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Function" ClassificationTypeKey="PhpFunction" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="13" TokenKey="Function" ClassificationTypeKey="PhpFunction" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						abs acos addcslashes addslashes apache_get_modules apache_get_version apache_getenv apache_lookup_uri
 						apache_note apache_request_headers apache_response_headers apache_setenv array_change_key_case
@@ -224,7 +224,7 @@ Actipro Syntax Language Definition (.langdef)
 						
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Constant" ClassificationTypeKey="PhpConstant">
+				<ExplicitPatternGroup TokenId="14" TokenKey="Constant" ClassificationTypeKey="PhpConstant">
 					<ExplicitPatterns><![CDATA[
 						DEFAULT_INCLUDE_PATH E_ALL E_COMPILE_ERROR E_COMPILE_WARNING E_CORE_ERROR E_CORE_WARNING
 						E_ERROR E_NOTICE E_PARSE E_STRICT E_USER_ERROR E_USER_NOTICE E_USER_WARNING E_WARNING PEAR_EXTENSION_DIR
@@ -233,94 +233,94 @@ Actipro Syntax Language Definition (.langdef)
 						PHP_SYSCONFDIR PHP_VERSION __CLASS__ __FILE__ __FUNCTION__ __LINE__ __METHOD__
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
-				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PhpOperator">
+				<RegexPatternGroup TokenId="15" TokenKey="Variable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenId="16" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="17" TokenKey="Operator" ClassificationTypeKey="PhpOperator">
 					<ExplicitPatterns><![CDATA[
 						!== != ! %= % && &= & *= * ++ += + , -- -= - .= . /= / : <<= << <= < === == = >= >>= >> > ? ^= ^ |= || | ~
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PhpOperator" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="17" TokenKey="Operator" ClassificationTypeKey="PhpOperator" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						and or xor
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="PhpNumber" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="18" TokenKey="RealNumber" ClassificationTypeKey="PhpNumber" LookAheadPattern="{NonWord}|\z">
 					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
 					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
 				</RegexPatternGroup>
-				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="PhpNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="PhpNumber" Pattern="0 [xX] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="19" TokenKey="IntegerNumber" ClassificationTypeKey="PhpNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="20" TokenKey="HexNumber" ClassificationTypeKey="PhpNumber" Pattern="0 [xX] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
 			</State>
 			<!-- PrimaryString state -->
-			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PhpString">
+			<State Id="2" Key="PrimaryString" DefaultTokenId="21" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PhpString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="22" TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="23" TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="PrimaryStringVariable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
-				<RegexPatternGroup TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
-				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
-				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\$\\\n]+" />
+				<RegexPatternGroup TokenId="24" TokenKey="PrimaryStringVariable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenId="25" TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="26" TokenKey="PrimaryStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenId="21" TokenKey="PrimaryStringText" Pattern="[^\&quot;\$\\\n]+" />
 			</State>
 			<!-- AlternateString state -->
-			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PhpString">
+			<State Id="3" Key="AlternateString" DefaultTokenId="27" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PhpString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="28" TokenKey="AlternateStringStartDelimiter" Pattern="'" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="29" TokenKey="AlternateStringEndDelimiter" Pattern="'" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="AlternateStringLineTerminator" Pattern="\n" />
-				<ExplicitPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\'" />
-				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
+				<RegexPatternGroup TokenId="30" TokenKey="AlternateStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="31" TokenKey="AlternateStringEscapedCharacter" Pattern="\\." />
+				<RegexPatternGroup TokenId="27" TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
 			</State>
 			<!-- SingleLineComment state -->
-			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PhpComment">
+			<State Id="4" Key="SingleLineComment" DefaultTokenId="32" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PhpComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
+							<ExplicitPatternGroup TokenId="33" TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+							<RegexPatternGroup TokenId="34" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
+							<ExplicitPatternGroup TokenId="33" TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+							<RegexPatternGroup TokenId="34" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+				<RegexPatternGroup TokenId="32" TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
 			</State>
 			<!-- MultiLineComment state -->
-			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="PhpComment">
+			<State Id="5" Key="MultiLineComment" DefaultTokenId="35" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="PhpComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+							<ExplicitPatternGroup TokenId="36" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+							<ExplicitPatternGroup TokenId="37" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
-				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
+				<RegexPatternGroup TokenId="38" TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="35" TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

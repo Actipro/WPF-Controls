@@ -334,9 +334,9 @@
 				
 				<StatusBarItem Grid.Column="2">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock x:Name="linePanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ln 1" />
-						<TextBlock x:Name="columnPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Col 1" />
-						<TextBlock x:Name="characterPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="Ch 1" />
+						<TextBlock x:Name="linePanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="{Binding ElementName=editor, Path=ActiveView.Selection.CaretPosition.DisplayLine, StringFormat='Ln {0}'}" />
+						<TextBlock x:Name="columnPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="{Binding ElementName=editor, Path=ActiveView.Selection.CaretDisplayCharacterColumn, StringFormat='Col {0}'}" />
+						<TextBlock x:Name="characterPanel" MinWidth="40" Margin="7,0,7,0" VerticalAlignment="Center" Text="{Binding ElementName=editor, Path=ActiveView.Selection.CaretPosition.DisplayCharacter, StringFormat='Ch {0}'}" />
 					</StackPanel>
 				</StatusBarItem>
 				

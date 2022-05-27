@@ -9,6 +9,10 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v22.1.2
+
+- **Docking/MDI:** Updated the [Floating Dock Hosts](docking/docking-window-features/floating-dock-hosts.md) topic with information on new features for customizing the floating dock host title.
+
 ## Updates for v22.1.1
 
 - **Ribbon:** Updated the [RibbonWindow](ribbon/controls/ribbonwindow.md) topic with sample code for how to apply templates (e.g., custom title bar content) to the `WindowChrome` pre-installed with `RibbonWindow`.

@@ -34,6 +34,7 @@ Features include:
 - Normal border, or single pixel-border with outer glow / drop shadow effects
 - Outer glow / drop shadow areas support window resizing
 - System-rendered rounded corner, border, and drop shadow support on Windows 11 or later
+- System backdrop (Mica, Acrylic textures) support on recent Windows versions
 - Snap layout menu support on Windows 11 or later
 - Optionally extend the window content itself, or just the background, to render in the title bar area
 - Full Aero-snap support
@@ -174,6 +175,25 @@ The `Square` value does not use the Windows system to round any corners, render 
 
 > [!NOTE]
 > When on a Windows 10 or earlier system, the corner kind is coerced to `Square`, since the system rounded corner feature isn't available until Windows 11.
+
+## System Backdrop (Mica, Acrylic) Rendering
+
+The [BackdropKind](xref:@ActiproUIRoot.Themes.WindowChrome.BackdropKind) property allows for a system-rendered backdrop to be displayed anywhere there is a transparent portion of a `Window`.
+
+Various backdrops have different Windows version support as listed below, and no backdrops are rendered in high-contrast mode:
+
+- MainWindow - A background material rendered for main windows.  On Windows 11 or later, this corresponds to the "Mica" material.
+- TransientWindow - A background material rendered for transient (popup/menu) windows.  On Windows 10 (May 2020 Update) or later, this corresponds to the "Acrylic" material.
+
+When a backdrop is specified but the operating system doesn't support the backdrop, or high-contrast mode is active, no backdrop will be rendered and a default opaque window background will be used.
+
+### Determining Backdrop Status
+
+The attached `WindowChrome.IsBackdropActive` property (set on the `Window` instance) returns whether a backdrop is currently being rendered.
+
+### Backdrop in the Title Bar
+
+The attached `WindowChrome.IsTitleBarBackdropAllowed` property (set on the `Window` instance) determines if a backdrop can be rendered in the title bar area of a window.  This attached property is set by the current theme, but can be overridden on the `Window` instance.  While most themes allow backdrops to be rendered in the title bar, by default, themes with accented title bar backgrounds do not.
 
 ## Title Bar Text Display
 
@@ -442,6 +462,12 @@ When building an Office-like Backstage overlay, use a value of `FadeSlide`.  If 
 The overlay covers the entire window but does sit in z-order behind the title bar's foreground.  This allows for the title bar to continue supporting window dragging, right-click context menus, and for title bar buttons (like Close) to be accessible.
 
 It also allows any custom title bar controls to be accessible, which may or may not be desired.  If a custom title bar control should not be accessible when an overlay is visible, it should be hidden or disabled.  The attached `WindowChrome.IsOverlayVisible` property on the window can be bound to using an appropriate value converter, or you can update the custom title bar control states programmatically in an [IsOverlayVisibleChanged](xref:@ActiproUIRoot.Themes.WindowChrome.IsOverlayVisibleChanged) event handler.
+
+### Focus Scope
+
+Overlays are designed by default to be focus scopes (similar to menus/toolbars), where their content can only temporarily be focused and the owner window will track which element previously had focus before the overlay displayed.  This allows for focus to be easily returned to the previous element.
+
+The attached `WindowChrome.IsOverlayFocusScope` property can be set on a window to specify if its overlay is a focus scope or not.  The default is `true`, but can be set to `false` when the overlay content should not be a separate focus scope.
 
 ## Using an Alternate Title Bar Style
 

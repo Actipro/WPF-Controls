@@ -4,6 +4,7 @@
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
 	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	FocusManager.FocusedElement="{Binding ElementName=codeEditor}"
     >
     
 	<DockPanel>
@@ -15,7 +16,9 @@
 					<TextBlock Margin="2,0,7,0" Text="Go To Definition" VerticalAlignment="Center" />
 				</StackPanel>
 			</Button>
-			<CheckBox x:Name="selectDefinitionCheckBox" Content="Select Definition on Navigate" Margin="20,0" VerticalAlignment="Center" IsChecked="True" />
+			<CheckBox x:Name="selectDefinitionCheckBox" Content="Select Definition on Navigate" Margin="20,0" VerticalAlignment="Center"
+					  Checked="OnSelectDefinitionCheckBoxIsCheckedChanged"
+					  Unchecked="OnSelectDefinitionCheckBoxIsCheckedChanged" />
 		</StackPanel>
 
 		<!-- Results -->
@@ -25,6 +28,8 @@
 		
 		<!-- Code Editor -->
 		<editor:SyntaxEditor x:Name="codeEditor" IsLineNumberMarginVisible="True"
+							 MouseMove="OnSyntaxEditorMouseMove"
+							 MouseLeave="OnSyntaxEditorMouseLeave"
 							 ViewSelectionChanged="OnSyntaxEditorViewSelectionChanged">
 			<editor:EditorDocument xml:space="preserve"><![CDATA[using System;
 
@@ -41,6 +46,9 @@ namespace DotNetLanguagesAddon {
 		// Move the caret throughout the document and the resolver will
 		// output relevant data for that position.
 				
+		// Move the mouse over the document and the resolver will output
+		// relevant data for the position under the mouse.
+				
 		public CSharpGoToDefinition() {
 			
 			// Position the caret over 'this', 'DemoMethod' or 'DemoProperty'
@@ -54,12 +62,17 @@ namespace DotNetLanguagesAddon {
 			
 			// Position the caret over the use of 'name' below and click
 			// the 'Go To Definition' button to jump to the declaration
-			// of the paremter.
+			// of the parameter.
 				
 			System.Diagnostics.Debug.WriteLine("The name is " + name);
 		}
 				
 		public string DemoProperty {
+			// Hold the CTRL key and move the mouse over 'CSharpGoToDefinition'
+			// below. The style of recognized tokens will change and
+			// the cursor will indicate the token is clickable. Click
+			// a recognized token to jump to the declaration.
+				
 			get {
 				return nameof(CSharpGoToDefinition) +
 					nameof(DemoMethod) +

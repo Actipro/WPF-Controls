@@ -5,7 +5,7 @@ order: 87
 ---
 # Converting to v22.1
 
-The 22.1 version made several minor API changes in the SyntaxEditor Python Language Add-on. A new [ToggleSwitch](../shared/windows-controls/toggle-switch.md) control (Shared Library) also resulted in renaming the existing ToggleSwitch (Guage) as [FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) to avoid ambiguity.
+The 22.1 version made several minor API changes in the SyntaxEditor Python Language Add-on. A new [ToggleSwitch](../shared/windows-controls/toggle-switch.md) control (Shared Library) also resulted in renaming the existing ToggleSwitch (Gauge) as [FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) to avoid ambiguity.
 
 ## SyntaxEditor Drag and Drop Updates
 
@@ -42,7 +42,7 @@ The [RegexCompletionItemMatcherBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.I
 
 Any custom classes which derive from [RegexCompletionItemMatcherBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase) will need to add the additional argument and update the logic to only use capture groups (i.e., parenthesis) in the pattern when requested.
 
-## ToggleSwitch Control (Guage Library) Renamed to FlipSwitch
+## ToggleSwitch Control (Gauge Library) Renamed to FlipSwitch
 
 To avoid ambiguity with a new [ToggleSwitch](../shared/windows-controls/toggle-switch.md) control (Shared Library), the existing Actipro Gauge `ToggleSwitch` control has been renamed to [FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch).  The following related types and members have also been renamed:
 

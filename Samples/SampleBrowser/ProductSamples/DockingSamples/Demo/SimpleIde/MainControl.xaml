@@ -21,7 +21,7 @@
 
 		<!-- DockSite -->
 		<docking:DockSite x:Name="dockSite" Grid.Row="1" 
-						  CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI Simple IDE Demo" FloatingWindowIcon="/Images/Icons/Actipro.ico"
+						  CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI Demo" FloatingWindowIcon="/Images/Icons/Actipro.ico"
 						  FloatingWindowOpening="OnDockSiteFloatingWindowOpening"
 						  MdiKindChanged="OnDockSiteMdiKindChanged"
 						  MenuOpening="OnDockSiteMenuOpening"

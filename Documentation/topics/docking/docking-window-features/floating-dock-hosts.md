@@ -51,6 +51,10 @@ For instance, if a tool window is floated, it will show up in a single [ToolWind
 
 A floating dock host can have its icon and title set via the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowIcon](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowIcon) and [FloatingWindowTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitle) properties respectively.  It's generally a good practice to use an application icon as the icon and the application title as the title.
 
+The floating dock host's title will also combine with the dock host's primary document's title (if there is a document in the dock host), which gives better clarity as to its contents in the Windows taskbar and Alt+Tab screens.  The primary document's title will appear before the [FloatingWindowTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitle) value and will be delimited by the [FloatingWindowTitleDelimiter](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitleDelimiter) value when both are present.
+
+The virtual [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[GetFloatingDockHostTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.GetFloatingDockHostTitle*) method does the work of generating the resolved title text for the floating dock host and can be overridden if custom logic should be used instead.
+
 ## Using Drag Float Previews
 
 By default, dragging a docking window will instantly float it, giving it more of a live feel.  The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseDragFloatPreviews](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseDragFloatPreviews) property, which defaults to `false`, can be set to `true` to prevent this behavior and only show a float preview highlight while dragging.
