@@ -122,7 +122,7 @@ Actipro Syntax Language Project (.langproj)
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="CommentText" Pattern="[^*]" />
+				<RegexPatternGroup TokenKey="CommentText" Pattern="[^*]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageProject.Lexer>

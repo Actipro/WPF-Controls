@@ -4,7 +4,7 @@
         xmlns:prism="http://prismlibrary.com/"
 		xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 		xmlns:viewModels="clr-namespace:ActiproSoftware.Windows.PrismIntegration.ViewModels"
-        Title="Actipro Prism v7.2 (Unity) Integration Sample" 
+        Title="Actipro Prism (Unity) Integration Sample" 
 		Icon="/Actipro.ico"
 		Width="800" Height="600"
 		>

@@ -19,10 +19,10 @@
 	>
 	
 	<themes:WindowChrome.Chrome>
-		<themes:WindowChrome />
+		<themes:WindowChrome BackdropKind="MainWindow" />
 	</themes:WindowChrome.Chrome>
 
-	<docking:DockSite>
+	<docking:DockSite Background="Transparent">
 		<docking:SplitContainer>
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow Title="Code Explorer" CanClose="False" ContainerDockedSize="250,200">

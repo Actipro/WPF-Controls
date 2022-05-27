@@ -105,6 +105,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 				this.ApplyValue(LargeChangeProperty, targetElement, RectEditBox.LargeChangeProperty);
 				this.ApplyValue(MaximumProperty, targetElement, RectEditBox.MaximumProperty);
 				this.ApplyValue(MinimumProperty, targetElement, RectEditBox.MinimumProperty);
+				this.ApplyValue(RoundingDecimalPlaceProperty, targetElement, RectEditBox.RoundingDecimalPlaceProperty);
 				this.ApplyValue(SmallChangeProperty, targetElement, RectEditBox.SmallChangeProperty);
 			}
 		}

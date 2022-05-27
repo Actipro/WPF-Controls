@@ -38,6 +38,19 @@ A simple object that implements `IDisposable`.
 <tr>
 <td>
 
+[EnvironmentHelper](xref:@ActiproUIRoot.EnvironmentHelper)
+
+</td>
+<td>
+
+Provides helper methods for interacting with the environment and platform.  For instance, its [IsWindowsMinimumRelease](xref:@ActiproUIRoot.EnvironmentHelper.IsWindowsMinimumRelease*) method returns whether the current operating system is a Windows operating system that is at least the specified [WindowsRelease](xref:@ActiproUIRoot.WindowsRelease).
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [ILogicalParent](xref:@ActiproUIRoot.ILogicalParent)
 
 </td>

@@ -6,9 +6,13 @@ using ActiproSoftware.Text.Languages.DotNet.Reflection;
 using ActiproSoftware.Text.Languages.DotNet.Resolution;
 using ActiproSoftware.Text.Languages.DotNet.Resolution.Implementation;
 using ActiproSoftware.Text.Lexing;
+using ActiproSoftware.Text.Tagging.Implementation;
+using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 #if WPF
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
@@ -22,7 +26,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 	public partial class MainControl : System.Windows.Controls.UserControl {
 
 		// A project assembly (similar to a Visual Studio project) contains source files and assembly references for reflection
-		private readonly IProjectAssembly projectAssembly;
+		private readonly GoToDefinitionService	goToDefinitionService;
+		private readonly IProjectAssembly		projectAssembly;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -43,6 +48,19 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 			// Load the .NET Languages Add-on C# language and register the project assembly on it
 			var language = new CSharpSyntaxLanguage();
 			language.RegisterProjectAssembly(projectAssembly);
+
+			// Initialize the GoToDefinitionService
+			goToDefinitionService = new GoToDefinitionService();
+			goToDefinitionService.OpenEditors.Add(codeEditor);
+			selectDefinitionCheckBox.IsChecked = goToDefinitionService.IsWordSelectedOnNavigation;
+
+			// Register the GoToDefinitionService on the language so it can be resolved by other types
+			language.RegisterService(goToDefinitionService);
+
+			// Register the GoToDefinitionTagger on the language
+			language.RegisterService(new TextViewTaggerProvider<GoToDefinitionTagger>(typeof(GoToDefinitionTagger)));
+
+			// Configure this editor to use the language
 			codeEditor.Document.Language = language;
 		}
 
@@ -56,64 +74,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Gets the source file location, if any, represented by the given resolver result.
-		/// </summary>
-		/// <param name="result">The result to examine.</param>
-		/// <returns>An <see cref="ISourceFileLocation"/> if available; otherwise <c>null</c>.</returns>
-		private ISourceFileLocation GetSourceFileLocation(IResolverResult result) {
-			if ((result?.Type is ITypeDefinition typeDefinition) && (typeDefinition.SourceFileLocations.Count > 0))
-				return typeDefinition.SourceFileLocations[0];
-
-			if (result is IParameterResolverResult parameterResult)
-				return parameterResult.Parameter.SourceFileLocation;
-
-			if (result is ITypeMemberResolverResult typeMemberResult)
-				return typeMemberResult.Member.SourceFileLocation;
-
-			if (result is IVariableResolverResult variableResult)
-				return variableResult.Variable.SourceFileLocation;
-
-			return null;
-		}
-
-		/// <summary>
-		/// Navigates to the given location.
-		/// </summary>
-		/// <param name="sourceFileLocation">The source file location.</param>
-		/// <param name="selectWord">When <c>true</c>, the word at the source file location will be selected (e.g. the identifier name).</param>
-		private void GoToSourceFileLocation(ISourceFileLocation sourceFileLocation, bool selectWord) {
-			if (sourceFileLocation != null) {
-				// Is the location within the current document?
-				if (sourceFileLocation.Key == codeEditor.Document.UniqueId.ToString()) {
-					// Determine the location of the definition
-					int navigationOffset = -1;
-					if (sourceFileLocation.NavigationOffset.HasValue)
-						navigationOffset = sourceFileLocation.NavigationOffset.Value;
-					else if (!sourceFileLocation.TextRange.IsDeleted)
-						navigationOffset = sourceFileLocation.TextRange.StartOffset;
-
-					// Move to the definition
-					if ((0 <= navigationOffset) && (navigationOffset < codeEditor.Document.CurrentSnapshot.Length)) {
-						// Should the definition be selected?
-						if (selectWord) {
-							// Find the full range of the "word" at the navigation offset and select it
-							var wordTextRange = codeEditor.Document.CurrentSnapshot.GetWordTextRange(navigationOffset);
-							if (!wordTextRange.IsZeroLength) {
-								codeEditor.ActiveView.Selection.SelectRange(wordTextRange);
-								return;
-							}
-						}
-
-						// No selection... simply adjust the caret location to the definition
-						codeEditor.ActiveView.Selection.CaretOffset = navigationOffset;
-						return;
-					}
-				}
-			}
-			MessageBox.Show("Cannot navigate to the symbol under the caret.", "Go To Definition", MessageBoxButton.OK, MessageBoxImage.Information);
-		}
-
-		/// <summary>
 		/// Occurs when the button is clicked.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
@@ -122,24 +82,58 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 			// Resolve the item under the caret
 			var resultSet = PerformResolution(codeEditor.ActiveView.Selection.EndSnapshotOffset);
 
-			// Determine the source location of the resolver result
-			ISourceFileLocation sourceFileLocation = null;
-			if ((resultSet != null) && (resultSet.Results.Count > 0))
-				sourceFileLocation = GetSourceFileLocation(resultSet.Results[0]);
-
-			// Navigate to the source location
-			GoToSourceFileLocation(sourceFileLocation, selectWord: (selectDefinitionCheckBox.IsChecked == true));
+			// Use the GoToDefinition service to navigate to the item
+			if (resultSet.Results.Count > 0) {
+				var result = resultSet.Results[0];
+				var goToDefinitionService = codeEditor.Document.Language.GetService<GoToDefinitionService>();
+				goToDefinitionService.NavigateToDefinition(result);
+			}
 
 			// Restore focus to the SyntaxEditor since the "Go To Definition" button in this sample will steal focus when clicked
 			codeEditor.ActiveView.Focus(Windows.FocusState.Programmatic);
 		}
 
 		/// <summary>
+		/// Occurs when the checked state changes.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
+		private void OnSelectDefinitionCheckBoxIsCheckedChanged(object sender, RoutedEventArgs e) {
+			if (goToDefinitionService != null)
+				goToDefinitionService.IsWordSelectedOnNavigation = (selectDefinitionCheckBox.IsChecked == true);
+		}
+
+		/// <summary>
+		/// Occurs when the mouse moves over the control.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">A <see cref="MouseEventArgs"/> that contains the event data.</param>
+		private void OnSyntaxEditorMouseMove(object sender, MouseEventArgs e) {
+			// When moving the mouse, resolve the item under the pointer
+			var result = codeEditor.HitTest(e.GetPosition(codeEditor));
+			if (result.Type == HitTestResultType.ViewTextAreaOverCharacter) {
+				var snapshotOffset = new TextSnapshotOffset(result.Snapshot, result.Offset);
+				PerformResolution(snapshotOffset);
+			}
+		}
+
+		/// <summary>
+		/// Occurs when the mouse leaves the control.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">A <see cref="MouseEventArgs"/> that contains the event data.</param>
+		private void OnSyntaxEditorMouseLeave(object sender, MouseEventArgs e) {
+			// When the mouse leaves, resolve the item under the caret position
+			PerformResolution(codeEditor.ActiveView.Selection.EndSnapshotOffset);
+		}
+
+		/// <summary>
 		/// Occurs when the selection changes within the view.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="Windows.Controls.SyntaxEditor.EditorViewSelectionEventArgs"/> that contains the event data.</param>
-		private void OnSyntaxEditorViewSelectionChanged(object sender, Windows.Controls.SyntaxEditor.EditorViewSelectionEventArgs e) {
+		/// <param name="e">A <see cref="EditorViewSelectionEventArgs"/> that contains the event data.</param>
+		private void OnSyntaxEditorViewSelectionChanged(object sender, EditorViewSelectionEventArgs e) {
+			// When selection changes, resolve the item under the caret
 			PerformResolution(e.View.Selection.EndSnapshotOffset);
 		}
 
@@ -149,29 +143,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		/// <param name="snapshotOffset">The snapshot offset.</param>
 		/// <returns>An <see cref="IResolverResultSet"/> if available; otherwise <c>null</c>.</returns>
 		private IResolverResultSet PerformResolution(TextSnapshotOffset snapshotOffset) {
-			if (!snapshotOffset.IsDeleted) {
-				// Create a context
-				var context = new CSharpContextFactory().CreateContext(snapshotOffset);
-
-				if (context.ProjectAssembly != null) {
-					// Create a request
-					var request = new ResolverRequest(context.TargetExpression) {
-						Context = context
-					};
-
-					// Resolve
-					var resolver = context.ProjectAssembly.Resolver;
-					var resultSet = resolver.Resolve(request);
-
-					// Output the results
-					UpdateResolverResults(resultSet);
-
-					return resultSet;
-				}
-			}
-
-			UpdateResolverResults(resultSet: null);
-			return null;
+			var resultSet = codeEditor.Document.Language.GetService<GoToDefinitionService>().PerformResolution(snapshotOffset);
+			UpdateResolverResults(resultSet);
+			return resultSet;
 		}
 
 		/// <summary>
@@ -179,7 +153,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		/// </summary>
 		/// <param name="resultSet">The result set.</param>
 		private void UpdateResolverResults(IResolverResultSet resultSet) {
-			StringBuilder text = new StringBuilder();
+			var text = new StringBuilder();
 
 			if (resultSet != null) {
 				for (var resultIndex = 0; resultIndex < resultSet.Results.Count; resultIndex++) {

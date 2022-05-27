@@ -2,7 +2,10 @@
 This sample shows how to integrate Docking/MDI for WPF into a Prism application,
 using Unity for inversion of control/dependency injection. 
 
-The project references Prism v7.2 and targets .NET 4.6.2.
+The project targets a specific version of Prism and .NET Framework, but those versions
+should not been seen as minimum or maximum requirements for the integration to be
+successful. The Prism version and target framework can be changed to verify if the
+sample code is compatible with your configuration needs.
 
 
 ABOUT THIS SAMPLE

@@ -99,7 +99,7 @@
 	</Window.Resources>
 	
 	<themes:WindowChrome.Chrome>
-		<themes:WindowChrome HasIcon="False" TitleBarLeftContentMaxWidthOverflowPercentage="0.5" TitleBarHeaderAlignment="Center">
+		<themes:WindowChrome HasIcon="False" TitleBarLeftContentMaxWidthOverflowPercentage="0.5" TitleBarHeaderAlignment="Center" BackdropKind="MainWindow">
 			
 			<!-- This template selector picks which UI to display for overlays based on the data passed in -->
 			<themes:WindowChrome.OverlayContentTemplateSelector>

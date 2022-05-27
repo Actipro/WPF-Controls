@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 
 Actipro Syntax Language Project (.langproj)
@@ -9,18 +9,18 @@ Actipro Syntax Language Project (.langproj)
   Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Php" LanguageDescription="PHP" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Php" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Php" LanguageDescription="PHP" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Php" OutputPath="S:\Code\ActiproSoftware\WPF-Controls-Source\Public\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
-		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
-		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
-		<ClassificationType Key="PhpNumber" Description="PHP Number" />
-		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
-		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
 		<ClassificationType Key="Identifier" />
+		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
+		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PhpNumber" Description="PHP Number" />
+		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
+		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
+		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>
@@ -266,7 +266,7 @@ Actipro Syntax Language Project (.langproj)
 				</State.Scopes>
 				<RegexPatternGroup TokenKey="PrimaryStringVariable" ClassificationTypeKey="PhpVariable" Pattern="\$ (_ | {Alpha})({Word})*" />
 				<RegexPatternGroup TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
-				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
+				<RegexPatternGroup TokenKey="PrimaryStringEscapedCharacter" Pattern="\\." />
 				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\$\\\n]+" />
 			</State>
 			<!-- AlternateString state -->
@@ -282,7 +282,7 @@ Actipro Syntax Language Project (.langproj)
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup TokenKey="AlternateStringLineTerminator" Pattern="\n" />
-				<ExplicitPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\'" />
+				<RegexPatternGroup TokenKey="AlternateStringEscapedCharacter" Pattern="\\." />
 				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
 			</State>
 			<!-- SingleLineComment state -->
