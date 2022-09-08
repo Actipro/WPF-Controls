@@ -77,6 +77,8 @@ The [IsPopupOpenedOnFocus](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.
 
 The height of the popup can be restricted by setting the [MaxPopupHeight](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.MaxPopupHeight) property.
 
+A header can be displayed within the popup by setting the [PopupHeader](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.PopupHeader), [PopupHeaderTemplate](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.PopupHeaderTemplate), and [PopupHeaderTemplateSelector](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.PopupHeaderTemplateSelector) properties.
+
 ## Submitting
 
 When the end user clicks on a suggested item or presses `Enter` (even if the suggestion list is not open at the time), the [Submitted](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.Submitted) event is raised.  Handlers of this event should perform whichever search query or command execution is appropriate based on the supplied text.

@@ -265,3 +265,14 @@ Gets or sets the shadow elevation.  The default value is `8`.  Set this property
 }
 
 In scenarios where you don't use tool windows at all, set the [AreToolWindowsVisible](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher.AreToolWindowsVisible) property to `false`.  Likewise, if you don't use MDI, set the [AreDocumentsVisible](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher.AreDocumentsVisible) property to `false`.
+
+## Non-Switcher Tab Selection Key Gestures
+
+Several other helpful tab selection key gestures are built into the product.
+
+| Key | Description |
+|-----|-----|
+| `Ctrl+PgUp` | Activates the previous tab in the same container by selecting it and focusing its content. |
+| `Ctrl+PgDn` | Activates the next tab in the same container by selecting it and focusing its content. |
+| `Ctrl+1`, `Ctrl+2`, etc. | Directly activates the numbered tab in a normal state in the current container.  For instance, `Ctrl+2` activates the second tab in a normal state. |
+| `Ctrl+Alt+1`, `Ctrl+Alt+2`, etc. | Directly activates the numbered tab in a pinned state in the current container.  For instance, `Ctrl+Alt+2` activates the second tab in a pinned state. |

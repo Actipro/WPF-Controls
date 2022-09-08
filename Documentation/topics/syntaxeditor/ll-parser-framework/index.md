@@ -11,7 +11,9 @@ A parsing framework is the key to enhancing a [SyntaxEditor](../index.md) editin
 
 ## Parser Type
 
-The parser in our framework is LL(*), meaning it is a top-down parser that can run on a subset of context-free grammars.  It parses input from left to right, traces leftmost derivation, and by default uses one symbol of look-ahead.  This normally would mean LL(1), however [can-match callbacks](callbacks-and-error-handling.md) allow infinite symbol look-ahead, thus making it LL(*).
+The parser in our framework is LL(*), meaning it is a top-down parser that can run on a subset of context-free grammars.  It parses input from left to right, traces leftmost derivation, and by default uses one symbol of look-ahead.
+
+This normally would mean LL(1), however [can-match callbacks](callbacks-and-error-handling.md) allow infinite symbol look-ahead, thus making it LL(*).
 
 LL parsers do not support left recursion however grammars can generally be refactored to eliminate left recursion and turn it into right recursion instead.  Ambiguity can be resolved using can-match callbacks.  Examples of handling both scenarios are given in this framework's documentation.
 

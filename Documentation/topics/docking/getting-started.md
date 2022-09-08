@@ -11,6 +11,16 @@ This topic's information will assume you are using Visual Studio to write your X
 
 @if (winrt) {
 
+## App Must Target Fall Creators Update or Later
+
+The Actipro @@PlatformName Controls target 'Windows 10 Fall Creators Update (10.0; Build 16299)'.  Any apps using them must also set the project's target version AND minimum version to the same or newer, or errors may occur.
+
+The controls also use Microsoft's 'Win2D.uwp' NuGet package, which must also be referenced.  Please see the Readme file for a detailed chart specifying which Windows 10 target versions are compatible with the various NuGet package requirement versions.
+
+}
+
+@if (winrt) {
+
 ## Add Extension SDK Reference
 
 In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" and add the "Actipro Universal Windows Controls" SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.

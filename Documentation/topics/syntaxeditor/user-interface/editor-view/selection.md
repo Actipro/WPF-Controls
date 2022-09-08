@@ -66,6 +66,12 @@ Press the `Esc` key when there are multiple selection ranges to collapse back to
 
 Most built-in edit actions and editing features are designed to support multiple selections.  For instance, pressing `Shift+Right Arrow` will extend all of the selections by one character.  Copying text from multiple selections unions the selected text, joining each range's text with a line terminator.  Pasting multi-line text into a view with the same number of selections as text lines being pasted will replace each selection with a related line from the pasted text.
 
+### Adding the Next Occurrence
+
+Pressing `Ctrl+D` adds the next occurrence of the currently-selected text to the selection, or selects the current word if there is no selection.
+
+The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[AddNextOccurrence](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.AddNextOccurrence*) method provides access to this functionality.
+
 ## Creating Block Selections at Run-time
 
 Block selections can be made via the mouse or the keyboard.

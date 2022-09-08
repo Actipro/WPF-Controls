@@ -252,6 +252,7 @@ The following tables describe the default key bindings that are in place when th
 | Ctrl + Shift + Page Up | [SelectToVisibleTopAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectToVisibleTopAction) |
 | Ctrl + Shift + Page Down | [SelectToVisibleBottomAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectToVisibleBottomAction) |
 | Ctrl + A | [SelectAllAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectAllAction) |
+| Ctrl + D | [AddNextOccurrenceToSelectionAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.AddNextOccurrenceToSelectionAction) |
 | Ctrl + Shift + W | [SelectWordAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectWordAction) |
 | Ctrl + Shift + ] | [SelectToMatchingBracketAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectToMatchingBracketAction) |
 | Shift + Alt + Down | [SelectBlockDownAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectBlockDownAction) |
