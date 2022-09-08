@@ -84,12 +84,20 @@
 
 			<sampleBrowser:SampleGalleryControl>
 
-				<sampleBrowser:LabeledCardControl Label="Countries list, using DisplayMemberPath and ComboBox input mode, and with a clear button on focus">
+				<sampleBrowser:LabeledCardControl Label="Countries list, using DisplayMemberPath, ComboBox input mode, popup header, and with a clear button when there is text">
 					<editors:AutoCompleteBox x:Name="countryBox" MinWidth="300" PlaceholderText="Country" TextMemberPath="Name" 
-											 DisplayMemberPath="Name" InputMode="ComboBox" HasClearButton="True" HorizontalAlignment="Left">
+											 DisplayMemberPath="Name" InputMode="ComboBox" HasClearButton="True" HorizontalAlignment="Left"
+											 PopupHeader="Select a country:">
 						<editors:AutoCompleteBox.DataFilter>
 							<editors:AutoCompleteBoxStringFilter />
 						</editors:AutoCompleteBox.DataFilter>
+						<editors:AutoCompleteBox.PopupHeaderTemplate>
+							<DataTemplate>
+								<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+									<TextBlock Margin="4" Text="{Binding}" TextWrapping="Wrap" />
+								</Border>
+							</DataTemplate>
+						</editors:AutoCompleteBox.PopupHeaderTemplate>
 					</editors:AutoCompleteBox>
 				</sampleBrowser:LabeledCardControl>
 

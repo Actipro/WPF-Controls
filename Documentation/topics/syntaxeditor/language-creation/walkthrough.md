@@ -9,6 +9,9 @@ Don't know where to get started building a custom syntax language?  This walkthr
 
 This walkthough gives you a sequence of concepts to understand when working with syntax languages.  Each section in the walkthough provides a brief overview along with links to other documentation topics that give detailed information about the related subject.
 
+> [!TIP]
+> The **Sample Browser** application included with our installer includes a series of *Getting Started QuickStarts* for building a custom language with full source code and a working sample for each step.
+
 ## Understanding Language Concepts
 
 A syntax language is an object implementing [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that can be assigned to an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) to provide language-specific functionality for the document.  This functionality can be anything from word-break finding to lexing/parsing, all available via registered services.  Multiple syntax languages can be created so that different documents can each receive different functionality.

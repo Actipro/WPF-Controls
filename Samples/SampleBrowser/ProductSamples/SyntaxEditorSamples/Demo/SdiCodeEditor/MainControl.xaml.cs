@@ -398,7 +398,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor 
 			if (!BrowserInteropHelper.IsBrowserHosted)
 				dialog.CheckFileExists = true;
 			dialog.Multiselect = false;
-			dialog.Filter = "Code files (*.cs;*.vb;*.js;*.py;*.xml;*.txt)|*.cs;*.vb;*.js;*.py;*.xml;*.txt|All files (*.*)|*.*";
+			dialog.Filter = "Code files (*.cs;*.vb;*.js;*.json;*.py;*.xml;*.txt)|*.cs;*.vb;*.js;*.json;*.py;*.xml;*.txt|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
 				// Open a document 
 				if (BrowserInteropHelper.IsBrowserHosted) {

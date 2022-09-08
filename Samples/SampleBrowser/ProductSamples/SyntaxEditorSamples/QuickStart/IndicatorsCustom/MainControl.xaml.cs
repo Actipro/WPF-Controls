@@ -32,12 +32,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Indicato
 			editor.Document.Language.RegisterService(new IndicatorQuickInfoProvider());
 
 			// Add some indicators
-			editor.ActiveView.Selection.StartOffset = editor.ActiveView.CurrentSnapshot.Lines[15].StartOffset + 10;
-			editor.ActiveView.Selection.SelectWord();
-			this.AddIndicator(editor.ActiveView.Selection.SnapshotRange);
-			editor.ActiveView.Selection.StartOffset = editor.ActiveView.CurrentSnapshot.Lines[22].StartOffset + 10;
-			editor.ActiveView.Selection.SelectWord();
-			this.AddIndicator(editor.ActiveView.Selection.SnapshotRange);
+			this.AddIndicatorForWordAtOffset(editor.ActiveView.CurrentSnapshot.Lines[15].StartOffset + 10);
+			this.AddIndicatorForWordAtOffset(editor.ActiveView.CurrentSnapshot.Lines[22].StartOffset + 10);
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +53,24 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Indicato
 			editor.Document.IndicatorManager.Add<CustomIndicatorTagger, CustomIndicatorTag>(snapshotRange, tag);
 		}
 		
+		/// <summary>
+		/// Adds an indicator for the word at the specified offset.
+		/// </summary>
+		/// <param name="startOffset">The offset to examine.</param>
+		private void AddIndicatorForWordAtOffset(int startOffset) { 
+			var reader = editor.ActiveView.CurrentSnapshot.GetReader(startOffset);
+
+			if (!reader.IsAtTokenStart) {
+				reader.GoToCurrentWordStart();
+				startOffset = reader.Offset;
+			}
+
+			reader.GoToCurrentWordEnd();
+			var endOffset = reader.Offset;
+
+			this.AddIndicator(new TextSnapshotRange(reader.Snapshot, startOffset, endOffset));
+		}
+
 		/// <summary>
 		/// Occurs when the button is clicked.
 		/// </summary>

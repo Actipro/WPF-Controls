@@ -9,6 +9,10 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v22.1.3
+
+- **SyntaxEditor:** Updated the [Word Wrap](syntaxeditor/user-interface/editor-view/word-wrap.md) topic with information on configuring the wrapped line indent amount.
+
 ## Updates for v22.1.2
 
 - **Docking/MDI:** Updated the [Floating Dock Hosts](docking/docking-window-features/floating-dock-hosts.md) topic with information on new features for customizing the floating dock host title.

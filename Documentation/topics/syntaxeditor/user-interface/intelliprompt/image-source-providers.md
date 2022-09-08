@@ -37,17 +37,27 @@ CommonImageSourceProvider provider = new CommonImageSourceProvider(CommonImageKi
 
 ### Image Set Selection
 
+@if (winforms) {
+
+There are several image sets that are included with SyntaxEditor:
+
+- MetroLight (default) - Best for most Metro themes.
+- MetroDark - Best for the MetroDark theme.
+
+}
+
+@if (winrt wpf) {
+
 There are several image sets that are included with SyntaxEditor:
 
 - Classic - Best for non-Metro themes.
 - MetroLight (default) - Best for most Metro themes.
 - MetroDark - Best for the MetroDark theme.
 
-@if (winrt wpf) {
-
-The MetroLight and MetroDark image sets are implemented with vector graphics, enabling the best clarity when used on high DPI systems. 
-
 }
+
+> [!TIP]
+> The MetroLight and MetroDark image sets are implemented with vector graphics, enabling the best clarity when used on high DPI systems.
 
 To change the image set that is currently in effect, set the [CommonImageSourceProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider).[DefaultImageSet](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider.DefaultImageSet) property to a [CommonImageSet](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSet) value.  Note that some UI, such as for the [NavigableSymbolSelector](navigable-symbol-selector.md), may need to be reloaded following a change to this property.
 
