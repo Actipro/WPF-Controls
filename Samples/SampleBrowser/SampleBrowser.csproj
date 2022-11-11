@@ -15,7 +15,7 @@
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 
-		<Version>22.1.3.0</Version>
+		<Version>22.1.4.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 
@@ -68,13 +68,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="22.1.3" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="22.1.3" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML" Version="22.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Themes.Aero" Version="22.1.4" />
 	</ItemGroup>
 	
 </Project>

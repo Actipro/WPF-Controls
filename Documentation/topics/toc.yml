@@ -1673,6 +1673,8 @@ items:
     href: conversion/converting-to-v12-1.md
 - name: "Troubleshooting (General)"
   href: troubleshooting.md
+- name: "Supported Technologies"
+  href: supported-technologies.md
 - name: "GitHub Open-Source"
   href: open-source.md
 - name: "Support"

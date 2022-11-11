@@ -10,7 +10,7 @@
 		<Description>Provides interoperability between Actipro's WPF Editors product and the WPF DataGrid.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML Editors DataGrid</PackageTags>
 
-		<Version>22.1.3.0</Version>
+		<Version>22.1.4.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -35,7 +35,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="22.1.3" />
+	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="22.1.4" />
 	</ItemGroup>
 
 </Project>

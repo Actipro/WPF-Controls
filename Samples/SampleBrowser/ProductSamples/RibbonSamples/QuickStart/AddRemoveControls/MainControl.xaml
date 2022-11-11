@@ -36,7 +36,7 @@
 					Actipro Ribbon allows for dynamic addition and removal of controls anywhere in the user interface.
 					It will recalculate layouts as appropriate.
 					<LineBreak /><LineBreak />
-					Once you launch the external window, use the controls on the window (above the document area) 
+					Use the sample options above
 					to add and remove controls dynamically from the ribbon and see how it affects the layout.
 				</TextBlock>
 			</Expander>

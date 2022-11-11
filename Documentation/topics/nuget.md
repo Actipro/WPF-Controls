@@ -7,7 +7,7 @@ order: 22
 
 Actipro provides NuGet packages for its @@PlatformName Control assemblies so that they can easily be consumed by .NET projects and later updated.
 
-The NuGet packages include .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+ variations of the assemblies.  When a package is referenced, NuGet will use the best variation for your target platform.
+The NuGet packages include multiple .NET variations of the assemblies.  When a package is referenced, NuGet will use the best variation for your target framework.  See the [Supported Technologies](supported-technologies.md) topic for a list of supported frameworks.
 
 ## Actipro NuGet Packages
 

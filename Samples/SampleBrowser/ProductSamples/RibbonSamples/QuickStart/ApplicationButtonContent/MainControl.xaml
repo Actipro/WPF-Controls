@@ -28,13 +28,13 @@
 					This is a string resource and can be customized by altering the SRName.UIApplicationButtonLabelText string resource
 					before the ribbon is created.
 					Alternatively the Ribbon.ApplicationButtonLabel property can be set at run-time to change it.
-					The leftmost ribbon in this sample shows the default File text content.
+					The top ribbon in this sample shows the default File text content.
 					<LineBreak /><LineBreak />
 					Ribbon includes a standard image that can be easily set to the Scenic application button in place of the default File text.
 					To use the built-in application button image, set the ApplicationButtonImageSource to the image source used
 					in the source of this sample.
 					You could use a 16x16 company logo image source instead if you wish.
-					The center ribbon shows the built-in image that can be used in a Scenic ribbon.
+					The bottom ribbon shows the built-in image that can be used in a Scenic ribbon.
 				</TextBlock>
 			</Expander>
 
