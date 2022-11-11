@@ -23,6 +23,7 @@ The controls ship with over 25 professionally-designed themes, and custom themes
   - [Running Other Sample Applications](#running-other-sample-applications)
   - [Viewing Related Open-Source Projects](#viewing-related-open-source-projects)
 - [NuGet Packages](#nuget-packages)
+- [Supported Technologies](#supported-technologies)
 - [Contributing](#contributing)
 - [Support](#support)
 - [Licensing](#licensing)
@@ -87,7 +88,7 @@ This repo also contains the following open-source projects, which can be opened 
 
 ## NuGet Packages
 
-[Packages for the Actipro WPF Controls](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF) are published on nuget.org, all beginning with the `ActiproSoftware.Controls.WPF` name prefix.  They contain .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+ variations of the product assemblies.
+[Packages for the Actipro WPF Controls](https://www.nuget.org/packages?q=ActiproSoftware.Controls.WPF) are published on nuget.org, all beginning with the `ActiproSoftware.Controls.WPF` name prefix.
 
 ### All WPF Controls Metapackage
 
@@ -131,6 +132,12 @@ These packages are optional and shipped separately from the metapackage:
 
 - [ActiproSoftware.Controls.WPF.DataGrid.Contrib](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.DataGrid.Contrib) - For the `DataGrid.Contrib` project in this repo.
 - [ActiproSoftware.Controls.WPF.Themes.Aero](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Themes.Aero) - For legacy Aero themes.
+
+## Supported Technologies
+
+- **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+
+- **Architectures:** Any CPU, ARM64, x64, and x86
+- **IDEs:** Visual Studio 2017-2022
 
 ## Contributing
 

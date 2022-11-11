@@ -10,6 +10,60 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">11/11/2022 - Version 22.1.4</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added support for restricting floating dock host maximum size when appropriate if contained docking windows have ContainerMaxSize set." />
+				<sampleBrowser:BulletContentControl Content="Added a protected virtual DockSite.NotifyWindowDragMove method that is called as the pointer drags any set of docking windows around." />
+				<sampleBrowser:BulletContentControl Content="Improved support for dragging docking windows to nested linked dock sites." />
+				<sampleBrowser:BulletContentControl Content="Updated floating dock hosts that contain a single ToolWindowContainer to use the selected ToolWindow's Title as their title." />
+				<sampleBrowser:BulletContentControl Content="Updated the AdvancedTabItem template to bind to the HeaderTemplateSelector property." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a StandardSwitcher might not receive key up events from interop controls when InteropFocusTracking is used." />
+				<sampleBrowser:BulletContentControl Content="Fixed a couple issues introduced in the previous build related to using the Float command on a tool window currently in MDI." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where MaskedTextBox mask character classes ending in a hyphen were sometimes parsed as an incomplete range." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a GridResourceKeys class with ComponentResourceKeys for several built-in PropertyGridItem styles." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Navigation</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated ZoomContentControl's zoom-to-region rubber band to render in a light color when in a dark theme." />
+				<sampleBrowser:BulletContentControl Content="Updated ZoomContentControl's cursors to have better contrast in dark themes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the SearchOverlayPane.ApplyStringResources method that can update the pane's UI strings after a string resource change." />
+				<sampleBrowser:BulletContentControl Content="Improved TextSnapshot.TextRangeToPositionRange performance for zero-length text ranges." />
+				<sampleBrowser:BulletContentControl Content="Updated the visible whitespace rendering logic to include non-breaking space characters." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where regex character classes ending in a hyphen were sometimes parsed as an incomplete range." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a selection-based search scope range may show up incorrectly after performing certain document changes while the search overlay pane is visible." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where CollectionTagger.FindNext didn't find a match at document end when searching backwards and wrapping." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the resolver didn't always crawl up namespace declarations properly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome to tell the system which border color to use when Windows renders the window border, ensuring border color consistency between Windows versions." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous build where some keys were getting consumed incorrectly in open menus." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated logic for determining maximum popup height." />
+				<sampleBrowser:BulletContentControl Content="Updated VisualTreeHelperExtended logic to better guard against non-Visual source arguments." />
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome to better support the Window.MaxWidth and MaxHeight properties." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where ImageConverter didn't support DrawingImage values." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous build where WindowChrome used on systems prior to Windows 8.1 could throw an exception." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where AdvancedTextBlock's HighlightForeground color might be coerced even though a contrasting HighlightBackground has been set." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/8/2022 - Version 22.1.3</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

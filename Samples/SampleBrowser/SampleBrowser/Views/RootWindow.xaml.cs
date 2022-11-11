@@ -68,12 +68,16 @@ namespace ActiproSoftware.SampleBrowser {
 		/// <param name="e">The <see cref="RoutedPropertyChangedEventArgs{Object}"/> that contains the event data.</param>
 		private void OnTransitionPresenterTransitionCompleted(object sender, RoutedPropertyChangedEventArgs<object> e) {
 			if (e.OriginalSource == rootPresenter) {
-				var contentElement = rootPresenter.Content as FrameworkElement;
-				this.Dispatcher.BeginInvoke(DispatcherPriority.Input, (Action)(() => {
-					var currentItemInfo = this.ViewModel.ViewItemInfo;
-					if ((currentItemInfo?.CanFocusOnLoad ?? false) && (this.IsActive) && (rootPresenter.Content == contentElement))
-						this.FocusContentElement(contentElement);
-				}));
+				if (rootPresenter.Content is FrameworkElement contentElement) {
+					this.Dispatcher.BeginInvoke(DispatcherPriority.Input, (Action)(() => {
+						var currentItemInfo = this.ViewModel.ViewItemInfo;
+						if ((currentItemInfo?.CanFocusOnLoad ?? false) && (this.IsActive) && (rootPresenter.Content == contentElement)) {
+							// There is no need to focus within the content element if focus is already there
+							if (!contentElement.IsKeyboardFocusWithin)
+								this.FocusContentElement(contentElement);
+						}
+					}));
+				}
 			}
 		}
 

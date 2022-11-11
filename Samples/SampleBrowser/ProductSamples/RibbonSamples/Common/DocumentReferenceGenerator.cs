@@ -39,27 +39,27 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 		/// <param name="manager">The <see cref="RecentDocumentManager"/> to update.</param>
 		public static void BindRecentDocumentManager(RecentDocumentManager manager) {
 			manager.Documents.BeginUpdate();
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\EULA.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Resume\Resume-2008.rtf"), true);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Resume\Resume-2006.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Resume\Resume-2005.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Resume\Resume-2004.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Actipro Software Notes.rtf"), true);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 1.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 2.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\A document with a very long filename that should be trimmed.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 3.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 4.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 5.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Actipro Software Products.rtf"), true);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 6.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 7.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 8.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 9.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 10.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 11.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Another document 12.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Document opened a long time ago but is pinned.rtf"), true);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Software\EULA.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Resume.rtf"), true);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Vacation Planning.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Investment Notes.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Holiday Recipies.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Software\Release Notes.rtf"), true);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Financial Report Q4.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Birthday Gift Ideas.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Financial Report Q3.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Untitled Novel - A story about long file names and their impact on user interfaces.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Downloads\Actipro Software - Getting Started.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Downloads\How to Deliver Faster with Reusable Components.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Software\Feature Requests.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Financial Report Q2.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Bathroom Remodel Budget.rtf"), true);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Financial Report Q1.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Side Project Domain Names.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Sales Presentation Notes.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Wish List.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Privacy Policy.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\TODO List.rtf"), true); // Oldest document, but pinned for importance
 			manager.Documents.EndUpdate();
 		}
 

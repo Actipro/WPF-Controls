@@ -52,13 +52,13 @@ using ActiproSoftware.Windows.Themes;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("22.1.3.0")]  // WPF
-[assembly: AssemblyInformationalVersion("22.1.3.0")]  // WPF
+[assembly: AssemblyVersion("22.1.4.0")]  // WPF
+[assembly: AssemblyInformationalVersion("22.1.4.0")]  // WPF
 
 namespace ActiproSoftware.Products.DataGrid.Contrib {
 
 	/// <summary>
-	/// Provides a class for retrieving information about the <c>ActiproSoftware.Charts</c> assembly.
+	/// Provides a class for retrieving information about the <c>ActiproSoftware.DataGrid.Contrib</c> assembly.
 	/// </summary>
 	public sealed class AssemblyInfo : ActiproSoftware.Products.AssemblyInfo {
 
