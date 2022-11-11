@@ -60,7 +60,7 @@
 	</ItemGroup>
 
 	<ItemGroup Label=".NET Core References" Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
-		<PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+		<PackageReference Include="System.Drawing.Common" Version="4.7.2" />
 	</ItemGroup>
 	
 	<ItemGroup Label="Microsoft Logging" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*MS_LOGGING(;.*)*$'))">
