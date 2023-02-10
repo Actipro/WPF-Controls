@@ -10,7 +10,7 @@
 		<Description>Common view models, templates, and other types used when implementing Bars controls with MVVM (Model-View-ViewModel) patterns.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML MVVM MMoodel View ViewModel Bars</PackageTags>
 
-		<Version>22.1.5.0</Version>
+		<Version>23.1.0.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -35,7 +35,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="22.1.5" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="23.1.0" />
 	</ItemGroup>
 
 </Project>

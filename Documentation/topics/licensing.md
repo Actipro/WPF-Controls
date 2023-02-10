@@ -144,7 +144,7 @@ The contents of a "licenses.licx" file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=22.1.5.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=23.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 ### Notes on Build Machines When Using Licenses.licx Files
