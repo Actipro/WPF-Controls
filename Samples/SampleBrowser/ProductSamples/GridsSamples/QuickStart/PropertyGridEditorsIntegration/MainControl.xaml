@@ -63,6 +63,7 @@
 						<DataTemplate>
 							<editors:Int16EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource SByteToInt16Converter}}" 
 								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+								AutomationProperties.Name="{Binding Name}"
 							  
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
@@ -91,6 +92,7 @@
 						<DataTemplate>
 							<editors:Int32EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt16ToInt32Converter}}" 
 								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+								AutomationProperties.Name="{Binding Name}"
 							  
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
@@ -119,6 +121,7 @@
 						<DataTemplate>
 							<editors:Int64EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt32ToInt64Converter}}" 
 								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+								AutomationProperties.Name="{Binding Name}"
 							  
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"

@@ -99,7 +99,7 @@
 	</Window.Resources>
 	
 	<themes:WindowChrome.Chrome>
-		<themes:WindowChrome HasIcon="False" TitleBarLeftContentMaxWidthOverflowPercentage="0.5" TitleBarHeaderAlignment="Center" BackdropKind="MainWindow">
+		<themes:WindowChrome HasIcon="False" TitleBarLeftContentMaxWidthOverflowPercentage="0.5" TitleBarHeaderAlignment="Center" BackdropKind="None">
 			
 			<!-- This template selector picks which UI to display for overlays based on the data passed in -->
 			<themes:WindowChrome.OverlayContentTemplateSelector>
@@ -279,13 +279,33 @@
 											<DataTemplate>
 												<StackPanel>
 													<TextBlock TextWrapping="Wrap" Text="Match Windows Settings" />
-													<TextBlock Margin="0,1,0,0" MaxWidth="230" TextWrapping="Wrap" Text="Auto-switch themes to match the light/dark or high-contrast Windows setting" Opacity="0.6" />
+													<TextBlock Margin="0,1,0,0" MaxWidth="230" TextWrapping="Wrap" Text="Auto-switch themes to match the light/dark or high-contrast Windows setting." Opacity="0.6" />
 												</StackPanel>
 											</DataTemplate>
 										</MenuItem.HeaderTemplate>
 									</MenuItem>
-									<MenuItem Header="Native Controls Themed" IsChecked="True" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
-											  CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Command="{Binding ToggleNativeThemesCommand}" />
+									<MenuItem IsChecked="True" Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Command="{Binding ToggleNativeThemesCommand}">
+										<MenuItem.HeaderTemplate>
+											<DataTemplate>
+												<StackPanel>
+													<TextBlock TextWrapping="Wrap" Text="Native Controls Themed" />
+													<TextBlock Margin="0,1,0,0" MaxWidth="230" TextWrapping="Wrap" Text="Use Actipro's themes on native WPF controls for a consistent appearance." Opacity="0.6" />
+												</StackPanel>
+											</DataTemplate>
+										</MenuItem.HeaderTemplate>
+									</MenuItem>
+									<MenuItem Style="{StaticResource {x:Static themes:SharedResourceKeys.MenuItemStyleKey}}" 
+											  CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Command="{Binding ToggleWindowBackdropCommand}">
+										<MenuItem.HeaderTemplate>
+											<DataTemplate>
+												<StackPanel>
+													<TextBlock TextWrapping="Wrap" Text="Window Backdrop" />
+													<TextBlock Margin="0,1,0,0" MaxWidth="230" TextWrapping="Wrap" Text="Render a system backdrop in the root window's title bar. (Windows 11 minimum)" Opacity="0.6" />
+												</StackPanel>
+											</DataTemplate>
+										</MenuItem.HeaderTemplate>
+									</MenuItem>
 								</ContextMenu>
 							</shared:PopupButton.PopupMenu>
 						</shared:PopupButton>
@@ -383,7 +403,7 @@
 				</StatusBarItem>
 				<StatusBarItem Grid.Column="1">
 					<ribbon:Button x:Name="viewCodeButton" Context="StatusBarItem" Margin="0,1,0,-1" Padding="6,0" VariantSize="Small"
-						ScreenTipHeader="View Source Code for This Sample"
+						ScreenTipHeader="View Source Code for This Sample" AutomationProperties.Name="View Source Code"
 						Command="{Binding OpenSampleCodeCommand}">
 						<ribbon:Button.ImageSourceSmall>
 							<DrawingImage shared:ImageProvider.CanAdapt="False">

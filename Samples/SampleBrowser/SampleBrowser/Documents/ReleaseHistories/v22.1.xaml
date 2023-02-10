@@ -10,6 +10,57 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/12/2023 - Version 22.1.5</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved UIA peer logic." />
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox.InvalidateChildren to work properly for the root item when IsRootItemVisible is false." />
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox to not handle number pad arithmetic keys if focus is within an embedded TextBoxBase control." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated group dialog launcher buttons to report an appropriate name via UI automation properties." />
+				<sampleBrowser:BulletContentControl Content="Updated ScreenTip help text to wrap in scenarios where long localized strings cause it to extend past the ScreenTip width." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where Backstage might not show properly when the Ribbon is in an interop scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the tab selection element might not adjust appropriately after tabs were dynamically added/removed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added ITextSnapshot.GetWordText and GetWordTextRange method overloads that accept a TextOffsetAffinity argument." />
+				<sampleBrowser:BulletContentControl Content="Added the CodeSnippetSelectionSession.RequestNavigate event, which can be used to handle description tip link clicks." />
+				<sampleBrowser:BulletContentControl Content="Improved the logic of the move selected lines up and down commands." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where setting SyntaxEditor.HasSearchOverlayPaneKeyBindings to false didn't prevent a couple ApplicationCommands with built-in key bindings from showing the search overlay pane." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated how an internal TypeReferenceCollection class initializes several properties for better multi-thread scenario support." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the VB resolver didn't properly resolve For Each statement variables that were declared outside of the loop." />
+				<sampleBrowser:BulletContentControl Content="Fixed possible exception when accessing indexed properties on ProjectAssemblyReferenceCollection in multi-threaded environments." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated how WindowChrome's built-in shadow handles size changes for windows that use SizeToContent." />
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome to use new instances of WindowChromeTitleBarHeaderTemplateSelector per WindowChrome instance, allowing WindowChrome to be applied properly on Windows in different threads." />
+				<sampleBrowser:BulletContentControl Content="Updated WindowChrome to not use rounded corners in Windows 11 when the system indicates rounded corners are not allowed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated MultiColumnPanel to use layout rounding." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added new ICommand implementations for previewable and composite commands." />
+				<sampleBrowser:BulletContentControl Content="Added the PopupButton.PopupPlacement property." />
+				<sampleBrowser:BulletContentControl Content="Added a couple VisualTreeHelperExtended methods for invalidating measurement." />
+				<sampleBrowser:BulletContentControl Content="Updated ResizablePopupContentHost to support horizontal resizing." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Validated .NET 7 compatibility." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">11/11/2022 - Version 22.1.4</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -46,6 +97,7 @@
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where the resolver didn't always crawl up namespace declarations properly." />
+				<sampleBrowser:BulletContentControl Content="Added attributes to BinaryAssemblyReferenceResolver to mark as obsolete any methods that are not supported on a particular framework or platform." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

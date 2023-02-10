@@ -1,4 +1,4 @@
-﻿using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Reflection;
@@ -71,7 +71,10 @@ namespace ActiproSoftware.SampleBrowser {
 		private DelegateCommand<object> toggleAutomaticThemesCommand;
 		private DelegateCommand<object> toggleIsBackstageOpenCommand;
 		private DelegateCommand<object> toggleNativeThemesCommand;
+		private DelegateCommand<object> toggleWindowBackdropCommand;
 
+		private static readonly bool IsMainWindowSystemBackdropSupported = EnvironmentHelper.IsFeatureSupported(WindowsFeatureKind.MainWindowSystemBackdrop);
+		
 		private const int MaximumSearchResults = 50;
 
 		private const string DefaultSampleUri = null;
@@ -90,6 +93,9 @@ namespace ActiproSoftware.SampleBrowser {
 		public ApplicationViewModel() {
 			ThemeManager.CurrentThemeChanged += OnThemeManagerCurrentThemeChanged;
 			this.NavigateViewToHome(TransitionDirection.Forward);
+
+			// Make the current application view model easily accessible to the sample application
+			ApplicationViewModel.Current = this;
 		}
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,6 +282,8 @@ namespace ActiproSoftware.SampleBrowser {
 				setApplicationThemeCommand.RaiseCanExecuteChanged();
 			if (toggleNativeThemesCommand != null)
 				toggleNativeThemesCommand.RaiseCanExecuteChanged();
+			if (toggleWindowBackdropCommand != null)
+				toggleWindowBackdropCommand.RaiseCanExecuteChanged();
 
 			this.IsUsingAutomaticThemes = ThemeManager.HasAutomaticThemes;
 		}
@@ -326,6 +334,12 @@ namespace ActiproSoftware.SampleBrowser {
 		/// <value>The copyright message.</value>
 		public string Copyright => String.Format(CultureInfo.CurrentCulture, "Copyright \u00A9 2006-{0} Actipro Software LLC", DateTime.Today.Year);
 		
+		/// <summary>
+		/// Gets the currently-loaded application view-model.
+		/// </summary>
+		/// <value>The currently-loaded application view-model.</value>
+		public static ApplicationViewModel Current { get; private set; }
+
 		/// <summary>
 		/// Gets or sets whether the application Backstage is open.
 		/// </summary>
@@ -743,10 +757,14 @@ namespace ActiproSoftware.SampleBrowser {
 						codeViewerWindow.Activate();
 
 						// Select the sample's path
-						var path = Path.Combine(GetSampleProjectPath(), viewItemInfo.Path.Replace('/', '\\').Substring(1)) + ".xaml";
+						var sampleRelativePath = (param as string) ?? viewItemInfo.Path;
+						var path = Path.Combine(GetSampleProjectPath(), sampleRelativePath.Replace('/', '\\').Substring(1)) + ".xaml";
 						this.CodeViewerSelectedPath = path;
 					}, (param) => {
-						return (viewItemInfo != null) && (!viewItemInfo.IsProductOverview) && (!viewItemInfo.IsReleaseHistory) && (!string.IsNullOrEmpty(this.ProductSamplesPath));
+						if (!string.IsNullOrEmpty(param as string))
+							return true;
+						else
+							return (viewItemInfo != null) && (!viewItemInfo.IsProductOverview) && (!viewItemInfo.IsReleaseHistory) && (!string.IsNullOrEmpty(this.ProductSamplesPath));
 					});
 				}
 
@@ -1105,6 +1123,47 @@ namespace ActiproSoftware.SampleBrowser {
 				}
 
 				return toggleNativeThemesCommand;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the <see cref="ICommand"/> that toggles whether the root window has a system backdrop enabled.
+		/// </summary>
+		/// <value>
+		/// The <see cref="ICommand"/> that toggles whether root window has a system backdrop enabled.
+		/// </value>
+		public ICommand ToggleWindowBackdropCommand {
+			get {
+				if (toggleWindowBackdropCommand == null) {
+					toggleWindowBackdropCommand = new DelegateCommand<object>((param) => { 
+						if (App.Current.MainWindow is RootWindow window) {
+							var chrome = WindowChrome.GetChrome(window);
+							if (chrome != null) {
+								chrome.BackdropKind = (chrome.BackdropKind == WindowChromeBackdropKind.None ? WindowChromeBackdropKind.MainWindow : WindowChromeBackdropKind.None);
+
+								var menuItem = param as MenuItem;
+								if (menuItem != null)
+									menuItem.IsChecked = (chrome.BackdropKind == WindowChromeBackdropKind.MainWindow);
+							}
+						}
+					}, (param) => {
+						if (!IsMainWindowSystemBackdropSupported)
+							return false;
+
+						if (App.Current.MainWindow is RootWindow window) {
+							var chrome = WindowChrome.GetChrome(window);
+							if (chrome != null) {
+								var menuItem = param as MenuItem;
+								if (menuItem != null)
+									menuItem.IsChecked = (chrome.BackdropKind == WindowChromeBackdropKind.MainWindow);
+							}
+						}
+
+						return true;
+					});
+				}
+
+				return toggleWindowBackdropCommand;
 			}
 		}
 		

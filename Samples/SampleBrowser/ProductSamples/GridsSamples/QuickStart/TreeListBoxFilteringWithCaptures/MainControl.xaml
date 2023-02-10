@@ -1,0 +1,185 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxFilteringWithCaptures.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxFilteringWithCaptures"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<DataTemplate x:Key="ItemDataTemplate">
+			<!-- The custom FilteringTreeListBox control stores current captures on the TreeListBoxItem.Tag property -->
+			<shared:AdvancedTextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"
+									  Captures="{Binding RelativeSource={RelativeSource AncestorType=grids:TreeListBoxItem}, Path=Tag}"
+									  HighlightForeground="White" HighlightBackground="RoyalBlue" HighlightFontWeight="Normal" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=IsFilterActive}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={x:Reference stringFilter}, Path=Value}" ValueTemplateKind="ImmediateString" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={x:Reference stringFilter}, Path=Operation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={x:Reference stringFilter}, Path=StringComparison}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={x:Reference stringFilter}, Path=IncludedFilterResult}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=AutoExpandItemsOnFilter}" DisplayName="Auto-expand to filtered items" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=treeListBox, Path=HasTreeLines}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Like the other filtering sample, this sample shows several of the filtering capabilities available to the control.
+					This sample takes filtering one step further by illustrating how an AdvancedTextBlock can be used to show which parts of the
+					filter are being matched.
+					When the IsFilterActive property is true, the adapter's Filter method will be called for each item to see if it is included in the filter.
+					While this Filter method can be overridden with custom logic, it's default logic is to use the control's DataFilter.
+					<LineBreak /><LineBreak />
+					This sample uses a TreeNodeModelStringFilter class that implements IDataFilter and is assigned to the control's DataFilter property.
+					The TextBox updates the string filter's value used to compare to each item's Name.
+					Various operation and string comparison options are available as well.
+					<LineBreak /><LineBreak />
+					There also is an option to auto-expand to filtered items.
+					This comes into play in scenarios where you originally had items collapsed and after activating a filter, some of the collapsed items' descendants are included.
+					In that scenario, using this option ensures all their ancestors are expanded.
+					When filtering is deactivated, the expansion states revert back to what they were prior to activating filtering.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<!-- This sample uses a custom FilteringTreeListBox (which derives from TreeListBox) to update capture information when filtering is active -->
+		<local:FilteringTreeListBox x:Name="treeListBox" MaxWidth="{StaticResource SampleThinMaxWidth}"
+									ItemTemplate="{StaticResource ItemDataTemplate}">
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+			<grids:TreeListBox.DataFilter>
+				<common:TreeNodeModelStringFilter x:Name="stringFilter" Value="g" />
+			</grids:TreeListBox.DataFilter>
+			<grids:TreeListBox.EmptyContentTemplate>
+				<DataTemplate>
+					<TextBlock Margin="20" Text="All items have been filtered out." FontStyle="Italic" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Opacity="0.67" />
+				</DataTemplate>
+			</grids:TreeListBox.EmptyContentTemplate>
+
+			<common:TreeNodeModel Name="Continents">
+				<common:TreeNodeModel Name="North America" IsExpanded="True">
+					<common:TreeNodeModel Name="Antigua and Barbuda" />
+					<common:TreeNodeModel Name="Bahamas" />
+					<common:TreeNodeModel Name="Barbados" />
+					<common:TreeNodeModel Name="Belize" />
+					<common:TreeNodeModel Name="Canada">
+						<common:TreeNodeModel Name="Alberta" />
+						<common:TreeNodeModel Name="British Columbia" />
+						<common:TreeNodeModel Name="Manitoba" />
+						<common:TreeNodeModel Name="New Brunswick" />
+						<common:TreeNodeModel Name="Newfoundland and Labrador" />
+						<common:TreeNodeModel Name="Nova Scotia" />
+						<common:TreeNodeModel Name="Ontario" />
+						<common:TreeNodeModel Name="Prince Edward Island" />
+						<common:TreeNodeModel Name="Quebec" />
+						<common:TreeNodeModel Name="Saskatchewan" />
+					</common:TreeNodeModel>
+					<common:TreeNodeModel Name="Costa Rica" />
+					<common:TreeNodeModel Name="Cuba" />
+					<common:TreeNodeModel Name="Dominica" />
+					<common:TreeNodeModel Name="Dominican Republic" />
+					<common:TreeNodeModel Name="El Salvador" />
+					<common:TreeNodeModel Name="Grenada" />
+					<common:TreeNodeModel Name="Guatemala" />
+					<common:TreeNodeModel Name="Haiti" />
+					<common:TreeNodeModel Name="Honduras" />
+					<common:TreeNodeModel Name="Jamaica" />
+					<common:TreeNodeModel Name="Mexico" />
+					<common:TreeNodeModel Name="Nicaragua" />
+					<common:TreeNodeModel Name="Panama" />
+					<common:TreeNodeModel Name="Saint Kitts and Nevis" />
+					<common:TreeNodeModel Name="Saint Lucia" />
+					<common:TreeNodeModel Name="Saint Vincent and the Grenadines" />
+					<common:TreeNodeModel Name="Trinidad and Tobago" />
+					<common:TreeNodeModel Name="United States of America">
+						<common:TreeNodeModel Name="Alabama" />
+						<common:TreeNodeModel Name="Alaska" />
+						<common:TreeNodeModel Name="Arizona" />
+						<common:TreeNodeModel Name="Arkansas" />
+						<common:TreeNodeModel Name="California" />
+						<common:TreeNodeModel Name="Colorado" />
+						<common:TreeNodeModel Name="Connecticut" />
+						<common:TreeNodeModel Name="Delaware" />
+						<common:TreeNodeModel Name="Florida" />
+						<common:TreeNodeModel Name="Georgia" />
+						<common:TreeNodeModel Name="Hawaii" />
+						<common:TreeNodeModel Name="Idaho" />
+						<common:TreeNodeModel Name="Illinois" />
+						<common:TreeNodeModel Name="Indiana" />
+						<common:TreeNodeModel Name="Iowa" />
+						<common:TreeNodeModel Name="Kansas" />
+						<common:TreeNodeModel Name="Kentucky" />
+						<common:TreeNodeModel Name="Louisiana" />
+						<common:TreeNodeModel Name="Maine" />
+						<common:TreeNodeModel Name="Maryland" />
+						<common:TreeNodeModel Name="Massachusetts" />
+						<common:TreeNodeModel Name="Michigan" />
+						<common:TreeNodeModel Name="Minnesota" />
+						<common:TreeNodeModel Name="Mississippi" />
+						<common:TreeNodeModel Name="Missouri" />
+						<common:TreeNodeModel Name="Montana" />
+						<common:TreeNodeModel Name="Nebraska" />
+						<common:TreeNodeModel Name="Nevada" />
+						<common:TreeNodeModel Name="New Hampshire" />
+						<common:TreeNodeModel Name="New Jersey" />
+						<common:TreeNodeModel Name="New Mexico" />
+						<common:TreeNodeModel Name="New York" />
+						<common:TreeNodeModel Name="North Carolina" />
+						<common:TreeNodeModel Name="North Dakota" />
+						<common:TreeNodeModel Name="Ohio" />
+						<common:TreeNodeModel Name="Oklahoma" />
+						<common:TreeNodeModel Name="Oregon" />
+						<common:TreeNodeModel Name="Pennsylvania" />
+						<common:TreeNodeModel Name="Rhode Island" />
+						<common:TreeNodeModel Name="South Carolina" />
+						<common:TreeNodeModel Name="South Dakota" />
+						<common:TreeNodeModel Name="Tennessee" />
+						<common:TreeNodeModel Name="Texas" />
+						<common:TreeNodeModel Name="Utah" />
+						<common:TreeNodeModel Name="Vermont" />
+						<common:TreeNodeModel Name="Virginia" />
+						<common:TreeNodeModel Name="Washington" />
+						<common:TreeNodeModel Name="West Virginia" />
+						<common:TreeNodeModel Name="Wisconsin" />
+						<common:TreeNodeModel Name="Wyoming" />
+					</common:TreeNodeModel>
+				</common:TreeNodeModel>
+				<common:TreeNodeModel Name="South America" IsExpanded="True">
+					<common:TreeNodeModel Name="Argentina" />
+					<common:TreeNodeModel Name="Bolivia" />
+					<common:TreeNodeModel Name="Brazil" />
+					<common:TreeNodeModel Name="Chile" />
+					<common:TreeNodeModel Name="Colombia" />
+					<common:TreeNodeModel Name="Ecuador" />
+					<common:TreeNodeModel Name="Guyana" />
+					<common:TreeNodeModel Name="Paraguay" />
+					<common:TreeNodeModel Name="Peru" />
+					<common:TreeNodeModel Name="Suriname" />
+					<common:TreeNodeModel Name="Uruguay" />
+					<common:TreeNodeModel Name="Venezuela" />
+				</common:TreeNodeModel>
+			</common:TreeNodeModel>
+
+		</local:FilteringTreeListBox>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

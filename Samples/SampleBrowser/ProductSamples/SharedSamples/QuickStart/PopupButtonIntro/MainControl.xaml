@@ -53,6 +53,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=StaysOpen}" DisplayName="Popup stays open" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=HasDropShadow}" DisplayName="Popup has drop shadow" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=PreventPopups}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=PopupPlacement}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=popupButtonWithPopup, Path=PopupAnimation}" />
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>
@@ -85,6 +86,7 @@
 										DisplayMode="{Binding ElementName=popupButtonWithPopup, Path=DisplayMode}"
 										HasDropShadow="{Binding ElementName=popupButtonWithPopup, Path=HasDropShadow}"
 										IsTransparencyModeEnabled="{Binding ElementName=popupButtonWithPopup, Path=IsTransparencyModeEnabled}"
+										PopupPlacement="{Binding ElementName=popupButtonWithPopup, Path=PopupPlacement}"
 										Click="OnPopupButtonClick" PopupOpening="OnPopupButtonPopupOpening">
 						<shared:PopupButton.PopupMenu>
 							<ContextMenu>

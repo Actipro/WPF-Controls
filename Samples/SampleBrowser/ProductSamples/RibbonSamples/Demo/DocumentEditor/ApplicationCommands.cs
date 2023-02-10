@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ActiproSoftware.SampleBrowser;
 using ActiproSoftware.Windows.Controls.Ribbon;
 using ActiproSoftware.Windows.Controls.Ribbon.Input;
 
@@ -44,49 +45,49 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		/// </summary>
 		public static void RegisterUIProvidersForNonRibbonCommands() {
 			RibbonCommandUIManager.Register(EditingCommands.AlignCenter, 
-				new RibbonCommandUIProvider("Center", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/AlignTextCenter16.png", "Center text."));
+				new RibbonCommandUIProvider("Center", null, ImageLoader.GetIcon("AlignTextCenter16.png"), "Center text."));
 			RibbonCommandUIManager.Register(EditingCommands.AlignJustify, 
-				new RibbonCommandUIProvider("Justify", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/AlignTextJustify16.png", "Align text to both the left and right margins, adding extra space between words as necessary.\r\n\r\nThis creates a clean look along the left and right sides of the page."));
+				new RibbonCommandUIProvider("Justify", null, ImageLoader.GetIcon("AlignTextJustify16.png"), "Align text to both the left and right margins, adding extra space between words as necessary.\r\n\r\nThis creates a clean look along the left and right sides of the page."));
 			RibbonCommandUIManager.Register(EditingCommands.AlignLeft, 
-				new RibbonCommandUIProvider("Align Text Left", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/AlignTextLeft16.png", "Align text to the left."));
+				new RibbonCommandUIProvider("Align Text Left", null, ImageLoader.GetIcon("AlignTextLeft16.png"), "Align text to the left."));
 			RibbonCommandUIManager.Register(EditingCommands.AlignRight, 
-				new RibbonCommandUIProvider("Align Text Right", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/AlignTextRight16.png", "Align text to the right."));
+				new RibbonCommandUIProvider("Align Text Right", null, ImageLoader.GetIcon("AlignTextRight16.png"), "Align text to the right."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Close, 
-				new RibbonCommandUIProvider("Close", "pack://application:,,,/SampleBrowser;component/Images/Icons/Close32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/Close16.png"));
+				new RibbonCommandUIProvider("Close", ImageLoader.GetIcon("Close32.png"), ImageLoader.GetIcon("Close16.png")));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Copy, 
-				new RibbonCommandUIProvider("Copy", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Copy16.png", "Copy the selection and put it on the Clipboard."));
+				new RibbonCommandUIProvider("Copy", null, ImageLoader.GetIcon("Copy16.png"), "Copy the selection and put it on the Clipboard."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Cut, 
-				new RibbonCommandUIProvider("Cut", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Cut16.png", "Cut the selection from the document and put it on the Clipboard."));
+				new RibbonCommandUIProvider("Cut", null, ImageLoader.GetIcon("Cut16.png"), "Cut the selection from the document and put it on the Clipboard."));
 			RibbonCommandUIManager.Register(EditingCommands.DecreaseFontSize, 
-				new RibbonCommandUIProvider("Shrink Font", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/ShrinkFont16.png", "Decrease the font size."));
+				new RibbonCommandUIProvider("Shrink Font", null, ImageLoader.GetIcon("ShrinkFont16.png"), "Decrease the font size."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Find, 
-				new RibbonCommandUIProvider("Find:", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Find16.png", "Finds text in the text editor."));
+				new RibbonCommandUIProvider("Find:", null, ImageLoader.GetIcon("Find16.png"), "Finds text in the text editor."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Help, 
-				new RibbonCommandUIProvider("About Ribbon", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Help16.png", "See the About window for this product."));
+				new RibbonCommandUIProvider("About Ribbon", null, ImageLoader.GetIcon("Help16.png"), "See the About window for this product."));
 			RibbonCommandUIManager.Register(EditingCommands.IncreaseFontSize, 
-				new RibbonCommandUIProvider("Grow Font", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/GrowFont16.png", "Increase the font size."));
+				new RibbonCommandUIProvider("Grow Font", null, ImageLoader.GetIcon("GrowFont16.png"), "Increase the font size."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.New, 
-				new RibbonCommandUIProvider("New", "pack://application:,,,/SampleBrowser;component/Images/Icons/New32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/New16.png"));
+				new RibbonCommandUIProvider("New", ImageLoader.GetIcon("New32.png"), ImageLoader.GetIcon("New16.png")));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Open, 
-				new RibbonCommandUIProvider("Open", "pack://application:,,,/SampleBrowser;component/Images/Icons/Open32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/Open16.png"));
+				new RibbonCommandUIProvider("Open", ImageLoader.GetIcon("Open32.png"), ImageLoader.GetIcon("Open16.png")));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Paste, 
-				new RibbonCommandUIProvider("Paste", "pack://application:,,,/SampleBrowser;component/Images/Icons/Paste32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/Paste16.png", "Paste the contents of the Clipboard."));
+				new RibbonCommandUIProvider("Paste", ImageLoader.GetIcon("Paste32.png"), ImageLoader.GetIcon("Paste16.png"), "Paste the contents of the Clipboard."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Redo, 
-				new RibbonCommandUIProvider("Redo", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Redo16.png"));
+				new RibbonCommandUIProvider("Redo", null, ImageLoader.GetIcon("Redo16.png")));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Save, 
-				new RibbonCommandUIProvider("Save", "pack://application:,,,/SampleBrowser;component/Images/Icons/Save32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/Save16.png"));
+				new RibbonCommandUIProvider("Save", ImageLoader.GetIcon("Save32.png"), ImageLoader.GetIcon("Save16.png")));
 			RibbonCommandUIManager.Register(EditingCommands.ToggleBold, 
-				new RibbonCommandUIProvider("Bold", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Bold16.png", "Make the selected text bold."));
+				new RibbonCommandUIProvider("Bold", null, ImageLoader.GetIcon("Bold16.png"), "Make the selected text bold."));
 			RibbonCommandUIManager.Register(EditingCommands.ToggleItalic, 
-				new RibbonCommandUIProvider("Italic", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Italic16.png", "Italicize the selected text."));
+				new RibbonCommandUIProvider("Italic", null, ImageLoader.GetIcon("Italic16.png"), "Italicize the selected text."));
 			RibbonCommandUIManager.Register(EditingCommands.ToggleSubscript, 
-				new RibbonCommandUIProvider("Subscript", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Subscript16.png", "Create small letters below the text baseline."));
+				new RibbonCommandUIProvider("Subscript", null, ImageLoader.GetIcon("Subscript16.png"), "Create small letters below the text baseline."));
 			RibbonCommandUIManager.Register(EditingCommands.ToggleSuperscript, 
-				new RibbonCommandUIProvider("Superscript", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Superscript16.png", "Create small letters above the line of text."));
+				new RibbonCommandUIProvider("Superscript", null, ImageLoader.GetIcon("Superscript16.png"), "Create small letters above the line of text."));
 			RibbonCommandUIManager.Register(EditingCommands.ToggleUnderline, 
-				new RibbonCommandUIProvider("Underline", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Underline16.png", "Underline the selected text."));
+				new RibbonCommandUIProvider("Underline", null, ImageLoader.GetIcon("Underline16.png"), "Underline the selected text."));
 			RibbonCommandUIManager.Register(System.Windows.Input.ApplicationCommands.Undo, 
-				new RibbonCommandUIProvider("Undo", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Undo16.png"));
+				new RibbonCommandUIProvider("Undo", null, ImageLoader.GetIcon("Undo16.png")));
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +101,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ApplicationExit {
 			get {
 				if (applicationExit == null)
-					applicationExit = new RibbonCommand("ApplicationExit", typeof(Ribbon), "Exit Sample", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/CloseTab16.png");
+					applicationExit = new RibbonCommand("ApplicationExit", typeof(Ribbon), "Exit Sample", null, ImageLoader.GetIcon("CloseTab16.png"));
 				return applicationExit;
 			}
 		}
@@ -112,7 +113,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ApplicationOptions {
 			get {
 				if (applicationOptions == null)
-					applicationOptions = new RibbonCommand("ApplicationOptions", typeof(Ribbon), "Options", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Options16.png");
+					applicationOptions = new RibbonCommand("ApplicationOptions", typeof(Ribbon), "Options", null, ImageLoader.GetIcon("Options16.png"));
 				return applicationOptions;
 			}
 		}
@@ -124,7 +125,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ApplyBackground {
 			get {
 				if (applyBackground == null)
-					applyBackground = new RibbonCommand("ApplyBackground", typeof(Ribbon), "Text Highlight Color", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/TextHighlightColor16.png");				
+					applyBackground = new RibbonCommand("ApplyBackground", typeof(Ribbon), "Text Highlight Color", null, ImageLoader.GetIcon("TextHighlightColor16.png"));
 				return applyBackground;
 			}
 		}
@@ -136,7 +137,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ApplyDefaultBackground {
 			get {
 				if (applyDefaultBackground == null)
-					applyDefaultBackground = new RibbonCommand("ApplyDefaultBackground", typeof(Ribbon), "Text Highlight Color", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/TextHighlightColor16.png");				
+					applyDefaultBackground = new RibbonCommand("ApplyDefaultBackground", typeof(Ribbon), "Text Highlight Color", null, ImageLoader.GetIcon("TextHighlightColor16.png"));
 				return applyDefaultBackground;
 			}
 		}
@@ -148,7 +149,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ApplyDefaultForeground {
 			get {
 				if (applyDefaultForeground == null)
-					applyDefaultForeground = new RibbonCommand("ApplyDefaultForeground", typeof(Ribbon), "Font Color", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/FontColor16.png");				
+					applyDefaultForeground = new RibbonCommand("ApplyDefaultForeground", typeof(Ribbon), "Font Color", null, ImageLoader.GetIcon("FontColor16.png"));
 				return applyDefaultForeground;
 			}
 		}
@@ -172,7 +173,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ClearFormatting {
 			get {
 				if (clearFormatting == null)
-					clearFormatting = new RibbonCommand("ClearFormatting", typeof(Ribbon), "Clear Formatting", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/ClearFormatting16.png", "Clear all the formatting from the selection, leaving only the plain text.");
+					clearFormatting = new RibbonCommand("ClearFormatting", typeof(Ribbon), "Clear Formatting", null, ImageLoader.GetIcon("ClearFormatting16.png"), "Clear all the formatting from the selection, leaving only the plain text.");
 				return clearFormatting;
 			}
 		}
@@ -196,8 +197,8 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand CoverPage {
 			get {
 				if (coverPage == null) {
-					coverPage = new RibbonCommand("CoverPage", typeof(Ribbon), "Cover Page", "pack://application:,,,/SampleBrowser;component/Images/Icons/CoverPage32.png", "pack://application:,,,/SampleBrowser;component/Images/Icons/CoverPage16.png", "Insert a fully-formatted cover page.\r\n\r\nYou fill in the title, author, date, and other information.");
-					coverPage.ScreenTipImageSource = new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Other/CoverPageScreenTip.png", UriKind.Absolute));
+					coverPage = new RibbonCommand("CoverPage", typeof(Ribbon), "Cover Page", ImageLoader.GetIcon("CoverPage32.png"), ImageLoader.GetIcon("CoverPage16.png"), "Insert a fully-formatted cover page.\r\n\r\nYou fill in the title, author, date, and other information.");
+					coverPage.ScreenTipImageSource = ImageLoader.GetOther("CoverPageScreenTip.png");
 					coverPage.ScreenTipHelpUri = new Uri("http://www.actiprosoftware.com", UriKind.Absolute);
 				}
 				return coverPage;
@@ -223,7 +224,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand FileNewRtfDocument {
 			get {
 				if (fileNewRtfDocument == null) 
-					fileNewRtfDocument = new RibbonCommand("FileNewRTFDocument", typeof(Ribbon), "New RTF Document", "pack://application:,,,/SampleBrowser;component/Images/Icons/RichTextDocument32.png", null);
+					fileNewRtfDocument = new RibbonCommand("FileNewRTFDocument", typeof(Ribbon), "New RTF Document", ImageLoader.GetIcon("RichTextDocument32.png"), null);
 				return fileNewRtfDocument;
 			}
 		}
@@ -235,7 +236,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand FileNewTextDocument {
 			get {
 				if (fileNewTextDocument == null)
-					fileNewTextDocument = new RibbonCommand("FileNewTextDocument", typeof(Ribbon), "New Text Document", "pack://application:,,,/SampleBrowser;component/Images/Icons/TextDocument32.png", null);
+					fileNewTextDocument = new RibbonCommand("FileNewTextDocument", typeof(Ribbon), "New Text Document", ImageLoader.GetIcon("TextDocument32.png"), null);
 				return fileNewTextDocument;
 			}
 		}
@@ -283,7 +284,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ToggleContextualTabGroup {
 			get {
 				if (toggleContextualTabGroup == null)
-					toggleContextualTabGroup = new RibbonCommand("ToggleContextualTabGroup", typeof(Ribbon), "Toggle Contextual Tab Group", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/QuickStart16.png", "Toggles the visiblility of a contextual tab group for demonstration purposes.");
+					toggleContextualTabGroup = new RibbonCommand("ToggleContextualTabGroup", typeof(Ribbon), "Toggle Contextual Tab Group", null, ImageLoader.GetIcon("QuickStart16.png"), "Toggles the visiblility of a contextual tab group for demonstration purposes.");
 				return toggleContextualTabGroup;
 			}
 		}
@@ -295,7 +296,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ToggleFlowDirection {
 			get {
 				if (toggleFlowDirection == null)
-					toggleFlowDirection = new RibbonCommand("ToggleFlowDirection", typeof(Ribbon), "Toggle Flow Direction", "pack://application:,,,/SampleBrowser;component/Images/Icons/FlowDirection32.png", null, "Toggles flow direction of the control so that you can see how right-to-left mode operates.");
+					toggleFlowDirection = new RibbonCommand("ToggleFlowDirection", typeof(Ribbon), "Toggle Flow Direction", ImageLoader.GetIcon("FlowDirection32.png"), null, "Toggles flow direction of the control so that you can see how right-to-left mode operates.");
 				return toggleFlowDirection;
 			}
 		}
@@ -307,7 +308,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ToggleStrikethrough {
 			get {
 				if (toggleStrikethrough == null)
-					toggleStrikethrough = new RibbonCommand("ToggleStrikethrough", typeof(Ribbon), "Strikethrough", null, "pack://application:,,,/SampleBrowser;component/Images/Icons/Strikethrough16.png", "Draw a line through the middle of the selected text.");
+					toggleStrikethrough = new RibbonCommand("ToggleStrikethrough", typeof(Ribbon), "Strikethrough", null, ImageLoader.GetIcon("Strikethrough16.png"), "Draw a line through the middle of the selected text.");
 				return toggleStrikethrough;
 			}
 		}

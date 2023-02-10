@@ -430,7 +430,7 @@
 							</ribbon:ButtonGroup>
 						</ribbon:RowPanel>					
 					</ribbon:Group>
-					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" Command="sample:ApplicationCommands.ShowDialog" CommandParameter="Paragraph" KeyTipAccessText="ZP">
+					<ribbon:Group ImageSourceSmall="/Images/Icons/AlignTextCenter16.png" Label="Paragraph" Command="sample:ApplicationCommands.ShowDialog" CommandParameter="Paragraph" KeyTipAccessText="ZP" ScreenTipHeader="Paragraph Settings">
 						<ribbon:Group.Variants>
 							<ribbon:GroupVariant Priority="40" Size="Medium" />
 							<ribbon:GroupVariant Priority="80" Size="Collapsed" />
