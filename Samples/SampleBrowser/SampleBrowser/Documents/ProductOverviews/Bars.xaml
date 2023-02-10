@@ -1,0 +1,63 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
+					<Image Width="400" Height="300" Source="/Images/Screenshots/Bars-DocumentEditor-400x300.png" />
+				</Button>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/Backstage/OverviewDocument?action=open">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Bars-Backstage-190x150.png" />
+					</Button>
+
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl">
+						<Image Width="190" Height="150" Source="/Images/Screenshots/Bars-LayoutModes-190x150.png" />
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Bars comes packed with an enormous set of controls intended for use within ribbons and toolbars, everything from popup and split buttons to comboboxes and galleries.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Our Ribbon control implements an Office-like user interface, complete with dynamic variant sizing, modern themes, fluent animations, and extensive customization capabilities.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					A StandaloneToolBar control with built-in overflow support can be used as a window's main toolbar, or within a tool window.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					The Bars product has been built from the ground up to support MVVM creation of the entire user interface if desired.
+					An open-source companion MVVM library is available that provides a full set of view models and related UI bindings to
+					easily configure and manage your ribbons, toolbars, and menus.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

@@ -194,7 +194,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 		/// <param name="hitTestResult">The <see cref="IHitTestResult"/> to examine.</param>
 		/// <returns>
 		/// An object describing the quick info context for the specified <see cref="IHitTestResult"/>, if any.
-		/// A <see langword="null"/> value indicates that no context is available.
+		/// A <c>null</c> value indicates that no context is available.
 		/// </returns>
 		/// <remarks>
 		/// This method is called in response to mouse events.
@@ -226,7 +226,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliP
 		/// <param name="offset">The text offset to examine.</param>
 		/// <returns>
 		/// An object describing the quick info context for the specified text offset, if any.
-		/// A <see langword="null"/> value indicates that no context is available.
+		/// A <c>null</c> value indicates that no context is available.
 		/// </returns>
 		/// <remarks>
 		/// This method is called in response to keyboard events.

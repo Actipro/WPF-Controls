@@ -110,7 +110,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.QuickStart.CustomizingQat
 
 			// Show a message if there was a problem
 			if (exceptions.Count > 0)
-				MessageBox.Show(exceptions.Count + " error(s) occured while deserializing the QAT items.  The collection of exceptions in OnLoadStateButtonClick explains the problem.  This messagebox is for debugging-only purposes in this QuickStart.", "Loading Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				MessageBox.Show(exceptions.Count + " error(s) occurred while deserializing the QAT items.  The collection of exceptions in OnLoadStateButtonClick explains the problem.  This messagebox is for debugging-only purposes in this QuickStart.", "Loading Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 		}
 
 		/// <summary>

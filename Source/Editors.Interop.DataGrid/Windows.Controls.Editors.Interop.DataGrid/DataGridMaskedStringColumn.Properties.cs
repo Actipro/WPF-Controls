@@ -106,7 +106,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// </summary>
 		/// <value>
 		/// The text that designates the input mask.
-		/// The default value is <see langword="null"/>.
+		/// The default value is <c>null</c>.
 		/// </value>
 		public string Mask {
 			get {

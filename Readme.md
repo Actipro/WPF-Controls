@@ -33,6 +33,7 @@ The controls ship with over 25 professionally-designed themes, and custom themes
 The [Actipro WPF Controls](https://www.actiprosoftware.com/products/controls/wpf) include:
 
 - [SyntaxEditor](https://www.actiprosoftware.com/products/controls/wpf/syntaxeditor) - A syntax-highlighting code editor control and parsing suite.
+- [Bars](https://www.actiprosoftware.com/products/controls/wpf/bars) - Advanced fluent ribbons, toolbars, menus and related controls.
 - [Docking/MDI](https://www.actiprosoftware.com/products/controls/wpf/docking) - A complete docking tool window and multiple document interface solution.
 - [Editors](https://www.actiprosoftware.com/products/controls/wpf/editors) - Part-based and masked edit controls, with advanced date/time picker.
 - [Grids](https://www.actiprosoftware.com/products/controls/wpf/grids) - Advanced PropertyGrid and custom tree (TreeListBox/TreeListView) controls.
@@ -101,6 +102,7 @@ This metapackage contains all of the control products, and is easiest to referen
 Use these individual control packages if you want to use a specific subset of the metapackage:
 
 - [ActiproSoftware.Controls.WPF.BarCode](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.BarCode)
+- [ActiproSoftware.Controls.WPF.Bars](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Bars)
 - [ActiproSoftware.Controls.WPF.Charts](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Charts)
 - [ActiproSoftware.Controls.WPF.Docking](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Docking)
 - [ActiproSoftware.Controls.WPF.Editors](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Editors)

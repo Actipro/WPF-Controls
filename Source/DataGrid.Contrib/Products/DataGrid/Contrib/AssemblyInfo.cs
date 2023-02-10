@@ -22,7 +22,7 @@ using ActiproSoftware.Windows.Themes;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Actipro Software LLC")]
 [assembly: AssemblyProduct("DataGrid.Contrib")]
-[assembly: AssemblyCopyright("Copyright (c) 2009-2022 Actipro Software LLC.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2023 Actipro Software LLC.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 [assembly: ComVisible(false)]

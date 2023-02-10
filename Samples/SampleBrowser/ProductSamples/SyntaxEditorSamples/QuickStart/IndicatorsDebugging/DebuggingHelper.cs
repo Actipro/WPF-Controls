@@ -34,11 +34,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Indicato
 
 			// Loop upwards through the AST to find a containing statement
 			var node = parseData.Ast.FindDescendantNode(offset);
-			Statement statmentNode = null;
+			Statement statementNode = null;
 			while (node != null) {
-				statmentNode = node as Statement;
-				if (statmentNode != null)
-					return statmentNode;
+				statementNode = node as Statement;
+				if (statementNode != null)
+					return statementNode;
 
 				node = node.Parent;
 			}

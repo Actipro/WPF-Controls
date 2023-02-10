@@ -123,7 +123,7 @@ namespace ActiproSoftware.SampleBrowser {
 				new ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository(appDataPath);
 			logger?.LogDebug(".NET Reflection Repository Path = {0}", appDataPath);
 
-			// Create SyntaxEditor Python Languages Add-on ambient pacakge repository, which supports caching of 
+			// Create SyntaxEditor Python Languages Add-on ambient package repository, which supports caching of 
 			//   reflection data... Be sure to replace the appDataPath with a proper path for your own application (if file access is allowed)
 			appDataPath = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
 				"Actipro Software"), "WPF SampleBrowser Python Package Repository");

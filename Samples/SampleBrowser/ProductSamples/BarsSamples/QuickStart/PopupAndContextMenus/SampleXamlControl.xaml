@@ -1,0 +1,316 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus.SampleXamlControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+			 xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+				<ResourceDictionary Source="CommonDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<!-- Define a style to bind BarGalleryItem to its view model -->
+			<Style x:Key="BarGalleryItemStyle" TargetType="{x:Type bars:BarGalleryItem}">
+				<Setter Property="LayoutBehavior" Value="{Binding LayoutBehavior}" />
+				<Setter Property="Label" Value="{Binding Label}" />
+				<Setter Property="ToolTip" Value="{Binding Description}" />
+				<Setter Property="KeyTipText" Value="{Binding KeyTipText}" />
+			</Style>
+
+		</ResourceDictionary>
+
+	</UserControl.Resources>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Control -->
+		<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Spacious" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+				<bars:RibbonGroup Key="PopupMenuSamples" CanAutoCollapse="False">
+					<bars:BarPopupButton Key="TechnicalDemos" MaxSimplifiedVariantSize="Medium" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png" ToolTip="A collection of technical demonstrations to illustrate the features and capabilities of menus.">
+
+						<bars:BarMenuItem Key="CommonMenuControls" UseLargeSize="True" LargeImageSource="/Images/Icons/Menu32.png" SmallImageSource="/Images/Icons/Menu16.png" Description="Common menu controls shown in various states and configurations.">
+							<bars:BarMenuHeading Header="Default" />
+							<bars:BarMenuItem Key="DefaultBarMenuItem" KeyTipText="D" Label="BarMenuItem" />
+							<bars:BarMenuItem Key="DefaultCheckableBarMenuItem" KeyTipText="D" Label="BarMenuItem (Checkable)" IsCheckable="True" IsChecked="True" />
+							<bars:BarMenuItem Key="DefaultBarMenuItemWithChildren" KeyTipText="D" Label="BarMenuItem (With Children)">
+								<bars:BarMenuItem Key="DefaultBarMenuItemWithChildrenChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DefaultBarMenuItemWithChildrenChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarMenuItem>
+							<bars:BarSplitMenuItem Key="DefaultBarSplitMenuItem" KeyTipText="D" Label="BarSplitMenuItem">
+								<bars:BarMenuItem Key="DefaultBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DefaultBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarSplitMenuItem Key="DefaultCheckableBarSplitMenuItem" KeyTipText="D" Label="BarSplitMenuItem (Checkable)" IsCheckable="True" IsChecked="True">
+								<bars:BarMenuItem Key="DefaultCheckableBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DefaultCheckableBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="With Icons" />
+							<bars:BarMenuItem Key="WithIconsBarMenuItem" KeyTipText="W" Label="BarMenuItem" SmallImageSource="/Images/Icons/New16.png" />
+							<bars:BarMenuItem Key="WithIconsCheckableBarMenuItem" KeyTipText="W" Label="BarMenuItem (Checkable)" IsCheckable="True" IsChecked="True" SmallImageSource="/Images/Icons/QuickStart16.png" />
+							<bars:BarMenuItem Key="WithIconsBarMenuItemWithChildren" KeyTipText="W" Label="BarMenuItem (With Children)" SmallImageSource="/Images/Icons/Open16.png">
+								<bars:BarMenuItem Key="WithIconsBarMenuItemWithChildrenChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="WithIconsBarMenuItemWithChildrenChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarMenuItem>
+							<bars:BarSplitMenuItem Key="WithIconsBarSplitMenuItem" KeyTipText="W" Label="BarSplitMenuItem" SmallImageSource="/Images/Icons/Save16.png">
+								<bars:BarMenuItem Key="WithIconsBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="WithIconsBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarSplitMenuItem Key="WithIconsCheckableBarSplitMenuItem" KeyTipText="W" Label="BarSplitMenuItem (Checkable)" IsCheckable="True" IsChecked="True" SmallImageSource="/Images/Icons/Print16.png">
+								<bars:BarMenuItem Key="WithIconsCheckableBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="WithIconsCheckableBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="StaysOpenOnClick" />
+							<bars:BarMenuItem Key="StaysOpenOnClickBarMenuItem" KeyTipText="S" Label="BarMenuItem" StaysOpenOnClick="True" />
+							<bars:BarMenuItem Key="StaysOpenOnClickCheckableBarMenuItem" KeyTipText="S" Label="BarMenuItem (Checkable)" IsCheckable="True" IsChecked="True" StaysOpenOnClick="True"/>
+							<bars:BarSplitMenuItem Key="StaysOpenOnClickBarSplitMenuItem" KeyTipText="S" Label="BarSplitMenuItem" StaysOpenOnClick="True">
+								<bars:BarMenuItem Key="StaysOpenOnClickBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="StaysOpenOnClickBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarSplitMenuItem Key="StaysOpenOnClickCheckableBarSplitMenuItem" KeyTipText="S" Label="BarSplitMenuItem (Checkable)" IsCheckable="True" IsChecked="True" StaysOpenOnClick="True">
+								<bars:BarMenuItem Key="StaysOpenOnClickCheckableBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="StaysOpenOnClickCheckableBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Disabled" />
+							<bars:BarMenuItem Key="DisabledBarMenuItem" KeyTipText="A" Label="BarMenuItem" IsEnabled="False" SmallImageSource="/Images/Icons/New16.png" />
+							<bars:BarMenuItem Key="DisabledCheckableBarMenuItem" KeyTipText="A" Label="BarMenuItem (Checkable)" IsEnabled="False" IsCheckable="True" IsChecked="True" />
+							<bars:BarMenuItem Key="DisabledCheckableBarMenuItemWithIcon" KeyTipText="A" Label="BarMenuItem (Checkable, With Icon)" IsEnabled="False" IsCheckable="True" IsChecked="True" SmallImageSource="/Images/Icons/QuickStart16.png" />
+							<bars:BarMenuItem Key="DisabledBarMenuItemWithChildren" KeyTipText="A" Label="BarMenuItem (With Children)" IsEnabled="False" SmallImageSource="/Images/Icons/Open16.png">
+								<bars:BarMenuItem Key="DisabledBarMenuItemWithChildrenChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DisabledBarMenuItemWithChildrenChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarMenuItem>
+							<bars:BarSplitMenuItem Key="DisabledBarSplitMenuItem" KeyTipText="A" Label="BarSplitMenuItem" IsEnabled="False" SmallImageSource="/Images/Icons/Save16.png">
+								<bars:BarMenuItem Key="DisabledBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DisabledBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarSplitMenuItem Key="DisabledCheckableBarSplitMenuItem" KeyTipText="A" Label="BarSplitMenuItem (Checkable)" IsEnabled="False" IsCheckable="True" IsChecked="True">
+								<bars:BarMenuItem Key="DisabledCheckableBarSplitMenuItemChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DisabledCheckableBarSplitMenuItemChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarSplitMenuItem Key="DisabledCheckableBarSplitMenuItemWithIcon" KeyTipText="A" Label="BarSplitMenuItem (Checkable, With Icon)" IsEnabled="False" IsCheckable="True" IsChecked="True" SmallImageSource="/Images/Icons/Print16.png">
+								<bars:BarMenuItem Key="DisabledCheckableBarSplitMenuItemWithIconChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="DisabledCheckableBarSplitMenuItemWithIconChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+
+						</bars:BarMenuItem>
+
+						<bars:BarMenuSeparator />
+						<bars:BarMenuItem Key="LargeSize" UseLargeSize="True" LargeImageSource="/Images/Icons/Height32.png" SmallImageSource="/Images/Icons/Height16.png" Description="Large-sized menu items (like this one) can be used for emphasis or to add descriptions.">
+							<bars:BarMenuHeading Header="Large Items" />
+							<bars:BarMenuItem Key="New" UseLargeSize="True" LargeImageSource="/Images/Icons/New32.png" Description="Create a new document">
+								<bars:BarMenuItem Key="NewChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="NewChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarMenuItem>
+							<bars:BarSplitMenuItem Key="Open" UseLargeSize="True" LargeImageSource="/Images/Icons/Open32.png" Description="Open an existing document">
+								<bars:BarMenuItem Key="OpenChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="OpenChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarMenuItem Key="Save" UseLargeSize="True" LargeImageSource="/Images/Icons/Save32.png" Description="Save the current document" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Large Items (No Description)" />
+							<bars:BarMenuItem Key="NewNoDesc" Label="New" UseLargeSize="True" LargeImageSource="/Images/Icons/New32.png">
+								<bars:BarMenuItem Key="NewNoDescChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="NewNoDescChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarMenuItem>
+							<bars:BarSplitMenuItem Key="OpenNoDesc" Label="Open" UseLargeSize="True" LargeImageSource="/Images/Icons/Open32.png">
+								<bars:BarMenuItem Key="OpenNoDescChild1" Label="BarMenuItem (Child 1)" />
+								<bars:BarMenuItem Key="OpenNoDescChild2" Label="BarMenuItem (Child 2)" />
+							</bars:BarSplitMenuItem>
+							<bars:BarMenuItem Key="SaveNoDesc" Label="Save" UseLargeSize="True" LargeImageSource="/Images/Icons/Save32.png" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Checkable" />
+							<bars:BarMenuItem Key="DefaultCheck" UseLargeSize="True" IsCheckable="True" IsChecked="True" Description="Checkmark automatically used as image" />
+							<bars:BarMenuItem Key="ExplicitImage" UseLargeSize="True" IsCheckable="True" IsChecked="True" LargeImageSource="/Images/Icons/QuickStart32.png" Description="Explicit images also supported" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Small Items in Same Menu" />
+							<bars:BarMenuItem Key="Undo" Command="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+							<bars:BarMenuItem Key="Redo" Command="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+						</bars:BarMenuItem>
+
+						<bars:BarMenuSeparator />
+						<bars:BarMenuItem Key="InputGestureText" KeyTipText="G" UseLargeSize="True" LargeImageSource="/Images/Icons/KeyboardShortcut32.png" SmallImageSource="/Images/Icons/KeyboardShortcut16.png" Description="Input gestures are automatically populated, when available, or can be set to display any text.">
+							<bars:BarMenuHeading Header="Automatic from KeyGesture" />
+							<bars:BarMenuItem Command="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+							<bars:BarMenuItem Command="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+							<bars:BarMenuItem Command="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Explicitly Defined" />
+							<bars:BarMenuItem Key="Custom" KeyTipText="U" SmallImageSource="/Images/Icons/QuickStart16.png" InputGestureText="Alt+F, N" />
+						</bars:BarMenuItem>
+
+						<bars:BarMenuSeparator />
+						<bars:BarMenuItem KeyTipText="V" Label="Vertical Scrolling" UseLargeSize="True" LargeImageSource="/Images/Icons/VerticalScroll32.png" SmallImageSource="/Images/Icons/VerticalScroll16.png" Description="Vertical scrolling is fully supported when a menu is too tall.">
+							<bars:BarMenuHeading Header="Group A" />
+							<bars:BarMenuItem Key="BarMenuItemA0" KeyTipText="A0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemA1" KeyTipText="A1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemA2" KeyTipText="A2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemA3" KeyTipText="A3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemA4" KeyTipText="A4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemA5" KeyTipText="A5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemA6" KeyTipText="A6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemA7" KeyTipText="A7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemA8" KeyTipText="A8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemA9" KeyTipText="A9" Label="BarMenuItem 9" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Group B" />
+							<bars:BarMenuItem Key="BarMenuItemB0" KeyTipText="B0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemB1" KeyTipText="B1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemB2" KeyTipText="B2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemB3" KeyTipText="B3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemB4" KeyTipText="B4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemB5" KeyTipText="B5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemB6" KeyTipText="B6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemB7" KeyTipText="B7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemB8" KeyTipText="B8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemB9" KeyTipText="B9" Label="BarMenuItem 9" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Group C" />
+							<bars:BarMenuItem Key="BarMenuItemC0" KeyTipText="C0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemC1" KeyTipText="C1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemC2" KeyTipText="C2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemC3" KeyTipText="C3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemC4" KeyTipText="C4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemC5" KeyTipText="C5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemC6" KeyTipText="C6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemC7" KeyTipText="C7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemC8" KeyTipText="C8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemC9" KeyTipText="C9" Label="BarMenuItem 9" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Group D" />
+							<bars:BarMenuItem Key="BarMenuItemD0" KeyTipText="D0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemD1" KeyTipText="D1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemD2" KeyTipText="D2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemD3" KeyTipText="D3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemD4" KeyTipText="D4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemD5" KeyTipText="D5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemD6" KeyTipText="D6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemD7" KeyTipText="D7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemD8" KeyTipText="D8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemD9" KeyTipText="D9" Label="BarMenuItem 9" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Group E" />
+							<bars:BarMenuItem Key="BarMenuItemE0" KeyTipText="E0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemE1" KeyTipText="E1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemE2" KeyTipText="E2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemE3" KeyTipText="E3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemE4" KeyTipText="E4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemE5" KeyTipText="E5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemE6" KeyTipText="E6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemE7" KeyTipText="E7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemE8" KeyTipText="E8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemE9" KeyTipText="E9" Label="BarMenuItem 9" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuHeading Header="Group F" />
+							<bars:BarMenuItem Key="BarMenuItemF0" KeyTipText="F0" Label="BarMenuItem 0" />
+							<bars:BarMenuItem Key="BarMenuItemF1" KeyTipText="F1" Label="BarMenuItem 1" />
+							<bars:BarMenuItem Key="BarMenuItemF2" KeyTipText="F2" Label="BarMenuItem 2" />
+							<bars:BarMenuItem Key="BarMenuItemF3" KeyTipText="F3" Label="BarMenuItem 3" />
+							<bars:BarMenuItem Key="BarMenuItemF4" KeyTipText="F4" Label="BarMenuItem 4" />
+							<bars:BarMenuItem Key="BarMenuItemF5" KeyTipText="F5" Label="BarMenuItem 5" />
+							<bars:BarMenuItem Key="BarMenuItemF6" KeyTipText="F6" Label="BarMenuItem 6" />
+							<bars:BarMenuItem Key="BarMenuItemF7" KeyTipText="F7" Label="BarMenuItem 7" />
+							<bars:BarMenuItem Key="BarMenuItemF8" KeyTipText="F8" Label="BarMenuItem 8" />
+							<bars:BarMenuItem Key="BarMenuItemF9" KeyTipText="F9" Label="BarMenuItem 9" />
+						</bars:BarMenuItem>
+
+					</bars:BarPopupButton>
+
+					<bars:BarPopupButton Key="SampleShowcase" MaxSimplifiedVariantSize="Medium" LargeImageSource="/Images/Icons/QuickStartGreen32.png" SmallImageSource="/Images/Icons/QuickStartGreen16.png" ToolTip="A collection of sample menus to showcase how menus might be used in real-world scenarios.">
+
+						<bars:BarMenuItem Key="AdvancedPasteOptions" KeyTipText="P" UseLargeSize="True" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" Description="A sample clipboard menu using a gallery to provide multiple paste options.">
+							<bars:BarMenuItem Key="Cut" Command="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+							<bars:BarMenuItem Key="Copy" Command="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+							<bars:BarMenuGallery Key="PasteOptions"
+												 AreSurroundingSeparatorsAllowed="False"
+												 CanCategorize="True"
+												 CategorizedItemsSource="{Binding PasteOptions}"
+												 CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding PasteSpecialCommand}"
+												 IsSelectionSupported="False"
+												 ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+												 ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
+												 MaxColumnCount="6"
+												 UseMenuItemIndent="True" />
+							<bars:BarMenuItem Key="PasteSpecial" Label="Paste Special..." KeyTipText="S" Command="{Binding PasteSpecialCommand}" />
+						</bars:BarMenuItem>
+
+						<bars:BarMenuSeparator />
+						<bars:BarMenuItem Key="ViewOptionsWithColorTagging" Label="View Options with Color Tagging" UseLargeSize="True" LargeImageSource="/Images/Icons/ColorPicker32.png" SmallImageSource="/Images/Icons/ColorPicker16.png" Description="A sample 'View' menu that includes a gallery to provide color-based tagging.">
+							<bars:BarMenuItem Key="UseStacks" />
+							<bars:BarMenuItem Key="SortBy" KeyTipText="B">
+								<bars:BarMenuItem Key="Name" IsCheckable="True" IsChecked="True" />
+								<bars:BarMenuItem Key="DateModified" />
+							</bars:BarMenuItem>
+							<bars:BarMenuItem Key="CleanUpSelections" />
+							<bars:BarMenuItem Key="ShowViewOptions" KeyTipText="O" />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuGallery Key="TagColors"
+												 AreSurroundingSeparatorsAllowed="False"
+												 ItemContainerStyle="{StaticResource CircularColorSwatchGalleryItemStyle}"
+												 ItemSpacing="6"
+												 ItemsSource="{Binding TagColors}"
+												 MinColumnCount="7"
+												 UseAccentedItemBorder="True"
+												 UseMenuItemIndent="True"/>
+							<bars:BarMenuItem Key="Tags" Label="Tags..." />
+							<bars:BarMenuSeparator />
+							<bars:BarMenuItem Key="Services" KeyTipText="V">
+								<bars:BarMenuItem Key="SampleService" />
+							</bars:BarMenuItem>
+						</bars:BarMenuItem>
+
+					</bars:BarPopupButton>
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+		</bars:Ribbon>
+
+		<!-- TextBox with ContextMenu -->
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True" TextWrapping="Wrap" Text="Right-click on this TextBox to show a custom ContextMenu based on a XAML-defined ribbon.">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+			</shared:HintProperties.Hint>
+
+			<TextBox.ContextMenu>
+				<bars:BarContextMenu>
+					<bars:BarMenuItem Command="ApplicationCommands.Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+					<bars:BarMenuItem Command="ApplicationCommands.Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+					<bars:BarMenuSeparator />
+					<bars:BarMenuItem Command="ApplicationCommands.Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+					<bars:BarMenuItem Command="ApplicationCommands.Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+					<bars:BarMenuGallery Key="PasteOptions"
+										 AreSurroundingSeparatorsAllowed="False"
+										 CanCategorize="True"
+										 CategorizedItemsSource="{Binding PasteOptions}"
+										 CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
+										 CategoryPropertyName="Category"
+										 Command="{Binding PasteSpecialCommand}"
+										 IsSynchronizedWithCurrentItem="False"
+										 ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+										 ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
+										 MaxColumnCount="6"
+										 UseMenuItemIndent="True" />
+					<bars:BarMenuSeparator />
+					<bars:BarMenuItem Command="ApplicationCommands.SelectAll" />
+				</bars:BarContextMenu>
+			</TextBox.ContextMenu>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

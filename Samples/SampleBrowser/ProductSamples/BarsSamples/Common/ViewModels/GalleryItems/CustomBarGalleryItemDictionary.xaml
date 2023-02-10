@@ -1,0 +1,39 @@
+﻿<ResourceDictionary 
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.Common.CustomBarGalleryItemDictionary"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<DataTemplate x:Key="{x:Static localCommon:CustomBarGalleryItemTemplateSelector.BulletTemplateResourceKey}" DataType="localCommon:BulletBarGalleryItemViewModel">
+
+		<Border Margin="3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+				BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidBrushKey}}">
+			<localCommon:BulletPresenter Width="40" Height="40" />
+		</Border>
+
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localCommon:CustomBarGalleryItemTemplateSelector.NumberingTemplateResourceKey}" DataType="localCommon:NumberingBarGalleryItemViewModel">
+
+		<Border Margin="3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+				BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidBrushKey}}">
+			<localCommon:NumberingPresenter LineBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" />
+		</Border>
+
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localCommon:CustomBarGalleryItemTemplateSelector.ShapeTemplateResourceKey}" DataType="localCommon:ShapeBarGalleryItemViewModel">
+
+		<localCommon:ShapePresenter Width="30" Height="30" />
+
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localCommon:CustomBarGalleryItemTemplateSelector.UnderlineTemplateResourceKey}" DataType="localCommon:UnderlineBarGalleryItemViewModel">
+
+		<localCommon:UnderlinePresenter Kind="{Binding Kind}" />
+
+	</DataTemplate>
+
+</ResourceDictionary>

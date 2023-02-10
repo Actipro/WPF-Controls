@@ -86,7 +86,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingS
 
 			// NOTE: Next line added so that FunctionDeclaration will always be examined, even if the next token is not 'function'...
 			//   This ensures that a non-function token at the start of the document will not prevent the rest of the document
-			//   from being parsed... similiar logic applies to BlockChildStatement except we don't force a match if a '}' is found
+			//   from being parsed... similar logic applies to BlockChildStatement except we don't force a match if a '}' is found
 			functionDeclaration.CanMatchCallback = CanAlwaysMatch;
 			blockChildStatement.CanMatchCallback = CanMatchBlockChildStatement;
 			functionAccessExpression.CanMatchCallback = CanMatchFunctionAccessExpression;

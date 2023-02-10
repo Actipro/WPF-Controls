@@ -1,0 +1,62 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Use these QuickStarts to learn step-by-step how to get up and running with Actipro Ribbon.
+					The end result is a ribbon that includes the foundations for building applications with
+					the same look and feel as modern ribbon-based applications like Microsoft Word.
+					<LineBreak /><LineBreak />
+					Run each QuickStart, one at a time.  Then after you see what each QuickStart adds,
+					open up the XAML source in the sample browser's project to see what was added for each step.
+					Use the button in the status bar of the sample window to quickly open the relevant source.
+					The documentation at the top of each code file explains the changes that are made from
+					one step to the next, with the most high-level comments included in MainControl.xaml.
+					<LineBreak /><LineBreak />
+					Several of the early steps focus on building the code necessary to support the view
+					and will not have any obvious changes in the user interface.
+				</TextBlock>
+			</Expander>
+			
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<TextBlock Style="{StaticResource SampleSectionHeadingTextBlockStyle}" Margin="0,0,0,20">QUICKSTART LIST</TextBlock>
+
+			<ItemsControl x:Name="itemsControl">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Button Margin="0,0,0,10" Style="{StaticResource SoftButtonStyle}" HorizontalContentAlignment="Stretch"
+								Click="OnLaunchButtonClick" >
+							<DockPanel LastChildFill="True">
+								<ContentPresenter DockPanel.Dock="Right" Margin="8,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" Opacity="0.3" 
+														  VerticalAlignment="Center" SnapsToDevicePixels="True" />
+								<TextBlock TextWrapping="Wrap">
+									<Run Text="Step " FontWeight="Bold" />
+									<Run Text="{Binding StepNumber, Mode=OneWay}" FontWeight="Bold" />
+									<Run Text="-" />
+									<Run Text="{Binding Summary, Mode=OneWay}" />
+								</TextBlock>
+							</DockPanel>
+						</Button>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+				
+			</ItemsControl>
+			
+		</StackPanel>
+	</ScrollViewer>
+	
+</sampleBrowser:ProductItemControl>

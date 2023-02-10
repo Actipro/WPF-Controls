@@ -61,7 +61,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnMarkNoteAsAccpeted(object sender, RoutedEventArgs e) {
+		private void OnMarkNoteAsAccepted(object sender, RoutedEventArgs e) {
 			MenuItem item = (MenuItem)sender;
 			this.ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Accepted);
 		}
@@ -168,7 +168,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			acceptedItem.Header = "Mark as Accepted";
 			acceptedItem.IsChecked = (tagRange.Tag.Status == ReviewStatus.Accepted);
 			acceptedItem.Tag = tagRange;
-			acceptedItem.Click += new RoutedEventHandler(OnMarkNoteAsAccpeted);
+			acceptedItem.Click += new RoutedEventHandler(OnMarkNoteAsAccepted);
 			contextMenu.Items.Add(acceptedItem);
 
 			MenuItem rejectedItem = new MenuItem();

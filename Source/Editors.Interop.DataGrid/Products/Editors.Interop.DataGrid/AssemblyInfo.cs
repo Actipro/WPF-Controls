@@ -18,7 +18,7 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Actipro Software LLC")]
 [assembly: AssemblyProduct("Editors.Interop.DataGrid")]
-[assembly: AssemblyCopyright("Copyright (c) 2009-2022 Actipro Software LLC.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2023 Actipro Software LLC.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

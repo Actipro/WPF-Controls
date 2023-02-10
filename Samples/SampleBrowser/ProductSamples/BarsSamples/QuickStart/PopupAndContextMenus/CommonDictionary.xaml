@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+					xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus"
+					xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+					xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
+
+	<!-- Define a style that renders a circular color swatch -->
+	<Style x:Key="CircularColorSwatchGalleryItemStyle" TargetType="{x:Type bars:BarGalleryItem}" BasedOn="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}">
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="8" />
+		<Setter Property="Width" Value="16" />
+		<Setter Property="Height" Value="16" />
+		<Setter Property="ContentTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
+								CornerRadius="8" BorderThickness="1" SnapsToDevicePixels="True">
+						<Border.Background>
+							<SolidColorBrush Color="{Binding Color}" />
+						</Border.Background>
+					</Border>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- Define the template for the category header that will display above the special BarGalleryItem paste options -->
+	<DataTemplate x:Key="PasteOptionGalleryCategoryTemplate" DataType="{x:Type CollectionViewGroup}">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Image Grid.Column="0" Margin="2" MaxWidth="16" MaxHeight="16" Source="/Images/Icons/Paste16.png" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+			<shared:PixelSnapper Grid.Column="1" VerticalRoundMode="CeilingToEven" Margin="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPaddingNormalThicknessKey}}">
+				<!-- The gallery item category is configured as "Paste Options:" and will be available from CollectionViewGroup.Name -->
+				<TextBlock FontWeight="Bold" Text="{Binding Path=Name}" UseLayoutRounding="True" VerticalAlignment="Center" />
+			</shared:PixelSnapper>
+		</Grid>
+	</DataTemplate>
+
+	<!-- Define the template for BarGalleryItem used to display special paste options in a menu -->
+	<DataTemplate x:Key="PasteOptionGalleryItemTemplate" DataType="{x:Type local:PasteOptionGalleryItem}">
+		<Image Margin="4" MaxHeight="24" MaxWidth="24" SnapsToDevicePixels="True" Source="{Binding Image}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+	</DataTemplate>
+
+</ResourceDictionary>

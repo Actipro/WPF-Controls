@@ -1,0 +1,512 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	FocusManager.FocusedElement="{Binding ElementName=simplifiedEditor}"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<shared:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+	</sampleBrowser:ProductItemControl.Resources>
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<StackPanel>
+					<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+						Actipro Ribbon is designed to dynamically adjust the layout of controls based on the available
+						width using techniques optimized for either the Simplified or Classic layout.
+						<LineBreak /><LineBreak />
+						Try resizing this window and watch as the Ribbon adjusts the sample layout to the available width. Each tab of the
+						Ribbon demonstrates a different feature to control variant sizing.
+					</TextBlock>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}" Header="SIMPLIFIED LAYOUT">
+				<StackPanel>
+					<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+						The primary focus of the Simplified layout is overflowing items to a popup menu.
+						<LineBreak /><LineBreak />
+						By default, all items are moved
+						one-by-one to the overflow menu on the far side of the Ribbon. Of course, the order in which items overflow can
+						be fully configured and you have additional options to control the overall behavior as shown in this sample.
+					</TextBlock>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}" Header="CLASSIC LAYOUT">
+				<StackPanel>
+					<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+						In the Classic layout, controls are generally available in sizes from Large to Small and will render using
+						the largest size possible for the available width. As the Ribbon size changes, controls dynamically adapt to the
+						available space and eventually collapse to a popup menu when space is too limited.
+						<LineBreak /><LineBreak />
+						Stacking behavior allows you to control which variant sizes are supported by a group.
+						Multi-row layouts offer the most dense presentation of controls in either two- or three-row configurations.
+						<LineBreak /><LineBreak />
+						If you want more control over layouts, you can explicitly define the order in which groups collapse. Multiple
+						groups can even be configured to change variant size at the same time.
+					</TextBlock>
+				</StackPanel>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+			
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="175">
+						
+						<!-- Ribbon Control with Simplified layout -->
+						<bars:Ribbon x:Name="ribbonSimplified" LayoutMode="Simplified" UserInterfaceDensity="Normal" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" CanChangeLayoutMode="False">
+
+							<bars:RibbonTabItem x:Name="SimplifiedOverflowTab" Label="Overflow">
+								<bars:RibbonGroup Key="Undo">
+									<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+									<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="File">
+									<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+									<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Clipboard" ChildOverflowTarget="Group">
+									<bars:RibbonControlGroup>
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="Format">
+									<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+									<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+									<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="Font">
+									<bars:BarButton Key="IncreaseFontSize" SmallImageSource="/Images/Icons/GrowFont16.png" />
+									<bars:BarButton Key="DecreaseFontSize" SmallImageSource="/Images/Icons/ShrinkFont16.png" />
+									<bars:BarButton Key="Subscript" SmallImageSource="/Images/Icons/Subscript16.png" />
+									<bars:BarButton Key="Superscript" SmallImageSource="/Images/Icons/Superscript16.png" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:RibbonTabItem x:Name="SimplifiedMaxVariantSizeTab" Label="Max Variant Size" KeyTipText="V">
+								<!--
+								The MaxSimplifiedVariantSize property determines the maximum variant size of a control
+								when it is displayed in a Ribbon with the Simplified layout.
+								
+								The default value is Small (e.g., just the icon for a BarButton), but you can optionally
+								set the value to Medium (e.g., icon plus a label for a BarButton). The Large variant
+								size has no effect in the Simplified layout.
+								-->
+								<bars:RibbonGroup Key="MaxMediumSize">
+									<!-- The following buttons will appear in the Medium size (e.g., with label) if there is space, then shift to Small size before moving to the Overflow menu -->
+									<bars:BarButton Key="MaxMedium1" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="MaxMedium2" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="MaxMedium3" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="MaxMedium4" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Max Small Size (Default)">
+									<!-- The following buttons will appear in the Small size (default) before moving to the Overflow menu -->
+									<bars:BarButton Key="MaxSmall1" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
+									<bars:BarButton Key="MaxSmall2" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
+									<bars:BarButton Key="MaxSmall3" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
+									<bars:BarButton Key="MaxSmall4" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Max Collapsed Size">
+									<!-- The following buttons will always appear in the Overflow menu even if there is space in the Ribbon -->
+									<bars:BarButton Key="AlwaysCollapsed1" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Collapsed"/>
+									<bars:BarButton Key="AlwaysCollapsed2" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Collapsed"/>
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:RibbonTabItem x:Name="SimplifiedExplicitSizingTab" Label="Explicit Sizing">
+								<bars:RibbonTabItem.ControlVariants>
+									<bars:VariantCollection>
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="Undo" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="Redo" Size="Collapsed" />
+										</bars:VariantSet>
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="Subscript" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="Superscript" Size="Collapsed" />
+										</bars:VariantSet>
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="FormatPainter" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="Cut" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="Copy" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="Paste" Size="Collapsed" />
+										</bars:VariantSet>
+										<bars:SizeVariant TargetKey="New" Size="Small" />
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="IncreaseFontSize" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="DecreaseFontSize" Size="Collapsed" />
+										</bars:VariantSet>
+									</bars:VariantCollection>
+								</bars:RibbonTabItem.ControlVariants>
+								<bars:RibbonGroup Label="Undo">
+									<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+									<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="File">
+									<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Clipboard" ChildOverflowTarget="Group">
+									<bars:RibbonControlGroup>
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Format">
+									<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+									<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+									<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Label="Font">
+									<bars:BarButton Key="IncreaseFontSize" SmallImageSource="/Images/Icons/GrowFont16.png" />
+									<bars:BarButton Key="DecreaseFontSize" SmallImageSource="/Images/Icons/ShrinkFont16.png" />
+									<bars:BarButton Key="Subscript" SmallImageSource="/Images/Icons/Subscript16.png" />
+									<bars:BarButton Key="Superscript" SmallImageSource="/Images/Icons/Superscript16.png" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<!-- Footer Definition -->
+							<bars:Ribbon.FooterContent>
+								<StackPanel>
+
+									<!-- Overflow Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=SimplifiedOverflowTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										By default buttons overflow starting at the far side of the Ribbon. The Clipboard group has its own overflow menu.
+									</TextBlock>
+
+									<!-- Max Variant Size Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=SimplifiedMaxVariantSizeTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										Setting MaxSimplifiedVariantSize to Medium will show a control label when there is enough space. Collapsed will force the control to the overflow menu.
+									</TextBlock>
+
+									<!-- Explicit Sizing Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=SimplifiedExplicitSizingTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										Take control of sizing behavior with explicit control variants. Controls in this sample overflow using a pre-defined order with some related controls grouped to overflow at the same time.
+									</TextBlock>
+
+								</StackPanel>
+							</bars:Ribbon.FooterContent>
+							
+						</bars:Ribbon>
+
+						<TextBox x:Name="simplifiedEditor" Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Simplified Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+
+						<!-- Ribbon Control with Classic layout -->
+						<bars:Ribbon x:Name="ribbonClassic" LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" CanChangeLayoutMode="False">
+							
+							<!-- Stacking Behavior -->
+							<bars:RibbonTabItem x:Name="ClassicStackingTab" Label="Stacking Behavior">
+								<bars:RibbonGroup x:Name="ClassicStackingDefaultGroup" Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="Default">
+										<bars:BarButton Key="One" KeyTipText="D" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="D" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="D" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="Four" KeyTipText="D" LargeImageSource="/Images/Icons/CoverPage32.png" SmallImageSource="/Images/Icons/CoverPage16.png" />
+										<bars:BarButton Key="Five" KeyTipText="D" LargeImageSource="/Images/Icons/PageBreak32.png" SmallImageSource="/Images/Icons/PageBreak16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingAlwaysLargeGroup" Label="Always Large" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysLarge">
+										<bars:BarButton Key="One" KeyTipText="L" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingAlwaysMediumGroup" Label="Always Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+										<bars:BarButton Key="One" KeyTipText="M" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="M" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="M" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingAlwaysSmallGroup" Label="Always Small" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysSmall">
+										<bars:BarButton Key="One" KeyTipText="S" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="S" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="S" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingNeverLargeGroup" Label="Never Large" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+										<bars:BarButton Key="One" KeyTipText="G" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="G" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="G" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingNeverMediumGroup" Label="Never Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="NeverMedium">
+										<bars:BarButton Key="One" KeyTipText="U" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="U" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="U" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup x:Name="ClassicStackingNeverSmallGroup" Label="Never Small" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="NeverSmall">
+										<bars:BarButton Key="One" KeyTipText="A" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" KeyTipText="A" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" KeyTipText="A" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+							
+							<!-- Multi-Row Layouts with Separators -->
+							<bars:RibbonTabItem x:Name="ClassicMultiRowTab" Label="Multi-Row Layouts" KeyTipText="R">
+								<bars:RibbonGroup Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="Format Painter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="TwoRowOnly" Label="2-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
+									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="ThreeRowOnly" Label="3-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
+									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="None" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
+									<bars:RibbonControlGroup SeparatorMode="Never">
+										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Never">
+										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Never">
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Never">
+										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Never">
+										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+							
+							<!-- Explicit Sizing-->
+							<bars:RibbonTabItem x:Name="ClassicExplicitSizingTab" Label="Explicit Sizing" KeyTipText="X">
+								<bars:RibbonTabItem.GroupVariants>
+									<bars:VariantCollection>
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="GroupA1" Size="Medium" />
+											<bars:SizeVariant TargetKey="GroupA2" Size="Medium" />
+										</bars:VariantSet>
+										<bars:SizeVariant TargetKey="GroupB" Size="Collapsed" />
+										<bars:SizeVariant TargetKey="GroupC" Size="Small" />
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="GroupA1" Size="Small" />
+											<bars:SizeVariant TargetKey="GroupA2" Size="Small" />
+										</bars:VariantSet>
+										<bars:VariantSet>
+											<bars:SizeVariant TargetKey="GroupA1" Size="Collapsed" />
+											<bars:SizeVariant TargetKey="GroupA2" Size="Collapsed" />
+										</bars:VariantSet>
+										<bars:SizeVariant TargetKey="GroupC" Size="Collapsed" />
+									</bars:VariantCollection>
+								</bars:RibbonTabItem.GroupVariants>
+								<bars:RibbonGroup Key="GroupA1" Label="Group A1" CollapsedButtonKeyTipText="ZA1" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup>
+										<bars:BarButton Key="One" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="Four" LargeImageSource="/Images/Icons/CoverPage32.png" SmallImageSource="/Images/Icons/CoverPage16.png" />
+										<bars:BarButton Key="Five" LargeImageSource="/Images/Icons/PageBreak32.png" SmallImageSource="/Images/Icons/PageBreak16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="GroupA2" Label="Group A2" CollapsedButtonKeyTipText="ZA2" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup>
+										<bars:BarButton Key="One" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="Four" LargeImageSource="/Images/Icons/CoverPage32.png" SmallImageSource="/Images/Icons/CoverPage16.png" />
+										<bars:BarButton Key="Five" LargeImageSource="/Images/Icons/PageBreak32.png" SmallImageSource="/Images/Icons/PageBreak16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="GroupB" Label="Group B" CollapsedButtonKeyTipText="ZB" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup>
+										<bars:BarButton Key="One" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
+										<bars:BarButton Key="Two" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
+										<bars:BarButton Key="Three" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+								<bars:RibbonGroup Key="GroupC" Label="Group C (Multi-Row)" CollapsedButtonKeyTipText="ZC" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True"
+												  ThreeRowItemSortOrder="0 1 3 4 2"
+												  >
+									<!--
+									In Two-Row mode, items are sorted in the order they are defined.
+									
+									In Three-Row mode, the default sort order can be changed using ThreeRowItemSortOrder where
+									the zero-based index of each item is listed in the order. In this example, the group with
+									Clipboard commands (index 2) is moved to the end when in three-row mode.
+									-->
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+									</bars:RibbonControlGroup>
+									<bars:RibbonControlGroup SeparatorMode="Default">
+										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+									</bars:RibbonControlGroup>
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<!-- Footer Definition -->
+							<bars:Ribbon.FooterContent>
+								<StackPanel>
+									
+									<!-- Stacking Footer Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicStackingTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										<Run Text="Current group variant sizes: " />
+										<Run Text="{Binding ElementName=ClassicStackingDefaultGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingAlwaysLargeGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingAlwaysMediumGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingAlwaysSmallGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingNeverLargeGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingNeverMediumGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text=">" />
+										<Run Text="{Binding ElementName=ClassicStackingNeverSmallGroup, Path=VariantSize}" FontWeight="Bold" />
+									</TextBlock>
+									
+									<!-- Multi-Row Footer Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicMultiRowTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										This groups in this sample show different values for SeparatorMode.
+									</TextBlock>
+									
+									<!-- Explicit Sizing Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicExplicitSizingTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										Take control of sizing behavior with explicit group variants. Here Groups A1 and A2 downsize together and Group B collapses before the others. The multi-row group also customizes the sort order in 3-row mode.
+									</TextBlock>
+									
+								</StackPanel>
+							</bars:Ribbon.FooterContent>
+							
+						</bars:Ribbon>
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Classic Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

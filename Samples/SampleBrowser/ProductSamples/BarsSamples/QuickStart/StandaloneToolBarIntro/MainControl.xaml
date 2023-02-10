@@ -1,0 +1,110 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.StandaloneToolBarIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
+	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	FocusManager.FocusedElement="{Binding ElementName=primaryDocumentView}"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryToolBar, Path=UserInterfaceDensity}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryToolBar, Path=CornerRadius}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryToolBar, Path=HasShadow}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryToolBar, Path=Padding}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=primaryToolBar, Path=ItemSpacing}">
+						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="10" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The StandaloneToolBar control can be used in scenarios where you wish to provide a modern toolbar UI,
+					but there aren't enough commands to justify a full-blown Ribbon implementation.
+					<LineBreak /><LineBreak />
+					The toolbar supports many of the controls that can appear in a Ribbon hierarchy,
+					such as split buttons that contain menu galleries.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<docking:WindowControl Title="Sample Window" ResizeMode="NoResize">
+				<DockPanel>
+					<bars:StandaloneToolBar x:Name="primaryToolBar" Margin="5,5,5,10" DockPanel.Dock="Top" DataContext="{Binding PrimaryStandaloneToolBar}"
+											Background="{DynamicResource {x:Static themes:AssetResourceKeys.RibbonTabControlBackgroundNormalBrushKey}}"
+											BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.RibbonTabControlBorderNormalBrushKey}}"
+											BorderThickness="1"
+											CornerRadius="8"
+											Padding="5,3"
+											ItemSpacing="2"
+											HasShadow="True"
+											Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
+
+					<common:RichTextEditorDocumentView x:Name="primaryDocumentView" DataContext="{Binding PrimaryDocument}" Padding="0" RootBarControl="{Binding ElementName=primaryToolBar}" />
+
+				</DockPanel>
+			</docking:WindowControl>
+		</shared:ShadowChrome>
+		
+		<shared:ShadowChrome Grid.Row="2" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<docking:WindowControl Title="Vertical and Embedded Usage" ResizeMode="NoResize">
+				<DockPanel>
+					<bars:StandaloneToolBar x:Name="secondaryToolBar" DockPanel.Dock="Left" DataContext="{Binding SecondaryStandaloneToolBar}" Orientation="Vertical" BorderThickness="0" 
+											Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+											Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
+
+					<docking:DockSite>
+						<docking:SplitContainer>
+							<docking:Workspace>
+								<docking:TabbedMdiHost>
+									<docking:TabbedMdiContainer>
+										<docking:DocumentWindow Title="Document1.txt">
+											<common:RichTextEditorDocumentView DataContext="{Binding SecondaryDocument}" Padding="0" RootBarControl="{Binding ElementName=secondaryToolBar}" />
+										</docking:DocumentWindow>
+									</docking:TabbedMdiContainer>
+								</docking:TabbedMdiHost>
+							</docking:Workspace>
+							<docking:ToolWindowContainer>
+								<docking:ToolWindow Title="Tool Window" ContainerDockedSize="230,200">
+									<DockPanel>
+										<bars:StandaloneToolBar x:Name="toolWindowToolBar" DockPanel.Dock="Top" DataContext="{Binding ToolWindowStandaloneToolBar}" BorderThickness="0" 
+																Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+																Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
+
+										<Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolWindowContainerTabItemBorderSelectedBrushKey}}">
+											<common:RichTextEditorDocumentView DataContext="{Binding ToolWindowDocument}" BorderThickness="0" Padding="0" RootBarControl="{Binding ElementName=toolWindowToolBar}" />
+										</Border>
+
+									</DockPanel>
+								</docking:ToolWindow>
+							</docking:ToolWindowContainer>
+						</docking:SplitContainer>
+					</docking:DockSite>
+				</DockPanel>
+			</docking:WindowControl>
+		</shared:ShadowChrome>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

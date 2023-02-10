@@ -29,7 +29,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.TabbedMdiNewT
 		/// Occurs when a new window is requested by the user.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>RoutedEventArgs</c> that containd data related to this event.</param>
+		/// <param name="e">The <c>RoutedEventArgs</c> that contained data related to this event.</param>
 		private void OnDockSiteNewWindowRequested(object sender, RoutedEventArgs e) {
 			DocumentHelper.CreateTextDocumentWindow(dockSite, ++documentIndex);
 		}

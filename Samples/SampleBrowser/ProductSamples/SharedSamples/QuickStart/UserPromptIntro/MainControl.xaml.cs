@@ -306,7 +306,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">The <see cref="UserPromptResponseEventArgs"/> that contains the event data.</param>
-		private void OnUserPromptControlRespondingCancelWhenVerifieid(object sender, UserPromptResponseEventArgs e) {
+		private void OnUserPromptControlRespondingCancelWhenVerified(object sender, UserPromptResponseEventArgs e) {
 			if ((sender is UserPromptControl userPromptControl) && (userPromptControl.IsChecked)) {
 				// Cancel the response
 				ThemedMessageBox.Show($"Cancelling response of '{e.Response}'", "Result Canceled");
@@ -343,7 +343,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			var result = UserPromptWindow.ShowDialog(userPromptControl, title, owner, initializeAction);
 
 			if (displayResult) {
-				// Notify the user of the reponse
+				// Notify the user of the response
 				ThemedMessageBox.Show($"The following result was selected:  {result}", "Result");
 			}
 
@@ -410,7 +410,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 				IsChecked = true,
 				StandardButtons = UserPromptStandardButtons.YesNo,
 			};
-			userPromptControl.Responding += OnUserPromptControlRespondingCancelWhenVerifieid;
+			userPromptControl.Responding += OnUserPromptControlRespondingCancelWhenVerified;
 
 			ShowDialog(userPromptControl, displayResult: true);
 		}

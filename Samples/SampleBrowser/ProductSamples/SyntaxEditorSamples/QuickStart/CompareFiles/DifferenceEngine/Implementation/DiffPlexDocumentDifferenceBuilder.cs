@@ -146,7 +146,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 		public IDifferenceCollection OldDifferences { get; private set; }
 
 		/// <summary>
-		/// Gets the collection of differences in the lastest document from the last compare operation.
+		/// Gets the collection of differences in the latest document from the last compare operation.
 		/// </summary>
 		public IDifferenceCollection NewDifferences { get; private set; }
 

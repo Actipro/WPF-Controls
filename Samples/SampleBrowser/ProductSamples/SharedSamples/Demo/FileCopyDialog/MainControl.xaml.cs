@@ -127,13 +127,13 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.Demo.FileCopyDialog {
 				if (this.CanSimulateAPause && (40 == fileCopyData.RemainingFileCount)) {
 					this.animatedProgressBar.State = OperationState.Paused;
 					MessageBox.Show("The file 'xyz.txt' already exists, would you like to overwrite it?",
-						"File Copy (Simluated)", MessageBoxButton.YesNo, MessageBoxImage.Question);
+						"File Copy (Simulated)", MessageBoxButton.YesNo, MessageBoxImage.Question);
 					this.animatedProgressBar.State = OperationState.Normal;
 				}
 				else if (this.CanSimulateAnError && (30 == fileCopyData.RemainingFileCount)) {
 					this.animatedProgressBar.State = OperationState.Error;
 					MessageBox.Show("An error occurred while copying the file 'abc.txt'.",
-						"File Copy (Simluated)", MessageBoxButton.OK, MessageBoxImage.Error);
+						"File Copy (Simulated)", MessageBoxButton.OK, MessageBoxImage.Error);
 					this.animatedProgressBar.State = OperationState.Normal;
 				}
 
@@ -153,7 +153,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.Demo.FileCopyDialog {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
-		/// Gets or sets whether a pause can be simluated.
+		/// Gets or sets whether a pause can be simulated.
 		/// </summary>
 		/// <value>
 		/// <c>true</c> if a pause can be simulated; otherwise, <c>false</c>.
@@ -168,7 +168,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.Demo.FileCopyDialog {
 		}
 
 		/// <summary>
-		/// Gets or sets whether an error can be simluated.
+		/// Gets or sets whether an error can be simulated.
 		/// </summary>
 		/// <value>
 		/// <c>true</c> if an error can be simulated; otherwise, <c>false</c>.

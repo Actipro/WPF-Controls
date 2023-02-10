@@ -1,0 +1,117 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationXaml.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:syntaxeditor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+    xmlns:barsSamplesCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
+	FocusManager.FocusedElement="{Binding ElementName=xmlDataEditor}"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.LayoutMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.UserInterfaceDensity}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.MinimizedState}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarLocation}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarItems}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon provides many options to customize the layout. By using
+					the serialization features, it is easy to save the current layout and restore it later.
+					<LineBreak /><LineBreak />
+					When users customize the Ribbon in an application, they will expect those customizations
+					to be restored the next time the application is launched.
+					<LineBreak /><LineBreak />
+					Developers have full control over which settings are saved and restored during
+					serialization. This will ensure that if an application is not designed to support
+					a feature like the Simplified layout, the serializer will ignore those settings
+					even if they are present in the serialized data.
+					<LineBreak /><LineBreak />
+					Make changes to the Ribbon layout like moving the location of the Quick Access Toolbar,
+					changing the user interface density, or minimzing the Ribbon. Save the layout at any
+					time and Restore it later. Use the Restore Original button to revert all changes
+					back to the state at the time the sample was loaded.
+					<LineBreak /><LineBreak />
+					Use the Sample Options to toggle which settings are processed when saving or restoring.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+				<bars:RibbonContainerPanel>
+					
+					<!-- Ribbon Control -->
+					<bars:Ribbon x:Name="ribbon"
+								 IsApplicationButtonVisible="False"
+								 QuickAccessToolBarItemAdding="OnQuickAccessToolBarItemAdding">
+						
+						<bars:Ribbon.QuickAccessToolBarContent>
+							<bars:RibbonQuickAccessToolBar>
+								<bars:RibbonQuickAccessToolBar.CommonItems>
+									<x:Array Type="DependencyObject">
+										<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Cut}" Command="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+										<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Copy}" Command="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+										<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Paste}" Command="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+									</x:Array>
+								</bars:RibbonQuickAccessToolBar.CommonItems>
+
+								<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Cut}" Command="Cut" SmallImageSource="/Images/Icons/Cut16.png" ToolTip="Removes the selection and puts it on the Clipboard so you can paste it elsewhere." />
+								<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Copy}" Command="Copy" SmallImageSource="/Images/Icons/Copy16.png" ToolTip="Puts a copy of the selection on the Clipboard so you can paste it elsewhere." />
+								<bars:BarButton Key="{x:Static barsSamplesCommon:BarControlKeys.Paste}" Command="Paste" SmallImageSource="/Images/Icons/Paste16.png" ToolTip="Paste." />
+							</bars:RibbonQuickAccessToolBar>
+						</bars:Ribbon.QuickAccessToolBarContent>
+
+						<bars:RibbonTabItem Key="Home">
+							<bars:RibbonGroup Key="Serialization">
+								<bars:RibbonControlGroup ItemVariantBehavior="AlwaysLarge" SeparatorMode="Always">
+									<bars:BarButton Key="SaveLayout" Command="{Binding SaveLayoutCommand}" SmallImageSource="/Images/Icons/Save16.png" LargeImageSource="/Images/Icons/Save32.png" ToolTip="Serializes the current Ribbon configuration to a string that can be restored later." />
+									<bars:BarButton Key="RestoreLayout" Command="{Binding RestoreLayoutCommand}" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolTip="Deserializes a previously saved configuration and applies it to the Ribbon." />
+								</bars:RibbonControlGroup>
+								<bars:BarButton Key="RestoreOriginal" KeyTipText="O" Command="{Binding RestoreOriginalCommand}" SmallImageSource="/Images/Icons/OpenMono16.png" LargeImageSource="/Images/Icons/OpenMono32.png" ToolTip="Deserializes the original configuration and applies it to the Ribbon." />
+							</bars:RibbonGroup>
+						</bars:RibbonTabItem>
+						
+					</bars:Ribbon>
+					
+					<!-- Serialized Data Editor -->
+					<syntaxeditor:SyntaxEditor x:Name="xmlDataEditor" BorderThickness="0" Margin="0,10,0,0"
+											   AreLineModificationMarksVisible="False"
+											   CanSplitHorizontally="False"
+											   IsLineNumberMarginVisible="True"
+											   IsOutliningMarginVisible="False"
+											   HorizontalScrollBarVisibility="Auto"
+											   VerticalScrollBarVisibility="Auto"
+											   >
+						<syntaxeditor:EditorDocument xml:space="preserve" TabSize="2">
+							<syntaxeditor:EditorDocument.Language>
+								<syntaxeditor:XmlSyntaxLanguage />
+							</syntaxeditor:EditorDocument.Language>
+						</syntaxeditor:EditorDocument>
+					</syntaxeditor:SyntaxEditor>
+				</bars:RibbonContainerPanel>
+
+			</Border>
+		</shared:ShadowChrome>
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

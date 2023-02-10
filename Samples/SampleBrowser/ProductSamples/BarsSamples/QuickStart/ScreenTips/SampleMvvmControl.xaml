@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ScreenTips.SampleMvvmControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+			 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		
+		<!--
+			The following ContentControl resources are defined in XAML and referenced in
+			code to create more robust ScreenTip samples than would normally be available
+			from view models that, on their own, only define basic string properties to
+			bind to a ScreenTip.
+		-->
+
+		<!-- Define the Content and Footer for the MVVM Complex ScreenTip -->
+		<ContentControl x:Key="ComplexScreenTipContent">
+			<Grid Margin="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Image Margin="0,0,8,0" Source="/Images/Other/CoverPageScreenTip.png" />
+				<TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top">
+					This <Italic>ScreenTip</Italic> uses a custom layout for Content and Footer.
+				</TextBlock>
+			</Grid>
+		</ContentControl>
+		<ContentControl x:Key="ComplexScreenTipFooterContent">
+			<Grid Margin="0,8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+
+				<Image Grid.Row="0" Grid.Column="0" Margin="0,0,8,0" Width="16" Height="16" Source="/Images/Icons/Help16.png" />
+				<TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold" Text="Press F1 for more help."/>
+
+				<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,0" TextWrapping="Wrap">Additional footer content can be placed here.</TextBlock>
+			</Grid>
+		</ContentControl>
+
+		<!-- Define the Footer for the MVVM Footer Help ScreenTip -->
+		<ContentControl x:Key="FooterHelpContextContent">
+			<Grid Margin="0,4">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Image Margin="0,0,8,0" Width="16" Height="16" Source="/Images/Icons/Help16.png" />
+				<TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="Press F1 for more help."/>
+			</Grid>
+		</ContentControl>
+		
+	</UserControl.Resources>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Configure the Ribbon to be bound to a view model with a style that automatically binds various Ribbon properties to the view model -->
+		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" IsReadOnly="True" ToolTip="This is a standard ToolTip. See the XAML-based sample for how to define a custom ScreenTip for any control.">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with MVVM" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+</UserControl>

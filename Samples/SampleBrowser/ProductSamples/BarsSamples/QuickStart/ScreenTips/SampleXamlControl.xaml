@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ScreenTips.SampleXamlControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Control -->
+		<bars:Ribbon x:Name="ribbon" LayoutMode="Classic" CanChangeLayoutMode="False" IsMinimizable="False"
+					 IsApplicationButtonVisible="False" QuickAccessToolBarLocation="Below">
+
+			<!-- Configure the Quick Access Toolbar -->
+			<bars:Ribbon.QuickAccessToolBarContent>
+				<bars:RibbonQuickAccessToolBar>
+					<bars:BarButton Key="Cut" Command="ApplicationCommands.Cut" SmallImageSource="/Images/Icons/Cut16.png" ToolTip="Removes the selection and puts it on the Clipboard so you can paste it elsewhere." />
+					<bars:BarButton Key="Copy" Command="ApplicationCommands.Copy" SmallImageSource="/Images/Icons/Copy16.png" ToolTip="Puts a copy of the selection on the Clipboard so you can paste it elsewhere." />
+					<bars:BarButton Key="Paste" Command="ApplicationCommands.Paste" SmallImageSource="/Images/Icons/Paste16.png" ToolTip="Adds content from the Clipboard into your document." />
+					<bars:BarButton Key="Undo" Command="ApplicationCommands.Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+					<bars:BarButton Key="Redo" Command="ApplicationCommands.Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+				</bars:RibbonQuickAccessToolBar>
+			</bars:Ribbon.QuickAccessToolBarContent>
+
+			<!-- XAML Samples Ribbon Tab -->
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+
+				<!-- Simple Group-->
+				<bars:RibbonGroup Key="Simple" CanAutoCollapse="False">
+					<bars:BarButton Key="SimpleDescription" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
+									ToolTip="A ScreenTip is automatically generated for Bar controls that assign a string to the ToolTip property." />
+				</bars:RibbonGroup>
+
+				<!-- Headers & Footers Group -->
+				<bars:RibbonGroup Key="HeadersAndFooters" Label="Headers &amp; Footers" CanAutoCollapse="False">
+
+					<bars:BarButton Key="Default" Title="Paste" Command="ApplicationCommands.Paste" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png"
+									ToolTip="Bar controls automatically generates a header from the Title property and keyboard shortcut (when available) for any associated Command. If Title is not specified, the Label will be used instead." />
+
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+
+						<bars:BarButton Key="AltHeader" Label="Alt. Header" Command="ApplicationCommands.Paste" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png"
+										ScreenTipHeader="Alternate Header"
+										ToolTip="This ScreenTip explicitly defines a header to override the default header." />
+
+						<bars:BarButton Key="NoHeader" Label="No Header" Command="ApplicationCommands.Paste" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png"
+										ScreenTipHeader=""
+										ToolTip="Setting the ScreenTipHeader to an empty string will hide the default header."
+										ScreenTipFooter="If a footer is defined a standard ScreenTip is still used." />
+
+						<bars:BarButton Key="NoHeaderOrFooter" Label="No Header/Footer" Command="ApplicationCommands.Paste" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png"
+										ScreenTipHeader=""
+										ToolTip="This ScreenTip with no header or footer looks like a normal ToolTip." />
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+
+				<!-- Custom Group -->
+				<bars:RibbonGroup Key="Custom" CanAutoCollapse="False">
+					<bars:RibbonControlGroup ItemVariantBehavior="NeverSmall">
+
+						<bars:BarButton Key="XamlFooterHelpContext" Label="Footer Help" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
+										ToolTip="The Header and Footer can be set to any content.">
+							<!-- Define complex content for the Footer -->
+							<bars:BarButton.ScreenTipFooter>
+								<Grid Margin="0,4">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="*" />
+									</Grid.ColumnDefinitions>
+
+									<Image Margin="0,0,8,0" Width="16" Height="16" Source="/Images/Icons/Help16.png" />
+									<TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" Text="Press F1 for more help."/>
+								</Grid>
+							</bars:BarButton.ScreenTipFooter>
+						</bars:BarButton>
+
+						<bars:BarButton Key="XamlComplexScreenTip" Label="Complex" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png">
+							<bars:BarButton.ToolTip>
+								<!-- Directly assign a complete ScreenTip so the ComplexContentWidth property can be increased -->
+								<bars:ScreenTip ComplexContentWidth="300" Header="ScreenTip Customization">
+									<bars:ScreenTip.Content>
+										<Grid Margin="8">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+
+											<Image Margin="0,0,8,0" Source="/Images/Other/CoverPageScreenTip.png" />
+											<TextBlock Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top">
+												This <Italic>ScreenTip</Italic> uses a custom layout for Content and Footer.
+											</TextBlock>
+										</Grid>
+									</bars:ScreenTip.Content>
+									<bars:ScreenTip.Footer>
+										<Grid Margin="0,8">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+
+											<Image Grid.Row="0" Grid.Column="0" Margin="0,0,8,0" Width="16" Height="16" Source="/Images/Icons/Help16.png" />
+											<TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold" Text="Press F1 for more help."/>
+
+											<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,0" TextWrapping="Wrap">Additional footer content can be placed here.</TextBlock>
+										</Grid>
+									</bars:ScreenTip.Footer>
+								</bars:ScreenTip>
+							</bars:BarButton.ToolTip>
+
+						</bars:BarButton>
+
+						<!-- The code behind for this sample will dynamically update the ScreenTip.Footer for this button in the OnScreenTipOpening event handler -->
+						<bars:BarButton Key="XamlDynamicScreenTip" Label="Dynamic" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
+										ToolTip="The footer of this ScreenTip will show the date/time it was displayed." />
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+
+		<!-- TextBox with ScreenTip -->
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True"
+				 Text="Hover over this TextBox to see how a ScreenTip can be shown for any control."
+				 ToolTipService.InitialShowDelay="1000" ToolTipOpening="OnTextBoxToolTipOpening">
+			<TextBox.ToolTip>
+				<bars:ScreenTip Header="Editor">
+					Screen tips can be used with any control to enhance the user experience.
+				</bars:ScreenTip>
+			</TextBox.ToolTip>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+</UserControl>

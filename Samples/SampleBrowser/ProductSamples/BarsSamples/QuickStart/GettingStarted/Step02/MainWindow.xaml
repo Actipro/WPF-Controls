@@ -1,0 +1,80 @@
+﻿<!--
+
+RIBBON GETTING STARTED SERIES - STEP 2
+
+STEP SUMMARY:
+
+	The Ribbon control is most powerful when combined with a Model-View-ViewModel (MVVM) pattern.
+	Using MVVM is also more complicated than defining everything in XAML, but is the approach we
+	expect most developers will want to use and will be the approach used by this series.
+	
+	This step creates the base view model that will be bound to the view and migrates the logic
+	of the Help command to an ICommand on the view model.
+	
+CHANGES SINCE LAST STEP:
+
+	A new 'SampleWindowViewModel' class was added. The code behind for this window will automatically
+	assign an instance of this view model to this window's DataContext to enable WPF bindings in
+	future steps. Refer to the code behind file for details.
+	
+	The Ribbon.DataContext is now bound to a RibbonViewModel defined by the SampleWindowViewModel.Ribbon
+	property. The Ribbon property for QuickAccessToolBarMode has been moved from the XAML definition to
+	the RibbonViewModel definition.
+	
+	Including the Ribbon style required added the 'themes' namespace entry.
+	
+EXPECTED OPERATION:
+	
+	Even though the sample has been reorganized, the expected operation (as perceived by the end
+	user) has not changed.
+	
+	When this sample window is opened, a Ribbon control with a default "File" button should be displayed
+	along with a "Help" button below the Ribbon. Clicking the "Help" button should display a message.
+	Clicking the "File" button should display a default Application Menu.
+
+-->
+
+<bars:RibbonWindow
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step02.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:gettingStartedCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Common"
+    Title="Actipro Ribbon Sample" Height="450" Width="800"
+	ResizeMode="CanResizeWithGrip"
+	>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Control -->
+		<!--
+		SAMPLE NOTE 3.1:
+			The Ribbon.DataContext is now bound to a RibbonViewModel defined by the SampleWindowViewModel.Ribbon
+			property. The Ribbon property for QuickAccessToolBarMode has been moved from the XAML definition to
+			the RibbonViewModel definition.
+
+		SAMPLE NOTE 3.2:
+			The Style defined by BarsMvvmResourceKeys.RibbonStyle is a pre-defined style in the MVVM library
+			which automatically binds properties on the Ribbon control to equivalent properties on RibbonViewModel.
+		-->
+		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+		<!-- Window Content -->
+		<DockPanel>
+			
+			<!-- Configure common StatusBar that is unrelated to this sample -->
+			<gettingStartedCommon:CommonStatusBar DockPanel.Dock="Bottom" SampleCodePath="/Step02/MainWindow" />
+
+			<!-- Temporary Button to test invocation of the Help command -->
+			<Button Command="ApplicationCommands.Help" Content="Help"
+					MinWidth="100" MinHeight="100"
+					HorizontalAlignment="Center" VerticalAlignment="Center"
+					/>
+			
+		</DockPanel>
+
+
+	</bars:RibbonContainerPanel>
+	
+</bars:RibbonWindow>

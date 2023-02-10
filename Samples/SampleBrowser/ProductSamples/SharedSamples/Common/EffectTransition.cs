@@ -169,7 +169,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.Common {
 		/// </summary>
 		/// <param name="presenter">The <see cref="TransitionPresenter"/> that is managing the transition.</param>
 		/// <param name="toContent">The element requesting a <see cref="Style"/>.</param>
-		/// <param name="fromContent">The element from which a transition is occuring.</param>
+		/// <param name="fromContent">The element from which a transition is occurring.</param>
 		/// <returns>
 		/// The <see cref="Style"/> to apply to the "to" content during the transition.
 		/// </returns>

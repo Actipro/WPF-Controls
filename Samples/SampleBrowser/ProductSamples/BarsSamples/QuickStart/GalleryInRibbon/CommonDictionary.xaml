@@ -1,0 +1,142 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon"
+					xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
+
+	<!--
+
+		Converters
+
+	-->
+		
+	<local:TextForegroundColorConverter x:Key="TextForegroundColorConverter" />
+
+	<!--
+
+		DataTemplates
+
+		A gallery displayed in a Ribbon will automatically select a 1, 2, or 3-row layout based on the
+		height of the items being displayed. The following DataTemplate definitions are pre-configured
+		to use a height that would typically result in one of the 3 desired row layouts. Since this sample
+		also demonstrates the ability to customize the spacing between items, increasing or decreasing the
+		ItemSpacing could result in the layout using more or fewer rows than originally intended.
+
+	-->
+
+	<DataTemplate x:Key="LargeItemDataTemplate">
+		<!-- Custom DataTemplate used to display large-sized items (typically using 1-row layout) -->
+		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Width="60" Height="44">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Border.Background>
+			<TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="9" Text="{Binding Color}"
+					   Foreground="{Binding BindsDirectlyToSource=True, Converter={StaticResource TextForegroundColorConverter}}"/>
+		</Border>
+	</DataTemplate>
+		
+	<DataTemplate x:Key="MediumItemDataTemplate">
+		<!-- Custom DataTemplate used to display medium-sized items (typically using 2-row layout) -->
+		<DockPanel Width="75" Height="22">
+			<Border DockPanel.Dock="Left" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Margin="2,0" Width="16" Height="16">
+				<Border.Background>
+					<SolidColorBrush Color="{Binding Color}" />
+				</Border.Background>
+			</Border>
+			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10" Text="{Binding Color}" />
+		</DockPanel>
+	</DataTemplate>
+		
+	<DataTemplate x:Key="SmallItemDataTemplate">
+		<!-- Custom DataTemplate used to display small-sized items (typically using 3-row layout) -->
+		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Width="32" Height="16">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Border.Background>
+		</Border>
+	</DataTemplate>
+
+	<!--
+		
+		Images
+		
+	-->
+		
+	<DrawingImage x:Key="OneRowLayoutSmallImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,4.5 l 6,0 l 0,6 l -6,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,4.5 l 6,0 l 0,6 l -6,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+		
+	<DrawingImage x:Key="OneRowLayoutLargeImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,8.5 l 12,0 l 0,12 l -12,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 18.5,8.5 l 12,0 l 0,12 l -12,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+		
+	<DrawingImage x:Key="TwoRowLayoutSmallImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,4.5 l 6,0 l 0,4 l -6,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,4.5 l 6,0 l 0,4 l -6,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,11.5 l 6,0 l 0,4 l -6,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,11.5 l 6,0 l 0,4 l -6,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+		
+	<DrawingImage x:Key="TwoRowLayoutLargeImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,6.5 l 12,0 l 0,8 l -12,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 18.5,6.5 l 12,0 l 0,8 l -12,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,18.5 l 12,0 l 0,8 l -12,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 18.5,18.5 l 12,0 l 0,8 l -12,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+		
+	<DrawingImage x:Key="ThreeRowLayoutSmallImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,2.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 4.5,2.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,2.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 12.5,2.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,5.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 4.5,5.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,5.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 12.5,5.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 0.5,8.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 4.5,8.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 8.5,8.5 l 2,0 l 0,2 l -2,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 12.5,8.5 l 2,0 l 0,2 l -2,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+		
+	<DrawingImage x:Key="ThreeRowLayoutLargeImage">
+		<DrawingImage.Drawing>
+			<DrawingGroup>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,7.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 9.5,7.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 17.5,7.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 25.5,7.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,14.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 9.5,14.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 17.5,14.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 25.5,14.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 1.5,21.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 9.5,21.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 17.5,21.5 l 4,0 l 0,4 l -4,0 z"/>
+				<GeometryDrawing Brush="#000000" Geometry="F1 M 25.5,21.5 l 4,0 l 0,4 l -4,0 z"/>
+			</DrawingGroup>
+		</DrawingImage.Drawing>
+	</DrawingImage>
+
+</ResourceDictionary>

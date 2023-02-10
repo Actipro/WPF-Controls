@@ -29,6 +29,15 @@
 
 			</views:MultiColumnPanel>
 
+			<StackPanel Margin="50,0,50,30" Style="{StaticResource DocumentContentPanelStyle}">
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					<Bold>IMPORTANT NOTE:</Bold> This Ribbon product will be replaced by the 
+					<Hyperlink Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument">Bars product</Hyperlink>, 
+					which includes new advanced fluent ribbons, toolbars, menus, and related controls.
+					It is best to develop new UI using Bars instead.
+				</TextBlock>
+			</StackPanel>
+
 			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
 					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
 				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">

@@ -399,7 +399,7 @@ public class Foo {
 }
 ```
 
-See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmodel.attributeproviderattribute.aspx) for more information on this attribute.
+See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx) for more information on this attribute.
 
 </td>
 </tr>
@@ -431,7 +431,7 @@ public class Foo {
 }
 ```
 
-See [MSDN (external)](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.editableattribute) for more information on this attribute.
+See [MSDN (external)](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.editableattribute.aspx) for more information on this attribute.
 
 </td>
 </tr>

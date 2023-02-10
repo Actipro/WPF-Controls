@@ -1,0 +1,96 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs.SampleXamlControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<bars:RibbonContainerPanel>
+
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None">
+
+			<bars:Ribbon.ContextualTabGroups>
+				<x:Array Type="bars:RibbonContextualTabGroup">
+					<!-- 
+					The visibility of a RibbonContextualTabGroup will determine the visibility of all
+					RibbonTabItem instances whose ContextualTabGroupKey matches RibbonContextualTabGroup.Key
+					-->
+					<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.PictureTools}" Visibility="{Binding Options.IsPictureToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+					<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.TableTools}" Visibility="{Binding Options.IsTableToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+				</x:Array>
+			</bars:Ribbon.ContextualTabGroups>
+
+			<!-- Standard Tabs (Always Visible) -->
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+				<bars:RibbonGroup Key="ContextualTabs">
+					<bars:BarToggleButton Key="TogglePictureTools" Label="Picture Tools" MaxSimplifiedVariantSize="Medium"
+										  IsChecked="{Binding Options.IsPictureToolsContextualTabGroupVisible}"
+										  LargeImageSource="/Images/Icons/Picture32.png" SmallImageSource="/Images/Icons/Picture16.png"
+										  ToolTip="Click to toggle the visibility of the Picture Tools contextual tab group." />
+					<bars:BarToggleButton Key="ToggleTableTools" Label="Table Tools" MaxSimplifiedVariantSize="Medium"
+										  IsChecked="{Binding Options.IsTableToolsContextualTabGroupVisible}"
+										  LargeImageSource="/Images/Icons/Table32.png" SmallImageSource="/Images/Icons/Table16.png"
+										  ToolTip="Click to toggle the visibility of the Table Tools contextual tab group." />
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+			<bars:RibbonTabItem Key="Home">
+				<bars:RibbonGroup Key="Placeholder">
+					<bars:BarButton Key="Placeholder" Label="Non-Contextual Tab for Demo" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png" />
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+
+			<!-- Picture Tools Contextual Tabs -->
+			<bars:RibbonTabItem Key="PictureFormat" ContextualTabGroupKey="{x:Static local:ContextualTabGroupKeys.PictureTools}">
+				<bars:RibbonGroup Key="ImageSize" LargeImageSource="/Images/Icons/Height32.png" SmallImageSource="/Images/Icons/Height16.png" >
+					<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge" >
+						<bars:BarTextBox Key="PictureHeight" Label="Height" RequestedWidth="50" Text='3.5"' />
+						<bars:BarTextBox Key="PictureWidth" Label="Width" RequestedWidth="50" Text='5.0"' />
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+
+			<!-- Table Tools Contextual Tabs -->
+			<bars:RibbonTabItem Key="TableDesign" ContextualTabGroupKey="{x:Static local:ContextualTabGroupKeys.TableTools}">
+				<bars:RibbonGroup Key="TableStyleOptions" LargeImageSource="/Images/Icons/Table32.png" SmallImageSource="/Images/Icons/Table16.png">
+					<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+						<bars:BarCheckBox Key="HeaderRow" />
+						<bars:BarCheckBox Key="TotalRow" />
+						<bars:BarCheckBox Key="BandedRows" />
+						<bars:BarCheckBox Key="FirstColumn" />
+						<bars:BarCheckBox Key="LastColumn" />
+						<bars:BarCheckBox Key="BandedColumns" />
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+			<bars:RibbonTabItem Key="Layout" ContextualTabGroupKey="{x:Static local:ContextualTabGroupKeys.TableTools}">
+				<bars:RibbonGroup Key="CellSize" LargeImageSource="/Images/Icons/Height32.png" SmallImageSource="/Images/Icons/Height16.png" >
+					<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+						<bars:BarTextBox Key="TableCellHeight" Label="Height" RequestedWidth="50" Text='0.20"' />
+						<bars:BarTextBox Key="TableCellWidth" Label="Width" RequestedWidth="50" Text='2.15"' />
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+				<bars:RibbonGroup Key="Alignment" LargeImageSource="/Images/Icons/AlignTextCenter32.png" SmallImageSource="/Images/Icons/AlignTextCenter16.png">
+					<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+						<bars:BarToggleButton Key="Left" SmallImageSource="/Images/Icons/AlignTextLeft16.png" />
+						<bars:BarToggleButton Key="Center" SmallImageSource="/Images/Icons/AlignTextCenter16.png" />
+						<bars:BarToggleButton Key="Right" SmallImageSource="/Images/Icons/AlignTextRight16.png" />
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+
+		<TextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

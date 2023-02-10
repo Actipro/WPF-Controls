@@ -116,7 +116,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		}
 
 		/// <summary>
-		/// Invaliates any previously defined tags.
+		/// Invalidates any previously defined tags.
 		/// </summary>
 		/// <param name="snapshotRange">The invalidated snapshot range.</param>
 		private void InvalidateTags(TextSnapshotRange snapshotRange) {

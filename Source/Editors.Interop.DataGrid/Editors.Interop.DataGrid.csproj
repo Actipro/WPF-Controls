@@ -15,7 +15,7 @@
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
 		<Authors>Actipro Software LLC</Authors>
-		<Copyright>Copyright (c) 2007-2022 Actipro Software LLC.  All rights reserved.</Copyright>
+		<Copyright>Copyright (c) 2007-2023 Actipro Software LLC.  All rights reserved.</Copyright>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
 		<DefineConstants Condition="'$(TargetFramework)' == 'netcoreapp3.1'">$(DefineConstants);NETCORE</DefineConstants>

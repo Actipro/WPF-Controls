@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
     xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode"
+    xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
     xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
     xmlns:dataGrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
     xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
@@ -30,8 +31,9 @@
 		
 		<sampleBrowser:ProductData.ReleaseHistory>
 			<sampleBrowser:ProductFamilyInfo ShortTitle="Documents" Title="Documents" LogoImageSource="{x:Static shared:AssemblyInfo.ActiproIconImageSource}">
-				<sampleBrowser:ProductItemInfo Category="Release History" Title="v22.1" Path="/SampleBrowser/Documents/ReleaseHistories/v22.1" />
-				<sampleBrowser:ProductItemInfo Category="Release History" Title="v21.1" Path="/SampleBrowser/Documents/ReleaseHistories/v21.1" />
+                <sampleBrowser:ProductItemInfo Category="Release History" Title="v23.1" Path="/SampleBrowser/Documents/ReleaseHistories/v23.1" />
+                <sampleBrowser:ProductItemInfo Category="Release History" Title="v22.1" Path="/SampleBrowser/Documents/ReleaseHistories/v22.1" />
+                <sampleBrowser:ProductItemInfo Category="Release History" Title="v21.1" Path="/SampleBrowser/Documents/ReleaseHistories/v21.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v20.1" Path="/SampleBrowser/Documents/ReleaseHistories/v20.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v19.1" Path="/SampleBrowser/Documents/ReleaseHistories/v19.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v18.1" Path="/SampleBrowser/Documents/ReleaseHistories/v18.1" />
@@ -61,18 +63,6 @@
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="SyntaxEditor" Title="SyntaxEditor" LogoImageSource="{x:Static syntaxEditor:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="The ultimate syntax-highlighting code editor control">
-
-			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="C# 8.0 syntax support" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/DotNetAddonCSharpEditor/MainControl" />
-				<sampleBrowser:ListItemInfo Title="JavaScript 2021 syntax support" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/WebAddonJavaScriptEditor/MainControl" />
-				<sampleBrowser:ListItemInfo Title="JSONC (JSON with Comments) syntax support" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/MainControl" />
-				<sampleBrowser:ListItemInfo Title="Python v3.9.5 syntax support" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/PythonAddonPythonEditor/MainControl" />
-				<sampleBrowser:ListItemInfo Title="New Drag and Drop QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl" />
-				<sampleBrowser:ListItemInfo Title="New Editor Views Synchronizing QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewsSynchronizing/MainControl" />
-				<sampleBrowser:ListItemInfo Title="New Go To Definition QuickStart (.NET Languages)" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonGoToDefinition/MainControl" />
-				<sampleBrowser:ListItemInfo Title="New Compare Files QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl" />
-				<sampleBrowser:ListItemInfo Title="New Column Guides QuickStart" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl" />
-			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/SyntaxEditor" />
@@ -386,41 +376,43 @@
 		</sampleBrowser:ProductFamilyInfo>
 
 		<!--
-			Ribbon
+			Bars
 		-->
-		<sampleBrowser:ProductFamilyInfo ShortTitle="Ribbon" Title="Ribbon" LogoImageSource="{x:Static ribbon:AssemblyInfo.ProductLogoImageSource}"
-										 Summary="Office-like user interface that implements all of Microsoft's Ribbon UI specs">
+		<sampleBrowser:ProductFamilyInfo BlurbText="BETA" ShortTitle="Bars" Title="Bars" LogoImageSource="{x:Static bars:AssemblyInfo.ProductLogoImageSource}"
+										 Summary="Advanced fluent ribbons, toolbars, menus and related controls">
+
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Document Editor (MVVM)" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open" />
+				<sampleBrowser:ListItemInfo Title="Getting Started Series" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/GettingStarted/MainControl" />
+				<sampleBrowser:ListItemInfo Title="Numerous other QuickStart samples" />
+			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
-				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Ribbon" />
+				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Bars" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
 
-			<sampleBrowser:ProductItemInfo Category="Demos" Title="Document Editor (similar to Word)" Path="/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Document Editor (MVVM)" Path="/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument"/>
 
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Getting Started Series" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/GettingStarted/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Add/Remove Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/AddRemoveControls/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="App Button Content" Path="/ProductSamples/RibbonSamples/QuickStart/ApplicationButtonContent/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Backstage Menu" Path="/ProductSamples/RibbonSamples/QuickStart/BackstageIntro/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Context Menu" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/ContextMenu/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Customizing Context Menus" Path="/ProductSamples/RibbonSamples/QuickStart/CustomizingContextMenus/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Customizing the QAT" Path="/ProductSamples/RibbonSamples/QuickStart/CustomizingQat/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Data-Bound Menu" Path="/ProductSamples/RibbonSamples/QuickStart/DataBoundMenu/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Dynamic Popup Content" Path="/ProductSamples/RibbonSamples/QuickStart/DynamicPopupContent/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Editors Integration (Interop)" SideBarWidth="Narrow" Path="/ProductSamples/EditorsSamples/QuickStart/RibbonIntegrationInterop/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery Color Pickers" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryColorPickers/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery Rows" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryRows/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery in a Ribbon" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryInRibbon/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery with Custom Draw Items" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryCustomDraw/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery with Item Categories/Filtering/Zooming" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryCategorization/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Hiding the App Button" Path="/ProductSamples/RibbonSamples/QuickStart/ApplicationButtonHidden/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Mini-ToolBar" Path="/ProductSamples/RibbonSamples/QuickStart/MiniToolBar/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Popup Layout" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/PopupLayout/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Recent Documents" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/RecentDocuments/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Ribbon Scaling" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/RibbonScaling/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="ScreenTips" Path="/ProductSamples/RibbonSamples/QuickStart/ScreenTips/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Standalone Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/StandaloneControls/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="StatusBar Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/StatusBarControls/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Window Size to Content" Path="/ProductSamples/RibbonSamples/QuickStart/WindowSizeToContent/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Getting Started Series" Path="/ProductSamples/BarsSamples/QuickStart/GettingStarted/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Button" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationButton/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Menu" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationMenu/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Backstage" Path="/ProductSamples/BarsSamples/QuickStart/Backstage/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Combobox" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/ComboBoxIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Contextual Tabs" Path="/ProductSamples/BarsSamples/QuickStart/ContextualTabs/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Customize Built-in Menus" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/CustomizeBuiltInMenus/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Dynamic Popup Menus" Path="/ProductSamples/BarsSamples/QuickStart/DynamicPopupMenus/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Footer" Path="/ProductSamples/BarsSamples/QuickStart/Footer/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery Color Pickers" Path="/ProductSamples/BarsSamples/QuickStart/GalleryColorPickers/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery in Ribbon" Path="/ProductSamples/BarsSamples/QuickStart/GalleryInRibbon/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Layout Modes" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Popup and Context Menus" Path="/ProductSamples/BarsSamples/QuickStart/PopupAndContextMenus/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Recent Documents" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/RecentDocuments/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Screen Tips" Path="/ProductSamples/BarsSamples/QuickStart/ScreenTips/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (MVVM)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationMvvm/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (XAML)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationXaml/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Standalone Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/StandaloneToolBarIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="User Interface Density" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/UserInterfaceDensity/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Variant Sizing" Path="/ProductSamples/BarsSamples/QuickStart/VariantSizing/MainControl"/>
 
 		</sampleBrowser:ProductFamilyInfo>
 
@@ -781,10 +773,6 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Themes" Title="Themes" LogoImageSource="{x:Static shared:AssemblyInfo.ThemesLogoImageSource}"
 										 Summary="Themes for Actipro, custom, and native WPF controls">
 
-			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="WindowChrome backdrop (Mica, Acrylic)" TargetUri="https://ActiproSoftware/ProductSamples/ThemesSamples/QuickStart/WindowChromeBackdrop/OverviewDocument" />
-			</sampleBrowser:ProductFamilyInfo.News>
-
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Themes" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -817,8 +805,7 @@
 										 Summary="Useful components and controls for the WPF framework">
 
 			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="ToggleSwitch control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/ToggleSwitchIntro/MainControl" />
-				<sampleBrowser:ListItemInfo Title="User Prompt controls" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/UserPromptIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title=".NET 5 targets moved to .NET 6" />
 				<sampleBrowser:ListItemInfo Title=".NET 7 compatibility verified" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
@@ -853,6 +840,45 @@
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Comparison" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/TransitionComparison/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Effects" Path="/ProductSamples/SharedSamples/QuickStart/TransitionEffects/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Effects (Shader)" Path="/ProductSamples/SharedSamples/QuickStart/TransitionEffectsShader/MainControl"/>
+
+		</sampleBrowser:ProductFamilyInfo>
+
+		<!--
+			Ribbon
+		-->
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Ribbon" Title="Ribbon" LogoImageSource="{x:Static ribbon:AssemblyInfo.ProductLogoImageSource}"
+										 Summary="Original Ribbon control that will be replaced by the new Bars product">
+
+			<sampleBrowser:ProductFamilyInfo.OverviewItem>
+				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Ribbon" />
+			</sampleBrowser:ProductFamilyInfo.OverviewItem>
+
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Document Editor (similar to Word)" Path="/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument"/>
+
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Getting Started Series" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/GettingStarted/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Add/Remove Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/AddRemoveControls/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="App Button Content" Path="/ProductSamples/RibbonSamples/QuickStart/ApplicationButtonContent/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Backstage Menu" Path="/ProductSamples/RibbonSamples/QuickStart/BackstageIntro/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Context Menu" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/ContextMenu/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Customizing Context Menus" Path="/ProductSamples/RibbonSamples/QuickStart/CustomizingContextMenus/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Customizing the QAT" Path="/ProductSamples/RibbonSamples/QuickStart/CustomizingQat/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Data-Bound Menu" Path="/ProductSamples/RibbonSamples/QuickStart/DataBoundMenu/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Dynamic Popup Content" Path="/ProductSamples/RibbonSamples/QuickStart/DynamicPopupContent/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Editors Integration (Interop)" SideBarWidth="Narrow" Path="/ProductSamples/EditorsSamples/QuickStart/RibbonIntegrationInterop/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery Color Pickers" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryColorPickers/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery Rows" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryRows/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery in a Ribbon" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryInRibbon/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery with Custom Draw Items" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryCustomDraw/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Gallery with Item Categories/Filtering/Zooming" Path="/ProductSamples/RibbonSamples/QuickStart/GalleryCategorization/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Hiding the App Button" Path="/ProductSamples/RibbonSamples/QuickStart/ApplicationButtonHidden/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Mini-ToolBar" Path="/ProductSamples/RibbonSamples/QuickStart/MiniToolBar/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Popup Layout" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/PopupLayout/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Recent Documents" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/RecentDocuments/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Ribbon Scaling" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/RibbonScaling/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="ScreenTips" Path="/ProductSamples/RibbonSamples/QuickStart/ScreenTips/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Standalone Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/StandaloneControls/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="StatusBar Controls" SideBarWidth="Narrow" Path="/ProductSamples/RibbonSamples/QuickStart/StatusBarControls/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Window Size to Content" Path="/ProductSamples/RibbonSamples/QuickStart/WindowSizeToContent/OverviewDocument"/>
 
 		</sampleBrowser:ProductFamilyInfo>
 
