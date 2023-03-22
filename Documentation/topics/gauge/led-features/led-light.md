@@ -29,7 +29,7 @@ The led light defaults to a circle, but supports several shapes including arrows
 
 When the built-in led types are not flexible enough to achieve the look desired, a custom `Geometry` can be used.
 
-When [LedType](xref:@ActiproUIRoot.Controls.Gauge.Led.LedType) is set to to [CustomGeometry](xref:@ActiproUIRoot.Controls.Gauge.LedType.CustomGeometry), then the `Geometry` specified by [LedGeometry](xref:@ActiproUIRoot.Controls.Gauge.Led.LedGeometry) is used when rendering the led light.
+When [LedType](xref:@ActiproUIRoot.Controls.Gauge.Led.LedType) is set to [CustomGeometry](xref:@ActiproUIRoot.Controls.Gauge.LedType.CustomGeometry), then the `Geometry` specified by [LedGeometry](xref:@ActiproUIRoot.Controls.Gauge.Led.LedGeometry) is used when rendering the led light.
 
 ### Light Size
 
@@ -53,7 +53,7 @@ The led background and foreground colors can be customized by setting the [LedBa
 > [!NOTE]
 > The led effect is only supported when [IsLedEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.Led.IsLedEffectEnabled) is set to `true`**and**[LedBackground](xref:@ActiproUIRoot.Controls.Gauge.Led.LedBackground)/[LedForeground](xref:@ActiproUIRoot.Controls.Gauge.Led.LedForeground) are set to a `SolidColorBrush`.
 
-The `LedState` of the `Led` determines how the foreground of the light is rendered, but regardless of the state the led light background is rendered using the `LedBackground` brush. Using the `LedState`, the led light foreground is rendered on top of the background, using a varying opacity.  If the the light is `On` then [LedOnOpacity](xref:@ActiproUIRoot.Controls.Gauge.Led.LedOnOpacity) is used.  If the the light is `Off` then [LedOffOpacity](xref:@ActiproUIRoot.Controls.Gauge.Led.LedOffOpacity) is used.  If the the light is `Blinking` then the opacity is animated to and from `LedOnOpacity` and `LedOffOpacity`.
+The `LedState` of the `Led` determines how the foreground of the light is rendered, but regardless of the state the led light background is rendered using the `LedBackground` brush. Using the `LedState`, the led light foreground is rendered on top of the background, using a varying opacity.  If the light is `On` then [LedOnOpacity](xref:@ActiproUIRoot.Controls.Gauge.Led.LedOnOpacity) is used.  If the light is `Off` then [LedOffOpacity](xref:@ActiproUIRoot.Controls.Gauge.Led.LedOffOpacity) is used.  If the light is `Blinking` then the opacity is animated to and from `LedOnOpacity` and `LedOffOpacity`.
 
 By default, the led light includes a thin black border, but this can be customzied by setting the [LedBorderBrush](xref:@ActiproUIRoot.Controls.Gauge.Led.LedBorderBrush) and/or [LedBorderThickness](xref:@ActiproUIRoot.Controls.Gauge.Led.LedBorderThickness) appropriately.
 

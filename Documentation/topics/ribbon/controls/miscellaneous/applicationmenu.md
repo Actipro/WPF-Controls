@@ -29,14 +29,14 @@ This code sample shows how to define a Backstage application menu for a ribbon. 
 		<ribbon:Backstage>
 			<ribbon:Button Label="Save" ImageSourceSmall="/Resources/Images/Save16.png" KeyTipAccessText="S" />
 			<!-- More buttons above tabs go here -->
-							
+
 			<!-- Optional RecentDocumentMenu goes here -->
-							
+
 			<ribbon:BackstageTab Header="Info" KeyTipAccessText="I">
 				<!-- Info tab content goes here -->
 			</ribbon:BackstageTab>
 			<!-- More tabs go here -->
-							
+
 			<!-- More buttons below tabs go here -->
 			<ribbon:Button Label="Exit" ImageSourceSmall="/Resources/Images/CloseTab16.png" KeyTipAccessText="X" />
 		</ribbon:Backstage>
@@ -74,7 +74,7 @@ The [TaskTabControl](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TaskTabControl
 
 ![Screenshot](../../images/backstage-controls.png)
 
-*A TaskTabControl with Separators and a Button on the selected tab.*
+*A TaskTabControl with Separators and a Button on the selected tab*
 
 The items of a [TaskTabControl](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TaskTabControl) can be either [Separator](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Separator) or [TaskTabItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TaskTabItem) controls.  Separators should have their [Label](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Label) properties set, and they will appear as group headers for the tab items. [TaskTabItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.TaskTabItem) tab headers can be any content, but to render similarly to Office, they should show an image and a text label.
 
@@ -149,7 +149,7 @@ This code defines the root items for a typical application menu.  Note that some
 	<ribbon:MenuButton ImageSourceLarge="/Images/Publish32.png" Label="Publish" KeyTipAccessText="U" />
 	<ribbon:Separator />
 	<ribbon:Button Command="ApplicationCommands.Close" KeyTipAccessText="C" />
-	</ribbon:ApplicationMenu>
+</ribbon:ApplicationMenu>
 ```
 
 ### Defining Footer Buttons
@@ -164,7 +164,7 @@ This code defines the footer buttons for a typical application menu.  Note that 
 		<ribbon:Button Command="sample:ApplicationCommands.ApplicationOptions" KeyTipAccessText="I" />
 		<ribbon:Button Command="sample:ApplicationCommands.ApplicationExit" KeyTipAccessText="X" />
 	</ribbon:ApplicationMenu.FooterButtons>
-	</ribbon:ApplicationMenu>
+</ribbon:ApplicationMenu>
 ```
 
 ### Defining Additional Content (Right Side)
@@ -178,7 +178,7 @@ This code defines a simple `TextBlock` as content for the right side of the appl
 	<ribbon:ApplicationMenu.AdditionalContent>
 		<TextBlock>My content here...</TextBlock>
 	</ribbon:ApplicationMenu.AdditionalContent>
-	</ribbon:ApplicationMenu>
+</ribbon:ApplicationMenu>
 ```
 
 You can create your own complex custom control to fill this space.  However keep in mind that per the Microsoft requirements, you are not permitted to use vertical scrollbars in this area.

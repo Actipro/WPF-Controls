@@ -27,24 +27,7 @@
 
 	<StatusBarItem Content="Click the 'View Source Code' button to see the '.xaml' and '.xaml.cs' source files with details and comments about this sample." />
 	<StatusBarItem Grid.Column="1">
-		<bars:BarButton x:Name="viewCodeButton" Margin="0,1,0,-1" Padding="6,0" VariantSize="Small"
-					Label="View Source Code for This Sample"
-					>
-			<bars:BarButton.SmallImageSource>
-				<DrawingImage shared:ImageProvider.CanAdapt="False">
-					<DrawingImage.Drawing>
-						<GeometryDrawing>
-							<GeometryDrawing.Pen>
-								<Pen Thickness="1" Brush="{DynamicResource {x:Static themes:AssetResourceKeys.StatusBarForegroundNormalBrushKey}}" />
-							</GeometryDrawing.Pen>
-							<GeometryDrawing.Geometry>
-								<PathGeometry Figures="M 6,13 L 10,3  M 4.5,4 L 0.5,8 L 4.5,12  M 11.5,4 L 15.5,8 L 11.5,12" />
-							</GeometryDrawing.Geometry>
-						</GeometryDrawing>
-					</DrawingImage.Drawing>
-				</DrawingImage>
-			</bars:BarButton.SmallImageSource>
-		</bars:BarButton>
+		<Button x:Name="viewCodeButton" Style="{StaticResource ViewCodeStatusBarButtonStyle}" Command="{Binding OpenSampleCodeCommand}" />
 	</StatusBarItem>
 	
 </StatusBar>

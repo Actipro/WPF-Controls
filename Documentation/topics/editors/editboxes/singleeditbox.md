@@ -87,10 +87,10 @@ Each of the features listed in the table below describe functionality that is co
 
 - C (currency)
 - F
-- Fx, where x is the number of decimal places (e.g. F1)
+- Fx, where x is the number of decimal places (e.g., F1)
 - G
 - N
-- Nx, where x is the number of decimal places (e.g. N1)
+- Nx, where x is the number of decimal places (e.g., N1)
 - P (percentage)
 
 Basic custom numeric formats are also supported, such as:
@@ -110,6 +110,8 @@ This edit box has a single part.
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
 
 Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.LargeChange) property.
+
+The [CanSnapToChangePrecision](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.CanSnapToChangePrecision) property determines whether the value should be snapped to the precision of the incremental change value prior to applying the increment.
 
 The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
 

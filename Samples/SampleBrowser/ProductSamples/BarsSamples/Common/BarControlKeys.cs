@@ -125,6 +125,7 @@
 		public const string ShapesMenu = nameof(ShapesMenu);
 		public const string Share = nameof(Share);
 		public const string ShowApplicationButton = nameof(ShowApplicationButton);
+		public const string ShowFooter = nameof(ShowFooter);
 		public const string ShowQuickAccessToolBar = nameof(ShowQuickAccessToolBar);
 		public const string ShowSymbols = nameof(ShowSymbols);
 		public const string SignatureLineInsert = nameof(SignatureLineInsert);

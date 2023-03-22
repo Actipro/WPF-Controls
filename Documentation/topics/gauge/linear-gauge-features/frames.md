@@ -26,16 +26,16 @@ The rim color can be customized by setting the [RimBrush](xref:@ActiproUIRoot.Co
 
 When the built-in rim types are not flexible enough to achieve the look desired, a custom `Geometry` or `ImageSource` can be used.
 
-When [RimType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimType) is set to to [CustomRimGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularRimType.CustomRimGeometry), then the `Geometry` specified by [RimGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimGeometry) is used when rendering the rim.
+When [RimType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimType) is set to [CustomRimGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularRimType.CustomRimGeometry), then the `Geometry` specified by [RimGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimGeometry) is used when rendering the rim.
 
 > [!NOTE]
 > Custom geometries will be automatically centered and scaled to fit inside the gauge control.
 
-When [RimType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimType) is set to to [CustomRimImage](xref:@ActiproUIRoot.Controls.Gauge.RectangularRimType.CustomRimImage), then the `ImageSource` specified by [RimImageSource](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimImageSource) is used when rendering the rim.
+When [RimType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimType) is set to [CustomRimImage](xref:@ActiproUIRoot.Controls.Gauge.RectangularRimType.CustomRimImage), then the `ImageSource` specified by [RimImageSource](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimImageSource) is used when rendering the rim.
 
 ## Frame Background
 
-The frame background is rendered on top of the frame rim and supports many styles, each with a special effect.  The background type can be set using the [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) property and the supported background types types can be seen using the sample project provided.
+The frame background is rendered on top of the frame rim and supports many styles, each with a special effect.  The background type can be set using the [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) property and the supported background types can be seen using the sample project provided.
 
 ### Brush and Effect
 
@@ -60,12 +60,12 @@ The size of the frame background is determined by the `ActualWidth`, `ActualHeig
 
 When the built-in background types are not flexible enough to achieve the look desired, a custom `Geometry` or `ImageSource` can be used.
 
-When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) is set to to [CustomBackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularBackgroundType.CustomBackgroundGeometry), then the `Geometry` specified by [BackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundGeometry) is used when rendering the background.
+When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) is set to [CustomBackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularBackgroundType.CustomBackgroundGeometry), then the `Geometry` specified by [BackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundGeometry) is used when rendering the background.
 
 > [!NOTE]
 > Custom geometries will be automatically centered and scaled to fit inside the gauge control.
 
-When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) is set to to [CustomBackgroundImage](xref:@ActiproUIRoot.Controls.Gauge.RectangularBackgroundType.CustomBackgroundImage), then the `ImageSource` specified by [BackgroundImageSource](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundImageSource) is used when rendering the rim.
+When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) is set to [CustomBackgroundImage](xref:@ActiproUIRoot.Controls.Gauge.RectangularBackgroundType.CustomBackgroundImage), then the `ImageSource` specified by [BackgroundImageSource](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundImageSource) is used when rendering the rim.
 
 ## Glass Effect
 

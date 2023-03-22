@@ -203,15 +203,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private static IEnumerable<TextStyleBarGalleryItemViewModel> CreateTextStyleBarGalleryItemViewModels() {
 			return new TextStyleBarGalleryItemViewModel[] {
 				new TextStyleBarGalleryItemViewModel("Normal", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black),
-				new TextStyleBarGalleryItemViewModel("Heading 1", FontSettings.HeadingFontFamilyName, FontSettings.Heading1FontSize, Color.FromArgb(0xff, 0x2F, 0x54, 0x96)),
-				new TextStyleBarGalleryItemViewModel("Heading 2", FontSettings.HeadingFontFamilyName, FontSettings.Heading2FontSize, Color.FromArgb(0xff, 0x2F, 0x54, 0x96)),
-				new TextStyleBarGalleryItemViewModel("Heading 3", FontSettings.HeadingFontFamilyName, FontSettings.Heading3FontSize, Color.FromArgb(0xff, 0x1F, 0x37, 0x63)),
-				new TextStyleBarGalleryItemViewModel("Heading 4", FontSettings.HeadingFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x2F, 0x54, 0x96)) { Italic = true },
+				new TextStyleBarGalleryItemViewModel("Heading 1", FontSettings.HeadingFontFamilyName, FontSettings.Heading1FontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)),
+				new TextStyleBarGalleryItemViewModel("Heading 2", FontSettings.HeadingFontFamilyName, FontSettings.Heading2FontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)),
+				new TextStyleBarGalleryItemViewModel("Heading 3", FontSettings.HeadingFontFamilyName, FontSettings.Heading3FontSize, Color.FromArgb(0xff, 0x1f, 0x37, 0x63)),
+				new TextStyleBarGalleryItemViewModel("Heading 4", FontSettings.HeadingFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)) { Italic = true },
 				new TextStyleBarGalleryItemViewModel("Title", FontSettings.HeadingFontFamilyName, FontSettings.TitleFontSize, Colors.Black),
-				new TextStyleBarGalleryItemViewModel("Subtitle", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x5A, 0x5A, 0x5A)),
+				new TextStyleBarGalleryItemViewModel("Subtitle", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x5a, 0x5a, 0x5a)),
 				new TextStyleBarGalleryItemViewModel("Subtle Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x40, 0x40, 0x40)) { Italic = true },
 				new TextStyleBarGalleryItemViewModel("Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black) { Italic = true },
-				new TextStyleBarGalleryItemViewModel("Intense Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x44, 0x72, 0xC4)) { Italic = true },
+				new TextStyleBarGalleryItemViewModel("Intense Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x44, 0x72, 0xc4)) { Italic = true },
 				new TextStyleBarGalleryItemViewModel("Strong", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black) { Bold = true },
 				new TextStyleBarGalleryItemViewModel("Quote", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x40, 0x40, 0x40)) { Italic = true },
 			};
@@ -264,7 +264,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, ToggleBoldCommand) { KeyTipText = "1", Description = "Make your text bold." });
 
 			viewModels.Register(BarControlKeys.BookmarkInsert, key
-				=> new BarButtonViewModel(key, "Bookmark", NotImplementedCommand) { Description = "Bookmarks work with links to let you jump to a specific place in your document.", Title = "Insert a Bookmark" });
+				=> new BarButtonViewModel(key, "Bookmark", "K", NotImplementedCommand) { Description = "Bookmarks work with links to let you jump to a specific place in your document.", Title = "Insert a Bookmark" });
 
 			viewModels.Register(BarControlKeys.Borders, key
 				=> new BarSplitToggleButtonViewModel(key, NotImplementedCommand) {
@@ -330,7 +330,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, "Create a Style...", "S", NotImplementedCommand) { Description = "Create a style based on the formatting of the selected text." });
 
 			viewModels.Register(BarControlKeys.CrossReferenceInsert, key
-				=> new BarButtonViewModel(key, "Cross-reference", NotImplementedCommand) { Description = "Refer to specific places in your document, such as headings and tables.", Title = "Insert Cross-reference" });
+				=> new BarButtonViewModel(key, "Cross-reference", "RF", NotImplementedCommand) { Description = "Refer to specific places in your document, such as headings and tables.", Title = "Insert Cross-reference" });
 
 			viewModels.Register(BarControlKeys.Cut, key
 				=> new BarButtonViewModel(key, ApplicationCommands.Cut) { Description = "Removes the selection and puts it on the Clipboard so you can paste it elsewhere." });
@@ -358,7 +358,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, ApplicationCommands.Delete) { Description = "Deletes the selection." });
 
 			viewModels.Register(BarControlKeys.DropCapInsert, key
-				=> new BarButtonViewModel(key, "Drop Cap", NotImplementedCommand) { Description = "Create a large capital letter at the beginning of a paragraph.", Title = "Add a Drop Cap" });
+				=> new BarButtonViewModel(key, "Drop Cap", "RC", NotImplementedCommand) { Description = "Create a large capital letter at the beginning of a paragraph.", Title = "Add a Drop Cap" });
 
 			viewModels.Register(BarControlKeys.EquationInsert, key
 				=> new BarButtonViewModel(key, "Equation", NotImplementedCommand) { Description = "Add common mathematical equations to your document.", Title = "Insert an Equation" });
@@ -417,6 +417,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					MaxMenuColumnCount = 1,
 					MenuResizeMode = ControlResizeMode.Vertical,
+					UseMenuItemAppearance = true,
 				});
 
 			viewModels.Register(BarControlKeys.FontMoreFontsDialog, key
@@ -437,6 +438,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					MaxMenuColumnCount = 1,
 					MenuResizeMode = ControlResizeMode.Vertical,
 					Title = "Font Size",
+					UseMenuItemAppearance = true,
 				});
 
 			viewModels.Register(BarControlKeys.FooterInsert, key
@@ -470,6 +472,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.LineSpacing, key
 				=> new BarPopupButtonViewModel(key) {
+					KeyTipText = "K",
 					Description = "Choose how much space appears between lines of text and between paragraphs.",
 					MaxSimplifiedVariantSize = VariantSize.Collapsed,
 					Title = "Line and Paragraph Spacing",
@@ -662,6 +665,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.ShowApplicationButton, key
 				=> new BarCheckBoxViewModel(key, "Application Button", "SA", ToggleApplicationButtonCommand) { Description = "Toggles the visibility of the application button." });
+			
+			viewModels.Register(BarControlKeys.ShowFooter, key
+				=> new BarCheckBoxViewModel(key, "Footer", "SF", ToggleFooterCommand) { Description = "Toggles the visibility of the ribbon's footer, where notifications can be displayed." });
 
 			viewModels.Register(BarControlKeys.ShowQuickAccessToolBar, key
 				=> new BarCheckBoxViewModel(key, "Quick Access Toolbar", "SQ", ToggleQuickAccessToolBarCommand) { Description = "Toggles the visibility of the Quick Access Toolbar." });
@@ -704,7 +710,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 
 			viewModels.Register(BarControlKeys.SymbolInsertMenu, key
-				=> new BarPopupButtonViewModel(key, "Symbol") {
+				=> new BarPopupButtonViewModel(key, "Symbol", "U") {
 					Description = "Add symbols that are not on your keyboard.", 
 					Title = "Insert a Symbol",
 					MenuItems = {
@@ -756,7 +762,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 
 			viewModels.Register(BarControlKeys.TextBoxInsert, key
-				=> new BarButtonViewModel(key, "Text Box", NotImplementedCommand) { Description = "A text box brings focus to its content.", Title = "Insert a Text Box" });
+				=> new BarButtonViewModel(key, "Text Box", "X", NotImplementedCommand) { Description = "A text box brings focus to its content.", Title = "Insert a Text Box" });
 			
 			viewModels.Register(BarControlKeys.TextFileInsert, key
 				=> new BarButtonViewModel(key, "Text from File...", NotImplementedCommand));

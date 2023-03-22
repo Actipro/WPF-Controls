@@ -158,7 +158,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 Specifies the display name for a property.
 
-The display name typically a user friendly version of the property name (e.g. "Display Name" versus "DisplayName").  This string is displayed in the name column and [summary area](summary-area.md) of a property grid.  If not specified, then the property name is used.
+The display name typically a user friendly version of the property name (e.g., "Display Name" versus "DisplayName").  This string is displayed in the name column and [summary area](summary-area.md) of a property grid.  If not specified, then the property name is used.
 
 This code shows an example of applying `DisplayNameAttribute` to set the property's display name:
 
@@ -272,7 +272,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 </td>
 <td>
 
-Indicates whether the name of a property is displayed within parentheses (e.g. "(Name)" versus "Name").
+Indicates whether the name of a property is displayed within parentheses (e.g., "(Name)" versus "Name").
 
 This attribute is typically used to sort more important properties to the top, when sorting alphabetically.  However other [sorting features](categorization-and-sorting.md) can alter sort order.  In addition, the parentheses make the property stand out slightly.
 

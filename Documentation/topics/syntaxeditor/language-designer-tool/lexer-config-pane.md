@@ -30,7 +30,7 @@ The New Dynamic Lexer Wizard appears when you choose to use a dynamic lexer.  Th
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-overview.png)
 
-*The New Dynamic Lexer Wizard asking whether to help you create the basics for a code oriented language.*
+*The New Dynamic Lexer Wizard asking whether to help you create the basics for a code oriented language*
 
 The first option is best for code-oriented languages like C#, Java, VB, etc.  It asks you series of questions about your language's lexical structure such as the keywords, operators, comment, number, and string syntax, etc.
 
@@ -38,37 +38,37 @@ The New Dynamic Lexer Wizard asks for you to define whether line terminators are
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-line-terminators-and-identifiers.png)
 
-*The New Dynamic Lexer Wizard allowing for configuration of line terminators and identifiers.*
+*The New Dynamic Lexer Wizard allowing for configuration of line terminators and identifiers*
 
 After configuring line terminators and identifiers, you will be prompted to define the language's keywords and whether they are case-sensitive. Note that if you are creating this Dynamic language for use with the [LL(*) Parser Framework](../ll-parser-framework/index.md), keywords will each need to be defined as separate tokens. This is discussed in the [Lexer Preparation](../ll-parser-framework/lexer-preparation.md) topic.
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-keywords.png)
 
-*The New Dynamic Lexer Wizard allowing for configuration of language keywords.*
+*The New Dynamic Lexer Wizard allowing for configuration of language keywords*
 
 After configuring keywords, you will be prompted to configure the language's operators and delimiters.  Many languages share a similar set of operators. You have the option to initialize the list with the most common operators, then edit it to your liking.
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-operators-and-delimiters.png)
 
-*The New Dynamic Lexer Wizard allowing for configuration of operators and delimiters.*
+*The New Dynamic Lexer Wizard allowing for configuration of operators and delimiters*
 
 Many languages support defining string literals in more than one way. For this reason, the wizard will prompt you for a primary and an alternate string syntax. If you only need to define one type of string, leave the first radio button group selection on "None" when you are presented with the alternate syntax configuration. If your langauge does not support strings at all, use the "None" selection on the primary and alternate syntax pages.
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-strings.png)
 
-*The New Dynamic Lexer Wizard allowing for configuration of strings.*
+*The New Dynamic Lexer Wizard allowing for configuration of strings*
 
 The next wizard screen will allow you to configure number tokens for your language. You can allow for exponent notation and hexadecimal notation, both of which are supported in many, but not all, languages.
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-numbers.png)
 
-*The New Dynamic Lexer Wizard allowing for configuration of numbers.*
+*The New Dynamic Lexer Wizard allowing for configuration of numbers*
 
 The last wizard screen allows you to configure comments in your language. You can configure it to support single line comments, multiline comments, neither, or both. You can also customize the comment delimiters.
 
 ![Screenshot](../images/language-designer-new-dynamic-lexer-wizard-comments.png)
 
-The New Dynamic Lexer Wizard allowing for configuration of comments.
+*The New Dynamic Lexer Wizard allowing for configuration of comments*
 
 Upon wizard completion, a dynamic lexer is created for you that is prepopulated with states and patterns.  For many languages, this wizard can help to get you up and running in minutes.
 

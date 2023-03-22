@@ -16,7 +16,7 @@ It is readable by most mobile devices with cameras and can be used to display te
 This symbology can encode up to 7,089 numeric characters, 4,296 alpha numeric characters, or 2,953 bytes.  Encoding modes are automatically switched when it is most efficient to do so.  This symbology implementation also auto-calculates the QR Code symbol version and inserts error correction codewords.
 
 > [!NOTE]
-> When using larger version numbers (i.e. version 25 and up), it may be neccessary to lower the default cell size in order for QR code readers to properly read the value.
+> When using larger version numbers (i.e., version 25 and up), it may be neccessary to lower the default cell size in order for QR code readers to properly read the value.
 
 ## Symbology Characteristics
 

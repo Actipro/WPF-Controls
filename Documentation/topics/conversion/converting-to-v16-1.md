@@ -354,8 +354,8 @@ The list below is the entire detailed update log, including breaking changes.
 - Option to close tab on middle-click.
 - Show any custom contextual content.
 - Read-only flag can auto-set a read-only contextual content.
-- Keyboard shortcuts (e.g. Ctrl+1) can directly access normal tabs by tab number.
-- Keyboard shortcuts (e.g. Ctrl+Alt+1) can directly access pinned tabs by tab number.
+- Keyboard shortcuts (e.g., Ctrl+1) can directly access normal tabs by tab number.
+- Keyboard shortcuts (e.g., Ctrl+Alt+1) can directly access pinned tabs by tab number.
 - Optional Ctrl+Tab and Ctrl+Shift+Tab support to switch tabs.
 
 ## ActiproSoftware.Legacy.Wpf.dll No Longer Installed By Default

@@ -15,10 +15,10 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		private int					itemSpacing					= 4;
 		private DataTemplate		itemTemplate;
 		private bool				isSetColorCommandEnabled	= true;
-		private int					largeMinRibbonColumnCount	= 6;
+		private int					minLargeRibbonColumnCount	= 6;
 		private int					maxMenuColumnCount			= int.MaxValue;
 		private int					maxRibbonColumnCount		= int.MaxValue;
-		private int					mediumMinRibbonColumnCount	= 3;
+		private int					minMediumRibbonColumnCount	= 3;
 		private ControlResizeMode	menuResizeMode				= ControlResizeMode.Both;
 		private int					minMenuColumnCount			= 1;
 		private bool				useAccentedItemBorder		= true;
@@ -111,21 +111,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		}
 
 		/// <summary>
-		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a large variant size.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Large min col count (ribbon)")]
-		public int LargeMinRibbonColumnCount {
-			get => largeMinRibbonColumnCount;
-			set {
-				if (largeMinRibbonColumnCount != value) {
-					largeMinRibbonColumnCount = value;
-					NotifyPropertyChanged(nameof(LargeMinRibbonColumnCount));
-				}
-			}
-		}
-
-		/// <summary>
 		/// Gets or sets the maximum number of columns used for gallery items when displayed in a menu.
 		/// </summary>
 		/// <value>An integer value.</value>
@@ -156,21 +141,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		}
 
 		/// <summary>
-		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a medium variant size.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Med min col count (ribbon)")]
-		public int MediumMinRibbonColumnCount {
-			get => mediumMinRibbonColumnCount;
-			set {
-				if (mediumMinRibbonColumnCount != value) {
-					mediumMinRibbonColumnCount = value;
-					NotifyPropertyChanged(nameof(MediumMinRibbonColumnCount));
-				}
-			}
-		}
-
-		/// <summary>
 		/// Gets or sets if a menu can be resized.
 		/// </summary>
 		/// <value>One of the <see cref="ControlResizeMode"/> values.</value>
@@ -180,6 +150,36 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 				if (menuResizeMode != value) {
 					menuResizeMode = value;
 					NotifyPropertyChanged(nameof(MenuResizeMode));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a large variant size.
+		/// </summary>
+		/// <value>An integer value.</value>
+		[DisplayName("Min large col count (ribbon)")]
+		public int MinLargeRibbonColumnCount {
+			get => minLargeRibbonColumnCount;
+			set {
+				if (minLargeRibbonColumnCount != value) {
+					minLargeRibbonColumnCount = value;
+					NotifyPropertyChanged(nameof(MinLargeRibbonColumnCount));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a medium variant size.
+		/// </summary>
+		/// <value>An integer value.</value>
+		[DisplayName("Min med col count (ribbon)")]
+		public int MinMediumRibbonColumnCount {
+			get => minMediumRibbonColumnCount;
+			set {
+				if (minMediumRibbonColumnCount != value) {
+					minMediumRibbonColumnCount = value;
+					NotifyPropertyChanged(nameof(MinMediumRibbonColumnCount));
 				}
 			}
 		}

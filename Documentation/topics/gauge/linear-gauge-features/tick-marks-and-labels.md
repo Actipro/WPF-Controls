@@ -133,7 +133,7 @@ By default, the tick labels will round the associated value(s) to the nearest wh
 
 The rounding used is specified using the [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration, which offers several rounding methods.  See the [PixelSnapper](../../shared/windows-controls/pixelsnapper.md) topic for more information on the various round modes.
 
-The format is used to convert `double` values to a string using the `String.Format` method, which uses the associated value as the only input parameter (e.g. `{0}`).
+The format is used to convert `double` values to a string using the `String.Format` method, which uses the associated value as the only input parameter (e.g., `{0}`).
 
 ## Scale Placement
 

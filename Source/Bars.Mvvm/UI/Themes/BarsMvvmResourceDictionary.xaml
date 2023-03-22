@@ -31,9 +31,11 @@
 		<Setter Property="ApplicationButtonContent" Value="{Binding ApplicationButton}" />
 		<Setter Property="BackstageContent" Value="{Binding Backstage}" />
 		<Setter Property="CanChangeLayoutMode" Value="{Binding CanChangeLayoutMode, Mode=TwoWay}" />
+		<Setter Property="CollapseThresholdSize" Value="{Binding CollapseThresholdSize, Mode=TwoWay}" />
 		<Setter Property="ContextualTabGroups" Value="{Binding ContextualTabGroups}" />
 		<Setter Property="FooterContent" Value="{Binding Footer}" />
 		<Setter Property="IsApplicationButtonVisible" Value="{Binding IsApplicationButtonVisible, Mode=TwoWay}" />
+		<Setter Property="IsCollapsible" Value="{Binding IsCollapsible, Mode=TwoWay}" />
 		<Setter Property="IsMinimizable" Value="{Binding IsMinimizable, Mode=TwoWay}" />
 		<Setter Property="ItemsSource" Value="{Binding Tabs}" />
 		<Setter Property="LayoutMode" Value="{Binding LayoutMode, Mode=TwoWay}" />
@@ -157,12 +159,10 @@
 		<bars:BarMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Description="{Binding Description}"
-			ItemsSource="{Binding DropDownItemsSource}"
+			ItemsSource="{Binding MenuItems}"
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
-			LargeImageSource="{Binding LargeImageSource}"
-			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			/>
 	</ItemContainerTemplate>
@@ -188,17 +188,17 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
-			LargeMinColumnCount="{Binding LargeMinRibbonColumnCount}"
 			LargeImageSource="{Binding LargeImageSource}"
 			MaxColumnCount="{Binding MaxRibbonColumnCount}"
 			MaxMenuColumnCount="{Binding MaxMenuColumnCount}"
 			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
-			MediumMinColumnCount="{Binding MediumMinRibbonColumnCount}"
 			MenuItems="{Binding MenuItems}"
 			MenuResizeMode="{Binding MenuResizeMode}"
 			MinItemHeight="{Binding MinItemHeight}"
 			MinItemWidth="{Binding MinItemWidth}"
+			MinLargeColumnCount="{Binding MinLargeRibbonColumnCount}"
+			MinMediumColumnCount="{Binding MinMediumRibbonColumnCount}"
 			MinMenuColumnCount="{Binding MinMenuColumnCount}"
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			SmallImageSource="{Binding SmallImageSource}"
@@ -438,8 +438,6 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
-			LargeImageSource="{Binding LargeImageSource}"
-			MediumImageSource="{Binding MediumImageSource}"
 			RequestedWidth="{Binding RequestedWidth}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Text="{Binding Text, Mode=TwoWay}"
@@ -450,23 +448,24 @@
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
-		<bars:BarTextBox
-			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
-			Command="{Binding Command}"
-			CommandParameter="{Binding CommandParameter}"
-			IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
-			Key="{Binding Key}"
-			KeyTipText="{Binding KeyTipText}"
-			Label="{Binding Label}"
-			LargeImageSource="{Binding LargeImageSource}"
-			Margin="7,3"
-			MediumImageSource="{Binding MediumImageSource}"
-			SmallImageSource="{Binding SmallImageSource}"
-			Text="{Binding Text, Mode=TwoWay}"
-			Title="{Binding Title}"
-			ToolTip="{Binding Description}"
-			shared:HintProperties.Hint="{Binding PlaceholderText}"
-			/>
+		<bars:BarMenuControlWrapper>
+			<bars:BarMenuControlWrapper.Header>
+				<bars:BarTextBox
+					CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+					Command="{Binding Command}"
+					CommandParameter="{Binding CommandParameter}"
+					IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+					Key="{Binding Key}"
+					KeyTipText="{Binding KeyTipText}"
+					Label="{Binding Label}"
+					SmallImageSource="{Binding SmallImageSource}"
+					Text="{Binding Text, Mode=TwoWay}"
+					Title="{Binding Title}"
+					ToolTip="{Binding Description}"
+					shared:HintProperties.Hint="{Binding PlaceholderText}"
+					/>
+			</bars:BarMenuControlWrapper.Header>
+		</bars:BarMenuControlWrapper>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarToggleButtonDefaultItemContainerTemplate}" DataType="local:BarToggleButtonViewModel">
@@ -630,6 +629,7 @@
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonQuickAccessToolBarDefaultItemContainerTemplate}" DataType="local:RibbonQuickAccessToolBarViewModel">
 		<bars:RibbonQuickAccessToolBar
 			CommonItems="{Binding CommonItems}"
+			IsCustomizeButtonVisible="{Binding IsCustomizeButtonVisible}"
 			ItemsSource="{Binding Items}"
 			/>
 	</ItemContainerTemplate>

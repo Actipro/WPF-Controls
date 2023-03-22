@@ -9,7 +9,7 @@ order: 36
 
 ![Screenshot](../images/user-prompt.png)
 
-*UserPromptControl with optional content areas labeled, OK/Cancel buttons, Information status image, and optional footer image.*
+*UserPromptControl with optional content areas labeled, OK/Cancel buttons, Information status image, and optional footer image*
 
 User Prompt functionality is enabled by the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) (pictured above) and [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) that is used to host the control as a modal dialog. [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) is a drop-in replacement for `MessageBox` that uses the same API as `MessageBox.Show` to make it easy to convert any application.
 

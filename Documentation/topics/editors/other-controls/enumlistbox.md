@@ -11,7 +11,7 @@ The [EnumListBox](xref:@ActiproUIRoot.Controls.Editors.EnumListBox) control auto
 
 ## Enumeration Value and Type
 
-The [EnumValue](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumValue) property provides a quick and easy way to setup to the list box.  The [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumType) property is used to to build the items presented by the `EnumListBox`. The items are constructed by reflecting the enumeration type, with full support for the `FlagsAttribute`.
+The [EnumValue](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumValue) property provides a quick and easy way to setup to the list box.  The [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumType) property is used to build the items presented by the `EnumListBox`. The items are constructed by reflecting the enumeration type, with full support for the `FlagsAttribute`.
 
 When the [EnumValue](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumValue) property is bound/set to a non-null enumeration value, then the enumeration type will be automatically set (if it has not been explicitly set).  Therefore, the [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumType) only needs to be set when [EnumValue](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.EnumValue) is bound to a nullable enumeration type.
 

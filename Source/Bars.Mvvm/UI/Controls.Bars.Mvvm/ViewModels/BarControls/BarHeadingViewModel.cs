@@ -28,7 +28,7 @@
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		/// <inheritdoc cref="BarButtonViewModel.label"/>
+		/// <inheritdoc cref="BarButtonViewModel.Label"/>
 		public string Label {
 			get => label;
 			set {

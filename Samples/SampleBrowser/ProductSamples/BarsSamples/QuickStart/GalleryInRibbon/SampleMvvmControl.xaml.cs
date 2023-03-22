@@ -46,8 +46,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 				viewModel.UseAccentedItemBorder = options.UseAccentedItemBorder;
 
 				// Ribbon-specific properties
-				viewModel.MediumMinRibbonColumnCount = options.MediumMinRibbonColumnCount;
-				viewModel.LargeMinRibbonColumnCount = options.LargeMinRibbonColumnCount;
+				viewModel.MinMediumRibbonColumnCount = options.MinMediumRibbonColumnCount;
+				viewModel.MinLargeRibbonColumnCount = options.MinLargeRibbonColumnCount;
 				viewModel.MaxRibbonColumnCount = options.MaxRibbonColumnCount;
 
 				// Menu-specific properties

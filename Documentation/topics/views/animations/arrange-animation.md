@@ -15,10 +15,10 @@ Elements can have one of several arrange status in its current state, represente
 
 | Member | Description |
 |-----|-----|
-| [EnterDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.EnterDuration) Property | Gets or sets the duration of the storyboard applied to elements entering the panel (i.e. `ArrangeStatus.Entering`) |
-| [LeaveDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.LeaveDuration) Property | Gets or sets the duration of the storyboard applied to elements leaving the panel (i.e. `ArrangeStatus.Leaving`) |
-| [ArrangeUpdateDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.ArrangeUpdateDuration) Property | Gets or sets the duration of the storyboard applied to elements changing position/size in the panel due to rearrangement (i.e. `ArrangeStatus.ArrangeUpdating`) |
-| [LayoutUpdateAnimation](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.LayoutUpdateAnimation) Property | Gets or sets the duration of the storyboard applied to elements changing position/size in the panel due to a layout logic change (i.e. `ArrangeStatus.LayoutUpdating`) |
+| [EnterDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.EnterDuration) Property | Gets or sets the duration of the storyboard applied to elements entering the panel (i.e., `ArrangeStatus.Entering`) |
+| [LeaveDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.LeaveDuration) Property | Gets or sets the duration of the storyboard applied to elements leaving the panel (i.e., `ArrangeStatus.Leaving`) |
+| [ArrangeUpdateDuration](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.ArrangeUpdateDuration) Property | Gets or sets the duration of the storyboard applied to elements changing position/size in the panel due to rearrangement (i.e., `ArrangeStatus.ArrangeUpdating`) |
+| [LayoutUpdateAnimation](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.LayoutUpdateAnimation) Property | Gets or sets the duration of the storyboard applied to elements changing position/size in the panel due to a layout logic change (i.e., `ArrangeStatus.LayoutUpdating`) |
 
 There are several animations that apply to certain arrange statuses, which are described in detail below and include:
 

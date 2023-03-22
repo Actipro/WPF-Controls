@@ -32,7 +32,7 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
-			<Image Grid.Column="0" Margin="2" MaxWidth="16" MaxHeight="16" Source="/Images/Icons/Paste16.png" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+			<shared:DynamicImage Grid.Column="0" Margin="2" MaxWidth="16" MaxHeight="16" Source="/Images/Icons/Paste16.png" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
 			<shared:PixelSnapper Grid.Column="1" VerticalRoundMode="CeilingToEven" Margin="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPaddingNormalThicknessKey}}">
 				<!-- The gallery item category is configured as "Paste Options:" and will be available from CollectionViewGroup.Name -->
 				<TextBlock FontWeight="Bold" Text="{Binding Path=Name}" UseLayoutRounding="True" VerticalAlignment="Center" />
@@ -42,7 +42,7 @@
 
 	<!-- Define the template for BarGalleryItem used to display special paste options in a menu -->
 	<DataTemplate x:Key="PasteOptionGalleryItemTemplate" DataType="{x:Type local:PasteOptionGalleryItem}">
-		<Image Margin="4" MaxHeight="24" MaxWidth="24" SnapsToDevicePixels="True" Source="{Binding Image}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		<shared:DynamicImage Margin="4" MaxHeight="24" MaxWidth="24" SnapsToDevicePixels="True" Source="{Binding Image}" HorizontalAlignment="Center" VerticalAlignment="Center" />
 	</DataTemplate>
 
 </ResourceDictionary>

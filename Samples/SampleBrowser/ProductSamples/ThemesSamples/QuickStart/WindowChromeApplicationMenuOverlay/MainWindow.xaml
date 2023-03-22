@@ -27,12 +27,20 @@
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="ButtonBase">
-						<Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
-							<ContentPresenter />
-						</Border>
+						<Grid>
+							<Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+								<ContentPresenter />
+							</Border>
+
+							<Rectangle x:Name="PART_SelectionElement" Margin="4" Width="2"
+									   Fill="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageHeaderSeparatorBorderNormalBrushKey}}" 
+									   HorizontalAlignment="Left" Visibility="Hidden" />
+						</Grid>
 						
 						<ControlTemplate.Triggers>
 							<Trigger Property="ToggleButton.IsChecked" Value="True">
+								<Setter TargetName="PART_SelectionElement" Property="Visibility" Value="Visible" />
+								<Setter TargetName="PART_SelectionElement" Property="Fill" Value="{DynamicResource {x:Static themes:AssetResourceKeys.RibbonTabItemBorderSelectedBrushKey}}" />
 								<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemBackgroundSelectedBrushKey}}" />
 								<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemForegroundSelectedBrushKey}}" />
 							</Trigger>
@@ -41,6 +49,7 @@
 								<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemForegroundHoverBrushKey}}" />
 							</Trigger>
 							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="PART_SelectionElement" Property="Visibility" Value="Visible" />
 								<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemBackgroundHoverBrushKey}}" />
 								<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemForegroundHoverBrushKey}}" />
 							</Trigger>
@@ -78,6 +87,7 @@
 					ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
 					Command="{x:Static themes:WindowChrome.ToggleIsOverlayVisibleCommand}"
 					Visibility="{Binding ElementName=window, Path=(themes:WindowChrome.IsOverlayVisible), Converter={StaticResource BooleanToVisibilityConverter}}"
+					themes:ThemeProperties.UseAlternateStyle="{Binding ElementName=window, Path=(themes:WindowChrome.IsOverlayVisible)}"
 					/>
 			<Button x:Name="menuButton" Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
 					themes:ThemeProperties.IsActive="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}, Path=(themes:ThemeProperties.IsActive)}"
@@ -133,7 +143,7 @@
 						<ToggleButton Style="{StaticResource OverlayButtonStyle}" Padding="20,32" IsTabStop="False" Focusable="False" IsHitTestVisible="False" IsChecked="True">
 							<StackPanel>
 								<Canvas Width="30" Height="30" HorizontalAlignment="Center">
-									<Path StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}" Opacity="0.8"
+									<Path StrokeThickness="1" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.BackstageTabItemForegroundNormalBrushKey}}" Opacity="0.8"
 										  Data="M 1,16 L 15,3 L 29,16  M 3.5,13.5 L 3.5,28.5 L 11.5,28.5 L 11.5,17.5 L 18.5,17.5 L 18.5,28.5 L 26.5,28.5 L 26.5,13.5"  />
 								</Canvas>
 								<TextBlock Margin="0,10,0,0" Text="Home" FontSize="16" TextAlignment="Center" />

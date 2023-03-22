@@ -24,10 +24,10 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=ItemSpacing}">
 						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="20" />
 					</grids:PropertyModel>
-					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=MediumMinRibbonColumnCount}">
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=MinMediumRibbonColumnCount}">
 						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="50" />
 					</grids:PropertyModel>
-					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=LargeMinRibbonColumnCount}">
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=MinLargeRibbonColumnCount}">
 						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="50" />
 					</grids:PropertyModel>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=MaxRibbonColumnCount}">
@@ -61,8 +61,8 @@
 					<LineBreak /><LineBreak />
 					The RibbonGallery control provides variant sizing behavior that makes it fit nicely into the parent Ribbon as it is resized.
 					At the smallest variant size, the RibbonGallery will render similar to a BarPopupButton. As additional space is availble to display
-					columns of gallery items, the MediumMinColumnCount and LargeMinColumnCount properties determine the minimum number of columns that
-					must be available at that variant size. Resize this sample and watch how the number of columns in the RibbonGallery adjusts until
+					columns of gallery items, a couple properties determine the minimum number of columns that must be available at the medium and
+					large variant sizes respectively. Resize this sample and watch how the number of columns in the RibbonGallery adjusts until
 					it hits the breakpoint between the medium and large variant sizes. Since the Layout group is configured to change its variant size
 					before the RibbonGallery, those buttons will change their size before the RibbonGroup transitions between variants.
 				</TextBlock>

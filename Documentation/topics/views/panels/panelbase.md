@@ -26,7 +26,7 @@ The [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState).[ArrangeStat
 | `Entering` Field | Indicates that the element was just added to the panel and is "entering" the view. |
 | `Leaving` Field | Indicates that the element was just removed from the panel and is "leaving" the view. |
 | `ArrangeUpdating` Field | Indicates that the element is changing position or size in the panel due to the standard arrange phase. |
-| `LayoutUpdating` Field | Indicates that the element is changing position or size because the layout logic of the panel changed (e.g. the orientation is changed). |
+| `LayoutUpdating` Field | Indicates that the element is changing position or size because the layout logic of the panel changed (e.g., the orientation is changed). |
 
 The current and previous arrange rectangels are captured in the [ArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeRect) and [PreviousArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.PreviousArrangeRect) properties, respectively.
 
@@ -177,7 +177,7 @@ Gets or sets the position along the Y-axis of the parent panel used when arrangi
 
 Gets a value indicating whether a change to the layout logic has changed and the elements have yet to be arranged.
 
-This is typically used to distingush between the `ArrangeStatus.ArrangeUpdating` and `ArrangeStatus.LayoutUpdating` statues, where the latter is due to a change in the logical layout (i.e. changing the orientation).
+This is typically used to distingush between the `ArrangeStatus.ArrangeUpdating` and `ArrangeStatus.LayoutUpdating` statues, where the latter is due to a change in the logical layout (i.e., changing the orientation).
 
 </td>
 </tr>

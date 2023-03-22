@@ -4,6 +4,7 @@ using ActiproSoftware.Windows.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
@@ -107,6 +108,23 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				}
 				return newDefaultDocumentCommand;
 			}
+		}
+		
+		/// <summary>
+		/// Gets the command to create and select a open a document.
+		/// </summary>
+		/// <value>An <see cref="ICommand"/>.</value>
+		public void Open(FlowDocument document) {
+			if (document == null)
+				throw new ArgumentNullException(nameof(document));
+
+			var viewModel = new RichTextEditorDocumentViewModel(this.BarManager, document) {
+				// Synchronize the documents ItemContainerTemplateSelector with the ribbon
+				// so view models of context menus can be properly displayed
+				ItemContainerTemplateSelector = Ribbon.ItemContainerTemplateSelector,
+			};
+
+			this.SelectNewDocument(viewModel);
 		}
 
 		/// <summary>

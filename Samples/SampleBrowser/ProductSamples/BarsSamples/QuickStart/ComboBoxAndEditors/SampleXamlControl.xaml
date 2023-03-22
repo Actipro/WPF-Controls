@@ -1,0 +1,198 @@
+<local:SampleControlBase 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors.SampleXamlControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:barsmvvm="http://schemas.actiprosoftware.com/winfx/xaml/barsmvvm"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+				<ResourceDictionary Source="CommonDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+
+	</UserControl.Resources>
+	
+	<bars:RibbonContainerPanel>
+
+		<bars:Ribbon IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
+			
+			<!-- 
+				BarComboBox is a special control that behaves like a ComboBox and uses a BarMenuGallery to display the
+				items in the popup. It's essentially a BarPopupButton with an editable or non-editable textual element.
+			
+				All BarMenuGallery functionality can be applied to a BarComboBox popup including categories and filtering.
+			-->
+
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+				<bars:RibbonGroup Key="BasicSamples">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+						
+						<!-- Editable -->
+						<bars:BarComboBox Key="Editable" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+										  ToolTip="A basic, editable combobox sample.">
+							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
+												 ItemsSource="{Binding ComboBoxPersonItems}"
+												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
+												 UseMenuItemAppearance="True" />
+						</bars:BarComboBox>
+
+						<!-- Read-Only -->
+						<bars:BarComboBox Key="ReadOnly" Label="Read-only" IsReadOnly="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+										  ToolTip="A basic, editable and read-only combobox sample.">
+							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
+												 ItemsSource="{Binding ComboBoxPersonItems}"
+												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
+												 UseMenuItemAppearance="True" />
+						</bars:BarComboBox>
+
+						<!-- Non-Editable -->
+						<bars:BarComboBox Key="NonEditable" Label="Non-Editable" IsEditable="False" TextPath="Label"
+										  ToolTip="A basic, non-editable combobox sample."
+										  >
+							<bars:BarMenuGallery Key="NonEditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
+												 ItemsSource="{Binding ComboBoxPersonItems}"
+												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
+												 UseMenuItemAppearance="True" />
+						</bars:BarComboBox>
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+				<bars:RibbonGroup Key="CategorizedSamples">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+
+						<!-- Categorized items in a single column -->
+						<bars:BarComboBox Key="CategorizedSingleColumn" Label="Single-Column" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+										  ToolTip="A combobox with items categorized and displayed in a single column.">
+							<bars:BarMenuGallery Key="CategorizedSingleColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
+												 MaxColumnCount="1"
+												 CategorizedItemsSource="{Binding ComboBoxPersonItems}"
+												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}" 
+												 UseMenuItemAppearance="True" />
+						</bars:BarComboBox>
+						
+						<!-- Categorized items in multiple columns -->
+						<bars:BarComboBox Key="CategorizedMultiColumn" Label="Multi-Column" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+										  ToolTip="A combobox with items categorized and displayed using multiple columns.">
+							<bars:BarMenuGallery Key="CategorizedMultiColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
+												 MinColumnCount="5" MaxColumnCount="5"
+												 CategorizedItemsSource="{Binding ComboBoxNumberItems}"
+												 ItemTemplate="{StaticResource NumberComboBoxGalleryItemTemplate}" />
+						</bars:BarComboBox>
+
+						<!-- Categorized/Filtered items with menu item appearance consistent with large menu items -->
+						<bars:BarComboBox Key="MenuStyle" TextPath="Label"
+										  ToolTip="A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.">
+							<bars:BarMenuGallery Key="MenuStyleGallery" MaxColumnCount="1" CanFilter="True" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
+												 CategorizedItemsSource="{Binding ComboBoxColorItems}"
+												 ItemTemplate="{StaticResource LargeMenuComboBoxGalleryItemTemplate}"
+												 UseMenuItemAppearance="True" />
+							<bars:BarMenuItem Label="More colors..." Command="{Binding NotImplementedCommand}" />
+						</bars:BarComboBox>
+						
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+				<bars:RibbonGroup Key="FontSamples">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+
+						<!-- Font family -->
+						<bars:BarComboBox Key="FontFamily" TextPath="Label" RequestedWidth="120" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+										  ToolTip="A combobox with system fonts and a category for recently-used fonts.">
+							<bars:BarMenuGallery Key="FontFamilyGallery" MaxColumnCount="1" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
+												 ResizeMode="Vertical"
+												 CategorizedItemsSource="{Binding ComboBoxFontFamilyItems}"
+												 UseMenuItemAppearance="True">
+								<bars:BarMenuGallery.ItemTemplateSelector>
+									<barsmvvm:BarGalleryItemTemplateSelector />
+								</bars:BarMenuGallery.ItemTemplateSelector>
+							</bars:BarMenuGallery>
+						</bars:BarComboBox>
+
+						<!-- Font size -->
+						<bars:BarComboBox Key="FontSize" TextPath="Label" RequestedWidth="45" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+										  ToolTip="A combobox with common font sizes.">
+							<bars:BarMenuGallery Key="FontSizeGallery" MaxColumnCount="1" Command="{Binding ComboBoxGalleryCommand}"
+												 ResizeMode="Vertical"
+												 CategorizedItemsSource="{Binding ComboBoxFontSizeItems}" IsSynchronizedWithCurrentItem="True"
+												 UseMenuItemAppearance="True">
+								<bars:BarMenuGallery.ItemTemplateSelector>
+									<barsmvvm:BarGalleryItemTemplateSelector />
+								</bars:BarMenuGallery.ItemTemplateSelector>
+							</bars:BarMenuGallery>
+						</bars:BarComboBox>
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+				<bars:RibbonGroup Key="OtherSamples">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+
+						<!-- Textbox -->
+						<bars:BarTextBox Key="Textbox" RequestedWidth="120" Text="A text value"
+										 Command="{Binding ElementName=rootSampleControl, Path=TextBoxCommitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
+										 ToolTip="A textbox control that commits changed text on Enter or focus loss." />
+
+						<editors:ColorEditBox bars:BarControlService.HasExternalHeader="True" 
+											  bars:BarControlService.Key="Color" 
+											  bars:BarControlService.Label="Color"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											  Width="100" MinHeight="24" MaxHeight="30"
+											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											  Value="LightSeaGreen" IsAlphaEnabled="False">
+							<editors:ColorEditBox.ToolTip>
+								<bars:ScreenTip Header="Color" Content="An editbox from Actipro Editors for selecting a Color." />
+							</editors:ColorEditBox.ToolTip>
+						</editors:ColorEditBox>
+
+						<editors:DateEditBox bars:BarControlService.HasExternalHeader="True" 
+											 bars:BarControlService.Key="Date" 
+											 bars:BarControlService.Label="Date"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											 Width="100" MinHeight="24" MaxHeight="30"
+											 UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3">
+							<editors:DateEditBox.ToolTip>
+								<bars:ScreenTip Header="Date" Content="An editbox from Actipro Editors for selecting a date." />
+							</editors:DateEditBox.ToolTip>
+						</editors:DateEditBox>
+
+						<editors:Int32EditBox bars:BarControlService.HasExternalHeader="True" 
+											  bars:BarControlService.Key="Number" 
+											  bars:BarControlService.Label="Number"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											  Width="60" MinHeight="24" MaxHeight="30"
+											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											  Value="10">
+							<editors:Int32EditBox.ToolTip>
+								<bars:ScreenTip Header="Number" Content="An editbox from Actipro Editors for selecting an Int32." />
+							</editors:Int32EditBox.ToolTip>
+						</editors:Int32EditBox>
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+		
+		<!-- TextBox -->
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+			</shared:HintProperties.Hint>
+
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

@@ -227,7 +227,7 @@
 
 			<TextBlock Style="{StaticResource BackstageHeadingTextBlockStyle}" Text="Open" />
 
-			<bars:BarButton VariantSize="Medium" SmallImageSource="/Images/Icons/Open32.png" Label="Browse..." KeyTipText="B" Command="{Binding NotImplementedCommand}"
+			<bars:BarButton VariantSize="Medium" SmallImageSource="/Images/Icons/Open16.png" Label="Browse..." KeyTipText="B" Command="{Binding NotImplementedCommand}"
 							HorizontalAlignment="Right" VerticalAlignment="Top" themes:ThemeProperties.IsTransparencyModeEnabled="False" Padding="10" />
 
 			<bars:RecentDocumentControl x:Name="recentDocumentControl" Grid.Row="1" MaxWidth="800" HorizontalAlignment="Left" Manager="{Binding RecentDocumentManager}" 

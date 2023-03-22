@@ -25,7 +25,7 @@ See the [Chart Types](chart-types/index.md) topic for a list of the available ch
 
 ## Specifying Items
 
-Each series is bound to it's own data source, which is indicated by the [ItemsSource](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroSeriesBase.ItemsSource) property.  The data source can be a collection of numeric values (i.e. `Double`, `Decimal`, `Int32`, etc), `DateTime` values, or custom objects.
+Each series is bound to it's own data source, which is indicated by the [ItemsSource](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroSeriesBase.ItemsSource) property.  The data source can be a collection of numeric values (i.e., `Double`, `Decimal`, `Int32`, etc), `DateTime` values, or custom objects.
 
 When the data source is a collection of numeric or `DateTime` values, then the series' [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) and [YPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.YPath) properties should not be set.  The series will automatically use the value from the collection as the data point's primary value (which is typically the `Y` value) and the index in the data source as the secondary value.
 

@@ -47,11 +47,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			var fontSize = FontSizeBarGalleryItemViewModel.ConvertFontSizeToWpfFontSize(viewModel.FontSize);
 			var foreground = new SolidColorBrush(viewModel.Color);
 
-			var formattedText = new FormattedText(viewModel.Label, CultureInfo.CurrentCulture, this.FlowDirection, typeface, fontSize, foreground, null, TextOptions.GetTextFormattingMode(this)
-				#if NETCOREAPP
-				, VisualTreeHelper.GetDpi(this).PixelsPerDip
-				#endif
-				);
+			var formattedText = new FormattedText(viewModel.Label, CultureInfo.CurrentCulture, this.FlowDirection, typeface, fontSize, foreground, null, TextOptions.GetTextFormattingMode(this), VisualTreeHelper.GetDpi(this).PixelsPerDip);
 
 			return formattedText;
 		}

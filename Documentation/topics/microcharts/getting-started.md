@@ -9,7 +9,7 @@ It's easy to get started using Micro Charts.  Simply follow the steps below to b
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll" assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll` assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the MicroXYChart Control
 
@@ -44,7 +44,7 @@ Now we need to add a series, which renders a single set of data points on the ch
 </UserControl>
 ```
 
-Note that this sample assumes that the chart's `DataContext` is a list of numeric (i.e. `Double`, `Decimal`, etc) or `DateTime` objects.  With this configuration, the chart's X values will represent the index value in the list and the chart's Y values will represent the list's actual value at the related list index.
+Note that this sample assumes that the chart's `DataContext` is a list of numeric (i.e., `Double`, `Decimal`, etc) or `DateTime` objects.  With this configuration, the chart's X values will represent the index value in the list and the chart's Y values will represent the list's actual value at the related list index.
 
 If our list contained custom objects and we wanted to pull the X and Y values from properties on that object, then we would have to specify the property path on the series.
 

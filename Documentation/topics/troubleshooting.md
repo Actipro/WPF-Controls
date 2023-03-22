@@ -26,8 +26,6 @@ To resolve this issue, simply close the XAML files, rebuild the Sample Browser s
 
 If that is not the problem, Visual Studio looks for the Actipro design-time functionality assemblies in a "Design" folder under the folder that contains the referenced Actipro control product assembly.  If you referenced Actipro assemblies from a file path location that doesn't have the "Design" child folder containing related design-time functionality assemblies, then Visual Studio will not have designer support for Actipro controls.
 
-When referencing the special code-signed copies of our product assemblies, or referencing our product assemblies from any other custom path that is not the default installed location, you must manually copy the "Design" folder to be a child folder of the folder containing the product assemblies.
-
 If referencing our product assemblies via our NuGet packages, you should not need to worry about file paths since the NuGet packages include the design-time functionality assemblies in them.
 
 ## Designer Errors Reported That Don't Occur At Run-Time

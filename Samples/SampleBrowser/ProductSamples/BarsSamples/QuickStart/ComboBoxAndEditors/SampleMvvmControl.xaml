@@ -1,0 +1,96 @@
+<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors.SampleMvvmControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+			 xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+			 xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+			 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+
+				<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+				<ResourceDictionary Source="CommonDictionary.xaml" />
+
+			</ResourceDictionary.MergedDictionaries>
+
+			<local:CustomBarControlTemplateSelector x:Key="CustomTemplateSelector">
+
+				<local:CustomBarControlTemplateSelector.ColorEditBoxDefaultTemplate>
+					<ItemContainerTemplate>
+						<editors:ColorEditBox bars:BarControlService.HasExternalHeader="True" 
+											  bars:BarControlService.Key="{Binding Key}" 
+											  bars:BarControlService.Label="{Binding Label}"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											  Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
+											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											  Value="{Binding Value, Mode=TwoWay}" IsAlphaEnabled="False">
+							<editors:ColorEditBox.ToolTip>
+								<bars:ScreenTip Header="{Binding Label}" Content="{Binding Description}" />
+							</editors:ColorEditBox.ToolTip>
+						</editors:ColorEditBox>
+					</ItemContainerTemplate>
+				</local:CustomBarControlTemplateSelector.ColorEditBoxDefaultTemplate>
+
+				<local:CustomBarControlTemplateSelector.DateEditBoxDefaultTemplate>
+					<ItemContainerTemplate>
+						<editors:DateEditBox bars:BarControlService.HasExternalHeader="True" 
+											  bars:BarControlService.Key="{Binding Key}" 
+											  bars:BarControlService.Label="{Binding Label}"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											  Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
+											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											  Value="{Binding Value, Mode=TwoWay}">
+							<editors:DateEditBox.ToolTip>
+								<bars:ScreenTip Header="{Binding Label}" Content="{Binding Description}" />
+							</editors:DateEditBox.ToolTip>
+						</editors:DateEditBox>
+					</ItemContainerTemplate>
+				</local:CustomBarControlTemplateSelector.DateEditBoxDefaultTemplate>
+
+				<local:CustomBarControlTemplateSelector.Int32EditBoxDefaultTemplate>
+					<ItemContainerTemplate>
+						<editors:Int32EditBox bars:BarControlService.HasExternalHeader="True" 
+											  bars:BarControlService.Key="{Binding Key}" 
+											  bars:BarControlService.Label="{Binding Label}"
+											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											  Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
+											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											  Value="{Binding Value, Mode=TwoWay}">
+							<editors:Int32EditBox.ToolTip>
+								<bars:ScreenTip Header="{Binding Label}" Content="{Binding Description}" />
+							</editors:Int32EditBox.ToolTip>
+						</editors:Int32EditBox>
+					</ItemContainerTemplate>
+				</local:CustomBarControlTemplateSelector.Int32EditBoxDefaultTemplate>
+
+			</local:CustomBarControlTemplateSelector>
+
+		</ResourceDictionary>
+
+	</UserControl.Resources>
+	
+	<bars:RibbonContainerPanel>
+		
+		<!-- MVVM-Based Ribbon Control -->
+		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" 
+					 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
+					 ItemContainerTemplateSelector="{StaticResource CustomTemplateSelector}" />
+
+		<!-- TextBox -->
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with MVVM" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+</local:SampleControlBase>

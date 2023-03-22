@@ -176,6 +176,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		/// <value>A <see cref="CompositeCommand"/>.</value>
 		public CompositeCommand ToggleBoldCommand { get; } = new CompositeCommand();
+		
+		/// <summary>
+		/// Gets the composite command for toggling the visibility of the ribbon footer.
+		/// </summary>
+		/// <value>A <see cref="CompositeCommand"/>.</value>
+		public CompositeCommand ToggleFooterCommand { get; } = new CompositeCommand();
 
 		/// <summary>
 		/// Gets the composite command for toggling the italic font style.

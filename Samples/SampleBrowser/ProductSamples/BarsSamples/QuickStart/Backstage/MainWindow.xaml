@@ -21,7 +21,7 @@
 			<!-- Configure the Backstage -->
 			<bars:Ribbon.BackstageContent>
 				<bars:RibbonBackstage CanClose="{Binding CanClose}" MinHeaderWidth="{Binding BackstageMinHeaderWidth}" MaxHeaderWidth="{Binding BackstageMaxHeaderWidth}"
-									  IsOpen="{Binding IsBackstageOpen}">
+									  IsOpen="{Binding IsBackstageOpen}" IsOpenChanged="OnBackstageIsOpenChanged">
 					<!-- Introduction Tab -->
 					<bars:RibbonBackstageTabItem Key="Introduction" SmallImageSource="/Images/Icons/HomeMono16.png" LargeImageSource="/Images/Icons/HomeMono32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
 						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
@@ -78,7 +78,8 @@
 							</StackPanel>
 						</ScrollViewer>
 					</bars:RibbonBackstageTabItem>
-					
+
+
 					<!-- Separator and Sample Buttons (which execute a default command) -->
 					<bars:RibbonBackstageHeaderSeparator Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" />
 					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}" Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
@@ -91,6 +92,98 @@
 					<!-- A separator is commonly displayed before the bottom-aligned items -->
 					<bars:RibbonBackstageHeaderSeparator HeaderAlignment="Bottom" />
 					
+					<!-- Backstage Controls Tab -->
+					<bars:RibbonBackstageTabItem Key="BackstageControls" HeaderAlignment="Bottom">
+						<Grid Margin="20">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<StackPanel Grid.Row="0">
+								<TextBlock Text="Backstage Controls" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock  Margin="0,20" TextWrapping="Wrap">
+									The TaskTabControl can be used on a backstage to further organize the content displayed
+									for the selected tab.  BarButton and BarPopupButton controls also have a special backstage style that can be applied
+									for a large button.
+								</TextBlock>
+							</StackPanel>
+							
+							<bars:TaskTabControl Grid.Row="1">
+								<bars:TaskTabItem Label="TaskTabControl" KeyTipText="T" LargeImageSource="/Images/Icons/New32.png">
+									<ScrollViewer Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Grid.ColumnSpan="2" Margin="0,0,0,8" Text="TaskTabControl" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+
+											<TextBlock Grid.Row="1" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="TaskTabControl is a special tab control for backstage" />
+											<TextBlock Grid.Row="2" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="Use TaskTabItem for each tab" />
+											<TextBlock Grid.Row="3" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="Display any content for the selected tab" />
+
+										</Grid>
+									</ScrollViewer>
+								</bars:TaskTabItem>
+
+								<bars:TaskTabItem Label="Button Backstage Styles" KeyTipText="B" LargeImageSource="/Images/Icons/Print32.png">
+									<ScrollViewer Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Grid.ColumnSpan="2" Margin="0,0,0,8" Text="BarButton and BarPopupButton" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+
+											<TextBlock Grid.Row="1" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="Large buttons are commonly used on backstage as shown below" />
+											<TextBlock Grid.Row="2" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="BarButton uses RibbonBackstageButtonStyleKey" />
+											<TextBlock Grid.Row="3" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="BarPopupButton uses RibbonBackstagePopupButtonStyleKey" />
+
+											<StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,40,0,0" Orientation="Horizontal">
+												<bars:BarButton Margin="0,0,10,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" 
+															   LargeImageSource="/Images/Icons/PdfDocument32.png" Label="Create PDF" KeyTipText="A" />
+
+												<bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}" 
+																	 LargeImageSource="/Images/Icons/ManageVersions32.png" Label="Manage Document" KeyTipText="M">
+													
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/RecoverUnsavedDocuments32.png" Label="Recover Unsaved Documents" 
+																	  Description="Browse recent copies of unsaved files." KeyTipText="B" />
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/DeleteUnsavedDocuments32.png" Label="Delete All Unsaved Documents" 
+																	  Description="Delete all recent copies of unsaved files." KeyTipText="D" />
+													
+												</bars:BarPopupButton>
+											</StackPanel>
+
+										</Grid>
+									</ScrollViewer>
+								</bars:TaskTabItem>
+
+							</bars:TaskTabControl>
+						</Grid>
+					</bars:RibbonBackstageTabItem>
+
 					<!-- Options Tab -->
 					<bars:RibbonBackstageTabItem Key="Options" HeaderAlignment="Bottom">
 						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
@@ -109,6 +202,7 @@
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
 									</Grid.RowDefinitions>
 									
 									<TextBlock Grid.Row="0" Grid.Column="0" Text="Use initial backstage view" VerticalAlignment="Center" />
@@ -120,20 +214,23 @@
 									<TextBlock Grid.Row="2" Grid.Column="0" Text="Show images on sample buttons" VerticalAlignment="Center" />
 									<shared:ToggleSwitch Grid.Row="2" Grid.Column="1" Margin="4" IsChecked="{Binding UseSampleButtonImages}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="3" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+									<TextBlock Grid.Row="3" Grid.Column="0" Text="Select this 'Options' tab on open" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="3" Grid.Column="1" Margin="4" IsChecked="{Binding SelectOptionsTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="4" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
 										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMinHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
 										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMinHeaderWidth}" />
 									</StackPanel>
 
-									<TextBlock Grid.Row="4" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+									<TextBlock Grid.Row="5" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
 										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMaxHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
 										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMaxHeaderWidth}" />
 									</StackPanel>
 
-									<TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
-									<TextBox Grid.Row="5" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
+									<TextBox Grid.Row="6" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
 								</Grid>
 								
 							</StackPanel>
@@ -190,10 +287,6 @@
 			</StatusBar>
 
 			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Focusable="False">
-				<ScrollViewer.Resources>
-					<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
-				</ScrollViewer.Resources>
-
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<TextBox x:Name="editor" BorderThickness="0" Padding="20" AcceptsReturn="True" TextWrapping="Wrap">

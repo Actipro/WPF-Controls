@@ -16,8 +16,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isStarSizingAllowed;
 		private string keyTipText;
 		private string label;
-		private ImageSource largeImageSource;
-		private ImageSource mediumImageSource;
 		private string placeholderText;
 		private double requestedWidth = 110.0;
 		private ImageSource smallImageSource;
@@ -62,6 +60,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.label = label ?? LabelGenerator.FromCommand(command) ?? LabelGenerator.FromKey(key);
 			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.label);
 			this.command = command;
+		}
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// INTERFACE IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.LargeImageSource {
+			get => null;
+			set { /* No-op since a large image is not supported by the control */ }
+		}
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.MediumImageSource {
+			get => null;
+			set { /* No-op since a medium image is not supported by the control */ }
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,28 +159,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <inheritdoc cref="BarButtonViewModel.LargeImageSource"/>
-		public ImageSource LargeImageSource {
-			get => largeImageSource;
-			set {
-				if (largeImageSource != value) {
-					largeImageSource = value;
-					this.NotifyPropertyChanged(nameof(LargeImageSource));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.MediumImageSource"/>
-		public ImageSource MediumImageSource {
-			get => mediumImageSource;
-			set {
-				if (mediumImageSource != value) {
-					mediumImageSource = value;
-					this.NotifyPropertyChanged(nameof(MediumImageSource));
-				}
-			}
-		}
-		
 		/// <summary>
 		/// Gets or sets the placeholder text to display when the control is empty.
 		/// </summary>

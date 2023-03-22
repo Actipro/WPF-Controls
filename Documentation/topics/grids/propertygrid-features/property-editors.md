@@ -202,7 +202,7 @@ When [ValueAsString](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyMo
 
 @if (wpf) {
 
-Additionally, a `TypeConverter` can be defined on the value class/struct/enum and can be used to convert the object to and from a string (e.g. for editing in a TextBox).  Many .NET primitives have built-in type converters that support string conversion. 
+Additionally, a `TypeConverter` can be defined on the value class/struct/enum and can be used to convert the object to and from a string (e.g., for editing in a TextBox).  Many .NET primitives have built-in type converters that support string conversion. 
 
 }
 
@@ -332,7 +332,7 @@ As described above, the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.Prop
 
 }
 
-For instance, if [integrating with Actipro Editors](../../editors/interoperability/propertygrid.md) and a date-only property editor should be used on a `DateTime`-based property, you can apply a [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor) to the the property like this:
+For instance, if [integrating with Actipro Editors](../../editors/interoperability/propertygrid.md) and a date-only property editor should be used on a `DateTime`-based property, you can apply a [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor) to the property like this:
 
 ```csharp
 [Editor(typeof(DatePropertyEditor), typeof(PropertyEditor))]

@@ -13,7 +13,7 @@ Radial sliders are often paired with [RingSlice](ringslice.md) controls, which a
 
 ![Screenshot](../images/radialslider-intro.png)
 
-*A RadialSlider that uses RingSlice controls for rendering of the track and value.*
+*A RadialSlider that uses RingSlice controls for rendering of the track and value*
 
 [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.  While the control is ideal for touch-based input, it also fully accepts mouse and keyboard input.  Combine two RadialSlider controls on top of each other to enable range-based selection.
 
@@ -29,7 +29,7 @@ The slider is designed to accept all forms of input (touch, mouse, and keyboard)
 
 ![Screenshot](../images/radialslider-snapping.png)
 
-*A RadialSlider that has snapping enabled and makes use of multiple RingSlice controls to render the snap points.*
+*A RadialSlider that has snapping enabled and makes use of multiple RingSlice controls to render the snap points*
 
 ### Dragging
 
@@ -72,7 +72,7 @@ The default `Minimum` is `0` and `Maximum` is `360`.  These settings enable a sp
 
 ![Screenshot](../images/radialslider-semi-circle.png)
 
-*A RadialSlider that is constrained to a semi-circle.*
+*A RadialSlider that is constrained to a semi-circle*
 
 Other ranges can allow for creative input scenarios too.  A `Minimum` of `-360` and a `Maximum` of `360` allow for a full circle rotation negative or positive.  A `Minimum` of `0` and a `Maximum` of `1080` allow for three full circle rotations positive.
 
@@ -97,6 +97,6 @@ These members on [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) are r
 
 ![Screenshot](../images/radialslider-multiple-sliders.png)
 
-*Two RadialSlider controls that overlay each other.*
+*Two RadialSlider controls that overlay each other*
 
 Multiple sliders can be overlayed on top of each other.  The sliders themselves are transparent and only their thumbs allow for interaction.  This means that two sliders would render two separate thumbs, each of which can be interacted with separately, and can therefore be used to specify a range of values by the end user.

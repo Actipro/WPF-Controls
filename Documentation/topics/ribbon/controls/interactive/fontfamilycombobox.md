@@ -83,7 +83,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:FontFamilyComboBox Width="135" Label="Font Family" KeyTipAccessText="FF" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:FontFamilyComboBox Width="135" 

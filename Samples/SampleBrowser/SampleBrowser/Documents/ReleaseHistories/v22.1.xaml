@@ -10,7 +10,12 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/12/2023 - Version 22.1.5</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/23/2023 - Version 22.1.5</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved tool window-only layout deserialization logic for tool windows that will restore to tabbed MDI." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue that could occur when deserializing tool window-only layouts." />
+			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Improved UIA peer logic." />
@@ -30,12 +35,16 @@
 				<sampleBrowser:BulletContentControl Content="Added the CodeSnippetSelectionSession.RequestNavigate event, which can be used to handle description tip link clicks." />
 				<sampleBrowser:BulletContentControl Content="Improved the logic of the move selected lines up and down commands." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where setting SyntaxEditor.HasSearchOverlayPaneKeyBindings to false didn't prevent a couple ApplicationCommands with built-in key bindings from showing the search overlay pane." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where typing in a block selection than spanned multiple word-wrapped view lines for the same single document line didn't yield expected results." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where IntelliPrompt parameter info could flicker slightly while editing." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the IProjectAssemblyReferencesCollection.Add method logic in .NET Core and later for finding system assemblies by name when they are in the same folder as mscorlib.dll." />
 				<sampleBrowser:BulletContentControl Content="Updated how an internal TypeReferenceCollection class initializes several properties for better multi-thread scenario support." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where the VB resolver didn't properly resolve For Each statement variables that were declared outside of the loop." />
 				<sampleBrowser:BulletContentControl Content="Fixed possible exception when accessing indexed properties on ProjectAssemblyReferenceCollection in multi-threaded environments." />
+				<sampleBrowser:BulletContentControl Content="Fixed possible infinite recursion scenario with BinaryAssemblySerializer collecting type definitions." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -57,6 +66,7 @@
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Validated .NET 7 compatibility." />
+				<sampleBrowser:BulletContentControl Content="Updated SyntaxEditor-related NuGet packages to properly support cross-platform .NET 5.0." />
 			</StackPanel>
 			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
 

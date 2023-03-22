@@ -23,10 +23,26 @@
 	<sampleBrowser:ProductData x:Key="ProductData">
 
 		<sampleBrowser:ProductData.FeaturedSamples>
-			<sampleBrowser:ListItemInfo Title="SyntaxEditor" ImageSource="/Images/Screenshots/SyntaxEditor-SdiCodeEditor-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/OverviewDocument?action=open" />
-			<sampleBrowser:ListItemInfo Title="Ribbon" ImageSource="/Images/Screenshots/Ribbon-DocumentEditor-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/RibbonSamples/Demo/DocumentEditor/OverviewDocument?action=open" />
-			<sampleBrowser:ListItemInfo Title="Docking / MDI" ImageSource="/Images/Screenshots/Docking-SimpleIde-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/DockingSamples/Demo/SimpleIde/OverviewDocument?action=open" />
-			<sampleBrowser:ListItemInfo Title="Grids" ImageSource="/Images/Screenshots/Grids-PropertyGrid-200x150.png" TargetUri="https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/PropertyGridGettingStarted/MainControl" />
+			<sampleBrowser:ListItemInfo Title="SyntaxEditor" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/OverviewDocument?action=open">
+				<sampleBrowser:ListItemInfo.ImageSource>
+					<BitmapImage UriSource="/Images/Screenshots/SyntaxEditor-SdiCodeEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
+				</sampleBrowser:ListItemInfo.ImageSource>
+			</sampleBrowser:ListItemInfo>
+			<sampleBrowser:ListItemInfo BlurbText="BETA!" Title="Bars" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
+				<sampleBrowser:ListItemInfo.ImageSource>
+					<BitmapImage UriSource="/Images/Screenshots/Bars-DocumentEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
+				</sampleBrowser:ListItemInfo.ImageSource>
+			</sampleBrowser:ListItemInfo>
+			<sampleBrowser:ListItemInfo Title="Docking / MDI" TargetUri="https://ActiproSoftware/ProductSamples/DockingSamples/Demo/SimpleIde/OverviewDocument?action=open">
+				<sampleBrowser:ListItemInfo.ImageSource>
+					<BitmapImage UriSource="/Images/Screenshots/Docking-SimpleIde-200x150.png" shared:ImageProvider.CanAdapt="False" />
+				</sampleBrowser:ListItemInfo.ImageSource>
+			</sampleBrowser:ListItemInfo>
+			<sampleBrowser:ListItemInfo Title="Grids" TargetUri="https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/PropertyGridGettingStarted/MainControl">
+				<sampleBrowser:ListItemInfo.ImageSource>
+					<BitmapImage UriSource="/Images/Screenshots/Grids-PropertyGrid-200x150.png" shared:ImageProvider.CanAdapt="False" />
+				</sampleBrowser:ListItemInfo.ImageSource>
+			</sampleBrowser:ListItemInfo>
 		</sampleBrowser:ProductData.FeaturedSamples>
 		
 		<sampleBrowser:ProductData.ReleaseHistory>
@@ -120,11 +136,11 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Code Summary" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CodeSummary/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Collapsed Regions - Intro" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CollapsedRegionsIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Collapsed Regions - Advanced" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CollapsedRegionsAdvanced/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Compare Files" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Column Guides" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Compare Files" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Column Guides" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Current Line Highlighting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CurrentLineHighlighting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Data Binding" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DataBinding/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Drag and Drop" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Drag and Drop" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Document Sharing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DocumentSharing/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Document Swapping" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DocumentSwapping/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Edit Actions" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditActions/MainControl"/>
@@ -132,7 +148,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Editor View Margins - Locations" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewMarginsLocations/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Editor View Margins - Visibility" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewMarginsVisibility/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Editor Views - Splitting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewsSplitting/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="General QuickStarts" Title="Editor Views - Synchronizing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewsSynchronizing/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Editor Views - Synchronizing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/EditorViewsSynchronizing/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Exporting to HTML / RTF" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Exporting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Globalization" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Globalization/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Go to Line" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLine/MainControl"/>
@@ -156,7 +172,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Search - Custom Pattern Provider" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SearchCustomPatternProvider/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Search - Find Results" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SearchFindResults/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Search - Result Highlighting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SearchResultHighlighting/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="General QuickStarts" Title="Single-Line Mode" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SingleLineMode/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Single-Line Mode" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SingleLineMode/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Snapshot Reading" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SnapshotReading/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Snapshot Translation" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SnapshotTranslation/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Snapshot Versioning" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/SnapshotVersioning/MainControl"/>
@@ -183,7 +199,7 @@
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Visual Basic Getting Started 01" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonVBGettingStarted01/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Visual Basic Getting Started 02" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonVBGettingStarted02/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="IntelliPrompt Completion Override" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddonCompletionOverride/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category=".NET Languages Add-on QuickStarts" Title="Go To Definition" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddOnGoToDefinition/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Go To Definition" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddOnGoToDefinition/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category=".NET Languages Add-on QuickStarts" Title="Server Tags" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DotNetAddOnServerTags/MainControl"/>
 
 			<sampleBrowser:ProductItemInfo Category="Web Languages Add-on QuickStarts" Title="JavaScript Getting Started" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/WebAddonJavaScriptGettingStarted/MainControl"/>
@@ -364,7 +380,7 @@
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Checking" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxChecking/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Drag/Drop" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxDragDrop/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Filtering" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxFiltering/MainControl"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="TreeListBox QuickStarts" Title="Filtering with Captures" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxFilteringWithCaptures/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Filtering with Captures" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxFilteringWithCaptures/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Inline Editing" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxInlineEditing/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Selection" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxSelection/MainControl"/>
             <sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Three-State Checking" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxThreeStateChecking/MainControl"/>
@@ -397,7 +413,7 @@
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Button" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationButton/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Menu" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationMenu/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Backstage" Path="/ProductSamples/BarsSamples/QuickStart/Backstage/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Combobox" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/ComboBoxIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Combobox and Editors" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/ComboBoxAndEditors/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Contextual Tabs" Path="/ProductSamples/BarsSamples/QuickStart/ContextualTabs/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Customize Built-in Menus" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/CustomizeBuiltInMenus/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Dynamic Popup Menus" Path="/ProductSamples/BarsSamples/QuickStart/DynamicPopupMenus/MainControl"/>
@@ -410,9 +426,10 @@
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Screen Tips" Path="/ProductSamples/BarsSamples/QuickStart/ScreenTips/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (MVVM)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationMvvm/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (XAML)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationXaml/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Standalone Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/StandaloneToolBarIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="User Interface Density" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/UserInterfaceDensity/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Variant Sizing" Path="/ProductSamples/BarsSamples/QuickStart/VariantSizing/MainControl"/>
+
+			<sampleBrowser:ProductItemInfo Category="Toolbar QuickStarts" Title="Standalone Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/StandaloneToolBarIntro/MainControl"/>
 
 		</sampleBrowser:ProductFamilyInfo>
 
@@ -525,7 +542,7 @@
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Bar Chart Slotting" SideBarWidth="Narrow" Path="/ProductSamples/ChartsSamples/QuickStart/XY/BarChartSlotting/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Bar Styles" Path="/ProductSamples/ChartsSamples/QuickStart/XY/BarStyles/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Baseline Customization" SideBarWidth="Narrow" Path="/ProductSamples/ChartsSamples/QuickStart/XY/BaselineCustomization/MainControl" />
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="XY Chart QuickStarts" Title="Data Aggregation" Path="/ProductSamples/ChartsSamples/QuickStart/XY/DataAggregation/MainControl" />
+			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Data Aggregation" Path="/ProductSamples/ChartsSamples/QuickStart/XY/DataAggregation/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Data Point Labels" SideBarWidth="Narrow" Path="/ProductSamples/ChartsSamples/QuickStart/XY/DataPointLabels/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Grouped Axis" SideBarWidth="Narrow" Path="/ProductSamples/ChartsSamples/QuickStart/XY/GroupedAxis/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="XY Chart QuickStarts" Title="Legend" Path="/ProductSamples/ChartsSamples/QuickStart/XY/Legend/MainControl" />
@@ -583,7 +600,7 @@
 			<sampleBrowser:ProductItemInfo Category="Chart Types" Title="Trend Indicator" Path="/ProductSamples/MicroChartsSamples/ChartTypes/TrendIndicator/MainControl" />
 
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Baseline Customization" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/BaselineCustomization/MainControl" />
-			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="QuickStarts" Title="Data Aggregation" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/DataAggregation/MainControl" />
+			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Data Aggregation" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/DataAggregation/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Hot Tracking" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/HotTracking/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Live Data" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/LiveData/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Marker Customization" SideBarWidth="Narrow" Path="/ProductSamples/MicroChartsSamples/QuickStart/MarkerCustomization/MainControl" />
@@ -787,7 +804,7 @@
 
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Introduction" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeIntro/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Application Menu Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeApplicationMenuOverlay/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="WindowChrome QuickStarts" Title="Backdrop" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeBackdrop/OverviewDocument"/>
+			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Backdrop" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeBackdrop/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Processing Overlay" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeProcessingOverlay/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="System Menu Customization" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeSystemMenuCustomization/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="WindowChrome QuickStarts" Title="Title Bar Back Button" Path="/ProductSamples/ThemesSamples/QuickStart/WindowChromeTitleBarBackButton/OverviewDocument"/>
@@ -807,6 +824,7 @@
 			<sampleBrowser:ProductFamilyInfo.News>
 				<sampleBrowser:ListItemInfo Title=".NET 5 targets moved to .NET 6" />
 				<sampleBrowser:ListItemInfo Title=".NET 7 compatibility verified" />
+				<sampleBrowser:ListItemInfo Title="Updated all assemblies to be code-signed" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -833,9 +851,9 @@
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Ring Slice" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/RingSliceIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/ShadowChromeIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Shapes" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/ShapesIntro/MainControl" />
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="ToggleSwitch" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/ToggleSwitchIntro/MainControl" />
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="User Prompt" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/UserPromptIntro/MainControl" />
-			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="User Prompt (Overlay)" Path="/ProductSamples/SharedSamples/QuickStart/UserPromptOverlayIntro/OverviewDocument" />
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="ToggleSwitch" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/ToggleSwitchIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="User Prompt" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/UserPromptIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="User Prompt (Overlay)" Path="/ProductSamples/SharedSamples/QuickStart/UserPromptOverlayIntro/OverviewDocument" />
 
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Comparison" SideBarWidth="Narrow" Path="/ProductSamples/SharedSamples/QuickStart/TransitionComparison/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Transitions" Title="Transition Effects" Path="/ProductSamples/SharedSamples/QuickStart/TransitionEffects/MainControl"/>

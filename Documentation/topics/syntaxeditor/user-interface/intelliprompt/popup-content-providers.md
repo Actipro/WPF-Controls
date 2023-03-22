@@ -115,7 +115,7 @@ Creates a hyperlink over the enclosed text.  The `href` attribute indicates the 
 </td>
 <td>
 
-Renders an image.  The `src` specifies the image and the the `align` tag controls alignment.  See the special notes for this tag below.
+Renders an image.  The `src` specifies the image and the `align` tag controls alignment.  See the special notes for this tag below.
 
 </td>
 </tr>
@@ -162,10 +162,10 @@ The supported properties are:
 
 | Property | Description |
 |-----|-----|
-| `background-color` | The background color of the text.  This value can be specified using HTML format (e.g. `#RRGGBB`) or by referencing standard web colors by name (e.g. `Red`). |
-| `color` | The foreground color of the text.  This value can be specified using HTML format (e.g. `#RRGGBB`) or by referencing standard web colors by name (e.g. `Red`). |
-| `font-family` | The font family of the text.  This can be any valid font family name (e.g. `Tahoma`), even in quotes (e.g. `"Courier New"`).  It can also be one of the generic family names (`Monospace`, `Serif`, or `Sans-Serif`). |
-| `font-size` | The font size of the text.  This is currently always specified in points (e.g. `10pt`). |
+| `background-color` | The background color of the text.  This value can be specified using HTML format (e.g., `#RRGGBB`) or by referencing standard web colors by name (e.g., `Red`). |
+| `color` | The foreground color of the text.  This value can be specified using HTML format (e.g., `#RRGGBB`) or by referencing standard web colors by name (e.g., `Red`). |
+| `font-family` | The font family of the text.  This can be any valid font family name (e.g., `Tahoma`), even in quotes (e.g., `"Courier New"`).  It can also be one of the generic family names (`Monospace`, `Serif`, or `Sans-Serif`). |
+| `font-size` | The font size of the text.  This is currently always specified in points (e.g., `10pt`). |
 | `font-weight` | The font weight, or boldness, of the text.  These values map to a normal font: `normal`, `lighter`, `100`, `200`, `300`, `400`, `500`.  These values map to a bold font: `bold`, `bolder`, `600`, `700`, `800`, `900`. |
 | `font-style` | The font style of the text.  The values `italic` and `oblique` map to an italic font.  The value `normal` map to a normal font. |
 | `text-decoration` | The decoration for the text.  The value `none` uses no decoration.  The value `underline` draws a line under the text.  The value `line-through` draws a line through the middle of the text (strike-through). |

@@ -59,13 +59,15 @@ PropertyGrid can also optionally harness our advanced data editing controls foun
 
 TreeListBox is a single-column tree control similar to the Visual Studio Solution Explorer tree control.  TreeListView is a multi-column variant of TreeListBox that renders similar to a standard ListView but has additional features.
 
-### Ribbon
+### Bars
 
-![Screenshot](images/card-ribbon.png)
+![Screenshot](images/card-bars.png)
 
-[Actipro Ribbon](ribbon/index.md) is a control suite that implements an Office-like user interface for WPF and meets 100% of the required AND optional Microsoft licensing requirements for implementation of a ribbon user interface.
+[Actipro Bars](bars/index.md) comes packed with an enormous set of controls intended for use within ribbons, toolbars, and menus: everything from popup and split buttons to comboboxes and galleries.
 
-Features include unrivaled ribbon resizing capabilities, backstage / application menu, QAT, many built-in control types, multiple layout options, key tips, screen tips, usage of the WPF command model, mini-toolbar, contextual tabs, fluent animations, and much more.
+The Ribbon control implements an Office-like user interface, complete with dynamic variant sizing, modern themes, fluent animations, and extensive customization capabilities.  A StandaloneToolBar control with built-in overflow support can be used as a window's main toolbar, or within a tool window.
+
+The Bars product has been built from the ground up to support MVVM creation of the entire user interface if desired.  An open source companion MVVM library is available that provides a full set of view models and related UI bindings to easily configure and manage your ribbons, toolbars, and menus.
 
 ### Shell
 
@@ -168,6 +170,12 @@ All of these features are built right into the Actipro Shared Library, which mea
 The [Actipro Shared Library](shared/index.md) is a common control library referenced by all of our WPF controls.  It contains a number of very useful controls and components that can be used in your projects.
 
 The Shared Library components are free for use by any licensed customers of our WPF control products.
+
+### Ribbon
+
+![Screenshot](images/card-ribbon.png)
+
+[Actipro Ribbon](ribbon/index.md) is the original product that implemented an Office-like ribbon user interface.  It will be replaced in the future by the newer ribbon in the [Actipro Bars](bars/index.md) product, so it is recommended to develop new ribbon UI using the Bars ribbon instead.
 
 ## The WPF Studio Bundle
 

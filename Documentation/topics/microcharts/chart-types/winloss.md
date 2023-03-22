@@ -11,7 +11,7 @@ A win/loss chart is a special kind of bar chart where any positive value renders
 
 ## Baseline Value
 
-The win/loss series uses the chart's baseline value, as specified by the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart).[AxisBaselineValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.AxisBaselineValue) property, to determine which values are positive (i.e. above the baseline) and negative (i.e. below the baseline).  The default baseline for numeric values is `0`, and for date/time values it is `DateTime.MinValue`.
+The win/loss series uses the chart's baseline value, as specified by the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart).[AxisBaselineValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.AxisBaselineValue) property, to determine which values are positive (i.e., above the baseline) and negative (i.e., below the baseline).  The default baseline for numeric values is `0`, and for date/time values it is `DateTime.MinValue`.
 
 In the following example, the data rendered by the chart uses the index postion along the X-axis and the fixed values `10, 25, 10, 20, 5, 20, 10` for the Y-axis.  The first image shows the series using `5` as the minimum value along the Y-axis, and `25` for the maximum.  Since our baseline is `0` (the default) all the values are considered positive.
 

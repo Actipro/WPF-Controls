@@ -1,7 +1,7 @@
 ---
 title: "Deployment"
 page-title: "Deployment"
-order: 23
+order: 25
 ---
 # Deployment
 
@@ -51,6 +51,20 @@ This table shows the product assemblies that may be redistributed based on indiv
 
 - `ActiproSoftware.BarCode.Wpf.dll` (via `ActiproSoftware.Controls.WPF.BarCode` NuGet package)
 - `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+
+</td>
+</tr>
+
+<tr>
+<td>Bars</td>
+<td>
+
+- `ActiproSoftware.Bars.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Bars` NuGet package)
+- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+
+Optional companion to the Bars product that supports easy MVVM integration is also licensed:
+
+- `ActiproSoftware.Bars.Mvvm.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Bars.Mvvm` NuGet package)
 
 </td>
 </tr>
@@ -258,6 +272,7 @@ This table shows the two bundles that allow groups of Actipro control products t
 Available via the `ActiproSoftware.Controls.WPF` NuGet metapackage, and includes these products:
 
 - Bar Code
+- Bars
 - Charts
 - Docking/MDI
 - Editors
@@ -281,6 +296,7 @@ Available via the `ActiproSoftware.Controls.WPF` NuGet metapackage, and includes
 
 Includes these products:
 
+- Bars
 - Docking/MDI
 - Editors
 - Navigation
@@ -401,9 +417,7 @@ When the @@PlatformName Controls installer is run on a machine, .NET Framework r
 
 `[Drive]:\Program Files (x86)\Actipro Software\WPF-Controls\[Version]\Assemblies\`
 
-If you require code-signed versions of the assemblies, they are located in a "CodeSigned" child folder, if optionally installed.
-
-Note that .NET Core assemblies are not included in the @@PlatformName Controls installer.  The .NET Core assemblies are available in the [NuGet packages](nuget.md).  The .NET Framework assemblies are contained in the [NuGet packages](nuget.md) as well.
+Note that .NET and .NET Core assemblies are not included in the @@PlatformName Controls installer.  The .NET and .NET Core assemblies are available in the [NuGet packages](nuget.md).  The .NET Framework assemblies are contained in the [NuGet packages](nuget.md) as well.
 
 ## Other Deployment Notes
 

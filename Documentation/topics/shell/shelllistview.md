@@ -11,7 +11,7 @@ The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control sh
 
 ## Getting Started
 
-First, add references to the "ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the `ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 This sample code shows how a [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control pointing to a default root shell folder can be added to any XAML:
 

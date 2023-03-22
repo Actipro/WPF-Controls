@@ -47,7 +47,7 @@ The area series can render an actual line along the top of the area to distingui
 
 ![Screenshot](../images/chart-types-area7.png)
 
-*An area series with LineVisibility set to All.*
+*An area series with LineVisibility set to All*
 
 See the [Line](line.md) topic for more information on the options available.
 
@@ -57,6 +57,6 @@ The area series can render a markers at each data point to highlight the actual 
 
 ![Screenshot](../images/chart-types-area8.png)
 
-*An area series with MarkerVisibility set to All.*
+*An area series with MarkerVisibility set to All*
 
 See the [Scatter](scatter.md) topic for more information on the options available.

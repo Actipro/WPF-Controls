@@ -23,8 +23,8 @@
 			
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					By default the Application Button in Ribbon will display with the text "File" as its content. This is a string resource
-					and can be customized by altering the SRName.UIApplicationButtonText string resource before the Ribbon is created.
+					By default the Application Button in Ribbon will display with the text "File" as its content, which is a string resource
+					that can be customized at app startup.
 					Alternatively, the RibbonApplicationButton.Label property can be set at run-time to change it. The top Ribbon in this
 					sample has Application Button Label and KeyTipText bound to the Sample Options above.
 					<LineBreak /><LineBreak />
@@ -47,7 +47,7 @@
 					<bars:RibbonContainerPanel Height="250">
 					
 						<!-- Ribbon Control with text Application Button content-->
-						<bars:Ribbon x:Name="topRibbon" QuickAccessToolBarMode="None">
+						<bars:Ribbon x:Name="topRibbon" QuickAccessToolBarMode="None" IsCollapsible="False">
 
 							<!-- Configure Default RibbonApplicationButton -->
 							<bars:Ribbon.ApplicationButtonContent>
@@ -87,7 +87,7 @@
 					<bars:RibbonContainerPanel Height="250">
 
 						<!-- Ribbon Control with custom icon for Application Button content -->
-						<bars:Ribbon x:Name="bottomRibbon" QuickAccessToolBarMode="None"
+						<bars:Ribbon x:Name="bottomRibbon" QuickAccessToolBarMode="None" IsCollapsible="False"
 									 IsApplicationButtonVisible="{Binding ElementName=topRibbon, Path=IsApplicationButtonVisible}">
 
 							<!-- Configure RibbonApplicationButton with Image Content -->

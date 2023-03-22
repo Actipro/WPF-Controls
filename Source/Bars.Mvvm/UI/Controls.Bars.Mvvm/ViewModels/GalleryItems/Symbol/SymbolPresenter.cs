@@ -29,11 +29,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			var fontSize = TextElement.GetFontSize(this);
 			var foreground = TextElement.GetForeground(this);
 
-			var formattedText = new FormattedText(text, CultureInfo.CurrentCulture, this.FlowDirection, typeface, fontSize, foreground, null, TextOptions.GetTextFormattingMode(this)
-				#if NETCOREAPP
-				, VisualTreeHelper.GetDpi(this).PixelsPerDip
-				#endif
-				);
+			var formattedText = new FormattedText(text, CultureInfo.CurrentCulture, this.FlowDirection, typeface, fontSize, foreground, null, TextOptions.GetTextFormattingMode(this), VisualTreeHelper.GetDpi(this).PixelsPerDip);
 
 			return formattedText;
 		}

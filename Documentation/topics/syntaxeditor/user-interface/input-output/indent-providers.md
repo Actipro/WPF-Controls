@@ -37,7 +37,7 @@ If the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) is an [ICodeDocu
 
 Indent providers are free to use any custom logic in the [GetIndentAmount](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider.GetIndentAmount*) implementation to perform the indentation.  They typically will create an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) (see the [Scanning Text Using a Reader](../../text-parsing/core-text/scanning-text.md) topic), will scan backwards from the indicated offset and will determine how the passed-in "block" indent amount value should be altered, if at all.
 
-For instance, in C#, if while scanning backwards the first non-whitespace character encountered is a `{`, then the the indent amount returned should be the "block" indent amount plus an additional tab stop (usually calculated by adding the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[TabSize](xref:ActiproSoftware.Text.ITextDocument.TabSize) value).
+For instance, in C#, if while scanning backwards the first non-whitespace character encountered is a `{`, then the indent amount returned should be the "block" indent amount plus an additional tab stop (usually calculated by adding the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[TabSize](xref:ActiproSoftware.Text.ITextDocument.TabSize) value).
 
 ## Registering with a Language
 

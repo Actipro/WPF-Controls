@@ -33,7 +33,7 @@ When information about a merged property is requested, the [MergedPropertyModel]
 
 Because only a single value can be displayed in the property for single property, the values of multiple properties must be compared.  If all the values are equal, then that single value is used.  In all other instances, `null` is used.  The get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Value](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Value) property performs this comparison.
 
-It is possible to get the unique values of all the selected objects using the The get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Values](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Values) property.  A custom property editor could then be developed that presented each unique value, if so desired.
+It is possible to get the unique values of all the selected objects using the get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Values](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Values) property.  A custom property editor could then be developed that presented each unique value, if so desired.
 
 ## Updating Values
 

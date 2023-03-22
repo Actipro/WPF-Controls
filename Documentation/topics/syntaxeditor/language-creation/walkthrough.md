@@ -183,7 +183,7 @@ This feature requires that an [ILineCommenter](feature-services/line-commenter.m
 <td>Text statistics</td>
 <td>
 
-[Text statistics](../text-parsing/advanced-text/statistics.md) can be quickly constructed for any language.  The statistics can include everything from word counts to readability scores.  Custom statistics can be be built for each language.
+[Text statistics](../text-parsing/advanced-text/statistics.md) can be quickly constructed for any language.  The statistics can include everything from word counts to readability scores.  Custom statistics can be built for each language.
 
 This feature requires that an [ITextStatisticsFactory](feature-services/text-statistics.md) service be registered with the language.
 

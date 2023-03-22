@@ -11,7 +11,7 @@
 
 	<bars:RibbonContainerPanel>
 
-		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None">
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" IsCollapsible="False">
 
 			<bars:Ribbon.ContextualTabGroups>
 				<x:Array Type="bars:RibbonContextualTabGroup">

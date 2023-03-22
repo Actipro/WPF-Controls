@@ -28,7 +28,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.RecentDocuments 
 
 			// Configure command bindings
 			this.CommandBindings.Add(new CommandBinding(ApplicationCommands.Open, OnOpenExecute));
-			recentDocumentControl.CommandBindings.Add(new CommandBinding(ApplicationCommands.Open, OnOpenExecute));
 
 			// Bind the view to itself since we do not define an explicit view model
 			this.DataContext = this;
@@ -89,12 +88,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.RecentDocuments 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the introduction text displayed in the sample.
-		/// </summary>
-		/// <value>A string value.</value>
-		public string IntroductionText => "This sample simulates how you might manage recent documents in your own application.\r\n\r\nNo files are actually opened, but references to the files are tracked and displayed in a Recent Files list available from the Backstage.";
 
 		/// <summary>
 		/// Gets the manager class for maintaining a list of recent document references.

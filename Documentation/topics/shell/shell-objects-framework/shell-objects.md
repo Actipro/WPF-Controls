@@ -59,9 +59,9 @@ Shell objects provide several size variations of icons and optional related over
 
 - [SmallIcon](xref:ActiproSoftware.Shell.IShellObject.SmallIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[SmallIconOverlay](xref:ActiproSoftware.Shell.IShellObject.SmallIconOverlay) - The small icon, which is generally 16x16 size.
 
-- [MediumIcon](xref:ActiproSoftware.Shell.IShellObject.MediumIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[MediumIconOverlay](xref:ActiproSoftware.Shell.IShellObject.MediumIconOverlay) - The medium icon, which is generally 48x48 size.
+- [MediumIcon](xref:ActiproSoftware.Shell.IShellObject.MediumIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[MediumIconOverlay](xref:ActiproSoftware.Shell.IShellObject.MediumIconOverlay) - The medium icon, which is generally 32x32 size.
 
-- [LargeIcon](xref:ActiproSoftware.Shell.IShellObject.LargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[LargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.LargeIconOverlay) - The large icon, which is generally 96x96 size.
+- [LargeIcon](xref:ActiproSoftware.Shell.IShellObject.LargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[LargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.LargeIconOverlay) - The large icon, which is generally 48x48 size.
 
 - [ExtraLargeIcon](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[ExtraLargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIconOverlay) - The extra large icon, which is generally 256x256 size.
 
@@ -71,9 +71,9 @@ The overlay icon can be used to indicate a "state" that overlays the normal icon
 
 Shell objects provide several size variations of thumbnail images, each of which may be used in various UI scenarios.
 
-- [MediumThumbnail](xref:ActiproSoftware.Shell.IShellObject.MediumThumbnail) - The medium thumbnail image, which is generally 48x48 size.
+- [MediumThumbnail](xref:ActiproSoftware.Shell.IShellObject.MediumThumbnail) - The medium thumbnail image, which is generally 32x32 size.
 
-- [LargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.LargeThumbnail) - The large thumbnail image, which is generally 96x96 size.
+- [LargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.LargeThumbnail) - The large thumbnail image, which is generally 48x48 size.
 
 - [ExtraLargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeThumbnail) - The extra large thumbnail image, which is generally 256x256 size.
 
@@ -85,7 +85,7 @@ Each shell object can return a tool tip to display when the mouse hovers over a 
 
 ## Children
 
-The [Children](xref:ActiproSoftware.Shell.IShellObject.Children) collection returns the children of the shell object.  This collection is lazy-loaded on first call, using the [shell service](shell-services.md) that was passed into the the shell object.
+The [Children](xref:ActiproSoftware.Shell.IShellObject.Children) collection returns the children of the shell object.  This collection is lazy-loaded on first call, using the [shell service](shell-services.md) that was passed into the shell object.
 
 If you wish to know if the [Children](xref:ActiproSoftware.Shell.IShellObject.Children) collection has been loaded already without already triggering a load, use the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[AreChildrenLoaded](xref:ActiproSoftware.Shell.IShellObject.AreChildrenLoaded) property.
 

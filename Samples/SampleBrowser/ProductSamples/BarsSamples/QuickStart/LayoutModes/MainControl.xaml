@@ -54,7 +54,7 @@
 									 DataContext="{Binding Ribbon}"
 									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
 
-						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
 							<shared:HintProperties.Hint>
 								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Classic Layout" />
 							</shared:HintProperties.Hint>
@@ -76,7 +76,7 @@
 									 DataContext="{Binding Ribbon}"
 									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
 
-						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
 							<shared:HintProperties.Hint>
 								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Simplified Layout" />
 							</shared:HintProperties.Hint>

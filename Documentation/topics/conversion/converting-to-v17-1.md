@@ -8,7 +8,7 @@ order: 91
 The 17.1 version has new lightweight implementations of the Editors and PropertyGrid controls created that are much more performant, use less memory, and still provide a wide array of features.  These infrastructure changes did require some breaking changes and some API cleanup was performed at the same time.  All of the breaking changes are detailed in the linked topics below.
 
 > [!NOTE]
-> Please read through the [Licensing](../licensing.md) topic's section on "licenses.licx" files.  In the 17.1 version we improved the "licenses.licx" file licensing mechanism to only use a single entry that covers all Actipro products you've licensed.  Now a single new entry is used, and all older Actipro entries should be removed.
+> Please read through the [Licensing](../licensing.md) topic's section on `licenses.licx` files.  In the 17.1 version we improved the `licenses.licx` file licensing mechanism to only use a single entry that covers all Actipro products you've licensed.  Now a single new entry is used, and all older Actipro entries should be removed.
 
 ## Massive Updates to Editors
 
@@ -45,7 +45,7 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - `DropDownClosed` and `DropDownOpened` events removed.
 
-- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e. [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) for [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
+- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e., [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) for [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
 
 - `Focus` (overload) and `SelectFirstGroup` methods removed.  Use the normal Focus method instead.
 
@@ -83,19 +83,19 @@ In addition to the above, some number-oriented edit boxs have had these property
 
 ### PropertyGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new `ActiproSoftware.Editors.Interop.Grids.Wpf.dll` assembly provides integration of edit boxes with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old `ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll` assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
 The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
 ### DataGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll" assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
+The new `ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll` assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
 
 The [Editors and DataGrid Interoperability](../editors/interoperability/datagrid.md) topic covers the column classes that are available, including additional ones like [DataGridDateColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDateColumn), to integrate edit boxes with DataGrid.
 
 ### Ribbon Integration Updates
 
-The old "ActiproSoftware.Editors.Interop.Ribbon.Wpf.dll" assembly, which provided Ribbon control-like appearance for edit boxes via a `RibbonEditorsStyleBehavior` class is no longer used in the new version.  Instead the new edit box templates include a built-in special mode that can be activated for toolbar/Ribbon contextual usage.
+The old `ActiproSoftware.Editors.Interop.Ribbon.Wpf.dll` assembly, which provided Ribbon control-like appearance for edit boxes via a `RibbonEditorsStyleBehavior` class is no longer used in the new version.  Instead the new edit box templates include a built-in special mode that can be activated for toolbar/Ribbon contextual usage.
 
 The [Editors and Ribbon Interoperability](../editors/interoperability/ribbon.md) topic covers the properties that should be set on edit boxes to achieve a Ribbon control-like appearance, and to also optionally support labels.
 
@@ -379,7 +379,7 @@ See the [Property Editors](../grids/propertygrid-features/property-editors.md) t
 
 ### Integration with Editors Updated
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new `ActiproSoftware.Editors.Interop.Grids.Wpf.dll` assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old `ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll` assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
 The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
@@ -413,7 +413,7 @@ The way data models at each level are sorted has changed.  The `AreDefaultSortDe
 
 ### Filtering Changes
 
-The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:@ActiproUIRoot.Data.Filtering) namespace.  The property grid-specific filters (e.g. [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
+The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:@ActiproUIRoot.Data.Filtering) namespace.  The property grid-specific filters (e.g., [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
 
 ### Summary Area Changes
 

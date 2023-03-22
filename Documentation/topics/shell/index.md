@@ -22,7 +22,7 @@ All of the UI found in the Shell controls is native WPF, even the context menus.
 - Uses the Actipro shell objects framework with built-in mechanisms to mimic what you see in Windows Explorer, including all non-file system objects.
 - Set a root folder multiple ways (including path) and optionally show the root folder node.
 - Optional default root folder that mimics Windows Explorer's root with Quick Access, This PC, etc.
-- Specify a special root folder (i.e. This PC, Desktop) via an easy-to-use enumeration.
+- Specify a special root folder (i.e., This PC, Desktop) via an easy-to-use enumeration.
 - Optionally display files and links.
 - Icons, overlay icons, name, and tooltip are data-driven from shell objects and can be customized.
 - Filter out shell objects provided by the shell service, or even add custom ones.

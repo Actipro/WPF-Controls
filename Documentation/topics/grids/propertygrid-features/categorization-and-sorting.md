@@ -37,7 +37,7 @@ The items presented by the property grid can be sorted using any custom logic.  
 
 - [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[SortOrder](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.SortOrder)
 
-- Numeric [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[DisplayName](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.DisplayName) index (i.e. `[0]`, `[1]`, etc.) if applicable
+- Numeric [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[DisplayName](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.DisplayName) index (i.e., `[0]`, `[1]`, etc.) if applicable
 
 - [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[DisplayName](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.DisplayName)
 

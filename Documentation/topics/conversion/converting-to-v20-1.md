@@ -183,7 +183,7 @@ The `Backstage` close button's appearance has been modernized.
 
 ### Buttons
 
-All buttons (`Button`, `PopupButton`, `SplitButton`, etc.) have had their appearances in various contexts modernized.  This includes updating buttons in menu item contexts to seamlessly match the appearance of Actipro's improved native WPF menu item appearances.  Buttons displayed as tab panel items (i.e. next to the Ribbon tabs) have a new appearance to match Office.
+All buttons (`Button`, `PopupButton`, `SplitButton`, etc.) have had their appearances in various contexts modernized.  This includes updating buttons in menu item contexts to seamlessly match the appearance of Actipro's improved native WPF menu item appearances.  Buttons displayed as tab panel items (i.e., next to the Ribbon tabs) have a new appearance to match Office.
 
 ### Contextual Tab Group
 

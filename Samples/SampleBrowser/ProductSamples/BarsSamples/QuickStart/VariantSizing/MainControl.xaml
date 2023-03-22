@@ -45,7 +45,7 @@
 						the largest size possible for the available width. As the Ribbon size changes, controls dynamically adapt to the
 						available space and eventually collapse to a popup menu when space is too limited.
 						<LineBreak /><LineBreak />
-						Stacking behavior allows you to control which variant sizes are supported by a group.
+						Variant behavior allows you to control which variant sizes are supported by a group.
 						Multi-row layouts offer the most dense presentation of controls in either two- or three-row configurations.
 						<LineBreak /><LineBreak />
 						If you want more control over layouts, you can explicitly define the order in which groups collapse. Multiple
@@ -66,7 +66,8 @@
 					<bars:RibbonContainerPanel Height="175">
 						
 						<!-- Ribbon Control with Simplified layout -->
-						<bars:Ribbon x:Name="ribbonSimplified" LayoutMode="Simplified" UserInterfaceDensity="Normal" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" CanChangeLayoutMode="False">
+						<bars:Ribbon x:Name="ribbonSimplified" LayoutMode="Simplified" UserInterfaceDensity="Normal" IsApplicationButtonVisible="False" 
+									 QuickAccessToolBarMode="None" CanChangeLayoutMode="False" IsCollapsible="False">
 
 							<bars:RibbonTabItem x:Name="SimplifiedOverflowTab" Label="Overflow">
 								<bars:RibbonGroup Key="Undo">
@@ -78,7 +79,7 @@
 									<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
 									<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Label="Clipboard" ChildOverflowTarget="Group">
+								<bars:RibbonGroup Key="Clipboard" ChildOverflowTarget="Group">
 									<bars:RibbonControlGroup>
 										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
 										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
@@ -223,11 +224,12 @@
 					<bars:RibbonContainerPanel Height="250">
 
 						<!-- Ribbon Control with Classic layout -->
-						<bars:Ribbon x:Name="ribbonClassic" LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" CanChangeLayoutMode="False">
+						<bars:Ribbon x:Name="ribbonClassic" LayoutMode="Classic" IsApplicationButtonVisible="False" 
+									 QuickAccessToolBarMode="None" CanChangeLayoutMode="False" IsCollapsible="False">
 							
-							<!-- Stacking Behavior -->
-							<bars:RibbonTabItem x:Name="ClassicStackingTab" Label="Stacking Behavior">
-								<bars:RibbonGroup x:Name="ClassicStackingDefaultGroup" Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png">
+							<!-- Variant Behavior -->
+							<bars:RibbonTabItem x:Name="ClassicVariantTab" Label="Variant Behavior">
+								<bars:RibbonGroup x:Name="ClassicVariantDefaultGroup" Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="Default">
 										<bars:BarButton Key="One" KeyTipText="D" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="D" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
@@ -236,40 +238,40 @@
 										<bars:BarButton Key="Five" KeyTipText="D" LargeImageSource="/Images/Icons/PageBreak32.png" SmallImageSource="/Images/Icons/PageBreak16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingAlwaysLargeGroup" Label="Always Large" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantAlwaysLargeGroup" Label="Always Large" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysLarge">
 										<bars:BarButton Key="One" KeyTipText="L" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingAlwaysMediumGroup" Label="Always Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantAlwaysMediumGroup" Label="Always Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 										<bars:BarButton Key="One" KeyTipText="M" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="M" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
 										<bars:BarButton Key="Three" KeyTipText="M" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingAlwaysSmallGroup" Label="Always Small" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantAlwaysSmallGroup" Label="Always Small" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="AlwaysSmall">
 										<bars:BarButton Key="One" KeyTipText="S" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="S" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
 										<bars:BarButton Key="Three" KeyTipText="S" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingNeverLargeGroup" Label="Never Large" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantNeverLargeGroup" Label="Never Large" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="NeverLarge">
 										<bars:BarButton Key="One" KeyTipText="G" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="G" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
 										<bars:BarButton Key="Three" KeyTipText="G" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingNeverMediumGroup" Label="Never Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantNeverMediumGroup" Label="Never Medium" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="NeverMedium">
 										<bars:BarButton Key="One" KeyTipText="U" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="U" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
 										<bars:BarButton Key="Three" KeyTipText="U" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup x:Name="ClassicStackingNeverSmallGroup" Label="Never Small" SmallImageSource="/Images/Icons/QuickStart16.png">
+								<bars:RibbonGroup x:Name="ClassicVariantNeverSmallGroup" Label="Never Small" SmallImageSource="/Images/Icons/QuickStart16.png">
 									<bars:RibbonControlGroup ItemVariantBehavior="NeverSmall">
 										<bars:BarButton Key="One" KeyTipText="A" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="A" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
@@ -352,7 +354,7 @@
 										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Key="None" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
+								<bars:RibbonGroup Key="Never" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
 									<bars:RibbonControlGroup SeparatorMode="Never">
 										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
 										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
@@ -463,22 +465,22 @@
 							<bars:Ribbon.FooterContent>
 								<StackPanel>
 									
-									<!-- Stacking Footer Message -->
-									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicStackingTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+									<!-- Variant Footer Message -->
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicVariantTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
 										<Run Text="Current group variant sizes: " />
-										<Run Text="{Binding ElementName=ClassicStackingDefaultGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantDefaultGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingAlwaysLargeGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantAlwaysLargeGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingAlwaysMediumGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantAlwaysMediumGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingAlwaysSmallGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantAlwaysSmallGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingNeverLargeGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantNeverLargeGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingNeverMediumGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantNeverMediumGroup, Path=VariantSize}" FontWeight="Bold" />
 										<Run Text=">" />
-										<Run Text="{Binding ElementName=ClassicStackingNeverSmallGroup, Path=VariantSize}" FontWeight="Bold" />
+										<Run Text="{Binding ElementName=ClassicVariantNeverSmallGroup, Path=VariantSize}" FontWeight="Bold" />
 									</TextBlock>
 									
 									<!-- Multi-Row Footer Message -->

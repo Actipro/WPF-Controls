@@ -187,7 +187,7 @@ The [AdornmentManagerProvider<T>](xref:@ActiproUIRoot.Controls.SyntaxEditor.Ador
 
 A constructor overload accepts a "singleton" object key that can be used to persist any created adornment manager into the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) dictionary using the key.  In this case, if the view's document or the document's language changes, the adornment manager is automatically closed and removed from the properties dictionary.  The adornment manager associated with the view can be retrieved via the properties dictionary while it is open.
 
-If no "singleton" object is is passed to the adornment manager provider, a new adornment manager class instance will be created each time the provider used.
+If no "singleton" object is passed to the adornment manager provider, a new adornment manager class instance will be created each time the provider used.
 
 ## Registering with a Syntax Language
 

@@ -32,7 +32,7 @@
 	<bars:RibbonContainerPanel>
 
 		<!-- Ribbon Control -->
-		<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Spacious" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
+		<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Spacious" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
 				<bars:RibbonGroup Key="PopupMenuSamples" CanAutoCollapse="False">
 					<bars:BarPopupButton Key="TechnicalDemos" MaxSimplifiedVariantSize="Medium" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png" ToolTip="A collection of technical demonstrations to illustrate the features and capabilities of menus.">

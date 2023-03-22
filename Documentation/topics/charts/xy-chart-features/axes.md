@@ -73,7 +73,7 @@ In the example above, and by default, values on the secondary axis (in this case
 
 ### Grouping
 
-By default, items will be grouped by object equality. To change how groups are determined, you can specify [XYGroupedAxis](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis).[GroupingFunc](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis.GroupingFunc).  This is a `Func<object,object,bool>` that takes two objects to compare and returns a `bool`.  Return `True` if they should be grouped together, elsewise, return `False`.
+By default, items will be grouped by object equality. To change how groups are determined, you can specify [XYGroupedAxis](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis).[GroupingFunc](xref:@ActiproUIRoot.Controls.Charts.XYGroupedAxis.GroupingFunc).  This is a `Func<object,object,bool>` that takes two objects to compare and returns a `bool`.  Return `true` if they should be grouped together, elsewise, return `false`.
 
 This example shows a custom grouping function that groups by the first letter in each string.
 

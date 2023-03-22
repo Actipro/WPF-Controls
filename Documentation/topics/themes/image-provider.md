@@ -60,7 +60,7 @@ To sum up, if you want all the [DynamicImage](../shared/windows-controls/dynamic
 
 Chromatic adaptation is the process of converting colors in an image so that they render well on a specific background color.  This is especially useful when your application has images designed for a light theme, and you wish for your application to support a dark theme.  Image provider can automatically convert them for you so that you don't have to design dark theme variations.
 
-The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support adaptation of all images when in a dark theme (i.e. `Dark`, `Black`, etc.).  The source images should be designed for a light theme and use a minimal number of colors (i.e. avoid gradients).
+The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support adaptation of all images when in a dark theme (i.e., `Dark`, `Black`, etc.).  The source images should be designed for a light theme and use a minimal number of colors (i.e., avoid gradients).
 
 ```csharp
 ImageProvider.Default.ChromaticAdaptationMode = ImageChromaticAdaptationMode.DarkThemes;
@@ -74,7 +74,7 @@ ImageProvider.Default.ChromaticAdaptationMode = ImageChromaticAdaptationMode.Dar
 
 Chromatic adaptation can also be applied in all themes.
 
-The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support adaptation of all images, regardless of theme.  The source images should be designed for a light theme and use a minimal number of colors (i.e. avoid gradients).
+The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support adaptation of all images, regardless of theme.  The source images should be designed for a light theme and use a minimal number of colors (i.e., avoid gradients).
 
 ```csharp
 ImageProvider.Default.ChromaticAdaptationMode = ImageChromaticAdaptationMode.Always;

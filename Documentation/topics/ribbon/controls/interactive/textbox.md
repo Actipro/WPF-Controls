@@ -85,7 +85,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:TextBox Width="100" ImageSourceSmall="/Images/Find16.png" Label="Find" KeyTipAccessText="F" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:TextBox Width="100" Command="ApplicationCommands.Find" KeyTipAccessText="F" />

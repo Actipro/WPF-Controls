@@ -132,7 +132,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:SplitButton Label="Bullets" ImageSourceSmall="/Images/Bullets16.png" KeyTipAccessText="U" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:SplitButton Command="ApplicationCommands.Paste" KeyTipAccessText="P" />

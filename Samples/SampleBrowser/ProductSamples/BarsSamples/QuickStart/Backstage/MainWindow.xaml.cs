@@ -3,6 +3,7 @@ using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Input;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -20,6 +21,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		private bool		isBackstageOpen				= true;
 		private bool		isFirstBackstage			= true;
 		private string		sampleButton3Label			= "Sample Button 3";
+		private bool		selectOptionsTabOnOpen	= false;
 		private bool		useSampleButtonImages		= false;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,6 +51,27 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		/// <param name="propertyName">The name of the changed property.</param>
 		private void NotifyPropertyChanged(string propertyName) {
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		/// <summary>
+		/// Called when the <see cref="RibbonBackstage.IsOpen"/> property value is changed.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">The event args.</param>
+		private void OnBackstageIsOpenChanged(object sender, RoutedEventArgs e) {
+			// Optionally pre-select the 'Options' tab when opening the backstage
+			if (sender is RibbonBackstage backstage
+				&& backstage.IsOpen
+				&& this.SelectOptionsTabOnOpen) {
+
+				// Find the desired tab to select
+				var optionsTab = backstage.Items.OfType<RibbonBackstageTabItem>()
+					.FirstOrDefault(tabItem => tabItem.Key == "Options");
+
+				// Configure the backstage selection
+				if (optionsTab != null)
+					backstage.SelectedItem = optionsTab;
+			}
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,6 +204,20 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		/// </summary>
 		/// <value>An <see cref="ImageSource"/> or <c>null</c> if no image should be displayed.</value>
 		public ImageSource SampleButtonImageSource => UseSampleButtonImages ? new BitmapImage(new Uri("/Images/Icons/QuickStart16.png", UriKind.Relative)) : null;
+
+		/// <summary>
+		/// Gets or sets if the "Options" tab should be selected when opening the backstage.
+		/// </summary>
+		/// <value><c>true</c> to select the "Options" tab when the backstage is opened; otherwise, <c>false</c> to use the default selection.</value>
+		public bool SelectOptionsTabOnOpen {
+			get => selectOptionsTabOnOpen;
+			set {
+				if (selectOptionsTabOnOpen != value) {
+					selectOptionsTabOnOpen = value;
+					NotifyPropertyChanged(nameof(SelectOptionsTabOnOpen));
+				}
+			}
+		}
 
 		/// <summary>
 		/// Gets or sets if images should be displayed on the sample buttons.

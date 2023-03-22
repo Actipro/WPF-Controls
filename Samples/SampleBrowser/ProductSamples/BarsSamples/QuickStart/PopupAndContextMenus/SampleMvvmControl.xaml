@@ -20,7 +20,7 @@
 	<bars:RibbonContainerPanel>
 		
 		<!-- MVVM-Based Ribbon Control -->
-		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" IsCollapsible="False" />
 
 		<!-- TextBox with ContextMenu -->
 		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True" TextWrapping="Wrap" Text="Right-click on this TextBox to show a custom ContextMenu based on an MVVM-defined ribbon.">

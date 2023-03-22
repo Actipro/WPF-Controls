@@ -168,7 +168,7 @@ The [MultiplicationConverter](xref:@ActiproUIRoot.Data.MultiplicationConverter) 
 
 ## NoOpConverter Class
 
-The [NoOpConverter](xref:@ActiproUIRoot.Data.NoOpConverter) represents a value converter that does not alter the value in any way (e.g. no operation).
+The [NoOpConverter](xref:@ActiproUIRoot.Data.NoOpConverter) represents a value converter that does not alter the value in any way (e.g., no operation).
 
 This converter can be used to bypass an issue that arises from an optimization present in the WPF binding system.
 

@@ -126,7 +126,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:PopupButton ImageSourceLarge="/Images/Table32.png" Label="Table" KeyTipAccessText="T" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:PopupButton Command="ApplicationCommands.Paste" KeyTipAccessText="P" />

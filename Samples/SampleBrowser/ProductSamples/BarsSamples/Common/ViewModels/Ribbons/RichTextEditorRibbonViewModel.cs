@@ -475,6 +475,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 								Items = {
 									barManager.ControlViewModels[BarControlKeys.ShowApplicationButton],
 									barManager.ControlViewModels[BarControlKeys.ShowQuickAccessToolBar],
+									barManager.ControlViewModels[BarControlKeys.ShowFooter],
 								}
 							}
 						}

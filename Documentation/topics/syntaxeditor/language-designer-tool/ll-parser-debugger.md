@@ -87,7 +87,7 @@ Once the parser is loaded, you should see the main area of the debugger populate
 
 ![Screenshot](../images/language-designer-ll-parser-debugger-debug-controls.png)
 
-*The LL Parser Debugger controls.*
+*The LL Parser Debugger controls*
 
 If you would like to see the complete results of parsing the example text without stepping through, you can simply click the Start button. The Parse Errors tab will populate with any generated error messages. The Matches tool will populate with the AST result of the parsing operation.
 

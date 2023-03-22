@@ -1,3 +1,4 @@
+using ActiproSoftware.ProductSamples.SharedSamples.Common;
 using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
@@ -194,7 +195,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 			catch (Exception ex) {
 				// Exception during the deserialization process
 				Debug.WriteLine(ex);
-				MessageBox.Show("Error restoring layout.  " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+				UserPromptHelper.ShowException(ex, "Error restoring layout.");
 
 				// Indicate failure to restore
 				return false;
@@ -221,7 +222,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 			catch (Exception ex) {
 				// Exception during the serialization process
 				Debug.WriteLine(ex);
-				MessageBox.Show("Error saving layout.  " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+				UserPromptHelper.ShowException(ex, "Error saving layout.");
 
 				// Indicate failure
 				layout = null;

@@ -19,9 +19,9 @@ The [MonthCalendar](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar) control 
 
 ![Screenshot](../images/monthcalendar-year-view.png)![Screenshot](../images/monthcalendar-decade-view.png)![Screenshot](../images/monthcalendar-century-view.png)
 
-*The MonthCalendar control showing the year, decade, and century views, repsectively.*
+*The MonthCalendar control showing the year, decade, and century views, repsectively*
 
-The end-user can zoom out by clicking the title bar text (e.g. "August 2014" for the month view).  When an individual item is clicked, that item is zoomed in. So clicking on "August" in the year view, will zoom in to the month view for August.
+The end-user can zoom out by clicking the title bar text (e.g., "August 2014" for the month view).  When an individual item is clicked, that item is zoomed in. So clicking on "August" in the year view, will zoom in to the month view for August.
 
 > [!TIP]
 > To zoom out using the keyboard, press the '-' key while holding down the Control key.  Similarly, pressing the '+' key while hold down the Control key will zoom in.
@@ -30,7 +30,7 @@ By default, the user can zoom out all the way out to the century view.  This can
 
 ### Scrolling
 
-Using the arrows in the title bar, the current view can be scrolled left or right. For the month view, scrolling left will move to the previous month and scrolling right will move to the next month. The other views move to their respective previous and next views (e.g. year, decade, century).
+Using the arrows in the title bar, the current view can be scrolled left or right. For the month view, scrolling left will move to the previous month and scrolling right will move to the next month. The other views move to their respective previous and next views (e.g., year, decade, century).
 
 > [!TIP]
 > To scroll left using the keyboard, press the PageDown key. Similarly, pressing the PageUp key will scroll right.
@@ -66,7 +66,7 @@ The calendar supports several selection modes, each with a unique behavior.  The
 | Mode | Description |
 |-----|-----|
 | `Single` | Specifies that only a single date can be selected. |
-| `Multiple` | Specifies that multiple dates can be selected, but must be done so explicitly (e.g. each item must be selected individually).  When clicking on an item it's selection state is toggled. |
+| `Multiple` | Specifies that multiple dates can be selected, but must be done so explicitly (e.g., each item must be selected individually).  When clicking on an item it's selection state is toggled. |
 | `Extended` | Specifies that multiple dates can be selected, by using the Control (to toggle a selected day) and Shift (to select a range) keys. |
 | `Range` | Specifies that multiple dates can be selected, by using the Shift (to select a range) key.  Works like the Extended mode, but the selected dates must be in a continguous range (not including disabled dates). |
 

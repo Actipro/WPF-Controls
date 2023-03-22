@@ -10,8 +10,38 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/1/2023 - Version 23.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/23/2023 - Version 23.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a public beta of our new Bars product, which implements advanced fluent ribbons, toolbars, menus, and related controls." />
+				<sampleBrowser:BulletContentControl Content="The Ribbon control has the latest Office appearance and includes the use of subtle animations throughout all controls." />
+				<sampleBrowser:BulletContentControl Content="Ribbon can instantly switch between Classic (taller) and Simplified (single-row) layout modes, allowing for configuration of the variant resizing behavior in both modes." />
+				<sampleBrowser:BulletContentControl Content="Complex galleries can appear in the Ribbon, as well as in any popup and context menu.  It's simple to create new galleries with rich visualizations for any need." />
+				<sampleBrowser:BulletContentControl Content="The StandaloneToolBar control can be used as an app's primary toolbar, or alternatively within tool windows.  It can host any control that can be used in Ribbon and overflows items to a popup as needed." />
+				<sampleBrowser:BulletContentControl Content="Three user interface density options can be chosen, letting your application select whether to better support a large number of controls, or focus more on touch-friendliness." />
+				<sampleBrowser:BulletContentControl Content="Controls inherit similar native WPF controls wherever possible." />
+				<sampleBrowser:BulletContentControl Content="UI accessbility peers are implemented for the entire control hierarchy." />
+				<sampleBrowser:BulletContentControl Content="The entire control hierarchy can be built using MVVM (preferred), or alternatively directly in XAML." />
+				<sampleBrowser:BulletContentControl Content="An optional MVVM library is available that makes it easy to configure the Bars controls with MVVM techniques." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the CanSnapToChangePrecision property to DoubleEditBox and SingleEditBox controls, which determines if the value should be snapped to the precision of the incremental change value prior to applying the increment." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the TreeListBox.CanSelectItemOnFocus property and updated TreeListBox/TreeListView to not select an item when it first gets focus by default, which matches ListBox behavior." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated shell service logic to better handle Microsoft's recent Windows 11 updates in root Desktop child folder results." />
+				<sampleBrowser:BulletContentControl Content="Refactored the pixel sizes of images returned from IShellObject to match Windows Explorer's use of the system image lists." />
+			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the caret blink timer's dispatcher priority to produce more consistent blink speeds." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with HighlightingStyleRegistry importing decimal font size values for style settings on systems where the current culture recognizes the decimal point character (.) as the thousands separator." />
+			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated the Docstring property of the reflection definition types to use a beautified version of the string instead of raw string literal text." />
@@ -20,6 +50,14 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the EmbeddedTextBox.CanSelectAllOnFocus property that if enabled, selects all text when the control receives focus." />
 				<sampleBrowser:BulletContentControl Content="Updated EmbeddedTextBox when read-only to disable the Paste command." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with UIColor parsing decimal alpha values from colors in rgba() format on systems where the current culture recognizes the decimal point character (.) as the thousands separator." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated .NET 5 targets to .NET 6 since .NET 5 is out of support. Users can continue to use .NET Core 3.1 targets for .NET 5 applications." />
+				<sampleBrowser:BulletContentControl Content="Updated .NET Framework 4.5.2 and 4.6.1 targets to .NET Framework 4.6.2 since it is the most recent supported version of .NET Framework." />
+				<sampleBrowser:BulletContentControl Content="Updated SyntaxEditor-related NuGet packages to properly support cross-platform .NET 6.0." />
+				<sampleBrowser:BulletContentControl Content="Updated all assemblies to be code-signed." />
 			</StackPanel>
 			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
 

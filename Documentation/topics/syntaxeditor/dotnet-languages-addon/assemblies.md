@@ -411,7 +411,7 @@ In scenarios like this, it might be useful to take advantage of the optional Ros
 
 ## Loading Binary Assemblies with Roslyn Extensions
 
-Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.1 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
+Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.2 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
 
 This code shows how to load a binary assembly with our Roslyn extensions and then add it as a reference to a project assembly:
 

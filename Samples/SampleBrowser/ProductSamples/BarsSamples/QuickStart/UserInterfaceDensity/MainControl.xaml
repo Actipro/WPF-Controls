@@ -25,8 +25,7 @@
 					Spacious is great for touch interactions (default for Simplified layout),
 					and Normal is a little in-between.
 					<LineBreak /><LineBreak />
-					Use the Sample Options above to change the User Interface Density of both. Users
-					can also use the Ribbon Options menu to change the density.
+					Use the Sample Options above to change the User Interface Density of both.
 					<LineBreak /><LineBreak />
 					Try changing the User Interface Density and watch as controls animate to their new
 					size and position.

@@ -69,7 +69,7 @@ This closes them out of the UI (if currently open) and removes them from their m
 
 ## Preventing Document Windows from Auto-Destroying on Close
 
-By default, document windows are only alive while open and will destroy themselves after being closed.  This is the default because normally once a document is closed, it is no longer needed unless the the end user specifically chooses to open it again, which may or may not ever occur.
+By default, document windows are only alive while open and will destroy themselves after being closed.  This is the default because normally once a document is closed, it is no longer needed unless the end user specifically chooses to open it again, which may or may not ever occur.
 
 You can alter this behavior by changing the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property to `false`.  When `false`, document windows will continue to be associated with the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and will remain within its [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collection, allowing them to be retrived for later reopening.
 
@@ -104,7 +104,7 @@ Setting the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActi
 
 The [LastActiveDateTime](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.LastActiveDateTime) property is updated every time the docking window is activated, either programmatically or by focus moving within it.  Sorting docking windows by this property value allows you to determine the sequence in which the docking windows were last active.
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event fires in response.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event fires in response.
 
 ## Default Initial Size
 

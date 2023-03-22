@@ -13,7 +13,7 @@ The X/Y coordinates specify an offset from an origin point, which by default is 
 
 The X/Y coordinates can be specified using a fixed pixel offset, or using a percentage. The basis of the percentage varies based on the control. For `CircularGaugeBase`-derived controls, the `Radius` is used as the basis. For the remaining controls, the `ActualWidth` and `ActualHeight` are used.
 
-Percentage based sizes can be specified by appending the percent character (%) at then end of the value (e.g. `X="10%"`).
+Percentage based sizes can be specified by appending the percent character (%) at then end of the value (e.g., `X="10%"`).
 
 ![Screenshot](images/circular-gauge-coordinate-system.gif)
 

@@ -53,10 +53,6 @@ EXPECTED OPERATION:
 
 			<!-- Configure editor -->
 			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Focusable="False">
-				<ScrollViewer.Resources>
-					<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
-				</ScrollViewer.Resources>
-
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<samplesCommon:RichTextBoxExtended x:Name="editor">

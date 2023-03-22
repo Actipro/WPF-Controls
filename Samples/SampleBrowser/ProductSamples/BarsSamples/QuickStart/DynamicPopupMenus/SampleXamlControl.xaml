@@ -13,7 +13,7 @@
 	<bars:RibbonContainerPanel>
 
 		<bars:Ribbon x:Name="ribbon" LayoutMode="Simplified" UserInterfaceDensity="Spacious"
-					 IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden"
+					 IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False"
 					 MenuOpening="OnRibbonMenuOpening">
 
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">

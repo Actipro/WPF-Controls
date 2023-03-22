@@ -47,7 +47,7 @@ To maximize performance, it is recommended to create a class that inherits [Auto
 
 ## Updating the Suggestion List
 
-While data filters might handle many common scenarios, there are other cases where you may wish to completely rebuild the list whenever the text changes.  This is more commonly done for quick launch kinds of scenarios where you only show the most popular suggested items that match what has been typed.  Or you might want to actually include the typed text in the suggested items themselves (e.g. "Get help on 'foo'").
+While data filters might handle many common scenarios, there are other cases where you may wish to completely rebuild the list whenever the text changes.  This is more commonly done for quick launch kinds of scenarios where you only show the most popular suggested items that match what has been typed.  Or you might want to actually include the typed text in the suggested items themselves (e.g., "Get help on 'foo'").
 
 To accomplish this, set the [ItemsSource](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemsSource) to a new collection in response to the [TextChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextChanged) event firing.
 

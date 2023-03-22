@@ -45,6 +45,11 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			this.Document.Background = Brushes.White;
 			this.Document.Foreground = this.Foreground;
 
+			// Force Ideal formatting because Display formatting at mixed DPI (e.g. 100% primary monitor, 150% secondary monitor)
+			// could cause RichTextBox to crash after switching monitors and scrolling documents with wrapped lines; especially if a MaxWidth
+			// was assigned to the RichTextBox or one of its parent containers
+			TextOptions.SetTextFormattingMode(this, TextFormattingMode.Ideal);
+
 			ThemeProperties.SetUseBackgroundStates(this, false);
 			ThemeProperties.SetUseBorderStates(this, false);
 		}
@@ -210,10 +215,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					var wordRange = GetWordRange(this.CaretPosition);
 					if (wordRange != null)
 						this.Selection.Select(wordRange.Start, wordRange.End);
-
-					// Ignore preview if no selection is available
-					if (this.Selection.IsEmpty)
-						return;
 				}
 
 				// Serialize the current settings so they can be restored when preview is deactivated

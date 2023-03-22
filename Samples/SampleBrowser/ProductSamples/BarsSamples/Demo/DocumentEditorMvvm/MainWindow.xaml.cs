@@ -2,6 +2,9 @@
 using ActiproSoftware.Windows.DocumentManagement;
 using ActiproSoftware.Windows.Input;
 using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
@@ -39,7 +42,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
 			windowViewModel.RegisterCommands();
 
 			// Initialize the window with a new editor document
-			windowViewModel.NewDefaultDocumentCommand?.Execute(parameter: null);
+			var document = Application.LoadComponent(new Uri("/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/FeaturesDocument.xaml", UriKind.Relative)) as FlowDocument;
+			windowViewModel.Open(document);
 
 			// Register commands handled by this window
 			barManager.FlowDirectionCommand.RegisterCommand(this.ToggleFlowDirectionCommand);
@@ -47,7 +51,13 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
 			this.ViewModel = windowViewModel;
 
 			this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, (Action)(() => {
+				// Focus the document
 				documentView.Focus();
+			}));
+
+			this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, (Action)(() => {
+				// Focusing the document above might scroll vertically a bit, reset the scroll
+				scrollViewer.ScrollToTop();
 			}));
 		}
 

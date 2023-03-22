@@ -53,7 +53,7 @@ Any number of regular expression elements can grouped together by enclosing them
 
 For example, the regular expression "ABC*" requires A and B, then allows for zero or more of C. The regular expression "(ABC)\*", which groups "ABC" into a single element, allows for zero or more of "ABC" together.
 
-In terms of literal completion, only the A character would ever be entered by the end-user for the "(ABC)\*" regular expresssion.  When the user types an A, then the BC are required and are therefore automatically inserted by the control.  If an additional A is typed, then again the BC would be auto completed, resulting in "ABCABC" as the text.
+In terms of literal completion, only the A character would ever be entered by the end-user for the "(ABC)\*" regular expression.  When the user types an A, then the BC are required and are therefore automatically inserted by the control.  If an additional A is typed, then again the BC would be auto completed, resulting in "ABCABC" as the text.
 
 ### Alternations
 

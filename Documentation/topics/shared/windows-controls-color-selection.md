@@ -28,7 +28,7 @@ This control has these important properties:
 | [R](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker.R) Property | Gets or sets the RGB red component of the [SelectedColor](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker.SelectedColor). |
 | [SelectedColor](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker.SelectedColor) Property | Gets or sets the `Color` that is selected in the picker and is displayed in the lower right box.  The lower middle box also generally displays the selected color, except when the mouse is being used to select a new color.  In that case, the color under the mouse is displayed in the lower middle box instead. |
 
-`TextBox` controls can be bound to the [SpectrumColorPicker](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker) to provide text entry of the various color values.  For web color entry (e.g. #FF0000), we have supplied a [ColorToStringConverter](xref:@ActiproUIRoot.Controls.ColorSelection.ColorToStringConverter) class that can be used in a binding.
+`TextBox` controls can be bound to the [SpectrumColorPicker](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker) to provide text entry of the various color values.  For web color entry (e.g., #FF0000), we have supplied a [ColorToStringConverter](xref:@ActiproUIRoot.Controls.ColorSelection.ColorToStringConverter) class that can be used in a binding.
 
 This XAML code shows how to create the color picker displayed above with all the bounds `TextBox` controls:
 

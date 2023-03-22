@@ -137,7 +137,7 @@ While tabs do support dragging to reorder themselves, the feature is not enabled
 
 ## Tab Selection on System Drag Over
 
-By default, performing a system (e.g. text, file) drag over a tab will select the tab so that the dragged content can be dropped on a control on the tab's content area.  To disable this feature, set the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[CanTabsSelectOnDragOver](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.CanTabsSelectOnDragOver) property to `false`.
+By default, performing a system (e.g., text, file) drag over a tab will select the tab so that the dragged content can be dropped on a control on the tab's content area.  To disable this feature, set the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[CanTabsSelectOnDragOver](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.CanTabsSelectOnDragOver) property to `false`.
 
 }
 

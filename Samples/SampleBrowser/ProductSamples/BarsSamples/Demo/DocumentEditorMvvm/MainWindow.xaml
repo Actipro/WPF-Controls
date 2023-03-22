@@ -7,8 +7,8 @@
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
     xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
 	Icon="/Images/Icons/Actipro.ico"
-    Title="Actipro Ribbon Sample" 
-	Height="450" Width="1000"
+    Title="Document1 - Actipro Bars" 
+	Height="600" Width="800"
 	ResizeMode="CanResizeWithGrip"
 	TextOptions.TextFormattingMode="Display"
 	>
@@ -20,7 +20,7 @@
 	</bars:RibbonWindow.Resources>
 
 	<bars:RibbonContainerPanel>
-		<bars:Ribbon x:Name="ribbon"
+		<bars:Ribbon x:Name="ribbon" 
 					 DataContext="{Binding Ribbon}"
 					 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
 					 />
@@ -41,11 +41,7 @@
 				<StatusBarItem Content="Ready" />
 			</StatusBar>
 
-			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Focusable="False">
-				<ScrollViewer.Resources>
-					<Style TargetType="ScrollViewer" BasedOn="{StaticResource {x:Static themes:SharedResourceKeys.WorkspaceEmbeddedScrollViewerStyleKey}}" />
-				</ScrollViewer.Resources>
-
+			<ScrollViewer x:Name="scrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Focusable="False">
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<common:RichTextEditorDocumentView x:Name="documentView" DataContext="{Binding SelectedDocument, Mode=OneWay}" RootBarControl="{x:Reference ribbon}" />

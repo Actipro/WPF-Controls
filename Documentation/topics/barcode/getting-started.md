@@ -9,7 +9,7 @@ We've engineered bar code to be extremely easy to use.
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.BarCode.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.BarCode.@@PlatformAssemblySuffix.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the BarCode Control
 

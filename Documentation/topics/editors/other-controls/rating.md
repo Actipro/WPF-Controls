@@ -51,7 +51,7 @@ These properties can be set using a `Style` that targets the [RatingItem](xref:@
 
 *Custom glyph templates for each item*
 
-Alternatively, if the `Rating` control is manually populated (i.e. one or more `RatingItem` instances are manually added to the `Items` collection), the `RatingItem` properties can be set directly.  This approach is needed to achieve advanced display scenarios like in the screenshot above.
+Alternatively, if the `Rating` control is manually populated (i.e., one or more `RatingItem` instances are manually added to the `Items` collection), the `RatingItem` properties can be set directly.  This approach is needed to achieve advanced display scenarios like in the screenshot above.
 
 ## Item Content
 

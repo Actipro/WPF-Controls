@@ -72,7 +72,7 @@ When a validation rule reports that the data input is invalid, a visual indicato
 
 *A property grid with invalid data highlight using the default ErrorTemplate*
 
-The type of the `ErrorTemplate` property is `ControlTemplate`, and a special placement element called `AdornedElementPlaceholder` which is used to to indicate the location of the associated control.
+The type of the `ErrorTemplate` property is `ControlTemplate`, and a special placement element called `AdornedElementPlaceholder` which is used to indicate the location of the associated control.
 
 This code shows how to define a custom `ErrorTemplate` that shows a pulsing red indicator:
 

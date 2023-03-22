@@ -51,6 +51,12 @@
 		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
 			<docking:WindowControl Title="Sample Window" ResizeMode="NoResize">
 				<DockPanel>
+					<!--
+						Since this toolbar is designed to be the main toolbar of the application
+						it is configured as a root scope for key tips to ensure accessibility with
+						the keyboard. Standalone toolbars used on tool windows or other secondary
+						UI containers would not set that property.
+					-->
 					<bars:StandaloneToolBar x:Name="primaryToolBar" Margin="5,5,5,10" DockPanel.Dock="Top" DataContext="{Binding PrimaryStandaloneToolBar}"
 											Background="{DynamicResource {x:Static themes:AssetResourceKeys.RibbonTabControlBackgroundNormalBrushKey}}"
 											BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.RibbonTabControlBorderNormalBrushKey}}"
@@ -59,6 +65,7 @@
 											Padding="5,3"
 											ItemSpacing="2"
 											HasShadow="True"
+											bars:KeyTipService.IsRootKeyTipScope="True"
 											Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
 
 					<common:RichTextEditorDocumentView x:Name="primaryDocumentView" DataContext="{Binding PrimaryDocument}" Padding="0" RootBarControl="{Binding ElementName=primaryToolBar}" />
@@ -70,7 +77,7 @@
 		<shared:ShadowChrome Grid.Row="2" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
 			<docking:WindowControl Title="Vertical and Embedded Usage" ResizeMode="NoResize">
 				<DockPanel>
-					<bars:StandaloneToolBar x:Name="secondaryToolBar" DockPanel.Dock="Left" DataContext="{Binding SecondaryStandaloneToolBar}" Orientation="Vertical" BorderThickness="0" 
+					<bars:StandaloneToolBar x:Name="secondaryToolBar" DockPanel.Dock="Left" DataContext="{Binding SecondaryStandaloneToolBar}" Orientation="Vertical" BorderThickness="0"
 											Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
 											Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
 

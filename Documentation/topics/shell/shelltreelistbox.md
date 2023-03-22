@@ -13,7 +13,7 @@ It is designed as a standalone control, so it can be used to build 'Browse for F
 
 ## Getting Started
 
-First, add references to the "ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll", "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the `ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 This sample code shows how a [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control pointing to a default root shell folder can be added to any XAML:
 
@@ -61,7 +61,7 @@ The [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) cont
 
 The [SelectedShellObject](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObject) property gets or sets the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that is selected in the control.  This property is effectively the same as binding to the `SelectedItem.Model` property.  It is often bound directly to the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) property of a paired [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control so that control tracks with the selection in the tree.
 
-The [SelectedShellObjectEditingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObjectEditingName) property gets or sets the selected shell object's full user-friendly [editing name](shell-objects-framework/shell-objects.md) (commonly the same as the file system path), if known.  This property can be bound to a path `TextBox`, which allows the user to type in a file system path (i.e. "C:\\Program Files") and have the related shell object get selected in the tree.
+The [SelectedShellObjectEditingName](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObjectEditingName) property gets or sets the selected shell object's full user-friendly [editing name](shell-objects-framework/shell-objects.md) (commonly the same as the file system path), if known.  This property can be bound to a path `TextBox`, which allows the user to type in a file system path (i.e., "C:\\Program Files") and have the related shell object get selected in the tree.
 
 ## Item Templates
 

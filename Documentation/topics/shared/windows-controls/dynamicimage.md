@@ -39,6 +39,12 @@ The [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) class has these im
 | [UseMonochrome](xref:@ActiproUIRoot.Controls.DynamicImage.UseMonochrome) Property | Whether the `ImageSource` value in the `Source` property should be rendered as monochrome.  The default value is `false`.  When this property is `true`, the resulting monochrome image will be in the control's current foreground color (gathered from the [Foreground](xref:@ActiproUIRoot.Controls.DynamicImage.Foreground) property). |
 | `Width` Property | The height of the image control in device independent units.  It's always a good idea to set this property to ensure the image is displayed at its intended size, and must be set if your [Image Provider](../../themes/image-provider.md) can swap in high-DPI images.  Inherited from `Image`. |
 
+## Bitmap Scaling in Integer DPI Scale Scenarios
+
+When rendering bitmap images for high DPI scenarios, WPF will scale the images by default in a way that reduces the clarity of icons, especially those with straight lines.  [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) watches for integer DPI scale scenarios (e.g., 100%, 200%, 300%) and automatically applies nearest-neighbor scaling for bitmap image rendering when in those scenarios.  This keeps bitmap icons looking crisper.
+
+Set the `RenderOptions.BitmapScalingModeProperty` attached property on the control to a value other than `Unspecified` to prevent this automatic mode change.
+
 ## Using ImageConverter
 
 The [ImageConverter](xref:@ActiproUIRoot.Controls.ImageConverter) is a [value converter](../value-converters.md) that makes it easy to convert a `Uri` or `String` value to a [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage).  It can prepend a URI prefix so that the bound value is shorter and reduces repetitive entry.

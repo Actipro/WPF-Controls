@@ -84,6 +84,7 @@ This repo contains two other sample application solutions that demonstrate speci
 
 This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Libraries.sln` solution:
 
+- `Bars.Mvvm` - An optional companion to the Actipro Bars product that supports easy MVVM integration.
 - `DataGrid.Contrib` - Several enhancements for the native Microsoft WPF DataGrid control.
 - `Editors.Interop.DataGrid` - Integration of Actipro Editors with the Microsoft WPF DataGrid control, with dedicated DataGrid column types for each of the editors.
 
@@ -132,12 +133,13 @@ Use these packages for SyntaxEditor's premium language add-ons as needed, which 
 
 These packages are optional and shipped separately from the metapackage:
 
+- [ActiproSoftware.Controls.WPF.Bars.Mvvm](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Bars.Mvvm) - For using MVVM with `Bars`.
 - [ActiproSoftware.Controls.WPF.DataGrid.Contrib](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.DataGrid.Contrib) - For the `DataGrid.Contrib` project in this repo.
 - [ActiproSoftware.Controls.WPF.Themes.Aero](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Themes.Aero) - For legacy Aero themes.
 
 ## Supported Technologies
 
-- **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+
+- **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.6.2+
 - **Architectures:** Any CPU, ARM64, x64, and x86
 - **IDEs:** Visual Studio 2017-2022
 

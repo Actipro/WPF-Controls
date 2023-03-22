@@ -14,12 +14,13 @@
 		
 		<!-- MVVM-Based Ribbon Control -->
 		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
-					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}" />
+					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}"
+					 IsCollapsible="False" />
 
 		<!-- TextBox -->
 		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">
 			<shared:HintProperties.Hint>
-				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with MVVM" />
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon footer defined with MVVM" />
 			</shared:HintProperties.Hint>
 		</TextBox>
 

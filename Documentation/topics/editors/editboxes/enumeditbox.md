@@ -83,7 +83,7 @@ Each of the features listed in the table below describe functionality that is co
 
 ## Enumeration Value and Type
 
-The [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property provides a quick and easy way to setup to the list box.  The [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.EnumType) property is used to to build the items presented by the `EnumEditBox`. The items are constructed by reflecting the enumeration type, with full support for the `FlagsAttribute`.
+The [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property provides a quick and easy way to setup to the list box.  The [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.EnumType) property is used to build the items presented by the `EnumEditBox`. The items are constructed by reflecting the enumeration type, with full support for the `FlagsAttribute`.
 
 When the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property is bound/set to a non-null enumeration value, then the enumeration type will be automatically set (if it has not been explicitly set).  Therefore, the [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.EnumType) only needs to be set when [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) is bound to a nullable enumeration type.
 

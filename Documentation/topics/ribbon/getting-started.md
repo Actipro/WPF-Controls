@@ -5,6 +5,9 @@ order: 2
 ---
 # Getting Started
 
+> [!IMPORTANT]
+> This older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../bars/index.md), which has a much-improved design and appearance, and many of the latest features currently found in Office.  It is recommended to implement new ribbons using the Bars product instead, and to [migrate away from this older Ribbon product](../conversion/converting-to-v23-1.md) to the newer Bars ribbon when possible.
+
 Getting up and running with Ribbon is very easy, especially with the samples we include.  Ribbon provides all the Office-like ribbon user interface features right out of the box, saving you hundreds of hours of work over implementing it yourself.
 
 ## Read the Documentation Topics
@@ -25,7 +28,7 @@ We've spent a lot of time adding numerous QuickStarts for Ribbon that are locate
 
 ## Add Assembly References
 
-Once you are ready to add Ribbon to your own application, first add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Ribbon.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+Once you are ready to add Ribbon to your own application, first add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.Ribbon.@@PlatformAssemblySuffix.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates (Ribbon Window, Ribbon Page)
 

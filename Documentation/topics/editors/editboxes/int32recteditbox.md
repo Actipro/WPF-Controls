@@ -86,7 +86,7 @@ Each of the features listed in the table below describe functionality that is co
 [Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.Int32RectEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
 - D
-- Dx, where x is the number of digits (e.g. D2)
+- Dx, where x is the number of digits (e.g., D2)
 - G
 
 ## Minimum and Maximum Values

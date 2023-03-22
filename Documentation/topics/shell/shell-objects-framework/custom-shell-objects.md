@@ -5,7 +5,7 @@ order: 10
 ---
 # Custom Shell Objects
 
-The built-in Windows shell functionality can be customized/extended.  Or in other cases, completely custom shell objects and services can be written to support non-Windows shells (i.e. a remote file system in a FTP client).
+The built-in Windows shell functionality can be customized/extended.  Or in other cases, completely custom shell objects and services can be written to support non-Windows shells (i.e., a remote file system in a FTP client).
 
 ## Customizing the Windows Shell
 

@@ -50,7 +50,7 @@
 					<bars:RibbonContainerPanel Height="250">
 					
 						<!-- Ribbon Control -->
-						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None">
+						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None" IsCollapsible="False">
 
 							<!-- Configure RibbonApplicationButton with Menu Items, Content, and Footer -->
 							<bars:Ribbon.ApplicationButtonContent>
@@ -184,7 +184,7 @@
 					<bars:RibbonContainerPanel Height="250">
 
 						<!-- Ribbon Control -->
-						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None">
+						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None" IsCollapsible="False">
 
 							<!-- Configure RibbonApplicationButton with Menu Items only... no Menu Additional Content or Menu Footer -->
 							<bars:Ribbon.ApplicationButtonContent>

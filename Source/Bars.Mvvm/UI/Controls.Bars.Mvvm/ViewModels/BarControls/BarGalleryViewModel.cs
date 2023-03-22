@@ -25,13 +25,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isSelectionSupported = true;
 		private string keyTipText;
 		private ImageSource largeImageSource;
-		private int largeMinRibbonColumnCount = 5;
 		private int maxMenuColumnCount = int.MaxValue;
 		private int maxRibbonColumnCount = 15;
 		private VariantSize maxSimplifiedVariantSize = VariantSize.Small;
 		private ImageSource mediumImageSource;
-		private int mediumMinRibbonColumnCount = 3;
 		private ControlResizeMode menuResizeMode = ControlResizeMode.None;
+		private int minLargeRibbonColumnCount = 5;
+		private int minMediumRibbonColumnCount = 3;
 		private int minMenuColumnCount = 1;
 		private BarGalleryItemViewModelBase selectedItem;
 		private bool useAccentedItemBorder;
@@ -293,23 +293,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Gets or sets the minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Large"/> variant size.
-		/// </summary>
-		/// <value>
-		/// The minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Large"/> variant size.
-		/// The default value is <c>5</c>.
-		/// </value>
-		public int LargeMinRibbonColumnCount {
-			get => largeMinRibbonColumnCount;
-			set {
-				if (largeMinRibbonColumnCount != value) {
-					largeMinRibbonColumnCount = value;
-					this.NotifyPropertyChanged(nameof(LargeMinRibbonColumnCount));
-				}
-			}
-		}
-		
-		/// <summary>
 		/// Gets or sets the maximum number of columns when in a menu.
 		/// </summary>
 		/// <value>
@@ -372,23 +355,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Gets or sets the minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Medium"/> variant size.
-		/// </summary>
-		/// <value>
-		/// The minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Medium"/> variant size.
-		/// The default value is <c>3</c>.
-		/// </value>
-		public int MediumMinRibbonColumnCount {
-			get => mediumMinRibbonColumnCount;
-			set {
-				if (mediumMinRibbonColumnCount != value) {
-					mediumMinRibbonColumnCount = value;
-					this.NotifyPropertyChanged(nameof(MediumMinRibbonColumnCount));
-				}
-			}
-		}
-		
-		/// <summary>
 		/// Gets the collection of menu items that appear within the popup.
 		/// </summary>
 		/// <value>The collection of menu items that appear within the popup.</value>
@@ -407,6 +373,40 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (menuResizeMode != value) {
 					menuResizeMode = value;
 					this.NotifyPropertyChanged(nameof(MenuResizeMode));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Large"/> variant size.
+		/// </summary>
+		/// <value>
+		/// The minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Large"/> variant size.
+		/// The default value is <c>5</c>.
+		/// </value>
+		public int MinLargeRibbonColumnCount {
+			get => minLargeRibbonColumnCount;
+			set {
+				if (minLargeRibbonColumnCount != value) {
+					minLargeRibbonColumnCount = value;
+					this.NotifyPropertyChanged(nameof(MinLargeRibbonColumnCount));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Medium"/> variant size.
+		/// </summary>
+		/// <value>
+		/// The minimum number of columns to use when in-ribbon with a <see cref="VariantSize.Medium"/> variant size.
+		/// The default value is <c>3</c>.
+		/// </value>
+		public int MinMediumRibbonColumnCount {
+			get => minMediumRibbonColumnCount;
+			set {
+				if (minMediumRibbonColumnCount != value) {
+					minMediumRibbonColumnCount = value;
+					this.NotifyPropertyChanged(nameof(MinMediumRibbonColumnCount));
 				}
 			}
 		}

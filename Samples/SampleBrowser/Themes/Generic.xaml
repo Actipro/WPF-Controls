@@ -114,7 +114,7 @@
 					<shared:ShadowChrome Elevation="8" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
 						<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" 
 								CornerRadius="{TemplateBinding themes:ThemeProperties.CornerRadius}">
-							<Image Stretch="None" Source="{TemplateBinding ImageSource}" />
+							<shared:DynamicImage Stretch="None" Source="{TemplateBinding ImageSource}" />
 						</Border>
 					</shared:ShadowChrome>
 					

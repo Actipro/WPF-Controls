@@ -19,7 +19,7 @@ At a minimum, an item adapter must tell the control how to retrieve the child it
 
 ## Recommended Item and Adapter Samples
 
-The "Common" folder in the Grids portion of samples contains full source sample implementations of tree node models (e.g. the `TreeNodeModel` class) that can be used as a starting point for your own items.  There also is a `DefaultTreeListBoxItemAdapter` class that implements method overrides for all adapter methods and provides optimal performance (no binding usage) when working with items of type `TreeNodeModel`.  Using those classes, you can load hundreds of thousands of items nearly instantly.
+The "Common" folder in the Grids portion of samples contains full source sample implementations of tree node models (e.g., the `TreeNodeModel` class) that can be used as a starting point for your own items.  There also is a `DefaultTreeListBoxItemAdapter` class that implements method overrides for all adapter methods and provides optimal performance (no binding usage) when working with items of type `TreeNodeModel`.  Using those classes, you can load hundreds of thousands of items nearly instantly.
 
 ## Binding to Data
 

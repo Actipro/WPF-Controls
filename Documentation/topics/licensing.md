@@ -1,7 +1,7 @@
 ---
 title: "Licensing"
 page-title: "Licensing"
-order: 21
+order: 23
 ---
 # Licensing
 
@@ -76,7 +76,7 @@ public partial class App : Application {
 }
 ```
 
-When using this licensing option, do NOT include any Actipro entries in your application's "licenses.licx" file.
+When using this licensing option, do NOT include any Actipro entries in your application's `licenses.licx` file.
 
 > [!NOTE]
 > It is important to protect your licensee and license key combination from decompilers.  We highly recommend using some form of string encryption on the "licensee" and "licenseKey" values passed into the `ActiproLicenseManager.RegisterLicense` method.  Many obfuscators include string encryption as an option, or you can use other custom logic to scramble/descramble the strings.
@@ -89,7 +89,7 @@ This licensing option is only available for classic .NET Framework applications,
 
 - Enter your Licensee and License Key during install
 - Compile our sample project to see if you entered them correctly
-- Update your project's "licenses.licx" file and you should be done
+- Update your project's `licenses.licx` file and you should be done
 
 ### Detailed Licenses.licx File Licensing Steps
 
@@ -119,17 +119,17 @@ The following detailed steps indicate how to install and license Actipro product
 
 1. When adding products to your application the first time...
     
-    - Add references to the Actipro product assemblies that are being used.  Default assembly install paths are indicated in the Readme file.  Please note that the "ActiproSoftware.Shared.Wpf.dll" assembly is always required since all products depend on it.
+    - Add references to the Actipro product assemblies that are being used.  Default assembly install paths are indicated in the Readme file.  Please note that the `ActiproSoftware.Shared.Wpf.dll` assembly is always required since all products depend on it.
 
 1. When upgrading products to new versions in an application that used old versions...
     
     - Ensure the references to the Actipro product assemblies are correctly pointing to the new version's assemblies you installed.  Default assembly install paths are indicated in the Readme file.  Update the references as needed to make sure the versions are correct.
 
-1. If you have licensed the product, configure the "licenses.licx" file in the projects that reference the product.
+1. If you have licensed the product, configure the `licenses.licx` file in the projects that reference the product.
     
-    - Open your project in Visual Studio and ensure that there is a "licenses.licx" file in it.  If your project does not contain a "licenses.licx" file, follow the steps in the "Troubleshooting / No licenses.licx file exists in my project" section below to create a "licenses.licx" file manually.
+    - Open your project in Visual Studio and ensure that there is a `licenses.licx` file in it.  If your project does not contain a `licenses.licx` file, follow the steps in the "Troubleshooting / No licenses.licx file exists in my project" section below to create a `licenses.licx` file manually.
     
-    - Ensure that the "licenses.licx" has a correct entry for Actipro's @@PlatformName control products.  The valid entry is listed below in this topic.  Ensure the version numbers in the entry always match the deployed assembly version, especially after upgrading to a new version or build.
+    - Ensure that the `licenses.licx` has a correct entry for Actipro's @@PlatformName control products.  The valid entry is listed below in this topic.  Ensure the version numbers in the entry always match the deployed assembly version, especially after upgrading to a new version or build.
 
 1. In Visual Studio, execute "Clean Solution" and then "Rebuild Solution".
 
@@ -137,11 +137,11 @@ After following these steps, licensing will be properly applied to your applicat
 
 ### Licenses.licx Files and Valid Entries
 
-A "licenses.licx" file is a file that Visual Studio maintains to know what third-party licensed components and controls are included in a project.  Visual Studio then uses that information to know what license data it needs to include in the output assembly for your project.  Therefore, if you use a third-party component and don't have the proper entries in your project's "licenses.licx" file, no licensing information will be included in your project's output assembly and licensing popup windows will display when your application is run on end user computers.
+A `licenses.licx` file is a file that Visual Studio maintains to know what third-party licensed components and controls are included in a project.  Visual Studio then uses that information to know what license data it needs to include in the output assembly for your project.  Therefore, if you use a third-party component and don't have the proper entries in your project's `licenses.licx` file, no licensing information will be included in your project's output assembly and licensing popup windows will display when your application is run on end user computers.
 
-The contents of a "licenses.licx" file are pretty simple.  It needs a single line that supplies license information to all Actipro @@PlatformName control products for which you are licensed.  Make sure that the version numbers, including build, match exactly with the version number of the control that is installed.
+The contents of a `licenses.licx` file are pretty simple.  It needs a single line that supplies license information to all Actipro @@PlatformName control products for which you are licensed.  Make sure that the version numbers, including build, match exactly with the version number of the control that is installed.
 
-This single line (update the version to match the one you use) should be added to the "licenses.licx" file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
+This single line (update the version to match the one you use) should be added to the `licenses.licx` file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
 ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=23.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
@@ -151,7 +151,7 @@ ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Versio
 
 Just like when compiling on developer machines, build machines need to be able to locate license information, so that Visual Studio and/or MSBuild can embed it in your application.  Therefore after licensing the product, it must be installed using the already-licensed option at least once on any build machine that will be compiling your application.  This process installs the license information into the machine's registry.  The install can be done with minimal options and can be uninstalled immediately after.  The license information will remain in the machine's registry.
 
-This process is only necessary once per major/minor version (e.g. 2020.1).  It doesn't need to be repeated for maintenance releases.  And it doesn't need to be done at all if you use the `RegisterLicense` call licensing option.
+This process is only necessary once per major/minor version (e.g., 2020.1).  It doesn't need to be repeated for maintenance releases.  And it doesn't need to be done at all if you use the `RegisterLicense` call licensing option.
 
 We do not charge additional licensing fees for build machines.
 
@@ -163,16 +163,16 @@ This means that you didn't enter the Licensee and License Key exactly as specifi
 
 #### No licenses.licx file exists in my project.
 
-If you don't see a "licenses.licx" file in your Visual Studio project (generally in the "Properties" folder), first ensure that the "Show All Files" option is set.  The "Show All Files" command is in the Visual Studio Solution Explorer tool window's toolbar.  If you still don't see one, follow these steps:
+If you don't see a `licenses.licx` file in your Visual Studio project (generally in the "Properties" folder), first ensure that the "Show All Files" option is set.  The "Show All Files" command is in the Visual Studio Solution Explorer tool window's toolbar.  If you still don't see one, follow these steps:
 
 - Right click on your project and select "Add -> Add New Item".
-- Select a "Text File" and name it "licenses.licx".
-- Ensure its "Build Action" is set to "Embedded Resource".  This can be done in the Visual Studio "Properties" tool window when the "licenses.licx" file is selected.
-- Copy the line from the sample "licenses.licx" file above into it.
+- Select a "Text File" and name it `licenses.licx`.
+- Ensure its "Build Action" is set to "Embedded Resource".  This can be done in the Visual Studio "Properties" tool window when the `licenses.licx` file is selected.
+- Copy the line from the sample `licenses.licx` file above into it.
 
 #### A licenses.licx file exists but there is no entry for the Actipro Software product I purchased.
 
-You can add the necessary line manually to the file.  Copy the line into your application's "licenses.licx" file from the sample "licenses.licx" file above.
+You can add the necessary line manually to the file.  Copy the line into your application's `licenses.licx` file from the sample `licenses.licx` file above.
 
 #### A licenses.licx file exists and I've copied the entry above, but I still get a license popup window.
 
@@ -180,7 +180,7 @@ Make sure the licenses.licx file is included as an "Embedded Resource" in your p
 
 #### A licenses.licx file exists and there is an entry for the Actipro Software products, however the version number is wrong.
 
-This situation can occur if you upgraded to a new version.  Be sure that you update the version number in the "licenses.licx" in every project that uses the product.  The version number should be the same as the version number of the product that is used.  Also ensure that the "PublicKeyToken" entry matches with the entry in the sample "licenses.licx" file above.
+This situation can occur if you upgraded to a new version.  Be sure that you update the version number in the `licenses.licx` in every project that uses the product.  The version number should be the same as the version number of the product that is used.  Also ensure that the "PublicKeyToken" entry matches with the entry in the sample `licenses.licx` file above.
 
 #### I've purchased licenses, installed using the already licensed option, and followed the steps above but a license popup window says 'Evaluation Release'.
 

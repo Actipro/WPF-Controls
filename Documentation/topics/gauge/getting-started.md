@@ -15,7 +15,7 @@ This documentation file contains a lot of information about using Actipro Gauge 
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Gauge.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.Gauge.@@PlatformAssemblySuffix.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Getting Started with CircularGauge
 

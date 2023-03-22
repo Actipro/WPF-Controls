@@ -20,7 +20,7 @@
 	<bars:RibbonContainerPanel>
 
 		<!-- Configure the Ribbon to be bound to a view model with a style that automatically binds various Ribbon properties to the view model -->
-		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" IsCollapsible="False" />
 
 		<TextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
 			<shared:HintProperties.Hint>

@@ -87,7 +87,7 @@ Each of the features listed in the table below describe functionality that is co
 
 - C0 (currency without decimals)
 - D
-- Dx, where x is the number of zero-padded digits (e.g. D3)
+- Dx, where x is the number of zero-padded digits (e.g., D3)
 - G
 - N0
 - X (uppercase hexadecimal)

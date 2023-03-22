@@ -94,7 +94,7 @@ See the [IEditorViewScroller](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorV
 
 Sometimes it is desirable for the editor to resize itself based on the current text content.  This feature is useful in scenarios such as where an editor is in a `StackPanel` and its height needs to grow as text is entered by the user.
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsViewLineMeasureEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsViewLineMeasureEnabled) property, which defaults to `false`, can be set to `true` to force each view line to be measured during measure phases, thus allowing the containing editor to resize based on the the current text content.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsViewLineMeasureEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsViewLineMeasureEnabled) property, which defaults to `false`, can be set to `true` to force each view line to be measured during measure phases, thus allowing the containing editor to resize based on the current text content.
 
 > [!NOTE]
 > Enabling this feature will affect performance and is only recommended for scenarios where small documents are expected to be edited.  If you expect the editor to always be docked to fill an available space, leave this feature disabled.

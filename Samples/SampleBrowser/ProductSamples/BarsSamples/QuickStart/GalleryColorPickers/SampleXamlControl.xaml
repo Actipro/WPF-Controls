@@ -35,7 +35,7 @@
 	<bars:RibbonContainerPanel>
 
 		<!-- Ribbon Control -->
-		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
 
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
 

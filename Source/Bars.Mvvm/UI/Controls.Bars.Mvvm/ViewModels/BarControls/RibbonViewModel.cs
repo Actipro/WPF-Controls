@@ -1,5 +1,6 @@
 ﻿using ActiproSoftware.Windows.Themes;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
@@ -11,8 +12,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private RibbonApplicationButtonViewModel applicationButton;
 		private RibbonBackstageViewModel backstage;
 		private bool canChangeLayoutMode = true;
+		private Size collapseThresholdSize = new Size(270, 170);
 		private RibbonFooterViewModel footer;
 		private bool isApplicationButtonVisible = true;
+		private bool isCollapsible = true;
 		private bool isMinimizable = true;
 		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
 		private RibbonLayoutMode layoutMode = RibbonLayoutMode.Classic;
@@ -93,7 +96,24 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-
+		
+		/// <summary>
+		/// Gets or sets the threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
+		/// </summary>
+		/// <value>
+		/// The threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
+		/// The default value is <c>270, 170</c>.
+		/// </value>
+		public Size CollapseThresholdSize {
+			get => collapseThresholdSize;
+			set {
+				if (collapseThresholdSize != value) {
+					collapseThresholdSize = value;
+					this.NotifyPropertyChanged(nameof(CollapseThresholdSize));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets the collection of optional contextual tab groups within the ribbon.
 		/// </summary>
@@ -130,7 +150,25 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-
+		
+		/// <summary>
+		/// Gets or sets whether the ribbon collapses when it becomes smaller than a minimum threshold width/height 
+		/// as specified by the <see cref="CollapseThresholdSize"/> property.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the ribbon auto-collapsed when it becomes smaller than the threshold; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsCollapsible {
+			get => isCollapsible;
+			set {
+				if (isCollapsible != value) {
+					isCollapsible = value;
+					this.NotifyPropertyChanged(nameof(IsCollapsible ));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets whether the ribbon is minimizable.
 		/// </summary>

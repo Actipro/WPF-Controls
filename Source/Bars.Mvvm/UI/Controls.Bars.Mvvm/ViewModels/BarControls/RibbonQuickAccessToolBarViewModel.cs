@@ -7,6 +7,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class RibbonQuickAccessToolBarViewModel : ObservableObjectBase {
 
+		private bool isCustomizeButtonVisible = true;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,6 +18,25 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of common items that should appear in the QAT's Customize menu.</value>
 		public ObservableCollection<object> CommonItems { get; } = new ObservableCollection<object>();
+		
+		/// <summary>
+		/// Gets or sets whether the customize button is visible.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the customize button is visible; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsCustomizeButtonVisible {
+			get {
+				return isCustomizeButtonVisible;
+			}
+			set {
+				if (isCustomizeButtonVisible != value) {
+					isCustomizeButtonVisible = value;
+					this.NotifyPropertyChanged(nameof(IsCustomizeButtonVisible));
+				}
+			}
+		}
 
 		/// <summary>
 		/// Gets the collection of items in the control.

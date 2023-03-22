@@ -41,7 +41,7 @@ Several types of charts are supported, which include Area, Bar, Line, Pie, Donut
   
   - Includes support for spline curves and stepped lines.
   - Optionally display markers to highlight data points.
-  - Show markers for for first, last, high, low, and negative data points.
+  - Show markers for first, last, high, low, and negative data points.
 
 - [Pie / Donut](chart-types/pie.md)
   

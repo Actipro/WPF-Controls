@@ -32,7 +32,7 @@
 	<bars:RibbonContainerPanel>
 
 		<!-- Ribbon Control -->
-		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
 
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
 
@@ -44,9 +44,9 @@
 										CanFilterOnMenu="{Binding Options.CanFilterOnMenu}"
 										CategoryPropertyName="Category"
 										Command="{Binding SetColorCommand}"
-										LargeMinColumnCount="{Binding Options.LargeMinRibbonColumnCount}"
-										MediumMinColumnCount="{Binding Options.MediumMinRibbonColumnCount}"
 										MaxColumnCount="{Binding Options.MaxRibbonColumnCount}"
+										MinLargeColumnCount="{Binding Options.MinLargeRibbonColumnCount}"
+										MinMediumColumnCount="{Binding Options.MinMediumRibbonColumnCount}"
 										MinMenuColumnCount="{Binding Options.MinMenuColumnCount}"
 										MaxMenuColumnCount="{Binding Options.MaxMenuColumnCount}"
 										MenuResizeMode="{Binding Options.MenuResizeMode}"

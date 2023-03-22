@@ -184,7 +184,7 @@ These instance members are found in the structure:
 | [R](xref:@ActiproUIRoot.Media.UIColor.R) Property | Gets or sets the RGB red component value of this `UIColor` structure. |
 | [Tint](xref:@ActiproUIRoot.Media.UIColor.Tint*) Method | Tints this color towards the specified tint `Color`. |
 | [ToColor](xref:@ActiproUIRoot.Media.UIColor.ToColor*) Method | Gets the `Color` value of this `UIColor` structure. |
-| [ToWebColor](xref:@ActiproUIRoot.Media.UIColor.ToWebColor*) Method | Converts the color to a web color string (e.g. `#FF0000` for `Red`). |
+| [ToWebColor](xref:@ActiproUIRoot.Media.UIColor.ToWebColor*) Method | Converts the color to a web color string (e.g., `#FF0000` for `Red`). |
 | [W3CBrightness](xref:@ActiproUIRoot.Media.UIColor.W3CBrightness) Property | Gets the brightness of the color, based on the W3C formula for calculating brightness. |
 
 These static members are found in the structure, many of which are used to create a [UIColor](xref:@ActiproUIRoot.Media.UIColor):
@@ -201,7 +201,7 @@ These static members are found in the structure, many of which are used to creat
 | [FromMix](xref:@ActiproUIRoot.Media.UIColor.FromMix*) Method | Creates a `UIColor` structure that is the specified percentage between the value of two `Color` objects. |
 | [FromName](xref:@ActiproUIRoot.Media.UIColor.FromName*) Method | Creates a `UIColor` structure from the specified name of a pre-defined color. |
 | [FromRgb](xref:@ActiproUIRoot.Media.UIColor.FromRgb*) Method | Creates a `UIColor` structure from the specified RGB color values (red, green, and blue). |
-| [FromWebColor](xref:@ActiproUIRoot.Media.UIColor.FromWebColor*) Method | Creates a `UIColor` structure from the specified web color.  This method can process HTML color specifications (e.g. #FF00FF) and known color names. |
+| [FromWebColor](xref:@ActiproUIRoot.Media.UIColor.FromWebColor*) Method | Creates a `UIColor` structure from the specified web color.  This method can process HTML color specifications (e.g., #FF00FF) and known color names. |
 | [GetStandardCustomColors](xref:@ActiproUIRoot.Media.UIColor.GetStandardCustomColors*) Method | Returns a `Color` array containing all of the standard custom values. |
 | [GetSystemColors](xref:@ActiproUIRoot.Media.UIColor.GetSystemColors*) Method | Returns a `Color` array containing all of the `SystemColors` values. |
 | [GetTintedColor](xref:@ActiproUIRoot.Media.UIColor.GetTintedColor*) Method | Returns the custom tinted color for the specified base color. |

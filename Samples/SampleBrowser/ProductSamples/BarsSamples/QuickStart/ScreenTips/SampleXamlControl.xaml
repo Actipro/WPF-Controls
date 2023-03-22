@@ -11,7 +11,7 @@
 
 		<!-- Ribbon Control -->
 		<bars:Ribbon x:Name="ribbon" LayoutMode="Classic" CanChangeLayoutMode="False" IsMinimizable="False"
-					 IsApplicationButtonVisible="False" QuickAccessToolBarLocation="Below">
+					 IsApplicationButtonVisible="False" QuickAccessToolBarLocation="Below" IsCollapsible="False">
 
 			<!-- Configure the Quick Access Toolbar -->
 			<bars:Ribbon.QuickAccessToolBarContent>
