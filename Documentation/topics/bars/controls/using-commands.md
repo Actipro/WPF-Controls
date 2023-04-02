@@ -7,7 +7,7 @@ order: 200
 
 All interactive controls in this product are designed to work well with MVVM patterns and the WPF command model.
 
-Controls will execute their command when a primary action occurs on the control, and use the command's can-execute result to determine if the control is enabled.  Commands can be used to support live preview for gallery items as well.
+Controls will execute their command when a primary action occurs on the control, and use the `ICommand.CanExecute` result to determine if the control is enabled.  Commands can be used to support live preview for gallery items as well.
 
 ## Control Command Support
 
@@ -37,7 +37,7 @@ Two command-related interfaces are fundamental for command support by controls.
 
 The `ICommand` interface provides the foundation of any command and includes support for executing a command and determining whether a command can execute.
 
-Controls will execute the command when their primary action occurs, such as a button being clicked.  Controls will also use the result of the can-execute logic to determine if the control should be enabled.
+Controls will execute the command when their primary action occurs, such as a button being clicked.  Controls will also use the `ICommand.CanExecute` result to determine if the control should be enabled.
 
 Actipro provides couple useful implementations of the `ICommand` interface that are described below.
 

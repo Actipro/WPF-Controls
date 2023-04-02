@@ -9,9 +9,9 @@ The lifecycle of a docking window includes its creation, specifying initial size
 
 ## Tool Windows vs. Document Windows
 
-Tool and document windows are the two varieties of docking windows that exist in the Docking/MDI product.  While they both share many capabilities, they have several functional differences and you should choose to use the appropriate kind based on your UI needs.
+Tool and document windows are the two varieties of docking windows that exist in the Docking/MDI product.  While they both share many capabilities, they have several functional differences, and you should choose to use the appropriate kind based on your UI needs.
 
-Tool windows are capable of being docked outside of MDI, auto-hidden to the side of a dock host, or used in the MDI area.  They have no out-of-the-box restrictions on where they can go.  Tool windows are typically used for scenarios where the docking window needs to support all those state locations, or needs to frequently be closed and reopened.  They remain registered with the dock site after they are closed, and thus can be readily reopened into the layout in their previous locations.
+Tool windows are capable of being docked outside of MDI, auto-hidden to the side of a dock host, or used in the MDI area.  They have no out-of-the-box restrictions on where they can go.  Tool windows are typically used for scenarios where the docking window needs to support all those state locations or needs to frequently be closed and reopened.  They remain registered with the dock site after they are closed, and thus can be readily reopened into the layout in their previous locations.
 
 Document windows on the other hand can only be used within the MDI area.  Since document windows are intended to have a limited lifetime, they are destroyed (unregistered from the dock site) by default when they are closed.  See a section below for information on altering this behavior.  Document windows are typically used for scenarios where the docking window is no longer needed after it is closed.
 
@@ -30,7 +30,7 @@ Use this code to create a tool window.  Always use a constructor that accepts a 
 ```csharp
 TextBox tb = new TextBox();
 tb.BorderThickness = new Thickness(0);
-ToolWindow window = new ToolWindow(dockSite, "MyToolWindow1", "My First Tool Window", 
+ToolWindow window = new ToolWindow(dockSite, "MyToolWindow1", "My First Tool Window",
 	new BitmapImage(new Uri("/Resources/Images/Properties16.png", UriKind.Relative)), tb);
 ```
 
@@ -38,7 +38,7 @@ When using the constructor in the example above, the first parameter is the [Doc
 
 The second is the value to be assigned to the `Name` property.
 
-> [!NOTE]
+> [!IMPORTANT]
 > A unique `Name` or [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) must be assigned to each tool window if layout serialization will be used in your application.  The `Name` property must be a valid C#/VB identifier (underscore, letter, and number characters only), while the [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) is more flexible and can consist of any characters.
 
 The third and fourth parameters are the title text and `ImageSource` respectively that will be displayed in the UI for the tool window.
@@ -52,7 +52,7 @@ Use this code to create a document window.  Always use a constructor that accept
 ```csharp
 TextBox tb = new TextBox();
 tb.BorderThickness = new Thickness(0);
-DocumentWindow window = new DocumentWindow(dockSite, "MyDocumentWindow1", "My First Document Window", 
+DocumentWindow window = new DocumentWindow(dockSite, "MyDocumentWindow1", "My First Document Window",
 	new BitmapImage(new Uri("/Resources/Images/TextDocument16.png", UriKind.Relative)), tb);
 ```
 
@@ -64,25 +64,25 @@ Both tool and document windows may be destroyed by calling the [DockingWindow](x
 
 This closes them out of the UI (if currently open) and removes them from their managing [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).
 
-> [!NOTE]
+> [!WARNING]
 > By default, document windows auto-destroy themselves when closed.  See the following section for more information.
 
 ## Preventing Document Windows from Auto-Destroying on Close
 
 By default, document windows are only alive while open and will destroy themselves after being closed.  This is the default because normally once a document is closed, it is no longer needed unless the end user specifically chooses to open it again, which may or may not ever occur.
 
-You can alter this behavior by changing the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property to `false`.  When `false`, document windows will continue to be associated with the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and will remain within its [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collection, allowing them to be retrived for later reopening.
+You can alter this behavior by changing the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property to `false`.  When `false`, document windows will continue to be associated with the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and will remain within its [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collection, allowing them to be retrieved for later reopening.
 
 ## Opening and Closing
 
 When open, a docking window is accessible in the user interface.  When closed, it is not.
 
-> [!NOTE]
-> It is very important to NOT set the `DockingWindow.Visibility` property yourself.  The docking framework itself will manage user interface visibility based on whether a docking window is currently open or not.
+> [!CAUTION]
+> It is very important to *not* set the `DockingWindow.Visibility` property yourself.  The docking framework itself will manage user interface visibility based on whether a docking window is currently open or not.
 
 ### Opening Docking Windows
 
-Docking windows aren't added to the user interface until specifically opened.  A call to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method will restore the docking window to its previous state and location, if known.  If the docking window doesn't have a prior location breadcrumb available, it will restore to a default location based on its property settings.
+Docking windows aren't added to the user interface until specifically opened.  A call to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method will restore the docking window to its previous state and location, if known.  If the docking window doesn't have a prior location breadcrumb available, it will be restored to a default location based on its property settings.
 
 Setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `true` is the same as calling the parameterless [Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method.  This property can be bound to in MVVM scenarios.
 
@@ -96,7 +96,7 @@ When closed, tool windows remain in the [DockSite](xref:@ActiproUIRoot.Controls.
 
 ## Activating and Focusing
 
-Activating is a superset of the Open functionality.  When the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method is called, if the docking window is currently closed, it will be opened.  Additionally if it is open but in a tabbed scenario where it is not the selected tab, its tab will be selected.
+Activating is a superset of the Open functionality.  When the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method is called, if the docking window is currently closed, it will be opened.  Additionally, if it is open but in a tabbed scenario where it is not the selected tab, its tab will be selected.
 
 The [Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method also has an overload for whether to set focus to the docking window's content.
 
@@ -116,8 +116,8 @@ This example shows the property being set that will request that the [ToolWindow
 ... <docking:ToolWindow Title="Wide" ContainerDockedSize="300,150"> ...
 ```
 
-> [!IMPORTANT]
-> Since the docking elements need to dynamically change their size based on their location and available space, the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, and `MaxHeight` properties should NEVER be used.
+> [!CAUTION]
+> Since the docking elements need to dynamically change their size based on their location and available space, the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, and `MaxHeight` properties should *never* be used.
 
 ## Minimum and Maximum Size
 
@@ -135,8 +135,8 @@ By setting the minimum size to the same thing as the maximum height, you can ach
 ... <docking:ToolWindow Title="Fixed Height" ContainerMinSize="30,180" ContainerMaxSize="10000,180"> ...
 ```
 
-> [!IMPORTANT]
-> Since the docking elements need to dynamically change their size based on their location and available space, the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, and `MaxHeight` properties should NEVER be used.
+> [!CAUTION]
+> Since the docking elements need to dynamically change their size based on their location and available space, the `Width`, `Height`, `MinWidth`, `MinHeight`, `MaxWidth`, and `MaxHeight` properties should *never* be used.
 
 ## Default Locations
 
@@ -287,7 +287,7 @@ The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) class 
 
 ### Example: Docking to the Top of a Target
 
-In this example we will dock the solutionExplorerToolWindow to the top of the propertiesToolWindow.
+In this example we will dock the solutionExplorerToolWindow to the top of the `propertiesToolWindow`.
 
 ```csharp
 solutionExplorerToolWindow.Dock(propertiesToolWindow, Side.Top);
@@ -295,7 +295,7 @@ solutionExplorerToolWindow.Dock(propertiesToolWindow, Side.Top);
 
 ### Example: Creating a Tabbed Group
 
-In this example we will create a tabbed group of tool windows by "attaching" the solutionExplorerToolWindow to the propertiesToolWindow.
+In this example we will create a tabbed group of tool windows by "attaching" the `solutionExplorerToolWindow` to the `propertiesToolWindow`.
 
 ```csharp
 solutionExplorerToolWindow.Attach(propertiesToolWindow);
@@ -303,7 +303,7 @@ solutionExplorerToolWindow.Attach(propertiesToolWindow);
 
 ### Example: Floating to a Location
 
-In this example we will float the solutionExplorerToolWindow to a particular location.
+In this example we will float the `solutionExplorerToolWindow` to a particular location.
 
 ```csharp
 solutionExplorerToolWindow.Float(new Point(100, 100));
@@ -311,7 +311,7 @@ solutionExplorerToolWindow.Float(new Point(100, 100));
 
 ### Example: Floating and sizing to fit content
 
-In this example we will float the solutionExplorerToolWindow to its previous location and have it size-to-content.
+In this example we will float the `solutionExplorerToolWindow` to its previous location and have it size-to-content.
 
 ```csharp
 solutionExplorerToolWindow.SizeToContentModes = SizeToContentModes.Floating;
@@ -338,6 +338,6 @@ window.DragMove(new InputPointerButtonEventArgs(e, InputPointerButtonKind.Primar
 
 ## Splitter Drag Kinds
 
-Live splitting is enabled by default, meaning that when a splitter is dragged, the surrounding containers will immediately resize.  This feature can be turned off by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:@ActiproUIRoot.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  When `false`, highlights are dragged instead and the containers only resize when the splitter is dropped.
+Live splitting is enabled by default, meaning that when a splitter is dragged, the surrounding containers will immediately resize.  This feature can be turned off by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[IsLiveSplittingEnabled](xref:@ActiproUIRoot.Controls.Docking.DockSite.IsLiveSplittingEnabled) property to `false`.  When `false`, highlights are dragged instead, and the containers only resize when the splitter is dropped.
 
 While the live splitting feature is desirable for most scenarios, if your docking window content has very complex element trees that don't measure/arrange fast, turning off live splitting will improve performance when the end user uses splitters.

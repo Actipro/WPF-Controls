@@ -27,11 +27,11 @@
 			<!-- Standard Tabs (Always Visible) -->
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
 				<bars:RibbonGroup Key="ContextualTabs">
-					<bars:BarToggleButton Key="TogglePictureTools" Label="Picture Tools" MaxSimplifiedVariantSize="Medium"
+					<bars:BarToggleButton Key="TogglePictureTools" Label="Picture Tools" ToolBarItemVariantBehavior="All"
 										  IsChecked="{Binding Options.IsPictureToolsContextualTabGroupVisible}"
 										  LargeImageSource="/Images/Icons/Picture32.png" SmallImageSource="/Images/Icons/Picture16.png"
 										  ToolTip="Click to toggle the visibility of the Picture Tools contextual tab group." />
-					<bars:BarToggleButton Key="ToggleTableTools" Label="Table Tools" MaxSimplifiedVariantSize="Medium"
+					<bars:BarToggleButton Key="ToggleTableTools" Label="Table Tools" ToolBarItemVariantBehavior="All"
 										  IsChecked="{Binding Options.IsTableToolsContextualTabGroupVisible}"
 										  LargeImageSource="/Images/Icons/Table32.png" SmallImageSource="/Images/Icons/Table16.png"
 										  ToolTip="Click to toggle the visibility of the Table Tools contextual tab group." />

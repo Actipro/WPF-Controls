@@ -173,7 +173,7 @@ The `IEditorView.StartMouseSelection` method was renamed to [IEditorView](xref:@
 
 The `SyntaxEditor.CanMoveCaretOnMouseRightClick` property was renamed to [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanMoveCaretForSecondaryPointerButton](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanMoveCaretForSecondaryPointerButton).
 
-Code block selection features (available in some languages) changed keyboard shortcuts from `Ctrl++` to `Ctrl+Shift++` for expansion, and `Ctrl+-` to `Ctrl+Shift+-` for contraction.
+Code block selection features (available in some languages) changed keyboard shortcuts from <kbd>Ctrl</kbd>+<kbd>+</kbd> to <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>+</kbd> for expansion, and <kbd>Ctrl</kbd>+<kbd>-</kbd> to <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>-</kbd> for contraction.
 
 ## Line Commenter Changes
 
@@ -199,7 +199,7 @@ public void Format(ITextSnapshot snapshot, ITextPositionRangeCollection selectio
 		throw new ArgumentNullException("snapshot");
 	if ((selectionPositionRanges == null) || (selectionPositionRanges.Count == 0))
 		throw new ArgumentNullException("selectionPositionRanges");
-			
+
 	// Changes must occur sequentially so that we can use unmodified offsets while looping over the document
 	var options = new TextChangeOptions();
 	options.OffsetDelta = TextChangeOffsetDelta.SequentialOnly;

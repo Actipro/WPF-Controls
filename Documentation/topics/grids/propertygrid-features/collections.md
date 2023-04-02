@@ -11,13 +11,13 @@ The property grid supports inline collection display and even editing in some ca
 
 @if (winrt) {
 
-By default, collections are simply displayed without expansion or inline editing support.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) property can be used to override this behavior. 
+By default, collections are simply displayed without expansion or inline editing support.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) property can be used to override this behavior.
 
 }
 
 @if (wpf) {
 
-By default, collections are simply displayed using their associated type converter.  Out of the box, only the type converter for arrays (`ArrayConverter`) allows expansion.  The default type converter used for other collection types, such as lists and dictionaries, does not allow expansion.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) property can be used to override this behavior. 
+By default, collections are simply displayed using their associated type converter.  Out of the box, only the type converter for arrays (`ArrayConverter`) allows expansion.  The default type converter used for other collection types, such as lists and dictionaries, does not allow expansion.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CollectionPropertyDisplayMode](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CollectionPropertyDisplayMode) property can be used to override this behavior.
 
 }
 
@@ -31,7 +31,7 @@ If [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CollectionPr
 
 *A property grid showing several collections using Expandable*
 
-`EditableInline` works exactly like `Expandable`, but adds inline editing buttons for collections that support them.
+`EditableInline` works exactly like `Expandable` but adds inline editing buttons for collections that support them.
 
 ![Screenshot](../images/propertygrid-collection-display-mode-editable-inline.png)
 
@@ -45,7 +45,7 @@ When using `Expandable` or `EditableInline`, the built-in data factory will chec
 
 @if (winrt) {
 
-The [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel) will call its virtual [CreateExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method and will use the type converter that is returned.  By default, an instance of [ExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ExpandableCollectionConverter) is returned. 
+The [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel) will call its virtual [CreateExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method and will use the type converter that is returned.  By default, an instance of [ExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ExpandableCollectionConverter) is returned.
 
 }
 
@@ -58,7 +58,7 @@ The [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Gri
 - CollectionConverter
 - ReferenceConverter
 
- If the collection uses one of these type converters, then the [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel) will call its virtual [CreateExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method and will use the type converter that is returned.  By default, an instance of [ExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ExpandableCollectionConverter) is returned. 
+ If the collection uses one of these type converters, then the [CollectionPropertyDescriptorPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel) will call its virtual [CreateExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CollectionPropertyDescriptorPropertyModel.CreateExpandableCollectionConverter*) method and will use the type converter that is returned.  By default, an instance of [ExpandableCollectionConverter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ExpandableCollectionConverter) is returned.
 
 }
 

@@ -104,6 +104,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 
 			Ribbon = new RibbonViewModel() {
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.Hidden,
 				Tabs = {
 					new RibbonTabViewModel("MvvmSamples", "MVVM Samples") {

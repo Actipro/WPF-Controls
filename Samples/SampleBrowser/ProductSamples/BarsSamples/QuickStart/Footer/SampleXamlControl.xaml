@@ -19,8 +19,7 @@
 		-->
 		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
 					 IsApplicationButtonVisible="False"
-					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}"
-					 IsCollapsible="False">
+					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}">
 
 			<!-- Configure the Ribbon Footer -->
 			<bars:Ribbon.FooterContent>

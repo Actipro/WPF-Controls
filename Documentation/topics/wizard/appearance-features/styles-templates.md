@@ -18,7 +18,7 @@ The [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) has a couple pr
 | [HeaderBackground](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.HeaderBackground) Property | Gets or sets the `Brush` used to draw the background that is displayed in the page header. |
 | [HeaderImage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.HeaderImage) Property | Gets or sets the `ImageSource` that is displayed at the right side of the page header. |
 
-This XAML code shows how to load a header image and header background for a page.  Both images are specified using pack:// syntax (see the WPF documentation for more info).  In this code snippet, the image `HatLogo.png` is a resource in an assembly named `Sample` and is in an `Images` folder.  The image `WelcomeBG.png` is located in the same folder as a resource.
+This XAML code shows how to load a header image and header background for a page.  Both images are specified using `pack://` syntax (see the WPF documentation for more info).  In this code snippet, the image *HatLogo.png* is a resource in an assembly named `Sample` and is in an `Images` folder.  The image *WelcomeBG.png* is located in the same folder as a resource.
 
 ```xaml
 <wizard:WizardPage x:Name="welcomePage" HeaderImage="/Sample;component/Images/HatLogo.png">
@@ -41,7 +41,7 @@ Of course, the default styles of any other type of control can be updated.  For 
 
 *Styles allow for easy application of custom themes*
 
-The WPF documentation does a great job of explaining how styles may be applied to controls.  In a nutshell, styles may be applied anywhere within a control hierarchy, at an application-level, or in a `Generic.xaml` resource dictionary.
+The WPF documentation does a great job of explaining how styles may be applied to controls.  In a nutshell, styles may be applied anywhere within a control hierarchy, at an application-level, or in a *Generic.xaml* resource dictionary.
 
 ## Styling the Button Container
 
@@ -92,20 +92,20 @@ This code shows how to alter the [WizardButtonContainer](xref:@ActiproUIRoot.Con
 						Padding="{TemplateBinding Padding}"
 						SnapsToDevicePixels="True">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-						<Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75" Command="wizard:WizardCommands.Cancel" 
-							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}" 
+						<Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75" Command="wizard:WizardCommands.Cancel"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}"
 							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.CancelButtonVisibility)}" />
-						<Button x:Name="PART_BackButton" MinWidth="75" Command="wizard:WizardCommands.PreviousPage" 
-							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}" 
+						<Button x:Name="PART_BackButton" MinWidth="75" Command="wizard:WizardCommands.PreviousPage"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}"
 							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.BackButtonVisibility)}" />
 						<Button x:Name="PART_NextButton" MinWidth="75" Command="wizard:WizardCommands.NextPage"
-							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}" 
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}"
 							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.NextButtonVisibility)}" />
-						<Button x:Name="PART_FinishButton" MinWidth="75" Command="wizard:WizardCommands.Finish" 
-							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}" 
+						<Button x:Name="PART_FinishButton" MinWidth="75" Command="wizard:WizardCommands.Finish"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}"
 							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.FinishButtonVisibility)}" />
 						<Button x:Name="PART_HelpButton" Margin="7,0,0,0" MinWidth="75" Command="wizard:WizardCommands.Help"
-							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}" 
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}"
 							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.HelpButtonVisibility)}" />
 					</StackPanel>
 				</Border>

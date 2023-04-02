@@ -13,7 +13,7 @@ It is designed as a standalone control, so it can be used to build 'Browse for F
 
 ## Getting Started
 
-First, add references to the `ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 This sample code shows how a [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control pointing to a default root shell folder can be added to any XAML:
 
@@ -100,7 +100,7 @@ The context menus themselves are provided by the [ShellObjectItemAdapter](xref:@
 
 The control supports inline renaming if the [IsRenamingEnabled](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.IsRenamingEnabled) property is `true`, which is the default value.  Note that the shell object to be renamed must also support renaming via the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[CanRename](xref:ActiproSoftware.Shell.IShellObject.CanRename) property.
 
-Renaming begins when single clicking on the shell object name, or by selecting an item and pressing `F2`.
+Renaming begins when single clicking on the shell object name, or by selecting an item and pressing <kbd>F2</kbd>.
 
 ## Horizontal ScrollBar Visibility
 

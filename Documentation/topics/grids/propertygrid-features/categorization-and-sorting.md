@@ -21,13 +21,13 @@ By default, all categories are automatically expanded.  This default can be chan
 
 ### Nested Categories
 
-Properties can also be categorized into nested categories.  For example, if a property specifies a category of "One\\Two", then by default the property will be in a top-level category titled "One\\Two".  By setting [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[AreNestedCategoriesSupported](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.AreNestedCategoriesSupported) to `true`, the `PropertyGrid` will interpret the category name as a path to the desired category.  In the previous example, a top-level category titled "One" will be created, with a nested category titled "Two" (which will contain the property).
+Properties can also be categorized into nested categories.  For example, if a property specifies a category of `"One\Two"`, then by default the property will be in a top-level category titled `"One\Two"`.  By setting [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[AreNestedCategoriesSupported](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.AreNestedCategoriesSupported) to `true`, the `PropertyGrid` will interpret the category name as a path to the desired category.  In the previous example, a top-level category titled `"One"` will be created, with a nested category titled `"Two"` (which will contain the property).
 
-If two properties specify the same root category name, then the nested categories & properties will be combined. Continuing the example from above, if another property specifies a category of "One" then it will be contained in the category titled "One" along with the nested category "Two".
+If two properties specify the same root category name, then the nested categories and properties will be combined. Continuing the example from above, if another property specifies a category of `"One"` then it will be contained in the category titled `"One"` along with the nested category `"Two"`.
 
-Any number of nested categories can be specified, at any level.  A category titled "One\\Two\\Three" would create three categories, with each of the latter two being nested.
+Any number of nested categories can be specified, at any level.  A category titled `"One\Two\Three"` would create three categories, with each of the latter two being nested.
 
-The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[MiscCategoryName](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.MiscCategoryName) property also supports the nested category syntax. For example, if set to "One\\Two" then any miscellaneous properties will be placed in the category titled "Two", which is nested in the top-level category "One".
+The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[MiscCategoryName](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.MiscCategoryName) property also supports the nested category syntax. For example, if set to `"One\Two"` then any miscellaneous properties will be placed in the category titled `"Two"`, which is nested in the top-level category `"One"`.
 
 ## Sorting
 

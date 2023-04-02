@@ -8,7 +8,7 @@
     xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
 	Icon="/Images/Icons/Actipro.ico"
     Title="Document1 - Actipro Bars" 
-	Height="600" Width="800"
+	Height="600" Width="1000"
 	ResizeMode="CanResizeWithGrip"
 	TextOptions.TextFormattingMode="Display"
 	>

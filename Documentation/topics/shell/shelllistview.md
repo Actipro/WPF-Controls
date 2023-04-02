@@ -11,7 +11,7 @@ The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control sh
 
 ## Getting Started
 
-First, add references to the `ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll`, `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 This sample code shows how a [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control pointing to a default root shell folder can be added to any XAML:
 
@@ -115,7 +115,7 @@ This is a sample `DataTemplate` set to the [DetailsLayoutModeItemTemplate](xref:
 
 ## Navigation into Folders
 
-The [CanNavigateIntoChildFolders](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanNavigateIntoChildFolders) property determines whether double-clicking or pressing `Enter` on an item causes the control's [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) to be set to the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) whose view-model item triggered the event.  The default value is `true`.
+The [CanNavigateIntoChildFolders](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanNavigateIntoChildFolders) property determines whether double-clicking or pressing <kbd>Enter</kbd> on an item causes the control's [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) to be set to the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) whose view-model item triggered the event.  The default value is `true`.
 
 When the [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView).[RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) is two-way bound to a [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox).[SelectedShellObject](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.SelectedShellObject) property, a navigation change into a folder will also update the selection in the paired [ShellTreeListBox](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox) control.
 
@@ -129,7 +129,7 @@ The context menus themselves are provided by the [ShellObjectItemAdapter](xref:@
 
 The control supports inline renaming if the [IsRenamingEnabled](xref:@ActiproUIRoot.Controls.Shell.ShellListView.IsRenamingEnabled) property is `true`, which is the default value.  Note that the shell object to be renamed must also support renaming via the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[CanRename](xref:ActiproSoftware.Shell.IShellObject.CanRename) property.
 
-Renaming begins when single clicking on the shell object name, or by selecting an item and pressing `F2`.
+Renaming begins when single clicking on the shell object name, or by selecting an item and pressing <kbd>F2</kbd>.
 
 ## Column Header Template
 

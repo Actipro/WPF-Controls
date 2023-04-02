@@ -9,11 +9,11 @@ The Python language has built-in automated IntelliPrompt completion list, parame
 
 ## Completion List
 
-[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible members from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing `Ctrl+Space` or typing a `.` character after an identifier.
+[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible members from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing <kbd>Ctrl</kbd>+<kbd>Space</kbd> or typing a `.` character after an identifier.
 
 There are two types of completion list scenarios when typing in code blocks.  First is when listing members of something.  This can occur when typing a `.` character after an identifier.  The second type is when showing all accessible members based on the current context.  This can occur when starting to type a new sequence of identifiers.
 
-In cases where a completion list is triggered via `Ctrl+Space`, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire identifier/keyword that was matched.
+In cases where a completion list is triggered via <kbd>Ctrl</kbd>+<kbd>Space</kbd>, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire identifier/keyword that was matched.
 
 The completion list features are implemented by the [PythonCompletionProvider](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonCompletionProvider) class.
 

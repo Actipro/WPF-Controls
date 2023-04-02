@@ -46,7 +46,7 @@ To enable C# target output by ANTLR, set the `language=CSharp3;` option in your 
 
 ### Assemblies Required for the Add-on
 
-The ANTLR Add-on references and thus requires one external assembly not written by Actipro, `Antlr3.Runtime.dll`, which interfaces with the ANTLR framework.  This assembly is freely available on the [ANTLR C# runtime download page](http://www.antlr.org/download/CSharp).
+The ANTLR Add-on references and thus requires one external assembly not written by Actipro, *Antlr3.Runtime.dll*, which interfaces with the ANTLR framework.  This assembly is freely available on the [ANTLR C# runtime download page](http://www.antlr.org/download/CSharp).
 
 The following list indicates the assemblies that are required by the add-on.
 

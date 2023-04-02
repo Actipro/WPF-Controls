@@ -106,7 +106,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private void OnViewModelRequestActivatePreviewMode(object sender, EventArgs e) {
 			if (!IsPreviewModeActive) {
 				ActivatePreviewMode();
-				viewModel.IsPreviewModeActive = IsPreviewModeActive;
+				viewModel.PreviewMode = this.PreviewMode;
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private void OnViewModelRequestCancelPreviewMode(object sender, EventArgs e) {
 			if (IsPreviewModeActive) {
 				DeactivatePreviewMode(restoreOldSettings: true);
-				viewModel.IsPreviewModeActive = IsPreviewModeActive;
+				viewModel.PreviewMode = this.PreviewMode;
 			}
 		}
 
@@ -148,7 +148,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private void OnViewModelRequestSaveAndExitPreviewMode(object sender, EventArgs e) {
 			if (IsPreviewModeActive) {
 				DeactivatePreviewMode(restoreOldSettings: false);
-				viewModel.IsPreviewModeActive = IsPreviewModeActive;
+				viewModel.PreviewMode = this.PreviewMode;
 			}
 		}
 

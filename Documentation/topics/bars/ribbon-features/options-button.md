@@ -17,7 +17,7 @@ Based on the ribbon configuration, several options are available from the menu.
 
 ### Ribbon Layout
 
-The ribbon supports two layout modes: [Classic](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Classic) and [Simplified](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Simplified). When enabled, the options menu allows the end-user to toggle between the two layout modes.  The following options are available:
+The ribbon supports two layout modes: `Classic` and `Simplified`. When enabled, the options menu allows the end-user to toggle between the two layout modes.  The following options are available:
 
 | Option | Description |
 | --- | --- |
@@ -79,7 +79,7 @@ The menu item labels for each option are defined by the following string resourc
 | Hide Quick Access Toolbar | `UIRibbonMenuItemHideQatText` |
 | Show Quick Access Toolbar | `UIRibbonMenuItemShowQatText` |
 
-The following example demonstrates how to change the "Always Show Ribbon" menu item label to "Show Full Ribbon":
+The following example demonstrates how to change the `"Always Show Ribbon"` menu item label to `"Show Full Ribbon"`:
 
 ```csharp
 ActiproSoftware.Products.Bars.SR.SetCustomString(ActiproSoftware.Products.Bars.SRName.UIRibbonMenuItemAlwaysShowRibbonText.ToString(), "Show Full Ribbon");

@@ -15,7 +15,7 @@ The controls provided in the Editors product can be easily integrated into the [
 
 ## Interop Assembly
 
-The Interop functionality is provided through a separate assembly, which is called `ActiproSoftware.Editors.Interop.Grids.Wpf.dll`.  Therefore, a reference to this assembly must be added in order to leverage the property editors it provides.  This assembly should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+The Interop functionality is provided through a separate assembly, which is called *ActiproSoftware.Editors.Interop.Grids.Wpf.dll*.  Therefore, a reference to this assembly must be added in order to leverage the property editors it provides.  This assembly should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 }
 
@@ -51,7 +51,7 @@ The Interop assembly provides a set of classes that derive from [PropertyEditor]
 </td>
 <td>
 
-Represents an property editor that uses a [BrushEditBox](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox) for editing `Brush` property values.
+Represents a property editor that uses a [BrushEditBox](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox) for editing `Brush` property values.
 
 </td>
 </tr>
@@ -65,7 +65,7 @@ Represents an property editor that uses a [BrushEditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) for editing `Byte` property values.
+Represents a property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) for editing `Byte` property values.
 
 </td>
 </tr>
@@ -79,7 +79,7 @@ Represents an property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox) for editing `Color` property values.
+Represents a property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox) for editing `Color` property values.
 
 </td>
 </tr>
@@ -92,7 +92,7 @@ Represents an property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox) for editing `CornerRadius` property values.
+Represents a property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox) for editing `CornerRadius` property values.
 
 </td>
 </tr>
@@ -105,7 +105,7 @@ Represents an property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIR
 </td>
 <td>
 
-Represents an property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) for editing `DateTime` (date-only) property values.
+Represents a property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) for editing `DateTime` (date-only) property values.
 
 </td>
 </tr>
@@ -118,7 +118,7 @@ Represents an property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime` property values.
+Represents a property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime` property values.
 
 </td>
 </tr>
@@ -131,7 +131,7 @@ Represents an property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.
 </td>
 <td>
 
-Represents an property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) for editing `Double` property values.
+Represents a property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) for editing `Double` property values.
 
 </td>
 </tr>
@@ -144,7 +144,7 @@ Represents an property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [EnumEditBox](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox) for editing `Enum` property values.
+Represents a property editor that uses a [EnumEditBox](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox) for editing `Enum` property values.
 
 </td>
 </tr>
@@ -157,7 +157,7 @@ Represents an property editor that uses a [EnumEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox) for editing `Guid` property values.
+Represents a property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox) for editing `Guid` property values.
 
 </td>
 </tr>
@@ -170,7 +170,7 @@ Represents an property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox) for editing `Int16` property values.
+Represents a property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox) for editing `Int16` property values.
 
 </td>
 </tr>
@@ -183,7 +183,7 @@ Represents an property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox) for editing `Int32` property values.
+Represents a property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox) for editing `Int32` property values.
 
 </td>
 </tr>
@@ -197,7 +197,7 @@ Represents an property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot.Controls.Editors.Int32RectEditBox) for editing `Int32Rect` property values.
+Represents a property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot.Controls.Editors.Int32RectEditBox) for editing `Int32Rect` property values.
 
 </td>
 </tr>
@@ -211,7 +211,7 @@ Represents an property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot
 </td>
 <td>
 
-Represents an property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Controls.Editors.Int64EditBox) for editing `Int64` property values.
+Represents a property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Controls.Editors.Int64EditBox) for editing `Int64` property values.
 
 </td>
 </tr>
@@ -224,7 +224,7 @@ Represents an property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) for editing property values.
+Represents a property editor that uses a [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) for editing property values.
 
 </td>
 </tr>
@@ -238,7 +238,7 @@ Represents an property editor that uses a [MaskedTextBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) for editing `Byte?` property values.
+Represents a property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) for editing `Byte?` property values.
 
 </td>
 </tr>
@@ -252,7 +252,7 @@ Represents an property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox) for editing `Color?` property values.
+Represents a property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox) for editing `Color?` property values.
 
 </td>
 </tr>
@@ -265,7 +265,7 @@ Represents an property editor that uses a [ColorEditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox) for editing `CornerRadius?` property values.
+Represents a property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox) for editing `CornerRadius?` property values.
 
 </td>
 </tr>
@@ -278,7 +278,7 @@ Represents an property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIR
 </td>
 <td>
 
-Represents an property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) for editing `DateTime?` (date-only) property values.
+Represents a property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) for editing `DateTime?` (date-only) property values.
 
 </td>
 </tr>
@@ -291,7 +291,7 @@ Represents an property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime?` property values.
+Represents a property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime?` property values.
 
 </td>
 </tr>
@@ -304,7 +304,7 @@ Represents an property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.
 </td>
 <td>
 
-Represents an property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) for editing `Double?` property values.
+Represents a property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) for editing `Double?` property values.
 
 </td>
 </tr>
@@ -317,7 +317,7 @@ Represents an property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox) for editing `Guid?` property values.
+Represents a property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox) for editing `Guid?` property values.
 
 </td>
 </tr>
@@ -330,7 +330,7 @@ Represents an property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox) for editing `Int16?` property values.
+Represents a property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox) for editing `Int16?` property values.
 
 </td>
 </tr>
@@ -343,7 +343,7 @@ Represents an property editor that uses a [Int16EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox) for editing `Int32?` property values.
+Represents a property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox) for editing `Int32?` property values.
 
 </td>
 </tr>
@@ -357,7 +357,7 @@ Represents an property editor that uses a [Int32EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot.Controls.Editors.Int32RectEditBox) for editing `Int32Rect?` property values.
+Represents a property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot.Controls.Editors.Int32RectEditBox) for editing `Int32Rect?` property values.
 
 </td>
 </tr>
@@ -371,7 +371,7 @@ Represents an property editor that uses a [Int32RectEditBox](xref:@ActiproUIRoot
 </td>
 <td>
 
-Represents an property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Controls.Editors.Int64EditBox) for editing `Int64?` property values.
+Represents a property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Controls.Editors.Int64EditBox) for editing `Int64?` property values.
 
 </td>
 </tr>
@@ -384,7 +384,7 @@ Represents an property editor that uses a [Int64EditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Controls.Editors.PointEditBox) for editing `Point?` property values.
+Represents a property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Controls.Editors.PointEditBox) for editing `Point?` property values.
 
 </td>
 </tr>
@@ -397,7 +397,7 @@ Represents an property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Controls.Editors.RectEditBox) for editing `Rect?` property values.
+Represents a property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Controls.Editors.RectEditBox) for editing `Rect?` property values.
 
 </td>
 </tr>
@@ -410,7 +410,7 @@ Represents an property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) for editing `Single?` property values.
+Represents a property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) for editing `Single?` property values.
 
 </td>
 </tr>
@@ -423,7 +423,7 @@ Represents an property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Controls.Editors.SizeEditBox) for editing `Size?` property values.
+Represents a property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Controls.Editors.SizeEditBox) for editing `Size?` property values.
 
 </td>
 </tr>
@@ -436,7 +436,7 @@ Represents an property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) for editing `Thickness?` property values.
+Represents a property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) for editing `Thickness?` property values.
 
 </td>
 </tr>
@@ -449,7 +449,7 @@ Represents an property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot
 </td>
 <td>
 
-Represents an property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) for editing `DateTime?` (time-only) property values.
+Represents a property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) for editing `DateTime?` (time-only) property values.
 
 </td>
 </tr>
@@ -462,7 +462,7 @@ Represents an property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox) for editing `TimeSpan?` property values.
+Represents a property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox) for editing `TimeSpan?` property values.
 
 </td>
 </tr>
@@ -476,7 +476,7 @@ Represents an property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.
 </td>
 <td>
 
-Represents an property editor that uses a [VectorEditBox](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox) for editing `Vector?` property values.
+Represents a property editor that uses a [VectorEditBox](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox) for editing `Vector?` property values.
 
 </td>
 </tr>
@@ -490,7 +490,7 @@ Represents an property editor that uses a [VectorEditBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Controls.Editors.PointEditBox) for editing `Point` property values.
+Represents a property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Controls.Editors.PointEditBox) for editing `Point` property values.
 
 </td>
 </tr>
@@ -503,7 +503,7 @@ Represents an property editor that uses a [PointEditBox](xref:@ActiproUIRoot.Con
 </td>
 <td>
 
-Represents an property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Controls.Editors.RectEditBox) for editing `Rect` property values.
+Represents a property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Controls.Editors.RectEditBox) for editing `Rect` property values.
 
 </td>
 </tr>
@@ -516,7 +516,7 @@ Represents an property editor that uses a [RectEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) for editing `Single` property values.
+Represents a property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) for editing `Single` property values.
 
 </td>
 </tr>
@@ -529,7 +529,7 @@ Represents an property editor that uses a [SingleEditBox](xref:@ActiproUIRoot.Co
 </td>
 <td>
 
-Represents an property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Controls.Editors.SizeEditBox) for editing `Size` property values.
+Represents a property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Controls.Editors.SizeEditBox) for editing `Size` property values.
 
 </td>
 </tr>
@@ -542,7 +542,7 @@ Represents an property editor that uses a [SizeEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) for editing `Thickness` property values.
+Represents a property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) for editing `Thickness` property values.
 
 </td>
 </tr>
@@ -555,7 +555,7 @@ Represents an property editor that uses a [ThicknessEditBox](xref:@ActiproUIRoot
 </td>
 <td>
 
-Represents an property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) for editing `DateTime` (time-only) property values.
+Represents a property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) for editing `DateTime` (time-only) property values.
 
 </td>
 </tr>
@@ -568,7 +568,7 @@ Represents an property editor that uses a [TimeEditBox](xref:@ActiproUIRoot.Cont
 </td>
 <td>
 
-Represents an property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox) for editing `TimeSpan` property values.
+Represents a property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox) for editing `TimeSpan` property values.
 
 </td>
 </tr>
@@ -582,7 +582,7 @@ Represents an property editor that uses a [TimeSpanEditBox](xref:@ActiproUIRoot.
 </td>
 <td>
 
-Represents an property editor that uses a [VectorEditBox](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox) for editing `Vector` property values.
+Represents a property editor that uses a [VectorEditBox](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox) for editing `Vector` property values.
 
 </td>
 </tr>
@@ -629,15 +629,11 @@ If you wish to apply the property editors provided to all property grid instance
 
 > [!NOTE]
 > There are several property editors that cannot be installed via the built-in editors property described above and must be manually added to a [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[PropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyEditors) collection:
-> 
+>
 > - [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor) - Targets `DateTime` and normally the [DateTimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DateTimePropertyEditor) handles that.
-> 
 > - [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor) - Targets `String` and requires that a `Mask` is set.
-> 
 > - [NullableDatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.NullableDatePropertyEditor) - Targets `DateTime?` and normally the [NullableDateTimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.NullableDateTimePropertyEditor) handles that.
-> 
 > - [NullableTimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.NullableTimePropertyEditor) - Targets `DateTime?` and normally the [NullableDateTimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.NullableDateTimePropertyEditor) handles that.
-> 
 > - [TimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.TimePropertyEditor) - Targets `DateTime` and normally the [DateTimePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DateTimePropertyEditor) handles that.
 
 ### Specific Property Editors via PropertyGrid.PropertyEditors

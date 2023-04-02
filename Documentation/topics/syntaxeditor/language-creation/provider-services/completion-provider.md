@@ -5,13 +5,13 @@ order: 7
 ---
 # IntelliPrompt Completion Provider
 
-Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to `Ctrl+Space`.
+Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to <kbd>Ctrl</kbd>+<kbd>Space</kbd>.
 
 ## Basic Concepts
 
 The [ICompletionProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider) interface defines a single method: [RequestSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider.RequestSession*).  This method has a parameter that indicates the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) in which to open the session and a boolean parameter that indicates whether to auto-complete if a single match is found.
 
-SyntaxEditor is wired up to automatically call this method if a completion provider is registered as a service on the current language when `Ctrl+Space` is typed by the end user.
+SyntaxEditor is wired up to automatically call this method if a completion provider is registered as a service on the current language when <kbd>Ctrl</kbd>+<kbd>Space</kbd> is typed by the end user.
 
 [RequestSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionProvider.RequestSession*) can also be called directly in your code if you wish to generically initiate a completion session, assuming the language supports it.
 

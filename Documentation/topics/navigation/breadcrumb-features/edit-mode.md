@@ -9,7 +9,7 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control sup
 
 The user can enter edit mode by:
 
-- Pressing the `Space` key when the breadcrumb has the keyboard focus
+- Pressing the <kbd>Space</kbd> key when the breadcrumb has the keyboard focus
 
 - Clicking on the icon on the left
 
@@ -19,9 +19,9 @@ The user can enter edit mode by:
 
 The user can exit edit mode by:
 
-- Pressing the `Enter` key when the text box has the keyboard focus
+- Pressing the <kbd>Enter</kbd> key when the text box has the keyboard focus
 
-- Pressing the `Escape` key when the text box has the keyboard focus (**any changes will be discarded**)
+- Pressing the <kbd>Esc</kbd> key when the text box has the keyboard focus (**any changes will be discarded**)
 
 - Selecting an item from the drop-down list
 

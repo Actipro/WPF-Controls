@@ -38,7 +38,7 @@ The [IronyParser](xref:ActiproSoftware.Text.Parsing.Implementation.IronyParser) 
 
 ## Assembly Requirements
 
-The Irony Add-on references and thus requires one external assembly not written by Actipro, `Irony.dll`.  This assembly is freely available on the [Irony GitHub page](https://github.com/IronyProject/Irony).
+The Irony Add-on references and thus requires one external assembly not written by Actipro, *Irony.dll*.  This assembly is freely available on the [Irony GitHub page](https://github.com/IronyProject/Irony).
 
 The following list indicates the assemblies that are required by the add-on.
 

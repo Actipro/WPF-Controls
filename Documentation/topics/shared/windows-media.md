@@ -68,13 +68,13 @@ See the [Value Converters](value-converters.md) topic for more information on th
 
 ## IconFrameConverter Class
 
-[IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) value converter can be used in binding statements to select an image frame based on its size from an icon (.ICO) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this value converter, a different size frame can be selected regardless of whether it's the first frame.
+[IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) value converter can be used in binding statements to select an image frame based on its size from an icon (*.ICO*) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this value converter, a different size frame can be selected regardless of whether it's the first frame.
 
 By default, [IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) will return the first `32x32` image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredWidth).  If no image of the desired size is found, then the passed value is returned.
 
 ## IconFrameSelector Class
 
-[IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) markup extension can be used in XAML to select an image frame based on its size from an icon (.ICO) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this markup extension, a different size frame can be selected regardless of whether it's the first frame.
+[IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) markup extension can be used in XAML to select an image frame based on its size from an icon (*.ICO*) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this markup extension, a different size frame can be selected regardless of whether it's the first frame.
 
 By default, [IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) will return the first `32x32` image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredWidth).  If no image of the desired size is found, then the default `ImageSource` is returned.
 

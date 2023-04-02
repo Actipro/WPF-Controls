@@ -80,6 +80,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 
 		/// <summary>
+		/// <inheritdoc/>
+		/// </summary>
+		public override bool IsLabelVisible => true;
+
+		/// <summary>
 		/// Gets or sets the text label to display.
 		/// </summary>
 		/// <value>The text label to display.</value>

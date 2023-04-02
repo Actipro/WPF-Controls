@@ -506,7 +506,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 
 			Ribbon = new RibbonViewModel(RibbonLayoutMode.Simplified) {
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.Hidden,
+				ItemContainerTemplateSelector = (BarControlTemplateSelector)FindResource("SampleItemContainerTemplateSelector"),
 				Tabs = {
 					new RibbonTabViewModel("MvvmSamples", "MVVM Samples") {
 						Groups = {
@@ -516,8 +518,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 									new BarPopupButtonViewModel("TechnicalDemos") {
 										Description = "A collection of technical demonstrations to illustrate the features and capabilities of menus.",
 										LargeImageSource = ImageLoader.GetIcon("QuickStart32.png"),
-										MaxSimplifiedVariantSize = VariantSize.Medium,
 										SmallImageSource = ImageLoader.GetIcon("QuickStart16.png"),
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 										MenuItems = {
 											CreateTechnicalDemoCommonMenuControlsViewModel(),
 											new BarSeparatorViewModel(),
@@ -531,12 +533,22 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 									new BarPopupButtonViewModel("SampleShowcase") {
 										Description = "A collection of sample menus to showcase how menus might be used in real-world scenarios.",
 										LargeImageSource = ImageLoader.GetIcon("QuickStartGreen32.png"),
-										MaxSimplifiedVariantSize = VariantSize.Medium,
 										SmallImageSource = ImageLoader.GetIcon("QuickStartGreen16.png"),
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 										MenuItems = {
 											CreateShowcaseSampleAdvancedPasteOptionsViewModel(),
 											new BarSeparatorViewModel(),
 											CreateShowcaseSampleViewOptionsWithColorTaggingViewModel(),
+										}
+									},
+									new BarPopupButtonViewModel("DialogPopup") {
+										Description = "A dialog-style popup is displayed as a menu control.",
+										LargeImageSource = ImageLoader.GetIcon("DialogWindow32.png"),
+										SmallImageSource = ImageLoader.GetIcon("DialogWindow16.png"),
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
+										MenuItems = {
+											// Custom view model associated with the popup view
+											new MenuPopupViewModel(),
 										}
 									},
 								}

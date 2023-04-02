@@ -114,7 +114,7 @@ There are several appearance-related properties that determine how the controls 
 
 The controls have a string `Label` that can be set, which is visible in UI.
 
-The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `FormatPainter` will automatically assign `Format Painter` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
+The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `"FormatPainter"` will automatically assign `"Format Painter"` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
 
 The [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) is rendered on the button when it is in a `Medium` or `Large` variant size.  When using a `Large` variant size button, the label will wrap words to two lines to minimize overall width.  In cases where a run of label text should not be broken up into two lines, use a non-breaking space character (ASCII code 160) in place of any whitespace, like this:
 
@@ -135,7 +135,7 @@ All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances
 [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
 
 
-### Description (`BarSplitMenuItem` only)
+### Description (BarSplitMenuItem only)
 
 When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description) property's string value is displayed under the menu item's bold label as an extended description.
 
@@ -147,18 +147,17 @@ An optional string [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitBu
 
 [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) supports multiple variant sizes via its [VariantSize](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.VariantSize) property.  This feature can be used in conjunction with [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) within a ribbon in `Classic` layout mode to achieve various button layouts as available width changes.
 
-> [!TIP]
-> See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
-
-When a ribbon is in `Simplified` layout mode, the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) control will render in a `Small` variant size by default.  The [MaxSimplifiedVariantSize](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MaxSimplifiedVariantSize) property can be set to `Medium` to show a label, or set to `Collapsed` to always have the button in the overflow menu.
+When a ribbon is in `Simplified` layout mode, the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) control will render in a `Small` variant size by default and will collapse to an overflow menu when necessary.  The [ToolBarItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ToolBarItemVariantBehavior) property can be set to `All` to show a label.  Alternatively, the [ToolBarItemCollapseBehavior](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ToolBarItemCollapseBehavior) property can be set to `Always` to always have the button in the overflow menu.
 
 While [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) doesn't support variant sizes, it does have a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that can be set to show a large version of the menu item.  This large version uses a large image and can display an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description).
 
-### User Interface Density (`BarSplitButton` only)
+See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
+
+### User Interface Density (BarSplitButton only)
 
 The [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.UserInterfaceDensity) property can alter the appearance of the button, such as its size, padding, and image used.  This property is not generally set on the button instance itself, and is instead meant to be set on the root bar control to inherit down, such as with the [Ribbon.UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property.
 
-### Checked State (`BarToggleSplitButton` and `BarSplitMenuItem` only)
+### Checked State (BarToggleSplitButton and BarSplitMenuItem only)
 
 Whereas [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) implements a non-toggleable button, the [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) controls both support a checked state.
 
@@ -168,12 +167,11 @@ Set the [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleB
 
 The controls support key tips.  When a control's key tip is accessed, the popup menu is opened.
 
-The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `Copy` will automatically assign `C` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
+The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `"Copy"` will automatically assign `"C"` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
 
 The [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.KeyTipText) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.KeyTipText) properties designate the key tip text to use for the control.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Commands and Events
 
@@ -181,8 +179,7 @@ The `ICommand` in the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSpli
 
 A [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[Click](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton.Click) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).`Click` event is also raised in these scenarios.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Input Gesture Text
 
@@ -204,8 +201,7 @@ If the control's `ToolTip` property is set to a value that doesn't derive from a
 
 If the optional [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ScreenTipFooter) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipFooter) properties are specified, they will appear in a footer area of the screen tip.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

@@ -49,8 +49,8 @@ This table shows the product assemblies that may be redistributed based on indiv
 <td>Bar Code</td>
 <td>
 
-- `ActiproSoftware.BarCode.Wpf.dll` (via `ActiproSoftware.Controls.WPF.BarCode` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.BarCode.Wpf.dll* (via `ActiproSoftware.Controls.WPF.BarCode` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -59,12 +59,12 @@ This table shows the product assemblies that may be redistributed based on indiv
 <td>Bars</td>
 <td>
 
-- `ActiproSoftware.Bars.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Bars` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Bars.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Bars` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 Optional companion to the Bars product that supports easy MVVM integration is also licensed:
 
-- `ActiproSoftware.Bars.Mvvm.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Bars.Mvvm` NuGet package)
+- *ActiproSoftware.Bars.Mvvm.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Bars.Mvvm` NuGet package)
 
 </td>
 </tr>
@@ -73,8 +73,8 @@ Optional companion to the Bars product that supports easy MVVM integration is al
 <td>Charts</td>
 <td>
 
-- `ActiproSoftware.Charts.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Charts` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Charts.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Charts` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -83,8 +83,8 @@ Optional companion to the Bars product that supports easy MVVM integration is al
 <td>Docking/MDI</td>
 <td>
 
-- `ActiproSoftware.Docking.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Docking` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Docking.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Docking` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -93,16 +93,16 @@ Optional companion to the Bars product that supports easy MVVM integration is al
 <td>Editors</td>
 <td>
 
-- `ActiproSoftware.Editors.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Editors` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Editors.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Editors` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 Optional interop with PropertyGrid if Grids is also licensed:
 
-- `ActiproSoftware.Editors.Interop.Grids.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Editors.Interop.Grids` NuGet package)
+- *ActiproSoftware.Editors.Interop.Grids.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Editors.Interop.Grids` NuGet package)
 
  Optional interop with the Microsoft DataGrid:
 
-- `ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Editors.Interop.DataGrid` NuGet package)
+- *ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Editors.Interop.DataGrid` NuGet package)
 
 </td>
 </tr>
@@ -111,8 +111,8 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Gauge</td>
 <td>
 
-- `ActiproSoftware.Gauge.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Gauge` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Gauge.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Gauge` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -121,8 +121,8 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Grids</td>
 <td>
 
-- `ActiproSoftware.Grids.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Grids` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Grids.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Grids` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -131,8 +131,8 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Micro Charts</td>
 <td>
 
-- `ActiproSoftware.MicroCharts.Wpf.dll` (via `ActiproSoftware.Controls.WPF.MicroCharts` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.MicroCharts.Wpf.dll* (via `ActiproSoftware.Controls.WPF.MicroCharts` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -141,8 +141,8 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Navigation</td>
 <td>
 
-- `ActiproSoftware.Navigation.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Navigation` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Navigation.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Navigation` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -151,8 +151,8 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Ribbon</td>
 <td>
 
-- `ActiproSoftware.Ribbon.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Ribbon` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Ribbon.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Ribbon` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -161,9 +161,9 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>Shell</td>
 <td>
 
-- `ActiproSoftware.Shell.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shell` NuGet package)
-- `ActiproSoftware.Grids.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Grids` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Shell.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shell` NuGet package)
+- *ActiproSoftware.Grids.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Grids` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -172,10 +172,10 @@ Optional interop with PropertyGrid if Grids is also licensed:
 <td>SyntaxEditor</td>
 <td>
 
-- `ActiproSoftware.SyntaxEditor.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
-- `ActiproSoftware.Text.LLParser.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
-- `ActiproSoftware.Text.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.SyntaxEditor.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
+- *ActiproSoftware.Text.LLParser.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
+- *ActiproSoftware.Text.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -188,9 +188,9 @@ SyntaxEditor .NET Languages Add-on \*
 </td>
 <td>
 
-- `ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
-- `ActiproSoftware.Text.Addons.DotNet.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
-- `ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
+- *ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
+- *ActiproSoftware.Text.Addons.DotNet.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
+- *ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet` NuGet package)
 
 </td>
 </tr>
@@ -203,8 +203,8 @@ SyntaxEditor Python Language Add-on \*
 </td>
 <td>
 
-- `ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python` NuGet package)
-- `ActiproSoftware.Text.Addons.Python.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python` NuGet package)
+- *ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python` NuGet package)
+- *ActiproSoftware.Text.Addons.Python.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.Python` NuGet package)
 
 </td>
 </tr>
@@ -217,10 +217,10 @@ SyntaxEditor Web Languages Add-on \*
 </td>
 <td>
 
-- `ActiproSoftware.SyntaxEditor.Addons.JavaScript.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript` NuGet package)
-- `ActiproSoftware.Text.Addons.JavaScript.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript` NuGet package)
-- `ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML` NuGet package)
-- `ActiproSoftware.Text.Addons.Xml.Wpf.dll` (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML` NuGet package)
+- *ActiproSoftware.SyntaxEditor.Addons.JavaScript.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript` NuGet package)
+- *ActiproSoftware.Text.Addons.JavaScript.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript` NuGet package)
+- *ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML` NuGet package)
+- *ActiproSoftware.Text.Addons.Xml.Wpf.dll* (via `ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.XML` NuGet package)
 
 </td>
 </tr>
@@ -229,8 +229,8 @@ SyntaxEditor Web Languages Add-on \*
 <td>Views</td>
 <td>
 
-- `ActiproSoftware.Views.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Views` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Views.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Views` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -239,8 +239,8 @@ SyntaxEditor Web Languages Add-on \*
 <td>Wizard</td>
 <td>
 
-- `ActiproSoftware.Wizard.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Wizard` NuGet package)
-- `ActiproSoftware.Shared.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
+- *ActiproSoftware.Wizard.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Wizard` NuGet package)
+- *ActiproSoftware.Shared.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Shared` NuGet package)
 
 </td>
 </tr>
@@ -333,7 +333,7 @@ Legacy assemblies contain old deprecated code that is intended for backwards com
 
 Includes optional Windows 7 and Office 2010-like Aero themes.  Not needed unless those older themes are required for your application.  Licensed for all licensed customers.
 
-- `ActiproSoftware.Themes.Aero.Wpf.dll` (via `ActiproSoftware.Controls.WPF.Themes.Aero` NuGet package)
+- *ActiproSoftware.Themes.Aero.Wpf.dll* (via `ActiproSoftware.Controls.WPF.Themes.Aero` NuGet package)
 
 </td>
 </tr>
@@ -344,7 +344,7 @@ Includes optional Windows 7 and Office 2010-like Aero themes.  Not needed unless
 
 Optional additional features and themes for the Microsoft WPF DataGrid.  Open source and licensed for all licensed customers.
 
-- `ActiproSoftware.DataGrid.Contrib.Wpf.dll`
+- *ActiproSoftware.DataGrid.Contrib.Wpf.dll*
 
 </td>
 </tr>
@@ -355,7 +355,7 @@ Optional additional features and themes for the Microsoft WPF DataGrid.  Open so
 
 Optional integration of SyntaxEditor with ANTLR v3 parsers.  Licensed for customers who have licensed SyntaxEditor individually or via a bundle.
 
-- `ActiproSoftware.Text.Addons.Antlr.Wpf.dll`
+- *ActiproSoftware.Text.Addons.Antlr.Wpf.dll*
 
 </td>
 </tr>
@@ -366,7 +366,7 @@ Optional integration of SyntaxEditor with ANTLR v3 parsers.  Licensed for custom
 
 Optional integration of SyntaxEditor with Irony parsers.  Licensed for customers who have licensed SyntaxEditor individually or via a bundle.
 
-- `ActiproSoftware.Text.Addons.Irony.Wpf.dll`
+- *ActiproSoftware.Text.Addons.Irony.Wpf.dll*
 
 </td>
 </tr>
@@ -377,7 +377,7 @@ Optional integration of SyntaxEditor with Irony parsers.  Licensed for customers
 
 Several deprecated common controls, licensed for all licensed customers.
 
-- `ActiproSoftware.Legacy.Wpf.dll`
+- *ActiproSoftware.Legacy.Wpf.dll*
 
 </td>
 </tr>
@@ -388,10 +388,10 @@ Several deprecated common controls, licensed for all licensed customers.
 
 Licensed for customers who have licensed Editors individually or via a bundle, as these contain the old Editors codebase prior to the 2017.1 version.
 
-- `ActiproSoftware.Editors.Legacy.Wpf.dll`
-- `ActiproSoftware.Editors.Interop.DataGrid.Legacy.Wpf.dll`
-- `ActiproSoftware.Editors.Interop.PropertyGrid.Legacy.Wpf.dll`
-- `ActiproSoftware.Editors.Interop.Ribbon.Legacy.Wpf.dll`
+- *ActiproSoftware.Editors.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.DataGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.PropertyGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.Ribbon.Legacy.Wpf.dll*
 
 </td>
 </tr>
@@ -402,8 +402,8 @@ Licensed for customers who have licensed Editors individually or via a bundle, a
 
 Licensed for customers who have licensed PropertyGrid (predecessor to Grids) individually or via a bundle, as these contain the old PropertyGrid codebase prior to the 2017.1 version.
 
-- `ActiproSoftware.PropertyGrid.Legacy.Wpf.dll`
-- `ActiproSoftware.PropertyGrid.Interop.WinForms.Legacy.Wpf.dll`
+- *ActiproSoftware.PropertyGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.PropertyGrid.Interop.WinForms.Legacy.Wpf.dll*
 
 </td>
 </tr>
@@ -415,7 +415,7 @@ Licensed for customers who have licensed PropertyGrid (predecessor to Grids) ind
 
 When the @@PlatformName Controls installer is run on a machine, .NET Framework redistributable assemblies are all installed to this folder by default:
 
-`[Drive]:\Program Files (x86)\Actipro Software\WPF-Controls\[Version]\Assemblies\`
+`<Drive>:\Program Files (x86)\Actipro Software\WPF-Controls\<Version>\Assemblies\`
 
 Note that .NET and .NET Core assemblies are not included in the @@PlatformName Controls installer.  The .NET and .NET Core assemblies are available in the [NuGet packages](nuget.md).  The .NET Framework assemblies are contained in the [NuGet packages](nuget.md) as well.
 

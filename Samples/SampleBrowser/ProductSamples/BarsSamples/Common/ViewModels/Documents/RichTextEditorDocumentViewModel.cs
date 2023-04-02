@@ -25,7 +25,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private ICommand decreaseFontSizeCommand;
 		private ICommand increaseFontSizeCommand;
 		private ICommand insertSymbolCommand;
-		private bool isPreviewModeActive = false;
+		private RichTextBoxExtended.PreviewModeState previewMode;
 		private RichTextStyle selectionTextStyle = new RichTextStyle();
 		private ICommand setFontColorCommand;
 		private ICommand setFontFamilyCommand;
@@ -96,7 +96,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			// Numbering is not supported by this application and this method stub is included
 			// only for demonstration purposes of how an application might implement
 			// applying a gallery item for numbering
-			if (!IsPreviewModeActive) {
+			if (PreviewMode == RichTextBoxExtended.PreviewModeState.None) {
 				ThemedMessageBox.Show(
 					$"The numbering kind '{viewModel.Kind}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Numbering Not Implemented",
 					MessageBoxButton.OK, MessageBoxImage.Information);
@@ -137,7 +137,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			if ((viewModel.Kind == UnderlineKind.None) || (viewModel.Kind == UnderlineKind.Underline)) {
 				UpdateSelectionTextStyle(x => x.Underline = viewModel.Kind);
 			}
-			else if (!IsPreviewModeActive) {
+			else if (PreviewMode == RichTextBoxExtended.PreviewModeState.None) {
 				// Provide feedback that the selected item is not supported
 				ThemedMessageBox.Show(
 					$"The underline kind '{viewModel.Kind}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Underline Not Implemented",
@@ -185,6 +185,11 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		/// <param name="action">The action to be performed against the current text style./param>
 		private void UpdateSelectionTextStyle(Action<RichTextStyle> action) {
+			// Ignore changes if text style if preview mode is active and selection is not available because
+			// it will not be possible to restore the original text style when preview is canceled
+			if (PreviewMode == RichTextBoxExtended.PreviewModeState.ActiveWithoutSelection)
+				return;
+
 			if (action != null) {
 				var textStyle = this.SelectionTextStyle.Clone();
 				action.Invoke(textStyle);
@@ -202,7 +207,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		/// <param name="textStyle">The current select's text style.</param>
 		private void UpdateBarControlViewModelsFromSelection(RichTextStyle textStyle) {
-			if (IsPreviewModeActive)
+			if (PreviewMode != RichTextBoxExtended.PreviewModeState.None)
 				return;
 
 			if (this.BarManager.ControlViewModels[BarControlKeys.FontColorPicker] is BarGalleryViewModel fontColorGalleryViewModel)
@@ -295,21 +300,18 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		}
 
 		/// <summary>
-		/// Gets or sets if preview mode is active.
+		/// Gets or sets the current preview preview mode.
 		/// </summary>
 		/// <value>
-		/// <c>true</c> if preview mode is active; otherwise, <c>false</c>.
+		/// One of the <see cref="RichTextBoxExtended.PreviewModeState"/> values.
 		/// </value>
-		public bool IsPreviewModeActive {
-			get => isPreviewModeActive;
+		public RichTextBoxExtended.PreviewModeState PreviewMode {
+			get => previewMode;
 			set {
-				if (isPreviewModeActive != value) {
-					isPreviewModeActive = value;
+				if (previewMode != value) {
+					previewMode = value;
 
-					if (!isPreviewModeActive)
-						UpdateBarControlViewModelsFromSelection();
-
-					NotifyPropertyChanged(nameof(IsPreviewModeActive));
+					NotifyPropertyChanged(nameof(PreviewMode));
 				}
 			}
 		}

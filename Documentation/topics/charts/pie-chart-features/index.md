@@ -27,7 +27,7 @@ See the [Legend](legend.md) topic for more information.
 
 ## Multiple Series
 
-Pie charts and donut charts can contain multiple series, displayed as cocentric rings.  They also support heirarchical data, displaying a child ring outside or inside the parent.
+Pie charts and donut charts can contain multiple series, displayed as concentric rings.  They also support hierarchical data, displaying a child ring outside or inside the parent.
 
 See the [Multiple Series](multiple-series.md) topic for more information.
 

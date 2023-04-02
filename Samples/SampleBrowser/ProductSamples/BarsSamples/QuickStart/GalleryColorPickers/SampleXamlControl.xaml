@@ -42,7 +42,7 @@
 				<!-- Common Font and Text Highlight Color Pickers -->
 				<bars:RibbonGroup Key="CommonColorPickers" SmallImageSource="/Images/Icons/ColorPicker16.png">
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
-						<bars:BarPopupButton Key="FontColorPickerWithAutomatic" Label="Font Color w/Automatic" SmallImageSource="{Binding FontColorSmallImageSource}" MaxSimplifiedVariantSize="Medium">
+						<bars:BarPopupButton Key="FontColorPickerWithAutomatic" Label="Font Color w/Automatic" SmallImageSource="{Binding FontColorSmallImageSource}" ToolBarItemVariantBehavior="All">
 							<bars:BarMenuGallery Key="FontColorPickerGalleryWithAutomatic" Label="Font Color w/Automatic" SmallImageSource="/Images/Icons/ColorPicker16.png"
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
@@ -63,7 +63,7 @@
 							</bars:BarMenuGallery>
 							<bars:BarMenuItem Key="MoreColors" Label="More Colors..." Command="{Binding MoreColorsCommand}" SmallImageSource="/Images/Icons/ColorPicker16.png" />
 						</bars:BarPopupButton>
-						<bars:BarPopupButton Key="TextHighlightColorPicker" Label="Highlight Color" SmallImageSource="{Binding TextHighlightColorSmallImageSource}" MaxSimplifiedVariantSize="Medium">
+						<bars:BarPopupButton Key="TextHighlightColorPicker" Label="Highlight Color" SmallImageSource="{Binding TextHighlightColorSmallImageSource}" ToolBarItemVariantBehavior="All">
 							<bars:BarMenuGallery Key="TextHighlightColorPickerGallery" Label="Highlight Color" SmallImageSource="/Images/Icons/ColorPicker16.png"
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 Command="{Binding SetTextHighlightColorCommand}"
@@ -85,7 +85,7 @@
 
 				<!-- Other Custom Color Pickers -->
 				<bars:RibbonGroup Key="Other" SmallImageSource="/Images/Icons/ColorPicker16.png">
-					<bars:BarPopupButton Key="MoreSamples" LargeImageSource="/Images/Icons/ColorPicker32.png" SmallImageSource="/Images/Icons/ColorPicker16.png" MaxSimplifiedVariantSize="Medium">
+					<bars:BarPopupButton Key="MoreSamples" LargeImageSource="/Images/Icons/ColorPicker32.png" SmallImageSource="/Images/Icons/ColorPicker16.png" ToolBarItemVariantBehavior="All">
 										
 						<!-- Font Picker gallery with a custom ItemTemplate that defines larger swatches for colors -->
 						<bars:BarMenuItem Key="LargerSwatchesFontColorPicker" Label="Larger Swatches">

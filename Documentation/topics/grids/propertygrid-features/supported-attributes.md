@@ -103,7 +103,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 Specifies the default value for a property.
 
-The default value can be used when determine if a property has been modified, or when resetting a property.  The value specified by this attribute takes precedence over the "Reset"/"ShouldSerialize" methods, if any.
+The default value can be used to determine if a property has been modified, or when resetting a property.  The value specified by this attribute takes precedence over the `Reset*`/`ShouldSerialize*` methods, if any.
 
 This code shows an example of applying `DefaultValueAttribute` to set the property's default value:
 
@@ -158,7 +158,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 Specifies the display name for a property.
 
-The display name typically a user friendly version of the property name (e.g., "Display Name" versus "DisplayName").  This string is displayed in the name column and [summary area](summary-area.md) of a property grid.  If not specified, then the property name is used.
+The display name is typically a user friendly version of the property name (e.g., `"Display Name"` versus `"DisplayName"`).  This string is displayed in the name column and [summary area](summary-area.md) of a property grid.  If not specified, then the property name is used.
 
 This code shows an example of applying `DisplayNameAttribute` to set the property's display name:
 
@@ -272,7 +272,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 </td>
 <td>
 
-Indicates whether the name of a property is displayed within parentheses (e.g., "(Name)" versus "Name").
+Indicates whether the name of a property is displayed within parentheses (e.g., `"(Name)"` versus `"Name"`).
 
 This attribute is typically used to sort more important properties to the top, when sorting alphabetically.  However other [sorting features](categorization-and-sorting.md) can alter sort order.  In addition, the parentheses make the property stand out slightly.
 
@@ -321,7 +321,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 Specifies a `TypeConverter` class that should be used to convert values for a property.
 
-`TypeConverter`-derived classes offer alot of functionality in allowing various types of input.  For example, the `EnumConverter` class allows a property, whose type is an enum, to be set to the string representation of one of the enum values.  Without `EnumConverter`, only actual enum values could be assigned to the property.
+`TypeConverter`-derived classes offer a lot of functionality in allowing various types of input.  For example, the `EnumConverter` class allows a property, whose type is an enum, to be set to the string representation of one of the enum values.  Without `EnumConverter`, only actual enum values could be assigned to the property.
 
 A custom `TypeConverter` can be used to validate or coerce input as needed.
 
@@ -357,7 +357,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 @if (wpf) {
 
-The `System.ComponentModel.DataAnnotations.dll` assembly has other attributes that can be used by property data and factories. 
+The *System.ComponentModel.DataAnnotations.dll* assembly has other attributes that can be used by property data and factories.
 
 }
 
@@ -386,7 +386,7 @@ Provides a general-purpose attribute that lets you specify [sort order](categori
 
 @if (wpf) {
 
-This attribute can be used in place of `CategoryAttribute`, `DisplayNameAttribute`, and `DescriptionAttribute`.  It is nicer since only one attribute needs to be used for all these data annoatations and the values returned are localizable with string resources. 
+This attribute can be used in place of `CategoryAttribute`, `DisplayNameAttribute`, and `DescriptionAttribute`.  It is nicer since only one attribute needs to be used for all these data annoatations and the values returned are localizable with string resources.
 
 }
 
@@ -416,7 +416,7 @@ Indicates whether a property is editable.
 
 @if (wpf) {
 
-This attribute is similar to `ReadOnlyAttribute` but in opposite terms. 
+This attribute is similar to `ReadOnlyAttribute` but in opposite terms.
 
 }
 
@@ -445,6 +445,6 @@ The properties returned by the built-in factories can be filtered based on a set
 
 @if (wpf) {
 
-The default value of `BrowsableAttributes` contains only one entry, which is `BrowsableAttribute.Yes`. This is a statically defined instance of `BrowsableAttribute` that indicates a property is browsable. If a property does not explicitly define a `BrowsableAttribute`, then it is assumed to be browsable. Therefore, the default setting `BrowsableAttributes` filters out properties that have been explicitly marked with `BrowsableAttribute.No`. 
+The default value of `BrowsableAttributes` contains only one entry, which is `BrowsableAttribute.Yes`. This is a statically defined instance of `BrowsableAttribute` that indicates a property is browsable. If a property does not explicitly define a `BrowsableAttribute`, then it is assumed to be browsable. Therefore, the default setting `BrowsableAttributes` filters out properties that have been explicitly marked with `BrowsableAttribute.No`.
 
 }

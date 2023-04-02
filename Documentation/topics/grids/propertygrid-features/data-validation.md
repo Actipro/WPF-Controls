@@ -45,7 +45,7 @@ This code shows how to use the custom `ValidationRule` in a `DataTemplate` which
 
 ```xaml
 xmlns:sample="clr-namespace:CustomRuleNamespace"
-						
+
 ...
 
 <DataTemplate x:Key="CustomTextBoxValueTemplate">
@@ -101,7 +101,7 @@ This code shows how to define a custom `ErrorTemplate` that shows a pulsing red 
 
 *A PropertyGrid with invalid data highlight using a custom ErrorTemplate*
 
-> [!TIP]
+> [!IMPORTANT]
 > There is known issue where the visual indicator is not hidden when the associated control is hidden, which is covered in the [Troubleshooting](../troubleshooting.md) topic.
 
 There are two ways to associate the custom `ErrorTemplate` with a control in the `PropertyGrid`.  The first requires that a custom property editor `DataTemplate` be used (as shown above), which would have the `Validation.ErrorTemplate` set appropriately.  The second method uses a custom `Style` to set the `Validation.ErrorTemplate` property.  This can be done through a property editor or implicit styles.

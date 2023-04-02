@@ -13,7 +13,7 @@ The [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) control i
 
 ## Native ContextMenu Compatibility
 
-Since the [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) class inherits the native `ContextMenu` class and its features, [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) may be used anywhere that a regular context menu can be used.
+Since the [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) class inherits the native `ContextMenu` class and its features, [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) may be used anywhere that a regular `ContextMenu` can be used.
 
 ## Defining a Context Menu
 
@@ -61,12 +61,11 @@ The default value for this property is `false` but can optionally be set to `tru
 
 ## Input Gesture Text
 
-Input gestures are keyboard shortcuts that provide access to a control's command.  For instance, `Ctrl+C` is commonly associated with the clipboard `Copy` command.
+Input gestures are keyboard shortcuts that provide access to a control's command.  For instance, <kbd>Ctrl</kbd>+<kbd>C</kbd> is commonly associated with the clipboard copy command.
 
 Input gesture text is a textual representation of a keyboard shortcut, allowing the end user to learn which keyboard shortcut executes a command.  Input gesture text is shown in menu items and can be customized or hidden completely.
 
-> [!TIP]
-> See the [Control Basics](../controls/control-basics.md) topic for more information on input gesture text.
+See the [Control Basics](../controls/control-basics.md) topic for more information on input gesture text.
 
 ## MVVM Support
 

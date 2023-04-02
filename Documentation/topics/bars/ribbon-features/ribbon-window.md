@@ -16,8 +16,7 @@ It is *always* recommended that a [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Rib
 While a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow) can be used without a [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control at all, any `Window` object can achieve the same look-and-feel by applying [WindowChrome](../../themes/windowchrome.md) directly on normal `Window` objects instead of using [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow). This is the recommended approach if the `Window` will not contain a
 [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control.
 
-> [!TIP]
-> See the [WindowChrome](../../themes/windowchrome.md) topic for details.
+See the [WindowChrome](../../themes/windowchrome.md) topic for details.
 
 ## WindowChrome Usage
 
@@ -27,7 +26,7 @@ Each [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow) already has 
 
 [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow) is automatically configured with a [RibbonWindowChrome](xref:@ActiproUIRoot.Themes.RibbonWindowChrome) instance that sets default properties, like [BackdropKind](xref:@ActiproUIRoot.Themes.WindowChrome.BackdropKind), that are appropriate for a `RibbonWindow`.  The [RibbonWindowChrome](xref:@ActiproUIRoot.Themes.RibbonWindowChrome) class inherits the [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) class.
 
-> [!NOTE]
+> [!IMPORTANT]
 > When defining [WindowChrome](../../themes/windowchrome.md) on a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow), it is recommended to use the [RibbonWindowChrome](xref:@ActiproUIRoot.Themes.RibbonWindowChrome) class since it is pre-configured with default values appropriate for a `RibbonWindow` and future changes to default values will also be implemented through this class.
 
 The following example shows how to modify the [WindowChrome](../../themes/windowchrome.md) for a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow) to turn off the transparency effect and adjust the alignment of the title bar header:
@@ -45,5 +44,4 @@ The following example shows how to modify the [WindowChrome](../../themes/window
 </bars:RibbonWindow>
 ```
 
-> [!TIP]
-> See the [WindowChrome](../../themes/windowchrome.md) topic more details on more advanced customization options like injecting additional content into the title bar.
+See the [WindowChrome](../../themes/windowchrome.md) topic more details on more advanced customization options like injecting additional content into the title bar.

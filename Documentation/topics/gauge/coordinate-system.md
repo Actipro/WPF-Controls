@@ -11,9 +11,9 @@ This section contains information regarding the Actipro Gauge coordinate system,
 
 The X/Y coordinates specify an offset from an origin point, which by default is the center of the gauge. The values along the X-axis increase from left to right, while the values along the Y-axis increase from top to bottom.
 
-The X/Y coordinates can be specified using a fixed pixel offset, or using a percentage. The basis of the percentage varies based on the control. For `CircularGaugeBase`-derived controls, the `Radius` is used as the basis. For the remaining controls, the `ActualWidth` and `ActualHeight` are used.
+The X/Y coordinates can be specified using a fixed pixel offset or using a percentage. The basis of the percentage varies based on the control. For `CircularGaugeBase`-derived controls, the `Radius` is used as the basis. For the remaining controls, the `ActualWidth` and `ActualHeight` are used.
 
-Percentage based sizes can be specified by appending the percent character (%) at then end of the value (e.g., `X="10%"`).
+Percentage based sizes can be specified by appending the percent character (`%`) at the end of the value (e.g., `X="10%"`).
 
 ![Screenshot](images/circular-gauge-coordinate-system.gif)
 

@@ -46,7 +46,7 @@ This code sample shows how to define a Backstage application menu for a ribbon. 
 
 ### Key Tip Access
 
-The [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage.KeyTipAccessText) property can be set to define the key tip access text for the application button.  It defaults to `F`, allowing the `Alt+F` key combination to open the application menu.
+The [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage.KeyTipAccessText) property can be set to define the key tip access text for the application button.  It defaults to `F`, allowing the <kbd>Alt</kbd>+<kbd>F</kbd> key combination to open the application menu.
 
 ### Defining Backstage Items
 
@@ -92,7 +92,7 @@ Use of those properties can trigger the style of labeled separators found in Off
 
 ### Preventing Backstage from Closing
 
-The [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage).[CanClose](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage.CanClose) property can be set to `false` which prevents the Backstage from closing by hiding the close button and blocking `Esc` from closing Backstage.
+The [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage).[CanClose](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage.CanClose) property can be set to `false` which prevents the Backstage from closing by hiding the close button and blocking <kbd>Esc</kbd> from closing Backstage.
 
 This is useful in scenarios where you are starting up an application and wish to block end user access to the main window until they create a new document or open a document.  These or other actions can be presented on a non-closable Backstage.
 
@@ -126,7 +126,7 @@ This code sample shows how to define an application menu for a ribbon.  Combine 
 
 ### Key Tip Access
 
-The [ApplicationMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ApplicationMenu).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.KeyTipAccessText) property can be set to define the key tip access text for the application button.  It defaults to `F`, allowing the `Alt+F` key combination to open the application menu.
+The [ApplicationMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ApplicationMenu).[KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ItemsControlBase.KeyTipAccessText) property can be set to define the key tip access text for the application button.  It defaults to `F`, allowing the <kbd>Alt</kbd>+<kbd>F</kbd> key combination to open the application menu.
 
 ### Defining Menu Items
 

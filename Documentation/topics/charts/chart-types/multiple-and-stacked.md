@@ -47,7 +47,7 @@ This results in the following chart, which has extended the line series beyond t
 
 ## No Stacking
 
-When not stacked, series will render on top of each other. For [BarSeries](xref:@ActiproUIRoot.Controls.Charts.BarSeries), bars will render next to each other.  This can be done by setting [StackKind](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.StackKind) on the series to `None`.
+When not stacked, series will render on top of each other. For [BarSeries](xref:@ActiproUIRoot.Controls.Charts.BarSeries), bars will be rendered next to each other.  This can be done by setting [StackKind](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.StackKind) on the series to `None`.
 
 ![Screenshot](../images/chart-types-stacked3.png)
 
@@ -62,7 +62,7 @@ When not stacked, series will render on top of each other. For [BarSeries](xref:
 
 ## Normal Stacking
 
-Two or more series can be stacked one on top of the other to convey cumlative values to the end user.
+Two or more series can be stacked one on top of the other to convey cumulative values to the end user.
 
 By setting [StackKind](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.StackKind) on the series to `Normal`, the values of each series will be added to the previous stacked series.
 
@@ -81,7 +81,7 @@ In this sample the second series will be stacked on top of the first series.
 
 ## Percentage Stacking
 
-Two or more area series can be stacked one on top of the other to convey proportional values to the end user.  In this mode, the series render to fill the chart height.  At any given location, the height of each rendered series indicates its value percentage relative to the total.
+Two or more area series can be stacked one on top of the other to convey proportional values to the end user.  In this mode, the series renders to fill the chart height.  At any given location, the height of each rendered series indicates its value percentage relative to the total.
 
 By setting [StackKind](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.StackKind) on the series to `Percentage`, the values of each series will be added to the previous stacked series and a percentage of the total value will be used.
 

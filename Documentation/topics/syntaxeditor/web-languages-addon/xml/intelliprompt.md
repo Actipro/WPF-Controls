@@ -9,9 +9,9 @@ The XML language has built-in automated IntelliPrompt completion list and quick 
 
 ## Completion List
 
-[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible elements, attributes, and attribute values from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing `Ctrl+Space` or typing a `<` character, etc.
+[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible elements, attributes, and attribute values from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing <kbd>Ctrl</kbd>+<kbd>Space</kbd> or typing a `<` character, etc.
 
-In cases where a completion list is triggered via `Ctrl+Space`, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire name/value that was matched.
+In cases where a completion list is triggered via <kbd>Ctrl</kbd>+<kbd>Space</kbd>, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire name/value that was matched.
 
 The completion list features are implemented by the [XmlCompletionProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlCompletionProvider) class.
 

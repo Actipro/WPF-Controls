@@ -15,13 +15,13 @@ The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[SelectionMode
 |-----|-----|
 | Single | The user can select only one item at a time. |
 | Multiple | The user can select multiple items without holding down a modifier key. |
-| Extended | The user can select multiple consecutive items while holding down the `Shift` key or can toggle selection on items while holding the `Ctrl` key.  This is a more common selection mode for multi-select over the `Multiple` option. |
+| Extended | The user can select multiple consecutive items while holding down the <kbd>Shift</kbd> key or can toggle selection on items while holding the <kbd>Ctrl</kbd> key.  This is a more common selection mode for multi-select over the `Multiple` option. |
 
 The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[SelectedItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItem) property gets and sets the primary selected item, while the [SelectedItems](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItems) property contains the collection of currently-selected items.
 
 ## Returning Selectability
 
-The control calls the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[GetIsSelectable](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetIsSelectable*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) to return whether an item is capable of being selected.  This method returns `true` by default, but can return `false` for items that aren't currently capable of being selected, such as for temporary placeholder items.
+The control calls the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[GetIsSelectable](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetIsSelectable*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) to return whether an item is capable of being selected.  This method returns `true` by default but can return `false` for items that aren't currently capable of being selected, such as for temporary placeholder items.
 
 A `Binding` can be set in XAML to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[IsSelectableBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.IsSelectableBinding) property to tell how an item should retrieve the path segment.  The [GetIsSelectable](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetIsSelectable*) method will use that binding if it is supplied, and will otherwise return null.  Please note that bindings aren't as performant as code, so for large trees or if you see performance issues, it is recommended to override the [GetIsSelectable](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetIsSelectable*) method instead with custom logic to retrieve the appropriate value.
 

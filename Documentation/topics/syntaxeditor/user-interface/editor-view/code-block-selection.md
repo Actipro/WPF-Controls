@@ -13,7 +13,7 @@ By contracting the selection, it goes back and selects the previously selected b
 
 ## Activating Code Block Selection
 
-Code block selection is enabled on SyntaxEditor by default, and can be executed via the default `Ctrl+Shift+Num+` (expand) and `Ctrl+Shift+Num-` (contract) [key bindings](../input-output/default-key-bindings.md).
+Code block selection is enabled on SyntaxEditor by default, and can be executed via the default <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Num +</kbd> (expand) and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Num -</kbd> (contract) [key bindings](../input-output/default-key-bindings.md).
 
 However note that code block selection only functions if the required language service ([ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) interface) is registered.
 

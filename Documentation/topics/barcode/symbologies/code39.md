@@ -5,9 +5,9 @@ order: 8
 ---
 # Code 39
 
-Code 39 is a linear symbology, and is one of the first alphanumeric bar codes.
+Code 39 is a linear symbology and is one of the first alphanumeric bar codes.
 
-Each character encoded is made up of 5 bars and 4 spaces for a total of 9 elements.  3 out of the 9 element are always wide.  Although it is not as dense of a symbology such as Code 128, it is one of the most widely supported symbologies by devices.
+Each character encoded is made up of 5 bars and 4 spaces for a total of 9 elements.  3 out of the 9 elements are always wide.  Although it is not as dense of a symbology such as Code 128, it is one of the most widely supported symbologies by devices.
 
 ![Screenshot](../images/symbology-code39.gif)
 
@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Code39Symbology](xref:@ActiproUIRoot.Controls.BarCode.Code39Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Code39ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code39ValidationRule) |
+| Related `ValidationRule` Class | [Code39ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code39ValidationRule) |
 | Encodable Characters | Number, uppercase letter, and `-$% ./+` characters. |
 | Supports Checksum | Yes.  While this symbology is self-checking, the implementation can optionally auto-calculate and insert a check character.  This is referred to as Code 39 mod 43. |
 | Has Special Start/Stop Characters | Yes.  Must start and stop with `*` characters, but these are automatically appended for you. |
@@ -35,7 +35,7 @@ This symbology has these important members:
 
 | Member | Description |
 |-----|-----|
-| [AreStartStopCharactersVisible](xref:@ActiproUIRoot.Controls.BarCode.Code39Symbology.AreStartStopCharactersVisible) Property | Gets or sets whether the start/stop characters (*) are visible in the displayed value. |
+| [AreStartStopCharactersVisible](xref:@ActiproUIRoot.Controls.BarCode.Code39Symbology.AreStartStopCharactersVisible) Property | Gets or sets whether the start/stop characters (`*`) are visible in the displayed value. |
 | [Background](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Background) Property | Gets or sets the `Brush` to use for rendering the background. |
 | [BarHeight](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology.BarHeight) Property | Gets or sets the desired height of the bars. |
 | [BarWidthRatio](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology.BarWidthRatio) Property | Gets or sets the width ratio of wide lines to narrow lines. |

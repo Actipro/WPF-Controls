@@ -67,8 +67,7 @@ By default, the footer background will use a color that is consistent with the r
 
 Instead of setting the `Background` property directly, the [RibbonFooterControl](xref:@ActiproUIRoot.Controls.Bars.RibbonFooterControl).[Kind](xref:@ActiproUIRoot.Controls.Bars.RibbonFooterControl.Kind) property can be set one of the [RibbonFooterKind](xref:@ActiproUIRoot.Controls.Bars.RibbonFooterKind) values to trigger a pre-defined background brush. This is the recommended approach for customizing the background since the resulting brush asset will be consistent with the current theme.
 
-> [!TIP]
-> See the [Reusable Assets](../../themes/reusable-assets.md) topic for details on customizing the pre-defined brush assets used by a footer kind.
+See the [Reusable Assets](../../themes/reusable-assets.md) topic for details on customizing the pre-defined brush assets used by a footer kind.
 
 > [!TIP]
 > See the "Footer" Bars Ribbon QuickStart of the Sample Browser application for a full demonstration of working with the ribbon footer.

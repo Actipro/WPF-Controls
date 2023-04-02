@@ -19,6 +19,24 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private MemoryStream	previewStream;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// NESTED TYPES
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <summary>
+		/// Defines the current preview mode state.
+		/// </summary>
+		public enum PreviewModeState {
+			/// <summary>Preview mode is not active.</summary>
+			None,
+
+			/// <summary>Preview mode is active and selection is tracked.</summary>
+			ActiveWithSelection,
+
+			/// <summary>Preview mode is active, but selection is not tracked.</summary>
+			ActiveWithoutSelection,
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -209,17 +227,31 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// Activates preview mode.
 		/// </summary>
 		public void ActivatePreviewMode() {
-			if (previewStream == null) {
-				if (this.Selection.IsEmpty) {
-					// When the selection is empty, we need to select something for the preview stream functionality to work correctly
-					var wordRange = GetWordRange(this.CaretPosition);
-					if (wordRange != null)
-						this.Selection.Select(wordRange.Start, wordRange.End);
-				}
+			if (IsPreviewModeActive)
+				return;
 
-				// Serialize the current settings so they can be restored when preview is deactivated
-				previewStream = new MemoryStream();
-				SerializeSelection(previewStream);
+			try {
+				if (previewStream == null) {
+					if (this.Selection.IsEmpty) {
+						// When the selection is empty, we need to select something for the preview stream functionality to work correctly
+						var wordRange = GetWordRange(this.CaretPosition);
+						if (wordRange is null) {
+							// Nothing to select, so selection will not be available to modify in preview mode. This can happen
+							// if the caret is positioned on a non-word element like a image.
+							return;
+						}
+						this.Selection.Select(wordRange.Start, wordRange.End);
+					}
+
+					// Serialize the current settings so they can be restored when preview is deactivated
+					if (!this.Selection.IsEmpty) {
+						previewStream = new MemoryStream();
+						SerializeSelection(previewStream);
+					}
+				}
+			}
+			finally {
+				IsPreviewModeActive = true;
 			}
 		}
 
@@ -227,6 +259,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// Clears all text highlights.
 		/// </summary>
 		public void ClearAllTextHighlights() {
+			if (IsPreviewModeActive)
+				return;
+
 			var range = new TextRange(this.Document.ContentStart, this.Document.ContentEnd);
 			range.ApplyPropertyValue(TextElement.BackgroundProperty, null);
 		}
@@ -236,22 +271,30 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		/// <param name="restoreOldSettings">Whether to restore the old settings.</param>
 		public void DeactivatePreviewMode(bool restoreOldSettings) {
-			if (previewStream != null) {
-				if (restoreOldSettings)
-					DeserializeSelection(previewStream);
-				previewStream.Dispose();
-				previewStream = null;
+			if (!IsPreviewModeActive)
+				return;
+
+			try {
+				if (previewStream != null) {
+					if (restoreOldSettings)
+						DeserializeSelection(previewStream);
+					previewStream.Dispose();
+					previewStream = null;
+				}
+			}
+			finally {
+				IsPreviewModeActive = false;
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets whether preview mode is active.
 		/// </summary>
 		/// <value>
 		/// <c>true</c> if preview mode is active; otherwise, <c>false</c>.
 		/// </value>
-		public bool IsPreviewModeActive => (previewStream != null);
-		
+		protected bool IsPreviewModeActive { get; private set; }
+
 		/// <summary>
 		/// Called when the rendered size of a control changes. 
 		/// </summary>
@@ -264,13 +307,38 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			if (this.Document != null)
 				this.Document.PageWidth = this.ActualWidth - this.BorderThickness.Left - this.Padding.Left - this.BorderThickness.Right - this.Padding.Right;
 		}
-		
+
+		/// <summary>
+		/// Gets the current state of preview mode.
+		/// </summary>
+		/// <value>One of the <see cref="PreviewModeState"/> values.</value>
+		public PreviewModeState PreviewMode {
+			get {
+				if (IsPreviewModeActive) {
+					return (previewStream is null)
+						? PreviewModeState.ActiveWithoutSelection
+						: PreviewModeState.ActiveWithSelection;
+				}
+				return PreviewModeState.None;
+			}
+		}
+
 		/// <summary>
 		/// Resets the current selection to a zero-width range at the start of the document.
 		/// </summary>
 		public void ResetSelection() {
 			if (this.Document != null) {
 				var startPosition = Document.ContentStart.GetPositionAtOffset(0);
+
+				// Advance to the first text context
+				while (
+					(startPosition != null)
+					&& (startPosition.GetPointerContext(LogicalDirection.Forward) != TextPointerContext.Text)) {
+
+					// Next context
+					startPosition = startPosition.GetNextContextPosition(LogicalDirection.Forward);
+				}
+
 				if (startPosition != null)
 					Selection.Select(startPosition, startPosition);
 			}

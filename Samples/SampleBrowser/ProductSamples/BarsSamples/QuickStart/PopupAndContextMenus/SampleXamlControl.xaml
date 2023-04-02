@@ -35,7 +35,8 @@
 		<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Spacious" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
 				<bars:RibbonGroup Key="PopupMenuSamples" CanAutoCollapse="False">
-					<bars:BarPopupButton Key="TechnicalDemos" MaxSimplifiedVariantSize="Medium" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png" ToolTip="A collection of technical demonstrations to illustrate the features and capabilities of menus.">
+					<bars:BarPopupButton Key="TechnicalDemos" LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png" ToolBarItemVariantBehavior="All" 
+										 ToolTip="A collection of technical demonstrations to illustrate the features and capabilities of menus.">
 
 						<bars:BarMenuItem Key="CommonMenuControls" UseLargeSize="True" LargeImageSource="/Images/Icons/Menu32.png" SmallImageSource="/Images/Icons/Menu16.png" Description="Common menu controls shown in various states and configurations.">
 							<bars:BarMenuHeading Header="Default" />
@@ -229,7 +230,8 @@
 
 					</bars:BarPopupButton>
 
-					<bars:BarPopupButton Key="SampleShowcase" MaxSimplifiedVariantSize="Medium" LargeImageSource="/Images/Icons/QuickStartGreen32.png" SmallImageSource="/Images/Icons/QuickStartGreen16.png" ToolTip="A collection of sample menus to showcase how menus might be used in real-world scenarios.">
+					<bars:BarPopupButton Key="SampleShowcase" LargeImageSource="/Images/Icons/QuickStartGreen32.png" SmallImageSource="/Images/Icons/QuickStartGreen16.png" ToolBarItemVariantBehavior="All"
+										 ToolTip="A collection of sample menus to showcase how menus might be used in real-world scenarios.">
 
 						<bars:BarMenuItem Key="AdvancedPasteOptions" KeyTipText="P" UseLargeSize="True" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" Description="A sample clipboard menu using a gallery to provide multiple paste options.">
 							<bars:BarMenuItem Key="Cut" Command="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
@@ -274,6 +276,10 @@
 							</bars:BarMenuItem>
 						</bars:BarMenuItem>
 
+					</bars:BarPopupButton>
+
+					<bars:BarPopupButton Key="DialogPopup" LargeImageSource="/Images/Icons/DialogWindow32.png" SmallImageSource="/Images/Icons/DialogWindow16.png" ToolTip="A dialog-style popup is displayed as a menu control." ToolBarItemVariantBehavior="All">
+						<local:MenuPopupUserControl />
 					</bars:BarPopupButton>
 				</bars:RibbonGroup>
 			</bars:RibbonTabItem>

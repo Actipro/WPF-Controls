@@ -19,7 +19,7 @@ When the [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) property
 
 ## Using Display Attributes
 
-Sometimes it is helpful to display an alternate text version of an enumeration value, especially when the values are made of multiple concatenated words.  For instance, an enumeration value named "FooBar" might appear nicer as "Foo Bar".
+Sometimes it is helpful to display an alternate text version of an enumeration value, especially when the values are made of multiple concatenated words.  For instance, an enumeration value named `FirstName` might appear nicer as `"First Name"`.
 
 This scenario is fully supported by [EnumPicker](xref:@ActiproUIRoot.Controls.Editors.EnumPicker).  A `System.ComponentModel.DataAnnotations.DisplayAttribute` can be applied to a value to give it an alternate textual description.  Then as long as the [UseDisplayAttributes](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.UseDisplayAttributes) property is set to `true`, that alternate text will be used.
 
@@ -39,14 +39,14 @@ public enum SampleEnum {
 
 @if (wpf) {
 
-> [!NOTE]
+> [!TIP]
 > The WPF version of [EnumPicker](xref:@ActiproUIRoot.Controls.Editors.EnumPicker) also supports `System.ComponentModel.DescriptionAttribute` to supply textual descriptions in place of `System.ComponentModel.DataAnnotations.DisplayAttribute`.
 
 }
 
 ## Custom Sorting
 
-By default, values are listed in the order they are defined.  The exception is that in flags enums, group values get placed together.
+By default, values are listed in the order they are defined.  The exception is that in flags enumerations, group values get placed together.
 
 Sorting can be altered by implementing a custom `IComparer<Enum>` class and assigning it to the [EnumSortComparer](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.EnumSortComparer) property.  The [EnumValueNameSortComparer](xref:@ActiproUIRoot.Controls.Editors.Primitives.EnumValueNameSortComparer).[Instance](xref:@ActiproUIRoot.Controls.Editors.Primitives.EnumValueNameSortComparer.Instance) static property provides access to a pre-built comparer for listing enumeration values alphabetically by name.
 

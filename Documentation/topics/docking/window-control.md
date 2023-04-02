@@ -11,7 +11,7 @@ During the implementation of standard MDI and hosted floating windows for this p
 
 *A WindowControl displayed in a couple of the built-in themes*
 
-[WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) is a `Control` that implements most of same members as the standard WPF `Window` class.
+[WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) is a `Control` that implements most of the same members as the standard WPF `Window` class.
 
 ## What Can I Do with WindowControl?
 
@@ -39,8 +39,6 @@ This control has a number of built-in themes, with various Metro, Office, and op
 
 ## Working with the WindowControl
 
-[WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) inherits `ContentControl` so set its
-
 As mentioned above we implemented many of the same members found in a WPF `Window` within [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl).  You can set properties such as [WindowState](xref:@ActiproUIRoot.Controls.Docking.WindowControl.WindowState) or [ResizeMode](xref:@ActiproUIRoot.Controls.Docking.WindowControl.ResizeMode).  Browse through the members list on the [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) control to see what is available to you.
 
 There are also a number of extra properties, methods, and events that aren't on `Window`, such as the [ToggleWindowState](xref:@ActiproUIRoot.Controls.Docking.WindowControl.ToggleWindowState*) method, the [TitleBarMenuOpening](xref:@ActiproUIRoot.Controls.Docking.WindowControl.TitleBarMenuOpening) event, etc.
@@ -55,15 +53,15 @@ The title bar can be hidden entirely by setting [HasTitleBar](xref:@ActiproUIRoo
 
 A number of properties can be used to alter the state or visibility of the title bar buttons.  By default, the current window state governs which of the minimize, restore, and maximize buttons are visible.
 
-The [CanClose](xref:@ActiproUIRoot.Controls.Docking.WindowControl.CanClose) property indicates if the close button is enabled.
+The [CanClose](xref:@ActiproUIRoot.Controls.Docking.WindowControl.CanClose) property indicates if the **Close** button is enabled.
 
-Sometimes it is useful to be able to always force one or more of the buttons to be hidden.  One use case is where you don't wish to allow minimization of the window and never want the minimize button visible.  The [HasMinimizeButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasMinimizeButton), [HasRestoreButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasRestoreButton), [HasMaximizeButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasMaximizeButton), and [HasCloseButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasCloseButton) properties can be set to `false` to specify that their related button should never be visible.
+Sometimes it is useful to be able to always force one or more of the buttons to be hidden.  One use case is where you don't wish to allow minimization of the window and never want the **Minimize** button visible.  The [HasMinimizeButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasMinimizeButton), [HasRestoreButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasRestoreButton), [HasMaximizeButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasMaximizeButton), and [HasCloseButton](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasCloseButton) properties can be set to `false` to specify that their related button should never be visible.
 
 ### Icon
 
 An icon can be displayed by setting [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl).[Icon](xref:@ActiproUIRoot.Controls.Docking.WindowControl.Icon) to a valid `ImageSource`.  By default, the icon is displayed when an valid image is specified.  You can alter this behavior by explicitly setting [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl).[HasIcon](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasIcon).  Therefore, you can force the [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) to display the specified image by setting [HasIcon](xref:@ActiproUIRoot.Controls.Docking.WindowControl.HasIcon) to `true`.
 
-> [!NOTE]
+> [!IMPORTANT]
 > The icon is restricted to be 16 pixels wide by 16 pixels high.
 
 ### Context Content

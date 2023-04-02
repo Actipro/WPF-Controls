@@ -160,7 +160,7 @@ See the [Single-Line Mode](single-line-mode.md) topic for more information.
 
 ## Custom Cursors
 
-WinRT doesn't allow custom mouse cursors to be included natively via .NET, however they can be included via C++ .res files.  Several custom cursors have been created for use with SyntaxEditor but must be properly registered at app startup.
+WinRT doesn't allow custom mouse cursors to be included natively via .NET, however they can be included via C++ *.res* files.  Several custom cursors have been created for use with SyntaxEditor but must be properly registered at app startup.
 
 See the [Custom Cursors](custom-cursors.md) topic for more information.
 

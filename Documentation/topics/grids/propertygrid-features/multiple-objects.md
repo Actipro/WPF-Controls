@@ -27,7 +27,7 @@ The built-in [data factory](data-models.md) has special support for merging the 
 When information about a merged property is requested, the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel) uses information from the wrapped property models to determine the best possible "merged information".  For example, if one wrapped property accessor is read-only, then the merged property is considered read-only.
 
 > [!TIP]
-> The `MergablePropertyAttribute` can be used on a property to prevent it from being merged.  Also, only one property from all the data objects needs to be marked as not mergable.
+> The `MergablePropertyAttribute` can be used on a property to prevent it from being merged.  Also, only one property from all the data objects needs to be marked as not mergeable.
 
 ## Displaying Values
 

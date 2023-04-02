@@ -20,11 +20,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string keyTipText;
 		private string label;
 		private ImageSource largeImageSource;
-		private VariantSize maxSimplifiedVariantSize = VariantSize.Small;
 		private ImageSource mediumImageSource;
 		private ImageSource smallImageSource;
 		private bool staysOpenOnClick;
 		private string title;
+		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
 		private bool useLargeMenuItem;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +103,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		
 		/// <summary>
 		/// Gets or sets whether the control can be cloned to the ribbon quick-access toolbar.
 		/// </summary>
@@ -232,23 +233,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the maximum <see cref="VariantSize"/> for the control when in a ribbon using Simplified layout mode.
-		/// </summary>
-		/// <value>
-		/// The maximum <see cref="VariantSize"/> for the control when in a ribbon using Simplified layout mode.
-		/// The default value is <c>Small</c>.
-		/// </value>
-		public VariantSize MaxSimplifiedVariantSize {
-			get => maxSimplifiedVariantSize;
-			set {
-				if (maxSimplifiedVariantSize != value) {
-					maxSimplifiedVariantSize = value;
-					this.NotifyPropertyChanged(nameof(MaxSimplifiedVariantSize));
-				}
-			}
-		}
-
 		/// <inheritdoc cref="IHasVariantImages.MediumImageSource"/>
 		public ImageSource MediumImageSource {
 			get => mediumImageSource;
@@ -298,6 +282,40 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (title != value) {
 					title = value;
 					this.NotifyPropertyChanged(nameof(Title));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the <see cref="ItemCollapseBehavior"/> for the control when in a ribbon using Simplified layout mode.
+		/// </summary>
+		/// <value>
+		/// The <see cref="ItemCollapseBehavior"/> for the control when in a ribbon using Simplified layout mode.
+		/// The default value is <c>Default</c>.
+		/// </value>
+		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+			get => toolBarItemCollapseBehavior;
+			set {
+				if (toolBarItemCollapseBehavior != value) {
+					toolBarItemCollapseBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the <see cref="ItemVariantBehavior"/> for the control when in a toolbar, which also applies when in a ribbon using Simplified layout mode.
+		/// </summary>
+		/// <value>
+		/// The <see cref="ItemVariantBehavior"/> for the control when in a toolbar, which also applies when in a ribbon using Simplified layout mode.
+		/// The default value is <c>AlwaysSmall</c>.
+		/// </value>
+		public ItemVariantBehavior ToolBarItemVariantBehavior {
+			get => toolBarItemVariantBehavior;
+			set {
+				if (toolBarItemVariantBehavior != value) {
+					toolBarItemVariantBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemVariantBehavior));
 				}
 			}
 		}

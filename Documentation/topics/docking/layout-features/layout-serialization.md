@@ -28,7 +28,7 @@ Dock site layout data can be persisted in XML format and loaded at a later time.
 
 @if (wpf) {
 
-The [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for saving to files, string, etc. 
+The [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for saving to files, string, etc.
 
 }
 
@@ -50,7 +50,7 @@ The layout data loading code matches the `SerializationId` (or `Name`) of window
 
 @if (wpf) {
 
-The [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for loading from files, string, etc. 
+The [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer) class fully implements the XML object hierarchy serialization framework described in the [Serialization](../../shared/windows-serialization.md) topic.  Please see that topic for a list of methods that can be called for loading from files, string, etc.
 
 }
 
@@ -62,7 +62,7 @@ new DockSiteLayoutSerializer().LoadFromString(layout, dockSite);
 
 ## Window Deserialization Behaviors
 
-When loading a previously saved layout, any document or tool windows that are missing will not have their layout restored.  So if a tool window with the name "TW1" has size and position information in the layout string, but is not currently registered with the `DockSite`, then it's layout information is ignored.
+When loading a previously saved layout, any document or tool windows that are missing will not have their layout restored.  So, if a tool window with the name `"TW1"` has size and position information in the layout string, but is not currently registered with the `DockSite`, then it's layout information is ignored.
 
 There are two other behaviors supported, which allow the layout information to be retained and then applied to the associated window.  These behaviors can be configured using the [DocumentWindowDeserializationBehavior](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.DocumentWindowDeserializationBehavior) and/or [ToolWindowDeserializationBehavior](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.ToolWindowDeserializationBehavior) properties on [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).
 
@@ -74,7 +74,7 @@ This allows the layout information to be properly restored, without have to imme
 
 When using this feature, the `DocumentWindow` and/or `ToolWindow` must specify a unique [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) or `Name` so that its associated layout data can be found.  In addition, when creating a `DocumentWindow` and/or `ToolWindow` its [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) or `Name` must be specified before it is registered with the `DockSite`. If this is not done, then the layout data will not be restored.
 
-This sample code will **not** properly load the layout data, because the `ToolWindow` is registered before it `SerializationId` property is set:
+This sample code *will not* properly load the layout data, because the `ToolWindow` is registered before it `SerializationId` property is set:
 
 ```csharp
 // INCORRECT
@@ -83,7 +83,7 @@ ToolWindow tw = new ToolWindow(this.dockSite) {
 };
 ```
 
-This sample code will properly load the layout data, because the `ToolWindow` has its `SerializationId` property is set before it is registered:
+This sample code *will* properly load the layout data, because the `ToolWindow` has its `SerializationId` property is set before it is registered:
 
 ```csharp
 // CORRECT
@@ -104,15 +104,15 @@ Normally when a layout is serialized, the dock site's unused lazy load data for 
 
 ### Auto Creation
 
-Alternatively, the missing document or tool windows can be automatically created and registered with the `DockSite`.  During this process, certain information must be manually configured, such as the title, image, and content. @if (wpf) {There are two wasy that this can be done.  First, by using the [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).[DockingWindowDeserializing](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.DockingWindowDeserializing) or the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) event.  Second, by using a custom class that derives from `DocumentWindow` or `ToolWindow`. }
+Alternatively, the missing document or tool windows can be automatically created and registered with the `DockSite`.  During this process, certain information must be manually configured, such as the title, image, and content. @if (wpf) {There are two ways that this can be done.  First, by using the [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).[DockingWindowDeserializing](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.DockingWindowDeserializing) or the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) event.  Second, by using a custom class that derives from `DocumentWindow` or `ToolWindow`. }
 
 The [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).[DockingWindowDeserializing](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.DockingWindowDeserializing) is fired before any document and/or tool window is deserialized. The event arguments are of type [DockingWindowDeserializingEventArgs](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockingWindowDeserializingEventArgs), which include the XML node from the layout data and the associated `DockingWindow`.  When using auto-creation, the docking window is a new instance created during the deserialization process.  The properties on this window can then be explicitly set, as needed.  The event handler attached to `DockingWindowDeserializing` simply needs to check the name of the XML node to know the window for which the event was fired.
 
-If the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) event is used instead, check to see if any of the windows specified in the event args have been initialized yet.  If not, then set appropriate properties like title, image, and content on the uninitialized windows.
+If the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) event is used instead, check to see if any of the windows specified in the event arguments have been initialized yet.  If not, then set appropriate properties like title, image, and content on the uninitialized windows.
 
 @if (wpf) {
 
-When using a custom class that derives from `DocumentWindow` or `ToolWindow`, the properties can be assigned in the constructor of the class. In addition, a XAML file with code-behind can be leveraged to allow the window to be designed in the Visual Studio designer. 
+When using a custom class that derives from `DocumentWindow` or `ToolWindow`, the properties can be assigned in the constructor of the class. In addition, a XAML file with code-behind can be leveraged to allow the window to be designed in the Visual Studio designer.
 
 }
 
@@ -120,7 +120,7 @@ When using a custom class that derives from `DocumentWindow` or `ToolWindow`, th
 
 When deserializing document layouts, all documents are closed and only those document windows that are listed in the layout data are re-opened.  This means that if a document was open prior to the layout deserialization, but it is not listed within the layout data, it will be closed (and destroyed if [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) is set).
 
-Sometimes this is not desired, and you may wish to keep documents open that were already open prior to layout deserialization, but aren't in the layout data.  This can be achieved by setting the [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).[CanKeepExistingDocumentWindowsOpen](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.CanKeepExistingDocumentWindowsOpen) property to `true`.
+Sometimes this is not desired, and you may wish to keep documents open that were already open prior to layout deserialization but aren't in the layout data.  This can be achieved by setting the [DockSiteLayoutSerializer](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer).[CanKeepExistingDocumentWindowsOpen](xref:@ActiproUIRoot.Controls.Docking.Serialization.DockSiteLayoutSerializer.CanKeepExistingDocumentWindowsOpen) property to `true`.
 
 @if (wpf) {
 
@@ -134,9 +134,9 @@ The [Serialization](../../shared/windows-serialization.md) topic explains how to
 
 ## Optimal Memory Utilization when Using Layout Serializers
 
-The layout serializer uses an `XmlSerializer` as the core .NET object that reads/writes XML data.  One issue that has been discovered in the Microsoft .NET framework is that XmlSerializer is capable of creating memory leaks.  The leak occurs whenever a new instance of XmlSerializer is created.
+The layout serializer uses an `XmlSerializer` as the core .NET object that reads/writes XML data.  One issue that has been discovered in the Microsoft .NET framework is that `XmlSerializer` is capable of creating memory leaks.  The leak occurs whenever a new instance of `XmlSerializer` is created.
 
-To combat this leak we've implemented some caching code on our end, but also highly recommend that instead of creating a new layout serializer any time you do a layout serialization, you instead keep a reference to a single app-wide instance of the layout serializer and use that for each layout serialization.
+To combat this leak, we've implemented some caching code on our end, but also highly recommend that instead of creating a new layout serializer any time you do a layout serialization, you instead keep a reference to a single app-wide instance of the layout serializer and use that for each layout serialization.
 
 ## Disabling Floating Window Snap-to-Screen
 

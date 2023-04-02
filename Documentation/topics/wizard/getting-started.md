@@ -11,7 +11,7 @@ This topic's information will assume you are using Visual Studio to write your X
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.Wizard.@@PlatformAssemblySuffix.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Wizard.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates (Wizard, Aero Wizard)
 
@@ -31,7 +31,7 @@ Next, create a new empty WPF `Window` that looks like this:
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	Width="600" SizeToContent="Height" ResizeMode="CanResize"
 	>
-	
+
 </Window>
 ```
 
@@ -49,7 +49,7 @@ Now in the root `Window` tag, add an `xmlns` declaration for the wizard namespac
 	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
 	Width="600" SizeToContent="Height" ResizeMode="CanResize"
 	>
-	
+
 </Window>
 ```
 
@@ -60,7 +60,7 @@ The xmlns attribute declares that the use of the `wizard` namespace in this `Win
 Next, add a [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control as the sole child of the `Window`:
 
 ```xaml
-	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack" 
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack"
 		BackwardProgressTransitionDuration="0:0:0.5" ForwardProgressTransitionDuration="0:0:0.5">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
@@ -68,7 +68,7 @@ Next, add a [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control as the 
 				<shared:BarWipeTransition />
 			</shared:MultiTransitionSelector>
 		</wizard:Wizard.TransitionSelector>
-		
+
 	</wizard:Wizard>
 ```
 
@@ -100,9 +100,9 @@ The welcome page is an [exterior page](page-button-features/page-types.md), whic
 Next, add an interior [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control after the existing welcome page:
 
 ```xaml
-		<wizard:WizardPage x:Name="interiorPage" 
+		<wizard:WizardPage x:Name="interiorPage"
 				Caption="Interior Page Sample"
-				Description="This is a sample interior page that represents a step in your wizard." 
+				Description="This is a sample interior page that represents a step in your wizard."
 				Title="Interior Page">
 			<TextBlock TextWrapping="Wrap">Add your content here.</TextBlock>
 		</wizard:WizardPage>
@@ -127,8 +127,8 @@ The complete sample code is:
 	Width="600" SizeToContent="Height" ResizeMode="CanResize"
 	FocusManager.FocusedElement="{Binding ElementName=wizard}"
 	>
-	
-	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack" 
+
+	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack"
 		BackwardProgressTransitionDuration="0:0:0.5" ForwardProgressTransitionDuration="0:0:0.5">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
@@ -136,7 +136,7 @@ The complete sample code is:
 				<shared:BarWipeTransition />
 			</shared:MultiTransitionSelector>
 		</wizard:Wizard.TransitionSelector>
-		
+
 		<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
 				Caption="Welcome to the Wizard Sample Application"
 				Description="Thank you for downloading the Actipro Wizard control.">
@@ -149,16 +149,16 @@ The complete sample code is:
 				<TextBlock Grid.Row="1" TextWrapping="Wrap">To continue, click Next.</TextBlock>
 			</Grid>
 		</wizard:WizardPage>
-		
-		<wizard:WizardPage x:Name="interiorPage" 
+
+		<wizard:WizardPage x:Name="interiorPage"
 				Caption="Interior Page Sample"
-				Description="This is a sample interior page that represents a step in your wizard." 
+				Description="This is a sample interior page that represents a step in your wizard."
 				Title="Interior Page">
 			<TextBlock TextWrapping="Wrap">Add your content here.</TextBlock>
 		</wizard:WizardPage>
-		
+
 	</wizard:Wizard>
-	
+
 </Window>
 ```
 

@@ -33,9 +33,9 @@ By default the prompts will only be appended when the control has focus.  The [P
 
 ## Case Sensitivity and Case-Correction
 
-The control attempts to match the mask in a case-insensitive way by default, meaning that both 'A' and 'a' will match an "a" pattern.  If you wish to force your mask to be case sensitive, set the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property to `true`.
+The control attempts to match the mask in a case-insensitive way by default, meaning that both `A` and `a` will match an `"a"` pattern.  If you wish to force your mask to be case sensitive, set the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property to `true`.
 
-If you wish to allow case-insensitivity and also coerce characters to match the pattern, set the [IsCaseAutoCorrected](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseAutoCorrected) property to `true`.  When this property is set, the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property is ignored.  Say the mask pattern is "(Male|Female)".  This means only one of the two strings can be typed.  If the user types a 'm' into the control, it will convert the typed character to 'M'.  The control also will automatically insert the rest of the text, making it read "Male" since the "ale" characters are considered literals at those character offsets.  Note that this last feature occurs regardless of case options.
+If you wish to allow case-insensitivity and also coerce characters to match the pattern, set the [IsCaseAutoCorrected](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseAutoCorrected) property to `true`.  When this property is set, the [IsCaseSensitive](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.IsCaseSensitive) property is ignored.  Say the mask pattern is `"(Male|Female)"`.  This means only one of the two strings can be typed.  If the user types an `m` into the control, it will convert the typed character to `M`.  The control will also automatically insert the rest of the text, making it read `"Male"` since the `"ale"` characters are considered literals at those character offsets.  Note that this last feature occurs regardless of case options.
 
 ## Regular Expression Mask Syntax
 
@@ -43,23 +43,23 @@ The [MaskedTextBox](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox) uses a c
 
 ### Literals
 
-Literal characters can be included in the regular expression, but special characters must be escaped using the backslash character (\\).
+Literal characters can be included in the regular expression, but special characters must be escaped using the backslash character (`\`).
 
 Whitespace such as spaces are treated as a literal.
 
 ### Groups
 
-Any number of regular expression elements can grouped together by enclosing them in parenthesis.  Alternations, which are described below, are a special type of group which are also enclosed in parenthesis.  Groups can be repeated using one of the support quantifiers after the closing paraenthesis.
+Any number of regular expression elements can be grouped together by enclosing them in parenthesis.  Alternations, which are described below, are a special type of group which are also enclosed in parenthesis.  Groups can be repeated using one of the support quantifiers after the closing parenthesis.
 
-For example, the regular expression "ABC*" requires A and B, then allows for zero or more of C. The regular expression "(ABC)\*", which groups "ABC" into a single element, allows for zero or more of "ABC" together.
+For example, the regular expression `"ABC*"` requires `A` and `B`, then allows for zero or more of `C`. The regular expression `"(ABC)*"`, which groups `"ABC"` into a single element, allows for zero or more of `"ABC"` together.
 
-In terms of literal completion, only the A character would ever be entered by the end-user for the "(ABC)\*" regular expression.  When the user types an A, then the BC are required and are therefore automatically inserted by the control.  If an additional A is typed, then again the BC would be auto completed, resulting in "ABCABC" as the text.
+In terms of literal completion, only the `A` character would ever be entered by the end-user for the `"(ABC)*"` regular expression.  When the user types an `A`, then the `BC` are required and are therefore automatically inserted by the control.  If an additional `A` is typed, then again the `BC` would be auto completed, resulting in `"ABCABC"` as the text.
 
 ### Alternations
 
-Alternation allows for two or more alternate branches to be taken and is defined by using the vertical bar in parenthesis. For example, the "(AB|CD)" regular expression can match the string "AB" or the string "CD". The alternate branches can be any other supported regular expression element, including other groups or alternations. This allows for very complex scenarioes to be defined and used as a mask.
+Alternation allows for two or more alternate branches to be taken and is defined by using the vertical bar in parenthesis. For example, the `"(AB|CD)"` regular expression can match the string `"AB"` or the string `"CD"`. The alternate branches can be any other supported regular expression element, including other groups or alternations. This allows for very complex scenarios to be defined and used as a mask.
 
-When showing prompt indicators for uncompleted sections of the maks, the control will choose the shortest branch of an alternation that would result in completion of the mask.
+When showing prompt indicators for uncompleted sections of the mask, the control will choose the shortest branch of an alternation that would result in completion of the mask.
 
 ### Quantifiers
 
@@ -67,24 +67,24 @@ Quantifiers can be used to specify the number of times a regular expression elem
 
 | Quantifier | Description |
 |-----|-----|
-| ?   | Indicates that the regular expression element is optional. For example, the regular expression "AB?C" will match the string "ABC" or "AC". |
-| \*  | Indicates that the regular expression element is can be repeated zero or more times, with no upper limit. For example, the regular expression "AB*C" will match the string "ABC" or "AC", as well as "ABBBBBBBC". |
-| +   | Indicates that the regular expression element must occur once, but can be repeat any number of times. For example, the regular expression "AB+C" will match the string "ABC" or "ABBBBBBBC", but will not match "AC". |
-| \{N} | Indicates that the regular expression element must occur exactly N times, where N is a postive integer value. For example, the regular expression "AB\{2}C" will only match the string "ABBC". |
-| \{N,} | Indicates that the regular expression element must occur exactly N times, where N is a postive integer value, but can be repeated any number of times.  For example, the regular expression "AB\{2,}C" will match the string "ABBC" or "ABBBBBBC". |
-| \{N,M} | Indicates that the regular expression element must occur exactly N times, where N is a postive integer value, but can be repeated M times, where M is a positive integer value greater than N.  For example, the regular expression "AB\{2,3}C" will match the string "ABBC" or "ABBBC", but not "ABBBBC". |
+| ?   | Indicates that the regular expression element is optional. For example, the regular expression `"AB?C"` will match the string `"ABC"` or `"AC"`. |
+| \*  | Indicates that the regular expression element can be repeated zero or more times, with no upper limit. For example, the regular expression `"AB*C"` will match the string `"ABC"` or `"AC"`, as well as `"ABBBBBBBC"`. |
+| +   | Indicates that the regular expression element must occur once but can be repeated any number of times. For example, the regular expression `"AB+C"` will match the string `"ABC"` or `"ABBBBBBBC"` but will not match `"AC"`. |
+| \{N} | Indicates that the regular expression element must occur exactly *N* times, where *N* is a positive integer value. For example, the regular expression `"AB{2}C"` will only match the string `"ABBC"`. |
+| \{N,} | Indicates that the regular expression element must occur exactly *N* times, where *N* is a positive integer value, but can be repeated any number of times.  For example, the regular expression `"AB{2,}C"` will match the string `"ABBC"` or `"ABBBBBBC"`. |
+| \{N,M} | Indicates that the regular expression element must occur exactly *N* times, where *N* is a positive integer value, but can be repeated *M* times, where *M* is a positive integer value greater than *N*.  For example, the regular expression `"AB{2,3}C"` will match the string `"ABBC"` or `"ABBBC"`, but not `"ABBBBC"`. |
 
 ### Character Classes
 
 Character classes can be used to define one or more characters, using ranges or by explicitly defining individual characters.
 
-Custom character classes are enclosed in square brackets. Ranges can be defined using a start character, followed by a dash (-), followed by an end character.  For example, the character class "\[0-9]", includes all digits. Additional ranges can be appended to specify non-contiguous ranges. For example, the character class "\[0-357-9]", includes all digits except 4 and 6.  The caret (^) can be used to negate the character class. For example, the character class "\[^0-9]" includes all characters except the digits.
+Custom character classes are enclosed in square brackets. Ranges can be defined using a start character, followed by a dash (`-`), followed by an end character.  For example, the character class `"[0-9]"`, includes all digits. Additional ranges can be appended to specify non-contiguous ranges. For example, the character class `"[0-357-9]"`, includes all digits except `4` and `6`.  The caret (`^`) can be used to negate the character class. For example, the character class `"[^0-9]"` includes all characters except the digits.
 
 The following table summarizes character matching syntax for custom and built-in character classes.
 
 | Character Class | Description |
 |-----|-----|
-| .   | Matches any character except \\n.  When within a character class, the `.` will be treated as a period character. |
+| .   | Matches any character except newline (`\n`).  When within a character class, the `.` will be treated as a period character. |
 | \[aeiou] | Matches any single character included in the specified set of characters. |
 | \[^aeiou] | Matches any single character not in the specified set of characters. |
 | \[0-9a-fA-F] | Use of a hyphen (`–`) allows specification of contiguous character ranges. |
@@ -161,4 +161,4 @@ Wildcard pattern providers search for text by using "wildcard" pattern matching.
 | \[aeiou] | Matches any one character in the set. |
 | \[!aeiou] | Matches any one character not in the set. |
 
-Any other character in the pattern matches the character.  An example wildcard pattern is "#####-####".
+Any other character in the pattern matches the character.  An example wildcard pattern is `"#####-####"`.

@@ -108,7 +108,7 @@ There are several appearance-related properties that determine how the controls 
 
 The controls have a string `Label` that can be set, which is visible in UI.
 
-The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `FormatPainter` will automatically assign `Format Painter` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
+The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `"FormatPainter"` will automatically assign `"Format Painter"` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
 
 The [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).[Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) is rendered on the button when it is in a `Medium` or `Large` variant size.  When using a `Large` variant size button, the label will wrap words to two lines to minimize overall width.  In cases where a run of label text should not be broken up into two lines, use a non-breaking space character (ASCII code 160) in place of any whitespace, like this:
 
@@ -128,7 +128,7 @@ All [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) instances
 
 [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.
 
-### Description (`BarMenuItem` only)
+### Description (BarMenuItem only)
 
 When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description) property's string value is displayed under the menu item's bold label as an extended description.
 
@@ -140,14 +140,13 @@ An optional string [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupBu
 
 [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) supports multiple variant sizes via its [VariantSize](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.VariantSize) property.  This feature can be used in conjunction with [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) within a ribbon in `Classic` layout mode to achieve various button layouts as available width changes.
 
-> [!TIP]
-> See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
-
-When a ribbon is in `Simplified` layout mode, the [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) control will render in a `Small` variant size by default.  The [MaxSimplifiedVariantSize](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MaxSimplifiedVariantSize) property can be set to `Medium` to show a label, or set to `Collapsed` to always have the button in the overflow menu.
+When a ribbon is in `Simplified` layout mode, the [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) control will render in a `Small` variant size by default and will collapse to an overflow menu when necessary.  The [ToolBarItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ToolBarItemVariantBehavior) property can be set to `All` to show a label.  Alternatively, the [ToolBarItemCollapseBehavior](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ToolBarItemCollapseBehavior) property can be set to `Always` to always have the button in the overflow menu.
 
 While [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) doesn't support variant sizes, it does have a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that can be set to show a large version of the menu item.  This large version uses a large image and can display an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description).
 
-### User Interface Density (`BarPopupButton` only)
+See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
+
+### User Interface Density (BarPopupButton only)
 
 The [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.UserInterfaceDensity) property can alter the appearance of the button, such as its size, padding, and image used.  This property is not generally set on the button instance itself, and is instead meant to be set on the root bar control to inherit down, such as with the [Ribbon.UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property.
 
@@ -155,12 +154,11 @@ The [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.User
 
 The controls support key tips.  When a control's key tip is accessed, the popup menu is opened.
 
-The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `Copy` will automatically assign `C` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
+The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `"Copy"` will automatically assign `"C"` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
 
 The [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.KeyTipText) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.KeyTipText) properties designate the key tip text to use for the control.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Commands and Events
 
@@ -170,8 +168,7 @@ No command is executed for [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMe
 
 [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).[PopupOpening](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpening) and [PopupOpened](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpened) events are raised when the popup is opened.  The former event allows you to customize the popup menu prior to display.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Screen Tips
 
@@ -183,8 +180,7 @@ If the control's `ToolTip` property is set to a value that doesn't derive from a
 
 If the optional [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ScreenTipFooter) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipFooter) properties are specified, they will appear in a footer area of the screen tip.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

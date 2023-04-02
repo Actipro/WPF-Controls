@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
@@ -13,11 +14,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool canCloneToRibbonQuickAccessToolBar = true;
 		private ICommand command;
 		private string description;
-		private bool isEditable = true;
+		private bool isEditable;
 		private bool isReadOnly;
 		private bool isStarSizingAllowed;
+		private bool isTextCompletionEnabled = true;
 		private bool isTextSearchCaseSensitive;
 		private bool isTextSearchEnabled = true;
+		private bool isUnmatchedTextAllowed = true;
 		private string keyTipText;
 		private string label;
 		private double requestedWidth = 110.0;
@@ -183,7 +186,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>
 		/// <c>true</c> if the combobox is editable; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
+		/// The default value is <c>false</c>.
 		/// </value>
 		public bool IsEditable {
 			get => isEditable;
@@ -228,6 +231,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
+		
+		/// <summary>
+		/// Gets or sets whether the control will attempt to complete typed text with a matching item.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the control will attempt to complete typed text with a matching item; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsTextCompletionEnabled {
+			get => isTextCompletionEnabled;
+			set {
+				if (isTextCompletionEnabled != value) {
+					isTextCompletionEnabled = value;
+					this.NotifyPropertyChanged(nameof(IsTextCompletionEnabled));
+				}
+			}
+		}
 
 		/// <summary>
 		/// Gets or sets whether case is a condition when searching for items.
@@ -247,7 +267,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-
+		
 		/// <summary>
 		/// Gets or sets whether known items are matched when text is entered.
 		/// </summary>
@@ -263,6 +283,24 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (isTextSearchEnabled != value) {
 					isTextSearchEnabled = value;
 					this.NotifyPropertyChanged(nameof(IsTextSearchEnabled));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether committed <see cref="Text"/> that is unable to be matched to a gallery item will raise the <see cref="UnmatchedTextCommand"/> and possibly be allowed.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if committed <see cref="Text"/> that is unable to be matched to a gallery item will raise the <see cref="UnmatchedTextCommand"/> and possibly be allowed; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		/// <seealso cref="UnmatchedTextCommand"/>
+		public bool IsUnmatchedTextAllowed {
+			get => isUnmatchedTextAllowed;
+			set {
+				if (isUnmatchedTextAllowed != value) {
+					isUnmatchedTextAllowed = value;
+					this.NotifyPropertyChanged(nameof(IsUnmatchedTextAllowed));
 				}
 			}
 		}
@@ -370,7 +408,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <inheritdoc cref="BarComboBox.UnmatchedTextCommand"/>
+		/// <summary>
+		/// Gets or sets the <see cref="ICommand"/> to execute when <see cref="Text"/> is committed that is unable to be matched to a gallery item
+		/// or when <see cref="ItemsControl.IsTextSearchEnabled"/> is <c>false</c>.
+		/// </summary>
+		/// <value>The <see cref="ICommand"/> to execute when <see cref="Text"/> is committed that is unable to be matched to a gallery item 
+		/// or when <see cref="ItemsControl.IsTextSearchEnabled"/> is <c>false</c>.</value>
+		/// <remarks>
+		/// <para>
+		/// This command is only used when the <see cref="IsUnmatchedTextAllowed"/> property is <c>true</c>.
+		/// The unmatched text string is passed as a command parameter.
+		/// </para>
+		/// <para>
+		/// When the command is <c>null</c> or <see cref="ICommand.CanExecute"/> returns <c>true</c>, the text will be committed; otherwise, it will not be committed.
+		/// </para>
+		/// </remarks>
+		/// <seealso cref="IsUnmatchedTextAllowed"/>
 		public ICommand UnmatchedTextCommand {
 			get => unmatchedTextCommand;
 			set {

@@ -45,7 +45,7 @@ See the [Resizing and Variants](resizing.md) topic for more information.
 
 ## Application Button
 
-Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as new, open, and file save operations.
+Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save** operations.
 
 Either a traditional application menu or more modern backstage can be displayed when the button is clicked.  See the respective topics for more details on configuring each style.
 
@@ -65,7 +65,7 @@ See the [Application Menu](application-menu.md) topic for more information.
 
 ## Backstage
 
-The backstage was introduced in Office 2010 and can be displayed when clicking the application button.  It is commonly used for file-based actions like New, Open, and Save.  When it is opened, the backstage takes over the entire window.  A subtle animation is used when opening/closing to help provide a smooth transition.
+The backstage was introduced in Office 2010 and can be displayed when clicking the application button.  It is commonly used for file-based actions like **New**, **Open**, and **Save**.  When it is opened, the backstage takes over the entire window.  A subtle animation is used when opening/closing to help provide a smooth transition.
 
 The backstage is organized such that buttons and tabs appear on the near side (the header area) and the selected tab's content appears on the far side (the content area).
 
@@ -117,13 +117,13 @@ See the [Contextual Tabs](contextual-tabs.md) topic for more information.
 
 ## Tab Row Toolbar
 
-The ribbon's tab row toolbar is a control that can optionally be displayed on the far-right side of the ribbon, in the same row as the ribbon tabs.  It generally shows common controls that are always available, such as `Sharing` or `Feedback` buttons.
+The ribbon's tab row toolbar is a control that can optionally be displayed on the far-right side of the ribbon, in the same row as the ribbon tabs.  It generally shows common controls that are always available, such as **Sharing** or **Feedback** buttons.
 
 See the [Tab Row Toolbar](tab-row-toolbar.md) topic for more information.
 
 ## Options Button
 
-The Options button is displayed on the far-bottom corner of the ribbon and is used to show a menu of options to the end-user.
+The **Options** button is displayed on the far-bottom corner of the ribbon and is used to show a menu of options to the end-user.
 
 See the [Options Button](options-button.md) topic for more information.
 
@@ -133,7 +133,7 @@ A recent document control is intended to be used within a backstage or an applic
 
 Recently opened documents are listed in a sorted order and can be clicked to open them.  Hovering the mouse over a document provides its full path.
 
-Clicking on a document's pin button will toggle the pinned state of the document.  When pinned, the document will not fall off the list if there are other unpinned documents that have been opened more recently.
+Clicking on a document's **Pin** button will toggle the pinned state of the document.  When pinned, the document will not fall off the list if there are other unpinned documents that have been opened more recently.
 
 See the [Recent Documents](recent-documents.md) topic for more information.
 

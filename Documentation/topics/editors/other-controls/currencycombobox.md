@@ -11,7 +11,7 @@ The [CurrencyComboBox](xref:@ActiproUIRoot.Controls.Editors.CurrencyComboBox) ca
 
 ## Overview
 
-The [CurrencyComboBox](xref:@ActiproUIRoot.Controls.Editors.CurrencyComboBox) extends the native ComboBox and displays a list of currencies as defined by the ISO.  A currency is represented by an instance of [Currency](xref:@ActiproUIRoot.Controls.Editors.Currency), and the list of currencies is defined by the [Currency](xref:@ActiproUIRoot.Controls.Editors.Currency).[Currencies](xref:@ActiproUIRoot.Controls.Editors.Currency.Currencies) collection.
+The [CurrencyComboBox](xref:@ActiproUIRoot.Controls.Editors.CurrencyComboBox) extends the native `ComboBox` and displays a list of currencies as defined by the ISO.  A currency is represented by an instance of [Currency](xref:@ActiproUIRoot.Controls.Editors.Currency), and the list of currencies is defined by the [Currency](xref:@ActiproUIRoot.Controls.Editors.Currency).[Currencies](xref:@ActiproUIRoot.Controls.Editors.Currency.Currencies) collection.
 
 ## List of Currencies
 

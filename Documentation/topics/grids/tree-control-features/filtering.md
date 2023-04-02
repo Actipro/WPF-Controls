@@ -13,16 +13,13 @@ To activate filtering functionality, set the [TreeListBox](xref:@ActiproUIRoot.C
 
 When filtering is active, the control will iterate over every item in the tree and will call the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[Filter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.Filter*) method for each item.  That method should return a [DataFilterResult](xref:@ActiproUIRoot.Data.Filtering.DataFilterResult):
 
-- **Included** - The item passed all filter conditions and is included in the filter.  Tree descendants will also be examined by the filter.
+- `Included` - The item passed all filter conditions and is included in the filter.  Tree descendants will also be examined by the filter.
+- `IncludedWithDescendants` - The item passed all filter conditions and is included in the filter.  Tree descendants may also be examined by the filter, but only to determine if their ancestors require expansion.  Tree descendants will be included in the filter regardless of their own filter result.
+- `IncludedByDescendants` - The item did not pass all filter conditions and will only be included in the filter if one or more of its tree descendants are included.  Tree descendants will also be examined by the filter.
+- `Excluded` - The item did not pass all filter conditions and will not be included in the filter.  None of its tree descendants will be examined by the filter.
 
-- **IncludedWithDescendants** - The item passed all filter conditions and is included in the filter.  Tree descendants may also be examined by the filter, but only for determining if their ancestors require expansion.  Tree descendants will be included in the filter regardless of their own filter result.
-
-- **IncludedByDescendants** - The item did not pass all filter conditions and will only be included in the filter if one or more of its tree descendants are included.  Tree descendants will also be examined by the filter.
-
-- **Excluded** - The item did not pass all filter conditions and will not be included in the filter.  None of its tree descendants will be examined by the filter.
-
-> [!NOTE]
-> When a filter includes an item, that item will be visible in the tree.  When a filter excludes an item, that item will not be visible in the tree.
+> [!IMPORTANT]
+> When a filter *includes* an item, that item will be visible in the tree.  When a filter *excludes* an item, that item will not be visible in the tree.
 
 The [Filter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.Filter*) method is virtual and at a low level can be overridden to use custom filter logic.
 
@@ -49,7 +46,7 @@ The [PredicateFilter](xref:@ActiproUIRoot.Data.Filtering.PredicateFilter) class,
 
 Simply set the [Predicate](xref:@ActiproUIRoot.Data.Filtering.PredicateFilter.Predicate) property to the predicate to use.  If the predicate returns `true`, the [IncludedFilterResult](xref:@ActiproUIRoot.Data.Filtering.DataFilterBase.IncludedFilterResult) property value will be returned by the filter.  Otherwise, `DataFilterResult.IncludedByDescendants` will be returned.
 
-This example code shows how to set a predicate filter that assumes each item is a `TreeNodeModel` (your custom model type) and checks to see if the `Name` starts with "Foo".
+This example code shows how to set a predicate filter that assumes each item is a `TreeNodeModel` (your custom model type) and checks to see if the `Name` starts with `"Foo"`.
 
 ```csharp
 treeListBox.DataFilter = new PredicateFilter(i => ((TreeNodeModel)i).Name.StartsWith("Foo"));
@@ -69,7 +66,7 @@ The [Operation](xref:@ActiproUIRoot.Data.Filtering.StringFilterBase.Operation) p
 
 ### Culture and Case Sensitivity
 
-The [StringComparison](xref:@ActiproUIRoot.Data.Filtering.StringFilterBase.StringComparison) property is set to a `StringComparison` value that determines how to compare the strings in terms of culture and case sensitivity.  The default value is `CurrentCultureIgnoreCase`, but can be set to other options if you would prefer ordinal or case sensitive comparisons.
+The [StringComparison](xref:@ActiproUIRoot.Data.Filtering.StringFilterBase.StringComparison) property is set to a `StringComparison` value that determines how to compare the strings in terms of culture and case sensitivity.  The default value is `CurrentCultureIgnoreCase` but can be set to other options if you would prefer ordinal or case sensitive comparisons.
 
 ### Regular Expressions
 
@@ -89,7 +86,7 @@ public class TreeNodeModelStringFilter : StringFilterBase {
 }
 ```
 
-Once the string filter has been created, it can be implemented in XAML like this to filter all models whose `Name` starts with `Foo`:
+Once the string filter has been created, it can be implemented in XAML like this to filter all models whose `Name` starts with `"Foo"`:
 
 ```xaml
 <grids:TreeListBox ...>
@@ -180,7 +177,7 @@ It is also possible to inherit the other base classes like [StringFilterBase](xr
 
 ## Auto-Expanding to Filtered Items
 
-The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[AutoExpandItemsOnFilter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.AutoExpandItemsOnFilter) property can be set to `true` to ensure that when filtering occurs and an item is included in the filter, all of its ancestor items will be expanded automatically.  The propertly's default value is `false`, meaning don't enable this behavior.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[AutoExpandItemsOnFilter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.AutoExpandItemsOnFilter) property can be set to `true` to ensure that when filtering occurs and an item is included in the filter, all of its ancestor items will be expanded automatically.  The property's default value is `false`, meaning don't enable this behavior.
 
 This feature is useful when you want to ensure that filtered items are always fully visible immediately and can't be hidden by collapsed ancestor items.
 

@@ -11,7 +11,7 @@ EAN-8 is a linear symbology, used on smaller retail packages where EAN-13 bar co
 
 *A sample of this symbology*
 
-The 8 character value is divided into three parts: system code, product code, and check digit.
+The 8-character value is divided into three parts: system code, product code, and check digit.
 
 ## Symbology Characteristics
 
@@ -21,11 +21,11 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Ean8Symbology](xref:@ActiproUIRoot.Controls.BarCode.Ean8Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Ean8ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Ean8ValidationRule) |
+| Related `ValidationRule` Class | [Ean8ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Ean8ValidationRule) |
 | Encodable Characters | Number characters. |
 | Supports Checksum | Yes.  This symbology implementation auto-calculates and inserts a check digit. |
 | Has Special Start/Stop Characters | No. |
-| Fixed Length Requirements | The value must be 7 characters with a 8th character, the check digit, automatically calculated and added by the symbology. |
+| Fixed Length Requirements | The value must be 7 characters with an 8th character, the check digit, automatically calculated and added by the symbology. |
 
 ## Important Members
 

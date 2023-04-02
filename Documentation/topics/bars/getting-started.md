@@ -9,11 +9,11 @@ Getting up and running with Bars is very easy, especially with the included samp
 
 ## Add Assembly References
 
-Once you are ready to add Bars controls to your own application, first add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.Bars.@@PlatformAssemblySuffix.dll` assemblies.  Customers who prefer the Model-View-ViewModel (MVVM) pattern and want to use our open source [MVVM library](mvvm-support.md) will also need to add a reference to the `ActiproSoftware.Bars.Mvvm.@@PlatformAssemblySuffix.dll` assembly.
+Once you are ready to add Bars controls to your own application, first add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Bars.@@PlatformAssemblySuffix.dll* assemblies.  Customers who prefer the Model-View-ViewModel (MVVM) pattern and want to use our open source [MVVM library](mvvm-support.md) will also need to add a reference to the *ActiproSoftware.Bars.Mvvm.@@PlatformAssemblySuffix.dll* assembly.
 
 [NuGet packages](../nuget.md) are available for all assemblies and are the recommended way to reference Actipro product assemblies.
 
-For customers who prefer direct references to `.dll` files in their .NET Framework-based applications, the WPF Controls installer by default will install assemblies to the GAC, as well as into a Program Files folder whose path is listed in the product's Readme file.
+For customers who prefer direct references to *.dll* files in their .NET Framework-based applications, the WPF Controls installer by default will install assemblies to the GAC, as well as into a *Program Files* folder whose path is listed in the product's Readme file.
 
 ## Read the Documentation Topics
 
@@ -32,7 +32,7 @@ Ribbon is a complex control, so we encourage ribbon users to start with the samp
 
 The first step starts with the simple creation of a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow) with an empty [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control on it.  The steps proceed to build out view models and other classes to support the ribbon.  Each step builds on the previous step to introduce core concepts with minimal code changes until, by the last step, there is a fully functional ribbon.  Since the code for a ribbon implementation can get quite large, we chose to put most of our sample code in the "Getting Started" series of QuickStarts instead of in this documentation.
 
-The "Getting Started" series is probably the best place to go for quickly getting up and running.  All the "Getting Started" windows can be run from the Sample Browser application and their source code (the most important thing) is located in the sample project.
+The "Getting Started" series is probably the best place to go for quickly getting up and running.  All the "Getting Started" windows can be run from the **Sample Browser** application and their source code (the most important thing) is located in the sample project.
 
 > [!TIP]
 > Although each "Getting Started" QuickStart focuses on adding a new piece of functionality to the ribbon and the changes for each step are described within the QuickStarts, it still may be useful to use a "text diff" application to see the exact code differences between each "Getting Started" step.

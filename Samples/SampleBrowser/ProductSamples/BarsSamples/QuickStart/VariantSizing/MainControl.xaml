@@ -100,33 +100,33 @@
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 
-							<bars:RibbonTabItem x:Name="SimplifiedMaxVariantSizeTab" Label="Max Variant Size" KeyTipText="V">
+							<bars:RibbonTabItem x:Name="SimplifiedVariantSizeTab" Label="Variant Sizes" KeyTipText="V">
 								<!--
-								The MaxSimplifiedVariantSize property determines the maximum variant size of a control
-								when it is displayed in a Ribbon with the Simplified layout.
+								The ToolBarItemVariantBehavior property determines the variant size behavior of a control
+								when it is displayed in a Ribbon with the Simplified layout mode.
 								
-								The default value is Small (e.g., just the icon for a BarButton), but you can optionally
-								set the value to Medium (e.g., icon plus a label for a BarButton). The Large variant
-								size has no effect in the Simplified layout.
+								The default value is AlwaysSmall (e.g., just the icon for a BarButton), but you can optionally
+								set the value to All to allow other sizes like Medium (e.g., icon plus a label for a BarButton).
+								The Large variant size is not used in the Simplified layout mode.
 								-->
-								<bars:RibbonGroup Key="MaxMediumSize">
+								<bars:RibbonGroup Key="AllowMediumSize">
 									<!-- The following buttons will appear in the Medium size (e.g., with label) if there is space, then shift to Small size before moving to the Overflow menu -->
-									<bars:BarButton Key="MaxMedium1" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
-									<bars:BarButton Key="MaxMedium2" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
-									<bars:BarButton Key="MaxMedium3" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
-									<bars:BarButton Key="MaxMedium4" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="MaxMedium1" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="MaxMedium2" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="MaxMedium3" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="MaxMedium4" Label="(Max Medium)" KeyTipText="M" SmallImageSource="/Images/Icons/New16.png" ToolBarItemVariantBehavior="All" />
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Label="Max Small Size (Default)">
+								<bars:RibbonGroup Label="Always Small Size (Default)">
 									<!-- The following buttons will appear in the Small size (default) before moving to the Overflow menu -->
 									<bars:BarButton Key="MaxSmall1" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
 									<bars:BarButton Key="MaxSmall2" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
 									<bars:BarButton Key="MaxSmall3" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
 									<bars:BarButton Key="MaxSmall4" Label="(Max Small)" KeyTipText="S" SmallImageSource="/Images/Icons/Open16.png"/>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Label="Max Collapsed Size">
+								<bars:RibbonGroup Label="Always Collapsed Size">
 									<!-- The following buttons will always appear in the Overflow menu even if there is space in the Ribbon -->
-									<bars:BarButton Key="AlwaysCollapsed1" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Collapsed"/>
-									<bars:BarButton Key="AlwaysCollapsed2" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Collapsed"/>
+									<bars:BarButton Key="AlwaysCollapsed1" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemCollapseBehavior="Always" />
+									<bars:BarButton Key="AlwaysCollapsed2" Label="(Always Collapsed)" KeyTipText="C" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemCollapseBehavior="Always" />
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 
@@ -159,7 +159,7 @@
 									<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
 								</bars:RibbonGroup>
 								<bars:RibbonGroup Label="File">
-									<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" ToolBarItemVariantBehavior="All" />
 									<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
 									<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
 								</bars:RibbonGroup>
@@ -194,8 +194,8 @@
 									</TextBlock>
 
 									<!-- Max Variant Size Message -->
-									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=SimplifiedMaxVariantSizeTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
-										Setting MaxSimplifiedVariantSize to Medium will show a control label when there is enough space. Collapsed will force the control to the overflow menu.
+									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=SimplifiedVariantSizeTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+										Setting ToolBarItemVariantBehavior to All will show a control label when there is enough space. Setting ToolBarItemOverflowBehavior to Always will force the control to the overflow menu.
 									</TextBlock>
 
 									<!-- Explicit Sizing Message -->
@@ -229,8 +229,8 @@
 							
 							<!-- Variant Behavior -->
 							<bars:RibbonTabItem x:Name="ClassicVariantTab" Label="Variant Behavior">
-								<bars:RibbonGroup x:Name="ClassicVariantDefaultGroup" Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png">
-									<bars:RibbonControlGroup ItemVariantBehavior="Default">
+								<bars:RibbonGroup x:Name="ClassicVariantDefaultGroup" Key="All" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonControlGroup ItemVariantBehavior="All">
 										<bars:BarButton Key="One" KeyTipText="D" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" />
 										<bars:BarButton Key="Two" KeyTipText="D" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" />
 										<bars:BarButton Key="Three" KeyTipText="D" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />

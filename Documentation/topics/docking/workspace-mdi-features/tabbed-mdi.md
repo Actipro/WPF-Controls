@@ -31,7 +31,7 @@ Normal tabs are the default kind of tab and render normally.
 
 Pinned tabs are tabs that have been pinned by the end user and align to the leftmost end of the tab strip.  They also render like normal tabs other than having an unpin button visible.
 
-Preview tabs render on the far right side of the tab strip, generally in a slightly faded-out appearance.  They have a keep open button visible that when clicked, will make the tab a normal tab.  It is advisable to only have a single preview tab in the UI at any given time.
+Preview tabs render on the far-right side of the tab strip, generally in a slightly faded-out appearance.  They have a keep open button visible that when clicked, will make the tab a normal tab.  It is advisable to only have a single preview tab in the UI at any given time.
 
 ### Switching Kinds
 
@@ -59,9 +59,9 @@ By default, no pin button appears directly on 'normal' tabs.  This feature can b
 
 ## Title vs. Tab Text
 
-The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the standard switcher.  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as "Properties - Document1.txt", while having shorting text that renders on tabs, such as "Properties".  This allows your title to provide more extensive contextual information.
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the standard switcher.  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as `"Properties - Document1.txt"`, while having shorter text that renders on tabs, such as `"Properties"`.  This allows your title to provide more extensive contextual information.
 
-By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabText) property to a non-null value, its value will be used to render the tab text instead of the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value.  In that scenario, the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value will still be used in title bars and on the standard switcher when the window is selected.
+By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabText) property to a non-`null` value, its value will be used to render the tab text instead of the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value.  In that scenario, the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value will still be used in title bars and on the standard switcher when the window is selected.
 
 ## Tab Tool Tip
 
@@ -81,7 +81,7 @@ See the [Contextual Content](../docking-window-features/contextual-content.md) t
 
 ## Tab Strip Placement
 
-By default the document tabs will appear above their content, but can be changed to appear on any side of the content.
+By default, the document tabs will appear above their content, but can be changed to appear on any side of the content.
 
 You can alter the location of the document tabs by changing the value of the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabStripPlacement](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabStripPlacement) property.
 
@@ -105,7 +105,7 @@ This feature is useful for browser-like applications and works best when the [Ta
 
 The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[EmptyContentTemplate](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContentTemplate) property can be set to a `DataTemplate` that should be displayed in the MDI host whenever there are no documents open.  If additional data needs to be passed into the data template, set it to the [EmptyContent](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContent) property.
 
-This is a great place to place a company or application logo, or give end users instructions on what to do next to open a document.
+This is a great place to include a company/application logo or give end users instructions on what to do next to open a document.
 
 ## Listing All Documents in the MDI Host
 
@@ -160,13 +160,13 @@ This code shows a custom `Style` assigned to the [TabbedMdiHost](xref:@ActiproUI
 
 @if (wpf) {
 
-The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerStyle) property can be set to a custom `Style` for the [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem) controls that render the tabs within those [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) controls. 
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerStyle) property can be set to a custom `Style` for the [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem) controls that render the tabs within those [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) controls.
 
 }
 
 @if (wpf) {
 
-Use these properties to customize the appearance of the tab controls and their tabs. 
+Use these properties to customize the appearance of the tab controls and their tabs.
 
 }
 
@@ -191,8 +191,8 @@ This code shows the default XAML assigned to the [TabbedMdiHost](xref:@ActiproUI
 
 ## Keyboard Shortcuts
 
-The `Alt+-` keyboard shortcut shows the context menu for the currently selected document in the active tabbed MDI container.
+The <kbd>Alt</kbd>+<kbd>-</kbd> keyboard shortcut shows the context menu for the currently selected document in the active tabbed MDI container.
 
-The `Ctrl+Alt+DownArrow` keyboard shortcut shows the document list menu for the active tabbed MDI container.
+The <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down Arrow</kbd> keyboard shortcut shows the document list menu for the active tabbed MDI container.
 
-Other keyboard shortcuts allow you to jump directly to a tab. `Ctrl+1` will activate the first tab in a normal state, with `Ctrl+2` activating the second normal tab, and so on. `Ctrl+Alt+1` will activate the first tab in a pinned state, with `Ctrl+Alt+2` activating the second pinned tab, and so on.
+Other keyboard shortcuts allow you to jump directly to a tab. <kbd>Ctrl</kbd>+<kbd>1</kbd> will activate the first tab in a normal state, with <kbd>Ctrl</kbd>+<kbd>2</kbd> activating the second normal tab, and so on. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd> will activate the first tab in a pinned state, with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd> activating the second pinned tab, and so on.

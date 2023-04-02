@@ -13,11 +13,11 @@ An area chart is a derivative of a line chart where the area between the line an
 
 The area series will pivot it's polygon based on the chart's baseline value, as specified by the `Baseline` property on [XYDateTimeAxis](xref:@ActiproUIRoot.Controls.Charts.XYDateTimeAxis), [XYDoubleAxis](xref:@ActiproUIRoot.Controls.Charts.XYDoubleAxis), or [XYDecimalAxis](xref:@ActiproUIRoot.Controls.Charts.XYDecimalAxis) The default baseline for numeric values is `0`, and for date/time values it is `DateTime.MinValue`.
 
-In the following examples, the data rendered by the chart uses the index postion along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
+In the following examples, the data rendered by the chart uses the index position along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
 
 ![Screenshot](../images/chart-types-area2.png)
 
-If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polyon will appear to pivot around the baseline.
+If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polygon will appear to pivot around the baseline.
 
 ![Screenshot](../images/chart-types-area3.png)
 
@@ -53,7 +53,7 @@ See the [Line](line.md) topic for more information on the options available.
 
 ## Markers
 
-The area series can render a markers at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The area series has the same configuration properties available as the scatter series, with regards to marker rendering.
+The area series can render a marker at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The area series has the same configuration properties available as the scatter series, with regards to marker rendering.
 
 ![Screenshot](../images/chart-types-area8.png)
 

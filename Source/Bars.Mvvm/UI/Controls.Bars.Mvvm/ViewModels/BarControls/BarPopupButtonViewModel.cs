@@ -19,10 +19,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string keyTipText;
 		private string label;
 		private ImageSource largeImageSource;
-		private VariantSize maxSimplifiedVariantSize = VariantSize.Small;
 		private ImageSource mediumImageSource;
 		private ImageSource smallImageSource;
 		private string title;
+		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
 		private bool useLargeMenuItem;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,7 +60,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		
 		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
 		public bool CanCloneToRibbonQuickAccessToolBar {
 			get => canCloneToRibbonQuickAccessToolBar;
@@ -137,17 +138,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <inheritdoc cref="BarButtonViewModel.MaxSimplifiedVariantSize"/>
-		public VariantSize MaxSimplifiedVariantSize {
-			get => maxSimplifiedVariantSize;
-			set {
-				if (maxSimplifiedVariantSize != value) {
-					maxSimplifiedVariantSize = value;
-					this.NotifyPropertyChanged(nameof(MaxSimplifiedVariantSize));
-				}
-			}
-		}
-
 		/// <inheritdoc cref="BarButtonViewModel.MediumImageSource"/>
 		public ImageSource MediumImageSource {
 			get => mediumImageSource;
@@ -183,6 +173,28 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (title != value) {
 					title = value;
 					this.NotifyPropertyChanged(nameof(Title));
+				}
+			}
+		}
+		
+		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
+		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+			get => toolBarItemCollapseBehavior;
+			set {
+				if (toolBarItemCollapseBehavior != value) {
+					toolBarItemCollapseBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemVariantBehavior"/>
+		public ItemVariantBehavior ToolBarItemVariantBehavior {
+			get => toolBarItemVariantBehavior;
+			set {
+				if (toolBarItemVariantBehavior != value) {
+					toolBarItemVariantBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemVariantBehavior));
 				}
 			}
 		}

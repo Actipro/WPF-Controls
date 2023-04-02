@@ -78,7 +78,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:BarContextMenu>
 ```
 
-> [!TIP]
+> [!NOTE]
 > See the [Using Custom Controls](using-custom-controls.md) topic for more information on [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper).
 
 ## Appearance
@@ -97,7 +97,7 @@ The control has a string [Label](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.La
 
 *A BarTextBox with an external label*
 
-The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `FormatPainter` will automatically assign `Format Painter` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
+The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `"FormatPainter"` will automatically assign `"Format Painter"` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
 
 ### Images
 
@@ -106,6 +106,12 @@ The control can display an image via [SmallImageSource](xref:@ActiproUIRoot.Cont
 ### Title
 
 An optional string [Title](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Title) can be specified, which is intended to override the control's `Label` when displayed in screen tips and customization UI.
+
+### Variant Sizes
+
+When a ribbon is in `Simplified` layout mode, the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control will render in a `Small` variant size by default and will collapse to an overflow menu when necessary.  The [ToolBarItemCollapseBehavior](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.ToolBarItemCollapseBehavior) property can be set to `Never` to prevent the textbox from ever collapsing to the overflow menu.
+
+See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
 
 ### Requested Width and Star Sizing
 
@@ -117,21 +123,19 @@ Star-sizing is a handy feature when the control is within a [RibbonGroup](xref:@
 
 The controls support key tips.  When a control's key tip is accessed, the control is focused.
 
-The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `Search` will automatically assign `S` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
+The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `"Search"` will automatically assign `"S"` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
 
 The [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.KeyTipText) properties designate the key tip text to use for the control.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Commands and Events
 
-The `ICommand` in the [Command](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Command) property is executed when `Enter` is pressed while the control is focused, or the control's text changes and then focus is lost.  This allows the command handler to process a committed text change.
+The `ICommand` in the [Command](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Command) property is executed when <kbd>Enter</kbd> is pressed while the control is focused, or the control's text changes and then focus is lost.  This allows the command handler to process a committed text change.
 
 A `TextChanged` event is raised whenever the control's text changes.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Screen Tips
 
@@ -143,8 +147,7 @@ If the control's `ToolTip` property is set to a value that doesn't derive from a
 
 If the optional [ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.ScreenTipFooter) property is specified, it will appear in a footer area of the screen tip.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

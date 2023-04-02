@@ -5,7 +5,7 @@ order: 21
 ---
 # Switchers
 
-Switchers are used during `Ctrl+Tab`, etc. key presses to easily navigate between open documents and tool windows.
+Switchers are used during <kbd>Ctrl</kbd>+<kbd>Tab</kbd>, etc. key presses to easily navigate between open documents and tool windows.
 
 ![Screenshot](../images/standard-switcher.png)
 
@@ -22,14 +22,14 @@ If a switcher is available, these key gestures will activate it:
 
 | Key | Description |
 |-----|-----|
-| `Ctrl+Tab` | Select the next document. |
-| `Alt+F7` | Select the next tool window. |
-| `Ctrl+Shift+Tab` | Select the previous document. |
-| `Shift+Alt+F7` | Select the previous tool window. |
+| <kbd>Ctrl</kbd>+<kbd>Tab</kbd> | Select the next document. |
+| <kbd>Alt</kbd>+<kbd>F7</kbd> | Select the next tool window. |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> | Select the previous document. |
+| <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F7</kbd> | Select the previous tool window. |
 
 @if (wpf) {
 
-You can customize the key gestures above by changing these properties: 
+You can customize the key gestures above by changing these properties:
 
 }
 
@@ -37,10 +37,10 @@ You can customize the key gestures above by changing these properties:
 
 | Member | Description |
 |-----|-----|
-| [SelectNextDocumentKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectNextDocumentKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the next document.  The default value is `Ctrl+Tab`. |
-| [SelectNextToolWindowKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectNextToolWindowKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the next tool window.  The default value is `Alt+F7`. |
-| [SelectPreviousDocumentKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectPreviousDocumentKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the previous document.  The default value is `Ctrl+Shift+Tab`. |
-| [SelectPreviousToolWindowKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectPreviousToolWindowKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the previous tool window.  The default value is `Shift+Alt+F7`. |
+| [SelectNextDocumentKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectNextDocumentKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the next document.  The default value is <kbd>Ctrl</kbd>+<kbd>Tab</kbd>. |
+| [SelectNextToolWindowKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectNextToolWindowKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the next tool window.  The default value is <kbd>Alt</kbd>+<kbd>F7</kbd>. |
+| [SelectPreviousDocumentKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectPreviousDocumentKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the previous document.  The default value is <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd>. |
+| [SelectPreviousToolWindowKeyGesture](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase.SelectPreviousToolWindowKeyGesture) Property | Gets or sets the `KeyGesture` that is used to select the previous tool window.  The default value is <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F7</kbd>. |
 
 }
 
@@ -48,7 +48,7 @@ You can customize the key gestures above by changing these properties:
 
 By default the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) is assigned a [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) to its [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property.
 
-You can clear the [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property (set it to `{x:Null}` in XAML or to a null value in code-behind) to not use switchers, or can set that property to another [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase)-inherited class instance to use another switcher. [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) and [SimpleSwitcher](xref:@ActiproUIRoot.Controls.Docking.SimpleSwitcher) are implementations of [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase).
+You can clear the [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property (set it to `"{x:Null}"` in XAML or to a `null` value in code-behind) to not use switchers, or can set that property to another [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase)-inherited class instance to use another switcher. [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) and [SimpleSwitcher](xref:@ActiproUIRoot.Controls.Docking.SimpleSwitcher) are implementations of [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase).
 
 This sample XAML code shows how to use a simple switcher for a dock site.
 
@@ -272,7 +272,7 @@ Several other helpful tab selection key gestures are built into the product.
 
 | Key | Description |
 |-----|-----|
-| `Ctrl+PgUp` | Activates the previous tab in the same container by selecting it and focusing its content. |
-| `Ctrl+PgDn` | Activates the next tab in the same container by selecting it and focusing its content. |
-| `Ctrl+1`, `Ctrl+2`, etc. | Directly activates the numbered tab in a normal state in the current container.  For instance, `Ctrl+2` activates the second tab in a normal state. |
-| `Ctrl+Alt+1`, `Ctrl+Alt+2`, etc. | Directly activates the numbered tab in a pinned state in the current container.  For instance, `Ctrl+Alt+2` activates the second tab in a pinned state. |
+| <kbd>Ctrl</kbd>+<kbd>PgUp</kbd> | Activates the previous tab in the same container by selecting it and focusing its content. |
+| <kbd>Ctrl</kbd>+<kbd>PgDn</kbd> | Activates the next tab in the same container by selecting it and focusing its content. |
+| <kbd>Ctrl</kbd>+<kbd>1</kbd>, <kbd>Ctrl</kbd>+<kbd>2</kbd>, etc. | Directly activates the numbered tab in a normal state in the current container.  For instance, <kbd>Ctrl</kbd>+<kbd>2</kbd> activates the second tab in a normal state. |
+| <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd>, <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd>, etc. | Directly activates the numbered tab in a pinned state in the current container.  For instance, <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd> activates the second tab in a pinned state. |

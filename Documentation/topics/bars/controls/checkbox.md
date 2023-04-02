@@ -95,7 +95,7 @@ There are several appearance-related properties that determine how the controls 
 
 The controls have a string `Label` that can be set, which is visible in UI.
 
-The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `FormatPainter` will automatically assign `Format Painter` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
+The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `"FormatPainter"` will automatically assign `"Format Painter"` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
 
 The [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[Label](xref:@ActiproUIRoot.Controls.Bars.BarButton.Label) is rendered next to the actual checkable box within the control.
 
@@ -107,7 +107,7 @@ The [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[Label](xref:@A
 
 [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
 
-### Description (`BarMenuItem` only)
+### Description (BarMenuItem only)
 
 When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description) property's string value is displayed under the menu item's bold label as an extended description.
 
@@ -131,12 +131,11 @@ Set the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[IsChecked]
 
 The controls support key tips.  When a control's key tip is accessed, a click is simulated.
 
-The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `Copy` will automatically assign `C` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
+The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `"Copy"` will automatically assign `"C"` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
 
 The [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarButton.KeyTipText) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.KeyTipText) properties designate the key tip text to use for the control.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Commands and Events
 
@@ -144,8 +143,7 @@ The `ICommand` in the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBo
 
 A [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).`Click` and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).`Click` event is also raised in these scenarios.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Input Gesture Text
 
@@ -167,8 +165,7 @@ If the control's `ToolTip` property is set to a value that doesn't derive from a
 
 If the optional [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarButton.ScreenTipFooter) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipFooter) properties are specified, they will appear in a footer area of the screen tip.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

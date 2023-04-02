@@ -269,7 +269,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.Borders, key
 				=> new BarSplitToggleButtonViewModel(key, NotImplementedCommand) {
 					Description = "Add or remove borders from the selection.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 					MenuItems = {
 						viewModels[BarControlKeys.BordersGallery],
 						viewModels[BarControlKeys.BordersShadingDialog],
@@ -317,7 +317,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.ClearFormatting, key
 				=> new BarButtonViewModel(key, "Clear All Formatting", "E", NotImplementedCommand) {
 					Description = "Remove all formatting from the selection, leaving unformatted text.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.Copy, key
@@ -339,7 +339,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, DecreaseFontSizeCommand) {
 					KeyTipText = "FK",
 					Description = "Make your text a bit smaller.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.DecreaseIndent, key
@@ -367,7 +367,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "FD",
 					Description = "Find text or other content.",
-					MaxSimplifiedVariantSize = VariantSize.Medium,
+					ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				});
 
 			viewModels.Register(BarControlKeys.FlowDirection, key
@@ -378,7 +378,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.Font, key
 				=> new BarComboBoxViewModel(key, SetFontFamilyCommand) {
 					Description = "Pick a new font for your text.",
+					IsEditable = true,
 					IsStarSizingAllowed = true,
+					IsUnmatchedTextAllowed = false,
 					KeyTipText = "FF",
 					MenuItems = {
 						viewModels[BarControlKeys.FontGallery],
@@ -426,6 +428,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.FontSize, key
 				=> new BarComboBoxViewModel(key, "Size", "FS", SetFontSizeCommand, viewModels[BarControlKeys.FontSizeGallery] as BarGalleryViewModel) {
 					Description = "Change the size of your text.",
+					IsEditable = true,
+					IsTextCompletionEnabled = false,
 					RequestedWidth = 45,
 					TextPath = nameof(FontSizeBarGalleryItemViewModel.Size),
 					Title = "Font Size",
@@ -448,7 +452,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "FP",
 					Description = "Apply the selection's look to other content in the document.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.HeaderInsert, key
@@ -461,7 +465,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, IncreaseFontSizeCommand) {
 					KeyTipText = "FG",
 					Description = "Make your text a bit bigger.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.IncreaseIndent, key
@@ -474,8 +478,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarPopupButtonViewModel(key) {
 					KeyTipText = "K",
 					Description = "Choose how much space appears between lines of text and between paragraphs.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
 					Title = "Line and Paragraph Spacing",
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 					MenuItems = {
 						viewModels[BarControlKeys.LineSpacingGallery],
 						viewModels[BarControlKeys.LineSpacingOptions],
@@ -591,7 +595,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "R",
 					Description = "Search for text you'd like to change and replace it with something else.",
-					MaxSimplifiedVariantSize = VariantSize.Medium,
+					ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				});
 
 			viewModels.Register(BarControlKeys.Save, key
@@ -613,7 +617,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.SelectMenu, key
 				=> new BarPopupButtonViewModel(key, "Select", "SL") {
 					Description = "Select text or objects.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 					MenuItems = {
 						viewModels[BarControlKeys.SelectAll],
 						viewModels[BarControlKeys.SelectObjects],
@@ -624,7 +628,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarSplitToggleButtonViewModel(key, NotImplementedCommand) {
 					Description = "Change the color behind the selected text, paragraph, or table cell.",
 					KeyTipText = "H",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 					MenuItems = {
 						viewModels[BarControlKeys.ShadingColorPicker],
 						viewModels[BarControlKeys.ShadingColorMoreColorsDialog],
@@ -676,7 +680,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "8",
 					Description = "Show paragraph marks and other hidden symbols.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.SignatureLineInsert, key
@@ -689,7 +693,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "SO",
 					Description = "Arrange the selection in alphabetical or numerical order.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.StopHighlighting, key
@@ -699,7 +703,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, ToggleStrikethroughCommand) {
 					KeyTipText = "4",
 					Description = "Cross something out by drawing a line through it.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 			
 			viewModels.Register(BarControlKeys.SymbolInsertGallery, key
@@ -726,14 +730,14 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarToggleButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "5",
 					Description = "Type very small letters just below the line of text.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.Superscript, key
 				=> new BarToggleButtonViewModel(key, NotImplementedCommand) {
 					KeyTipText = "6",
 					Description = "Type very small letters just above the line of text.",
-					MaxSimplifiedVariantSize = VariantSize.Collapsed,
+					ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 				});
 
 			viewModels.Register(BarControlKeys.TableDraw, key

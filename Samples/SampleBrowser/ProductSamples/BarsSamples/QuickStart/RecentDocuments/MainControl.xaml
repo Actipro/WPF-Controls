@@ -70,7 +70,7 @@
 
 							<bars:RibbonTabItem Key="Home">
 								<bars:RibbonGroup Key="Documents">
-									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 
@@ -134,7 +134,7 @@
 
 							<bars:RibbonTabItem Key="Home">
 								<bars:RibbonGroup Key="Documents">
-									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 

@@ -9,7 +9,7 @@ All of the edit box controls share a [PartEditBoxBase<T>](xref:@ActiproUIRoot.Co
 
 ## Designed for Keyboard, Mouse, and Touch Input
 
-Unlike many other third party editor controls, the Actipro Editors have been specifically designed to work great for whichever form of input (keyboard, mouse, or touch) is utilized by the end user.
+Unlike many other third-party editor controls, the Actipro Editors have been specifically designed to work great for whichever form of input (keyboard, mouse, or touch) is utilized by the end user.
 
 Each editor's main appearance is similar to a standard `TextBox`, where the value can be typed in via a keyboard for maximum efficiency.  Certain keyboard keys and the mouse wheel can often be used to increment/cycle values.  See the related section below for more information.
 
@@ -19,7 +19,7 @@ Most editors also contain a default popup picker that is geared for mouse and to
 
 The [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property gets/sets the value that is being edited by the edit box.  When using an edit box in your UI, you generally want to bind this property to your view model via two-way binding.
 
-As the user types in a value, the temporary value derived from the text being typed is available in the [IntermediateValue](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IntermediateValue) property.  This intermediate value gets 'committed' (or set to the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property) by default when `Enter` is pressed, a spin occurs, or the control loses focus.  The [CommitTriggers](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.CommitTriggers) property has enumeration flags to determine exactly what triggers a commit.  Modify this property if you wish to commit immediately whenever typing occurs.  There also is a [Commit](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Commit*) method that will programmatically commit the intermediate value.  In the event that a typed value isn't desired, the user can press `Esc` to revert back to the last committed value.
+As the user types in a value, the temporary value derived from the text being typed is available in the [IntermediateValue](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IntermediateValue) property.  This intermediate value gets "committed" (or set to the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property) by default when <kbd>Enter</kbd> is pressed, a spin occurs, or the control loses focus.  The [CommitTriggers](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.CommitTriggers) property has enumeration flags to determine exactly what triggers a commit.  Modify this property if you wish to commit immediately whenever typing occurs.  There also is a [Commit](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Commit*) method that will programmatically commit the intermediate value.  In the event that a typed value isn't desired, the user can press <kbd>Esc</kbd> to revert back to the last committed value.
 
 When the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property is changed, the `ValueChanged` event is raised.
 
@@ -37,9 +37,9 @@ Custom conversion and validation logic can be implemented by overriding the [Try
 
 ## Incrementing/Cycling Values
 
-Up/down arrow keys, PgUp/PgDn keys, and the mouse wheel can all be used to increment and decrement the value in many edit boxes.
+<kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> keys, <kbd>PgUp</kbd>/<kbd>PgDn</kbd> keys, and the mouse wheel can all be used to increment and decrement the value in many edit boxes.
 
-The up/down arrow keys and mouse wheel will cycle values by a small amount (in the case of numbers) and PgUp/PgDn keys will cycle values by a larger amount.  For numbers, holding the Shift key while pressing the up/down arrow keys or using the mouse wheel will also cycle values by a larger amount.
+The <kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> keys and mouse wheel will cycle values by a small amount (in the case of numbers) and <kbd>PgUp</kbd>/<kbd>PgDn</kbd> keys will cycle values by a larger amount.  For numbers, holding the <kbd>Shift</kbd> key while pressing the <kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> keys or using the mouse wheel will also cycle values by a larger amount.
 
 The [SpinWrapping](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.SpinWrapping) property determines the wrapping behavior used when spinning past a minimum or maximum value in the active part.  See the documentation on the [SpinWrapping](xref:@ActiproUIRoot.Controls.Editors.SpinWrapping) enumeration for more information on the available options.
 
@@ -51,7 +51,7 @@ Some edit boxes have multiple component parts.  An example is the [TimeEditBox](
 
 ![Screenshot](../images/editbox-part-navigation.png)
 
-For these types of edit boxes, the [IsArrowKeyPartNavigationEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsArrowKeyPartNavigationEnabled) property determines if the left/right arrow keys move between parts.  When `true`, pressing one of those arrow keys will move to the previous/next part and select its text.  This makes it easy to quickly jump to a certain component of the value being edited and then either type over that component value or increment/cycle it.
+For these types of edit boxes, the [IsArrowKeyPartNavigationEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsArrowKeyPartNavigationEnabled) property determines if the <kbd>Left Arrow</kbd>/<kbd>Right Arrow</kbd> keys move between parts.  When `true`, pressing one of those arrow keys will move to the previous/next part and select its text.  This makes it easy to quickly jump to a certain component of the value being edited and then either type over that component value or increment/cycle it.
 
 ## Input Scope Hints
 
@@ -65,9 +65,9 @@ When the [IsReadOnly](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBo
 
 When the [IsEditable](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsEditable) property is `false`, the edit box converts its appearance and behavior to that of a standard `ComboBox` as long as the edit box indicates it has a popup.  Tapping anywhere on the edit box will open an available popup, if there is one.  The popup can be used to alter the value.
 
-Up/down arrow keys, PgUp/PgDn keys, and the mouse wheel can be used to increment and decrement the value in non-editable edit boxes that have a single part.
+<kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> keys, <kbd>PgUp</kbd>/<kbd>PgDn</kbd> keys, and the mouse wheel can be used to increment and decrement the value in non-editable edit boxes that have a single part.
 
-When in non-editable mode, the standard clipboard keyboard shortcuts (`Ctrl+C`, `Ctrl+X`, and `Ctrl+V`) are available to get/set the text value of the edit box.  Cut and paste will not modify the value if the control is in read-only mode.
+When in non-editable mode, the standard clipboard keyboard shortcuts (<kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd>, and <kbd>Ctrl</kbd>+<kbd>V</kbd>) are available to get/set the text value of the edit box.  Cut and paste will not modify the value if the control is in read-only mode.
 
 @if (winrt) {
 
@@ -119,11 +119,11 @@ Edit boxes support the insertion of inline UI elements.  For instance, you can i
 
 Inlines are specified via instances of the [PartEditBoxInline](xref:@ActiproUIRoot.Controls.Editors.PartEditBoxInline) class.  The class requires that you set a `DataTemplate` to its [ContentTemplate](xref:@ActiproUIRoot.Controls.Editors.PartEditBoxInline.ContentTemplate) property.  This `DataTemplate` will contain the UI elements for the inline.
 
-The `ContentPresenter` that is generated behind the scenes to host the `DataTemplate` will have a `WeakReference` to the edit box as its `Content`/`DataContext`.  We cannot pass the edit box control itself as `Content` since this `ContentPresenter` is inserted into the edit box, which could lead to issues with the framework.  By passing a `WeakReference`, we can still provide the edit box as a data context while not triggering any framework issues.  The distinction here is that you need to reference any properties on the edit box by prefixing the `Path` with "Target.", as in the example below.
+The `ContentPresenter` that is generated behind the scenes to host the `DataTemplate` will have a `WeakReference` to the edit box as its `Content`/`DataContext`.  We cannot pass the edit box control itself as `Content` since this `ContentPresenter` is inserted into the edit box, which could lead to issues with the framework.  By passing a `WeakReference`, we can still provide the edit box as a data context while not triggering any framework issues.  The distinction here is that you need to reference any properties on the edit box by prefixing the `Path` with `"Target."`, as in the example below.
 
 @if (winrt) {
 
-This example shows how to insert a "Now" button into a [TimeEditBox](timeeditbox.md) that uses the built-in [SetValueToNowCommand](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.SetValueToNowCommand).
+This example shows how to insert a **Now** button into a [TimeEditBox](timeeditbox.md) that uses the built-in [SetValueToNowCommand](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.SetValueToNowCommand).
 
 ```xaml
 <editors:TimeEditBox>
@@ -131,7 +131,7 @@ This example shows how to insert a "Now" button into a [TimeEditBox](timeeditbox
 		<editors:PartEditBoxInlineCollection>
 			<editors:PartEditBoxInline>
 				<DataTemplate>
-					<Button Content="Now" Command="{Binding Target.SetValueToNowCommand}" 
+					<Button Content="Now" Command="{Binding Target.SetValueToNowCommand}"
 							Padding="4,0" FontSize="10" Background="Transparent" VerticalAlignment="Stretch" />
 				</DataTemplate>
 			</editors:PartEditBoxInline>
@@ -144,7 +144,7 @@ This example shows how to insert a "Now" button into a [TimeEditBox](timeeditbox
 
 @if (wpf) {
 
-This example shows how to insert a "Now" button into a [TimeEditBox](timeeditbox.md) that uses the built-in [SetValueToNowCommand](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.SetValueToNowCommand).
+This example shows how to insert a **Now** button into a [TimeEditBox](timeeditbox.md) that uses the built-in [SetValueToNowCommand](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.SetValueToNowCommand).
 
 ```xaml
 <editors:TimeEditBox>
@@ -152,8 +152,8 @@ This example shows how to insert a "Now" button into a [TimeEditBox](timeeditbox
 		<editors:PartEditBoxInlineCollection>
 			<editors:PartEditBoxInline>
 				<DataTemplate>
-					<Button Content="Now" Command="{Binding Target.SetValueToNowCommand}" 
-							Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}" 
+					<Button Content="Now" Command="{Binding Target.SetValueToNowCommand}"
+							Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseStyleKey}}"
 							Padding="4,0" VerticalAlignment="Stretch" />
 				</DataTemplate>
 			</editors:PartEditBoxInline>

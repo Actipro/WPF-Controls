@@ -9,13 +9,13 @@ The C# language has built-in automated IntelliPrompt completion list, parameter 
 
 ## Completion List
 
-[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible members from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing `Ctrl+Space` or typing a `.` character after an identifier.
+[IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) are used to present end users with a list of accessible members from the code editor's current caret location.  In many cases, the completion list is triggered by key events such as pressing <kbd>Ctrl</kbd>+<kbd>Space</kbd> or typing a `.` character after an identifier.
 
 There are two types of completion list scenarios when typing in code blocks.  First is when listing members of something.  This can occur when typing a `.` character after an identifier.  The second type is when showing all accessible members based on the current context.  This can occur when starting to type a new sequence of identifiers.
 
 When typing a `<` character in documentation comments, a list of appropriate documentation comment tags is displayed.
 
-In cases where a completion list is triggered via `Ctrl+Space`, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire identifier/keyword that was matched.
+In cases where a completion list is triggered via <kbd>Ctrl</kbd>+<kbd>Space</kbd>, if there is a single match for the text that has been typed, it will not show the list but will auto-complete the match.  This saves the user from having to type the entire identifier/keyword that was matched.
 
 The completion list features are implemented by the [CSharpCompletionProvider](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpCompletionProvider) class.
 
@@ -41,7 +41,7 @@ IntelliPrompt quick info features are implemented by the [CSharpQuickInfoProvide
 
 ## Code Snippets
 
-[IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) provide the ability to insert pre-defined text fragments and for the end user to edit fields declared within the text.  When a code snippet provider with code snippets is registered as a service on the language, the automated completion list will list code snippets at appropriate times.  Typing a code snippet's shortcut, which is also inserted by selecting a code snippet from the completion list, and pressing `Tab` will activate a code snippet template session.
+[IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) provide the ability to insert pre-defined text fragments and for the end user to edit fields declared within the text.  When a code snippet provider with code snippets is registered as a service on the language, the automated completion list will list code snippets at appropriate times.  Typing a code snippet's shortcut, which is also inserted by selecting a code snippet from the completion list, and pressing <kbd>Tab</kbd> will activate a code snippet template session.
 
 The [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) service that is registered needs to have a root [ICodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetFolder) set on it, with at least code snippet within it or its child folders.  A folder can be created programmatically. @if (wpf winforms) {Or it can be loaded recursively via the [CodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetFolder).[LoadFrom](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetFolder.LoadFrom*) method. }
 

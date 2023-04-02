@@ -15,7 +15,7 @@ Tick marks and tick labels can be included and make it easier to visually determ
 
 Tick marks are indicators or shapes rendered at a given interval along a value range. Both the interval and the value range are defined on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet) element. See the [Tick Sets](tick-sets.md) topic for more information.
 
-There are three types of tick marks: Major, Minor, and Custom.
+There are three types of tick marks: major, minor, and custom.
 
 ### Major Tick Marks
 
@@ -34,17 +34,17 @@ Which tick marks are rendered by an instance of [CircularTickMarkMajor](xref:@Ac
 | [EndValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.EndValue) | Specifies the last (or largest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no end value. |
 | [MaximumTickVisibility](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.MaximumTickVisibility) | Specifies when the tick mark for the maximum value should be rendered. |
 | [MinimumTickVisibility](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.MinimumTickVisibility) | Specifies when the tick mark for the minimum value should be rendered. |
-| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.SkipValues) | Specifies 0 or more specific values that should not be rendered. |
+| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.SkipValues) | Specifies zero or more specific values that should not be rendered. |
 | [StartValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor.StartValue) | Specifies the first (or smallest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no start value. |
 
 > [!TIP]
 > You can use multiple instances of [CircularTickMarkMajor](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMajor) to show tick marks in a specific range using a unique look.
-> 
-> Using the images above as an example, one instance could be set to use a black background (as shown) and have an end value of 50. A second instance could be set to use a red background and have a start value of 60.
+>
+> Using the images above as an example, one instance could be set to use a black background (as shown) and have an end value of `50`. A second instance could be set to use a red background and have a start value of `60`.
 
 ### Minor Tick Marks
 
-Minor tick marks are rendered at the [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval) specified on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet). Additionally, minor tick marks are **not** rendered when they fall on the major interval.
+Minor tick marks are rendered at the [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval) specified on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet). Additionally, minor tick marks are *not* rendered when they fall on the major interval.
 
 ![Screenshot](../images/circular-tick-mark-minor.gif)
 
@@ -57,23 +57,23 @@ Which tick marks are rendered by an instance of [CircularTickMarkMinor](xref:@Ac
 | Property | Description |
 |-----|-----|
 | [EndValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMinor.EndValue) | Specifies the last (or largest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no end value. |
-| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMinor.SkipValues) | Specifies 0 or more specific values that should not be rendered. |
+| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMinor.SkipValues) | Specifies zero or more specific values that should not be rendered. |
 | [StartValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMinor.StartValue) | Specifies the first (or smallest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no start value. |
 
 > [!TIP]
 > You can use multiple instances of [CircularTickMarkMinor](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkMinor) to show tick marks in a specific range using a unique look.
-> 
-> Using the images above as an example, one instance could be set to use a black background (as shown) and have an end value of 55. A second instance could be set to use a red background and have a start value of 65.
+>
+> Using the images above as an example, one instance could be set to use a black background (as shown) and have an end value of `55`. A second instance could be set to use a red background and have a start value of `65`.
 
 ### Custom Tick Marks
 
-When the major and minor tick marks do not offer enough customization, custom tick marks maybe used. Custom tick marks can be placed at a specifc value (shown at value 54 in the images above) by setting the [Value](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkCustom.Value) property. Just like the major and minor tick marks, the look of the custom tick marks can be fully customized.
+When the major and minor tick marks do not offer enough customization, custom tick marks may be used. Custom tick marks can be placed at a specific value (shown at value `54` in the images above) by setting the [Value](xref:@ActiproUIRoot.Controls.Gauge.CircularTickMarkCustom.Value) property. Just like the major and minor tick marks, the look of the custom tick marks can be fully customized.
 
 ## Tick Labels
 
 Tick labels are textual representation of a value rendered at a given interval along a value range. Both the interval and the value range are defined on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet) element. See the [Tick Sets](tick-sets.md) topic for more information.
 
-There are three types of tick labels: Major, Minor, and Custom.
+There are three types of tick labels: major, minor, and custom.
 
 ### Major Tick Labels
 
@@ -92,17 +92,17 @@ Which tick labels are rendered by an instance of [CircularTickLabelMajor](xref:@
 | [EndValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.EndValue) | Specifies the last (or largest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no end value. |
 | [MaximumTickVisibility](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.MaximumTickVisibility) | Specifies when the tick label for the maximum value should be rendered. |
 | [MinimumTickVisibility](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.MinimumTickVisibility) | Specifies when the tick label for the minimum value should be rendered. |
-| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.SkipValues) | Specifies 0 or more specific values that should not be rendered. |
+| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.SkipValues) | Specifies zero or more specific values that should not be rendered. |
 | [StartValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor.StartValue) | Specifies the first (or smallest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no start value. |
 
 > [!TIP]
 > You can use multiple instances of [CircularTickLabelMajor](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMajor) to show tick labels in a specific range using a unique look.
-> 
-> Using the images above as an example, one instance could be set to use a black foreground (as shown) and have an end value of 50. A second instance could be set to use a red foreground and have a start value of 60.
+>
+> Using the images above as an example, one instance could be set to use a black foreground (as shown) and have an end value of `50`. A second instance could be set to use a red foreground and have a start value of `60`.
 
 ### Minor Tick Labels
 
-Minor tick labels are rendered at the [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval) specified on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet). Additionally, minor tick labels are **not** rendered when they fall on the major interval.
+Minor tick labels are rendered at the [MinorInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.TickSetBase.MinorInterval) specified on the associated [CircularTickSet](xref:@ActiproUIRoot.Controls.Gauge.CircularTickSet). Additionally, minor tick labels are *not* rendered when they fall on the major interval.
 
 ![Screenshot](../images/circular-tick-label-minor.gif)
 
@@ -115,17 +115,17 @@ Which tick labels are rendered by an instance of [CircularTickLabelMinor](xref:@
 | Property | Description |
 |-----|-----|
 | [EndValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMinor.EndValue) | Specifies the last (or largest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no end value. |
-| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMinor.SkipValues) | Specifies 0 or more specific values that should not be rendered. |
+| [SkipValues](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMinor.SkipValues) | Specifies zero or more specific values that should not be rendered. |
 | [StartValue](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMinor.StartValue) | Specifies the first (or smallest) value that should be rendered by the element. Set to `Double.NaN` to specify that there is no start value. |
 
 > [!TIP]
 > You can use multiple instances of [CircularTickLabelMinor](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelMinor) to show tick labels in a specific range using a unique look.
-> 
-> Using the images above as an example, one instance could be set to use a black foreground (as shown) and have an end value of 55. A second instance could be set to use a red foreground and have a start value of 65.
+>
+> Using the images above as an example, one instance could be set to use a black foreground (as shown) and have an end value of `55`. A second instance could be set to use a red foreground and have a start value of `65`.
 
 ### Custom Tick Labels
 
-When the major and minor tick labels do not offer enough customization, custom tick labels maybe used. Custom tick labels can be placed at a specifc value (shown at value 54 in the images above) by setting the [Value](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom.Value) property. Additionally, the text displayed by the custom label can be specified using the [Text](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom.Text) property. Just like the major and minor tick labels, the look of the custom tick labes can be fully customized.
+When the major and minor tick labels do not offer enough customization, custom tick labels maybe used. Custom tick labels can be placed at a specific value (shown at value `54` in the images above) by setting the [Value](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom.Value) property. Additionally, the text displayed by the custom label can be specified using the [Text](xref:@ActiproUIRoot.Controls.Gauge.CircularTickLabelCustom.Text) property. Just like the major and minor tick labels, the look of the custom tick labels can be fully customized.
 
 ### Rounding and Text Format
 
@@ -133,7 +133,7 @@ By default, the tick labels will round the associated value(s) to the nearest wh
 
 The rounding used is specified using the [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration, which offers several rounding methods.  See the [PixelSnapper](../../shared/windows-controls/pixelsnapper.md) topic for more information on the various round modes.
 
-The format is used to convert `double` values to a string using the `String.Format` method, which uses the associated value as the only input parameter (e.g., `{0}`).
+The format is used to convert `double` values to a string using the `String.Format` method, which uses the associated value as the only input parameter (e.g., `"{0}"`).
 
 ## Scale Placement
 

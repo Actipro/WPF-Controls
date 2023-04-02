@@ -13,7 +13,7 @@ The advanced XML syntax language implementation in the SyntaxEditor Web Language
 
 The XML language is packed with features, including:
 
-- Automated IntelliPrompt completion lists and quick info for elements, attributes, and values based on one or more loaded .XSD files.
+- Automated IntelliPrompt completion lists and quick info for elements, attributes, and values based on one or more loaded *.XSD* files.
 - Syntax highlighting.
 - Abstract syntax tree (AST) generation.
 - Automatic code outlining based on XML element structure.

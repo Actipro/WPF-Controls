@@ -94,17 +94,15 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:StandaloneToolBar>
 ```
 
-After the toolbar is marked as a root key tip scope, pressing keys like `Alt` will activate key tip mode the same as with a ribbon.
+After the toolbar is marked as a root key tip scope, pressing keys like <kbd>Alt</kbd> will activate key tip mode the same as with a ribbon.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Screen Tips
 
 The child controls support screen tips, which are formatted tool tips.  Screen tips attempt to display below the [StandaloneToolBar](xref:@ActiproUIRoot.Controls.Bars.StandaloneToolBar).
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

@@ -71,10 +71,11 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -109,8 +110,9 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -140,8 +142,10 @@
 			IsEditable="{Binding IsEditable}"
 			IsReadOnly="{Binding IsReadOnly}"
 			IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+			IsTextCompletionEnabled="{Binding IsTextCompletionEnabled}"
 			IsTextSearchCaseSensitive="{Binding IsTextSearchCaseSensitive}"
 			IsTextSearchEnabled="{Binding IsTextSearchEnabled}"
+			IsUnmatchedTextAllowed="{Binding IsUnmatchedTextAllowed}"
 			ItemsSource="{Binding MenuItems}" 
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
@@ -191,7 +195,6 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			MaxColumnCount="{Binding MaxRibbonColumnCount}"
 			MaxMenuColumnCount="{Binding MaxMenuColumnCount}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			MenuItems="{Binding MenuItems}"
 			MenuResizeMode="{Binding MenuResizeMode}"
@@ -203,6 +206,8 @@
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
 			UseMenuItemIndent="{Binding UseMenuItemIndent}"
 			/>
@@ -289,10 +294,11 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -357,10 +363,11 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -399,10 +406,11 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -442,6 +450,7 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Text="{Binding Text, Mode=TwoWay}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolTip="{Binding Description}"
 			shared:HintProperties.Hint="{Binding PlaceholderText}"
 			/>
@@ -449,22 +458,20 @@
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
 		<bars:BarMenuControlWrapper>
-			<bars:BarMenuControlWrapper.Header>
-				<bars:BarTextBox
-					CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
-					Command="{Binding Command}"
-					CommandParameter="{Binding CommandParameter}"
-					IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
-					Key="{Binding Key}"
-					KeyTipText="{Binding KeyTipText}"
-					Label="{Binding Label}"
-					SmallImageSource="{Binding SmallImageSource}"
-					Text="{Binding Text, Mode=TwoWay}"
-					Title="{Binding Title}"
-					ToolTip="{Binding Description}"
-					shared:HintProperties.Hint="{Binding PlaceholderText}"
-					/>
-			</bars:BarMenuControlWrapper.Header>
+			<bars:BarTextBox
+				CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+				Command="{Binding Command}"
+				CommandParameter="{Binding CommandParameter}"
+				IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+				Key="{Binding Key}"
+				KeyTipText="{Binding KeyTipText}"
+				Label="{Binding Label}"
+				SmallImageSource="{Binding SmallImageSource}"
+				Text="{Binding Text, Mode=TwoWay}"
+				Title="{Binding Title}"
+				ToolTip="{Binding Description}"
+				shared:HintProperties.Hint="{Binding PlaceholderText}"
+				/>
 		</bars:BarMenuControlWrapper>
 	</ItemContainerTemplate>
 
@@ -480,10 +487,11 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
-			MaxSimplifiedVariantSize="{Binding MaxSimplifiedVariantSize}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -578,6 +586,7 @@
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonControlGroupDefaultItemContainerTemplate}" DataType="local:RibbonControlGroupViewModel">
 		<bars:RibbonControlGroup
+			HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
 			ItemVariantBehavior="{Binding ItemVariantBehavior}"
 			SeparatorMode="{Binding SeparatorMode}"
 			ItemsSource="{Binding Items}"

@@ -25,9 +25,9 @@ The base `Header` content is defined by the control's `ScreenTipHeader` property
 
 The screen tip `Header` can be set to any object supported by `ContentPresenter`.
 
-If the `ScreenTipHeader` property is undefined, the control's `Label` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[Label](xref:@ActiproUIRoot.Controls.Bars.BarButton.Label)) will be converted to the base `Header` content.  Any `Label` value that ends with ellipses (e.g., `Print...`) will trim the trailing ellipsis from the base `Header` content.
+If the `ScreenTipHeader` property is undefined, the control's `Label` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[Label](xref:@ActiproUIRoot.Controls.Bars.BarButton.Label)) will be converted to the base `Header` content.  Any `Label` value that ends with ellipses (e.g., `"Print..."`) will trim the trailing ellipsis from the base `Header` content.
 
-Finally, if the base `Header` content is a `string` and the control defines an `InputGestureText` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[InputGestureText](xref:@ActiproUIRoot.Controls.Bars.BarButton.InputGestureText)), that gesture text will optionally be appended within parenthesis to the end of the `Header` content (e.g., `Copy (Ctrl+C)`).  Appending the gesture text can be disabled by setting the `IsInputGestureTextVisible` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarButton.IsInputGestureTextVisible)) to `false`.
+Finally, if the base `Header` content is a `string` and the control defines an `InputGestureText` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[InputGestureText](xref:@ActiproUIRoot.Controls.Bars.BarButton.InputGestureText)), that gesture text will optionally be appended within parenthesis to the end of the `Header` content (e.g., `"Copy (Ctrl+C)"`).  Appending the gesture text can be disabled by setting the `IsInputGestureTextVisible` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarButton.IsInputGestureTextVisible)) to `false`.
 
 > [!NOTE]
 > If only the `Header` is defined for a screen tip (no other `Content` or `Footer`) then the screen tip will appear like a normal `ToolTip`.
@@ -62,7 +62,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 <bars:BarButton Title="Copy to Clipboard" IsInputGestureTextVisible="False" Command="ApplicationCommands.Copy" />
 ```
 
-By setting the `ToolTip` property to a string value, the basic screen tip like that from the previous example will display an additional description for the content. The following example would display a screen tip with the header `Copy to Clipboard (Ctrl+C)` and text content of `Copies the selection to the clipboard`.
+By setting the `ToolTip` property to a string value, the basic screen tip like that from the previous example will display an additional description for the content. The following example would display a screen tip with the header `"Copy to Clipboard (Ctrl+C)"` and text content of `"Copies the selection to the clipboard"`.
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"

@@ -183,6 +183,160 @@ The Bars product does not currently have an implementation of the legacy Ribbon 
 
 The [application button](../bars/ribbon-features/application-button.md) is implemented a bit differently in Bars ribbon, but still supports customizing the button's content, and can either show an [application menu](../bars/ribbon-features/application-menu.md) or [backstage](../bars/ribbon-features/backstage.md) when clicked.
 
+## Converting from Legacy Ribbon to Bars Ribbon
+
+The following is a high-level overview of common steps that most users will encounter when trying to migrate to the new ribbon but is not meant to serve as a comprehensive conversion guide. Many users may want to use this opportunity to migrate to an [MVVM-based model](../bars/mvvm-support.md) for the ribbon. For those that want to continue using a XAML-based pattern, the following should help. While these steps focus on XAML declarations, similar steps may need to be applied to code-behind files.
+
+### General Property Changes
+
+Several properties have been renamed that apply to many individual controls. When converting, the following properties will typically need to be updated:
+1. `ImageSourceLarge` renamed as `LargeImageSource`.
+1. `ImageSourceSmall` renamed as `SmallImageSource`.
+1. `KeyTipAccessText` renamed as `KeyTipText` (except `RibbonGroup`)
+1. `Id` can be replaced by `Key`.
+1. `ScreenTipDescription` can be replaced by `ToolTip`.
+
+### Change Namespaces
+
+For relevant XAML files, replace the `ribbon` namespace declaration ...
+
+```xaml
+xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+```
+
+... with the `bars` namespace ...
+
+```xaml
+xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+```
+
+### Convert RibbonWindow
+
+Replace `ribbon:RibbonWindow` with `bars:RibbonWindow`.
+
+The legacy `ribbon:RibbonWindow.ApplicationName` and `ribbon:RibbonWindow.DocumentName` properties were not migrated to Bars.  Since those properties were only used to set the window title, the same can be accomplished in Bars by setting the `bars:RibbonWindow.Title` property instead.
+
+> [!IMPORTANT]
+> If customizations were made to the [Window Chrome](../themes/windowchrome.md) of the legacy `ribbon:RibbonWindow`, see the Bars [Ribbon Window](../bars/ribbon-features/ribbon-window.md) topic for additional details on working with `WindowChrome` in the new `bars:RibbonWindow`.
+
+### Convert Ribbon Tabs
+
+In the legacy ribbon, tabs were defined on the `ribbon:Ribbon.Tabs` property.
+
+In Bars, the ribbon is an `ItemsControl`, so tabs are defined on the `Items` or `ItemsSource` properties of the Bars ribbon.  Remove all ribbon tabs declared on the `ribbon:Ribbon.Tabs` property and place them as direct children to the `bars:Ribbon` declaration.
+
+Replace `ribbon:Tab` declarations with `bars:RibbonTabItem`.
+
+### Convert Contextual Tab Groups
+
+In the legacy ribbon, contextual tab groups defined the tabs that were part of the group. In the Bars ribbon, contextual tabs are defined in the same collection as non-contextual (always visible) tabs except they are associated with a contextual group by a `Key`.
+
+To prepare for the conversion in Bars, initialize the `bars:Ribbon.ContextualTabGroups` property as an array of `bars:RibbonContextualTabGroup`.
+
+```xaml
+...
+<bars:Ribbon.ContextualTabGroups>
+	<x:Array Type="bars:RibbonContextualTabGroup">
+
+	</x:Array>
+</bars:Ribbon.ContextualTabGroups>
+```
+
+For each legacy `ribbon:ContextualTabGroup` defined on the `ribbon:Ribbon.ContextualTabGroups` property, add an entry to the array for a `bars:RibbonContextualTabGroup`.
+- Set the `bars:RibbonContextualTabGroup.Key` property to a new value that will uniquely identify the group.
+- Migrate the `Label` property.
+- The legacy `ribbon:ContextualTabGroup.IsActive` property (a `boolean`) has been replaced by the standard WPF `Visibility` property, where `Visible` is the same as `IsActive = True` and `Collapsed` is the same as `IsActive = False`.
+- The legacy `ribbon:ContextualTabGroup.Color` property is not supported in Bars and can be removed.
+- Each legacy `ribbon:Tab` defined in the `ribbon:ContextualTabGroup` should be migrated to the same collection as the non-contextual (always visible) tabs using the steps previously defined.
+- For each migrated tab, set the `bars:RibbonTab.ContextualTabGroupKey` property to the same value assigned to the `bars:RibbonContextualTabGroup.Key` property.
+  - When a Bars `RibbonContextualTabGroup.Visibility` property changes, all of the `bars:RibbonTab` instances with the matching `ContextualTabGroupKey` will be updated to match the visibility setting.
+
+> [!TIP]
+> If the legacy `IsActive` property was data-bound to a `boolean` value, the [BooleanToVisibilityConverter](xref:@ActiproUIRoot.Data.BooleanToVisibilityConverter) in the Shared library can be used to convert the `boolean` value to the equivalent `Visibility` value used by Bars.
+
+### Convert Tab Groups
+
+Replace `ribbon:Group` declarations with `bars:RibbonGroup`.
+  - The `ribbon:Group.KeyTipAccessText` property is moved to `bars:RibbonGroup.CollapsedButtonKeyTipText`.
+
+### Convert Tab Group Layout Controls
+
+All legacy tab group layout controls have been replaced by functionality directly on Bars `RibbonGroup` and/or `RibbonControlGroup` controls.  See the [Tabs, Groups, and Control Groups](../bars/ribbon-features/tabs-groups-controlgroups.md) for more details. The following sections outline the basic conversion process for each control type.
+
+#### StackPanel
+
+Within a ribbon group, replace `ribbon:StackPanel` declarations with `bars:RibbonControlGroup`.  Both controls have an `ItemVariantBehavior` property, but the values of the associated enum have been updated to make them easier to understand.  For values that are not the same, the following are mostly equivalent conversions:
+- Replace `LargeThenMediumWhenMedium` with `NeverSmall`.
+- Replace `LargeThenMediumWhenSmall` with `NeverSmall`.
+- Replace `LargeThenSmallWhenMedium` with `NeverMedium`.
+- Replace `LargeThenSmallWhenSmall` with `NeverMedium`.
+- Replace `MediumThenSmallWhenMedium` with `NeverLarge`.
+- Replace `MediumThenSmallWhenSmall` with `NeverLarge`.
+
+For more explicit control over sizing, see the [Resizing and Variants](../bars/ribbon-features/resizing.md) topic.
+
+The legacy `ribbon:StackPanel.RowAlignment` property is not supported in Bars and can be removed.
+
+#### RowPanel / ButtonGroup
+
+Replace `ribbon:RowPanel` declarations with their own `bars:RibbonGroup` that has the `bars:RibbonGroup.CanUseMultiRowLayout` set to `true`.  Use `bars:RibbonControlGroup` to group related controls instead of the legacy `ribbon:RibbonGroup`.
+
+### Convert Controls
+
+Most controls in the legacy ribbon have an equivalent control in the Bars ribbon.
+
+Checkable controls in Bars have changed how their checked state is managed. In legacy ribbon, checkable controls were updated using an instance of `ICheckableCommandParameter` as the parameter passed to the `ICommand` associated with a control, but this was problematic. In Bars ribbon, the command model is no longer used to update checked state and each checkable control has a corresponding `IsChecked` property instead.  When converting controls, those that utilized `ICheckableCommandParameter` will need to be migrated to a Bars control that supports the `IsChecked` property.  Application logic will need to be refactored to update the checked state without using the command model.
+
+The following are common control conversions:
+- Replace `ribbon.Button` with either `bars:BarButton` or checkable `bars:BarToggleButton` (see the [Button](../bars/controls/button.md) topic).
+- Replace `ribbon:SplitButton` with either `bars:BarSplitButton` or checkable `bars:BarSplitToggleButton` (see the [Split Button](../bars/controls/split-button.md) topic).
+- Replace `ribbon:PopupButton` with `bars:BarPopupButton` (see the [Popup Button](../bars/controls/popup-button.md) topic).
+  - The `ribbon:PopupButton.PopupContent` is not defined in Bars, but similar functionality is available using the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsMenuControlProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsMenuControlProperty) property. See the Sample Browser "Popup and Context Menus" QuickStart for an example.
+- Replace `ribbon:CheckBox` with `bars:BarCheckBox` (see the [Checkbox](../bars/controls/checkbox.md) topic).
+- Replace `ribbon:TextBox` with `bars:BarTextBox` (see the [Textbox](../bars/controls/textbox.md) topic).
+- Replace `ribbon:ComboBox` with `bars:BarComboBox` (see the [Combobox](../bars/controls/combobox.md) topic).
+  - The legacy `ribbon:FontFamilyComboBox` and `ribbon:FontSizeComboBox` are not first-class types in Bars, but can be implemented using `bars:BarComboBox`.  See the Sample Browser application for examples.
+- Replace `ribbon:Separator` with `bars:BarSeparator` (see the [Separator](../bars/controls/separator.md) topic).
+- Replace `ribbon:RibbonGallery` and `ribbon:PopupGallery` with `bars:BarGallery` and `bars:BarMenuGallery` (see the [Gallery](../bars/controls/gallery.md) topic).
+- The legacy `ribbon:RadioButton` is not supported in Bars.
 
 
+### Converting ApplicationMenu
 
+See the [Application Menu](../bars/ribbon-features/application-menu.md) topic for details on how to define an application menu in Bars as part of the application button, then proceed as follows:
+
+- Migrate `ribbon:ApplicationMenu.AdditionalContent` to `bars:RibbonApplicationButton.MenuAdditionalContent`.
+- Migrate `ribbon:ApplicationMenu.FooterButtons` to `bars:bars:RibbonApplicationButton.MenuFooter`.
+  - Any content is supported by Bars, but buttons can be placed in a right-aligned horizontal `StackPanel` for a similar look to the legacy ribbon.
+  - Use `bars:BarButton` to define each footer button.
+
+### Converting Backstage
+
+See the [Backstage](../bars/ribbon-features/backstage.md) topic for details on how to define a backstage, then proceed as follows:
+
+#### Header Area Controls
+
+- Replace `ribbon:BackstageTab` with `bars:RibbonBackstageTabItem`.
+- Replace `ribbon:Button` with `bars:RibbonBackstageHeaderButton`.
+- Replace `ribbon:Separator` with `bars:RibbonBackstageHeaderSeparator`.
+- The `ribbon:RecentDocumentMenu` is not supported in the header area for Bars, but a `bars:RecentDocumentControl` is available for use within tab content. See the [Recent Documents](../bars/ribbon-features/recent-documents.md) topic for details.
+
+#### Tab Content Controls
+
+- Replace `ribbon:TaskTabControl` with `bars:TaskTabControl`.
+- For any `ribbon:Button` or `ribbon:PopupButton` with `Context="BackstageItem"` and `VariantSize="Large"`, replace with `bars:BarButton` or `bars:BarPopupButton` and the style shown below:
+
+```xaml
+xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+...
+<bars:BarButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" />
+<bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}" />
+
+```
+
+### Other Common Conversions
+
+1. Replace `ribbon:Ribbon.TabPanelItems` with a [Tab Row Toolbar](../bars/ribbon-features/tab-row-toolbar.md), moving existing controls to be direct children of a Bars `RibbonTabRowToolBar`.
+1. Replace `ribbon:Ribbon.QuickAccessToolBarItems` with a [Quick Access Toolbar](../bars/ribbon-features/quick-access-toolbar.md), moving existing controls to be direct children of a Bars `RibbonQuickAccessToolBar`.
+1. Replace `ribbon:RecentDocumentMenu` with a [Recent Document Control](../bars/ribbon-features/recent-documents.md).

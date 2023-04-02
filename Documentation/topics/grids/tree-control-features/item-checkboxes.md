@@ -5,7 +5,7 @@ order: 8
 ---
 # Item CheckBoxes
 
-`CheckBox` controls can be inserted into item templates to make items checkable, and default actions can be implemented to toggle checked states for double-taps and `Enter` key presses.
+`CheckBox` controls can be inserted into item templates to make items checkable, and default actions can be implemented to toggle checked states for double-taps and <kbd>Enter</kbd> key presses.
 
 ## Displaying CheckBoxes
 
@@ -17,10 +17,10 @@ Here's an example of a `DataTemplate` that includes a `CheckBox`.  This example 
 <DataTemplate>
 	<StackPanel Orientation="Horizontal">
 		<CheckBox Margin="0,0,4,0" VerticalAlignment="Center"
-				  Visibility="{Binding IsCheckable, Converter={StaticResource BooleanToVisibilityConverter}}" 
-				  IsThreeState="{Binding IsThreeState}" IsChecked="{Binding IsChecked, Mode=TwoWay}" 
+				  Visibility="{Binding IsCheckable, Converter={StaticResource BooleanToVisibilityConverter}}"
+				  IsThreeState="{Binding IsThreeState}" IsChecked="{Binding IsChecked, Mode=TwoWay}"
 				  />
-						
+
 		<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
 	</StackPanel>
 </DataTemplate>
@@ -28,7 +28,7 @@ Here's an example of a `DataTemplate` that includes a `CheckBox`.  This example 
 
 ## Using Default Actions to Toggle Checked State
 
-Default actions are executed when an item is double-tapped or `Enter` is pressed.  When using `CheckBox` controls in item templates, it's generally good practice to handle item [default actions](default-actions.md) and toggle the item's `IsChecked` property appropriately.
+Default actions are executed when an item is double-tapped or <kbd>Enter</kbd> is pressed.  When using `CheckBox` controls in item templates, it's generally good practice to handle item [default actions](default-actions.md) and toggle the item's `IsChecked` property appropriately.
 
 This example code shows how to handle a default action (via the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemDefaultActionExecuting](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemDefaultActionExecuting) event) and toggle the checked state on a `CheckableTreeNodeModel` item type that has `IsCheckable`, `IsThreeState`, and `IsChecked` properties.
 

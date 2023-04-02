@@ -106,6 +106,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenu
 		private void InitializeRibbonViewModels() {
 			Ribbon = new RibbonViewModel(RibbonLayoutMode.Simplified) {
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.Hidden,
 				Tabs = {
 					new RibbonTabViewModel("MvvmSamples", "MVVM Samples") {
@@ -119,7 +120,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenu
 										Description = "The recent documents in this popup menu are dynamically generated.",
 										Label = "Open",
 										LargeImageSource = ImageLoader.GetIcon("Open32.png"),
-										MaxSimplifiedVariantSize = VariantSize.Medium,
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 										SmallImageSource = ImageLoader.GetIcon("Open16.png"),
 										MenuItems = { CreateChildPlaceholder() }
 									},
@@ -127,7 +128,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenu
 										Description = "The menu of this popup button is dynamically generated when the popup is opened.",
 										Label = "Popup Button with Dynamic Menu",
 										LargeImageSource = ImageLoader.GetIcon("QuickStart32.png"),
-										MaxSimplifiedVariantSize = VariantSize.Medium,
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 										SmallImageSource = ImageLoader.GetIcon("QuickStart16.png"),
 										MenuItems = { CreateChildPlaceholder() }
 									},
@@ -140,7 +141,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenu
 									new BarPopupButtonViewModel(BarControlKeys.DynamicPopupOverflowButton) {
 										Label = "Popup Button Overflowed in Simplified Layout",
 										LargeImageSource = ImageLoader.GetIcon("QuickStartGreen32.png"),
-										MaxSimplifiedVariantSize = VariantSize.Collapsed,
+										ToolBarItemCollapseBehavior = ItemCollapseBehavior.Always,
 										SmallImageSource = ImageLoader.GetIcon("QuickStartGreen16.png"),
 										MenuItems = { CreateChildPlaceholder() }
 									},

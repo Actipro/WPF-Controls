@@ -9,10 +9,14 @@ Many of the controls intended for use within ribbons, toolbars, and menus share 
 
 ## Key
 
-Each bar control has a string-based `Key` that identifies the control and allows it to be associated with other related controls anywhere in Bars control hierarchies.  A button and a menu item that both execute the same "paste" functionality should use the same `Key` value of `Paste`.
+Each bar control has a string-based `Key` that is used to identify the control and allows it to be associated with other related controls anywhere in Bars control hierarchies.  `Label` is meant for display purposes only and could be repeated on similar controls or even change from region to region when localizing the application, so the `Key` value should always be able to properly identify a control.
 
 > [!TIP]
 > It is highly recommended to define all string keys as constants on a static class to ensure compile-time safety. Many of the code samples in this documentation use string keys only to reduce the complexity of the sample.
+
+
+> [!IMPORTANT]
+> If multiple controls have the same `Key` value, they must represent the same operation and be considered interchangeable from one context to another. For example, a button and a menu item that both execute the same paste functionality should use the same `Key` value, like `"Paste"`.
 
 ### Examples
 
@@ -20,12 +24,24 @@ Here are several examples of `Key` values that could be used for various usage s
 
 | Key | Control Type | Notes |
 |-----|-----|-----|
-| `ClipboardGroup` | [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) | A `Clipboard` group within a ribbon. |
-| `ClipboardGroupLauncher` | [RibbonGroupLauncherButton](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton) | The `Clipboard` ribbon group's launcher button. |
-| `Paste` | [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) | Regular clickable menu item that triggers a clipboard paste. |
-| `Paste` | [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) | Regular button in a toolbar or ribbon that triggers a clipboard paste.  Uses the same `Key` as the menu item since it triggers the same command. |
-| `PasteMenu` | [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) | Split button that executes the same command as the `Paste` button but has other paste-related gallery or menu items in its popup menu. |
-| `PasteGallery` | [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) | A menu gallery of various paste modes (e.g., merge formatting, keep text only, etc.) that can be selected for customized pasting. |
+| `"ClipboardGroup"` | [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) | A **Clipboard** group within a ribbon. |
+| `"ClipboardGroupLauncher"` | [RibbonGroupLauncherButton](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton) | The **Clipboard** ribbon group's launcher button. |
+| `"Paste"` | [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) | Regular clickable menu item that triggers a clipboard paste. |
+| `"Paste"` | [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) | Regular button in a toolbar or ribbon that triggers a clipboard paste.  Uses the same `Key` as the menu item since it triggers the same command. |
+| `"PasteMenu"` | [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) | Split button that executes the same command as the **Paste** button but has other paste-related gallery or menu items in its popup menu. |
+| `"PasteGallery"` | [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) | A menu gallery of various paste modes (e.g., merge formatting, keep text only, etc.) that can be selected for customized pasting. |
+
+### Usage Scenarios
+
+The `Key` property is critical to supporting the following usage scenarios:
+- Adding controls to the [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and detecting if a control has already been added.
+- [Serializing and deserializing](../ribbon-features/serialization.md) the controls displayed in the Quick Access Toolbar.
+- Explicitly defining control variant sizes [when resizing the ribbon](../ribbon-features/resizing.md).
+- Planned future functionality for UI customization.
+
+Additionally, the `Key` property can also be used to optionally support the following features:
+- [Automatic generation of label and key tip](auto-generation.md) when localization is not important.
+- Automatically associate an image with a view model of the same `Key` [when using MVVM](../mvvm-support.md).
 
 ## Appearance
 
@@ -46,12 +62,11 @@ For example, a button's `Label` appears in the button's content, while a menu it
 
 Controls that have both `Key` and `Label` properties will auto-generate a `Label` value based on the `Key` if no other `Label` has been specifically set.
 
-It's recommended to either use "PascalCase" identifiers or hyphenated words when creating `Key` property values.  Both `Key` values `AlignLeft` and `align-left` will auto-generate a `Label` value `Align Left`.
+It's recommended to either use "PascalCase" identifiers or hyphenated words when creating `Key` property values.  Both `Key` values `"AlignLeft"` and `"align-left"` will auto-generate a `Label` value `"Align Left"`.
 
 This time-saving feature helps reduce the need to specify many `Label` values, except in scenarios where a customized value is necessary.
 
-> [!TIP]
-> See the [Label and Key Tip Generation](auto-generation.md) topic for more information on auto-generated labels.
+See the [Label and Key Tip Generation](auto-generation.md) topic for more information on auto-generated labels.
 
 ### Images
 
@@ -76,9 +91,13 @@ Some controls support a single image size, while other controls with variant siz
 
 When a button is in a ribbon with [Simplified layout mode](../ribbon-features/layout-and-density.md) active, it will fall back to using its small image if a medium image is not available.
 
-#### Fallback Images
+#### Fallback Label and Images
 
-If an image is not defined and is vital to the appearance of the control, such as when within the ribbon's [quick access toolbar](../ribbon-features/quick-access-toolbar.md) or when the control is a collapsed ribbon group, then a default fallback image will be used.
+If an image is not defined and is vital to the normal appearance of the control, a fallback display mechanism can occur, primarily in buttons.
+
+In many cases, a missing image for small and medium variant size buttons will result in the label being displayed instead.
+
+In other cases, such as when the control is within the ribbon's [quick access toolbar](../ribbon-features/quick-access-toolbar.md) or when the control is a collapsed ribbon group, then a default fallback image will be used.
 
 ![Screenshot](../images/fallback-image.png)
 
@@ -108,17 +127,19 @@ As an example, examine a button's common variant size transitions within a Class
 
 *Several button variant size examples*
 
-Controls that support variant sizes have a `VariantSize` property that indicates the current variant size.  Some controls also define a `MaxSimplifiedVariantSize` property that indicates the maximum variant size allowed in a Simplified ribbon.  For instance, if a button should show an image and label in a Simplified ribbon when space is available, `MaxSimplifiedVariantSize` should be set to `Medium`.
+Controls that support variant sizes have a `VariantSize` property that indicates the current variant size.
 
-> [!TIP]
-> See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on variant sizes.
+Some controls define a `ToolBarItemVariantBehavior` property that defaults to `AlwaysSmall` and indicates the variant sizes allowed when in a toolbar or Simplified ribbon.  For instance, if a button should show an image and label in a Simplified ribbon when space is available, `ToolBarItemVariantBehavior` should be set to `All`, which allows small and medium variant sizes.
+
+Some controls define a `ToolBarItemOverflowBehavior` property that defaults to `Default` and indicates how the control should handle possible overflow when in a Simplified ribbon.  For instance, if a button should show always be overflowed in a Simplified ribbon, `ToolBarItemOverflowBehavior` should be set to `Always`.
+
+See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on variant sizes.
 
 ### User Interface Density
 
 Many controls support a user interface density option where values ranging from compact to spacious may be set to designate how much padding is used.  `Compact` is best for more dense user interfaces where there is a need to display many controls at a time.  `Spacious` is better for user interfaces with fewer controls that should be more touch-friendly.  There also is a third option that strikes a balance between the other two.
 
-> [!TIP]
-> See the [Layout Modes and Density](../ribbon-features/layout-and-density.md) topic for more information on user interface density.
+See the [Layout Modes and Density](../ribbon-features/layout-and-density.md) topic for more information on user interface density.
 
 ## Key Tips
 
@@ -130,38 +151,33 @@ Key tips are small decorations that pop up over each control indicating a key or
 
 Controls that support key tips have a `KeyTipText` property that can be set to the string that should be typed to access the control while key tip mode is active.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ### Key Tip Auto-Generation
 
 Most controls that have both `Label` and `KeyTipText` properties will auto-generate a `KeyTipText` value based on the `Label` if no other `KeyTipText` has been specifically set.
 
-For example, a popup button's `Label` of `Table` will auto-generate a `KeyTipText` of `T`, making it unnecessary to specify a `KeyTipText`.
+For example, a popup button's `Label` of `"Table"` will auto-generate a `KeyTipText` of `"T"`, making it unnecessary to specify a `KeyTipText`.
 
 This time-saving feature helps reduce the need to specify many `KeyTipText` values, except in scenarios where a customized value is necessary. Since most controls with a `Key` will auto-generate a `Label`, and `Label` will auto-generate `KeyTipText`, it is often only necessary to specify the `Key` and allow both the `Label` and `KeyTipText` to be auto-generated!
 
-> [!TIP]
-> See the [Label and Key Tip Generation](auto-generation.md) topic for more information on auto-generated key tip text.
+See the [Label and Key Tip Generation](auto-generation.md) topic for more information on auto-generated key tip text.
 
 ## Commands and Events
 
-Most controls have command support where the control's primary action executes the `ICommand` set in the control's `Command` property.
-
-Many times, the control will also raise an event when this primary action occurs.
+Most controls have command support where the control's primary action executes the `ICommand` set in the control's `Command` property.  Many times, the control will also raise an event when this primary action occurs.
 
 For example, a regular button will execute its command and raise a `Click` event when the button is clicked or its key tip is accessed.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Input Gesture Text
 
-Input gestures are keyboard shortcuts that provide access to a control's command.  For instance, `Ctrl+C` is commonly associated with the clipboard `Copy` command.
+Input gestures are keyboard shortcuts that provide access to a control's command.  For instance, <kbd>Ctrl</kbd>+<kbd>C</kbd> is commonly associated with the clipboard copy command.
 
 Input gesture text is a textual representation of a keyboard shortcut, allowing the end user to learn which keyboard shortcut executes a command.  Input gesture text is shown in screen tip headers and in menu items.
 
-Controls that support the display of input gesture text have an `InputGestureText` property that can be set to any string (e.g., `Ctrl+Shift+T` or `Ctrl+V or Shift+Ins`).  If an `InputGestureText` property value is not specified, screen tips and menu items will attempt to find a `KeyGesture` within the control's command.  The command instance must be derived from `RoutedCommand` and have a `KeyGesture` assigned.  The gesture's string representation will then be used as the input gesture text.
+Controls that support the display of input gesture text have an `InputGestureText` property that can be set to any string (e.g., `"Ctrl+Shift+T"` or `"Ctrl+V or Shift+Ins"`).  If an `InputGestureText` property value is not specified, screen tips and menu items will attempt to find a `KeyGesture` within the control's command.  The command instance must be derived from `RoutedCommand` and have a `KeyGesture` assigned.  The gesture's string representation will then be used as the input gesture text.
 
 ### Input Gesture Text Visibility
 
@@ -184,8 +200,7 @@ Most controls build their screen tip content using these properties:
 
 For other more complex scenarios that need to display additional content, a [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) instance with its various properties configured can be set to the native `ToolTip` property.  It is generally recommended to use the properties listed above to ensure screen tips for all controls render in a consistent way.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 
@@ -213,7 +228,6 @@ Here is a list of common attached properties that are related to concepts descri
 | [LargeImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LargeImageSourceProperty) | Large 32x32 size image. |
 | [TitleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.TitleProperty) | String title that can override the label in screen tips and customization UI. |
 | [VariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.VariantSizeProperty) | The current variant size of the control. |
-| [MaxSimplifiedVariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.MaxSimplifiedVariantSizeProperty) | The maximum variant size the control can be when in a Simplified ribbon. |
 | [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the control can clone to the ribbon [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md). |
 | [HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) | Whether an external header (image/label) should be rendered for the control when in a ribbon control group stack. |
 

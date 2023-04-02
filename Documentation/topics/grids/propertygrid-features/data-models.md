@@ -15,23 +15,23 @@ The property grid can easily present the properties of any .NET object or object
 
 @if (winrt) {
 
-On the @@PlatformName platform, reflection is used by the default data factory to enumerate and examine properties. 
+On the @@PlatformName platform, reflection is used by the default data factory to enumerate and examine properties.
 
 }
 
 @if (wpf) {
 
-On the @@PlatformName platform, type descriptors are used by the default data factory to enumerate and examine properties. 
+On the @@PlatformName platform, type descriptors are used by the default data factory to enumerate and examine properties.
 
 }
 
 If [categorization](categorization-and-sorting.md) is enabled, category data models are also created by the data factory.  When [category editors](category-editors.md) are supported, category editor data models can also be generated.
 
-The entire hierarchy of data models (properties, categories, category editors, etc.) is then passed back to the property grid control and is bound to the control as the data source for display.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control inherits [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView), which inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).  Thus the property grid harnesses and expands upon the fast data population and display framework provided by those base classes.  And as such, most of the topics in the [Tree Control Features](../tree-control-features/index.md) area of the documentation can also apply to property grid.
+The entire hierarchy of data models (properties, categories, category editors, etc.) is then passed back to the property grid control and is bound to the control as the data source for display.  The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control inherits [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView), which inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).  Thus, the property grid harnesses and expands upon the fast data population and display framework provided by those base classes.  And as such, most of the topics in the [Tree Control Features](../tree-control-features/index.md) area of the documentation can also apply to property grid.
 
 ### Mutually-Exclusive
 
-The [DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject) and [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjects) properties are mutually exclusive and are automatically synchronized by the property grid.  Therefore, if `DataObject` is set then `DataObjects` is automatically set to an object array containing only one item, the data object.  Conversely, if `DataObjects` is set then `DataObject` is automatically set to the first item in the object array, if any.  This functionality mirrors the Windows Forms PropertyGrid control.
+The [DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject) and [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjects) properties are mutually exclusive and are automatically synchronized by the property grid.  Therefore, if `DataObject` is set then `DataObjects` is automatically set to an object array containing only one item, the data object.  Conversely, if `DataObjects` is set then `DataObject` is automatically set to the first item in the object array, if any.  This functionality mirrors the Windows Forms `PropertyGrid` control.
 
 ### Setting DataObject Example
 
@@ -53,7 +53,7 @@ When the [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjec
 
 See the [Multiple Objects](multiple-objects.md) topic for more information.
 
-## Clearing the DataObject Property When Done With PropertyGrid
+## Clearing the DataObject Property When Done with PropertyGrid
 
 When the property grid is attached to data objects, it monitors their properties with property value change events so that it can update itself when any changes are detected.  The property grid internals use weak event handlers for these notifications to minimize any memory leaks.  That being said, memory can start to build up in certain scenarios if multiple instances of property grid controls are used without properly clearing out the data objects when the property grid control instances are no longer needed.
 
@@ -150,9 +150,9 @@ The following sections talk about the various properties declared in [IPropertyM
 
 ### Target
 
-The [Target](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.Target) property returns the object that owns the property.  For instance, if a `Foo` class instance was set to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject), and a property model was generated for a `Bar` property on the `Foo` class, that property model's `Target` would return the `Foo` instance.
+The [Target](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.Target) property returns the object that owns the property.  For instance, if a `Person` class instance was set to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject), and a property model was generated for a `Name` property on the `Person` class, that property model's `Target` would return the `Person` instance.
 
-The [TargetType](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.TargetType) property returns the `Type` of the [Target](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.Target) instance.  In the example above, it would return a `Type` representing the `Foo` class.
+The [TargetType](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.TargetType) property returns the `Type` of the [Target](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.Target) instance.  In the example above, it would return a `Type` representing the `Person` class.
 
 ### Value and Type
 
@@ -176,11 +176,11 @@ That property can also return `true` if the property model is for a nested prope
 
 Standard values can be specified for a property, which are effectively a list of known values from which the end user can choose for the property.  The [HasStandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.HasStandardValues) property returns if the property has any standard values.
 
-If the [IsLimitedToStandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.IsLimitedToStandardValues) property returns `true`, the end user can only choose from standard values when entering a value.  Otherwise, freeform entry is allowed and the standard values are presented solely as options.
+If the [IsLimitedToStandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.IsLimitedToStandardValues) property returns `true`, the end user can only choose from standard values when entering a value.  Otherwise, freeform entry is allowed, and the standard values are presented solely as options.
 
 The [StandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.StandardValues) property returns the actual collection of standard values.  As an example, this collection could be bound to a `CombBox.ItemsSource`.  For cases where these must be converted to strings, use the [StandardValuesAsStrings](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.StandardValuesAsStrings) property instead.
 
-For scenarios where [StandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.StandardValues) is being used and the [IsLimitedToStandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.IsLimitedToStandardValues) property is `true`, it is assumed that a complex object type is being used for standard value items.  The [StandardValuesDisplayMemberPath](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.StandardValuesDisplayMemberPath) property can be set to the name of the property to dispaly in the data template for each standard value item.
+For scenarios where [StandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.StandardValues) is being used and the [IsLimitedToStandardValues](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.IsLimitedToStandardValues) property is `true`, it is assumed that a complex object type is being used for standard value items.  The [StandardValuesDisplayMemberPath](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModel.StandardValuesDisplayMemberPath) property can be set to the name of the property to display in the data template for each standard value item.
 
 The [CycleToNextStandardValue](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.CycleToNextStandardValue*) method can be manually called to change the [Value](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.Value) to the next standard value.
 
@@ -238,13 +238,13 @@ Each property grid has a data factory assigned to the [PropertyGrid](xref:@Actip
 
 @if (winrt) {
 
-On the @@PlatformName platform, an instance of the [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory) class is the default data factory applied to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataFactory).  This class inherits [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase) and uses reflection to return data models. 
+On the @@PlatformName platform, an instance of the [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory) class is the default data factory applied to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataFactory).  This class inherits [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase) and uses reflection to return data models.
 
 }
 
 @if (wpf) {
 
-On the @@PlatformName platform, an instance of the [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory) class is the default data factory applied to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataFactory).  This class inherits [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase) and uses type descriptors to return data models. 
+On the @@PlatformName platform, an instance of the [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory) class is the default data factory applied to [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataFactory).  This class inherits [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase) and uses type descriptors to return data models.
 
 }
 
@@ -256,40 +256,40 @@ The [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactor
 
 @if (winrt) {
 
-The [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory).[GetPropertyModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.GetPropertyModels) method implementation uses reflection to locate properties on the data objects.  For collection properties, the [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreateCollectionPropertyModel) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).  Otherwise, the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreatePropertyModel) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel). 
+The [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory).[GetPropertyModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.GetPropertyModels) method implementation uses reflection to locate properties on the data objects.  For collection properties, the [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreateCollectionPropertyModel) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).  Otherwise, the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory.CreatePropertyModel) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).
 
 }
 
 @if (wpf) {
 
-The [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory).[GetPropertyModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.GetPropertyModels*) method implementation uses type descriptors to find property descriptors on the data objects.  If a property descriptor is for a collection property, the [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreateCollectionPropertyModel*) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).  Otherwise, the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreatePropertyModel*) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel). 
+The [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory).[GetPropertyModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.GetPropertyModels*) method implementation uses type descriptors to find property descriptors on the data objects.  If a property descriptor is for a collection property, the [CreateCollectionPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreateCollectionPropertyModel*) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).  Otherwise, the [CreatePropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory.CreatePropertyModel*) method is called to create an [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).
 
 }
 
 Next, if the request is made for a root data object, any additional explicitly-defined properties (via [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[Properties](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.Properties)) will be appended to the data model collection.
 
-If [categorization](categorization-and-sorting.md) is enabled (via [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[IsCategorized](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.IsCategorized)), then the [CategorizeDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CategorizeDataModels*) method is called.  In that method, each of the properties in the data model collection is examined to see which category the property falls into.  If no category is specified, a default `Misc` category is used.  The final display name of this `Misc` category can be set with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[MiscCategoryName](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.MiscCategoryName) property. [ICategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryModel) objects are created as appropriate to contain each of the properties in the related category.  The [CreateCategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CreateCategoryModel*) method is called to create the [ICategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryModel) object.  In scenarios where [category editors](category-editors.md) should be applied, the [CreateCategoryEditorModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CreateCategoryEditorModel*) method is called to create the [ICategoryEditorModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryEditorModel) object.  These category and category editor models are placed in a new top-level data model collection and they are what is returned by the [GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method.  If categorization is not enabled, the original uncategorized property models are what would be returned by the [GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method instead.
+If [categorization](categorization-and-sorting.md) is enabled (via [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[IsCategorized](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.IsCategorized)), then the [CategorizeDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CategorizeDataModels*) method is called.  In that method, each of the properties in the data model collection is examined to see which category the property falls into.  If no category is specified, a default `"Misc"` category is used.  The final display name of this `"Misc"` category can be set with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[MiscCategoryName](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.MiscCategoryName) property. [ICategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryModel) objects are created as appropriate to contain each of the properties in the related category.  The [CreateCategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CreateCategoryModel*) method is called to create the [ICategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryModel) object.  In scenarios where [category editors](category-editors.md) should be applied, the [CreateCategoryEditorModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.CreateCategoryEditorModel*) method is called to create the [ICategoryEditorModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryEditorModel) object.  These category and category editor models are placed in a new top-level data model collection and they are what is returned by the [GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method.  If categorization is not enabled, the original uncategorized property models are what would be returned by the [GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method instead.
 
-Finally, before the results are returned, the data model collection is [sorted](categorization-and-sorting.md) via a call to the [SortDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.SortDataModels*) method.  By default, the data models are sorted in order of sort importance (a [DataModelSortImportance](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataModelSortImportance) value), sort order (an integer), numeric display name index (if applicable and using format like `[0]`)), and finally display name.
+Finally, before the results are returned, the data model collection is [sorted](categorization-and-sorting.md) via a call to the [SortDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.SortDataModels*) method.  By default, the data models are sorted in order of sort importance (a [DataModelSortImportance](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataModelSortImportance) value), sort order (an integer), numeric display name index (if applicable and using format like `"[0]"`)), and finally display name.
 
 > [!NOTE]
 > All of the [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase) methods described above are virtual and can be overridden in derived classes to customize or replace default functionality.
 
 ## Custom Data Factories
 
-Custom data factories can be written to tailor what is displayed by the property grid.  Custom factories can populate the property grid using entries in a collection, xml document, or application settings.  It is not limited to strictly properties.
+Custom data factories can be written to tailor what is displayed by the property grid.  Custom factories can populate the property grid using entries in a collection, XML document, or application settings.  It is not strictly limited to properties.
 
 A custom factory needs to implement [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory) and must be assigned to the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataFactory) property for it to be used.
 
 @if (winrt) {
 
-While it's generally easiest to inherit [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory) for your custom factory and to simply override its methods as appropriate, you could inherit the lower-level [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase), or even implement [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory) completely yourself. 
+While it's generally easiest to inherit [TypeReflectionFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeReflectionFactory) for your custom factory and to simply override its methods as appropriate, you could inherit the lower-level [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase), or even implement [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory) completely yourself.
 
 }
 
 @if (wpf) {
 
-While it's generally easiest to inherit [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory) for your custom factory and to simply override its methods as appropriate, you could inherit the lower-level [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase), or even implement [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory) completely yourself. 
+While it's generally easiest to inherit [TypeDescriptorFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.TypeDescriptorFactory) for your custom factory and to simply override its methods as appropriate, you could inherit the lower-level [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase), or even implement [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory) completely yourself.
 
 }
 
@@ -297,7 +297,7 @@ The following sections summarize all of the virtual methods you can override in 
 
 ### GetDataModels Method
 
-The [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory).[GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method (implemented by [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase).[GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.GetDataModels*)) is the main entry and exit point of a data factory.  Thus you can override it to alter request data, reimplement all core logic, or alter the default final data model results for the request.
+The [IDataFactory](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory).[GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataFactory.GetDataModels*) method (implemented by [DataFactoryBase](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase).[GetDataModels](xref:@ActiproUIRoot.Controls.Grids.PropertyData.DataFactoryBase.GetDataModels*)) is the main entry and exit point of a data factory.  Thus, you can override it to alter request data, reimplement all core logic, or alter the default final data model results for the request.
 
 ### GetPropertyModels Method
 

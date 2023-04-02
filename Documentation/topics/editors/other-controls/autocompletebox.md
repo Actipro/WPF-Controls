@@ -21,7 +21,7 @@ Set the [IsReadOnly](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.IsRead
 
 ## Populating the Suggestion List
 
-The [AutoCompleteBox](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox) control's template also contains an embedded list control that is used to render the suggestion list.  This list displays in a popup.  There are a number of common `ItemsControl` properties used to populate the list and determine how suggestion items render.
+The [AutoCompleteBox](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox) control's template also contains an embedded list control that is used to render the suggestion list.  This list is displayed in a popup.  There are a number of common `ItemsControl` properties used to populate the list and determine how suggestion items render.
 
 The [ItemsSource](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemsSource) property should be set to a collection of suggestion items.  This collection is run through a data filter (if supplied) and the results are placed in the [FilteredItemsSource](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.FilteredItemsSource) property.  The suggestion list binds to this property.
 
@@ -43,11 +43,11 @@ A pre-built [AutoCompleteBoxStringFilter](xref:@ActiproUIRoot.Controls.Editors.A
 
 As mentioned above, the [ConvertToString](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ConvertToString*) method is used to convert each suggested item to a string for filtering and other purposes.  This method uses the [TextMemberPath](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextMemberPath) property to create a binding that can obtain the string.  While this process performs fine in scenarios with several hundred suggested items, it can become a performance bottleneck if there are a very large number of suggested items.
 
-To maximize performance, it is recommended to create a class that inherits [AutoCompleteBox](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox) and overrides the [ConvertToString](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ConvertToString*) method.  In the method implementation, cast the item to the specific data type you are using and return an appropriate string value, such as from one of the object's properties.  This circumvents the use of a slow binding to obtain the value, and can add up to a significant performance gain, especially with large numbers of suggested items.
+To maximize performance, it is recommended to create a class that inherits [AutoCompleteBox](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox) and overrides the [ConvertToString](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ConvertToString*) method.  In the method's implementation, cast the item to the specific data type you are using and return an appropriate string value, such as from one of the object's properties.  This circumvents the use of a slow binding to obtain the value, and can add up to a significant performance gain, especially with large numbers of suggested items.
 
 ## Updating the Suggestion List
 
-While data filters might handle many common scenarios, there are other cases where you may wish to completely rebuild the list whenever the text changes.  This is more commonly done for quick launch kinds of scenarios where you only show the most popular suggested items that match what has been typed.  Or you might want to actually include the typed text in the suggested items themselves (e.g., "Get help on 'foo'").
+While data filters might handle many common scenarios, there are other cases where you may wish to completely rebuild the list whenever the text changes.  This is more commonly done for quick launch kinds of scenarios where you only show the most popular suggested items that match what has been typed.  Or you might want to actually include the typed text in the suggested items themselves (e.g., `"Get help on 'foo'"`).
 
 To accomplish this, set the [ItemsSource](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemsSource) to a new collection in response to the [TextChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextChanged) event firing.
 
@@ -59,7 +59,7 @@ The [NoItemsContentTemplate](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBo
 
 ## Suggested Item Selection
 
-When the end user clicks on a suggested item or presses `Enter` while the suggestion list is open, the [SuggestionChosen](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SuggestionChosen) event is raised.
+When the end user clicks on a suggested item or presses <kbd>Enter</kbd> while the suggestion list is open, the [SuggestionChosen](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SuggestionChosen) event is raised.
 
 The [TextMemberPath](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextMemberPath) property is used to determine the text for the item.  The logic for converting an item to text is implemented in the virtual [ConvertToString](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ConvertToString*) method.
 
@@ -81,7 +81,7 @@ A header can be displayed within the popup by setting the [PopupHeader](xref:@Ac
 
 ## Submitting
 
-When the end user clicks on a suggested item or presses `Enter` (even if the suggestion list is not open at the time), the [Submitted](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.Submitted) event is raised.  Handlers of this event should perform whichever search query or command execution is appropriate based on the supplied text.
+When the end user clicks on a suggested item or presses <kbd>Enter</kbd> (even if the suggestion list is not open at the time), the [Submitted](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.Submitted) event is raised.  Handlers of this event should perform whichever search query or command execution is appropriate based on the supplied text.
 
 ## Clear Button
 

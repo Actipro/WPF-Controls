@@ -13,7 +13,7 @@ A [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentContro
 
 Recently opened documents are listed in a sorted order and can be clicked to open them.  Hovering the mouse over a document provides its full path.
 
-Clicking on a document's pin button will toggle the pinned state of the document.  When pinned, the document will not fall off the list if there are other unpinned documents that have been opened more recently.
+Clicking on a document's **Pin** button will toggle the pinned state of the document.  When pinned, the document will not fall off the list if there are other unpinned documents that have been opened more recently.
 
 ## Adding to a Backstage
 

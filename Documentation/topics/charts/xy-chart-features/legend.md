@@ -17,7 +17,7 @@ The visibility of the legend can be controlled using [XYChart](xref:@ActiproUIRo
 
 ![Screenshot](../images/appearance-legend1.png)
 
-This is an example of setting IsLegendVisible to `true`.
+This is an example of setting `IsLegendVisible` to `true`.
 
 ```xaml
 <charts:XYChart IsLegendVisible="true" .../>
@@ -25,7 +25,7 @@ This is an example of setting IsLegendVisible to `true`.
 
 ## Position
 
-The position of the legend can be controlled using [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendHorizontalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendHorizontalPosition) and [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendVerticalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:@ActiproUIRoot.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:@ActiproUIRoot.Controls.Charts.LegendVerticalPosition.TopOutside). `Inside` means the legend will be positioned relative to the chart drawing area, and `Outside` means the legend will be positioned relative to the entire chart control.  So `CenterInside` will be in the center of the chart drawing area, wheras `CenterOutside` will be in the center of the entire chart control.
+The position of the legend can be controlled using [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendHorizontalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendHorizontalPosition) and [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendVerticalPosition](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendVerticalPosition).  Legend positions have two modifiers, `Inside` and `Outside` (for example, [LeftInside](xref:@ActiproUIRoot.Controls.Charts.LegendHorizontalPosition.LeftInside) and [TopOutside](xref:@ActiproUIRoot.Controls.Charts.LegendVerticalPosition.TopOutside)). `Inside` means the legend will be positioned relative to the chart drawing area, and `Outside` means the legend will be positioned relative to the entire chart control.  So `CenterInside` will be in the center of the chart drawing area, whereas `CenterOutside` will be in the center of the entire chart control.
 
 ![Screenshot](../images/appearance-legend2.png)
 
@@ -83,11 +83,11 @@ This is an example of providing a custom `LegendStyle`.
 
 ## Legend Item Customization
 
-Each individual legend item can be retemplated by setting `ItemTemplate` in [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendStyle).  The data source for the template is [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[Label](xref:@ActiproUIRoot.Controls.Charts.LegendKey.Label) and [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:@ActiproUIRoot.Controls.Charts.LegendKey.LegendMarkerStyle).
+Each individual legend item can be re-templated by setting `ItemTemplate` in [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart).[LegendStyle](xref:@ActiproUIRoot.Controls.Charts.XYChart.LegendStyle).  The data source for the template is [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey), allowing you to bind to properties from the template such as [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[Label](xref:@ActiproUIRoot.Controls.Charts.LegendKey.Label) and [LegendKey](xref:@ActiproUIRoot.Controls.Charts.LegendKey).[LegendMarkerStyle](xref:@ActiproUIRoot.Controls.Charts.LegendKey.LegendMarkerStyle).
 
 ![Screenshot](../images/appearance-legend5.png)
 
-This is an example of providing a custom `LegendStyle` to retemplate the legend items.
+This is an example of providing a custom `LegendStyle` to re-template the legend items.
 
 ```xaml
 <charts:XYChart.LegendStyle>

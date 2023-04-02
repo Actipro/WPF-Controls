@@ -9,7 +9,7 @@ The [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) control allows
 
 ![Screenshot](../images/datepicker.png)
 
-Use the previous/next buttons in the calendar's header to navigate to a nearby month, or tap the current view's title to 'zoom out' to year, decade, or century views.
+Use the previous/next buttons in the calendar's header to navigate to a nearby month, or tap the current view's title to "zoom out" to year, decade, or century views.
 
 The [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) directly embeds a [MonthCalendar](../other-controls/monthcalendar.md) control to provide the functionality mentioned above.  See the [MonthCalendar](../other-controls/monthcalendar.md) topic for more information on that control's capabilities.
 

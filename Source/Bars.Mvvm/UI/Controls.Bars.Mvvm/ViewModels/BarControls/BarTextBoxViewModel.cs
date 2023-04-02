@@ -21,6 +21,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ImageSource smallImageSource;
 		private string text;
 		private string title;
+		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -81,7 +82,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		
 		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
 		public bool CanCloneToRibbonQuickAccessToolBar {
 			get => canCloneToRibbonQuickAccessToolBar;
@@ -222,6 +223,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (title != value) {
 					title = value;
 					this.NotifyPropertyChanged(nameof(Title));
+				}
+			}
+		}
+		
+		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
+		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+			get => toolBarItemCollapseBehavior;
+			set {
+				if (toolBarItemCollapseBehavior != value) {
+					toolBarItemCollapseBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
 				}
 			}
 		}

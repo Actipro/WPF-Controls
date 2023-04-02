@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Actipro Gauge follows WPF best practices for areas such as layout, globalization and accessibility.
+Actipro Gauge follows WPF best practices for areas such as layout, globalization, and accessibility.
 
 ## Flow Direction
 

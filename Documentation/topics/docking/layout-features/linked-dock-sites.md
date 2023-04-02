@@ -5,7 +5,7 @@ order: 5
 ---
 # Linked Dock Sites
 
-Dock sites are completely self-contained but they can be linked, which allows the document and tool windows from one dock site to be dragged/moved to the other dock site.
+Dock sites are completely self-contained, but they can be linked, which allows the document and tool windows from one dock site to be dragged/moved to the other dock site.
 
 ## Linking/Unlinking Dock Sites
 
@@ -28,4 +28,4 @@ As soon as the dock sites are linked, the documents and/or tool windows can be m
 
 ## Nested Dock Sites
 
-When nested dock sites are linked and you are dragging over multiple dock hosts, the dock guides will show for the dock host in the same dock site by default.  Hold the `Shift` key while dragging to show the dock guides for an alternate dock host instead, which could be an inner or outer dock host.
+When nested dock sites are linked and you are dragging over multiple dock hosts, the dock guides will show for the dock host in the same dock site by default.  Hold the <kbd>Shift</kbd> key while dragging to show the dock guides for an alternate dock host instead, which could be an inner or outer dock host.

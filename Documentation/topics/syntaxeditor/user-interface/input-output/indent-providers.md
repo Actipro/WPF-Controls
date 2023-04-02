@@ -5,29 +5,29 @@ order: 9
 ---
 # Indent Providers (Auto-Indent)
 
-Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the `Enter` key is pressed.
+Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the <kbd>Enter</kbd> key is pressed.
 
 ## Indent Mode
 
 SyntaxEditor has been designed such that customized auto-indent behavior can be implemented to suit the language being edited.
 
-If a class that implements [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) is registered with a syntax language as an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service, the indent provider's [Mode](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider.Mode) property will be queried by SyntaxEditor to determine the type of indentation it should be performing when `Enter` is pressed.
+If a class that implements [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) is registered with a syntax language as an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service, the indent provider's [Mode](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider.Mode) property will be queried by SyntaxEditor to determine the type of indentation it should be performing when <kbd>Enter</kbd> is pressed.
 
 There are three mode options:
 
 | Mode | Description |
 |-----|-----|
-| None | When selected, no automatic indenting occurs when the end user presses `Enter` to move to a new line of text, and the cursor is placed at the first column of the next line. |
-| Block | When selected and the end user presses `Enter`, the new line of text is automatically indented to the same indentation as the line preceding it. |
-| Smart | When selected and the end user presses `Enter`, the new line of text is automatically indented based on what the current language's [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service determines the context to be. |
+| None | When selected, no automatic indenting occurs when the end user presses <kbd>Enter</kbd> to move to a new line of text, and the cursor is placed at the first column of the next line. |
+| Block | When selected and the end user presses <kbd>Enter</kbd>, the new line of text is automatically indented to the same indentation as the line preceding it. |
+| Smart | When selected and the end user presses <kbd>Enter</kbd>, the new line of text is automatically indented based on what the current language's [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) service determines the context to be. |
 
 ## Default Auto-Indent Behavior
 
-If do not you have an indent provider registered with your syntax language, a default "Block" mode will be used. When the end user presses `Enter`, the new line of text is automatically indented to the same indentation as the line preceding it.
+If do not you have an indent provider registered with your syntax language, a default "Block" mode will be used. When the end user presses <kbd>Enter</kbd>, the new line of text is automatically indented to the same indentation as the line preceding it.
 
 ## Smart Indent Logic
 
-When an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) is registered with the language and the [Smart](xref:@ActiproUIRoot.Controls.SyntaxEditor.IndentMode.Smart) indent mode is set, the [GetIndentAmount](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider.GetIndentAmount*) method will be invoked whenever the `Enter` key is pressed.
+When an [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) is registered with the language and the [Smart](xref:@ActiproUIRoot.Controls.SyntaxEditor.IndentMode.Smart) indent mode is set, the [GetIndentAmount](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider.GetIndentAmount*) method will be invoked whenever the <kbd>Enter</kbd> key is pressed.
 
 The method is passed a [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) and the default "block" indent amount.  The result of this method should always be the number of columns (spaces) to indent the line, as opposed to tabs.  Upon return from the method, SyntaxEditor will automatically indent the first non-whitespace character on the line to the desired column.
 
@@ -50,7 +50,7 @@ language.RegisterService<IIndentProvider>(indentProvider);
 
 ## Curly Brace Auto-Indent
 
-Some languages like C# and JavaScript use curly braces as delimiters for code blocks.  When the end user presses `Enter` while the caret is immediately between a curly brace pair, it is handy for the caret to be moved to the next line, indented, and for the close curly brace to be moved to the line following the caret.  This aids in typing efficiency.
+Some languages like C# and JavaScript use curly braces as delimiters for code blocks.  When the end user presses <kbd>Enter</kbd> while the caret is immediately between a curly brace pair, it is handy for the caret to be moved to the next line, indented, and for the close curly brace to be moved to the line following the caret.  This aids in typing efficiency.
 
 This example, where the `|` character denotes the caret, demonstrates the before and after what is described above:
 
@@ -83,7 +83,7 @@ In some lexers such as [dynamic lexers](../../text-parsing/lexing/dynamic-lexers
 
 ## Close Delimiter Indentation Level
 
-When using the [DelimiterIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.DelimiterIndentProvider) class described above, the close delimiter will normally flow to the same indent level as the line upon which `Enter` was pressed, such as:
+When using the [DelimiterIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.DelimiterIndentProvider) class described above, the close delimiter will normally flow to the same indent level as the line upon which <kbd>Enter</kbd> was pressed, such as:
 
 ```
 function Foo() {|}

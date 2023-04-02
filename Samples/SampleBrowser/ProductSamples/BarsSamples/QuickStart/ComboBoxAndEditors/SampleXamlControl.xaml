@@ -41,7 +41,7 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 						
 						<!-- Editable -->
-						<bars:BarComboBox Key="Editable" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+						<bars:BarComboBox Key="Editable" TextPath="Label" IsEditable="True" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
 										  ToolTip="A basic, editable combobox sample.">
 							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
 												 ItemsSource="{Binding ComboBoxPersonItems}"
@@ -50,7 +50,7 @@
 						</bars:BarComboBox>
 
 						<!-- Read-Only -->
-						<bars:BarComboBox Key="ReadOnly" Label="Read-only" IsReadOnly="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+						<bars:BarComboBox Key="ReadOnly" Label="Read-only" IsEditable="True" IsReadOnly="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
 										  ToolTip="A basic, editable and read-only combobox sample.">
 							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
 												 ItemsSource="{Binding ComboBoxPersonItems}"
@@ -59,7 +59,7 @@
 						</bars:BarComboBox>
 
 						<!-- Non-Editable -->
-						<bars:BarComboBox Key="NonEditable" Label="Non-Editable" IsEditable="False" TextPath="Label"
+						<bars:BarComboBox Key="NonEditable" Label="Non-Editable" TextPath="Label"
 										  ToolTip="A basic, non-editable combobox sample."
 										  >
 							<bars:BarMenuGallery Key="NonEditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
@@ -74,7 +74,7 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 
 						<!-- Categorized items in a single column -->
-						<bars:BarComboBox Key="CategorizedSingleColumn" Label="Single-Column" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+						<bars:BarComboBox Key="CategorizedSingleColumn" Label="Single-Column" IsEditable="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
 										  ToolTip="A combobox with items categorized and displayed in a single column.">
 							<bars:BarMenuGallery Key="CategorizedSingleColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
 												 MaxColumnCount="1"
@@ -84,7 +84,7 @@
 						</bars:BarComboBox>
 						
 						<!-- Categorized items in multiple columns -->
-						<bars:BarComboBox Key="CategorizedMultiColumn" Label="Multi-Column" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+						<bars:BarComboBox Key="CategorizedMultiColumn" Label="Multi-Column" IsEditable="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
 										  ToolTip="A combobox with items categorized and displayed using multiple columns.">
 							<bars:BarMenuGallery Key="CategorizedMultiColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
 												 MinColumnCount="5" MaxColumnCount="5"
@@ -93,7 +93,7 @@
 						</bars:BarComboBox>
 
 						<!-- Categorized/Filtered items with menu item appearance consistent with large menu items -->
-						<bars:BarComboBox Key="MenuStyle" TextPath="Label"
+						<bars:BarComboBox Key="MenuStyle" IsEditable="True" TextPath="Label"
 										  ToolTip="A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.">
 							<bars:BarMenuGallery Key="MenuStyleGallery" MaxColumnCount="1" CanFilter="True" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
 												 CategorizedItemsSource="{Binding ComboBoxColorItems}"
@@ -108,7 +108,7 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 
 						<!-- Font family -->
-						<bars:BarComboBox Key="FontFamily" TextPath="Label" RequestedWidth="120" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+						<bars:BarComboBox Key="FontFamily" IsEditable="True" IsUnmatchedTextAllowed="False" TextPath="Label" RequestedWidth="120"
 										  ToolTip="A combobox with system fonts and a category for recently-used fonts.">
 							<bars:BarMenuGallery Key="FontFamilyGallery" MaxColumnCount="1" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
 												 ResizeMode="Vertical"
@@ -121,7 +121,7 @@
 						</bars:BarComboBox>
 
 						<!-- Font size -->
-						<bars:BarComboBox Key="FontSize" TextPath="Label" RequestedWidth="45" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+						<bars:BarComboBox Key="FontSize" IsEditable="True" IsTextCompletionEnabled="False" TextPath="Label" RequestedWidth="45" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
 										  ToolTip="A combobox with common font sizes.">
 							<bars:BarMenuGallery Key="FontSizeGallery" MaxColumnCount="1" Command="{Binding ComboBoxGalleryCommand}"
 												 ResizeMode="Vertical"

@@ -14,9 +14,9 @@ UI virtualization means that if many items are loaded in the control, containers
 The tree controls have "Recycling" UI virtualization active by default, and nothing needs to be done to configure it.  As the control is scrolled, containers for items that are scrolled out of view may be recycled and reused for other items that are being scrolled into view.  This recycling helps performance because it prevents UI elements from being created new for every container that is needed.
 
 > [!NOTE]
-> 
-> If you see issues with bound data showing up on incorrect containers or styles not being applied properly, especially while scrolling, please see the [Troubleshooting](../troubleshooting.md) topic.  That topic has a section that describes this scenario in more detail and talks about how to change the virtualization mode back to "Standard", which should solve the issue.  "Standard" virtualization is a little slower than "Recycling" virtualization, but is still fast.
-> 
+>
+> If you see issues with bound data showing up on incorrect containers or styles not being applied properly, especially while scrolling, please see the [Troubleshooting](../troubleshooting.md) topic.  That topic has a section that describes this scenario in more detail and talks about how to change the virtualization mode back to "Standard", which should solve the issue.  "Standard" virtualization is a little slower than "Recycling" virtualization but is still fast.
+>
 > The problems described above mostly tend to happen in scenarios where you are switching styles/templates for tree control items on the fly with a selector, based on data.  Most tree control usage scenarios don't use selectors, and thus shouldn't run into the problem.
 
 ## Data Virtualization

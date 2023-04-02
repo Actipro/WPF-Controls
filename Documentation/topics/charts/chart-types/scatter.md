@@ -11,7 +11,7 @@ Scatter charts render data points where each point is represented by a marker.
 
 ## Marker Shape Kinds
 
-Markers support several built in shape kinds, which include:
+Markers support several built-in shape kinds, which include:
 
 | Kind | Example |
 |-----|-----|

@@ -19,22 +19,20 @@ The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) is an `ItemsControl` whos
 
 Tabs have a string [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) that can be set, which is visible in UI as the header for the tab.
 
-The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) can be auto-generated based on the tab's [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) property.  For instance, a tab with [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) of `TableDesign` will automatically assign `Table Design` as the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) value.  The auto-generated default can be overridden by setting the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) property.
+The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) can be auto-generated based on the tab's [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) property.  For instance, a tab with [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) of `"TableDesign"` will automatically assign `"Table Design"` as the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) value.  The auto-generated default can be overridden by setting the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) property.
 
-> [!TIP]
-> See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more information on auto-generated labels.
+See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more information on auto-generated labels.
 
 ### Key Tips
 
 Tabs support key tips.  When a tab's key tip is accessed, the tab is selected and its child key tip scope is activated to further access controls contained within the tab.
 
-The [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) can be auto-generated based on the tab's [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) property.  For instance, a tab with [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) of `Home` will automatically assign `H` as the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) value.  The auto-generated default can be overridden by setting the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) property.
-
-> [!NOTE]
-> Since the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) will auto-generate a [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label), and [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) will auto-generate [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText), it is often only necessary to specify the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) and allow both the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) and [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) to be auto-generated!
+The [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) can be auto-generated based on the tab's [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) property.  For instance, a tab with [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) of `"Home"` will automatically assign `"H"` as the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) value.  The auto-generated default can be overridden by setting the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) property.
 
 > [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+> Since the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) will auto-generate a [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label), and [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) will auto-generate [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText), it is often only necessary to specify the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Key) and allow both the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.Label) and [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem.KeyTipText) to be auto-generated!
+
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ### Defining Tabs
 
@@ -61,8 +59,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonContainerPanel>
 ```
 
-> [!NOTE]
-> See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
+See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
 ### MVVM Support
 
@@ -77,8 +74,7 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonTabVi
 
 Most ribbon tabs are always visible, but some tabs are only relevant when the application is in a specific state. These are called "contextual tabs".
 
-> [!TIP]
-> See the [Contextual Tabs](contextual-tabs.md) topic for more details on that feature.
+See the [Contextual Tabs](contextual-tabs.md) topic for more details on that feature.
 
 ## Groups
 
@@ -86,41 +82,42 @@ Groups are used to organize related controls within a tab and can have a differe
 
 ### Classic Layout Mode
 
-In the [Classic](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Classic) layout mode, groups are prominently displayed in the UI with separators between each group and the label at the bottom.  When there is not enough space to display all of the controls in a ribbon, a group may collapse to a single button that will display the group's controls in a popup when accessed.
+In the `Classic` layout mode, groups are prominently displayed in the UI with separators between each group and the label at the bottom.  When there is not enough space to display all of the controls in a ribbon, a group may collapse to a single button that will display the group's controls in a popup when accessed.
 
-> [!TIP]
-> See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to prevent a group from collapsing.
+See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to prevent a group from collapsing.
+
+See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Classic` modde.
+
 
 ### Simplified Layout Mode
 
-In the [Simplified](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Simplified) layout mode, controls still visible in the ribbon will render a separator between groups. Any controls that have moved to the **Tab Overflow** menu will be organized under a header based on the containing group's label.  Groups can optionally be configured to overflow to their own menu instead of the common **Tab Overflow** menu.
+In the `Simplified` layout mode, controls still visible in the ribbon will render a separator between groups. Any controls that have moved to the **Tab Overflow** menu will be organized under a header based on the containing group's label.  Groups can optionally be configured to overflow to their own menu instead of the common **Tab Overflow** menu.
 
-> [!TIP]
-> See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to configure a **Group Overflow** menu.
+See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to configure a **Group Overflow** menu.
+
+See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Simplified` modde.
 
 ### Label
 
-Groups have a string [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) that can be set, which is visible in UI below the group ([Classic](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Classic) layout) or in the **Tab Overflow** menu ([Simplified](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Simplified) layout).
+Groups have a string [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) that can be set, which is visible in UI below the group (`Classic` layout mode) or in the **Tab Overflow** menu (`Simplified` layout mode).
 
-The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) can be auto-generated based on the group's [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) property.  For instance, a group with [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) of `FontSettings` will automatically assign `Font Settings` as the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) value.  The auto-generated default can be overridden by setting the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) property.
+The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) can be auto-generated based on the group's [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) property.  For instance, a group with [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) of `"FontSettings"` will automatically assign `"Font Settings"` as the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) value.  The auto-generated default can be overridden by setting the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) property.
+
+See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more information on auto-generated labels.
+
+### Collapsed Button Key Tip (Classic layout mode only)
+
+When a group in the `Classic` layout mode is collapsed to a button, the collapsed button supports key tips.  When the key tip of a group's collapsed button is accessed, the content of the group is displayed in a popup.
+
+> [!NOTE]
+> A convention used by Office applications is for the key tip of collapsed groups to use two-letter tips that start with `"Z"`. For example, `"ZF"` might be the key tip for the collapsed button of a **Font** group.
+
+The [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) can be auto-generated based on the group's [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) property.  Based on the convention noted above, the auto-generated key tip will be prefixed with `"Z"` to match the convention.  For instance, a group with [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) of `"Font"` will automatically assign `"ZF"` as the [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) value.  The auto-generated default can be overridden by setting the [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) property.
 
 > [!TIP]
-> See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more information on auto-generated labels.
-
-### Collapsed Button Key Tip (`Classic` layout mode only)
-
-When a group in the [Classic](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Classic) layout mode is collapsed to a button, the collapsed button supports key tips.  When the key tip of a group's collapsed button is accessed, the content of the group is displayed in a popup.
-
-> [!NOTE]
-> A convention used by Office applications is for the key tip of collapsed groups to use two-letter tips that start with `Z`. For example, `ZF` might be the key tip for the collapsed button of a `Font` group.
-
-The [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) can be auto-generated based on the group's [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) property.  Based on the convention noted above, the auto-generated key tip will be prefixed with `Z` to match the convention.  For instance, a group with [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) of `Font` will automatically assign `ZF` as the [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) value.  The auto-generated default can be overridden by setting the [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) property.
-
-> [!NOTE]
 > Since the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) will auto-generate a [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label), and [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) will auto-generate [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText), it is often only necessary to specify the [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) and allow both the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) and [CollapsedButtonKeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CollapsedButtonKeyTipText) to be auto-generated!
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ### Launcher Button
 
@@ -134,7 +131,7 @@ Launcher buttons should be used to display additional UI (e.g., a dialog window 
 
 The launcher button is configured in a manner consistent with other Bars button controls including support for common properties like `Command`, [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.Key), [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.Label) (with support to auto-generate from `Key`), and [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.KeyTipText) (with support to auto-generate from `Label`).  [Screen Tips](screen-tips.md) are also supported.
 
-Unlike other buttons, however, the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.SmallImageSource) property does not define the button content.  Instead, this image is *only* displayed when the ribbon is using the [Simplified](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Simplified) layout mode and the launcher button has been moved to an overflow menu. In the overflow menu, the icon will be displayed in the icon column consistent with other menu items.
+Unlike other buttons, however, the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.SmallImageSource) property does not define the button content.  Instead, this image is *only* displayed when the ribbon is using the `Simplified` layout mode and the launcher button has been moved to an overflow menu. In the overflow menu, the icon will be displayed in the icon column consistent with other menu items.
 
 ### Defining Groups
 
@@ -167,8 +164,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 ```
 
-> [!NOTE]
-> See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
+See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
 ### MVVM Support
 
@@ -181,9 +177,9 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonGroup
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
 
-## Control Groups (`Classic` layout only)
+## Control Groups (Classic layout mode only)
 
-A [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is only relevant when a ribbon is using the [Classic](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Classic) layout mode and can be omitted if only the [Simplified](xref:@ActiproUIRoot.Controls.Bars.RibbonLayoutMode.Simplified) layout mode is supported.
+A [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is only relevant when a ribbon is using the `Classic` layout mode and can be omitted if only the `Simplified` layout mode is to be supported.
 
 The primary purpose of a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is to enable variant sizing of the controls within the group.  See the [Resizing and Variants](resizing.md) topic for more details on resizing.
 
@@ -215,8 +211,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 ```
 
-> [!NOTE]
-> See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
+See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
 ### MVVM Support
 
@@ -226,3 +221,9 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonContr
 
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
+
+### Horizontal Alignment
+
+When a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) and is vertically stacking its items (`Medium` or `Small` variant sizes), the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).`HorizontalContentAlignment` property determines how the items are horizontally aligned.  The default value is `Left`.
+
+In some cases, such as when using [ItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.ItemVariantBehavior).[AlwaysMedium](xref:@ActiproUIRoot.Controls.Bars.ItemVariantBehavior.AlwaysMedium) for a set of buttons, it may be preferred to ensure all items are the same width by using the `HorizontalAlignment.Stretch` option.  This can be particularly useful when the items are [popup buttons](../controls/popup-button.md) or [split buttons](../controls/split-button.md) since the dropdown arrows will align on the right, even though the buttons have different label lengths.

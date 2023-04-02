@@ -19,6 +19,30 @@ The following hierarchy shows a high-level structure a window that defines a rib
 > [!IMPORTANT]
 > The `RibbonContainerPanel` should be used as the container for a `Ribbon` and the content that appears below the ribbon. The two controls work together to provide smooth animations based on ribbon state changes. While the `RibbonContainerPanel` is not required, it improves the end-user experience.
 
+### Defining Ribbon Within ContentControl
+
+For composible UI frameworks like Prism, it may not be reasonable to define a `Ribbon` directly as a child of a `RibbonContainerPanel`.  In these scenarios, a `ContentControl` can be used as the direct child of a `RibbonContainerPanel` as long as the `ContentControl.Content` is initialized to an instance of `Ribbon` at run-time.  When hosted in a `ContentControl`, it is recommended to set the `Panel.ZIndex` of the `ContentControl` to `1` for the ribbon's shadow chrome to display correctly.
+
+The following sample demonstrates how a `ContentControl` might be configured within a `RibbonContainerPanel`:
+
+```xaml
+xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+...
+<bars:RibbonWindow>
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Placeholder -->
+		<ContentControl x:Name="ribbonContent" Panel.ZIndex="1" />
+
+		<!-- Other main window content here -->
+
+	</bars:RibbonContainerPanel>
+</bars:RibbonWindow>
+ ```
+
+In the code-behind, the `ribbonContent.Content` should be assigned an instance of `Ribbon`.
+
+
 ## Ribbon
 
 The following hierarchy shows the definition of a [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control and the typical types (with their own hierarchies) that are assigned to important properties.

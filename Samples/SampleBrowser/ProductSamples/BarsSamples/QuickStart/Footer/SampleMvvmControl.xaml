@@ -14,8 +14,7 @@
 		
 		<!-- MVVM-Based Ribbon Control -->
 		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
-					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}"
-					 IsCollapsible="False" />
+					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}" />
 
 		<!-- TextBox -->
 		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">

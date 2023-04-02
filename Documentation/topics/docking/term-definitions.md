@@ -49,7 +49,7 @@ A dock site (represented by the [DockSite](xref:@ActiproUIRoot.Controls.Docking.
 
 A document window (represented by the [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) class) is a docking window that is restricted to only be used within a MDI area.
 
-By default it is destroyed after it is closed, however this behavior can be changed.
+By default, it is destroyed after it is closed, however this behavior can be changed.
 
 </td>
 </tr>
@@ -63,7 +63,7 @@ By default it is destroyed after it is closed, however this behavior can be chan
 <td>MDI</td>
 <td>
 
-MDI stands for Multiple Document Interface, meaning the method with which documents can be visually interacted by the end user.
+MDI stands for "Multiple Document Interface", meaning the method with which documents can be visually interacted by the end user.
 
 The two built-in types of MDI are Tabbed MDI and Standard MDI.
 
@@ -72,7 +72,7 @@ The two built-in types of MDI are Tabbed MDI and Standard MDI.
 
 <tr>
 <td>MVVM</td>
-<td>MVVM stands for Model View ViewModel and is a design pattern used to build applications where the logic is separated from the user interface, testability is increased, as well as other benefits.</td>
+<td>MVVM stands for "Model View ViewModel" and is a design pattern used to build applications where the logic is separated from the user interface, testability is increased, as well as other benefits.</td>
 </tr>
 
 <tr>

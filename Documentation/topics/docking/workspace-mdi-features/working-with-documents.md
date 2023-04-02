@@ -19,7 +19,7 @@ Document windows have a couple additional properties that aid in their user inte
 
 The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).[FileName](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow.FileName) property should be set to the full file or URL path of the document content, if appropriate.  If this doesn't apply, leave the value `null`.
 
-The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).[Description](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Description) property should be set to a description of the document type, such as: `Text document` This value gets displayed on a [standard switcher](../docking-window-features/switchers.md).
+The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).[Description](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Description) property should be set to a description of the document type, such as: `"Text document"`. This value gets displayed on a [standard switcher](../docking-window-features/switchers.md).
 
 ## Opening a Document
 
@@ -70,7 +70,7 @@ There are numerous [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) met
 
 A document can be closed by calling its [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Close](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Close*) method.
 
-> [!NOTE]
+> [!WARNING]
 > For document windows this will also destroy the window by default unless the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property is set to `false`.
 
 ## Contextual Content

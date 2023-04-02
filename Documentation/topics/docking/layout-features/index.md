@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Actipro Docking & MDI has an enormous feature set related to layouts, globalization and accessibility.
+Actipro Docking & MDI has an enormous feature set related to layouts, globalization, and accessibility.
 
 ## Layout Serialization
 

@@ -13,7 +13,7 @@ Visibility of the grid lines is controlled using [XYChart](xref:@ActiproUIRoot.C
 
 ![Screenshot](../images/appearance-grid-lines1.png)
 
-This is an example of setting GridLineMajorVisibility to `Y`, in which grid lines are shown for each major tick on the Y axis.
+This is an example of setting `GridLineMajorVisibility` to `Y`, in which grid lines are shown for each major tick on the Y axis.
 
 ```xaml
 <charts:XYChart GridLineVisibility="Y" .../>
@@ -21,7 +21,7 @@ This is an example of setting GridLineMajorVisibility to `Y`, in which grid line
 
 ![Screenshot](../images/appearance-grid-lines2.png)
 
-This is an example of setting GridLineMajorVisibility to `X`, in which grid lines are shown for each major tick on the X axis.
+This is an example of setting `GridLineMajorVisibility` to `X`, in which grid lines are shown for each major tick on the X axis.
 
 ```xaml
 <charts:XYChart GridLineVisibility="X" .../>
@@ -29,7 +29,7 @@ This is an example of setting GridLineMajorVisibility to `X`, in which grid line
 
 ![Screenshot](../images/appearance-grid-lines3.png)
 
-This is an example of setting GridLineMajorVisibility to `All`, in which grid lines are shown for each major tick on the X and Y axis.
+This is an example of setting `GridLineMajorVisibility` to `All`, in which grid lines are shown for each major tick on the X and Y axis.
 
 ```xaml
 <charts:XYChart GridLineVisibility="All" .../>
@@ -41,7 +41,7 @@ Visibility of the grid stripes is controlled using [XYChart](xref:@ActiproUIRoot
 
 ![Screenshot](../images/appearance-grid-lines4.png)
 
-This is an example of setting GridLineMajorVisibility to `Y`, in which grid stripes are shown alternating between each major tick on the Y axis.
+This is an example of setting `GridLineMajorVisibility` to `Y`, in which grid stripes are shown alternating between each major tick on the Y axis.
 
 ```xaml
 <charts:XYChart GridLineVisibility="Y" .../>
@@ -49,7 +49,7 @@ This is an example of setting GridLineMajorVisibility to `Y`, in which grid stri
 
 ![Screenshot](../images/appearance-grid-lines5.png)
 
-This is an example of setting GridLineMajorVisibility to `X`, in which grid stripes are shown alternating between each major tick on the X axis.
+This is an example of setting `GridLineMajorVisibility` to `X`, in which grid stripes are shown alternating between each major tick on the X axis.
 
 ```xaml
 <charts:XYChart GridLineVisibility="X" .../>
@@ -61,7 +61,7 @@ The color of major and minor grid lines can be controlled using [XYChart](xref:@
 
 ![Screenshot](../images/appearance-grid-lines6.png)
 
-This is an example of setting GridLineMajorBrush and GridLineMinorBrush to custom colors.
+This is an example of setting `GridLineMajorBrush` and `GridLineMinorBrush` to custom colors.
 
 ```xaml
 <charts:XYChart .... GridLineMajorBrush="#338833" GridLineMinorBrush="#33bb33">
@@ -73,7 +73,7 @@ The color of grid stripes and alternating grid stripes can be controlled using [
 
 ![Screenshot](../images/appearance-grid-lines7.png)
 
-This is an example of setting GridStripeBrush and GridStripeAlternatingBrush to custom colors.
+This is an example of setting `GridStripeBrush` and `GridStripeAlternatingBrush` to custom colors.
 
 ```xaml
 <charts:XYChart .... GridStripeBrush="#55338833" GridStripeAlternatingBrush="#2233bb33">

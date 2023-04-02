@@ -11,5 +11,5 @@ Acitpro WPF DataGrid Contrib adds the [ThemedDataGrid](xref:@ActiproUIRoot.Contr
 
 *A couple themes applied to the ThemedDataGrid control*
 
-> [!NOTE]
+> [!IMPORTANT]
 > Be sure to read the [Actipro Themes](../themes/index.md) product documentation too since that explains in great detail how the themes management works with Actipro controls.

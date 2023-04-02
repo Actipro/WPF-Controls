@@ -15,15 +15,13 @@ A section at the bottom of the application menu is optional and can be used for 
 
 Any content can optionally be placed on the far side of the application menu as well.  A list of [recent documents](recent-documents.md) is commonly displayed there.
 
-> [!TIP]
-> See the [Backstage](backstage.md) topic for details on how to define a more modern alternative to the traditional application menu.
+See the [Backstage](backstage.md) topic for details on how to define a more modern alternative to the traditional application menu.
 
 ## Defining an Application Menu
 
 An application menu is defined by assigning menu items to a [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton)'s `Items` collection and optionally setting other content-based properties.
 
-> [!TIP]
-> See the [Application Button](application-button.md) topic for more details on configuring a ribbon with an application button.
+See the [Application Button](application-button.md) topic for more details on configuring a ribbon with an application button.
 
 This code sample shows how to define an application menu for a ribbon.  Combine it with the code in the following sections to define your application menu and its items.
 
@@ -88,7 +86,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).[MenuFooter](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton.MenuFooter) property can be set to any `Object` which is supported by `ContentPresenter`.
 
-Since the footer is commonly used to display [buttons](../controls/button.md) for configuring options or exiting the application, the following sample demonstrates using a `StackPanel` as the footer content. Instances of `BarButton` are used for the buttons so [Key Tips](key-tips.md) are properly supported.
+Since the footer is commonly used to display [buttons](../controls/button.md) for configuring options or exiting the application, the following sample demonstrates using a `StackPanel` as the footer content. Instances of [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) are used for the buttons so [Key Tips](key-tips.md) are properly supported.
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
@@ -147,4 +145,3 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 > [!TIP]
 > See the "Recent Documents" Bars Ribbon QuickStart of the Sample Browser application for a full demonstration of showing recent files in the application menu.
-

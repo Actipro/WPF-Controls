@@ -70,6 +70,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Editable
 											new BarComboBoxViewModel("Editable") {
 												Description = "A basic, editable combobox sample.",
+												IsEditable = true,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {
@@ -83,6 +84,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Read-Only
 											new BarComboBoxViewModel("ReadOnly") {
 												Description = "A basic, editable and read-only combobox sample.",
+												IsEditable = true,
 												IsReadOnly = true,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
@@ -97,7 +99,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Non-Editable
 											new BarComboBoxViewModel("NonEditable", "Non-Editable") {
 												Description = "A basic, non-editable combobox sample.",
-												IsEditable = false,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {
@@ -122,6 +123,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Categorized items in a single column
 											new BarComboBoxViewModel("CategorizedSingleColumn", "Single-Column") {
 												Description = "A combobox with items categorized and displayed in a single column.",
+												IsEditable = true,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {
@@ -137,6 +139,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Categorized items in multiple columns
 											new BarComboBoxViewModel("CategorizedMultiColumn", "Multi-Column") {
 												Description = "A combobox with items categorized and displayed using multiple columns.",
+												IsEditable = true,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedNumberTextCommand,
 												MenuItems = {
@@ -153,6 +156,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Categorized/Filtered items with menu item appearance consistent with large menu items
 											new BarComboBoxViewModel("MenuStyle") {
 												Description = "A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.",
+												IsEditable = true,
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {
@@ -183,9 +187,10 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Font family
 											new BarComboBoxViewModel("FontFamily") {
 												Description = "A combobox with system fonts and a category for recently-used fonts.",
+												IsEditable = true,
+												IsUnmatchedTextAllowed = false,
 												RequestedWidth = 120,
 												TextPath = nameof(FontFamilyBarGalleryItemViewModel.Label),
-												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {
 													new BarGalleryViewModel("FontFamilyGallery", this.ComboBoxGalleryCommand, this.ComboBoxFontFamilyItems) {
 														CanCategorize = true,
@@ -200,6 +205,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											// Font size
 											new BarComboBoxViewModel("FontSize") {
 												Description = "A combobox with common font sizes.",
+												IsEditable = true,
+												IsTextCompletionEnabled = false,
 												RequestedWidth = 45,
 												TextPath = nameof(FontSizeBarGalleryItemViewModel.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedNumberTextCommand,

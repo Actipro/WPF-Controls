@@ -65,7 +65,7 @@ The [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) control cannot 
 
 *A combobox when in a menu*
 
-> [!TIP]
+> [!NOTE]
 > See the [Popup Button](popup-button.md) topic for more information on menu contexts since that is the approach used for comboboxes in a menu.
 
 ## Appearance
@@ -86,7 +86,7 @@ The control has a string [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.Ba
 
 *A BarComboBox with an external label*
 
-The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `FontSize` will automatically assign `Font Size` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
+The `Label` can be auto-generated based on the control's `Key` property.  For instance, a control with `Key` of `"FontSize"` will automatically assign `"Font Size"` as the `Label` value.  The auto-generated default can be overridden by setting the `Label` property.
 
 ### Images
 
@@ -104,33 +104,43 @@ Star-sizing is a handy feature when the control is within a [RibbonGroup](xref:@
 
 ## Editability and Read-Only State
 
-The [IsEditable](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsEditable) property determines if the combobox supports typing and potentially references to unknown items when it has focus.  This property is `true` by default.
+The [IsEditable](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsEditable) property determines if the combobox supports typing when it has focus.  This property is `false` by default, which means that clicking on the text portion of the combobox will display the popup.  When the property is `true`, any text value can be typed that may or may not match a combobox item.  See the "Unmatched Text" section below for more information on handling unmatched text values.
 
 The [IsReadOnly](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsReadOnly) property determines if the textbox within an editable combobox is read-only.  This property is `false` by default.
+
+## Text Completion
+
+An editable combobox supports text completion where typing text will display the rest of a matching item's text in a selection at the end of what is being typed.  This is very handy for selecting items such as font names.  Type a few characters and press <kbd>Enter</kbd> once the desired font name is completed to commit the full font name.
+
+The text completion feature is enabled by default and can be disabled by setting the [IsTextCompletionEnabled](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsTextCompletionEnabled) property to `false`.  A font size combobox is a scenario where text completion should be disabled because it doesn't make sense to suggest a number string like `"12"` when a `"1"` value has been typed by the end user.
+
+## Unmatched Text
+
+The [IsUnmatchedTextAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsUnmatchedTextAllowed) property determines whether text that doesn't match a gallery item is allowed to be committed.  This property is `true` by default, and when unmatched text is encountered, the [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) will be executed.  If that command is not specified or if its can-execute returns `true`, the unmatched text will be committed.  Otherwise, the original text value prior to any changes will be restored.
+
+When the [IsUnmatchedTextAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsUnmatchedTextAllowed) property is set to `false` and unmatched text is encountered, the original text value prior to any changes will always be restored and the [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) will not be examined.
 
 ## Key Tips
 
 The controls support key tips.  When a control's key tip is accessed, the control is focused.
 
-The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `Search` will automatically assign `S` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
+The `KeyTipText` can be auto-generated based on the control's `Label` property.  For instance, a control with `Label` of `"Search"` will automatically assign `"S"` as the `KeyTipText` value.  The auto-generated default can be overridden by setting the `KeyTipText` property.
 
 The [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.KeyTipText) properties designate the key tip text to use for the control.
 
-> [!TIP]
-> See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Commands and Events
 
-A commit is attempted by an editable [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) when `Enter` is pressed while the control is focused, or the control's text changes and then focus is lost.  As long as the `IsTextSearchEnabled` property is `true`, the commit logic will examine the first menu gallery in the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox)'s items and will look for an item within that gallery that matches the typed text.  `IsTextSearchCaseSensitive` determines whether a case-sensitive text search is made.  The attached `TextSearch.Text` property value from the gallery item (if it is a `DependencyObject`) will be examined first when looking for matches.  If no match is made on that, and the gallery's [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies a property name on the item to examine, that property on the item will be looked at next for a match.
+A commit is attempted by an editable [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) when <kbd>Enter</kbd> is pressed while the control is focused, or the control's text changes and then focus is lost.  As long as the `IsTextSearchEnabled` property is `true`, the commit logic will examine the first menu gallery in the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox)'s items and will look for an item within that gallery that matches the typed text.  `IsTextSearchCaseSensitive` determines whether a case-sensitive text search is made.  The attached `TextSearch.Text` property value from the gallery item (if it is a `DependencyObject`) will be examined first when looking for matches.  If no match is made on that, and the gallery's [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies a property name on the item to examine, that property on the item will be looked at next for a match.
 
 If a matching gallery item is located, the gallery's [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) and the combobox's [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Command) are both executed and are passed the matching gallery item as a command parameter.
 
-On the other hand, if no matching gallery item is located, the combobox's [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) is executed with the unmatched text string as the command parameter.
+On the other hand, if no matching gallery item is located and the [IsUnmatchedTextAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsUnmatchedTextAllowed) property is `true`, the combobox's [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) is executed with the unmatched text string as the command parameter.  If the command's can-execute returns `false`, the unmatched text will not be accepted and the original text will be restored.
 
 In either case, a [TextCommitted](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextCommitted) event is raised whenever this process completes.
 
-> [!TIP]
-> See the [Using Commands](using-commands.md) topic for more information on commands.
+See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Screen Tips
 
@@ -142,8 +152,7 @@ If the control's `ToolTip` property is set to a value that doesn't derive from a
 
 If the optional [ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ScreenTipFooter) property is specified, it will appear in a footer area of the screen tip.
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
 ## MVVM Support
 

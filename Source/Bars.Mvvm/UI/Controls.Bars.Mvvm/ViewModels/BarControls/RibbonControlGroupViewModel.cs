@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
@@ -7,13 +8,33 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class RibbonControlGroupViewModel : ObservableObjectBase {
 
-		private ItemVariantBehavior itemVariantBehavior = ItemVariantBehavior.Default;
+		private HorizontalAlignment horizontalContentAlignment = HorizontalAlignment.Left;
+		private ItemVariantBehavior itemVariantBehavior = ItemVariantBehavior.All;
 		private RibbonControlGroupSeparatorMode separatorMode = RibbonControlGroupSeparatorMode.Default;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		
+		/// <summary>
+		/// Gets or sets a <see cref="HorizontalAlignment"/> that indicates how items stacked vertically should be aligned horizontally.
+		/// </summary>
+		/// <value>
+		/// An <see cref="itemVariantBehavior"/> that indicates how items stacked vertically should be aligned horizontally.
+		/// The default value is <see cref="HorizontalAlignment.Left"/>.
+		/// </value>
+		public HorizontalAlignment HorizontalContentAlignment {
+			get {
+				return horizontalContentAlignment;
+			}
+			set {
+				if (horizontalContentAlignment != value) {
+					horizontalContentAlignment = value;
+					this.NotifyPropertyChanged(nameof(HorizontalContentAlignment));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets the collection of items in the control.
 		/// </summary>
@@ -21,10 +42,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
 		
 		/// <summary>
-		/// Gets or sets an <see cref="itemVariantBehavior"/> that indicators how variant sizes should be applied to items.
+		/// Gets or sets an <see cref="itemVariantBehavior"/> that indicates how variant sizes should be applied to items.
 		/// </summary>
 		/// <value>
-		/// An <see cref="itemVariantBehavior"/> that indicators how variant sizes should be applied to items.
+		/// An <see cref="itemVariantBehavior"/> that indicates how variant sizes should be applied to items.
 		/// The default value is <see cref="ItemVariantBehavior.Default"/>.
 		/// </value>
 		public ItemVariantBehavior ItemVariantBehavior {

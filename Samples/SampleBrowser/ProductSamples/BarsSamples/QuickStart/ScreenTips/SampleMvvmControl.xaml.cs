@@ -60,6 +60,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ScreenTips {
 					ContentTemplateSelector = new RibbonFooterContentTemplateSelector(),
 				},
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				IsMinimizable = false,
 				QuickAccessToolBarLocation = RibbonQuickAccessToolBarLocation.Below,
 				QuickAccessToolBar = new RibbonQuickAccessToolBarViewModel() {

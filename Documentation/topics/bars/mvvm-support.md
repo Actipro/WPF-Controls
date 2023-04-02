@@ -51,8 +51,7 @@ While galleries can use logic like above with an `ItemContainerTemplateSelector`
 
 The `DataTemplate` may contain the complete UI for the gallery item, or it may include a custom element that knows how to measure and render itself in code-behind.  The `DataContext` for the elements in the `DataTemplate` will be the gallery item view model, allowing for the view model's properties to be bound into any elements within the `DataTemplate`.
 
-> [!TIP]
-> See the [Gallery](controls/gallery.md) topic for more information on galleries.
+See the [Gallery](controls/gallery.md) topic for more information on galleries.
 
 ### Backstage Tab Content
 
@@ -74,15 +73,13 @@ Alternatively, if distinct view model types (`InfoRibbonBackstageTabViewModel`, 
 
 When using implicit `DataTemplate` resources, no `ContentTemplateSelector` is necessary.
 
-> [!TIP]
-> See the [Backstage](ribbon-features/backstage.md) topic for more information on backstage.
+See the [Backstage](ribbon-features/backstage.md) topic for more information on backstage.
 
 ### Ribbon Footer Content
 
 The [RibbonFooterControl](xref:@ActiproUIRoot.Controls.Bars.RibbonFooterControl) is a `ContentControl` and supports both `DataTemplateSelector` and implicit `DataTemplate`-based content selection.
 
-> [!TIP]
-> See the [Footer](ribbon-features/footer.md) topic for more information on ribbon footers.
+See the [Footer](ribbon-features/footer.md) topic for more information on ribbon footers.
 
 ### Container Element Summary
 

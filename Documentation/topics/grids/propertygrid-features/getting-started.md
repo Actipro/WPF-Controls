@@ -22,7 +22,7 @@ This code shows the base XAML that creates a simple [PropertyGrid](xref:@Actipro
 The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DataObject](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObject) property allows for a single data object's properties to be displayed in the control.  If multiple data objects need their common properties displayed, bind to the [DataObjects](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DataObjects) property instead.
 
 > [!NOTE]
-> There are other ways to populate property items, such as explictly defining them, all of which are described in the [Data Models and Factories](data-models.md) topic.
+> There are other ways to populate property items, such as explicitly defining them, all of which are described in the [Data Models and Factories](data-models.md) topic.
 
 ## Read-Only Display
 

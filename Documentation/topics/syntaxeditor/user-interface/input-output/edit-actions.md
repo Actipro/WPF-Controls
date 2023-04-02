@@ -66,7 +66,7 @@ public class CustomAction : ActiproSoftware.Windows.Controls.SyntaxEditor.Implem
 
 Although there are many [default key bindings](default-key-bindings.md) for edit actions in SyntaxEditor, it's easy to add new ones.
 
-Binding of edit actions to a keyboard shortcut is done in three steps.  In the following example, we will bind the `CustomAction` edit action defined above to the `Ctrl+R` keyboard shortcut.
+Binding of edit actions to a keyboard shortcut is done in three steps.  In the following example, we will bind the `CustomAction` edit action defined above to the <kbd>Ctrl</kbd>+<kbd>R</kbd> keyboard shortcut.
 
 ### Create a Static Command
 
@@ -84,7 +84,7 @@ editor.CommandBindings.Add(MyStaticCommands.Custom.CreateCommandBinding());
 
 ### Add an Input Binding
 
-Finally, add an input binding so that a keyboard shortcut (`Ctrl+R`) will trigger the edit action:
+Finally, add an input binding so that a keyboard shortcut (<kbd>Ctrl</kbd>+<kbd>R</kbd>) will trigger the edit action:
 
 ```csharp
 editor.InputBindings.Add(new KeyBinding(MyStaticCommands.Custom, Key.R, ModifierKeys.Control));
@@ -98,7 +98,7 @@ editor.InputBindings.Add(new KeyBinding(MyStaticCommands.Custom, Key.R, Modifier
 
 Changing or adding keyboard shortcuts to the built-in edit actions is easier.  In that case it is only a matter of updating the input bindings (see above) since the [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands) already defines commands for the built-in edit actions and the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control has handlers for all those commands.
 
-This code makes `Ctrl+R` execute the copy to clipboard edit action:
+This code makes <kbd>Ctrl</kbd>+<kbd>R</kbd> execute the copy to clipboard edit action:
 
 ```csharp
 editor.InputBindings.Add(new KeyBinding(EditorCommands.CopyToClipboard, Key.R, ModifierKeys.Control));

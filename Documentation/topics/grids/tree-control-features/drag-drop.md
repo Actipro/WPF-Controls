@@ -19,11 +19,11 @@ The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[MultiDragKind
 
 | Mode | Description |
 |-----|-----|
-| None | Drags are not allowed when multiple items are selected.  Only single item selection drags are permitted. |
-| Any | Any node can be dragged. |
-| SameType | Any node that is the same type can be dragged. |
-| SameDepth | Any node at the same depth can be dragged. |
-| Siblings | Any node that shares the same parent can be dragged. |
+| `None` | Drags are not allowed when multiple items are selected.  Only single item selection drags are permitted. |
+| `Any` | Any node can be dragged. |
+| `SameType` | Any node that is the same type can be dragged. |
+| `SameDepth` | Any node at the same depth can be dragged. |
+| `Siblings` | Any node that shares the same parent can be dragged. |
 
 ## Initializing a DataObject
 
@@ -31,13 +31,13 @@ When items are about to be dragged, the [TreeListBoxItemAdapter](xref:@ActiproUI
 
 @if (winrt) {
 
-By default, the [InitializeDataObject](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.InitializeDataObject*) method does nothing and needs an override implementation for drag support. 
+By default, the [InitializeDataObject](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.InitializeDataObject*) method does nothing and needs an override implementation for drag support.
 
 }
 
 @if (wpf) {
 
-By default, the [InitializeDataObject](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.InitializeDataObject*) method simply returns `DragDropEffects.None` and needs an override implementation for drag support. 
+By default, the [InitializeDataObject](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.InitializeDataObject*) method simply returns `DragDropEffects.None` and needs an override implementation for drag support.
 
 }
 
@@ -45,7 +45,7 @@ The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemDataForma
 
 Other formats can be added to the drag data.  For instance, if one item is being dragged, it's common to set a text value that contains the primary text displayed for the item.  This text value could then be dropped onto other external controls like `TextBox` controls.
 
-> [!NOTE]
+> [!TIP]
 > A full sample of drag and drop functionality is included in the product QuickStarts.  It contains fairly extensive logic and should be referred to for better understanding of how drag and drop works.
 
 ## Dropping Support
@@ -56,13 +56,13 @@ Dropping is not enabled by default.  Set the [TreeListBox](xref:@ActiproUIRoot.C
 
 @if (winrt) {
 
-The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDragOverAsync](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDragOverAsync) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) notifies that a drag event occurred over a target item, requests that appropriate updates are made to the supplied `DragEventArgs`, and requests that the allowed drop area is returned for visual target feedback. 
+The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDragOverAsync](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDragOverAsync) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) notifies that a drag event occurred over a target item, requests that appropriate updates are made to the supplied `DragEventArgs`, and requests that the allowed drop area is returned for visual target feedback.
 
 }
 
 @if (wpf) {
 
-The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDragOver](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDragOver*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) notifies that a drag event occurred over a target item, requests that appropriate updates are made to the supplied `DragEventArgs`, and requests that the allowed drop area is returned for visual target feedback. 
+The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDragOver](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDragOver*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) notifies that a drag event occurred over a target item, requests that appropriate updates are made to the supplied `DragEventArgs`, and requests that the allowed drop area is returned for visual target feedback.
 
 }
 
@@ -72,25 +72,25 @@ The target item (which can be null if over the whitespace area below the last it
 
 @if (winrt) {
 
-The `DragEventArgs.AcceptedOperation` property should also be set appropriately. 
+The `DragEventArgs.AcceptedOperation` property should also be set appropriately.
 
 }
 
 @if (wpf) {
 
-The `DragEventArgs.Effects` property should also be set appropriately. 
+The `DragEventArgs.Effects` property should also be set appropriately.
 
 }
 
 @if (winrt) {
 
-Finally if a drop does occur, the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDropAsync](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDropAsync) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) is called and requests that appropriate updates are made to the supplied `DragEventArgs`. 
+Finally if a drop does occur, the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDropAsync](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDropAsync) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) is called and requests that appropriate updates are made to the supplied `DragEventArgs`.
 
 }
 
 @if (wpf) {
 
-Finally if a drop does occur, the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDrop](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDrop*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) is called and requests that appropriate updates are made to the supplied `DragEventArgs`. 
+Finally if a drop does occur, the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[OnDrop](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.OnDrop*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)) is called and requests that appropriate updates are made to the supplied `DragEventArgs`.
 
 }
 
@@ -98,7 +98,7 @@ The default implementation of this method flags that no drop occurred and takes 
 
 Here again, the target item (which can be null if over the whitespace area below the last item in the control) and a [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) based on hit testing over the target item are passed in as arguments.  An override of this method takes appropriate action to update tree items.  This could involve moving items, copying items, inserting new items, etc.
 
-> [!NOTE]
+> [!TIP]
 > A full sample of drag and drop functionality is included in the product QuickStarts.  It contains fairly extensive logic and should be referred to for better understanding of how drag and drop works.
 
 ## Expanding an Item on Drag/Hover

@@ -13,11 +13,11 @@ The XML code snippet file format used is the same as Visual Studio's.  This allo
 
 ## Opening Selection Sessions
 
-Functionality is included that displays a helpful popup where the end user can type the title of an accessible code snippet to activate it.  A completion list that shows the code snippets and child folders at the current folder level is also displayed below the popup and fully supports partial matches and `Tab`-based selection.  The code snippets used to populate the selection session come from the [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) language service.
+Functionality is included that displays a helpful popup where the end user can type the title of an accessible code snippet to activate it.  A completion list that shows the code snippets and child folders at the current folder level is also displayed below the popup and fully supports partial matches and <kbd>Tab</kbd>-based selection.  The code snippets used to populate the selection session come from the [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) language service.
 
 ![Screenshot](../../images/code-snippet-selection.png)
 
-When a folder is selected in the completion list, the scope of the selection popup changes to that folder and the user can access the code snippets and child folders within it.  Pressing `Backspace` or clicking the parent folder's link, backs up to the parent folder level.
+When a folder is selected in the completion list, the scope of the selection popup changes to that folder and the user can access the code snippets and child folders within it.  Pressing <kbd>Bkspace</kbd> or clicking the parent folder's link, backs up to the parent folder level.
 
 ### Programmatic Session Creation
 
@@ -35,12 +35,12 @@ Both of these helper methods wrap a call to the [ICodeSnippetProvider](xref:@Act
 Code snippets are generally inserted into SyntaxEditor and activated into a template session by one of these methods:
 
 - Selection made via a selection session.
-- End user types a code snippet's registered shortcut (defined in the source XML file) into SyntaxEditor and presses the `Tab` key.
+- End user types a code snippet's registered shortcut (defined in the source XML file) into SyntaxEditor and presses the <kbd>Tab</kbd> key.
 - Programmatic template session creation.
 
 ### Pressing Tab After a Code Snippet Shortcut
 
-Each code snippet has a shortcut that can be typed into the editor.  When the `Tab` key is pressed after the shortcut, an [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) language service will look at the word before the caret to see if it matches any registered code snippets.  If a match is found, the shortcut text is removed from the document, and a code snippet template session is opened.
+Each code snippet has a shortcut that can be typed into the editor.  When the <kbd>Tab</kbd> key is pressed after the shortcut, an [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) language service will look at the word before the caret to see if it matches any registered code snippets.  If a match is found, the shortcut text is removed from the document, and a code snippet template session is opened.
 
 This mechanism depends on a [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) service being registered on the current language.  Please see the sections below for more information on code snippet providers.
 
@@ -58,11 +58,11 @@ session.Open(editor.ActiveView);
 
 When a template session is opened, the code snippet's text is inserted into the document.  Some code snippets indicate a location within their text where the current view's selected text should be inserted.  In this scenario, the selected text prior to the session being opened is appropriately indented and injected within the code snippet text.
 
-If one or more fields were declared in the code snippet, then fields will display in the editor.  Fields are highlighted replacement regions that represent the regions of text that need to be edited to complete the code snippet.  While the caret is in a field, the `Tab` key can be used to navigate to the next field.  Likewise, `Shift+Tab` navigates to the previous field.
+If one or more fields were declared in the code snippet, then fields will display in the editor.  Fields are highlighted replacement regions that represent the regions of text that need to be edited to complete the code snippet.  While the caret is in a field, the <kbd>Tab</kbd> key can be used to navigate to the next field.  Likewise, <kbd>Shift</kbd>+<kbd>Tab</kbd> navigates to the previous field.
 
 Editable fields are drawn with a background behind them.  Sometimes a field refers to a declaration that is used in multiple places within the code snippet.  In that case, only the first field is designated as editable.  When its value changes, the other fields that are dependent upon it automatically update.  The dependent fields are drawn with a dotted line around them.
 
-Once all the fields have been updated, pressing `Enter` while in a field completes the code snippet and closes the session.  At this point, if the code snippet designated a target offset for the caret to end up at, the caret will move to that offset.
+Once all the fields have been updated, pressing <kbd>Enter</kbd> while in a field completes the code snippet and closes the session.  At this point, if the code snippet designated a target offset for the caret to end up at, the caret will move to that offset.
 
 ## Template Session Event Sink
 
@@ -167,7 +167,7 @@ This code is also required to be called once per application instance since it r
 new DisplayItemClassificationTypeProvider().RegisterAll();
 ```
 
-Once the provider has been registered on a language, it will watch for `Tab` key presses.  If a shortcut for a known code snippet appears before the caret, then that code snippet will be activated into a new template session.
+Once the provider has been registered on a language, it will watch for <kbd>Tab</kbd> key presses.  If a shortcut for a known code snippet appears before the caret, then that code snippet will be activated into a new template session.
 
 ## Customizing Code Snippet Providers
 
@@ -177,6 +177,6 @@ This can be achieved by creating a class that inherits [CodeSnippetProvider](xre
 
 ## Code Snippets in Completion Lists
 
-Languages that wish to include code snippet support may wish to list code snippet metadata items in the `Ctrl+Space` completion lists.  The [.NET Languages Add-on](../../dotnet-languages-addon/index.md) languages include this feature.
+Languages that wish to include code snippet support may wish to list code snippet metadata items in the <kbd>Ctrl</kbd>+<kbd>Space</kbd> completion lists.  The [.NET Languages Add-on](../../dotnet-languages-addon/index.md) languages include this feature.
 
-When a code snippet is selected in the completion list, its shortcut is inserted into the editor.  Then if the user presses the `Tab` key next, and assuming a code snippet provider is registered on the language (see above), the related code snippet is inserted.
+When a code snippet is selected in the completion list, its shortcut is inserted into the editor.  Then if the user presses the <kbd>Tab</kbd> key next, and assuming a code snippet provider is registered on the language (see above), the related code snippet is inserted.

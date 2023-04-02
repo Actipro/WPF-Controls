@@ -121,8 +121,8 @@
 									<!-- Menu Footer: Displayed below the menu items-->
 									<bars:RibbonApplicationButton.MenuFooter>
 										<StackPanel Margin="0,4" Orientation="Horizontal" HorizontalAlignment="Right">
-											<bars:BarButton Key="Options" KeyTipText="I" Command="{Binding NotImplementedCommand}" SmallImageSource="/Images/Icons/Options16.png" VariantSize="Medium" />
-											<bars:BarButton Key="Exit" KeyTipText="X" Margin="7,0" Command="{Binding NotImplementedCommand}" SmallImageSource="/Images/Icons/Exit16.png" VariantSize="Medium" />
+											<bars:BarButton Key="Options" KeyTipText="I" Command="{Binding NotImplementedCommand}" />
+											<bars:BarButton Key="Exit" KeyTipText="X" Margin="7,0" Command="{Binding NotImplementedCommand}" />
 										</StackPanel>
 									</bars:RibbonApplicationButton.MenuFooter>
 
@@ -153,8 +153,8 @@
 
 							<bars:RibbonTabItem Key="Home">
 								<bars:RibbonGroup Key="Documents">
-									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" MaxSimplifiedVariantSize="Medium" />
-									<bars:BarButton Key="Save" Label="Save Document" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Document" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemVariantBehavior="All" />
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 
@@ -213,8 +213,8 @@
 
 							<bars:RibbonTabItem Key="Home">
 								<bars:RibbonGroup Key="Documents">
-									<bars:BarButton Key="Open" Label="Open Documents" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" MaxSimplifiedVariantSize="Medium" />
-									<bars:BarButton Key="Save" Label="Save Documents" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" MaxSimplifiedVariantSize="Medium" />
+									<bars:BarButton Key="Open" Label="Open Documents" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Documents" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemVariantBehavior="All" />
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 

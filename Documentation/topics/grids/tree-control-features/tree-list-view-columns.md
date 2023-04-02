@@ -37,7 +37,7 @@ The [CellBorderThickness](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.
 
 ## Widths
 
-A column's width is specified via the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[Width](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.Width) property.  This property accepts a `GridLength` value and effectively works the same as a `Grid` panel's column width specification where a value can be a specific pixel length, `Auto`, or can be a star (*) sized length.
+A column's width is specified via the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[Width](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.Width) property.  This property accepts a `GridLength` value and effectively works the same as a `Grid` panel's column width specification where a value can be a specific pixel length, `"Auto"`, or can be a star (`*`) sized length.
 
 In the case of auto and star-sized columns, the [MinWidth](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.MinWidth) and [MaxWidth](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.MaxWidth) values are also examined.  These properties set minimum and maximum values for any calculated widths.
 
@@ -90,7 +90,7 @@ Here's an example of specifying star-sized widths for columns (the second column
 
 ## Resizing
 
-The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsResize](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsResize) property (defaults to `true`) is a global property that indicates whether columns can resize by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanResize](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanResize) property to a non-null value.
+The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsResize](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsResize) property (defaults to `true`) is a global property that indicates whether columns can resize by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanResize](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanResize) property to a non-`null` value.
 
 When a column is allowed to resize, the end user can click and drag a gripper on the right side of the column's header to resize it.  Note that this feature is only available for star-sized columns when there is another visible star-sized column after it in the same control.
 
@@ -100,7 +100,7 @@ The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnsResi
 
 ## Reordering
 
-The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsReorder](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsReorder) property (defaults to `false`) is a global property that indicates whether columns can be reordered by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanReorder](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanReorder) property to a non-null value.
+The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsReorder](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsReorder) property (defaults to `false`) is a global property that indicates whether columns can be reordered by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanReorder](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanReorder) property to a non-`null` value.
 
 When a column is allowed to be reordered, the end user can click and drag the column header to a new location.  Drop indicators will show where the drop will occur.
 
@@ -110,7 +110,7 @@ The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnReord
 
 A column's visibility can be controlled via the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[IsVisible](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.IsVisible) property.  The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnIsVisibleChanged](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnIsVisibleChanged) event is raised after a column's visibility changes.
 
-The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsToggleVisibility](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsToggleVisibility) property (defaults to `false`) is a global property that indicates whether columns can toggle their visibility by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanToggleVisibility](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanToggleVisibility) property to a non-null value.
+The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[CanColumnsToggleVisibility](xref:@ActiproUIRoot.Controls.Grids.TreeListView.CanColumnsToggleVisibility) property (defaults to `false`) is a global property that indicates whether columns can toggle their visibility by default.  This value can be overridden on an instance basis by setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CanToggleVisibility](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CanToggleVisibility) property to a non-`null` value.
 
 When a column is allowed to have its visibility toggled, the end user can right-click the column header to show a context menu (see a section below for more on column header context menus) and the default context menu provides an option for toggling visibility.
 
@@ -120,7 +120,7 @@ The [ToggleVisibilityCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListViewCol
 
 Frozen columns are one or more columns that appear fixed to the left side of the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control and are outside of the scrollable portion of the control.
 
-Set the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[FrozenColumnCount](xref:@ActiproUIRoot.Controls.Grids.TreeListView.FrozenColumnCount) to a value larger than `0` to indicate the number of columns to freeze.  Make sure the columns you intend to freeze are the first columns in the [Columns](xref:@ActiproUIRoot.Controls.Grids.TreeListView.Columns) collection.  The count doesn't examine the current visibility state of the columns, only their index in the collection.
+Set the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[FrozenColumnCount](xref:@ActiproUIRoot.Controls.Grids.TreeListView.FrozenColumnCount) to a value larger than zero to indicate the number of columns to freeze.  Make sure the columns you intend to freeze are the first columns in the [Columns](xref:@ActiproUIRoot.Controls.Grids.TreeListView.Columns) collection.  The count doesn't examine the current visibility state of the columns, only their index in the collection.
 
 ## Specifying the Expansion Column
 
@@ -138,7 +138,7 @@ When the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[IsDefa
 
 If you are using column header templates instead of setting the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[Header](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.Header) properties to string values, be sure to set the [Title](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.Title) property to a string that describes the column title.  This string will be used in the default column header context menu and/or other UI.
 
-The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnHeaderMenuRequested](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnHeaderMenuRequested) event is raised immediately before the menu is displayed.  This allows you to customize the menu as needed with custom logic, or prevent it from showing at all.
+The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnHeaderMenuRequested](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnHeaderMenuRequested) event is raised immediately before the menu is displayed.  This allows you to customize the menu as needed with custom logic or prevent it from showing at all.
 
 ## Size-to-Fit
 
@@ -148,9 +148,9 @@ A companion [SizeToFitCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListViewCo
 
 ## Grid Lines
 
-While column headers have grid lines by default due to the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[HeaderCellBorderThickness](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.HeaderCellBorderThickness) property being `0,0,1,1`, item cells don't have grid lines by default.
+While column headers have grid lines by default due to the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[HeaderCellBorderThickness](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.HeaderCellBorderThickness) property being `"0,0,1,1"`, item cells don't have grid lines by default.
 
-Set the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CellBorderThickness](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CellBorderThickness) property to `0,0,1,1` to enable grid lines around the item cells too.
+Set the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[CellBorderThickness](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.CellBorderThickness) property to `"0,0,1,1"` to enable grid lines around the item cells too.
 
 ## Column Index
 
@@ -158,7 +158,7 @@ The index of the column within its owner control can be retrieved via the [TreeL
 
 ## Sort Direction
 
-If a custom external sorting mechanism is used, the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property can display a glyph indicating ascending or descending sorting is active for the column.  The property is nullable and can be set to a null reference to remove the sort glyph.
+If a custom external sorting mechanism is used, the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property can display a glyph indicating ascending or descending sorting is active for the column.  The property is nullable and can be set to a `null` reference to remove the sort glyph.
 
 Handle the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnHeaderTapped](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnHeaderTapped) event to know when a column header is clicked, so that you can programmatically alter the [SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property appropriately (which updates the sort arrow glyph) and manually adjust the order of item children in your item nodes.
 

@@ -5,7 +5,7 @@ order: 30
 ---
 # Backstage
 
-The backstage was introduced in Office 2010 and can be displayed when clicking the [application button](application-button.md).  It is commonly used for file-based actions like New, Open, and Save.  When it is opened, the backstage takes over the entire window.  A subtle animation is used when opening/closing to help provide a smooth transition.
+The backstage was introduced in Office 2010 and can be displayed when clicking the [application button](application-button.md).  It is commonly used for file-based actions like **New**, **Open**, and **Save**.  When it is opened, the backstage takes over the entire window.  A subtle animation is used when opening/closing to help provide a smooth transition.
 
 ![Screenshot](../images/backstage-buttons.png)
 
@@ -16,7 +16,7 @@ The backstage is organized such that buttons and tabs appear on the near side (t
 > [!IMPORTANT]
 > A ribbon must be hosted within a [RibbonWindow](ribbon-window.md) and [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) to support the backstage taking over the entire window.
 
-> [!TIP]
+> [!NOTE]
 > See the [Application Menu](application-menu.md) topic for details on how to define a more traditional application menu instead of a backstage.
 
 ## Defining a Backstage
@@ -61,7 +61,17 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ```
 
 > [!IMPORTANT]
-> The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) that defines a backstage should be a child of a [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) for the backstage to display properly. When a backstage is opened, it will cover the entire area defined by the [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) (with additional support when hosted inside a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow)).
+> The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) that defines a backstage should be a child of a [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) for the backstage to display properly. When a backstage is opened, it will cover the entire area defined by the [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) (with additional support when hosted inside a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow)).  See the [Control Hierarchy](control-hierarchy.md) topic for more information on optionally defining the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) inside a `ContentControl`.
+
+## Header Area Transparency
+
+The backstage template is set up to use a transparent background in its tab header area when a system backdrop like Mica (available starting in Windows 11) is enabled on the containing `Window`'s [WindowChrome](../../themes/windowchrome.md).  It is important to use the control hierarchy described above that involves [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel), as the panel will hide when backstage is open, allowing the system backdrop background to show through to the backstage header area instead of content like a ribbon control that is underneath the backstage.
+
+In a scenario where there is other content outside of the panel that is showing in the backstage header area when backstage is open, it can be hidden in response to the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[IsOpenChanged](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.IsOpenChanged) event that bubbles up.
+
+When the containing window's chrome is not configured to use a system backdrop, or on pre-Windows 11 systems, the backstage header area will use an opaque background.
+
+See the [WindowChrome](../../themes/windowchrome.md) topic for complete details on the application and operating system requirements necessary to support transparency.
 
 ## MVVM Support
 
@@ -84,15 +94,15 @@ Controls will the same header alignment appear in the order in which they are de
 
 ### Buttons
 
-[RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton) controls generally appear at the top and bottom of the backstage header area.  They are often set to the most common application commands such as `Save`, that can be easily executed with one click.
+[RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton) controls generally appear at the top and bottom of the backstage header area.  They are often set to the most common application commands such as **Save**, that can be easily executed with one click.
 
 ### Tabs
 
-[RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) controls can be added when there are multiple configuration possibilities or there is data that needs to be displayed.  For instance, an `Info` tab may provide information and statistics about the current document.  A `Recent` tab might show a [Recent Documents](recent-documents.md) control (with its `UseLargeSize` property set to `true`) allowing for recent documents to be selected.  A `New` tab might show multiple options for creating new documents.
+[RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) controls can be added when there are multiple configuration possibilities or there is data that needs to be displayed.  For instance, an **Info** tab may provide information and statistics about the current document.  A **Recent** tab might show a [Recent Documents](recent-documents.md) control (with its [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) property set to `true`) allowing for recent documents to be selected.  A **New** tab might show multiple options for creating new documents.
 
 The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.Label) and optional image ([LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.LargeImageSource) or [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.SmallImageSource)) of the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) are what is rendered in the backstage header area.  The tab's content is displayed in the backstage content area when the tab is selected.
 
-When there are not many tabs or buttons to display in the backstage, the backstage can look empty.  This is common, for example, when an application is first launched and no document is open.  To help fill the vertical space, the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem).[VariantSize](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.VariantSize) can be set to [VariantSize](xref:@ActiproUIRoot.Controls.Bars.VariantSize).[Large](xref:@ActiproUIRoot.Controls.Bars.VariantSize.Large) to display tabs that are significantly larger.
+When there are not many tabs or buttons to display in the backstage, the backstage can look empty.  This is common, for example, when an application is first launched and no document is open.  To help fill the vertical space, the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem).[VariantSize](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.VariantSize) can be set to `Large` to display tabs that are significantly larger.
 
 > [!NOTE]
 > The header of a tab is automatically generated, so any content assigned to the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem).`Header` property is ignored.
@@ -135,7 +145,7 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 
 ## Preventing Backstage from Closing
 
-The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[CanClose](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.CanClose) property can be set to `false` which prevents the backstage from closing by hiding the close button and ignoring the `Esc` key that typically closing backstage.
+The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[CanClose](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.CanClose) property can be set to `false` which prevents the backstage from closing by hiding the close button and ignoring the <kbd>Esc</kbd> key that typically closing backstage.
 
 This is useful in scenarios where you are starting up an application and wish to block end user access to the main window until they create a new document or open a document.  These or other actions can be presented on a non-closable backstage.
 

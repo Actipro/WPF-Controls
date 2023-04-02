@@ -21,7 +21,7 @@ Each [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem) is defined
 
 See the [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic for more details on defining standard tabs.
 
-The following code sample shows how to define two contextual tab groups for a ribbon (`PictureTools` and `TableTools`) and associate tabs with the corresponding group:
+The following code sample shows how to define two contextual tab groups for a ribbon (`PictureTools` and `TableTools`) and then associate tabs with the corresponding group:
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"

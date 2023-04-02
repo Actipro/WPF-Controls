@@ -5,7 +5,7 @@ order: 20
 ---
 # Application Button
 
-Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as new, open, and file save operations.
+Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save** operations.
 
 Either a traditional [application menu](application-menu.md) or more modern [backstage](backstage.md) can be displayed when the button is clicked.  See the respective topics for more details on configuring each style.
 
@@ -51,7 +51,7 @@ The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicatio
 
 ## Customizing Default Text
 
-By default, the application button in ribbon will display with the text `File` as its content, which is defined by the string resource `UIApplicationButtonText`.
+By default, the application button in ribbon will display with the text `"File"` as its content, which is defined by the string resource `UIApplicationButtonText`.
 
 ### String Resource
 

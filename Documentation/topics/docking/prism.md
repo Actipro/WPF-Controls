@@ -20,53 +20,53 @@ Prior to the 2016.1 version of our WPF controls, portions of the Prism integrati
 
 ## Reusable Open Source Code
 
-As mentioned above, the Prism integration functionality is contained in the 'PrismIntegration' sample.  The open source functionality is distributed among several folders and code files as described in the list below.
+As mentioned above, the Prism integration functionality is contained in the "PrismIntegration" sample.  The open source functionality is distributed among several folders and code files as described in the list below.
 
 > [!TIP]
 > These code files can generally be copied verbatim to your own Prism applications and further customized as needed.  When copying the classes in the folders below, be sure to update the namespaces to match your application's naming scheme.
 
 - **\\ViewModels** - Folder containing all view-models.
-  
+
   - **\\Docking** - Folder containing docking-related view-models.
-    
-    - **ClassViewToolItemViewModel, etc.** - View-model implementation classes that configure view-models for various container docking windows and inherit base classes in the 'Core' folder.  A view-model class should generally be created for each kind of docking window in your application.
-    
+
+    - **ClassViewToolItemViewModel, etc.** - View-model implementation classes that configure view-models for various container docking windows and inherit base classes in the "Core" folder.  A view-model class should generally be created for each kind of docking window in your application.
+
     - **\\Core** - Folder containing code that should be used as base classes for your document and tool window view-models.  This code has no references at all to the Actipro Docking & MDI assembly.
-      
+
       - **DockingItemViewModelBase** - The base class for all docking item view-models.  While the default implementation covers many appearance and layout features, you can easily add support for other [capabilities](docking-window-features/docking-window-capabilities.md) like whether windows can close, etc.
-      
+
       - **DocumentItemViewModel** - Implements a document item view-model.  Instances of this class can be used directly as view-models, or derived view-model classes can be made from it.
-      
+
       - **ToolItemViewModel** - Implements a tool item view-model.  Instances of this class can be used directly as view-models, or derived view-model classes can be made from it.
-      
+
       - **ToolItemDefaultLocation** - Specifies a tool item view's default location.
-      
+
       - **ToolItemDockSide** - Specifies a dock side for a tool item's view.  This is analogous to the [Side](xref:@ActiproUIRoot.Controls.Side) enumeration.
-      
+
       - **ToolItemState** - Specifies the state of a tool item's view.  This is analogous to the [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration.
 
 - **\\Views** - Folder containing all views.
-  
+
   - **ImplicitTemplates** - A XAML file that is included in the `Application.Resources` and implicitly applies view `DataTemplate`s to container docking windows based on the view-model type.
-  
+
   - **\\Docking** - Folder containing docking-related views.
-    
-    - **ClassViewToolItemView, etc.** - View implementations for each of the related view-models.  A view class should be created for each view-model in your application, and it should be wired up via the `ImplicitTemplates.xaml` file.
+
+    - **ClassViewToolItemView, etc.** - View implementations for each of the related view-models.  A view class should be created for each view-model in your application, and it should be wired up via the *ImplicitTemplates.xaml* file.
 
 - **\\Regions** - Folder containing code that ties the view-models to generated containers (docking windows) and manages Prism integration.
-  
+
   - **DockSiteRegionAdapter** - Implements a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) region adapter.
-  
+
   - **DockSiteRegionViewKinds** - An enumeration indicating the kinds of view kinds (`Document`, `Tool`, or `Both`) that are permitted. `Both` is the default.
-  
+
   - **DockingWindowBindingExtensions** - A static class with methods that can bind/unbind the core view-model properties to related container properties.  This class needs to be updated any time additional view-model properties are added that should be bound to a container.
-  
+
   - **ToolItemDockSideConverter** - A value converter used by `DockingWindowBindingExtensions`.
-  
+
   - **ToolItemStateConverter** - A value converter used by `DockingWindowBindingExtensions`.
-  
+
   - **\\Behaviors** - Folder containing Prism behaviors.
-    
+
     - **DockSiteRegionBehavior** - Implements a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) region behavior, which provides the main integration logic with Prism.
 
 ## Register Region Adapter
@@ -85,11 +85,11 @@ protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
 }
 ```
 
-If using Unity, or some other IoC/DI product, then the registration code above may differ slightly.
+If using Unity, or some other "Inversion of Control"/"Dependency Injection" product, then the registration code above may differ slightly.
 
 ## Define DockSite Region
 
-After registering the region adapter, instances of [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) can be setup as regions.  In Prism, a region is simply a placeholder which allows a developer to specify where views will be displayed in the application's user interface.  Therefore, one or more objects (such as view-models or UIElements) can be added to the `DockSite` via Prism's view discovery or injection.  These objects will then be presented as either document (default) or tool windows.
+After registering the region adapter, instances of [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) can be set up as regions.  In Prism, a region is simply a placeholder which allows a developer to specify where views will be displayed in the application's user interface.  Therefore, one or more objects (such as view-models or UIElements) can be added to the `DockSite` via Prism's view discovery or injection.  These objects will then be presented as either document (default) or tool windows.
 
 The [Add a Region (external)](http://msdn.microsoft.com/en-us/library/ff921164(PandP.20).aspx) MSDN article describes how to define a control as a region.  Effectively, the `RegionManager.RegionNameProperty` attached property must be set on the `DockSite` using a constant/known string name.
 
@@ -98,7 +98,7 @@ This code shows how to specify a `DockSite`, which will use a tabbed-MDI interfa
 ```xaml
 xmlns:prism="http://prismlibrary.com/"
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
-
+...
 <docking:DockSite x:Name="dockSite" prism:RegionManager.RegionName="MyDockSiteRegion">
 	<docking:Workspace>
 		<docking:TabbedMdiHost />
@@ -181,7 +181,7 @@ The `DockSiteRegionAdapter` is set up to generate a container [DocumentWindow](x
 
 If you aren't using our base classes for your view-models, then the `DockSiteRegionAdapter.GetDockingWindowItemKind` method would need to be updated with custom logic for selecting the kind of container to generate.
 
-> [!NOTE]
+> [!IMPORTANT]
 > All view-model items will assume to be documents unless one of the above steps is taken.
 
 ### Adding More Configuration Properties
@@ -196,7 +196,7 @@ The core view-model classes included in the sample include the most common prope
 
 The `DockingWindowBindingExtensions` class has methods to set and clear two-way bindings from view-model properties to related container docking window properties.  It is important to update this class whenever new general properties are added to any of our core docking view-model classes.
 
-In our sample, the `ImplicitTemplates.xaml` file contains implicit `DataTemplate`s that are applied to the container docking windows based on the view-model type in use.  This sort of file needs to be included in your `Application.Resources`.
+In our sample, the *ImplicitTemplates.xaml* file contains implicit `DataTemplate`s that are applied to the container docking windows based on the view-model type in use.  This sort of file needs to be included in your `Application.Resources`.
 
 Another way to select templates is by using the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[DocumentItemTemplateSelector](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentItemTemplateSelector) and [ToolItemTemplateSelector](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolItemTemplateSelector) properties, and assigning an appropriate template selector class to them.
 

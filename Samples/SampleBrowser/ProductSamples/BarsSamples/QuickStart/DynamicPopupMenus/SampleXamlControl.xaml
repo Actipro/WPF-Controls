@@ -21,7 +21,7 @@
 				<bars:RibbonGroup Key="Sample" CanAutoCollapse="False">
 					<bars:BarSplitButton Key="{x:Static local:BarControlKeys.OpenDocument}" Command="ApplicationCommands.Open"
 										 LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png"
-										 MaxSimplifiedVariantSize="Medium"
+										 ToolBarItemVariantBehavior="All"
 										 ToolTip="The recent documents in this popup menu are dynamically generated.">
 						<bars:BarSplitButton.Items>
 							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
@@ -29,7 +29,7 @@
 					</bars:BarSplitButton>
 					<bars:BarPopupButton Key="{x:Static local:BarControlKeys.DynamicPopupButton}" Label="Popup Button with Dynamic Menu"
 										 LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
-										 MaxSimplifiedVariantSize="Medium"
+										 ToolBarItemVariantBehavior="All"
 										 ToolTip="The menu of this popup button is dynamically generated when the popup is opened.">
 						<bars:BarPopupButton.Items>
 							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
@@ -40,7 +40,7 @@
 				<bars:RibbonGroup Key="SimplifiedLayoutOverflow" CanAutoCollapse="False">
 					<bars:BarPopupButton Key="{x:Static local:BarControlKeys.DynamicPopupOverflowButton}" Label="Popup Button Overflowed in Simplified Layout"
 										 LargeImageSource="/Images/Icons/QuickStartGreen32.png" SmallImageSource="/Images/Icons/QuickStartGreen16.png"
-										 MaxSimplifiedVariantSize="Collapsed"
+										 ToolBarItemCollapseBehavior="Always"
 										 ToolTip="This button overflows as a standard menu when using simplified layout and menu items are dynamically generated when opened.">
 						<bars:BarPopupButton.Items>
 							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />

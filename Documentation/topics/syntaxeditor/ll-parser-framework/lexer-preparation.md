@@ -23,7 +23,7 @@ It can be good practice to make a comment state and a string state for languages
 
 ## Generate Source Files
 
-You may be used to loading a language definition file (.langdef) into your application to provide a [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage) for use with your [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), but the parsing framework's needs are more granular.  For this reason, you need to generate source files for the language instead of the .langdef file.  This will ensure that [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer), [ITokenIdProvider](xref:ActiproSoftware.Text.Lexing.ITokenIdProvider), and other classes are built that can be used by the parser.
+You may be used to loading a language definition file (*.langdef*) into your application to provide a [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage) for use with your [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), but the parsing framework's needs are more granular.  For this reason, you need to generate source files for the language instead of the *.langdef* file.  This will ensure that [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer), [ITokenIdProvider](xref:ActiproSoftware.Text.Lexing.ITokenIdProvider), and other classes are built that can be used by the parser.
 
 See the [Parser Infrastucture](parser-infrastructure.md) topic for more information on how to set up your [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage).
 

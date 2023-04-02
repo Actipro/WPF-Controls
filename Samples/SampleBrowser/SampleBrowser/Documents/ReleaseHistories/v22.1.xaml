@@ -15,6 +15,8 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Improved tool window-only layout deserialization logic for tool windows that will restore to tabbed MDI." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue that could occur when deserializing tool window-only layouts." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where complex content on a newly-added AdvancedTabControl tab might prevent the tab from scrolling into view properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where activating a docking window that was contained in a minimized floating dock host wouldn't unminimize the dock host." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -34,6 +36,7 @@
 				<sampleBrowser:BulletContentControl Content="Added ITextSnapshot.GetWordText and GetWordTextRange method overloads that accept a TextOffsetAffinity argument." />
 				<sampleBrowser:BulletContentControl Content="Added the CodeSnippetSelectionSession.RequestNavigate event, which can be used to handle description tip link clicks." />
 				<sampleBrowser:BulletContentControl Content="Improved the logic of the move selected lines up and down commands." />
+				<sampleBrowser:BulletContentControl Content="Updated pointer interaction in an editor view to quit if the view is unable to be focused." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where setting SyntaxEditor.HasSearchOverlayPaneKeyBindings to false didn't prevent a couple ApplicationCommands with built-in key bindings from showing the search overlay pane." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where typing in a block selection than spanned multiple word-wrapped view lines for the same single document line didn't yield expected results." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where IntelliPrompt parameter info could flicker slightly while editing." />
@@ -62,6 +65,7 @@
 				<sampleBrowser:BulletContentControl Content="Added the PopupButton.PopupPlacement property." />
 				<sampleBrowser:BulletContentControl Content="Added a couple VisualTreeHelperExtended methods for invalidating measurement." />
 				<sampleBrowser:BulletContentControl Content="Updated ResizablePopupContentHost to support horizontal resizing." />
+				<sampleBrowser:BulletContentControl Content="Updated PopupButton to prevent an ancestor ScrollViewer from closing its popup when clicking on the whitespace area of the popup." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

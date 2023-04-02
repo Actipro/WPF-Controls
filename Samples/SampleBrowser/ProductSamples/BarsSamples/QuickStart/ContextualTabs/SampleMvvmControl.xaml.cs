@@ -87,14 +87,14 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs {
 			togglePictureToolsButton = new BarToggleButtonViewModel("TogglePictureTools", "Picture Tools") {
 				Command = TogglePictureToolsCommand,
 				Description = "Click to toggle the visibility of the Picture Tools contextual tab group.",
-				MaxSimplifiedVariantSize = VariantSize.Medium,
+				ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				LargeImageSource = ImageLoader.GetIcon("Picture32.png"),
 				SmallImageSource = ImageLoader.GetIcon("Picture16.png"),
 			};
 			toggleTableToolsButton = new BarToggleButtonViewModel("ToggleTableTools", "Table Tools") {
 				Command = ToggleTableToolsCommand,
 				Description = "Click to toggle the visibility of the Table Tools contextual tab group.",
-				MaxSimplifiedVariantSize = VariantSize.Medium,
+				ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				LargeImageSource = ImageLoader.GetIcon("Table32.png"),
 				SmallImageSource = ImageLoader.GetIcon("Table16.png"),
 			};
@@ -105,6 +105,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs {
 
 			Ribbon = new RibbonViewModel() {
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.None,
 				ContextualTabGroups = {
 					pictureToolsContextualTabGroup,

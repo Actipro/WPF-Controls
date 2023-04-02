@@ -140,5 +140,4 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 </bars:StandaloneToolBar>
 ```
 
-> [!TIP]
-> See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
+See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.

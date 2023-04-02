@@ -20,15 +20,15 @@ The ribbon supports minimization, which means that the ribbon may be hidden so t
 
 ## Ways to Minimize the Ribbon
 
-There are four ways the end user can toggle minimization of the ribbon:
+There are several ways the end user can toggle minimization of the ribbon:
 
 - Double-clicking a tab
-- Choosing `Collapse the Ribbon` from a context menu
-- Choosing `Show Tabs Only` from the [Options Button](options-button.md) menu
-- Pressing `Ctrl+F1`
+- Choosing **Collapse the Ribbon** from a context menu
+- Choosing **Show Tabs Only** from the [Options Button](options-button.md) menu
+- Pressing <kbd>Ctrl</kbd>+<kbd>F1</kbd>
 
 > [!IMPORTANT]
-> The default text `Collapse the Ribbon` shown on ribbon context menus is consistent with Office applications even though it technically minimizes the ribbon and does not collapse it.  See the [Collapsing](collapsing.md) topic for more details on the collapsed state.
+> The default text `"Collapse the Ribbon"` shown on ribbon context menus is consistent with Office applications even though it technically minimizes the ribbon and does not collapse it.  See the [Collapsing](collapsing.md) topic for more details on the collapsed state.
 
 ## Related Members
 

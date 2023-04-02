@@ -5,7 +5,7 @@ order: 2
 ---
 # Frames
 
-The [LinearGauge](xref:@ActiproUIRoot.Controls.Gauge.LinearGauge) frame is made up of a rim and a background.  Each of which can be configured independenty to create a customized look.
+The [LinearGauge](xref:@ActiproUIRoot.Controls.Gauge.LinearGauge) frame is made up of a rim and a background.  Each of which can be configured independently to create a customized look.
 
 ## Frame Rim
 
@@ -19,12 +19,12 @@ The rim color can be customized by setting the [RimBrush](xref:@ActiproUIRoot.Co
 
 *Two LinearGauge controls with a dark blue rim; the right image has the rim effect disabled*
 
-> [!NOTE]
-> The rim effect is only supported when [IsRimEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.IsRimEffectEnabled) is set to `true`**and**[RimBrush](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.RimBrush) is set to a `SolidColorBrush`.
+> [!IMPORTANT]
+> The rim effect is only supported when [IsRimEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.IsRimEffectEnabled) is set to `true` *and* [RimBrush](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.RimBrush) is set to a `SolidColorBrush`.
 
 ### Custom Geometry/ImageSource
 
-When the built-in rim types are not flexible enough to achieve the look desired, a custom `Geometry` or `ImageSource` can be used.
+When the built-in rim types are not flexible enough to achieve the desired look, a custom `Geometry` or `ImageSource` can be used.
 
 When [RimType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimType) is set to [CustomRimGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularRimType.CustomRimGeometry), then the `Geometry` specified by [RimGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.RimGeometry) is used when rendering the rim.
 
@@ -45,8 +45,8 @@ The background color can be customized by setting the [Background](xref:@Actipro
 
 *Two LinearGauge controls with a dark red background; the right image has the background effect disabled*
 
-> [!NOTE]
-> The background effect is only supported when [IsBackgroundEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.IsBackgroundEffectEnabled) is set to `true`**and**[Background](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.Background) is set to a `SolidColorBrush`.
+> [!IMPORTANT]
+> The background effect is only supported when [IsBackgroundEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.IsBackgroundEffectEnabled) is set to `true` *and* [Background](xref:@ActiproUIRoot.Controls.Gauge.Primitives.GaugeBase.Background) is set to a `SolidColorBrush`.
 
 ### Size
 
@@ -76,7 +76,7 @@ A glass effect can be overlayed on the gauge, and any elements inside the gauge,
 *A LinearGauge with a glass effect*
 
 > [!NOTE]
-> 
+>
 > The glass effect has a z-index of `100`, therefore elements can be placed on top of the glass effect by setting their z-index to a value greater than `100`.
-> 
+>
 > For more information on setting the z-index of elements, see the [Coordinate System](../coordinate-system.md) topic.

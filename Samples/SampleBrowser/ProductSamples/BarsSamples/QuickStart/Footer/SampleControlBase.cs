@@ -43,6 +43,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer {
 			// sample focused only on the footer configuration
 			var ribbon = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel().Ribbon;
 			ribbon.IsApplicationButtonVisible = false;
+			ribbon.IsCollapsible = false;
 			return ribbon;
 		}
 

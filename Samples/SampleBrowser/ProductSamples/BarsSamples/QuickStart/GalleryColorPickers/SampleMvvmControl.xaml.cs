@@ -127,8 +127,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 
 			// Font Color with Automatic picker 
 			fontColorPickerWithAutomaticViewModel = new BarPopupButtonViewModel("FontColorPickerWithAutomatic", "Font Color w/Automatic") {
-				MaxSimplifiedVariantSize = VariantSize.Medium,
 				SmallImageSource = FontColorSmallImageSource,
+				ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				MenuItems = {
 					new BarGalleryViewModel("FontColorPickerGalleryWithAutomatic", "Font Color w/Automatic", this.SetFontColorCommand, FontColorItemsWithAutomatic) {
 						AreSurroundingSeparatorsAllowed = this.Options.AreSurroundingSeparatorsAllowed,
@@ -147,8 +147,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 
 			// Text highlight picker
 			textHighlightColorPickerViewModel = new BarPopupButtonViewModel("TextHighlightColorPicker", "Highlight Color") {
-				MaxSimplifiedVariantSize = VariantSize.Medium,
 				SmallImageSource = TextHighlightColorSmallImageSource,
+				ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 				MenuItems = {
 					new BarGalleryViewModel("TextHighlightColorPickerGallery", "Highlight Color", this.SetTextHighlightColorCommand, TextHighlightColorItems) {
 						AreSurroundingSeparatorsAllowed = this.Options.AreSurroundingSeparatorsAllowed,
@@ -251,6 +251,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 
 			Ribbon = new RibbonViewModel() {
 				IsApplicationButtonVisible = false,
+				IsCollapsible = false,
 				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.Hidden,
 				Tabs = {
 					new RibbonTabViewModel("MvvmSamples", "MVVM Samples") {
@@ -268,7 +269,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 								SmallImageSource = ImageLoader.GetIcon("ColorPicker16.png"),
 								Items = {
 									new BarPopupButtonViewModel("MoreSamples") {
-										MaxSimplifiedVariantSize = VariantSize.Medium,
+										ToolBarItemVariantBehavior = ItemVariantBehavior.All,
 										LargeImageSource = ImageLoader.GetIcon("ColorPicker32.png"),
 										SmallImageSource = ImageLoader.GetIcon("ColorPicker16.png"),
 										MenuItems = {

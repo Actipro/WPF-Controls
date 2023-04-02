@@ -14,7 +14,7 @@ Code snippet providers, represented by the [ICodeSnippetProvider](xref:@ActiproU
 - They let other code know that code snippets are supported for the language.
 - They make the available code snippets accessible.
 - They allow for selection sessions to be opened.
-- They watch for `Tab` to be pressed after a code snippet shortcut, and open a template session in response.
+- They watch for <kbd>Tab</kbd> to be pressed after a code snippet shortcut, and open a template session in response.
 - They allow for the various template session adornments to be displayed.
 
 A [CodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetProvider) class instance can be used directly as the service.

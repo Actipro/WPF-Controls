@@ -17,14 +17,14 @@ Key tip access text must be defined for each control that is used throughout the
 
 So, what is key tip text?  It is generally a one- or two-character string that indicates text that can be typed to access the control when its parent key tip scope is active.  For instance, on the **Home** tab in the screenshot above, the current key tip scope is the **Home** tab.  It is currently displaying the key tips of all controls that are accessible via key tips.  Note that the **Paste** item has a key tip access text of `V` and the **Font Family** combobox has a key tip access text of `FF`.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Key tips are so important to accessibility that most controls will automatically generate a key tip from the corresponding `Label` property.  See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more details on auto-generated key tips.
 
 ## Navigating Key Tip Scopes
 
-Pressing and releasing either the `Alt` or `F10` keys will activate key tip mode.  This initially places the key tip scope on the ribbon itself, allowing access to the application menu, quick access toolbar items, tabs, or tab row toolbar.  Note that when not in key tip mode, you can also jump right to a tab's key tip scope by pressing `Alt` and its key tip access text.  For instance, to jump directly to the **Home** tab's key tip scope, you can press `Alt+H`.
+Pressing and releasing either the <kbd>Alt</kbd> or <kbd>F10</kbd> keys will activate key tip mode.  This initially places the key tip scope on the ribbon itself, allowing access to the application menu, quick access toolbar items, tabs, or tab row toolbar.  Note that when not in key tip mode, you can also jump right to a tab's key tip scope by pressing <kbd>Alt</kbd> and its key tip access text.  For instance, to jump directly to the **Home** tab's key tip scope, you can press <kbd>Alt</kbd>+<kbd>H</kbd>.
 
-The default key tip text for the [Application Button](application-button.md) is `F`, and activating this key tip will display either a [Backstage](backstage.md) or [Application Button](application-button.md), depending on the configuration, and activate its key tip scope.  When an application menu becomes the active key tip scope, you can access its menu items or its footer buttons. When a backstage becomes the active key tip scope, you can access its buttons and tab items.
+The default key tip text for the [Application Button](application-button.md) is `"F"`, and activating this key tip will display either a [Backstage](backstage.md) or [Application Button](application-button.md), depending on the configuration, and activate its key tip scope.  When an application menu becomes the active key tip scope, you can access its menu items or its footer buttons. When a backstage becomes the active key tip scope, you can access its buttons and tab items.
 
 When a [Tab](tabs-groups-controlgroups.md) becomes the active key tip scope, you can access all of its child controls.  Collapsed groups can be displayed by typing the group's key tip access text.  By typing a group's dialog launcher key tip access text, you can access the groups dialog launcher.
 
@@ -33,7 +33,7 @@ When a [Tab](tabs-groups-controlgroups.md) becomes the active key tip scope, you
 
 When a control with a popup becomes the active key tip scope, you can access any of its items.
 
-To return to any parent key tip scope, press the `Esc` key.  Once back at the root ribbon key tip scope, press the `Esc` key to quit key tip mode.
+To return to any parent key tip scope, press the <kbd>Esc</kbd> key.  Once back at the root ribbon key tip scope, press the <kbd>Esc</kbd> key to quit key tip mode.
 
 Pressing any non-letter/digit key or clicking the mouse will also quit key tip mode.
 
@@ -75,6 +75,6 @@ It has these important properties:
 
 ### Key Tip Mode Shortcuts
 
-By default, pressing an `Alt` or `F10` key will toggle key tip mode on or off.  Sometimes keys like `F10` may be assigned as keyboard shortcuts for other features in an application.  In this case, it is useful to be able to prevent the key tip service from watching for `F10`.
+By default, pressing an <kbd>Alt</kbd> or <kbd>F10</kbd> key will toggle key tip mode on or off.  Sometimes keys like <kbd>F10</kbd> may be assigned as keyboard shortcuts for other features in an application.  In this case, it is useful to be able to prevent the key tip service from watching for <kbd>F10</kbd>.
 
 The [KeyTipService](xref:@ActiproUIRoot.Controls.Bars.KeyTipService).[AllowedKeyTipModeShortcuts](xref:@ActiproUIRoot.Controls.Bars.KeyTipService.AllowedKeyTipModeShortcuts) property can be set to a flags [KeyTipModeShortcuts](xref:@ActiproUIRoot.Controls.Bars.KeyTipModeShortcuts) value indicating which keys can toggle key tip mode.

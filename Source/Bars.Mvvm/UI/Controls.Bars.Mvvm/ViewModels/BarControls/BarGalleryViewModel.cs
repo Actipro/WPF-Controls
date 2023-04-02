@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -27,13 +26,14 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ImageSource largeImageSource;
 		private int maxMenuColumnCount = int.MaxValue;
 		private int maxRibbonColumnCount = 15;
-		private VariantSize maxSimplifiedVariantSize = VariantSize.Small;
 		private ImageSource mediumImageSource;
 		private ControlResizeMode menuResizeMode = ControlResizeMode.None;
 		private int minLargeRibbonColumnCount = 5;
 		private int minMediumRibbonColumnCount = 3;
 		private int minMenuColumnCount = 1;
 		private BarGalleryItemViewModelBase selectedItem;
+		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
 		private bool useAccentedItemBorder;
 		private bool useMenuItemAppearance;
 		private bool useMenuItemIndent;
@@ -150,7 +150,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		
 		/// <summary>
 		/// Gets or sets whether the gallery sorts and displays items by category.
 		/// </summary>
@@ -326,23 +326,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 		
-		/// <summary>
-		/// Gets or sets the maximum <see cref="VariantSize"/> when using a Simplified layout mode.
-		/// </summary>
-		/// <value>
-		/// The maximum <see cref="VariantSize"/> when using a Simplified layout mode.
-		/// The default value is <see cref="VariantSize.Small"/>.
-		/// </value>
-		public VariantSize MaxSimplifiedVariantSize {
-			get => maxSimplifiedVariantSize;
-			set {
-				if (maxSimplifiedVariantSize != value) {
-					maxSimplifiedVariantSize = value;
-					this.NotifyPropertyChanged(nameof(MaxSimplifiedVariantSize));
-				}
-			}
-		}
-
 		/// <inheritdoc cref="BarButtonViewModel.MediumImageSource"/>
 		public ImageSource MediumImageSource {
 			get => mediumImageSource;
@@ -455,6 +438,28 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.SelectedItem = newSelectedItem;
 		}
 		
+		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
+		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+			get => toolBarItemCollapseBehavior;
+			set {
+				if (toolBarItemCollapseBehavior != value) {
+					toolBarItemCollapseBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemVariantBehavior"/>
+		public ItemVariantBehavior ToolBarItemVariantBehavior {
+			get => toolBarItemVariantBehavior;
+			set {
+				if (toolBarItemVariantBehavior != value) {
+					toolBarItemVariantBehavior = value;
+					this.NotifyPropertyChanged(nameof(ToolBarItemVariantBehavior));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets whether to use an accented item border for gallery items, common when they have vibrant content such as color swatches.
 		/// </summary>

@@ -19,7 +19,7 @@ In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" an
 
 ## Add Assembly References
 
-First, add references to the `ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll` and `ActiproSoftware.Editors.@@PlatformAssemblySuffix.dll` assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Editors.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they will also be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 }
 
@@ -37,7 +37,7 @@ xmlns:editors="using:ActiproSoftware.UI.Xaml.Controls.Editors"
 
 @if (wpf) {
 
-This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
+This `xmlns` declaration in your root XAML control allows access to the various controls in this product:
 
 ```xaml
 xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"

@@ -9,7 +9,7 @@ The [ColorPicker](xref:@ActiproUIRoot.Controls.Editors.ColorPicker) control make
 
 ![Screenshot](../images/colorpicker.png)
 
-It combines a [HsbColorPicker](hsbcolorpicker.md) with edit boxes for RGB (red, green, blue).  This allows the end user to select the color either via HSB (hue, saturation, brightness) or RGB values.  In addition, a drop-down allows selection of a HSB text input mode, where HSB edit boxes are displayed in place of the RGB ones.
+It combines an [HsbColorPicker](hsbcolorpicker.md) with edit boxes for RGB (red, green, blue).  This allows the end user to select the color either via HSB (hue, saturation, brightness) or RGB values.  In addition, a drop-down allows selection of an HSB text input mode, where HSB edit boxes are displayed in place of the RGB ones.
 
 Alpha transparency selection is also optionally supported.
 
