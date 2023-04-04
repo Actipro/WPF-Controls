@@ -67,7 +67,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		/// Gets or sets the <see cref="IComparer{Enum}"/> used to sort the enumeration values.
 		/// </summary>
 		/// <value>
-		/// The <see cref="IComparer{Enum}"/> used to sort the enumeration values; otherwise <see langword="null"/> to indicate no sorting, which will use the order the enumeration values are defined.
+		/// The <see cref="IComparer{Enum}"/> used to sort the enumeration values; otherwise <c>null</c> to indicate no sorting, which will use the order the enumeration values are defined.
 		/// </value>
 		public IComparer<Enum> EnumSortComparer {
 			get { 

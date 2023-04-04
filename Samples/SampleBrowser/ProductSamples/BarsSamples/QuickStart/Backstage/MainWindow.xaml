@@ -1,0 +1,305 @@
+﻿<bars:RibbonWindow
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+    Title="Actipro Backstage Sample" Height="600" Width="800"
+	ResizeMode="CanResizeWithGrip"
+	FocusManager.FocusedElement="{Binding ElementName=editor}"
+	>
+	<bars:RibbonWindow.Resources>
+
+		<shared:BooleanToVisibilityConverter x:Key="BooleanToCollapsedConverter" IsInverted="True" />
+
+	</bars:RibbonWindow.Resources>
+
+	<bars:RibbonContainerPanel>
+		<bars:Ribbon x:Name="ribbon" QuickAccessToolBarMode="Visible" QuickAccessToolBarLocation="Above">
+
+			<!-- Configure the Backstage -->
+			<bars:Ribbon.BackstageContent>
+				<bars:RibbonBackstage CanClose="{Binding CanClose}" MinHeaderWidth="{Binding BackstageMinHeaderWidth}" MaxHeaderWidth="{Binding BackstageMaxHeaderWidth}"
+									  IsOpen="{Binding IsBackstageOpen}" IsOpenChanged="OnBackstageIsOpenChanged">
+					<!-- Introduction Tab -->
+					<bars:RibbonBackstageTabItem Key="Introduction" SmallImageSource="/Images/Icons/HomeMono16.png" LargeImageSource="/Images/Icons/HomeMono32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
+						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+							<StackPanel>
+								<TextBlock Text="Introduction" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock TextWrapping="Wrap">
+									The Backstage is commonly used for file-based actions like New, Open, and Save. When opened, the Backstage takes over the entire
+									window. A subtle animation is used when opening/closing to help provide a smooth transition.
+									<LineBreak /><LineBreak />
+									This sample is configured to automatically display a more limited Backstage when initially opened. This initial view uses a large variant
+									for the most important tabs and hides buttons that might not be useful at first launch. Once the Backstage is closed and reopened, the
+									small variant will be used for all tabs and additional buttons will display. This initial Backstage view can also be toggled on or off
+									using a setting on the Options tab.
+								</TextBlock>
+								<TextBlock Text="Tabs and Buttons" Margin="0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock TextWrapping="Wrap">
+									The items on the left are a collection of Tabs, Buttons, and Separators.
+									Each item is aligned to the top by default, but can also be aligned to the bottom.
+									<LineBreak /><LineBreak />
+									A Tab (RibbonBackstageTabItem) can be used to display any content when
+									selected. An "Open" tab, for instance, might contain a button to browse for a file combined with
+									a list of recently-accessed files that can be opened quickly. This "Introduction" item is an
+									example of a Tab.
+									<LineBreak /><LineBreak />
+									A Button (RibbonBackstageHeaderButton) can be used for simple operations and is associated with
+									an ICommand that, when invoked, will close the Backstage. Use Buttons when additional content
+									is not necessary. For example, the file "Save" command would commonly be implemented as a Button.
+									<LineBreak /><LineBreak />
+									A Separator (RibbonBackstageHeaderSeparator) can be inserted between Tabs and/or Buttons to draw
+									a line separating the controls.
+								</TextBlock>
+							</StackPanel>
+						</ScrollViewer>
+					</bars:RibbonBackstageTabItem>
+					
+					<!-- Appearance Tab -->
+					<bars:RibbonBackstageTabItem Key="Appearance" KeyTipText="P" SmallImageSource="/Images/Icons/ColorPicker16.png" LargeImageSource="/Images/Icons/ColorPicker32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
+						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+							<StackPanel>
+								<TextBlock Text="Mica Effect" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock TextWrapping="Wrap">
+									When supported by the current operating system and machine configuration, a Mica texture (popularized by Windows 11) is extended from the Title Bar
+									into the non-content area of the Backstage for a seamless effect
+								</TextBlock>
+								<TextBlock Text="Images" Margin="0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock TextWrapping="Wrap">
+									Both Tabs and Buttons support images, but most modern applications only show an image on Tabs.
+								</TextBlock>
+								<TextBlock Text="Header Alignment" Margin="0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock TextWrapping="Wrap">
+									Each Tab, Button, or Separator is aligned to the top by default. By setting "HeaderAlignment=Bottom", each item
+									will be aligned to the bottom instead.
+								</TextBlock>
+							</StackPanel>
+						</ScrollViewer>
+					</bars:RibbonBackstageTabItem>
+
+
+					<!-- Separator and Sample Buttons (which execute a default command) -->
+					<bars:RibbonBackstageHeaderSeparator Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" />
+					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}" Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					<bars:RibbonBackstageHeaderButton Key="SampleButton2" KeyTipText="S2" Command="{Binding BackstageHeaderButtonCommand}" Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					
+					<!--
+					  The following items are aligned to the bottom
+					-->
+
+					<!-- A separator is commonly displayed before the bottom-aligned items -->
+					<bars:RibbonBackstageHeaderSeparator HeaderAlignment="Bottom" />
+					
+					<!-- Backstage Controls Tab -->
+					<bars:RibbonBackstageTabItem Key="BackstageControls" HeaderAlignment="Bottom">
+						<Grid Margin="20">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+
+							<StackPanel Grid.Row="0">
+								<TextBlock Text="Backstage Controls" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								<TextBlock  Margin="0,20" TextWrapping="Wrap">
+									The TaskTabControl can be used on a backstage to further organize the content displayed
+									for the selected tab.  BarButton and BarPopupButton controls also have a special backstage style that can be applied
+									for a large button.
+								</TextBlock>
+							</StackPanel>
+							
+							<bars:TaskTabControl Grid.Row="1">
+								<bars:TaskTabItem Label="TaskTabControl" KeyTipText="T" LargeImageSource="/Images/Icons/New32.png">
+									<ScrollViewer Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Grid.ColumnSpan="2" Margin="0,0,0,8" Text="TaskTabControl" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+
+											<TextBlock Grid.Row="1" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="TaskTabControl is a special tab control for backstage" />
+											<TextBlock Grid.Row="2" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="Use TaskTabItem for each tab" />
+											<TextBlock Grid.Row="3" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="Display any content for the selected tab" />
+
+										</Grid>
+									</ScrollViewer>
+								</bars:TaskTabItem>
+
+								<bars:TaskTabItem Label="Button Backstage Styles" KeyTipText="B" LargeImageSource="/Images/Icons/Print32.png">
+									<ScrollViewer Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+
+											<TextBlock Grid.ColumnSpan="2" Margin="0,0,0,8" Text="BarButton and BarPopupButton" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+
+											<TextBlock Grid.Row="1" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="Large buttons are commonly used on backstage as shown below" />
+											<TextBlock Grid.Row="2" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="BarButton uses RibbonBackstageButtonStyleKey" />
+											<TextBlock Grid.Row="3" Margin="7,0" Text="&#x25aa;" />
+											<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="BarPopupButton uses RibbonBackstagePopupButtonStyleKey" />
+
+											<StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,40,0,0" Orientation="Horizontal">
+												<bars:BarButton Margin="0,0,10,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" 
+															   LargeImageSource="/Images/Icons/PdfDocument32.png" Label="Create PDF" KeyTipText="A" />
+
+												<bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}" 
+																	 LargeImageSource="/Images/Icons/ManageVersions32.png" Label="Manage Document" KeyTipText="M">
+													
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/RecoverUnsavedDocuments32.png" Label="Recover Unsaved Documents" 
+																	  Description="Browse recent copies of unsaved files." KeyTipText="B" />
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/DeleteUnsavedDocuments32.png" Label="Delete All Unsaved Documents" 
+																	  Description="Delete all recent copies of unsaved files." KeyTipText="D" />
+													
+												</bars:BarPopupButton>
+											</StackPanel>
+
+										</Grid>
+									</ScrollViewer>
+								</bars:TaskTabItem>
+
+							</bars:TaskTabControl>
+						</Grid>
+					</bars:RibbonBackstageTabItem>
+
+					<!-- Options Tab -->
+					<bars:RibbonBackstageTabItem Key="Options" HeaderAlignment="Bottom">
+						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+							<StackPanel>
+								<TextBlock Text="Options" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+								
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="*" />
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+									</Grid.RowDefinitions>
+									
+									<TextBlock Grid.Row="0" Grid.Column="0" Text="Use initial backstage view" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="0" Grid.Column="1" Margin="4" IsChecked="{Binding IsFirstBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="1" Grid.Column="0" Text="Can close" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="1" Grid.Column="1" Margin="4" IsChecked="{Binding CanClose}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="2" Grid.Column="0" Text="Show images on sample buttons" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="2" Grid.Column="1" Margin="4" IsChecked="{Binding UseSampleButtonImages}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="3" Grid.Column="0" Text="Select this 'Options' tab on open" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="3" Grid.Column="1" Margin="4" IsChecked="{Binding SelectOptionsTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="4" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMinHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
+										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMinHeaderWidth}" />
+									</StackPanel>
+
+									<TextBlock Grid.Row="5" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMaxHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
+										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMaxHeaderWidth}" />
+									</StackPanel>
+
+									<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
+									<TextBox Grid.Row="6" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+								</Grid>
+								
+							</StackPanel>
+						</ScrollViewer>
+					</bars:RibbonBackstageTabItem>
+					
+					<!-- Another Sample Button (which execute a default command) -->
+					<bars:RibbonBackstageHeaderButton Key="SampleButton3" Label="{Binding SampleButton3Label}" KeyTipText="S3" HeaderAlignment="Bottom" Command="{Binding BackstageHeaderButtonCommand}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					
+				</bars:RibbonBackstage>
+			</bars:Ribbon.BackstageContent>
+
+			<!--
+				The following configuration is used to define the overall sample but is not directly related to the backstage
+			-->
+			
+			<bars:Ribbon.QuickAccessToolBarContent>
+				<bars:RibbonQuickAccessToolBar>
+					<bars:BarButton Key="Undo" KeyTipText="AZ" Command="ApplicationCommands.Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+					<bars:BarButton Key="Redo" KeyTipText="AQ" Command="ApplicationCommands.Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+				</bars:RibbonQuickAccessToolBar>
+			</bars:Ribbon.QuickAccessToolBarContent>
+
+			<bars:RibbonTabItem Key="Home">
+				<bars:RibbonGroup Key="Documents">
+					<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
+					<bars:BarButton Key="Save" Label="Save Document" Command="ApplicationCommands.Save" SmallImageSource="/Images/Icons/Save16.png" LargeImageSource="/Images/Icons/Save32.png" ToolBarItemVariantBehavior="All" />
+				</bars:RibbonGroup>
+			</bars:RibbonTabItem>
+
+			<bars:Ribbon.FooterContent>
+				<DockPanel>
+					<Image Source="/Images/Icons/InformationClear16.png" Height="16" Width="16" DockPanel.Dock="Left" Margin="0,0,5,0" />
+					<TextBlock VerticalAlignment="Center" TextWrapping="Wrap">Click the <Bold>File</Bold> application button to show the Backstage.</TextBlock>
+				</DockPanel>
+			</bars:Ribbon.FooterContent>
+
+		</bars:Ribbon>
+
+		<DockPanel>
+			<StatusBar DockPanel.Dock="Bottom">
+				<StatusBar.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="16" />
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</ItemsPanelTemplate>
+				</StatusBar.ItemsPanel>
+				
+				<StatusBarItem Content="Ready" />
+			</StatusBar>
+
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Focusable="False">
+				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
+					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+						<TextBox x:Name="editor" BorderThickness="0" Padding="20" AcceptsReturn="True" TextWrapping="Wrap">
+							A Backstage is used in many modern applications to provide a richer experience for the user than is typically
+							available from a traditional menu. Click the 'File' application button and see how the Backstage provides a full screen experience
+							that can be customized to meet the individual needs of the application.
+						</TextBox>
+					</Border>
+				</shared:ShadowChrome>
+			</ScrollViewer>
+
+		</DockPanel>
+
+	</bars:RibbonContainerPanel>
+	
+</bars:RibbonWindow>

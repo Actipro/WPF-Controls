@@ -109,7 +109,7 @@ The default tree constructors are good to use when first writing a grammar's EBN
 
 Manually added to the tree constructor portion of productions via the use of the various non-generic `AstXX` methods found on the [Grammar](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Grammar) class.
 
-AST nodes created using these methods are [DefaultAstNode](xref:ActiproSoftware.Text.Parsing.Implementation.DefaultAstNode) instances.  These nodes are fine to use in production since they should be optimized to contain only meaningful data based on how how you specified the tree constructor portion of the productions.
+AST nodes created using these methods are [DefaultAstNode](xref:ActiproSoftware.Text.Parsing.Implementation.DefaultAstNode) instances.  These nodes are fine to use in production since they should be optimized to contain only meaningful data based on how you specified the tree constructor portion of the productions.
 
 </td>
 </tr>
@@ -313,7 +313,7 @@ Language="English"
 
 ![Screenshot](../images/ll-parser-tree-construction-ast-value-of.png)
 
-Note how the the root AST node's value is the value of a match, in this case `Language`.
+Note how the root AST node's value is the value of a match, in this case `Language`.
 
 ### AstFrom(string label)
 
@@ -524,7 +524,7 @@ The above production shows usage of [AppendToProperty](xref:ActiproSoftware.Text
 
 ### AddToCollectionProperty
 
-The [AddToCollectionProperty](xref:ActiproSoftware.Text.Parsing.LLParser.ITypedTreeConstructionNode`1.AddToCollectionProperty*) method appends one or more AST node result values to a collection property.  In the production above, any attribute section AST nodes that are matched are added to the the `AttributeSections` list property.
+The [AddToCollectionProperty](xref:ActiproSoftware.Text.Parsing.LLParser.ITypedTreeConstructionNode`1.AddToCollectionProperty*) method appends one or more AST node result values to a collection property.  In the production above, any attribute section AST nodes that are matched are added to the `AttributeSections` list property.
 
 ### SetCollectionItemProperties
 

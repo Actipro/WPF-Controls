@@ -7,7 +7,7 @@ order: 6
 
 Once you have configured your language project and are ready to start testing it or generating code, it's time to build the project.  Building a project examines the project and reports whether there are any errors, warnings, or messages that you should be aware of.
 
-Project builds can be initiated from the ribbon, or by pressing the shortcut `Ctrl+Shift+B`.
+Project builds can be initiated from the ribbon, or by pressing the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>.
 
 ## Error List and Status Bar
 

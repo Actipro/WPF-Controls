@@ -15,25 +15,25 @@ The current view presented by the [MonthCalendar](xref:@ActiproUIRoot.Controls.E
 
 ### Zooming In and Out
 
-The [MonthCalendar](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar) control supports four view modes: Month, Year, Decade, and Century.  The various view modes make it easier to navigate from one date to another, by allowing to user to zoom out and then drill back in to a specific date.
+The [MonthCalendar](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar) control supports four view modes: Month, Year, Decade, and Century.  The various view modes make it easier to navigate from one date to another, by allowing the user to zoom out and then drill back into a specific date.
 
 ![Screenshot](../images/monthcalendar-year-view.png)![Screenshot](../images/monthcalendar-decade-view.png)![Screenshot](../images/monthcalendar-century-view.png)
 
-*The MonthCalendar control showing the year, decade, and century views, repsectively.*
+*The MonthCalendar control showing the year, decade, and century views, repsectively*
 
-The end-user can zoom out by clicking the title bar text (e.g. "August 2014" for the month view).  When an individual item is clicked, that item is zoomed in. So clicking on "August" in the year view, will zoom in to the month view for August.
+The end-user can zoom out by clicking the title bar text (e.g., `"August 2014"` for the month view).  When an individual item is clicked, that item is zoomed in. So, clicking on **August** in the year view, will zoom in to the month view for August.
 
 > [!TIP]
-> To zoom out using the keyboard, press the '-' key while holding down the Control key.  Similarly, pressing the '+' key while hold down the Control key will zoom in.
+> To zoom out using the keyboard, press the <kbd>Ctrl</kbd>+<kbd>-</kbd>.  Similarly, pressing <kbd>Ctrl</kbd>+<kbd>+</kbd> to zoom in.
 
 By default, the user can zoom out all the way out to the century view.  This can be restricted by setting the [MaxViewMode](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.MaxViewMode) property.
 
 ### Scrolling
 
-Using the arrows in the title bar, the current view can be scrolled left or right. For the month view, scrolling left will move to the previous month and scrolling right will move to the next month. The other views move to their respective previous and next views (e.g. year, decade, century).
+Using the arrows in the title bar, the current view can be scrolled left or right. For the month view, scrolling left will move to the previous month and scrolling right will move to the next month. The other views move to their respective previous and next views (e.g., year, decade, century).
 
 > [!TIP]
-> To scroll left using the keyboard, press the PageDown key. Similarly, pressing the PageUp key will scroll right.
+> To scroll left using the keyboard, press the <kbd>PgDn</kbd> key. Similarly, pressing the <kbd>PgUp</kbd> key will scroll right.
 
 ### Keyboard/Item Navigation
 
@@ -60,15 +60,15 @@ The number of selected dates can be restricted using the [MaxSelectionCount](xre
 
 The calendar supports several selection modes, each with a unique behavior.  The selection mode is configured using the [SelectionMode](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectionMode) property.
 
-> [!NOTE]
-> The selection mode only limits how the end-user can select dates.  The selection mode restrictions are not enforce when adding dates to [SelectedDates](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDates) programmatically.
+> [!IMPORTANT]
+> The selection mode only limits how the end-user can select dates.  The selection mode restrictions are not enforced when adding dates to [SelectedDates](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDates) programmatically.
 
 | Mode | Description |
 |-----|-----|
 | `Single` | Specifies that only a single date can be selected. |
-| `Multiple` | Specifies that multiple dates can be selected, but must be done so explicitly (e.g. each item must be selected individually).  When clicking on an item it's selection state is toggled. |
-| `Extended` | Specifies that multiple dates can be selected, by using the Control (to toggle a selected day) and Shift (to select a range) keys. |
-| `Range` | Specifies that multiple dates can be selected, by using the Shift (to select a range) key.  Works like the Extended mode, but the selected dates must be in a continguous range (not including disabled dates). |
+| `Multiple` | Specifies that multiple dates can be selected, but must be done so explicitly (e.g., each item must be selected individually).  When clicking on an item its selection state is toggled. |
+| `Extended` | Specifies that multiple dates can be selected, by using the <kbd>Ctrl</kbd> (to toggle a selected day) and <kbd>Shift</kbd> (to select a range) keys. |
+| `Range` | Specifies that multiple dates can be selected, by using the <kbd>Shift</kbd> (to select a range) key.  Works like the `Extended` mode, but the selected dates must be in a contiguous range (not including disabled dates). |
 
 The day of week header items and week number items can be used for selection, when the [SelectionMode](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectionMode) allows multiple dates to be selected.  This feature can be disabled by setting [IsDayOfWeekSelectionEnabled](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsDayOfWeekSelectionEnabled) and/or [IsWeekNumberSelectionEnabled](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsWeekNumberSelectionEnabled) properties to `false`.
 
@@ -78,9 +78,9 @@ A "clear" button can be included by setting [IsClearButtonVisible](xref:@Actipro
 
 The [Minimum](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.Maximum) properties can be used to restrict the date range over which the user can navigate and select a date.  Any dates falling outside of that range will appear disabled and won't be selectable.
 
-Within the minimum and maximum range, other dates can be disabled as well.  All instances of dates that fall over certain days of week can be disabled by setting the [DisabledDaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.DisabledDaysOfWeek) property, which accepts one or more values from the flags enumeration [DaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.DaysOfWeek).  This is useful for scenarios like where you might not wish to allow weekend days to be selected.
+Within the minimum and maximum range, other dates can be disabled as well.  All instances of dates that fall over certain days of week can be disabled by setting the [DisabledDaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.DisabledDaysOfWeek) property, which accepts one or more values from the flags enumeration [DaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.DaysOfWeek).  This is useful for scenarios where you might not wish to allow weekend days to be selected.
 
-> [!NOTE]
+> [!IMPORTANT]
 > When [DisabledDaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.DisabledDaysOfWeek) is set to `DaysOfWeek.All` then the user will not be able to navigate away from the currently active date.
 
 Finally, for any dates that would normally be enabled within the [Minimum](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.Maximum) range, and aren't disabled by the [DisabledDaysOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.DisabledDaysOfWeek) property, a special [IsDateDisabledFunc](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsDateDisabledFunc) property can optionally supply a function that is passed a `DateTime` and returns `true` if the specified date should be disabled.  This function is called for each day cell that is rendered.
@@ -101,10 +101,10 @@ There properties can be used to customize the overall look of the [MonthCalendar
 
 | Property | Description |
 |-----|-----|
-| [CalendarWeekRule](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.CalendarWeekRule) | By default the calender week rule, which determines how weeks are numbered, is retrieved from the current culture, but this property can be used to override the value. |
+| [CalendarWeekRule](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.CalendarWeekRule) | By default, the calendar week rule, which determines how weeks are numbered, is retrieved from the current culture, but this property can be used to override the value. |
 | [DayOfWeekFormatPattern](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.DayOfWeekFormatPattern) | Specifies the format used to display the values in the day of week header. |
-| [FirstDayOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.FirstDayOfWeek) | By default the first day of the week is retrieved from the current culture, but this property can be used to override the value. |
-| [IsTodayButtonVisible](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsTodayButtonVisible) | Indicates whether the today button is visible. |
+| [FirstDayOfWeek](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.FirstDayOfWeek) | By default, the first day of the week is retrieved from the current culture, but this property can be used to override the value. |
+| [IsTodayButtonVisible](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsTodayButtonVisible) | Indicates whether the **Today** button is visible. |
 | [IsTodayHighlighted](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsTodayHighlighted) | Indicates whether today is highlighted with an outline. |
 | [IsWeekNumberColumnVisible](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.IsWeekNumberColumnVisible) | Indicates whether the week number column is visible. |
 

@@ -8,7 +8,7 @@ order: 91
 The 17.1 version has new lightweight implementations of the Editors and PropertyGrid controls created that are much more performant, use less memory, and still provide a wide array of features.  These infrastructure changes did require some breaking changes and some API cleanup was performed at the same time.  All of the breaking changes are detailed in the linked topics below.
 
 > [!NOTE]
-> Please read through the [Licensing](../licensing.md) topic's section on "licenses.licx" files.  In the 17.1 version we improved the "licenses.licx" file licensing mechanism to only use a single entry that covers all Actipro products you've licensed.  Now a single new entry is used, and all older Actipro entries should be removed.
+> Please read through the [Licensing](../licensing.md) topic's section on *licenses.licx* files.  In the 17.1 version we improved the *licenses.licx* file licensing mechanism to only use a single entry that covers all Actipro products you've licensed.  Now a single new entry is used, and all older Actipro entries should be removed.
 
 ## Massive Updates to Editors
 
@@ -45,7 +45,7 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - `DropDownClosed` and `DropDownOpened` events removed.
 
-- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e. [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) for [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
+- `DropDownContent`, `DropDownContentTemplate`, and `DropDownContentTemplateSelector` properties removed.  Each edit box now has a related picker (i.e., [DatePicker](xref:@ActiproUIRoot.Controls.Editors.DatePicker) for [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox)) and its style can be set via [PopupPickerStyle](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.PopupPickerStyle).  This `Style` value can set a new `Template` for the picker if needed.
 
 - `Focus` (overload) and `SelectFirstGroup` methods removed.  Use the normal Focus method instead.
 
@@ -75,7 +75,7 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 In addition to the above, some number-oriented edit boxs have had these property changes:
 
-- `StepValue` property renamed to [SmallChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.SmallChange), which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new [LargeChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.LargeChange) property is used for `PgUp`/`PgDn` incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
+- `StepValue` property renamed to [SmallChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.SmallChange), which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new [LargeChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.LargeChange) property is used for <kbd>PgUp</kbd>/<kbd>PgDn</kbd> incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
 
 - [Minimum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Maximum) now use non-nullable types instead of the same type as the `Value` property.  So for a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) (which has a `Value` of type `Nullable<Double>`), the type for those two properties will be `Double`.
 
@@ -83,19 +83,19 @@ In addition to the above, some number-oriented edit boxs have had these property
 
 ### PropertyGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new *ActiproSoftware.Editors.Interop.Grids.Wpf.dll* assembly provides integration of edit boxes with the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid) control.  found in the Grids product via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old *ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll* assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
 The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
 ### DataGrid Integration Updates
 
-The new "ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll" assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
+The new *ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll* assembly provides easy integration of edit boxes with the native WPF DataGrid control.  Several of the column classes (like [DataGridBrushColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridBrushColumn), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes) described in this topic.  Also the `DataGridMaskedTextColumn` class is now named [DataGridMaskedStringColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridMaskedStringColumn).
 
 The [Editors and DataGrid Interoperability](../editors/interoperability/datagrid.md) topic covers the column classes that are available, including additional ones like [DataGridDateColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDateColumn), to integrate edit boxes with DataGrid.
 
 ### Ribbon Integration Updates
 
-The old "ActiproSoftware.Editors.Interop.Ribbon.Wpf.dll" assembly, which provided Ribbon control-like appearance for edit boxes via a `RibbonEditorsStyleBehavior` class is no longer used in the new version.  Instead the new edit box templates include a built-in special mode that can be activated for toolbar/Ribbon contextual usage.
+The old *ActiproSoftware.Editors.Interop.Ribbon.Wpf.dll* assembly, which provided Ribbon control-like appearance for edit boxes via a `RibbonEditorsStyleBehavior` class is no longer used in the new version.  Instead the new edit box templates include a built-in special mode that can be activated for toolbar/Ribbon contextual usage.
 
 The [Editors and Ribbon Interoperability](../editors/interoperability/ribbon.md) topic covers the properties that should be set on edit boxes to achieve a Ribbon control-like appearance, and to also optionally support labels.
 
@@ -287,16 +287,16 @@ We recognize that for the 17.1 version, numerous breaking changes were made and 
 
 These older legacy assemblies are not installed by default.  You must check the 'Control Assemblies / Legacy' option in the installer to install them.  Once you do so, these Editors-related assemblies will appear in a 'Legacy' subfolder of the Actipro assembly install folder (see the [Deployment](../deployment.md) topic for the default location), but will not appear in the GAC:
 
-- ActiproSoftware.Editors.Legacy.Wpf.dll
-- ActiproSoftware.Editors.Interop.DataGrid.Legacy.Wpf.dll
-- ActiproSoftware.Editors.Interop.PropertyGrid.Legacy.Wpf.dll
-- ActiproSoftware.Editors.Interop.Ribbon.Legacy.Wpf.dll
+- *ActiproSoftware.Editors.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.DataGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.PropertyGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.Editors.Interop.Ribbon.Legacy.Wpf.dll*
 
-You will be able to reference the `ActiproSoftware.Editors.Legacy.Wpf` assembly in place of the new `ActiproSoftware.Editors.Wpf` assembly to maintain full backward compatibility with the old version, while you work on upgrading your application to the new version.
+You will be able to reference the *ActiproSoftware.Editors.Legacy.Wpf.dll* assembly in place of the new *ActiproSoftware.Editors.Wpf.dll* assembly to maintain full backward compatibility with the old version, while you work on upgrading your application to the new version.
 
-See the [Licensing](../licensing.md) topic for info on how to add an entry to the `licenses.licx` file (updated info added in v17.1).
+See the [Licensing](../licensing.md) topic for info on how to add an entry to the *licenses.licx* file (updated info added in v17.1).
 
-Do NOT reference both the `ActiproSoftware.Editors.Wpf` and `ActiproSoftware.Editors.Legacy.Wpf` assemblies (or similar for interop assemblies) in the same project, since they have many types/members named the same.
+Do NOT reference both the *ActiproSoftware.Editors.Wpf.dll* and *ActiproSoftware.Editors.Legacy.Wpf.dll* assemblies (or similar for interop assemblies) in the same project, since they have many types/members named the same.
 
 Again, these legacy assemblies will only be included temporarily.  We encourage you to upgrade your code to the latest Editors assembly as soon as it is feasible so that you can continue to receive the latest product feature additions and bug fixes.
 
@@ -379,7 +379,7 @@ See the [Property Editors](../grids/propertygrid-features/property-editors.md) t
 
 ### Integration with Editors Updated
 
-The new "ActiproSoftware.Editors.Interop.Grids.Wpf.dll" assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old "ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll" assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
+The new *ActiproSoftware.Editors.Interop.Grids.Wpf.dll* assembly provides integration of edit boxes with the property grid via the use of custom [property editors](../grids/propertygrid-features/property-editors.md).  This feature is similar to what was in the old *ActiproSoftware.Editors.Interop.PropertyGrid.Wpf.dll* assembly.  Several of the property editor classes (like [BrushPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.BrushPropertyEditor), etc.) have had property updates to correspond to the related edit box property changes (adds, renames, or removes).  Also the `MaskedTextBoxPropertyEditor` class is now named [MaskedStringPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.MaskedStringPropertyEditor).
 
 The [Editors and PropertyGrid Interoperability](../editors/interoperability/propertygrid.md) topic covers the property editors that are available, including additional ones like [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor), to integrate edit boxes with PropertyGrid and how to do so in the new version.
 
@@ -413,7 +413,7 @@ The way data models at each level are sorted has changed.  The `AreDefaultSortDe
 
 ### Filtering Changes
 
-The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:@ActiproUIRoot.Data.Filtering) namespace.  The property grid-specific filters (e.g. [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
+The filtering model has been reworked to an extent and large portions of it moved to the Shared Library.  in the [ActiproSoftware.Windows.Data.Filtering](xref:@ActiproUIRoot.Data.Filtering) namespace.  The property grid-specific filters (e.g., [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelStringFilter) and [PropertyModelBooleanFilter](xref:@ActiproUIRoot.Controls.Grids.PropertyData.PropertyModelBooleanFilter)) are now in the [ActiproSoftware.Windows.Controls.Grids.PropertyData](xref:@ActiproUIRoot.Controls.Grids.PropertyData) namespace.
 
 ### Summary Area Changes
 
@@ -445,13 +445,13 @@ We recognize that for the 17.1 version, numerous breaking changes were made and 
 
 These older legacy assemblies are not installed by default.  You must check the 'Control Assemblies / Legacy' option in the installer to install them.  Once you do so, these PropertyGrid-related assemblies will appear in a 'Legacy' subfolder of the Actipro assembly install folder (see the [Deployment](../deployment.md) topic for the default location), but will not appear in the GAC:
 
-- ActiproSoftware.PropertyGrid.Legacy.Wpf.dll
-- ActiproSoftware.PropertyGrid.Interop.WinForms.Legacy.Wpf.dll
+- *ActiproSoftware.PropertyGrid.Legacy.Wpf.dll*
+- *ActiproSoftware.PropertyGrid.Interop.WinForms.Legacy.Wpf.dll*
 
-You will be able to reference the `ActiproSoftware.PropertyGrid.Legacy.Wpf` assembly in place of the new `ActiproSoftware.Grids.Wpf` assembly to maintain full backward compatibility with the old version, while you work on upgrading your application to the new version.
+You will be able to reference the *ActiproSoftware.PropertyGrid.Legacy.Wpf.dll* assembly in place of the new *ActiproSoftware.Grids.Wpf.dll* assembly to maintain full backward compatibility with the old version, while you work on upgrading your application to the new version.
 
-See the [Licensing](../licensing.md) topic for info on how to add an entry to the `licenses.licx` file (updated info added in v17.1).
+See the [Licensing](../licensing.md) topic for info on how to add an entry to the *licenses.licx* file (updated info added in v17.1).
 
-Do NOT reference both the `ActiproSoftware.Grids.Wpf` and `ActiproSoftware.PropertyGrid.Legacy.Wpf` assemblies (or similar for interop assemblies) in the same project, since they have many types/members named the same.
+Do NOT reference both the *ActiproSoftware.Grids.Wpf.dll* and *ActiproSoftware.PropertyGrid.Legacy.Wpf.dll* assemblies (or similar for interop assemblies) in the same project, since they have many types/members named the same.
 
 Again, these legacy assemblies will only be included temporarily.  We encourage you to upgrade your code to the latest Grids assembly as soon as it is feasible so that you can continue to receive the latest product feature additions and bug fixes.

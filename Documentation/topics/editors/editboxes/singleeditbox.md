@@ -85,17 +85,17 @@ Each of the features listed in the table below describe functionality that is co
 
 [Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- C (currency)
-- F
-- Fx, where x is the number of decimal places (e.g. F1)
-- G
-- N
-- Nx, where x is the number of decimal places (e.g. N1)
-- P (percentage)
+- `"C"` (currency)
+- `"F"`
+- `"Fx"`, where x is the number of decimal places (e.g., `"F1"`)
+- `"G"`
+- `"N"`
+- `"Nx"`, where x is the number of decimal places (e.g., `"N1"`)
+- `"P"` (percentage)
 
 Basic custom numeric formats are also supported, such as:
 
-- 0.0#' ft'
+- `"0.0#' ft'"`
 
 ## Minimum and Maximum Values
 
@@ -111,21 +111,23 @@ When the caret is over a part, the part value may be incremented or decremented.
 
 Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.LargeChange) property.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [CanSnapToChangePrecision](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.CanSnapToChangePrecision) property determines whether the value should be snapped to the precision of the incremental change value prior to applying the increment.
+
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7`, but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7` but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
 
 ## Allowing NaN or Infinity Values
 
 Text entry of `NaN` (not-a-number) and infinity values into the edit box is not allowed by default.
 
-Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter 'n'.
+Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter <kbd>N</kbd>.
 
-Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign and then the letter 'i'.
+Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign <kbd>-</kbd> and then the letter <kbd>I</kbd>.
 
-Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter 'i'.
+Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter <kbd>I</kbd>.
 
 ## Sample XAML
 
@@ -141,13 +143,13 @@ This edit box has multiple built-in picker kinds that can be set via the [Single
 
 @if (wpf) {
 
-The default value in WPF is `Calculator`. 
+The default value in WPF is `Calculator`.
 
 }
 
 @if (winrt) {
 
-The default value in UWP is `Default`. 
+The default value in UWP is `Default`.
 
 }
 

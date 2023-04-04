@@ -33,7 +33,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDat
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
-		/// Called when <c>Validation.Error</c> is fired on the PropertyGrid or one it's descendents.
+		/// Called when <c>Validation.Error</c> is fired on the PropertyGrid or one it's descendants.
 		/// </summary>
 		/// <param name="sender">The sender.</param>
 		/// <param name="e">The <see cref="ValidationErrorEventArgs"/> instance containing the event data.</param>

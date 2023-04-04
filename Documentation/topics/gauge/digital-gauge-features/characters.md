@@ -12,7 +12,7 @@ This topic covers the options available for customizing the characters displayed
 Five types of character segments are supported: 7-segment (normal), 7-segment (trapezoid), 14-segment (normal), and using 5-by-7 matrix with ellipses or rectangles.
 
 > [!NOTE]
-> Because of the number of segments is limited, certain letters/numbers may be rendered using the same segments.
+> Because the number of segments is limited, certain letters/numbers may be rendered using the same segments. For example, the number `0` and the letter `O` might be indistinguishable.
 
 ![Screenshot](../images/digital-gauge7-segment-normal.gif)
 

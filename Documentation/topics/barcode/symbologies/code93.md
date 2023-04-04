@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Code93Symbology](xref:@ActiproUIRoot.Controls.BarCode.Code93Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Code93ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code93ValidationRule) |
+| Related `ValidationRule` Class | [Code93ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code93ValidationRule) |
 | Encodable Characters | Number, uppercase letter, and `-$% ./+` characters. |
 | Supports Checksum | Yes.  This symbology implementation auto-calculates and inserts two check characters. |
 | Has Special Start/Stop Characters | Yes.  Must start and stop with `*` characters, but these are automatically appended for you. |
@@ -35,7 +35,7 @@ This symbology has these important members:
 
 | Member | Description |
 |-----|-----|
-| [AreStartStopCharactersVisible](xref:@ActiproUIRoot.Controls.BarCode.Code93Symbology.AreStartStopCharactersVisible) Property | Gets or sets whether the start/stop characters (*) are visible in the displayed value. |
+| [AreStartStopCharactersVisible](xref:@ActiproUIRoot.Controls.BarCode.Code93Symbology.AreStartStopCharactersVisible) Property | Gets or sets whether the start/stop characters (`*`) are visible in the displayed value. |
 | [Background](xref:@ActiproUIRoot.Controls.BarCode.BarCodeSymbology.Background) Property | Gets or sets the `Brush` to use for rendering the background. |
 | [BarHeight](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology.BarHeight) Property | Gets or sets the desired height of the bars. |
 | [BarWidthRatio](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology.BarWidthRatio) Property | Gets or sets the width ratio of wide lines to narrow lines. |

@@ -24,7 +24,7 @@ Thus via the use fo the service locator architecture, we can register (or custom
 
 ### A Custom Service Type Example
 
-Any custom service types can be registered too.  Say you made a service that returns an object which has a method indicating if a passed filename is supported by the language.  If our language was Java and the passed filename had a `.java` extension, we'd return true.  You could register similar functionality on all the languages you use and publish this service as a type called `IFilenameSupported`.  Then in your application where you maintained a list of available languages, when a file was opened you could enumerate your list of languages, get the `IFilenameSupported` service, pass the filename to its method, and see if `true` was returned.  When you encounter a `true` return value, you know that language supports the file.
+Any custom service types can be registered too.  Say you made a service that returns an object which has a method indicating if a passed filename is supported by the language.  If our language was Java and the passed filename had a *.java* extension, we'd return true.  You could register similar functionality on all the languages you use and publish this service as a type called `IFilenameSupported`.  Then in your application where you maintained a list of available languages, when a file was opened you could enumerate your list of languages, get the `IFilenameSupported` service, pass the filename to its method, and see if `true` was returned.  When you encounter a `true` return value, you know that language supports the file.
 
 ## Creating, Loading, and Using a Language
 

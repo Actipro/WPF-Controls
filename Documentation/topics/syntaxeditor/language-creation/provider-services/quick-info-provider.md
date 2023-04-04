@@ -32,7 +32,7 @@ Implementations of this method should create a new quick info session, store the
 
 ## The QuickInfoProviderBase Base Class
 
-The [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) interface implements [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) and thus is able to process pointer (e.g. pointer) input from within a SyntaxEditor.  There is some complicated code needed to do this processing, which is wrapped up in the handy abstract [QuickInfoProviderBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase) class.
+The [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) interface implements [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) and thus is able to process pointer (e.g., pointer) input from within a SyntaxEditor.  There is some complicated code needed to do this processing, which is wrapped up in the handy abstract [QuickInfoProviderBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase) class.
 
 The easiest way to implement an [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) for a language is to inherit the [QuickInfoProviderBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.QuickInfoProviderBase) class.  Then just override its abstract members.
 

@@ -65,6 +65,11 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 			this.Document.Background = Brushes.Transparent;
 			this.Document.Foreground = this.Foreground;
 
+			// Force Ideal formatting because Display formatting at mixed DPI (e.g. 100% primary monitor, 150% secondary monitor)
+			// could cause RichTextBox to crash after switching monitors and scrolling documents with wrapped lines; especially if a MaxWidth
+			// was assigned to the RichTextBox or one of its parent containers
+			TextOptions.SetTextFormattingMode(this, TextFormattingMode.Ideal);
+
 			ThemeProperties.SetUseBackgroundStates(this, false);
 			ThemeProperties.SetUseBorderStates(this, false);
 

@@ -9,11 +9,11 @@ Data point labels allow you to show the values of a given data point.
 
 ## Visibility
 
-Visibility of data point labels can be controlled using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelVisibility).  LabelVisibility defaults to `Hidden`, in which no labels are visible.
+Visibility of data point labels can be controlled using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelVisibility).  `LabelVisibility` defaults to `Hidden`, in which no labels are visible.
 
 ![Screenshot](../images/appearance-data-point-labels1.png)
 
-This is an example of setting LabelVisibility to `Visible`, in which all labels are visible.
+This is an example of setting `LabelVisibility` to `Visible`, in which all labels are visible.
 
 ```xaml
 <charts:BarSeries LabelVisibility="Visible" .../>
@@ -21,7 +21,7 @@ This is an example of setting LabelVisibility to `Visible`, in which all labels 
 
 ![Screenshot](../images/appearance-data-point-labels2.png)
 
-This is an example of setting LabelVisibility to `PointerAxis`, in which labels are visible on all data points near the mouse pointer on the secondary axis.
+This is an example of setting `LabelVisibility` to `PointerAxis`, in which labels are visible on all data points near the mouse pointer on the secondary axis.
 
 ```xaml
 <charts:BarSeries LabelVisibility="PointerAxis" .../>
@@ -29,13 +29,13 @@ This is an example of setting LabelVisibility to `PointerAxis`, in which labels 
 
 ![Screenshot](../images/appearance-data-point-labels3.png)
 
-This is an example of setting LabelVisibility to `PointerProximity`, in which labels are visible on all data points near the mouse pointer.
+This is an example of setting `LabelVisibility` to `PointerProximity`, in which labels are visible on all data points near the mouse pointer.
 
 ```xaml
 <charts:BarSeries LabelVisibility="PointerProximity" .../>
 ```
 
-LabelVisibility can also be `PointerProximitySingle`, where only the closest data point label to the mouse pointer is visible.
+`LabelVisibility` can also be `PointerProximitySingle`, where only the closest data point label to the mouse pointer is visible.
 
 ```xaml
 <charts:BarSeries LabelVisibility="PointerProximitySingle" .../>
@@ -43,7 +43,7 @@ LabelVisibility can also be `PointerProximitySingle`, where only the closest dat
 
 ## Style
 
-The sytle of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelStyle](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelStyle).  The style `TargetType` must be [DataPointLabel](xref:@ActiproUIRoot.Controls.Charts.DataPointLabel).
+The style of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelStyle](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelStyle).  The style `TargetType` must be [DataPointLabel](xref:@ActiproUIRoot.Controls.Charts.DataPointLabel).
 
 ![Screenshot](../images/appearance-data-point-labels4.png)
 
@@ -70,16 +70,16 @@ This is an example of a custom data point label style. Note how the default labe
 
 ## Formatting
 
-The formatting of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelFormat).  Label format provides four parameters:
+The formatting of the data point labels can be changed using [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase).[LabelFormat](xref:@ActiproUIRoot.Controls.Charts.Primitives.SeriesBase.LabelFormat).  Label format provides the following parameters:
 
-- \{0} is the value on the primary axis.
-- \{1} is the value on the secondary axis.
-- \{2} is the value on the X axis.
-- \{3} is the value on the Y axis.
+- `"{0}"` is the value on the primary axis.
+- `"{1}"` is the value on the secondary axis.
+- `"{2}"` is the value on the X axis.
+- `"{3}"` is the value on the Y axis.
 
 ![Screenshot](../images/appearance-data-point-labels5.png)
 
-This is an example of a custom data point label format. The label format is "X:\{2} Y:\{3}". Note the extra pair of curly-braces used to escape the format string in XAML.
+This is an example of a custom data point label format. The label format is `"X:\{2} Y:\{3}"`. Note the extra pair of curly-braces used to escape the format string in XAML.
 
 ```xaml
 <charts:BarSeries LabelFormat="{}X:{2} Y:{3}" .../>
@@ -91,13 +91,13 @@ There may be situations where [SeriesBase](xref:@ActiproUIRoot.Controls.Charts.P
 
 ![Screenshot](../images/appearance-data-point-labels-label-func.png)
 
-This is an example of a custom data point label func.
+This is an example of a custom data point `LabelFunc`.
 
 ```xaml
 <charts:BarSeries LabelFunc="{Binding CustomLabelFunc}" .../>
 ```
 
- It is bound to a `Func<object,object,object,object,object,string>` property on the DataContext, which has a function pointer with a matching signature assigned to it.
+ It is bound to a `Func<object,object,object,object,object,string>` property on the `DataContext`, which has a function pointer with a matching signature assigned to it.
 
 ```csharp
 private readonly Func<object, object, object, object, object, string> customLabelFunc = GetCustomLabel;

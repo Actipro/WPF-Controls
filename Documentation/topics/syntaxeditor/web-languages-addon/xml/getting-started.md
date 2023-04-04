@@ -58,13 +58,13 @@ protected override void OnExit(ExitEventArgs e) {
 
 ## Configure the XmlSchemaResolver
 
-Next, create a [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) instance and use the methods described in the [Schema Resolver](schema-resolver.md) topic to initialize it with one or more .XSD files.  If you use DTDs for validation instead, you can ignore this step.
+Next, create a [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) instance and use the methods described in the [Schema Resolver](schema-resolver.md) topic to initialize it with one or more *.XSD* files.  If you use DTDs for validation instead, you can ignore this step.
 
 The [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) is used to provide data consumed for supporting automated IntelliPrompt and validation, so it is essential that you configure it with a schema data that describes the XML that will be edited.
 
-.XSD files can be found on the Internet for common XML formats, and custom .XSD's can be created for any other XML format.  The Internet has a lot of great information on how to create .XSD files.  Please do Internet searches if you need assistance building your own .XSD files.
+*.XSD* files can be found on the Internet for common XML formats, and custom *.XSD*'s can be created for any other XML format.  The Internet has a lot of great information on how to create *.XSD* files.  Please do Internet searches if you need assistance building your own *.XSD* files.
 
-This code creates a [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) and loads an .XSD file that is located on the hard drive at the path specified by the `path` variable:
+This code creates a [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) and loads an *.XSD* file that is located on the hard drive at the path specified by the `path` variable:
 
 ```csharp
 XmlSchemaResolver resolver = new XmlSchemaResolver();
@@ -73,7 +73,7 @@ resolver.LoadSchemaFromFile(path);
 
 ## Configure DTD Support
 
-We recommend that if you have the option, you use XML schemas (.XSD files) instead of DTDs to provide validation for your XML.  XML schemas also enable automated IntelliPrompt features like completion lists that aren't available when using DTDs.
+We recommend that if you have the option, you use XML schemas (*.XSD* files) instead of DTDs to provide validation for your XML.  XML schemas also enable automated IntelliPrompt features like completion lists that aren't available when using DTDs.
 
 If you do wish to support DTDs for validation, you must set an option on the [XmlValidator](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlValidator) language service and then register it on the language.  It is not enabled by default since DTDs can sometimes attempt to access external resources.
 

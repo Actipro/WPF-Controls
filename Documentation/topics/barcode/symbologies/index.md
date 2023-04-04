@@ -105,7 +105,7 @@ UPC-E is a linear symbology, used on smaller retail packages where UPC-A bar cod
 
 ![Screenshot](../images/symbology-code39.gif)
 
-Code 39 is a linear symbology, and is one of the first alphanumeric bar codes.
+Code 39 is a linear symbology and is one of the first alphanumeric bar codes.
 
 </td>
 </tr>
@@ -120,7 +120,7 @@ Code 39 is a linear symbology, and is one of the first alphanumeric bar codes.
 
 ![Screenshot](../images/symbology-code39-extended.gif)
 
-Code 39 Extended is a linear symbology, and supports the encoding of many more characters than standard Code 39.
+Code 39 Extended is a linear symbology and supports the encoding of many more characters than standard Code 39.
 
 </td>
 </tr>
@@ -195,7 +195,7 @@ Codabar is a linear symbology, developed in 1972 by Pitney Bowes, Inc.
 
 ![Screenshot](../images/symbology-interleaved2of5.gif)
 
-Interleaved 2 of 5 is a linear symbology, that provides higher density than the Industrial 2 of 5 symbology that it is based on.
+Interleaved 2 of 5 is a linear symbology that provides higher density than the Industrial 2 of 5 symbology that it is based on.
 
 </td>
 </tr>

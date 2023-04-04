@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The XYChart control contains several features that can be used to customize the appearance and data.
+The [XYChart](xref:@ActiproUIRoot.Controls.Charts.XYChart) control contains several features that can be used to customize the appearance and data.
 
 ## Axes
 

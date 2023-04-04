@@ -18,7 +18,7 @@ The primary selection has several properties for determining its caret location.
 | Member | Description |
 |-----|-----|
 | [CaretCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn) Property | Gets the character column of the primary caret within the active view. |
-| [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the the active view.  and adds one to the value for display purposes within a status bar. |
+| [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the active view.  and adds one to the value for display purposes within a status bar. |
 | [CaretOffset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset) Property | Gets or sets the offset of the primary caret within the active view. |
 | [CaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) Property | Gets or sets the [TextPosition](xref:ActiproSoftware.Text.TextPosition) of the primary caret within the active view. |
 

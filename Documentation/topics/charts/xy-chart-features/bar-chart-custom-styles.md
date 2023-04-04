@@ -35,11 +35,11 @@ This example shows a chart the bars styled uniquely.
 
 ## Custom Template
 
-For a more dramatic change, you can retemplate the bar content completely by using [BarSeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase).[BarTemplate](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase.BarTemplate).
+For a more dramatic change, you can re-template the bar content completely by using [BarSeriesBase](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase).[BarTemplate](xref:@ActiproUIRoot.Controls.Charts.Primitives.BarSeriesBase.BarTemplate).
 
 ![Screenshot](../images/appearance-bar-style2.png)
 
-This example shows a chart the bars retemplated uniquely.
+This example shows a chart the bars re-templated uniquely.
 
 ```xaml
 <charts:XYChart Width="200" Height="150" Margin="20" HorizontalAlignment="Left">
@@ -52,7 +52,7 @@ This example shows a chart the bars retemplated uniquely.
 		</charts:BarSeries.BarStyle>
 		<charts:BarSeries.BarTemplate>
 			<DataTemplate>
-				<Viewbox shared:ClipToBoundsBehavior.ClipToBounds="True" StretchDirection="DownOnly" 
+				<Viewbox shared:ClipToBoundsBehavior.ClipToBounds="True" StretchDirection="DownOnly"
 								Stretch="UniformToFill" Margin="0" VerticalAlignment="Bottom" >
 					<StackPanel Width="20" Orientation="Vertical">
 						<StackPanel.Resources>

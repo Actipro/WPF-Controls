@@ -11,10 +11,10 @@ All strings that are displayed in the user interface can be customized and local
 
 All strings that are displayed in the user interface are available from static methods on the `ActiproSoftware.Products.Docking.SR` class.  Use that class to customize string resources as well.
 
-> [!NOTE]
+> [!TIP]
 > String resource customization is described in great detail in the general [Customizing String Resources](../../customizing-string-resources.md) topic.  Please see that topic for in-depth information related to localization of string resources.
 
-An enumation named `SRName` includes a list of all the string resource names. @if (wpf) {A XAML markup extension named `SRExtension` is available for use within XAML templates to access string resources.}
+An enumeration named `SRName` includes a list of all the string resource names. @if (wpf) {A XAML markup extension named `SRExtension` is available for use within XAML templates to access string resources.}
 
 @if (wpf) {
 

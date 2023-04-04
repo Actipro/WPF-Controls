@@ -60,7 +60,7 @@ See the [Working with Popups](working-with-popups.md) topic for more information
 
 ## Key Tips
 
-The control base classes all have built-in support for key tips, which are little popups that display when `Alt` is pressed and allow for quick keyboard access to each control.
+The control base classes all have built-in support for key tips, which are little popups that display when <kbd>Alt</kbd> is pressed and allow for quick keyboard access to each control.
 
 Please see the [Key Tips](../layout-features/key-tips.md) topic for detailed information on working with key tips.
 

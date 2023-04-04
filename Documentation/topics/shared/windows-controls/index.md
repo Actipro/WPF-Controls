@@ -9,7 +9,7 @@ The [ActiproSoftware.Windows.Controls](xref:@ActiproUIRoot.Controls) namespace c
 
 ## The AdvancedTextBlock Control
 
-The [AdvancedTextBlock](advancedtextblock.md) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e. filter match results).
+The [AdvancedTextBlock](advancedtextblock.md) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e., filter match results).
 
 ## The AnimatedExpander Control
 

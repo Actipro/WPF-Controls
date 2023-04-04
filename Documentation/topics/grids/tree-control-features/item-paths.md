@@ -24,9 +24,9 @@ public override string GetPath(object item) {
 
 ## Setting the Path Separator
 
-The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[PathSeparator](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.PathSeparator) property is what defines the delimiter text that separates each item's path segment to build a full path.  Its default value is `\`.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[PathSeparator](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.PathSeparator) property is what defines the delimiter text that separates each item's path segment to build a full path.  Its default value is `"\"`.
 
-## Getting an Item From a Full Path
+## Getting an Item from a Full Path
 
 If you know the full path of an item and wish to obtain the item itself, you can call the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[GetItemByFullPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.GetItemByFullPath*) method, passing in the full path as an argument.
 
@@ -36,7 +36,7 @@ If you have an item reference and wish to obtain its full path, you can call the
 
 ## Other Operations by Full Path
 
-This methods can be executed by supplying a full path.
+These methods can be executed by supplying a full path.
 
 | Member | Description |
 |-----|-----|

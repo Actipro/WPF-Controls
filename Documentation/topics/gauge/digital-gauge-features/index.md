@@ -5,11 +5,11 @@ order: 1
 ---
 # Overview
 
-[DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) displays a specified value using segemented characters which are custom rendered.
+[DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) displays a specified value using segmented characters which are custom rendered.
 
 ## Value
 
-The text displayed by the [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) is obtained from a "value" `Object`. If the value is a `String`, then the text is display as-is. If the value is a `Double`, then it is rounded down and then converted into a `String`. All other objects will be converted to a `String` using the `ToString` method.
+The text displayed by the [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) is obtained from a "value" object. If the value is a `String`, then the text is displayed as-is. If the value is a `Double`, then it is rounded down and then converted into a `String`. All other objects will be converted to a `String` using the `ToString` method.
 
 ## Frames
 
@@ -25,7 +25,7 @@ See the [Characters](characters.md) topic for more information.
 
 When using a [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) to display real-time data, it is possible that the value displayed by the gauge will change to quickly for the user to read the individual values. The [RefreshRate](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge.RefreshRate) property can be used to limit the number of updates displayed to the user.
 
-The refresh rate is specified as the amount of time to wait between updates. Therefore, if the refresh rate is set to `500` milliseconds, then there will be two updates to the display every second. If several hundreds value changes are made during that second, then only two of the values will actually be displayed.
+The refresh rate is specified as the amount of time to wait between updates. Therefore, if the refresh rate is set to `500` milliseconds, then there will be two updates to the display every second. If hundreds of value changes are made during that second, then only two of the values will actually be displayed.
 
 ## Text Scrolling
 
@@ -35,6 +35,6 @@ The [ScrollInterval](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge.ScrollInter
 
 ## Led State
 
-The led lights rendered by the [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) support three states: on (default), off, and blinking. This functionality mimics the states supported by the [Led](xref:@ActiproUIRoot.Controls.Gauge.Led) control.
+The LED lights rendered by the [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) support three states: on (default), off, and blinking. This functionality mimics the states supported by the [Led](xref:@ActiproUIRoot.Controls.Gauge.Led) control.
 
 See the [Led Features\Led Light](../led-features/led-light.md) topic for more information.

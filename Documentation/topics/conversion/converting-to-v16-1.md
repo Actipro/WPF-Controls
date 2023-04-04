@@ -129,7 +129,7 @@ While properties like [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.Docki
 
 ### Prism Integration Changes
 
-In the old version, we maintained and shipped a separate `ActiproSoftware.Docking.Interop.Prism.Wpf.dll` assembly that contained some Prism integration logic.  This assembly's source code was also located at [http://actipro.codeplex.com](http://actipro.codeplex.com).  The latest source code of that assembly, compiled for Prism 5.0 and Actipro WPF Controls v15.1 is still available there.
+In the old version, we maintained and shipped a separate *ActiproSoftware.Docking.Interop.Prism.Wpf.dll* assembly that contained some Prism integration logic.  This assembly's source code was also located at [http://actipro.codeplex.com](http://actipro.codeplex.com).  The latest source code of that assembly, compiled for Prism 5.0 and Actipro WPF Controls v15.1 is still available there.
 
 Starting in this version, we no longer ship a newer version of that assembly but do include everything you need for Prism 6.1 compatibility right in the Prism integration sample that comes with the WPF controls.  This way, you are able to easily see all the source code, copy it to your own application, and customize it as needed.  The same features as before are available in this new open source offering, and it works with the latest Prism and Actipro WPF Controls versions.
 
@@ -354,8 +354,8 @@ The list below is the entire detailed update log, including breaking changes.
 - Option to close tab on middle-click.
 - Show any custom contextual content.
 - Read-only flag can auto-set a read-only contextual content.
-- Keyboard shortcuts (e.g. Ctrl+1) can directly access normal tabs by tab number.
-- Keyboard shortcuts (e.g. Ctrl+Alt+1) can directly access pinned tabs by tab number.
+- Keyboard shortcuts (e.g., Ctrl+1) can directly access normal tabs by tab number.
+- Keyboard shortcuts (e.g., Ctrl+Alt+1) can directly access pinned tabs by tab number.
 - Optional Ctrl+Tab and Ctrl+Shift+Tab support to switch tabs.
 
 ## ActiproSoftware.Legacy.Wpf.dll No Longer Installed By Default
@@ -366,7 +366,7 @@ If you still need to use this assembly in the meantime, you must check the 'Cont
 
 ## Metro Themes Merged Into Shared Library
 
-With the rise in popularity of Metro-like themes in general due to Windows 10/8.x adoption, we have merged the Metro themes from what used to be in the `ActiproSoftware.Themes.Metro.Wpf.dll` and placed them directly within the Shared Library.  There is no more `ActiproSoftware.Themes.Metro.Wpf.dll` assembly packaged with the WPF Controls.
+With the rise in popularity of Metro-like themes in general due to Windows 10/8.x adoption, we have merged the Metro themes from what used to be in the *ActiproSoftware.Themes.Metro.Wpf.dll* and placed them directly within the Shared Library.  There is no more *ActiproSoftware.Themes.Metro.Wpf.dll* assembly packaged with the WPF Controls.
 
 Since they are located directly in the Shared Library now, Metro themes no longer need to be explicitly registered via a call to the `ThemesMetroThemeCatalogRegistrar.Register` method.
 
@@ -374,7 +374,7 @@ Also, now Windows 10 and 8.x systems will default to Metro Light theme unless ot
 
 To handle the breaking changes above:
 
-- Remove any references to the `ActiproSoftware.Themes.Metro.Wpf.dll` assembly.
+- Remove any references to the *ActiproSoftware.Themes.Metro.Wpf.dll* assembly.
 - Remove any calls to the `ThemesMetroThemeCatalogRegistrar.Register` method.
 - Continue setting the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to any Metro theme listed in the [Themes Getting Started](../themes/getting-started.md) topic as appropriate.  Or specifically set the current theme to another non-Metro theme if you always wish for a non-Metro theme to be used on Windows 10/8.x systems.
 
@@ -382,11 +382,11 @@ The updates for v16.1 also include multiple new Metro Light and Metro White acce
 
 ## Luna/Royale Themes Split Into Separate Library
 
-Now that Windows XP is past its Microsoft support lifetime, we have removed the XP-related themes (LunaNormalColor, LunaHomestead, LunaMetallic, and RoyaleNormalColor) from the Shared Library and placed them in a new `ActiproSoftware.Themes.Luna.Wpf.dll` assembly.
+Now that Windows XP is past its Microsoft support lifetime, we have removed the XP-related themes (LunaNormalColor, LunaHomestead, LunaMetallic, and RoyaleNormalColor) from the Shared Library and placed them in a new *ActiproSoftware.Themes.Luna.Wpf.dll* assembly.
 
 If you wish to use these deprecated XP-like themes in your application, you must perform these steps:
 
-- Add a reference to the `ActiproSoftware.Themes.Luna.Wpf.dll` assembly.
+- Add a reference to the *ActiproSoftware.Themes.Luna.Wpf.dll* assembly.
 - Call the `ThemesLunaThemeCatalogRegistrar.Register` method during app startup.
 - Set the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to an appropriate Luna theme.
 
@@ -397,7 +397,7 @@ It is recommended that most applications move to one of the Metro themes from Lu
 
 ## WindowChrome Updated to Only Allow Aero Glass on Windows 7 and Vista
 
-In the previous version, Aero glass effects were allowed on Windows 8.x and 10.  However in Windows 10, they don't render correctly.  Unfortunately .NET prevents you from detecting if your app is running in Windows 10, unless you specifically add a special `app.manifest`.  Since Aero glass isn't really used on Windows 8.x, we updated WindowChrome to only allow Aero glass to be enabled on Windows 7 and Vista, regardless of what the `WindowChrome.IsGlassEnabled` property value is.
+In the previous version, Aero glass effects were allowed on Windows 8.x and 10.  However in Windows 10, they don't render correctly.  Unfortunately .NET prevents you from detecting if your app is running in Windows 10, unless you specifically add a special *app.manifest*.  Since Aero glass isn't really used on Windows 8.x, we updated WindowChrome to only allow Aero glass to be enabled on Windows 7 and Vista, regardless of what the `WindowChrome.IsGlassEnabled` property value is.
 
 ## RibbonWindow.IsGlassEnabled Is No Longer Nullable and Defaults to False
 

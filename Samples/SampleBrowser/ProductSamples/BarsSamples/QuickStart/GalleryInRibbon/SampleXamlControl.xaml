@@ -1,0 +1,95 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon.SampleXamlControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+
+			<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="CommonDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<!-- Define a style to bind BarGalleryItem to its view model -->
+			<Style x:Key="BarGalleryItemStyle" TargetType="{x:Type bars:BarGalleryItem}">
+				<Setter Property="LayoutBehavior" Value="{Binding LayoutBehavior}" />
+				<Setter Property="Label" Value="{Binding Label}" />
+				<Setter Property="ToolTip" Value="{Binding Description}" />
+			</Style>
+
+		</ResourceDictionary>
+
+	</UserControl.Resources>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Control -->
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
+
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+
+				<bars:RibbonGroup Key="RibbonGallery" SmallImageSource="/Images/Icons/ColorPicker16.png">
+
+					<!-- Define a Gallery that is hosted directly in the Ribbon -->
+					<bars:RibbonGallery Key="ColorPicker" LargeImageSource="/Images/Icons/ColorPicker32.png" SmallImageSource="/Images/Icons/ColorPicker16.png"
+										CanCategorizeOnMenu="{Binding Options.CanCategorizeOnMenu}"
+										CanFilterOnMenu="{Binding Options.CanFilterOnMenu}"
+										CategoryPropertyName="Category"
+										Command="{Binding SetColorCommand}"
+										MaxColumnCount="{Binding Options.MaxRibbonColumnCount}"
+										MinLargeColumnCount="{Binding Options.MinLargeRibbonColumnCount}"
+										MinMediumColumnCount="{Binding Options.MinMediumRibbonColumnCount}"
+										MinMenuColumnCount="{Binding Options.MinMenuColumnCount}"
+										MaxMenuColumnCount="{Binding Options.MaxMenuColumnCount}"
+										MenuResizeMode="{Binding Options.MenuResizeMode}"
+										ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+										ItemSpacing="{Binding Options.ItemSpacing}"
+										ItemsSource="{Binding ColorItems}"
+										ItemTemplate="{Binding Options.ItemTemplate}"
+										UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}">
+
+						<!-- Define additional menu items to be included when the gallery is displayed in a menu -->
+						<bars:RibbonGallery.MenuItems>
+							<x:Array Type="{x:Type bars:BarMenuItem}">
+								<bars:BarMenuItem Key="OneRowLayout" Label="1-Row Layout" Command="{Binding ConfigureOneRowLayoutCommand}" SmallImageSource="{StaticResource OneRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 1 row."/>
+								<bars:BarMenuItem Key="TwoRowLayout" Label="2-Row Layout" Command="{Binding ConfigureTwoRowLayoutCommand}" SmallImageSource="{StaticResource TwoRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 2 rows."/>
+								<bars:BarMenuItem Key="ThreeRowLayout" Label="3-Row Layout" Command="{Binding ConfigureThreeRowLayoutCommand}" SmallImageSource="{StaticResource ThreeRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 3 rows."/>
+							</x:Array>
+						</bars:RibbonGallery.MenuItems>
+
+					</bars:RibbonGallery>
+				</bars:RibbonGroup>
+
+				<bars:RibbonGroup Key="Layout" CanAutoCollapse="False">
+
+					<!-- Define buttons for changing the 1-, 2-, and 3-row layouts -->
+					<bars:RibbonControlGroup>
+						<bars:BarButton Key="OneRowLayout" Label="1-Row Layout" Command="{Binding ConfigureOneRowLayoutCommand}" LargeImageSource="{StaticResource OneRowLayoutLargeImage}" SmallImageSource="{StaticResource OneRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 1 row."/>
+						<bars:BarButton Key="TwoRowLayout" Label="2-Row Layout" Command="{Binding ConfigureTwoRowLayoutCommand}" LargeImageSource="{StaticResource TwoRowLayoutLargeImage}" SmallImageSource="{StaticResource TwoRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 2 rows."/>
+						<bars:BarButton Key="ThreeRowLayout" Label="3-Row Layout" Command="{Binding ConfigureThreeRowLayoutCommand}" LargeImageSource="{StaticResource ThreeRowLayoutLargeImage}" SmallImageSource="{StaticResource ThreeRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 3 rows."/>
+					</bars:RibbonControlGroup>
+
+				</bars:RibbonGroup>
+
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+
+		<TextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

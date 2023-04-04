@@ -1,0 +1,51 @@
+﻿<UserControl
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus.MenuPopupUserControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	bars:BarControlService.IsMenuControl="True"
+	>
+	<!-- 
+		IMPORTANT:
+	
+		BarsControlService.IsMenuControl must be set to True to allow this control to appear directly
+		in a menu without being wrapped by a MenuItem
+	-->
+	
+	<StackPanel Width="200" Margin="15">
+		<TextBlock Text="Name:" />
+		<TextBox x:Name="nameTextBox" Margin="0,3,0,0" />
+
+		<TextBlock Margin="0,7,0,0" Text="Position:" />
+		<ComboBox x:Name="positionComboBox" Margin="0,3,0,0" SelectedValuePath="Content">
+			<ComboBoxItem>Employee</ComboBoxItem>
+			<ComboBoxItem>Contractor</ComboBoxItem>
+			<ComboBoxItem>Manager</ComboBoxItem>
+		</ComboBox>
+
+		<TextBlock Margin="0,7,0,0" Text="E-mail address:" />
+		<TextBox x:Name="emailTextBox" Margin="0,3,0,0" />
+
+		<StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+			
+			<!--
+				IMPORTANT:
+			
+				BarButton (unlike native Button) is designed for use on Bars controls and will, by default, close any popup
+				its hosted on when it is clicked, but the StaysOpenOnClick behavior (default = False) can be set to True
+				to manually close a popup using PopupManager
+			-->
+			<bars:BarButton x:Name="saveButton" MinWidth="70" Label="Save" HorizontalContentAlignment="Center" 
+							themes:ThemeProperties.IsTransparencyModeEnabled="False" Click="OnSaveButtonClick" StaysOpenOnClick="True" />
+			<bars:BarButton x:Name="cancelButton" Margin="7,0,0,0" MinWidth="70" Label="Cancel" HorizontalContentAlignment="Center" 
+							themes:ThemeProperties.IsTransparencyModeEnabled="False" Click="OnCancelButtonClick" />
+		</StackPanel>
+
+		<TextBlock Margin="0,7,0,0" FontStyle="Italic" Text="*All fields are required" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHigherBrushKey}}"/>
+
+		<TextBlock Margin="0,20,0,0" Text="Demo options:" />
+		<CheckBox x:Name="showConfirmationCheckBox" IsChecked="True" Margin="0,3,0,0">Show 'Save' confirmation</CheckBox>
+
+	</StackPanel>
+</UserControl>

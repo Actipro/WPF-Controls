@@ -1,0 +1,33 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPickers.SampleMvvmControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPickers"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+		<ResourceDictionary Source="CommonDictionary.xaml" />
+
+	</UserControl.Resources>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Configure the Ribbon to be bound to a view model with a style that automatically binds various Ribbon properties to the view model -->
+		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+		<TextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with MVVM" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+</local:SampleControlBase>

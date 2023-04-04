@@ -73,7 +73,7 @@ public partial class App : Application {
         // Call the base method
     	base.OnStartup(e);
     }
-	
+
 }
 ```
 
@@ -235,10 +235,10 @@ There are many resources on the web describing how the non-Actipro WPF's themes 
 - Aero2.NormalColor.xaml - Windows 8.x/10 default theme
 - AeroLite.NormalColor.xaml - Windows Server 2012 default theme
 
-Basically if the user is running Windows XP with the olive green theme active, the `Luna.Homestead.xaml` file, if found, will be loaded so that anything in the application can use its resources (styles, brushes, etc.).  These resources are loaded like this on demand, when WPF encounters the first control or `ComponentResourceKey` lookup corresponding to the given assembly.  Also note that the `System.Windows.ThemeInfoAttribute` must be assigned to your assembly context indicating that themed-resources are in the assembly.  See the MSDN for documentation on this attribute.
+Basically if the user is running Windows XP with the olive green theme active, the *Luna.Homestead.xaml* file, if found, will be loaded so that anything in the application can use its resources (styles, brushes, etc.).  These resources are loaded like this on demand, when WPF encounters the first control or `ComponentResourceKey` lookup corresponding to the given assembly.  Also note that the `System.Windows.ThemeInfoAttribute` must be assigned to your assembly context indicating that themed-resources are in the assembly.  See the MSDN for documentation on this attribute.
 
 > [!NOTE]
-> With Windows 10-based systems being the primary operating system used at this point, much of the system-based theming described above is no obsolete.  Actipro controls now all simply implement a single `Generic.xaml` file for their styles/templates and theming is based on the Actipro theme definition used.
+> With Windows 10-based systems being the primary operating system used at this point, much of the system-based theming described above is no obsolete.  Actipro controls now all simply implement a single *Generic.xaml* file for their styles/templates and theming is based on the Actipro theme definition used.
 
 ## Theme Catalogs
 

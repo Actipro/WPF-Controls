@@ -154,9 +154,9 @@ The [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost).[AutoHidePopupTool
 
 @if (wpf) {
 
-## Preventing an Auto-Hide Popup From Closing
+## Preventing an Auto-Hide Popup from Closing
 
-Auto-hide popups will close by default after a brief delay whenever the keyboard focus is moved outside of them.  This can be a problem in scenarios where a dialog `Window` is opened from the tool window displayed in the auto-hide popup.  In that scenario, the keyboard focus moves to the dialog and the auto-hide popup is closed.  However you may wish to keep the auto-hide popup visible while the dialog is displayed so that focus properly returns to it when the dialog is closed.
+Auto-hide popups will close by default after a brief delay whenever the keyboard focus is moved outside of them.  This can be a problem in scenarios where a dialog `Window` is opened from the tool window displayed in the auto-hide popup.  In that scenario, the keyboard focus moves to the dialog and the auto-hide popup is closed.  However, you may wish to keep the auto-hide popup visible while the dialog is displayed so that focus properly returns to it when the dialog is closed.
 
 This code shows how to display a dialog and keep any current auto-hide popup open:
 

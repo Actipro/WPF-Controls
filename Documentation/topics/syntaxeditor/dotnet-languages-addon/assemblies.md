@@ -15,7 +15,7 @@ There are two main types of assemblies: project assemblies and binary assemblies
 
 Project assemblies are similar in concept to a Visual Studio project in that they can track reflection data for source code files and can maintain a list of other [IAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly) references related to the project.  These references can be to other project assemblies (similar to Visual Studio when a solution hosts multiple projects that are dependent upon each other) or can be to binary assemblies.
 
-Binary assemblies store reflection data for pre-compiled binary .dll files such as `mscorlib.dll`.
+Binary assemblies store reflection data for pre-compiled binary *.dll* files such as *mscorlib.dll*.
 
 Since [IAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly) and the rest of the types used for reflection in this add-on are all implemented as interfaces, it is possible to create other custom assembly types when there are special need scenarios.
 
@@ -36,7 +36,7 @@ This diagram shows the general structure of a project assembly:
 
 ![Screenshot](../images/dotnet-addon-project-assembly.png)
 
-In the diagram, there are three source files loaded: `Foo1.cs`, `Foo2.cs`, and `Bar.cs`.  The first two files contain a partial class named `Foo`, so the two class declarations are merged together in the reflection data tracked by the project assembly.  The last file contains a `Bar` class along with a nested type named `Nested`.  The diagram also shows that there are references made to other assemblies such as `mscorlib.dll`, `System.dll`, etc.  All of this data is tracked live and can be updated on-the-fly as code changes or references need to be added/removed.
+In the diagram, there are three source files loaded: *Foo1.cs*, *Foo2.cs*, and *Bar.cs*.  The first two files contain a partial class named `Foo`, so the two class declarations are merged together in the reflection data tracked by the project assembly.  The last file contains a `Bar` class along with a nested type named `Nested`.  The diagram also shows that there are references made to other assemblies such as *mscorlib.dll*, *System.dll*, etc.  All of this data is tracked live and can be updated on-the-fly as code changes or references need to be added/removed.
 
 When the resolver executes, it uses all of the above information along with language-specific rules to try and find the best match for a type, member, etc., even if that match is in a referenced assembly.
 
@@ -91,7 +91,7 @@ language.RegisterProjectAssembly(project);
 
 ## Managing Assembly References
 
-For the resolver and automated IntelliPrompt features to work properly, the appropriate assembly references must be added to the project assembly.  At a minimum, a reference to `mscorlib.dll` should always be added since that is where native types like `Int32`, `String`, etc. are defined.  The resolver only knows about the assemblies that are referenced by the project, so if a reference is made to a type `Foo` but there is no source file or referenced assembly that defines `Foo`, the resolution of that reference will fail.
+For the resolver and automated IntelliPrompt features to work properly, the appropriate assembly references must be added to the project assembly.  At a minimum, a reference to *mscorlib.dll* should always be added since that is where native types like `Int32`, `String`, etc. are defined.  The resolver only knows about the assemblies that are referenced by the project, so if a reference is made to a type `Foo` but there is no source file or referenced assembly that defines `Foo`, the resolution of that reference will fail.
 
 Always think about project assemblies in terms of being equivalient to Visual Studio projects.  If an assembly reference would be needed to support a type or member in code, then a reference to the assembly should be made in the project assembly.
 
@@ -391,7 +391,7 @@ The [SourceFile](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implement
 
 ## Binary Assemblies
 
-Binary assemblies, represented by the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) interface, store reflection data for pre-compiled binary .dll files such as `mscorlib.dll`.  They can be created for any `System.Reflection.Assembly` instance, one in memory or one on disk.
+Binary assemblies, represented by the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) interface, store reflection data for pre-compiled binary *.dll* files such as *mscorlib.dll*.  They can be created for any `System.Reflection.Assembly` instance, one in memory or one on disk.
 
 Similar to project assemblies, binary assemblies also have their own references to other assemblies.  However in binary assemblies, the references are more informational.
 
@@ -411,7 +411,7 @@ In scenarios like this, it might be useful to take advantage of the optional Ros
 
 ## Loading Binary Assemblies with Roslyn Extensions
 
-Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.1 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
+Our optional Roslyn extensions are fully capable of loading [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly) data for a particular file system assembly file.  This binary assembly can then be referenced by a project assembly as described in the 'Managing Assembly References' section earlier in this topic.  The only requirements are that your app uses .NET 4.6.2 or later, references our `ActiproSoftware.Text.Addons.DotNet.Roslyn.@@PlatformAssemblySuffix` assembly, and has a NuGet package reference to 'Microsoft.CodeAnalysis'.
 
 This code shows how to load a binary assembly with our Roslyn extensions and then add it as a reference to a project assembly:
 
@@ -434,7 +434,7 @@ Assembly repositories have several @if (winrt) {[LoadAsync](xref:ActiproSoftware
 The assembly repository's cache may write to files or some other mechanism depending on the implementation.  Regardless it is important to call the @if (winrt) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCacheAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCacheAsync)}@if (wpf winforms) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*)} method to prune invalid data from the cache upon application shutdown.
 
 > [!NOTE]
-> Since assemblies can change over time (when a .dll is recompiled or deleted), it is important to make sure the cache removes data that is no longer valid via a call to @if (winrt) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCacheAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCacheAsync)}@if (wpf winforms) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*)} when the application is shut down.
+> Since assemblies can change over time (when a *.dll* is recompiled or deleted), it is important to make sure the cache removes data that is no longer valid via a call to @if (winrt) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCacheAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCacheAsync)}@if (wpf winforms) {[IAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository).[PruneCache](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyRepository.PruneCache*)} when the application is shut down.
 
 ### Reference Tracking
 
@@ -450,7 +450,7 @@ If no cache path is set on the repository then it will not attempt to save or lo
 
 @if (wpf) {
 
-This table illustrates the preferred catch path settings for [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) based on the type of application and its trust level. 
+This table illustrates the preferred catch path settings for [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) based on the type of application and its trust level.
 
 }
 
@@ -489,7 +489,7 @@ AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(a
 This code is executed at application startup and creates a [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) for use as the ambient assembly repository.  Note that it uses an application-specific data folder path that you should update as appropriate for your application.
 
 ```csharp
-string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 	@"YourCompanyName\YourApplicationName\Assembly Repository");
 AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(appDataPath);
 ```

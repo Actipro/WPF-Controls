@@ -41,7 +41,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Items Must Be SolidColorBrushes
 
-The items of this control must be of type `SolidColorBrush`.  This makes it easy to use the selected color directly when you apply it to other controls.  And it also means that attached properties (like for screen tips, categorization and layout behavior) can be be applied to each item.
+The items of this control must be of type `SolidColorBrush`.  This makes it easy to use the selected color directly when you apply it to other controls.  And it also means that attached properties (like for screen tips, categorization and layout behavior) can be applied to each item.
 
 ## Auto-Generating Lighter/Darker Shades of Colors
 

@@ -5,11 +5,11 @@ order: 6
 ---
 # Multiple Series
 
-Pie charts and donut charts can contain multiple series, displayed as cocentric rings.  They also support hierarchical data, displaying a child ring outside or inside the parent.
+Pie charts and donut charts can contain multiple series, displayed as concentric rings.  They also support hierarchical data, displaying a child ring outside or inside the parent.
 
 ## Stacked Pie Series
 
-To display multiple pie series, simply specify them as [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).Content the same way you would specify a single pie series:
+To display multiple pie series, simply specify them as [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).`Content` the same way you would specify a single pie series:
 
 ```xaml
 <charts:PieChart>
@@ -35,7 +35,9 @@ The size of pie series can be adjusted using the [PieSeries](xref:@ActiproUIRoot
 
 Data can be displayed hierarchically, so that inside or outside of each pie slice there are child slices. To display children, you must set [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries).[ChildrenPath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildrenPath). `ChildrenPath` is a property path to an item on your data source that contains an `IEnumerable` of child items. At a minimum, children must have values, so [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries).[ChildSliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceValuePath) must be set as well, and resolve to a numeric value.
 
-There are numerous properties on [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries) that have a matching counterpart for child slices: [ChildLabelBrush](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelBrush), [ChildLabelPosition](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelPosition), [ChildLabelStyle](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelStyle), [ChildSliceLabelFormat](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceLabelFormat), [ChildSliceLabelFunc](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceLabelFunc), [ChildSliceTitlePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceTitlePath), and [ChildSliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceValuePath) are all properties that have a matching counterpart for parent pie slices.  Consult the relevant sections at [Pie Chart Features](index.md) to understand how these properties work.
+There are numerous properties on [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries) that have a matching counterpart for child slices: [ChildLabelBrush](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelBrush), [ChildLabelPosition](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelPosition), [ChildLabelStyle](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildLabelStyle), [ChildSliceLabelFormat](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceLabelFormat), [ChildSliceLabelFunc](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceLabelFunc), [ChildSliceTitlePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceTitlePath), and [ChildSliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceValuePath) are all properties that have a matching counterpart for parent pie slices.
+
+See the relevant sections of the [Pie Chart Features](index.md) topic to better understand how these properties work.
 
 ### Example
 
@@ -59,7 +61,7 @@ public class Person {
 
 ![Screenshot](../images/pie-multiple-series3.png)
 
- Note how the `Person` class has a `Employees` property, which is also an `IEnumerable` of `Person`. Let's use that as our child data source for each pie slice.  We also need to set the [ChildSliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceValuePath) and the [ChildSliceTitlePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceTitlePath).
+ Note how the `Person` class has an `Employees` property, which is also an `IEnumerable` of `Person`. Let's use that as our child data source for each pie slice.  We also need to set the [ChildSliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceValuePath) and the [ChildSliceTitlePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ChildSliceTitlePath).
 
 ```xaml
 <charts:PieChart>

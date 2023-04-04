@@ -21,7 +21,7 @@ See the [Adornment Manager Provider](adornment-manager-provider.md) topic for mo
 
 ## IntelliPrompt Completion Provider
 
-Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to `Ctrl+Space`.
+Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to <kbd>Ctrl</kbd>+<kbd>Space</kbd>.
 
 See the [IntelliPrompt Completion Provider](completion-provider.md) topic for more information.
 

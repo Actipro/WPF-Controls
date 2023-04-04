@@ -41,9 +41,9 @@ The event arguments for the changing event allow for the tab change to be cancel
 
 ## Selecting a Tab with the Keyboard
 
-If you have defined a [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText) on a `Tab`, that tab can quickly be accessed by holding `Alt` and typing the `KeyTipAccessText` letter.
+If you have defined a [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.KeyTipAccessText) on a `Tab`, that tab can quickly be accessed by holding <kbd>Alt</kbd> and typing the `KeyTipAccessText` letter.
 
-For instance, if you assigned a `KeyTipAccessText` of `H` to your `Home` tab, pressing `Alt+H` will jump to that tab and start key tip mode for the controls within that tab.
+For instance, if you assigned a `KeyTipAccessText` of `H` to your **Home** tab, pressing <kbd>Alt</kbd>+<kbd>H</kbd> will jump to that tab and start key tip mode for the controls within that tab.
 
 ## Disabling Tabs
 
@@ -59,6 +59,6 @@ This code sample shows how to easily define `Group` controls within a `Tab` in X
 	<ribbon:Group ImageSourceSmall="/Resources/Images/FontColor16.png" Label="Font" KeyTipAccessText="ZF" />
 	<ribbon:Group ImageSourceSmall="/Resources/Images/ParagraphCenter16.png" Label="Paragraph" KeyTipAccessText="ZP" />
 	<ribbon:Group ImageSourceSmall="/Resources/Images/StylesGroup16.png" Label="Styles" KeyTipAccessText="ZS" />
-	<ribbon:Group ImageSourceSmall="/Resources/Images/Find16.png" Label="Editing" KeyTipAccessText="ZN" />					
+	<ribbon:Group ImageSourceSmall="/Resources/Images/Find16.png" Label="Editing" KeyTipAccessText="ZN" />
 </ribbon:Tab>
 ```

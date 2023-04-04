@@ -13,6 +13,12 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		#region Dependency Properties
 		
 		/// <summary>
+		/// Identifies the <see cref="CanSnapToChangePrecision"/> dependency property.  This field is read-only.
+		/// </summary>
+		/// <value>The identifier for the <see cref="CanSnapToChangePrecision"/> dependency property.</value>
+		public static readonly DependencyProperty CanSnapToChangePrecisionProperty = DependencyProperty.Register("CanSnapToChangePrecision", typeof(bool), typeof(DataGridDoubleColumn), new PropertyMetadata(true));
+		
+		/// <summary>
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
 		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
@@ -105,6 +111,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		protected override void ApplyStandardValues(FrameworkElement targetElement) {
 			base.ApplyStandardValues(targetElement);
 			if (targetElement is DoubleEditBox) {
+				this.ApplyValue(CanSnapToChangePrecisionProperty, targetElement, DoubleEditBox.CanSnapToChangePrecisionProperty);
 				this.ApplyValue(DefaultValueProperty, targetElement, DoubleEditBox.DefaultValueProperty);
 				this.ApplyValue(FormatProperty, targetElement, DoubleEditBox.FormatProperty);
 				this.ApplyValue(IsNaNAllowedProperty, targetElement, DoubleEditBox.IsNaNAllowedProperty);
@@ -116,6 +123,26 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 				this.ApplyValue(PickerKindProperty, targetElement, DoubleEditBox.PickerKindProperty);
 				this.ApplyValue(RoundingDecimalPlaceProperty, targetElement, DoubleEditBox.RoundingDecimalPlaceProperty);
 				this.ApplyValue(SmallChangeProperty, targetElement, DoubleEditBox.SmallChangeProperty);
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets whether the value should be snapped to the precision of the incremental change value prior to applying the increment. 
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the value should be snapped to the precision of the incremental change value prior to applying the increment; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		/// <remarks>
+		/// When <c>true</c>, a value of <c>1.24</c> with change value <c>0.1</c> would result in <c>1.3</c>.
+		/// When <c>false</c>, a value of <c>1.24</c> with change value <c>0.1</c> would result in <c>1.34</c>.
+		/// </remarks>
+		public bool CanSnapToChangePrecision {
+			get {
+				return (bool)this.GetValue(CanSnapToChangePrecisionProperty);
+			}
+			set {
+				this.SetValue(CanSnapToChangePrecisionProperty, value);
 			}
 		}
 		

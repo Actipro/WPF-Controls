@@ -1,0 +1,73 @@
+﻿<!--
+
+RIBBON GETTING STARTED SERIES - STEP 3
+
+STEP SUMMARY:
+
+	Before we can start adding controls to the Ribbon, we need to establish the supporting
+	classes.  This starts by defining unique keys that can be used to refer to each control.
+	Then we need need to define a view model that will represent each control.
+	
+	Refer to 'SampleBarControlKeys.cs' for more information on the string-based keys.
+	
+	Refer to 'SampleBarManager.cs' for more information on the class that will manage the
+	view models for each control.
+	
+CHANGES SINCE LAST STEP:
+
+	This XAML is fundamentally unchanged by this step.
+	
+	A new 'SampleBarControlKeys' class was added with a string-based key for the Help control.
+	
+	A new 'SampleBarManager' class was added. Large and small images were registered for the
+	Help control based on the control key. A view model was registered for the Help control
+	based on the control key.
+	
+	Prior sample comments were removed/condensed.
+	
+EXPECTED OPERATION:
+	
+	This step laid the groundwork for incorporating view models into the Ribbon, but the
+	expected operation (as perceived by the end user) has not changed. In the next step, the
+	"Help" button will be migrated to the Ribbon.
+	
+	When this sample window is opened, a Ribbon control with a default "File" button should be displayed
+	along with a "Help" button below the Ribbon. Clicking the "Help" button should display a message.
+	Clicking the "File" button should display a default Application Menu.
+
+-->
+
+<bars:RibbonWindow
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step03.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:gettingStartedCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Common"
+    Title="Actipro Ribbon Sample" Height="450" Width="800"
+	ResizeMode="CanResizeWithGrip"
+	>
+
+	<bars:RibbonContainerPanel>
+		
+		<!-- Ribbon Control -->
+		<bars:Ribbon DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+		<!-- Window Content -->
+		<DockPanel>
+
+			<!-- Configure common StatusBar that is unrelated to this sample -->
+			<gettingStartedCommon:CommonStatusBar DockPanel.Dock="Bottom" SampleCodePath="/Step03/MainWindow" />
+
+			<!-- Temporary Button to test invocation of the Help command -->
+			<Button Command="ApplicationCommands.Help" Content="Help"
+					MinWidth="100" MinHeight="100"
+					HorizontalAlignment="Center" VerticalAlignment="Center"
+					/>
+			
+		</DockPanel>
+
+
+	</bars:RibbonContainerPanel>
+	
+</bars:RibbonWindow>

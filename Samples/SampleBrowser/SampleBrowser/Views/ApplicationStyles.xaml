@@ -127,6 +127,12 @@
 		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
 	</Style>
 
+	<!-- DocumentHeadingTextElementStyle -->
+	<Style x:Key="DocumentHeadingTextElementStyle" TargetType="Block">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge4FontSizeDoubleKey}}"/>
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading1ForegroundNormalBrushKey}}"/>
+	</Style>
+
 	<!-- DocumentSubHeadingTextBlockStyle -->
 	<Style x:Key="DocumentSubHeadingTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource BasicTextBlockStyle}">
 		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
@@ -137,6 +143,13 @@
 		<Setter Property="Margin" Value="0,0,0,20" />
 		<Setter Property="TextWrapping" Value="Wrap" />
 		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+	</Style>
+
+	<!-- DocumentSubHeadingTextElementStyle -->
+	<Style x:Key="DocumentSubHeadingTextElementStyle" TargetType="Block">
+		<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}"/>
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.DocumentHeading2ForegroundNormalBrushKey}}"/>
+		<Setter Property="Margin" Value="0,30,0,0"/>
 	</Style>
 
 	<!-- DocumentSubHeading2TextBlockStyle -->
@@ -317,7 +330,59 @@
 		</DockPanel>
 	</DataTemplate>
 
-	
+	<!-- ViewCodeStatusBarButtonStyle -->
+	<Style x:Key="ViewCodeStatusBarButtonStyle" TargetType="Button">
+		<Setter Property="AutomationProperties.Name" Value="View Source Code" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="Margin" Value="0,-2,0,-3" />
+		<Setter Property="Padding" Value="6,4" />
+		<Setter Property="ToolTip" Value="View Source Code for This Sample" />
+		<Setter Property="themes:ThemeProperties.UseAlternateStyle" Value="{DynamicResource {x:Static themes:AssetResourceKeys.StatusBarUseMonochromeImagesBooleanKey}}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Grid Background="{TemplateBinding Background}">
+						<Border x:Name="outerBorder" CornerRadius="3" />
+
+						<shared:DynamicImage x:Name="image" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" StretchDirection="DownOnly">
+							<shared:DynamicImage.Source>
+								<DrawingImage shared:ImageProvider.CanAdapt="False">
+									<DrawingImage.Drawing>
+										<GeometryDrawing>
+											<GeometryDrawing.Pen>
+												<Pen Thickness="1" Brush="{DynamicResource {x:Static themes:AssetResourceKeys.StatusBarForegroundNormalBrushKey}}" />
+											</GeometryDrawing.Pen>
+											<GeometryDrawing.Geometry>
+												<PathGeometry Figures="M 6,13 L 10,3  M 4.5,4 L 0.5,8 L 4.5,12  M 11.5,4 L 15.5,8 L 11.5,12" />
+											</GeometryDrawing.Geometry>
+										</GeometryDrawing>
+									</DrawingImage.Drawing>
+								</DrawingImage>
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+					</Grid>
+
+					<ControlTemplate.Triggers>
+						<Trigger Property="themes:ThemeProperties.UseAlternateStyle" Value="True">
+							<Setter TargetName="outerBorder" Property="Opacity" Value="0.3" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="outerBorder" Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundHoverBrushKey}}" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="outerBorder" Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundPressedBrushKey}}" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter TargetName="image" Property="Opacity" Value="0.6" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+
 	<!--
 	
 		SAMPLE-RELATED STYLES
@@ -537,7 +602,7 @@
 							</Grid.RowDefinitions>
 
 							<Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" >
-								<Image Width="200" Height="150" Source="{Binding ImageSource}" />
+								<shared:DynamicImage Width="200" Height="150" Source="{Binding ImageSource}" />
 							</Border>
 
 							<Border Grid.Row="1" Padding="15,4" CornerRadius="0,0,4,4"

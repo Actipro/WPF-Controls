@@ -9,7 +9,7 @@ One of the best features of Actipro Docking & MDI is the number of options that 
 
 ## Global Default Options
 
-A number of global default options appear on the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) classes.  By default, docking windows will use these options unless their instance settings overrides them.
+A number of global default options appear on the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) and [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) classes.  By default, docking windows will use these options unless their instance settings override them.
 
 <table>
 <thead>
@@ -590,9 +590,9 @@ All of the global default options listed above will apply to docking windows by 
 
 ## How to Allow Tabs to Be Reordered, But Not Dragged Elsewhere
 
-In some situations you may wish to keep docking windows in their current container but still want to allow them to be reordered.
+In some situations, you may wish to keep docking windows in their current container but still want to allow them to be reordered.
 
-To accomplish this, turn all the appropriate options off such as can dock and can raft, etc.  but leave can drag on.  This will allow the user to reorder tabs by dragging them within their container but will prevent the docking window from moving outside of the container.
+To accomplish this, turn all the appropriate options off such as `CanDock` and `CanRaft`, etc.  but leave `CanDrag` on.  This will allow the user to reorder tabs by dragging them within their container but will prevent the docking window from moving outside of the container.
 
 ## Limiting the Allowed Dock Guides While Dragging
 
@@ -620,7 +620,7 @@ You can force the image to display on the tool window tabs by setting the [DockS
 
 ## Single Tab Layout Behavior
 
-By default, when a [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) only has a single [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), then the tabs are hidden.  This mimics the behavior seen in Visual Studio, but can be customized.  The tab for the single window can be hidden or shown.
+By default, when a [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) only has a single [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), then the tabs are hidden.  This mimics the behavior seen in Visual Studio but can be customized.  The tab for the single window can be hidden or shown.
 
 The behavior can be customized using the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsSingleTabLayoutBehavior](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsSingleTabLayoutBehavior) property, whose default value is `Hide`.
 
@@ -630,7 +630,7 @@ The behavior can be customized using the [DockSite](xref:@ActiproUIRoot.Controls
 
 ## Tinting Tabs
 
-Tabs can be tinted towards a color by setting the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabTintColor](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabTintColor) property.  The tab will have the same general visual appearance but the colors will be skewed towards the tint color.
+Tabs can be tinted towards a color by setting the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabTintColor](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabTintColor) property.  The tab will have the same general visual appearance, but the colors will be skewed towards the tint color.
 
 ![Screenshot](../images/tinted-tabs.png)
 
@@ -642,7 +642,7 @@ Tabs can enter a flashing mode by setting the [DockingWindow](xref:@ActiproUIRoo
 
 The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabFlashColor](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashColor) property specifies the color used to tint the tab for its flash effect.
 
-Flashing is best used to grab the end user's attention, and let them know that a tab should be clicked.  Watch the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event to see when the docking window is activated.  At that point, set the [TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property back to `None` to disable flashing.
+Flashing is best used to grab the end user's attention and let them know that a tab should be clicked.  Watch the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event to see when the docking window is activated.  At that point, set the [TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property back to `None` to disable flashing.
 
 ## ToolWindowContainer Title Font
 

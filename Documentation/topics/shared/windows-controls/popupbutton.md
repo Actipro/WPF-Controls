@@ -9,7 +9,7 @@ The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control supports dis
 
 ![Screenshot](../images/popupbutton-display-modes.png)
 
-*The various PopupButton display modes.*
+*The various PopupButton display modes*
 
 ## Display Mode
 
@@ -45,7 +45,7 @@ The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) also supports a tran
 
 ![Screenshot](../images/popupbutton-transparency-mode.png)
 
-*Two identical [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) controls with the transparency mode enabled, with the mouse hovered over the bottom one.*
+*Two identical [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) controls with the transparency mode enabled, with the mouse hovered over the bottom one*
 
 ## DataContext for Popup ContextMenu
 

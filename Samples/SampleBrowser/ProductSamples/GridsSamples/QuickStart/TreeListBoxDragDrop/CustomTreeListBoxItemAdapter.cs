@@ -69,7 +69,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDrag
 		/// </summary>
 		/// <param name="e">The <see cref="DragEventArgs"/> whose effects should be updated.</param>
 		/// <param name="targetControl">The target control, over which the event occurred</param>
-		/// <param name="targetItem">The target item, which could be <see langword="null"/> if dragging below the last tree item.</param>
+		/// <param name="targetItem">The target item, which could be <c>null</c> if dragging below the last tree item.</param>
 		/// <param name="dropArea">A <see cref="TreeItemDropArea"/> indicating the drop area over the target item.</param>
 		/// <returns>
 		/// A <see cref="TreeItemDropArea"/> indicating the allowed drop area, which will be used for visual feedback to the end user.
@@ -133,7 +133,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDrag
 		/// </summary>
 		/// <param name="e">The <see cref="DragEventArgs"/> whose effects should be updated.</param>
 		/// <param name="targetControl">The target control, over which the event occurred</param>
-		/// <param name="targetItem">The target item, which could be <see langword="null"/> if dragging below the last tree item.</param>
+		/// <param name="targetItem">The target item, which could be <c>null</c> if dragging below the last tree item.</param>
 		/// <param name="dropArea">A <see cref="TreeItemDropArea"/> indicating the drop area over the target item.</param>
 		/// <remarks>
 		/// The default implementation of this method sets the <c>e.Effects</c> to <c>DragDropEffects.None</c> and takes no further action.

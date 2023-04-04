@@ -9,7 +9,7 @@ The [SaturationBrightnessPicker](xref:@ActiproUIRoot.Controls.Editors.Saturation
 
 ![Screenshot](../images/saturationbrightness.png)
 
-The control displays a two-dimensional gradient of color values for a given hue, where the vertical gradient represents brightness and the horizontal gradient represents saturation.
+The control displays a two-dimensional gradient of color values for a given hue, where the vertical gradient represents brightness, and the horizontal gradient represents saturation.
 
 A gripper can be dragged to change the selected color.
 
@@ -22,6 +22,6 @@ This picker shows the saturation and brightness cross-section for a particular h
 This control can be placed within any other XAML container control, such as a `Page` or `Panel` with this sort of XAML:
 
 ```xaml
-<editors:SaturationBrightnessPicker Hue="120" Saturation="{Binding Path=YourSVMProperty, Mode=TwoWay}" 
+<editors:SaturationBrightnessPicker Hue="120" Saturation="{Binding Path=YourSVMProperty, Mode=TwoWay}"
 	Brightness="{Binding Path=YourBVMProperty, Mode=TwoWay}" />
 ```

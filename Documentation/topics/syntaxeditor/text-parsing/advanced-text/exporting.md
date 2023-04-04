@@ -34,7 +34,7 @@ The text framework has four formats for exporting HTML, all available as methods
 
 Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to `HTML`, using `CSS` classes for syntax highlighting.
 
-`CSS` class references will be used for highlighting.  This type adds a `STYLE` tag block to the exported `HTML` where `CSS` classes are defined.  The text in the code block references these `CSS` classes, therefore allowing color settings to easily be altered for each highlighting style (i.e. keywords, comments, etc.).  Root `HTML`, `BODY` and other tags will be added to the output.
+`CSS` class references will be used for highlighting.  This type adds a `STYLE` tag block to the exported `HTML` where `CSS` classes are defined.  The text in the code block references these `CSS` classes, therefore allowing color settings to easily be altered for each highlighting style (i.e., keywords, comments, etc.).  Root `HTML`, `BODY` and other tags will be added to the output.
 
 </td>
 </tr>

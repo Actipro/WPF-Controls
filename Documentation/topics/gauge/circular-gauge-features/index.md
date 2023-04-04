@@ -11,7 +11,7 @@ To allow for easy customization, most of the functionality found in the [Circula
 
 Most of the [CircularGauge](xref:@ActiproUIRoot.Controls.Gauge.CircularGauge) elements provide one or more properties that control the size of the rendered content. For example, [TickMarkExtent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularTickMarkBase.TickMarkExtent) and [TickMarkAscent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularTickMarkBase.TickMarkAscent) control the width/height of the tick marks.
 
-Extent refers to the length of the element outward from the center. In other words, the extent runs along an imaginary line drawn from the center point outwards. This allows the extent to change direction depending on the current angle. Therefore, an element drawn on the right side of the gauge would be as wide as an element drawn at the top is tall. The ascent is always runs perpendicular to the extent.
+Extent refers to the length of the element outward from the center. In other words, the extent runs along an imaginary line drawn from the center point outwards. This allows the extent to change direction depending on the current angle. Therefore, an element drawn on the right side of the gauge would be as wide as an element drawn at the top is tall. The ascent always runs perpendicular to the extent.
 
 ![Screenshot](../images/circular-gauge-extent-ascent1.gif)![Screenshot](../images/circular-gauge-extent-ascent2.gif)
 
@@ -21,7 +21,7 @@ Both extents and ascents can be specified as a percentage of the frame radius, o
 
 ## Frames
 
-Several frames are support and are rendered in the background of the control.
+Several frames are supported and are rendered in the background of the control.
 
 See the [Frames](frames.md) topic for more information.
 

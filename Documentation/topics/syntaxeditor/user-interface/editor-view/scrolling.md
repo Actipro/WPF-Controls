@@ -13,13 +13,13 @@ Scrollbar acceleration allows scrolling speed to increase the longer a scrollbar
 
 @if (winrt wpf) {
 
-Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates. 
+Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates.
 
 }
 
 ## Scrolling Via Keyboard
 
-SyntaxEditor has [default key bindings](../input-output/default-key-bindings.md) for all of the standard scroll-related text editing keys, like `PgUp`, `PgDn`, `Ctrl+End`, etc.
+SyntaxEditor has [default key bindings](../input-output/default-key-bindings.md) for all of the standard scroll-related text editing keys, like <kbd>PgUp</kbd>, <kbd>PgDn</kbd>, <kbd>Ctrl</kbd>+<kbd>End</kbd>, etc.
 
 ## Scrolling Via Mouse Wheel
 
@@ -29,7 +29,7 @@ Vertical scrolling can be performed by spinning the mouse wheel.  Each wheel not
 
 ### Horizontal Scrolling
 
-Horizontal scrolling can be performed by holding the `Shift` key and spinning the mouse wheel.
+Horizontal scrolling can be performed by holding the <kbd>Shift</kbd> key and spinning the mouse wheel.
 
 ### Preventing Scrolling Over Unfocused Editor Views
 
@@ -45,7 +45,7 @@ The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Scroll
 
 An editor view can be scrolled such that it displays the line containing a specified [TextPosition](xref:ActiproSoftware.Text.TextPosition).  This is done by initializing a [TextViewScrollState](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewScrollState) object and passing it to the [IEditorViewScroller](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller).[ScrollTo](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller.ScrollTo*) method.
 
-The following example shows how to scroll the view line containing the 24th document line (text positions are zero-based) to the center of the view.  The first parameter is the vertical anchor text position.  The second parameter is a [TextViewVerticalAnchorPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewVerticalAnchorPlacement) that indicates where the vertical anchor text position should be placed in the view (e.g. top, center, bottom).  The third parameter is a pixel delta from the placement, meaning you could scroll a text position to the top of the view but also displace it down a certain pixel amount so that lines above it are visible too for context.  The fourth parameter is the horizontal scroll amount.
+The following example shows how to scroll the view line containing the 24th document line (text positions are zero-based) to the center of the view.  The first parameter is the vertical anchor text position.  The second parameter is a [TextViewVerticalAnchorPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewVerticalAnchorPlacement) that indicates where the vertical anchor text position should be placed in the view (e.g., top, center, bottom).  The third parameter is a pixel delta from the placement, meaning you could scroll a text position to the top of the view but also displace it down a certain pixel amount so that lines above it are visible too for context.  The fourth parameter is the horizontal scroll amount.
 
 ```csharp
 var scrollState = new TextViewScrollState(new TextPosition(23, 0), TextViewVerticalAnchorPlacement.Center, 0, 0);
@@ -128,7 +128,7 @@ The easiest way to define a data template is in XAML.  This code shows how to de
 	<editor:SyntaxEditor.ScrollBarTrayBottomTemplate>
 		<DataTemplate>
 			<ToggleButton ToolTip="ToggleButton in the bottom tray">
-				<Image Width="16" Height="16" Stretch="None" 
+				<Image Width="16" Height="16" Stretch="None"
 					Source="/Resources/Images/Mail16.png" />
 			</ToggleButton>
 		</DataTemplate>

@@ -373,7 +373,7 @@ A lexical state ID provider (represented by the [ILexicalStateIdProvider](xref:A
 <td>Lexical State Transition</td>
 <td>
 
-A lexical state transition (represented by the [ILexicalStateTransition](xref:ActiproSoftware.Text.Lexing.ILexicalStateTransition) interface) specifies a transition that can occur from one lexical state to another, typically in a separate language (i.e. HTML to CSS).
+A lexical state transition (represented by the [ILexicalStateTransition](xref:ActiproSoftware.Text.Lexing.ILexicalStateTransition) interface) specifies a transition that can occur from one lexical state to another, typically in a separate language (i.e., HTML to CSS).
 
 </td>
 </tr>

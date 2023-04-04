@@ -9,7 +9,7 @@ order: 36
 
 ![Screenshot](../images/user-prompt.png)
 
-*UserPromptControl with optional content areas labeled, OK/Cancel buttons, Information status image, and optional footer image.*
+*UserPromptControl with optional content areas labeled, OK/Cancel buttons, Information status image, and optional footer image*
 
 User Prompt functionality is enabled by the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) (pictured above) and [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) that is used to host the control as a modal dialog. [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) is a drop-in replacement for `MessageBox` that uses the same API as `MessageBox.Show` to make it easy to convert any application.
 
@@ -366,7 +366,7 @@ When [SystemSound](xref:@ActiproUIRoot.Controls.UserPromptControl.SystemSound) i
 
 ## Customize Clipboard Content
 
-When a native `MessageBox` is displayed, the **Copy** (`Ctrl+C`) command will transfer the contents of the dialog to the system clipboard. [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) supports this feature as well. Since [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) also supports rich content of potentially complex control structures, it may not be possible to accurately translate the various properties to textual clipboard content.
+When a native `MessageBox` is displayed, the **Copy** (<kbd>Ctrl</kbd>+<kbd>C</kbd>) command will transfer the contents of the dialog to the system clipboard. [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) supports this feature as well. Since [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) also supports rich content of potentially complex control structures, it may not be possible to accurately translate the various properties to textual clipboard content.
 
 The properties in the following table have a corresponding string-based property that can be used to explicitly define the text to be placed on the system clipboard for that object when the **Copy** command is invoked.
 

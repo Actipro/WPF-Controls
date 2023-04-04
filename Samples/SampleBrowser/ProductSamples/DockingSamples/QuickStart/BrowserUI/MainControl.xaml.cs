@@ -62,7 +62,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.BrowserUI {
 		/// Occurs when the browser completes page loading.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>NavigationEventArgs</c> that containd data related to this event.</param>
+		/// <param name="e">The <c>NavigationEventArgs</c> that contained data related to this event.</param>
 		private void OnBrowserLoadCompleted(object sender, NavigationEventArgs e) {
 			var browser = (WebBrowser)sender;
 			this.UpdateUrlAndTitle(browser);
@@ -72,7 +72,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.BrowserUI {
 		/// Occurs when the browser starts navigation.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>NavigationEventArgs</c> that containd data related to this event.</param>
+		/// <param name="e">The <c>NavigationEventArgs</c> that contained data related to this event.</param>
 		private void OnBrowserNavigated(object sender, NavigationEventArgs e) {
 			var browser = (WebBrowser)sender;
 			this.UpdateUrlAndTitle(browser);
@@ -82,7 +82,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.BrowserUI {
 		/// Occurs when a new window is requested by the user.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>RoutedEventArgs</c> that containd data related to this event.</param>
+		/// <param name="e">The <c>RoutedEventArgs</c> that contained data related to this event.</param>
 		private void OnDockSiteNewWindowRequested(object sender, RoutedEventArgs e) {
 			this.CreateBrowserWindow("about:blank");
 		}

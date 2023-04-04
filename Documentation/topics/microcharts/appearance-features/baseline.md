@@ -37,7 +37,7 @@ For example, the following line series uses the same fixed values from above (`1
 
 ![Screenshot](../images/baseline1.png)
 
-If we set [IsAxisBaselineVisible](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.IsAxisBaselineVisible) to `True`, then we can easily determine this information.
+If we set [IsAxisBaselineVisible](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.IsAxisBaselineVisible) to `true`, then we can easily determine this information.
 
 ![Screenshot](../images/baseline2.png)
 

@@ -1,0 +1,177 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPickers.SampleXamlControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:barsmvvm="http://schemas.actiprosoftware.com/winfx/xaml/barsmvvm"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPickers"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!-- This XAML resource dictionary has the common resources for both the MVVM- and XAML-based samples -->
+				<ResourceDictionary Source="CommonDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+			<!-- This DataTemplate for text highlight color gallery items is consistent with the default one defined in the MVVM library -->
+			<DataTemplate x:Key="BarGalleryItemTextHighlightColorDataTemplate">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}">
+					<Border.Background>
+						<SolidColorBrush Color="{Binding Color}" />
+					</Border.Background>
+				</Border>
+			</DataTemplate>
+
+		</ResourceDictionary>
+
+	</UserControl.Resources>
+
+	<bars:RibbonContainerPanel>
+
+		<!-- Ribbon Control -->
+		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False">
+
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+
+				<!-- Common Font and Text Highlight Color Pickers -->
+				<bars:RibbonGroup Key="CommonColorPickers" SmallImageSource="/Images/Icons/ColorPicker16.png">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+						<bars:BarPopupButton Key="FontColorPickerWithAutomatic" Label="Font Color w/Automatic" SmallImageSource="{Binding FontColorSmallImageSource}" ToolBarItemVariantBehavior="All">
+							<bars:BarMenuGallery Key="FontColorPickerGalleryWithAutomatic" Label="Font Color w/Automatic" SmallImageSource="/Images/Icons/ColorPicker16.png"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 CanCategorize="{Binding Options.FontColorCanCategorize}"
+												 CanFilter="{Binding Options.FontColorCanFilter}"
+												 CategorizedItemsSource="{Binding FontColorItemsWithAutomatic}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding SetFontColorCommand}"
+												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 MaxColumnCount="{Binding FontColorItemsColumnCount}"
+												 MinColumnCount="{Binding FontColorItemsColumnCount}"
+												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
+												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
+												 ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+												 >
+								<bars:BarMenuGallery.ItemTemplateSelector>
+									<barsmvvm:BarGalleryItemTemplateSelector />
+								</bars:BarMenuGallery.ItemTemplateSelector>
+							</bars:BarMenuGallery>
+							<bars:BarMenuItem Key="MoreColors" Label="More Colors..." Command="{Binding MoreColorsCommand}" SmallImageSource="/Images/Icons/ColorPicker16.png" />
+						</bars:BarPopupButton>
+						<bars:BarPopupButton Key="TextHighlightColorPicker" Label="Highlight Color" SmallImageSource="{Binding TextHighlightColorSmallImageSource}" ToolBarItemVariantBehavior="All">
+							<bars:BarMenuGallery Key="TextHighlightColorPickerGallery" Label="Highlight Color" SmallImageSource="/Images/Icons/ColorPicker16.png"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 Command="{Binding SetTextHighlightColorCommand}"
+												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 MaxColumnCount="{Binding Options.TextHighlightColCount}"
+												 MinColumnCount="{Binding Options.TextHighlightColCount}"
+												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
+												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
+												 ItemsSource="{Binding TextHighlightColorItems}"
+												 ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+												 ItemTemplate="{StaticResource BarGalleryItemTextHighlightColorDataTemplate}"
+												 MinItemWidth="28"
+												 MinItemHeight="28"
+												 />
+							<bars:BarMenuItem Key="HighlightingStop" Label="Stop Highlighting" Command="{Binding StopHighlightingCommand}" />
+						</bars:BarPopupButton>
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+
+				<!-- Other Custom Color Pickers -->
+				<bars:RibbonGroup Key="Other" SmallImageSource="/Images/Icons/ColorPicker16.png">
+					<bars:BarPopupButton Key="MoreSamples" LargeImageSource="/Images/Icons/ColorPicker32.png" SmallImageSource="/Images/Icons/ColorPicker16.png" ToolBarItemVariantBehavior="All">
+										
+						<!-- Font Picker gallery with a custom ItemTemplate that defines larger swatches for colors -->
+						<bars:BarMenuItem Key="LargerSwatchesFontColorPicker" Label="Larger Swatches">
+							<bars:BarMenuGallery Key="LargerSwatchesFontColorPickerGallery" Label="Larger Swatches"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 CanCategorize="{Binding Options.FontColorCanCategorize}"
+												 CanFilter="{Binding Options.FontColorCanFilter}"
+												 CategorizedItemsSource="{Binding FontColorItems}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding SetFontColorCommand}"
+												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 MaxColumnCount="{Binding FontColorItemsColumnCount}"
+												 MinColumnCount="{Binding FontColorItemsColumnCount}"
+												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
+												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
+												 ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+												 ItemTemplate="{StaticResource LargerButtonGalleryItemTemplate}"/>
+						</bars:BarMenuItem>
+										
+						<!-- Gallery where colors are displayed similar to standard menu items -->
+						<bars:BarMenuItem Key="MenuItemColorPicker" Label="Menu Items">
+							<bars:BarMenuGallery Key="MenuItemColorPickerGallery" Label="Menu Items"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 CanCategorize="{Binding Options.FontColorCanCategorize}"
+												 CanFilter="{Binding Options.FontColorCanFilter}"
+												 CategorizedItemsSource="{Binding CustomMenuItemColorPickerItems}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding SetFontColorCommand}"
+												 ItemSpacing="0"
+												 MinColumnCount="1" MaxColumnCount="1"
+												 UseAccentedItemBorder="False"
+												 UseMenuItemIndent="False"
+												 ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+												 ItemTemplate="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemColorMenuItemDataTemplate}}"/>
+							<bars:BarMenuItem Key="MoreColors" Label="More Colors..." Command="{Binding MoreColorsCommand}" SmallImageSource="/Images/Icons/ColorPicker16.png" />
+						</bars:BarMenuItem>
+
+						<!-- Gallery of custom color gallery items that define a custom Style and DataTemplate to display each color as a circle instead of the default square -->
+						<bars:BarMenuItem Key="CustomStyleFontColorPicker" Label="Custom Style" KeyTipText="S">
+							<bars:BarMenuGallery Key="CustomStyleFontColorPickerGallery" Label="Custom Style"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 CanCategorize="{Binding Options.FontColorCanCategorize}"
+												 CanFilter="{Binding Options.FontColorCanFilter}"
+												 CategorizedItemsSource="{Binding CustomStyleColorPickerItems}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding SetFontColorCommand}"
+												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 MinColumnCount="7"
+												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
+												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
+												 ItemContainerStyle="{StaticResource BarGalleryItemCircleStyle}"
+												 ItemTemplate="{StaticResource CircleStyleGalleryItemItemplate}"/>
+							<bars:BarMenuItem Key="CustomStyleFontColorPickerMoreColors" Label="Customize..." Command="{Binding MoreColorsCommand}" />
+						</bars:BarMenuItem>
+										
+						<!-- Gallery of custom color gallery items that use BarGalleryItemLayoutBehavior to define custom groups and also uses the larger button template -->
+						<bars:BarMenuItem Key="CustomLayoutFontColorPicker" KeyTipText="Y" Label="Custom Layout">
+							<bars:BarMenuGallery Key="CustomLayoutFontColorPickerGallery" Label="Custom Layout"
+												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
+												 CanCategorize="{Binding Options.FontColorCanCategorize}"
+												 CanFilter="{Binding Options.FontColorCanFilter}"
+												 CategorizedItemsSource="{Binding CustomLayoutColorPickerItems}"
+												 CategoryPropertyName="Category"
+												 Command="{Binding SetFontColorCommand}"
+												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 MinColumnCount="{Binding CustomLayoutColorPickerItemsColumnCount}" MaxColumnCount="{Binding CustomLayoutColorPickerItemsColumnCount}"
+												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
+												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
+												 ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+												 ItemTemplate="{StaticResource LargerButtonGalleryItemTemplate}"/>
+						</bars:BarMenuItem>
+										
+					</bars:BarPopupButton>
+				</bars:RibbonGroup>
+								
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+
+		<TextBox Margin="0,10,0,0" BorderThickness="0" IsReadOnly="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

@@ -11,7 +11,7 @@ SyntaxEditor supports animated zooming in and out of views, which is a great fea
 
 If the flags-based [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ZoomModesAllowed](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ZoomModesAllowed) enumeration property includes the `Mouse` value, mouse wheel zooming is enabled.
 
-Mouse wheel zoom is activated at run-time by holding the `Ctrl` key and turning the mouse wheel up to zoom in (make text larger) and down to zoom out.
+Mouse wheel zoom is activated at run-time by holding the <kbd>Ctrl</kbd> key and turning the mouse wheel up to zoom in (make text larger) and down to zoom out.
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ZoomLevelIncrement](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ZoomLevelIncrement) property determines the percentage amount by which to zoom with the mouse wheel.  It defaults to `0.25`, which means a 25% increment on each mouse wheel notch scroll.
 

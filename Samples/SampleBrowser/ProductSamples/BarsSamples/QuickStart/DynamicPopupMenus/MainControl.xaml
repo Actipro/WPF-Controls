@@ -1,0 +1,58 @@
+<sampleBrowser:ProductItemControl
+	x:Name="rootProductItemControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenus.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenus"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<!-- Sample Side Bar Content -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon makes it easy to dynamically create/change a popup menu before the menu is displayed.
+					This feature is most commonly used to "lazy load" the items of a menu (e.g., a recent files list).
+					<LineBreak /><LineBreak />
+					The Ribbon and StandaloneToolBar classes have a MenuOpening event that is raised before a popup menu is displayed.
+					You can attach to this event and alter the menu, as needed, before it is displayed.
+					<LineBreak /><LineBreak />
+					To see an implementation of this feature, click any of the buttons in this sample. Each menu you see is dynamically
+					generated in the code-behind.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- MVVM-Based Ribbon Sample Control -->
+					<local:SampleMvvmControl Height="250" RecentDocumentManager="{Binding ElementName=rootProductItemControl, Path=RecentDocumentManager, Mode=OneWay}" />
+
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- XAML-Based Ribbon Sample Control -->
+					<local:SampleXamlControl Height="250" RecentDocumentManager="{Binding ElementName=rootProductItemControl, Path=RecentDocumentManager, Mode=OneWay}" />
+
+				</Border>
+			</shared:ShadowChrome>
+			
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

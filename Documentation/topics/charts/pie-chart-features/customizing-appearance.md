@@ -15,7 +15,7 @@ Style selectors determine what style will be applied to each pie slice. To chang
 
 ![Screenshot](../images/built-in-palettes.png)
 
-A built-in palette can be assigned to a pie / donut chart like this (in this case the Roman palette):
+A built-in palette can be assigned to a pie / donut chart like this (in this case the `Roman` palette):
 
 ```xaml
 <charts:PieChart>
@@ -58,7 +58,7 @@ Custom palettes can be assigned by specifying your own colors on an instance of 
 
 ## Chart Border
 
-The color and thickness of a pie / donut chart border can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).BorderBrush and [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).BorderThickness properties, respectively.
+The color and thickness of a pie / donut chart border can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).`BorderBrush` and [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).`BorderThickness` properties, respectively.
 
 ```xaml
 <charts:PieChart BorderBrush="DarkSlateGray" BorderThickness="3"/>
@@ -68,7 +68,7 @@ The color and thickness of a pie / donut chart border can be changed using the [
 
 ## Chart Background
 
-The color of a pie / donut chart background can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).Background property.
+The color of a pie / donut chart background can be changed using the [PieChart](xref:@ActiproUIRoot.Controls.Charts.PieChart).`Background` property.
 
 ```xaml
 <charts:PieChart Background="DimGray"/>

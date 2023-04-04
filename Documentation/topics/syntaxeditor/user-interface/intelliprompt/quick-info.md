@@ -61,7 +61,7 @@ The [IQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.
 
 ## Control Key Down Opacity
 
-The quick info popup animates to be semi-transparent when the `Ctrl` key is held down, thereby allowing the end user to see the text behind it.  The [IQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
+The quick info popup animates to be semi-transparent when the <kbd>Ctrl</kbd> key is held down, thereby allowing the end user to see the text behind it.  The [IQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
 
 Set this property to `1.0` to prevent the list from being semi-transparent.
 

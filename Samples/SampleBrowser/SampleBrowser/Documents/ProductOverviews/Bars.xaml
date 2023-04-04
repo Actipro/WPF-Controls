@@ -1,0 +1,74 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel>
+
+			<views:MultiColumnPanel ColumnMinWidth="420" Style="{StaticResource DocumentContentPanelStyle}">
+
+				<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" HorizontalAlignment="Center"
+						Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
+					<shared:DynamicImage Width="400" Height="300">
+						<shared:DynamicImage.Source>
+							<BitmapImage UriSource="/Images/Screenshots/Bars-DocumentEditor-400x300.png" shared:ImageProvider.CanAdapt="False" />
+						</shared:DynamicImage.Source>
+					</shared:DynamicImage>
+				</Button>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+					<Button Margin="0,0,18,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/Backstage/OverviewDocument?action=open">
+						<shared:DynamicImage Width="190" Height="150">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/Screenshots/Bars-Backstage-190x150.png" shared:ImageProvider.CanAdapt="False" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+					</Button>
+
+					<Button Margin="0,0,0,20" Style="{StaticResource ScreenshotSoftButtonStyle}" 
+							Command="{Binding NavigateViewToItemInfoCommand}" CommandParameter="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl">
+						<shared:DynamicImage Width="190" Height="150">
+							<shared:DynamicImage.Source>
+								<BitmapImage UriSource="/Images/Screenshots/Bars-LayoutModes-190x150.png" shared:ImageProvider.CanAdapt="False" />
+							</shared:DynamicImage.Source>
+						</shared:DynamicImage>
+					</Button>
+				</StackPanel>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					Bars comes packed with everything you need to implement advanced ribbons, toolbars, and menus in your applications.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					The Ribbon control implements an Office-like user interface, complete with dynamic variant sizing, modern themes, fluent animations, and extensive customization capabilities.
+					A StandaloneToolBar control with built-in overflow support can be used as a window's main toolbar, or within a tool window.
+					An enormous set of controls intended for use within ribbons, toolbars, and menus is included as well: everything from popup and split buttons to comboboxes and graphically-rich galleries.
+				</TextBlock>
+
+				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
+					The Bars product has been built from the ground up to support MVVM creation of the entire user interface if desired.
+					An open source companion MVVM library is available that provides a full set of view models and related UI bindings to
+					easily configure and manage your ribbons, toolbars, and menus.
+				</TextBlock>
+
+				<Button Margin="0,0,0,20" Style="{StaticResource FeatureSummaryAccentButtonStyle}" HorizontalAlignment="Left" />
+
+			</views:MultiColumnPanel>
+
+			<Border BorderThickness="0,1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+				<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+					<ItemsControl ItemsSource="{Binding ViewItemInfo.ProductFamily.GroupedItems}" Style="{StaticResource GroupedProductItemInfoItemsControlStyle}" />
+				</StackPanel>
+			</Border>
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

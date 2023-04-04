@@ -253,7 +253,7 @@ Creates a tagger is associated with an [ICodeDocument](xref:ActiproSoftware.Text
 
 A constructor overload accepts a "singleton" object key that can be used to persist any created tagger into the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[Properties](xref:ActiproSoftware.Text.ICodeDocument.Properties) dictionary using the key.  In this case, if the document's language changes, the tagger is automatically closed and removed from the properties dictionary.  The tagger associated with the document can be retrieved via the properties dictionary while it is active.
 
-If no "singleton" object is is passed to the tagger provider, a new tagger class instance will be created each time a [tag aggregator](tag-aggregators.md) requests one.
+If no "singleton" object is passed to the tagger provider, a new tagger class instance will be created each time a [tag aggregator](tag-aggregators.md) requests one.
 
 </td>
 </tr>
@@ -270,7 +270,7 @@ Creates a tagger is associated with a specific text view.  This type is only ava
 
 A constructor overload accepts a "singleton" object key that can be used to persist any created tagger into the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[Properties](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.Properties) dictionary using the key.  In this case, if the view's document or the document's language changes, the tagger is automatically closed and removed from the properties dictionary.  The tagger associated with the view can be retrieved via the properties dictionary while it is active.
 
-If no "singleton" object is is passed to the tagger provider, a new tagger class instance will be created each time a [tag aggregator](tag-aggregators.md) requests one.
+If no "singleton" object is passed to the tagger provider, a new tagger class instance will be created each time a [tag aggregator](tag-aggregators.md) requests one.
 
 </td>
 </tr>

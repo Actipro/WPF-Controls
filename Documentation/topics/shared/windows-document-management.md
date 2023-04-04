@@ -7,15 +7,15 @@ order: 7
 
 The [ActiproSoftware.Windows.DocumentManagement](xref:@ActiproUIRoot.DocumentManagement) namespace contains several classes that can be used for storing document references and maintaining recent document lists.
 
-These classes are used in our [Ribbon](../ribbon/index.md) product to manage recent documents within the ribbon application menu's optional [RecentDocumentMenu](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RecentDocumentMenu) control.
+These classes are used by controls in our [Bars](../bars/index.md) ([RecentDocumentControl](../bars/ribbon-features/recent-documents.md)) and [Ribbon](../ribbon/index.md) ([RecentDocumentMenu](../ribbon/controls/miscellaneous/recentdocumentmenu.md)) products to manage recent documents within an application menu.
 
 ## Document References
 
 The [IDocumentReference](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference) interface provides the base requirements for a document reference.  A document reference is simply a reference to a document that contains the `Uri` to the document, along with the document's display name, the `DateTime` that it was last opened, and whether it is a pinned recent document.
 
-Some extended properties are also available for specifying icons (large/small) and a description of the reference.  These properties may be used by products such as Ribbon's [RecentDocumentMenu](../ribbon/controls/miscellaneous/recentdocumentmenu.md) when on a [Backstage](../ribbon/controls/miscellaneous/applicationmenu.md) menu.
+Some extended properties are also available for specifying icons (large/small) and a description of the reference.  These properties may be used by products such as Bars's [RecentDocumentControl](../bars/ribbon-features/recent-documents.md) when on a [Backstage](../bars/ribbon-features/backstage.md).
 
-The [DocumentReference](xref:@ActiproUIRoot.DocumentManagement.DocumentReference) class is a simple implementation of the [IDocumentReference](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference) class.
+The [DocumentReference](xref:@ActiproUIRoot.DocumentManagement.DocumentReference) class is a simple implementation of the [IDocumentReference](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference) interface.
 
 ## Recent Document Management
 
@@ -23,7 +23,7 @@ The [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumen
 
 The manager class filters down the contained document references from its [Documents](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.Documents) collection into its [FilteredDocuments](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.FilteredDocuments) collection.
 
-The filtered collection will contain up to a maximum number of document references that you specify.  That collection will also be sorted in reverse date/time of the last time the document was opened, by examining the [IDocumentReference](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference).[LastOpenedDateTime](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference.LastOpenedDateTime) property.  Further logic is applied so that if the document reference's [IsPinnedRecentDocument](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference.IsPinnedRecentDocument) property is `true`, it will have higher priority for staying on the list and not being filtered out, even if another more recently-opened document reference would normally cause it to be filtered out.
+The filtered collection will contain up to a maximum number of document references that you specify.  That collection will also be sorted in descending date/time of the last time the document was opened, by examining the [IDocumentReference](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference).[LastOpenedDateTime](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference.LastOpenedDateTime) property.  Further logic is applied so that if the document reference's [IsPinnedRecentDocument](xref:@ActiproUIRoot.DocumentManagement.IDocumentReference.IsPinnedRecentDocument) property is `true`, it will have higher priority for staying on the list and not being filtered out, even if another more recently-opened document reference that wasn't pinned would normally have caused it to be filtered out.
 
 The [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager) class has these important members:
 
@@ -43,6 +43,6 @@ In many cases where a simple [DocumentReference](xref:@ActiproUIRoot.DocumentMan
 
 ## Persisting Recent Document Lists
 
-The recent document list managed by a [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager) can be easily persisted to an XML string.  This XML string in turn can be saved to a settings file or database or whatever other sort of storage mechanism you use for keeping user data.
+The recent document list managed by a [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager) can be easily persisted to an XML string.  This XML string in turn can be saved to a settings file, database, or any other sort of storage mechanism you use for keeping user data.
 
 Call [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager).[Serialize](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.Serialize*) to obtain the serialized data and later on, call [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager).[Deserialize](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.Deserialize*) to restore the serialized data.

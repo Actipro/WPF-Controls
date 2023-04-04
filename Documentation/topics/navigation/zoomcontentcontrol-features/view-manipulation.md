@@ -21,7 +21,7 @@ If the zoom level is set to the value outside of this range, it will be coerced 
 
 ### Zoom Level Stops
 
-The [ZoomLevelStops](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevelStops) property is used by several of the helper methods listed below to incrementally increase or decrease [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel).  When specified, the `ZoomLevel` will be increment or decremented to the next stop value.  This allows the zoom in and out commands/methods to follow a predefined sets of zoom levels (e.g.. 10%, 25%, 33%, 50%, 75%, 100%, 200%, 300%, etc).
+The [ZoomLevelStops](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevelStops) property is used by several of the helper methods listed below to incrementally increase or decrease [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel).  When specified, the `ZoomLevel` will be increment or decremented to the next stop value.  This allows the zoom in and out commands/methods to follow a predefined sets of zoom levels (e.g.,. 10%, 25%, 33%, 50%, 75%, 100%, 200%, 300%, etc).
 
 > [!NOTE]
 > If an appropriate stop value cannot be found, then the minimum or maximum zoom level will be used, based on whether the user is zooming in or out.
@@ -465,7 +465,7 @@ By setting [IsVirtualSpaceEnabled](xref:@ActiproUIRoot.Controls.Navigation.ZoomC
 
 ## Mouse Behavior
 
-The mouse behavior of the [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) can be customized customized by updating the `InputBindings` collection.
+The mouse behavior of the [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) can be customized by updating the `InputBindings` collection.
 
 See the [Input Bindings](input-bindings.md) topic for more information.
 

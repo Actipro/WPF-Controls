@@ -1,0 +1,766 @@
+﻿<ResourceDictionary 
+	x:Class="ActiproSoftware.Windows.Themes.BarsMvvmResourceDictionary"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+    xmlns:local="clr-namespace:ActiproSoftware.Windows.Controls.Bars.Mvvm"
+    xmlns:localThemes="clr-namespace:ActiproSoftware.Windows.Themes"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<!--
+		
+		STYLES
+	
+	-->
+
+	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemStyle}" TargetType="bars:BarGalleryItem">
+		<!-- Any changes to properties that bind to the view model should be replicated in BarGalleryItemDefaultItemContainerTemplate -->
+		<Setter Property="bars:BarControlService.IsLabelVisible" Value="{Binding IsLabelVisible}" />
+		<Setter Property="KeyTipText" Value="{Binding KeyTipText, Mode=TwoWay}" />
+		<Setter Property="Label" Value="{Binding Label, Mode=TwoWay}" />
+		<Setter Property="LayoutBehavior" Value="{Binding LayoutBehavior, Mode=TwoWay}" />
+		<Setter Property="ToolTip" Value="{Binding Description, Mode=TwoWay}" />
+	</Style>
+	
+	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonStyle}" TargetType="bars:Ribbon">
+		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
+		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
+
+		<Setter Property="ApplicationButtonContent" Value="{Binding ApplicationButton}" />
+		<Setter Property="BackstageContent" Value="{Binding Backstage}" />
+		<Setter Property="CanChangeLayoutMode" Value="{Binding CanChangeLayoutMode, Mode=TwoWay}" />
+		<Setter Property="CollapseThresholdSize" Value="{Binding CollapseThresholdSize, Mode=TwoWay}" />
+		<Setter Property="ContextualTabGroups" Value="{Binding ContextualTabGroups}" />
+		<Setter Property="FooterContent" Value="{Binding Footer}" />
+		<Setter Property="IsApplicationButtonVisible" Value="{Binding IsApplicationButtonVisible, Mode=TwoWay}" />
+		<Setter Property="IsCollapsible" Value="{Binding IsCollapsible, Mode=TwoWay}" />
+		<Setter Property="IsMinimizable" Value="{Binding IsMinimizable, Mode=TwoWay}" />
+		<Setter Property="ItemsSource" Value="{Binding Tabs}" />
+		<Setter Property="LayoutMode" Value="{Binding LayoutMode, Mode=TwoWay}" />
+		<Setter Property="QuickAccessToolBarContent" Value="{Binding QuickAccessToolBar}" />
+		<Setter Property="QuickAccessToolBarLocation" Value="{Binding QuickAccessToolBarLocation, Mode=TwoWay}" />
+		<Setter Property="QuickAccessToolBarMode" Value="{Binding QuickAccessToolBarMode, Mode=TwoWay}" />
+		<Setter Property="TabRowToolBarContent" Value="{Binding TabRowToolBar}" />
+		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
+	</Style>
+
+	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.StandaloneToolBarStyle}" TargetType="bars:StandaloneToolBar">
+		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
+		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
+
+		<Setter Property="ItemsSource" Value="{Binding Items}" />
+		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
+	</Style>
+
+	<!--
+		
+		ITEM CONTAINER TEMPLATES
+	
+	-->
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarButtonDefaultItemContainerTemplate}" DataType="local:BarButtonViewModel">
+		<bars:BarButton
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			InputGestureText="{Binding InputGestureText}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MediumImageSource="{Binding MediumImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarButtonMenuItemItemContainerTemplate}" DataType="local:BarButtonViewModel">
+		<bars:BarMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			InputGestureText="{Binding InputGestureText}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Title="{Binding Title}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarCheckBoxDefaultItemContainerTemplate}" DataType="local:BarCheckBoxViewModel">
+		<bars:BarCheckBox
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			InputGestureText="{Binding InputGestureText}"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarCheckBoxMenuItemItemContainerTemplate}" DataType="local:BarCheckBoxViewModel">
+		<bars:BarMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			InputGestureText="{Binding InputGestureText}"
+			IsCheckable="True"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			Title="{Binding Title}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarComboBoxDefaultItemContainerTemplate}" DataType="local:BarComboBoxViewModel">
+		<bars:BarComboBox
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			IsEditable="{Binding IsEditable}"
+			IsReadOnly="{Binding IsReadOnly}"
+			IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+			IsTextCompletionEnabled="{Binding IsTextCompletionEnabled}"
+			IsTextSearchCaseSensitive="{Binding IsTextSearchCaseSensitive}"
+			IsTextSearchEnabled="{Binding IsTextSearchEnabled}"
+			IsUnmatchedTextAllowed="{Binding IsUnmatchedTextAllowed}"
+			ItemsSource="{Binding MenuItems}" 
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			RequestedWidth="{Binding RequestedWidth}"
+			Text="{Binding Text, Mode=TwoWay}"
+			TextPath="{Binding TextPath}"
+			Title="{Binding Title}"
+			ToolTip="{Binding Description}"
+			UnmatchedTextCommand="{Binding UnmatchedTextCommand}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarComboBoxMenuItemItemContainerTemplate}" DataType="local:BarComboBoxViewModel">
+		<bars:BarMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Description="{Binding Description}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			Title="{Binding Title}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryDefaultItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<bars:RibbonGallery
+			AreSurroundingSeparatorsAllowedOnMenu="{Binding AreSurroundingSeparatorsAllowed}"
+			CanCategorizeOnMenu="{Binding CanCategorize}"
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			CanFilterOnMenu="{Binding CanFilter}"
+			CategoryHeaderTemplate="{Binding CategoryHeaderTemplate}"
+			CategoryPropertyName="{Binding CategoryPropertyName}"
+			CollapsedButtonToolTip="{Binding CollapsedButtonDescription}"
+			Command="{Binding Command}"
+			HasCategoryHeadersOnMenu="{Binding HasCategoryHeaders}"
+			IsSelectionSupported="{Binding IsSelectionSupported}"
+			ItemContainerStyle="{Binding ItemContainerStyle}"
+			ItemContainerStyleSelector="{Binding ItemContainerStyleSelector}"
+			ItemSpacing="{Binding ItemSpacing}"
+			ItemsSource="{Binding Items}"
+			ItemTemplate="{Binding ItemTemplate}"
+			ItemTemplateSelector="{Binding ItemTemplateSelector}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MaxColumnCount="{Binding MaxRibbonColumnCount}"
+			MaxMenuColumnCount="{Binding MaxMenuColumnCount}"
+			MediumImageSource="{Binding MediumImageSource}"
+			MenuItems="{Binding MenuItems}"
+			MenuResizeMode="{Binding MenuResizeMode}"
+			MinItemHeight="{Binding MinItemHeight}"
+			MinItemWidth="{Binding MinItemWidth}"
+			MinLargeColumnCount="{Binding MinLargeRibbonColumnCount}"
+			MinMediumColumnCount="{Binding MinMediumRibbonColumnCount}"
+			MinMenuColumnCount="{Binding MinMenuColumnCount}"
+			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
+			UseMenuItemIndent="{Binding UseMenuItemIndent}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryMenuItemItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<bars:BarMenuGallery
+			AreSurroundingSeparatorsAllowed="{Binding AreSurroundingSeparatorsAllowed}"
+			CanCategorize="{Binding CanCategorize}"
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			CanFilter="{Binding CanFilter}"
+			CategorizedItemsSource="{Binding Items}"
+			CategoryHeaderTemplate="{Binding CategoryHeaderTemplate}"
+			CategoryPropertyName="{Binding CategoryPropertyName}"
+			Command="{Binding Command}"
+			HasCategoryHeaders="{Binding HasCategoryHeaders}"
+			IsSelectionSupported="{Binding IsSelectionSupported}"
+			ItemContainerStyle="{Binding ItemContainerStyle}"
+			ItemContainerStyleSelector="{Binding ItemContainerStyleSelector}"
+			ItemSpacing="{Binding ItemSpacing}"
+			ItemTemplate="{Binding ItemTemplate}"
+			ItemTemplateSelector="{Binding ItemTemplateSelector}"
+			Key="{Binding Key}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MaxColumnCount="{Binding MaxMenuColumnCount}"
+			MediumImageSource="{Binding MediumImageSource}"
+			MinColumnCount="{Binding MinMenuColumnCount}"
+			MinItemHeight="{Binding MinItemHeight}"
+			MinItemWidth="{Binding MinItemWidth}"
+			ResizeMode="{Binding MenuResizeMode}"
+			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
+			UseMenuItemAppearance="{Binding UseMenuItemAppearance}"
+			UseMenuItemIndent="{Binding UseMenuItemIndent}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryOverflowMenuItemItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<bars:BarMenuItem
+			Key="{Binding Key}"
+			Label="{Binding Label}"
+			SmallImageSource="{Binding SmallImageSource}"
+			>
+			<bars:BarMenuItem.Resources>
+				<shared:ArrayConverter x:Key="ArrayConverter" />
+				<CollectionViewSource x:Key="GalleryViewSource" Source="{Binding Converter={StaticResource ArrayConverter}}" />
+				<CollectionViewSource x:Key="MenuItemsViewSource" Source="{Binding MenuItems}" />
+			</bars:BarMenuItem.Resources>
+			<bars:BarMenuItem.ItemsSource>
+				<CompositeCollection>
+					<CollectionContainer Collection="{Binding Source={StaticResource GalleryViewSource}}" />
+					<CollectionContainer Collection="{Binding Source={StaticResource MenuItemsViewSource}}" />
+				</CompositeCollection>
+			</bars:BarMenuItem.ItemsSource>
+		</bars:BarMenuItem>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemDefaultItemContainerTemplate}" DataType="local:BarGalleryItemViewModelBase">
+		<!-- Any changes to properties that bind to the view model should be replicated in BarGalleryItemStyle -->
+		<bars:BarGalleryItem
+			Content="{Binding}"
+			bars:BarControlService.IsLabelVisible="{Binding IsLabelVisible}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LayoutBehavior="{Binding LayoutBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarHeadingMenuItemItemContainerTemplate}" DataType="local:BarMenuHeadingViewModel">
+		<bars:BarMenuHeading Label="{Binding Label}" />
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarPopupButtonDefaultItemContainerTemplate}" DataType="local:BarPopupButtonViewModel">
+		<bars:BarPopupButton
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MediumImageSource="{Binding MediumImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarPopupButtonMenuItemItemContainerTemplate}" DataType="local:BarPopupButtonViewModel">
+		<bars:BarMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSeparatorDefaultItemContainerTemplate}" DataType="local:BarSeparatorViewModel">
+		<bars:BarSeparator />
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSeparatorMenuItemItemContainerTemplate}" DataType="local:BarSeparatorViewModel">
+		<bars:BarMenuSeparator />
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSizeSelectionGalleryMenuItemItemContainerTemplate}" DataType="local:BarSizeSelectionGalleryViewModel">
+		<bars:BarSizeSelectionMenuGallery
+			AreSurroundingSeparatorsAllowed="{Binding AreSurroundingSeparatorsAllowed}"
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			DefaultHeadingText="{Binding DefaultHeadingText}"
+			ItemContainerStyle="{Binding ItemContainerStyle}"
+			ItemContainerStyleSelector="{Binding ItemContainerStyleSelector}"
+			ItemSpacing="{Binding ItemSpacing}"
+			ItemTemplate="{Binding ItemTemplate}"
+			ItemTemplateSelector="{Binding ItemTemplateSelector}"
+			Key="{Binding Key}"
+			Label="{Binding Label}"
+			ColumnCount="{Binding MenuColumnCount}"
+			MinItemHeight="{Binding MinItemHeight}"
+			MinItemWidth="{Binding MinItemWidth}"
+			RowCount="{Binding MenuRowCount}"
+			SizeHeadingTextFormat="{Binding SizeHeadingTextFormat}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitButtonDefaultItemContainerTemplate}" DataType="local:BarSplitButtonViewModel">
+		<bars:BarSplitButton
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			InputGestureText="{Binding InputGestureText}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MediumImageSource="{Binding MediumImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitButtonMenuItemItemContainerTemplate}" DataType="local:BarSplitButtonViewModel">
+		<bars:BarSplitMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			InputGestureText="{Binding InputGestureText}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Title="{Binding Title}"
+			ToolTip="{Binding Description}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitToggleButtonDefaultItemContainerTemplate}" DataType="local:BarSplitToggleButtonViewModel">
+		<bars:BarSplitToggleButton
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			InputGestureText="{Binding InputGestureText}"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MediumImageSource="{Binding MediumImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitToggleButtonMenuItemItemContainerTemplate}" DataType="local:BarSplitToggleButtonViewModel">
+		<bars:BarSplitMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			InputGestureText="{Binding InputGestureText}"
+			IsCheckable="True"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			ItemsSource="{Binding MenuItems}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Title="{Binding Title}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxDefaultItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
+		<bars:BarTextBox
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			RequestedWidth="{Binding RequestedWidth}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Text="{Binding Text, Mode=TwoWay}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolTip="{Binding Description}"
+			shared:HintProperties.Hint="{Binding PlaceholderText}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
+		<bars:BarMenuControlWrapper>
+			<bars:BarTextBox
+				CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+				Command="{Binding Command}"
+				CommandParameter="{Binding CommandParameter}"
+				IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
+				Key="{Binding Key}"
+				KeyTipText="{Binding KeyTipText}"
+				Label="{Binding Label}"
+				SmallImageSource="{Binding SmallImageSource}"
+				Text="{Binding Text, Mode=TwoWay}"
+				Title="{Binding Title}"
+				ToolTip="{Binding Description}"
+				shared:HintProperties.Hint="{Binding PlaceholderText}"
+				/>
+		</bars:BarMenuControlWrapper>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarToggleButtonDefaultItemContainerTemplate}" DataType="local:BarToggleButtonViewModel">
+		<bars:BarToggleButton
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			InputGestureText="{Binding InputGestureText}"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			MediumImageSource="{Binding MediumImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
+			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarToggleButtonMenuItemItemContainerTemplate}" DataType="local:BarToggleButtonViewModel">
+		<bars:BarMenuItem
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Description="{Binding Description}"
+			InputGestureText="{Binding InputGestureText}"
+			IsCheckable="True"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Title="{Binding Title}"
+			UseLargeSize="{Binding UseLargeMenuItem}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonApplicationButtonDefaultItemContainerTemplate}" DataType="local:RibbonApplicationButtonViewModel">
+		<bars:RibbonApplicationButton
+			ItemsSource="{Binding MenuItems}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			MenuAdditionalContent="{Binding MenuAdditionalContent}"
+			MenuAdditionalContentTemplate="{Binding MenuAdditionalContentTemplate}"
+			MenuAdditionalContentTemplateSelector="{Binding MenuAdditionalContentTemplateSelector}"
+			MenuFooter="{Binding MenuFooter}"
+			MenuFooterTemplate="{Binding MenuFooterTemplate}"
+			MenuFooterTemplateSelector="{Binding MenuFooterTemplateSelector}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageDefaultItemContainerTemplate}" DataType="local:RibbonBackstageViewModel">
+		<bars:RibbonBackstage
+			ContentTemplateSelector="{Binding ContentTemplateSelector}"
+			IsOpen="{Binding IsOpen, Mode=TwoWay}"
+			ItemsSource="{Binding Items}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageHeaderButtonDefaultItemContainerTemplate}" DataType="local:RibbonBackstageHeaderButtonViewModel">
+		<bars:RibbonBackstageHeaderButton
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			HeaderAlignment="{Binding HeaderAlignment}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate}" DataType="local:RibbonBackstageHeaderSeparatorViewModel">
+		<bars:RibbonBackstageHeaderSeparator
+			HeaderAlignment="{Binding HeaderAlignment}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageTabDefaultItemContainerTemplate}" DataType="local:RibbonBackstageTabViewModel">
+		<bars:RibbonBackstageTabItem
+			HeaderAlignment="{Binding HeaderAlignment}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonContextualTabGroupDefaultItemContainerTemplate}" DataType="local:RibbonContextualTabGroupViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+		
+		<bars:RibbonContextualTabGroup
+			Key="{Binding Key}"
+			Label="{Binding Label}"
+			Visibility="{Binding IsActive, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonControlGroupDefaultItemContainerTemplate}" DataType="local:RibbonControlGroupViewModel">
+		<bars:RibbonControlGroup
+			HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
+			ItemVariantBehavior="{Binding ItemVariantBehavior}"
+			SeparatorMode="{Binding SeparatorMode}"
+			ItemsSource="{Binding Items}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterDefaultItemContainerTemplate}" DataType="local:RibbonFooterControlViewModel">
+		<bars:RibbonFooterControl
+			ContentTemplateSelector="{Binding ContentTemplateSelector}"
+			ContentTemplate="{Binding ContentTemplate}"
+			Content="{Binding Content}"
+			Kind="{Binding Kind}"
+			Padding="{Binding Padding}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonGroupDefaultItemContainerTemplate}" DataType="local:RibbonGroupViewModel">
+		<bars:RibbonGroup
+			CanAutoCollapse="{Binding CanAutoCollapse}"
+			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
+			CanUseMultiRowLayout="{Binding CanUseMultiRowLayout}"
+			ChildOverflowTarget="{Binding ChildOverflowTarget}"
+			CollapsedButtonKeyTipText="{Binding CollapsedButtonKeyTipText}"
+			CollapsedButtonToolTip="{Binding CollapsedButtonDescription}"
+			Key="{Binding Key}"
+			Label="{Binding Label}"
+			LargeImageSource="{Binding LargeImageSource}"
+			LauncherButtonContent="{Binding LauncherButton}"
+			ItemsSource="{Binding Items}"
+			SmallImageSource="{Binding SmallImageSource}"
+			ThreeRowItemSortOrder="{Binding ThreeRowItemSortOrder}"
+			Title="{Binding Title}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonGroupLauncherButtonDefaultItemContainerTemplate}" DataType="local:RibbonGroupLauncherButtonViewModel">
+		<bars:RibbonGroupLauncherButton
+			Command="{Binding Command}"
+			CommandParameter="{Binding CommandParameter}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			SmallImageSource="{Binding SmallImageSource}"
+			Title="{Binding Title}"
+			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonQuickAccessToolBarDefaultItemContainerTemplate}" DataType="local:RibbonQuickAccessToolBarViewModel">
+		<bars:RibbonQuickAccessToolBar
+			CommonItems="{Binding CommonItems}"
+			IsCustomizeButtonVisible="{Binding IsCustomizeButtonVisible}"
+			ItemsSource="{Binding Items}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonTabDefaultItemContainerTemplate}" DataType="local:RibbonTabViewModel">
+		<bars:RibbonTabItem
+			ContextualTabGroupKey="{Binding ContextualTabGroupKey}"
+			ControlVariants="{Binding ControlVariants}"
+			Key="{Binding Key}"
+			KeyTipText="{Binding KeyTipText}"
+			Label="{Binding Label}"
+			GroupVariants="{Binding GroupVariants}"
+			HeaderToolTip="{Binding Description}"
+			ItemsSource="{Binding Groups}"
+			Title="{Binding Title}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonTabRowToolBarDefaultItemContainerTemplate}" DataType="local:RibbonTabRowToolBarViewModel">
+		<bars:RibbonTabRowToolBar
+			ItemsSource="{Binding Items}"
+			/>
+	</ItemContainerTemplate>
+
+	<!--
+		
+		GALLERY ITEM TEMPLATES
+	
+	-->
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemColorDataTemplate}" DataType="local:ColorBarGalleryItemViewModel">
+		<DataTemplate.Resources>
+			<bars:BarGalleryItemBorderThicknessConverter x:Key="BarGalleryItemBorderThicknessConverter" />
+		</DataTemplate.Resources>
+
+		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
+				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Border.Background>
+		</Border>
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemColorMenuItemDataTemplate}" DataType="local:ColorPickerBarGalleryItemViewModel" >
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemIconColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemSpacerColumnGroup" />
+				<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup" />
+				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPopupColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemPopupArrowColumnGroup" />
+			</Grid.ColumnDefinitions>
+
+			<Border Grid.Column="0" Margin="2" Width="16" Height="16" 
+					BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1"
+					HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" >
+				<Border.Background>
+					<SolidColorBrush Color="{Binding Color}" />
+				</Border.Background>
+			</Border>
+
+			<shared:PixelSnapper Grid.Column="1" VerticalRoundMode="CeilingToEven" Margin="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPaddingNormalThicknessKey}}">
+				<ContentPresenter Content="{Binding Label}" RecognizesAccessKey="True" VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+			</shared:PixelSnapper>
+		</Grid>
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemFontFamilyDataTemplate}" DataType="local:FontFamilyBarGalleryItemViewModel">
+		<Decorator MinHeight="26">
+			<TextBlock Margin="22,0" Text="{Binding Label}" FontSize="16" FontFamily="{Binding Name}" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" />
+		</Decorator>
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemFontSizeDataTemplate}" DataType="local:FontSizeBarGalleryItemViewModel">
+		<TextBlock Margin="12,4" Text="{Binding Label}" />
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemMenuItemDataTemplate}" DataType="local:MenuItemBarGalleryItemViewModel" >
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemIconColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemSpacerColumnGroup" />
+				<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup" />
+				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPopupColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemPopupArrowColumnGroup" />
+			</Grid.ColumnDefinitions>
+
+			<shared:DynamicImage Margin="2" Width="16" Height="16" Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding SmallImageSource}" 
+								 HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
+
+			<shared:PixelSnapper Grid.Column="1" VerticalRoundMode="CeilingToEven" Margin="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPaddingNormalThicknessKey}}">
+				<ContentPresenter Content="{Binding Label}" RecognizesAccessKey="True" VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+			</shared:PixelSnapper>
+		</Grid>
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemSizeSelectionDataTemplate}">
+		<Border Margin="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" BorderThickness="1" />
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemSymbolDataTemplate}" DataType="local:SymbolBarGalleryItemViewModel">
+		<local:SymbolPresenter MinWidth="30" MinHeight="30" 
+							   TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+	</DataTemplate>
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemTextStyleDataTemplate}" DataType="local:TextStyleBarGalleryItemViewModel">
+		<local:TextStylePresenter Background="#ffffff" />
+	</DataTemplate>
+
+	<!--
+		
+		RIBBON FOOTER CONTENT TEMPLATES
+	
+	-->
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate}" DataType="local:RibbonFooterSimpleContentViewModel">
+		<DockPanel>
+			<shared:DynamicImage DockPanel.Dock="Left" Margin="0,0,5,0" Width="16" Height="16" 
+								 Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ImageSource}" 
+								 HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+			<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Text}"/>
+		</DockPanel>
+	</DataTemplate>
+
+</ResourceDictionary>

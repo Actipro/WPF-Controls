@@ -81,7 +81,7 @@ This code shows how to prototype this control in XAML-only:
 	ImageSourceSmall="/Images/SmartArt16.png" Label="SmartArt" KeyTipAccessText="M" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:Button Command="ApplicationCommands.Paste" KeyTipAccessText="P" />

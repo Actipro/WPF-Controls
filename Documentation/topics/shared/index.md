@@ -13,7 +13,7 @@ The Shared Library is not a product that is sold on its own, but any developer w
 
 ### General Controls
 
-- An AdvancedTextBlock control that can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e. filter match results).
+- An AdvancedTextBlock control that can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e., filter match results).
 - An AnimatedExpander control, which supports animated expand/collapse with fade in/out.
 - An AnimatedProgressBar control, which is an enhanced Aero-like progressbar with smooth value change animations, multiple states, and animated highlights.
 - A CircularThumb control, which is a thumb gripper with a circular shape and arrow adornment.

@@ -85,9 +85,9 @@ Each of the features listed in the table below describe functionality that is co
 
 Standard time formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- c
-- g
-- G
+- `"c"`
+- `"g"`
+- `"G"`
 
 ## Minimum and Maximum Values
 
@@ -109,7 +109,7 @@ When the caret is over a part, the part value may be incremented or decremented.
 
 Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.SmallChange) property.  Large value changes alter the current number component by other amounts, based on the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.LargeChange) property.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Sample XAML
 

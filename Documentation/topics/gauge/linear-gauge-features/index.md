@@ -21,7 +21,7 @@ Both extents and ascents can be specified as a percentage of the frame width/hei
 
 ## Frames
 
-Several frames are support and are rendered in the background of the control.
+Several frames are supported and are rendered in the background of the control.
 
 See the [Frames](frames.md) topic for more information.
 

@@ -14,7 +14,7 @@ Offsets and offset ranges can be translated from one snapshot to another using a
 
 Say you start some time-consuming parsing on the most current snapshot, which we'll call snapshot 1.  While the parsing is executing in a separate thread on snapshot 1, more text changes in the document are made, bringing us to what we'll call snapshot 2.  Then assume snapshot 1's parsing completes and returns an AST of the document.
 
-All the offsets for the AST are based on the text found in snapshot 1.  Since snapshot 2 is the the most current snapshot, the offsets for the AST are most likely incorrect by some delta amount since they were not based on snapshot 2.
+All the offsets for the AST are based on the text found in snapshot 1.  Since snapshot 2 is the most current snapshot, the offsets for the AST are most likely incorrect by some delta amount since they were not based on snapshot 2.
 
 The text framework can translate offsets from one snapshot to another, taking any text changes into account.  So if we were editing a document in an editor and wanted to jump directly to a class name whose offset we know from the AST based on snapshot 1, we can translate the offset from snapshot 1 to the current snapshot (snapshot 2), and move the editor's caret right to the translated offset.
 

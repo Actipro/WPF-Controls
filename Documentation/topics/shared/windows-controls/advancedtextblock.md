@@ -5,7 +5,7 @@ order: 3
 ---
 # AdvancedTextBlock
 
-The [AdvancedTextBlock](xref:@ActiproUIRoot.Controls.AdvancedTextBlock) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e. filter match results).
+The [AdvancedTextBlock](xref:@ActiproUIRoot.Controls.AdvancedTextBlock) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e., filter match results).
 
 ## Setting the Text
 

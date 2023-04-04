@@ -9,10 +9,10 @@ Items support inline editing, which means that a special UI mode can be entered 
 
 ## Starting Editing
 
-If an item is editable (see below for how to provide this), pressing `F2` while it is focused, or single tapping on an [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) in the item's template will trigger edit mode.  This is often kept in sync with an item's `IsEditing` property.
+If an item is editable (see below for how to provide this), pressing <kbd>F2</kbd> while it is focused, or single tapping on an [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) in the item's template will trigger edit mode.  This is often kept in sync with an item's `IsEditing` property.
 
 > [!NOTE]
-> When edit mode is active, no arrow key-based item navigation will be enabled.  Therefore it is important to only mark items as editable (see below) that have a control in the item template that will respond to `IsEditing` property changes (from `F2` pressed or the item is single tapped) and that also exits the edit mode when appropriate (i.e. focus loss).  The default implementation of [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) does all this for you if you two-way bind its [IsEditing](xref:@ActiproUIRoot.Controls.EditableContentControl.IsEditing) property.  If you wish to manage the `IsEditing` state on your own, do not mark the item as editable.
+> When edit mode is active, no arrow key-based item navigation will be enabled.  Therefore, it is important to only mark items as editable (see below) that have a control in the item template that will respond to `IsEditing` property changes (from <kbd>F2</kbd> pressed or the item is single tapped) and that also exits the edit mode when appropriate (i.e., focus loss).  The default implementation of [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) does all this for you if you two-way bind its [IsEditing](xref:@ActiproUIRoot.Controls.EditableContentControl.IsEditing) property.  If you wish to manage the `IsEditing` state on your own, do not mark the item as editable.
 
 ## Selecting EditableContentControl TextBox Text
 
@@ -24,11 +24,11 @@ This method can be overridden to select a certain range of text instead.  A comm
 
 When a value being edited in an [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) is committed, the virtual [SetContentAfterEditing](xref:@ActiproUIRoot.Controls.EditableContentControl.SetContentAfterEditing*) method is called and the edited content is passed in.  The default implementation of this method simply sets the `Content` property to the specified edited content.
 
-This method can be overridden to coerce the edited content as needed.  Or if the edited content is invalid, you could choose to not call the base method, which would effectively cancel the edit.  If you wish to keep edit mode active, set the `IsEditing` property back to `true`.  This is sometimes done if there is an invalid value.
+This method can be overridden to coerce the edited content as needed.  Or if the edited content is invalid, you could choose not to call the base method, which would effectively cancel the edit.  If you wish to keep edit mode active, set the `IsEditing` property back to `true`.  This is sometimes done if there is an invalid value.
 
 ## Using an Editable Item Template
 
-When an item's text should be editable, use a [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) in its item template instead of a `TextBlock` to display the text.  The text will display like a normal `TextBlock` by default, but will switch to a `TextBox` for editing when in edit mode.
+When an item's text should be editable, use a [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md) in its item template instead of a `TextBlock` to display the text.  The text will display like a normal `TextBlock` by default but will switch to a `TextBox` for editing when in edit mode.
 
 Here's an example of a `DataTemplate` that includes a `Image` and [EditableContentControl](../../shared/windows-controls/editablecontentcontrol.md).  This example assumes that you are using an item type that has `ImageSource`, `Name`, and `IsEditing` properties.  The `IsEditing` property has a two-way binding so that it can update the item's property as the end user exits edit mode.
 
@@ -41,7 +41,7 @@ Here's an example of a `DataTemplate` that includes a `Image` and [EditableConte
 </DataTemplate>
 ```
 
-By specifying a `ContentTemplate` on the content control, you can surround the bound text content with other text.  For instance, if `Name` has value "Foo", instead of just showing "Foo" in the item template, you could display the text as "Solution 'Foo'".  Here's an example:
+By specifying a `ContentTemplate` on the content control, you can surround the bound text content with other text.  For instance, if `Name` has value `"Foo"`, instead of just showing `"Foo"` in the item template, you could display the text as `"Solution 'Foo'"`.  Here's an example:
 
 ```xaml
 <DataTemplate>
@@ -62,7 +62,7 @@ By specifying a `ContentTemplate` on the content control, you can surround the b
 </DataTemplate>
 ```
 
-When an item with the above item template is edited, the surrounding "Solution'" and "'" text disappears and the `TextBox` occupies the entire space, editing the `Name` value.
+When an item with the above item template is edited, the surrounding `"Solution '"` and `"'"` text disappears and the `TextBox` occupies the entire space, editing the `Name` value.
 
 ## Providing Whether an Item Is Editable
 

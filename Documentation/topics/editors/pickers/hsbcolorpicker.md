@@ -5,7 +5,7 @@ order: 13
 ---
 # HsbColorPicker
 
-The [HsbColorPicker](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker) control combines several primitives ([RadialHuePicker](radialhuepicker.md) and [SaturationBrightnessPicker](saturationbrightness.md)) together to create a control that allows for easy selection of a HSB (hue, saturation, brightness) color.
+The [HsbColorPicker](xref:@ActiproUIRoot.Controls.Editors.HsbColorPicker) control combines several primitives ([RadialHuePicker](radialhuepicker.md) and [SaturationBrightnessPicker](saturationbrightness.md)) together to create a control that allows for easy selection of an HSB (hue, saturation, brightness) color.
 
 ![Screenshot](../images/hsbcolorpicker.png)
 

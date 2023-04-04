@@ -1,0 +1,85 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.UserInterfaceDensity.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=ribbonClassic, Path=UserInterfaceDensity}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon supports multiple levels of User Interface Density.
+					The Compact option is best for traditional mouse interactions (default for Classic layout),
+					Spacious is great for touch interactions (default for Simplified layout),
+					and Normal is a little in-between.
+					<LineBreak /><LineBreak />
+					Use the Sample Options above to change the User Interface Density of both.
+					<LineBreak /><LineBreak />
+					Try changing the User Interface Density and watch as controls animate to their new
+					size and position.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+
+						<!-- Ribbon Control with Classic layout -->
+						<bars:Ribbon x:Name="ribbonClassic" LayoutMode="Classic" IsApplicationButtonVisible="False"
+									 DataContext="{Binding Ribbon}"
+									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Classic Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="175">
+						
+						<!-- Ribbon Control with Simplified layout -->
+						<bars:Ribbon LayoutMode="Simplified" IsApplicationButtonVisible="False"
+									 UserInterfaceDensity="{Binding ElementName=ribbonClassic, Mode=TwoWay, Path=UserInterfaceDensity}"
+									 DataContext="{Binding Ribbon}"
+									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Simplified Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -20,17 +20,17 @@ See the [Lifecycle and Docking Management](docking-window-features/lifecycle-and
 
 ## Programmatic Layout Updates Don't Work Until Loaded
 
-Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the contructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event fires.
+Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the constructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event fires.
 
-When the root element has loaded, that means that all the templates of the control hierarchy within the dock site have been properly loaded and applied as well.  The dock site and its features are then ready for programmatic interaction.
+When the root element has been loaded, that means that all the templates of the control hierarchy within the dock site have been properly loaded and applied as well.  The dock site and its features are then ready for programmatic interaction.
 
-## Document/ToolWindow DataContext Cleared On Layout Changes
+## Document/ToolWindow DataContext Cleared on Layout Changes
 
-In many common app design scenarios, you set a data context on a root container in your element hierarchy.  Naturally you expect it to inherit down the tree of elements and into the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).`DataContext` properties.
+In many common app design scenarios, you set a data context on a root container in your element hierarchy.  Naturally you expect it to inherit down the tree of elements and into the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).`DataContext` and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).`DataContext` properties.
 
-While that may work on initial load, the problem is that as soon as the layout changes, such as when an end user drags a tool window to float, the `DataContext` will clear.  This is because the tool window has now moved to a new root container, and the data context is no longer inheriting down.
+While that may work on the initial load, the problem is that as soon as the layout changes, such as when an end user drags a tool window to float, the `DataContext` will clear.  This is because the tool window has now moved to a new root container, and the data context is no longer inheriting down.
 
-> [!NOTE]
+> [!TIP]
 > This issue is not present when using our [MVVM Features](mvvm-features.md) since in that case, the `DataContext` of each docking window becomes the item you bound in the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolItemsSource) or [DocumentItemsSource](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentItemsSource) properties.
 
 If the content of your docking windows will rely on a data context that normally would be inherited down, you should explicitly bind your docking window's `DataContext` property to the dock site's `DataContext` like this:
@@ -54,7 +54,7 @@ The same concept applies if you have a [Workspace](workspace-mdi-features/worksp
 
 @if (wpf) {
 
-## Active Window is Incorrect With Interop Controls
+## Active Window is Incorrect with Interop Controls
 
 The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) property might not be correct when clicking into interop (WinForms, ActiveX, etc.) controls.  This is due to issues WPF has with tracking focus that enters `HwndHost` controls, and then properly reporting it back in WPF events.
 

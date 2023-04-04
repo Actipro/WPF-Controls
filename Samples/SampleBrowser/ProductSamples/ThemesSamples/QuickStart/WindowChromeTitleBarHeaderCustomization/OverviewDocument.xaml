@@ -2,10 +2,15 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	>
 
 	<Paragraph TextAlignment="Center">
-		<sampleBrowser:ScreenshotControl ImageSource="/Images/Screenshots/Themes-WindowChromeTitleBarHeaderCustomization-200x150.png" />
+		<sampleBrowser:ScreenshotControl>
+			<sampleBrowser:ScreenshotControl.ImageSource>
+				<BitmapImage UriSource="/Images/Screenshots/Themes-WindowChromeTitleBarHeaderCustomization-200x150.png" shared:ImageProvider.CanAdapt="False" />
+			</sampleBrowser:ScreenshotControl.ImageSource>
+		</sampleBrowser:ScreenshotControl>
 	</Paragraph>
 
 	<Paragraph>

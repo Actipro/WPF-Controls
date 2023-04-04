@@ -23,7 +23,7 @@ The [Caption](xref:@ActiproUIRoot.Controls.BarCode.BarCode.Caption) property can
 
 ## Setting a Symbology
 
-Each bar code symbology is implemented in a separate .NET type.  For instance, `Code 39` is implemented by the [Code39Symbology](xref:@ActiproUIRoot.Controls.BarCode.Code39Symbology) class.
+Each bar code symbology is implemented in a separate .NET type.  For instance, Code 39 is implemented by the [Code39Symbology](xref:@ActiproUIRoot.Controls.BarCode.Code39Symbology) class.
 
 Set the symbology that you would like to use for your bar code to the [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode).[Symbology](xref:@ActiproUIRoot.Controls.BarCode.BarCode.Symbology) property.
 

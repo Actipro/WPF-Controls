@@ -22,7 +22,7 @@ When [FocusBehavior](xref:@ActiproUIRoot.Controls.DataGrid.FocusBehavior).[Track
 
 This class provides attached behavior for `DataGrid` controls to customize the new row template.  The [NewRowTemplateBehavior](xref:@ActiproUIRoot.Controls.DataGrid.NewRowTemplateBehavior).[TemplateProperty](xref:@ActiproUIRoot.Controls.DataGrid.NewRowTemplateBehavior.TemplateProperty) attached property can be set to a custom `ControlTemplate` to use when the new row is not currently editing.
 
-By default, the new row looks identical to actual data rows, but with empty cells. Using [NewRowTemplateBehavior](xref:@ActiproUIRoot.Controls.DataGrid.NewRowTemplateBehavior), a more appealling look can easily be achieved.
+By default, the new row looks identical to actual data rows, but with empty cells. Using [NewRowTemplateBehavior](xref:@ActiproUIRoot.Controls.DataGrid.NewRowTemplateBehavior), a more appealing look can easily be achieved.
 
 ![Screenshot](./images/datagrid-new-row-default.png)
 

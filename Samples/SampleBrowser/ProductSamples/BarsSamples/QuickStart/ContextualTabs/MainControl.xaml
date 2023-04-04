@@ -1,0 +1,68 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs">
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Define the options used by this sample -->
+		<local:OptionsViewModel x:Key="SampleOptions" />
+		
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" DisplayName="Show picture tools" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=IsPictureToolsContextualTabGroupVisible}" />
+					<grids:PropertyModel CanAutoConfigure="True" DisplayName="Show table tools" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=IsTableToolsContextualTabGroupVisible}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon supports contextual tabs that are only visible when the appliation is in a specific state.
+					<LineBreak /><LineBreak />
+					One or more tabs can be associated with a contextual tab group, and the associated tabs will
+					only be visible when that tab group is active. Multiple contextual tab groups can be active at the same time
+					<LineBreak /><LineBreak />
+					Use the Sample Options to toggle the visibility of the Picture Tools group (which contains one tab) and
+					the Table Tools group (which contains two tabs).
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- MVVM-Based Ribbon Sample Control -->
+					<local:SampleMvvmControl Options="{StaticResource SampleOptions}" Height="250" />
+
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- XAML-Based Ribbon Sample Control -->
+					<local:SampleXamlControl Options="{StaticResource SampleOptions}" Height="250" />
+
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

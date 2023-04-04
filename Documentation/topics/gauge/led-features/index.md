@@ -16,6 +16,6 @@ The [Led](xref:@ActiproUIRoot.Controls.Gauge.Led) control can be broken down int
 
 ## Led Light
 
-[Led](xref:@ActiproUIRoot.Controls.Gauge.Led) supports on, off, or blinking states, and includes several options for customizing the look of the led light.
+[Led](xref:@ActiproUIRoot.Controls.Gauge.Led) supports on, off, or blinking states, and includes several options for customizing the look of the LED light.
 
 See the [Led Light](led-light.md) topic for more information.

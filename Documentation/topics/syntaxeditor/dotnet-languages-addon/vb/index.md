@@ -84,6 +84,6 @@ See the [Automated IntelliPrompt](intelliprompt.md) topic for more information.
 
 ## Documentation Comment Auto-Completer
 
-A documentation comment auto-completer is an object that can attempt to auto-generate stub documentation comments for a type or member when `'''` is typed by the end user, can auto-complete end tags, and can insert continuation delimiters when pressing `Enter` in a documentation comment.
+A documentation comment auto-completer is an object that can attempt to auto-generate stub documentation comments for a type or member when `'''` is typed by the end user, can auto-complete end tags, and can insert continuation delimiters when pressing <kbd>Enter</kbd> in a documentation comment.
 
 See the [Documentation Comment Auto-Completer](doc-comment-auto-completer.md) topic for more information.

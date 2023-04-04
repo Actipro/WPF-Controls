@@ -5,6 +5,9 @@ order: 1
 ---
 # Overview
 
+> [!IMPORTANT]
+> This older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../../../bars/index.md), which has a much-improved design and appearance, and many of the latest features currently found in Office.  It is recommended to implement new ribbons using the Bars product instead, and to [migrate away from this older Ribbon product](../../../conversion/converting-to-v23-1.md) to the newer Bars ribbon when possible.
+
 Interactive controls are controls that are located throughout the ribbon user interface and in menus and are the ones that end users primarily interact with.
 
 <table>

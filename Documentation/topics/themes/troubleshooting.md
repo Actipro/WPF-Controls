@@ -17,7 +17,7 @@ There are two steps that must be performed in order to leverage the Aero-style (
 > [!NOTE]
 > Tinted themes that are based on one of the Aero-style themes can also be affected if the source theme is not registered correctly.
 
-The Aero-style themes are located in a separate assembly, to help reduce the install base size for customers that do not use it.  Therefore, you must first ensure that your application has a reference to the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.
+The Aero-style themes are located in a separate assembly, to help reduce the install base size for customers that do not use it.  Therefore, you must first ensure that your application has a reference to the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly.
 
 Once the reference has been added, the Aero theme catalog must be manually registered with the theme manager during application startup before the theme is used:
 

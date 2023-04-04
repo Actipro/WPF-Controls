@@ -5,6 +5,9 @@ order: 1
 ---
 # Overview
 
+> [!IMPORTANT]
+> This older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../../bars/index.md), which has a much-improved design and appearance, and many of the latest features currently found in Office.  It is recommended to implement new ribbons using the Bars product instead, and to [migrate away from this older Ribbon product](../../conversion/converting-to-v23-1.md) to the newer Bars ribbon when possible.
+
 Actipro Ribbon has a large number of built-in controls that are ready for use.  Some controls are for interactive use by the end user while others are used more for layout purposes.
 
 This portion of the documentation links to the various other help topics that relate to controls: learning the basics, information on the control types, and other miscellaneous information.

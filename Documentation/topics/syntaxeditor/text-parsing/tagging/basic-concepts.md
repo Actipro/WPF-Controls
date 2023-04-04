@@ -11,7 +11,7 @@ Tags are objects that store data and can be applied to a text range.  Classifica
 
 Tags are any object inheriting [ITag](xref:ActiproSoftware.Text.Tagging.ITag) that can contain some data and can be applied to and tracked with a range of text in a document.
 
-There are several built-in tag types are are used to drive various functionality pieces in the product.  This table lists the built-in tag interface types that are supported, along with optional implementation classes that can be used.
+There are several built-in tag types are used to drive various functionality pieces in the product.  This table lists the built-in tag interface types that are supported, along with optional implementation classes that can be used.
 
 <table>
 <thead>

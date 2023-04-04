@@ -183,7 +183,7 @@ The `Backstage` close button's appearance has been modernized.
 
 ### Buttons
 
-All buttons (`Button`, `PopupButton`, `SplitButton`, etc.) have had their appearances in various contexts modernized.  This includes updating buttons in menu item contexts to seamlessly match the appearance of Actipro's improved native WPF menu item appearances.  Buttons displayed as tab panel items (i.e. next to the Ribbon tabs) have a new appearance to match Office.
+All buttons (`Button`, `PopupButton`, `SplitButton`, etc.) have had their appearances in various contexts modernized.  This includes updating buttons in menu item contexts to seamlessly match the appearance of Actipro's improved native WPF menu item appearances.  Buttons displayed as tab panel items (i.e., next to the Ribbon tabs) have a new appearance to match Office.
 
 ### Contextual Tab Group
 
@@ -246,7 +246,7 @@ Windows 7 was the last Windows version to support Aero glass.  Windows 7 is now 
 
 Windows 7 and Office 2010 are both end-of-life and are no longer support by Microsoft.  Some customers may still wish to use Aero-style themes (AeroNormalColor, OfficeBlack, OfficeBlue, and OfficeSilver) in their applications so we are keeping these available as options.
 
-We've moved the four Aero-style themes to a new `ActiproSoftware.Themes.Aero.Wpf.dll` assembly to reduce the size of the Shared assembly.  The four themes can now only be used if this optional Aero assembly is referenced by your application, and you perform this register call in your application startup logic:
+We've moved the four Aero-style themes to a new *ActiproSoftware.Themes.Aero.Wpf.dll* assembly to reduce the size of the Shared assembly.  The four themes can now only be used if this optional Aero assembly is referenced by your application, and you perform this register call in your application startup logic:
 
 ```csharp
 ThemesAeroThemeCatalogRegistrar.Register();
@@ -260,19 +260,19 @@ Again, the `AeroNormalColor` theme will no longer work unless the optional Aero 
 
 The older style of predefined asset resources in a resource dictionary supported a tinting mechanism as a way of altering colors if you didn't like the defaults.  While the Aero-style themes support this mechanism since they are still implemented with the older predefined resource dictionary design, generated themes created with theme definitions do not support tinting.  The reason is that generated themes allow you to customize the grayscale palette using various theme definition options, so tinting isn't needed.
 
-As such, various tint-related types (like `TintedThemeCatalog`, `TintGroup`, etc.) that now only work with the Aero-style themes have been moved into the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.
+As such, various tint-related types (like `TintedThemeCatalog`, `TintGroup`, etc.) that now only work with the Aero-style themes have been moved into the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly.
 
 ## Windows XP Themes Removed
 
 Windows XP has been end-of-life and no longer supported by Microsoft for several years, so the related Windows XP themes (LunaNormalColor, LunaHomestead, LunaMetallic, and RoyaleNormalColor) we provided were removed.
 
-The `ActiproSoftware.Themes.Luna.Wpf.dll` assembly that contained those themes is also no longer available.
+The *ActiproSoftware.Themes.Luna.Wpf.dll* assembly that contained those themes is also no longer available.
 
 ## Legacy Docking/MDI Codebase Removed
 
 The 16.1 version made some large improvements to Docking/MDI, including some API changes.  We previously temporarily included the old API as an optional install for those who couldn't immediately upgrade to the newer API.
 
-The `ActiproSoftware.Docking.Legacy.Wpf.dll` and `ActiproSoftware.Docking.Interop.Prism.Legacy.Wpf.dll` assemblies are no longer shipped in the v20.1 distribution.  If you were previously using those assemblies, please upgrade to the newer Docking/MDI API that has been out since v16.1.
+The *ActiproSoftware.Docking.Legacy.Wpf.dll* and *ActiproSoftware.Docking.Interop.Prism.Legacy.Wpf.dll* assemblies are no longer shipped in the v20.1 distribution.  If you were previously using those assemblies, please upgrade to the newer Docking/MDI API that has been out since v16.1.
 
 ## Visual Basic Sample Projects Removed
 
@@ -302,11 +302,11 @@ The list below is the entire detailed update log, including breaking changes.
 
 - `SystemTheme` property and `SystemThemeChanged` event removed, since they are no longer useful with Windows 7 being end-of-life.
 
-- The AeroNormalColor (Windows 7 style) theme was moved to a new optional `ActiproSoftware.Themes.Aero.Wpf.dll` assembly, and now requires a `ThemesAeroThemeCatalogRegistrar.Register()` call at app startup to use.
+- The AeroNormalColor (Windows 7 style) theme was moved to a new optional *ActiproSoftware.Themes.Aero.Wpf.dll* assembly, and now requires a `ThemesAeroThemeCatalogRegistrar.Register()` call at app startup to use.
 
-- The Aero-style Office 2010 themes (OfficeBlack, OfficeBlue, and OfficeSilver) were moved from the old `ActiproSoftware.Themes.Office.Wpf.dll` to the new `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.  Use `ThemesAeroThemeCatalogRegistrar` instead of `ThemesOfficeThemeCatalogRegistrar` to register these optional themes.
+- The Aero-style Office 2010 themes (OfficeBlack, OfficeBlue, and OfficeSilver) were moved from the old *ActiproSoftware.Themes.Office.Wpf.dll* to the new *ActiproSoftware.Themes.Aero.Wpf.dll* assembly.  Use `ThemesAeroThemeCatalogRegistrar` instead of `ThemesOfficeThemeCatalogRegistrar` to register these optional themes.
 
-- The LunaNormalColor, LunaHomestead, LunaMetallic, and RoyaleNormalColor themes defined in the optional `ActiproSoftware.Themes.Luna.Wpf.dll` are no longer available.
+- The LunaNormalColor, LunaHomestead, LunaMetallic, and RoyaleNormalColor themes defined in the optional *ActiproSoftware.Themes.Luna.Wpf.dll* are no longer available.
 
 ### ThemeName (Shared Library)
 
@@ -424,7 +424,7 @@ This list contains changes and removals only:
 
 ### Tint-Related Types (Shared Library)
 
-- `TintedResourceDictionary`, `TintedResourceDictionaryReference`, `TintedThemeCatalog`, `TintGroup`, `TintGroupCollection`, `TintGroupNames`, and `TintGroupSets` types moved to the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly since they now only work with the older Aero-style themes.
+- `TintedResourceDictionary`, `TintedResourceDictionaryReference`, `TintedThemeCatalog`, `TintGroup`, `TintGroupCollection`, `TintGroupNames`, and `TintGroupSets` types moved to the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly since they now only work with the older Aero-style themes.
 
 ### AnimatedExpanderDecorator (Shared Library)
 
@@ -508,7 +508,7 @@ This list contains changes and removals only:
 - `IsTitleBarAreaVisible` property removed since it is no longer needed.  Set `QuickAccessToolBarLocation` to `None` to mimic `false` now.
 - Static `SystemHasSegoeUIFont` property removed since it is no longer needed.
 - `UseScenicLayout` property removed since the Office 2007 orb style of application button is no longer supported.
-- `ApplicationButtonDefault16.png` image file that used to be included in the Ribbon assembly and can be set to `Ribbon.ApplicationButtonImageSource` is now included in the Sample Browser project instead.
+- *ApplicationButtonDefault16.png* image file that used to be included in the Ribbon assembly and can be set to `Ribbon.ApplicationButtonImageSource` is now included in the Sample Browser project instead.
 
 ### RibbonWindow (Ribbon product)
 

@@ -29,7 +29,7 @@ See the [Creating an ISyntaxLanguage](creating-language.md) topic for more infor
 
 ## Loading a Language Definition (.langdef File)
 
-The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with .langdef file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
+The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with *.langdef* file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
 
 See the [Loading a Language Definition (.langdef File)](loading-lang-def.md) topic for details on how to load one of these files at run-time.
 

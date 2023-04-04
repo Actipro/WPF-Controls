@@ -68,7 +68,7 @@ It's very easy by using the properties described above to create some interestin
 
 ![Screenshot](../../images/stackpanel-layouts.gif)
 
-*Some sample stack panel layouts.*
+*Some sample stack panel layouts*
 
 ### Sample 1
 

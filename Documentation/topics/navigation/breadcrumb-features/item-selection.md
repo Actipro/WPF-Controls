@@ -15,7 +15,7 @@ The user can navigate down the hierarchy using the drop-down menus provided by i
 
 *The Breadcrumb control using the Aero theme showing the menu for the Computer item*
 
-The user can navigate directly to any visible item by clicking the associated item, or by pressing the `Enter` key when the associated item has the keyboard focus.
+The user can navigate directly to any visible item by clicking the associated item, or by pressing the <kbd>Enter</kbd> key when the associated item has the keyboard focus.
 
 ![Screenshot](../images/breadcrumb-select-item-aero-normal-color.png)
 

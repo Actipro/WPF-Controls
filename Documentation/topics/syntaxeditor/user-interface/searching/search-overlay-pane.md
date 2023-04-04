@@ -124,7 +124,7 @@ Search results can be highlighted as the find text and other search options are 
 
 ## Control Key Down Opacity
 
-The search overlay pane animates to be semi-transparent when the `Ctrl` key is held down, thereby allowing the end user to see the text behind it. [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
+The search overlay pane animates to be semi-transparent when the <kbd>Ctrl</kbd> key is held down, thereby allowing the end user to see the text behind it. [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
 
 Set this property to `1.0` to prevent the list from being semi-transparent.
 

@@ -160,7 +160,7 @@ foreach (UIElement element in elements) {
 
 Instead of directly arranging elements, derivations of `PanelBase` update the "arrange state".  This information is captured in an instance of [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState) and is set on an element via an attached property.
 
-The `PanelBase` will then watch for state changes and animate an element based on its state (i.e. entering the view, leaving the view, updating location, etc) and the current animation settings.
+The `PanelBase` will then watch for state changes and animate an element based on its state (i.e., entering the view, leaving the view, updating location, etc) and the current animation settings.
 
 This logic will also prevent elements from moving when one or more sibling elements are leaving the scene.
 

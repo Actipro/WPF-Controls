@@ -1,0 +1,92 @@
+﻿<!--
+
+RIBBON GETTING STARTED SERIES - STEP 1
+
+STEP SUMMARY:
+
+	A full Ribbon configuration can be complex, so this Getting Started series is designed as a
+	sequence of smaller steps to introduce you to the Ribbon control and its features.
+	
+	This first step establishes the core control structure for hosting a Ribbon control and defines
+	a baseline for executing a command.
+	
+	Notes similar to these will also be reflected in the C# code files that accompany each step.
+	
+CHANGES SINCE LAST STEP:
+
+	This is the first step. In subsequent steps, check here for notes about what changed since the
+	previous step.
+	
+EXPECTED OPERATION:
+	
+	When this sample window is opened, a Ribbon control with a default "File" button should be displayed
+	along with a "Help" button below the Ribbon. Clicking the "Help" button should display a message.
+	Clicking the "File" button should display a default Application Menu.
+
+-->
+
+
+
+<!--
+SAMPLE NOTE 1.1:
+	Hosting a Ribbon in a RibbonWindow (instead of a standard Window) will provide a themed experience
+	consistent with popular modern applications that typically use a ribbon interface
+-->
+<bars:RibbonWindow
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step01.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:gettingStartedCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Common"
+    Title="Actipro Ribbon Sample" Height="450" Width="800"
+	ResizeMode="CanResizeWithGrip"
+	>
+
+	<!--
+	SAMPLE NOTE 1.2:
+		Placing a RibbonContainerPanel around ar Ribbon will enable animation effects when toggling the
+		minimized state as well as additional logic for when a backstage is displayed (which will be
+		discussed in a later step)
+	
+	SAMPLE NOTE 1.3:
+		RibbonContainerPanel will automatically locate the child Ribbon control and properly arrange
+		it within the panel. All other children will fill the remaining space, similar to how WPF Grid
+		arranges children.
+	-->
+	<bars:RibbonContainerPanel>
+		
+		<!--
+		SAMPLE NOTE 1.4:
+			Ribbon.QuickAccessToolBarMode is currently set to "None" so that UI related to the Quick Access Toolbar
+			will not be displayed. The Quick Access Toolbar will be discussed in a later step.
+		-->
+		<bars:Ribbon QuickAccessToolBarMode="None" />
+
+		<!-- Window Content -->
+		<DockPanel>
+			
+			<!--
+			SAMPLE NOTE 1.5:
+				This common StatusBar is used by all samples and is unrelated to the use and configuration
+				of Ribbon or the Getting Started series.
+			-->
+			<gettingStartedCommon:CommonStatusBar DockPanel.Dock="Bottom" SampleCodePath="/Step01/MainWindow" />
+
+			<!--
+			SAMPLE NOTE 1.6:
+				This Button is created only as a temporary placeholder in the early stages of the Getting Started
+				series in order to verify that standard WPF RoutedCommand handling is working as expected without
+				involving Ribbon. In later steps, this button will be moved to a Tab on the Ribbon. This window
+				has been configured with a CommandBinding to handle the RoutedCommand for Help.
+			-->
+			<Button Command="ApplicationCommands.Help" Content="Help"
+					MinWidth="100" MinHeight="100"
+					HorizontalAlignment="Center" VerticalAlignment="Center"
+					/>
+			
+		</DockPanel>
+
+
+	</bars:RibbonContainerPanel>
+	
+</bars:RibbonWindow>

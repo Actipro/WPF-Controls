@@ -13,7 +13,7 @@ This symbology is also known as Universal Product Code version A.
 
 *A sample of this symbology*
 
-The 13 character value is divided into four parts: system code, manufacturer code, product code, and check digit.
+The 13-character value is divided into four parts: system code, manufacturer code, product code, and check digit.
 
 ## Symbology Characteristics
 
@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [UpcASymbology](xref:@ActiproUIRoot.Controls.BarCode.UpcASymbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [UpcAValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.UpcAValidationRule) |
+| Related `ValidationRule` Class | [UpcAValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.UpcAValidationRule) |
 | Encodable Characters | Number characters. |
 | Supports Checksum | Yes.  This symbology implementation auto-calculates and inserts a check digit. |
 | Has Special Start/Stop Characters | No. |

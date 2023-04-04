@@ -22,7 +22,7 @@ This allows you to debug the grammar since you are no longer trying to load @@Pl
 Follow these steps to create a WPF class library containing your parser that can be debugged:
 
 - Create a new .NET class library project.
-- Reference the `ActiproSoftware.Text.Wpf.dll` and `ActiproSoftware.Text.LLParser.Wpf.dll` assemblies, which are WPF versions.  They are shipped in the same folder as the Language Designer application.
+- Reference the *ActiproSoftware.Text.Wpf.dll* and *ActiproSoftware.Text.LLParser.Wpf.dll* assemblies, which are WPF versions.  They are shipped in the same folder as the Language Designer application.
 - Add the classes you need for your LL(*) Parser Framework parser to run, such as lexer, token ID classes, token reader, grammar, parser, etc.
 - Compile the project to ensure an assembly is produced.
 - Use that assembly with the LL Parser Debugger.
@@ -87,7 +87,7 @@ Once the parser is loaded, you should see the main area of the debugger populate
 
 ![Screenshot](../images/language-designer-ll-parser-debugger-debug-controls.png)
 
-*The LL Parser Debugger controls.*
+*The LL Parser Debugger controls*
 
 If you would like to see the complete results of parsing the example text without stepping through, you can simply click the Start button. The Parse Errors tab will populate with any generated error messages. The Matches tool will populate with the AST result of the parsing operation.
 
@@ -105,9 +105,9 @@ The LL Parser Debugger supports the same main debugging hotkeys as Visual Studio
 
 | Hotkey Combination | Action |
 |-----|-----|
-| F5  | Start Debugging |
-| Shift+F5 | Stop Debugging |
-| F11 | Step Into |
-| F10 | Step Over |
-| Shift+F11 | Step Out |
-| F9  | Toggle Breakpoint |
+| <kbd>F5</kbd> | Start Debugging |
+| <kbd>Shift</kbd>+<kbd>F5</kbd> | Stop Debugging |
+| <kbd>F11</kbd> | Step Into |
+| <kbd>F10</kbd> | Step Over |
+| <kbd>Shift</kbd>+<kbd>F11</kbd> | Step Out |
+| <kbd>F9</kbd> | Toggle Breakpoint |

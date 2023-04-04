@@ -9,7 +9,7 @@ A special utility class is included supports the generation of 'lorem ipsum' pla
 
 ## Generating Placeholder Text
 
-A toolbar button or menu item (i.e. a "Insert Lorem Ipsum" item) clicked by the user in your app's UI might trigger the generation of placeholder text.
+A toolbar button or menu item (i.e., a "Insert Lorem Ipsum" item) clicked by the user in your app's UI might trigger the generation of placeholder text.
 
 This code snippet shows how to use the [LipsumGenerator](xref:ActiproSoftware.Text.Utility.LipsumGenerator) class to generate the placeholder text:
 

@@ -120,7 +120,7 @@ When the caret is over a part, the part value may be incremented or decremented.
 
 Small value changes alter the current color component by a single unit.  Large value changes alter the current color component by `16` units.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Sample XAML
 

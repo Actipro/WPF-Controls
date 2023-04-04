@@ -91,17 +91,17 @@ Note that a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditB
 
 Standard date formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- d
-- D
-- m
-- y
-- MM/dd/yyyy
-- MM/dd/yy
-- yyyy-MM-dd
-- d MMMM yyyy
-- d MMM yyyy
-- dd.MM.yyyy
-- d.M.yyyy
+- `"d"`
+- `"D"`
+- `"m"`
+- `"y"`
+- `"MM/dd/yyyy"`
+- `"MM/dd/yy"`
+- `"yyyy-MM-dd"`
+- `"d MMMM yyyy"`
+- `"d MMM yyyy"`
+- `"dd.MM.yyyy"`
+- `"d.M.yyyy"`
 
 ## Minimum and Maximum Values
 

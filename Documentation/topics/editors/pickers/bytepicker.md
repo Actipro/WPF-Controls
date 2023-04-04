@@ -9,7 +9,7 @@ The [ByteEditBox](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox) control allo
 
 ![Screenshot](../images/int32picker.png)
 
-The control allows for selection of an `Byte` value via the use of a radial slider and increment/decrement button combination.  The radial slider facilitates large changes to the value, while the increment/decrement buttons enable fine tuning.
+The control allows for selection of a `Byte` value via the use of a radial slider and increment/decrement button combination.  The radial slider facilitates large changes to the value, while the increment/decrement buttons enable fine tuning.
 
 The picker adjusts its radial slider functionality according to the range of specified minimum and maximum values.  Large ranges permit multiple slider rotation cycles and show an overall progress indicator towards the largest value.  Smaller ranges only allow for a single rotation cycle.
 

@@ -5,11 +5,11 @@ order: 1
 ---
 # Overview
 
-The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) control is a single-column tree control with many advanced features, similar to the Visual Studio Solution Explorer tree control.  The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control is a multi-column variant of [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) that renders similar to a standard `ListView` but has additional features.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) control is a single-column tree control with many advanced features, similar to the Visual Studio **Solution Explorer** tree control.  The [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) control is a multi-column variant of [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) that renders similar to a standard `ListView` but has additional features.
 
 @if (wpf) {
 
-While [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) may initially appear similar to a native `TreeView` control, and [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) may appear similar to a native `ListView` control, they offer many more features than what is found in the native controls.  See the Features list below for a summary of what they can do. 
+While [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) may initially appear similar to a native `TreeView` control, and [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView) may appear similar to a native `ListView` control, they offer many more features than what is found in the native controls.  See the Features list below for a summary of what they can do.
 
 }
 
@@ -24,20 +24,20 @@ While [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) may initiall
 - UI virtualization, allowing for hundreds of thousands of nodes to be loaded into a tree very quickly.
 - No scrollbar jumpiness as seen in other virtualized tree controls when scrolling vertically.
 - Use your own custom data models as the source for the tree, with no dependencies on UI or our interfaces.  An adapter class is used (and can be fully customized to fit your model) to communicate between the UI and the model for things like expansion state, getting children, etc.
-- The adapter can be coded with bindings in XAML (convenient, yet can be slow in very large trees) or via method overrides (slightly more work but lightning fast).
+- The adapter can be coded with bindings in XAML (convenient yet can be slow in very large trees) or via method overrides (slightly more work but lightning fast).
 - Optionally show the root item in the control.
 - Fine-grained control over expandability and children query triggers.
 - Optional async loading with busy indicator display.
 - Events for expansion.
 - Events for selection.
-- Single or multi-selection, with Ctrl and Shift-based selection options.
+- Single or multi-selection, with <kbd>Ctrl</kbd> and <kbd>Shift</kbd>-based selection options.
 - Filter selection such as only allowing sibling nodes to be multi-selected, or nodes of the same depth.
 - All common tree hotkeys supported including special ones for expanding and collapsing entire branches.
 - Select or ensure nodes are visible by path.
-- Double-click and Return key default action handling.
+- Double-click and <kbd>Enter</kbd> key default action handling.
 - Optional checkboxes within the data templates.
 - Intelligent text searching so when you start typing while the control has focus, it will auto-focus the item that matches the typed text.
-- Inline editing via F2 and single-click on a selected item.
+- Inline editing via <kbd>F2</kbd> and single-click on a selected item.
 - Per-item context menus that can be constructed dynamically via an event.
 - Drag items to external controls, drop data from external controls, or drag/drop items within the control itself.
 - Dragged items can highlight above, on, and below drop areas for each item.
@@ -88,7 +88,7 @@ See the [Selection](selection.md) topic for more information.
 
 ## Default Actions
 
-A default action occurs when an item is double-tapped or `Enter` is pressed.  This action can be fully customized to execute custom logic.
+A default action occurs when an item is double-tapped or <kbd>Enter</kbd> is pressed.  This action can be fully customized to execute custom logic.
 
 See the [Default Actions](default-actions.md) topic for more information.
 
@@ -100,7 +100,7 @@ See the [Item Paths](item-paths.md) topic for more information.
 
 ## Item CheckBoxes
 
-`CheckBox` controls can be inserted into item templates to make items checkable, and default actions can be implemented to toggle checked states for double-taps and `Enter` key presses.
+`CheckBox` controls can be inserted into item templates to make items checkable, and default actions can be implemented to toggle checked states for double-taps and <kbd>Enter</kbd> key presses.
 
 See the [Item CheckBoxes](item-checkboxes.md) topic for more information.
 

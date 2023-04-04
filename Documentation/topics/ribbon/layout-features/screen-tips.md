@@ -76,7 +76,7 @@ Note that at least one screentip-related attached property, such as [ScreenTipSe
 
 ## Context Sensitive Help Implementation
 
-Whenever the [ScreenTipHelpUri](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipHelpUri) property is set to a non-null value, a help icon and text will appear near the bottom of the screen tip that indicates that the user may press `F1` to access context sensitive help for that control.
+Whenever the [ScreenTipHelpUri](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.ScreenTipHelpUri) property is set to a non-null value, a help icon and text will appear near the bottom of the screen tip that indicates that the user may press <kbd>F1</kbd> to access context sensitive help for that control.
 
 To handle this, simply process an `Execute` handler for the standard `ApplicationCommands.Help` command.  Then in that code, check the [CurrentScreenTip](xref:@ActiproUIRoot.Controls.Ribbon.UI.ScreenTipService.CurrentScreenTip) property to see if there is a [ScreenTip](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ScreenTip) currently visible.  If there is, and a help URI is specified, show the appropriate topic in your help file.
 

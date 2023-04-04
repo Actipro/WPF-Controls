@@ -85,12 +85,12 @@ Each of the features listed in the table below describe functionality that is co
 
 Standard time formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- t
-- T
-- hh:mm tt
-- h:mm:ss tt
-- HH:mm:ss
-- HH:mm
+- `"t"`
+- `"T"`
+- `"hh:mm tt"`
+- `"h:mm:ss tt"`
+- `"HH:mm:ss"`
+- `"HH:mm"`
 
 ## Minimum and Maximum Values
 

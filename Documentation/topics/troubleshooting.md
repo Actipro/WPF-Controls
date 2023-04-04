@@ -26,13 +26,11 @@ To resolve this issue, simply close the XAML files, rebuild the Sample Browser s
 
 If that is not the problem, Visual Studio looks for the Actipro design-time functionality assemblies in a "Design" folder under the folder that contains the referenced Actipro control product assembly.  If you referenced Actipro assemblies from a file path location that doesn't have the "Design" child folder containing related design-time functionality assemblies, then Visual Studio will not have designer support for Actipro controls.
 
-When referencing the special code-signed copies of our product assemblies, or referencing our product assemblies from any other custom path that is not the default installed location, you must manually copy the "Design" folder to be a child folder of the folder containing the product assemblies.
-
 If referencing our product assemblies via our NuGet packages, you should not need to worry about file paths since the NuGet packages include the design-time functionality assemblies in them.
 
 ## Designer Errors Reported That Don't Occur At Run-Time
 
-If the Visual Studio designer is reporting errors that aren't errors that occur at run-time, such as "The member 'Foo' is not recognized or is not accessible.", it could be that you haven't referenced the `ActiproSoftware.Shared.Wpf.dll` assembly, which is the Shared Library.  This core assembly is referenced by all our product assemblies and is required to be referenced and deployed with your app when using any of our control products.
+If the Visual Studio designer is reporting errors that aren't errors that occur at run-time, such as "The member '&lt;Name&gt;' is not recognized or is not accessible.", it could be that you haven't referenced the *ActiproSoftware.Shared.Wpf.dll* assembly, which is the Shared Library.  This core assembly is referenced by all our product assemblies and is required to be referenced and deployed with your app when using any of our control products.
 
 Once you've ensured you have a reference to that assembly in your project, please rebuild the project and then reopen the designer.
 
@@ -79,25 +77,25 @@ It is very important to not that the data binding errors are NOT problems in our
 We wanted to get more information on this issue for a customer who wrote us, so we asked Dr. WPF (a WPF expert) for an explanation.  Here's what he had to say:
 
 ```
-You can reassure your customer that the binding trace output is merely there to help developers debug unresolved bindings.  
+You can reassure your customer that the binding trace output is merely there to help developers debug unresolved bindings.
 It does not indicate an error in your code.
-						
-There are several levels at which a binding may be resolved.  
-Most bindings are resolved when they are first parsed.  
-However, for templates and some other specific cases (like generated item containers), 
-the elements may be parsed as they are added to a partial tree or while under a different parser context.  
+
+There are several levels at which a binding may be resolved.
+Most bindings are resolved when they are first parsed.
+However, for templates and some other specific cases (like generated item containers),
+the elements may be parsed as they are added to a partial tree or while under a different parser context.
 In such a case, a perfectly good binding may fail to resolve on the first try.
-						
-If a binding fails to resolve, it is marked as such with an internal flag and a later attempt will be made to resolve the binding. 
-Additionally, for a RelativeSource binding of FindAncestor, any change in the ancestor tree will cause the binding expression 
+
+If a binding fails to resolve, it is marked as such with an internal flag and a later attempt will be made to resolve the binding.
+Additionally, for a RelativeSource binding of FindAncestor, any change in the ancestor tree will cause the binding expression
 to be re-resolved.
-						
-Unfortunately, there is no way to turn off the trace output when running under the debugger.  
-If a debugger is present, all errors and warnings will be issued. 
+
+Unfortunately, there is no way to turn off the trace output when running under the debugger.
+If a debugger is present, all errors and warnings will be issued.
 If a debugger is not present, the trace output will only be generated if a specific key in the registry is set.
-						
-As for how you convince your customer that this is not a real problem, 
-I'd start by pointing out that the messages are coming through the "trace" pipeline... not the "debug" pipeline.  
+
+As for how you convince your customer that this is not a real problem,
+I'd start by pointing out that the messages are coming through the "trace" pipeline... not the "debug" pipeline.
 Second, I'd reemphasize that if there was indeed a problem, you would see it in the UI.
 ```
 

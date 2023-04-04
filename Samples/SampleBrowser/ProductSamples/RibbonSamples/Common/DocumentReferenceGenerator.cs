@@ -43,7 +43,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Resume.rtf"), true);
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Vacation Planning.rtf"), false);
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Investment Notes.rtf"), false);
-			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Holiday Recipies.rtf"), false);
+			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Holiday Recipes.rtf"), false);
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Software\Release Notes.rtf"), true);
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Work\Financial Report Q4.rtf"), false);
 			DocumentReferenceGenerator.AddDocumentReference(manager, new Uri(@"C:\Documents\Personal\Birthday Gift Ideas.rtf"), false);

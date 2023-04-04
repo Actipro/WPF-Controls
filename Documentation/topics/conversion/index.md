@@ -9,6 +9,8 @@ Occasionally during large updates to a product, some breaking changes are necess
 
 Read the following topics that are appropriate for your scenario if you are converting from an older version to the latest version.
 
+- [Converting to v23.1](converting-to-v23-1.md)
+
 - [Converting to v22.1](converting-to-v22-1.md)
 
 - [Converting to v21.1](converting-to-v21-1.md)

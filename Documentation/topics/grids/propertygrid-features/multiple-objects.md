@@ -27,13 +27,13 @@ The built-in [data factory](data-models.md) has special support for merging the 
 When information about a merged property is requested, the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel) uses information from the wrapped property models to determine the best possible "merged information".  For example, if one wrapped property accessor is read-only, then the merged property is considered read-only.
 
 > [!TIP]
-> The `MergablePropertyAttribute` can be used on a property to prevent it from being merged.  Also, only one property from all the data objects needs to be marked as not mergable.
+> The `MergablePropertyAttribute` can be used on a property to prevent it from being merged.  Also, only one property from all the data objects needs to be marked as not mergeable.
 
 ## Displaying Values
 
 Because only a single value can be displayed in the property for single property, the values of multiple properties must be compared.  If all the values are equal, then that single value is used.  In all other instances, `null` is used.  The get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Value](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Value) property performs this comparison.
 
-It is possible to get the unique values of all the selected objects using the The get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Values](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Values) property.  A custom property editor could then be developed that presented each unique value, if so desired.
+It is possible to get the unique values of all the selected objects using the get method for the [MergedPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.MergedPropertyModel).[Values](xref:@ActiproUIRoot.Controls.Grids.PropertyData.CachedPropertyModelBase.Values) property.  A custom property editor could then be developed that presented each unique value, if so desired.
 
 ## Updating Values
 

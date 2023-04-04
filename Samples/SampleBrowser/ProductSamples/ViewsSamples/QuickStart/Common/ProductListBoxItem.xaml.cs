@@ -8,7 +8,7 @@ using ActiproSoftware.SampleBrowser;
 namespace ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.Common {
 	
 	/// <summary>
-	/// Represents a product item for displaying in the variuos panels.
+	/// Represents a product item for displaying in the various panels.
 	/// </summary>
 	public partial class ProductListBoxItem : ListBoxItem {
 

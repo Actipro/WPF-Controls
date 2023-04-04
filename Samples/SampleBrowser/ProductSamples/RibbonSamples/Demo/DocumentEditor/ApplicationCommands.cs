@@ -284,15 +284,15 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 		public static RibbonCommand ToggleContextualTabGroup {
 			get {
 				if (toggleContextualTabGroup == null)
-					toggleContextualTabGroup = new RibbonCommand("ToggleContextualTabGroup", typeof(Ribbon), "Toggle Contextual Tab Group", null, ImageLoader.GetIcon("QuickStart16.png"), "Toggles the visiblility of a contextual tab group for demonstration purposes.");
+					toggleContextualTabGroup = new RibbonCommand("ToggleContextualTabGroup", typeof(Ribbon), "Toggle Contextual Tab Group", null, ImageLoader.GetIcon("QuickStart16.png"), "Toggles the visibility of a contextual tab group for demonstration purposes.");
 				return toggleContextualTabGroup;
 			}
 		}
 
 		/// <summary>
-		/// Gets the <see cref="RibbonCommand"/> that is used to toggle flowdirection.
+		/// Gets the <see cref="RibbonCommand"/> that is used to toggle flow direction.
 		/// </summary>
-		/// <value>The <see cref="RibbonCommand"/> that is used to toggle flowdirection.</value>
+		/// <value>The <see cref="RibbonCommand"/> that is used to toggle flow direction.</value>
 		public static RibbonCommand ToggleFlowDirection {
 			get {
 				if (toggleFlowDirection == null)

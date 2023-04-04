@@ -16,21 +16,21 @@ Leveraging Actipro Themes in your applications is as simple as setting a few pro
 Actipro Themes includes these predefined themes, whose names are defined as constants in the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class:
 
 - Standard
-  
+
   - `Black` - Modern black theme.
   - `Dark` - Modern dark theme.
   - `Light` - Modern light theme.
   - `White` - Modern white theme.
 
 - Metro
-  
+
   - `MetroBlack` - Similar to `MetroDark`, except has a black title bar area.
   - `MetroDark` - A very dark variation of `MetroLight`, similar to the Visual Studio's dark theme.
   - `MetroLight` - System default theme for Windows 8.x and newer.
   - `MetroWhite` - Similar to `MetroLight`, except has a white title bar area.
 
 - Office Colorful
-  
+
   - `OfficeColorfulBlue` - Office-like blue accented light theme, similar to Outlook's Colorful theme.
   - `OfficeColorfulGreen` - Office-like green accented light theme, similar to Excel's Colorful theme.
   - `OfficeColorfulIndigo` - Office-like indigo accented light theme, similar to Word's Colorful theme.
@@ -42,7 +42,7 @@ Actipro Themes includes these predefined themes, whose names are defined as cons
   - `OfficeColorfulYellow` - Office-like yellow accented light theme.
 
 - Office White
-  
+
   - `OfficeWhiteBlue` - Office-like blue accented white theme, similar to Outlook's White theme.
   - `OfficeWhiteGreen` - Office-like green accented white theme, similar to Excel's White theme.
   - `OfficeWhiteIndigo` - Office-like indigo accented white theme, similar to Word's White theme.
@@ -53,24 +53,24 @@ Actipro Themes includes these predefined themes, whose names are defined as cons
   - `OfficeWhiteTeal` - Office-like teal accented white theme, similar to Publisher's White theme.
   - `OfficeWhiteYellow` - Office-like yellow accented white theme.
 
-- Aero-Style *(These themes require the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly, along with special registration as described below) *
-  
+- Aero-Style *(These themes require the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly, along with special registration as described below) *
+
   - `AeroNormalColor` - Windows 7-like theme.
   - `Office2010Black` - Office 2010-like black theme.
   - `Office2010Blue` - Office 2010-like blue theme.
   - `Office2010Silver` - Office 2010-like silver theme.
 
 - Other
-  
+
   - `HighContrast` - High-contrast theme that should only be activated when the Windows system is in high-contrast mode.
 
 ## Add Assembly References
 
-To get started, add a reference to the `ActiproSoftware.Shared.Wpf.dll` assembly.  See the product's Readme for details on the default install location.
+To get started, add a reference to the *ActiproSoftware.Shared.Wpf.dll* assembly.  See the product's Readme for details on the default install location.
 
 ### Aero and Office 2010 Theme Registration
 
-If you'd like to leverage the optional `AeroNormalColor` or three supported Office 2010-like themes (`Office2010Black`, `Office2010Blue`, and `Office2010Silver`), you'll need to add a reference to the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.  The Aero theme in this assembly is similar to the Windows 7 system theme.  The Office themes in this assembly are similar to the Aero-style Office 2010 themes.  For support of themes similar to newer Office versions, use the Office accented themes instead (see above).
+If you'd like to leverage the optional `AeroNormalColor` or three supported Office 2010-like themes (`Office2010Black`, `Office2010Blue`, and `Office2010Silver`), you'll need to add a reference to the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly.  The Aero theme in this assembly is similar to the Windows 7 system theme.  The Office themes in this assembly are similar to the Aero-style Office 2010 themes.  For support of themes similar to newer Office versions, use the Office accented themes instead (see above).
 
 > [!TIP]
 > Only add this reference if these older-style themes are required for your application.
@@ -161,7 +161,7 @@ public partial class App : Application {
         // Call the base method
     	base.OnStartup(e);
     }
-	
+
 }
 ```
 

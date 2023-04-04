@@ -647,7 +647,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor 
 				return;
 
 			// The line, col, and character display are updated using XAML bindings in the view, but the
-			// following could also be used to programatically update the status of the caret position:
+			// following could also be used to programmatically update the status of the caret position:
 			Debug.WriteLineIf(false, string.Format("Ln {0}  Col {1}  Ch {2}",
 				e.CaretPosition.DisplayLine,
 				e.CaretDisplayCharacterColumn,

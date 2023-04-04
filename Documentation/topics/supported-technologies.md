@@ -13,7 +13,7 @@ The products have assemblies available for multiple frameworks, including:
 
 - .NET 5 or later
 - .NET Core 3.1
-- .NET Framework 4.5.2 or later
+- .NET Framework 4.6.2 or later
 
 > [!NOTE]
 > The @@PlatformName Controls installer only installs the product assemblies specifically for .NET Framework.  Please use our [NuGet packages](nuget.md) to make use of assemblies that can target any of the .NET variations listed above, including the .NET Framework ones.

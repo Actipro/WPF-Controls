@@ -23,7 +23,7 @@ Block selection, sometimes called column or rectangular selection, allows a sing
 
 *Continuous stream (left) vs. block (right) selection*
 
-When a block selection is active, multiple lines can be edited at the same time.  Typing will enter the character on each line.  Pasting single-line text will paste the text on each line.  Likewise, operations like `Del` and `Backspace` will work on each line.
+When a block selection is active, multiple lines can be edited at the same time.  Typing will enter the character on each line.  Pasting single-line text will paste the text on each line.  Likewise, keyboard operations like <kbd>Del</kbd> and <kbd>Bkspace</kbd> will work on each line.
 
 ## Getting Information About the Current Selection
 
@@ -52,23 +52,23 @@ There are a number of properties on the [IEditorViewSelection](xref:@ActiproUIRo
 
 Continuous stream selections can be made via the mouse or the keyboard.
 
-To make a continuous stream selection with the mouse, left click in the text area and drag to create the selection.  Hold `Ctrl` when click+dragging to select by word instead of character, but only if the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreMultipleSelectionRangesEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreMultipleSelectionRangesEnabled) property is `false`.
+To make a continuous stream selection with the mouse, left click in the text area and drag to create the selection.  Hold <kbd>Ctrl</kbd> when click+dragging to select by word instead of character, but only if the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreMultipleSelectionRangesEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreMultipleSelectionRangesEnabled) property is `false`.
 
-To make a continuous stream selection with the keyboard, hold the `Shift` key, and press any arrow key.  Other keys such as `Home`, `End`, `PageUp`, and `PageDn` also create selections while holding `Shift`.  Holding `Ctrl+Shift` when using the arrows keys will select by word instead of character.
+To make a continuous stream selection with the keyboard, hold the <kbd>Shift</kbd> key, and press any arrow key.  Other keys such as <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>PgUp</kbd>, and <kbd>PgDn</kbd> also create selections while holding <kbd>Shift</kbd>.  Holding <kbd>Ctrl</kbd>+<kbd>Shift</kbd> when using the arrows keys will select by word instead of character.
 
 ## Creating Multiple Selections at Run-time
 
 Multiple continuous stream selections can be made when the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreMultipleSelectionRangesEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreMultipleSelectionRangesEnabled) property is `true`, the default.
 
-A new selection can be added by holding the `Ctrl` key when clicking in the text area or clicking on the selection or line number margins.
+A new selection can be added by holding the <kbd>Ctrl</kbd> key when clicking in the text area or clicking on the selection or line number margins.
 
-Press the `Esc` key when there are multiple selection ranges to collapse back to a single primary selection range.
+Press the <kbd>Esc</kbd> key when there are multiple selection ranges to collapse back to a single primary selection range.
 
-Most built-in edit actions and editing features are designed to support multiple selections.  For instance, pressing `Shift+Right Arrow` will extend all of the selections by one character.  Copying text from multiple selections unions the selected text, joining each range's text with a line terminator.  Pasting multi-line text into a view with the same number of selections as text lines being pasted will replace each selection with a related line from the pasted text.
+Most built-in edit actions and editing features are designed to support multiple selections.  For instance, pressing <kbd>Shift</kbd>+<kbd>Right Arrow</kbd> will extend all of the selections by one character.  Copying text from multiple selections unions the selected text, joining each range's text with a line terminator.  Pasting multi-line text into a view with the same number of selections as text lines being pasted will replace each selection with a related line from the pasted text.
 
 ### Adding the Next Occurrence
 
-Pressing `Ctrl+D` adds the next occurrence of the currently-selected text to the selection, or selects the current word if there is no selection.
+Pressing <kbd>Ctrl</kbd>+<kbd>D</kbd> adds the next occurrence of the currently-selected text to the selection, or selects the current word if there is no selection.
 
 The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[AddNextOccurrence](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.AddNextOccurrence*) method provides access to this functionality.
 
@@ -76,9 +76,9 @@ The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView
 
 Block selections can be made via the mouse or the keyboard.
 
-To make a block selection with the mouse, hold the `Alt` key, left click in the text area and drag to create the selection.  Hold `Ctrl+Alt+Shift` when click+dragging to select by word instead of character.
+To make a block selection with the mouse, hold the <kbd>Alt</kbd> key, left click in the text area and drag to create the selection.  Hold <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd> when click+dragging to select by word instead of character.
 
-To make a block selection with the keyboard, hold the `Shift+Alt` keys, and press any arrow key.  Holding `Ctrl+Alt+Shift` when using the arrows keys will select by word instead of character.
+To make a block selection with the keyboard, hold the <kbd>Shift</kbd>+<kbd>Alt</kbd> keys, and press any arrow key.  Holding <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd> when using the arrows keys will select by word instead of character.
 
 ## Creating a Single Selection Programmatically
 
@@ -110,7 +110,7 @@ The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView
 
 ## Creating Multiple Selections Programmatically
 
-The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[SelectRanges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.SelectRanges*) method allows for a collection of [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange) objects to be specified that will become multiple selections.  A caret will be placed at the end of each position range.  An optional second parameter allows the index of the primary selection range to be specified.  If `Esc` is pressed by the end user, all selection ranges but the primary selection range will be removed.
+The [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection).[SelectRanges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.SelectRanges*) method allows for a collection of [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange) objects to be specified that will become multiple selections.  A caret will be placed at the end of each position range.  An optional second parameter allows the index of the primary selection range to be specified.  If <kbd>Esc</kbd> is pressed by the end user, all selection ranges but the primary selection range will be removed.
 
 ## Getting or Replacing the Selected Text
 
@@ -178,9 +178,9 @@ This functionality makes use of the [snapshot translation](../../text-parsing/co
 
 ## Selection Collapsing
 
-The `Esc` key can be pressed to collapse the selection.
+The <kbd>Esc</kbd> key can be pressed to collapse the selection.
 
-If there are multiple selection ranges, the `Esc` key will first remove all selections other than the primary selection.
+If there are multiple selection ranges, the <kbd>Esc</kbd> key will first remove all selections other than the primary selection.
 
 When there is a single selection range, the selection will collapse to the caret, meaning make the selection go to zero-length.  This behavior can be changed so that the selection collapses to the selection anchor instead.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[SelectionCollapsesToAnchor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.SelectionCollapsesToAnchor) property can be set to `true` to activate this behavior.
 

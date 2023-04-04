@@ -28,7 +28,7 @@ This scenario could happen if you accidentally set a `Width` or `Height` on the 
 
 This scenario is most likely to occur when you are adjusting control layouts in the designer and adjust the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) or a parent container's size accidentally.
 
-To resolve this issue, simply remove any explicit `Width` or `Height` setting on the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) or a parent container that is causing the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon)'s size be be smaller than [CollapseThresholdSize](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.CollapseThresholdSize).  Alternatively, change [IsCollapsible](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsible) to `false`.
+To resolve this issue, simply remove any explicit `Width` or `Height` setting on the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) or a parent container that is causing the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon)'s size be smaller than [CollapseThresholdSize](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.CollapseThresholdSize).  Alternatively, change [IsCollapsible](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsCollapsible) to `false`.
 
 To help identify when this scenario is occurring, we have added a message that overlays the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) in the Visual Studio designer and warns you that the current size will prevent the ribbon from displaying at run-time (since it will be collapsed).  When you see that message, please follow the steps above to resolve the issue and remove the message.
 

@@ -9,7 +9,7 @@ The [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome) control
 
 ![Screenshot](../images/shadowchrome.png)
 
-*A ShadowChrome providing a soft shadow around a contact card.*
+*A ShadowChrome providing a soft shadow around a contact card*
 
 ## Render Mode
 

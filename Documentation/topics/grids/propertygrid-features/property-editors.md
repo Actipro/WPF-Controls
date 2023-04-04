@@ -61,7 +61,7 @@ The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[PropertyEdi
 
 Each [PropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor) object has several properties that are used to determine the best match: [ObjectType](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.ObjectType), [PropertyName](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.PropertyName), and [PropertyType](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.PropertyType).  Property names must match exactly, while types offer a few more comparison options.  In addition to exact matches, types can match if one of their base classes is specified in the property editor, or if it (or one of its base classes) implements a specified interface.
 
-This table defines the precedence of property editor defintions, with the highest priority at the top ('-' indicates the given property is null or undefined):
+This table defines the precedence of property editor defintions, with the highest priority at the top (`-` indicates the given property is null or undefined):
 
 | Source | Object Type | Property Name | Property Type |
 |-----|-----|-----|-----|
@@ -119,7 +119,7 @@ This table defines the precedence of property editor defintions, with the highes
 | Instance PropertyEditors | -   | -   | -   |
 | Global DefaultPropertyEditors | -   | -   | -   |
 
-> [!NOTE]
+> [!IMPORTANT]
 > The search through the [PropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyEditors) and [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DefaultPropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultPropertyEditors) collections will take the best match per the table above.  If two or more matches are made with the same precedence level, the last one in the collection is chosen.  This ensures that any user-defined property editors have a higher priority than built-in ones.
 
 ## Built-in DataTemplates and Property Editors
@@ -182,8 +182,8 @@ This code shows the default `DataTemplate` used in [PropertyGrid](xref:@ActiproU
 ```xaml
 <shared:NoOpConverter x:Key="NoOpConverter" />
 <DataTemplate>
-	<TextBox Text="{Binding ValueAsString, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource NoOpConverter}}" 
-		IsReadOnly="{Binding IsReadOnly}" 
+	<TextBox Text="{Binding ValueAsString, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource NoOpConverter}}"
+		IsReadOnly="{Binding IsReadOnly}"
 		Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}"
 		/>
 </DataTemplate>
@@ -193,7 +193,7 @@ This code shows the default `DataTemplate` used in [PropertyGrid](xref:@ActiproU
 
 @if (wpf) {
 
-> [!NOTE]
+> [!WARNING]
 > There is an issue when binding the `ValueAsString` property to a `string` property, such as the `TextBox.Text`.  When setting `ValueAsString`, if the underlying object or `TypeConverter` modifies the value such that the `ValueAsString` value is updated then the bound control will not update accordingly. The problem arises from an optimization present in the WPF binding system, and can be corrected by using a no-op (no operation) converter, such as [NoOpConverter](xref:@ActiproUIRoot.Data.NoOpConverter).  The use of the converter on the binding statement, regardless of whether it actually converts the value, forces the control to update itself appropriately.
 
 }
@@ -202,7 +202,7 @@ When [ValueAsString](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyMo
 
 @if (wpf) {
 
-Additionally, a `TypeConverter` can be defined on the value class/struct/enum and can be used to convert the object to and from a string (e.g. for editing in a TextBox).  Many .NET primitives have built-in type converters that support string conversion. 
+Additionally, a `TypeConverter` can be defined on the value class/struct/enum and can be used to convert the object to and from a string (e.g., for editing in a `TextBox`).  Many .NET primitives have built-in type converters that support string conversion.
 
 }
 
@@ -215,7 +215,7 @@ This code shows the default `DataTemplate` used in [PropertyGrid](xref:@ActiproU
 <DataTemplate>
 	<ComboBox BorderThickness="0" Padding="{ThemeResource TextControlThemePadding}" HorizontalAlignment="Stretch"
 				ItemsSource="{Binding StandardValues, Mode=OneWay}" IsEnabled="{Binding IsReadOnly, Mode=OneWay, Converter={StaticResource BooleanNotConverter}}"
-				SelectedItem="{Binding Value, Mode=TwoWay}" 
+				SelectedItem="{Binding Value, Mode=TwoWay}"
 				/>
 </DataTemplate>
 ```
@@ -244,7 +244,7 @@ If a [PropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.Propert
 
 It's very easy to define custom property editors in XAML, both at instance and global levels.
 
-This example shows how a custom property editor can be applied to a property named "Foo" via the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[PropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyEditors) property, but only on the single property grid instance upon which the property editor is defined.
+This example shows how a custom property editor can be applied to a property named `Foo` via the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[PropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.PropertyEditors) property, but only on the single property grid instance upon which the property editor is defined.
 
 @if (winrt) {
 
@@ -282,7 +282,7 @@ This example shows how a custom property editor can be applied to a property nam
 
 }
 
-This example shows how a custom property editor can be applied to a property named "Foo" via a [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier), which is a mechanism used to alter the global [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DefaultPropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultPropertyEditors) collection (applies to all property grid instances in the application).  The [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier).[Clear](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier.Clear) property can be set to `true` to force the built-in default property editors collection to first clear.  Then any property editors added to the modifier are added to the collection.
+This example shows how a custom property editor can be applied to a property named `Foo` via a [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier), which is a mechanism used to alter the global [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[DefaultPropertyEditors](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.DefaultPropertyEditors) collection (applies to all property grid instances in the application).  The [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier).[Clear](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier.Clear) property can be set to `true` to force the built-in default property editors collection to first clear.  Then any property editors added to the modifier are added to the collection.
 
 @if (winrt) {
 
@@ -316,7 +316,7 @@ This example shows how a custom property editor can be applied to a property nam
 
 }
 
-> [!NOTE]
+> [!IMPORTANT]
 > The [PropertyGridPropertyEditorsModifier](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyGridPropertyEditorsModifier) needs to be placed in your app's `Application.Resources` using the `x:Key` specified above, or it will not be applied properly.
 
 ## Specifying a Property Editor at the Property Level
@@ -332,7 +332,7 @@ As described above, the [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.Prop
 
 }
 
-For instance, if [integrating with Actipro Editors](../../editors/interoperability/propertygrid.md) and a date-only property editor should be used on a `DateTime`-based property, you can apply a [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor) to the the property like this:
+For instance, if [integrating with Actipro Editors](../../editors/interoperability/propertygrid.md) and a date-only property editor should be used on a `DateTime`-based property, you can apply a [DatePropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DatePropertyEditor) to the property like this:
 
 ```csharp
 [Editor(typeof(DatePropertyEditor), typeof(PropertyEditor))]
@@ -353,11 +353,11 @@ Once a delegate is found, it will be executed.  The delegate is responsible for 
 
 ## Committing Property Value Changes
 
-When the property grid receives a key down event for the `Enter` key, it will attempt to find an appropriate action to perform.  The action would generally commit any pending changes for controls like `TextBox` that don't push changes to binding sources immediately.  For other control types, such as `CheckBox`, the value is always immediately committed back, and custom actions aren't needed.  After the action is executed, focus is automatically moved back to the parent [PropertyGridItem](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItem) if focus was within a property editor.
+When the property grid receives a key down event for the <kbd>Enter</kbd> key, it will attempt to find an appropriate action to perform.  The action would generally commit any pending changes for controls like `TextBox` that don't push changes to binding sources immediately.  For other control types, such as `CheckBox`, the value is always immediately committed back, and custom actions aren't needed.  After the action is executed, focus is automatically moved back to the parent [PropertyGridItem](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItem) if focus was within a property editor.
 
 This behavior is control by the static [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CommitPropertyValueEditHandlers](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CommitPropertyValueEditHandlers) dictionary.  This dictionary maps a `Type` to a [PropertyGridItemActionHandler](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItemActionHandler) delegate.  Using the type of the focused control, the property grid will search for an associated delegate to execute.  The search will start with the concrete type, then search up the base class types until a delegate is found or until no more base types are available.
 
-Once a delegate is found, it will be executed.  The delegate is responsible for committing any changes.  The dictionary is initialized with a two entries to support `TextBox` and `ComboBox`.
+Once a delegate is found, it will be executed.  The delegate is responsible for committing any changes.  The dictionary is initialized with two entries to support `TextBox` and `ComboBox`.
 
 @if (wpf) {
 
@@ -371,13 +371,13 @@ private bool CommitForTextBox(PropertyGridItemActionRequest request) {
 	var control = request.Element as TextBox;
 	if ((control == null) || (!control.IsEnabled) || (control.IsReadOnly))
 		return false;
-			
+
 	var bindingExpression = control.GetBindingExpression(TextBox.TextProperty);
 	if (bindingExpression != null) {
 		bindingExpression.UpdateSource();
 		return true;
 	}
-	
+
 	return false;
 }
 ```
@@ -386,17 +386,17 @@ private bool CommitForTextBox(PropertyGridItemActionRequest request) {
 
 @if (wpf) {
 
-This behavior can be disabled by setting `KeyboardNavigation.AcceptsReturn` to `false` on the property grid. 
+This behavior can be disabled by setting `KeyboardNavigation.AcceptsReturn` to `false` on the property grid.
 
 }
 
 ## Canceling Property Value Changes
 
-When the property grid receives a key down event for the `Escape` key, it will attempt to find an appropriate action to perform.  The action would generally cancel any pending changes.  After the action is executed, focus is automatically moved back to the parent [PropertyGridItem](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItem) if focus was within a property editor.
+When the property grid receives a key down event for the <kbd>Esc</kbd> key, it will attempt to find an appropriate action to perform.  The action would generally cancel any pending changes.  After the action is executed, focus is automatically moved back to the parent [PropertyGridItem](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItem) if focus was within a property editor.
 
 This behavior is control by the static [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[CancelPropertyValueEditHandlers](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid.CancelPropertyValueEditHandlers) dictionary.  This dictionary maps a `Type` to a [PropertyGridItemActionHandler](xref:@ActiproUIRoot.Controls.Grids.PropertyGridItemActionHandler) delegate.  Using the type of the focused control, the property grid will search for an associated delegate to execute.  The search will start with the concrete type, then search up the base class types until a delegate is found or until no more base types are available.
 
-Once a delegate is found, it will be executed.  The delegate is responsible for cancelling any changes.  The dictionary is initialized with a two entries to support `TextBox` and `ComboBox`.
+Once a delegate is found, it will be executed.  The delegate is responsible for cancelling any changes.  The dictionary is initialized with two entries to support `TextBox` and `ComboBox`.
 
 @if (wpf) {
 
@@ -410,13 +410,13 @@ private bool CancelForTextBox(PropertyGridItemActionRequest request) {
 	var control = request.Element as TextBox;
 	if ((control == null) || (!control.IsEnabled) || (control.IsReadOnly))
 		return false;
-			
+
 	var bindingExpression = control.GetBindingExpression(TextBox.TextProperty);
 	if (bindingExpression != null) {
 		bindingExpression.UpdateTarget();
 		return true;
 	}
-	
+
 	return false;
 }
 ```

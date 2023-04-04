@@ -73,7 +73,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:CheckBox Label="Toggle Bold" KeyTipAccessText="B" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:CheckBox Command="EditingCommands.ToggleBold" KeyTipAccessText="B" />

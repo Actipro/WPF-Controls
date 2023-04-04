@@ -15,7 +15,7 @@ This topic's information will assume you are using Visual Studio to write your X
 
 The Actipro @@PlatformName Controls target 'Windows 10 Fall Creators Update (10.0; Build 16299)'.  Any apps using them must also set the project's target version AND minimum version to the same or newer, or errors may occur.
 
-The controls also use Microsoft's 'Win2D.uwp' NuGet package, which must also be referenced.  Please see the Readme file for a detailed chart specifying which Windows 10 target versions are compatible with the various NuGet package requirement versions.
+The controls also use Microsoft's `Win2D.uwp` NuGet package, which must also be referenced.  Please see the Readme file for a detailed chart specifying which Windows 10 target versions are compatible with the various NuGet package requirement versions.
 
 }
 
@@ -23,7 +23,7 @@ The controls also use Microsoft's 'Win2D.uwp' NuGet package, which must also be 
 
 ## Add Extension SDK Reference
 
-In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" and add the "Actipro Universal Windows Controls" SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.
+In the Visual Studio **Add References** dialog, expand out **Windows/Extensions** and add the **Actipro Universal Windows Controls** SDK to your project.  This process is described in further detail in the [References and Deployment](../deployment.md) topic.
 
 }
 
@@ -31,7 +31,7 @@ In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" an
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Docking.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Docking.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 }
 
@@ -39,7 +39,7 @@ First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dl
 
 @if (winrt) {
 
-This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
+This `xmlns` declaration in your root XAML control allows access to the various controls in this product:
 
 ```xaml
 xmlns:docking="using:ActiproSoftware.UI.Xaml.Controls.Docking"
@@ -49,7 +49,7 @@ xmlns:docking="using:ActiproSoftware.UI.Xaml.Controls.Docking"
 
 @if (wpf) {
 
-This 'xmlns' declaration in your root XAML control allows access to the various controls in this product:
+This `xmlns` declaration in your root XAML control allows access to the various controls in this product:
 
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
@@ -68,7 +68,7 @@ This code shows the base XAML that you can use to create a simple docking window
 					<docking:DocumentWindow Title="Document1.txt" Description="Text document" FileName="Document1.rtf">
 						<TextBox BorderThickness="0" TextWrapping="Wrap" Text="This is a document window." />
 					</docking:DocumentWindow>
-				</docking:TabbedMdiContainer>						
+				</docking:TabbedMdiContainer>
 			</docking:TabbedMdiHost>
 		</docking:Workspace>
 		<docking:ToolWindowContainer>
@@ -96,9 +96,9 @@ Several ways of opening the windows are shown in the MVVM examples found in our 
 
 ## The Visual Studio Item Templates
 
-If you have Visual Studio, several item templates named `Docking & Standard MDI Window (WPF)`, `Docking & Standard MDI Page (WPF)`, `Docking & Tabbed MDI Window (WPF)`, `Docking & Tabbed MDI Page (WPF)`, `Docking Inner Fill Window (WPF)`, and `Docking Inner Fill Page (WPF)` should have been installed during the WPF Studio installation procedure.
+If you have Visual Studio, several item templates named "Docking & Standard MDI Window (WPF)", "Docking & Standard MDI Page (WPF)", "Docking & Tabbed MDI Window (WPF)", "Docking & Tabbed MDI Page (WPF)", "Docking Inner Fill Window (WPF)", and "Docking Inner Fill Page (WPF)" should have been installed during the WPF Studio installation procedure.
 
-When you wish to create a new `Window` or `Page` with a tabbed MDI, standard MDI, or inner fill in your application, simply choose `Add New Item` in Visual Studio and select the appropriate item template.  A `DockSite` with several tool and documents already defined will be added to your project and opened.
+When you wish to create a new `Window` or `Page` with a tabbed MDI, standard MDI, or inner fill in your application, simply choose **Add New Item** in Visual Studio and select the appropriate item template.  A `DockSite` with several tool and documents already defined will be added to your project and opened.
 
 The use of item templates is the fastest way to get started with our products in your own applications.
 

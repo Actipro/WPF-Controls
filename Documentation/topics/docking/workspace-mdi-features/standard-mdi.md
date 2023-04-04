@@ -23,11 +23,11 @@ At run-time, you can use the common document framework (shared with [tabbed MDI]
 
 ## Allowing Windows to Maximize/Minimize
 
-The maximize and minimize buttons on windows within the standard MDI area can be selectively shown or hidden using the [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost).[CanWindowsMaximize](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.CanWindowsMaximize) and [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost).[CanWindowsMinimize](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.CanWindowsMinimize) properties, respectively.
+The **Maximize** and **Minimize** buttons on windows within the standard MDI area can be selectively shown or hidden using the [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost).[CanWindowsMaximize](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.CanWindowsMaximize) and [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost).[CanWindowsMinimize](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.CanWindowsMinimize) properties, respectively.
 
-Individual windows can have its maximize and minimize buttons selectively shown or hidden using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMaximize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMaximize) and [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMinimize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMinimize) properties, respectively.
+Individual windows can have its **Maximize** and **Minimize** buttons selectively shown or hidden using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMaximize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMaximize) and [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMinimize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMinimize) properties, respectively.
 
-In addition to hiding the maximize button, the `StandardMdiHost.CanWindowsMaximize` and `DockingWindow.CanStandardMdiMaximize` properties will disable the ability to double click the titlebar of a window to maximize it. Windows that do not display their maximize or minimize buttons can still be programmatically maximized/minimized.
+In addition to hiding the **Maximize** button, the `StandardMdiHost.CanWindowsMaximize` and `DockingWindow.CanStandardMdiMaximize` properties will disable the ability to double click the titlebar of a window to maximize it. Windows that do not display their **Maximize** or **Minimize** buttons can still be programmatically maximized/minimized.
 
 ## Window State
 
@@ -47,7 +47,7 @@ If you wish for your windows to be opened as maximized by default, set it to `tr
 
 The [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost).[AreMaximizedWindowFramesVisible](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.AreMaximizedWindowFramesVisible) can be set to `false` to hide the title bar and frame of the child MDI windows when they are maximized. This gives more room to the MDI window and is typical for a standard MDI layout.
 
-When hiding the frame, the title and minimize/restore/close buttons are typically presented by an assocated Ribbon, toolbar, or menu of the containing window/control.  The Sample Browser includes a 'Standard MDI-Only' sample that show how this can be accomplished.
+When hiding the frame, the title and minimize/restore/close buttons are typically presented by an associated ribbon, toolbar, or menu of the containing window/control.  The Sample Browser includes a "Standard MDI-Only" sample that shows how this can be accomplished.
 
 When using external buttons to manage the windows, these [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) commands are available for use with the buttons: [MinimizePrimaryWindowCommand](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.MinimizePrimaryWindowCommand), [RestorePrimaryWindowCommand](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.RestorePrimaryWindowCommand), [MaximizePrimaryWindowCommand](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.MaximizePrimaryWindowCommand), and [ClosePrimaryWindowCommand](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost.ClosePrimaryWindowCommand).
 
@@ -59,7 +59,7 @@ If you wish for a docking window to auto-size itself to its content when opened 
 
 Magnetism allows windows within the standard MDI area to be "snapped" together when moving or resizing.  This makes it easier for the end-user to line up the windows into rows or columns.
 
-Magnetism can be configured using [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MagnetismSnapDistance](xref:@ActiproUIRoot.Controls.Docking.DockSite.MagnetismSnapDistance) and [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MagnetismGapDistance](xref:@ActiproUIRoot.Controls.Docking.DockSite.MagnetismGapDistance).  The snap distance indicates the distance at which magnetism begins to snap windows being dragged.  The gap distance indicates the distance between windows that are snapped together via magnetism.  Magnetism can be disabled by setting the snap distance to 0.
+Magnetism can be configured using [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MagnetismSnapDistance](xref:@ActiproUIRoot.Controls.Docking.DockSite.MagnetismSnapDistance) and [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MagnetismGapDistance](xref:@ActiproUIRoot.Controls.Docking.DockSite.MagnetismGapDistance).  The snap distance indicates the distance at which magnetism begins to snap windows being dragged.  The gap distance indicates the distance between windows that are snapped together via magnetism.  Magnetism can be disabled by setting the snap distance to `0`.
 
 ## Title Bar Contextual Content
 

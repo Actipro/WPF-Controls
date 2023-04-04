@@ -101,7 +101,7 @@ The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl
 
 }
 
-### Highlighting Inactive Tabs On Pointer Over
+### Highlighting Inactive Tabs on Pointer Over
 
 The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[CanTabsHighlightOnPointerOverWhenInactive](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.CanTabsHighlightOnPointerOverWhenInactive) property sets whether tabs can highlight when the pointer is over inactive ones.  The default value is `false`.
 
@@ -137,7 +137,7 @@ While tabs do support dragging to reorder themselves, the feature is not enabled
 
 ## Tab Selection on System Drag Over
 
-By default, performing a system (e.g. text, file) drag over a tab will select the tab so that the dragged content can be dropped on a control on the tab's content area.  To disable this feature, set the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[CanTabsSelectOnDragOver](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.CanTabsSelectOnDragOver) property to `false`.
+By default, performing a system drag over a tab (e.g., text drag, file drag) will select the tab so that the dragged content can be dropped on a control on the tab's content area.  To disable this feature, set the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[CanTabsSelectOnDragOver](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.CanTabsSelectOnDragOver) property to `false`.
 
 }
 
@@ -151,6 +151,6 @@ The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl
 
 ## Keyboard Shortcuts
 
-When the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[IsTabKeyboardSwitchingEnabled](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.IsTabKeyboardSwitchingEnabled) property is `true` (the default), the `Ctrl+Tab` shortcut will switch to the next tab and the `Ctrl+Shift+Tab` shortcut will switch to the previous tab.
+When the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[IsTabKeyboardSwitchingEnabled](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.IsTabKeyboardSwitchingEnabled) property is `true` (the default), the <kbd>Ctrl</kbd>+<kbd>Tab</kbd> shortcut will switch to the next tab and the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Tab</kbd> shortcut will switch to the previous tab.
 
-When the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[IsTabKeyboardAccessEnabled](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.IsTabKeyboardAccessEnabled) property is `true` (the default), keyboard access to directly select a tab is enabled. `Ctrl+1` will activate the first tab in a normal state, with `Ctrl+2` activating the second normal tab, and so on. `Ctrl+Alt+1` will activate the first tab in a pinned state, with `Ctrl+Alt+2` activating the second pinned tab, and so on.
+When the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[IsTabKeyboardAccessEnabled](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.IsTabKeyboardAccessEnabled) property is `true` (the default), keyboard access to directly select a tab is enabled. <kbd>Ctrl</kbd>+<kbd>1</kbd> will activate the first tab in a normal state, with <kbd>Ctrl</kbd>+<kbd>2</kbd> activating the second normal tab, and so on. <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd> will activate the first tab in a pinned state, with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd> activating the second pinned tab, and so on.

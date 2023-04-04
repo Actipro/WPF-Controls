@@ -601,7 +601,7 @@ The content icon is configured to not change in dark themes, but the footer icon
 												  StandardButtons="YesNo"
 												  IsChecked="True"
 												  CheckBoxContent="Check to cancel the response"
-												  Responding="OnUserPromptControlRespondingCancelWhenVerifieid"
+												  Responding="OnUserPromptControlRespondingCancelWhenVerified"
 												  Width="500" BorderThickness="1">
 						</shared:UserPromptControl>
 						<Button Style="{StaticResource ShowDialogButton}" Click="OnSampleShowDialogCancelResponseClick" />

@@ -32,7 +32,7 @@ An exception will be thrown if an unsupported data type is specified.
 
 Each series in a chart control can be bound to a separate data source, or to different properties on the same data source.  The [ItemsSource](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroSeriesBase.ItemsSource) property on each series can be set to any collection of objects, including custom objects, as long as the collection implements `IEnumerable`.
 
-There are two types of collections that can be used, simple (such as as list of `Double`) and complex (such as a list of custom objects).
+There are two types of collections that can be used, simple (such as list of `Double`) and complex (such as a list of custom objects).
 
 ### Simple Collections
 

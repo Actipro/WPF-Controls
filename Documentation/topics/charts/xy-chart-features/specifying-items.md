@@ -51,8 +51,8 @@ Each series in a chart control can be bound to a separate data source, or to dif
 
 In this case, the [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) and/or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) properties must be set to the name of a property on the objects in the collection.
 
-> [!NOTE]
-> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (".").  For example you can set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like "MyProperty.MyOtherProperty.MyDoubleValue", similar to how binding paths work in XAML.
+> [!TIP]
+> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`.`).  For example you can set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.
 
 For example, consider the following custom object:
 
@@ -61,7 +61,7 @@ public class SalesData {
 
 	private decimal amount;
 	private DateTime date;
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	// OBJECT
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,12 +79,12 @@ public class SalesData {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	// PUBLIC PROCEDURES
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/// <summary>
 	/// Gets the sales amount.
 	/// </summary>
 	/// <value>The sales amount.</value>
-	public decimal Amount { 
+	public decimal Amount {
 		get {
 			return amount;
 		}
@@ -94,7 +94,7 @@ public class SalesData {
 	/// Gets the date for which the amount is specified.
 	/// </summary>
 	/// <value>The date for which the amount is specified.</value>
-	public DateTime Date { 
+	public DateTime Date {
 		get {
 			return date;
 		}

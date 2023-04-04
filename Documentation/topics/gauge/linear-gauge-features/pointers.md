@@ -27,7 +27,7 @@ There are two brushes used by bars: [Background](xref:@ActiproUIRoot.Controls.Ga
 
 ### Extents/Ascents
 
-Bars use the [PointerExtent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.PointerExtent) property to determine the thickness of the band. The [PointerAscent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.PointerAscent) property is used when rendering a blub at the end of the bar. In this case, the ascent determines the radius of the blub.
+Bars use the [PointerExtent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.PointerExtent) property to determine the thickness of the band. The [PointerAscent](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.PointerAscent) property is used when rendering a bulb at the end of the bar. In this case, the ascent determines the radius of the bulb.
 
 ## Labels
 
@@ -35,7 +35,7 @@ Labels are pointers that render text at the specified value.
 
 ### Text
 
-When [Text](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.Text) is non-null, then that sting is used.  When null, the text is determined by the [DisplayValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.DisplayValue), [RoundMode](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.RoundMode), and [TextFormat](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.TextFormat) properties.
+When [Text](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.Text) is non-`null`, then that sting is used.  When `null`, the text is determined by the [DisplayValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.DisplayValue), [RoundMode](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.RoundMode), and [TextFormat](xref:@ActiproUIRoot.Controls.Gauge.LinearPointerLabel.TextFormat) properties.
 
 ### Font and Foreground
 
@@ -71,13 +71,13 @@ When making small value changes then the relative duration may be too short, res
 
 When using a [LinearGauge](xref:@ActiproUIRoot.Controls.Gauge.LinearGauge) to display real-time data, it is possible that the value displayed by the gauge will change to quickly for the user to read the individual values. The [PointerBase](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase).[RefreshRate](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.RefreshRate) property can be used to limit the number of updates displayed to the user.
 
-The refresh rate is specified as the amount of time to wait between updates. Therefore, if the refresh rate is set to `500` milliseconds, then there will be two updates to the display every second. If several hundreds value changes are made during that second, then only two of the values will actually be displayed.
+The refresh rate is specified as the amount of time to wait between updates. Therefore, if the refresh rate is set to `500` milliseconds, then there will be two updates to the display every second. If hundreds of value changes are made during that second, then only two of the values will actually be displayed.
 
 ## Snapping
 
-The values presented by the various pointers, can be any real value between the minimum and maximum values, including fractions.  Pointer values can be "snapped" to a configurable interval, by setting [IsSnappingEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.IsSnappingEnabled) to `true`. When snapping is enabled, the pointer value will be coerced so that it is evenly divisible by the snapping interval, which is specified by the [SnappingInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.SnappingInterval) property.
+The values presented by the various pointers can be any real value between the minimum and maximum values, including fractions.  Pointer values can be "snapped" to a configurable interval, by setting [IsSnappingEnabled](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.IsSnappingEnabled) to `true`. When snapping is enabled, the pointer value will be coerced so that it is evenly divisible by the snapping interval, which is specified by the [SnappingInterval](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.SnappingInterval) property.
 
-For example, if snapping is enabled with an interval of 1, then the pointer value will be automatically rounded to the nearest whole number.
+For example, if snapping is enabled with an interval of `1`, then the pointer value will be automatically rounded to the nearest whole number.
 
 > [!TIP]
 > Snapping can be used in conjunction with interactive pointers.
@@ -86,10 +86,10 @@ The [SnappingMode](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.Sna
 
 ## Interactive Pointers
 
-Pointer values can be interctively changed, by the end-user, using the mouse when [CanDrag](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.CanDrag) is set to `true`. When enabled, the cursor is changed to `Cursors.Hand` when the mouse is hovered over the pointer. The cursor can be customized by setting [DragCursor](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.DragCursor).
+Pointer values can be interactively changed, by the end-user, using the mouse when [CanDrag](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.CanDrag) is set to `true`. When enabled, the cursor is changed to `Cursors.Hand` when the mouse is hovered over the pointer. The cursor can be customized by setting [DragCursor](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.DragCursor).
 
 > [!TIP]
-> By setting `IsFocusable` to `true` on a pointer element, the end-user can press the Escape key to cancel a drag operation.
+> By setting `IsFocusable` to `true` on a pointer element, the end-user can press the <kbd>Esc</kbd> key to cancel a drag operation.
 
 By default, the pointer is not animated when the value is changed using the mouse. This behavior can be altered by setting [IsDraggingAnimated](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.IsDraggingAnimated) to `true`.
 

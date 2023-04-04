@@ -32,9 +32,7 @@ The [TrackHeight](xref:@ActiproUIRoot.Controls.Editors.GradientStopSlider.TrackH
 There are several properties that return `ICommand` and can be utilized by external buttons or menu items:
 
 - [AddStopCommand](xref:@ActiproUIRoot.Controls.Editors.GradientStopSlider.AddStopCommand)
-
 - [RemoveSelectedStopCommand](xref:@ActiproUIRoot.Controls.Editors.GradientStopSlider.RemoveSelectedStopCommand)
-
 - [ReverseStopsCommand](xref:@ActiproUIRoot.Controls.Editors.GradientStopSlider.ReverseStopsCommand)
 
 Simply bind the `Command` property of an external button or menu item to the appropriate slider property to have them interact with the control.

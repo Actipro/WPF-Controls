@@ -20,7 +20,7 @@ A tool window is in auto-hide state when its tab appears along one of four outer
 
 *The Solution Explorer tool window in AutoHide state with its popup displayed*
 
-The `AutoHide` state is only available to tool windows.  Auto-hide is always supported in the primary dock host, and is only supported in floating dock hosts that have a workspace visible.
+The `AutoHide` state is only available to tool windows.  Auto-hide is always supported in the primary dock host and is only supported in floating dock hosts that have a workspace visible.
 
 ## The Docked State
 
@@ -44,11 +44,11 @@ A docking window is in `Document` state when it is within the MDI area.  It coul
 
 *The Solution Explorer tool window in Document state (standard MDI)*
 
-The `Document` state is available to both tool and document windows.  Documents that are dragged to float will create a MDI host in their containing floating dock host.
+The `Document` state is available to both tool and document windows.  Documents that are dragged to float will create an MDI host in their containing floating dock host.
 
 ## State Changes
 
-The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) property can be set to alter where the docking window is located.  Note that setting the state will not automatically open the docking window if it currently closed.  It is designed this way so that the state can be set and other properties configured prior to the open occuring, which can be done by setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `true`, setting the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActive) property to `true`, calling the [Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method, or calling the [Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method.
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) property can be set to alter where the docking window is located.  Note that setting the state will not automatically open the docking window if it is currently closed.  It is designed this way so that the state can be set and other properties configured prior to the open occurring, which can be done by setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `true`, setting the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActive) property to `true`, calling the [Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method, or calling the [Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method.
 
 The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged) event can be used to detect changes to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) property of the various registered windows.  This event may fire once for a group of docking windows that change state together, with the event arguments containing the list of affected docking windows.
 

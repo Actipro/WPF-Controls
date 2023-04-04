@@ -21,7 +21,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [CodabarSymbology](xref:@ActiproUIRoot.Controls.BarCode.CodabarSymbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [CodabarValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.CodabarValidationRule) |
+| Related `ValidationRule` Class | [CodabarValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.CodabarValidationRule) |
 | Encodable Characters | Number and `-$:/.+` characters, along with 4 start/stop characters. |
 | Supports Checksum | No.  This symbology is self-checking, so no checksum or check digit is required. |
 | Has Special Start/Stop Characters | Yes.  Each encoded value must start and stop with `A`, `B`, `C`, or `D`. |

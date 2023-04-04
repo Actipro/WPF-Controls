@@ -1,0 +1,244 @@
+<sampleBrowser:ProductItemControl
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ApplicationMenu.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	FocusManager.FocusedElement="{Binding ElementName=editor}"
+	>
+	
+	<!-- Sample Options and Description -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" DisplayName="Use large size menu items" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=DataContext.UseLargeSize}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Actipro Ribbon defines an application button that can either display a Backstage or an application menu.
+					This sample demonstrates the application menu.
+					<LineBreak /><LineBreak />
+					The top Ribbon shows an application menu that defines additional content to the right of the menu items and
+					a footer at the bottom. The content and footer can be set any to any content.
+					<LineBreak /><LineBreak />
+					The bottom Ribbon shows the same application menu without defining the additional content or footer.
+					<LineBreak /><LineBreak />
+					Use the Sample Options above to toggle the size of the menu items. Large-sized items support an optional
+					description on a second line as can be seen in the 'New' popup menu. Even though this demo changes most of the
+					menu items at the same time, the large size is set on each individual menu item and difference sizes can
+					be mixed within the same menu.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+					
+						<!-- Ribbon Control -->
+						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None" IsCollapsible="False">
+
+							<!-- Configure RibbonApplicationButton with Menu Items, Content, and Footer -->
+							<bars:Ribbon.ApplicationButtonContent>
+								<bars:RibbonApplicationButton>
+									
+									<!-- Menu Additional Content: displayed to the right of the menu items -->
+									<bars:RibbonApplicationButton.MenuAdditionalContent>
+										<Grid Margin="20">
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="20" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="7" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="7" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="7" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="7" />
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="20" />
+												<RowDefinition Height="*" />
+											</Grid.RowDefinitions>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="15" />
+												<ColumnDefinition Width="*" />
+											</Grid.ColumnDefinitions>
+											<Grid.Resources>
+
+												<Style x:Key="PropertyNameTextBlockStyle" TargetType="TextBlock">
+													<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestNormalBrushKey}}" />
+													<Setter Property="TextTrimming" Value="CharacterEllipsis" />
+												</Style>
+
+												<Style x:Key="PropertyValueTextBlockStyle" TargetType="TextBlock">
+													<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowerSubtleBrushKey}}" />
+													<Setter Property="TextTrimming" Value="CharacterEllipsis" />
+												</Style>
+
+											</Grid.Resources>
+
+											<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+													   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}"
+													   Text="Document Properties" />
+										
+											<TextBlock Grid.Row="2" Grid.Column="0" Text="Size" Style="{StaticResource PropertyNameTextBlockStyle}" />
+											<TextBlock Grid.Row="2" Grid.Column="2" Text="Not saved yet" Style="{StaticResource PropertyValueTextBlockStyle}" />
+
+											<TextBlock Grid.Row="4" Grid.Column="0" Text="Pages" Style="{StaticResource PropertyNameTextBlockStyle}" />
+											<TextBlock Grid.Row="4" Grid.Column="2" Text="3" Style="{StaticResource PropertyValueTextBlockStyle}" />
+
+											<TextBlock Grid.Row="6" Grid.Column="0" Text="Words" Style="{StaticResource PropertyNameTextBlockStyle}" />
+											<TextBlock Grid.Row="6" Grid.Column="2" Text="481" Style="{StaticResource PropertyValueTextBlockStyle}" />
+
+											<TextBlock Grid.Row="8" Grid.Column="0" Text="Total Editing Time" Style="{StaticResource PropertyNameTextBlockStyle}" />
+											<TextBlock Grid.Row="8" Grid.Column="2" Text="2 minutes" Style="{StaticResource PropertyValueTextBlockStyle}" />
+
+											<TextBlock Grid.Row="10" Grid.Column="0" Text="Created" Style="{StaticResource PropertyNameTextBlockStyle}" />
+											<TextBlock Grid.Row="10" Grid.Column="2" Text="Today, 1:18 PM" Style="{StaticResource PropertyValueTextBlockStyle}" />
+
+											<Viewbox Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Width="125" VerticalAlignment="Center">
+												<shared:ActiproLogo />
+											</Viewbox>
+										</Grid>
+									</bars:RibbonApplicationButton.MenuAdditionalContent>
+									
+									<!-- Menu Footer: Displayed below the menu items-->
+									<bars:RibbonApplicationButton.MenuFooter>
+										<StackPanel Margin="0,4" Orientation="Horizontal" HorizontalAlignment="Right">
+											<bars:BarButton Key="Options" KeyTipText="I" Command="{Binding NotImplementedCommand}" />
+											<bars:BarButton Key="Exit" KeyTipText="X" Margin="7,0" Command="{Binding NotImplementedCommand}" />
+										</StackPanel>
+									</bars:RibbonApplicationButton.MenuFooter>
+
+									<!-- Menu Items -->
+									<bars:BarMenuItem Key="New" LargeImageSource="/Images/Icons/New32.png" SmallImageSource="/Images/Icons/New16.png" UseLargeSize="{Binding UseLargeSize}">
+										<bars:BarMenuItem Key="PlainText" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/BlankPage32.png" SmallImageSource="/Images/Icons/BlankPage16.png" UseLargeSize="{Binding UseLargeSize}" Description="A plain text document" />
+										<bars:BarMenuItem Key="RichText" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/RichTextDocument32.png" SmallImageSource="/Images/Icons/RichTextDocument16.png" UseLargeSize="{Binding UseLargeSize}" Description="A text document with rich formatting" />
+									</bars:BarMenuItem>
+									<bars:BarSplitMenuItem Key="Open" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" UseLargeSize="{Binding UseLargeSize}">
+										<bars:BarMenuHeading Header="Recent Documents" />
+										<bars:BarMenuItem KeyTipText="1" Label="Financial Report Q1.rtf" Command="ApplicationCommands.Open" CommandParameter="Financial Report Q1.rtf" SmallImageSource="/Images/Icons/RichTextDocument16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuItem KeyTipText="2" Label="Side Project Domain Names.txt" Command="ApplicationCommands.Open" CommandParameter="Side Project Domain Names.txt" SmallImageSource="/Images/Icons/BlankPage16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuItem KeyTipText="3" Label="TODO List.rtf" Command="ApplicationCommands.Open" CommandParameter="TODO List.rtf" SmallImageSource="/Images/Icons/RichTextDocument16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuSeparator />
+										<bars:BarMenuItem Key="OpenBrowse" Label="Browse..." KeyTipText="O" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:BarSplitMenuItem>
+									<bars:BarMenuItem Key="Save" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuItem Key="SaveAs" Label="Save As" KeyTipText="A" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/SaveAs32.png" SmallImageSource="/Images/Icons/SaveAs16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Print" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Print32.png" SmallImageSource="/Images/Icons/Print16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuItem Key="Send" KeyTipText="D" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Mail32.png" SmallImageSource="/Images/Icons/Mail16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Close" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Close32.png" SmallImageSource="/Images/Icons/Close16.png" UseLargeSize="{Binding UseLargeSize}" />
+									
+								</bars:RibbonApplicationButton>
+								
+							</bars:Ribbon.ApplicationButtonContent>
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Document" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:Ribbon.FooterContent>
+								<DockPanel>
+									<Image Source="/Images/Icons/InformationClear16.png" Height="16" Width="16" DockPanel.Dock="Left" Margin="0,0,5,0" />
+									<TextBlock VerticalAlignment="Center" TextWrapping="Wrap">Click the <Bold>File</Bold> application button to show the application menu.</TextBlock>
+								</DockPanel>
+							</bars:Ribbon.FooterContent>
+							
+						</bars:Ribbon>
+
+						<TextBox x:Name="editor" Margin="0,10,0,0" Padding="20" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with application menu defining content and footer" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+
+						<!-- Ribbon Control -->
+						<bars:Ribbon LayoutMode="Simplified" UserInterfaceDensity="Normal" QuickAccessToolBarMode="None" IsCollapsible="False">
+
+							<!-- Configure RibbonApplicationButton with Menu Items only... no Menu Additional Content or Menu Footer -->
+							<bars:Ribbon.ApplicationButtonContent>
+								<bars:RibbonApplicationButton>
+									<bars:BarMenuItem Key="New" LargeImageSource="/Images/Icons/New32.png" SmallImageSource="/Images/Icons/New16.png" UseLargeSize="{Binding UseLargeSize}">
+										<bars:BarMenuItem Key="PlainText" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/BlankPage32.png" SmallImageSource="/Images/Icons/BlankPage16.png" UseLargeSize="{Binding UseLargeSize}" Description="A plain text document" />
+										<bars:BarMenuItem Key="RichText" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/RichTextDocument32.png" SmallImageSource="/Images/Icons/RichTextDocument16.png" UseLargeSize="{Binding UseLargeSize}" Description="A text document with rich formatting" />
+									</bars:BarMenuItem>
+									<bars:BarSplitMenuItem Key="Open" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" UseLargeSize="{Binding UseLargeSize}">
+										<bars:BarMenuHeading Header="Recent Documents" />
+										<bars:BarMenuItem KeyTipText="1" Label="Financial Report Q1.rtf" Command="ApplicationCommands.Open" CommandParameter="Financial Report Q1.rtf" SmallImageSource="/Images/Icons/RichTextDocument16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuItem KeyTipText="2" Label="Side Project Domain Names.txt" Command="ApplicationCommands.Open" CommandParameter="Side Project Domain Names.txt" SmallImageSource="/Images/Icons/BlankPage16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuItem KeyTipText="3" Label="TODO List.rtf" Command="ApplicationCommands.Open" CommandParameter="TODO List.rtf" SmallImageSource="/Images/Icons/RichTextDocument16.png" IsInputGestureTextVisible="False" />
+										<bars:BarMenuSeparator />
+										<bars:BarMenuItem Key="OpenBrowse" Label="Browse..." KeyTipText="O" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" />
+									</bars:BarSplitMenuItem>
+									<bars:BarMenuItem Key="Save" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuItem Key="SaveAs" Label="Save As" KeyTipText="A" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/SaveAs32.png" SmallImageSource="/Images/Icons/SaveAs16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Print" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Print32.png" SmallImageSource="/Images/Icons/Print16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuItem Key="Send" KeyTipText="D" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Mail32.png" SmallImageSource="/Images/Icons/Mail16.png" UseLargeSize="{Binding UseLargeSize}" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Close" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Close32.png" SmallImageSource="/Images/Icons/Close16.png" UseLargeSize="{Binding UseLargeSize}" />
+								</bars:RibbonApplicationButton>
+							</bars:Ribbon.ApplicationButtonContent>
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Documents" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Documents" Command="{Binding NotImplementedCommand}" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:Ribbon.FooterContent>
+								<DockPanel>
+									<Image Source="/Images/Icons/InformationClear16.png" Height="16" Width="16" DockPanel.Dock="Left" Margin="0,0,5,0" />
+									<TextBlock VerticalAlignment="Center" TextWrapping="Wrap">Click the <Bold>File</Bold> application button to show the application menu.</TextBlock>
+								</DockPanel>
+							</bars:Ribbon.FooterContent>
+							
+						</bars:Ribbon>
+
+						<TextBox Margin="0,10,0,0" Padding="20" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with basic application menu" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

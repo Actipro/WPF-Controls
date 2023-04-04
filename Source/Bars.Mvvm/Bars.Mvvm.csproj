@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<TargetFrameworks>net462;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+
+		<AssemblyName>ActiproSoftware.Bars.Mvvm.Wpf</AssemblyName>
+		<Product>Bars.Mvvm</Product>
+		<Title>Actipro Bars MVVM (for WPF)</Title>
+		<Description>Common view models, templates, and other types used when implementing Bars controls with MVVM (Model-View-ViewModel) patterns.</Description>
+		<PackageTags>Actipro UI Controls WPF XAML MVVM MMoodel View ViewModel Bars</PackageTags>
+
+		<Version>23.1.0.0</Version>
+
+		<RootNamespace>ActiproSoftware</RootNamespace>
+		<Company>Actipro Software LLC</Company>
+		<Authors>Actipro Software LLC</Authors>
+		<Copyright>Copyright (c) 2007-2023 Actipro Software LLC.  All rights reserved.</Copyright>
+
+		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
+		<DefineConstants Condition="'$(TargetFramework)' == 'netcoreapp3.1'">$(DefineConstants);NETCORE</DefineConstants>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://www.actiprosoftware.com/products/controls/wpf</PackageProjectUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\bin\Debug</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\bin\Release</OutputPath>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="23.1.0" />
+	</ItemGroup>
+
+</Project>

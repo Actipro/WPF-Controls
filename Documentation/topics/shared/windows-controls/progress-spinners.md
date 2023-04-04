@@ -9,7 +9,7 @@ Progress spinners are used when some form of processing is occurring to tell the
 
 ![Screenshot](../images/ring-spinner-large.png)
 
-*A large RingSpinner control.*
+*A large RingSpinner control*
 
 ## RingSpinner Overview
 
@@ -17,7 +17,7 @@ The [RingSpinner](xref:@ActiproUIRoot.Controls.RingSpinner) control renders an a
 
 ![Screenshot](../images/ring-spinner.png) ![Screenshot](../images/ring-spinner-pie.png)
 
-*A couple RingSpinner controls.*
+*A couple RingSpinner controls*
 
 The [IsSpinning](xref:@ActiproUIRoot.Controls.RingSpinner.IsSpinning) property must be set to `true` to activate animated spinning.
 

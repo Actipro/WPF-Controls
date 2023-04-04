@@ -34,7 +34,7 @@ The following table gives an overview of the capabilities of the control.
 | Has popup | Yes.  The items are displayed in the popup. |
 | Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
-| Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
+| Click event trigger | When the <kbd>Enter</kbd> key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
 | Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
@@ -83,9 +83,9 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:FontFamilyComboBox Width="135" Label="Font Family" KeyTipAccessText="FF" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
-<ribbon:FontFamilyComboBox Width="135" 
+<ribbon:FontFamilyComboBox Width="135"
 	Command="sample:ApplicationCommands.FontFamily" KeyTipAccessText="FF" />
 ```

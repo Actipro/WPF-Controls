@@ -77,7 +77,7 @@ Sometimes a document's text is fetched using an external process, such as from a
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) method can be used to completely replace the document text with a string.
 
-There are several overloads of the [SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) available.  The overload that only accepts a `String` parameter will will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  The other overloads will not do this.
+There are several overloads of the [SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) available.  The overload that only accepts a `String` parameter will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  The other overloads will not do this.
 
 This code replaces the text content of a document from a string, marks the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false`, and clears the undo history:
 

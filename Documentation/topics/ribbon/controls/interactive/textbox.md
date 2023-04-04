@@ -34,7 +34,7 @@ The following table gives an overview of the capabilities of the control.
 | Has popup | No. |
 | Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.TextBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
-| Click event trigger | When the `Enter` key is pressed while in the control or when the control loses focus and the value is changed. |
+| Click event trigger | When the <kbd>Enter</kbd> key is pressed while in the control or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
 | Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
@@ -85,7 +85,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:TextBox Width="100" ImageSourceSmall="/Images/Find16.png" Label="Find" KeyTipAccessText="F" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:TextBox Width="100" Command="ApplicationCommands.Find" KeyTipAccessText="F" />

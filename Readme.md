@@ -33,6 +33,7 @@ The controls ship with over 25 professionally-designed themes, and custom themes
 The [Actipro WPF Controls](https://www.actiprosoftware.com/products/controls/wpf) include:
 
 - [SyntaxEditor](https://www.actiprosoftware.com/products/controls/wpf/syntaxeditor) - A syntax-highlighting code editor control and parsing suite.
+- [Bars](https://www.actiprosoftware.com/products/controls/wpf/bars) - Advanced fluent ribbons, toolbars, menus and related controls.
 - [Docking/MDI](https://www.actiprosoftware.com/products/controls/wpf/docking) - A complete docking tool window and multiple document interface solution.
 - [Editors](https://www.actiprosoftware.com/products/controls/wpf/editors) - Part-based and masked edit controls, with advanced date/time picker.
 - [Grids](https://www.actiprosoftware.com/products/controls/wpf/grids) - Advanced PropertyGrid and custom tree (TreeListBox/TreeListView) controls.
@@ -83,6 +84,7 @@ This repo contains two other sample application solutions that demonstrate speci
 
 This repo also contains the following open-source projects, which can be opened in the `Source\WPF-Libraries.sln` solution:
 
+- `Bars.Mvvm` - An optional companion to the Actipro Bars product that supports easy MVVM integration.
 - `DataGrid.Contrib` - Several enhancements for the native Microsoft WPF DataGrid control.
 - `Editors.Interop.DataGrid` - Integration of Actipro Editors with the Microsoft WPF DataGrid control, with dedicated DataGrid column types for each of the editors.
 
@@ -101,6 +103,7 @@ This metapackage contains all of the control products, and is easiest to referen
 Use these individual control packages if you want to use a specific subset of the metapackage:
 
 - [ActiproSoftware.Controls.WPF.BarCode](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.BarCode)
+- [ActiproSoftware.Controls.WPF.Bars](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Bars)
 - [ActiproSoftware.Controls.WPF.Charts](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Charts)
 - [ActiproSoftware.Controls.WPF.Docking](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Docking)
 - [ActiproSoftware.Controls.WPF.Editors](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Editors)
@@ -130,12 +133,13 @@ Use these packages for SyntaxEditor's premium language add-ons as needed, which 
 
 These packages are optional and shipped separately from the metapackage:
 
+- [ActiproSoftware.Controls.WPF.Bars.Mvvm](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Bars.Mvvm) - For using MVVM with `Bars`.
 - [ActiproSoftware.Controls.WPF.DataGrid.Contrib](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.DataGrid.Contrib) - For the `DataGrid.Contrib` project in this repo.
 - [ActiproSoftware.Controls.WPF.Themes.Aero](https://www.nuget.org/packages/ActiproSoftware.Controls.WPF.Themes.Aero) - For legacy Aero themes.
 
 ## Supported Technologies
 
-- **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.5.2+
+- **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.6.2+
 - **Architectures:** Any CPU, ARM64, x64, and x86
 - **IDEs:** Visual Studio 2017-2022
 

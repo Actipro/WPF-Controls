@@ -85,17 +85,17 @@ Each of the features listed in the table below describe functionality that is co
 
 [Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- C0 (currency without decimals)
-- D
-- Dx, where x is the number of zero-padded digits (e.g. D3)
-- G
-- N0
-- X (uppercase hexadecimal)
-- x (lowercase hexadecimal)
+- `"C0"` (currency without decimals)
+- `"D"`
+- `"Dx"`, where x is the number of zero-padded digits (e.g., `"D3"`)
+- `"G"`
+- `"N0"`
+- `"X"` (uppercase hexadecimal)
+- `"x"` (lowercase hexadecimal)
 
 Basic custom numeric formats are also supported, such as:
 
-- 0' days'
+- `"0' days'"`
 
 ## Minimum and Maximum Values
 
@@ -111,7 +111,7 @@ When the caret is over a part, the part value may be incremented or decremented.
 
 Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.SmallChange) property.  Large value changes alter the current number component by `8`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.LargeChange) property.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.ByteEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Built-in Picker Kinds
 
@@ -119,13 +119,13 @@ This edit box has multiple built-in picker kinds that can be set via the [ByteEd
 
 @if (wpf) {
 
-The default value in WPF is `Calculator`. 
+The default value in WPF is `Calculator`.
 
 }
 
 @if (winrt) {
 
-The default value in UWP is `Default`. 
+The default value in UWP is `Default`.
 
 }
 

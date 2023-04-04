@@ -72,7 +72,7 @@ As you can see, we now define a `HierarchicalDataTemplate` for each distinct XML
 
 ## Using a Style
 
-A `Style` can also be used to to define the look of the data, using a `DataTemplate`, and how to locate any child items. This can be accomplished by setting the `ItemsSource` and `ItemTemplate` directly on the container elements, typically an `ItemsControl`-derived class, created for each data object. Examples of container elements include [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) and `TreeViewItem`.
+A `Style` can also be used to define the look of the data, using a `DataTemplate`, and how to locate any child items. This can be accomplished by setting the `ItemsSource` and `ItemTemplate` directly on the container elements, typically an `ItemsControl`-derived class, created for each data object. Examples of container elements include [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) and `TreeViewItem`.
 
 This sample code shows how to define a `Style` for the sample XML data below:
 

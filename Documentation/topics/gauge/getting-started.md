@@ -15,16 +15,15 @@ This documentation file contains a lot of information about using Actipro Gauge 
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.Gauge.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Gauge.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 ## Getting Started with CircularGauge
 
 This code shows the base XAML that you can use to create a simple [CircularGauge](xref:@ActiproUIRoot.Controls.Gauge.CircularGauge) with a few gauge elements:
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:CircularGauge Width="200" Height="200" Radius="100">
 	<gauge:CircularScale Radius="80">
 		<gauge:CircularTickSet>
@@ -46,9 +45,8 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 This code shows the base XAML that you can use to create a simple [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge) to display a string:
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:DigitalGauge Width="200" Height="100" Value="Testing" />
 ```
 
@@ -57,9 +55,8 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 This code shows the base XAML that you can use to create a simple [Led](xref:@ActiproUIRoot.Controls.Gauge.Led) with a green light:
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:Led Width="100" Height="100" LedForeground="Green" />
 ```
 
@@ -68,9 +65,8 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 This code shows the base XAML that you can use to create a simple [LinearGauge](xref:@ActiproUIRoot.Controls.Gauge.LinearGauge) with a few gauge elements:
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:LinearGauge Width="200" Height="100">
 	<gauge:LinearScale BarExtent="85%">
 		<gauge:LinearTickSet>
@@ -92,7 +88,7 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 This code shows the base XAML that you can use to create a simple [FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch):
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
 
 <gauge:FlipSwitch Width="100" Height="100" IsChecked="true" />
@@ -102,6 +98,6 @@ xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 
 It's very easy to use the various Gauge controls and there are probably a lot of great features that you aren't aware of.
 
-Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough and the sample project demonstrates almost every feature of the controls.
+Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough, and the sample project demonstrates almost every feature of the controls.
 
 If you require further assistance after looking through those, please visit our support forum for the product.

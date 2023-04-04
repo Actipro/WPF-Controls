@@ -7,7 +7,7 @@ order: 4
 
 The IntelliPrompt completion list allows you create popups for displaying a list of options used to complete what the end user is typing.  This is most used when editing programming languages.  Features include ctrl+space support, description tips, multiple matching algorithms, matched text highlights, filters, and more.
 
-As the end user types in the editor, the selected item in the completion list is updated to reflect the item that most closely matches what has been typed.  The end user can press `Tab` or `Enter` to insert the complete text associated with the item.  This immensely helps increase the productivity of end users while typing.
+As the end user types in the editor, the selected item in the completion list is updated to reflect the item that most closely matches what has been typed.  The end user can press <kbd>Tab</kbd> or <kbd>Enter</kbd> to insert the complete text associated with the item.  This immensely helps increase the productivity of end users while typing.
 
 ## Run-Time Functionality
 
@@ -15,9 +15,9 @@ The completion list bases itself on a text range that is passed in when it is op
 
 Optional filters can be toggled by the end user via buttons and tabs to narrow down the list of displayed items.
 
-The pressing and holding of the `Ctrl` key animates the list to be semi-transparent so that the end user can see the text under the list.
+The pressing and holding of the <kbd>Ctrl</kbd> key animates the list to be semi-transparent so that the end user can see the text under the list.
 
-When the `Tab` key is pressed, the completion list is closed and the selected item's text is auto-inserted into the document.  The `Esc` key can be used to cancel the completion list and close it without inserting any text.
+When the <kbd>Tab</kbd> key is pressed, the completion list is closed and the selected item's text is auto-inserted into the document.  The <kbd>Esc</kbd> key can be used to cancel the completion list and close it without inserting any text.
 
 ## Creating and Opening a Session
 
@@ -46,8 +46,8 @@ The next step is to populate the list with all the items that should be included
 This code adds a single item for a `Boolean` native type:
 
 ```csharp
-session.Items.Add(new CompletionItem("bool", 
-	new CommonImageSourceProvider(CommonImageKind.StructurePublic), 
+session.Items.Add(new CompletionItem("bool",
+	new CommonImageSourceProvider(CommonImageKind.StructurePublic),
 	new CustomContentProvider(typeof(bool))));
 ```
 
@@ -112,7 +112,7 @@ switch (e.TypedText) {
 		ITextSnapshotReader reader = editor.ActiveView.GetReader();
 		reader.ReadCharacterReverseThrough('.');
 		IToken token = reader.ReadTokenReverse();
-		
+
 		// In production code, a token ID comparison would be better than this string comparison
 		if ((token != null) && (reader.TokenText == "this")) {
 			// A dot was typed after a "this" keyword so open the completion list session here
@@ -126,12 +126,12 @@ Note that in this sample, we used an [ITextSnapshotReader](xref:ActiproSoftware.
 
 ### Sample: Showing a Completion List Automatically When a New Word Is Started
 
-In this scenario, we wish to show a completion list whenever a letter is typed by the end user that is starting a new word.  This prevents the end user from having to do a `Ctrl+Space` to initiate a completion session.
+In this scenario, we wish to show a completion list whenever a letter is typed by the end user that is starting a new word.  This prevents the end user from having to do a <kbd>Ctrl</kbd>+<kbd>Space</kbd> to initiate a completion session.
 
 Here is sample code for a [DocumentTextChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.DocumentTextChanged) event handler to do this:
 
 ```csharp
-// If the text that was typed is a letter character that is starting a word... 
+// If the text that was typed is a letter character that is starting a word...
 if (e.IsTypedWordStart) {
 	// If no completion session is currently open, show a completion list
 	if (!editor.IntelliPrompt.Sessions.Contains(IntelliPromptSessionTypes.Completion)) {
@@ -144,7 +144,7 @@ if (e.IsTypedWordStart) {
 
 Syntax languages are fully capable of listening to typed characters like above and opening a completion list session in response.  To do this, they can use the [event sinks](../../language-creation/event-sinks.md) mechanism that allows them to be notified of text changes.
 
-The [IntelliPrompt Completion Provider](../../language-creation/provider-services/completion-provider.md) topic describes a special language service that can be implemented to respond to `Ctrl+Space` and show a completion list.
+The [IntelliPrompt Completion Provider](../../language-creation/provider-services/completion-provider.md) topic describes a special language service that can be implemented to respond to <kbd>Ctrl</kbd>+<kbd>Space</kbd> and show a completion list.
 
 When a completion provider service is registered for a language, the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[IntelliPrompt](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.IntelliPrompt).[RequestAutoComplete](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestAutoComplete*) and [RequestCompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) methods can be called to request auto-complete or completion list display respectively.  In that case if the completion provider determines that completion can occur at the current editor caret position, IntelliPrompt action will be taken.
 
@@ -291,11 +291,11 @@ The completion list can be programmatically committed by calling the [Commit](xr
 
 If committed, two events fire: [Committing](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committing), then [Committed](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committed).  The first event allows you to set the `Cancel` property of the event args to cancel auto-complete.
 
-The `Tab` key commits the selected item at run-time and is consumed.  The `Enter` key commits and is normally consumed as well unless the [IsEnterKeyHandledOnCommit](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.IsEnterKeyHandledOnCommit) property is set to `false`.
+The <kbd>Tab</kbd> key commits the selected item at run-time and is consumed.  The <kbd>Enter</kbd> key commits and is normally consumed as well unless the [IsEnterKeyHandledOnCommit](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.IsEnterKeyHandledOnCommit) property is set to `false`.
 
 ## Auto-Commit Without Showing a Popup (Complete Word)
 
-There generally are two modes in which to display a completion list. `Ctrl+Space` keypresses typically activate a "complete word" mode where if the text range with which the list was initialized is capable of fully selecting an item in the list, the list item is auto-completed and the list is never displayed.  If no exact match is made, the list displays and operates like normal.  The default mode is to have the list display regardless of whether it can initially match an item.
+There generally are two modes in which to display a completion list. <kbd>Ctrl</kbd>+<kbd>Space</kbd> keypresses typically activate a "complete word" mode where if the text range with which the list was initialized is capable of fully selecting an item in the list, the list item is auto-completed and the list is never displayed.  If no exact match is made, the list displays and operates like normal.  The default mode is to have the list display regardless of whether it can initially match an item.
 
 To enable "complete word" functionality, set the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[CanCommitWithoutPopup](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.CanCommitWithoutPopup) property to `true`.
 
@@ -310,7 +310,7 @@ Description tip content is specified on each item via the [ICompletionItem](xref
 
 @if (wpf) {
 
-When links are present in description tip content, the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.RequestNavigate) event will fire if a link is clicked, requesting that you take some action. 
+When links are present in description tip content, the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.RequestNavigate) event will fire if a link is clicked, requesting that you take some action.
 
 }
 
@@ -383,7 +383,7 @@ The [RegexCompletionItemMatcherBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.I
 In this sample implementation of the [GetRegex](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase.GetRegex*) method we'll return a `Regex` that matches text that appears after any `.` or `_` character:
 
 ```csharp
-return new Regex(String.Format("[\\._]({0})", Regex.Escape(text)), 
+return new Regex(String.Format("[\\._]({0})", Regex.Escape(text)),
 	RegexOptions.IgnoreCase | RegexOptions.Singleline);
 ```
 
@@ -481,7 +481,7 @@ Button and tab filters can be used at the same time.  There is no problem with i
 
 ### Keyboard Shortcuts
 
-Button and tab filters both have a [KeyGesture](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.KeyGesture) property that can be set to a shortcut to toggle/activate the related UI via the keyboard.  For instance, a "Properties" filter may use an `Alt+P` key gesture.  The key gesture text will be automatically added to the button/tab's tooltip if the tooltip is a string.
+Button and tab filters both have a [KeyGesture](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.KeyGesture) property that can be set to a shortcut to toggle/activate the related UI via the keyboard.  For instance, a "Properties" filter may use an <kbd>Alt</kbd>+<kbd>P</kbd> key gesture.  The key gesture text will be automatically added to the button/tab's tooltip if the tooltip is a string.
 
 ## Filtering Unmatched Items (Auto-Shrink)
 
@@ -499,6 +499,6 @@ Then attach to the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEdito
 
 ## Control Key Down Opacity
 
-The completion list animates to be semi-transparent when the `Ctrl` key is held down, thereby allowing the end user to see the text behind it.  The [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.ControlKeyDownOpacity) property specifies the opacity when the list is semi-transparent.
+The completion list animates to be semi-transparent when the <kbd>Ctrl</kbd> key is held down, thereby allowing the end user to see the text behind it.  The [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.ControlKeyDownOpacity) property specifies the opacity when the list is semi-transparent.
 
 Set this property to `1.0` to prevent the list from being semi-transparent.

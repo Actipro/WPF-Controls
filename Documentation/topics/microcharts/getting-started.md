@@ -9,7 +9,7 @@ It's easy to get started using Micro Charts.  Simply follow the steps below to b
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll" assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll* assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## Add the MicroXYChart Control
 
@@ -18,10 +18,10 @@ Then find the parent element that will contain the micro chart.  This could be a
 Next, add a [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart) control to the desired parent element.  In this sample we will add the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart) to a `UserControl`:
 
 ```xaml
-<UserControl 
+<UserControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts" 
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
 	>
 	<microcharts:MicroXYChart Width="100" Height="18">
 	</microcharts:MicroXYChart>
@@ -33,10 +33,10 @@ Next, add a [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart
 Now we need to add a series, which renders a single set of data points on the chart.  In this sample we will add a [MicroAreaSeries](xref:@ActiproUIRoot.Controls.MicroCharts.MicroAreaSeries) series, but the other types are added in a similar manner.
 
 ```xaml
-<UserControl 
+<UserControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts" 
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
 	>
 	<microcharts:MicroXYChart Width="100" Height="18">
 		<microcharts:MicroAreaSeries ItemsSource="{Binding}" />
@@ -44,15 +44,15 @@ Now we need to add a series, which renders a single set of data points on the ch
 </UserControl>
 ```
 
-Note that this sample assumes that the chart's `DataContext` is a list of numeric (i.e. `Double`, `Decimal`, etc) or `DateTime` objects.  With this configuration, the chart's X values will represent the index value in the list and the chart's Y values will represent the list's actual value at the related list index.
+Note that this sample assumes that the chart's `DataContext` is a list of numeric (i.e., `Double`, `Decimal`, etc) or `DateTime` objects.  With this configuration, the chart's X values will represent the index value in the list and the chart's Y values will represent the list's actual value at the related list index.
 
 If our list contained custom objects and we wanted to pull the X and Y values from properties on that object, then we would have to specify the property path on the series.
 
 ```xaml
-<UserControl 
+<UserControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts" 
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
 	>
 	<microcharts:MicroXYChart Width="100" Height="18">
 		<microcharts:MicroAreaSeries ItemsSource="{Binding}" XPath="MyDateProperty" YPath="MyNumericProperty" />

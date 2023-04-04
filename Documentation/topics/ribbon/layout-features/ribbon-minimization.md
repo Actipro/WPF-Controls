@@ -21,7 +21,7 @@ There are four ways the end user can toggle minimization of the ribbon:
 
 - Double-clicking the selected tab
 - Choosing `Minimize the Ribbon` from a context menu
-- Pressing `Ctrl+F1`
+- Pressing <kbd>Ctrl</kbd>+<kbd>F1</kbd>
 - Adding a [ToggleMinimizationButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ToggleMinimizationButton) control to the ribbon's [TabPanelItems](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.TabPanelItems) collection and clicking it
 
 > [!NOTE]

@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
+
+	<!--
+		The BarGalleryItemBorderThicknessConverter is used for gallery items that use BarGalleryItemLayoutBehavior to group items
+		without spacing in between so that borders are not rendered on the adjacent sides
+	-->
+	<bars:BarGalleryItemBorderThicknessConverter x:Key="BarGalleryItemBorderThicknessConverter" />
+
+	<!-- Custom DataTemplate used by XAML and MVVM samples to use larger swatches in the font color picker -->
+	<DataTemplate x:Key="LargerButtonGalleryItemTemplate">
+		<Border Width="20" Height="20"
+				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
+				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Border.Background>
+		</Border>
+	</DataTemplate>
+
+	<!-- Extend a style for BarGalleryItem that should use circles instead of rectangles -->
+	<Style x:Key="BarGalleryItemCircleStyle" TargetType="{x:Type bars:BarGalleryItem}" BasedOn="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}">
+		<!--
+			The AccentedItemBorder is rectangle whose CornerRadius is based on ThemeProperties.CornerRadius, so
+			make the CornerRadius match the same value used by CircleStyleGalleryItemTemplate
+		-->
+		<Setter Property="themes:ThemeProperties.CornerRadius" Value="9" />
+	</Style>
+
+	<!-- Custom DataTemplate used by XAML and MVVM samples to use circles (instead of squares) for gallery items -->
+	<DataTemplate x:Key="CircleStyleGalleryItemItemplate">
+		<!-- The CornerRadius defined here must match the CornerRadius defined by BarGalleryItemCircleStyle in the resources for each Ribbon control -->
+		<Border Width="18" Height="18"
+				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
+				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}"
+				CornerRadius="9">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Color}" />
+			</Border.Background>
+		</Border>
+	</DataTemplate>
+
+</ResourceDictionary>

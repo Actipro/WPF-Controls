@@ -85,9 +85,9 @@ Each of the features listed in the table below describe functionality that is co
 
 [Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- F
-- Fx, where x is the number of decimal places (e.g. F1)
-- G
+- `"F"`
+- `"Fx"`, where x is the number of decimal places (e.g., `"F1"`)
+- `"G"`
 
 ## Minimum and Maximum Values
 
@@ -112,7 +112,7 @@ The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.Defa
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `8`, but can be set to any value in the range `0` to `15`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `8` but can be set to any value in the range `0` to `15`.  Or set the value to `null` to prevent rounding.
 
 ## Allowing NaN or Infinity Values
 
@@ -120,17 +120,17 @@ Text entry of `NaN` (not-a-number) and infinity component values into the edit b
 
 @if (wpf) {
 
-Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter 'n'. 
+Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter <kbd>N</kbd>.
 
 }
 
 @if (wpf) {
 
-Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign and then the letter 'i'. 
+Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign <kbd>-</kbd> then the letter <kbd>I</kbd>.
 
 }
 
-Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter 'i'.
+Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter <kbd>I</kbd>.
 
 ## Sample XAML
 
