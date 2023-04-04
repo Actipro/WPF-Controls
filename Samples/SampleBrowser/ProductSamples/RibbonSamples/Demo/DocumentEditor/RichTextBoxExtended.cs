@@ -14,6 +14,7 @@ using ActiproSoftware.Windows.Controls.Ribbon.Input;
 using ActiproSoftware.Windows.Controls.Ribbon.UI;
 using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Themes;
+using ImageLoader = ActiproSoftware.SampleBrowser.ImageLoader;
 
 #if WPF
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
@@ -519,8 +520,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 			DrawingGroup group = new DrawingGroup();
 			image.Drawing = group;
 
-			ImageDrawing imageDrawing = new ImageDrawing(
-				new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/FontColor16.png")), new Rect(0, 0, 16, 16));
+			ImageDrawing imageDrawing = new ImageDrawing(ImageLoader.GetIcon("FontColor16.png"), new Rect(0, 0, 16, 16));
 			group.Children.Add(imageDrawing);
 
 			GeometryDrawing geomDrawing = new GeometryDrawing();
@@ -551,8 +551,7 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 			DrawingGroup group = new DrawingGroup();
 			image.Drawing = group;
 
-			ImageDrawing imageDrawing = new ImageDrawing(
-				new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/TextHighlightColor16.png")), new Rect(0, 0, 16, 16));
+			ImageDrawing imageDrawing = new ImageDrawing(ImageLoader.GetIcon("TextHighlightColor16.png"), new Rect(0, 0, 16, 16));
 			group.Children.Add(imageDrawing);
 
 			GeometryDrawing geomDrawing = new GeometryDrawing();

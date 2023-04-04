@@ -374,6 +374,7 @@
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Checking" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxChecking/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Drag/Drop" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxDragDrop/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Filtering" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxFiltering/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="TreeListBox QuickStarts" Title="Filtering with Captures" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxFilteringWithCaptures/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Inline Editing" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxInlineEditing/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Selection" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxSelection/MainControl"/>
             <sampleBrowser:ProductItemInfo Category="TreeListBox QuickStarts" Title="Three-State Checking" Path="/ProductSamples/GridsSamples/QuickStart/TreeListBoxThreeStateChecking/MainControl"/>
@@ -818,7 +819,7 @@
 			<sampleBrowser:ProductFamilyInfo.News>
 				<sampleBrowser:ListItemInfo Title="ToggleSwitch control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/ToggleSwitchIntro/MainControl" />
 				<sampleBrowser:ListItemInfo Title="User Prompt controls" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/UserPromptIntro/MainControl" />
-				<sampleBrowser:ListItemInfo Title=".NET 6 compatibility verified" />
+				<sampleBrowser:ListItemInfo Title=".NET 7 compatibility verified" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>

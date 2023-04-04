@@ -6,10 +6,10 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'Ruby' language created by Actipro Software LLC.
-  Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Ruby" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Ruby" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
 		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />

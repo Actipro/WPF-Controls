@@ -44,7 +44,8 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 		/// associated with the status image (e.g. red for error).
 		/// </summary>
 		/// <param name="userPromptControl">The control to customize.</param>
-		private void ApplyImageBasedAppearance(UserPromptControl userPromptControl) {
+		/// <param name="windowCustomizationAction">Outputs an action to be executed against the <see cref="UserPromptWindow"/> for additional theme-based customization.</param>
+		private void ApplyImageBasedAppearance(UserPromptControl userPromptControl, out Action<UserPromptWindow> windowCustomizationAction) {
 
 			ColorFamilyName colorFamilyName;
 			switch (userPromptControl.StandardStatusImage) {
@@ -62,6 +63,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 					break;
 				default:
 					// Nothing to apply
+					windowCustomizationAction = ((window) => { /* no op */ });
 					return;
 			}
 
@@ -119,6 +121,14 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			userPromptControl.Resources.Add(AssetResourceKeys.ContainerForegroundLowDisabledBrushKey, new SolidColorBrush(Color.FromArgb(200, 0, 0, 0))); // Black with transparency
 			userPromptControl.Resources.Add(AssetResourceKeys.ButtonBackgroundDisabledBrushKey, lightestColorFamilyBrush);
 			userPromptControl.Resources.Add(AssetResourceKeys.ButtonBorderDisabledBrushKey, lightColorFamilyBrush);
+
+			// Define callback to customize the UserPromptWindow before display
+			windowCustomizationAction = (Action<UserPromptWindow>)((window) => {
+				// Override theme assets for the window title bar foreground to always use colors that match the custom theme (even when in a dark theme)
+				window.Resources.Add(AssetResourceKeys.AlternateWindowTitleBarForegroundActiveBrushKey, new SolidColorBrush(Color.FromRgb(17, 17, 17)));
+				window.Resources.Add(AssetResourceKeys.AlternateWindowTitleBarForegroundInactiveBrushKey, new SolidColorBrush(Color.FromRgb(112, 113, 113)));
+				window.Resources.Add(AssetResourceKeys.WindowBorderActiveBrushKey, darkerColorFamilyBrush);
+			});
 
 		}
 
@@ -466,16 +476,10 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 				StandardButtons = UserPromptStandardButtons.OKCancel,
 			};
 
-			// Customize the appearance of UserPromptControl
-			ApplyImageBasedAppearance(userPromptControl);
+			// Customize the appearance of UserPromptControl and initialize an action to customize the UserPromptWindow before it is displayed
+			ApplyImageBasedAppearance(userPromptControl, out var customizeWindow);
 
-			// Define callback to customize the UserPromptWindow before display
-			var customizeWindow = (Action<UserPromptWindow>)((window) => {
-				// Override theme assets for the window title bar foreground to always use colors that match the custom theme (even when in a dark theme)
-				window.Resources.Add(AssetResourceKeys.AlternateWindowTitleBarForegroundActiveBrushKey, new SolidColorBrush(Color.FromRgb(17, 17, 17)));
-				window.Resources.Add(AssetResourceKeys.AlternateWindowTitleBarForegroundInactiveBrushKey, new SolidColorBrush(Color.FromRgb(112, 113, 113)));
-			});
-
+			// Show the customized dialog
 			ShowDialog(userPromptControl, false, "Custom Theme Prompt", customizeWindow);
 		}
 
@@ -531,7 +535,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			// SAMPLE: Use any content for buttons
 			//
 
-			var imageSource = new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/Save16.png"));
+			var imageSource = ImageLoader.GetIcon("Save16.png");
 			var userPromptControl = new UserPromptControl() {
 				Header = "Full support for custom button content.",
 				Content = "Buttons can have any content, including images. This sample shows images used as content and demonstrates changing the horizontal alignment of all buttons from right (default) to center.",
@@ -591,7 +595,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			var userPromptControl = new UserPromptControl() {
 				Header = "Exporting Project (Sample Project)",
 				HeaderForeground = new SolidColorBrush(Colors.White),
-				StatusImageSource = new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/Save32.png")),
+				StatusImageSource = ImageLoader.GetIcon("Save32.png"),
 				StandardButtons = UserPromptStandardButtons.Cancel,
 			};
 
@@ -761,9 +765,9 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			//
 
 			// Initialize the images
-			var statusImageSource = new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/Actipro.ico"));
+			var statusImageSource = ImageLoader.GetIcon("Actipro.ico");
 			ImageProvider.SetCanAdapt(statusImageSource, false); // Keep original colors
-			var footerImageSource = new BitmapImage(new Uri("pack://application:,,,/SampleBrowser;component/Images/Icons/Help16.png"));
+			var footerImageSource = ImageLoader.GetIcon("Help16.png");
 			ImageProvider.SetCanAdapt(footerImageSource, true); // Allow to adjust for dark themes
 
 			// Initialize the prompt
