@@ -11,7 +11,7 @@
 
 		<RootNamespace>ActiproSoftware.Windows.WindowsWorkflowIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>
-		<Copyright>Copyright (c) 2020-2022 Actipro Software LLC.  All rights reserved.</Copyright>
+		<Copyright>Copyright (c) 2020-2023 Actipro Software LLC.  All rights reserved.</Copyright>
 		<Title>Windows Workflow Integration Sample</Title>
 		<Product>$(Title)</Product>
 		<Description>Sample application to demonstrate integrating into a Windows Workflow application.</Description>

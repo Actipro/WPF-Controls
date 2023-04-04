@@ -107,7 +107,7 @@ If you are looking for a list of recently added major new features to WPF Studio
 
 ## Updates for v18.1.0675
 
-- **Editors:** Updated the [](editors/editboxes/coloreditbox.md) topic with information on the new feature for comparing the old and new color values in the picker popup.
+- **Editors:** Updated the [ColorEditBox](editors/editboxes/coloreditbox.md) topic with information on the new feature for comparing the old and new color values in the picker popup.
 
 ## Updates for v18.1.0674
 

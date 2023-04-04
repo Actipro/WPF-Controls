@@ -6,10 +6,10 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'XAML' language created by Actipro Software LLC.
-  Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Xaml" LanguageDescription="XAML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Xaml" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2022 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Xaml" LanguageDescription="XAML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Xaml" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="XamlAttributeMarkupExtensionValue" Description="XAML Attribute Markup Extension Value" DefaultStyle="#FF808000" />
