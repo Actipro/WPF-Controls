@@ -13,7 +13,7 @@ A line chart renders quantitative data as a series of points connected by line s
 
 The chart's baseline value, as specified by the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart).[AxisBaselineValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.AxisBaselineValue) property, only determines which portion of the line is considered "negative" when using various style kinds.  The default baseline for numeric values is `0`, and for date/time values it is `DateTime.MinValue`.
 
-In the following example, the data rendered by the chart uses the index postion along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.
+In the following example, the data rendered by the chart uses the index position along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.
 
 ![Screenshot](../images/micro-line-series-style1.png)
 
@@ -49,6 +49,6 @@ The `Step` line kind creates a line that only uses horizontal and vertical lines
 
 ## Markers
 
-The line series can render a markers at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroLineSeriesBase.MarkerVisibility) to a value other than `None`.  The line series has the same configuration properties available as the scatter series, with regards to marker rendering.
+The line series can render a marker at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroLineSeriesBase.MarkerVisibility) to a value other than `None`.  The line series has the same configuration properties available as the scatter series, with regards to marker rendering.
 
 See the [Scatter](scatter.md) topic for more information on the options available.

@@ -21,7 +21,7 @@ The [RingSpinner](xref:@ActiproUIRoot.Controls.RingSpinner) control renders an a
 
 The [IsSpinning](xref:@ActiproUIRoot.Controls.RingSpinner.IsSpinning) property must be set to `true` to activate animated spinning.
 
-The outer radius of the ring will be auto-calculated based on the `Width` and `Height` of the control.  They always should be set.  For instance if `Width` and `Height` are `16` and there is no `Padding` set, the ring's radius will be `8`.
+The outer radius of the ring will be auto-calculated based on the `Width` and `Height` of the control.  They always should be set.  For instance, if `Width` and `Height` are `16` and there is no `Padding` set, the ring's radius will be `8`.
 
 The `BorderBrush` and `BorderThickness` properties specify the brush and thickness of the ring, extending inward from the outer radius.
 

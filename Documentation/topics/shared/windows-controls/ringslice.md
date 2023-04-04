@@ -11,7 +11,7 @@ The [RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) control renders a portio
 
 *Several RingSlice controls combined to create an appealing radial graph*
 
-Ring slice controls can be combined in many interesting ways within UI, including being used to represent the 'track' or value of a [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider), used to create segmented progress indicators, etc.
+Ring slice controls can be combined in many interesting ways within UI, including being used to represent the "track" (or value) of a [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider), used to create segmented progress indicators, etc.
 
 ## Angles, Radius, and Thickness
 
@@ -28,7 +28,7 @@ The control also has two properties that control its radius and thickness.  The 
 
 ## Other Stroke Properties
 
-[RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) also supports all of the standard stroke properties found on a shape control.  This includes setting start/end/dash caps to achieve circular, triangle, etc. line ends, or setting properties to renders dashed lines.
+[RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) also supports all of the standard stroke properties found on a shape control.  This includes setting start/end/dash caps to achieve circular, triangle, etc. line ends, or setting properties to render dashed lines.
 
 ## Entire Circle
 

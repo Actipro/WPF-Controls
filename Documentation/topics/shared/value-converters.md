@@ -9,15 +9,15 @@ The [ActiproSoftware.Windows.Data](xref:@ActiproUIRoot.Data), [ActiproSoftware.W
 
 ## BooleanAndConverter Class
 
-The [BooleanAndConverter](xref:@ActiproUIRoot.Data.BooleanAndConverter) represents a multi-value converter that performs a logical AND (&&) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
+The [BooleanAndConverter](xref:@ActiproUIRoot.Data.BooleanAndConverter) represents a multi-value converter that performs a logical AND (`&&`) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
 
 ## BooleanNotConverter Class
 
-The [BooleanNotConverter](xref:@ActiproUIRoot.Data.BooleanNotConverter) represents a value converter that performs a NOT (!) operation on a specified `Boolean` value.
+The [BooleanNotConverter](xref:@ActiproUIRoot.Data.BooleanNotConverter) represents a value converter that performs a NOT (`!`) operation on a specified `Boolean` value.
 
 ## BooleanOrConverter Class
 
-The [BooleanOrConverter](xref:@ActiproUIRoot.Data.BooleanOrConverter) represents a multi-value converter that performs a logical OR (||) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
+The [BooleanOrConverter](xref:@ActiproUIRoot.Data.BooleanOrConverter) represents a multi-value converter that performs a logical OR (`||`) operation on one or more `Boolean` values passed to the associated `MultiBinding` object.
 
 ## BorderChildClipConverter Class
 
@@ -31,17 +31,17 @@ This XAML shows an example of using the converter:
 
 ```xaml
 <Border x:Name="outerBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="8">
-    <Grid>
-        <Grid.Clip>
-            <MultiBinding Converter="{StaticResource BorderClipConverter}">
-                <Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
-                <Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
-                <Binding ElementName="outerBorder" Path="BorderThickness" />
-                <Binding ElementName="outerBorder" Path="CornerRadius" />
-            </MultiBinding>
-        </Grid.Clip>
-        <!-- Grid child controls here -->
-    </Grid>
+	<Grid>
+		<Grid.Clip>
+			<MultiBinding Converter="{StaticResource BorderClipConverter}">
+				<Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
+				<Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+				<Binding ElementName="outerBorder" Path="BorderThickness" />
+				<Binding ElementName="outerBorder" Path="CornerRadius" />
+			</MultiBinding>
+		</Grid.Clip>
+		<!-- Grid child controls here -->
+	</Grid>
 </Border>
 ```
 
@@ -55,7 +55,7 @@ The [CharacterCasingConverter](xref:@ActiproUIRoot.Data.CharacterCasingConverter
 
 ## CoalesceConverter Class
 
-The [CoalesceConverter](xref:@ActiproUIRoot.Data.CoalesceConverter) represents a value converter that returns the value if it is non-null; otherwise, the value of the converter's parameter.  This converter can also be used in a `MultiBinding`, in which case the first non-null value is returned; otherwise, the converter's parameter is returned.
+The [CoalesceConverter](xref:@ActiproUIRoot.Data.CoalesceConverter) represents a value converter that returns the value if it is non-`null`; otherwise, the value of the converter's parameter.  This converter can also be used in a `MultiBinding`, in which case the first non-`null` value is returned; otherwise, the converter's parameter is returned.
 
 ## ColorInterpolationConverter Class
 
@@ -102,14 +102,14 @@ This sample code shows how to use the converter in a `Binding` in XAML:
 <TextBlock Text="{Binding Path=BooleanProperty, Converter={StaticResource ConditionalConverter}}" />
 ```
 
-If the condition is not a boolean, other condition evaluation logic executes as follows.  Strings evaluate true if they are not null or empty.  Non-null objects also return true.
+If the condition is not a boolean, other condition evaluation logic executes as follows.  Strings evaluate `true` if they are not `null` or empty.  Non-`null` objects also return `true`.
 
 ## CornerRadiusConverter Class
 
 The [CornerRadiusConverter](xref:@ActiproUIRoot.Data.CornerRadiusConverter) represents a value converter that converts between a `CornerRadius` and a number.
 
 ```xaml
-... Value="{Binding Path=Number, Converter={StaticResource CornerRadiusConverter}}" ...
+<... Value="{Binding Path=Number, Converter={StaticResource CornerRadiusConverter}}" ... />
 ```
 
 ## DelegateConverter Class
@@ -143,7 +143,7 @@ This converter expects the source value to be a `String` that is a key recognize
 Optionally set the converter parameter to a specific instance of [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider). Otherwise, the instance defined by [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).[Default](xref:@ActiproUIRoot.Media.ImageProvider.Default) will be used.
 
 ```xaml
-<... ImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Warning}, Converter={StaticResource ImageKeyToImageSourceConverter}}" ...
+<... ImageSource="{Binding Source={x:Static shared:SharedImageSourceKeys.Warning}, Converter={StaticResource ImageKeyToImageSourceConverter}}" ... />
 ```
 
 ## InverseConverter Class
@@ -186,7 +186,7 @@ The [PercentageConverter](xref:@ActiproUIRoot.Data.PercentageConverter) represen
 
 The [StringFormatConverter](xref:@ActiproUIRoot.Data.StringFormatConverter) represents a multi-value converter that provides `String.Format` functionality for both simple `Binding` and `MultiBinding` objects.
 
-Pass the format string in the converter's parameter.  Since `{` characters are normally interpreted as markup extension starts, you can escape them by placing `{}` before the format string like this:
+Pass the format string in the converter's parameter.  Since curly brace characters `{` and `}` are normally interpreted as markup extension starts, you can escape them by placing `"{}"` before the format string like this:
 
 ```xaml
 <MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}{0} of {1}">...
@@ -200,10 +200,10 @@ By default, the `Thickness` returned will have all four sides (`Thickness.Left`,
 
 ```xaml
 <!-- Set all four sides -->
-... Value="{Binding Path=Number, Converter={StaticResource ThicknessConverter}}" ...
-								
+<... Value="{Binding Path=Number, Converter={StaticResource ThicknessConverter}}" ... />
+
 <!-- Only set the Left and Right sides -->
-... Value="{Binding Path=Number, Converter={StaticResource ThicknessConverter}, ConverterParameter='Left,Right'}" ...
+<... Value="{Binding Path=Number, Converter={StaticResource ThicknessConverter}, ConverterParameter='Left,Right'}" ... />
 ```
 
 ## TypeNameConverter Class

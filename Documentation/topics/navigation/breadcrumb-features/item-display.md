@@ -9,9 +9,9 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control all
 
 ## Customizing the Item Look
 
-The items in the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control use the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[ItemTemplate](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ItemTemplate) as their `DataTemplate`. In addtion, the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[ItemContainerStyle](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ItemContainerStyle) can be used to further customize the look of an item.
+The items in the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control use the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[ItemTemplate](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ItemTemplate) as their `DataTemplate`. In addition, the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[ItemContainerStyle](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ItemContainerStyle) can be used to further customize the look of an item.
 
-Typically, these properties are set on the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control for use by all the items displayed. But the associated properties on the [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) control can be used to change the look for its descendents. Therefore, if desired, each item in the trail could be given a custom look.
+Typically, these properties are set on the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control for use by all the items displayed. But the associated properties on the [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem) control can be used to change the look for its descendants. Therefore, if desired, each item in the trail could be given a custom look.
 
 ## Setting Images
 

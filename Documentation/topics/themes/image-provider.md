@@ -40,7 +40,7 @@ Note that the native `Image` control from which [DynamicImage](../shared/windows
 
 ## Assigning a Non-Default Image Provider to an ImageSource
 
-An [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) instance is created and assigned to the static [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).[Default](xref:@ActiproUIRoot.Media.ImageProvider.Default) property by default.  This instance does not have any out-of-the-box configuration for supporting chromatic adaptation, scales, or themes.  However its properties may be adjusted to support those features.
+An [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) instance is created and assigned to the static [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).[Default](xref:@ActiproUIRoot.Media.ImageProvider.Default) property by default.  This instance does not have any out-of-the-box configuration for supporting chromatic adaptation, scales, or themes.  However, its properties may be adjusted to support those features.
 
 When the [DynamicImage](../shared/windows-controls/dynamicimage.md) control needs to adapt an image, it examines the `ImageSource` set to its `Source` property to see if a value is returned for the `ImageProvider.Provider` attached property.  If no specific [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) instance was set via that attached property on the `ImageSource`, then the static instance returned via [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).[Default](xref:@ActiproUIRoot.Media.ImageProvider.Default) will be used instead for adaptation.
 
@@ -104,9 +104,9 @@ ImageProvider.Default.DesignForegroundColor = Colors.Black;
 
 Raster images render blurry when used in high-DPI. [DynamicImage](../shared/windows-controls/dynamicimage.md) can automatically watch for high-DPI scenarios and swap in an image variation designed for high-DPI.
 
-The image provider knows to support specific scales when scale values higher than `1.0` are added to its [Scales](xref:@ActiproUIRoot.Media.ImageProvider.Scales) collection.  Note that if you do add a scale to the collection, you must ensure that each image design has a `"[filename].Scale-[scalefactor].[fileextension]"` image available in the same folder as the source image.
+The image provider knows to support specific scales when scale values higher than `1.0` are added to its [Scales](xref:@ActiproUIRoot.Media.ImageProvider.Scales) collection.  Note that if you do add a scale to the collection, you must ensure that each image design has a `<filename>.Scale-<scalefactor>.<fileextension>` image available in the same folder as the source image.
 
-The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support 200% scale images.  If the source image is normally 32x32 size in 100% DPI, then the scaled up image variation needs to be 64x64.
+The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support 200% scale images.  If the source image is normally 32x32 size in 100% DPI, then the scaled-up image variation needs to be 64x64.
 
 ```csharp
 ImageProvider.Default.Scales.Add(2.0);
@@ -118,7 +118,7 @@ ImageProvider.Default.Scales.Add(2.0);
 
 The above configuration will have [DynamicImage](../shared/windows-controls/dynamicimage.md) watch for high-DPI scenarios and will have it adapt to swap in an image located at `"/Images/Save32.Scale-200.png"` when entering DPI greater than 100%.
 
-No `".Scale-100"` should be in the filenames of images designed for 100% DPI.
+No `.Scale-100` should be in the filenames of images designed for 100% DPI.
 
 > [!NOTE]
 > When using scale variations, it's important to set the `Width` and `Height` properties on the [DynamicImage](../shared/windows-controls/dynamicimage.md) control to ensure that a swapped-in high-DPI image will not resize the control itself from its intended device independent unit size.  For instance, an image designed for 32x32 size should have the `Width` and `Height` both set to `32`, even if a 64x64 200% DPI image variation is swapped in.
@@ -127,7 +127,7 @@ No `".Scale-100"` should be in the filenames of images designed for 100% DPI.
 
 Raster images might have other specific designs when in certain themes. [DynamicImage](../shared/windows-controls/dynamicimage.md) can automatically watch for theme changes and swap in an image variation designed for that theme.  This feature should not be used if you are making use of chromatic adaptation, since these theme variations are already designed for a specific theme and no adaptation is necessary.
 
-The image provider knows to support specific themes when theme names are added to its [ThemeNames](xref:@ActiproUIRoot.Media.ImageProvider.ThemeNames) collection.  Note that if you do add a theme name to the collection, you must ensure that each image design has a `"[filename].Theme-[themename].[fileextension]"` image available in the same folder as the source image.
+The image provider knows to support specific themes when theme names are added to its [ThemeNames](xref:@ActiproUIRoot.Media.ImageProvider.ThemeNames) collection.  Note that if you do add a theme name to the collection, you must ensure that each image design has a `<filename>.Theme-<themename>.<fileextension>` image available in the same folder as the source image.
 
 The following example shows the configuration for an [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider) to support "Dark" theme images.
 
@@ -141,9 +141,9 @@ ImageProvider.Default.ThemeNames.Add("Dark");
 
 The above configuration will have [DynamicImage](../shared/windows-controls/dynamicimage.md) watch for theme changes and will have it adapt to swap in an image located at `"/Images/Save32.Theme-Dark.png"` when theme named "Dark" is activated.
 
-Theme name and scale variations can be combined as well.  In cases where both variations are supported by an image provider and need to load, the image file `"[filename].Theme-[themename].Scale-[scalefactor].[fileextension]"` will be loaded.
+Theme name and scale variations can be combined as well.  In cases where both variations are supported by an image provider and need to load, the image file `<filename>.Theme-<themename>.Scale-<scalefactor>.<fileextension>` will be loaded.
 
-No `".Theme-[defaultthemename]"` should be in the filenames of images designed for your application's default theme.
+No `.Theme-<defaultthemename>` should be in the filenames of images designed for your application's default theme.
 
 ## Grayscale Adaptation
 

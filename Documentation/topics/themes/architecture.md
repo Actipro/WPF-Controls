@@ -5,15 +5,15 @@ order: 3
 ---
 # Architecture
 
-Actipro Themes contains a complete framework for managing run-time selection of the themes of both Actipro and native controls, but can also be used for your own custom controls as well.
+Actipro Themes contains a complete framework for managing run-time selection of the themes of both Actipro and native controls but can also be used for your own custom controls as well.
 
 Themes are dynamically generated based on theme definitions, which allow for you to configure various appearance options prior to theme generation.  This topic covers the underlying architecture for the themes and describes how theme definitions are used to configure generated themes.
 
-Actipro's [Theme Designer application](theme-designer.md) comes with the WPF Controls, making it easy to fully configure a theme definition and see how various options affect appearance.  The Theme Designer even generates the code necessary to paste into your application `OnStartup` to replicate the theme definition.
+Actipro's [Theme Designer application](theme-designer.md) comes with the WPF Controls, making it easy to fully configure a theme definition and see how various options affect appearance.  The **Theme Designer** even generates the code necessary to paste into your application `OnStartup` to replicate the theme definition.
 
 ## What are Themes?
 
-Themes are resource dictionaries that define styles and templates for a group of controls.  Each "theme" has its own visual appearance that it creates.  For instance, a Ribbon can be rendered in an Office blue theme or a modern dark theme, among many others.
+Themes are resource dictionaries that define styles and templates for a group of controls.  Each theme has its own visual appearance that it creates.  For instance, a `Ribbon` can be rendered in an Office blue theme or a modern dark theme, among many others.
 
 Some resource dictionaries may be used to provide the styles and templates for controls, while others may simply define asset resources, such as brushes and pens.  Still others may tie those combinations together to provide a complete theme implementation.
 
@@ -43,7 +43,7 @@ Theme definitions allow for easy configuration of these kinds of options:
 
 ## Registering and Using a Theme Definition
 
-This sample code shows how to create a basic [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) whose name is "Custom", register it with the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager), and then tell the theme manager to use it as the current theme.  Note that we also tell the theme manager to theme native WPF controls.  The generated theme will be dark colors with green accents.
+This sample code shows how to create a basic [ThemeDefinition](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition) whose name is `"Custom"`, register it with the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager), and then tell the theme manager to use it as the current theme.  Note that we also tell the theme manager to theme native WPF controls.  The generated theme will be dark colors with green accents.
 
 ```csharp
 public partial class App : Application {
@@ -68,16 +68,16 @@ public partial class App : Application {
 		finally {
 			ThemeManager.EndUpdate();
 
-        // ...
+		// ...
 
-        // Call the base method
-    	base.OnStartup(e);
-    }
+		// Call the base method
+		base.OnStartup(e);
+	}
 
 }
 ```
 
-Call the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterThemeDefinition](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterThemeDefinition*) method for each theme definition to register.  Multiple theme definitions can be registered with the theme manager, but make sure each theme definition has a unique name.  The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property is later set to the name of the theme to load for the application.  The names of predefined themes is available as constants in the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class.
+Call the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterThemeDefinition](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterThemeDefinition*) method for each theme definition to register.  Multiple theme definitions can be registered with the theme manager, but make sure each theme definition has a unique name.  The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property is later set to the name of the theme to load for the application.  The names of predefined themes are available as constants in the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class.
 
 ## Automatic Light and Dark Theme Switching
 
@@ -93,7 +93,8 @@ ThemeManager.RegisterAutomaticThemes("MyLightTheme", "MyDarkTheme", ThemeNames.H
 
 Behind the scenes, [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) attaches a Win32 message hook on the `Application.MainWindow` to listen for messages from the system that indicate theme changes.  When one is detected the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property is updated and if automatic theme switching is enabled, the theme is changed.
 
-Note that if you use a splash screen for your application, the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) may initially attach its hook to that splash screen `Window` since it would be the value in `Application.MainWindow`.  WPF's `Application` class doesn't notify when `Application.MainWindow` changes.  If you later set a new main `Window` to `Application.MainWindow`, the hook can be updated to that `Window` by a call to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterAutomaticThemes](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterAutomaticThemes*) method, which ensures the hook is attached to the current `Application.MainWindow`.
+> [!IMPORTANT]
+> If you use a splash screen for your application, the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager) may initially attach its hook to that splash screen `Window` since it would be the value in `Application.MainWindow`.  WPF's `Application` class doesn't notify when `Application.MainWindow` changes.  If you later set a new main `Window` to `Application.MainWindow`, the hook can be updated to that `Window` by a call to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[RegisterAutomaticThemes](xref:@ActiproUIRoot.Themes.ThemeManager.RegisterAutomaticThemes*) method, which ensures the hook is attached to the current `Application.MainWindow`.
 
 ## High-Contrast Support
 
@@ -131,7 +132,7 @@ Each theme definition generates multiple shades of colors in various color famil
 
 The properties for the base colors used to generate each color family can be altered from their color palette defaults.  This is useful when you wish to tweak the color family shades to match your brand colors.
 
-The base colors for each color family is listed below:
+The base colors for each color family are listed below:
 
 - [BaseColorBlue](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorBlue) - Base color for the blue color family.
 - [BaseColorGreen](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseColorGreen) - Base color for the green color family.
@@ -145,7 +146,7 @@ The base colors for each color family is listed below:
 
 ## Theme Definition Grayscale Palette Options
 
-All grayscale (silver and gray shades) are tinted twoards a particular color hue.  The [BaseGrayscaleHue](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseGrayscaleHue) property determines this hue value in degrees from `0` to `359`.
+All grayscale (silver and gray shades) are tinted towards a particular color hue.  The [BaseGrayscaleHue](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseGrayscaleHue) property determines this hue value in degrees from `0` to `359`.
 
 The [BaseGrayscaleSaturation](xref:@ActiproUIRoot.Themes.Generation.ThemeDefinition.BaseGrayscaleSaturation) property determines the level at which the color hue is saturated into the grayscale shades.  A higher number means a higher saturation level.
 
@@ -223,26 +224,26 @@ Several options like [WindowTitleBarBackgroundKind](xref:@ActiproUIRoot.Themes.G
 
 ## Traditional WPF Themes (System-Based Switching)
 
-There are many resources on the web describing how the non-Actipro WPF's themes system traditionally works but here is a brief overview.  You can optionally define a number of XAML resource dictionary files in a `Themes` folder off of your project root.  Special filenames include:
+> [!IMPORTANT]
+> With Windows 10-based and newer systems being the primary operating system used at this point, much of the system-based theming described below is now obsolete.  Modern Actipro controls all implement a single *Generic.xaml* file for their styles/templates and theming is based on the Actipro theme definition used.
 
-- Generic.xaml - The default resources that are always loaded but can be overridden by other ones below
-- Classic.xaml - "Classic" Windows 9x/2000 look
-- Luna.NormalColor.xaml - Windows XP default blue theme
-- Luna.Homestead.xaml - Windows XP olive green theme
-- Luna.Metallic.xaml - Windows XP silver theme
-- Royale.NormalColor.xaml - Windows XP Media Center Edition theme
-- Aero.NormalColor.xaml - Windows Vista/7 default theme
-- Aero2.NormalColor.xaml - Windows 8.x/10 default theme
-- AeroLite.NormalColor.xaml - Windows Server 2012 default theme
+There are many resources on the web describing how the non-Actipro WPF's themes system traditionally works but here is a brief overview.  You can optionally define a number of XAML resource dictionary files in a *Themes* folder off of your project root.  Special filenames include:
 
-Basically if the user is running Windows XP with the olive green theme active, the *Luna.Homestead.xaml* file, if found, will be loaded so that anything in the application can use its resources (styles, brushes, etc.).  These resources are loaded like this on demand, when WPF encounters the first control or `ComponentResourceKey` lookup corresponding to the given assembly.  Also note that the `System.Windows.ThemeInfoAttribute` must be assigned to your assembly context indicating that themed-resources are in the assembly.  See the MSDN for documentation on this attribute.
+- *Generic.xaml* - The default resources that are always loaded but can be overridden by other ones below
+- *Classic.xaml* - "Classic" Windows 9x/2000 look
+- *Luna.NormalColor.xaml* - Windows XP default blue theme
+- *Luna.Homestead.xaml* - Windows XP olive green theme
+- *Luna.Metallic.xaml* - Windows XP silver theme
+- *Royale.NormalColor.xaml* - Windows XP Media Center Edition theme
+- *Aero.NormalColor.xaml* - Windows Vista/7 default theme
+- *Aero2.NormalColor.xaml* - Windows 8.x/10 default theme
+- *AeroLite.NormalColor.xaml* - Windows Server 2012 default theme
 
-> [!NOTE]
-> With Windows 10-based systems being the primary operating system used at this point, much of the system-based theming described above is no obsolete.  Actipro controls now all simply implement a single *Generic.xaml* file for their styles/templates and theming is based on the Actipro theme definition used.
+Basically, if the user is running Windows XP with the olive green theme active, the *Luna.Homestead.xaml* file, if found, will be loaded so that anything in the application can use its resources (styles, brushes, etc.).  These resources are loaded like this on demand, when WPF encounters the first control or `ComponentResourceKey` lookup corresponding to the given assembly.  Also note that the `System.Windows.ThemeInfoAttribute` must be assigned to your assembly context indicating that themed-resources are in the assembly.  See the MSDN for documentation on this attribute.
 
 ## Theme Catalogs
 
-Theme catalogs can be used to indicate which resource dictionaries should be loaded for any given theme.  The theme catalogs contains zero or more resource dictionary references, which map a resource dictionary to one or more themes by name.  When the current theme is changed, the theme manager will then query each registered theme catalog to find the resource dictionaries that must be loaded for the given theme.
+Theme catalogs can be used to indicate which resource dictionaries should be loaded for any given theme.  The theme catalogs contain zero or more resource dictionary references, which map a resource dictionary to one or more themes by name.  When the current theme is changed, the theme manager will then query each registered theme catalog to find the resource dictionaries that must be loaded for the given theme.
 
 Each of these resource dictionaries can contain many assets, such as brushes, specific to a theme.  For instance, you may wish to override some brushes used in one of the predefined themes.  To do this, you would make a resource dictionary with the brush overrides, then register that resource dictionary with a theme catalog to load for the target theme name.
 
@@ -256,5 +257,5 @@ Custom registrars, which derive from [ThemeCatalogRegistrarBase<T>](xref:@Actipr
 
 To accomplish this, a custom [ThemeCatalogRegistrarBase<T>](xref:@ActiproUIRoot.Themes.ThemeCatalogRegistrarBase`1) is created that passes the desired theme catalog type as the type parameter.  This registrar can then be included in the XAML files loaded by WPF and it will automatically register the theme catalog when loaded.
 
-> [!NOTE]
-> It is a best practice to register custom theme catalogs upfront in the application startup code.  The tradeoff is that registering a theme catalog at app startup will force that assembly to load immediately, and will incur the time cost of loading the assembly, but will prevent templates from being reapplied later during app usage when a themed control from a control library is first used.
+> [!TIP]
+> It is a best practice to register custom theme catalogs upfront in the application startup code.  The tradeoff is that registering a theme catalog at app startup will force that assembly to load immediately and will incur the time cost of loading the assembly, but will prevent templates from being reapplied later during app usage when a themed control from a control library is first used.

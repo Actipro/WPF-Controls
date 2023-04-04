@@ -5,7 +5,7 @@ order: 7
 ---
 # Header Area
 
-This topic covers the options available for the NavigationBar header area.
+This topic covers the options available for the `NavigationBar` header area.
 
 ![Screenshot](../images/navigationbar.png)
 

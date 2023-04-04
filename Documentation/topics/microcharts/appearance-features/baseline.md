@@ -17,11 +17,11 @@ This positive/negative distinction can affect which style is used for various el
 
 In addition, area, bar, and win/loss series will pivot their polygons around the baseline value, which alters their appearance.
 
-In the following examples, the data rendered by the area chart uses the index postion along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
+In the following examples, the data rendered by the area chart uses the index position along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
 
 ![Screenshot](../images/micro-area-series-style1.png)
 
-If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polyon will appear to pivot around the baseline.
+If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polygon will appear to pivot around the baseline.
 
 ![Screenshot](../images/micro-area-series-style2.png)
 

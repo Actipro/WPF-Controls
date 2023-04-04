@@ -38,9 +38,9 @@ Therefore, in cases where a `ListView` is being used without an associated `Grid
 
 ### Ensuring Application.Current Is Initialized
 
-Actipro's theme manager and `Image` embedded resources (such as those used in our IntelliPrompt popups) with pack:// URIs both require access to the WPF `Application.Current` object.  When hosting WPF controls in a WinForms or other non-WPF application, the `Application.Current` property will be null by default.
+Actipro's theme manager and `Image` embedded resources (such as those used in our IntelliPrompt popups) with `"pack://"` URIs both require access to the WPF `Application.Current` object.  When hosting WPF controls in a WinForms or other non-WPF application, the `Application.Current` property will be null by default.
 
-This effectively prevents the theme manager from dynamically changing the current theme, and any pack:// URI references to `Image` embedded resources may fail with a `NotSupportedException` and message "The URI prefix is not recognized."
+This effectively prevents the theme manager from dynamically changing the current theme, and any `"pack://"` URI references to `Image` embedded resources may fail with a `NotSupportedException` and message "The URI prefix is not recognized."
 
 Both issues can be resolved by creating a WPF `Application` object.  The WPF `Application` object can be programmatically created in your application startup before any UI is created like this:
 
@@ -53,7 +53,7 @@ if (System.Windows.Application.Current == null) {
 
 The `wpfApplication` variable should be stored at your static application level and in your application shutdown code, the `wpfApplication.Shutdown()` method should be called to explicitly close the WPF `Application`.
 
-The reason we need to use `ShutdownMode.OnExplicitShutdown` above is that by default, the last WPF window that closes will shut down the WPF application and it will be as if no application was created, breaking pack:// syntax and causing the `NotSupportedException` exception.  If you are still in evaluation mode, the Actipro evaluation dialog for the WPF Controls could trigger this when it closes.  By explicitly controlling the lifetime of the WPF application, you prevent that scenario from occurring.
+The reason we need to use `ShutdownMode.OnExplicitShutdown` above is that by default, the last WPF window that closes will shut down the WPF application and it will be as if no application was created, breaking `"pack://"` syntax and causing the `NotSupportedException` exception.  If you are still in evaluation mode, the Actipro evaluation dialog for the WPF Controls could trigger this when it closes.  By explicitly controlling the lifetime of the WPF application, you prevent that scenario from occurring.
 
 ### Ensuring ThemeManager Is Initialized
 
@@ -71,4 +71,4 @@ ThemeManager.CurrentTheme = ThemeNames.MetroDark
 
 ## Snap Layout Menus Do Not Appear
 
-Windows 11 added a new feature to show a Snap Layouts Menu when the user hovers the mouse over the Maximize or Restore button in the application title bar. This feature is fully supported by `WindowChrome`.  If you do not see the Snap Layouts Menu on Windows 11, make sure your application has explicitly declared Windows 11 as a supported operating system in the `app.manifest` file. Refer to the [WindowChrome](windowchrome.md) topic for more information about declaring operating system support.
+Windows 11 added a new feature to show a **Snap Layouts Menu** when the user hovers the mouse over the **Maximize** or **Restore** button in the application title bar. This feature is fully supported by `WindowChrome`.  If you do not see the **Snap Layouts Menu** on Windows 11, make sure your application has explicitly declared Windows 11 as a supported operating system in the *app.manifest* file. Refer to the [WindowChrome](windowchrome.md) topic for more information about declaring operating system support.

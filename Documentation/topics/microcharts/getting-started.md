@@ -9,7 +9,7 @@ It's easy to get started using Micro Charts.  Simply follow the steps below to b
 
 ## Add Assembly References
 
-First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll* assemblies.  The assemblies should be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.MicroCharts.@@PlatformAssemblySuffix.dll* assemblies.  The assemblies should be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 ## Add the MicroXYChart Control
 
@@ -65,12 +65,12 @@ This sample assumes the objects in the list each contain a property named `MyDat
 > [!NOTE]
 > If a list contains custom data objects but the index of each entry should be used as the X-values, leave out the `XPath` attribute and just specify the `YPath` to the data object's property that contains the value to display.
 
-Additional series can be added and they will all be rendered on the same chart using the same X and Y scales.
+Additional series can be added, and they will all be rendered on the same chart using the same X and Y scales.
 
 ## Further Study
 
 It's very easy to use Micro Charts and there are probably a lot of great features that you aren't aware of.
 
-Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough and the sample project demonstrates almost every feature of Micro Charts.
+Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough, and the sample project demonstrates almost every feature of Micro Charts.
 
 If you require further assistance after looking through those, please visit our support forum for the product.

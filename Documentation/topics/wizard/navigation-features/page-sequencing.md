@@ -7,7 +7,7 @@ order: 3
 
 Wizard has many helpful features for setting up the sequence in which pages will be visited.
 
-The simplest way to set up page sequencing is declaratively in XAML.  In addition, default page sequencing may be overridden and page changes can be initiated programmatically.
+The simplest way to set up page sequencing is declaratively in XAML.  In addition, default page sequencing may be overridden, and page changes can be initiated programmatically.
 
 This topic describes declarative page sequencing.  See the [Selection Changes](selection-changes.md) topic for more help on cancelling page changes and programmatically overriding page sequence.
 
@@ -51,7 +51,7 @@ Normal page sequencing, in which pages are visited in the order in which they ap
 </td>
 <td>
 
-Normal page sequencing occurs when the Next button is pressed.  Each page visited is stored in an internal stack.  Back button presses move backwards through the stack.
+Normal page sequencing occurs when the **Next** button is pressed.  Each page visited is stored in an internal stack.  **Back** button presses move backwards through the stack.
 
 This feature requires each [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage)'s `Name` property to be set.
 
@@ -116,7 +116,7 @@ By setting an integer number value to those properties, you indicate that the ne
 This XAML code shows how to set the explicit next page for a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) to the fifth page in the parent Wizard's pages collection:
 
 ```xaml
-<wizard:WizardPage NextPage="4"></wizard:WizardPage>
+<wizard:WizardPage NextPage="4"> ... </wizard:WizardPage>
 ```
 
 </td>
@@ -132,10 +132,10 @@ This XAML code shows how to set the explicit next page for a [WizardPage](xref:@
 
 By setting a `String` value to those properties, you indicate that the next or previous page for the page should be the page with the specified name within the parent Wizard's pages collection.
 
-This XAML code shows how to set the explicit previous page for a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) to the page with `Name` "welcomePage" in the parent Wizard's pages collection:
+This XAML code shows how to set the explicit previous page for a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) to the page with `Name` `"welcomePage"` in the parent Wizard's pages collection:
 
 ```
-<wizard:WizardPage PreviousPage="welcomePage"></wizard:WizardPage>
+<wizard:WizardPage PreviousPage="welcomePage"> ... </wizard:WizardPage>
 ```
 
 </td>
@@ -151,10 +151,10 @@ This XAML code shows how to set the explicit previous page for a [WizardPage](xr
 
 By setting an explicit [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) reference to those properties, you indicate that the next or previous page for the page should be the specified page.
 
-This XAML code shows how to set the explicit next page for a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) to the page with `Name` "finishPage" in the parent Wizard's pages collection:
+This XAML code shows how to set the explicit next page for a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) to the page with `Name` `"finishPage"` in the parent Wizard's pages collection:
 
 ```xaml
-<wizard:WizardPage NextPage="{Binding ElementName=finishPage}"></wizard:WizardPage>
+<wizard:WizardPage NextPage="{Binding ElementName=finishPage}"> ... </wizard:WizardPage>
 ```
 
 </td>
@@ -163,7 +163,7 @@ This XAML code shows how to set the explicit next page for a [WizardPage](xref:@
 </tbody>
 </table>
 
-Note that in the default page sequence diagrams above, the first page in the diagram, index 0, has a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextPage) value of `2`, meaning when the Next button is clicked, jump to the third page (since page indices are zero-based) in the Wizard.
+Note that in the default page sequence diagrams above, the first page in the diagram, index 0, has a [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[NextPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.NextPage) value of `2`, meaning when the **Next** button is clicked, jump to the third page (since page indices are zero-based) in the Wizard.
 
 It is important to note that when stack-based page sequencing is used, the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage).[PreviousPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage.PreviousPage) property will be ignored since the stack will be used in determining which pages to visit on backwards progress.
 

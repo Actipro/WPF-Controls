@@ -5,13 +5,13 @@ order: 4
 ---
 # ShellListView Control
 
-The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control shows the contents of a selected folder using column-based property display, similar to what you see in the right side of Windows Explorer.
+The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control shows the contents of a selected folder using column-based property display, similar to what you see in the right side of **Windows Explorer**.
 
 ![Screenshot](images/shelllistview.png)
 
 ## Getting Started
 
-First, add references to the *ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shell.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Grids.@@PlatformAssemblySuffix.dll*, *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* assemblies.  All three assemblies are required for the Shell product.  They should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 This sample code shows how a [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control pointing to a default root shell folder can be added to any XAML:
 
@@ -25,7 +25,7 @@ xmlns:shell="http://schemas.actiprosoftware.com/winfx/xaml/shell"
 
 The [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellListView.DefaultShellService) property is set to an instance of [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) by default.  This allows the control to support Windows shell interaction out of the box.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Please see the [Memory Management](memory-management.md) topic for notes on handling shell service changes, since they sometimes use unmanaged resources.
 
 ## Root Shell Folder
@@ -33,12 +33,10 @@ The [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellListView.Defau
 A root shell folder must be set on the control so that it can display that root folder's hierarchy.  The root shell folder may be set via three different properties:
 
 - [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) - A [IShellObject](xref:ActiproSoftware.Shell.IShellObject) that must be a shell folder.  Setting this property updates the [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolderParsingName) and [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootSpecialFolderKind) properties to remain in sync.
+- [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolderParsingName) - A [parsing name](shell-objects-framework/shell-objects.md) (generally a file system path like `"C:\\Program Files"`) that indicates the root shell folder.  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) and [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootSpecialFolderKind) properties to remain in sync.
+- [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootSpecialFolderKind) - An enum value of type [SpecialFolderKind](xref:ActiproSoftware.Shell.SpecialFolderKind) that indicates a special Windows folder kind (`Computer`, `ThisPC`, and so on).  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) and [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolderParsingName) properties to remain in sync.
 
-- [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolderParsingName) - A [parsing name](shell-objects-framework/shell-objects.md) (generally a file system path like "C:\\Program Files") that indicates the root shell folder.  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) and [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootSpecialFolderKind) properties to remain in sync.
-
-- [RootSpecialFolderKind](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootSpecialFolderKind) - An enum value of type [SpecialFolderKind](xref:ActiproSoftware.Shell.SpecialFolderKind) that indicates a special Windows folder kind ("Computer", "ThisPC", and so on).  Setting this property updates the [RootShellFolder](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolder) and [RootShellFolderParsingName](xref:@ActiproUIRoot.Controls.Shell.ShellListView.RootShellFolderParsingName) properties to remain in sync.
-
-> [!NOTE]
+> [!IMPORTANT]
 > Please see the [Memory Management](memory-management.md) topic for notes on handling root shell folder changes, since they sometimes use unmanaged resources.
 
 ## Display Options
@@ -46,12 +44,9 @@ A root shell folder must be set on the control so that it can display that root 
 There are several display option properties that affect features and functionality:
 
 - [CanIncludeFiles](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanIncludeFiles) - Whether files should be displayed.  The default value is `true`.
-
 - [CanIncludeFolders](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanIncludeFolders) - Whether folders should be displayed.  The default value is `true`.
-
 - [CanIncludeLinks](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanIncludeLinks) - Whether links should be displayed.  The default value is `true`.
-
-- [IsRootItemVisible](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.IsRootItemVisible) - Whether the root item is visible.  The default value is `false`, and this inherited value should NOT be changed for the [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control.
+- [IsRootItemVisible](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.IsRootItemVisible) - Whether the root item is visible.  The default value is `false`, and this inherited value should *not* be changed for the [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control.
 
 ## Selection
 
@@ -59,7 +54,7 @@ Since this control inherits [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.Tre
 
 ## Layout Modes
 
-The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control is in `Details` layout mode by default, which renders items in a vertical list with mutiple columns of data.
+The [ShellListView](xref:@ActiproUIRoot.Controls.Shell.ShellListView) control is in `Details` layout mode by default, which renders items in a vertical list with multiple columns of data.
 
 The [LayoutMode](xref:@ActiproUIRoot.Controls.Shell.ShellListView.LayoutMode) property can be set to another [ShellListViewLayoutMode](xref:@ActiproUIRoot.Controls.Shell.ShellListViewLayoutMode) enumeration value to change to an alternate layout mode, such as the `LargeIcons` layout mode pictured here:
 
@@ -72,7 +67,7 @@ Available layout modes include:
 - `SmallIcons` - A horizontal list mode that renders a small icon and name.
 - `MediumIcons` - A horizontal list mode that renders a medium icon and name.
 - `LargeIcons` - A horizontal list mode that renders a large icon and name.
-- `ExtraLargeIcons` - A horizontal list mode that renders an extra large icon and name.
+- `ExtraLargeIcons` - A horizontal list mode that renders an extra-large icon and name.
 
 The `MediumIcons`, `LargeIcons`, and `ExtraLargeIcons` layout modes can optionally show thumbnail images in place of icons when they are available.  Thumbnail images provide previews of the shell object's content.  This functionality is enabled by setting the [CanUseThumbnails](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanUseThumbnails) property to `true`, which is the default.
 
@@ -83,15 +78,10 @@ The control uses multiple `DataTemplate`-based properties to determine how to re
 The `DataTemplate` properties for each layout mode include:
 
 - [DetailsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.DetailsLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `Details`.
-
 - [ExtraLargeIconsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.ExtraLargeIconsLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `ExtraLargeIcons`.
-
 - [LargeIconsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.LargeIconsLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `LargeIcons`.
-
 - [ListLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.ListLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `List`.
-
 - [MediumIconsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.MediumIconsLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `MediumIcons`.
-
 - [SmallIconsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.SmallIconsLayoutModeItemTemplate) - The `DataTemplate` to use as the `ItemTemplate` when the layout mode is `SmallIcons`.
 
 This is a sample `DataTemplate` set to the [DetailsLayoutModeItemTemplate](xref:@ActiproUIRoot.Controls.Shell.ShellListView.DetailsLayoutModeItemTemplate) property:

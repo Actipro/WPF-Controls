@@ -9,7 +9,7 @@ The [RadioButtonList](xref:@ActiproUIRoot.Controls.RadioButtonList) control dire
 
 ![Screenshot](../images/radiobuttonlist.gif)
 
-*The RadioButtonList control bounds to the `Dock` enumeration *
+*The RadioButtonList control bounds to the `Dock` enumeration*
 
 The selected item in the list will appear as a checked radio button.
 

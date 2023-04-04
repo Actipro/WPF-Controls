@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Wizard follows WPF best practices for areas such as layout, globalization and accessibility.
+Wizard follows WPF best practices for areas such as layout, globalization, and accessibility.
 
 Some of the more major features include:
 

@@ -7,7 +7,7 @@ order: 5
 
 Actipro Themes includes styles and templates for all native WPF controls that have been given a more modernized appearance, and mesh perfectly with Actipro's custom control products.
 
-The native WPF control styles use the same common asset resource (brush, thickness, etc.) pool as with our other custom WPF controls.  Thus no matter which native or Actipro controls you use together, the appearance will consistently look great.
+The native WPF control styles use the same common asset resource (brush, thickness, etc.) pool as with our other custom WPF controls.  Thus, no matter which native or Actipro controls you use together, the appearance will consistently look great.
 
 ## Using Native Styles and Templates
 

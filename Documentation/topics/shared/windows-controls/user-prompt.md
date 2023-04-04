@@ -44,17 +44,17 @@ global using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 ```
 
 > [!WARNING]
-> The alias will not apply to any usage of `MessageBox` written with a fully- or partially-qualified domain name; e.g., `System.Windows.MessageBox.Show`.
+> The alias will not apply to any usage of `MessageBox` written with a fully or partially qualified domain name; e.g., `System.Windows.MessageBox.Show`.
 
 ### Limitations
 
-Since [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) is designed for API compatibility with the native `MessageBox`, many of the advanced features of [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) are not available using the [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox).[Show](xref:@ActiproUIRoot.Controls.ThemedMessageBox.Show*) method overloads. See the **Building a User Prompt** section below for details on how to use the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) to compose more advanced prompts.
+Since [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) is designed for API compatibility with the native `MessageBox`, many of the advanced features of [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) are not available using the [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox).[Show](xref:@ActiproUIRoot.Controls.ThemedMessageBox.Show*) method overloads. See the "Building a User Prompt" section below for details on how to use the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) to compose more advanced prompts.
 
 ## Building a User Prompt
 
 While [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox).[Show](xref:@ActiproUIRoot.Controls.ThemedMessageBox.Show*) satisfies most prompting needs, [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) provides additional layout and customization options to meet more advanced needs. To build a user prompt, create a new instance of [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) and set the appropriate properties to achieve the desired result.
 
-The following code demonstrates creating a [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) with a header, content, **Yes** & **No** buttons, and a **Question** status image:
+The following code demonstrates creating a [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) with a header, content, **Yes** and **No** buttons, and a **Question** status image:
 
 ```csharp
 using ActiproSoftware.Windows.Controls;
@@ -81,7 +81,7 @@ A user typically responds to a prompt by invoking a button that corresponds to t
 
 While the [ButtonItems](xref:@ActiproUIRoot.Controls.UserPromptControl.ButtonItems) property allows for any button to be defined, most prompts can be built using several commonly-used buttons defined by the [UserPromptStandardButtons](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons) enumeration.  These flags can be easily combined to display a fixed set of buttons to the user. Instead of populating the [ButtonItems](xref:@ActiproUIRoot.Controls.UserPromptControl.ButtonItems) property, set the [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons) property to the desired combination of commonly-used buttons.
 
-A special [Help](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.Help) button can be included in [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons).  Invoking the `Help` button will execute the command designated by the [HelpCommand](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommand) property.  An additional [HelpCommandParameter](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommandParameter) can also be populated that will be passed to the [HelpCommand](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommand) when invoked.
+A special [Help](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.Help) button can be included in [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons).  Invoking the **Help** button will execute the command designated by the [HelpCommand](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommand) property.  An additional [HelpCommandParameter](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommandParameter) can also be populated that will be passed to the [HelpCommand](xref:@ActiproUIRoot.Controls.UserPromptControl.HelpCommand) when invoked.
 
 > [!TIP]
 > Several popular combinations of buttons are predefined for convenience. For instance, the value [UserPromptStandardButtons](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons).[YesNoCancel](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.YesNoCancel) can be used to display [UserPromptStandardButtons](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons).[Yes](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.Yes), [UserPromptStandardButtons](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons).[No](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.No), and [UserPromptStandardButtons](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons).[Cancel](xref:@ActiproUIRoot.Controls.UserPromptStandardButtons.Cancel) buttons on the prompt.
@@ -101,7 +101,7 @@ var userPromptControl = new UserPromptControl() {
 > The [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons) property is ignored if the [ButtonItems](xref:@ActiproUIRoot.Controls.UserPromptControl.ButtonItems) property is explicitly populated.
 
 > [!TIP]
-> See the **Configuring and Evaluating Results** section below for more detail on how to associate [ButtonItems](xref:@ActiproUIRoot.Controls.UserPromptControl.ButtonItems) objects with a [UserPromptStandardResult](xref:@ActiproUIRoot.Controls.UserPromptStandardResult).
+> See the "Configuring and Evaluating Results" section below for more detail on how to associate [ButtonItems](xref:@ActiproUIRoot.Controls.UserPromptControl.ButtonItems) objects with a [UserPromptStandardResult](xref:@ActiproUIRoot.Controls.UserPromptStandardResult).
 
 ### Status Image
 
@@ -120,7 +120,7 @@ var userPromptControl = new UserPromptControl() {
 };
 ```
 
-Several common images like those for an **Error** or **Warning** are defined by the [UserPromptStandardImage](xref:@ActiproUIRoot.Controls.UserPromptStandardImage) enumeration.  Instead of populating the [StatusImageSource](xref:@ActiproUIRoot.Controls.UserPromptControl.StatusImageSource) property, set the [StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) property to one of the [UserPromptStandardImage](xref:@ActiproUIRoot.Controls.UserPromptStandardImage) values. The following demonstrates creating a [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) with a standard [Information](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Information) image:
+Several common images, like those for an error or warning, are defined by the [UserPromptStandardImage](xref:@ActiproUIRoot.Controls.UserPromptStandardImage) enumeration.  Instead of populating the [StatusImageSource](xref:@ActiproUIRoot.Controls.UserPromptControl.StatusImageSource) property, set the [StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) property to one of the [UserPromptStandardImage](xref:@ActiproUIRoot.Controls.UserPromptStandardImage) values. The following demonstrates creating a [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) with a standard [Information](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Information) image:
 
 ```csharp
 using ActiproSoftware.Windows.Controls;
@@ -175,7 +175,7 @@ using System.Windows.Media.Imaging;
 // Initialize a hyperlink with a click handler
 var hyperlink = new Hyperlink(new Run("here"));
 hyperlink.Click += OnShowMoreInformationHyperlinkClick;
-						
+
 // Build the prompt
 var userPromptControl = new UserPromptControl() {
 	Content = "This operation is not currently supported.",
@@ -208,7 +208,7 @@ var userPromptControl = new UserPromptControl() {
 ```
 
 > [!NOTE]
-> The [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) only displays the `CheckBox` and manages the state. The developer is responsible for persisting settings and suppress any prompts the user has requested not to be displayed.
+> The [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) only displays the `CheckBox` and manages the state. The developer is responsible for persisting settings and suppressing any prompts the user has requested not to be displayed.
 
 ### Expanded Information
 
@@ -265,18 +265,18 @@ if (result == UserPromptStandardResult.Yes) {
 ```
 
 > [!NOTE]
-> See the **Configuring and Evaluating Results** section below for more details on working with the result of a prompt.
+> See the "Configuring and Evaluating Results" section below for more details on working with the result of a prompt.
 
 ### Title
 
 The [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow).[ShowDialog](xref:@ActiproUIRoot.Controls.UserPromptWindow.ShowDialog*) method optionally accepts an argument that will be used as the title of the [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) when displayed. When an overload is used that does not pass a title or the specified title is `null`, the [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow).[DefaultTitle](xref:@ActiproUIRoot.Controls.UserPromptWindow.DefaultTitle) will be used. If [DefaultTitle](xref:@ActiproUIRoot.Controls.UserPromptWindow.DefaultTitle) is also `null` the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) property is used to provide a contextually appropriate title; e.g., the title is set to `"Warning"` for [UserPromptStandardImage](xref:@ActiproUIRoot.Controls.UserPromptStandardImage).[Warning](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Warning).
 
 > [!TIP]
-> See the **Customize String Resources** section below for details on how to customize the string resources used for default titles.
+> See the "Customize String Resources" section below for details on how to customize the string resources used for default titles.
 
 ### Close Button
 
-A [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) will only display a **Close** button in the **Title Bar** if a response can be associated with closing the window. The [CloseResult](xref:@ActiproUIRoot.Controls.UserPromptControl.CloseResult) property is used to define the result associated with closing the window instead of invoking an available button. When set to [UserPromptStandardResult](xref:@ActiproUIRoot.Controls.UserPromptStandardResult).[None](xref:@ActiproUIRoot.Controls.UserPromptStandardResult.None), the **Close** button will not be displayed.
+A [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) will only display a **Close** button in the title bar if a response can be associated with closing the window. The [CloseResult](xref:@ActiproUIRoot.Controls.UserPromptControl.CloseResult) property is used to define the result associated with closing the window instead of invoking an available button. When set to [UserPromptStandardResult](xref:@ActiproUIRoot.Controls.UserPromptStandardResult).[None](xref:@ActiproUIRoot.Controls.UserPromptStandardResult.None), the **Close** button will not be displayed.
 
 When [CloseResult](xref:@ActiproUIRoot.Controls.UserPromptControl.CloseResult) is set to `null` and the [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons) property is used to define the available buttons, an appropriate [UserPromptStandardResult](xref:@ActiproUIRoot.Controls.UserPromptStandardResult) will be assigned to [CloseResult](xref:@ActiproUIRoot.Controls.UserPromptControl.CloseResult) based on the current value of [StandardButtons](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardButtons).
 
@@ -352,13 +352,13 @@ The [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[Respond
 
 ## Playing a SystemSound
 
-When a native `MessageBox` is displayed, an associated `System.Media.SystemSound` may be played based on the value of `MessageBoxImage` used.  Set [SystemSound](xref:@ActiproUIRoot.Controls.UserPromptControl.SystemSound) to any `SystemSound` and it will be played when the [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) is shown.
+When a native `MessageBox` is displayed, an associated `System.Media.SystemSound` may be played based on the value of `MessageBoxImage` used.  Set [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[SystemSound](xref:@ActiproUIRoot.Controls.UserPromptControl.SystemSound) to any `SystemSound` and it will be played when the [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) is shown.
 
 When [SystemSound](xref:@ActiproUIRoot.Controls.UserPromptControl.SystemSound) is set to `null` and the [StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) property is used to define the status image, an appropriate `SystemSound` will be automatically assigned based on the image as shown in the following table:
 
 | StandardStatusImage | SystemSound |
 |-----|-----|
-| [None](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.None) | *None* |
+| [None](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.None) | None |
 | [Error](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Error) | `System.Media.SystemSounds.Hand` |
 | [Information](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Information) | `System.Media.SystemSounds.Asterisk` |
 | [Question](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Question) | `System.Media.SystemSounds.Question` |
@@ -366,9 +366,9 @@ When [SystemSound](xref:@ActiproUIRoot.Controls.UserPromptControl.SystemSound) i
 
 ## Customize Clipboard Content
 
-When a native `MessageBox` is displayed, the **Copy** (<kbd>Ctrl</kbd>+<kbd>C</kbd>) command will transfer the contents of the dialog to the system clipboard. [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) supports this feature as well. Since [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) also supports rich content of potentially complex control structures, it may not be possible to accurately translate the various properties to textual clipboard content.
+When a native `MessageBox` is displayed, the copy (<kbd>Ctrl</kbd>+<kbd>C</kbd>) command will transfer the contents of the dialog to the system clipboard. [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) supports this feature as well. Since [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) also supports rich content of potentially complex control structures, it may not be possible to accurately translate the various properties to textual clipboard content.
 
-The properties in the following table have a corresponding string-based property that can be used to explicitly define the text to be placed on the system clipboard for that object when the **Copy** command is invoked.
+The properties in the following table have a corresponding string-based property that can be used to explicitly define the text to be placed on the system clipboard for that object when the copy command is invoked.
 
 | Property | Corresponding Clipboard Property |
 |-----|-----|
@@ -436,7 +436,7 @@ The following string resources are available to localize or customize built-in s
 | `UIDialogTitleQuestionText` | The default title used by [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) when an explicit title is not defined and [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) is set to [Question](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Question). The default value is `"Question"`. |
 | `UIDialogTitleWarningText` | The default title used by [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow) when an explicit title is not defined and [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[StandardStatusImage](xref:@ActiproUIRoot.Controls.UserPromptControl.StandardStatusImage) is set to [Warning](xref:@ActiproUIRoot.Controls.UserPromptStandardImage.Warning). The default value is `"Warning"`. |
 
-This code shows how to set custom values for the string resources.
+This code shows how to set custom values for string resources.
 
 ```csharp
 ActiproSoftware.Products.Shared.SR.SetCustomString(ActiproSoftware.Products.Shared.SRName.UIDialogButtonRetryText.ToString(), "T_ry Again");

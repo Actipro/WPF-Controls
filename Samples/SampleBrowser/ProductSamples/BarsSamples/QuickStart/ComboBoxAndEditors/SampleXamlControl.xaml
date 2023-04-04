@@ -42,7 +42,7 @@
 						
 						<!-- Editable -->
 						<bars:BarComboBox Key="Editable" TextPath="Label" IsEditable="True" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
-										  ToolTip="A basic, editable combobox sample.">
+										  ToolTip="A basic, editable combobox sample." PlaceholderText="Employee">
 							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
 												 ItemsSource="{Binding ComboBoxPersonItems}"
 												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"

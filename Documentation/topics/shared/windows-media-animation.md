@@ -19,15 +19,15 @@ This XAML code shows how to create a [TransitionPresenter](xref:@ActiproUIRoot.M
 
 ```xaml
 <Window x:Class="Sample.Application.Window"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
-    >
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+        >
 	<shared:TransitionPresenter x:Name="Presenter" />
 </Window>
 ```
 
-Only one content can be displayed in the transition presenter, although as a new content is selected, it is transitioned in based on the transition that is currently assigned to the transition presenter.
+Only one content can be displayed in the transition presenter, although as new content is selected, it is transitioned in based on the transition that is currently assigned to the transition presenter.
 
 This XAML code shows how to assign a specific [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) to the transition presenter via the [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[Transition](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.Transition) property:
 
@@ -35,7 +35,7 @@ This XAML code shows how to assign a specific [Transition](xref:@ActiproUIRoot.M
 <shared:TransitionPresenter x:Name="Presenter">
 	<shared:TransitionPresenter.Transition>
 		<shared:FadeTransition />
-	</shared:TransitionPresenter.Transition>							
+	</shared:TransitionPresenter.Transition>
 </shared:TransitionPresenter>
 ```
 
@@ -56,7 +56,7 @@ transitionPresenter.TransitionSelector = new DelegateTransitionSelector() {
 
 A class called [MultiTransitionSelector](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector) is included in the Shared library.  Its [Transitions](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector.Transitions) collection can contain one or more [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) instances.  When this selector is used, it randomly picks one of the child transitions.  Additionally if the [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[DefaultMode](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.DefaultMode) is `Out`, then it will return an opposite variation of the picked transition (if the transition supports it).  This makes it easy to show different directions of transitions for forward and backward progress, such as in Wizard for WPF.
 
-The currently visible content in the transition presenter is set via the [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).`Content` property.  When a new object is set to that property, the transition presenter performs a transition from the "from" content (existing property value) to the "to" content (new property value).  You can use the `ContentTemplate` or `ContentTemplateSelector` properties to set a `DataTemplate` or a `DataTemplateSelector` for the "to" content.  Of course you can bind all this properties in XAML too.
+The currently visible content in the transition presenter is set via the [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).`Content` property.  When a new object is set to that property, the transition presenter performs a transition from the "from" content (existing property value) to the "to" content (new property value).  You can use the `ContentTemplate` or `ContentTemplateSelector` properties to set a `DataTemplate` or a `DataTemplateSelector` for the "to" content.  Of course, you can bind all this properties in XAML too.
 
 You can specify a default [TransitionDirection](xref:@ActiproUIRoot.Media.Animation.TransitionDirection) for transitions that support directions.  This is done via the [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[DefaultDirection](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.DefaultDirection) property.
 
@@ -212,7 +212,7 @@ Although this transition supports a direction, it one works for horizontal or ve
 
 Custom transitions can be created in multiple ways.  Any custom transition must inherit the [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) class or one of its subclasses.
 
-When inheriting [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) directly, implement the [OnStarted](xref:@ActiproUIRoot.Media.Animation.Transition.OnStarted*) method to begin the transtion and the [OnCompleted](xref:@ActiproUIRoot.Media.Animation.Transition.OnCompleted*) method to clean up the transtion once it has ended.  The transition must call the and the [EndTransition](xref:@ActiproUIRoot.Media.Animation.Transition.EndTransition*) method when the transition is complete.  That method in turn calls [OnCompleted](xref:@ActiproUIRoot.Media.Animation.Transition.OnCompleted*) for you and also lets the transition presenter know that the transition is complete.  If your transition supports a concept of an opposite variant, you can have the [GetOppositeTransition](xref:@ActiproUIRoot.Media.Animation.Transition.GetOppositeTransition*) method return a new instance of the transition in an opposite variant.  Otherwise, have it return the current instance.
+When inheriting [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) directly, implement the [OnStarted](xref:@ActiproUIRoot.Media.Animation.Transition.OnStarted*) method to begin the transition and the [OnCompleted](xref:@ActiproUIRoot.Media.Animation.Transition.OnCompleted*) method to clean up the transition once it has ended.  The transition must call the and the [EndTransition](xref:@ActiproUIRoot.Media.Animation.Transition.EndTransition*) method when the transition is complete.  That method in turn calls [OnCompleted](xref:@ActiproUIRoot.Media.Animation.Transition.OnCompleted*) for you and also lets the transition presenter know that the transition is complete.  If your transition supports a concept of an opposite variant, you can have the [GetOppositeTransition](xref:@ActiproUIRoot.Media.Animation.Transition.GetOppositeTransition*) method return a new instance of the transition in an opposite variant.  Otherwise, have it return the current instance.
 
 An easier way to create custom transitions is via XAML using the [StoryboardTransition](xref:@ActiproUIRoot.Media.Animation.StoryboardTransition) class.  It has four important properties: [FromContentStyle](xref:@ActiproUIRoot.Media.Animation.StoryboardTransition.FromContentStyle), [ToContentStyle](xref:@ActiproUIRoot.Media.Animation.StoryboardTransition.ToContentStyle), [FromContentStoryboard](xref:@ActiproUIRoot.Media.Animation.StoryboardTransition.FromContentStoryboard), and [ToContentStoryboard](xref:@ActiproUIRoot.Media.Animation.StoryboardTransition.ToContentStoryboard).  The two style properties optionally set a `Style` to the "from" and "to" content while a transition is occurring.  The two storyboard properties optionally set a `Storyboard` to animate properties on the "from" and "to" contents.
 
@@ -242,7 +242,7 @@ Many of our built-in transitions a programmatically created and inherit the [Sto
 
 ## Integrating the WPF Pixel Shader Effects Library
 
-The WPF Pixel Shader Effects Library, which can be found on [CodePlex (external)](http://www.codeplex.com/wpffx), includes several transition effects that leverage the `UIElement.Effect` property, which is included in .NET 3.5 SP1.  These effects are written using Microsoft's High Level Shader Language (HLSL), which provide alot of control over what is rendered.
+The WPF Pixel Shader Effects Library, [announced here (external)](https://learn.microsoft.com/en-us/archive/blogs/jaimer/announcement-wpf-pixel-shader-effects-library-on-codeplex), includes several transition effects that leverage the `UIElement.Effect` property, which is included in .NET 3.5 SP1.  These effects are written using Microsoft's High Level Shader Language (HLSL), which provide a lot of control over what is rendered.
 
 ![Screenshot](images/transitionpresenter-banded-swirl.png)![Screenshot](images/transitionpresenter-cloud-reveal.png)
 
@@ -256,7 +256,6 @@ This XAML code shows how to utilize the `BandedSwirlTransitionEffect` in a `Tran
 xmlns:sampleCommon="clr-namespace:ActiproSoftware.Windows.ProductSamples.SharedSamples.Common"
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 xmlns:transitionEffects="clr-namespace:TransitionEffects;assembly=TransitionEffects"
-
 ...
 
 <shared:TransitionPresenter ... >

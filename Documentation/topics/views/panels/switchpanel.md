@@ -13,9 +13,13 @@ The [SwitchPanel](xref:@ActiproUIRoot.Controls.Views.SwitchPanel) relies on one 
 
 Once configured, the layout logic of the `SwitchPanel` can be quickly altered by updating the `ActiveIndex` property.
 
-![Screenshot](../images/stackpanel-canvas.png)![Screenshot](../images/stackpanel-animatedwrappanel.png)
+![Screenshot](../images/stackpanel-canvas.png)
 
-*`SwitchPanel` with the elements arranged by an `AnimatedCanvas` (left) and an `AnimatedWrapPanel` (right)*
+*`SwitchPanel` with the elements arranged by an `AnimatedCanvas`*
+
+![Screenshot](../images/stackpanel-animatedwrappanel.png)
+
+*`SwitchPanel` with the elements arranged by an `AnimatedWrapPanel`*
 
 ## Getting Started with SwitchPanel
 

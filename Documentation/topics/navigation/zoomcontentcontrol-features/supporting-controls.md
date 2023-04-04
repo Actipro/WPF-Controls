@@ -13,10 +13,10 @@ The [PanPad](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad) control 
 
 The offsets of the [Pan](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.Pan) event are calculated using the mouse click location and the current mouse location, which includes both a direction and a magnitude. The offsets can be limited using the [MaxOffset](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.MaxOffset) property.
 
-Finally, the internval at which the [Pan](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.Pan) event is fired can be customized using the [Interval](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.Interval) property.
+Finally, the interval at which the [Pan](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.Pan) event is raised can be customized using the [Interval](xref:@ActiproUIRoot.Controls.Navigation.Primitives.PanPad.Interval) property.
 
 ## ZoomDecorator
 
-The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) uses a [ZoomDecorator](xref:@ActiproUIRoot.Controls.Navigation.ZoomDecorator) in the default control template to display it's content.  The [ZoomDecorator](xref:@ActiproUIRoot.Controls.Navigation.ZoomDecorator) can be used to zoom or pan a `UIElement`, much like the [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl), but does not offer any built-in user interaction (such as mouse interation, scroll bars, or the view control pane).  The view can still be programmatically zoomed or panned.
+The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) uses a [ZoomDecorator](xref:@ActiproUIRoot.Controls.Navigation.ZoomDecorator) in the default control template to display its content.  The [ZoomDecorator](xref:@ActiproUIRoot.Controls.Navigation.ZoomDecorator) can be used to zoom or pan a `UIElement`, much like the [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl), but does not offer any built-in user interaction (such as mouse interaction, scrollbars, or the view control pane).  The view can still be programmatically zoomed or panned.
 
 Since [ZoomDecorator](xref:@ActiproUIRoot.Controls.Navigation.ZoomDecorator) implements `IScrollInfo`, it can be wrapped in a `ScrollViewer` if only scrollbars are needed. The only requirement is that `ScrollViewer.CanContentScroll` be set to `true`.

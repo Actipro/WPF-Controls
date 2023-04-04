@@ -24,12 +24,12 @@ There are several animations that apply to certain arrange statuses, which are d
 
 | Animation | Entering | Leaving | ArrangeUpdating | LayoutUpdating |
 |-----|-----|-----|-----|-----|
-| Fade | Yes | Yes | -   | -   |
-| Move | Yes | Yes | Yes | Yes |
-| Rotate | Yes | Yes | -   | -   |
-| Scale | Yes | Yes | -   | -   |
-| Size | -   | -   | Yes | Yes |
-| Translate | Yes | Yes | -   | -   |
+| `Fade` | Yes | Yes | -   | -   |
+| `Move` | Yes | Yes | Yes | Yes |
+| `Rotate` | Yes | Yes | -   | -   |
+| `Scale` | Yes | Yes | -   | -   |
+| `Size` | -   | -   | Yes | Yes |
+| `Translate` | Yes | Yes | -   | -   |
 
 The animations that are applied to each arrange status are configured using the following properties.  Each property can be set to zero or more enumeration flag values as defined by [ArrangeAnimations](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimations).  For example, the `EnterAnimation` can be set to `"Fade,Scale"` in XAML to have elements entering the panel to fade and scale in.
 
@@ -100,13 +100,14 @@ The `ArrangeAnimations.Move` flag supports animating the `X` and `Y` values of t
 
 Gets or sets the move animation starting point for elements entering the panel.
 
-If this property is set to ``, then the starting point will not be animated.  When non-null, the `X` and `Y` values determine the starting point using values relative to the panels bounds.
-
-If `X` and `Y` have a value of `-1`, then the starting point will be the top-left corner of the panel.  If `X` and `Y` have a value of `0`, then the starting point will be the center of the panel.  If `X` and `Y` have a value of `1`, then the starting point will be the bottom-right corner of the panel.  If the values are greater than `1` or less than `-1`, then the starting point will be off screen by the relative difference.
-
-If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
-
-Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that starting value will be determined randomly.
+- If this property is set to `null`, then the starting point will not be animated.
+- When non-`null`, the `X` and `Y` values determine the starting point using values relative to the panels bounds.
+- If `X` and `Y` have a value of `-1`, then the starting point will be the top-left corner of the panel.
+- If `X` and `Y` have a value of `0`, then the starting point will be the center of the panel.
+- If `X` and `Y` have a value of `1`, then the starting point will be the bottom-right corner of the panel.
+- If the values are greater than `1` or less than `-1`, then the starting point will be off screen by the relative difference.
+- If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `"1.2,NaN"`.
+- Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that starting value will be determined randomly.
 
 </td>
 </tr>
@@ -139,13 +140,14 @@ Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeI
 
 Gets or sets the move animation starting point for elements leaving the panel.
 
-If this property is set to `null`, then the ending point will not be animated.  When non-null, the `X` and `Y` values determine the ending point using values relative to the panels bounds.
-
-If `X` and `Y` have a value of `-1`, then the ending point will be the top-left corner of the panel.  If `X` and `Y` have a value of `0`, then the ending point will be the center of the panel.  If `X` and `Y` have a value of `1`, then the ending point will be the bottom-right corner of the panel.  If the values are greater than `1` or less than `-1`, then the ending point will be off screen by the relative difference.
-
-If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
-
-Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that ending value will be determined randomly.
+- If this property is set to `null`, then the ending point will not be animated.
+- When non-`null`, the `X` and `Y` values determine the ending point using values relative to the panels bounds.
+- If `X` and `Y` have a value of `-1`, then the ending point will be the top-left corner of the panel.
+- If `X` and `Y` have a value of `0`, then the ending point will be the center of the panel.
+- If `X` and `Y` have a value of `1`, then the ending point will be the bottom-right corner of the panel.
+- If the values are greater than `1` or less than `-1`, then the ending point will be off screen by the relative difference.
+- If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
+- Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that ending value will be determined randomly.
 
 </td>
 </tr>
@@ -218,11 +220,14 @@ The `ArrangeAnimations.Translate` flag supports animating the `TranslateTransfor
 
 Gets or sets the translate animation starting point for elements entering the panel.
 
-The `X` and `Y` values determine the starting point using values relative to the panels bounds.  If `X` and `Y` have a value of `-1`, then the starting point will be the top-left corner of the panel.  If `X` and `Y` have a value of `0`, then the starting point will be the center of the panel.  If `X` and `Y` have a value of `1`, then the starting point will be the bottom-right corner of the panel.  If the values are greater than `1` or less than `-1`, then the starting point will be off screen by the relative difference.
+The `X` and `Y` values determine the starting point using values relative to the panels bounds.
 
-If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
-
-Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that starting value will be determined randomly.
+- If `X` and `Y` have a value of `-1`, then the starting point will be the top-left corner of the panel.
+- If `X` and `Y` have a value of `0`, then the starting point will be the center of the panel.
+- If `X` and `Y` have a value of `1`, then the starting point will be the bottom-right corner of the panel.
+- If the values are greater than `1` or less than `-1`, then the starting point will be off screen by the relative difference.
+- If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
+- Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that starting value will be determined randomly.
 
 </td>
 </tr>
@@ -246,11 +251,14 @@ Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeI
 
 Gets or sets the translate animation ending point for elements leaving the panel.
 
-The `X` and `Y` values determine the ending point using values relative to the panels bounds.  If `X` and `Y` have a value of `-1`, then the ending point will be the top-left corner of the panel.  If `X` and `Y` have a value of `0`, then the ending point will be the center of the panel.  If `X` and `Y` have a value of `1`, then the ending point will be the bottom-right corner of the panel.  If the values are greater than `1` or less than `-1`, then the ending point will be off screen by the relative difference.
+The `X` and `Y` values determine the ending point using values relative to the panels bounds.
 
-If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
-
-Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that ending value will be determined randomly.
+- If `X` and `Y` have a value of `-1`, then the ending point will be the top-left corner of the panel.
+- If `X` and `Y` have a value of `0`, then the ending point will be the center of the panel.
+- If `X` and `Y` have a value of `1`, then the ending point will be the bottom-right corner of the panel.
+- If the values are greater than `1` or less than `-1`, then the ending point will be off screen by the relative difference.
+- If `X` or `Y` are set to `double.NaN`, then that value will not be animated.  For example, this can be used to slide items in from the left by specifying a point of `1.2,NaN`.
+- Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeInfinity`, then that ending value will be determined randomly.
 
 </td>
 </tr>
@@ -258,30 +266,30 @@ Finally, if `X` or `Y` are set to `double.PositiveInfinity` or `double.NegativeI
 </tbody>
 </table>
 
-Both [TranslateEnterPoint](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.TranslateEnterPoint) and [TranslateLeavePoint](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.TranslateLeavePoint) leverage a custom type converter that supports common terms. For example, instead of specifying the enter point a "0,0" (or the center), the string "Center,Center" can be used.  The following table lists common values and their associated names:
+Both [TranslateEnterPoint](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.TranslateEnterPoint) and [TranslateLeavePoint](xref:@ActiproUIRoot.Controls.Views.ArrangeAnimation.TranslateLeavePoint) leverage a custom type converter that supports common terms. For example, instead of specifying the enter point a `"0,0"` (or the center), the string `"Center,Center"` can be used.  The following table lists common values and their associated names:
 
 | Value | Supported Names |
 |-----|-----|
-| `double.NaN` | None, Fixed, NaN |
-| `double.PositiveInfinity` | Random, PositiveInfinity, +Infinity |
-| `double.NegativeInfinity ` | Random, NegativeInfinity, -Infinity |
+| `double.NaN` | `"None"`, `"Fixed"`, `"NaN"` |
+| `double.PositiveInfinity` | `"Random"`, `"PositiveInfinity"`, `"+Infinity"` |
+| `double.NegativeInfinity ` | `"Random"`, `"NegativeInfinity"`, `"-Infinity"` |
 
 The following table lists common values and their associated names that are valid for the `X` value:
 
 | Value | Supported Names |
 |-----|-----|
-| `-1.5` | FarLeft |
-| `-1.0` | Left |
-| `0` | Center |
-| `1.0` | Right |
-| `1.5` | FarRight |
+| `-1.5` | `"FarLeft"` |
+| `-1.0` | `"Left"` |
+| `0` | `"Center"` |
+| `1.0` | `"Right"` |
+| `1.5` | `"FarRight"` |
 
 The following table lists common values and their associated names that are valid for the `Y` value:
 
 | Value | Supported Names |
 |-----|-----|
-| `-1.5` | FarTop |
-| `-1.0` | Top |
-| `0` | Center |
-| `1.0` | Bottom |
-| `1.5` | FarBottom |
+| `-1.5` | `"FarTop"` |
+| `-1.0` | `"Top"` |
+| `0` | `"Center"` |
+| `1.0` | `"Bottom"` |
+| `1.5` | `"FarBottom"` |

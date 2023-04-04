@@ -11,11 +11,11 @@ Bullet graphs were originally designed to replace meters and gauges in a more co
 
 ## Measure Display
 
-The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph) is capable of displaying a featured value, a comparative value, a projected value, and any number of ranges. The only required value is the featured value, all others default to `NaN`, in which case they will not be displayed. If all parts are present the order they are rendered from top to bottom is: featured, comparative, projected, then the ranges in order from the smallest value to	the largest value.
+The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph) is capable of displaying a featured value, a comparative value, a projected value, and any number of ranges. The only required value is the featured value, all others default to `NaN`, in which case they will not be displayed. If all parts are present, the order they are rendered from top to bottom is: featured, comparative, projected, then the ranges in order from the smallest value to the largest value.
 
 ![Screenshot](../images/bullet-diagram.png)
 
-By default the featured and projected bars take up a third of the control and extend from zero to a length proportional to their respective values. The comparative bar is displayed perpendicular to the featured bar, with a default width of two and fills two thirds of the control. Ranges fill the entire control and extend to a length proportional to their value, any ranges that aren't given a value will fill to the end of the control. The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph).[QualitativeRanges](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.QualitativeRanges) member is used to set and access the collection of [MicroQualitativeRange](xref:@ActiproUIRoot.Controls.MicroCharts.MicroQualitativeRange)s displayed by the chart. An example of populating the collection is shown below.
+By default, the featured and projected bars take up a third of the control and extend from zero to a length proportional to their respective values. The comparative bar is displayed perpendicular to the featured bar, with a default width of two and fills two thirds of the control. Ranges fill the entire control and extend to a length proportional to their value, any ranges that aren't given a value will fill to the end of the control. The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph).[QualitativeRanges](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.QualitativeRanges) member is used to set and access the collection of [MicroQualitativeRange](xref:@ActiproUIRoot.Controls.MicroCharts.MicroQualitativeRange)s displayed by the chart. An example of populating the collection is shown below.
 
 ```xaml
 <bulletGraph:MicroBulletGraph Maximum="800" FeaturedMeasureValue="450" FeaturedMeasureBrush="Black">
@@ -42,17 +42,17 @@ If the [Minimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.Minim
 
 ### Negative Values
 
-Negative values are supported by the [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph) control. If the featured and/or projected bar is given a negative value they will start at zero and extend in the opposite direction to a length proportional to their value.
+Negative values are supported by the [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph) control. If the featured and/or projected bar is given a negative value, they will start at zero and extend in the opposite direction to a length proportional to their value.
 
 ## Orientation
 
-The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph).[Orientation](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.Orientation) property is `Horizontal` by default, but can be set to `Vertical` as well. Setting the chart's orientation to vertical effectively rotates the control 90 degrees counter-clockwise, so the minimum value is on the bottom and the maximum is at the top of the control.
+The [MicroBulletGraph](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph).[Orientation](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.Orientation) property is `Horizontal` by default, but can be set to `Vertical` as well. Setting the chart's orientation to vertical effectively rotates the control 90 degrees counterclockwise, so the minimum value is on the bottom and the maximum is at the top of the control.
 
 ## Appearance Customization
 
 ### Brushes
 
-Every part of the graph has a brush that can be customized to display any color or gradient desired.  To specify the brush used on a range set its background property. Below is a list of the different parts and what member can be accessed to change their brush.
+Every part of the graph has a brush that can be customized to display any color or gradient desired.  To specify the brush used on a range set its background property. Below is a list of the different parts and which member can be accessed to change their brush.
 
 | Part Name | Member Name |
 |-----|-----|
@@ -66,10 +66,11 @@ Every part of the graph has a brush that can be customized to display any color 
 The size of the featured, projected, and comparative bars can be customized using the [FeaturedMeasureAscent](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.FeaturedMeasureAscent), [ComparativeMeasureAscent](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.ComparativeMeasureAscent), and [ComparativeMeasureExtent](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.ComparativeMeasureExtent) properties. The ascent properties are [Unit](xref:@ActiproUIRoot.Unit) values that specify the amount of the control that the part should fill (height for horizontal orientation and width for vertical). The [FeaturedMeasureAscent](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.FeaturedMeasureAscent) property changes both the featured and projected bars and is commonly set as a percentage, but can also be a pixel value. The [ComparativeMeasureExtent](xref:@ActiproUIRoot.Controls.MicroCharts.MicroBulletGraph.ComparativeMeasureExtent) property represents the thickness, generally in pixels, of the comparative bar (width for horizontal orientation and height for vertical).
 
 ```xaml
-<microcharts:MicroBulletGraph FeaturedMeasureValue="72" FeaturedMeasureBrush="White"
-			ProjectedMeasureValue="80" ProjectedMeasureBrush="LightGray" ComparativeMeasureValue="60"
-			Maximum="100" ComparativeMeasureBrush="White" FeaturedMeasureAscent="30%"
-			ComparativeMeasureAscent="60%" ComparativeMeasureExtent="5">
+<microcharts:MicroBulletGraph
+		FeaturedMeasureValue="72" FeaturedMeasureBrush="White"
+		ProjectedMeasureValue="80" ProjectedMeasureBrush="LightGray" ComparativeMeasureValue="60"
+		Maximum="100" ComparativeMeasureBrush="White" FeaturedMeasureAscent="30%"
+		ComparativeMeasureAscent="60%" ComparativeMeasureExtent="5">
 	<microcharts:MicroBulletGraph.QualitativeRanges>
 		<microcharts:MicroQualitativeRange Value="33" Background="#505f74" />
 		<microcharts:MicroQualitativeRange Value="66" Background="#758498" />
@@ -88,16 +89,16 @@ The above example shows how to set values for the different part brushes and cus
 
 | Format Parameter | Description |
 |-----|-----|
-| \{0} | The featured measure value. |
-| \{1} | The projected measure value. |
-| \{2} | The comparative measure value. |
-| \{3} | The minimum value. |
-| \{4} | The maximum value. |
-| \{5} | The value of the first qualitative range. |
-| \{6} | The value of the second qualitative range. |
-| \{7} | The value of the third qualitative range. |
-| \{8} | The value of the fourth qualitative range. |
-| \{9} | The value of the fifth qualitative range. |
+| `"{0}"` | The featured measure value. |
+| `"{1}"` | The projected measure value. |
+| `"{2}"` | The comparative measure value. |
+| `"{3}"` | The minimum value. |
+| `"{4}"` | The maximum value. |
+| `"{5}"` | The value of the first qualitative range. |
+| `"{6}"` | The value of the second qualitative range. |
+| `"{7}"` | The value of the third qualitative range. |
+| `"{8}"` | The value of the fourth qualitative range. |
+| `"{9}"` | The value of the fifth qualitative range. |
 
 This example displays the featured value as well as the ranges from the minimum to the end of the third range. Note how numeric formatting is used on the featured value.
 

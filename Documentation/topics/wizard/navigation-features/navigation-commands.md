@@ -13,7 +13,7 @@ Many of today's computer mice have two extended buttons on them, one for a "forw
 
 Many modern keyboards also have forward and back keyboard buttons that are used for the same purpose.
 
-Windows is set up by default to fire the WPF `NavigationCommands.BrowseForward` and `NavigationCommands.BrowseBack` commands when either of those buttons are pressed.
+Windows is set up by default to raise the WPF `NavigationCommands.BrowseForward` and `NavigationCommands.BrowseBack` commands when either of those buttons are pressed.
 
 ## Enabling Mouse/Keyboard Forward/Back Button Navigation
 

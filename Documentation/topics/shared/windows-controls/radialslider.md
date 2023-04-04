@@ -15,13 +15,13 @@ Radial sliders are often paired with [RingSlice](ringslice.md) controls, which a
 
 *A RadialSlider that uses RingSlice controls for rendering of the track and value*
 
-[RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.  While the control is ideal for touch-based input, it also fully accepts mouse and keyboard input.  Combine two RadialSlider controls on top of each other to enable range-based selection.
+[RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) supports minimum/maximum ranges, infinite wrapping mode, customizable thumb styles, and more.  While the control is ideal for touch-based input, it also fully accepts mouse and keyboard input.  Combine two [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) controls on top of each other to enable range-based selection.
 
 ## Values
 
 Values in the [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider) are expressed in terms of degrees, where `0` is upward and the degree values increase as they go clockwise, meaning `90` degrees is to the right.
 
-There are two value properties exposed by this control.  The first is the `Value` property, which inherits from `RangeBase`.  This property contains the final 'snapped' degree value as the radial slider is interacted with by the end user.  The second is [IntermediateValue](xref:@ActiproUIRoot.Controls.RadialSlider.IntermediateValue), which is the exact degree value as the radial slider is interacted with by the end user.  They generally will be the same value however they can be different in cases where the user is dragging the slider's thumb off of a snap point (see below).
+There are two value properties exposed by this control.  The first is the `Value` property, which inherits from `RangeBase`.  This property contains the final 'snapped' degree value as the radial slider is interacted with by the end user.  The second is [IntermediateValue](xref:@ActiproUIRoot.Controls.RadialSlider.IntermediateValue), which is the exact degree value as the radial slider is interacted with by the end user.  They generally will be the same value however they can be different in cases where the user is dragging the slider's thumb off a snap point (see below).
 
 ## Input and Value Snapping
 
@@ -43,23 +43,23 @@ When turning the mouse wheel, the slider's value will increment/decrement by the
 
 These keys are supported for keyboard input:
 
-- **Up** - Increment by `SmallChange`.
-- **Down** - Decrement by `SmallChange`.
-- **PageUp** - Increment by `LargeChange`.
-- **PageDown** - Decrement by `LargeChange`.
-- **Home** - Change directly to `Minimum`.
-- **End** - Change directly to `Maximum`.
+- <kbd>Up Arrow</kbd> - Increment by `SmallChange`.
+- <kbd>Down Arrow</kbd> - Decrement by `SmallChange`.
+- <kbd>PgUp</kbd> - Increment by `LargeChange`.
+- <kbd>PgDn</kbd> - Decrement by `LargeChange`.
+- <kbd>Home</kbd> - Change directly to `Minimum`.
+- <kbd>End</kbd> - Change directly to `Maximum`.
 
 ## Conversion to Scalar Values
 
-While the slider's value are always represented in degrees, they can easily be converted to any scalar value via the use of a value converter.
+While the slider's value is always represented in degrees, they can easily be converted to any scalar value via the use of a value converter.
 
-In this example, a slider is set to snap at `30` degree increments and a `TextBlock` in the middle of it is bound to the value.  But instead of displaying a degree value, the value converter divides the degree value by the degree increment (`30`) and displays the result, which is a value in the range of `0` to `11`.
+In this example, a slider is set to snap at 30-degree increments and a `TextBlock` in the middle of it is bound to the value.  But instead of displaying a degree value, the value converter divides the degree value by the degree increment (`30`) and displays the result, which is a value in the range of `0` to `11`.
 
 ```xaml
 <controls:RadialSlider x:Name="snappingSlider2" Radius="100" Value="120" LargeChange="30" SmallChange="30" />
-<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center" 
-	Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}" />
+<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"
+           Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}" />
 ```
 
 While the converter above is a simple example, the degree value could be converted to a percentage or even a text label instead.
@@ -78,7 +78,7 @@ Other ranges can allow for creative input scenarios too.  A `Minimum` of `-360` 
 
 ## Radius
 
-The [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider).[Radius](xref:@ActiproUIRoot.Controls.RadialSlider.Radius) property indicates the radius of the invisible track over which the thumb will rotate.  A radius of `40` means the circle will be `80x80` in size.
+The [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider).[Radius](xref:@ActiproUIRoot.Controls.RadialSlider.Radius) property indicates the radius of the invisible track over which the thumb will rotate.  A radius of `40` means the circle will be 80x80 in size.
 
 ## Customizing the Thumb
 

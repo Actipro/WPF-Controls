@@ -40,15 +40,15 @@ object myobject = new XamlSerializer().LoadFromString(xaml);
 
 There are countless cases where it is useful to persist a hierarchy of data to XML that can be saved and reloaded later.
 
-One example of this is storing the layout of a customizable control such as a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar), where the end user can reorder and show/hide panes.  The layout needs to be saved and restored between application sessions so that their customizations are kept in tact.
+One example of this is storing the layout of a customizable control such as a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar), where the end user can reorder and show/hide panes.  The layout needs to be saved and restored between application sessions so that their customizations are kept intact.
 
-The Shared Library has a complete framework for supporting easy serialization and deserialization of a hierarchy of objects (such as layout data) to XML.  The framework uses a standard `XmlSerializer` to do the actual conversion to and from XML but the framework numerous extra features, such as that ability to save/load to various targets like `Stream`s, strings, etc.  It also can fire an event any time an object is serialized or deserialized, allowing you to easily store and retrieve custom data anywhere in the serialized output.
+The Shared Library has a complete framework for supporting easy serialization and deserialization of a hierarchy of objects (such as layout data) to XML.  The framework uses a standard `XmlSerializer` to do the actual conversion to and from XML, but the framework has numerous extra features, such as that ability to save/load to various targets like `Stream`s, strings, etc.  It also can fire an event any time an object is serialized or deserialized, allowing you to easily store and retrieve custom data anywhere in the serialized output.
 
 ### Creating the Root Serializer
 
 The first step in creating a serializable hierarchy is making the root serializer class.
 
-This class should inherit the base generic [XmlSerializerBase<T, U>](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2) class.  The first type parameter indicates the `Type` of target object represented by the second type parameter's object `Type`.  The second type parameter indicates the `Type` of the root object that will be serialized, and must inherit [XmlObjectBase](xref:@ActiproUIRoot.Serialization.XmlObjectBase).
+This class should inherit the base generic [XmlSerializerBase<T, U>](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2) class.  The first type parameter indicates the `Type` of target object represented by the second type parameter's object `Type`.  The second type parameter indicates the `Type` of the root object that will be serialized and must inherit [XmlObjectBase](xref:@ActiproUIRoot.Serialization.XmlObjectBase).
 
 For instance [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar)'s layout serialization class, [NavigationBarLayoutSerializer](xref:@ActiproUIRoot.Controls.Navigation.Serialization.NavigationBarLayoutSerializer), is defined as:
 
@@ -60,13 +60,13 @@ The type [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) 
 
 Next there are three methods to override.  First, override [GetXmlSerializer](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.GetXmlSerializer*) to return a standard `XmlSerializer` that specifies the `Type`s that will be serialized/deserialized.
 
-Second, override [ApplyTo](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.ApplyTo*) with code that examines the [RootNode](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.RootNode) property value and updates the passed object (like a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) instance.
+Second, override [ApplyTo](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.ApplyTo*) with code that examines the [RootNode](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.RootNode) property value and updates the passed object (like a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) instance).
 
 Third, override [CreateRootNodeFor](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.CreateRootNodeFor*) to create the root XML node that will be serialized (like a [XmlNavigationBarLayout](xref:@ActiproUIRoot.Controls.Navigation.Serialization.XmlNavigationBarLayout)) for the passed object.
 
 ### Creating the Serializable Objects
 
-Next, create the objects that will be part of the hierarchy to serialize.  The objects must inherit [XmlObjectBase](xref:@ActiproUIRoot.Serialization.XmlObjectBase).  This base class provides several helper methods like converting `Point`, `Size`, and `Rect` objects to and from strings.  It also defines a [Tag](xref:@ActiproUIRoot.Serialization.XmlObjectBase.Tag) property, useful for persisting custom data via the serialization and deserialization events that fire (see below).
+Next, create the objects that will be part of the hierarchy to serialize.  The objects must inherit [XmlObjectBase](xref:@ActiproUIRoot.Serialization.XmlObjectBase).  This base class provides several helper methods like converting `Point`, `Size`, and `Rect` objects to and from strings.  It also defines a [Tag](xref:@ActiproUIRoot.Serialization.XmlObjectBase.Tag) property, useful for persisting custom data via the serialization and deserialization events that are raised (see below).
 
 The serializable objects should start with `Xml` as a naming convention and be located within a `Serialization` child namespace.
 
@@ -103,14 +103,14 @@ The `Node` property in the event arguments provides the [XmlObjectBase](xref:@Ac
 Deserialization is the same process.  Create an event handler with the same argument type and attach it to the [XmlSerializerBase<T, U>](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2).[ObjectDeserialized](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.ObjectDeserialized) event.  Your method will be called, passing the same sort of arguments, whenever an object is deserialized.  So here you can read your custom data back in.
 
 > [!NOTE]
-> For a good example of serializing custom data, see the `NavigationBar Layout Save/Load` QuickStart.
+> For a good example of serializing custom data, see the "NavigationBar Layout Save/Load" QuickStart.
 
 ### Custom Data Types
 
 Sometimes you may be using custom data types in the data that is serialized and deserialized.  The XML serializer needs to know about custom data types so that it can properly map XML tags to .NET types.  The [XmlSerializerBase<T, U>](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2) has a [CustomTypes](xref:@ActiproUIRoot.Serialization.XmlSerializerBase`2.CustomTypes) property that allows you to specify custom data types, thereby preventing any exceptions such as:
 
 ```
-The type YourTypeHere was not expected. Use the XmlInclude or SoapInclude attribute to specify types that are not known statically.
+The type <YourTypeHere> was not expected. Use the XmlInclude or SoapInclude attribute to specify types that are not known statically.
 ```
 
 This sample code shows how to register a `CustomData` type with the serializer, thereby preventing the above exception when performing serialization:

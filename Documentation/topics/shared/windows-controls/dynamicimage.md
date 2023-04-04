@@ -34,16 +34,10 @@ The [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) class has these im
 | [DisabledOpacity](xref:@ActiproUIRoot.Controls.DynamicImage.DisabledOpacity) Property | The opacity at which to render the image when the control is disabled.  The default value is `1.0`, meaning don't change opacity when disabled. |
 | [Foreground](xref:@ActiproUIRoot.Controls.DynamicImage.Foreground) Property | The current foreground `Brush` for the control, inherited down from ancestor controls.  A foreground color is derived from the `Brush` and is used as the target color for monochrome adaptation. |
 | `Height` Property | The height of the image control in device independent units.  It's always a good idea to set this property to ensure the image is displayed at its intended size and must be set if your [Image Provider](../../themes/image-provider.md) can swap in high-DPI images.  Inherited from `Image`. |
-| `IsEnabled` Property | When set to `false`, the image content will render in grayscale.  Inherited from `Image`. |
+| `IsEnabled` Property | When set to `false`, the image content will be rendered in grayscale.  Inherited from `Image`. |
 | `Source` Property | The `ImageSource` for the image content.  Inherited from `Image`. |
 | [UseMonochrome](xref:@ActiproUIRoot.Controls.DynamicImage.UseMonochrome) Property | Whether the `ImageSource` value in the `Source` property should be rendered as monochrome.  The default value is `false`.  When this property is `true`, the resulting monochrome image will be in the control's current foreground color (gathered from the [Foreground](xref:@ActiproUIRoot.Controls.DynamicImage.Foreground) property). |
 | `Width` Property | The height of the image control in device independent units.  It's always a good idea to set this property to ensure the image is displayed at its intended size, and must be set if your [Image Provider](../../themes/image-provider.md) can swap in high-DPI images.  Inherited from `Image`. |
-
-## Bitmap Scaling in Integer DPI Scale Scenarios
-
-When rendering bitmap images for high DPI scenarios, WPF will scale the images by default in a way that reduces the clarity of icons, especially those with straight lines.  [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) watches for integer DPI scale scenarios (e.g., 100%, 200%, 300%) and automatically applies nearest-neighbor scaling for bitmap image rendering when in those scenarios.  This keeps bitmap icons looking crisper.
-
-Set the `RenderOptions.BitmapScalingModeProperty` attached property on the control to a value other than `Unspecified` to prevent this automatic mode change.
 
 ## Using ImageConverter
 
@@ -52,8 +46,7 @@ The [ImageConverter](xref:@ActiproUIRoot.Controls.ImageConverter) is a [value co
 This sample XAML shows usage of an [ImageConverter](xref:@ActiproUIRoot.Controls.ImageConverter) with a `MenuItem`.
 
 ```xaml
-<Window xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-	...
+<Window ... xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared">
 	<Window.Resources>
 		<shared:ImageConverter x:Key="ImageConverter" Width="16" Height="16" UriPrefix="pack://application:,,,/SampleBrowser;component/Images/" />
 	</Window.Resources>
@@ -77,4 +70,4 @@ To resolve this exception, use the [Pack syntax for specifying URIs](https://doc
 
 This example shows how to use an absolute URI to fully specify an image that is located in the `"/Resources/Images"` subfolder of a `"SampleBrowser"` project:
 
-`pack://application:,,,/SampleBrowser;component/Resources/Images/Paste16.png`
+`"pack://application:,,,/SampleBrowser;component/Resources/Images/Paste16.png"`

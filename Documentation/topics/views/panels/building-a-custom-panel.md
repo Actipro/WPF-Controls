@@ -14,7 +14,7 @@ This topic describes step-by-step how to create a custom panel that supports ani
 
 The panel will be named `RandomPanel` and needs to derive from [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).
 
-The `using` statements listed below have been included as they will all be needed to complete this tutorial.  But, Visual Studio can be used to automatically add the appropriate `using` statements for unknown types.  Since this panel can be found in the associated samples, the same namespace is used here.
+The `using` statements listed below have been included as they will all be needed to complete this tutorial.  But Visual Studio can be used to automatically add the appropriate `using` statements for unknown types.  Since this panel can be found in the associated samples, the same namespace is used here.
 
 ```csharp
 using System;
@@ -26,10 +26,10 @@ using ActiproSoftware.Windows.Controls.Views.Primitives;
 namespace ActiproSoftware.Windows.ProductSamples.ViewsSamples.QuickStart.CustomPanelRandom {
 
 	/// <summary>
-	/// Represents a custom panel that randomly arranges it's child elements.
+	/// Represents a custom panel that randomly arranges its child elements.
 	/// </summary>
 	public class RandomPanel : PanelBase {
-	
+
 		// SEE BELOW
 
 	}
@@ -67,7 +67,7 @@ Add the following inside the `Random` class:
 public override Size MeasureElements(IList<UIElement> elements, Size availableSize) {
 
 	// SEE BELOW
-	
+
 }
 ```
 
@@ -122,10 +122,10 @@ The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase).[IsLayo
 
 Derived panels are responsible for checking and using the `IsLayoutUpdatePending` flag, so both statuses are correctly applied.
 
-> [!NOTE]
+> [!IMPORTANT]
 > If the flag is not properly used, then the "layout updating" animations and settings will not be used.  Instead, the "arrange updating" animations and settings will always be used.
 
-Add the following inside the `ArrangeElements` method above the SEE BELOW marker:
+Add the following inside the `ArrangeElements` method above the "SEE BELOW" comment marker:
 
 ```csharp
 // Cache and reset layout pending flag
@@ -135,11 +135,11 @@ this.IsLayoutUpdatePending = false;
 
 ## Step 7: Arrangement Logic - Determine Location
 
-Using the `random` field, a unique x and y coordinate will be calculated for each element.  Determining an x and y coordinate is similar to how the native WPF `Canvas` works, but can actually be applied to any panel.  In reality, the final rectangle of the element is being determined.
+Using the `random` field, a unique x and y coordinate will be calculated for each element.  Determining an x and y coordinate is similar to how the native WPF `Canvas` works but can actually be applied to any panel.  In reality, the final rectangle of the element is being determined.
 
 In addition to randomly placing the elements, this logic will ensure that the element is fully visible inside the panel, when possible.
 
-Add the following inside the `ArrangeElements` method in place of the SEE BELOW marker:
+Add the following inside the `ArrangeElements` method in place of the "SEE BELOW" comment marker:
 
 ```csharp
 // Iterate over the elements and arrange
@@ -160,11 +160,11 @@ foreach (UIElement element in elements) {
 
 Instead of directly arranging elements, derivations of `PanelBase` update the "arrange state".  This information is captured in an instance of [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState) and is set on an element via an attached property.
 
-The `PanelBase` will then watch for state changes and animate an element based on its state (i.e., entering the view, leaving the view, updating location, etc) and the current animation settings.
+The `PanelBase` will then watch for state changes and animate an element based on its state (i.e., entering the view, leaving the view, updating location, etc.) and the current animation settings.
 
 This logic will also prevent elements from moving when one or more sibling elements are leaving the scene.
 
-Add the following inside the `ArrangeElements` method in place of the SEE BELOW marker:
+Add the following inside the `ArrangeElements` method in place of the "SEE BELOW" comment marker:
 
 ```csharp
 // Update the arrange state with the new arrange rect, but if there are leaving elements then don't move
@@ -203,7 +203,7 @@ xmlns:sample="clr-namespace:ActiproSoftware.Windows.ProductSamples.ViewsSamples.
 <sample:RandomPanel>
 	<sample:RandomPanel.ArrangeAnimation>
 		<views:ArrangeAnimation EnterAnimation="Fade,Rotate,Scale,Translate" LeaveAnimation="Fade,Rotate,Scale,Translate"
-				ScaleEnterUniformScale="0" ScaleLeaveUniformScale="5" />
+		                        ScaleEnterUniformScale="0" ScaleLeaveUniformScale="5" />
 	</sample:RandomPanel.ArrangeAnimation>
 	<!-- Both buttons will be randomly placed -->
 	<Button Content="One" \>

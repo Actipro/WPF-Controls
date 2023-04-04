@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The Shell Object Framework provides a managed way to access a file system shell.  A Windows shell service is included and custom shell services can be written to access other file system shells.
+The Shell Object Framework provides a managed way to access a file system shell.  A Windows shell service is included, and custom shell services can be written to access other file system shells.
 
 Various shell user interface controls in the product like [ShellTreeListBox](../shelltreelistbox.md) use the Shell Object Framework to determine what to display and how to interact with shell objects/properties.
 

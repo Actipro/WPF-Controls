@@ -14,7 +14,7 @@ This panel allows child elements to be precisely positioned using coordinates th
 
 ## Overview
 
-The [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas) does not have any inherent layout logic.  Child elements are positioned at the specified loctaions, and are always allotted their desired size.
+The [AnimatedCanvas](xref:@ActiproUIRoot.Controls.Views.AnimatedCanvas) does not have any inherent layout logic.  Child elements are positioned at the specified locations and are always allotted their desired size.
 
 The `Panel.ZIndex` property is used to determine the order of child elements that overlap.  Elements with a higher `ZIndex` will appear on top of elements with a lower value.
 

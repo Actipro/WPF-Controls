@@ -16,15 +16,15 @@ Resizing direction options are `None`, `Horizontal`, `Vertical`, or `Both`.  The
 > [!TIP]
 > You can provide a custom template for the [ResizableContentControl](xref:@ActiproUIRoot.Controls.ResizableContentControl) to position the gripper in a custom location if the default options don't meet your needs.  You also can make a custom `Style` for the `Thumb` control (gripper) that it contains to draw the gripper however you like.
 
-The resize gripper is shown on top of the content associated with the `ResizableContentControl`. Problems can arise when the content uses a `ScrollViewer`, that is displaying a vertical scrollbar but not a horizontal scrollbar. The gripper will overlap the vertical scrollbar, which prevents the down button from being clicked (as well as an undesireable look).
+The resize gripper is shown on top of the content associated with the `ResizableContentControl`. Problems can arise when the content uses a `ScrollViewer`, that displays a vertical scrollbar but not a horizontal scrollbar. The gripper will overlap the vertical scrollbar, which prevents the down button from being clicked (as well as an undesirable look).
 
 ![Screenshot](../images/resizablecontentcontrol-native-style.png)
 
 *The ResizableContentControl with a ScrollViewer using the native WPF Style*
 
-There are two methods for working around this issue. The first method requires that the `Padding` property be set on the `ResizableContentControl` so that the content is pushed up a sufficent amount. The height of the gripper is determined by the `SystemParameters.HorizontalScrollBarHeight` property.
+There are two methods for working around this issue. The first method requires that the `Padding` property be set on the `ResizableContentControl` so that the content is pushed up a sufficient amount. The height of the gripper is determined by the `SystemParameters.HorizontalScrollBarHeight` property.
 
-Alternatively, the [UseAlternateScrollViewerStyleProperty](xref:@ActiproUIRoot.Controls.ResizableContentControl.UseAlternateScrollViewerStyleProperty) attached property can be set to `true` on the `ResizableContentControl`, the parent element of the `ResizableContentControl`, or any child elements of the `ResizableContentControl`. This applies a Style to the `ScrollViewer` elements that reserves sufficent space for the gripper.
+Alternatively, the [UseAlternateScrollViewerStyleProperty](xref:@ActiproUIRoot.Controls.ResizableContentControl.UseAlternateScrollViewerStyleProperty) attached property can be set to `true` on the `ResizableContentControl`, the parent element of the `ResizableContentControl`, or any child elements of the `ResizableContentControl`. This applies a `Style` to the `ScrollViewer` elements that reserves sufficent space for the gripper.
 
 ![Screenshot](../images/resizablecontentcontrol-alternate-style.png)
 

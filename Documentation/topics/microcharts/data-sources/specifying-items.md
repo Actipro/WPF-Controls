@@ -61,7 +61,7 @@ public class SalesData {
 
 	private decimal amount;
 	private DateTime date;
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	// OBJECT
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,12 +79,12 @@ public class SalesData {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	// PUBLIC PROCEDURES
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/// <summary>
 	/// Gets the sales amount.
 	/// </summary>
 	/// <value>The sales amount.</value>
-	public decimal Amount { 
+	public decimal Amount {
 		get {
 			return amount;
 		}
@@ -94,7 +94,7 @@ public class SalesData {
 	/// Gets the date for which the amount is specified.
 	/// </summary>
 	/// <value>The date for which the amount is specified.</value>
-	public DateTime Date { 
+	public DateTime Date {
 		get {
 			return date;
 		}
@@ -107,5 +107,5 @@ We can specify that the Y values should be pulled from the `Amount` property by 
 
 If instead we want the X values to be pulled from the `Date` property, then we would need to set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) to `"Date"`.
 
-> [!NOTE]
-> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (".").  For example you can set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.YPath) to something like "MyProperty.MyOtherProperty.MyDoubleValue", similar to how binding paths work in XAML.
+> [!TIP]
+> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`"."`).  For example you can set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.

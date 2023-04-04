@@ -21,7 +21,7 @@ All of the methods on [WindowsShellService](xref:ActiproSoftware.Shell.WindowsSh
 
 While shell services are harnessed to drive the user interface of the shell controls, they and the related shell objects can be used completely independently of any user interfaces.
 
-They fully support calls to any of their members, allowing you to programmatically examine shell folder and file hierarchies, or properties of shell objects.  This is expecially useful for working with the [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService), since its implementation provides shell data not available in the `System.IO` namespace.
+They fully support calls to any of their members, allowing you to programmatically examine shell folder and file hierarchies, or properties of shell objects.  This is especially useful for working with the [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService), since its implementation provides shell data not available in the `System.IO` namespace.
 
 ## Creating an Object's Children
 
@@ -43,7 +43,7 @@ The [AreNamesCaseSensitive](xref:ActiproSoftware.Shell.IShellService.AreNamesCas
 
 The [Grids tree controls](../../grids/tree-control-features/index.md) like [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) have their own concept of "paths."  Those tree controls provide the foundation of several shell UI controls and thus inherit that "path" concept, which can be different from a shell file system path.
 
-First, a tree control "path" segment is returned for each item in the tree.  These paths can be combined with a path separator delimiter (often "\\") to construct what is called a "full path." Thus a "full path" becomes a delimited string where each "path" segment in it, can be examined to walk down the tree hierarchy.
+First, a tree control "path" segment is returned for each item in the tree.  These paths can be combined with a path separator delimiter (often `"\"`) to construct what is called a "full path." Thus a "full path" becomes a delimited string where each "path" segment in it, can be examined to walk down the tree hierarchy.
 
 The [Shell Objects](shell-objects.md) topic has more information on paths.  In general though, the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[RelativeParsingName](xref:ActiproSoftware.Shell.IShellObject.RelativeParsingName) is what is returned as the path segment for each shell object, used to build up a "full path."
 
@@ -53,8 +53,8 @@ The [CreateProperties](xref:ActiproSoftware.Shell.IShellService.CreateProperties
 
 A [ShellPropertyRequestKind](xref:ActiproSoftware.Shell.ShellPropertyRequestKind) enum value is also passed, specifying the kind of properties to return.  These values are supported:
 
-- **DefaultColumns** - Return the properties that should show in a [ShellListView](../shelllistview.md) control.
-- **AllColumns** - Isn't really used in UI but allows you to examine all available properties.
+- `DefaultColumns` - Return the properties that should show in a [ShellListView](../shelllistview.md) control.
+- `AllColumns` - Isn't really used in UI but allows you to examine all available properties.
 
 The [IShellProperty](xref:ActiproSoftware.Shell.IShellProperty) interface defines a property, such as its key, canonical name (non-localized name), display name, default column width, column sort direction, column horizontal alignment, etc.  The column-related properties are specifically for use within a [ShellListView](../shelllistview.md) control.
 
@@ -62,10 +62,10 @@ If you wish to supply your own shell property results, make a class that impleme
 
 The most common properties returned for file system folders have these canonical names:
 
-- System.ItemNameDisplay
-- System.DateModified
-- System.ItemType
-- System.Size
+- `"System.ItemNameDisplay"`
+- `"System.DateModified"`
+- `"System.ItemType"`
+- `"System.Size"`
 
 ## Getting an Object's Property Value
 

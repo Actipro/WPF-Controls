@@ -102,6 +102,12 @@ It is recommended that textbox controls within ribbon and toolbar contexts speci
 
 Star-sizing is a handy feature when the control is within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) that is using multi-row layout via the [CanUseMultiRowLayout](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanUseMultiRowLayout) property.  If the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox).[IsStarSizingAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsStarSizingAllowed) property is set to `true` and the row the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) is on has some extra width available compared to the other rows, it will expand [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) to fill that width.  This makes the overall row widths equal for a more professional appearance.  Only one control per row should enable star-sizing.
 
+### Placeholder Text
+
+Placeholder text is a way to prompt the end user for the type of value that should be entered into the control when no value has been set yet.  For instance, a combobox that lists a set of employees might set the placeholder text to `"Employee"`.
+
+Placeholder text is faintly rendered when there is no value in the control, and can be designated via the [PlaceholderText](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.PlaceholderText) property.
+
 ## Editability and Read-Only State
 
 The [IsEditable](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsEditable) property determines if the combobox supports typing when it has focus.  This property is `false` by default, which means that clicking on the text portion of the combobox will display the popup.  When the property is `true`, any text value can be typed that may or may not match a combobox item.  See the "Unmatched Text" section below for more information on handling unmatched text values.
@@ -119,6 +125,12 @@ The text completion feature is enabled by default and can be disabled by setting
 The [IsUnmatchedTextAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsUnmatchedTextAllowed) property determines whether text that doesn't match a gallery item is allowed to be committed.  This property is `true` by default, and when unmatched text is encountered, the [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) will be executed.  If that command is not specified or if its can-execute returns `true`, the unmatched text will be committed.  Otherwise, the original text value prior to any changes will be restored.
 
 When the [IsUnmatchedTextAllowed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsUnmatchedTextAllowed) property is set to `false` and unmatched text is encountered, the original text value prior to any changes will always be restored and the [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) will not be examined.
+
+## Previewing Text-Matched Gallery Items
+
+When text is typed in a combobox that matches an item in the contained menu gallery displayed on an open popup, and if the gallery supports preview features, the matched gallery item will be previewed.  Matched gallery item previews are only supported by default when the combobox's popup is open.
+
+The [IsPreviewEnabledWhenPopupClosed](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsPreviewEnabledWhenPopupClosed) property can optionally be set to `true` to allow the combobox to also show matched gallery item previews as text is typed while the combobox's popup is closed.  This feature is handy for comboboxes that contain font names, since the font name can be typed and completed to show a live preview of the font change in a related document without the combobox popup ever showing.
 
 ## Key Tips
 

@@ -15,13 +15,13 @@ The content displayed by the [ZoomContentControl](xref:@ActiproUIRoot.Controls.N
 
 ### Minimum/Maximum Zoom Level
 
-The [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel) is restricted to the range defined by the [MinZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MinZoomLevel) and [MaxZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MaxZoomLevel) properties.  Both of these properties must be greater than `0`, and the [MaxZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MaxZoomLevel) must be larger than or equal to the [MinZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MinZoomLevel).
+The [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel) is restricted to the range defined by the [MinZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MinZoomLevel) and [MaxZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MaxZoomLevel) properties.  Both of these properties must be greater than zero, and the [MaxZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MaxZoomLevel) must be larger than or equal to the [MinZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.MinZoomLevel).
 
 If the zoom level is set to the value outside of this range, it will be coerced to fall within the range.
 
 ### Zoom Level Stops
 
-The [ZoomLevelStops](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevelStops) property is used by several of the helper methods listed below to incrementally increase or decrease [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel).  When specified, the `ZoomLevel` will be increment or decremented to the next stop value.  This allows the zoom in and out commands/methods to follow a predefined sets of zoom levels (e.g.,. 10%, 25%, 33%, 50%, 75%, 100%, 200%, 300%, etc).
+The [ZoomLevelStops](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevelStops) property is used by several of the helper methods listed below to incrementally increase or decrease [ZoomLevel](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.ZoomLevel).  When specified, the `ZoomLevel` will be incremented or decremented to the next stop value.  This allows the zoom in and out commands/methods to follow a predefined set of zoom levels (e.g., 10%, 25%, 33%, 50%, 75%, 100%, 200%, 300%, etc.).
 
 > [!NOTE]
 > If an appropriate stop value cannot be found, then the minimum or maximum zoom level will be used, based on whether the user is zooming in or out.
@@ -476,7 +476,7 @@ The commands supported by the [ZoomContentControl](xref:@ActiproUIRoot.Controls.
 > [!NOTE]
 > Several of the commands in [ZoomContentControlCommands](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControlCommands) return a command that is defined elsewhere. For example, the [LineDown](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControlCommands.LineDown) command returns the command defined by `ScrollBar.LineDownCommand`.  This makes it easier to find the supported commands.
 
-The following table describes the various commands.
+The following table describes the various commands:
 
 <table>
 <thead>
@@ -805,7 +805,7 @@ An `Orientation` can be passed as the command parameter to only zoom-to-fit hori
 The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) includes a `ScrollViewer` in the default control template. The visibility of associated scrollbars can be customized using the [HorizontalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.HorizontalScrollBarVisibility) and/or [VerticalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.VerticalScrollBarVisibility) properties.
 
 > [!TIP]
-> If [HorizontalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.HorizontalScrollBarVisibility) or [VerticalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.VerticalScrollBarVisibility) is set to `ScrollBarVisibility.Auto` then the view will **shift** when the scrollbars are shown or hidden (as the viewport size will shrink or grow, respectively).
+> If [HorizontalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.HorizontalScrollBarVisibility) or [VerticalScrollBarVisibility](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.VerticalScrollBarVisibility) is set to `ScrollBarVisibility.Auto` then the view will "shift" when the scrollbars are shown or hidden (as the viewport size will shrink or grow, respectively).
 
 ## Batch Updates
 

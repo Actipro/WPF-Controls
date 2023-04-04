@@ -19,31 +19,31 @@ Due to how shell objects can appear in multiple locations in UI such as within a
 
 The [Name](xref:ActiproSoftware.Shell.IShellObject.Name) property returns the name of the object when it is displayed in trees and lists.
 
-Some examples are "Foo.txt" for a file, or "OneDrive" for the system's OneDrive folder.
+Some examples are `"Foo.txt"` for a file, or `"OneDrive"` for the system's **OneDrive** folder.
 
 ### File System Path
 
-The [FileSystemPath](xref:ActiproSoftware.Shell.IShellObject.FileSystemPath) property returns the path to the object if it is part of a file system.  The property will return `null` for any virtual object, such as "This PC", that is not part of the file system.
+The [FileSystemPath](xref:ActiproSoftware.Shell.IShellObject.FileSystemPath) property returns the path to the object if it is part of a file system.  The property will return `null` for any virtual object, such as **This PC**, that is not part of the file system.
 
-An example is "C:\\OneDrive" for the system's OneDrive folder.
+An example is `"C:\\OneDrive"` for the system's **OneDrive** folder.
 
 ### Editing Name
 
 The [EditingName](xref:ActiproSoftware.Shell.IShellObject.EditingName) property returns the full user-friendly editing name of the shell object, if available.  This value is usually the same as [FileSystemPath](xref:ActiproSoftware.Shell.IShellObject.FileSystemPath) for file system objects, except that it can also return a special value to identify special shell objects.  Think of the editing name as the text that you see when you enter edit mode in the Windows Explorer breadcrumb.
 
-Some examples are "OneDrive" for the system's OneDrive folder, but "C:\\OneDrive" for the same folder accessed through the C: drive.  Objects like This PC will return an editing name of "This PC".
+Some examples are `"OneDrive"` for the system's **OneDrive** folder, but `"C:\\OneDrive"` for the same folder accessed through the `C:` drive.  Objects like **This PC** will return an editing name of `"This PC"`.
 
 ### Parsing Name
 
-The [ParsingName](xref:ActiproSoftware.Shell.IShellObject.ParsingName) property returns the full parsing name of the shell object, if available.  This value is usually the same as [FileSystemPath](xref:ActiproSoftware.Shell.IShellObject.FileSystemPath) for file system objects, except that it can also return a special syntax to identify special shell objects.  This value is not ever shown in UI, but is intended to reduce ambiguity when locating shell objects.
+The [ParsingName](xref:ActiproSoftware.Shell.IShellObject.ParsingName) property returns the full parsing name of the shell object, if available.  This value is usually the same as [FileSystemPath](xref:ActiproSoftware.Shell.IShellObject.FileSystemPath) for file system objects, except that it can also return a special syntax to identify special shell objects.  This value is not ever shown in UI but is intended to reduce ambiguity when locating shell objects.
 
-Some examples are "::\{20D04FE0-3AEA-1069-A2D8-08002B30309D}" for the This PC folder, and "C:\\OneDrive" for the system's OneDrive folder.
+Some examples are `"::\{20D04FE0-3AEA-1069-A2D8-08002B30309D}"` for the **This PC** folder, and `"C:\\OneDrive"` for the system's **OneDrive** folder.
 
 ### Relative Parsing Name
 
-The [RelativeParsingName](xref:ActiproSoftware.Shell.IShellObject.RelativeParsingName) property returns the parent-relative parsing name of the shell object, if available.  This value is usually the same as [Name](xref:ActiproSoftware.Shell.IShellObject.Name), except that it can also return a special syntax to identify special shell objects.  This value is not ever shown in UI, but is intended to reduce ambiguity when locating shell objects.
+The [RelativeParsingName](xref:ActiproSoftware.Shell.IShellObject.RelativeParsingName) property returns the parent-relative parsing name of the shell object, if available.  This value is usually the same as [Name](xref:ActiproSoftware.Shell.IShellObject.Name), except that it can also return a special syntax to identify special shell objects.  This value is not ever shown in UI but is intended to reduce ambiguity when locating shell objects.
 
-Some examples are "::\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" for the system's OneDrive folder, and "OneDrive" for the same folder accessed through the C: drive.
+Some examples are `"::\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"` for the system's **OneDrive** folder, and `"OneDrive"` for the same folder accessed through the `C:` drive.
 
 This property is used when building up a "full path" for Grids' [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).  It is returned as the path segment for the shell object in the [ShellObjectItemAdapter](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter).[GetPath](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter.GetPath*) method.
 
@@ -63,7 +63,7 @@ Shell objects provide several size variations of icons and optional related over
 
 - [LargeIcon](xref:ActiproSoftware.Shell.IShellObject.LargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[LargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.LargeIconOverlay) - The large icon, which is generally 48x48 size.
 
-- [ExtraLargeIcon](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[ExtraLargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIconOverlay) - The extra large icon, which is generally 256x256 size.
+- [ExtraLargeIcon](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIcon) / [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[ExtraLargeIconOverlay](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeIconOverlay) - The extra-large icon, which is generally 256x256 size.
 
 The overlay icon can be used to indicate a "state" that overlays the normal icon.  An example is that link shell objects show an arrow overlay.
 
@@ -75,7 +75,7 @@ Shell objects provide several size variations of thumbnail images, each of which
 
 - [LargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.LargeThumbnail) - The large thumbnail image, which is generally 48x48 size.
 
-- [ExtraLargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeThumbnail) - The extra large thumbnail image, which is generally 256x256 size.
+- [ExtraLargeThumbnail](xref:ActiproSoftware.Shell.IShellObject.ExtraLargeThumbnail) - The extra-large thumbnail image, which is generally 256x256 size.
 
 Thumbnail images can be used in a [ShellListView](../shelllistview.md) control when its [CanUseThumbnails](xref:@ActiproUIRoot.Controls.Shell.ShellListView.CanUseThumbnails) property is `true`.  In that case, a thumbnail image is used in certain larger layout modes when one is available.  If no thumbnail image is available, an icon of the same size is used instead.
 

@@ -24,7 +24,7 @@ Features include:
 - Ability to set the margin around the icon
 - Ability to hide the icon
 - Ability to determine which title bar buttons are visible
-- Ability to use different title text from the Window.Title
+- Ability to use different title text from the `Window.Title`
 - Change the alignment of the title text (optionally center it)
 - Ability to inject a custom header UI in place of default title bar text
 - Ability to inject additional UI next to the title bar icon and/or buttons
@@ -51,7 +51,9 @@ It is highly recommended that [native control themes](native-controls.md) are ac
 If your app will be using our Metro theme, you may apply the chrome to any existing `Window` via XAML or dynamically via code.
 
 > [!IMPORTANT]
-> Do not apply the chrome onto [RibbonWindow](../ribbon/controls/ribbonwindow.md) instances.  Each `RibbonWindow` instance already has a pre-installed `WindowChrome` that is configured to support the QAT and other Ribbon features, and it will break functionality if changed.  You can get that existing instance programmatically and alter its properties as needed via a call to [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[GetChrome](xref:@ActiproUIRoot.Themes.WindowChrome.GetChrome*).
+> For the Ribbon product, do not apply the chrome onto [RibbonWindow](../ribbon/controls/ribbonwindow.md) instances.  Each `RibbonWindow` instance already has a pre-installed `WindowChrome` that is configured to support the QAT and other Ribbon features, and it will break functionality if changed.  You can get that existing instance programmatically and alter its properties as needed via a call to [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[GetChrome](xref:@ActiproUIRoot.Themes.WindowChrome.GetChrome*).
+>
+> The newer Bars [RibbonWindow](../bars/ribbon-features/ribbon-window.md) does not have this limitation, but it is recommended to assign an instance of [RibbonWindowChrome](xref:@ActiproUIRoot.Themes.RibbonWindowChrome).
 
 ### Applying Via XAML
 
@@ -69,7 +71,7 @@ This code sample shows how to set a [WindowChrome](xref:@ActiproUIRoot.Themes.Wi
 </Window>
 ```
 
-You could also apply a single chrome to multiple windows in an app by defining the chrome in your Application.Resources with an `x:Key`.  Then reference that chrome in each `Window`'s XAML like:
+You could also apply a single chrome to multiple windows in an app by defining the chrome in your `Application.Resources` with an `x:Key`.  Then reference that chrome in each `Window`'s XAML like:
 
 ```xaml
 <Window xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -112,7 +114,10 @@ Once removed, the window will render using system defaults again.
 
 ## Declaring Operating System Support
 
-Some features of [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) are OS-specific and may require your application to explicitly declare support for the related operating system.  Snap layouts menu support, for example, requires Windows 11 support to be explicitly declared.  Applications declare supported operating systems using an `app.manifest` file.  Our **Sample Browser** application ships with an `app.manifest` file that can be used as an example.  In general, the following code snippet can be added to the `app.manifest` file to declare support:
+> [!IMPORTANT]
+> Some features of [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) are OS-specific and may require your application to explicitly declare support for the related operating system.  Snap layouts menu support, for example, requires Windows 11 support to be explicitly declared.
+
+Applications declare supported operating systems using an *app.manifest* file.  Our **Sample Browser** application ships with an *app.manifest* file that can be used as an example.  In general, the following code snippet can be added to the *app.manifest* file to declare support:
 
 ```xml
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -120,7 +125,7 @@ Some features of [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) are OS-
 	<compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
 		<application>
 			<!-- A list of the Windows versions that this application has been tested on and is
-			is designed to work with. Uncomment the appropriate elements and Windows will 
+			is designed to work with. Uncomment the appropriate elements and Windows will
 			automatically selected the most compatible environment. -->
 
 			<!-- Windows 7 -->
@@ -182,10 +187,10 @@ The [BackdropKind](xref:@ActiproUIRoot.Themes.WindowChrome.BackdropKind) propert
 
 Various backdrops have different Windows version support as listed below, and no backdrops are rendered in high-contrast mode:
 
-- MainWindow - A background material rendered for main windows.  On Windows 11 or later, this corresponds to the "Mica" material.
-- TransientWindow - A background material rendered for transient (popup/menu) windows.  On Windows 10 (May 2020 Update) or later, this corresponds to the "Acrylic" material.
+- `MainWindow` - A background material rendered for main windows.  On Windows 11 or later, this corresponds to the "Mica" material.
+- `TransientWindow` - A background material rendered for transient (popup/menu) windows.  On Windows 10 (May 2020 Update) or later, this corresponds to the "Acrylic" material.
 
-When a backdrop is specified but the operating system doesn't support the backdrop, or high-contrast mode is active, no backdrop will be rendered and a default opaque window background will be used.
+When a backdrop is specified but the operating system doesn't support the backdrop, or high-contrast mode is active, no backdrop will be rendered, and a default opaque window background will be used.
 
 ### Determining Backdrop Status
 
@@ -193,7 +198,7 @@ The attached `WindowChrome.IsBackdropActive` property (set on the `Window` insta
 
 ### Backdrop in the Title Bar
 
-The attached `WindowChrome.IsTitleBarBackdropAllowed` property (set on the `Window` instance) determines if a backdrop can be rendered in the title bar area of a window.  This attached property is set by the current theme, but can be overridden on the `Window` instance.  While most themes allow backdrops to be rendered in the title bar, by default, themes with accented title bar backgrounds do not.
+The attached `WindowChrome.IsTitleBarBackdropAllowed` property (set on the `Window` instance) determines if a backdrop can be rendered in the title bar area of a window.  This attached property is set by the current theme but can be overridden on the `Window` instance.  While most themes allow backdrops to be rendered in the title bar, by default, themes with accented title bar backgrounds do not.
 
 ## Title Bar Text Display
 
@@ -237,9 +242,9 @@ This example shows how the [TitleBarHeaderTemplate](xref:@ActiproUIRoot.Themes.W
 			<themes:WindowChrome.TitleBarHeaderTemplate>
 				<DataTemplate>
 					<Button Content="{Binding}" Margin="20,0" MaxWidth="300"
-						Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
-						Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
-						IsTabStop="False" Focusable="False" />
+					        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+					        Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+					        IsTabStop="False" Focusable="False" />
 				</DataTemplate>
 			</themes:WindowChrome.TitleBarHeaderTemplate>
 		</themes:WindowChrome>
@@ -257,9 +262,9 @@ This example shows how the attached `WindowChrome.TitleBarHeader` property can b
 	</themes:WindowChrome.Chrome>
 	<themes:WindowChrome.TitleBarHeader>
 		<Button Content="{Binding ElementName=window, Path=Title}" Margin="20,0" MaxWidth="300"
-				Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
-				Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
-				IsTabStop="False" Focusable="False" />
+		        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+		        Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+		        IsTabStop="False" Focusable="False" />
 	</themes:WindowChrome.TitleBarHeader>
 	...
 </Window>
@@ -289,15 +294,15 @@ This example shows how the [TitleBarRightContentTemplate](xref:@ActiproUIRoot.Th
 			<themes:WindowChrome.TitleBarRightContentTemplate>
 				<DataTemplate>
 					<Button Command="{Binding CustomButtonCommand}"
-						Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-						themes:ThemeProperties.IsActive="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=IsActive}"
-						ToolTip="Custom TitleBar Button">
+					        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+					        themes:ThemeProperties.IsActive="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=IsActive}"
+					        ToolTip="Custom TitleBar Button">
 						<Button.ContentTemplate>
 							<DataTemplate>
 								<Canvas Margin="6,0" Width="16" Height="16">
-									<Path Canvas.Left="3" Canvas.Top="11" 
-										  Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
-										  Data="M 0,0 L 2,0 L 2,2 L 0,2 Z M 4,0 L 6,0 L 6,2 L 4,2 Z M 8,0 L 10,0 L 10,2 L 8,2 Z"/>
+									<Path Canvas.Left="3" Canvas.Top="11"
+									      Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+									      Data="M 0,0 L 2,0 L 2,2 L 0,2 Z M 4,0 L 6,0 L 6,2 L 4,2 Z M 8,0 L 10,0 L 10,2 L 8,2 Z"/>
 								</Canvas>
 							</DataTemplate>
 						</Button.ContentTemplate>
@@ -339,15 +344,15 @@ In this phase, the left/right content areas will generally be told to render at 
 
 The [TitleBarMenu](xref:@ActiproUIRoot.Controls.TitleBarMenu) control inherits the native `Menu` control but alters the top-level menu item appearance to render properly in title bar scenarios.
 
-It also will wrap menu items that don't fit within the available width to new lines so that they all remain accessible.  Note that when using a title bar menu, the [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[TitleBarLeftContentMaxWidthOverflowPercentage](xref:@ActiproUIRoot.Themes.WindowChrome.TitleBarLeftContentMaxWidthOverflowPercentage) property should be set to a relatively high value to avoid the menu from wrapping its top-level menu items too early as available width decreases.
+It will also wrap menu items that don't fit within the available width to new lines so that they all remain accessible.  Note that when using a title bar menu, the [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[TitleBarLeftContentMaxWidthOverflowPercentage](xref:@ActiproUIRoot.Themes.WindowChrome.TitleBarLeftContentMaxWidthOverflowPercentage) property should be set to a relatively high value to avoid the menu from wrapping its top-level menu items too early as available width decreases.
 
 This is an example of using the [TitleBarMenu](xref:@ActiproUIRoot.Controls.TitleBarMenu) control on the left side of a [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) title bar.
 
 ```xaml
 <Window ...>
 	<themes:WindowChrome.Chrome>
-		<themes:WindowChrome x:Name="chrome" TitleBarHeaderAlignment="Center" TitleBarHeaderMinWidth="70" 
-			TitleBarLeftContentMaxWidthOverflowPercentage="0.75" TitleBarRightContentMaxWidthOverflowPercentage="0" />
+		<themes:WindowChrome x:Name="chrome" TitleBarHeaderAlignment="Center" TitleBarHeaderMinWidth="70"
+		                     TitleBarLeftContentMaxWidthOverflowPercentage="0.75" TitleBarRightContentMaxWidthOverflowPercentage="0" />
 	</themes:WindowChrome.Chrome>
 	<themes:WindowChrome.TitleBarLeftContent>
 		<shared:TitleBarMenu x:Name="menu" Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}">
@@ -413,8 +418,8 @@ private void OnWindowSystemMenuOpening(object sender, ContextMenuOpeningEventArg
 
 	// Inject a Help menu item
 	e.Menu.Items.Insert(index++, new Separator());
-	e.Menu.Items.Insert(index++, new MenuItem() { 
-		Header = "Help", 
+	e.Menu.Items.Insert(index++, new MenuItem() {
+		Header = "Help",
 		Command = ApplicationCommands.Help,
 		CommandTarget = this,
 		InputGestureText = "F1"
@@ -442,7 +447,7 @@ It may be desired to bind the attached `WindowChrome.IsOverlayVisible` property 
 
 ```xaml
 <Window x:Name="window" ...
-	themes:WindowChrome.IsOverlayVisible="{Binding IsWindowOverlayVisible}}">
+        themes:WindowChrome.IsOverlayVisible="{Binding IsWindowOverlayVisible}}"> ... </Window>
 ```
 
 For convenience, the static [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[SetIsOverlayVisible](xref:@ActiproUIRoot.Themes.WindowChrome.SetIsOverlayVisible*) method can also be called from code to set the current value of the attached property.
@@ -459,7 +464,7 @@ When building an Office-like Backstage overlay, use a value of `FadeSlide`.  If 
 
 ### Surface Area
 
-The overlay covers the entire window but does sit in z-order behind the title bar's foreground.  This allows for the title bar to continue supporting window dragging, right-click context menus, and for title bar buttons (like Close) to be accessible.
+The overlay covers the entire window but does sit in z-order behind the title bar's foreground.  This allows for the title bar to continue supporting window dragging, right-click context menus, and for title bar buttons (like **Close**) to be accessible.
 
 It also allows any custom title bar controls to be accessible, which may or may not be desired.  If a custom title bar control should not be accessible when an overlay is visible, it should be hidden or disabled.  The attached `WindowChrome.IsOverlayVisible` property on the window can be bound to using an appropriate value converter, or you can update the custom title bar control states programmatically in an [IsOverlayVisibleChanged](xref:@ActiproUIRoot.Themes.WindowChrome.IsOverlayVisibleChanged) event handler.
 
@@ -467,7 +472,7 @@ It also allows any custom title bar controls to be accessible, which may or may 
 
 Overlays are designed by default to be focus scopes (similar to menus/toolbars), where their content can only temporarily be focused and the owner window will track which element previously had focus before the overlay displayed.  This allows for focus to be easily returned to the previous element.
 
-The attached `WindowChrome.IsOverlayFocusScope` property can be set on a window to specify if its overlay is a focus scope or not.  The default is `true`, but can be set to `false` when the overlay content should not be a separate focus scope.
+The attached `WindowChrome.IsOverlayFocusScope` property can be set on a window to specify if its overlay is a focus scope or not.  The default is `true` but can be set to `false` when the overlay content should not be a separate focus scope.
 
 ## Using an Alternate Title Bar Style
 
@@ -481,7 +486,7 @@ It's a common practice with Office-like Backstage overlays to bind the attached 
 
 ```xaml
 <Window x:Name="window" ...
-	themes:WindowChrome.UseAlternateTitleBarStyle="{Binding RelativeSource={RelativeSource Self}, Path=(themes:WindowChrome.IsOverlayVisible)}">
+        themes:WindowChrome.UseAlternateTitleBarStyle="{Binding RelativeSource={RelativeSource Self}, Path=(themes:WindowChrome.IsOverlayVisible)}"> ... </Window>
 ```
 
 ## Setting the Minimum Title Bar Height
@@ -490,7 +495,7 @@ The minimum title bar height can be set using the attached [TitleBarMinHeightPro
 
 ```xaml
 <Window x:Name="window" ...
-	themes:WindowChrome.TitleBarMinHeight="28">
+        themes:WindowChrome.TitleBarMinHeight="28"> ... </Window>
 ```
 
 ## Getting the Title Bar Height
@@ -506,7 +511,7 @@ This code shows how the title bar height can be used as a top margin for a contr
 	<shared:ThicknessConverter x:Key="ThicknessConverter" />
 <Window.Resources>
 ...
-<Grid Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}">
+<Grid Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}"> ... </Grid>
 ```
 
 ## WindowChrome Samples

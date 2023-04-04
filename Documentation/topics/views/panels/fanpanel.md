@@ -25,7 +25,7 @@ Elements that are defined in the `Children` collection before the focal element 
 
 By default, fore elements are hidden from view. This behavior can be changed using the [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[ForeElementLayoutPlacement](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeElementLayoutPlacement) property.  The fore elements can be placed above or below the focal element along the z-axis using the `Above` or `Below` setting, respectively.  When using these settings, the fore elements can be offset, faded, or rotated so that the focal element is still visible.
 
-The `Wrap` setting will wrap the fore elements so they are stacked below any back elements.  When using this setting, the [ForeAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeAngleStep), [ForeOffsetStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeOffsetStep), and [ForeOpacityStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeOpacityStep) properties are not used.  Instead the associated back properties are applied to every element, except the focal element.
+The `Wrap` setting will wrap the fore elements so they are stacked below any back elements.  When using this setting, the [ForeAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeAngleStep), [ForeOffsetStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeOffsetStep), and [ForeOpacityStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeOpacityStep) properties are not used.  Instead, the associated back properties are applied to every element, except the focal element.
 
 ## Offsetting Elements
 
@@ -37,7 +37,7 @@ The [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[BackOffsetStep](xre
 
 ## Rotating Elements
 
-The [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[BackAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.BackAngleStep) and [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[ForeAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeAngleStep) properties configure an incremental angle rotation for the fore and back elements.  The focal element will always use an angle of 0, so it is never rotated.
+The [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[BackAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.BackAngleStep) and [FanPanel](xref:@ActiproUIRoot.Controls.Views.FanPanel).[ForeAngleStep](xref:@ActiproUIRoot.Controls.Views.FanPanel.ForeAngleStep) properties configure an incremental angle rotation for the fore and back elements.  The focal element will always use an angle of `0`, so it is never rotated.
 
 ## Fading Elements
 

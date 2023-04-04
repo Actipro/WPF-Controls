@@ -15,6 +15,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ICommand command;
 		private string description;
 		private bool isEditable;
+		private bool isPreviewEnabledWhenPopupClosed;
 		private bool isReadOnly;
 		private bool isStarSizingAllowed;
 		private bool isTextCompletionEnabled = true;
@@ -23,6 +24,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isUnmatchedTextAllowed = true;
 		private string keyTipText;
 		private string label;
+		private string placeholderText;
 		private double requestedWidth = 110.0;
 		private string text;
 		private string textPath;
@@ -199,6 +201,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 
 		/// <summary>
+		/// Gets or sets whether an editable combobox will preview a gallery item if the item is matched by typed text while the popup is closed.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if an editable combobox will preview a gallery item if the item is matched by typed text while the popup is closed; otherwise, <c>false</c>.
+		/// The default value is <c>false</c>.
+		/// </value>
+		public bool IsPreviewEnabledWhenPopupClosed {
+			get => isPreviewEnabledWhenPopupClosed;
+			set {
+				if (isPreviewEnabledWhenPopupClosed != value) {
+					isPreviewEnabledWhenPopupClosed = value;
+					this.NotifyPropertyChanged(nameof(IsPreviewEnabledWhenPopupClosed));
+				}
+			}
+		}
+		
+		/// <summary>
 		/// Gets or sets whether the combobox is read-only.
 		/// </summary>
 		/// <value>
@@ -332,7 +351,21 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of menu items that appear within the drop-down.</value>
 		public ObservableCollection<object> MenuItems { get; } = new ObservableCollection<object>();
-
+		
+		/// <summary>
+		/// Gets or sets the text that is displayed in the control until the value is changed by a user action or some other operation.
+		/// </summary>
+		/// <value>The text that is displayed in the control until the value is changed by a user action or some other operation.</value>
+		public string PlaceholderText {
+			get => placeholderText;
+			set {
+				if (placeholderText != value) {
+					placeholderText = value;
+					this.NotifyPropertyChanged(nameof(PlaceholderText));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets the requested width of the control.
 		/// </summary>

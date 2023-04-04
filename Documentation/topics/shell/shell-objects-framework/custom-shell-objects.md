@@ -5,11 +5,11 @@ order: 10
 ---
 # Custom Shell Objects
 
-The built-in Windows shell functionality can be customized/extended.  Or in other cases, completely custom shell objects and services can be written to support non-Windows shells (i.e., a remote file system in a FTP client).
+The built-in Windows shell functionality can be customized/extended.  Or in other cases, completely custom shell objects and services can be written to support non-Windows shells (i.e., a remote file system for an FTP client).
 
 ## Customizing the Windows Shell
 
-The built-in [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) class interacts with the Windows shell, attempting to return the same data you find in Windows Explorer.
+The built-in [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) class interacts with the Windows shell, attempting to return the same data you find in **Windows Explorer**.
 
 There may be cases where you wish to filter out certain shell objects, change certain shell object properties, etc. from what is returned by default.  In these cases, you need to make a class that inherits [WindowsShellService](xref:ActiproSoftware.Shell.WindowsShellService) and set the new instance to your shell UI control's [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
 
@@ -23,7 +23,7 @@ To insert additional shell objects as the children of a parent shell object, ove
 
 ### Wrapping a Shell Object
 
-If you wish to change actual properties of a Windows [IShellObject](xref:ActiproSoftware.Shell.IShellObject) (not the [IShellProperty](xref:ActiproSoftware.Shell.IShellProperty) objects for a shell object), you must wrap the shell object.  A handy wrapper [ShellObjectWrapper](xref:ActiproSoftware.Shell.ShellObjectWrapper) class is provided specifically for this scenario.  That class allows you to pass the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) and it wraps all the calls to the shell object's members in virtual members of its own.  For instance if you wanted to customize the icon returned for a shell object, you could override the appropriate icon properties.  Or if you wanted to treat a certain shell folder as a file instead, you could override its [IsFolder](xref:ActiproSoftware.Shell.ShellObjectWrapper.IsFolder) and [Kind](xref:ActiproSoftware.Shell.ShellObjectWrapper.Kind) properties.
+If you wish to change actual properties of a Windows [IShellObject](xref:ActiproSoftware.Shell.IShellObject) (not the [IShellProperty](xref:ActiproSoftware.Shell.IShellProperty) objects for a shell object), you must wrap the shell object.  A handy wrapper [ShellObjectWrapper](xref:ActiproSoftware.Shell.ShellObjectWrapper) class is provided specifically for this scenario.  That class allows you to pass the [IShellObject](xref:ActiproSoftware.Shell.IShellObject) and it wraps all the calls to the shell object's members in virtual members of its own.  For instance, if you wanted to customize the icon returned for a shell object, you could override the appropriate icon properties.  Or if you wanted to treat a certain shell folder as a file instead, you could override its [IsFolder](xref:ActiproSoftware.Shell.ShellObjectWrapper.IsFolder) and [Kind](xref:ActiproSoftware.Shell.ShellObjectWrapper.Kind) properties.
 
 To insert this wrapper shell object into the shell object hierarchy, override the [CreateObjectChildren](xref:ActiproSoftware.Shell.WindowsShellService.CreateObjectChildren*) method and call its base method, which is a collection result.  Replace the original [IShellObject](xref:ActiproSoftware.Shell.IShellObject) in that collection with the related wrapper shell object.
 
@@ -35,7 +35,7 @@ Be sure to also override the [GetPropertyValue](xref:ActiproSoftware.Shell.IShel
 
 ## Making a Completely Custom Shell
 
-A custom-written shell service allows for working with any file system.  A great example of this is the remote file system for a FTP client application.  By using the Shell Object Framework to implement a custom shell service, the same shell UI controls can be used to render a Windows file system as well as another kind of custom file system.
+A custom-written shell service allows for working with any file system.  A great example of this is the remote file system for an FTP client application.  By using the Shell Object Framework to implement a custom shell service, the same shell UI controls can be used to render a Windows file system as well as another kind of custom file system.
 
 To author a custom shell service, make a class that implements [IShellService](xref:ActiproSoftware.Shell.IShellService) and set a new instance to your shell UI control's [DefaultShellService](xref:@ActiproUIRoot.Controls.Shell.ShellTreeListBox.DefaultShellService) property.
 

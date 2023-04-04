@@ -11,13 +11,13 @@ This topic's information will assume you are using Visual Studio to write your X
 
 ## Add Assembly References
 
-First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Navigation.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Navigation.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates for Navigation Controls
 
-If you have Visual Studio, item templates named `Navigation Bar Window (WPF)` and `Explorer Bar Window (WPF)` should have been installed during the WPF Studio installation procedure.
+If you have Visual Studio, item templates named "Navigation Bar Window (WPF)" and "Explorer Bar Window (WPF)" should have been installed during the WPF Studio installation procedure.
 
-When you wish to create a new `Window` containing one of the Navigation controls in your application, simply choose `Add New Item` in Visual Studio and select the appropriate the item template.  A `Window` with the related Navigation control on it will be added to your project and opened.
+When you wish to create a new `Window` containing one of the Navigation controls in your application, simply choose **Add New Item** in Visual Studio and select the appropriate the item template.  A `Window` with the related Navigation control on it will be added to your project and opened.
 
 The use of item templates is the fastest way to get started with our products in your own applications.
 
@@ -97,6 +97,6 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 
 It's very easy to use the various Navigation controls and there are probably a lot of great features that you aren't aware of.
 
-Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough and the sample project demonstrates almost every feature of the controls.
+Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough, and the sample project demonstrates almost every feature of the controls.
 
 If you require further assistance after looking through those, please visit our support forum for the product.

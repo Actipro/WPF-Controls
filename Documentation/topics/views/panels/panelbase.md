@@ -9,7 +9,7 @@ This is the base class for all the panels provided by the Views product. It allo
 
 ## Overview
 
-The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) provides base functionality of all animated panels. It provides attached properties for storing state information, as well as the current animation rectangle.
+The [PanelBase](xref:@ActiproUIRoot.Controls.Views.Primitives.PanelBase) provides the base functionality of all animated panels. It provides attached properties for storing state information, as well as the current animation rectangle.
 
 When building a custom panel that derives from the native `Panel`, the `ArrangeOverride` and `MeasureOverride` methods are overridden.  Similarly, when building a custom panel that derives from the `PanelBase`, the `ArrangeElements` and `MeasureElements` methods should be overridden. Additionally, the panel should not reference the `Children` collection, but instead arrange the list of elements specified. This allows the panel's layout logic to be leveraged by the `SwitchPanel`.
 
@@ -28,9 +28,9 @@ The [ArrangeState](xref:@ActiproUIRoot.Controls.Views.ArrangeState).[ArrangeStat
 | `ArrangeUpdating` Field | Indicates that the element is changing position or size in the panel due to the standard arrange phase. |
 | `LayoutUpdating` Field | Indicates that the element is changing position or size because the layout logic of the panel changed (e.g., the orientation is changed). |
 
-The current and previous arrange rectangels are captured in the [ArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeRect) and [PreviousArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.PreviousArrangeRect) properties, respectively.
+The current and previous arrange rectangles are captured in the [ArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeRect) and [PreviousArrangeRect](xref:@ActiproUIRoot.Controls.Views.ArrangeState.PreviousArrangeRect) properties, respectively.
 
-Finally, the [ArrangeFromPoint](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeFromPoint) can be used to optionally change the location that an element starts it's "move" animation from. This is usually leveraged by custom panels to customize the movement of elements.
+Finally, the [ArrangeFromPoint](xref:@ActiproUIRoot.Controls.Views.ArrangeState.ArrangeFromPoint) can be used to optionally change the location that an element starts its "move" animation from. This is usually leveraged by custom panels to customize the movement of elements.
 
 ## Disabling Animations Per Element
 
@@ -74,7 +74,7 @@ Gets or sets the [IArrangeAnimation](xref:@ActiproUIRoot.Controls.Views.IArrange
 
 Arranges the specified element using the current arrange state.
 
-This can be used to force an element to arrange using it's current arrange location, but does not typically need to be called directly.
+This can be used to force an element to arrange using its current arrange location, but does not typically need to be called directly.
 
 </td>
 </tr>
@@ -177,7 +177,7 @@ Gets or sets the position along the Y-axis of the parent panel used when arrangi
 
 Gets a value indicating whether a change to the layout logic has changed and the elements have yet to be arranged.
 
-This is typically used to distingush between the `ArrangeStatus.ArrangeUpdating` and `ArrangeStatus.LayoutUpdating` statues, where the latter is due to a change in the logical layout (i.e., changing the orientation).
+This is typically used to distinguish between the `ArrangeStatus.ArrangeUpdating` and `ArrangeStatus.LayoutUpdating` statues, where the latter is due to a change in the logical layout (i.e., changing the orientation).
 
 </td>
 </tr>

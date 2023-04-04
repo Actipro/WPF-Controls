@@ -5,17 +5,17 @@ order: 3
 ---
 # Input Bindings
 
-The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) supports interactive zooming and panning through the use of input bindings. This topic convers the default behavior, as well as how to customize the behavior.
+The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) supports interactive zooming and panning through the use of input bindings. This topic covers the default behavior, as well as how to customize the behavior.
 
 ## Mouse Gestures
 
-The Windows Presentation Framework (WPF) includes support for defining input bindings on controls, through the `InputBindings` collection. This collection defines various gestures, which when executed will raise an associated command.
+The Windows Presentation Framework (WPF) includes support for defining input bindings on controls, through the `InputBindings` collection. This collection defines various gestures, which, when executed, will raise an associated command.
 
-There are two native WPF gestures that can be used: `MouseGesture` and `KeyboardGesture`. `MouseGesture` encompasses actions like clicking (and double-clicking) mouse buttons, while `KeyboardGesture` captures pressing keys.  Both types support modifier keys, such as <kbd>Ctrl</kbd>, <kbd>Shift</kbd>, etc. This tells the gesutre that the specifed modifier key must be pressed when the gesture is performed for the assocated command to be fired. For example, when using `MouseAction.LeftClick` with a modifier key of `ModifierKeys.Control`, then the associated command is only fired when the user click the left mouse button while holding down the control key.
+There are two native WPF gestures that can be used: `MouseGesture` and `KeyboardGesture`. `MouseGesture` encompasses actions like clicking (and double-clicking) mouse buttons, while `KeyboardGesture` captures pressing keys.  Both types support modifier keys, such as <kbd>Ctrl</kbd>, <kbd>Shift</kbd>, etc. This tells the gesture that the specified modifier key must be pressed when the gesture is performed for the associated command to be fired. For example, when using `MouseAction.LeftClick` with a modifier key of `ModifierKeys.Control`, then the associated command is only fired when the user clicks the left mouse button while holding down the <kbd>Ctrl</kbd> key.
 
 The Shared Library adds an additional gesture that can bind mouse wheel actions to a command. [MouseWheelGesture](xref:@ActiproUIRoot.Input.MouseWheelGesture) supports positive or negative changes (i.e., up or down scrolling of the mouse wheel), and can also be used with the [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl).
 
-There are several helper types that make defining a gesture easier via XAML, whic include `KeyboardBinding`, `MouseBinding`, and [MouseWheelBinding](xref:@ActiproUIRoot.Input.MouseWheelBinding). Using these classes, the `Gesture` property can be set to a simple string value. For example, setting the `MouseBinding.Gesture` property to "Control+LeftClick" will automatically create the appropriate `MouseGesture`.
+There are several helper types that make defining a gesture easier via XAML, which include `KeyboardBinding`, `MouseBinding`, and [MouseWheelBinding](xref:@ActiproUIRoot.Input.MouseWheelBinding). Using these classes, the `Gesture` property can be set to a simple string value. For example, setting the `MouseBinding.Gesture` property to `"Control+LeftClick"` will automatically create the appropriate `MouseGesture`.
 
 ## Default Mouse Behavior
 
@@ -47,7 +47,7 @@ The default input bindings can be disabled by setting [AreDefaultInputBindingsEn
 
 ## Mouse Cursor
 
-The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) will automatically update it's `Cursor` property based on the specified input bindings. Specifically, it looks for an input binding that uses a `MouseGesture` with a `MouseAction.LeftClick` action and specifies modifier keys that match the current key state.  For example, if the <kbd>Ctrl</kbd> key is currently pressed, then it will search for a `MouseGesture` with a `MouseAction.LeftClick` action and with `ModifierKeys.Control` defined.
+The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) will automatically update its `Cursor` property based on the specified input bindings. Specifically, it looks for an input binding that uses a `MouseGesture` with a `MouseAction.LeftClick` action and specifies modifier keys that match the current key state.  For example, if the <kbd>Ctrl</kbd> key is currently pressed, then it will search for a `MouseGesture` with a `MouseAction.LeftClick` action and with `ModifierKeys.Control` defined.
 
 If an input binding is found that matches the current state, then the cursor will be updated based on the specified command.  The following table lists the commands and their associated cursor.
 

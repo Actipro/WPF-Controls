@@ -31,7 +31,7 @@ This view-model class has properties on it for tracking expansion, editing, sele
 
 It also has features for auto-returning an upsized icon in scenarios where higher DPI is detected.  For instance when in 200% DPI, the [ShellObjectViewModel](xref:@ActiproUIRoot.Controls.Shell.ShellObjectViewModel).[SmallIcon](xref:@ActiproUIRoot.Controls.Shell.ShellObjectViewModel.SmallIcon) property will actually return the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[MediumIcon](xref:ActiproSoftware.Shell.IShellObject.MediumIcon) value so that the image remains crisp.
 
-While the [CreateShellObjectViewModel](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter.CreateShellObjectViewModel*) method doesn't generally need to be overridden, it is a good place to filter out shell objects at a view-level instead of at the model-level (via a shell service).  This could be useful when sharing shell objects in multiple shell UI controls, but wanting to filter out certain kinds of shell objects for a specific shell UI control.  To filter out a shell object, simply override this method and return `null`.
+While the [CreateShellObjectViewModel](xref:@ActiproUIRoot.Controls.Shell.ShellObjectItemAdapter.CreateShellObjectViewModel*) method doesn't generally need to be overridden, it is a good place to filter out shell objects at a view-level instead of at the model-level (via a shell service).  This could be useful when sharing shell objects in multiple shell UI controls but wanting to filter out certain kinds of shell objects for a specific shell UI control.  To filter out a shell object, simply override this method and return `null`.
 
 ## Context Menu Creation
 

@@ -71,6 +71,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											new BarComboBoxViewModel("Editable") {
 												Description = "A basic, editable combobox sample.",
 												IsEditable = true,
+												PlaceholderText = "Employee",
 												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
 												MenuItems = {

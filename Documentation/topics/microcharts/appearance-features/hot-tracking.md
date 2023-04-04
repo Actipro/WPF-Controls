@@ -15,16 +15,16 @@ Once enabled, as the end user's mouse moves over the chart, values nearest the m
 
 ## Legend String Format
 
-The legend's string format is the easiest way to customize what is displayed in a tooltip for a series.  The series-specific string format is set via the [MicroXYSeriesBase](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase).[LegendStringFormat](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.LegendStringFormat) property.  By default the value of the primary axis is displayed.
+The legend's string format is the easiest way to customize what is displayed in a tooltip for a series.  The series-specific string format is set via the [MicroXYSeriesBase](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase).[LegendStringFormat](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.LegendStringFormat) property.  By default, the value of the primary axis is displayed.
 
 | Format Parameter | Description |
 |-----|-----|
-| \{0} | The value of the primary axis, generally the Y value. |
-| \{1} | The value of the secondary axis, generally the X value. |
-| \{2} | The X value. |
-| \{3} | The Y value. |
-| \{4} | Reserved for future use. |
-| \{5} | The series description, as indicated in the [MicroXYSeriesBase](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase).[Description](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.Description) property. |
+| `"{0}"` | The value of the primary axis, generally the Y value. |
+| `"{1}"` | The value of the secondary axis, generally the X value. |
+| `"{2}"` | The X value. |
+| `"{3}"` | The Y value. |
+| `"{4}"` | Reserved for future use. |
+| `"{5}"` | The series description, as indicated in the [MicroXYSeriesBase](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase).[Description](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.Description) property. |
 
 ![Screenshot](../images/hot-tracking1.png)
 

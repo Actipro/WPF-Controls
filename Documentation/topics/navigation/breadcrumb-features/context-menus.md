@@ -5,13 +5,13 @@ order: 4
 ---
 # Context Menus
 
-The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control displays context menus when the [overflow button](overflow.md) is clicked and when the [popup button](item-selection.md) on the individual items is clicked. These context menus are automatically populated by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control, but can be customized during runtime.
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control displays context menus when the [overflow button](overflow.md) is clicked and when the [popup button](item-selection.md) on the individual items is clicked. These context menus are automatically populated by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control but can be customized during runtime.
 
 ## Customizing the Menu
 
 You can completely customize the default `ContextMenu`s or even supply an alternate menu by handling the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[OverflowButtonClick](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.OverflowButtonClick) or [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem).[NavigateButtonClick](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.NavigateButtonClick) events. The `Item` property of the event arguments is the `ContextMenu` that will be displayed.  Add/update/remove menu items as necessary there.
 
-In addition, there are numereous properties listed below, which allow the look of the context menus to be customized as well.
+In addition, there are numerous properties listed below, which allow the look of the context menus to be customized as well.
 
 ## Menu and Text Alignment
 

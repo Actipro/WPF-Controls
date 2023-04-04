@@ -46,7 +46,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>
 		/// An <see cref="itemVariantBehavior"/> that indicates how variant sizes should be applied to items.
-		/// The default value is <see cref="ItemVariantBehavior.Default"/>.
+		/// The default value is <see cref="ItemVariantBehavior.All"/>.
 		/// </value>
 		public ItemVariantBehavior ItemVariantBehavior {
 			get {

@@ -13,7 +13,7 @@ The [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome) control
 
 ## Render Mode
 
-The mode by which to render the shadow can be set via the [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome).[RenderMode](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome.RenderMode) property.  The default `Default` mode uses fast WPF rendering and is intended for child elements that have a rectangular shape.
+The mode by which to render the shadow can be set via the [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome).[RenderMode](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome.RenderMode) property.  The `Default` mode uses fast WPF rendering and is intended for child elements that have a rectangular shape.
 
 Shader effects can alternatively be used to render the shadow.  Shader effects provide a very realistic shadow effect for contained content, but they are more resource intensive and should be used sparingly throughout UI.
 
@@ -31,7 +31,7 @@ The [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome).[IsShad
 
 ## Direction
 
-The shadow is cast out towards a certain direction, specified by the [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome).[Direction](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome.Direction) property.  The direction value `0` is towards the right, and increases counter-clockwise.  The default direction value is `270`, which is downward.  Another commonly-used direction value is `315`, which is down-and-right.
+The shadow is cast out towards a certain direction, specified by the [ShadowChrome](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome).[Direction](xref:@ActiproUIRoot.Controls.Primitives.ShadowChrome.Direction) property.  The direction value `0` is towards the right and increases counterclockwise.  The default direction value is `270`, which is downward.  Another commonly-used direction value is `315`, which is down-and-right.
 
 > [!NOTE]
 > When using fast WPF rendering and for the downward `270` direction only, special algorithms kick in to seamlessly render the shadow in a slightly more natural way that nearly matches how the more complex shader effects would render the shadow.

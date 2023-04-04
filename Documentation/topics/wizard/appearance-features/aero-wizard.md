@@ -8,17 +8,17 @@ order: 3
 Wizard includes a special class that is used for the creation of wizards the conform to the Aero Wizard standard.
 
 > [!TIP]
-> To get started in seconds with an Aero Wizard, use the `Aero Wizard Window (WPF)` new item template in Visual Studio.
+> To get started in seconds with an Aero Wizard, use the "Aero Wizard Window (WPF)" new item template in Visual Studio.
 
 ## Aero Wizard Style Introduction
 
-Aero Wizards have a large title area that is Aero glass with the Back button for the wizard appearing in the upper left corner of the window.  This provides for consistency with the other explorer-like dialogs in Windows.  The window title appears to the right of the Back button.
+Aero Wizards have a large title area that is Aero glass with the **Back** button for the wizard appearing in the upper left corner of the window.  This provides for consistency with the other explorer-like dialogs in Windows.  The window title appears to the right of the **Back** button.
 
 ![Screenshot](../images/aero-wizard.png)
 
 *An Aero Wizard that mimics the an Add Printer wizard*
 
-Since the Back button is located in the title area, there is no Back button in the button container at the bottom of the wizard.
+Since the **Back** button is located in the title area, there is no **Back** button in the button container at the bottom of the wizard.
 
 There is no concept of exterior pages in Aero wizards.  Instead, all pages are treated more like interior pages since they have their caption displayed at the top of the client area of the window.
 
@@ -26,42 +26,41 @@ There is no concept of exterior pages in Aero wizards.  Instead, all pages are t
 
 ### Configuring the Window
 
-When creating a `Window` for an Aero wizard, you will want to set its `Icon` and `Title` properties like you would for a normal window.  A [WindowChrome](../../themes/windowchrome.md) instance can be used to place a "back" button in the title bar.
+When creating a `Window` for an Aero wizard, you will want to set its `Icon` and `Title` properties like you would for a normal window.  A [WindowChrome](../../themes/windowchrome.md) instance can be used to place a **Back** button in the title bar.
 
 The complete sample code is:
 
 ```xaml
-<Window
-	x:Name="wizardDemo" 
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
-	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-	Icon="/Images/Icons/Actipro.ico"
-	Title="Aero Wizard Demo"
-	Width="600" Height="450"
-	WindowStartupLocation="CenterScreen"
-	themes:WindowChrome.TitleBarLeftContent="{Binding ElementName=wizard}"
-	FocusManager.FocusedElement="{Binding ElementName=wizard}"
-	>
-							
+<Window x:Name="wizardDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+        Icon="/Images/Icons/Actipro.ico"
+        Title="Aero Wizard Demo"
+        Width="600" Height="450"
+        WindowStartupLocation="CenterScreen"
+        themes:WindowChrome.TitleBarLeftContent="{Binding ElementName=wizard}"
+        FocusManager.FocusedElement="{Binding ElementName=wizard}"
+        >
+
 	<themes:WindowChrome.Chrome>
 		<themes:WindowChrome HasIcon="False">
 			<themes:WindowChrome.TitleBarLeftContentTemplate>
 				<DataTemplate>
-					<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}" 
-							ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
-							Command="{x:Static wizard:WizardCommands.PreviousPage}" CommandTarget="{Binding}" />
+					<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+					        ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
+					        Command="{x:Static wizard:WizardCommands.PreviousPage}" CommandTarget="{Binding}" />
 				</DataTemplate>
 			</themes:WindowChrome.TitleBarLeftContentTemplate>
 		</themes:WindowChrome>
 	</themes:WindowChrome.Chrome>
-	
+
 	<wizard:AeroWizard x:Name="wizard">
 		...
 	</wizard:AeroWizard>
-	
+
 </Window>
 ```
 
@@ -77,7 +76,7 @@ That's all that is needed to configure an Aero Wizard.  Just use the information
 
 The screenshot above shows two [CommandButton](xref:@ActiproUIRoot.Controls.Wizard.CommandButton) controls in the wizard's page.  These are special buttons with a title and content.  They have smooth animations that change state when the mouse moves over them or when they are clicked.
 
-They usually are presented on pages where large branching choices must be made.  In this scenario, disable the Next button for that page and allow the command buttons to choose the wizard's path instead.
+They usually are presented on pages where large branching choices must be made.  In this scenario, disable the **Next** button for that page and allow the command buttons to choose the wizard's path instead.
 
 The [CommandButton](xref:@ActiproUIRoot.Controls.Wizard.CommandButton).[Title](xref:@ActiproUIRoot.Controls.Wizard.CommandButton.Title) property lets you specify the large title for the button and the button's `Content` is what appears below the title.
 

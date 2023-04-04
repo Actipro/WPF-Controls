@@ -36,7 +36,7 @@ By setting the [AnimatedWrapPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedWr
 
 ## Use in ScrollViewer
 
-If an `AnimatedWrapPanel` is used in a `ScrollViewer`, which typically includes `ListBox` and other `ItemsControl`-derived controls, then special consideration is needed.  Scrolling needs to be disabled in the same orientation as the `AnimatedWrapPanel`.  Otherwise, the `ScrollViewer` will give the `AnimatedWrapPanel` unlimited space in which to arrange it's children, which effectively disables the "wrapping" feature.
+If an `AnimatedWrapPanel` is used in a `ScrollViewer`, which typically includes `ListBox` and other `ItemsControl`-derived controls, then special consideration is needed.  Scrolling needs to be disabled in the same orientation as the `AnimatedWrapPanel`.  Otherwise, the `ScrollViewer` will give the `AnimatedWrapPanel` unlimited space in which to arrange its children, which effectively disables the "wrapping" feature.
 
 To disabled scrolling, the `ScrollViewer.HorizontalScrollBarVisibility` or `ScrollViewer.VerticalScrollBarVisibility` property can be set to `Disabled`. When using a `ListBox`, the scrollbar visibility properties can be set directly on the `ListBox`, as it's an attached property.
 

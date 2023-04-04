@@ -23,7 +23,7 @@ Aggregation is enabled by default and can be disabled by setting [IsAggregationE
 
 There are various aggregation functions that can be performed on the items in a group.  The supported aggregation kinds are specified using the [PrimaryAggregationKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.PrimaryAggregationKind) and [SecondaryAggregationKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.SecondaryAggregationKind).
 
-The `PrimaryAggregationKind` is typically used for the Y values, but for vertically-oriented series this will be used by the X values.  Similarly the `SecondaryAggregationKind` is used for X values, but will be used by Y values for vertically-oriented series.
+The `PrimaryAggregationKind` is typically used for the Y values, but for vertically-oriented series this will be used by the X values.  Similarly, the `SecondaryAggregationKind` is used for X values, but will be used by Y values for vertically-oriented series.
 
 The following table lists the supported aggregation kinds:
 

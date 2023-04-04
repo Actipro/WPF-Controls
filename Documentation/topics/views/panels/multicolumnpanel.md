@@ -5,7 +5,7 @@ order: 14
 ---
 # MultiColumnPanel
 
-This panel can render child elements in multiple columns, collapsing columns down as available space decreases.  It's a space-efficient and visually-appealing way to render lists of items, or to break paragraphs of text up.
+This panel can render child elements in multiple columns, collapsing columns down as available space decreases.  It's a space-efficient and visually appealing way to render lists of items, or to break paragraphs of text up.
 
 ![Screenshot](../images/multicolumnpanel.png)
 
@@ -44,7 +44,7 @@ The following [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnP
 
 Gets or sets whether columns without any items can be removed, with remaining columns filling in, thereby maximizing use of available width.  The default value is `false`.
 
-When using multiple [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) instances in a stack where columns should always be aligned, leave this property its default of `false`.  Alternatively when wanting to maximize use of available width, set this property to `true`.
+When using multiple [MultiColumnPanel](xref:@ActiproUIRoot.Controls.Views.MultiColumnPanel) instances in a stack where columns should always be aligned, leave this property its default of `false`.  Alternatively, when wanting to maximize use of available width, set this property to `true`.
 
 </td>
 </tr>

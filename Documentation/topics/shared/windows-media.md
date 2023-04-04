@@ -56,7 +56,7 @@ Specifies the type of `LinearGradientBrush` to be created by [LinearGradientBrus
 
 ## BrushOpacityConverter Class
 
-[BrushOpacityConverter](xref:@ActiproUIRoot.Media.BrushOpacityConverter) value converter can be used in XAML bindings to return a clone of a `Brush` with it's opacity set to a specified value.
+[BrushOpacityConverter](xref:@ActiproUIRoot.Media.BrushOpacityConverter) value converter can be used in XAML bindings to return a clone of a `Brush` with its opacity set to a specified value.
 
 See the [Value Converters](value-converters.md) topic for more information on this class.
 
@@ -68,15 +68,15 @@ See the [Value Converters](value-converters.md) topic for more information on th
 
 ## IconFrameConverter Class
 
-[IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) value converter can be used in binding statements to select an image frame based on its size from an icon (*.ICO*) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this value converter, a different size frame can be selected regardless of whether it's the first frame.
+[IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) value converter can be used in binding statements to select an image frame based on its size from an icon (ICO) file. Normally, the first frame from the icon file is returned which may not be the desired size. Using this value converter, a different size frame can be selected regardless of whether it's the first frame.
 
-By default, [IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) will return the first `32x32` image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredWidth).  If no image of the desired size is found, then the passed value is returned.
+By default, [IconFrameConverter](xref:@ActiproUIRoot.Media.IconFrameConverter) will return the first 32x32 image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameConverter.DesiredWidth).  If no image of the desired size is found, then the passed value is returned.
 
 ## IconFrameSelector Class
 
-[IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) markup extension can be used in XAML to select an image frame based on its size from an icon (*.ICO*) file. Normally, the first frame from icon file is returned which may not be the desired size. Using this markup extension, a different size frame can be selected regardless of whether it's the first frame.
+[IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) markup extension can be used in XAML to select an image frame based on its size from an icon (ICO) file. Normally, the first frame from the icon file is returned which may not be the desired size. Using this markup extension, a different size frame can be selected regardless of whether it's the first frame.
 
-By default, [IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) will return the first `32x32` image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredWidth).  If no image of the desired size is found, then the default `ImageSource` is returned.
+By default, [IconFrameSelector](xref:@ActiproUIRoot.Media.IconFrameSelector) will return the first 32x32 image frame.  The desired size can be set using [DesiredHeight](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredHeight) and [DesiredWidth](xref:@ActiproUIRoot.Media.IconFrameSelector.DesiredWidth).  If no image of the desired size is found, then the default `ImageSource` is returned.
 
 ## LinearGradientBrushExtension Class
 
@@ -106,7 +106,7 @@ These instance members are found in the class:
 Gets or sets the additional stops used when creating a `LinearGradientBrush`.
 
 > [!NOTE]
-> When using additional stops, the start and end color will be alternated at each stop. Therefore if 1 additional stop is used, then the `LinearGradientBrush` will have 3 stops with the colors: start color, end color, start color.
+> When using additional stops, the start and end color will be alternated at each stop. Therefore if one additional stop is used, then the `LinearGradientBrush` will have three stops with the colors: start color, end color, start color.
 
 </td>
 </tr>
@@ -184,7 +184,7 @@ These instance members are found in the structure:
 | [R](xref:@ActiproUIRoot.Media.UIColor.R) Property | Gets or sets the RGB red component value of this `UIColor` structure. |
 | [Tint](xref:@ActiproUIRoot.Media.UIColor.Tint*) Method | Tints this color towards the specified tint `Color`. |
 | [ToColor](xref:@ActiproUIRoot.Media.UIColor.ToColor*) Method | Gets the `Color` value of this `UIColor` structure. |
-| [ToWebColor](xref:@ActiproUIRoot.Media.UIColor.ToWebColor*) Method | Converts the color to a web color string (e.g., `#FF0000` for `Red`). |
+| [ToWebColor](xref:@ActiproUIRoot.Media.UIColor.ToWebColor*) Method | Converts the color to a web color string (e.g., `"#FF0000"` for red). |
 | [W3CBrightness](xref:@ActiproUIRoot.Media.UIColor.W3CBrightness) Property | Gets the brightness of the color, based on the W3C formula for calculating brightness. |
 
 These static members are found in the structure, many of which are used to create a [UIColor](xref:@ActiproUIRoot.Media.UIColor):
@@ -201,7 +201,7 @@ These static members are found in the structure, many of which are used to creat
 | [FromMix](xref:@ActiproUIRoot.Media.UIColor.FromMix*) Method | Creates a `UIColor` structure that is the specified percentage between the value of two `Color` objects. |
 | [FromName](xref:@ActiproUIRoot.Media.UIColor.FromName*) Method | Creates a `UIColor` structure from the specified name of a pre-defined color. |
 | [FromRgb](xref:@ActiproUIRoot.Media.UIColor.FromRgb*) Method | Creates a `UIColor` structure from the specified RGB color values (red, green, and blue). |
-| [FromWebColor](xref:@ActiproUIRoot.Media.UIColor.FromWebColor*) Method | Creates a `UIColor` structure from the specified web color.  This method can process HTML color specifications (e.g., #FF00FF) and known color names. |
+| [FromWebColor](xref:@ActiproUIRoot.Media.UIColor.FromWebColor*) Method | Creates a `UIColor` structure from the specified web color.  This method can process HTML color specifications (e.g., `"#FF00FF"`) and known color names. |
 | [GetStandardCustomColors](xref:@ActiproUIRoot.Media.UIColor.GetStandardCustomColors*) Method | Returns a `Color` array containing all of the standard custom values. |
 | [GetSystemColors](xref:@ActiproUIRoot.Media.UIColor.GetSystemColors*) Method | Returns a `Color` array containing all of the `SystemColors` values. |
 | [GetTintedColor](xref:@ActiproUIRoot.Media.UIColor.GetTintedColor*) Method | Returns the custom tinted color for the specified base color. |

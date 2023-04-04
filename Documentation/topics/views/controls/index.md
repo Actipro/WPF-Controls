@@ -13,7 +13,7 @@ See the [Book](book.md) topic for more information.
 
 ## InertiaScrollViewer
 
-The [InertiaScrollViewer](xref:@ActiproUIRoot.Controls.Views.InertiaScrollViewer) is a smooth-scrolling ScrollViewer-like control that reacts to touch and continues gliding to a stop when flicked.
+The [InertiaScrollViewer](xref:@ActiproUIRoot.Controls.Views.InertiaScrollViewer) is a smooth-scrolling `ScrollViewer`-like control that reacts to touch and continues gliding to a stop when flicked.
 
 See the [InertiaScrollViewer](inertia-scroll-viewer.md) topic for more information.
 

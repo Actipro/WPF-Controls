@@ -13,7 +13,7 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control can
 
 ## Setting Auto Minimize Count
 
-The number of items automatically minimized is controlled by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[AutoMinimizeItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.AutoMinimizeItemCount) property. This number counts down from the top of the hierarchy and can include [tail items](tail-items.md). The selected item is never minimized, but is counted. Therefore, this count can also be thought of as the level in the hierarchy tree.
+The number of items automatically minimized is controlled by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[AutoMinimizeItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.AutoMinimizeItemCount) property. This number counts down from the top of the hierarchy and can include [tail items](tail-items.md). The selected item is never minimized but is counted. Therefore, this count can also be thought of as the level in the hierarchy tree.
 
 For example, if [AutoMinimizeItemCount](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.AutoMinimizeItemCount) is set to `2` then only the root item and its direct children are ever eligible for minimization.
 

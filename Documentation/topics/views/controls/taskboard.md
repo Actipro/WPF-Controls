@@ -19,7 +19,7 @@ The [TaskColumn](xref:@ActiproUIRoot.Controls.Views.TaskColumn) control is also 
 
 As described above, the task board is meant to be data-driven.  It provides a number of `Style`, `DataTemplate`, etc. properties that allow for complete customization of how the board renders and what UI is available.  Any interactive controls, such as buttons, can be placed within a `DataTemplate` to support advanced functionality like popups within the cards.  By using a `DataTemplateSelector`, different appearances can be supplied for cards depending on the data item.
 
-Each task board renders its columns in a horizontal layout, followed by an optional board footer.  A task planning app might put an "Add a list" button in the board footer template.  Each column renders a header at the top, typically displaying a bold title.  The vertical list of cards within the column renders under the header.  This is followed by an optional column footer.  A task planning app mgiht put an "Add a task" button in the column footer template.
+Each task board renders its columns in a horizontal layout, followed by an optional board footer.  A task planning app might put an **Add a list** button in the board footer template.  Each column renders a header at the top, typically displaying a bold title.  The vertical list of cards within the column is rendered under the header.  This is followed by an optional column footer.  A task planning app might put an **Add a task** button in the column footer template.
 
 These properties on [TaskBoard](xref:@ActiproUIRoot.Controls.Views.TaskBoard) allow for appearance customization:
 
@@ -29,16 +29,16 @@ These properties on [TaskBoard](xref:@ActiproUIRoot.Controls.Views.TaskBoard) al
 | [CardContainerStyleSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardContainerStyleSelector) Property | The `StyleSelector` to use for card containers. |
 | [CardCornerRadius](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardCornerRadius) Property | The card corner radius.  The default value is `3.0`. |
 | [CardSpacing](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardSpacing) Property | The spacing between cards.  The default value is `7.0`. |
-| [CardTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardTemplate) Property | The DataTemplate to use for cards. |
-| [CardTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardTemplateSelector) Property | The DataTemplateSelector to use for cards. |
+| [CardTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardTemplate) Property | The `DataTemplate` to use for cards. |
+| [CardTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.CardTemplateSelector) Property | The `DataTemplateSelector` to use for cards. |
 | [ColumnCornerRadius](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ColumnCornerRadius) Property | The column corner radius.  The default value is `3.0`. |
 | [ColumnPadding](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ColumnPadding) Property | The column padding.  The default value is `7.0`. |
 | [ColumnSpacing](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ColumnSpacing) Property | The spacing between columns.  The default value is `10.0`. |
-| [FooterTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.FooterTemplate) Property | The DataTemplate to use for a footer. |
-| [ItemFooterTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemFooterTemplate) Property | The DataTemplate to use for column footers. |
-| [ItemFooterTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemFooterTemplateSelector) Property | The DataTemplateSelector to use for column footers. |
-| [ItemHeaderTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemHeaderTemplate) Property | The DataTemplate to use for column headers. |
-| [ItemHeaderTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemHeaderTemplateSelector) Property | The DataTemplateSelector to use for column headers. |
+| [FooterTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.FooterTemplate) Property | The `DataTemplate` to use for a footer. |
+| [ItemFooterTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemFooterTemplate) Property | The `DataTemplate` to use for column footers. |
+| [ItemFooterTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemFooterTemplateSelector) Property | The `DataTemplateSelector` to use for column footers. |
+| [ItemHeaderTemplate](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemHeaderTemplate) Property | The `DataTemplate` to use for column headers. |
+| [ItemHeaderTemplateSelector](xref:@ActiproUIRoot.Controls.Views.TaskBoard.ItemHeaderTemplateSelector) Property | The `DataTemplateSelector` to use for column headers. |
 
 ## Animated Drag Reordering
 
@@ -48,7 +48,8 @@ Column and card dragging to reorder is enabled by default as long as the source 
 
 @if (wpf winrt) {
 
-Note that when using touch to drag a column or card, you must first hold your finger down on the column/card for at least a quarter second before moving it.  Otherwise, if you touch down and immediately drag, the control will think you are trying to scroll the control. 
+> [!NOTE]
+> Note that when using touch to drag a column or card, you must first hold your finger down on the column/card for at least a quarter second before moving it.  Otherwise, if you touch down and immediately drag, the control will think you are trying to scroll the control.
 
 }
 
@@ -79,8 +80,8 @@ By using both those methods, it's possible to determine which card is at a certa
 This basic XAML shows how to create the basic appearance for the Task Planning demo, whose complete source is in the sample project.
 
 ```xaml
-<views:TaskBoard x:Name="taskBoard" ItemsSource="{Binding Lists}" ColumnItemsSourcePath="Tasks" 
-					Padding="15" ColumnSpacing="15" ColumnPadding="10" FontSize="14">
+<views:TaskBoard x:Name="taskBoard" ItemsSource="{Binding Lists}" ColumnItemsSourcePath="Tasks"
+                 Padding="15" ColumnSpacing="15" ColumnPadding="10" FontSize="14">
 	<views:TaskBoard.ItemContainerStyle>
 		<Style TargetType="views:TaskColumn">
 			<Setter Property="Background" Value="#80ffffff" />

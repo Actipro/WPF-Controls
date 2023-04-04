@@ -13,9 +13,13 @@ Child elements are positioned or "stacked" based on the order that the elements 
 
 Unlike an [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel), a focal item (or an item of interest) is centered in the view.  This can be tied to the selected index of an associated `ListBox`, or any other control such as a `Slider`.
 
-![Screenshot](../images/zappanel-no-wrap1.png)![Screenshot](../images/zappanel-no-wrap2.png)
+![Screenshot](../images/zappanel-no-wrap1.png)
 
-*`ZapPanel` with the first element selected (left) and the second element selected (right)*
+*`ZapPanel` with the first element selected*
+
+![Screenshot](../images/zappanel-no-wrap2.png)
+
+*`ZapPanel` with the second element selected*
 
 The `ZapPanel` implements `IScrollInfo` to support logical scrolling.  Physical scrolling is based on the size of the element being scrolled and can be thought of as "pixel-based" scrolling.  Logical scrolling is based on the number of elements in the `ZapPanel`, so it effectively moves a given element completely into the view (when possible).  If `ScrollViewer`.`CanContentScroll` is set to `false`, then logical scrolling will be disabled and physical scrolling will be used.  This causes a problem as the `ZapPanel` centers the focal item, so the physical scrolling will be offset.  Therefore, physical scrolling cannot be used with the `ZapPanel`, and instead an [AnimatedStackPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedStackPanel) should be used.
 
@@ -25,9 +29,13 @@ In general, the width of the `ZapPanel` should be restricted when oriented horiz
 
 By default, the child elements are stacked in order from beginning to end.  The [ZapPanel](xref:@ActiproUIRoot.Controls.Views.ZapPanel) can wrap elements around to the opposing side to produce a circular effect.  This feature can be enabled by setting `ZapPanel`.[AreChildrenWrapped](xref:@ActiproUIRoot.Controls.Views.ZapPanel.AreChildrenWrapped) to `true`.
 
-![Screenshot](../images/zappanel-wrap1.png)![Screenshot](../images/zappanel-wrap2.png)
+![Screenshot](../images/zappanel-wrap1.png)
 
-*`ZapPanel` using wrapping with the first element selected (left) and the second element selected (right)*
+*`ZapPanel` using wrapping with the first element selected*
+
+![Screenshot](../images/zappanel-wrap2.png)
+
+*`ZapPanel` using wrapping with the second element selected*
 
 ## Getting Started with ZapPanel
 

@@ -23,7 +23,7 @@ An important thing to note is that the [MicroSeriesPaletteStyleSelector](xref:@A
 
 Numerous built-in palettes are included with the product, each named via a value within the [MicroPaletteKind](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroPaletteKind) enumeration.
 
-A built-in palette can be assigned to a chart like this (in this case the Roman palette):
+A built-in palette can be assigned to a chart like this (in this case the `Roman` palette):
 
 ```xaml
 <microcharts:MicroXYChart Width="100" Height="18">
@@ -83,7 +83,7 @@ This sample shows the creation of a palette that contains two custom colors:
 </microcharts:MicroXYChart>
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > When multiple series are used in a chart, make sure that your palette has enough base color entries to match or exceed your series count.  Or ensure that the shade generation feature (described above) is active.
 
 ## Customizing Highlight Effect Brushes
@@ -97,9 +97,7 @@ As described in the introduction above, there are many ways certain data points 
 Each of these options generally has three properties on [MicroSeriesPaletteStyleSelector](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesPaletteStyleSelector), such as these for normal areas:
 
 - [AreaBrushCustom](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesPaletteStyleSelector.AreaBrushCustom)
-
 - [AreaBrushKind](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesPaletteStyleSelector.AreaBrushKind)
-
 - [AreaTintColor](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesPaletteStyleSelector.AreaTintColor)
 
 ### Custom Brush
@@ -110,18 +108,18 @@ A custom `Brush`, if specified via properties like [AreaBrushCustom](xref:@Actip
 
 A brush kind can be specified via properties like [AreaBrushKind](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesPaletteStyleSelector.AreaBrushKind).  This kind is of type [MicroSeriesBrushKind](xref:@ActiproUIRoot.Controls.MicroCharts.Palettes.MicroSeriesBrushKind) and has many values that can "modify" the palette color assigned to the series:
 
-- Default - Use the exact palette color.
-- Light - Use a slightly lighter version of the palette color.
-- Dark - Use a slightly darker version of the palette color.
-- SemiTransparent - Use a semi-transparent version of the palette color.
-- DarkToLightGradient - Use a gradient, from the `Dark` to `Light` color.
-- LightToDarkGradient - Use a gradient, from the `Light` to `Dark` color.
-- Complement - Use a complement of the `Default` color.
-- ComplementLight - Use a complement of the `Light` color.
-- ComplementDark - Use a complement of the `Dark` color.
-- ComplementSemiTransparent - Use a semi-transparent version of the `Default` color.
-- ComplementDarkToLightGradient - Use a gradient, from the `ComplementDark` to `ComplementLight` color.
-- ComplementLightToDarkGradient - Use a gradient, from the `ComplementLight` to `ComplementDark` color.
+- `Default` - Use the exact palette color.
+- `Light` - Use a slightly lighter version of the palette color.
+- `Dark` - Use a slightly darker version of the palette color.
+- `SemiTransparent` - Use a semi-transparent version of the palette color.
+- `DarkToLightGradient` - Use a gradient, from the `Dark` to `Light` color.
+- `LightToDarkGradient` - Use a gradient, from the `Light` to `Dark` color.
+- `Complement` - Use a complement of the `Default` color.
+- `ComplementLight` - Use a complement of the `Light` color.
+- `ComplementDark` - Use a complement of the `Dark` color.
+- `ComplementSemiTransparent` - Use a semi-transparent version of the `Default` color.
+- `ComplementDarkToLightGradient` - Use a gradient, from the `ComplementDark` to `ComplementLight` color.
+- `ComplementLightToDarkGradient` - Use a gradient, from the `ComplementLight` to `ComplementDark` color.
 
 By using a brush kind setting instead of specifying an exact custom brush, the brush used for each series will be relative to the palette color assigned to that series.
 

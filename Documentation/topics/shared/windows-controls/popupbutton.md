@@ -5,7 +5,7 @@ order: 25
 ---
 # PopupButton
 
-The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control supports display of popups or context menus, and can render in multiple display modes.
+The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control supports display of popups or context menus and can render in multiple display modes.
 
 ![Screenshot](../images/popupbutton-display-modes.png)
 
@@ -17,8 +17,8 @@ The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton).[DisplayMode](xref:@
 
 | DisplayMode | Description |
 |-----|-----|
-| [Merged](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.Merged) | The control will show the content as a normal button, with a popup indicator on the right side.  This display mode is also known as a drop-down button, and opens a popup/menu when clicked. |
-| [CenterMerged](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.CenterMerged) | The control will show the content as a normal button, with a popup indicator right next to the content.  This display mode is also known as a drop-down button, and opens a popup/menu when clicked. |
+| [Merged](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.Merged) | The control will show the content as a normal button, with a popup indicator on the right side.  This display mode is also known as a drop-down button and opens a popup/menu when clicked. |
+| [CenterMerged](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.CenterMerged) | The control will show the content as a normal button, with a popup indicator right next to the content.  This display mode is also known as a drop-down button and opens a popup/menu when clicked. |
 | [Split](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.Split) | The control will show the content in a normal button area and a popup indicator in a separate clickable area.  This display mode is also known as a split button.  It performs a standard button click when clicking the button's content area, and opens a popup/menu when the popup indicator area is clicked. |
 | [ButtonOnly](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.ButtonOnly) | The control will show the content as a normal button, and with no popup indicator.  This display mode renders the same as a normal `Button`, while still retaining popup display functionality when clicked.  If no popup content or menu is assigned to the control, clicks on the control will behave like a standard `Button`. |
 | [PopupOnly](xref:@ActiproUIRoot.Controls.PopupButtonDisplayMode.PopupOnly) | The control will show the popup indicator, but not the content.  This display mode opens a popup/menu when clicked. |
@@ -29,7 +29,8 @@ The [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) can be set t
 
 Alternatively the [PopupContent](xref:@ActiproUIRoot.Controls.PopupButton.PopupContent), [PopupContentTemplate](xref:@ActiproUIRoot.Controls.PopupButton.PopupContentTemplate), and/or [PopupContentTemplateSelector](xref:@ActiproUIRoot.Controls.PopupButton.PopupContentTemplateSelector) properties can be used to specify content for a popup to show instead.
 
-Note that setting the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property will trigger its `ContextMenu` to display, even of any of the popup content properties are set.  The [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property takes priority.
+> [!NOTE]
+> Setting the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property will trigger its `ContextMenu` to display, even of any of the popup content properties are set.  The [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu) property takes priority.
 
 The popup content can be automatically focused when opened by setting the [IsAutoFocusOnOpenEnabled](xref:@ActiproUIRoot.Controls.PopupButton.IsAutoFocusOnOpenEnabled) property to `true`, which is the default.
 
@@ -49,9 +50,9 @@ The [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) also supports a tran
 
 ## DataContext for Popup ContextMenu
 
-Because `ContextMenu` elements are not part of the same visual tree as the associated `PopupButton`, they do not inherit the `DataContext`.  The `PopupButton` has been designed to pass it's `DataContext` on to the `ContextMenu` specified by the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu).  This allows data binding to be used without having to add any additional work-arounds.
+Because `ContextMenu` elements are not part of the same visual tree as the associated `PopupButton`, they do not inherit the `DataContext`.  The `PopupButton` has been designed to pass its `DataContext` on to the `ContextMenu` specified by the [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu).  This allows data binding to be used without having to add any additional workarounds.
 
-The data context passed to the context menu is specified by the [PopupMenuDataContext](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenuDataContext) property, which is bound to the `DataContext` by default.  This in effect, extends the current data context to the context menu, while still allowing it to be customzied easily as needed.
+The data context passed to the context menu is specified by the [PopupMenuDataContext](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenuDataContext) property, which is bound to the `DataContext` by default.  This, in effect, extends the current data context to the context menu, while still allowing it to be customized easily as needed.
 
 ## Placement Target
 
@@ -357,7 +358,7 @@ Gets or sets the vertical distance between the target origin and the popup align
 </td>
 <td>
 
-Gets or sets a value that indicates whether the Popup closes when the control is no longer in focus.  The default value is `false`.
+Gets or sets a value that indicates whether the popup closes when the control is no longer in focus.  The default value is `false`.
 
 > [!NOTE]
 > This property has no effect when using [PopupMenu](xref:@ActiproUIRoot.Controls.PopupButton.PopupMenu).

@@ -10,22 +10,16 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control sup
 The user can enter edit mode by:
 
 - Pressing the <kbd>Space</kbd> key when the breadcrumb has the keyboard focus
-
 - Clicking on the icon on the left
-
 - Clicking in the empty space on the right
-
 - Opening the drop-down list
 
 The user can exit edit mode by:
 
 - Pressing the <kbd>Enter</kbd> key when the text box has the keyboard focus
-
-- Pressing the <kbd>Esc</kbd> key when the text box has the keyboard focus (**any changes will be discarded**)
-
+- Pressing the <kbd>Esc</kbd> key when the text box has the keyboard focus (*any changes will be discarded*)
 - Selecting an item from the drop-down list
-
-- Moving focus away from the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control (**any changes will be discarded**)
+- Moving focus away from the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control (*any changes will be discarded*)
 
 ![Screenshot](../images/breadcrumb-combobox-aero-normal-color.png)
 
@@ -33,13 +27,13 @@ The user can exit edit mode by:
 
 ## Disabling Edit Mode
 
-The edit mode can be disabled by setting the [IsEditable](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.IsEditable) property to `false`. When the edit mode is disabled, the drop-down list is hidden and the user cannot directly enter a path.
+The edit mode can be disabled by setting the [IsEditable](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.IsEditable) property to `false`. When the edit mode is disabled, the drop-down list is hidden, and the user cannot directly enter a path.
 
 ## Populating the Drop-Down List
 
 The embedded combo box drop-down list is populated using the [ComboBoxItemsSource](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ComboBoxItemsSource) property. This property can be set in the same manner as the `ComboBox.ItemsSource` property.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Logic to convert a combo box item to a trail must be provided. See the [Item Conversion](item-conversion.md) topic for more information.
 
 ## Associated Members

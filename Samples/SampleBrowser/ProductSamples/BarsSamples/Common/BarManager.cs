@@ -379,6 +379,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarComboBoxViewModel(key, SetFontFamilyCommand) {
 					Description = "Pick a new font for your text.",
 					IsEditable = true,
+					IsPreviewEnabledWhenPopupClosed = true,
 					IsStarSizingAllowed = true,
 					IsUnmatchedTextAllowed = false,
 					KeyTipText = "FF",

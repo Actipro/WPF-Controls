@@ -5,7 +5,7 @@ order: 4
 ---
 # Selection Changes
 
-The selected page in the Wizard can be changed programmatically and numerous cancelable selection changed events fire whenever a page change occurs.
+The selected page in the Wizard can be changed programmatically and numerous cancelable selection changed events are raised whenever a page change occurs.
 
 ## Programmatically Getting or Setting the Selected Page
 
@@ -24,20 +24,20 @@ The selected page in the Wizard can be changed programmatically and numerous can
 
 ## Page Change Event Sequence
 
-Whenever a selected page change occurs, regardless of what caused it, numerous events fire.  The event sequence is designed so that you can process the selection change events at either the wizard or page-specific levels.
+Whenever a selected page change occurs, regardless of what caused it, numerous events are raised.  The event sequence is designed so that you can process the selection change events at either the wizard or page-specific levels.
 
 All of the events receive an informative event argument of type [WizardSelectedPageChangeEventArgs](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs) that has these important members:
 
 | Member | Description |
 |-----|-----|
-| [Cancel](xref:@ActiproUIRoot.CancelRoutedEventArgs.Cancel) Property | Gets or sets whether to cancel the selected page change.  This property is only useful in the page changing events that fire before the page change occurs. |
+| [Cancel](xref:@ActiproUIRoot.CancelRoutedEventArgs.Cancel) Property | Gets or sets whether to cancel the selected page change.  This property is only useful in the page changing events that are raised before the page change occurs. |
 | [NewSelectedPage](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.NewSelectedPage) Property | Gets the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) that is about to be selected. |
 | [OldSelectedPage](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.OldSelectedPage) Property | Gets the [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) that is currently selected. |
 | [SelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardSelectedPageChangeEventArgs.SelectionFlags) Property | Gets a [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSelectionFlags) indicating information about the page selection. |
 
-The first events that fire upon a page change request are page changing events.  These are cancellable events and if the `Cancel` property is set in these, then the page change will be cancelled and no new selected page will be set.
+The first events raised upon a page change request are page changing events.  These are cancellable events and if the `Cancel` property is set in these, then the page change will be cancelled, and no new selected page will be set.
 
-Page changing events fire in this order:
+Page changing events are raised in this order:
 
 - [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewSelectedPageChanging](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewSelectedPageChanging)
 
@@ -47,9 +47,9 @@ Page changing events fire in this order:
 
 - [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[SelectedPageChanging](xref:@ActiproUIRoot.Controls.Wizard.Wizard.SelectedPageChanging)
 
-If the page change is not cancelled, then the actual page change will occur and a series of page changed events fire.
+If the page change is not cancelled, then the actual page change will occur, and a series of page changed events are raised.
 
-Page changed events fire in this order:
+Page changed events are raised in this order:
 
 - [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[PreviewSelectedPageChanged](xref:@ActiproUIRoot.Controls.Wizard.Wizard.PreviewSelectedPageChanged)
 
@@ -82,7 +82,7 @@ The [WizardPageSelectionFlags](xref:@ActiproUIRoot.Controls.Wizard.WizardPageSel
 
 Wizard tracks a notion of forward and backward progress.  This is used in several internal areas such as [stack-based page sequencing](page-sequencing.md) and for [transition effects](../appearance-features/transition-effects.md).
 
-When moving "forward" through pages, it is assumed you are doing things like clicking the Next button.  When moving "backward" through pages, it is assumed you are doing things like clicking the Back button.
+When moving "forward" through pages, it is assumed you are doing things like clicking the **Next** button.  When moving "backward" through pages, it is assumed you are doing things like clicking the **Back** button.
 
 Transitions use this information so that they can be set to perform their effects in one direction when moving forward, or in another direction when moving backward.
 

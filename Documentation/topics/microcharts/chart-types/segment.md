@@ -11,11 +11,11 @@ A segment chart provides a visual representation of an integer value in relation
 
 This sort of chart is great for use on dashboards, and also as an indicator of steps or progress achieved.
 
-The style for the segments can be customized, allowing for any sort of shape, size, or color combination.  The Panel used to render the chart can also be set, enabling wrapping and other layout scenarios.
+The style for the segments can be customized, allowing for any sort of shape, size, or color combination.  The `Panel` used to render the chart can also be set, enabling wrapping and other layout scenarios.
 
 @if (wpf) {
 
-Value converters can be used to further customize the brush or size of each segment to create some interesting effects. 
+Value converters can be used to further customize the brush or size of each segment to create some interesting effects.
 
 }
 
@@ -67,7 +67,7 @@ This code shows how to customize the chart template to create the purple circles
 					<ControlTemplate TargetType="microcharts:MicroSegmentChartItem">
 
 						<Ellipse x:Name="background" Fill="{TemplateBinding Background}" />
-	
+
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsHighlighted" Value="True">
 								<Setter TargetName="background" Property="Fill" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HighlightedBackground}" />
@@ -113,7 +113,7 @@ This code shows how to customize the chart template to create the purple circles
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
 						</Ellipse>
-					
+
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
@@ -149,7 +149,7 @@ Each segment is passed its number as the data context.  This allows the segment 
 								BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
 							<TextBlock x:Name="text" Text="{Binding}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
 						</Border>
-							
+
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsHighlighted" Value="True">
 								<Setter TargetName="background" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HighlightedBackground}" />
@@ -186,7 +186,7 @@ Each segment is passed its number as the data context.  This allows the segment 
 						<Border x:Name="background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
 								BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
 							<TextBlock x:Name="text" Text="{Binding}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-												
+
 							<VisualStateManager.VisualStateGroups>
 								<VisualStateGroup x:Name="HighlightStates">
 									<VisualState x:Name="Unhighlighted" />
@@ -203,7 +203,7 @@ Each segment is passed its number as the data context.  This allows the segment 
 								</VisualStateGroup>
 							</VisualStateManager.VisualStateGroups>
 						</Border>
-					
+
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
