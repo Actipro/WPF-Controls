@@ -10,7 +10,7 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/23/2023 - Version 22.1.5</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">4/4/2023 - Version 22.1.5</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Improved tool window-only layout deserialization logic for tool windows that will restore to tabbed MDI." />

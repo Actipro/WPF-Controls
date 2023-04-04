@@ -6,7 +6,7 @@
     >
 
 	<editor:SyntaxEditor x:Name="editor">
-			<editor:EditorDocument x:Name="document" xml:space="preserve">
+			<editor:EditorDocument x:Name="document" xml:space="preserve" IsReadOnly="True">
 				<editor:EditorDocument.Language>
 					<sample:CustomSyntaxLanguage />
 				</editor:EditorDocument.Language><![CDATA[This QuickStart shows how to make a CollectionTagger that tracks
@@ -30,6 +30,8 @@ a highlighting style, the related style's foreground brush will
 be used to render the squiggle.  This enables end users to
 be able to configure the squiggle color in highlighting style
 configuration dialogs.
+
+Note that this document is marked read-only.
 ]]></editor:EditorDocument>
 	</editor:SyntaxEditor>
 	
