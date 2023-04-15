@@ -22,7 +22,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 				var foreColor = UIColor.FromColor(Colors.Black);
 
 				// Adapt the color to the background
-				foreColor.AdaptToBackground(colorViewModel.Color, isHighContrast: false);
+				foreColor.AdaptToBackground(colorViewModel.Value, isHighContrast: false);
 
 				// Create a brush from the adapted color
 				return new SolidColorBrush(foreColor.ToColor());

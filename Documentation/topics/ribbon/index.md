@@ -84,7 +84,7 @@ Since Actipro recognizes the need for developers to have a consistent look and f
 
 ### Theming
 
-Multiple built-in themes that mimic Office's blue, black and silver themes, as well as all system themes are included.  However you can also generate a completely custom theme with a single line of code.  Individual theme colors may also be altered as needed.  For advanced developers who want even more customization possibilities, we've made all our controls so that they can be styled and templated and all primitive elements that are used in our built-in control templates are public.
+Multiple built-in themes that mimic Office's blue, black and silver themes, as well as all system themes are included.  However, you can also generate a completely custom theme with a single line of code.  Individual theme colors may also be altered as needed.  For advanced developers who want even more customization possibilities, we've made all our controls so that they can be styled and templated and all primitive elements that are used in our built-in control templates are public.
 
 ### Right-to-left, Localization, and Scaling
 

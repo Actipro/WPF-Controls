@@ -24,6 +24,10 @@
 				<sampleBrowser:BulletContentControl Content="The entire control hierarchy can be built using MVVM (preferred), or alternatively directly in XAML." />
 				<sampleBrowser:BulletContentControl Content="An optional MVVM library is available that makes it easy to configure the Bars controls with MVVM techniques." />
 			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved docking window images to support monochrome vector image adaptation via ImageProvider." />
+			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the CanSnapToChangePrecision property to DoubleEditBox and SingleEditBox controls, which determines if the value should be snapped to the precision of the incremental change value prior to applying the increment." />

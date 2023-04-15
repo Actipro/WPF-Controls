@@ -48,7 +48,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Checked State
 
-This control is designed to use the WPF command model to maintain the checked state of the control.  By default a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF command model to maintain the checked state of the control.  By default, a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Command Model](../../command-model/index.md) topic for detailed information on using this command parameter to manage the checked state.
 
@@ -77,7 +77,7 @@ See the [Working with Popups](../working-with-popups.md) topic for more detailed
 
 ### With a Contained PopupGallery
 
-The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However, the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
 
 ### Without a Contained PopupGallery
 

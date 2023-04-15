@@ -61,7 +61,7 @@ The [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[PropertyEdi
 
 Each [PropertyEditor](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor) object has several properties that are used to determine the best match: [ObjectType](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.ObjectType), [PropertyName](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.PropertyName), and [PropertyType](xref:@ActiproUIRoot.Controls.Grids.PropertyEditors.PropertyEditor.PropertyType).  Property names must match exactly, while types offer a few more comparison options.  In addition to exact matches, types can match if one of their base classes is specified in the property editor, or if it (or one of its base classes) implements a specified interface.
 
-This table defines the precedence of property editor defintions, with the highest priority at the top (`-` indicates the given property is null or undefined):
+This table defines the precedence of property editor defintions, with the highest priority at the top (`-` indicates the given property is `null` or undefined):
 
 | Source | Object Type | Property Name | Property Type |
 |-----|-----|-----|-----|

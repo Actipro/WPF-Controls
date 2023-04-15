@@ -14,7 +14,8 @@
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public RibbonBackstageHeaderSeparatorViewModel() { }  // Parameterless constructor required for XAML support
+		public RibbonBackstageHeaderSeparatorViewModel()  // Parameterless constructor required for XAML support
+			: this(RibbonBackstageHeaderAlignment.Top) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified header alignment.

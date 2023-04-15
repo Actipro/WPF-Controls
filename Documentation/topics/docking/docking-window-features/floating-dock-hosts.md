@@ -73,7 +73,7 @@ If you wish for a docking window to auto-size itself to its content when floated
 
 ## Limiting Floating Window Initial Sizes
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOpening) event fires whenever a floating window is opening, allowing for customization before it is displayed.  It is passed arguments of type [FloatingWindowOpeningEventArgs](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowOpeningEventArgs) that indicate the child control of the floating dock host that will be created, along with the default size of the floating window.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOpening) event is raised whenever a floating window is opening, allowing for customization before it is displayed.  It is passed arguments of type [FloatingWindowOpeningEventArgs](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowOpeningEventArgs) that indicate the child control of the floating dock host that will be created, along with the default size of the floating window.
 
 The [FloatingWindowOpeningEventArgs](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowOpeningEventArgs).[Size](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowOpeningEventArgs.Size) property can be altered in the event handler to limit the size of the floating window.  This feature is useful since sometimes when a MDI area fills most of the screen, dragged-to-float documents would fully obscure what is behind them.
 

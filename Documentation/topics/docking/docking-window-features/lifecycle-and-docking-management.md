@@ -92,7 +92,7 @@ Docking windows can be removed from the user interface by a call to their [Docki
 
 Setting the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property to `false` is the same as calling the [Close](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Close*) method.  This property can be bound to in MVVM scenarios.
 
-When closed, tool windows remain in the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) collection until destroyed.  However when document windows are closed, by default they will be destroyed as well unless the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property is set to `false`.
+When closed, tool windows remain in the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) collection until destroyed.  However, when document windows are closed, by default they will be destroyed as well unless the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreDocumentWindowsDestroyedOnClose](xref:@ActiproUIRoot.Controls.Docking.DockSite.AreDocumentWindowsDestroyedOnClose) property is set to `false`.
 
 ## Activating and Focusing
 
@@ -104,7 +104,7 @@ Setting the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActi
 
 The [LastActiveDateTime](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.LastActiveDateTime) property is updated every time the docking window is activated, either programmatically or by focus moving within it.  Sorting docking windows by this property value allows you to determine the sequence in which the docking windows were last active.
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event fires in response.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) tracks the currently active window.  This property changes whenever a different docking window gains focus, and the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event is raised in response.
 
 ## Default Initial Size
 
@@ -146,9 +146,9 @@ This is how a default location is determined:
 
 - First, if a [WindowGroupName](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.WindowGroupName) value is specified, the docking window will try to find another open docking window that has the same window group name.
 
-- Second, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[DefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.DefaultLocationRequested) event fires with the [DockingWindowDefaultLocationEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs).[Target](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs.Target) property initialized to the docking window found in the same window group, if any.
+- Second, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[DefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.DefaultLocationRequested) event is raised with the [DockingWindowDefaultLocationEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs).[Target](xref:@ActiproUIRoot.Controls.Docking.DockingWindowDefaultLocationEventArgs.Target) property initialized to the docking window found in the same window group, if any.
 
-- Third, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowDefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowDefaultLocationRequested) event fires with the same event arguments.
+- Third, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowDefaultLocationRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowDefaultLocationRequested) event is raised with the same event arguments.
 
 - Both of these events allow you to programmatically indicate the window should float (and optionally a specific floating location), or alternatively customize where the default location for the window will be.  You can indicate a dock target and optional side around which it should dock.  Passing `null` as the side will trigger an attach.
 

@@ -90,7 +90,7 @@ By default, the [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts
 Below is an example of a [MicroHeatMapPresenter](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter) with its [IsSizingEnabled](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.IsSizingEnabled) property set to true. Note that the [GradientStops](xref:@ActiproUIRoot.Controls.MicroCharts.MicroHeatMapPresenter.GradientStops) property is not set, so the control will render black for a sizing-only effect.
 
 ```xaml
-<microcharts:MicroHeatMapPresenter SizeValue="1250" SizeMinimum="100" SizeMaximum="10000" Width = “20” Height = “20” IsSizingEnabled="True"/>
+<microcharts:MicroHeatMapPresenter SizeValue="1250" SizeMinimum="100" SizeMaximum="10000" Width="20" Height="20" IsSizingEnabled="True"/>
 ```
 
 ## Marker Shape Kinds

@@ -49,10 +49,10 @@ Once you are within your account on our web site, download the latest release an
 
 ## Two Options to Apply Licensing
 
-There are two ways to apply licensing once you have purchased licenses for Actipro controls.  Both cases require you to know the "Licensee" and "License Key" (license information) for the major.minor version you have licensed.
+There are two ways to apply licensing once you have purchased licenses for Actipro controls.  Both cases require you to know the "Licensee" and "License Key" (license information) for the `major.minor` version you have licensed.
 
 > [!NOTE]
-> Each major.minor version has its own distinct license information that can be obtained for licensed versions on [your Actipro account](https://www.actiprosoftware.com/support/account)'s page for your organization.
+> Each `major.minor` version has its own distinct license information that can be obtained for licensed versions on [your Actipro account](https://www.actiprosoftware.com/support/account)'s page for your organization.
 
 The first licensing option is to make a method call at app startup before any UI is referenced to register your license information.  This option is quick and easy, and works best for scenarios where Actipro [NuGet packages](nuget.md) or build servers are used.  See the "Licensing Via a RegisterLicense Call" section below for detailed information on this option.
 
@@ -64,7 +64,7 @@ This licensing option is required when Actipro [NuGet packages](nuget.md) are us
 
 In this licensing option, we make a single code-based call to the `ActiproLicenseManager.RegisterLicense` method at application startup, before any UI is referenced.  This static call registers your license information globally throughout your application.
 
-The following code calls the `ActiproLicenseManager.RegisterLicense` method using "licensee" and "licenseKey" variables containing string values that must exactly match the license information in your license e-mail:
+The following code calls the `ActiproLicenseManager.RegisterLicense` method using `licensee` and `licenseKey` variables containing string values that must exactly match the license information in your license e-mail:
 
 ```csharp
 public partial class App : Application {
@@ -79,7 +79,7 @@ public partial class App : Application {
 When using this licensing option, do NOT include any Actipro entries in your application's *licenses.licx* file.
 
 > [!NOTE]
-> It is important to protect your licensee and license key combination from decompilers.  We highly recommend using some form of string encryption on the "licensee" and "licenseKey" values passed into the `ActiproLicenseManager.RegisterLicense` method.  Many obfuscators include string encryption as an option, or you can use other custom logic to scramble/descramble the strings.
+> It is important to protect your licensee and license key combination from decompilers.  We highly recommend using some form of string encryption on the `licensee` and `licenseKey` values passed into the `ActiproLicenseManager.RegisterLicense` method.  Many obfuscators include string encryption as an option, or you can use other custom logic to scramble/descramble the strings.
 
 ## Licensing Via a Licenses.licx File
 
@@ -109,7 +109,7 @@ The following detailed steps indicate how to install and license Actipro product
 
     - Run the installer for the latest build on your machine.
 
-    - If you are a licensed customer, in the installer, check the "I have already purchased licenses for this product" box and enter your license information **exactly as specified** in the e-mail you sent to yourself in an earlier step.
+    - If you are a licensed customer, in the installer, check the **I have already purchased licenses for this product** box and enter your license information *exactly as specified* in the e-mail you sent to yourself in an earlier step.
 
     - Review the configuration options that you'd like to install.  For build servers, the documentation, samples, tools, and designer integration install options may be turned off.
 
@@ -131,7 +131,7 @@ The following detailed steps indicate how to install and license Actipro product
 
     - Ensure that the *licenses.licx* has a correct entry for Actipro's @@PlatformName control products.  The valid entry is listed below in this topic.  Ensure the version numbers in the entry always match the deployed assembly version, especially after upgrading to a new version or build.
 
-1. In Visual Studio, execute "Clean Solution" and then "Rebuild Solution".
+1. In Visual Studio, execute **Clean Solution** and then **Rebuild Solution**.
 
 After following these steps, licensing will be properly applied to your application.
 
@@ -165,9 +165,9 @@ This means that you didn't enter the Licensee and License Key exactly as specifi
 
 If you don't see a *licenses.licx* file in your Visual Studio project (generally in the "Properties" folder), first ensure that the "Show All Files" option is set.  The "Show All Files" command is in the Visual Studio Solution Explorer tool window's toolbar.  If you still don't see one, follow these steps:
 
-- Right click on your project and select "Add -> Add New Item".
-- Select a "Text File" and name it *licenses.licx*.
-- Ensure its "Build Action" is set to "Embedded Resource".  This can be done in the Visual Studio "Properties" tool window when the *licenses.licx* file is selected.
+- Right click on your project and select **Add > Add New Item**.
+- Select a **Text File** template and name it *licenses.licx*.
+- Ensure its **Build Action** is set to *Embedded Resource*.  This can be done in the Visual Studio **Properties** tool window when the *licenses.licx* file is selected.
 - Copy the line from the sample *licenses.licx* file above into it.
 
 #### A licenses.licx file exists but there is no entry for the Actipro Software product I purchased.

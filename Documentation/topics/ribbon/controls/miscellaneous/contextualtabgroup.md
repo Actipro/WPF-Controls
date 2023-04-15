@@ -5,7 +5,7 @@ order: 4
 ---
 # ContextualTabGroup
 
-The controls used most often in an application are always available on the Ribbon.  However sometimes a specific object is selected in the document (such as a picture, table, or chart) that requires additional controls for proper interaction with the object.  This is where contextual tabs come in since they contain the controls that relate to the selected object.
+The controls used most often in an application are always available on the Ribbon.  However, sometimes a specific object is selected in the document (such as a picture, table, or chart) that requires additional controls for proper interaction with the object.  This is where contextual tabs come in since they contain the controls that relate to the selected object.
 
 Contextual tabs are the same as normal tabs except that they are contained by a [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) and are only displayed when the parent [ContextualTabGroup](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ContextualTabGroup) is active.
 

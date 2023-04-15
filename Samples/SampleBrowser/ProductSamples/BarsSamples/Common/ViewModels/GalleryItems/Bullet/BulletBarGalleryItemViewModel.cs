@@ -1,80 +1,80 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 	/// <summary>
 	/// Represents a bullet style as a gallery item view model for a bar gallery control.
 	/// </summary>
-	public class BulletBarGalleryItemViewModel : BarGalleryItemViewModelBase {
+	public class BulletBarGalleryItemViewModel : BarGalleryItemViewModel<BulletKind> {
 
 		/// <summary>
 		/// The name of the category for bullets.
 		/// </summary>
-		public const string BulletLibraryCategory = "Bullet Library";
-
-		private BulletKind kind;
+		public const string DefaultCategory = "Bullet Library";
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="BulletBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with a default value and category.
 		/// </summary>
-		public BulletBarGalleryItemViewModel()  // Parameterless constructor required for XAML support
-			: this(BulletLibraryCategory, BulletKind.None, label: null) { }
+		public BulletBarGalleryItemViewModel()
+			: this(value: default) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="BulletBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with the specified value and a default category.
 		/// </summary>
-		/// <param name="category">The gallery item category.</param>
-		/// <param name="kind">The kind of bullet.</param>
-		/// <param name="label">The text label to display.</param>
-		public BulletBarGalleryItemViewModel(string category, BulletKind kind, string label)
-			: base(category) {
+		/// <param name="value">The item's value.</param>
+		public BulletBarGalleryItemViewModel(BulletKind value)
+			: this(value, DefaultCategory) { }
 
-			this.kind = kind;
-			this.Label = label;
-		}
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value and category
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public BulletBarGalleryItemViewModel(BulletKind value, string category)
+			: this(value, category, label: null) { }
+
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value, category, and label.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public BulletBarGalleryItemViewModel(BulletKind value, string category, string label)
+			: base(value, category, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Creates a default collection of gallery item view models representing the bullet kinds.
+		/// Creates a default collection of gallery item view models representing bullet kinds.
 		/// </summary>
 		/// <returns>The collection of gallery item view models that was created.</returns>
 		public static IEnumerable<BulletBarGalleryItemViewModel> CreateDefaultCollection() {
 			return new BulletBarGalleryItemViewModel[] {
-				new BulletBarGalleryItemViewModel(BulletLibraryCategory, BulletKind.None, "None"),
-				new BulletBarGalleryItemViewModel(BulletLibraryCategory, BulletKind.Circle, "Circle"),
-				new BulletBarGalleryItemViewModel(BulletLibraryCategory, BulletKind.FilledCircle, "Filled Circle"),
-				new BulletBarGalleryItemViewModel(BulletLibraryCategory, BulletKind.Square, "Square"),
-				new BulletBarGalleryItemViewModel(BulletLibraryCategory, BulletKind.FilledSquare, "Filled Square"),
+				new BulletBarGalleryItemViewModel(BulletKind.None),
+				new BulletBarGalleryItemViewModel(BulletKind.Circle),
+				new BulletBarGalleryItemViewModel(BulletKind.FilledCircle),
+				new BulletBarGalleryItemViewModel(BulletKind.Square),
+				new BulletBarGalleryItemViewModel(BulletKind.FilledSquare),
 			};
 		}
-
+		
 		/// <summary>
-		/// Gets or sets the kind of bullet.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models representing bullet kinds, allowing for possible categorization and filtering.
 		/// </summary>
-		/// <value>One of the <see cref="BulletKind"/> values.</value>
-		public BulletKind Kind {
-			get => kind;
-			set {
-				if (kind != value) {
-					kind = value;
-					this.NotifyPropertyChanged(nameof(Kind));
-				}
-			}
-		}
-
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Kind='{this.Kind}']";
-		}
+		/// <param name="categorize">Whether the collection view should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
 
 	}
 

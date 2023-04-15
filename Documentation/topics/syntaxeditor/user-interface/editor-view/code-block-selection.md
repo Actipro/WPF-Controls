@@ -15,7 +15,7 @@ By contracting the selection, it goes back and selects the previously selected b
 
 Code block selection is enabled on SyntaxEditor by default, and can be executed via the default <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Num +</kbd> (expand) and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Num -</kbd> (contract) [key bindings](../input-output/default-key-bindings.md).
 
-However note that code block selection only functions if the required language service ([ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) interface) is registered.
+However, note that code block selection only functions if the required language service ([ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) interface) is registered.
 
 ## Finder Logic
 
@@ -29,13 +29,13 @@ An [ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) can b
 language.RegisterService<ICodeBlockFinder>(myCodeBlockFinder);
 ```
 
-Registering a code block finder with a language is optional, but recommended.
+Registering a code block finder with a language is optional but recommended.
 
 ## LLParseDataCodeBlockFinder Implementation
 
 The built-in [LLParseDataCodeBlockFinder](xref:ActiproSoftware.Text.Analysis.Implementation.LLParseDataCodeBlockFinder) class, which is part of the [LL(*) Parser Framework](../../ll-parser-framework/index.md), implements [ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) and can be used as a code block finder service on any language that uses a grammar-based parser from our framework.
 
-It is designed to examine the resulting AST (abstract syntax tree) that was constructed from the parser and walk up the tree as calls are made to the code block finder.
+It is designed to examine the resulting abstract syntax tree (AST) that was constructed from the parser and walk up the tree as calls are made to the code block finder.
 
 The class has a special [Filter](xref:ActiproSoftware.Text.Analysis.Implementation.LLParseDataCodeBlockFinder.Filter) property that can optionally be assigned to a predicate delegate.  The delegate is passed an [IAstNode](xref:ActiproSoftware.Text.Parsing.IAstNode) that the finder is currently examining and considering returning.  If the AST node should be used, return `true`, otherwise return `false` and the finder will examine the node's parent instead.  This mechanism allows for certain AST nodes to be skipped over.
 

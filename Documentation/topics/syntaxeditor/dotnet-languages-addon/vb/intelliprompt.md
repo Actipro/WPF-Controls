@@ -19,7 +19,7 @@ In cases where a completion list is triggered via <kbd>Ctrl</kbd>+<kbd>Space</kb
 
 The completion list features are implemented by the [VBCompletionProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBCompletionProvider) class.
 
-### Disabling Auto-Show On Typed Word Start
+### Disabling Auto-Show on Typed Word Start
 
 The [VBCompletionProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBCompletionProvider) class has a [CanShowOnTypedWordStart](xref:ActiproSoftware.Text.Languages.DotNet.Implementation.DotNetCompletionProviderBase.CanShowOnTypedWordStart) property that defaults to `true`.  When `true`, the completion provider will attempt to automatically show a completion list as the user starts to type a new word, but only in certain contexts.  Set the property to `false` to disable this behavior.
 
@@ -45,7 +45,7 @@ IntelliPrompt quick info features are implemented by the [VBQuickInfoProvider](x
 
 The [ICodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetProvider) service that is registered needs to have a root [ICodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetFolder) set on it, with at least code snippet within it or its child folders.  A folder can be created programmatically. @if (wpf winforms) {Or it can be loaded recursively via the [CodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetFolder).[LoadFrom](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetFolder.LoadFrom*) method. }
 
-This code creates a [VBSyntaxLanguage](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBSyntaxLanguage) and registers a [VBCodeSnippetProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBCodeSnippetProvider) service on it, which is a code snippet provider that is optimized for this language.  The provider has a root [ICodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetFolder) assigned that contains all the snippets recursively found within the file system path specified by the `path` variable.  Note that `VB` is passed as a language name parameter when loading the folder.  This ensures that only code snippets designed for the Visual Basic language will be loaded.
+This code creates a [VBSyntaxLanguage](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBSyntaxLanguage) and registers a [VBCodeSnippetProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBCodeSnippetProvider) service on it, which is a code snippet provider that is optimized for this language.  The provider has a root [ICodeSnippetFolder](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetFolder) assigned that contains all the snippets recursively found within the file system path specified by the `path` variable.  Note that `"VB"` is passed as a language name parameter when loading the folder.  This ensures that only code snippets designed for the Visual Basic language will be loaded.
 
 ```csharp
 var language = new VBSyntaxLanguage();
@@ -56,7 +56,7 @@ language.RegisterService(new VBCodeSnippetProvider() { RootFolder = snippetFolde
 
 ## Navigable Symbol Selector
 
-The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  It shows the types and members that currently enclose or are nearest the caret, and allows the end user to select other types/members within the same document via a dropdown, and to navigate to those members upon selection.
+The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  It shows the types and members that currently enclose or are nearest the caret and allows the end user to select other types/members within the same document via a dropdown, and to navigate to those members upon selection.
 
 This control populates its symbol lists by the [VBNavigableSymbolProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBNavigableSymbolProvider) language service.
 

@@ -94,9 +94,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 				SmallImageSource = ImageLoader.GetIcon("ColorPicker16.png"),
 			};
 			ApplySampleOptionsToGallery(colorPickerGalleryViewModel);
-			colorPickerGalleryViewModel.MenuItems.Add(configureOneRowLayoutButtonViewModel);
-			colorPickerGalleryViewModel.MenuItems.Add(configureTwoRowLayoutButtonViewModel);
-			colorPickerGalleryViewModel.MenuItems.Add(configureThreeRowLayoutButtonViewModel);
+			colorPickerGalleryViewModel.BelowMenuItems.Add(configureOneRowLayoutButtonViewModel);
+			colorPickerGalleryViewModel.BelowMenuItems.Add(configureTwoRowLayoutButtonViewModel);
+			colorPickerGalleryViewModel.BelowMenuItems.Add(configureThreeRowLayoutButtonViewModel);
 
 			//
 			// Configure Ribbon

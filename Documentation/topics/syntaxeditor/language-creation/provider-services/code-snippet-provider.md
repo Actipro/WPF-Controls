@@ -5,7 +5,7 @@ order: 10
 ---
 # IntelliPrompt Code Snippet Provider
 
-Languages can choose to support [IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) that provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted and the end user can tab between the fields to edit their values.
+Languages can choose to support [IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) that provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted and the end user can <kbd>Tab</kbd> between the fields to edit their values.
 
 ## Basic Concepts
 
@@ -14,7 +14,7 @@ Code snippet providers, represented by the [ICodeSnippetProvider](xref:@ActiproU
 - They let other code know that code snippets are supported for the language.
 - They make the available code snippets accessible.
 - They allow for selection sessions to be opened.
-- They watch for <kbd>Tab</kbd> to be pressed after a code snippet shortcut, and open a template session in response.
+- They watch for <kbd>Tab</kbd> to be pressed after a code snippet shortcut and open a template session in response.
 - They allow for the various template session adornments to be displayed.
 
 A [CodeSnippetProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CodeSnippetProvider) class instance can be used directly as the service.

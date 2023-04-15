@@ -13,7 +13,7 @@ Project builds can be initiated from the ribbon, or by pressing the shortcut <kb
 
 The **Error List** tool window indicates the errors, warnings, and messages from the last build.  Each item in the list shows a general category, which relates to a configuration pane, along with a description.
 
-In addition, the status bar will show a project build result summary and at what time the last build succeeded or failed.
+In addition, the **Status Bar** will show a project build result summary and at what time the last build succeeded or failed.
 
 ## Fixing Errors
 

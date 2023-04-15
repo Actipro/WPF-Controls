@@ -46,9 +46,9 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		/// <inheritdoc/>
 		protected override void OnRender(DrawingContext drawingContext) {
-			var viewModel = this.ViewModel;
-			if ((viewModel != null) && !string.IsNullOrEmpty(viewModel.Symbol)) {
-				var formattedText = this.CreateFormattedText(viewModel.Symbol);
+			var symbol = this.ViewModel?.Value;
+			if (!string.IsNullOrEmpty(symbol)) {
+				var formattedText = this.CreateFormattedText(symbol);
 				var location = new Point((this.ActualWidth - formattedText.Width) / 2.0, (this.ActualHeight - formattedText.Height) / 2.0);
 				drawingContext.DrawText(formattedText, location, this.FlowDirection);
 			}

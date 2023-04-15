@@ -122,7 +122,7 @@ It has these important properties:
 | [CurrentScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTipService.CurrentScreenTip) Property | Gets the [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) that is currently visible, if any. |
 | [ScreenTipFooterProperty](xref:@ActiproUIRoot.Controls.Bars.ScreenTipService.ScreenTipFooterProperty) Attached Property | When specified, the content is displayed under a horizontal separator at the bottom of the screen tip.  Footers are most often used to provide extended state information about a control.  It is of type `object` meaning that you can specify plain text or can insert any type of control.  Each control's local `ScreenTipFooter` property is mapped to this property. |
 | [ScreenTipHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.ScreenTipService.ScreenTipHeaderProperty) Attached Property | When specified, the content is displayed in bold above the rest of the screen tip content.  It is of type `object` meaning that you can specify plain text or can insert any type of control.  Each control's local `ScreenTipHeader` property is mapped to this property. |
-| [ScreenTipOpening](xref:@ActiproUIRoot.Controls.Bars.ScreenTipService.ScreenTipOpening) Event | Fires before the screen tip is displayed, allowing you to customize the screen tip properties. |
+| [ScreenTipOpening](xref:@ActiproUIRoot.Controls.Bars.ScreenTipService.ScreenTipOpening) Event | Raised before the screen tip is displayed, allowing you to customize the screen tip properties. |
 
 Most of the screen tip content properties are of type object, allowing you to pass a string of text or any control supported by `ContentPresenter`.  This allows for great flexibility in what you can display on the screen tip.
 

@@ -11,7 +11,7 @@ While Irony can do advanced parsing and abstract syntax tree construction for th
 
 The Actipro Irony Add-on provides a bridge between an Irony parser and the SyntaxEditor control.  Namely, if you have created a grammar with Irony, you can use it to perform syntax and semantic parsing within SyntaxEditor.
 
-The best part is that all this can be done in only **a few lines of code**!
+The best part is that all this can be done with only a few lines of code!
 
 > [!NOTE]
 > SyntaxEditor's integration with Irony parsers via this add-on is being deprecated.  We offer and recommend our own advanced [LL(*) Parser Framework](../ll-parser-framework/index.md) instead that features grammars that are written in C#/VB using EBNF-like notation, customizable AST construction, advanced error handling/reporting, easy code injection, a complete debugger UI, and much more.

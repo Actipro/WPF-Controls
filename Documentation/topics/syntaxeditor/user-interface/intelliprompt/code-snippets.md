@@ -5,11 +5,12 @@ order: 6
 ---
 # Code Snippets
 
-IntelliPrompt code snippets provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted and the end user can tab between the fields to edit their values.
+IntelliPrompt code snippets provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted, and the end user can <kbd>Tab</kbd> between the fields to edit their values.
 
 Multiple fields can be declared with the same ID.  In this scenario, only one of the fields with that ID in a template session will be editable.  When that field's value is changed by the end user, the dependent fields (the other non-editable fields with the same ID) will have their value updated as well.  This improves end user typing efficiency.
 
-The XML code snippet file format used is the same as Visual Studio's.  This allows for any Visual Studio compatible code snippet to be used in SyntaxEditor.
+> [!TIP]
+> The XML code snippet file format used is the same as Visual Studio's.  This allows for any Visual Studio compatible code snippet to be used in SyntaxEditor.
 
 ## Opening Selection Sessions
 

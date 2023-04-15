@@ -15,7 +15,7 @@ The [EnumPicker](xref:@ActiproUIRoot.Controls.Editors.EnumPicker) directly embed
 
 The [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) property provides a quick and easy way to setup to the list box.  The [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.EnumType) property is used to build the items presented by the `EnumPicker`. The items are constructed by reflecting the enumeration type, with full support for the `FlagsAttribute`.
 
-When the [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) property is bound/set to a non-null enumeration value, then the enumeration type will be automatically set (if it has not been explicitly set).  Therefore, the [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.EnumType) only needs to be set when [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) is bound to a nullable enumeration type.
+When the [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) property is bound/set to a non-`null` enumeration value, then the enumeration type will be automatically set (if it has not been explicitly set).  Therefore, the [EnumType](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.EnumType) only needs to be set when [Value](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.Value) is bound to a nullable enumeration type.
 
 ## Using Display Attributes
 

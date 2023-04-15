@@ -53,7 +53,7 @@ protected override void OnExit(ExitEventArgs e) {
 }
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > Failure to set up an ambient parse request dispatcher when using the language will result in unnecessary UI slowdown since parse operations will be performed in the UI thread instead of in a worker thread.
 
 ## Configure the JsonSyntaxLanguage
@@ -79,7 +79,7 @@ This code applies the language to a document in a [SyntaxEditor](xref:@ActiproUI
 editor.Document.Language = language;
 ```
 
-> [!NOTE]
+> [!TIP]
 > We recommend reusing your [JsonSyntaxLanguage](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JsonSyntaxLanguage) instance among all the documents in your application that are editing JSON code.  This saves on overall memory usage and reduces load times.
 
 ## Assembly Requirements

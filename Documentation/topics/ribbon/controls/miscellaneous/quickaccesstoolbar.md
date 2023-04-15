@@ -31,7 +31,7 @@ This code sample shows how to define the quick access toolbar items for a ribbon
 
 The QAT can be located either above or below the ribbon. The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarLocation) property gets and sets the location of the QAT.  It takes an enueration of type [QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Ribbon.QuickAccessToolBarLocation).
 
-The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocationChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarLocationChanged) event fires when the location changes.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[QuickAccessToolBarLocationChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.QuickAccessToolBarLocationChanged) event is raised when the location changes.
 
 ## Hiding the Quick Access Toolbar
 

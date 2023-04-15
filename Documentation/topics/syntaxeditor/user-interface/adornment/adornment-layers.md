@@ -9,7 +9,7 @@ Adornment layers are panels that are stacked within a view's text area.  Each la
 
 ## Adornment Layers and Definitions
 
-Adornment layers, represented by the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer) interface, are panels that can contain adornment elements.  Typically related adornment elements are grouped into a single adornment layer.  For instance, a squiggle lines are in one adornment layer, however selection is rendered in a separate layer.
+Adornment layers, represented by the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer) interface, are panels that can contain adornment elements.  Typically, related adornment elements are grouped into a single adornment layer.  For instance, squiggle lines are in one adornment layer, however selection is rendered in a separate layer.
 
 ### Adornment Layer Definitions
 
@@ -27,7 +27,7 @@ Therefore, you could easily indicate that a custom layer should appear before th
 This code shows how to create an adornment layer definition that renders adornments in front of the text foreground layer:
 
 ```csharp
-AdornmentLayerDefinition def = new AdornmentLayerDefinition("CustomLayer", 
+AdornmentLayerDefinition def = new AdornmentLayerDefinition("CustomLayer",
 	new Ordering(AdornmentLayerDefinitions.TextForeground, OrderPlacement.Before));
 ```
 
@@ -35,7 +35,7 @@ AdornmentLayerDefinition def = new AdornmentLayerDefinition("CustomLayer",
 
 ### Element-Based and Draw-Based Adornments
 
-Adornments can render via UI elements or by drawing themselves.  Most of our pre-defined adornments use the draw-based mechanism where they render themselves in the rendering pipeline instead of using UI elements to render themselves.  It's important to note that element-based adornments will always render "on top" of draw-based adornments since the elements are stacked on top of the drawing canvas element.  Adornments like alternating row highlights should be draw-based so that they stack appropriately with other pre-defined adornment layers.  Adornments like intra-line controls can be element-based since they generally appear on top of other view content anyhow.
+Adornments can be rendered via UI elements or by drawing themselves.  Most of our pre-defined adornments use the draw-based mechanism where they render themselves in the rendering pipeline instead of using UI elements to render themselves.  It's important to note that element-based adornments will always render "on top" of draw-based adornments since the elements are stacked on top of the drawing canvas element.  Adornments like alternating row highlights should be draw-based so that they stack appropriately with other pre-defined adornment layers.  Adornments like intra-line controls can be element-based since they generally appear on top of other view content anyhow.
 
 }
 
@@ -84,7 +84,7 @@ This table shows the built-in adornment layers, listed in order by which the lay
 
 @if (winrt wpf) {
 
-> [!NOTE]
+> [!IMPORTANT]
 > Element-based adornments will always render "on top" of draw-based adornments since the drawing canvas is an element itself.  Most of the pre-defined adornments are draw-based, so use draw-based adornments if you wish to inject adornments within those layers.
 
 }
@@ -97,18 +97,18 @@ Adornments, represented by the [IAdornment](xref:@ActiproUIRoot.Controls.SyntaxE
 
 Both methods have the following common parameters:
 
-- reason - An [AdornmentChangeReason](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) indicating the add reason.
-- visualElement - For element-based adornments, the actual `UIElement` used to visually render the adornment.  It is commonly a shape but could be any element type.
-- drawCallback - For draw-based adornments, a [DrawAdornmentCallback](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.DrawAdornmentCallback) method that is invoked to draw the adornment.
-- location - The initial location of the adornment, in text area-relative coordinates.  Methods like [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[TransformToTextArea](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TransformToTextArea*) can be used to transform coordinates from view-relative to text area-relative.
-- tag - An object that contains user-defined data about the adornment.  The tag can optionally later be used to find specific adornments that have been created.
-- removedCallback - The callback method that is invoked when the adornment is removed from its parent [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).
+- `reason` - An [AdornmentChangeReason](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) indicating the add reason.
+- `visualElement` - For element-based adornments, the actual `UIElement` used to visually render the adornment.  It is commonly a shape but could be any element type.
+- `drawCallback` - For draw-based adornments, a [DrawAdornmentCallback](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.DrawAdornmentCallback) method that is invoked to draw the adornment.
+- `location` - The initial location of the adornment, in text area-relative coordinates.  Methods like [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[TransformToTextArea](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TransformToTextArea*) can be used to transform coordinates from view-relative to text area-relative.
+- `tag` - An object that contains user-defined data about the adornment.  The tag can optionally later be used to find specific adornments that have been created.
+- `removedCallback` - The callback method that is invoked when the adornment is removed from its parent [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).
 
 If the adornment should be tracked with text, it will automatically be removed when the related text range is scrolled out of the view.  These parameters apply to this [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) overload:
 
-- viewLine - The [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) with which the adornment is associated, if any.
-- snapshotRange - The [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) that indicates the range of the adornment.
-- trackingModes - A [TextRangeTrackingModes](xref:ActiproSoftware.Text.TextRangeTrackingModes) indicating the tracking modes to use.
+- `viewLine` - The [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) with which the adornment is associated, if any.
+- `snapshotRange` - The [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) that indicates the range of the adornment.
+- `trackingModes` - A [TextRangeTrackingModes](xref:ActiproSoftware.Text.TextRangeTrackingModes) indicating the tracking modes to use.
 
 ### Finding Existing Adornments
 
@@ -148,9 +148,9 @@ The type parameter for the class indicates the type of view to support.  To supp
 
 The constructor accepts up to three parameters:
 
-- view - The view to which the manager will be attached.
-- layerDefinition - The [AdornmentLayerDefinition](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinition) that indicates the definition for the adornment layer to use.  The layer is available via the [AdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.AdornmentLayer) property.
-- isForLanguage - Optional.  When true, indicates that the manager is something installed by a syntax language and that if the view's document or its language are changed, the managers should auto-close itself.  Otherwise the manager will not close unless the view is closed or it is closed explicitly via the [Close](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.Close*) method.
+- `view` - The view to which the manager will be attached.
+- `layerDefinition` - The [AdornmentLayerDefinition](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentLayerDefinition) that indicates the definition for the adornment layer to use.  The layer is available via the [AdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.AdornmentLayer) property.
+- `isForLanguage` - (Optional) When `true`, indicates that the manager is something installed by a syntax language and that if the view's document or its language are changed, the managers should auto-close themselves.  Otherwise the manager will not close unless the view is closed or it is closed explicitly via the [Close](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.Close*) method.
 
 The [View](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.View) property provides access to the view that contains the adornment layer.  The [AdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.AdornmentLayer) property specifies the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer) that is used by this manager.
 
@@ -158,7 +158,7 @@ The [Close](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.
 
 The [IsActive](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.IsActive) property is optionally used but provides a handy way to indicate whether the manager's adornments should be displayed or not.  When its value changes, the [OnIsActiveChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.AdornmentManagerBase`1.OnIsActiveChanged*) method is called.  Inherited classes can override this method to add/update/remove adornments as appropriate.
 
-Adornment managers typically link up to various document and view events in their constructor and detach from the events when the manager is closed.  While open, when the events occur, adornments are added to and removed from the managed adornment layer.  A common event that is attached to is the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[TextAreaLayout](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TextAreaLayout) event.  This event's arguments pass the list of view lines that are added/updated/removed/translated in the layout, if any.  Thus you can adjust your adornments appropriately using the add/remove methods of the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer). [IAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment) instances also have [Location](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment.Location) properties that can be set to move them.  If you wish to move an adornment by a certain delta amount, it can use the [Translate](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment.Translate*) event instead.
+Adornment managers typically link up to various document and view events in their constructor and detach from the events when the manager is closed.  While open, when the events occur, adornments are added to and removed from the managed adornment layer.  A common event that is attached to is the [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[TextAreaLayout](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TextAreaLayout) event.  This event's arguments pass the list of view lines that are added/updated/removed/translated in the layout, if any.  Thus, you can adjust your adornments appropriately using the add/remove methods of the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer). [IAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment) instances also have [Location](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment.Location) properties that can be set to move them.  If you wish to move an adornment by a certain delta amount, it can use the [Translate](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment.Translate*) event instead.
 
 ### The DecorationAdornmentManagerBase<T,U> Class
 
@@ -168,10 +168,10 @@ The base class is notified whenever tags are changed or when the text area layou
 
 Whenever a new adornment needs to be created for a tagged range, the abstract [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2.AddAdornment*) method is called.  This method has these parameters:
 
-- reason - An [AdornmentChangeReason](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) indicating the add reason.
-- viewLine - The [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) upon which the adornment will be placed.
-- tagRange - A [TagSnapshotRange<T>](xref:ActiproSoftware.Text.Tagging.TagSnapshotRange`1) indicating the tag and snapshot range for which an adornment is needed on this line.  Note that the tag range could extend outside of the view line's range if the tag covers more than one view line.
-- bounds - The text bounds in which to render the adornment.
+- `reason` - An [AdornmentChangeReason](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.AdornmentChangeReason) indicating the add reason.
+- `viewLine` - The [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) upon which the adornment will be placed.
+- `tagRange` - A [TagSnapshotRange<T>](xref:ActiproSoftware.Text.Tagging.TagSnapshotRange`1) indicating the tag and snapshot range for which an adornment is needed on this line.  Note that the tag range could extend outside of the view line's range if the tag covers more than one view line.
+- `bounds` - The text bounds in which to render the adornment.
 
 Inheritors of this class should override the [AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.Implementation.DecorationAdornmentManagerBase`2.AddAdornment*) method and in there, have it create a visual element (such as a shape) that will be rendered, then call the [IAdornmentLayer](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer).[AddAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentLayer.AddAdornment*) method to add the element into the adornment layer and create an [IAdornment](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornment).
 
@@ -179,7 +179,7 @@ This base class makes it very easy to add adornments to text ranges via the use 
 
 ## Adornment Manager Providers
 
-Adornment manager providers, represented by the [IAdornmentManagerProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentManagerProvider) interface, are objects that can create/retrieve adornment managers for a particular view.  Adornment manager providers are called on-demand when a view is created or the view's document/language are changed.
+Adornment manager providers, represented by the [IAdornmentManagerProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentManagerProvider) interface, are objects that can create/retrieve adornment managers for a particular view.  Adornment manager providers are called on-demand when a view is created, or the view's document/language are changed.
 
 The [IAdornmentManagerProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentManagerProvider) interface has a [GetAdornmentManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Adornments.IAdornmentManagerProvider.GetAdornmentManager*) method that returns an adornment manager instance to use for the specified view.
 

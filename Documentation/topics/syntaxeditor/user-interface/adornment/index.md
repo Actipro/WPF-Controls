@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-SyntaxEditor has a fully-extensible adornment layer framework that allows for any sort of custom content to be inserted within a view's text area.  This can include everything from alternating row highlights, to animated text decorations, or anything else you can imagine.
+SyntaxEditor has a fully-extensible adornment layer framework that allows for any sort of custom content to be inserted within a view's text area.  This can include everything from alternating row highlights to animated text decorations, or anything else you can imagine.
 
 All the built-in text area rendering is done using adornment layers, such as the text itself, selection, caret, and more.
 
@@ -33,7 +33,7 @@ See the [Squiggle Lines](squiggle-lines.md) topic for more information.
 
 SyntaxEditor supports the ability to insert intra-text spacers, or space between text characters, and have adornments render within the space that was created.
 
-This feature can be used to insert any sort of UI element in-line with the text of a view, and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for inserting in-line images, in-line buttons that can be used to take action on nearby document text, etc.
+This feature can be used to insert any sort of UI element in-line with the text of a view and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for inserting in-line images, in-line buttons that can be used to take action on nearby document text, etc.
 
 See the [Intra-Text Adornments](intra-text-adornments.md) topic for more information.
 
@@ -41,6 +41,6 @@ See the [Intra-Text Adornments](intra-text-adornments.md) topic for more informa
 
 SyntaxEditor supports the ability to insert intra-line spacers, or margin space around view lines, and have adornments render within the space that was created.
 
-This feature can be used to insert any sort of UI element in-line with a view line, and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for functionality similar to Code Lens and Peek Definition within the Visual Studio code editor.
+This feature can be used to insert any sort of UI element in-line with a view line and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for functionality similar to Code Lens and Peek Definition within the Visual Studio code editor.
 
 See the [Intra-Line Adornments](intra-line-adornments.md) topic for more information.

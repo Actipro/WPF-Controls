@@ -7,12 +7,23 @@ order: 1
 
 Editor views are where end users primarily interact with documents and are customizable in a number of ways.
 
+@if (wpf) {
+
 > [!TIP]
-> If you want your SyntaxEditor instances to look just like Visual Studio's code editor, use the `Consolas` font with a `FontSize` of `13`.
+> The recommended settings for code editing are to use `Consolas` font with a `FontSize` of `13` (which is the WPF equivalent of an 11pt font).
+
+}
+
+@if (winforms) {
+
+> [!TIP]
+> The recommended settings for code editing are to use `Consolas` font with a `FontSize` of `11`.
+
+}
 
 ## Caret
 
-The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simulataneous editing in several document locations at the same time.
+The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simultaneous editing in several document locations at the same time.
 
 See the [Caret](caret.md) topic for more information.
 
@@ -106,6 +117,12 @@ Indentation guides are subtle vertical lines that render at each tab stop on lin
 
 See the [Indentation Guides](indentation-guides.md) topic for more information.
 
+## Column Guides
+
+Column guides are vertical lines typically aligned with a specific column but can also be displayed at an explicit location on the x-axis of the view.
+
+See the [Column Guides](column-guides.md) topic for more information.
+
 ## Scrolling
 
 Scrolling can be performed by end users via keyboard, mouse wheel, or touch.  Editor views can be scrolled programmatically as well.
@@ -116,7 +133,7 @@ Scrollbar acceleration allows scrolling speed to increase the longer a scrollbar
 
 @if (winrt wpf) {
 
-Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates. 
+Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates.
 
 }
 

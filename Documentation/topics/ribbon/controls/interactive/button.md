@@ -46,7 +46,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Checked State
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the checked state of the control.  By default a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the checked state of the control.  By default, a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Checkable Controls](../../command-model/checkable-controls.md) topic for detailed information on using this command parameter to manage the checked state.
 

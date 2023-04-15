@@ -108,7 +108,7 @@ When the caret is over a part, the part value may be incremented or decremented.
 
 Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.LargeChange) property.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a null value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Rounding Decimal Places
 

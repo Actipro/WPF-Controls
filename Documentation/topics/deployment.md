@@ -433,6 +433,6 @@ You do **NOT** need to use our product installers to place our controls on end u
 
 If you are getting license popups on end user machines, your licensing configuration is incorrect on your build machine.  Read the [Licensing](licensing.md) topic to troubleshoot the issue.  Once licensing is configured properly, you should only need to xcopy our product assemblies into the same folder as your application on end machines.
 
-### Do Not Install Our Controls to End User GACs (Global Assembly Cache)
+### Do Not Install Our Controls to End User GAC (Global Assembly Cache)
 
-We ask that you do not place our .NET Framework-based control assemblies in the GACs of end user machines.  Our controls should only be in the GACs of developer machines, which is done by our product installer.
+We ask that you do not place our .NET Framework-based control assemblies in the GAC of end user machines.  Our controls should only be in the GAC of developer machines, which is done by our product installer.

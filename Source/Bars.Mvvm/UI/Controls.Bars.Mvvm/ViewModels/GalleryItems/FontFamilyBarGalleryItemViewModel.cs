@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
@@ -11,12 +12,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a gallery item view model for a font family.
 	/// </summary>
-	public class FontFamilyBarGalleryItemViewModel : BarGalleryItemViewModelBase {
+	public class FontFamilyBarGalleryItemViewModel : BarGalleryItemViewModel<string> {
 
 		private const string CalibriFontFamilyName = "Calibri";
 		internal const string DefaultFontFamilyName = CalibriFontFamilyName;
-
-		private string name;
 
 		private static ReadOnlyCollection<FontFamilyBarGalleryItemViewModel> cachedDefaultCollection;
 		private static int[] knownFontWeights;
@@ -26,32 +25,35 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the class.
+		/// Initializes a new instance of the class with a default font family name and category.
 		/// </summary>
 		public FontFamilyBarGalleryItemViewModel()  // Parameterless constructor required for XAML support
 			: this(DefaultFontFamilyName) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified name.
+		/// Initializes a new instance of the class with the specified name and a default category.
 		/// </summary>
-		/// <param name="name">The font family name.</param>
-		public FontFamilyBarGalleryItemViewModel(string name)
-			: this(SR.GetString(SRName.UIGalleryItemCategoryAllFontsText), name) { }
+		/// <param name="value">The font family name.</param>
+		public FontFamilyBarGalleryItemViewModel(string value)
+			: this(value, DefaultCategory) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified category and name.
+		/// Initializes a new instance of the class with the specified name and category.
 		/// </summary>
-		/// <param name="category">The gallery item category.</param>
-		/// <param name="name">The font family name.</param>
-		public FontFamilyBarGalleryItemViewModel(string category, string name)
-			: base(category) {
+		/// <param name="value">The font family name.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public FontFamilyBarGalleryItemViewModel(string value, string category)
+			: this(value, category, label: null) { }
 
-			if (string.IsNullOrEmpty(name))
-				throw new ArgumentNullException(nameof(name));
+		/// <summary>
+		/// Initializes a new instance of the class with the specified name, category, and label.
+		/// </summary>
+		/// <param name="value">The font family name.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public FontFamilyBarGalleryItemViewModel(string value, string category, string label)
+			: base(ValidateFontFamilyName(value, nameof(value)), category, label) { }
 
-			this.name = name;
-		}
-		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// NON-PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,6 +115,20 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			return true;
 		}
 
+		/// <summary>
+		/// Tests if the given font family name is valid and throws <see cref="ArgumentException"/> if invalid.
+		/// </summary>
+		/// <param name="name">The value to be tested.</param>
+		/// <param name="paramName">The name of the parameter which defined the value.</param>
+		/// <exception cref="ArgumentException">Throw if the given name is not valid.</exception>
+		/// <returns>Returns the font family name if an exception is not thrown.</returns>
+		private static string ValidateFontFamilyName(string name, string paramName) {
+			if (string.IsNullOrWhiteSpace(name))
+				throw new ArgumentException("Font family name cannot be null, empty, or filled with white space.", paramName);
+
+			return name;
+		}
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,11 +178,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 						if (hasRegularTypeFace) {
 							// Include each font variant
-							list.AddRange(fontFamilyTypeFaceNames.Select(fontName => new FontFamilyBarGalleryItemViewModel(allFontsCategory, fontName)));
+							list.AddRange(fontFamilyTypeFaceNames.Select(fontName => new FontFamilyBarGalleryItemViewModel(fontName, allFontsCategory)));
 						}
 						else {
 							// Ignore additional typeface variants if one of those was not "regular"
-							list.Add(new FontFamilyBarGalleryItemViewModel(allFontsCategory, fontFamily.Source));
+							list.Add(new FontFamilyBarGalleryItemViewModel(fontFamily.Source, allFontsCategory));
 						}
 					}
 				}
@@ -178,37 +194,25 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			return cachedDefaultCollection
 				?? Enumerable.Empty<FontFamilyBarGalleryItemViewModel>();
 		}
+		
+		/// <summary>
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models representing the installed font families, allowing for possible categorization and filtering.
+		/// </summary>
+		/// <param name="categorize">Whether the collection view source should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
 
 		/// <summary>
-		/// Gets or sets the text label to display.
+		/// Gets the localizable default category to be used for view models of this type.
 		/// </summary>
-		/// <value>The text label to display.</value>
-		/// <remarks>If the label is not explicitly defined, the current <see cref="Name"/> value will be used as the label.</remarks>
-		public override string Label {
-			get => base.Label ?? Name;
-			set => base.Label = value;
-		}
-
-		/// <summary>
-		/// Gets or sets the font family name.
-		/// </summary>
-		/// <value>The font family name.</value>
-		public string Name {
-			get {
-				return name;
-			}
-			set {
-				if (name != value) {
-					name = value;
-					this.NotifyPropertyChanged(nameof(Name));
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
+		/// <value>The string category name.</value>
+		public static string DefaultCategory => SR.GetString(SRName.UIGalleryItemCategoryAllFontsText);
 
 		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Name={this.Name}]";
+		public override string Value {
+			get => base.Value;
+			set => base.Value = ValidateFontFamilyName(value, nameof(value));
 		}
 
 	}

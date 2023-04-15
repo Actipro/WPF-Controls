@@ -38,7 +38,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 				var pen = new Pen(foreground, 1.0);
 
-				switch (viewModel.Kind) {
+				switch (viewModel.Value) {
 					case ShapeKind.Line:
 						drawingContext.DrawLine(pen, new Point(x + 0.5, y + 0.5), new Point(x + Extent - 0.5, y + Extent - 0.5));
 						break;

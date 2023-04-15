@@ -52,7 +52,7 @@ private static ITypeReference MyUnknownReturnTypeReferenceCallback(IReflectionDe
 			}
 		}
 	}
-			
+
 	return null;
 }
 ```

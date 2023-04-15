@@ -1,13 +1,17 @@
 ﻿using ActiproSoftware.ProductSamples.BarsSamples.Common;
+using ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses;
 using ActiproSoftware.SampleBrowser.SampleData;
 using ActiproSoftware.Windows.Controls;
+using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -24,6 +28,13 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		private ICommand notImplementedCommand;
 		private ICommand textBoxCommitCommand;
 
+		private CollectionViewSource comboBoxColorItems;
+		private CollectionViewSource comboBoxEnumItems;
+		private CollectionViewSource comboBoxFontFamilyItems;
+		private IEnumerable comboBoxFontSizeItems;
+		private CollectionViewSource comboBoxNumberItems;
+		private CollectionViewSource comboBoxPersonItems;
+
 		#region Dependency Properties
 
 		public static readonly DependencyProperty ComboboxPreviewLabelProperty = DependencyProperty.Register(nameof(ComboboxPreviewLabel), typeof(string), typeof(SampleControlBase), new PropertyMetadata("<None>"));
@@ -38,40 +49,79 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		/// Gets the items to be displayed in combobox for selecting colors.
 		/// </summary>
 		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable<SimpleComboBoxGalleryItem> ComboBoxColorItems {
+		public IEnumerable ComboBoxColorItems {
 			get {
-				var primaryCategory = "Primary Colors";
-				yield return new SimpleComboBoxGalleryItem("Red", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.RedSwatch) };
-				yield return new SimpleComboBoxGalleryItem("Yellow", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.YellowSwatch) };
-				yield return new SimpleComboBoxGalleryItem("Blue", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.BlueSwatch) };
+				if (comboBoxColorItems is null) {
+					var primaryCategory = "Primary Colors";
+					var secondaryCategory = "Secondary Colors";
+					
+					comboBoxColorItems = BarGalleryViewModel.CreateCollectionViewSource(new [] {
+						new TextBarGalleryItemViewModel("Red", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.RedSwatch) },
+						new TextBarGalleryItemViewModel("Yellow", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.YellowSwatch) },
+						new TextBarGalleryItemViewModel("Blue", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.BlueSwatch) },
 
-				var secondaryCategory = "Secondary Colors";
-				yield return new SimpleComboBoxGalleryItem("Orange", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.OrangeSwatch) };
-				yield return new SimpleComboBoxGalleryItem("Green", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.GreenSwatch) };
-				yield return new SimpleComboBoxGalleryItem("Purple", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.PurpleSwatch) };
+						new TextBarGalleryItemViewModel("Orange", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.OrangeSwatch) },
+						new TextBarGalleryItemViewModel("Green", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.GreenSwatch) },
+						new TextBarGalleryItemViewModel("Purple", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.PurpleSwatch) },
+					}, categorize: true);
+				}
+
+				return comboBoxColorItems.View;
+			}
+		}
+
+		/// <summary>
+		/// Gets the items to be displayed in combobox based on an enum.
+		/// </summary>
+		/// <value>An <see cref="IEnumerable"/> of type <see cref="EnumBarGalleryItemViewModel{TEnum}"/>.</value>
+		public IEnumerable ComboBoxEnumItems {
+			get {
+				if (comboBoxEnumItems is null) {
+					comboBoxEnumItems = BarGalleryViewModel.CreateCollectionViewSource(
+						EnumBarGalleryItemViewModel<SampleEnum>.CreateCollection().Select(vm => {
+							// Apply a default category
+							if (vm.Category is null)
+								vm.Category = "Uncategorized";
+							return vm;
+						}),
+						categorize: true);
+				}
+
+				return comboBoxEnumItems.View;
 			}
 		}
 
 		/// <summary>
 		/// Gets the items to be displayed in combobox for selecting font families.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="FontFamilyBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<FontFamilyBarGalleryItemViewModel> ComboBoxFontFamilyItems {
+		/// <value>An <see cref="IEnumerable"/> of type <see cref="FontFamilyBarGalleryItemViewModel"/>.</value>
+		public IEnumerable ComboBoxFontFamilyItems {
 			get {
-				const string RecentlyUsedCategory = "Recently-Used Fonts";
+				if (comboBoxFontFamilyItems is null) {
+					const string RecentlyUsedCategory = "Recently-Used Fonts";
 
-				return new FontFamilyBarGalleryItemViewModel[] {
-					new FontFamilyBarGalleryItemViewModel(RecentlyUsedCategory, FontSettings.DefaultFontFamilyName)
-				}.Concat(FontFamilyBarGalleryItemViewModel.CreateDefaultCollection());
+					comboBoxFontFamilyItems = BarGalleryViewModel.CreateCollectionViewSource(
+						new FontFamilyBarGalleryItemViewModel[] {
+							new FontFamilyBarGalleryItemViewModel(FontSettings.DefaultFontFamilyName, RecentlyUsedCategory)
+						}.Concat(FontFamilyBarGalleryItemViewModel.CreateDefaultCollection()),
+					categorize: true);
+				}
+
+				return comboBoxFontFamilyItems.View;
 			}
 		}
 
 		/// <summary>
 		/// Gets the items to be displayed in combobox for selecting font sizes.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="FontSizeBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<FontSizeBarGalleryItemViewModel> ComboBoxFontSizeItems {
-			get => FontSizeBarGalleryItemViewModel.CreateDefaultCollection();
+		/// <value>An <see cref="IEnumerable"/> of type <see cref="FontSizeBarGalleryItemViewModel"/>.</value>
+		public IEnumerable ComboBoxFontSizeItems {
+			get {
+				if (comboBoxFontSizeItems is null)
+					comboBoxFontSizeItems = FontSizeBarGalleryItemViewModel.CreateDefaultCollection();
+
+				return comboBoxFontSizeItems;
+			}
 		}
 
 		/// <summary>
@@ -81,7 +131,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		public ICommand ComboBoxGalleryCommand {
 			get {
 				if (comboBoxGalleryCommand is null) {
-					comboBoxGalleryCommand = new PreviewableDelegateCommand<BarGalleryItemViewModelBase>(
+					comboBoxGalleryCommand = new PreviewableDelegateCommand<IBarGalleryItemViewModel>(
 						executeAction:			param => ThemedMessageBox.Show($"The value '{param?.Label}' was matched from the gallery.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
 						canExecuteFunc:			param => true,
 						
@@ -97,26 +147,42 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		/// <summary>
 		/// Gets the items to be displayed in combobox for selecting numbers.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable<SimpleComboBoxGalleryItem> ComboBoxNumberItems {
+		/// <value>An <see cref="IEnumerable"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
+		public IEnumerable ComboBoxNumberItems {
 			get {
-				var evenCategory = "Even Numbers";
-				var oddCategory = "Odd Numbers";
-				for (var i = 1; i <= 20; i++) {
-					bool isEven = (i % 2 == 0);
-					yield return new SimpleComboBoxGalleryItem(i.ToString(), (isEven ? evenCategory : oddCategory));
+				if (comboBoxNumberItems is null) {
+					var evenCategory = "Even Numbers";
+					var oddCategory = "Odd Numbers";
+
+					var items = new List<SimpleComboBoxGalleryItem>();
+					for (var i = 1; i <= 20; i++) {
+						bool isEven = (i % 2 == 0);
+						items.Add(new SimpleComboBoxGalleryItem(i.ToString(), (isEven ? evenCategory : oddCategory)));
+					}
+
+					comboBoxNumberItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
 				}
+
+				return comboBoxNumberItems.View;
 			}
 		}
 
 		/// <summary>
 		/// Gets the items to be displayed in combobox for selecting people.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable<SimpleComboBoxGalleryItem> ComboBoxPersonItems {
+		/// <value>An <see cref="IEnumerable"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
+		public IEnumerable ComboBoxPersonItems {
 			get {
-				foreach (var person in People.All.OrderBy(x => x.FullName))
-					yield return new SimpleComboBoxGalleryItem(person.FullName, person.Position);
+				if (comboBoxPersonItems is null) {
+					var items = new List<SimpleComboBoxGalleryItem>();
+
+					foreach (var person in People.All.OrderBy(x => x.FullName))
+						items.Add(new SimpleComboBoxGalleryItem(person.FullName, person.Position));
+
+					comboBoxPersonItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
+				}
+
+				return comboBoxPersonItems.View;
 			}
 		}
 		

@@ -5,9 +5,9 @@ order: 1
 ---
 # Overview
 
-This guide walks through the steps needed to build and use your own syntax languages with SyntaxEditor.  Syntax languages are a key part of the SyntaxEditor control product because they are part of the flow that enables syntax highlighting and other features in SyntaxEditor.
+This guide walks through the steps needed to build and use your own syntax languages with SyntaxEditor.  Syntax languages are a key part of the `SyntaxEditor` control product because they are part of the flow that enables syntax highlighting and other features in SyntaxEditor.
 
-To better illustrate, lets examine the flow that occurs when text is typed into a SyntaxEditor to see how a language is involved in determining how the typed text gets rendered.
+To better illustrate, let's examine the flow that occurs when text is typed into a SyntaxEditor to see how a language is involved in determining how the typed text gets rendered.
 
 ![Screenshot](../images/input-to-display-flow.png)
 
@@ -29,7 +29,7 @@ See the [Creating an ISyntaxLanguage](creating-language.md) topic for more infor
 
 ## Loading a Language Definition (.langdef File)
 
-The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with *.langdef* file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
+The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with `.langdef` file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
 
 See the [Loading a Language Definition (.langdef File)](loading-lang-def.md) topic for details on how to load one of these files at run-time.
 
@@ -37,7 +37,7 @@ See the [Loading a Language Definition (.langdef File)](loading-lang-def.md) top
 
 Syntax languages are architected using the Service Locator design pattern, which keeps the [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) interface small while still allowing for powerful extensibility of features.
 
-Language features such as lexing, token tagger providers, line commenters, etc. can be registered as services on each language instance.  Certain service types are well known and extension methods provide easy access to the built-in feature services.  Any sort of custom service can be registered with a language and retrieved later as well.
+Language features such as lexing, token tagger providers, line commenters, etc. can be registered as services on each language instance.  Certain service types are well known, and extension methods provide easy access to the built-in feature services.  Any sort of custom service can be registered with a language and retrieved later as well.
 
 See the [Service Locator Architecture](service-locator-architecture.md) topic for more information.
 

@@ -107,15 +107,20 @@ The following controls can appear within the context of a toolbar and show their
 - [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton) : `Menu`, `ItemsControl` *(see [Split Button](../controls/split-button.md) topic)*
   - *Menu controls (e.g., `BarMenuItem`... see "Menu Controls" section)*
 - [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) : `ItemsControl` *(see [Gallery](../controls/gallery.md) topic)*
-  - [MenuItems](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.MenuItems) : `IEnumerable`
-    - *Optional additional menu controls (e.g., `BarMenuItem`... see "Menu Controls" section)*
+  - [AboveMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.AboveMenuItems) : `IEnumerable`
+    - *Optional additional menu controls above the gallery items (e.g., `BarMenuItem`... see "Menu Controls" section)*
   - `ItemsControl.Items`
     - [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) : `ContentControl`
+  - [BelowMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.BelowMenuItems) : `IEnumerable`
+    - *Optional additional menu controls below the gallery items (e.g., `BarMenuItem`... see "Menu Controls" section)*
 - [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox) : `Button` *(see [Checkbox](../controls/checkbox.md) topic)*
-- [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) : `Menu`, `ItemsControl` *(see [Combobox](../controls/combobox.md) topic)*
-  - [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) : `ItemsControl` *(combobox items presented as gallery items)*
+- [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) : `ItemsControl` *(see [Combobox](../controls/combobox.md) topic)*
+  - [AboveMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.AboveMenuItems) : `IEnumerable`
+    - *Optional additional menu controls above the gallery items (e.g., `BarMenuItem`... see "Menu Controls" section)*
+  - `ItemsControl.Items`
     - [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) : `ContentControl`
-  - *Optional additional menu controls (e.g., `BarMenuItem`... see "Menu Controls" section)*
+  - [BelowMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.BelowMenuItems) : `IEnumerable`
+    - *Optional additional menu controls below the gallery items (e.g., `BarMenuItem`... see "Menu Controls" section)*
 - [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) : `TextBox` *(see [Textbox](../controls/textbox.md) topic)*
 - [BarSeparator](xref:@ActiproUIRoot.Controls.Bars.BarSeparator) : `Separator` *(see [Separator](../controls/separator.md) topic)*
 

@@ -40,7 +40,7 @@ The most important one, the [Grammar](xref:ActiproSoftware.Text.Parsing.LLParser
 
 An [ILLParser](xref:ActiproSoftware.Text.Parsing.LLParser.ILLParser)-based class (you should generally inherit from [LLParserBase](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParserBase)) is registered as a service to the [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage) that is associated with the [SyntaxEditor](../index.md).
 
-An [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader)-based class is necessary to provide tokens to the parsing framework.  For some languages with [mergable lexers](../text-parsing/lexing/basic-concepts.md), it is sufficient to use the existing [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) class.  However in non-mergable lexer scenarios or scenarios where you wish to filter the tokens being supplied to the parser, you may need to subclass [TokenReaderBase](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.TokenReaderBase) or [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) for more control.
+An [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader)-based class is necessary to provide tokens to the parsing framework.  For some languages with [mergable lexers](../text-parsing/lexing/basic-concepts.md), it is sufficient to use the existing [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) class.  However, in non-mergable lexer scenarios or scenarios where you wish to filter the tokens being supplied to the parser, you may need to subclass [TokenReaderBase](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.TokenReaderBase) or [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) for more control.
 
 For more information on creating the core classes, view the [Parser Infrastructure](parser-infrastructure.md) topic.
 
@@ -48,7 +48,7 @@ For more information on creating the core classes, view the [Parser Infrastructu
 
 Your grammar class will need to define the rules for how the core parser will interpret input.  This is done by defining all the symbols that are in your language and defining a number of productions which reference the symbols.
 
-There are two types of symbols: terminals and non-terminals.  Terminals are the lowest-level fixed-input lexical element used in a grammar production rule.  In the case of Actipros text framework, terminals equate to tokens that are read in from a lexer.  Non-terminals each have a production rule that is comprised of some combination of terminal and non-terminal symbol references.
+There are two types of symbols: terminals and non-terminals.  Terminals are the lowest-level fixed-input lexical element used in a grammar production rule.  In the case of Actipro's text framework, terminals equate to tokens that are read in from a lexer.  Non-terminals each have a production rule that is comprised of some combination of terminal and non-terminal symbol references.
 
 For more information on setting up the symbols and non-terminal productions, view the [Symbols and EBNF Terms](symbols-and-terms.md) topic.
 

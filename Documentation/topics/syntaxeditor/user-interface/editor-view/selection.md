@@ -43,7 +43,7 @@ There are a number of properties on the [IEditorViewSelection](xref:@ActiproUIRo
 | [Length](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.Length) Property | Gets the absolute offset length of the primary selection range. |
 | [Mode](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.Mode) Property | Gets a [SelectionModes](xref:@ActiproUIRoot.Controls.SyntaxEditor.SelectionModes) that indicates the selection mode currently in use. |
 | [PositionRange](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.PositionRange) Property | Gets or sets the [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange) that describes the start and end [TextPosition](xref:ActiproSoftware.Text.TextPosition) of the primary selection. |
-| [Ranges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.Ranges) Property | Gets the collection of selection ranges in the view.  This collection ordinarily contains a single range, but can have more than one range when there are multiple selections.  Each selection range has its own caret at the selection range's end position. |
+| [Ranges](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.Ranges) Property | Gets the collection of selection ranges in the view.  This collection ordinarily contains a single range but can have more than one range when there are multiple selections.  Each selection range has its own caret at the selection range's end position. |
 | [StartOffset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.StartOffset) Property | Gets or sets the start offset of the primary selection range. |
 | [StartPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.StartPosition) Property | Gets or sets the [TextPosition](xref:ActiproSoftware.Text.TextPosition) that represents the start of the primary selection range. |
 | [TextRange](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.TextRange) Property | Gets or sets the [TextRange](xref:ActiproSoftware.Text.TextRange) that specifies the offset range of the primary selection. |
@@ -152,13 +152,13 @@ By altering the [SelectionModes](xref:@ActiproUIRoot.Controls.SyntaxEditor.Selec
 
 ## Selection Change Event
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSelectionChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSelectionChanged) event fires whenever the selection's anchor or length have changed.  This makes the event an ideal place to update the current caret column and position in a status bar.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSelectionChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSelectionChanged) event is raised whenever the selection's anchor or length have changed.  This makes the event an ideal place to update the current caret column and position in a status bar.
 
 The event passes an [EditorViewSelectionEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewSelectionEventArgs) that has a number of useful properties on it.  It tells you the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) that contains the selection (be sure to only update UI when the view's [IsActive](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.IsActive) property is true).  The [CaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorViewSelectionEventArgs.CaretPosition) property contains the primary caret's [TextPosition](xref:ActiproSoftware.Text.TextPosition).  Use its [DisplayLine](xref:ActiproSoftware.Text.TextPosition.DisplayLine) and [DisplayCharacter](xref:ActiproSoftware.Text.TextPosition.DisplayCharacter) properties when displaying the caret location in a status bar or other user interface.
 
 ### Batch Selection Changes
 
-Sometimes multiple selection changes might be made, such as in the case of performing a text change that alters the selection, but wanting to specifically set another selection right afterward.  In this scenario, a batch can be created to wrap the text change and any selection changes.  The selection changed event will only be raised when the outermost batch is completed.
+Sometimes multiple selection changes might be made, such as in the case of performing a text change that alters the selection but wanting to specifically set another selection right afterward.  In this scenario, a batch can be created to wrap the text change and any selection changes.  The selection changed event will only be raised when the outermost batch is completed.
 
 This example shows how to create a disposable batch object.  When the batch is disposed, the batch is completed.
 
@@ -188,7 +188,7 @@ Some end users like the ability to auto-collapse the selection when a copy opera
 
 ## Selection Grippers for Touch
 
-When the end user touches a view, a small selection gripper will appear below the start and end of the selection.  The gripper can be dragged to resize the selection, or tapped to show a context menu.
+When the end user touches a view, a small selection gripper will appear below the start and end of the selection.  The gripper can be dragged to resize the selection or tapped to show a context menu.
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreSelectionGrippersEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreSelectionGrippersEnabled) property can be set to `false` to disable display of the selection grippers.
 

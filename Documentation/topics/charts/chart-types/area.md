@@ -43,7 +43,7 @@ The `Step` line kind creates a polygon that only uses horizontal and vertical li
 
 ## Line
 
-The area series can render an actual line along the top of the area to distinguish it better.  By default the line is not rendered, but it can be shown by setting [LineVisibility](xref:@ActiproUIRoot.Controls.Charts.AreaSeries.LineVisibility) to a value other than `None`.  The area series has the same configuration properties available as the line series, with regards to line rendering.
+The area series can render an actual line along the top of the area to distinguish it better.  By default, the line is not rendered, but it can be shown by setting [LineVisibility](xref:@ActiproUIRoot.Controls.Charts.AreaSeries.LineVisibility) to a value other than `None`.  The area series has the same configuration properties available as the line series, with regards to line rendering.
 
 ![Screenshot](../images/chart-types-area7.png)
 
@@ -53,7 +53,7 @@ See the [Line](line.md) topic for more information on the options available.
 
 ## Markers
 
-The area series can render a marker at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The area series has the same configuration properties available as the scatter series, with regards to marker rendering.
+The area series can render a marker at each data point to highlight the actual location.  By default, the markers are not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The area series has the same configuration properties available as the scatter series, with regards to marker rendering.
 
 ![Screenshot](../images/chart-types-area8.png)
 

@@ -23,10 +23,10 @@ View-oriented tag aggregators are created by calling the [ITextView](xref:@Actip
 
 ## Collecting Tags
 
-The [ITagAggregator<T>](xref:ActiproSoftware.Text.Tagging.ITagAggregator`1) inteface defines two overloads of a [GetTags](xref:ActiproSoftware.Text.Tagging.ITagAggregator`1.GetTags*) method.  Both methods allow you to request the tags that fall into one or more snapshot ranges.
+The [ITagAggregator<T>](xref:ActiproSoftware.Text.Tagging.ITagAggregator`1) interface defines two overloads of a [GetTags](xref:ActiproSoftware.Text.Tagging.ITagAggregator`1.GetTags*) method.  Both methods allow you to request the tags that fall into one or more snapshot ranges.
 
 When either of these methods are called, the tag aggregator examines all of the appropriate taggers that provide the tag type associated with the tag aggregator.
 
 ## Notification of Tag Changes
 
-Whenever one of the taggers being monitored by a tag aggregator raises an event that notifies its tags have changed, the tag aggregator bubbles the event up as well via the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagAggregatorBase.TagsChanged) event.  Thus any listeners to this event can refresh themselves by requesting the updated tags in the affected range.
+Whenever one of the taggers being monitored by a tag aggregator raises an event that notifies its tags have changed, the tag aggregator bubbles the event up as well via the [TagsChanged](xref:ActiproSoftware.Text.Tagging.ITagAggregatorBase.TagsChanged) event.  Thus, any listeners to this event can refresh themselves by requesting the updated tags in the affected range.

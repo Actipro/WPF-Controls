@@ -42,7 +42,7 @@ There are countless cases where it is useful to persist a hierarchy of data to X
 
 One example of this is storing the layout of a customizable control such as a [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar), where the end user can reorder and show/hide panes.  The layout needs to be saved and restored between application sessions so that their customizations are kept intact.
 
-The Shared Library has a complete framework for supporting easy serialization and deserialization of a hierarchy of objects (such as layout data) to XML.  The framework uses a standard `XmlSerializer` to do the actual conversion to and from XML, but the framework has numerous extra features, such as that ability to save/load to various targets like `Stream`s, strings, etc.  It also can fire an event any time an object is serialized or deserialized, allowing you to easily store and retrieve custom data anywhere in the serialized output.
+The Shared Library has a complete framework for supporting easy serialization and deserialization of a hierarchy of objects (such as layout data) to XML.  The framework uses a standard `XmlSerializer` to do the actual conversion to and from XML, but the framework has numerous extra features, such as that ability to save/load to various targets like `Stream`s, strings, etc.  It also can raise an event any time an object is serialized or deserialized, allowing you to easily store and retrieve custom data anywhere in the serialized output.
 
 ### Creating the Root Serializer
 

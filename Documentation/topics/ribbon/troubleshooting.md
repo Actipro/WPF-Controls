@@ -16,9 +16,9 @@ If you use relative paths for your bitmap image sources, you might encounter a `
 
 Many of the Ribbon controls like the buttons use the [DynamicImage](../shared/windows-controls/dynamicimage.md) control in their templates, which is a Shared Library control that allows for disabled buttons to render their images in grayscale.  Please see the [DynamicImage](../shared/windows-controls/dynamicimage.md) topic for more detailed information on this exception and exactly how to resolve it.
 
-## RibbonWindow Border Bottom is Clipped in VS 2012
+## RibbonWindow Border Bottom is Clipped in Visual Studio 2012
 
-For some reason that we haven't been able to determine yet, RibbonWindow's bottom border may be clipped 3-4 pixels at the bottom, but only when the Visual Studio 2012 debugger is attached or when the application is targeting .NET 4.5.  If VS 2010's debugger is attached or if a .NET 4.0 application is run directly from explorer, RibbonWindow continues to render everything correctly.
+For some reason that we haven't been able to determine yet, RibbonWindow's bottom border may be clipped 3-4 pixels at the bottom, but only when the Visual Studio 2012 debugger is attached or when the application is targeting .NET 4.5.  If Visual Studio 2010's debugger is attached or if a .NET 4.0 application is run directly from explorer, RibbonWindow continues to render everything correctly.
 
 We are going to be working on reimplementing RibbonWindow's code that allows it to render WPF content in the window's non-client area and hope to solve the issue in this particular scenario soon.
 
@@ -37,3 +37,9 @@ To help identify when this scenario is occurring, we have added a message that o
 This can occur when you are using a tablet PC or drawing tablet. The menu placement behavior will differ depending on whether the tablet support is configured for left-handed or right-handed use. This was designed so that menus do not appear under the user's hand.
 
 To resolve this issue, simply change the tablet support configuration to left-handed.
+
+## Ribbon Designer Functionality Not Working in Visual Studio 2022
+
+The designer support outlined in the [Designer Interaction](designer-interaction.md) topic only applies to .NET Framework assemblies when used with Visual Studio 2019 and earlier.  Starting with Visual Studio 2022, Microsoft changed the designer extensibility APIs in order to support .NET Core assemblies, and those changes broke the Ribbon designer functionality.  Since this older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../bars/index.md), which has a much-improved design and appearance, this designer interaction will not be migrated to the new extensibility APIs.
+
+Visual Studio 2022 users can safely use the XAML designer when working with Ribbon, but the additional designer interaction will not be available.

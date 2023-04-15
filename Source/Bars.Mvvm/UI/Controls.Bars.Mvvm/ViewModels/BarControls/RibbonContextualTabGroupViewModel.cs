@@ -15,7 +15,8 @@
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public RibbonContextualTabGroupViewModel() { }  // Parameterless constructor required for XAML support
+		public RibbonContextualTabGroupViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified key.  The label is auto-generated.

@@ -66,7 +66,7 @@ The [VariantSize](xref:@ActiproUIRoot.Controls.Bars.VariantSize).[Large](xref:@A
 
 Most controls define a `ToolBarItemVariantBehavior` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[ToolBarItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.BarButton.ToolBarItemVariantBehavior)) that determines the allowed variant sizes of a control when it is displayed in a ribbon with the `Simplified` layout mode or a toolbar.
 
-Since the default variant behavior is `AlwaysSmall`, most controls will appear without a label.  By setting `ToolBarItemVariantBehavior` = `All`, most controls will use a medium variant to display with a label when space is available, and will shrink to a small variant without a label as needed.  Use the `AlwaysMedium` value to require a label and prevent small variant sizes.  Note that large variant sizes are unsupported in toolbars.
+Since the default variant behavior is `AlwaysSmall`, most controls will appear without a label.  By setting `ToolBarItemVariantBehavior` = `All`, most controls will use a medium variant to display with a label when space is available and will shrink to a small variant without a label as needed.  Use the `AlwaysMedium` value to require a label and prevent small variant sizes.  Note that large variant sizes are unsupported in toolbars.
 
 Most controls define a `ToolBarItemCollapseBehavior` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[ToolBarItemCollapseBehavior](xref:@ActiproUIRoot.Controls.Bars.BarButton.ToolBarItemCollapseBehavior)) that determines how a control is allowed to collapse to an **Overflow** menu when in a ribbon with the `Simplified` layout mode.  The default behavior is to collapse to an **Overflow** menu as needed.  By setting the property to `Always`, a control can be forced to only ever appear on an **Overflow** menu, even if space is available.  By setting the property to `Never`, a control will never collapse to an **Overflow** menu.
 
@@ -206,7 +206,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 #### Multi-Row Layout Separators
 
-By default when a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) is configured for multi-row layout, separators are inserted between adjacent control groups on the same row to help visually differentiate the groups. For more exact control, the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).[SeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup.SeparatorMode) property can be set to any of the following [RibbonControlGroupSeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroupSeparatorMode) values to control when a separator is displayed:
+By default, when a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) is configured for multi-row layout, separators are inserted between adjacent control groups on the same row to help visually differentiate the groups. For more exact control, the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).[SeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup.SeparatorMode) property can be set to any of the following [RibbonControlGroupSeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroupSeparatorMode) values to control when a separator is displayed:
 
 | Separator Mode | Description |
 | --- | --- |

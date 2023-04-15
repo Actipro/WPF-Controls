@@ -35,6 +35,6 @@ If at the end of those events the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.W
 
 ## Setting the Window DialogResult
 
-By default, no `DialogResult` will be set on the parent `Window` when the **Finish** or **Cancel** buttons are clicked.  However by changing the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[IsWindowDialogResultUpdatingEnabled](xref:@ActiproUIRoot.Controls.Wizard.Wizard.IsWindowDialogResultUpdatingEnabled) property to `true`, the **Finish** button will set the `DialogResult` to `true` and the **Cancel** button will set it to `false`.
+By default, no `DialogResult` will be set on the parent `Window` when the **Finish** or **Cancel** buttons are clicked.  However, by changing the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[IsWindowDialogResultUpdatingEnabled](xref:@ActiproUIRoot.Controls.Wizard.Wizard.IsWindowDialogResultUpdatingEnabled) property to `true`, the **Finish** button will set the `DialogResult` to `true` and the **Cancel** button will set it to `false`.
 
 This feature should only be enabled when the wizard is on a modal `Window`.

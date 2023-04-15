@@ -21,10 +21,6 @@
 		<TextBlock Margin="15,4" Text="{Binding Label}" TextAlignment="Center" />
 	</DataTemplate>
 
-	<DataTemplate x:Key="{x:Static local:LocalResourceKeys.PersonComboBoxGalleryItemTemplate}"  DataType="local:SimpleComboBoxGalleryItem">
-		<TextBlock Margin="15,4" Text="{Binding Label}" />
-	</DataTemplate>
-
 	<DrawingImage x:Key="{x:Static local:LocalResourceKeys.RedSwatch}">
 		<DrawingImage.Drawing>
 			<DrawingGroup>

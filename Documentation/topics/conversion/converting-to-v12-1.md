@@ -16,12 +16,12 @@ Please note that both the full and the client profile variations of .NET 4.0 are
 > [!NOTE]
 > Ensure that projects using our products target .NET 4.0, .NET 4.0 Client Profile, or a later .NET version.
 
-## VS 2008 No Longer Supported
+## Visual Studio 2008 No Longer Supported
 
 Visual Studio 2008 doesn't support .NET 4.0 and only supports prior .NET versions.  Thus, it is no longer supported and no sample projects are included for it.
 
 > [!NOTE]
-> Convert old VS 2008 projects to VS 2010 or later.
+> Convert old Visual Studio 2008 projects to Visual Studio 2010 or later.
 
 ## Docking/MDI and Prism Interop Upgraded to v4.1
 

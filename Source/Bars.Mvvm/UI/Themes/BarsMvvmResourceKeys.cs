@@ -55,6 +55,7 @@ namespace ActiproSoftware.Windows.Themes {
 		// Gallery item data templates
 		private static ComponentResourceKey barGalleryItemColorDataTemplate;
 		private static ComponentResourceKey barGalleryItemColorMenuItemDataTemplate;
+		private static ComponentResourceKey barGalleryItemDefaultDataTemplate;
 		private static ComponentResourceKey barGalleryItemFontFamilyDataTemplate;
 		private static ComponentResourceKey barGalleryItemFontSizeDataTemplate;
 		private static ComponentResourceKey barGalleryItemMenuItemDataTemplate;
@@ -382,6 +383,13 @@ namespace ActiproSoftware.Windows.Themes {
 		/// <value>A resource key.</value>
 		public static ResourceKey BarGalleryItemColorMenuItemDataTemplate
 			=> (barGalleryItemColorMenuItemDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemColorMenuItemDataTemplate)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey BarGalleryItemDefaultDataTemplate
+			=> (barGalleryItemDefaultDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemDefaultDataTemplate)));
 		
 		/// <summary>
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.

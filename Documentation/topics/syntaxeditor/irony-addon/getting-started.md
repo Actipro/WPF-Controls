@@ -16,11 +16,11 @@ The Irony Add-on exposes two main types that allow you to easily support automat
 
 ### About Core Irony Lexers/Parsers
 
-Both the Actipro text/parsing framework and Irony use the industry standard terms "lexer" and "parser", where a lexer tokenizes text and a parser performs syntax/semantic parsing on the text, generally producing a parse tree or an AST (abstract syntax tree) result.
+Both the Actipro text/parsing framework and Irony use the industry standard terms *lexer* and *parser*, where a lexer tokenizes text and a parser performs syntax/semantic parsing on the text, generally producing a parse tree or an abstract syntax tree (AST) result.
 
-Unfortunately since Irony doesn't support incremental lexing, we can't harness Irony to drive syntax highlighting features in SyntaxEditor.  Alternative options are described in sections below.  We can still use Irony to perform syntax/semantic parsing though.
+Unfortunately, since Irony doesn't support incremental lexing, we can't harness Irony to drive syntax highlighting features in SyntaxEditor.  Alternative options are described in the sections below.  We can still use Irony to perform syntax/semantic parsing though.
 
-Irony grammar classes and some framework code needs to be "wrapped" so that they can be used for parsing.  That is exactly what this add-on helps you to do.
+Irony grammar classes and some framework code need to be "wrapped" so that they can be used for parsing.  That is exactly what this add-on helps you to do.
 
 ### The Irony Parser
 
@@ -54,7 +54,7 @@ The following list indicates the assemblies that are required by the add-on.
 
 This sample will show how to create an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that does not have syntax highlighting (see section below for more info on this) but can automatically call Irony asynchronously when text changes occur on documents using the language.
 
-In the sample we use an example language called "SimpleLanguage". The grammar class is named SimpleLanguageGrammar.
+In the sample we use an example language called "SimpleLanguage". The grammar class is named `SimpleLanguageGrammar`.
 
 ### Creating an Ambient Parse Request Dispatcher
 
@@ -96,11 +96,11 @@ This code applies the language that was created to a document being edited by a 
 editor.Document.Language = language;
 ```
 
-That's all there is to it.  In a few lines of code we have SyntaxEditor automatically calling an Irony parser whenever its document text changes.  The parse data result in the form of an [IIronyParseData](xref:ActiproSoftware.Text.Parsing.IIronyParseData) object is passed back asynchronously to the document's [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property when parsing is complete.  This triggers the document's [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event.
+That's all there is to it.  In a few lines of code, we have SyntaxEditor automatically calling an Irony parser whenever its document text changes.  The parse data result in the form of an [IIronyParseData](xref:ActiproSoftware.Text.Parsing.IIronyParseData) object is passed back asynchronously to the document's [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property when parsing is complete.  This triggers the document's [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event.
 
 ## Adding Syntax Highlighting
 
-As mentioned above, the Irony lexer doesn't support incremental lexing, meaning that we can't have it pick up at a certain point and just give us a range of tokens.  These features are necessary to get syntax highlighting working within a SyntaxEditor.  The previous sample shows how to intergrate with Irony parsers to provide parse results for a document as it is changed.  But how can we get syntax highlighting working for the language too?
+As mentioned above, the Irony lexer doesn't support incremental lexing, meaning that we can't have it pick up at a certain point and just give us a range of tokens.  These features are necessary to get syntax highlighting working within a SyntaxEditor.  The previous sample shows how to integrate with Irony parsers to provide parse results for a document as it is changed.  But how can we get syntax highlighting working for the language too?
 
 There are two main options.  Both involve creating a [lexer](../text-parsing/lexing/index.md) for your language, either a [programmatic lexer](../text-parsing/lexing/programmatic-lexers.md) or a [dynamic lexer](../text-parsing/lexing/dynamic-lexers.md).  Once a [lexer has been registered with the language](../language-creation/feature-services/lexer.md), a [token tagger provider must be registered](../language-creation/provider-services/tagger-provider.md) as well so that the tokens read from the lexer can be converted into styles, and syntax highlighting can be achieved.
 

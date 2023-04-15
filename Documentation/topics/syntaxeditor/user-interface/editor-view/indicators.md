@@ -26,7 +26,7 @@ It is recommended that glyphs be restricted to 16x16 size.  See the custom indic
 
 ### Classifications
 
-While the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag) interface just handles rendering of the glyphs, more often than not, indicators also intend to style the contained text range differently.  You see this sort of thing with breakpoints, where they highlight the background of the text red.  This is accomplished by having the tag instance also implement [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag).
+While the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag) interface just handles the rendering of the glyphs, more often than not, indicators also intend to style the contained text range differently.  You see this sort of thing with breakpoints, where they highlight the background of the text red.  This is accomplished by having the tag instance also implement [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag).
 
 See the [Tags and Classification Types](../../text-parsing/tagging/basic-concepts.md) topic for more information on how classification tags can be used to override default syntax highlighting.
 
@@ -80,7 +80,7 @@ var options = new TagSearchOptions<BookmarkIndicatorTag>();
 options.CanWrap = true;
 options.SearchUp = false;
 options.Filter = (tr => tr.Tag.IsEnabled);
-						
+
 // Find the next indicator
 var tagRange = editor.Document.IndicatorManager.Bookmarks.FindNext(editor.ActiveView.Selection.EndSnapshotOffset.Line, options);
 if (tagRange != null) {
@@ -139,7 +139,7 @@ document.IndicatorManager.CurrentStatement.Clear();
 
 Custom indicators can easily be created and used with SyntaxEditor.  To support a custom indicator, a custom indicator tag class and a custom indicator tagger class must be created.
 
-> [!NOTE]
+> [!TIP]
 > One of the samples included with the product shows a complete implementation of a custom tag and tagger.  That is an excellent sample to examine when building a custom indicator.
 
 ### Indicator Tag
@@ -156,13 +156,16 @@ Similar to the two tag base classes above, two tagger base classes are provided:
 
 In either case, both taggers implement [ICollectionTagger<T>](xref:ActiproSoftware.Text.Tagging.ICollectionTagger`1) and can be interacted with similar to a collection.  See the [Taggers and Tagger Providers](../../text-parsing/tagging/taggers.md) topic for details on collection taggers.
 
-One important thing to note about the tagger is that your inheriting class must include a public constructor that takes a single [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) parameter.  The constructor should call the base constructor and pass any orderings that are appropriate to it so that indicators from certain taggers can appear above indicator from other taggers.
+> [!CAUTION]
+> One important thing to note about the tagger is that your inheriting class must include a public constructor that takes a single [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) parameter.
+>
+> The constructor should call the base constructor and pass any orderings that are appropriate to it so that indicators from certain taggers can appear above indicator from other taggers.
 
 This code shows an example of a custom tagger that orders itself above the token tagger, meaning if its tags support [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) then it can override syntax highlighting:
 
 ```csharp
-public CustomIndicatorTagger(ICodeDocument document) : 
-	base("CustomIndicator", new Ordering[] { 
+public CustomIndicatorTagger(ICodeDocument document) :
+	base("CustomIndicator", new Ordering[] {
 		new Ordering(TaggerKeys.Token, OrderPlacement.Before)
 	}, document, true) {}
 ```
@@ -188,7 +191,7 @@ IntelliPrompt quick info can be added for the glyphs in the indicator margin.  T
 
 The quick info comes from the [IContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IContentProvider) that is set in the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.IIndicatorTag.ContentProvider) property.  The content provider can return simple text, complex markup, etc. as described in the [Content Providers](../intelliprompt/popup-content-providers.md) topic.
 
-> [!NOTE]
+> [!IMPORTANT]
 > There is one requirement for this functionality to work.  A special [IndicatorQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service must be registered on the language.  This quick info provider has built-in functionality to watch for the mouse being over indicator glyphs and use their related content provider for the quick info tip content.
 
 This code shows how to register an [IndicatorQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.IndicatorQuickInfoProvider) language service on a language:

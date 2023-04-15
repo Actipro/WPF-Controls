@@ -7,7 +7,7 @@ order: 1
 
 The advanced Python syntax language implementation in the SyntaxEditor Python Language Add-on includes everything from code outlining to syntax error reporting.
 
-> [!NOTE]
+> [!IMPORTANT]
 > The syntax language and its parser support Python v3.9.5 syntax.
 
 ## Features
@@ -52,7 +52,7 @@ See the [Parsing and Parse Data](parsing.md) topic for more information.
 
 ## Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 See the [Indent Provider](indent-provider.md) topic for more information.
 

@@ -29,7 +29,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		protected BarGalleryViewModelBase() { }  // Parameterless constructor required for XAML support
+		protected BarGalleryViewModelBase()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 		
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		protected BarGalleryViewModelBase(string key)

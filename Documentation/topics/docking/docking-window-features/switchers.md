@@ -46,7 +46,7 @@ You can customize the key gestures above by changing these properties:
 
 ## Configuration
 
-By default the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) is assigned a [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) to its [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property.
+By default, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) is assigned a [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) to its [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property.
 
 You can clear the [Switcher](xref:@ActiproUIRoot.Controls.Docking.DockSite.Switcher) property (set it to `"{x:Null}"` in XAML or to a `null` value in code-behind) to not use switchers, or can set that property to another [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase)-inherited class instance to use another switcher. [StandardSwitcher](xref:@ActiproUIRoot.Controls.Docking.StandardSwitcher) and [SimpleSwitcher](xref:@ActiproUIRoot.Controls.Docking.SimpleSwitcher) are implementations of [SwitcherBase](xref:@ActiproUIRoot.Controls.Docking.Primitives.SwitcherBase).
 

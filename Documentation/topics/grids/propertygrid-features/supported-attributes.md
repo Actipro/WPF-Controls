@@ -274,7 +274,7 @@ See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmo
 
 Indicates whether the name of a property is displayed within parentheses (e.g., `"(Name)"` versus `"Name"`).
 
-This attribute is typically used to sort more important properties to the top, when sorting alphabetically.  However other [sorting features](categorization-and-sorting.md) can alter sort order.  In addition, the parentheses make the property stand out slightly.
+This attribute is typically used to sort more important properties to the top, when sorting alphabetically.  However, other [sorting features](categorization-and-sorting.md) can alter sort order.  In addition, the parentheses make the property stand out slightly.
 
 See [MSDN (external)](http://msdn.microsoft.com/en-us/library/system.componentmodel.parenthesizepropertynameattribute.aspx) for more information on this attribute.
 
@@ -420,7 +420,7 @@ This attribute is similar to `ReadOnlyAttribute` but in opposite terms.
 
 }
 
-When not specified, the property is editable by default if there is a `set` accessor available.  However if this attribute is supplied with its `AllowEdit` property set to `false`, the property will be displayed as read-only.
+When not specified, the property is editable by default if there is a `set` accessor available.  However, if this attribute is supplied with its `AllowEdit` property set to `false`, the property will be displayed as read-only.
 
 This code shows an example of applying `EditableAttribute` to force the property to be read-only when in a property grid:
 

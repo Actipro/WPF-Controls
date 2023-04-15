@@ -21,7 +21,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public RibbonGroupLauncherButtonViewModel() { }  // Parameterless constructor required for XAML support
+		public RibbonGroupLauncherButtonViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		public RibbonGroupLauncherButtonViewModel(string key)

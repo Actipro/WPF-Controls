@@ -8,7 +8,7 @@ order: 4
 SyntaxEditor supports drag and drop operations within itself, as well as with external controls.
 
 > [!TIP]
-> **Drag and Drop** and **Clipboard** operations share many of the same concepts. Refer to the [Clipboard Operations](clipboard-operations.md) topic for details specific to working with the clipboard.
+> *Drag and Drop* and *Clipboard* operations share many of the same concepts. Refer to the [Clipboard Operations](clipboard-operations.md) topic for details specific to working with the clipboard.
 
 ## Allowing Drag and Drop
 
@@ -28,18 +28,11 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanC
 
 ## Customizing Text to be Dragged
 
-Sometimes it is useful to be able to customize the text, or objects, to be dragged.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event fires before text is cut/copied to the clipboard and also before a drag occurs (see the [Clipboard Operations](clipboard-operations.md) topic for additional details).
+Sometimes it is useful to be able to customize the text, or objects, to be dragged.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event is raised before text is cut/copied to the clipboard and also before a drag occurs (see the [Clipboard Operations](clipboard-operations.md) topic for additional details).
 
-In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) that is to be dragged as well as the type of operation that will be performed.  When the event fires, the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) has already been initialized with @if (wpf winforms) {`DataFormats.UnicodeText` and `DataFormats.Text` entries}@if (winrt) {`StandardDataFormats.Text`} based on the current selection in the editor.  The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) can be modified to customize what is dragged.
+In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) that is to be dragged as well as the type of operation that will be performed.  When the event is raised, the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) has already been initialized with @if (wpf winforms) {`DataFormats.UnicodeText` and `DataFormats.Text` entries}@if (winrt) {`StandardDataFormats.Text`} based on the current selection in the editor.  The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) can be modified to customize what is dragged.
 
-@if (wpf) {
-
-> [!NOTE]
-> The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) interface is used instead of `IDataObject` partially because `IDataObject` will throw a security exception in most XBAP applications. [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) is designed to use many of the same method signatures that `IDataObject` does and provides a consistent API across our supported platforms.
-
-}
-
-@if (winforms) {
+@if (wpf winforms) {
 
 > [!NOTE]
 > The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) interface is used instead of `IDataObject`. [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) is designed to use many of the same method signatures that `IDataObject` does and provides a consistent API across our supported platforms.
@@ -55,7 +48,7 @@ In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.
 
 ## Customizing Text to be Dropped
 
-Just like the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event, an event is provided to allow for customization of text that is to be pasted or dropped onto the editor (see the [Clipboard Operations](clipboard-operations.md) topic for additional details).  The [PasteDragDrop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.PasteDragDrop) event fires in several situations:
+Just like the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event, an event is provided to allow for customization of text that is to be pasted or dropped onto the editor (see the [Clipboard Operations](clipboard-operations.md) topic for additional details).  The [PasteDragDrop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.PasteDragDrop) event is raised in several situations:
 
 - Paste operations
 - Paste completion
@@ -80,7 +73,7 @@ The `Text` property is auto-populated by examining the [IDataStore](xref:@Actipr
 
 @if (winrt) {
 
-The `Text` property is auto-populated by examining the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) for `StandardDataFormats.Text`. 
+The `Text` property is auto-populated by examining the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) for `StandardDataFormats.Text`.
 
 }
 
@@ -142,12 +135,11 @@ dragSource.DoDragDrop(dataObject, DragDropEffects.Copy);
 
 }
 
-See the **Customizing Drag Behavior** section below for more advanced drag scenarios like file drop.
+See the "Customizing Drag Behavior" section below for more advanced drag scenarios like file drop.
 
 > [!IMPORTANT]
-> 
 > For drag-related actions, the [PasteDragDropEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs).[DragEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs.DragEventArgs) operation must be set to `Copy` or `Move` to indicate that the object can be dropped.
-> 
+>
 > The [PasteDragDropEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs).[Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs.Text) property's actual value only has to be assigned for the [DragDrop](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropAction.DragDrop) action.
 
 > [!TIP]
@@ -243,7 +235,7 @@ private void OnEditorPasteDragDrop(object sender, PasteDragDropEventArgs e) {
 				// Cancel default handling
 				e.DragEventArgs.Effects = DragDropEffects.None;
 				// Process the dropped file here
-		}		
+		}
 	}
 }
 ```
@@ -269,7 +261,7 @@ private void OnEditorPasteDragDrop(object sender, PasteDragDropEventArgs e) {
 				// Cancel default handling
 				e.DragEventArgs.Effect = DragDropEffects.None;
 				// Process the dropped file here
-		}		
+		}
 	}
 }
 ```

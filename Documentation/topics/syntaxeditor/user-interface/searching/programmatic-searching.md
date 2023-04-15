@@ -35,7 +35,7 @@ Each search method returns an [ISearchResultSet](xref:ActiproSoftware.Text.Searc
 
 ## Performing a Find Next Operation
 
-A find next operation can be performed like this:
+A "find next" operation can be performed like this:
 
 ```csharp
 EditorSearchOptions options = new EditorSearchOptions();
@@ -46,7 +46,7 @@ ISearchResultSet resultSet = editor.ActiveView.Searcher.FindNext(options);
 
 ## Performing a Replace Next Operation
 
-A replace next operation can be performed like this:
+A "replace next" operation can be performed like this:
 
 ```csharp
 EditorSearchOptions options = new EditorSearchOptions();
@@ -58,7 +58,7 @@ ISearchResultSet resultSet = editor.ActiveView.Searcher.ReplaceNext(options);
 
 ## Performing a Replace All Operation
 
-A replace all operation can be performed like this:
+A "replace all" operation can be performed like this:
 
 ```csharp
 EditorSearchOptions options = new EditorSearchOptions();

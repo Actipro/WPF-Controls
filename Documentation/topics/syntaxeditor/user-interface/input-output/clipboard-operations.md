@@ -8,7 +8,7 @@ order: 3
 SyntaxEditor makes use of the Windows clipboard as a temporary repository for data for cut/copy/paste operations. @if (wpf) {SyntaxEditor places text on the clipboard using the `DataFormats.UnicodeText` and `DataFormats.Text` formats.}
 
 > [!TIP]
-> **Clipboard** and **Drag and Drop** operations share many of the same concepts. Refer to the [Drag and Drop](drag-drop.md) topic for details specific to working with drag-and-drop.
+> *Clipboard* and *Drag and Drop* operations share many of the same concepts. Refer to the [Drag and Drop](drag-drop.md) topic for details specific to working with drag-and-drop.
 
 ## Cutting and Copying Text
 
@@ -44,28 +44,13 @@ This code demonstrates how to paste text from the clipboard:
 editor.ActiveView.PasteFromClipboard();
 ```
 
-@if (wpf) {
-
-## The Clipboard and XBAP Security
-
-If an XBAP is deployed with Internet security restrictions in place, the XBAP is not permitted to access the Windows clipboard.  SyntaxEditor properly recognizes this scenario, and maintains an internal clipboard of its own so that text can be copied and pasted between SyntaxEditor instances or within the same SyntaxEditor control.
-
-}
-
 ## Customizing Text to be Cut or Copied
 
-Sometimes it is useful to be able to customize the text, or objects, to be cut or copied.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event that fires before text is cut or copied to the clipboard, and also before a drag occurs (see the [Drag and Drop](drag-drop.md) topic for additional details).
+Sometimes it is useful to be able to customize the text, or objects, to be cut or copied.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event that is raised before text is cut or copied to the clipboard, and also before a drag occurs (see the [Drag and Drop](drag-drop.md) topic for additional details).
 
-In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) that is to be copied as well as the type of operation that will be performed.  When the event fires, the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) has already been initialized with @if (winrt) {a `StandardDataFormats.Text` entry}@if (wpf winforms) {`DataFormats.UnicodeText` and `DataFormats.Text` entries} based on the current selection in the editor.  The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) can be modified to customize what is sent to the clipboard.
+In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) that is to be copied as well as the type of operation that will be performed.  When the event is raised, the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) has already been initialized with @if (winrt) {a `StandardDataFormats.Text` entry}@if (wpf winforms) {`DataFormats.UnicodeText` and `DataFormats.Text` entries} based on the current selection in the editor.  The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) can be modified to customize what is sent to the clipboard.
 
-@if (wpf) {
-
-> [!NOTE]
-> The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) interface is used instead of `IDataObject` partially because `IDataObject` will throw a security exception in most XBAP applications. [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) is designed to use many of the same method signatures that `IDataObject` does and provides a consistent API across our supported platforms.
-
-}
-
-@if (winforms) {
+@if (wpf winforms) {
 
 > [!NOTE]
 > The [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) interface is used instead of `IDataObject`. [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDataStore) is designed to use many of the same method signatures that `IDataObject` does and provides a consistent API across our supported platforms.
@@ -81,7 +66,7 @@ In its event arguments, it passes the [IDataStore](xref:@ActiproUIRoot.Controls.
 
 ## Customizing Text to be Pasted
 
-Just like the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event, an event is provided to allow for customization of text that is to be pasted or dropped onto the editor (see the [Drag and Drop](drag-drop.md) topic for additional details).  The [PasteDragDrop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.PasteDragDrop) event fires in several situations:
+Just like the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event, an event is provided to allow for customization of text that is to be pasted or dropped onto the editor (see the [Drag and Drop](drag-drop.md) topic for additional details).  The [PasteDragDrop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.PasteDragDrop) event is raised in several situations:
 
 - Paste operations
 - Paste completion
@@ -95,9 +80,8 @@ This event passes the [IDataStore](xref:@ActiproUIRoot.Controls.SyntaxEditor.IDa
 The [PasteDragDropEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs).[Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs.Text) property can be set to the text to be inserted.  It also can be set to `null` to insert nothing.
 
 > [!TIP]
-> 
 > For [CanPaste](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropAction.CanPaste) actions, the [PasteDragDropEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs).[Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropEventArgs.Text) property can be set to any non-`null` value to indicate that an object can be pasted.  The actual value only has to be assigned for the [Paste](xref:@ActiproUIRoot.Controls.SyntaxEditor.PasteDragDropAction.Paste) actions.
 
 ## Tracking Clipboard Change Events
 
-Since the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event fires any time text is cut or copied from the control, it can also be used to maintain an external clipboard-setting history in your application.  This is useful for maintaining a clipboard ring for your application.
+Since the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CutCopyDrag](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CutCopyDrag) event is raised any time text is cut or copied from the control, it can also be used to maintain an external clipboard-setting history in your application.  This is useful for maintaining a clipboard ring for your application.

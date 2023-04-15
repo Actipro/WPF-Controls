@@ -49,7 +49,7 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[HasDocuments](xre
 
 The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) property gets the document that currently is the primary document in the dock site.  The primary document is the same as [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) if the active window is a document.  When the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) is not a document, then the primary document is the open document that was last activated.
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event fires whenever the primary document changes.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event is raised whenever the primary document changes.
 
 ## Working with Open Documents
 

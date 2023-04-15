@@ -5,7 +5,7 @@ order: 4
 ---
 # Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 The [Indent Providers](../../user-interface/input-output/indent-providers.md) topic talks about indent providers in general and how to register them as a "feature" language service.
 
@@ -15,7 +15,7 @@ The [VBIndentProvider](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBI
 
 ### Smart Indent
 
-The built-in indent provider will attempt to properly indent lines inside the current block scope.  For instance, pressing ENTER after a `Sub` signature will cause the next line to be indented by one tab stop.
+The built-in indent provider will attempt to properly indent lines inside the current block scope.  For instance, pressing <kbd>Enter</kbd> after a `Sub` signature will cause the next line to be indented by one tab stop.
 
 ### Typed Characters
 

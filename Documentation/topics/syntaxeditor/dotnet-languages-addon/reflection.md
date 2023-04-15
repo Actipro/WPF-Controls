@@ -9,7 +9,7 @@ A large object model is included in the add-on for managing reflection data for 
 
 ## Assemblies
 
-Similar to real .NET assemblies, assemblies in this add-on, represented by the [IAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly) interface, store information about contained types and members.  Assemblies can be created for real pre-compiled .NET assemblies, or can be like Visual Studio projects where they are containers of source code files with references to other assemblies.  Assemblies provide access to type/member information via namespaces.
+Similar to real .NET assemblies, assemblies in this add-on, represented by the [IAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly) interface, store information about contained types and members.  Assemblies can be created for real pre-compiled .NET assemblies or can be like Visual Studio projects where they are containers of source code files with references to other assemblies.  Assemblies provide access to type/member information via namespaces.
 
 > [!NOTE]
 > See the [Assemblies](assemblies.md) topic for detailed information on the types of assemblies and how to load them.
@@ -46,7 +46,7 @@ Each namespace definition within an assembly has a unique full name (e.g., `Syst
 
 ### Nested Namespaces
 
-Namespaces often contain other nested namespaces.  For instance the global namespace whose name is an empty string often contains a nested namespace named `System`.  These nested namespaces are available from the [INamespaceDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition).[Children](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition.Children) collection, which is indexed using the simple names of each nested namespace.
+Namespaces often contain other nested namespaces.  For instance, the global namespace whose name is an empty string often contains a nested namespace named `System`.  These nested namespaces are available from the [INamespaceDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition).[Children](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition.Children) collection, which is indexed using the simple names of each nested namespace.
 
 This code accesses the [INamespaceDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition) for `System` within the [IAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly) in the `assembly` variable:
 
@@ -66,7 +66,7 @@ var typeDef = assembly.Namespaces["System", true].Types["Int32", true];
 
 ### Other Collections
 
-Namespace definitions provide access to a couple other helper collections.
+Namespace definitions provide access to a couple of other helper collections.
 
 First is the [INamespaceDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition).[ExtensionMethods](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.INamespaceDefinition.ExtensionMethods) property.  This property is a collection of [ITypeMemberDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ITypeMemberDefinition) objects where each member definition is for an extension method defined on a type which is contained by the namespace.
 
@@ -109,7 +109,7 @@ Parameter definitions, represented by the [IParameterDefinition](xref:ActiproSof
 Reflection data is fully LINQ queryable.  For instance, this query looks in the [IProjectAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IProjectAssembly) for an [ITypeDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ITypeDefinition) named `Foo`:
 
 ```csharp
-var fooType = (from ns in project.Namespaces 
+var fooType = (from ns in project.Namespaces
 	let types = ns.Types["Foo", true]
 	where types != null
 	select types).FirstOrDefault();

@@ -23,7 +23,7 @@
 			<DataTemplate x:Key="BarGalleryItemTextHighlightColorDataTemplate">
 				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}">
 					<Border.Background>
-						<SolidColorBrush Color="{Binding Color}" />
+						<SolidColorBrush Color="{Binding Value}" />
 					</Border.Background>
 				</Border>
 			</DataTemplate>
@@ -47,10 +47,9 @@
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
 												 CanFilter="{Binding Options.FontColorCanFilter}"
-												 CategorizedItemsSource="{Binding FontColorItemsWithAutomatic}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding SetFontColorCommand}"
 												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 ItemsSource="{Binding FontColorItemsWithAutomatic}"
 												 MaxColumnCount="{Binding FontColorItemsColumnCount}"
 												 MinColumnCount="{Binding FontColorItemsColumnCount}"
 												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
@@ -93,10 +92,9 @@
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
 												 CanFilter="{Binding Options.FontColorCanFilter}"
-												 CategorizedItemsSource="{Binding FontColorItems}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding SetFontColorCommand}"
 												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 ItemsSource="{Binding FontColorItems}"
 												 MaxColumnCount="{Binding FontColorItemsColumnCount}"
 												 MinColumnCount="{Binding FontColorItemsColumnCount}"
 												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
@@ -111,10 +109,9 @@
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
 												 CanFilter="{Binding Options.FontColorCanFilter}"
-												 CategorizedItemsSource="{Binding CustomMenuItemColorPickerItems}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding SetFontColorCommand}"
 												 ItemSpacing="0"
+												 ItemsSource="{Binding CustomMenuItemColorPickerItems}"
 												 MinColumnCount="1" MaxColumnCount="1"
 												 UseAccentedItemBorder="False"
 												 UseMenuItemIndent="False"
@@ -129,10 +126,9 @@
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
 												 CanFilter="{Binding Options.FontColorCanFilter}"
-												 CategorizedItemsSource="{Binding CustomStyleColorPickerItems}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding SetFontColorCommand}"
 												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 ItemsSource="{Binding CustomStyleColorPickerItems}"
 												 MinColumnCount="7"
 												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
 												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
@@ -147,10 +143,9 @@
 												 AreSurroundingSeparatorsAllowed="{Binding Options.AreSurroundingSeparatorsAllowed}"
 												 CanCategorize="{Binding Options.FontColorCanCategorize}"
 												 CanFilter="{Binding Options.FontColorCanFilter}"
-												 CategorizedItemsSource="{Binding CustomLayoutColorPickerItems}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding SetFontColorCommand}"
 												 ItemSpacing="{Binding Options.ItemSpacing}"
+												 ItemsSource="{Binding CustomLayoutColorPickerItems}"
 												 MinColumnCount="{Binding CustomLayoutColorPickerItemsColumnCount}" MaxColumnCount="{Binding CustomLayoutColorPickerItemsColumnCount}"
 												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
 												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"

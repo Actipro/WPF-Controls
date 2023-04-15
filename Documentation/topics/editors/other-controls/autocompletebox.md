@@ -15,7 +15,7 @@ The control supports automatic filtering of suggested items as the end user type
 
 The [AutoCompleteBox](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox) control renders like an editable `ComboBox` in that it has a text entry area and a drop-down button.
 
-The [Text](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.Text) property provides access to the string value being edited in the control's text area and supports two-way binding.  The [TextChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextChanged) event fires whenever the text is changed.  Event arguments pass the reason for the change, along with the new text.  Set the [AutoCompleteBoxEventArgs](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBoxEventArgs).[IsPopupAllowed](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBoxEventArgs.IsPopupAllowed) property to `false` to prevent the suggestion list popup from possibly opening in response to the change.
+The [Text](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.Text) property provides access to the string value being edited in the control's text area and supports two-way binding.  The [TextChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.TextChanged) event is raised whenever the text is changed.  Event arguments pass the reason for the change, along with the new text.  Set the [AutoCompleteBoxEventArgs](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBoxEventArgs).[IsPopupAllowed](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBoxEventArgs.IsPopupAllowed) property to `false` to prevent the suggestion list popup from possibly opening in response to the change.
 
 Set the [IsReadOnly](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.IsReadOnly) property to `true` to prevent editing of the text value.
 
@@ -29,7 +29,7 @@ For basic scenarios where you simply want to display a text property in the list
 
 If you wish to customize the display of each suggestion item, the control provides [ItemContainerStyle](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemContainerStyle), [ItemContainerStyleSelector](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemContainerStyleSelector), [ItemTemplate](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemTemplate), and [ItemTemplateSelector](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.ItemTemplateSelector) properties.  The container elements that are generated are of type [EmbeddedListBoxItem](xref:@ActiproUIRoot.Controls.Editors.Primitives.EmbeddedListBoxItem).  When using custom item templates, do not use the [DisplayMemberPath](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.DisplayMemberPath) property.
 
-The suggestion list selects the first item by default.  If you wish to set another item as the default selection, use the [SelectedItem](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SelectedItem) property.  The [SelectedItemChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SelectedItemChanged) event fires when this property is changed.
+The suggestion list selects the first item by default.  If you wish to set another item as the default selection, use the [SelectedItem](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SelectedItem) property.  The [SelectedItemChanged](xref:@ActiproUIRoot.Controls.Editors.AutoCompleteBox.SelectedItemChanged) event is raised when this property is changed.
 
 ## Using Data Filters
 

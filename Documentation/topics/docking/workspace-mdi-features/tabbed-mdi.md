@@ -69,7 +69,7 @@ The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabTool
 
 ## Tab Images
 
-By default the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image will not appear on document tabs.
+By default, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image will not appear on document tabs.
 
 You can force the image to display on the tabs by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabImages](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabImages) property to `true`.
 
@@ -97,7 +97,7 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreNewTabsInserte
 
 ## New Tab Buttons
 
-The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[ContainersHaveNewTabButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.ContainersHaveNewTabButtons) property can be set to `true` to display a new tab button.  When this button is clicked, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[NewWindowRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.NewWindowRequested) event fires.  A handler of this event should activate a new document.
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[ContainersHaveNewTabButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.ContainersHaveNewTabButtons) property can be set to `true` to display a new tab button.  When this button is clicked, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[NewWindowRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.NewWindowRequested) event is raised.  A handler of this event should activate a new document.
 
 This feature is useful for browser-like applications and works best when the [TabOverflowBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabOverflowBehavior) is set to `Shrink` or `ShrinkWithMenu`.
 

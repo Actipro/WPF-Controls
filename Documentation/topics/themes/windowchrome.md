@@ -156,7 +156,7 @@ The [HasTitleBar](xref:@ActiproUIRoot.Themes.WindowChrome.HasTitleBar) property 
 
 By default, the [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome) will render the window's 16x16 icon.
 
-However if a custom-sized icon is desired (such as a 24x24 icon), its `ImageSource` can be set to the [IconSource](xref:@ActiproUIRoot.Themes.WindowChrome.IconSource) property.  The margin around the icon can be adjusted with the [IconMargin](xref:@ActiproUIRoot.Themes.WindowChrome.IconMargin) property.
+However, if a custom-sized icon is desired (such as a 24x24 icon), its `ImageSource` can be set to the [IconSource](xref:@ActiproUIRoot.Themes.WindowChrome.IconSource) property.  The margin around the icon can be adjusted with the [IconMargin](xref:@ActiproUIRoot.Themes.WindowChrome.IconMargin) property.
 
 The [HasIcon](xref:@ActiproUIRoot.Themes.WindowChrome.HasIcon) property can be set to `false` to hide the icon in the title bar altogether.
 
@@ -399,7 +399,7 @@ A window's system menu displays when you right-click the title bar, or you click
 
 *A themed system menu, with custom Help menu*
 
-The [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[WindowSystemMenuOpening](xref:@ActiproUIRoot.Themes.WindowChrome.WindowSystemMenuOpening) event fires when the system menu is opening, allowing for full customization.  If you don't wish to use a custom WPF-based system menu that matches the current application theme, set `e.Menu` to a null reference in the event handler.
+The [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[WindowSystemMenuOpening](xref:@ActiproUIRoot.Themes.WindowChrome.WindowSystemMenuOpening) event is raised when the system menu is opening, allowing for full customization.  If you don't wish to use a custom WPF-based system menu that matches the current application theme, set `e.Menu` to a `null` reference in the event handler.
 
 ### Adding Custom Menu Items
 
@@ -452,7 +452,7 @@ It may be desired to bind the attached `WindowChrome.IsOverlayVisible` property 
 
 For convenience, the static [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[SetIsOverlayVisible](xref:@ActiproUIRoot.Themes.WindowChrome.SetIsOverlayVisible*) method can also be called from code to set the current value of the attached property.
 
-An [IsOverlayVisibleChanged](xref:@ActiproUIRoot.Themes.WindowChrome.IsOverlayVisibleChanged) event fires when the property changes.  This event handler to make any programmatic changes to the UI needed for an overlay visibility change, such as showing/hiding title bar controls that should only be visible when the overlay is displayed.
+An [IsOverlayVisibleChanged](xref:@ActiproUIRoot.Themes.WindowChrome.IsOverlayVisibleChanged) event is raised when the property changes.  This event handler to make any programmatic changes to the UI needed for an overlay visibility change, such as showing/hiding title bar controls that should only be visible when the overlay is displayed.
 
 A static [ToggleIsOverlayVisibleCommand](xref:@ActiproUIRoot.Themes.WindowChrome.ToggleIsOverlayVisibleCommand) property is available, which returns an `ICommand` that can toggle the `WindowChrome.IsOverlayVisible` property.
 

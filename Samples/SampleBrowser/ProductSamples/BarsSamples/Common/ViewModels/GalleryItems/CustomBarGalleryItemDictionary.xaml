@@ -32,7 +32,7 @@
 
 	<DataTemplate x:Key="{x:Static localCommon:CustomBarGalleryItemTemplateSelector.UnderlineTemplateResourceKey}" DataType="localCommon:UnderlineBarGalleryItemViewModel">
 
-		<localCommon:UnderlinePresenter Kind="{Binding Kind}" />
+		<localCommon:UnderlinePresenter Kind="{Binding Value}" />
 
 	</DataTemplate>
 

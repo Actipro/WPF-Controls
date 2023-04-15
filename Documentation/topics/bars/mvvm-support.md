@@ -149,7 +149,6 @@ The following table shows various bar control view model types defined in the MV
 | [BarButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarButtonViewModel) | Regular [button](controls/button.md) control. |
 | [BarCheckBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarCheckBoxViewModel) | [Checkbox](controls/checkbox.md) control. |
 | [BarComboBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarComboBoxViewModel) | [Combobox](controls/combobox.md) control. |
-| [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase) | Abstract base class for a [gallery item](controls/gallery.md). |
 | [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) | [Gallery](controls/gallery.md) control. |
 | [BarHeadingViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarHeadingViewModel) | [Heading](controls/heading.md) control. |
 | [BarKeyedObjectViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarKeyedObjectViewModelBase) | Abstract base class for a [control with a string keys](controls/control-basics.md). |
@@ -188,15 +187,17 @@ The following table shows the ribbon footer content view model types defined in 
 
 #### Gallery Item View Models
 
-The following table shows the gallery item view model types defined in the MVVM library, which are supported by the [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector) class out of the box.  Instances of these view model types can be bound into the `ItemsSource` of any [gallery](controls/gallery.md) control.
+The following table shows the [gallery item](controls/gallery.md) view model types defined in the MVVM library, which are supported by the [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector) class out of the box.  Instances of these view model types can be bound into the `ItemsSource` of any [gallery](controls/gallery.md) control.
 
 | Name | Description |
 |-----|-----|
+| [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) | An interface that provides the common requirements of a gallery item view model. |
+| [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1) | Has a generic type parameter for a related value.  Can be used directly or inherited for specialized gallery item view model types. |
 | [ColorBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.ColorBarGalleryItemViewModel) | Represents a `Color` value, used for any kind of color picker gallery. |
 | [FontFamilyBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.FontFamilyBarGalleryItemViewModel) | Represents a font family name, used for font comboboxes. |
 | [FontSizeBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.FontSizeBarGalleryItemViewModel) | Represents a font size, used for font size comboboxes. |
-| [MenuItemBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.MenuItemBarGalleryItemViewModel) | Represents a generic gallery item that should be rendered as a menu item with a label and optional icon `ImageSource`. |
 | [SymbolBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.SymbolBarGalleryItemViewModel) | Represents a symbol (e.g., copyright sign) string, used to insert a symbol into a document.  Rendered by a [SymbolPresenter](xref:@ActiproUIRoot.Controls.Bars.Mvvm.SymbolPresenter) element. |
+| [TextBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.TextBarGalleryItemViewModel) | Represents a simple text string. |
 | [TextStyleBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.TextStyleBarGalleryItemViewModel) | Represents a text style for a document, which stores information like font, color, bold, etc.  Rendered by a [TextStylePresenter](xref:@ActiproUIRoot.Controls.Bars.Mvvm.TextStylePresenter) element. |
 
 ### Root Bar Control Styles
@@ -233,7 +234,7 @@ The [BarImageProvider](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarImageProvider) 
 
 The factory function is called when the [GetImageSource](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarImageProvider.GetImageSource*) method is invoked and passes a [BarImageOptions](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarImageOptions) instance, while expecting an `ImageSource` in return.
 
-This example demonstrates a registration, and assumes your application has a `ImageLoader.GetIcon` method that loads the image with the specified filename:
+This example demonstrates a registration, and assumes your application has an `ImageLoader.GetIcon` method that loads the image with the specified filename:
 
 ```csharp
 imageProvider.Register("AlignCenter", options => ImageLoader.GetIcon("AlignTextCenter16.png"));
@@ -255,4 +256,4 @@ In another scenario, perhaps you wish to introduce a brand-new bar control view 
 
 ### New Gallery Item Kind Support
 
-The most common customization is likely for gallery items since these tend to be more application specific.  When creating a new kind of gallery item, create a view model class that inherits [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase) and has whatever other properties are necessary for the gallery item to be identifiable and capable of rendering in UI.  Next, create a class that inherits [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector) and override its `SelectTemplate` method to handle the new view model as an item.  It should return a new `DataTemplate` that contains the UI elements used to render the gallery item, along with appropriate bindings to the view model.  Be sure to call the base `SelectTemplate` method for other gallery item view model types so they are still handled properly.  Set an instance of the custom [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector)-based class to any galleries that host the new kind of gallery item.
+The most common customization is likely for gallery items since these tend to be more application specific.  When creating a new kind of gallery item, create a view model class that inherits [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1) and has whatever other properties are necessary for the gallery item to be identifiable and capable of rendering in UI.  Next, create a class that inherits [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector) and override its `SelectTemplate` method to handle the new view model as an item.  It should return a new `DataTemplate` that contains the UI elements used to render the gallery item, along with appropriate bindings to the view model.  Be sure to call the base `SelectTemplate` method for other gallery item view model types so they are still handled properly.  Set an instance of the custom [BarGalleryItemTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemTemplateSelector)-based class to any galleries that host the new kind of gallery item.

@@ -13,9 +13,9 @@ The [XmlEndTagAutoCompleter](xref:ActiproSoftware.Text.Languages.Xml.Implementat
 
 ## Integration with Schema Resolver
 
-The auto-completer uses contextual information to determine whether an element should be closed without content or whether an end tag is appropriate.  This contextual information is found by examining resolved schema element data passed in the [XML context](context.md).  Therefore a [schema resolver](schema-resolver.md) should be configured and installed on the lanugage to achieve proper results.
+The auto-completer uses contextual information to determine whether an element should be closed without content or whether an end tag is appropriate.  This contextual information is found by examining resolved schema element data passed in the [XML context](context.md).  Therefore a [schema resolver](schema-resolver.md) should be configured and installed on the language to achieve proper results.
 
-If not schema data is found for the current element being closed, then an end tag will insert.
+If no schema data is found for the current element being closed, then an end tag will insert.
 
 ## Registering with a Syntax Language
 

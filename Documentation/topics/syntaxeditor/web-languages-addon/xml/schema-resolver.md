@@ -11,9 +11,9 @@ The [IXmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.IXmlSchemaResol
 
 The [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) class is the default implementation of the [IXmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.IXmlSchemaResolver) interface.
 
-## Managing the .XSD Schemas Used
+## Managing the XSD Schemas Used
 
-The schema resolver can manage one to many *.XSD* schemas at a time.  These *.XSD*'s are used to provide automated IntelliPrompt completion lists and quick info, and are also used to validate XML documents.
+The schema resolver can manage one to many XSD schemas at a time.  These XSDs are used to provide automated IntelliPrompt completion lists and quick info and are also used to validate XML documents.
 
 The [XmlSchemaResolver](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlSchemaResolver) class has numerous methods for loading XML schema data directly, or from files, streams, strings, etc.
 

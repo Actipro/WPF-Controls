@@ -7,14 +7,14 @@ order: 4
 
 There are several ways to reference the location of characters within an [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView), each with their own benefits.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Before reading this topic, first read the [Offsets, Ranges, and Positions](../../text-parsing/core-text/offsets-ranges-positions.md) topic since that provides a lot of information about core text-related structures that apply to the information in this topic too.
 
 ## Offsets and Positions
 
 As mentioned in the [Offsets, Ranges, and Positions](../../text-parsing/core-text/offsets-ranges-positions.md) topic, offsets are zero-based integer numbers indicating a character index from the beginning of a string or snapshot and text positions are similar but specify a line index and a character index within that line instead.
 
-Offsets and positions are used within [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) objects to provide layout information to the view lines.  However it is important to note that while a [TextPosition](xref:ActiproSoftware.Text.TextPosition) (`4,0`) is the fifth line in a view's [CurrentSnapshot](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.CurrentSnapshot), it may not be the fifth view line in the view, even when the view is scrolled all the way to the top.  Things that can cause this scenario are [word wrap](word-wrap.md), collapsed outlining nodes, etc.  So in the same scenario, assume word wrap is on and the second line wrapped once.  This would mean that [TextPosition](xref:ActiproSoftware.Text.TextPosition) (`4,0`) would appear as the sixth line.
+Offsets and positions are used within [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) objects to provide layout information to the view lines.  However, it is important to note that while a [TextPosition](xref:ActiproSoftware.Text.TextPosition) (`4,0`) is the fifth line in a view's [CurrentSnapshot](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.CurrentSnapshot), it may not be the fifth view line in the view, even when the view is scrolled all the way to the top.  Things that can cause this scenario are [word wrap](word-wrap.md), collapsed outlining nodes, etc.  So, in the same scenario, assume word wrap is on and the second line wrapped once.  This would mean that [TextPosition](xref:ActiproSoftware.Text.TextPosition) (`4,0`) would appear as the sixth line.
 
 ## Scrolling a View to a Position
 
@@ -34,6 +34,6 @@ The [GetCharacterBounds](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.G
 
 ## Hit Testing
 
-SyntaxEditor features a very powerful hit testing mechanism where you indicate a `Point` relative to the SyntaxEditor control and it returns very detailed information about what is at the location.  Information includes related character offsets, positions, etc. as well.
+SyntaxEditor features a very powerful hit testing mechanism where you indicate a `Point` relative to the `SyntaxEditor` control and it returns very detailed information about what is at the location.  Information includes related character offsets, positions, etc. as well.
 
 See the [Hit Testing](hit-testing.md) topic for information on how to perform hit testing.

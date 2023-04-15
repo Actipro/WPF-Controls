@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Actipro Gauge provides circular, linear, and digital gauge controls, as well as led and flip switch controls, all natively written for the Windows Presentation Foundation framework. Use these controls in your applications to more effectively present various data.
+Actipro Gauge provides circular, linear, and digital gauge controls, as well as LED and flip switch controls, all natively written for the Windows Presentation Foundation framework. Use these controls in your applications to more effectively present various data.
 
 ![Screenshot](images/gauge-teaser.gif)
 

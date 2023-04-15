@@ -51,8 +51,14 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 		/// <inheritdoc/>
 		protected override void OnRender(DrawingContext drawingContext) {
-			var viewModel = this.ViewModel;
-			if ((viewModel != null) && (viewModel.Kind != BulletKind.None)) {
+			var viewModel = this.ViewModel ?? new BulletBarGalleryItemViewModel(BulletKind.None);
+			var kind = viewModel.Value;
+			if (kind == BulletKind.None) {
+				var formattedText = this.CreateFormattedText(viewModel.Label);
+				var location = new Point((this.ActualWidth - formattedText.Width) / 2.0, (this.ActualHeight - formattedText.Height) / 2.0);
+				drawingContext.DrawText(formattedText, location, this.FlowDirection);
+			}
+			else {
 				var foreground = TextElement.GetForeground(this);
 
 				var xCenter = Math.Round(this.ActualWidth / 2.0, MidpointRounding.AwayFromZero);
@@ -60,7 +66,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 				const double Radius = 5.0;
 
-				switch (viewModel.Kind) {
+				switch (kind) {
 					case BulletKind.Circle:
 						drawingContext.DrawEllipse(null, new Pen(foreground, 1.0), new Point(xCenter, yCenter), Radius, Radius);
 						break;
@@ -74,11 +80,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						drawingContext.DrawRectangle(null, new Pen(foreground, 1.0), new Rect(xCenter - Radius + 0.5, yCenter - Radius + 0.5, 2 * Radius - 1.0, 2 * Radius - 1.0));
 						break;
 				}
-			}
-			else {
-				var formattedText = this.CreateFormattedText("None");
-				var location = new Point((this.ActualWidth - formattedText.Width) / 2.0, (this.ActualHeight - formattedText.Height) / 2.0);
-				drawingContext.DrawText(formattedText, location, this.FlowDirection);
 			}
 		}
 

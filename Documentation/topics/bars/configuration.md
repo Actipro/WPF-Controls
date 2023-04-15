@@ -16,7 +16,7 @@ All Bars controls can be defined directly in XAML and are designed to support co
 
 ### Pros
 
-XAML is familiar to most WPF developers and popular IDE's like Visual Studio provide designers that make it easy to visualize the run-time appearance of controls as their XAML is written. Newer IDE's even support hot reload of XAML definitions to modify a control at run-time and immediately see the impact of a change.  Getting started with XAML can be very quick and the entire control definition can often be contained in a single file.
+XAML is familiar to most WPF developers and popular IDEs like Visual Studio provide designers that make it easy to visualize the run-time appearance of controls as their XAML is written. Newer IDEs even support hot reload of XAML definitions to modify a control at run-time and immediately see the impact of a change.  Getting started with XAML can be very quick and the entire control definition can often be contained in a single file.
 
 ### Cons
 

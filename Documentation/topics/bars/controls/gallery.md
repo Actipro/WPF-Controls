@@ -31,11 +31,11 @@ Use the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control
 
 | Specification | Details |
 |-----|-----|
-| Base class | [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase), which inherits native `Selector`. |
+| Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified.  |
 | Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.LargeImageSource) properties. |
-| Has popup | Yes, which generally shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items. |
+| Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
 | Is checkable | No. |
 | Variant sizes | `Small` (collapsed gallery popup button), `Medium` (several columns), `Large` (many columns). |
 | Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) property.  The gallery item that is selected/previewed is passed as the command parameter. |
@@ -202,9 +202,12 @@ See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more i
 
 A minimum and maximum number of columns to display in a menu may be set for the menu gallery.  When the menu is initially displayed, it will show at least the minimum number of columns specified, which defaults to `1`.  If the menu gallery is opened for a [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) **More** button, the popup menu will be stretched to cover the width of the in-ribbon gallery at a minimum.  As the popup menu is sized larger, the number of columns displayed will range between the minimum and maximum specified.  The default maximum number of columns to display in a menu is `Int32.MaxValue` but can be reduced if some other maximum should be used.
 
-The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[MinMenuColumnCount](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.MinMenuColumnCount) and [MaxMenuColumnCount](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.MaxMenuColumnCount) properties set the menu column count range for the menu gallery displayed when the **More** button is clicked.
+The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[MinMenuColumnCount](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MinMenuColumnCount) and [MaxMenuColumnCount](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MaxMenuColumnCount) properties set the menu column count range for the menu gallery displayed when the **More** button is clicked.
 
 Whereas the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[MinColumnCount](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.MinColumnCount) and [MaxColumnCount](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.MaxColumnCount) properties are used for menu galleries that are declared outside of a ribbon gallery.
+
+> [!TIP]
+> Set [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[MaxColumnCount](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.MaxColumnCount) = `1` to create a menu gallery that has a single column.  This setting is ideal for menu galleries that only have simple text as their content.  Optionally also set [UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemAppearance) = `true` to have the menu gallery items render like normal menu items.
 
 ### Menu Resizing
 
@@ -214,35 +217,47 @@ Menu galleries that show items in a single column, such as an underline gallery,
 
 Menu galleries that contain many items displayed in multiple columns generally use a `Both` resize mode.
 
-The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[MenuResizeMode](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.MenuResizeMode) and [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[ResizeMode](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.ResizeMode) properties set the resize mode for the containing menu to use.
+The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[MenuResizeMode](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MenuResizeMode) and [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[ResizeMode](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.ResizeMode) properties set the resize mode for the containing menu to use.
 
 ### Surrounding Separators on Menu
 
 Menu galleries will automatically render a separator between them and surrounding menu items.  In some scenarios, this may be undesired.
 
-The automatic insertion of separators around a menu gallery can be disabled by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[AreSurroundingSeparatorsAllowedOnMenu](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.AreSurroundingSeparatorsAllowedOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[AreSurroundingSeparatorsAllowed](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.AreSurroundingSeparatorsAllowed) property to `false`.
+The automatic insertion of separators around a menu gallery can be disabled by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[AreSurroundingSeparatorsAllowedOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.AreSurroundingSeparatorsAllowedOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[AreSurroundingSeparatorsAllowed](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.AreSurroundingSeparatorsAllowed) property to `false`.
 
 If a separator is only needed either above or below the menu gallery, disable automatic surrounding separators and then manually add a [Separator](separator.md) either before or after the menu gallery as appropriate.
 
 ### Item Spacing
 
-The [ItemSpacing](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.ItemSpacing) property sets the amount of spacing between items.  By default, it is set to `0`, meaning no space in between items.  Some galleries such as color picker galleries may wish to increase the item spacing to a larger value, like `4`.
+![Screenshot](../images/gallery-item-spacing.png)
+
+*Spacing added between gallery items*
+
+The [ItemSpacing](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.ItemSpacing) property sets the amount of spacing between items.  By default, it is set to `0`, meaning no space in between items, and is the recommended value for most galleries.  Some galleries such as color picker galleries may wish to increase the item spacing to a larger value, like `4`.
 
 ### Accented Item Borders
 
 The [UseAccentedItemBorder](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.UseAccentedItemBorder) property can be set to `true` to use an accented border for selected items.  This is useful for gallery items that have vibrant content, such as color swatches.
 
-### Menu Item Indent
+### Menu Item Indent (BarMenuGallery only)
 
 A menu gallery generally fills the width of the menu, aligning the gallery items to the menu's edges.  Sometimes a gallery may wish to indent its items such that they appear within the icon column on the left and spacer column on the right.
 
-This can be achieved by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[UseMenuItemIndent](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.UseMenuItemIndent) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[UseMenuItemIndent](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemIndent) properties to `true`.
+![Screenshot](../images/gallery-menu-item-indent.png)
+
+*Menu item indent applied to the color swatch gallery in the menu*
+
+This can be achieved by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[UseMenuItemIndent](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.UseMenuItemIndent) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[UseMenuItemIndent](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemIndent) properties to `true`.
 
 ### Menu Item Appearance (BarMenuGallery only)
 
 When a gallery is solely presented within the menu of a containing [Popup Button](popup-button.md), [Split Button](split-button.md), or [Combobox](combobox.md), and the gallery has a single column of items with longer-width content, the gallery may wish to present these items with a menu item-like appearance.  This feature will cause the [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) container to use the same theme resource brushes that `MenuItem` uses.
 
-This feature can be enabled by setting the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemAppearance) property to `true`.
+![Screenshot](../images/gallery-menu-item-appearance.png)
+
+*Menu item appearance applied to the line spacing menu gallery*
+
+This feature can be enabled by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.UseMenuItemAppearance) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemAppearance) property to `true`.  It is recommended to restrict the gallery to a single column when using this feature.  The "Columns Displayed on Menu" section above explains how to restrict the column count.
 
 ### User Interface Density (RibbonGallery only)
 
@@ -266,6 +281,8 @@ The `ICommand` in the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGa
 
 An [IPreviewableCommand](xref:@ActiproUIRoot.Input.IPreviewableCommand) interface is defined in the Shared Library that allows special `ICommand` implementations to support live preview features.  A section below describes how to implement live preview.
 
+The [PopupOpeningCommand](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.PopupOpeningCommand) command, if assigned, is executed prior to the popup opening.  This command can be handled in a view model, allowing for a MVVM way to update the items on the popup prior to display.
+
 A [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).`SelectionChanged` and [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).`SelectionChanged` event is raised when the gallery's selection changes.
 
 See the [Using Commands](using-commands.md) topic for more information on commands.
@@ -274,9 +291,9 @@ See the [Using Commands](using-commands.md) topic for more information on comman
 
 The optional companion [MVVM Library](../mvvm-support.md) defines a [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) class that is intended to be used as a view model for galleries.
 
-This view model class maps over to the appropriate view controls described above based on usage context, and configures all necessary bindings between the view model and the view control.
+This view model class maps over to the appropriate view controls described above based on usage context and configures all necessary bindings between the view model and the view control.
 
-A [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase) class is intended to be a base class for any gallery item view model.  Each kind of gallery should define a separate view model class for its items.  For instance, a gallery related to selection of a color defines a [ColorBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.ColorBarGalleryItemViewModel) class for its items, which inherits [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase).
+A [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) interface defines the common requirements for gallery item view models, and a [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1) class is intended to be used directly, or as a base class for any gallery item view model.  Each kind of gallery should define a separate view model class for its items.  For instance, a gallery related to selection of a color defines a [ColorBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.ColorBarGalleryItemViewModel) class for its items, which inherits [BarGalleryItemViewModel\<Color\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1).
 
 It is recommended to build a custom `DataTemplateSelector` that can be assigned to the gallery's `ItemTemplateSelector` property to apply a `DataTemplate` for the related gallery item view model type.
 
@@ -286,6 +303,18 @@ It is recommended to build a custom `DataTemplateSelector` that can be assigned 
 ## Gallery Items
 
 Gallery items are often very visual in nature.  Some galleries maintain a selection, while others do not, and take an action instead when an item is clicked.
+
+### Items Source
+
+It is recommended to always use custom view model types for gallery items, and to bind an enumerable of view model instances to the gallery's `ItemsSource` property.
+
+> [!NOTE]
+> If gallery categorizing or filtering support is desired, an `ICollectionView` instance must be bound to the gallery's `ItemsSource` property.  The `ICollectionView.GroupDescriptions` collection should have a `PropertyGroupDescription` added to it that specifies the name of the category property on the gallery item view model `Type`.  See the "Item Categorization" section below for more information.
+
+> [!CAUTION]
+> There are several scenarios where multiple gallery controls may be created for the same conceptual set of gallery items.  For instance, the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control has an implicitly created [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) that appears in its **More** button's popup menu, and the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) control has an implicitly-created [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) that appears in its drop-down menu.  Galleries may also be cloned to the [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) or cloned for overflow purposes.
+>
+> Since multiple gallery control instances may be bound to the same core `ItemsSource` property, it is important that the property's resulting enumerable returns the same set of item instances.  Avoid yielding new item instances on each call to the property so that selections can be tracked across the gallery controls properly.  It's also a recommended practice to implement `Equals` overrides on the gallery item view model classes.
 
 ### Item Selection
 
@@ -297,7 +326,7 @@ The [IsSelectionSupported](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalle
 
 ### Item Templates
 
-Gallery controls generate a [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) container for each gallery item in the gallery's `ItemsSource`.  It is recommended to always use custom view model types for gallery items, and to bind an enumerable of view model instances to the gallery's `ItemsSource` property, or `CategorizedItemsSource` property if supporting categorization per a latter section.
+Gallery controls generate a [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) container for each gallery item in the gallery's `ItemsSource`.
 
 A `DataTemplate` for the view model type can be supplied via the [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase).`ItemTemplate` property, or alternatively, a `DataTemplateSelector`-based class instance can be set to the gallery's `ItemTemplateSelector` property.  These concepts are all fundamental to how any data-bound `ItemsControl` works.
 
@@ -365,7 +394,7 @@ The gallery's [InitialPreviewDelay](xref:@ActiproUIRoot.Controls.Bars.Primitives
 
 The [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).[Label](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem.Label) property is bound to the [ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem.ScreenTipHeader) property by default, meaning hovering over a gallery item will show its label in a tooltip.
 
-It doesn't make sense for galleries that show a label within the item itself to also display a tooltip containing simple label content.  For instance, a font size gallery shows the font size number, which is the label, in each gallery item.  Having a tooltip that would show the same value is not helpful.  For cases like this, set the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsLabelVisibleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsLabelVisibleProperty) property to `true` on [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).  If you are using the [MVVM Library](../mvvm-support.md), set the [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase).[IsLabelVisible](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase.IsLabelVisible) property to `true`, which will bind over to the attached property that prevents a simple tooltip from showing.
+It doesn't make sense for galleries that show a label within the item itself to also display a tooltip containing simple label content.  For instance, a font size gallery shows the font size number, which is the label, in each gallery item.  Having a tooltip that would show the same value is not helpful.  For cases like this, set the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsLabelVisibleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsLabelVisibleProperty) property to `true` on [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).  If you are using the [MVVM Library](../mvvm-support.md), have the [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1).[IsLabelVisible](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1.IsLabelVisible) property return `true`, which will bind over to the attached property that prevents a simple tooltip from showing.
 
 Set the [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).`ToolTip` property to a string to add an extended description for a gallery item.  Alternatively, the value may be any `ToolTip`-derived class, including our [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) class.
 
@@ -377,17 +406,31 @@ Gallery items can be placed in categories.  These categories will not show up in
 
 *A color picker gallery with categorized colors*
 
-Menu gallery categorization requires several configuration steps.  First, the gallery item view model collection should be bound to the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CategorizedItemsSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CategorizedItemsSource) property instead of `ItemsSource`.  What happens behind the scenes is that the enumerable set to that property will be placed into a `CollectionViewSource` for categorization and possible filtering support, and the resulting `CollectionViewSource.View` will then be set as the gallery's `ItemsSource`.  Therefore, it is important not to set the `ItemsSource` property yourself when categorization is desired.  When a menu gallery is displayed for a ribbon gallery's `More` button, it will automatically bind the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).`ItemsSource` property to the related [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CategorizedItemsSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CategorizedItemsSource) property.
+Menu gallery categorization requires that the gallery item view model collection is bound to the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).`ItemsSource` property, and the collection must be an `ICollectionView`.  The `ICollectionView.GroupDescriptions` collection must have a `PropertyGroupDescription` added to it that specifies the name of the category property on the gallery item view model `Type`.  For instance, if using gallery item view models from our [MVVM Library](../mvvm-support.md), the category property there is [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel).[Category](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel.Category) so a `PropertyGroupDescription` would specify `"Category"`.
 
-Second, the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CategoryPropertyName](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.CategoryPropertyName) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CategoryPropertyName](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CategoryPropertyName) property should be set to the name of the property on your gallery item view models that contains the string category name.  For instance, when using our [MVVM Library](../mvvm-support.md), the [BarGalleryItemViewModelBase](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase).[Category](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModelBase.Category) property is where the category name is stored.  Therefore, set the [CategoryPropertyName](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CategoryPropertyName) property to `"Category"` for that use case.
+Here is a helper method on [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) that shows how to set up an `ICollectionView` for categorizing a collection of gallery items:
 
-Finally, the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanCategorizeOnMenu](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.CanCategorizeOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanCategorize](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanCategorize) property must be set to `true` to support categorization.  When categorization is active, a category header that displays the category name will appear above all items in the category.  One exception is that if the category is `null`, no category header will be displayed.
+```csharp
+public static ICollectionView CreateCollectionView(IEnumerable<IBarGalleryItemViewModel> items, bool categorize) {
+	var viewSource = new CollectionViewSource();
+	viewSource.Source = items;
+
+	if (categorize)
+		viewSource.GroupDescriptions.Add(new PropertyGroupDescription(nameof(IBarGalleryItemViewModel.Category)));
+
+	return viewSource.View;
+}
+```
+
+The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanCategorizeOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.CanCategorizeOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanCategorize](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanCategorize) property must also be set to `true` to support categorization, which is the default.  The property can be set to `false` to turn off categorization for an `ICollectionView`-based `ItemsSource`.  Binding `ItemsSource` to an `IEnumerable` that does not implement `ICollectionSource` will also prevent categorization from working.
+
+When categorization is active, a category header that displays the category name will appear above all items in the category.  One exception is that if the category is `null`, no category header will be displayed.
 
 ![Screenshot](../images/gallery-border.png)
 
 *A menu gallery that has category headers hidden, while still displaying menu separators*
 
-In a scenario where you wish for a gallery to break items into multiple categories with a separator in between, but not display a category header for any categories, set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[HasCategoryHeadersOnMenu](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.HasCategoryHeadersOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[HasCategoryHeaders](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.HasCategoryHeaders) property to `false`.
+In a scenario where you wish for a gallery to break items into multiple categories with a separator in between, but not display a category header for any categories, set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[HasCategoryHeadersOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.HasCategoryHeadersOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[HasCategoryHeaders](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.HasCategoryHeaders) property to `false`.
 
 ### Categorized Item Filtering (BarMenuGallery only)
 
@@ -397,23 +440,23 @@ If you have categorization enabled in your [BarMenuGallery](xref:@ActiproUIRoot.
 
 *A menu gallery with filtering enabled*
 
-There is always an **All** option and the rest of the options relate to the various category names.  The **All** filter is used by default and does not perform any filtering.  When a specific category is chosen as a filter, only the items in that category are displayed.
+There is always an **All** option, and the rest of the options relate to the various category names.  The **All** filter is used by default and does not perform any filtering.  When a specific category is chosen as a filter, only the items in that category are displayed.
 
-Set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanFilterOnMenu](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.CanFilterOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanFilter](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanFilter) property to `true` to enable filtering features for the end user.  The current category that is being filtered is available via the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[SelectedFilterCategory](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.SelectedFilterCategory) property.
+Set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanFilterOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.CanFilterOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanFilter](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanFilter) property to `true` to enable filtering features for the end user.  The current category that is being filtered is available via the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[SelectedFilterCategory](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.SelectedFilterCategory) property.
 
 ## Additional Menu Items (RibbonGallery only)
 
-[RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) has the ability to display additional menu items underneath the menu gallery on its **More** popup menu.  This can be achieved by adding menu items into its [MenuItems](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.MenuItems) collection.
+[RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) has the ability to display additional menu items above or below the menu gallery on its **More** button's popup menu.  This can be achieved by adding menu items into its [AboveMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.AboveMenuItems) and [BelowMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.BelowMenuItems) collections.
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:RibbonGallery Key="TextStyles" ... >
-	<bars:RibbonGallery.MenuItems>
+	<bars:RibbonGallery.BelowMenuItems>
 		<x:Array Type="{x:Type bars:BarMenuItem}">
 			<bars:BarMenuItem Key="MoreTextStyles" Command="{Binding MoreTextStylesCommand}" />
 		</x:Array>
-	</bars:RibbonGallery.MenuItems>
+	</bars:RibbonGallery.BelowMenuItems>
 </bars:RibbonGallery>
 ```
 

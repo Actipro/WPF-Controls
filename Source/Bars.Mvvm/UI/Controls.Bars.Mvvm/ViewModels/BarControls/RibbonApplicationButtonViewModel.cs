@@ -1,6 +1,7 @@
+using ActiproSoftware.Products.Bars.Mvvm;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
@@ -11,8 +12,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	[ContentProperty(nameof(MenuItems))]
 	public class RibbonApplicationButtonViewModel : ObservableObjectBase {
 
-		private string keyTipText = "F";
-		private string label = "File";
+		private string keyTipText;
+		private string label;
 		private object menuAdditionalContent;
 		private DataTemplate menuAdditionalContentTemplate;
 		private DataTemplateSelector menuAdditionalContentTemplateSelector;
@@ -27,7 +28,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public RibbonApplicationButtonViewModel() { }  // Parameterless constructor required for XAML support
+		public RibbonApplicationButtonViewModel()  // Parameterless constructor required for XAML support
+			: this(label: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified label.
@@ -42,7 +44,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <param name="label">The text label to display.</param>
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="label"/> if <c>null</c>.</param>
 		public RibbonApplicationButtonViewModel(string label, string keyTipText) {
-			this.label = label;
+			this.label = label ?? SR.GetString(SRName.UIApplicationButtonText);
 			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromLabel(this.label);
 		}
 

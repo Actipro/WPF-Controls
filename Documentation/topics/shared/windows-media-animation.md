@@ -64,7 +64,7 @@ You can also specify a default `Duration` for transitions that support defaultab
 
 The [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[DefaultMode](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.DefaultMode) property is used to indicate to a [TransitionSelector](xref:@ActiproUIRoot.Media.Animation.TransitionSelector) whether selected transitions that support the mode concept should be `In` (the default) or `Out` transitions.
 
-The [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[IsFirstContentTransitionEnabled](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.IsFirstContentTransitionEnabled) property indicates whether when transitioning from a null `Content` to an object, a transition is enabled.  If set to `false`, an instant display of the "to" content will occur.
+The [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[IsFirstContentTransitionEnabled](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.IsFirstContentTransitionEnabled) property indicates whether when transitioning from a `null` `Content` to an object, a transition is enabled.  If set to `false`, an instant display of the "to" content will occur.
 
 The [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter).[IsPostTransitionFocusEnabled](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter.IsPostTransitionFocusEnabled) property indicates whether focus will be set to the "to" content upon transition completion.
 
@@ -157,7 +157,7 @@ It also has configurable [ZoomInPercentage](xref:@ActiproUIRoot.Media.Animation.
 
 A crossfade transition between two elements.  The transition supports [BeginTime](xref:@ActiproUIRoot.Media.Animation.FadeTransition.BeginTime), [Duration](xref:@ActiproUIRoot.Media.Animation.FadeTransition.Duration), and [Mode](xref:@ActiproUIRoot.Media.Animation.FadeTransition.Mode) properties.
 
-It also has a configurable [BlurRadius](xref:@ActiproUIRoot.Media.Animation.FadeTransition.BlurRadius) property that indicates an optional radius of a blur effect to apply to the fade.  The default is `0`.  Since setting this property to non-zero uses a bitmap effect, do not set this property when used in an XBAP (due to security restrictions).
+It also has a configurable [BlurRadius](xref:@ActiproUIRoot.Media.Animation.FadeTransition.BlurRadius) property that indicates an optional radius of a blur effect to apply to the fade.  The default is `0`.
 
 </td>
 </tr>

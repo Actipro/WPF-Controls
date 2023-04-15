@@ -47,14 +47,14 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				: new Paragraph(new Run(initialText));
 
 			// Lookup the "Normal" text style and apply settings to the new document
-			var defaultStyle = (barManager?.ControlViewModels[BarControlKeys.QuickStylesGallery] as BarGalleryViewModel)?
+			var defaultTextStyle = (barManager?.ControlViewModels[BarControlKeys.QuickStylesGallery] as BarGalleryViewModel)?
 				.Items.OfType<TextStyleBarGalleryItemViewModel>()
-				.FirstOrDefault();
-			if (defaultStyle != null) {
-				if (!string.IsNullOrEmpty(defaultStyle.FontFamilyName))
-					paragraph.FontFamily = new FontFamily(defaultStyle.FontFamilyName);
-				if (!double.IsNaN(defaultStyle.FontSize))
-					paragraph.FontSize = FontSizeBarGalleryItemViewModel.ConvertFontSizeToWpfFontSize(defaultStyle.FontSize);
+				.FirstOrDefault()?.Value;
+			if (defaultTextStyle != null) {
+				if (!string.IsNullOrEmpty(defaultTextStyle.FontFamilyName))
+					paragraph.FontFamily = new FontFamily(defaultTextStyle.FontFamilyName);
+				if (!double.IsNaN(defaultTextStyle.FontSize))
+					paragraph.FontSize = FontSizeBarGalleryItemViewModel.ConvertFontSizeToWpfFontSize(defaultTextStyle.FontSize);
 			}
 
 			var document = new FlowDocument();

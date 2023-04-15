@@ -29,7 +29,7 @@ Semantic analysis is more concerned with examining the code to determine its mea
 
 The output of most parsers is some sort of abstract syntax tree (AST) with the root node being called a compilation unit.  It may include symbol table data and/or a list of the syntax/semantic errors that were located during the parsing operation, if there were any.  Any data can be returned, as long as it implements the [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) interface.
 
-Although the syntax and semantic analysis methodology described above is the formal definition of what generally takes place in parsing, parsing really can be any sort of processing that performed as a result of text scanning.
+Although the syntax and semantic analysis methodology described above is the formal definition of what generally takes place in parsing, parsing really can be any sort of processing that is performed as a result of text scanning.
 
 ## The IParser Interface
 
@@ -38,11 +38,11 @@ The [IParser](xref:ActiproSoftware.Text.Parsing.IParser) interface is very simpl
 > [!NOTE]
 > See the [Parse Requests and Dispatchers](parse-requests-and-dispatchers.md) topic for more information on parse requests.
 
-What does a parser actually do?  Well it's entirely up to you.  Generally, it calls some sort of external parser @if (wpf) {such as Irony, ANTLR, etc.} to examine the text in the request and return some sort of result.
+What does a parser actually do?  Well, it's entirely up to you.  Generally, it calls some sort of external parser @if (wpf) {such as Irony, ANTLR, etc.} to examine the text in the request and return some sort of result.
 
-However the parser could be implemented to simply execute your own custom code instead.  Maybe you don't need to run a complicated parser that builds an AST and you simply want to build a list of variables defined and where they are defined.  Anything is possible by scanning the text.
+However, the parser could be implemented to simply execute your own custom code instead.  Maybe you don't need to run a complicated parser that builds an AST and you simply want to build a list of variables defined and where they are defined.  Anything is possible by scanning the text.
 
-The only requirement for whatever the parser does is that it return its results in the form of an [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) object.  This object then gets placed in the calling [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property.
+The only requirement for whatever the parser does is that it returns its results in the form of an [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) object.  This object then gets placed in the calling [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property.
 
 ## The Abstract ParserBase Class
 
@@ -57,12 +57,12 @@ public class MyParser : ParserBase {
 
 	public override IParseData Parse(IParseRequest request) {
 		IParseData parseData = null;
-						
+
 		// Perform some sort of parsing here and place the result in parseData
-						
+
 		return parseData;
 	}
-	
+
 }
 ```
 
@@ -82,7 +82,7 @@ When no [IParser](xref:ActiproSoftware.Text.Parsing.IParser) is registered with 
 
 ## The IParseData Interface
 
-The [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) interface defines the base requirements for an object that is returned as the result of a parsing opertion.
+The [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) interface defines the base requirements for an object that is returned as the result of a parsing operation.
 
 There are not currently any default implementations of this interface so you must ensure that any object that is returned by an [IParser](xref:ActiproSoftware.Text.Parsing.IParser) implements the interface.
 
@@ -92,7 +92,7 @@ The [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseData](xref:Ac
 
 When an [IParser](xref:ActiproSoftware.Text.Parsing.IParser) completes a parse operation, the [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) that is returned is placed in the calling [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property.  This generally happens asynchronously if a [Parse Request Dispatcher](parse-requests-and-dispatchers.md) is used.
 
-At that time, the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event fires, allowing you to update the user interface or take other action as appropriate.
+At that time, the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event is raised, allowing you to update the user interface or take other action as appropriate.
 
 ## Quickly Parsing a Text String
 

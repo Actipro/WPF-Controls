@@ -15,7 +15,7 @@ Printer view margins surround the text area and can be displayed in one of four 
 
 The [IPrinterViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin).[Placement](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin.Placement) property has an [PrinterViewMarginPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.PrinterViewMarginPlacement) enumeration value that indicates one of those four placement locations.
 
-Since each [IPrinterViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin) has a string-based `Key`, and the interface also implements [IOrderable](xref:ActiproSoftware.Text.Utility.IOrderable), it has an [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property that returns an enumerable of [Ordering](xref:ActiproSoftware.Text.Utility.Ordering) objects.  Each ordering indicates the a string `Key` of another margin and whether this margin comes before or after that one.  When multiple margins are combined into a placement location, they are ordered based on the [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property values, where "after" means farther away from the text area.
+Since each [IPrinterViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin) has a string-based `Key`, and the interface also implements [IOrderable](xref:ActiproSoftware.Text.Utility.IOrderable), it has an [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property that returns an enumerable of [Ordering](xref:ActiproSoftware.Text.Utility.Ordering) objects.  Each ordering indicates the string `Key` of another margin and whether this margin comes before or after that one.  When multiple margins are combined into a placement location, they are ordered based on the [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property values, where "after" means farther away from the text area.
 
 ## Built-In Margin Summary
 
@@ -66,15 +66,15 @@ Margin factories are used to tell SyntaxEditor which margins to display in a pri
 
 The [DefaultPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultPrinterViewMarginFactory) class is an implementation of a factory that creates all of the built-in margins.  While all the built-in margins are added if this factory is used, they still change their visibility based on the related [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings) margin visibility properties such as [IsDocumentTitleMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.IsDocumentTitleMarginVisible).
 
-The [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.ViewMarginFactories) property is a collection of [IPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMarginFactory) objects.  By default it is auto-populated with the [DefaultPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultPrinterViewMarginFactory), meaning all built-in margins are available.  Add additional margin factories to the collection if you wish to add custom margins.  A QuickStart is available in the samples that shows how to do this.
+The [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.ViewMarginFactories) property is a collection of [IPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMarginFactory) objects.  By default, it is auto-populated with the [DefaultPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultPrinterViewMarginFactory), meaning all built-in margins are available.  Add additional margin factories to the collection if you wish to add custom margins.  A QuickStart is available in the samples that shows how to do this.
 
 ## Custom Margins
 
 Custom margins are pretty easy to create.  These are the basic steps involved:
 
-- First, make a margin `Control` that implements [IPrinterViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin).
-- Second, make a custom [IPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMarginFactory) that creates an instance of your margin class.
-- Third, add your custom margin factory to the [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.ViewMarginFactories) collection.
+1. Make a margin `Control` that implements [IPrinterViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMargin).
+1. Make a custom [IPrinterViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IPrinterViewMarginFactory) that creates an instance of your margin class.
+1. Add your custom margin factory to the [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.ViewMarginFactories) collection.
 
 At this point your margin should now be getting added to the view.
 

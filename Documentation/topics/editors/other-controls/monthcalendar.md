@@ -54,7 +54,7 @@ The [MonthCalendar](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar) can be u
 > [!NOTE]
 > Disabled dates, as described below, are automatically excluded from selection.
 
-The [SelectionChanged](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectionChanged) event fires whenever the [SelectedDate](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDate) or [SelectedDates](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDates) properties change.
+The [SelectionChanged](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectionChanged) event is raised whenever the [SelectedDate](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDate) or [SelectedDates](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.SelectedDates) properties change.
 
 The number of selected dates can be restricted using the [MaxSelectionCount](xref:@ActiproUIRoot.Controls.Editors.MonthCalendar.MaxSelectionCount) property.  When set to `-1` (the default value), no limit is imposed.
 

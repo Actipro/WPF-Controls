@@ -68,7 +68,7 @@ The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemA
 
 The default implementation of this method flags that dropping is not allowed and returns [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea).[None](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea.None), meaning no visual feedback should be given.  Override this method if you wish to support dropping and add logic to properly handle the dragged data.
 
-The target item (which can be null if over the whitespace area below the last item in the control) and a [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) based on hit testing over the target item are passed in as arguments.  If dropping is to be supported and a drop indicator should be displayed, the [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) returned can be the same value, or coerced to another value.  The resulting value will affect the displayed drop indicator.  Possible values are `None` (no indicator), `Before` (small bar at the top of the target item), `On` (a highlight under the item), or `After` (small bar at the bottom of the target item).  Some implementations of drag/drop may wish to keep the drop indicators simple by only returning `None` or `On` (coercing `Before` and `After` to `On`).
+The target item (which can be `null` if over the whitespace area below the last item in the control) and a [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) based on hit testing over the target item are passed in as arguments.  If dropping is to be supported and a drop indicator should be displayed, the [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) returned can be the same value, or coerced to another value.  The resulting value will affect the displayed drop indicator.  Possible values are `None` (no indicator), `Before` (small bar at the top of the target item), `On` (a highlight under the item), or `After` (small bar at the bottom of the target item).  Some implementations of drag/drop may wish to keep the drop indicators simple by only returning `None` or `On` (coercing `Before` and `After` to `On`).
 
 @if (winrt) {
 
@@ -96,7 +96,7 @@ Finally if a drop does occur, the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.C
 
 The default implementation of this method flags that no drop occurred and takes no further action.  Override this method if you wish to support dropping and add logic to properly handle the dragged data.
 
-Here again, the target item (which can be null if over the whitespace area below the last item in the control) and a [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) based on hit testing over the target item are passed in as arguments.  An override of this method takes appropriate action to update tree items.  This could involve moving items, copying items, inserting new items, etc.
+Here again, the target item (which can be `null` if over the whitespace area below the last item in the control) and a [TreeItemDropArea](xref:@ActiproUIRoot.Controls.Grids.TreeItemDropArea) based on hit testing over the target item are passed in as arguments.  An override of this method takes appropriate action to update tree items.  This could involve moving items, copying items, inserting new items, etc.
 
 > [!TIP]
 > A full sample of drag and drop functionality is included in the product QuickStarts.  It contains fairly extensive logic and should be referred to for better understanding of how drag and drop works.

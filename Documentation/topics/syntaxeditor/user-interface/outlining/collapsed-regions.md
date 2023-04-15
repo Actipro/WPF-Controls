@@ -5,9 +5,9 @@ order: 5
 ---
 # Collapsing Regions Without Outlining
 
-The code outlining feature decribed in earlier topics supports the collapsing of outlining nodes, where contained text becomes hidden.  SyntaxEditor's low-level collapsed region management feature is harnessed to achieve this functionality.  This same collapsed regions mechanism can be used independently of code outlining too.
+The code outlining feature described in earlier topics supports the collapsing of outlining nodes, where contained text becomes hidden.  SyntaxEditor's low-level collapsed region management feature is harnessed to achieve this functionality.  This same collapsed regions mechanism can be used independently of code outlining too.
 
-Various text regions can be collapsed (hidden) independent of the outlining features.  And in these cases you can even optionally replace the collapsed region with an adornment.
+Various text regions can be collapsed (hidden) independent of the outlining features.  And in these cases, you can even optionally replace the collapsed region with an adornment.
 
 ## Collapsed Region Manager
 
@@ -18,7 +18,7 @@ When the view's text formatting engine builds up layout data for a view line, it
 The [ICollapsedRegionManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.ICollapsedRegionManager) has two main functions:
 
 - Raise an event when the collapsed regions change
-- Allow consumers to return collapsed regions that contain an offset or interset a text range
+- Allow consumers to return collapsed regions that contain an offset or intersect a text range
 
 ### RegionsChanged Event
 
@@ -40,7 +40,7 @@ At this point if your tagger is in use by your language, you should notice hidde
 
 ## Rendering Intra-Text Adornments in Place of Collapsed Regions
 
-Collapsed regions by default will not render anything in their place.  However there is an option to render an adornment in place of the collapsed region.  The code outlining feature uses this option to render the "..." sort of adornments wherever an outlining node is collapsed.
+Collapsed regions by default will not render anything in their place.  However, there is an option to render an adornment in place of the collapsed region.  The code outlining feature uses this option to render the `"..."` sort of adornments wherever an outlining node is collapsed.
 
 Since the adornments that are inserted in place of collapsed regions should be inserted in between the surrounding text characters, intra-text adornments are used.
 

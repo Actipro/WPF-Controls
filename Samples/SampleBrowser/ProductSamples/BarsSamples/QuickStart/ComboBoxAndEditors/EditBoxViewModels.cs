@@ -23,7 +23,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		protected PartEditBoxViewModelBase() { }  // Parameterless constructor required for XAML support
+		protected PartEditBoxViewModelBase()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified key.  The label is auto-generated.

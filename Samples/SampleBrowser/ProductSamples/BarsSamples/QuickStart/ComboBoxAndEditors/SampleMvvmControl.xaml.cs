@@ -68,46 +68,33 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 										Items = {
 
 											// Editable
-											new BarComboBoxViewModel("Editable") {
+											new BarComboBoxViewModel("Editable", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
+												CanCategorize = false,
 												Description = "A basic, editable combobox sample.",
 												IsEditable = true,
-												PlaceholderText = "Employee",
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
+												PlaceholderText = "(employee)",
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("EditableGallery", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.PersonComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													}
-												}
 											},
 
 											// Read-Only
-											new BarComboBoxViewModel("ReadOnly") {
+											new BarComboBoxViewModel("ReadOnly", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
+												CanCategorize = false,
 												Description = "A basic, editable and read-only combobox sample.",
 												IsEditable = true,
 												IsReadOnly = true,
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("EditableGallery", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.PersonComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													}
-												}
 											},
 
 											// Non-Editable
-											new BarComboBoxViewModel("NonEditable", "Non-Editable") {
+											new BarComboBoxViewModel("NonEditable", "Non-Editable", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
+												CanCategorize = false,
 												Description = "A basic, non-editable combobox sample.",
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
-												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("NonEditableGallery", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.PersonComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													}
-												}
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
 											},
 
 										}
@@ -122,52 +109,34 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 										Items = {
 
 											// Categorized items in a single column
-											new BarComboBoxViewModel("CategorizedSingleColumn", "Single-Column") {
+											new BarComboBoxViewModel("CategorizedSingleColumn", "Single-Column", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
 												Description = "A combobox with items categorized and displayed in a single column.",
 												IsEditable = true,
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("CategorizedSingleColumnGallery", this.ComboBoxGalleryCommand, this.ComboBoxPersonItems) {
-														CanCategorize = true,
-														MaxMenuColumnCount = 1,
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.PersonComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													}
-												}
 											},
 
 											// Categorized items in multiple columns
-											new BarComboBoxViewModel("CategorizedMultiColumn", "Multi-Column") {
+											new BarComboBoxViewModel("CategorizedMultiColumn", "Multi-Column", this.ComboBoxGalleryCommand, this.ComboBoxNumberItems) {
 												Description = "A combobox with items categorized and displayed using multiple columns.",
 												IsEditable = true,
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.NumberComboBoxGalleryItemTemplate),
+												MinMenuColumnCount = 5,
+												MaxMenuColumnCount = 5,
 												UnmatchedTextCommand = this.ComboBoxUnmatchedNumberTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("CategorizedMultiColumnGallery", this.ComboBoxGalleryCommand, this.ComboBoxNumberItems) {
-														CanCategorize = true,
-														MinMenuColumnCount = 5,
-														MaxMenuColumnCount = 5,
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.NumberComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													}
-												}
 											},
 
 											// Categorized/Filtered items with menu item appearance consistent with large menu items
-											new BarComboBoxViewModel("MenuStyle") {
+											new BarComboBoxViewModel("MenuStyle", this.ComboBoxGalleryCommand, this.ComboBoxColorItems) {
+												CanFilter = true,
 												Description = "A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.",
 												IsEditable = true,
-												TextPath = nameof(SimpleComboBoxGalleryItem.Label),
+												IsSynchronizedWithCurrentItem = true,
+												ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.LargeMenuComboBoxGalleryItemTemplate),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("MenuStyleGallery", this.ComboBoxGalleryCommand, this.ComboBoxColorItems) {
-														CanCategorize = true,
-														CanFilter = true,
-														MaxMenuColumnCount = 1,
-														ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.LargeMenuComboBoxGalleryItemTemplate),
-														UseMenuItemAppearance = true,
-													},
+												BelowMenuItems = {
 													new BarButtonViewModel("MoreColors", "More colors...") {
 														Command = this.NotImplementedCommand,
 													}
@@ -186,39 +155,46 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 										Items = {
 
 											// Font family
-											new BarComboBoxViewModel("FontFamily") {
+											new BarComboBoxViewModel("FontFamily", this.ComboBoxGalleryCommand, this.ComboBoxFontFamilyItems) {
 												Description = "A combobox with system fonts and a category for recently-used fonts.",
 												IsEditable = true,
+												IsPreviewEnabledWhenPopupClosed = true,
+												IsSynchronizedWithCurrentItem = true,
 												IsUnmatchedTextAllowed = false,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
+												MenuResizeMode = Windows.Controls.ControlResizeMode.Vertical,
 												RequestedWidth = 120,
-												TextPath = nameof(FontFamilyBarGalleryItemViewModel.Label),
-												MenuItems = {
-													new BarGalleryViewModel("FontFamilyGallery", this.ComboBoxGalleryCommand, this.ComboBoxFontFamilyItems) {
-														CanCategorize = true,
-														ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
-														MaxMenuColumnCount = 1,
-														MenuResizeMode = Windows.Controls.ControlResizeMode.Vertical,
-														UseMenuItemAppearance = true,
-													}
-												}
 											},
 
 											// Font size
-											new BarComboBoxViewModel("FontSize") {
+											new BarComboBoxViewModel("FontSize", this.ComboBoxGalleryCommand, this.ComboBoxFontSizeItems) {
 												Description = "A combobox with common font sizes.",
 												IsEditable = true,
+												IsSynchronizedWithCurrentItem = true,
 												IsTextCompletionEnabled = false,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
+												MenuResizeMode = Windows.Controls.ControlResizeMode.Vertical,
 												RequestedWidth = 45,
-												TextPath = nameof(FontSizeBarGalleryItemViewModel.Label),
 												UnmatchedTextCommand = this.ComboBoxUnmatchedNumberTextCommand,
-												MenuItems = {
-													new BarGalleryViewModel("FontSizeGallery", this.ComboBoxGalleryCommand, this.ComboBoxFontSizeItems) {
-														ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
-														MaxMenuColumnCount = 1,
-														MenuResizeMode = Windows.Controls.ControlResizeMode.Vertical,
-														UseMenuItemAppearance = true,
-													}
-												}
+											},
+
+										}
+									}
+								}
+							},
+
+							new RibbonGroupViewModel("EnumSamples") {
+								Items = {
+									new RibbonControlGroupViewModel() {
+										ItemVariantBehavior = ItemVariantBehavior.AlwaysMedium,
+										Items = {
+
+											new BarComboBoxViewModel("EnumValue", this.ComboBoxGalleryCommand, this.ComboBoxEnumItems) {
+												Description = "A combobox with items automated generated from the fields of an Enum type.",
+												IsSynchronizedWithCurrentItem = true,
+												IsUnmatchedTextAllowed = false,
+												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),
+												RequestedWidth = 120,
 											},
 
 										}
@@ -274,7 +250,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 			// associated with more than one BarTextBoxViewModel
 			return textBoxViewModel?.Text;
 		}
-
 
 		/// <summary>
 		/// Gets the view model for the Ribbon control.

@@ -62,7 +62,7 @@ The size, or radius, of the frame background is determined by the [Radius](xref:
 
 ### Custom Geometry/ImageSource
 
-When the built-in background types are not flexible enough to achieve the look desired, a custom `Geometry` or `ImageSource` can be used.
+When the built-in background types are not flexible enough to achieve the desired look, a custom `Geometry` or `ImageSource` can be used.
 
 When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularGaugeBase.BackgroundType) is set to [CustomBackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.CircularBackgroundType.CustomBackgroundGeometry), then the `Geometry` specified by [BackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularGaugeBase.BackgroundGeometry) is used when rendering the background.
 

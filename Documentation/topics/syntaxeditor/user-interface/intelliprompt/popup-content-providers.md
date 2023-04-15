@@ -95,7 +95,7 @@ Creates a hyperlink over the enclosed text.  The `href` attribute indicates the 
 `em`
 
 </td>
-<td>Renders the enclosed text using emphasis.  The default style renders in italics.</td>
+<td>Renders the enclosed text using emphasis.  The default style is rendered in italics.</td>
 </tr>
 
 <tr>
@@ -184,7 +184,7 @@ The `href` attribute of an `a` tag specifies the target of the hyperlink.  When 
 
 ### Working With the 'img' (Image) Tag
 
-Since there is no way to pass binary image data in the XML markup itself, the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider).[GetImage](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider.GetImage*) method is called when an `img` tag is encountered.  The `src` attribute value is passed in and the method returns an `Image`.  This method must be overridden in a custom class that inherits [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider), otherwise a null reference is always returned.
+Since there is no way to pass binary image data in the XML markup itself, the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider).[GetImage](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider.GetImage*) method is called when an `img` tag is encountered.  The `src` attribute value is passed in and the method returns an `Image`.  This method must be overridden in a custom class that inherits [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider), otherwise a `null` reference is always returned.
 
 The `align` attribute accepts values of `baseline` and `absbottom`.  The default is `baseline`.
 
@@ -225,7 +225,7 @@ Since the method is called on-demand, the content doesn't need to be loaded up f
 It is common to use the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) to aid in dynamically generating content in custom content providers.  In this example of a [GetContent](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IContentProvider.GetContent*) implementation, there is a `Type` field in the custom content provider class called `targetType`.  A [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) is used to help provide nicely-formatted markup content describing the type.
 
 ```csharp
-string htmlSnippet = String.Format("Type: <b>{0}</b>", 
+string htmlSnippet = String.Format("Type: <b>{0}</b>",
 	HtmlContentProvider.Escape(targetType.FullName));
 return new HtmlContentProvider(htmlSnippet).GetContent();
 ```

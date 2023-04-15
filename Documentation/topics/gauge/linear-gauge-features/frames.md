@@ -58,7 +58,7 @@ The size of the frame background is determined by the `ActualWidth`, `ActualHeig
 
 ### Custom Geometry/ImageSource
 
-When the built-in background types are not flexible enough to achieve the look desired, a custom `Geometry` or `ImageSource` can be used.
+When the built-in background types are not flexible enough to achieve the desired look, a custom `Geometry` or `ImageSource` can be used.
 
 When [BackgroundType](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundType) is set to [CustomBackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.RectangularBackgroundType.CustomBackgroundGeometry), then the `Geometry` specified by [BackgroundGeometry](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RectangularGaugeBase.BackgroundGeometry) is used when rendering the background.
 

@@ -50,6 +50,6 @@ Handle the [WindowsDragged](xref:@ActiproUIRoot.Controls.Docking.DockSite.Window
 
 ## Customizing Menus
 
-The [MenuOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.MenuOpening) event fires before any menu is displayed for a window or button, allowing you to customize it or replace it with your own.
+The [MenuOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.MenuOpening) event is raised before any menu is displayed for a window or button, allowing you to customize it or replace it with your own.
 
 See the [Menu Customization](menu-customization.md) topic for details on handling this event.

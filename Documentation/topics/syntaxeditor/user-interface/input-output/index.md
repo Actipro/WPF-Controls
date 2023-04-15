@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-In addition to the input/output features found in the [text framework](../../text-parsing/index.md) such as file load/save, exporting to HTML/RTF, etc., SyntaxEditor has a lot of other i/o features built-in.
+In addition to the input/output features found in the [text framework](../../text-parsing/index.md) such as file load/save, exporting to HTML/RTF, etc., SyntaxEditor has a lot of other I/O features built-in.
 
 ## Document Swapping
 
@@ -45,18 +45,18 @@ See the [Macro Recording and Playback](macro-recording.md) topic for more inform
 
 ## Data Binding
 
-SyntaxEditor has the capability of allowing two-way binding of its text to any other data source.  This feature is disabled by default for performance reasons, but can be enabled via a property setting.
+SyntaxEditor has the capability of allowing two-way binding of its text to any other data source.  This feature is disabled by default for performance reasons but can be enabled via a property setting.
 
 See the [Data Binding](data-binding.md) topic for more information.
 
 ## Indent Providers (Auto-Indent)
 
-Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the Enter key is pressed.
+Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) and contain code to perform automatic indentation when the <kbd>Enter</kbd> key is pressed.
 
 See the [Indent Providers (Auto-Indent)](indent-providers.md) topic for more information.
 
 ## Delimiter Auto-Completion
 
-Delimiter auto-completion occurs when the end user types a start delimiter and a related end delimiter is auto-inserted after the caret.  This improves code editing productivity since it means less overall typing is required to output the same code.
+Delimiter auto-completion occurs when the end user types a start delimiter, and a related end delimiter is auto-inserted after the caret.  This improves code editing productivity since it means less overall typing is required to output the same code.
 
 See the [Delimiter Auto-Completion](delimiter-auto-completion.md) topic for more information.

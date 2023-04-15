@@ -20,7 +20,7 @@ See the [Lifecycle and Docking Management](docking-window-features/lifecycle-and
 
 ## Programmatic Layout Updates Don't Work Until Loaded
 
-Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the constructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event fires.
+Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the constructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event is raised.
 
 When the root element has been loaded, that means that all the templates of the control hierarchy within the dock site have been properly loaded and applied as well.  The dock site and its features are then ready for programmatic interaction.
 

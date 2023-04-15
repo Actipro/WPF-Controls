@@ -98,7 +98,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			// applying a gallery item for numbering
 			if (PreviewMode == RichTextBoxExtended.PreviewModeState.None) {
 				ThemedMessageBox.Show(
-					$"The numbering kind '{viewModel.Kind}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Numbering Not Implemented",
+					$"The numbering '{viewModel.Label}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Numbering Not Implemented",
 					MessageBoxButton.OK, MessageBoxImage.Information);
 
 				// Since selecting one of the numbering gallery items will automatically change the selection to that
@@ -106,7 +106,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				this.BarManager.UpdateControlViewModelCheckedState(BarControlKeys.Numbering, () => false);
 				if (this.BarManager.ControlViewModels[BarControlKeys.NumberingGallery] is BarGalleryViewModel numberingGalleryViewModel) {
 					numberingGalleryViewModel.SelectItemByValueMatch<NumberingBarGalleryItemViewModel>(i =>
-						i.Kind == NumberingKind.None
+						i.Value == NumberingKind.None
 					);
 				}
 			}
@@ -115,15 +115,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// <summary>
 		/// Applies a text style to the current selection.
 		/// </summary>
-		/// <param name="viewModel">The view model which defines the text style to apply.</param>
-		private void ApplyTextStyle(TextStyleBarGalleryItemViewModel viewModel) {
+		/// <param name="textStyle">The text style to apply.</param>
+		private void ApplyTextStyle(TextStyle textStyle) {
 			UpdateSelectionTextStyle(x => {
-				x.Bold = viewModel.Bold;
-				x.FontColor = viewModel.Color;
-				x.FontFamilyName = viewModel.FontFamilyName;
-				x.FontSize = viewModel.FontSize;
-				x.Italic = viewModel.Italic;
-				x.Underline = viewModel.Underline ? UnderlineKind.Underline : UnderlineKind.None;
+				x.Bold = textStyle.Bold;
+				x.FontColor = textStyle.TextColor;
+				x.FontFamilyName = textStyle.FontFamilyName;
+				x.FontSize = textStyle.FontSize;
+				x.Italic = textStyle.Italic;
+				x.Underline = textStyle.Underline ? UnderlineKind.Underline : UnderlineKind.None;
 			});
 		}
 
@@ -134,13 +134,13 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		private void ApplyUnderline(UnderlineBarGalleryItemViewModel viewModel) {
 			// Only standard underline is supported by this application and the other underline kinds
 			// are for demonstration purposes only
-			if ((viewModel.Kind == UnderlineKind.None) || (viewModel.Kind == UnderlineKind.Underline)) {
-				UpdateSelectionTextStyle(x => x.Underline = viewModel.Kind);
+			if ((viewModel.Value == UnderlineKind.None) || (viewModel.Value == UnderlineKind.Underline)) {
+				UpdateSelectionTextStyle(x => x.Underline = viewModel.Value);
 			}
 			else if (PreviewMode == RichTextBoxExtended.PreviewModeState.None) {
 				// Provide feedback that the selected item is not supported
 				ThemedMessageBox.Show(
-					$"The underline kind '{viewModel.Kind}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Underline Not Implemented",
+					$"The underline '{viewModel.Label}' is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Underline Not Implemented",
 					MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 		}
@@ -211,25 +211,25 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				return;
 
 			if (this.BarManager.ControlViewModels[BarControlKeys.FontColorPicker] is BarGalleryViewModel fontColorGalleryViewModel)
-				fontColorGalleryViewModel.SelectItemByValueMatch<ColorBarGalleryItemViewModel>(i => i.Color == textStyle.FontColor);
+				fontColorGalleryViewModel.SelectItemByValueMatch<ColorBarGalleryItemViewModel>(i => i.Value == textStyle.FontColor);
 
 			if ((this.BarManager.ControlViewModels[BarControlKeys.Font] is BarComboBoxViewModel fontFamilyComboBoxViewModel) && !(string.IsNullOrEmpty(textStyle.FontFamilyName)))
-				fontFamilyComboBoxViewModel.SelectItemByValueMatch<FontFamilyBarGalleryItemViewModel>(i => i.Name == textStyle.FontFamilyName, textStyle.FontFamilyName);
+				fontFamilyComboBoxViewModel.SelectItemByTextMatch<FontFamilyBarGalleryItemViewModel>(i => i.Value, textStyle.FontFamilyName);
 
 			if ((this.BarManager.ControlViewModels[BarControlKeys.FontSize] is BarComboBoxViewModel fontSizeComboBoxViewModel) && !(double.IsNaN(textStyle.FontSize)))
-				fontSizeComboBoxViewModel.SelectItemByValueMatch<FontSizeBarGalleryItemViewModel>(i => i.Size == textStyle.FontSize, textStyle.FontSize.ToString());
+				fontSizeComboBoxViewModel.SelectItemByValueMatch<FontSizeBarGalleryItemViewModel>(i => i.Value == textStyle.FontSize, i => i.Value.ToString(), textStyle.FontSize.ToString());
 
 			if (this.BarManager.ControlViewModels[BarControlKeys.TextHighlightColorPicker] is BarGalleryViewModel textHighlightColorGalleryViewModel)
-				textHighlightColorGalleryViewModel.SelectItemByValueMatch<ColorBarGalleryItemViewModel>(i => i.Color == textStyle.TextHighlightColor);
+				textHighlightColorGalleryViewModel.SelectItemByValueMatch<ColorBarGalleryItemViewModel>(i => i.Value == textStyle.TextHighlightColor);
 
 			if (this.BarManager.ControlViewModels[BarControlKeys.QuickStylesGallery] is BarGalleryViewModel textStyleGalleryViewModel) {
 				textStyleGalleryViewModel.SelectItemByValueMatch<TextStyleBarGalleryItemViewModel>(i =>
-					i.Bold == textStyle.Bold
-					&& i.Color == textStyle.FontColor
-					&& i.FontFamilyName == textStyle.FontFamilyName
-					&& i.FontSize == textStyle.FontSize
-					&& i.Italic == textStyle.Italic
-					&& i.Underline == (textStyle.Underline == UnderlineKind.Underline)
+					i.Value.Bold == textStyle.Bold
+					&& i.Value.TextColor == textStyle.FontColor
+					&& i.Value.FontFamilyName == textStyle.FontFamilyName
+					&& i.Value.FontSize == textStyle.FontSize
+					&& i.Value.Italic == textStyle.Italic
+					&& i.Value.Underline == (textStyle.Underline == UnderlineKind.Underline)
 				);
 			}
 
@@ -241,7 +241,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			this.BarManager.UpdateControlViewModelCheckedState(BarControlKeys.Underline, () => underlineKind != UnderlineKind.None);
 			if (this.BarManager.ControlViewModels[BarControlKeys.UnderlineGallery] is BarGalleryViewModel underlineGalleryViewModel) {
 				underlineGalleryViewModel.SelectItemByValueMatch<UnderlineBarGalleryItemViewModel>(i =>
-					i.Kind == underlineKind
+					i.Value == underlineKind
 				);
 			}
 
@@ -404,7 +404,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			get {
 				if (insertSymbolCommand is null) {
 					insertSymbolCommand = new DelegateCommand<SymbolBarGalleryItemViewModel>(
-						p => OnRequestInsertText(p.Symbol)
+						p => OnRequestInsertText(p.Value)
 					);
 				}
 				return insertSymbolCommand;
@@ -421,7 +421,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					setFontColorCommand = new PreviewableDelegateCommand<ColorBarGalleryItemViewModel>(
 						executeAction: p => {
 							OnRequestSaveAndExitPreviewMode();
-							UpdateSelectionTextStyle(x => x.FontColor = p?.Color ?? DefaultFontForegroundPickerColor);
+							UpdateSelectionTextStyle(x => x.FontColor = p?.Value ?? DefaultFontForegroundPickerColor);
 
 							if (this.BarManager.ControlViewModels[BarControlKeys.FontColor] is BarSplitButtonViewModel buttonViewModel) {
 								buttonViewModel.CommandParameter = p;
@@ -431,7 +431,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						canExecuteFunc: p => true,
 						previewAction: p => {
 							OnRequestActivatePreviewMode();
-							UpdateSelectionTextStyle(x => x.FontColor = p?.Color ?? DefaultFontForegroundPickerColor);
+							UpdateSelectionTextStyle(x => x.FontColor = p?.Value ?? DefaultFontForegroundPickerColor);
 						},
 						cancelPreviewAction: p => {
 							OnRequestCancelPreviewMode();
@@ -452,12 +452,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					setFontFamilyCommand = new PreviewableDelegateCommand<FontFamilyBarGalleryItemViewModel>(
 						executeAction: p => {
 							OnRequestSaveAndExitPreviewMode();
-							UpdateSelectionTextStyle(x => x.FontFamilyName = p?.Name ?? FontSettings.DefaultFontFamilyName);
+							UpdateSelectionTextStyle(x => x.FontFamilyName = p?.Value ?? FontSettings.DefaultFontFamilyName);
 						},
 						canExecuteFunc: p => true,
 						previewAction: p => {
 							OnRequestActivatePreviewMode();
-							UpdateSelectionTextStyle(x => x.FontFamilyName = p?.Name ?? FontSettings.DefaultFontFamilyName);
+							UpdateSelectionTextStyle(x => x.FontFamilyName = p?.Value ?? FontSettings.DefaultFontFamilyName);
 						},
 						cancelPreviewAction: p => {
 							OnRequestCancelPreviewMode();
@@ -478,12 +478,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					setFontSizeCommand = new PreviewableDelegateCommand<FontSizeBarGalleryItemViewModel>(
 						executeAction: p => {
 							OnRequestSaveAndExitPreviewMode();
-							UpdateSelectionTextStyle(x => x.FontSize = p?.Size ?? FontSettings.DefaultFontSize);
+							UpdateSelectionTextStyle(x => x.FontSize = p?.Value ?? FontSettings.DefaultFontSize);
 						},
 						canExecuteFunc: p => true,
 						previewAction: p => {
 							OnRequestActivatePreviewMode();
-							UpdateSelectionTextStyle(x => x.FontSize = p?.Size ?? FontSettings.DefaultFontSize);
+							UpdateSelectionTextStyle(x => x.FontSize = p?.Value ?? FontSettings.DefaultFontSize);
 						},
 						cancelPreviewAction: p => {
 							OnRequestCancelPreviewMode();
@@ -547,7 +547,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					setTextHighlightColorCommand = new PreviewableDelegateCommand<ColorBarGalleryItemViewModel>(
 						executeAction: p => {
 							OnRequestSaveAndExitPreviewMode();
-							UpdateSelectionTextStyle(x => x.TextHighlightColor = p?.Color ?? DefaultFontBackgroundPickerColor);
+							UpdateSelectionTextStyle(x => x.TextHighlightColor = p?.Value ?? DefaultFontBackgroundPickerColor);
 
 							if (this.BarManager.ControlViewModels[BarControlKeys.TextHighlightColor] is BarSplitButtonViewModel buttonViewModel) {
 								buttonViewModel.CommandParameter = p;
@@ -557,7 +557,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						canExecuteFunc: p => true,
 						previewAction: p => {
 							OnRequestActivatePreviewMode();
-							UpdateSelectionTextStyle(x => x.TextHighlightColor = p?.Color ?? DefaultFontBackgroundPickerColor);
+							UpdateSelectionTextStyle(x => x.TextHighlightColor = p?.Value ?? DefaultFontBackgroundPickerColor);
 						},
 						cancelPreviewAction: p => {
 							OnRequestCancelPreviewMode();
@@ -578,12 +578,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					setTextStyleCommand = new PreviewableDelegateCommand<TextStyleBarGalleryItemViewModel>(
 						executeAction: p => {
 							OnRequestSaveAndExitPreviewMode();
-							this.ApplyTextStyle(p);
+							this.ApplyTextStyle(p.Value);
 						},
 						canExecuteFunc: p => true,
 						previewAction: p => {
 							OnRequestActivatePreviewMode();
-							this.ApplyTextStyle(p);
+							this.ApplyTextStyle(p.Value);
 						},
 						cancelPreviewAction: p => {
 							OnRequestCancelPreviewMode();

@@ -13,7 +13,7 @@ When the items presented by the [Breadcrumb](xref:@ActiproUIRoot.Controls.Naviga
 
 ## Handling Conversion Requests
 
-The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) fires the [ConvertItem](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ConvertItem) event, when it needs a path or a trail.  The event arguments are an instance of [BreadcrumbConvertItemEventArgs](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbConvertItemEventArgs) and include information about the conversion request.
+The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) raises the [ConvertItem](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ConvertItem) event, when it needs a path or a trail.  The event arguments are an instance of [BreadcrumbConvertItemEventArgs](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbConvertItemEventArgs) and include information about the conversion request.
 
 This sample code shows how to define an event handler for the [ConvertItem](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ConvertItem) event:
 

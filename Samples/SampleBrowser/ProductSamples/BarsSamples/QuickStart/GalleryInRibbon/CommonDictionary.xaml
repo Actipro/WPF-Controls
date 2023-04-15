@@ -27,9 +27,9 @@
 		<!-- Custom DataTemplate used to display large-sized items (typically using 1-row layout) -->
 		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Width="60" Height="44">
 			<Border.Background>
-				<SolidColorBrush Color="{Binding Color}" />
+				<SolidColorBrush Color="{Binding Value}" />
 			</Border.Background>
-			<TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="9" Text="{Binding Color}"
+			<TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="9" Text="{Binding Value}"
 					   Foreground="{Binding BindsDirectlyToSource=True, Converter={StaticResource TextForegroundColorConverter}}"/>
 		</Border>
 	</DataTemplate>
@@ -39,10 +39,10 @@
 		<DockPanel Width="75" Height="22">
 			<Border DockPanel.Dock="Left" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Margin="2,0" Width="16" Height="16">
 				<Border.Background>
-					<SolidColorBrush Color="{Binding Color}" />
+					<SolidColorBrush Color="{Binding Value}" />
 				</Border.Background>
 			</Border>
-			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10" Text="{Binding Color}" />
+			<TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="10" Text="{Binding Value}" />
 		</DockPanel>
 	</DataTemplate>
 		
@@ -50,7 +50,7 @@
 		<!-- Custom DataTemplate used to display small-sized items (typically using 3-row layout) -->
 		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}" BorderThickness="1" Width="32" Height="16">
 			<Border.Background>
-				<SolidColorBrush Color="{Binding Color}" />
+				<SolidColorBrush Color="{Binding Value}" />
 			</Border.Background>
 		</Border>
 	</DataTemplate>

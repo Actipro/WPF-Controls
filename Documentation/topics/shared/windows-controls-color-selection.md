@@ -88,7 +88,7 @@ This control has these important properties:
 
 ## The SpectrumSlider Control
 
-The [SpectrumSlider](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumSlider) control is part of the [SpectrumColorPicker](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker) control and is used to display a hue spectrum on the right side of the color picker.  However this control may be used on its own.
+The [SpectrumSlider](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumSlider) control is part of the [SpectrumColorPicker](xref:@ActiproUIRoot.Controls.ColorSelection.SpectrumColorPicker) control and is used to display a hue spectrum on the right side of the color picker.  However, this control may be used on its own.
 
 The `Value` of the control may be in the range of `0` to `360` and specifies the hue component in the HSB color space.
 

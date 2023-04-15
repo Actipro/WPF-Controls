@@ -9,9 +9,9 @@ The built-in regular expression engine, when used with [dynamic lexers](../text-
 
 ## Usage
 
-Using defined macros is easy.  To reference a macro, simply type its name within curly braces (\{ ... }).
+Using defined macros is easy.  To reference a macro, simply type its name within curly braces; e.g., `{MacroName}`.
 
-This regular expression uses a macro that represents the character class \[0-9] to build a decimal number regular expression.
+This regular expression uses a macro that represents the character class `[0-9]` to build a decimal number regular expression.
 
 `{Digit}+ (\. {Digit}+)?`
 
@@ -27,19 +27,19 @@ The following table summarizes all of the built-in macros:
 
 | Name | Description |
 |-----|-----|
-| All | Contains all Unicode characters.  This is the same as: `[\u0000-\uFFFF]`. |
-| Alpha | Contains all Unicode alphabetic digits.  This is the same as `\p{L}` (all letters). |
-| Digit | Contains all Unicode decimal digits.  This is the same as `\d` and `\p{Nd}`. |
-| HexDigit | Contains all Unicode hexidecimal digits.  This is the same as `[0-9a-fA-F]`. |
-| LineTerminator | Contains all Unicode line terminators.  This is the same as `[\n\r\p{Zl}\p{Zp}]`. |
-| LineTerminatorWhitespace | Contains all Unicode line terminators and whitespace characters.  This is the same as `\s` or `[\f\n\r\t\v\x85\p{Z}]`. |
-| NonAlpha | Contains the inverse of `Alpha`. |
-| NonDigit | Contains the inverse of `Digit`. |
-| None | Contains no characters. |
-| NonHexDigit | Contains the inverse of `HexDigit`. |
-| NonLineTerminator | Contains the inverse of `LineTerminator`. |
-| NonLineTerminatorWhitespace | Contains the inverse of `LineTerminatorWhitespace`. |
-| NonWhitespace | Contains the inverse of `Whitespace`. |
-| NonWord | Contains the inverse of `Word`. |
-| Whitespace | Contains all Unicode whitespace characters.  This is the same as `[\f\t\v\x85\p{Zs}]`. |
-| Word | Contains all Unicode word characters.  This is the same as `\w` and `[\p{L}\p{Nd}\p{Pc}]` (all letters, decimal digits, and connectors like underscore). |
+| `{All}` | Contains all Unicode characters.  This is the same as: `[\u0000-\uFFFF]`. |
+| `{Alpha}` | Contains all Unicode alphabetic digits.  This is the same as `\p{L}` (all letters). |
+| `{Digit}` | Contains all Unicode decimal digits.  This is the same as `\d` and `\p{Nd}`. |
+| `{HexDigit}` | Contains all Unicode hexadecimal digits.  This is the same as `[0-9a-fA-F]`. |
+| `{LineTerminator}` | Contains all Unicode line terminators.  This is the same as `[\n\r\p{Zl}\p{Zp}]`. |
+| `{LineTerminatorWhitespace}` | Contains all Unicode line terminators and whitespace characters.  This is the same as `\s` or `[\f\n\r\t\v\x85\p{Z}]`. |
+| `{NonAlpha}` | Contains the inverse of `Alpha`. |
+| `{NonDigit}` | Contains the inverse of `Digit`. |
+| `{None}` | Contains no characters. |
+| `{NonHexDigit}` | Contains the inverse of `HexDigit`. |
+| `{NonLineTerminator}` | Contains the inverse of `LineTerminator`. |
+| `{NonLineTerminatorWhitespace}` | Contains the inverse of `LineTerminatorWhitespace`. |
+| `{NonWhitespace}` | Contains the inverse of `Whitespace`. |
+| `{NonWord}` | Contains the inverse of `Word`. |
+| `{Whitespace}` | Contains all Unicode whitespace characters.  This is the same as `[\f\t\v\x85\p{Zs}]`. |
+| `{Word}` | Contains all Unicode word characters.  This is the same as `\w` and `[\p{L}\p{Nd}\p{Pc}]` (all letters, decimal digits, and connectors like underscore). |

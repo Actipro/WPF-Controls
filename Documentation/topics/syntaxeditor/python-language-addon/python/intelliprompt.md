@@ -35,7 +35,7 @@ IntelliPrompt quick info features are implemented by the [PythonQuickInfoProvide
 
 ## Navigable Symbol Selector
 
-The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  It shows the types and attributes that currently enclose or are nearest the caret, and allows the end user to select other types/attributes within the same document via a dropdown.
+The [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) is a control that generally sits above and is bound to a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).  It shows the types and attributes that currently enclose or are nearest the caret and allows the end user to select other types/attributes within the same document via a dropdown.
 
 The [NavigableSymbolSelector](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector).[AreMemberSymbolsSupported](xref:@ActiproUIRoot.Controls.SyntaxEditor.NavigableSymbolSelector.AreMemberSymbolsSupported) property should be set to `false` when working with Python since only one drop-down is used.
 

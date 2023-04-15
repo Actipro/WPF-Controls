@@ -29,10 +29,10 @@ This information is vital to know when examining the class library or reading th
 
 This documentation file contains a lot of information about working with SyntaxEditor and the text/parsing framework.  Whenever you have specific questions about a feature, please read through its documentation topic to search for answers.
 
-The documentation is organized such that the text/parsing framework is described first.  This framework is the core of the product and the user interface is built around it.  Thus the user interface is described after the text/parsing framework.  A [language creation guide](language-creation/index.md) is included to help [walk you through](language-creation/walkthrough.md) the process of creating your own syntax languages.
+The documentation is organized such that the text/parsing framework is described first.  This framework is the core of the product, and the user interface is built around it.  Thus, the user interface is described after the text/parsing framework.  A [language creation guide](language-creation/index.md) is included to help [walk you through](language-creation/walkthrough.md) the process of creating your own syntax languages.
 
 > [!NOTE]
-> If you have read through the documentation topics and samples and have found that some information is not clear enough, please e-mail us.  We want to continue to improve the documentation and samples over time to thoroughly cover all functionality found in this enormous product, and we certainly appreciate your feedback.
+> If you have read through the documentation topics and samples and have found that some information is not clear enough, please e-mail us.  We want to continue to improve the documentation and samples over time to thoroughly cover all the functionality found in this enormous product, and we certainly appreciate your feedback.
 
 ## Examine the Sample QuickStarts
 
@@ -40,13 +40,13 @@ The sample project contains a lot of full source samples called QuickStarts that
 
 The QuickStarts contain a wealth of information on almost every product feature area, so be sure to look at them while working with the documentation.
 
-A 'Getting Started' series of QuickStarts is included in the sample project that shows how to build a robust syntax language from start to finish.  It is an extremely valuable sample when starting to build your own syntax languages.
+A "Getting Started" series of QuickStarts is included in the sample project that shows how to build a robust syntax language from start to finish.  It is an extremely valuable sample when starting to build your own syntax languages.
 
 ## Learn Terms
 
 The [Term Definitions](term-definitions.md) topic provides an extensive list of terms used in this product.  If you ever wonder what a term means, check that list.
 
-## Use the 'How To' Topic
+## Use the "How To" Topic
 
 The [How To...](how-to.md) topic provides a great jump off point for where to find information on performing the most common tasks with SyntaxEditor.  It's a great resource.
 
@@ -62,7 +62,7 @@ In the Visual Studio "Add References" dialog, expand out "Windows/Extensions" an
 
 ## Add Assembly References
 
-Once you are ready to add SyntaxEditor to your own application, you'll need to add references in your project to the proper assemblies.  The assemblies should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+Once you are ready to add SyntaxEditor to your own application, you'll need to add references in your project to the proper assemblies.  The assemblies should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 Look at the [Assemblies and Add-on Licensing](assemblies.md) topic for details on the appropriate assemblies to reference in your project.
 
@@ -72,7 +72,7 @@ Look at the [Assemblies and Add-on Licensing](assemblies.md) topic for details o
 
 We encourage you to copy and use any code from our sample project, including sample language definitions.  It will really help you implement features in a matter of minutes instead of hours.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Please note that some images in the sample project are copyrighted by Microsoft and we include them in our sample project for control demonstration purposes only!
 
 ## Premium Language Add-ons

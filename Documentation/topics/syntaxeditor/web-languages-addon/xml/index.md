@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The advanced XML syntax language implementation in the SyntaxEditor Web Languages Add-on includes everything from automated IntelliPrompt and code outlining to validation, and provides a best-of-breed XML editing experience for end users.
+The advanced XML syntax language implementation in the SyntaxEditor Web Languages Add-on includes everything from automated IntelliPrompt and code outlining to validation and provides a best-of-breed XML editing experience for end users.
 
 ![Screenshot](../../images/web-addon-xml.png)
 
@@ -13,7 +13,7 @@ The advanced XML syntax language implementation in the SyntaxEditor Web Language
 
 The XML language is packed with features, including:
 
-- Automated IntelliPrompt completion lists and quick info for elements, attributes, and values based on one or more loaded *.XSD* files.
+- Automated IntelliPrompt completion lists and quick info for elements, attributes, and values based on one or more loaded XSD files.
 - Syntax highlighting.
 - Abstract syntax tree (AST) generation.
 - Automatic code outlining based on XML element structure.
@@ -30,7 +30,7 @@ The XML language is packed with features, including:
 
 ## Licensing
 
-Even though the Web Languages Add-on is distributed and demoed with the @@PlatformName controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and licenses are all Enterprise licenses, meaning they cover your entire organization.
+Even though the Web Languages Add-on is distributed and demoed with the @@PlatformName controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and the licenses are all Enterprise licenses, meaning they cover your entire organization.
 
 See the [Assemblies and Add-on Licensing](../../assemblies.md) topic for more information.
 
@@ -70,7 +70,7 @@ See the [End Tag Auto-Completer](end-tag-auto-completer.md) topic for more infor
 
 ## Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 See the [Indent Provider](indent-provider.md) topic for more information.
 

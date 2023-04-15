@@ -5,7 +5,7 @@ order: 2
 ---
 # Caret
 
-The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simulataneous editing in several document locations at the same time.
+The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simultaneous editing in several document locations at the same time.
 
 ## Accessing the Caret
 

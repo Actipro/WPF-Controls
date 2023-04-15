@@ -9,7 +9,7 @@ The core parser in the LL(*) Parser Framework depends on an [ILexer](xref:Actipr
 
 The easiest and recommended way to fulfill this need is to use the [Language Designer](../language-designer-tool/index.md) to create a new language.  Once you have a language designed, you can generate source files which you can then include in your project.  One of the generated source files will contain a class that implements the [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) interface.
 
-As mentioned above, any [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer)-based object will work with the LL(*) parser.  Thus you don't have to use the Language Designer to create your lexer.  All the techniques described in the [Lexing](../text-parsing/lexing/index.md) portion of the documentation apply.
+As mentioned above, any [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer)-based object will work with the LL(*) parser.  Thus, you don't have to use the **Language Designer** to create your lexer.  All the techniques described in the [Lexing](../text-parsing/lexing/index.md) portion of the documentation apply.
 
 ## Designing A Parser-Friendly Dynamic Language
 
@@ -23,7 +23,7 @@ It can be good practice to make a comment state and a string state for languages
 
 ## Generate Source Files
 
-You may be used to loading a language definition file (*.langdef*) into your application to provide a [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage) for use with your [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), but the parsing framework's needs are more granular.  For this reason, you need to generate source files for the language instead of the *.langdef* file.  This will ensure that [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer), [ITokenIdProvider](xref:ActiproSoftware.Text.Lexing.ITokenIdProvider), and other classes are built that can be used by the parser.
+You may be used to loading a language definition file (*.langdef*) into your application to provide a [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage) for use with your [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor), but the parsing framework's needs are more granular.  For this reason, you need to generate source files for the language instead of the *\*.langdef* file.  This will ensure that [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer), [ITokenIdProvider](xref:ActiproSoftware.Text.Lexing.ITokenIdProvider), and other classes are built that can be used by the parser.
 
 See the [Parser Infrastucture](parser-infrastructure.md) topic for more information on how to set up your [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage).
 

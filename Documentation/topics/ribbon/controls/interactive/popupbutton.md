@@ -71,7 +71,7 @@ See the [Working with Popups](../working-with-popups.md) topic for more detailed
 
 ### With a Contained PopupGallery
 
-The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However, the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
 
 ### Without a Contained PopupGallery
 

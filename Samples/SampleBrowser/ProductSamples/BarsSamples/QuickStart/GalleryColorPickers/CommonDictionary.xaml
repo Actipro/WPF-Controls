@@ -15,7 +15,7 @@
 				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
 				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}">
 			<Border.Background>
-				<SolidColorBrush Color="{Binding Color}" />
+				<SolidColorBrush Color="{Binding Value}" />
 			</Border.Background>
 		</Border>
 	</DataTemplate>
@@ -37,7 +37,7 @@
 				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}"
 				CornerRadius="9">
 			<Border.Background>
-				<SolidColorBrush Color="{Binding Color}" />
+				<SolidColorBrush Color="{Binding Value}" />
 			</Border.Background>
 		</Border>
 	</DataTemplate>

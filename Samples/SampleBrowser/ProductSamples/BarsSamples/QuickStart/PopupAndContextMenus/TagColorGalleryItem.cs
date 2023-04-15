@@ -16,10 +16,10 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 		/// <summary>
 		/// Initializes a new instance of the <see cref="TagColorGalleryItem"/> class.
 		/// </summary>
-		/// <param name="color">The color associated with the tag.</param>
+		/// <param name="value">The color associated with the tag.</param>
 		/// <param name="label">The label associated with the tag.</param>
-		public TagColorGalleryItem(Color color, string label)
-			: base(category: null, color, label) { }
+		public TagColorGalleryItem(Color value, string label)
+			: base(value, category: null, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES

@@ -5,7 +5,7 @@ order: 4
 ---
 # Completion List
 
-The IntelliPrompt completion list allows you create popups for displaying a list of options used to complete what the end user is typing.  This is most used when editing programming languages.  Features include ctrl+space support, description tips, multiple matching algorithms, matched text highlights, filters, and more.
+The IntelliPrompt completion list allows you create popups for displaying a list of options used to complete what the end user is typing.  This is most used when editing programming languages.  Features include <kbd>Ctrl</kbd>+<kbd>Space</kbd> support, description tips, multiple matching algorithms, matched text highlights, filters, and more.
 
 As the end user types in the editor, the selected item in the completion list is updated to reflect the item that most closely matches what has been typed.  The end user can press <kbd>Tab</kbd> or <kbd>Enter</kbd> to insert the complete text associated with the item.  This immensely helps increase the productivity of end users while typing.
 
@@ -53,7 +53,7 @@ session.Items.Add(new CompletionItem("bool",
 
 The core implementation of [ICompletionItemCollection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItemCollection) is based on an `ObservableCollection<ICompletionItem>`, which raises an event each time an item is added to the collection.  This can cause a performance bottleneck when adding hundreds or thousands of completion items to the `session.Items` collection.
 
-This bottleneck may be eliminated by wrapping all item adds in a batch, which only raises a single collection change event:
+This bottleneck may be eliminated by wrapping all add operations in a batch, which only raises a single collection change event:
 
 ```csharp
 using (var batch = session.Items.CreateBatch()) {
@@ -75,13 +75,13 @@ For most cases, once the session is opened, the built-in functionality handles a
 
 ## Opening a Session in Response to a Typed Character ('.', '<', etc.)
 
-Completion lists are often opened in response to a typed character by the end user.  For instance, in C# or VB, pressing the `.` (dot) character generally opens a completion list for the object represented by the text before the dot.  In HTML a `<` character displays a completion list for available tags.  Some languages also automatically show a completion list when a letter is typed that starts a new word.
+Completion lists are often opened in response to a typed character by the end user.  For instance, in C# or VB, typing the `.` character generally opens a completion list for the object represented by the text before the dot.  In HTML a `<` character displays a completion list for available tags.  Some languages also automatically show a completion list when a letter is typed that starts a new word.
 
 ### Watching Typed Characters
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[DocumentTextChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.DocumentTextChanged) event is the best place to watch for specific characters being typed.  Its event args, [EditorSnapshotChangedEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs), has a special helper property called [TypedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs.TypedText) that is normally a null value but is filled in only when the text change is [TextChangeTypes](xref:ActiproSoftware.Text.TextChangeTypes).[Typing](xref:ActiproSoftware.Text.TextChangeTypes.Typing), and the change is not an undo/redo.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[DocumentTextChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.DocumentTextChanged) event is the best place to watch for specific characters being typed.  Its event arguments, [EditorSnapshotChangedEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs), has a special helper property called [TypedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorSnapshotChangedEventArgs.TypedText) that is normally a `null` value but is filled in only when the text change is [TextChangeTypes](xref:ActiproSoftware.Text.TextChangeTypes).[Typing](xref:ActiproSoftware.Text.TextChangeTypes.Typing), and the change is not an undo/redo.
 
-If your app allows two or more SyntaxEditor controls to operate on the same document, then all of the samples below should be wrapped with a check to ensure that the view in which the text change occurred is the same editor's view in which the completion session will be requested:
+If your app allows two or more `SyntaxEditor` controls to operate on the same document, then all of the samples below should be wrapped with a check to ensure that the view in which the text change occurred is the same editor's view in which the completion session will be requested:
 
 ```csharp
 if (e.TextChange.Source == editor.ActiveView) {
@@ -122,7 +122,14 @@ switch (e.TypedText) {
 }
 ```
 
-Note that in this sample, we used an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) to scan backwards past the dot and to the token before it.  We then did a text compare with the token to see if its text was `this`.  If your language has token IDs available, it's better to do a token ID comparison here instead of a string comparison.  Also, while scanning back, you may wish to skip over whitespace tokens.  If all that criteria was met, the completion list session was opened.
+Note that in this sample, we used an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) to scan backwards past the dot and to the token before it.  We then did a text compare with the token to see if its text was `"this"`.
+
+> [!NOTE]
+> If your language has token IDs available, it's better to do a token ID comparison here instead of a string comparison.
+
+Also, while scanning back, you may wish to skip over whitespace tokens.
+
+If all that criteria was met, the completion list session was opened.
 
 ### Sample: Showing a Completion List Automatically When a New Word Is Started
 
@@ -148,7 +155,7 @@ The [IntelliPrompt Completion Provider](../../language-creation/provider-service
 
 When a completion provider service is registered for a language, the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[IntelliPrompt](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.IntelliPrompt).[RequestAutoComplete](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestAutoComplete*) and [RequestCompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) methods can be called to request auto-complete or completion list display respectively.  In that case if the completion provider determines that completion can occur at the current editor caret position, IntelliPrompt action will be taken.
 
-As an example, if a syntax language has an event sink registered that watches for the `.` key to be typed, it may wish to request that a completion session be opened if appropriate.  In that case the event sink handler should call [RequestCompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) and if a completion provider is available to handle the request, a completion list will display.
+As an example, if a syntax language has an event sink registered that watches for the `.` character to be typed, it may wish to request that a completion session be opened if appropriate.  In that case the event sink handler should call [RequestCompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) and if a completion provider is available to handle the request, a completion list will display.
 
 ## Completion List Items (Images, Text, Descriptions, etc.)
 
@@ -271,7 +278,7 @@ Many times the displayed [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.Intell
 
 *A br tag before and after it is inserted from the completion list*
 
-In the screenshot above, a `br` should be displayed but `<br/>` should be inserted before the caret.  To accomplish this, [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.Text) is set to `br`, [AutoCompletePreText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePreText) is set to `<br/>`, and [AutoCompletePostText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePostText) is set to a null reference.
+In the screenshot above, a `"br"` should be displayed but `"<br/>"` should be inserted before the caret.  To accomplish this, [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.Text) is set to `"br"`, [AutoCompletePreText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePreText) is set to `"<br/>"`, and [AutoCompletePostText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePostText) is set to a `null` reference.
 
 ### Alternate text inserted to surround the caret
 
@@ -281,7 +288,7 @@ Sometimes auto-completes need to surround the caret with text.
 
 *An HTML comment before and after it is inserted from the completion list*
 
-In the screenshot above, a `!--` should be displayed but `<!-- -->` should surround the caret on auto-complete.  To accomplish this, [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.Text) is set to `!--`, [AutoCompletePreText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePreText) is set to `<!--`, and [AutoCompletePostText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePostText) is set to `-->`.
+In the screenshot above, a `"!--"` should be displayed but `"<!-- -->"` should surround the caret on auto-complete.  To accomplish this, [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.Text) is set to `"!--"`, [AutoCompletePreText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePreText) is set to `"<!--"`, and [AutoCompletePostText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem.AutoCompletePostText) is set to `"-->"`.
 
 ## Commit and Cancel
 
@@ -289,7 +296,7 @@ When the completion list is committed, auto-complete is performed on whichever i
 
 The completion list can be programmatically committed by calling the [Commit](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Commit*) method.  Likewise, it can be cancelled by calling the [Cancel](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Cancel*) method.
 
-If committed, two events fire: [Committing](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committing), then [Committed](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committed).  The first event allows you to set the `Cancel` property of the event args to cancel auto-complete.
+If committed, two events are raised: [Committing](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committing), then [Committed](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Committed).  The first event allows you to set the `Cancel` property of the event arguments to cancel auto-complete.
 
 The <kbd>Tab</kbd> key commits the selected item at run-time and is consumed.  The <kbd>Enter</kbd> key commits and is normally consumed as well unless the [IsEnterKeyHandledOnCommit](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.IsEnterKeyHandledOnCommit) property is set to `false`.
 
@@ -310,7 +317,7 @@ Description tip content is specified on each item via the [ICompletionItem](xref
 
 @if (wpf) {
 
-When links are present in description tip content, the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.RequestNavigate) event will fire if a link is clicked, requesting that you take some action.
+When links are present in description tip content, the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.RequestNavigate) event will be raised if a link is clicked, requesting that you take some action.
 
 }
 
@@ -320,9 +327,9 @@ The [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt
 
 ## Getting the Selection
 
-The [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[Selection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Selection) property indicates the current selection of the list.  Its value is of type [CompletionSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.CompletionSelection), which indicates the [ICompletionItem](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem) that is selected and its selection state (full or partial).  If there is no selection then that property returns a null reference.
+The [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[Selection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.Selection) property indicates the current selection of the list.  Its value is of type [CompletionSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.CompletionSelection), which indicates the [ICompletionItem](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItem) that is selected and its selection state (full or partial).  If there is no selection, then that property returns a `null` reference.
 
-When the selection changes, the [SelectionChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.SelectionChanged) event fires.
+When the selection changes, the [SelectionChanged](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.SelectionChanged) event is raised.
 
 ## Allowed and Commit Characters
 
@@ -376,7 +383,7 @@ This feature is on by default but can be turned off via the [ICompletionSession]
 
 SyntaxEditor includes the built-in matching algorithms described above.  However, it's very easy to add custom matching algorithms as well.  Matching algorithms as implementations of the [ICompletionItemMatcher](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionItemMatcher) interface.
 
-The [RegexCompletionItemMatcherBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase) class is the best class to inherit when making a custom matching algorithm.  When you inherit that class, all you need to do is override the [GetRegex](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase.GetRegex*) method to return a standard .NET `Regex` (from the System.Text.RegularExpressions namespace) and override the `Key` property to return a string-based key that identifies the matcher.  The `Regex` is used to both identify matches and can even perform matched text highlights (see previous section).
+The [RegexCompletionItemMatcherBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase) class is the best class to inherit when making a custom matching algorithm.  When you inherit that class, all you need to do is override the [GetRegex](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.RegexCompletionItemMatcherBase.GetRegex*) method to return a standard .NET `Regex` (from the `System.Text.RegularExpressions` namespace) and override the `Key` property to return a string-based key that identifies the matcher.  The `Regex` is used to both identify matches and can even perform matched text highlights (see previous section).
 
 ### A Regex Sample
 
@@ -387,12 +394,12 @@ return new Regex(String.Format("[\\._]({0})", Regex.Escape(text)),
 	RegexOptions.IgnoreCase | RegexOptions.Singleline);
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > The `GetRegex` method includes an argument to indicate if the pattern should capture groups. When `true`, the actual matched text portion(s) in the regular expression pattern should always be surrounded by parenthesis.  In the example above, `{0}` is surrounded by parenthesis.  This allows the matched text highlights to work automatically based on your regular expression pattern. When the argument is `false`, the parenthesis should not be included since capturing groups can impact matching performance.
 
 ### Adding the Custom Item Matcher to the Session
 
-All the item matchers for a session are listed in the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[ItemMatchers](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.ItemMatchers) collection.  By default, this collection contains all the built-in matchers although some (like Acroynm) may not be active if its match option is not specified (see above).
+All the item matchers for a session are listed in the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[ItemMatchers](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.ItemMatchers) collection.  By default, this collection contains all the built-in matchers although some (like Acronym) may not be active if its match option is not specified (see above).
 
 To enable a custom item matcher to be used in a session, it must be added to the [ItemMatchers](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.ItemMatchers) collection too.  Item matchers are executed in order until one succeeds.  The default "starts-with" item matcher should nearly always be used first so it's best to insert your custom item matcher at index `1`.
 
@@ -413,7 +420,7 @@ This default can be disabled so that insensitive matches are always used by ensu
 Completion list items each have display text and text that is actually inserted into the document.  By default, the text that will be inserted into the document is matched against.  However, you can change it to match against the display text if you prefer.
 
 > [!NOTE]
-> In most cases, the display text and text to insert actually are the same thing.
+> In most cases, the "display text" and "text to insert" actually are the same value.
 
 Matching can be made to target the display text by ensuring the [ICompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession).[MatchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICompletionSession.MatchOptions) flags property has the [CompletionMatchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.CompletionMatchOptions).`TargetsDisplayText` flag specified.
 
@@ -461,11 +468,11 @@ In this display mode, the [Content](xref:@ActiproUIRoot.Controls.SyntaxEditor.In
 
 The [ToolTip](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.ToolTip) property sets the content to display in a tooltip for the button.
 
-Groups of buttons can be displayed by placing filters that should be grouped visually in sequence and having their [GroupName](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.GroupName) property value match.  In the screenshots above, the first three filters have the same group name and the last filter has a different group name.  Thus, a separator line is drawn between them.
+Groups of buttons can be displayed by placing filters that should be grouped visually in sequence and having their [GroupName](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.GroupName) property value match.  In the screenshots above, the first three filters have the same group name, and the last filter has a different group name.  Thus, a separator line is drawn between them.
 
 ### Tabs
 
-Tabs are another sort of UI that can be generated for filters.  With tabs, the related filter is applied only when the tab is selected.  There is a special “All” tab that can be added that deactivates any filters that are applied by tabs.
+Tabs are another sort of UI that can be generated for filters.  With tabs, the related filter is applied only when the tab is selected.  There is a special "All" tab that can be added that deactivates any filters that are applied by tabs.
 
 ![Screenshot](../../images/completion-filter-tab1.png)![Screenshot](../../images/completion-filter-tab2.png)
 
@@ -481,7 +488,7 @@ Button and tab filters can be used at the same time.  There is no problem with i
 
 ### Keyboard Shortcuts
 
-Button and tab filters both have a [KeyGesture](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.KeyGesture) property that can be set to a shortcut to toggle/activate the related UI via the keyboard.  For instance, a "Properties" filter may use an <kbd>Alt</kbd>+<kbd>P</kbd> key gesture.  The key gesture text will be automatically added to the button/tab's tooltip if the tooltip is a string.
+Button and tab filters both have a [KeyGesture](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CompletionFilter.KeyGesture) property that can be set to a shortcut to toggle/activate the related UI via the keyboard.  For instance, a **Properties** filter may use an <kbd>Alt</kbd>+<kbd>P</kbd> key gesture.  The key gesture text will be automatically added to the button/tab's tooltip if the tooltip is a string.
 
 ## Filtering Unmatched Items (Auto-Shrink)
 

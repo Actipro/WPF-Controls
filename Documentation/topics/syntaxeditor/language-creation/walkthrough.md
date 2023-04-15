@@ -7,7 +7,7 @@ order: 2
 
 Don't know where to get started building a custom syntax language?  This walkthrough is the perfect place to go because it gives the steps that should be followed, along with links to many other helpful topics in this documentation.
 
-This walkthough gives you a sequence of concepts to understand when working with syntax languages.  Each section in the walkthough provides a brief overview along with links to other documentation topics that give detailed information about the related subject.
+This walkthrough gives you a sequence of concepts to understand when working with syntax languages.  Each section in the walkthrough provides a brief overview along with links to other documentation topics that give detailed information about the related subject.
 
 > [!TIP]
 > The **Sample Browser** application included with our installer includes a series of *Getting Started QuickStarts* for building a custom language with full source code and a working sample for each step.
@@ -19,24 +19,22 @@ A syntax language is an object implementing [ISyntaxLanguage](xref:ActiproSoftwa
 For instance, the C# language uses different word-break and tokenizing rules than the CSS language does.  By having different syntax languages defined for C# and CSS, different functionality can be applied to a document based on the language it currently is using.
 
 - The [Syntax Languages](../text-parsing/syntax-languages.md) topic talks at a high-level about syntax languages and what they do.
-
 - The [Service Locator Architecture](service-locator-architecture.md) topic talks in-depth about the service locator architecture utilized by syntax languages and how it provides an open and extensible framework for plugging in language features.  It also describes the available built-in service types.  We will get more into implementing services later in this topic.
-
 - The [Feature Services](feature-services/index.md), [Provider Services](provider-services/index.md), and [Event Sink Services](event-sinks.md) topics give details on the various built-in service types that are available, but more on that below.
 
 ## Gathering Language Specifications
 
-Once you understand the basic concepts of what syntax languages do, it's time to think about implementing a custom syntax language for the language(s) you wish to support in your application.  Syntax languages are best used in conjunction with SyntaxEditor controls since they provide a full-featured editing experience much like what is found in Visual Studio.
+Once you understand the basic concepts of what syntax languages do, it's time to think about implementing a custom syntax language for the language(s) you wish to support in your application.  Syntax languages are best used in conjunction with `SyntaxEditor` controls since they provide a full-featured editing experience much like what is found in Visual Studio.
 
 A number of free syntax language samples are included in the sample project.  Be sure to check those out since we may have already created a syntax language for the language you wish to support.  If one is available, feel free to copy and use it in your application.  You can extend or modify it using the concepts we describe below.
 
 If no existing syntax language is available for your target language, you can create one yourself.  You will need to go on the Internet and find a language specification for your language.  Language specifications generally describe the lexical and semantic structure of a language.  They are very important because they tell us the language's keywords, the syntax of comments, etc.
 
-Once you have examined your language's specifications, it's time to use the Language Designer tool.
+Once you have examined your language's specifications, it's time to use the **Language Designer** tool.
 
 ## Using the Language Designer Tool
 
-The [Language Designer](../language-designer-tool/index.md) application was built with the goal of making it easy to get started building a language.  You essentially input information about your language and it generates code for you that can be included in your project to use your syntax language.
+The [Language Designer](../language-designer-tool/index.md) application was built with the goal of making it easy to get started building a language.  You essentially input information about your language, and it generates code for you that can be included in your project to use your syntax language.
 
 - Run through the entire [Language Designer](../language-designer-tool/index.md) documentation section since it discusses the functionality of the application, what pieces of a language can be defined in a language project, how to output code, etc.
 
@@ -150,9 +148,9 @@ There are free add-ons that come with SyntaxEditor that make it easy to integrat
 <td>Automatic outlining support</td>
 <td>
 
-Automatic outlining is where the document text is scanned and an outlining node hierarchy is constructed based on its contents.  The outlining node tree is rendered visually in the editor's outlining margin and end users can expand/collapse nodes.  As further text changes occur, the outlining node tree is incrementally updated.
+Automatic outlining is where the document text is scanned, and an outlining node hierarchy is constructed based on its contents.  The outlining node tree is rendered visually in the editor's outlining margin and end users can expand/collapse nodes.  As further text changes occur, the outlining node tree is incrementally updated.
 
-The [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager) is the object that maintains the outlining node hierarhcy.  When a language has an [IOutliner](feature-services/outliner.md) service registered, the outlining manager knows that the language is capable of performing automatic outlining.  The outlining manager uses the outliner service to retrieve an [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) whenever it needs to update.  The outlining source is capable of examining an offset and returning whether an outlining node should start or end there, or neither.  There are several base classes included with SyntaxEditor that make it easy to create an outlining source.
+The [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager) is the object that maintains the outlining node hierarchy.  When a language has an [IOutliner](feature-services/outliner.md) service registered, the outlining manager knows that the language is capable of performing automatic outlining.  The outlining manager uses the outliner service to retrieve an [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) whenever it needs to update.  The outlining source is capable of examining an offset and returning whether an outlining node should start or end there, or neither.  There are several base classes included with SyntaxEditor that make it easy to create an outlining source.
 
 An [Outliner](feature-services/outliner.md) service is required for automatic outlining support.  The [Outlining and Collapsing Features](../user-interface/outlining/index.md) series of topics talk about how create outlining sources and define nodes.
 
@@ -194,7 +192,7 @@ This feature requires that an [ITextStatisticsFactory](feature-services/text-sta
 <td>Word break finding</td>
 <td>
 
-While many syntax languages use the same patterns for determining line breaks, there are some syntax languages that require further customization.  For instance, the CSS syntax language needs hyphen (-) characters to be considered word characters.
+While many syntax languages use the same patterns for determining line breaks, there are some syntax languages that require further customization.  For instance, the CSS syntax language needs hyphen (`-`) characters to be considered word characters.
 
 Custom word break finding functionality can be configured for a language by registering an [IWordBreakFinder](feature-services/word-break-finder.md) service with the language.
 
@@ -211,9 +209,9 @@ The [IntelliPrompt Completion](../user-interface/intelliprompt/completion-list.m
 
 Syntax languages have several ways they can be set up to provide automated IntelliPrompt completion.
 
-One or more [ICompletionProvider](provider-services/completion-provider.md) services may be registered on the language.  These provider services can be ordered.  When a completion provider service is on the language, any <kbd>Ctrl</kbd>+<kbd>Space</kbd> keys typed by the end user will call the first completion provider to see if it can open a completion session.  If it can't, the next provider is checked, and so on.  When opening a session, the completion providers determine if auto-complete is allowed, what features are enabled (filtering, auto-shrink, text matching algorithms, etc).  The completion provider must also populate the items in the completion session prior to opening it.  Completion providers often use a mix of looking at any available document [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) and [token scanning](../text-parsing/core-text/scanning-text.md) to detemine which sort of items should be in the session, based on the current editor view caret location.
+One or more [ICompletionProvider](provider-services/completion-provider.md) services may be registered on the language.  These provider services can be ordered.  When a completion provider service is on the language, any <kbd>Ctrl</kbd>+<kbd>Space</kbd> keys typed by the end user will call the first completion provider to see if it can open a completion session.  If it can't, the next provider is checked, and so on.  When opening a session, the completion providers determine if auto-complete is allowed, what features are enabled (filtering, auto-shrink, text matching algorithms, etc.).  The completion provider must also populate the items in the completion session prior to opening it.  Completion providers often use a mix of looking at any available document [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) and [token scanning](../text-parsing/core-text/scanning-text.md) to determine which sort of items should be in the session, based on the current editor view caret location.
 
-Completion sessions can also be requested when the end user begins to type a new word.  This involves having the language register an [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service and in the text changed event notification, check a helper property on the event args that indicates if a new word is being typed.  If so, request a completion session.  A full sample of this is included in the "Opening a Session in Response to a Typed Character" section of the [Completion List](../user-interface/intelliprompt/completion-list.md) topic.
+Completion sessions can also be requested when the end user begins to type a new word.  This involves having the language register an [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) service and in the text changed event notification, check a helper property on the event arguments that indicates if a new word is being typed.  If so, request a completion session.  A full sample of this is included in the "Opening a Session in Response to a Typed Character" section of the [Completion List](../user-interface/intelliprompt/completion-list.md) topic.
 
 </td>
 </tr>
@@ -246,7 +244,7 @@ The control requires that a feature service is implemented on the language that 
 <td>Code snippet support</td>
 <td>
 
-[IntelliPrompt Code Snippets](../user-interface/intelliprompt/code-snippets.md) allow small snippets of code to be inserted into a document.  Selection sessions display all available code snippets and allow the end user to easily pick one to activate.  Template sessions occur when a code snippet is activated and alllow the end user to tab between pre-defined fields within the code snippet to customize the text that is inserted.
+[IntelliPrompt Code Snippets](../user-interface/intelliprompt/code-snippets.md) allow small snippets of code to be inserted into a document.  Selection sessions display all available code snippets and allow the end user to easily pick one to activate.  Template sessions occur when a code snippet is activated and allow the end user to <kbd>Tab</kbd> between pre-defined fields within the code snippet to customize the text that is inserted.
 
 Code snippet features require that an [IntelliPrompt code snippet provider](provider-services/code-snippet-provider.md) is registered on the language, with one or more code snippets loaded into it.
 
@@ -316,7 +314,7 @@ See the [Intra-Text Adornments](../user-interface/adornment/intra-text-adornment
 <td>Hide text regions (without outlining)</td>
 <td>
 
-Sometimes you may wish to hide a region of text within a SyntaxEditor view but still keep it in the document.  This sort of feature can be attained by "tagging" the desired ranges to hide with [ICollapsedRegionTag](xref:ActiproSoftware.Text.Tagging.ICollapsedRegionTag) instances.  This feature can be used independently from code outlining.  In fact the code outlining feature does use this behind the scenes for collapsed nodes.  If you tag the same collapsed regions with an [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag), you can [insert an adornment](../user-interface/outlining/collapsed-regions.md) in place of the collapsed region.
+Sometimes you may wish to hide a region of text within a SyntaxEditor view but still keep it in the document.  This sort of feature can be attained by "tagging" the desired ranges to hide with [ICollapsedRegionTag](xref:ActiproSoftware.Text.Tagging.ICollapsedRegionTag) instances.  This feature can be used independently from code outlining.  In fact, the code outlining feature does use this behind the scenes for collapsed nodes.  If you tag the same collapsed regions with an [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag), you can [insert an adornment](../user-interface/outlining/collapsed-regions.md) in place of the collapsed region.
 
 See the [Collapsing Regions without Outlining](../user-interface/outlining/collapsed-regions.md) topic for details on how to use this feature.
 
@@ -338,7 +336,7 @@ Any service registered on a language that implements one of the [event sink inte
 <td>Auto-indentation</td>
 <td>
 
-Auto-indent is the ability for SyntaxEditor to automatically indent a new line when the Enter key is pressed. The default behavior is to indent a new line to the same level as the preceeding line.
+Auto-indent is the ability for SyntaxEditor to automatically indent a new line when the <kbd>Enter</kbd> key is pressed. The default behavior is to indent a new line to the same level as the preceding line.
 
 To override the default behavior, an [IIndentProvider](feature-services/indent-provider.md) service must be registered with the language.
 

@@ -7,7 +7,7 @@ order: 5
 
 Syntax languages are architected using the Service Locator design pattern, which keeps the [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) interface small while still allowing for powerful extensibility of features.
 
-Language features such as lexing, token tagger providers, line commenters, etc. can be registered as services on each language instance.  Certain service types are well known and extension methods provide easy access to the built-in feature services.  Any sort of custom service can be registered with a language and retrieved later as well.
+Language features such as lexing, token tagger providers, line commenters, etc. can be registered as services on each language instance.  Certain service types are well known, and extension methods provide easy access to the built-in feature services.  Any sort of custom service can be registered with a language and retrieved later as well.
 
 ## What is the Service Locator Design Pattern?
 
@@ -22,7 +22,7 @@ The methods described above are generic and allow for any sort of service to be 
 
 ## Built-In Service Types
 
-While you can customize a syntax language with any custom services you like, there are a number of built-in service types are that recognized, and they come in three varieties.
+While you can customize a syntax language with any custom services you like, there are a number of built-in service types that are recognized, and they come in three varieties.
 
 ### Feature Service Types
 
@@ -37,7 +37,7 @@ This table lists the built-in single-instance service types that can be used whe
 | [IAutoCorrector](xref:ActiproSoftware.Text.Analysis.IAutoCorrector) | Designates the [auto-corrector](feature-services/auto-corrector.md) that can perform additional edits after text changes, such as auto-case correcting language keywords. |
 | [IDelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.IDelimiterAutoCompleter) | Designates the [delimiter auto-completer](feature-services/delimiter-auto-completer.md) that can insert end delimiters when a start delimiter is typed by the end user. |
 | [IExampleTextProvider](xref:ActiproSoftware.Text.IExampleTextProvider) | Designates the [example text provider](feature-services/example-text.md) that returns a code snippet which can be displayed in an application to show sample code syntax. |
-| [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) | Designates the [indent provider](feature-services/indent-provider.md) that performs automatic indentation of text when the Enter key is pressed. |
+| [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) | Designates the [indent provider](feature-services/indent-provider.md) that performs automatic indentation of text when the <kbd>Enter</kbd> key is pressed. |
 | [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) | Designates the [lexer](feature-services/lexer.md) that tokenizes text for the language. |
 | [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) | Designates the [line commenter](feature-services/line-commenter.md) that is capable of commenting and uncommenting lines or a range of text. |
 | [INavigableSymbolProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbolProvider) | Designates the [navigable symbol provider](feature-services/navigable-symbol-provider.md) that lists the accessible symbols within a document. |
@@ -52,7 +52,7 @@ This table lists the built-in single-instance service types that can be used whe
 
 The next variety of service types is related to being able to provide data for a language.  Unlike "feature" services, more than one "provider" service can be registered on a language.
 
-It doesn't matter which service `Type` key a service is registered under.  Therefore if any registered service implements one of these interfaces, it will be used.  But be careful to not register more than one service with the same `Type` key, or else the existing service that with `Type` key will be removed.
+It doesn't matter which service `Type` key a service is registered under.  Therefore, if any registered service implements one of these interfaces, it will be used.  But be careful to not register more than one service with the same `Type` key, or else the existing service that with `Type` key will be removed.
 
 This table lists the built-in multiple-instance service types that can be used when adding providers to an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage).  The Service Type column indicates the interface that must be implemented by the service for it to be used, however as mentioned above, the service can be registered using any `Type` key.
 
@@ -74,7 +74,7 @@ Event sink service types are registered similarly to the rules described in the 
 
 ## Helper Extension Methods, and Requirements for Usage
 
-The [SyntaxLanguageExtensions](xref:ActiproSoftware.Text.SyntaxLanguageExtensions) static class contains numerous extension methods that are available on any [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) instance when the `ActiproSoftware.Text` namespace is imported.  These extension methods wrap the generic service locator methods and implement Register, Unregister, and Get methods for each of the built-in "feature" service types described above.
+The [SyntaxLanguageExtensions](xref:ActiproSoftware.Text.SyntaxLanguageExtensions) static class contains numerous extension methods that are available on any [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) instance when the `ActiproSoftware.Text` namespace is imported.  These extension methods wrap the generic service locator methods and implement `Register*`, `Unregister*`, and `Get*` methods for each of the built-in "feature" service types described above.
 
 While it is not necessary to use them since you can just use the core generic service locator methods, they keep your code cleaner and give you some prompting via the Visual Studio member list for which service types are available.
 
@@ -82,7 +82,7 @@ While it is not necessary to use them since you can just use the core generic se
 
 The [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) interface defines two events that provide notifications of when services are added to or removed from a language.
 
-The [ServiceAdded](xref:ActiproSoftware.Text.Utility.IServiceLocator.ServiceAdded) event fires whenever a service is added to the language.  Likewise the [ServiceRemoved](xref:ActiproSoftware.Text.Utility.IServiceLocator.ServiceRemoved) event fires whenever a service is removed from the language.
+The [ServiceAdded](xref:ActiproSoftware.Text.Utility.IServiceLocator.ServiceAdded) event is raised whenever a service is added to the language.  Likewise, the [ServiceRemoved](xref:ActiproSoftware.Text.Utility.IServiceLocator.ServiceRemoved) event is raised whenever a service is removed from the language.
 
 ## Sample: Registering a Lexer
 
@@ -126,11 +126,15 @@ This code registers an object of type `CustomCompletionProvider` in the `myCompl
 language.RegisterService<CustomCompletionProvider>(myCompletionProvider);
 ```
 
-This code does the same thing but the `Type` key is automatically pulled via reflection, based on the `Type` of the object referenced by `myCompletionProvider`.  Note that this shortcut cannot be used with "feature" services because those must be registered using the specific interface types described in the table above.
+This code does the same thing, but the `Type` key is automatically pulled via reflection, based on the `Type` of the object referenced by `myCompletionProvider`.
+
 
 ```csharp
 language.RegisterService(myCompletionProvider);
 ```
+
+> [!IMPORTANT]
+> This shortcut cannot be used with "feature" services because those must be registered using the specific interface types described in the table above.
 
 ## Sample: Retrieving a Completion Provider
 

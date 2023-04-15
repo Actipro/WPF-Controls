@@ -9,7 +9,7 @@ Word wrapping is a powerful feature that allows users to view all text for a lin
 
 ## Word Wrap Modes
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[WordWrapMode](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.WordWrapMode) property can be set to `WordWrapMode.Word` to activate word wrap functionality.  By default it is set to `WordWrapMode.None`, meaning no word wrap.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[WordWrapMode](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.WordWrapMode) property can be set to `WordWrapMode.Word` to activate word wrap functionality.  By default, it is set to `WordWrapMode.None`, meaning no word wrap.
 
 ![Screenshot](../../images/word-wrap.png)
 
@@ -49,7 +49,7 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[AreW
 
 By default, wrapped lines are indented by a configurable amount, relative to their primary line's indentation.  The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[WrappedLineIndentAmount](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.WrappedLineIndentAmount) property is what determines the indent amount of wrapped lines.
 
-A value of `2` (the default) will indent wrapped lines to the original indent level of the primary line, plus `2` additional character widths.  A value of `0` will indent wrapped lines to the original indent level of the primary line.  A value of `-1` will not indent wrapped lines at all, and will simply align them to the left edge of the view.
+A value of `2` (the default) will indent wrapped lines to the original indent level of the primary line, plus `2` additional character widths.  A value of `0` will indent wrapped lines to the original indent level of the primary line.  A value of `-1` will not indent wrapped lines at all and will simply align them to the left edge of the view.
 
 The indent amount may be limited or altogether disabled if there is not enough available width in the view to support proper indentation.
 

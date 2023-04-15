@@ -25,7 +25,7 @@ This code shows how to execute an [IndentAction](xref:@ActiproUIRoot.Controls.Sy
 editor.ActiveView.ExecuteEditAction(new IndentAction());
 ```
 
-Most of the edit action classes defined by SyntaxEditor also have helper methods which make running the edit actions easier.  or instance, the [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection) interface has a method [SelectAll](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.SelectAll*), which runs the [SelectAllAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectAllAction).  Another example is the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) interface has a method [CopyToClipboard](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.CopyToClipboard*), which runs the [CopyToClipboardAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.CopyToClipboardAction).
+Most of the edit action classes defined by SyntaxEditor also have helper methods which make running the edit actions easier.  For instance, the [IEditorViewSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection) interface has a method [SelectAll](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.SelectAll*), which runs the [SelectAllAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectAllAction).  Another example is the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) interface has a method [CopyToClipboard](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.CopyToClipboard*), which runs the [CopyToClipboardAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.CopyToClipboardAction).
 
 ## Canceling an Edit Action
 
@@ -39,16 +39,16 @@ This code shows how to define an edit action that surrounds the selected text wi
 
 ```csharp
 /// <summary>
-/// Provides a custom <see cref="IEditAction"/> implementation that inserts a 
+/// Provides a custom <see cref="IEditAction"/> implementation that inserts a
 /// <c>custom</c> tag surrounding the selected text.
 /// </summary>
 public class CustomAction : ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation.EditActionBase {
-	
+
 	/// <summary>
 	/// Initializes an instance of the <c>CustomAction</c> class.
 	/// </summary>
 	public CustomAction() : base("Custom") {}
-	
+
 	/// <summary>
 	/// Executes the edit action in the specified <see cref="IEditorView"/>.
 	/// </summary>
@@ -56,7 +56,7 @@ public class CustomAction : ActiproSoftware.Windows.Controls.SyntaxEditor.Implem
 	public override void Execute(IEditorView view) {
 		view.InsertSurroundingText("<custom>", "</custom>");
 	}
-	
+
 }
 ```
 
@@ -70,7 +70,7 @@ Binding of edit actions to a keyboard shortcut is done in three steps.  In the f
 
 ### Create a Static Command
 
-For ease in implementation, the [EditActionBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.EditActionBase) type (base class for edit actions) implements `ICommand`.  SyntaxEditor's built-in commands are defined as static properties on a static class named [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands).  This allows a single edit action instance (like [SelectAllAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectAllAction)) to be reused anywhere a command or input binding for that edit action is needed.  Therefore it is recommended that custom edit actions also create a static instance that can be used the same way.
+For ease in implementation, the [EditActionBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.EditActionBase) type (base class for edit actions) implements `ICommand`.  SyntaxEditor's built-in commands are defined as static properties on a static class named [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands).  This allows a single edit action instance (like [SelectAllAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.SelectAllAction)) to be reused anywhere a command or input binding for that edit action is needed.  Therefore, it is recommended that custom edit actions also create a static instance that can be used the same way.
 
 ### Add a Command Binding
 

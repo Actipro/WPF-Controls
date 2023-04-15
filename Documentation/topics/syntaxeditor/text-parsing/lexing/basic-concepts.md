@@ -31,13 +31,13 @@ An [ITokenIdProvider](xref:ActiproSoftware.Text.Lexing.ITokenIdProvider) is simp
 
 A lexical state, represented by the [ILexicalState](xref:ActiproSoftware.Text.Lexing.ILexicalState) interface, is a context in which certain text can be parsed into a set of tokens.
 
-For instance, all lexers must have a default lexical state, but then languages such as C# may have another lexical state for XML documentation comments.  As you know, XML documentation comment tags are not valid in normal code.  The code must have a `///` delimiter on a line (thereby entering the XML documentation comment lexical state) and then tags are valid.  While in this state, keywords such as `void` are not recognized and all text other than tags is treated as comment text.  The lexical state ends at the line terminator and flips back to its parent default lexical state where again, keywords like `void` are recognized.
+For instance, all lexers must have a default lexical state, but then languages such as C# may have another lexical state for XML documentation comments.  As you know, XML documentation comment tags are not valid in normal code.  The code must have a `///` delimiter on a line (thereby entering the XML documentation comment lexical state) and then tags are valid.  While in this state, keywords such as `void` are not recognized and all text other than tags is treated as comment text.  The lexical state ends at the line terminator and flips back to its parent default lexical state where, again, keywords like `void` are recognized.
 
 ### Lexical Scopes
 
 A lexical scope, represented by the [ILexicalScope](xref:ActiproSoftware.Text.Lexing.ILexicalScope) interface, defines how a parent lexical state can transition to another child lexical state and back.
 
-Again using the C# XML documentation comment example, the start scope for the XML documentation comment lexical state recognizes the text `///` as its start scope and when found, transitions to the lexical state.  Once in the lexical state, it looks for a line terminator, which is the end lexical scope for the lexical state.  When that is found, it exits the lexical state and pops back to the parent default state.
+Again, using the C# XML documentation comment example, the start scope for the XML documentation comment lexical state recognizes the text `///` as its start scope and when found, transitions to the lexical state.  Once in the lexical state, it looks for a line terminator, which is the end lexical scope for the lexical state.  When that is found, it exits the lexical state and pops back to the parent default state.
 
 ## Registering with a Syntax Language
 
@@ -73,11 +73,11 @@ A common question is, should I make my language's lexer mergable or not?  The tw
 
 Mergable lexers require more overhead, both in the actual parsing operation and in how data ends up being tracked in tokens.  This translates into slightly slower overall lexing and some increased memory usage.
 
-Non-mergable lexers, since they don't support language transitions, only need to process the information needed to support the core [IToken](xref:ActiproSoftware.Text.Lexing.IToken) interface.  Therefore they can run faster and use less overall memory.
+Non-mergable lexers, since they don't support language transitions, only need to process the information needed to support the core [IToken](xref:ActiproSoftware.Text.Lexing.IToken) interface.  Therefore, they can run faster and use less overall memory.
 
 ## Changing Mergable Lexers
 
-Mergable lexers sometimes cache data about themselves.  Therefore if they are ever to be altered after their initial creation, they need to be notified that something within them has changed.
+Mergable lexers sometimes cache data about themselves.  Therefore, if they are ever to be altered after their initial creation, they need to be notified that something within them has changed.
 
 As an example, this scenario can occur if you load two independent languages and then wish to merge them together, such as HTML with CSS.  In this scenario you'd load two [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) instances, one for HTML and one for CSS.  Then you'd create a lexical state that contains a scope transition to CSS.  See the Language Transitions QuickStart for a related full sample.
 

@@ -5,7 +5,7 @@ order: 4
 ---
 # Loading a Language Definition (.langdef File)
 
-The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with *.langdef* file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
+The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with `.langdef` file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
 
 Read the Language Designer's [Getting Started](../language-designer-tool/getting-started.md) topic for more information on language definitions and when to use them.
 
@@ -15,7 +15,7 @@ Language definition files may be loaded directly from a file, or from a `Stream`
 
 The benefit of distributing the language definition as a file with your application is that end users can modify the language definition if necessary.
 
-This code creates a syntax language object based on a *ECMAScript.langdef* file:
+This code creates a syntax language object based on an *ECMAScript.langdef* file:
 
 ```csharp
 SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
@@ -40,7 +40,7 @@ Now that an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) object 
 
 ## Initializing an Existing ISyntaxLanguage Instead
 
-The two loading methods described above load a language definition file and use it to create a new [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage).  However there could be scenarios where you already have an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) created but wish to initialize it with language definition data.  An example of this is that maybe you wish to ship *.langdef* files with your app so that end users can customize them.  However you have several additional language services (such as a parser) that need to get used on this language as well.  In this scenario, you'd want the best of both worlds: to load the lexer, token tagger, and classification types from the *.langdef* and register your additional services for use as well.
+The two loading methods described above load a language definition file and use it to create a new [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage).  However, there could be scenarios where you already have an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) created but wish to initialize it with language definition data.  An example of this is that maybe you wish to ship *\*.langdef* files with your app so that end users can customize them.  However, you have several additional language services (such as a parser) that need to get used on this language as well.  In this scenario, you'd want the best of both worlds: to load the lexer, token tagger, and classification types from the *\*.langdef* file and register your additional services for use as well.
 
 This code snippet shows how a custom language class can be created that both initializes itself based on a *.langdef* file and also adds additional services.
 
@@ -66,7 +66,7 @@ EcmaScriptSyntaxLanguage language = new EcmaScriptSyntaxLanguage();
 The [SyntaxLanguageDefinitionSerializer](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer) class has:
 
 @if (wpf winforms) {
-- An [InitializeFromFile](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromFile*) method for initializing an existing syntax language from a file, and 
+- An [InitializeFromFile](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromFile*) method for initializing an existing syntax language from a file
 }
 
-- An [InitializeFromStream](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromStream*) method for initializing an existing syntax language from a `Stream`, and
+- An [InitializeFromStream](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromStream*) method for initializing an existing syntax language from a `Stream`

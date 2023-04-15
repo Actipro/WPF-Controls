@@ -16,7 +16,7 @@
 					<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
 								CornerRadius="8" BorderThickness="1" SnapsToDevicePixels="True">
 						<Border.Background>
-							<SolidColorBrush Color="{Binding Color}" />
+							<SolidColorBrush Color="{Binding Value}" />
 						</Border.Background>
 					</Border>
 				</DataTemplate>

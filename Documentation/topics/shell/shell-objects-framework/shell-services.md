@@ -43,7 +43,7 @@ The [AreNamesCaseSensitive](xref:ActiproSoftware.Shell.IShellService.AreNamesCas
 
 The [Grids tree controls](../../grids/tree-control-features/index.md) like [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) have their own concept of "paths."  Those tree controls provide the foundation of several shell UI controls and thus inherit that "path" concept, which can be different from a shell file system path.
 
-First, a tree control "path" segment is returned for each item in the tree.  These paths can be combined with a path separator delimiter (often `"\"`) to construct what is called a "full path." Thus a "full path" becomes a delimited string where each "path" segment in it, can be examined to walk down the tree hierarchy.
+First, a tree control "path" segment is returned for each item in the tree.  These paths can be combined with a path separator delimiter (often `"\"`) to construct what is called a "full path." Thus, a "full path" becomes a delimited string where each "path" segment in it, can be examined to walk down the tree hierarchy.
 
 The [Shell Objects](shell-objects.md) topic has more information on paths.  In general though, the [IShellObject](xref:ActiproSoftware.Shell.IShellObject).[RelativeParsingName](xref:ActiproSoftware.Shell.IShellObject.RelativeParsingName) is what is returned as the path segment for each shell object, used to build up a "full path."
 

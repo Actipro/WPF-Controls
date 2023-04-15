@@ -30,7 +30,7 @@ Since text snapshots provide immutable views on a text document, the [ITextSnaps
 </td>
 <td>
 
-Performs a find all operation.
+Performs a "find all" operation.
 
 There are two overloads of this method.  One overload accepts a [TextRange](xref:ActiproSoftware.Text.TextRange) indicating the range of offsets to search.
 
@@ -45,7 +45,7 @@ There are two overloads of this method.  One overload accepts a [TextRange](xref
 </td>
 <td>
 
-Performs a find next operation.
+Performs a "find next" operation.
 
 There are two overloads of this method.  One overload accepts a [TextRange](xref:ActiproSoftware.Text.TextRange) indicating the range of offsets to search.
 
@@ -55,7 +55,7 @@ There are two overloads of this method.  One overload accepts a [TextRange](xref
 </tbody>
 </table>
 
-Both methods return an [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet) object that contains information about the search results.  In the case of an find all operation, more than one result may be present within the result set.
+Both methods return an [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet) object that contains information about the search results.  In the case of a "find all" operation, more than one result may be present within the result set.
 
 ## Replacing Text
 
@@ -80,7 +80,7 @@ Since text change operations typically originate from a document, the [ITextDocu
 </td>
 <td>
 
-Performs a replace all operation.
+Performs a "replace all" operation.
 
 There are two overloads of this method.  One overload accepts a [TextRange](xref:ActiproSoftware.Text.TextRange) indicating the range of offsets to search.
 
@@ -95,7 +95,7 @@ There are two overloads of this method.  One overload accepts a [TextRange](xref
 </td>
 <td>
 
-Performs a replace next operation.
+Performs a "replace next" operation.
 
 There are two overloads of this method.  One overload accepts a [TextRange](xref:ActiproSoftware.Text.TextRange) indicating the range of offsets to search.
 
@@ -105,7 +105,7 @@ There are two overloads of this method.  One overload accepts a [TextRange](xref
 </tbody>
 </table>
 
-Both methods return an [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet) object that contains information about the search results.  In the case of an replace all operation, more than one result may be present within the result set.
+Both methods return an [ISearchResultSet](xref:ActiproSoftware.Text.Searching.ISearchResultSet) object that contains information about the search results.  In the case of a "replace all" operation, more than one result may be present within the result set.
 
 ## Search Results
 
@@ -119,36 +119,36 @@ Each [ISearchResult](xref:ActiproSoftware.Text.Searching.ISearchResult) object i
 
 ## Search Options
 
-The [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) interface contains all the settings needed to perform a search operation.  These options include the text to find/replace, whether to match case, match whole word, search up, and the type of seatch pattern provider to use (normal, regular expressions, etc.).  The maximum number of results can also be set, which is useful in find all scenarios.
+The [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) interface contains all the settings needed to perform a search operation.  These options include the text to find/replace, whether to match case, match whole word, search up, and the type of seatch pattern provider to use (normal, regular expressions, etc.).  The maximum number of results can also be set, which is useful in "find all" scenarios.
 
 Each core search method described above accepts an [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) instance.  Any custom implementations of [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions) should implement an `Equals` method override.
 
 ## Built-In Search Pattern Providers
 
-A search pattern format is a syntax for entering how to find and replace text within a document.  Since the search engine is regular expression-based, the [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider) interface provides two methods, one for getting a regex pattern for supplied find text, and one for getting a regex pattern for supplied replace text.
+A search pattern format is a syntax for entering how to find and replace text within a document.  Since the search engine is regular expression-based, the [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider) interface provides two methods, one for getting a regex pattern for supplied "find" text, and one for getting a regex pattern for supplied "replace" text.
 
-The text framework ships with five built-in pattern providers:
+The text framework ships with the following built-in pattern providers:
 
-- **Normal** is a plain text find and replace format.
-- **Regular Expression** uses regular expressions to match find text, and uses regular expression replace pattern syntax to allow for replacements at different matched capture points in the find pattern.
-- **Wildcard** uses simple wildcard search patterns to match text.
-- **Acronym** matches a character at the start of a word, then every capital letter or character following an underscore.
-- **Shorthand** allows any non-whitespace character to be between the search pattern characters.
+- [Normal](xref:ActiproSoftware.Text.Searching.SearchPatternProviders.Normal) is a plain text find and replace format.
+- [RegularExpression](xref:ActiproSoftware.Text.Searching.SearchPatternProviders.RegularExpression) uses regular expressions to match text, and uses regular expression replace pattern syntax to allow for replacements at different matched capture points in the find pattern.
+- [Wildcard](xref:ActiproSoftware.Text.Searching.SearchPatternProviders.Wildcard) uses simple wildcard search patterns to match text.
+- [Acronym](xref:ActiproSoftware.Text.Searching.SearchPatternProviders.Acronym) matches a character at the start of a word, then every capital letter or character following an underscore.
+- [Shorthand](xref:ActiproSoftware.Text.Searching.SearchPatternProviders.Shorthand) allows any non-whitespace character to be between the search pattern characters.
 
 > [!NOTE]
 > The [SearchPatternProviders](xref:ActiproSoftware.Text.Searching.SearchPatternProviders) static class provides access to each of these [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider) instances.
 
 ### Normal Pattern Provider
 
-This pattern provider searchs for the find text exactly as specified and replaces using the exact replace text.
+This pattern provider searches for the "find text" exactly as specified and replaces using the exact "replace text"".
 
 ### Regular Expression Pattern Provider
 
 Regular expression find/replace operations search for text by using .NET regular expression syntax pattern matching.  It is important to note that pattern whitespace is ignored.  Whitespace can be matched by using the `\s` character class.
 
-The regular expression pattern provider has a feature that the others don't have.  In its replace patterns, substitutions can be specified.  Replace patterns recognize normal text characters, regular expression escape characters (\\n meaning line feed, etc.), and substitution specifications ($1, etc.).
+The regular expression pattern provider has a feature that the others don't have.  In its replace patterns, substitutions can be specified.  Replace patterns recognize normal text characters, regular expression escape characters (`\n` meaning line feed, etc.), and substitution specifications (`$1`, etc.).
 
-Substitutions place text from captures into the replace text.  This is best illustrated by an example.  Say the text to search in is `using System;`, the find text is `using \s+ (\w[\w\.]+);`, and the replace text is `Namespace: $1;`.  This operation is looking for any C# using statement and is outputting the namespace.  So the result in this scenario is `Namespace: System;`.
+Substitutions place text from captures into the replace text.  This is best illustrated by an example.  Imagine the text to be searched is `using System;`, the "find text" is `using \s+ (\w[\w\.]+);`, and the "replace text" is `Namespace: $1;`.  This operation is looking for any C# using statement and is outputting the namespace.  So the result in this scenario is `Namespace: System;` since `System` was the value matched by the first capture group and `$1` in the "replace text" is a placeholder for the first captured value.
 
 See the [Regular Expression Language Elements](../../regular-expressions/language-elements.md) topic for more information on the regular expression syntax.
 
@@ -158,17 +158,17 @@ Wildcard pattern providers search for text by using "wildcard" pattern matching.
 
 | Construct | Description |
 |-----|-----|
-| \*  | Specifies zero or more of any character, except the line feed character. |
-| ?   | Specifies any single character, except the line feed character. |
-| #   | Specifies any single digit. |
-| \[aeiou] | Matches any one character in the set. |
-| \[!aeiou] | Matches any one character not in the set. |
+| `*`  | Specifies zero or more of any character, except the line feed character. |
+| `?`   | Specifies any single character, except the line feed character. |
+| `#`   | Specifies any single digit. |
+| `[aeiou]` | Matches any one character in the set. |
+| `[!aeiou]` | Matches any one character not in the set. |
 
 Any other character in the pattern matches the character.  An example wildcard pattern is `using *;`. This pattern will match any C# using statement.
 
 ### Acronym Pattern Provider
 
-Acronym searching matches a character at the start of a word, then every capital letter or character following an underscore.  Space characters have special meaning to match any whitespace character.
+Acronym searching matches a character at the start of a word, then every capital letter or character following an underscore (`_`).  Space characters have special meaning to match any whitespace character.
 
 An example acronym pattern `fr` would match the text `FindR` in the word `FindReplace`.
 
@@ -186,6 +186,6 @@ The [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternP
 
 The [GetFindPattern](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider.GetFindPattern*) method returns the regular expression match pattern to use for find operations, based on the supplied pattern that uses the provider.  Likewise, the [GetReplacePattern](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider.GetReplacePattern*) method returns the regular expression match pattern to use for replace operations, based on the supplied pattern that uses the provider.
 
-As mentioned above, the core search engine uses our built-in regular expression engine to perform searching.  Therefore search patterns used by the search engine must be provided in regular expression syntax.  That is essentially what an [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider) does, converts a custom pattern syntax to regular expression syntax.
+As mentioned above, the core search engine uses our built-in regular expression engine to perform searching.  Therefore, search patterns used by the search engine must be provided in regular expression syntax.  That is essentially what an [ISearchPatternProvider](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider) does, converts a custom pattern syntax to regular expression syntax.
 
-Finally, the [RequiresCaseSensitivity](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider.RequiresCaseSensitivity) property returns whether the find patterns used require case sensitivity.  If this is `false`, the default, the [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions).[MatchCase](xref:ActiproSoftware.Text.Searching.ISearchOptions.MatchCase) value is used instead.
+Finally, the [RequiresCaseSensitivity](xref:ActiproSoftware.Text.Searching.ISearchPatternProvider.RequiresCaseSensitivity) property returns whether the find patterns being used require case sensitivity.  If this is `false`, the default, the [ISearchOptions](xref:ActiproSoftware.Text.Searching.ISearchOptions).[MatchCase](xref:ActiproSoftware.Text.Searching.ISearchOptions.MatchCase) value is used instead.

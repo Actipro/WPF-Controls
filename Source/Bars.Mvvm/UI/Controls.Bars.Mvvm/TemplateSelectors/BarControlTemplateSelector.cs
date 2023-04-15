@@ -25,7 +25,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.BarCheckBoxDefaultTemplate = dictionary[BarsMvvmResourceKeys.BarCheckBoxDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.BarCheckBoxMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarCheckBoxMenuItemItemContainerTemplate] as ItemContainerTemplate;
 			this.BarComboBoxDefaultTemplate = dictionary[BarsMvvmResourceKeys.BarComboBoxDefaultItemContainerTemplate] as ItemContainerTemplate;
-			this.BarComboBoxMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarComboBoxMenuItemItemContainerTemplate] as ItemContainerTemplate;
 			this.BarGalleryDefaultTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.BarGalleryMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryMenuItemItemContainerTemplate] as ItemContainerTemplate;
 			this.BarGalleryOverflowMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryOverflowMenuItemItemContainerTemplate] as ItemContainerTemplate;
@@ -94,19 +93,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public ItemContainerTemplate BarComboBoxDefaultTemplate { get; set; }
 		
 		/// <summary>
-		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="BarComboBoxViewModel"/> used in a menu item context.
-		/// </summary>
-		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
-		public ItemContainerTemplate BarComboBoxMenuItemTemplate { get; set; }
-
-		/// <summary>
 		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="BarGalleryViewModel"/>.
 		/// </summary>
 		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
 		public ItemContainerTemplate BarGalleryDefaultTemplate { get; set; }
 		
 		/// <summary>
-		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="BarGalleryItemViewModelBase"/>.
+		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="IBarGalleryItemViewModel"/>.
 		/// </summary>
 		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
 		public ItemContainerTemplate BarGalleryItemDefaultTemplate { get; set; }
@@ -295,6 +288,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 				case BarCheckBoxViewModel _:
 					return isMenuItem ? this.BarCheckBoxMenuItemTemplate : this.BarCheckBoxDefaultTemplate;
+				case BarComboBoxViewModel _: {
+					var isOverflowMenuItem = BarControlService.GetIsOverflowMenuItemHost(parentItemsControl);
+					return isMenuItem ? (isOverflowMenuItem ? this.BarGalleryOverflowMenuItemTemplate : this.BarGalleryMenuItemTemplate) : this.BarComboBoxDefaultTemplate;
+				}
 				case BarSplitToggleButtonViewModel _:
 					return isMenuItem ? this.BarSplitToggleButtonMenuItemTemplate : this.BarSplitToggleButtonDefaultTemplate;
 				case BarSplitButtonViewModel _:
@@ -306,9 +303,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 				case BarButtonViewModel _:
 					return isMenuItem ? this.BarButtonMenuItemTemplate : this.BarButtonDefaultTemplate;
-				case BarComboBoxViewModel _:
-					return isMenuItem ? this.BarComboBoxMenuItemTemplate : this.BarComboBoxDefaultTemplate;
-				case BarGalleryItemViewModelBase _:
+				case IBarGalleryItemViewModel _:
 					return this.BarGalleryItemDefaultTemplate;
 				case BarGalleryViewModel _: {
 					var isOverflowMenuItem = BarControlService.GetIsOverflowMenuItemHost(parentItemsControl);

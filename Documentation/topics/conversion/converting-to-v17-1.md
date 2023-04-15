@@ -37,7 +37,7 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - Nullable edit boxes no longer have a checkbox.  Instead, select all the text and delete it to null out a nullable edit box. `IsChecked`, `CheckBoxInactiveVisibility`, `CheckBoxMargin`, `CheckBoxPlacementOrder`, `CheckBoxPlacementSlot`, `CheckBoxTemplate`, and `CheckBoxVisibility` properties removed.
 
-- The `InitialValue` property was removed since the former checkbox used to initialize it.  However numerous edit boxes have a new `DefaultValue` property that is similar and is used as the value to set when incrementing/decrementing (via spinner or arrow keys) from a null value.
+- The `InitialValue` property was removed since the former checkbox used to initialize it.  However, numerous edit boxes have a new `DefaultValue` property that is similar and is used as the value to set when incrementing/decrementing (via spinner or arrow keys) from a `null` value.
 
 - The drop-down button is now defined in each edit box control's template so placement properties no longer apply. `DropDownButtonInactiveVisibility`, `DropDownButtonMargin`, `DropDownButtonPlacementOrder`, `DropDownButtonPlacementSlotSpinnerTemplate`, `DropDownButtonTemplate`, `DropDownHorizontalAlignment`, and `DropDownStaysOpen` properties removed.
 

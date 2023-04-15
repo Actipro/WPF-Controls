@@ -191,4 +191,4 @@ See the [Exporting to HTML / RTF](../advanced-text/exporting.md) topic for more 
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property can be used to store the file name (full path) of the file that has been loaded into the document.  The [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method overloads that read a file automatically set this property.
 
-When the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value is changed, the [FileNameChanged](xref:ActiproSoftware.Text.ITextDocument.FileNameChanged) event fires.
+When the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value is changed, the [FileNameChanged](xref:ActiproSoftware.Text.ITextDocument.FileNameChanged) event is raised.

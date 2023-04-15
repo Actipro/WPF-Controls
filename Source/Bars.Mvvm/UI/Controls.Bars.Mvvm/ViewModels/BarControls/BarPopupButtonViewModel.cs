@@ -20,6 +20,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string label;
 		private ImageSource largeImageSource;
 		private ImageSource mediumImageSource;
+		private ICommand popupOpeningCommand;
 		private ImageSource smallImageSource;
 		private string title;
 		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
@@ -31,7 +32,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarPopupButtonViewModel() { }  // Parameterless constructor required for XAML support
+		public BarPopupButtonViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		public BarPopupButtonViewModel(string key)
@@ -155,6 +157,20 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <value>The collection of menu items that appear within the popup.</value>
 		public ObservableCollection<object> MenuItems { get; } = new ObservableCollection<object>();
 		
+		/// <summary>
+		/// Gets or sets the <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.
+		/// </summary>
+		/// <value>The <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.</value>
+		public ICommand PopupOpeningCommand {
+			get => popupOpeningCommand;
+			set {
+				if (popupOpeningCommand != value) {
+					popupOpeningCommand = value;
+					this.NotifyPropertyChanged(nameof(PopupOpeningCommand));
+				}
+			}
+		}
+
 		/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
 		public ImageSource SmallImageSource {
 			get => smallImageSource;

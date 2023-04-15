@@ -43,6 +43,6 @@ The `Step` line kind creates a line that only uses horizontal and vertical lines
 
 ## Markers
 
-The line series can render a marker at each data point to highlight the actual location.  By default the markers is not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The line series has the same configuration properties available as the scatter series, with regards to marker rendering.
+The line series can render a marker at each data point to highlight the actual location.  By default, the markers are not rendered, but they can be shown by setting [MarkerVisibility](xref:@ActiproUIRoot.Controls.Charts.Primitives.LineSeriesBase.MarkerVisibility) to a value other than `None`.  The line series has the same configuration properties available as the scatter series, with regards to marker rendering.
 
 See the [Scatter](scatter.md) topic for more information on the options available.

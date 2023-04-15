@@ -1,18 +1,20 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 	/// <summary>
 	/// Represents a numbering style as a gallery item view model for a bar gallery control.
 	/// </summary>
-	public class NumberingBarGalleryItemViewModel : BarGalleryItemViewModelBase {
+	public class NumberingBarGalleryItemViewModel : BarGalleryItemViewModel<NumberingKind> {
 
 		/// <summary>
 		/// The name of the category for the numbering library.
 		/// </summary>
-		public const string NumberingLibraryCategory = "Numbering Library";
+		public const string DefaultCategory = "Numbering Library";
 
 		/// <summary>
 		/// The string format to use for numbering followed by a dot (e.g., <c>1.</c>, <c>2.</c>, etc.).
@@ -24,59 +26,83 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		public const string ParenthesisFormat = "{0})";
 		
-		private string format;
-		private NumberingKind kind;
+		private string format = DotFormat;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NumberingBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with a default value and category using dot format.
 		/// </summary>
-		public NumberingBarGalleryItemViewModel()  // Parameterless constructor required for XAML support
-			: this(NumberingLibraryCategory, NumberingKind.None, format: DotFormat, label: null) { }
+		public NumberingBarGalleryItemViewModel()
+			: this(value: default) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NumberingBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with the specified value and a default category using dot format.
 		/// </summary>
-		/// <param name="category">The gallery item category.</param>
-		/// <param name="kind">The kind of numbering.</param>
-		/// <param name="format">The numbering format.</param>
-		/// <param name="label">The text label to display.</param>
-		public NumberingBarGalleryItemViewModel(string category, NumberingKind kind, string format, string label)
-			: base(category) {
+		/// <param name="value">The item's value.</param>
+		public NumberingBarGalleryItemViewModel(NumberingKind value)
+			: this(value, DefaultCategory) { }
 
-			if (string.IsNullOrEmpty(format))
-				throw new ArgumentNullException(nameof(format));
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value and category using dot format.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public NumberingBarGalleryItemViewModel(NumberingKind value, string category)
+			: this(value, category, label: null) { }
 
-			this.kind = kind;
-			this.format = format;
-			this.Label = label;
-		}
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value, category, and label using dot format.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public NumberingBarGalleryItemViewModel(NumberingKind value, string category, string label)
+			: base(value, category, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		protected override string CoerceLabel() {
+			if (Value != NumberingKind.None) {
+				var baseLabel = ConvertEnumValueToString(Value, useAttributes: true);
+				if (Format == DotFormat)
+					return baseLabel + " with Dots";
+				else if (Format == ParenthesisFormat)
+					return baseLabel + " with Parenthesis";
+			}
+			return base.CoerceLabel();
+		}
+
 		/// <summary>
-		/// Creates a default collection of gallery item view models representing the numbering kinds.
+		/// Creates a default collection of gallery item view models representing common numbering kinds.
 		/// </summary>
 		/// <returns>The collection of gallery item view models that was created.</returns>
 		public static IEnumerable<NumberingBarGalleryItemViewModel> CreateDefaultCollection() {
 			return new NumberingBarGalleryItemViewModel[] {
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.None, DotFormat, "None"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.ArabicNumeral, DotFormat, "Arabic Numerals with Dots"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.ArabicNumeral, ParenthesisFormat, "Arabic Numerals with Parenthesis"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.UpperRomanNumeral, DotFormat, "Uppercase Roman Numerals with Dots"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.LowerRomanNumeral, DotFormat, "Lowercase Roman Numerals with Dots"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.UpperAlpha, DotFormat, "Uppercase Letters with Dots"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.UpperAlpha, ParenthesisFormat, "Uppercase Letters with Parenthesis"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.LowerAlpha, DotFormat, "Lowercase Letters with Dots"),
-				new NumberingBarGalleryItemViewModel(NumberingLibraryCategory, NumberingKind.LowerAlpha, ParenthesisFormat, "Lowercase Letters with Parenthesis"),
+				new NumberingBarGalleryItemViewModel(NumberingKind.None),
+				new NumberingBarGalleryItemViewModel(NumberingKind.ArabicNumeral) { Format = DotFormat },
+				new NumberingBarGalleryItemViewModel(NumberingKind.ArabicNumeral) { Format = ParenthesisFormat },
+				new NumberingBarGalleryItemViewModel(NumberingKind.UpperRomanNumeral),
+				new NumberingBarGalleryItemViewModel(NumberingKind.LowerRomanNumeral),
+				new NumberingBarGalleryItemViewModel(NumberingKind.UpperAlpha) { Format = DotFormat },
+				new NumberingBarGalleryItemViewModel(NumberingKind.UpperAlpha) { Format = ParenthesisFormat },
+				new NumberingBarGalleryItemViewModel(NumberingKind.LowerAlpha) { Format = DotFormat },
+				new NumberingBarGalleryItemViewModel(NumberingKind.LowerAlpha) { Format = ParenthesisFormat },
 			};
 		}
 		
+		/// <summary>
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models representing common numbering kinds, allowing for possible categorization and filtering.
+		/// </summary>
+		/// <param name="categorize">Whether the collection view should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
+
 		/// <summary>
 		/// Gets or sets the string format used for displaying the numbering.
 		/// </summary>
@@ -95,27 +121,14 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 					format = value;
 					this.NotifyPropertyChanged(nameof(Format));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the kind of numbering.
-		/// </summary>
-		/// <value>One of the <see cref="NumberingKind"/> values.</value>
-		public NumberingKind Kind {
-			get => kind;
-			set {
-				if (kind != value) {
-					kind = value;
-					this.NotifyPropertyChanged(nameof(Kind));
+					this.NotifyPropertyChanged(nameof(Label));
 				}
 			}
 		}
 
 		/// <inheritdoc/>
 		public override string ToString() {
-			return $"{this.GetType().FullName}[Kind='{this.Kind}', Format='{this.Format}']";
+			return $"{this.GetType().FullName}[Value='{this.Value}', Format='{this.Format}']";
 		}
 
 	}

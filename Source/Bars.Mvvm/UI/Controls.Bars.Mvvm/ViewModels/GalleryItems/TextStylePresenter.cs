@@ -40,12 +40,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <param name="viewModel">The <see cref="TextStyleBarGalleryItemViewModel"/> to examine.</param>
 		/// <returns>The <see cref="FormattedText"/> that was created.</returns>
 		private FormattedText CreateFormattedText(TextStyleBarGalleryItemViewModel viewModel) {
-			var fontFamily = new FontFamily(viewModel.FontFamilyName);
-			var fontStyle = viewModel.Italic ? FontStyles.Italic : FontStyles.Normal;
-			var fontWeight = viewModel.Bold ? FontWeights.Bold : FontWeights.Normal;
+			var textStyle = viewModel.Value;
+			var fontFamily = new FontFamily(textStyle.FontFamilyName);
+			var fontStyle = textStyle.Italic ? FontStyles.Italic : FontStyles.Normal;
+			var fontWeight = textStyle.Bold ? FontWeights.Bold : FontWeights.Normal;
 			var typeface = new Typeface(fontFamily, fontStyle, fontWeight, FontStretches.Normal);
-			var fontSize = FontSizeBarGalleryItemViewModel.ConvertFontSizeToWpfFontSize(viewModel.FontSize);
-			var foreground = new SolidColorBrush(viewModel.Color);
+			var fontSize = FontSizeBarGalleryItemViewModel.ConvertFontSizeToWpfFontSize(textStyle.FontSize);
+			var foreground = new SolidColorBrush(textStyle.TextColor);
 
 			var formattedText = new FormattedText(viewModel.Label, CultureInfo.CurrentCulture, this.FlowDirection, typeface, fontSize, foreground, null, TextOptions.GetTextFormattingMode(this), VisualTreeHelper.GetDpi(this).PixelsPerDip);
 

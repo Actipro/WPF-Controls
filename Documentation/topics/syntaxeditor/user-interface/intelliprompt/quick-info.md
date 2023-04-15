@@ -21,7 +21,7 @@ QuickInfoSession session = new QuickInfoSession();
 
 ### Setting the Content to Display
 
-Next, the content that will be displayed must be specified.  Since a `ContentProvider` is used behind the scenes, this could be any object.  However it is recommended that you use a `UIElement` or the output from one of the [Content Providers](popup-content-providers.md).
+Next, the content that will be displayed must be specified.  Since a `ContentProvider` is used behind the scenes, this could be any object.  However, it is recommended that you use a `UIElement` or the output from one of the [Content Providers](popup-content-providers.md).
 
 This code uses the output from a [PlainTextContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.PlainTextContentProvider) as the content to display since it provides a word wrapping `TextBlock` containing a string:
 
@@ -51,7 +51,7 @@ It is highly recommended to make use of the [HtmlContentProvider](xref:@ActiproU
 
 ## Handling Link Clicks
 
-When links are present in quick info tip content, the [IQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession.RequestNavigate) event will fire if a link is clicked, requesting that you take some action.
+When links are present in quick info tip content, the [IQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoSession.RequestNavigate) event will be raised if a link is clicked, requesting that you take some action.
 
 }
 
@@ -81,7 +81,7 @@ The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Intell
 
 There are built in Quick Info providers for collapsed node text (used with outlining) and squiggle tags.
 
-When using the [code outlining](../../user-interface/outlining/outlining-general.md) features, sometimes the end user will collapse outlining nodes. By default, nothing happens when the mouse is hovered over a collapsed outlining node adornment (normally a box with "..." in it). The built-in [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) implementation called [CollapsedRegionQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) watches for mouse hovers over collapsed regions and will automatically show a quick info tip with the contained content on mouse hovers.
+When using the [code outlining](../../user-interface/outlining/outlining-general.md) features, sometimes the end user will collapse outlining nodes. By default, nothing happens when the mouse is hovered over a collapsed outlining node adornment (normally a box with `"..."` in it). The built-in [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) implementation called [CollapsedRegionQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) watches for mouse hovers over collapsed regions and will automatically show a quick info tip with the contained content on mouse hovers.
 
 When using the [parsing](../../text-parsing/parsing/index.md) framework and the [ParseErrorTagger](xref:ActiproSoftware.Text.Tagging.Implementation.ParseErrorTagger) (or other custom tagger that uses [SquiggleTag](xref:ActiproSoftware.Text.Tagging.Implementation.SquiggleTag) tags), there will be squiggle adornments in the document window. By default, nothing happens when the mouse is hovered over these adornments. However, there is a built-in [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) implementation called [SquiggleTagQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.SquiggleTagQuickInfoProvider) that watches for mouse hovers over squiggle adorned regions and will automatically show a quick info tip with the parse error description on mouse hovers.
 

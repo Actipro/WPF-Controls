@@ -58,7 +58,7 @@ protected override void OnExit(ExitEventArgs e) {
 
 ## Configure the Ambient Package Repository
 
-An ambient package repository should always be set up to ensure that the application is able to use and cache package data from all packages within the Python project's search paths.  A Python project (see below) normally adds search paths for the root of your project's *.py* files, along with external libraries such as the Python standard library's `Lib` folder.  When a search path is added to a project, it will search the cache path to see if the cached data there is up-to-date with the related source package.  If not, cache data is added to the package repository via a worker thread.
+An ambient package repository should always be set up to ensure that the application is able to use and cache package data from all packages within the Python project's search paths.  A Python project (see below) normally adds search paths for the root of your project's *\*.py* files, along with external libraries such as the Python standard library's `Lib` folder.  When a search path is added to a project, it will search the cache path to see if the cached data there is up-to-date with the related source package.  If not, cache data is added to the package repository via a worker thread.
 
 The ambient package repository should be set up in your application startup code.  The [FileBasedPackageRepository](xref:ActiproSoftware.Text.Languages.Python.Reflection.Implementation.FileBasedPackageRepository) class is the default implementation of a package repository, which supports the writing of binary package data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder @if (winrt) {(the app's data folder is advised). }@if (wpf winforms) {(usually requires full trust). }
 
@@ -81,7 +81,7 @@ protected override void OnStartup(StartupEventArgs e) {
 protected override void OnStartup(StartupEventArgs e) {
 	...
 	// Use a path like this if in full trust
-	string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+	string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 		@"YourCompanyName\YourApplicationName\Package Repository");
 	AmbientPackageRepositoryProvider.Repository = new FileBasedPackageRepository(appDataPath);
 	...
@@ -107,7 +107,7 @@ var language = new PythonSyntaxLanguage();
 
 Each language has a [IProject](xref:ActiproSoftware.Text.Languages.Python.Reflection.IProject) registered as a service on it that provides information such as which modules are actively being edited in a SyntaxEditor and the collection of paths to search for external packages.
 
-If you wish to support automated IntelliPrompt for external modules, it is important to add search paths to the project.  This tells the resolver where to look for *.py* files.  Note that the resolver will recursively search through child folders of specified paths as long as the folder names are valid Python identifiers.
+If you wish to support automated IntelliPrompt for external modules, it is important to add search paths to the project.  This tells the resolver where to look for *\*.py* files.  Note that the resolver will recursively search through child folders of specified paths as long as the folder names are valid Python identifiers.
 
 It is common practice to specify these paths:
 

@@ -21,15 +21,15 @@ If the flags-based [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.Synt
 
 | Key | Action |
 |-----|-----|
-| Ctrl + + | Zoom in. |
-| Ctrl + - | Zoom out. |
-| Ctrl + 0 | Reset zoom to 100%. |
+| <kbd>Ctrl</kbd>+<kbd>+</kbd> | Zoom in. |
+| <kbd>Ctrl</kbd>+<kbd>-</kbd> | Zoom out. |
+| <kbd>Ctrl</kbd>+<kbd>0</kbd> | Reset zoom to 100%. |
 
 ## Touch Zoom
 
 If the flags-based [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ZoomModesAllowed](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ZoomModesAllowed) enumeration property includes the `Touch` value, pinch-to-zoom is enabled.
 
-Place two fingers on the editor view and spread them apart to zoom in, or bring them closer together to zoom out.
+Place two fingers on the editor view and spread them apart to zoom in or bring them closer together to zoom out.
 
 ## Zoom Level
 

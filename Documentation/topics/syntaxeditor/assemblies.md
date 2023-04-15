@@ -15,7 +15,7 @@ Add-ons may include very advanced syntax language implementations that have feat
 
 @if (wpf) {
 
-Two add-ons we include with SyntaxEditor are free assemblies for integrating SyntaxEditor with parsers created using Irony and ANTLR parsing frameworks.  These add-ons are optionally installed during setup. 
+Two add-ons we include with SyntaxEditor are free assemblies for integrating SyntaxEditor with parsers created using Irony and ANTLR parsing frameworks.  These add-ons are optionally installed during setup.
 
 }
 
@@ -216,4 +216,4 @@ This list of assemblies indicates all of the assemblies related to SyntaxEditor,
 </tbody>
 </table>
 
-Although the add-ons that are marked as sold separately are included with the @@PlatformName controls sample for demo purposes, licenses for them must be purchased separately if you would like to use them.  However, the pricing on the add-ons is very affordable and licenses are all Enterprise licenses, meaning they cover your entire organization.
+Although the add-ons that are marked as sold separately are included with the @@PlatformName controls sample for demo purposes, licenses for them must be purchased separately if you would like to use them.  However, the pricing on the add-ons is very affordable and the licenses are all Enterprise licenses, meaning they cover your entire organization.

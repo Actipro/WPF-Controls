@@ -42,7 +42,7 @@ Sometimes this mode doesn't work well with interop controls since they could hav
 
 ## Handling Focus Issues
 
-There are known issues in core WPF with how it tracks and reports focus movement in and out of `HwndHost`.  This makes it difficult to use standard WPF-based focus events when dealing with `HwndHost`-based scenarios, because the events don't fire properly.
+There are known issues in core WPF with how it tracks and reports focus movement in and out of `HwndHost`.  This makes it difficult to use standard WPF-based focus events when dealing with `HwndHost`-based scenarios, because the events aren't raised properly.
 
 We provide a workaround for most of these issues in the form of an [InteropFocusTracking](xref:@ActiproUIRoot.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property that should be set on any `HwndHost`-based control, such as `WindowsFormsHost`, WPF `WebBrowser`, etc.  Set that attached property to `true` on such controls in your docking window hierarchy to enable our workarounds.
 

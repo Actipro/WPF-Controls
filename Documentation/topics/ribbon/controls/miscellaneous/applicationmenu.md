@@ -64,7 +64,7 @@ If you wish to add recent document buttons to your Backstage header, a [RecentDo
 
 ### Auto-Selecting a Tab When Backstage Opens
 
-The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[IsApplicationMenuOpen](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsApplicationMenuOpen) property gets or sets whether the application menu is currently open.  A related [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[IsApplicationMenuOpenChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsApplicationMenuOpenChanged) event fires whenever that property changes.  This is an ideal place to initialize Backstage so that a certain tab is always selected when it opens.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[IsApplicationMenuOpen](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsApplicationMenuOpen) property gets or sets whether the application menu is currently open.  A related [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[IsApplicationMenuOpenChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsApplicationMenuOpenChanged) event is raised whenever that property changes.  This is an ideal place to initialize Backstage so that a certain tab is always selected when it opens.
 
 The event handler for the [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[IsApplicationMenuOpenChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.IsApplicationMenuOpenChanged) event can check to see if the application menu is being opened and if so, ensure the [Backstage](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Backstage).`SelectedItem` property is set to the desired tab.
 
@@ -181,7 +181,7 @@ This code defines a simple `TextBlock` as content for the right side of the appl
 </ribbon:ApplicationMenu>
 ```
 
-You can create your own complex custom control to fill this space.  However keep in mind that per the Microsoft requirements, you are not permitted to use vertical scrollbars in this area.
+You can create your own complex custom control to fill this space.  However, keep in mind that per the Microsoft requirements, you are not permitted to use vertical scrollbars in this area.
 
 Many applications will want to place our [RecentDocumentMenu](recentdocumentmenu.md) control into the application menu's additional content.  This control displays a list of recently-opened documents that can be maintained in code-behind and supports pinning of the documents so that they don't fall off the list when newer documents are opened.
 

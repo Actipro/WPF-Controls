@@ -27,11 +27,11 @@ This version adds a new [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.Doc
 
 Since [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) is a better property to use than `Name` for serialization purposes, although `Name` can still be used, we have updated the constructors for both [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) and [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) that used to accept a `Name` parameter to switch that parameter to assign the [SerializationId](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.SerializationId) property instead.
 
-The only real negative side effect of this is that an indexer of the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) and [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collections works off of `Name`.  Since that property won't be set directly any more by using the constructor that used to set it, indexer calls off those collections may return a null value unless you manually set the `Name` property on each docking window instance.
+The only real negative side effect of this is that an indexer of the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindows) and [DocumentWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.DocumentWindows) collections works off of `Name`.  Since that property won't be set directly any more by using the constructor that used to set it, indexer calls off those collections may return a `null` value unless you manually set the `Name` property on each docking window instance.
 
 ### Programmatic Layout Updates Don't Work Until Loaded
 
-Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the contructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event fires.
+Sometimes docking windows are programmatically added to a layout (via opening, docking, layout loading, etc.) within the contructor of a root element like a `Window` or `UserControl` after its `InitializeComponent` method executes.  In situations like this, the code to add the docking windows to the layout needs to be performed at or after the time that root element's `Loaded` event is raised.
 
 When the root element has loaded, that means that all the templates of the control hierarchy within the dock site have been properly loaded and applied as well.  The dock site and its features are then ready for programmatic interaction.
 
@@ -57,7 +57,7 @@ The old `LastActiveDocument`, `LastActiveToolWindow`, and related property chang
 
 Use the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) to know which window is currently active, and watch the [WindowDeactivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowDeactivated) and [WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) events to know when that changes.
 
-Use the new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) property to know which document is currently the primary document.  This value will be the same as [ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) if the active window is a document.  If the active window is a tool window outside of the MDI area instead, the primary document will refer to the last open document that was active.  The [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event fires when the related property value changes.
+Use the new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) property to know which document is currently the primary document.  This value will be the same as [ActiveWindow](xref:@ActiproUIRoot.Controls.Docking.DockSite.ActiveWindow) if the active window is a document.  If the active window is a tool window outside of the MDI area instead, the primary document will refer to the last open document that was active.  The [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event is raised when the related property value changes.
 
 All docking windows now have a [LastActiveDateTime](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.LastActiveDateTime) property that you can examine to sort them by when they were last active.
 
@@ -65,7 +65,7 @@ All docking windows now have a [LastActiveDateTime](xref:@ActiproUIRoot.Controls
 
 In the old version, if the focus was in one container (such as a docked tool window) and then the close X button on a document tab was clicked, the tab would be closed and the next document tab in that tabbed MDI container would become active.  In vNext in this same scenario, focus remains in the original container (docked tool window) instead of activating the next tabbed document.
 
-This means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event won't fire for the next tabbed document.  If you relied on this event to know when a new document became the primary document, switch over to using the new [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event instead, which is described inthe previous section.  The new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) returns the open document that is currently active, or was last active in the case where a non-document is currently active.
+This means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event won't be raised for the next tabbed document.  If you relied on this event to know when a new document became the primary document, switch over to using the new [PrimaryDocumentChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocumentChanged) event instead, which is described inthe previous section.  The new [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDocument](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDocument) returns the open document that is currently active, or was last active in the case where a non-document is currently active.
 
 ### Renamed Rafting to Floating
 
@@ -83,7 +83,7 @@ The revised [WindowsClosing](xref:@ActiproUIRoot.Controls.Docking.DockSite.Windo
 
 The [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration no longer has a `Floating` value.  The reason is that now floating dock hosts can have docked, auto-hidden or document-oriented docking windows in them, so that option no longer fit.
 
-In addition, this change means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged) event will no longer fire when a docking window is moved to or from a floating dock host, unless doing so is a transition between the docked, auto-hide, or document states.
+In addition, this change means that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged) event will no longer be raised when a docking window is moved to or from a floating dock host, unless doing so is a transition between the docked, auto-hide, or document states.
 
 ### Tool Window Transitions Removed
 
@@ -397,7 +397,7 @@ It is recommended that most applications move to one of the Metro themes from Lu
 
 ## WindowChrome Updated to Only Allow Aero Glass on Windows 7 and Vista
 
-In the previous version, Aero glass effects were allowed on Windows 8.x and 10.  However in Windows 10, they don't render correctly.  Unfortunately .NET prevents you from detecting if your app is running in Windows 10, unless you specifically add a special *app.manifest*.  Since Aero glass isn't really used on Windows 8.x, we updated WindowChrome to only allow Aero glass to be enabled on Windows 7 and Vista, regardless of what the `WindowChrome.IsGlassEnabled` property value is.
+In the previous version, Aero glass effects were allowed on Windows 8.x and 10.  However, in Windows 10, they don't render correctly.  Unfortunately .NET prevents you from detecting if your app is running in Windows 10, unless you specifically add a special *app.manifest*.  Since Aero glass isn't really used on Windows 8.x, we updated WindowChrome to only allow Aero glass to be enabled on Windows 7 and Vista, regardless of what the `WindowChrome.IsGlassEnabled` property value is.
 
 ## RibbonWindow.IsGlassEnabled Is No Longer Nullable and Defaults to False
 

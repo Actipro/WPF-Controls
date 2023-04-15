@@ -13,7 +13,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarCheckBoxViewModel() { }  // Parameterless constructor required for XAML support
+		public BarCheckBoxViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		public BarCheckBoxViewModel(string key)

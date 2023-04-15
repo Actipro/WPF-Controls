@@ -14,7 +14,8 @@
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public BarHeadingViewModel() { }  // Parameterless constructor required for XAML support
+		public BarHeadingViewModel()  // Parameterless constructor required for XAML support
+			: this(label: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified label.

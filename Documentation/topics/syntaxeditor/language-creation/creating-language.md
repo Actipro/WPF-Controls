@@ -28,7 +28,7 @@ Since this language only has a couple options set, there is nothing wrong with d
 
 ## Option 2: Creating a Custom Class that Inherits SyntaxLanguage
 
-Many times language implementations are more complex that the sample illustrated in the previous option.  It could be a case of additional configuration/processing needed or you may simply want to have your language completely encapsulated with a dedicated class.
+Many times language implementations are more complex than the sample illustrated in the previous option.  It could be a case of additional configuration/processing needed or you may simply want to have your language completely encapsulated with a dedicated class.
 
 > [!NOTE]
 > The [Language Designer](../language-designer-tool/index.md) tool allows you to quickly configure information about your language.  It can generate a lot of the C#/VB code needed to have a dedicated syntax language class and related features.  Use of that application is the fastest way to get started making a syntax language.
@@ -66,12 +66,11 @@ MyCustomSyntaxLanguage language = new MyCustomSyntaxLanguage();
 
 ## Option 3: Loading a Language Definition (.langdef File)
 
-The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with *.langdef* file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
+The [Language Designer](../language-designer-tool/index.md) application can be used to optionally create files with `.langdef` file extensions, which are language definitions.  These language definition files can be distributed with your application, often in file form or as an embedded resource.  They contain information about a language and can be loaded at run-time to automatically create and initialize a language.
 
 Language definitions can be used to either:
 
 - Create a new [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) from scratch that is initialized with data from the language definition, which is focus of this Option 3.
-
 - Initialize an existing [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage), which means it can be used in both Option 1 and 2 scenarios listed above to supply the lexer, etc. instead of manually registering code-based ones
 
 See the [Loading a Language Definition (.langdef File)](loading-lang-def.md) topic for details on how to load one of these files at run-time.

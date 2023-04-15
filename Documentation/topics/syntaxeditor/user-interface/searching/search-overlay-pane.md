@@ -15,12 +15,12 @@ These key bindings are search-related and are built into the SyntaxEditor contro
 
 | Key | Edit Action |
 |-----|-----|
-| Ctrl+F | Opens the search overlay pane in find mode and focuses the find textbox. |
-| F3  | Repeats the last search operation in a forward direction. |
-| Ctrl+F3 | Performs a forward find on the current selection, or the current word when there is not selection.  Also opens the search overlay pane in find mode. |
-| Shift+F3 | Repeats the last search operation in a backward direction. |
-| Ctrl+Shift+F3 | Performs a backward find on the current selection, or the current word when there is not selection.  Also opens the search overlay pane in find mode. |
-| Ctrl+H | Opens the search overlay pane in replace mode and focuses the find what textbox. |
+| <kbd>Ctrl</kbd>+<kbd>F</kbd> | Opens the search overlay pane in find mode and focuses the **Find** textbox. |
+| <kbd>F3</kbd>  | Repeats the last search operation in a forward direction. |
+| <kbd>Ctrl</kbd>+<kbd>F3</kbd> | Performs a forward find on the current selection, or the current word when there is no selection.  Also opens the search overlay pane in find mode. |
+| <kbd>Shift</kbd>+<kbd>F3</kbd> | Repeats the last search operation in a backward direction. |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F3</kbd> | Performs a backward find on the current selection, or the current word when there is no selection.  Also opens the search overlay pane in find mode. |
+| <kbd>Ctrl</kbd>+<kbd>H</kbd> | Opens the search overlay pane in replace mode and focuses the **Find** textbox. |
 
 ### Disabling Built-in Search Functionality
 
@@ -34,18 +34,18 @@ These key bindings are active when focus is within the search overlay pane, prov
 
 | Key | Edit Action |
 |-----|-----|
-| Esc | Closes the search overlay pane. |
-| Enter (focus in find textbox) | Performs a find next operation. |
-| Shift+Enter (focus in find textbox) | Performs a find previous operation. |
-| Ctrl+Enter (focus in find textbox) | Performs a find all operation, if [IsFindAllButtonVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.IsFindAllButtonVisible) is `true`. |
-| Enter (focus in replace textbox) | Performs a replace next operation. |
-| Shift+Enter (focus in replace textbox) | Performs a replace previous operation. |
-| Alt+R | When in replace mode, performs a replace next operation. |
-| Alt+A | When in replace mode, performs a replaces all operation. |
-| Alt+C | Toggles the match case option. |
-| Alt+W | Toggles the whole word option. |
-| Alt+E | Toggles the use regular expressions option. |
-| Alt+U | Toggles the use search up option. |
+| <kbd>Esc</kbd> | Closes the search overlay pane. |
+| <kbd>Enter</kbd> (focus in **Find** textbox) | Performs a "find next" operation. |
+| <kbd>Shift</kbd>+<kbd>Enter</kbd> (focus in **Find** textbox) | Performs a "find previous" operation. |
+| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (focus in **Find** textbox) | Performs a "find all" operation, if [IsFindAllButtonVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.IsFindAllButtonVisible) is `true`. |
+| <kbd>Enter</kbd> (focus in **Replace** textbox) | Performs a "replace next" operation. |
+| <kbd>Shift</kbd>+<kbd>Enter</kbd> (focus in **Replace** textbox) | Performs a "replace previous" operation. |
+| <kbd>Alt</kbd>+<kbd>R</kbd> | When in replace mode, performs a "replace next" operation. |
+| <kbd>Alt</kbd>+<kbd>A</kbd> | When in replace mode, performs a "replaces all" operation. |
+| <kbd>Alt</kbd>+<kbd>C</kbd> | Toggles the **Match Case** option. |
+| <kbd>Alt</kbd>+<kbd>W</kbd> | Toggles the **Whole Word** option. |
+| <kbd>Alt</kbd>+<kbd>E</kbd> | Toggles the **Use Regular Expressions** option. |
+| <kbd>Alt</kbd>+<kbd>U</kbd> | Toggles the **Search Up** option. |
 
 ## The SearchOverlayPane User Interface
 
@@ -59,13 +59,13 @@ The [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.Sea
 
 The control offers two search modes: find and replace.  Use the expansion arrow on the left side of the control to toggle between them.
 
-The expansion arrow is displayed by default.  However the [CanToggleReplace](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.CanToggleReplace) property can be set to `false` to hide it.
+The expansion arrow is displayed by default.  However, the [CanToggleReplace](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.CanToggleReplace) property can be set to `false` to hide it.
 
-This is useful if you only wish to allow the end user to perform find opertions and not replace operations.
+This is useful if you only wish to allow the end user to perform "find" operations and not "replace" operations.
 
 ### Find All Button Visibility
 
-The `Find All` button is not displayed by default.  The [IsFindAllButtonVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.IsFindAllButtonVisible) property can be set to `true` to show it.
+The **Find All** button is not displayed by default.  The [IsFindAllButtonVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.IsFindAllButtonVisible) property can be set to `true` to show it.
 
 This button should only be made visible if the find results will be displayed to the user from within a [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSearch](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSearch) event handler.  A common way to do this is to display the results within a `Find Results` tool window.
 
@@ -85,7 +85,7 @@ Animation can be disabled by setting the [AnimationDuration](xref:@ActiproUIRoot
 
 ## Pane Events
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[OverlayPaneOpened](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.OverlayPaneOpened) event is fired when the search overlay pane is opened.  The [OverlayPaneEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneEventArgs).[Pane](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneEventArgs.Pane) property contains the [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane) instance that is opening.  This is where various options may be set on the pane for initialization purposes.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[OverlayPaneOpened](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.OverlayPaneOpened) event is raised when the search overlay pane is opened.  The [OverlayPaneEventArgs](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneEventArgs).[Pane](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneEventArgs.Pane) property contains the [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane) instance that is opening.  This is where various options may be set on the pane for initialization purposes.
 
 This code shows how to set several options on the pane:
 
@@ -101,13 +101,13 @@ private void OnSyntaxEditorOverlayPaneOpened(object sender, OverlayPaneEventArgs
 }
 ```
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[OverlayPaneClosed](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.OverlayPaneClosed) event is fired when the pane is closed.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[OverlayPaneClosed](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.OverlayPaneClosed) event is raised when the pane is closed.
 
 ## Syncing Options
 
 The [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).[SearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchViewBase.SearchOptions) property accepts an [IEditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorSearchOptions) instance that automatically gets assigned the search options instance found in the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[SearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.SearchOptions) property.
 
-When the end user alters the "find what" text for instance, the control auto-updates the attached options.  The options can be used with any search operation.
+When the end user alters the "find what" text, for instance, the control auto-updates the attached options.  The options can be used with any search operation.
 
 > [!NOTE]
 > The [EditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.EditorSearchOptions) class provides an implementation of the [IEditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorSearchOptions) interface.
@@ -116,7 +116,7 @@ The default [IEditorSearchOptions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEd
 
 ## Handling Results
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSearch](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSearch) event fires whenever a search is made using [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).  The event arguments pass along the search options and the result set.  That information can then be presented to the user in a `Find Results` tool window for example.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewSearch](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewSearch) event is raised whenever a search is made using [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).  The event arguments pass along the search options and the result set.  That information can then be presented to the user in a **Find Results** tool window for example.
 
 ## Search Result Highlights
 

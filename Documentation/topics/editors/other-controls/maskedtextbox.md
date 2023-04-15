@@ -29,7 +29,7 @@ The [MatchedText](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.MatchedText
 
 Prompts can be appended to the end of the text in scenarios where further text input is required to properly match a mask.  The prompts do their best to indicate literal characters as themselves.  Any time there is a choice in character, a prompt character specified by the [PromptChar](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.PromptChar) is inserted.
 
-By default the prompts will only be appended when the control has focus.  The [PromptVisibility](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.PromptVisibility) property can be changed to `Always` to always show prompts, even when the control doesn't has focus.  The `Never` option prevents prompts from ever showing.
+By default, the prompts will only be appended when the control has focus.  The [PromptVisibility](xref:@ActiproUIRoot.Controls.Editors.MaskedTextBox.PromptVisibility) property can be changed to `Always` to always show prompts, even when the control doesn't has focus.  The `Never` option prevents prompts from ever showing.
 
 ## Case Sensitivity and Case-Correction
 

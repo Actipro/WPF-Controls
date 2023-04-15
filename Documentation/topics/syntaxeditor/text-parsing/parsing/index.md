@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an AST.  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser @if (wpf) {(such as ANTLR)} can be called.
+Parsing is the process of performing syntax and/or semantic analysis on a text, and outputting some sort of parse data, generally an abstract syntax tree (AST).  The parsing framework supports automated calling of parsers via worker threads following text changes.  Any custom or third-party parser @if (wpf) {(such as ANTLR)} can be called.
 
 ## Parse Requests and Dispatchers
 
@@ -31,7 +31,7 @@ See the [AST Nodes](ast-nodes.md) topic for more information.
 
 ## Code Fragments
 
-Documents support code fragment editing, whereby the editable document text is a code fragment that is to be surrounded by header and footer text for the purposes of parsing.  This is useful in situations where a language with parsing capabilties is used by a document but the end user should only be able to edit the contents of a specific method, expression, etc.
+Documents support code fragment editing, whereby the editable document text is a code fragment that is to be surrounded by header and footer text for the purposes of parsing.  This is useful in situations where a language with parsing capabilities is used by a document but the end user should only be able to edit the contents of a specific method, expression, etc.
 
 See the [Code Fragments](code-fragments.md) topic for more information.
 

@@ -103,13 +103,13 @@ The [RibbonGallery](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RibbonGallery) 
 
 ## Hiding the Selected Value
 
-By default, the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) will be drawn with a highlight to indicate its selected state to the end user.  However they may be cases where you wish to prevent the end user from seeing any sort of highlighted item in the gallery.  To do this, set the [IsSelectionHighlightVisible](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.IsSelectionHighlightVisible) property to `false`.
+By default, the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) will be drawn with a highlight to indicate its selected state to the end user.  However, they may be cases where you wish to prevent the end user from seeing any sort of highlighted item in the gallery.  To do this, set the [IsSelectionHighlightVisible](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.IsSelectionHighlightVisible) property to `false`.
 
 ## Processing Item Clicks and Managing the Selected Value
 
 When an item is clicked, the [ItemClick](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ItemClick) is raised.  This event passes arguments that specify which item was clicked.  The clicked item becomes the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) and is passed through as the value to the command for the gallery.
 
-Galleries are designed to support the WPF [command model](../../command-model/index.md) for maintaining the selected value of the control.  By default an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
+Galleries are designed to support the WPF [command model](../../command-model/index.md) for maintaining the selected value of the control.  By default, an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value (selected item) and support live preview.
 
@@ -121,7 +121,7 @@ When the mouse moves over an item, the item becomes the [ActiveItem](xref:@Actip
 
 If you are using commands, the [Interaction with Value Controls](../../command-model/value-controls.md) topic explains how to support live preview using command can-execute handlers.
 
-Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItemChanged) event fires whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItem) property is changed.
+Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItemChanged) event is raised whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItem) property is changed.
 
 ## Zooming-In on Mouse Over
 
@@ -141,7 +141,7 @@ The best way to ensure this is to explicitly set a width/height on the root elem
 
 ### Render Items with Templates or Programmatically
 
-The normal way to render an item is to use the `ItemTemplate` and WPF elements to provide the user interface.  However sometimes you need more control over what is rendered, and must render the item via code.
+The normal way to render an item is to use the `ItemTemplate` and WPF elements to provide the user interface.  However, sometimes you need more control over what is rendered, and must render the item via code.
 
 In those cases, we've added a [CustomDrawElement](xref:@ActiproUIRoot.Controls.CustomDrawElement) element that can be placed in your item template.  Simply attach to its [CustomDraw](xref:@ActiproUIRoot.Controls.CustomDrawElement.CustomDraw) event and in the event handler, draw the item however you need.
 

@@ -5,11 +5,11 @@ order: 1
 ---
 # Overview
 
-SyntaxEditor includes some extremely powerful IntelliPrompt features that help enhance end user productivity.  These features range from popup lists with text completion to popup tips that provide more information about what the end user it editing.
+SyntaxEditor includes some extremely powerful IntelliPrompt features that help enhance end user productivity.  These features range from popup lists with text completion to popup tips that provide more information about what the end user is editing.
 
 ## Sessions
 
-An IntelliPrompt session is essentially a controller for a certain type of IntelliPrompt UI.  Each type of IntelliPrompt UI (completion list, quick info, etc.) has a related session.  The IntelliPrompt UI and functionality can be made activate by "opening" the related session.
+An IntelliPrompt session is essentially a controller for a certain type of IntelliPrompt UI.  Each type of IntelliPrompt UI (completion list, quick info, etc.) has a related session.  The IntelliPrompt UI and functionality can be activated by "opening" the related session.
 
 See the [Sessions](sessions.md) topic for more information.
 
@@ -21,7 +21,7 @@ See the [Quick Info](quick-info.md) topic for more information.
 
 ## Completion List
 
-The IntelliPrompt completion list allows you create popups for displaying a list of options used to complete what the end user is typing.  This is most used when editing programming languages.  Features include ctrl+space support, description tips, multiple matching algorithms, matched text highlights, filters, and more.
+The IntelliPrompt completion list allows you create popups for displaying a list of options used to complete what the end user is typing.  This is most used when editing programming languages.  Features include <kbd>Ctrl</kbd>+<kbd>Space</kbd> support, description tips, multiple matching algorithms, matched text highlights, filters, and more.
 
 See the [Completion List](completion-list.md) topic for more information.
 
@@ -33,7 +33,7 @@ See the [Parameter Info](parameter-info.md) topic for more information.
 
 ## Code Snippets
 
-IntelliPrompt code snippets provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted and the end user can tab between the fields to edit their values.
+IntelliPrompt code snippets provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted, and the end user can <kbd>Tab</kbd> between the fields to edit their values.
 
 See the [Code Snippets](code-snippets.md) topic for more information.
 

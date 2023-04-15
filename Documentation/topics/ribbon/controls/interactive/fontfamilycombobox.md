@@ -43,7 +43,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [FontFamilyValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.FontFamilyValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default, an [FontFamilyValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.FontFamilyValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 
@@ -67,7 +67,7 @@ myFontFamilyComboBox.SelectedValue = FontFamilyComboBox.GetFontFamily("Courier N
 
 ## Setting Whether Items Display Text Using the Font Family
 
-By default each item in the drop-down will draw its font family name in the actual `FontFamily` that it represents.  This behavior can be disabled by setting the [FontFamilyComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox).[UsePreviewInItemRendering](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox.UsePreviewInItemRendering) property to `false`.
+By default, each item in the drop-down will draw its font family name in the actual `FontFamily` that it represents.  This behavior can be disabled by setting the [FontFamilyComboBox](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox).[UsePreviewInItemRendering](xref:@ActiproUIRoot.Controls.Ribbon.Controls.FontFamilyComboBox.UsePreviewInItemRendering) property to `false`.
 
 When this feature is disabled, each item will draw the font family name in the standard UI font.
 

@@ -13,7 +13,7 @@ Once you are ready to add Bars controls to your own application, first add refer
 
 [NuGet packages](../nuget.md) are available for all assemblies and are the recommended way to reference Actipro product assemblies.
 
-For customers who prefer direct references to *.dll* files in their .NET Framework-based applications, the WPF Controls installer by default will install assemblies to the GAC, as well as into a *Program Files* folder whose path is listed in the product's Readme file.
+For customers who prefer direct references to DLL files in their .NET Framework-based applications, the WPF Controls installer by default will install assemblies to the GAC, as well as into a *Program Files* folder whose path is listed in the product's Readme file.
 
 ## Read the Documentation Topics
 

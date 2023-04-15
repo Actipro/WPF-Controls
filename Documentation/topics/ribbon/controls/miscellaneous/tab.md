@@ -35,7 +35,7 @@ The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon).[SelectedTab](xref:@Act
 
 ## Tab Selection Events
 
-The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) control exposes two events related to the selection of a tab.  The [SelectedTabChanging](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.SelectedTabChanging) event fires before a tab change occurs and the [SelectedTabChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.SelectedTabChanged) event fires after a tab change occurs.
+The [Ribbon](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon) control exposes two events related to the selection of a tab.  The [SelectedTabChanging](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.SelectedTabChanging) event is raised before a tab change occurs and the [SelectedTabChanged](xref:@ActiproUIRoot.Controls.Ribbon.Ribbon.SelectedTabChanged) event is raised after a tab change occurs.
 
 The event arguments for the changing event allow for the tab change to be cancelled by setting `e.Cancel` to `true`.
 

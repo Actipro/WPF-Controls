@@ -27,7 +27,7 @@ You can see there are four lines in the snapshot.  Now assume that the editor ha
 ```
 0: // Sample code
 1: int myIntValue = 123;
-2: string myStringValue = "This is a long bit of text 
+2: string myStringValue = "This is a long bit of text
 3: that will be word wrapped.";
 4: // End of code
 ```
@@ -40,7 +40,7 @@ View lines are completely virtualized meaning they are generated on demand and a
 
 There is an [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[GetViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.GetViewLine*) method overload that accepts an offset parameter.  This method allows you to retrieve the view line that contains the specified offset.
 
-This code gets the [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) that contains offset 10:
+This code gets the [ITextViewLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextViewLine) that contains offset `10`:
 
 ```csharp
 editor.ActiveView.GetViewLine(10);
@@ -96,7 +96,7 @@ Sometimes it is desirable for the editor to resize itself based on the current t
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsViewLineMeasureEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsViewLineMeasureEnabled) property, which defaults to `false`, can be set to `true` to force each view line to be measured during measure phases, thus allowing the containing editor to resize based on the current text content.
 
-> [!NOTE]
+> [!WARNING]
 > Enabling this feature will affect performance and is only recommended for scenarios where small documents are expected to be edited.  If you expect the editor to always be docked to fill an available space, leave this feature disabled.
 
 }

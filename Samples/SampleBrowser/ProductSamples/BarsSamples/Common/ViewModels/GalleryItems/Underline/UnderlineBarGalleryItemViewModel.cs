@@ -1,81 +1,83 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 	/// <summary>
 	/// Represents an underline style as a gallery item view model for a bar gallery control.
 	/// </summary>
-	public class UnderlineBarGalleryItemViewModel : BarGalleryItemViewModelBase {
+	public class UnderlineBarGalleryItemViewModel : BarGalleryItemViewModel<UnderlineKind> {
 
 		/// <summary>
 		/// The name of the category for underlines.
 		/// </summary>
-		public const string UnderlineCategory = "Underline";
+		public const string DefaultCategory = "Underline";
 		
-		private UnderlineKind kind;
-
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UnderlineBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with a default category.
 		/// </summary>
-		public UnderlineBarGalleryItemViewModel() : this(UnderlineKind.None, label: null) { }  // Parameterless constructor required for XAML support
+		public UnderlineBarGalleryItemViewModel()
+			: this(value: default) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UnderlineBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with the specified value and a default category.
 		/// </summary>
-		/// <param name="kind">The kind of underline.</param>
-		/// <param name="label">The text label to display.</param>
-		public UnderlineBarGalleryItemViewModel(UnderlineKind kind, string label)
-			: base(UnderlineCategory) {
+		/// <param name="value">The item's value.</param>
+		public UnderlineBarGalleryItemViewModel(UnderlineKind value)
+			: this(value, DefaultCategory) { }
 
-			this.kind = kind;
-			this.Label = label;
-		}
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value and category.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public UnderlineBarGalleryItemViewModel(UnderlineKind value, string category)
+			: this(value, category, label: null) { }
+
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value, category, and label.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public UnderlineBarGalleryItemViewModel(UnderlineKind value, string category, string label)
+			: base(value, category, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Creates a default collection of gallery item view models representing the underline kinds.
+		/// Creates a default collection of gallery item view models representing underline kinds.
 		/// </summary>
 		/// <returns>The collection of gallery item view models that was created.</returns>
 		public static IEnumerable<UnderlineBarGalleryItemViewModel> CreateDefaultCollection() {
 			return new UnderlineBarGalleryItemViewModel[] {
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.Underline, "Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.DoubleUnderline, "Double Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.ThickUnderline, "Thick Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.DottedUnderline, "Dotted Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.DashedUnderline, "Dashed Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.DotDashUnderline, "Dot-Dash Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.DotDotDashUnderline, "Dot-Dot-Dash Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.WaveUnderline, "Wave Underline"),
-				new UnderlineBarGalleryItemViewModel(UnderlineKind.None, "No Underline"),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.Underline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.DoubleUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.ThickUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.DottedUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.DashedUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.DotDashUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.DotDotDashUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.WaveUnderline),
+				new UnderlineBarGalleryItemViewModel(UnderlineKind.None) { Label = "No Underline" },
 			};
 		}
-
+		
 		/// <summary>
-		/// Gets or sets the kind of underline.
+		/// Creates an <see cref="CollectionViewSource"/> of gallery item view models representing underline kinds, allowing for possible categorization and filtering.
 		/// </summary>
-		/// <value>One of the <see cref="UnderlineKind"/> values.</value>
-		public UnderlineKind Kind {
-			get => kind;
-			set {
-				if (kind != value) {
-					kind = value;
-					this.NotifyPropertyChanged(nameof(Kind));
-				}
-			}
-		}
-
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Kind='{this.Kind}']";
-		}
+		/// <param name="categorize">Whether the collection view should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
 
 	}
 

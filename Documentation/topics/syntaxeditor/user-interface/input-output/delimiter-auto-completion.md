@@ -15,16 +15,16 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsDe
 
 Delimiter auto-completers are language services that implement the [IDelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.IDelimiterAutoCompleter) interface.  A built-in [DelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter) class is included that fully implements [IDelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.IDelimiterAutoCompleter) and makes it easy for a language to support auto-completion of these delimiter pairs:
 
-- Angle braces (disabled by default)
-- Curly braces
-- Double quotes
-- Parenthesis
-- Single quotes (disabled by default)
-- Square braces
+- Angle braces, `<` and `>` (disabled by default)
+- Curly braces, `{` and `}`
+- Parenthesis, `(` and `)`
+- Square braces, `[` and `]`
+- Double quotes, `"`
+- Single quotes, `'`  (disabled by default)
 
 The various supported brace match options can be turned on or off with properties such as [DelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter).[CanCompleteSquareBraces](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter.CanCompleteSquareBraces).
 
-By default, this auto-completer will just perform basic text scanning when determining if delimiters are valid for auto-completion.  However this can cause issues when examining an open parenthesis and the character is within a string or comment, meaning it's not really a code-oriented parenthesis.  Thus the auto-completer also provides optional token IDs that can be set for each character.  When a potential open delimiter is found and a related token ID is specified, it will double-check that the token at the offset has that token ID.  This eliminates the problem.  Properties such as [DelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter).[OpenParenthesisTokenId](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter.OpenParenthesisTokenId) are available for indicating the token IDs.
+By default, this auto-completer will just perform basic text scanning when determining if delimiters are valid for auto-completion.  However, this can cause issues when examining an open parenthesis and the character is within a string or comment, meaning it's not really a code-oriented parenthesis.  Thus, the auto-completer also provides optional token IDs that can be set for each character.  When a potential open delimiter is found and a related token ID is specified, it will double-check that the token at the offset has that token ID.  This eliminates the problem.  Properties such as [DelimiterAutoCompleter](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter).[OpenParenthesisTokenId](xref:ActiproSoftware.Text.Analysis.Implementation.DelimiterAutoCompleter.OpenParenthesisTokenId) are available for indicating the token IDs.
 
 ## Registering a Delimiter Auto-Completer with a Syntax Language
 

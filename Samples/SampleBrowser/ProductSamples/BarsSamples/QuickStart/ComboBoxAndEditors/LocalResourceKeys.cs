@@ -7,7 +7,6 @@
 
 		public const string LargeMenuComboBoxGalleryItemTemplate = nameof(LargeMenuComboBoxGalleryItemTemplate);
 		public const string NumberComboBoxGalleryItemTemplate = nameof(NumberComboBoxGalleryItemTemplate);
-		public const string PersonComboBoxGalleryItemTemplate = nameof(PersonComboBoxGalleryItemTemplate);
 		
 		public const string BlueSwatch = nameof(BlueSwatch);
 		public const string GreenSwatch = nameof(GreenSwatch);

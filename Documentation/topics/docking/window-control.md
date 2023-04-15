@@ -5,7 +5,7 @@ order: 22
 ---
 # WindowControl
 
-During the implementation of standard MDI and hosted floating windows for this product, we ran into the need for a `Window`-like class that was skinnable and behaved like a regular `Control`.  Thus we developed [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl), a control that looks and acts like a `Window` and can mimic both normal and tool window styles.
+During the implementation of standard MDI and hosted floating windows for this product, we ran into the need for a `Window`-like class that was skinnable and behaved like a regular `Control`.  Thus, we developed [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl), a control that looks and acts like a `Window` and can mimic both normal and tool window styles.
 
 ![Screenshot](images/window-control.png)
 

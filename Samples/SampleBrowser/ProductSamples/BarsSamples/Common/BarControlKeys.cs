@@ -81,10 +81,8 @@
 		public const string FontColor = nameof(FontColor);
 		public const string FontColorPicker = nameof(FontColorPicker);
 		public const string FontColorMoreColorsDialog = nameof(FontColorMoreColorsDialog);
-		public const string FontGallery = nameof(FontGallery);
 		public const string FontMoreFontsDialog = nameof(FontMoreFontsDialog);
 		public const string FontSize = nameof(FontSize);
-		public const string FontSizeGallery = nameof(FontSizeGallery);
 		public const string FooterInsert = nameof(FooterInsert);
 		public const string FormatPainter = nameof(FormatPainter);
 		public const string HeaderInsert = nameof(HeaderInsert);

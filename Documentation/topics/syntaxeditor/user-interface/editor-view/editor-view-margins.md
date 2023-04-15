@@ -19,11 +19,11 @@ Scrollable margins appear inside of the scrollbars and scroll with the text area
 
 *Custom margins that show the eight available margin placement locations*
 
-All in all there are eight available margin placement locations.  The screenshot above shows where each placement is located.
+All in all, there are eight available margin placement locations.  The screenshot above shows where each placement is located.
 
 The [IEditorViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMargin).[Placement](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMargin.Placement) property has an [EditorViewMarginPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.EditorViewMarginPlacement) enumeration value that indicates one of those eight placement locations.
 
-Since each [IEditorViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMargin) has a string-based `Key`, and the interface also implements [IOrderable](xref:ActiproSoftware.Text.Utility.IOrderable), it has an [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property that returns an enumerable of [Ordering](xref:ActiproSoftware.Text.Utility.Ordering) objects.  Each ordering indicates the a string `Key` of another margin and whether this margin comes before or after that one.  When multiple margins are combined into a placement location, they are ordered based on the [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property values, where "after" means farther away from the text area.
+Since each [IEditorViewMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMargin) has a string-based `Key`, and the interface also implements [IOrderable](xref:ActiproSoftware.Text.Utility.IOrderable), it has an [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property that returns an enumerable of [Ordering](xref:ActiproSoftware.Text.Utility.Ordering) objects.  Each ordering indicates the string `Key` of another margin and whether this margin comes before or after that one.  When multiple margins are combined into a placement location, they are ordered based on the [Orderings](xref:ActiproSoftware.Text.Utility.IOrderable.Orderings) property values, where "after" means farther away from the text area.
 
 For instance, the selection margin says it is not after anything, meaning it is placed closes to the text area.  The line number margin says it is after the selection margin, and so on.
 
@@ -168,7 +168,7 @@ Margin factories are used to tell SyntaxEditor which margins to display in an ed
 
 The [DefaultEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultEditorViewMarginFactory) class is an implementation of a factory that creates all of the built-in margins.  While all the built-in margins are added if this factory is used, they still change their visibility based on the related SyntaxEditor margin visibility properties such as [IsLineNumberMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsLineNumberMarginVisible).
 
-The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewMarginFactories) property is a collection of [IEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMarginFactory) objects.  By default it is auto-populated with the [DefaultEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultEditorViewMarginFactory), meaning all built-in margins are available.  Add additional margin factories to the collection if you wish to add custom margins.  A QuickStart is available in the samples that shows how to do this.
+The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewMarginFactories) property is a collection of [IEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMarginFactory) objects.  By default, it is auto-populated with the [DefaultEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.Implementation.DefaultEditorViewMarginFactory), meaning all built-in margins are available.  Add additional margin factories to the collection if you wish to add custom margins.  A QuickStart is available in the samples that shows how to do this.
 
 ## Custom Margins
 
@@ -178,6 +178,6 @@ Custom margins are pretty easy to create.  These are the basic steps involved:
 - Second, make a custom [IEditorViewMarginFactory](xref:@ActiproUIRoot.Controls.SyntaxEditor.Margins.IEditorViewMarginFactory) that creates an instance of your margin class.
 - Third, add your custom margin factory to the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ViewMarginFactories](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ViewMarginFactories) collection.
 
-At this point your margin should now be getting added to the view.  Scrollable margins need to update when the text area is changed, so be sure to attach to the view's [TextAreaLayout](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TextAreaLayout) event and update the margin properly when that event fires.
+At this point your margin should now be getting added to the view.  Scrollable margins need to update when the text area is changed, so be sure to attach to the view's [TextAreaLayout](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView.TextAreaLayout) event and update the margin properly when that event is raised.
 
 For details on implementing a custom margin including several complete examples, please see the related QuickStarts in the samples.

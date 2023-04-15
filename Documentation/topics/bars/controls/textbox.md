@@ -53,9 +53,9 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 ### Menu Contexts
 
-Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control described above, but wrapped in a [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) to implement a textbox concept within a menu context.
+Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control described above to implement a textbox concept within a menu context.
 
-[BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) is a special control that is intended wrap other interactive controls like a [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) that are not normally intended for use in a menu.  It can display the wrapped control's label externally from the wrapped control itself and aligns everything within the menu properly.
+Since [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) is not flagged as a menu control via the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsMenuControlProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsMenuControlProperty) attached property, it will be wrapped by a [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) instance when parented by a Bars menu control. [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) is a special control that can wrap interactive controls like [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) that are not normally intended for use in a menu.  It displays the wrapped control's label externally from the wrapped control itself and applies horizontal margins to align everything with surrounding menu items properly.
 
 ![Screenshot](../images/textbox-menu.png)
 
@@ -65,15 +65,11 @@ Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control descr
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:BarContextMenu>
-	<bars:BarMenuControlWrapper>
-		<bars:BarMenuControlWrapper.Header>
-			<!-- Label is auto-generated from Key -->
-			<bars:BarTextBox
-				Key="Search"
-				Command="{Binding SearchCommand}"
-				/>
-		<bars:BarMenuControlWrapper.Header>
-	</bars:BarMenuControlWrapper>
+	<!-- Label is auto-generated from Key -->
+	<bars:BarTextBox
+		Key="Search"
+		Command="{Binding SearchCommand}"
+		/>
 	...
 </bars:BarContextMenu>
 ```
@@ -118,6 +114,12 @@ See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more i
 It is recommended that textbox controls within ribbon and toolbar contexts specify a width.  While the `Width` property can be set directly, it's better to set the [RequestedWidth](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.RequestedWidth) property.  [RequestedWidth](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.RequestedWidth) will ideally measure to the requested width, thereby acting the same as setting `Width`, but can allow other widths such as in situations like star-sizing.  Setting the `Width` property directly will not allow other possible widths, since it is explicitly forcing a width.
 
 Star-sizing is a handy feature when the control is within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) that is using multi-row layout via the [CanUseMultiRowLayout](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanUseMultiRowLayout) property.  If the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox).[IsStarSizingAllowed](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.IsStarSizingAllowed) property is set to `true` and the row the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) is on has some extra width available compared to the other rows, it will expand [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) to fill that width.  This makes the overall row widths equal for a more professional appearance.  Only one control per row should enable star-sizing.
+
+### Placeholder Text
+
+Placeholder text is a way to prompt the end user for the type of value that should be entered into the control when no value has been set.  For instance, a textbox that is used to search for something might use placeholder text `"(search text)"`.
+
+Placeholder text is faintly rendered when there is no value in the control, and can be designated via the [PlaceholderText](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.PlaceholderText) property.
 
 ## Key Tips
 

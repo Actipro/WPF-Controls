@@ -1,13 +1,15 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 	/// <summary>
 	/// Represents a shape as a gallery item view model for a bar gallery control.
 	/// </summary>
-	public class ShapeBarGalleryItemViewModel : BarGalleryItemViewModelBase {
+	public class ShapeBarGalleryItemViewModel : BarGalleryItemViewModel<ShapeKind> {
 
 		/// <summary>
 		/// The name of the category for basic shapes.
@@ -24,70 +26,73 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		public const string RectanglesCategory = "Rectangles";
 
-		private ShapeKind kind;
-
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ShapeBarGalleryItemViewModel"/> class with a rectangle shape.
+		/// Initializes a new instance of the class with a rectangular shape.
 		/// </summary>
-		public ShapeBarGalleryItemViewModel()  // Parameterless constructor required for XAML support
-			: this(RectanglesCategory, ShapeKind.Rectangle, null) { }
+		public ShapeBarGalleryItemViewModel()
+			: this(value: ShapeKind.Rectangle) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ShapeBarGalleryItemViewModel"/> class.
+		/// Initializes a new instance of the class with the specified value.
 		/// </summary>
-		/// <param name="category">The gallery item category.</param>
-		/// <param name="kind">The kind of shape.</param>
-		/// <param name="label">The text label to display.</param>
-		public ShapeBarGalleryItemViewModel(string category, ShapeKind kind, string label)
-			: base(category) {
+		/// <param name="value">The item's value.</param>
+		public ShapeBarGalleryItemViewModel(ShapeKind value)
+			: this(value, category: null) { }
 
-			this.kind = kind;
-			this.Label = label;
-		}
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value and category.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public ShapeBarGalleryItemViewModel(ShapeKind value, string category)
+			: this(value, category, label: null) { }
+
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value, category, and label.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public ShapeBarGalleryItemViewModel(ShapeKind value, string category, string label)
+			: base(value, category, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Creates a default collection of gallery item view models representing the shape kinds.
+		/// Creates a default collection of gallery item view models representing shape kinds.
 		/// </summary>
 		/// <returns>The collection of gallery item view models that was created.</returns>
 		public static IEnumerable<ShapeBarGalleryItemViewModel> CreateDefaultCollection() {
 			return new ShapeBarGalleryItemViewModel[] {
-				new ShapeBarGalleryItemViewModel(LinesCategory, ShapeKind.Line, "Line"),
-				new ShapeBarGalleryItemViewModel(LinesCategory, ShapeKind.LineArrow, "Line Arrow"),
-				new ShapeBarGalleryItemViewModel(LinesCategory, ShapeKind.LineArrowDouble, "Line Arrow: Double"),
-				new ShapeBarGalleryItemViewModel(RectanglesCategory, ShapeKind.Rectangle, "Rectangle"),
-				new ShapeBarGalleryItemViewModel(RectanglesCategory, ShapeKind.RectangleRoundedCorners, "Rectangle: Rounded Corners"),
-				new ShapeBarGalleryItemViewModel(RectanglesCategory, ShapeKind.RectangleSingleCornerSnipped, "Rectangle: Single Corner Snipped"),
-				new ShapeBarGalleryItemViewModel(BasicShapesCategory, ShapeKind.Oval, "Oval"),
-				new ShapeBarGalleryItemViewModel(BasicShapesCategory, ShapeKind.RightTriangle, "Right Triangle"),
+				// Lines
+				new ShapeBarGalleryItemViewModel(ShapeKind.Line, LinesCategory),
+				new ShapeBarGalleryItemViewModel(ShapeKind.LineArrow, LinesCategory),
+				new ShapeBarGalleryItemViewModel(ShapeKind.LineArrowDouble, LinesCategory),
+
+				// Rectangles
+				new ShapeBarGalleryItemViewModel(ShapeKind.Rectangle, RectanglesCategory),
+				new ShapeBarGalleryItemViewModel(ShapeKind.RectangleRoundedCorners, RectanglesCategory),
+				new ShapeBarGalleryItemViewModel(ShapeKind.RectangleSingleCornerSnipped, RectanglesCategory),
+
+				// Basic Shapes
+				new ShapeBarGalleryItemViewModel(ShapeKind.Oval, BasicShapesCategory),
+				new ShapeBarGalleryItemViewModel(ShapeKind.RightTriangle, BasicShapesCategory),
 			};
 		}
-
+		
 		/// <summary>
-		/// Gets or sets the kind of shape.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models representing shape kinds, allowing for possible categorization and filtering.
 		/// </summary>
-		/// <value>One of the <see cref="ShapeKind"/> values.</value>
-		public ShapeKind Kind {
-			get => kind;
-			set {
-				if (kind != value) {
-					kind = value;
-					this.NotifyPropertyChanged(nameof(Kind));
-				}
-			}
-		}
-
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Kind='{this.Kind}']";
-		}
+		/// <param name="categorize">Whether the collection view should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
 
 	}
 

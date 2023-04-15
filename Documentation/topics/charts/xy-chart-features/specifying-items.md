@@ -52,7 +52,7 @@ Each series in a chart control can be bound to a separate data source, or to dif
 In this case, the [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) and/or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) properties must be set to the name of a property on the objects in the collection.
 
 > [!TIP]
-> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`.`).  For example you can set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.
+> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`.`).  For example, you can set [XPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.Charts.Primitives.XYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.
 
 For example, consider the following custom object:
 

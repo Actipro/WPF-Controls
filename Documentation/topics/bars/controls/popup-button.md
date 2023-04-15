@@ -168,6 +168,8 @@ No command is executed for [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMe
 
 [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).[PopupOpening](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpening) and [PopupOpened](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpened) events are raised when the popup is opened.  The former event allows you to customize the popup menu prior to display.
 
+The [PopupOpeningCommand](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpeningCommand) command, if assigned, is executed prior to the popup opening.  This command can be handled in a view model, allowing for a MVVM way to update the items on the popup prior to display.
+
 See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Screen Tips

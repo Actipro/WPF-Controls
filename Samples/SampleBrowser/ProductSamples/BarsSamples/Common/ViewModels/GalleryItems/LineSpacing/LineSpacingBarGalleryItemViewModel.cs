@@ -1,45 +1,71 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Data;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 	/// <summary>
 	/// Represents a gallery item view model for a line spacing style that will appear as menu item, only intended for use within a menu gallery.
 	/// </summary>
-	public class LineSpacingBarGalleryItemViewModel : MenuItemBarGalleryItemViewModel {
+	public class LineSpacingBarGalleryItemViewModel : BarGalleryItemViewModel<double> {
+
+		/// <summary>
+		/// The default value for spacing.
+		/// </summary>
+		public const double DefaultSpacing = 1.2;
 
 		/// <summary>
 		/// The name of the category for line spacing.
 		/// </summary>
-		public const string LineSpacingCategory = "Line Spacing";
-		
-		private double spacing;
+		public const string DefaultCategory = "Line Spacing";
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="LineSpacingBarGalleryItemViewModel"/> class with default spacing.
+		/// Initializes a new instance of the class with a default value and category.
 		/// </summary>
-		public LineSpacingBarGalleryItemViewModel() : this(1.2) { }  // Parameterless constructor required for XAML support
+		public LineSpacingBarGalleryItemViewModel()
+			: this(DefaultSpacing) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="LineSpacingBarGalleryItemViewModel"/> class with the given spacing.
+		/// Initializes a new instance of the class with the specified value and a default category.
 		/// </summary>
-		/// <param name="spacing">The amount of spacing between lines.</param>
-		public LineSpacingBarGalleryItemViewModel(double spacing)
-			: base(LineSpacingCategory, label: null, smallImageSource: null) {
+		/// <param name="value">The item's value.</param>
+		public LineSpacingBarGalleryItemViewModel(double value)
+			: this(value, DefaultCategory) { }
 
-			this.spacing = spacing;
-		}
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value and category
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		public LineSpacingBarGalleryItemViewModel(double value, string category)
+			: this(value, category, label: null) { }
+
+		/// <summary>
+		/// Initializes a new instance of the class with the specified value, category, and label.
+		/// </summary>
+		/// <param name="value">The item's value.</param>
+		/// <param name="category">The item's category, or <c>null</c> if categorization is not supported.</param>
+		/// <param name="label">The text label to display, or <c>null</c> if the label can be coerced from the current value.</param>
+		public LineSpacingBarGalleryItemViewModel(double value, string category, string label)
+			: base(value, category, label) { }
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		/// <inheritdoc/>
+		protected override string CoerceLabel() {
+			return Value.ToString("0.0");
+		}
+
 		/// <summary>
-		/// Creates a default collection of gallery item view models representing the line spacing values.
+		/// Creates a default collection of gallery item view models representing common line spacing values.
 		/// </summary>
 		/// <returns>The collection of gallery item view models that was created.</returns>
 		public static IEnumerable<LineSpacingBarGalleryItemViewModel> CreateDefaultCollection() {
@@ -52,31 +78,18 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				new LineSpacingBarGalleryItemViewModel(3.0),
 			};
 		}
-
-		/// <inheritdoc/>
-		public override string Label {
-			get => base.Label ?? spacing.ToString("0.0");
-			set => base.Label = value;
-		}
-
+		
 		/// <summary>
-		/// Gets or sets the amount of spacing between lines.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models representing common line spacing values, allowing for possible categorization and filtering.
 		/// </summary>
-		/// <value>A double value.</value>
-		public double Spacing {
-			get => spacing;
-			set {
-				if (spacing != value) {
-					spacing = value;
-					this.NotifyPropertyChanged(nameof(Spacing));
-				}
-			}
-		}
-
+		/// <param name="categorize">Whether the collection view should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateDefaultCollectionViewSource(bool categorize)
+			=> BarGalleryViewModel.CreateCollectionViewSource(CreateDefaultCollection(), categorize);
+		
 		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Spacing={this.Spacing.ToString("0.0")}]";
-		}
+		public override bool IsLabelVisible => true;
+
 
 	}
 

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -15,13 +18,14 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	[ContentProperty(nameof(Items))]
 	public class BarGalleryViewModel : BarGalleryViewModelBase, IHasVariantImages {
 
-		private bool canCategorize;
+		private bool canCategorize = true;
 		private bool canFilter;
 		private DataTemplate categoryHeaderTemplate;
-		private string categoryPropertyName = nameof(BarGalleryItemViewModelBase.Category);
 		private string collapsedButtonDescription;
 		private bool hasCategoryHeaders = true;
 		private bool isSelectionSupported = true;
+		private bool? isSynchronizedWithCurrentItem = null;
+		private IEnumerable items;
 		private string keyTipText;
 		private ImageSource largeImageSource;
 		private int maxMenuColumnCount = int.MaxValue;
@@ -31,7 +35,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private int minLargeRibbonColumnCount = 5;
 		private int minMediumRibbonColumnCount = 3;
 		private int minMenuColumnCount = 1;
-		private BarGalleryItemViewModelBase selectedItem;
+		private ICommand popupOpeningCommand;
+		private IBarGalleryItemViewModel selectedItem;
 		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
 		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
 		private bool useAccentedItemBorder;
@@ -43,18 +48,19 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarGalleryViewModel() { }  // Parameterless constructor required for XAML support
+		public BarGalleryViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		public BarGalleryViewModel(string key)
 			: this(key, label: null) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key.  The label and key tip text are auto-generated.
+		/// Initializes a new instance of the class with the specified key and items.  The label and key tip text are auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, IEnumerable items)
 			: this(key, label: null, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
@@ -62,12 +68,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			: this(key, label, keyTipText: null) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key and label.  The key tip text is auto-generated.
+		/// Initializes a new instance of the class with the specified key, label, and items.  The key tip text is auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="key"/> if <c>null</c>.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, string label, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, string label, IEnumerable items)
 			: this(key, label, keyTipText: null, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
@@ -75,13 +81,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			: this(key, label, keyTipText, items: null) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, and key tip text.
+		/// Initializes a new instance of the class with the specified key, label, key tip text, and items.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="label"/> if <c>null</c>.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, string label, string keyTipText, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, string label, string keyTipText, IEnumerable items)
 			: this(key, label, keyTipText, command: null, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(RoutedCommand)"/>
@@ -89,11 +95,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			: this(routedCommand?.Name, routedCommand) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified <see cref="RoutedCommand"/>, also used to auto-generate a key, label, and key tip text.
+		/// Initializes a new instance of the class with the specified items and <see cref="RoutedCommand"/>, also used to auto-generate a key, label, and key tip text.
 		/// </summary>
 		/// <param name="routedCommand">The command to attach to the control.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(RoutedCommand routedCommand, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(RoutedCommand routedCommand, IEnumerable items)
 			: this(routedCommand?.Name, routedCommand, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, ICommand)"/>
@@ -109,54 +115,61 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			: this(key, label, keyTipText, command, items: null) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key and command.  The label and key tip text are auto-generated.
+		/// Initializes a new instance of the class with the specified key, command, and items.  The label and key tip text are auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, ICommand command, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, ICommand command, IEnumerable items)
 			: this(key, label: null, keyTipText: null, command, items) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, and command.  The key tip text is auto-generated.
+		/// Initializes a new instance of the class with the specified key, label, command, and items.  The key tip text is auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="command"/> or <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, string label, ICommand command, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, string label, ICommand command, IEnumerable items)
 			: this(key, label, keyTipText: null, command, items) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, key tip text, and command.
+		/// Initializes a new instance of the class with the specified key, label, key tip text, command, and items.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="command"/> or <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="command"/> or <paramref name="label"/> if <c>null</c>.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="items">The collection of gallery items.</param>
-		public BarGalleryViewModel(string key, string label, string keyTipText, ICommand command, IEnumerable<BarGalleryItemViewModelBase> items)
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarGalleryViewModel(string key, string label, string keyTipText, ICommand command, IEnumerable items)
 			: base(key, label, command) {
 
 			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.Label);
-
-			// Add the gallery items
-			if (items != null) {
-				foreach (var item in items)
-					this.Items.Add(item);
-			}
+			this.items = items;
 		}
-
+		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
-		/// Gets or sets whether the gallery sorts and displays items by category.
+		/// Gets the collection of menu items that appear above the menu gallery in a popup.
+		/// </summary>
+		/// <value>The collection of menu items that appear above the menu gallery in a popup.</value>
+		public ObservableCollection<object> AboveMenuItems { get; } = new ObservableCollection<object>();
+		
+		/// <summary>
+		/// Gets the collection of menu items that below above the menu gallery in a popup.
+		/// </summary>
+		/// <value>The collection of menu items that below above the menu gallery in a popup.</value>
+		public ObservableCollection<object> BelowMenuItems { get; } = new ObservableCollection<object>();
+		
+		/// <summary>
+		/// Gets or sets whether the gallery sorts and displays items by category when an <see cref="ICollectionView"/> is set to the <c>ItemsSource</c>.
 		/// </summary>
 		/// <value>
-		/// <c>true</c> if the gallery sorts and displays items by category; otherwise, <c>false</c>.
-		/// The default value is <c>false</c>.
+		/// <c>true</c> if the gallery sorts and displays items by category when an <see cref="ICollectionView"/> is set to the <c>ItemsSource</c>; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
 		/// </value>
 		public bool CanCategorize {
 			get => canCategorize;
@@ -200,22 +213,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Gets or sets the name of the category property on each item object.
+		/// Creates a <see cref="CollectionViewSource"/> for the specified collection of gallery item view models, allowing for possible categorization and filtering.
 		/// </summary>
-		/// <value>
-		/// The name of the category property on each item object.
-		/// The default value is <c>Category</c>.
-		/// </value>
-		public string CategoryPropertyName {
-			get => categoryPropertyName;
-			set {
-				if (categoryPropertyName != value) {
-					categoryPropertyName = value;
-					NotifyPropertyChanged(nameof(CategoryPropertyName));
-				}
-			}
+		/// <param name="items">The collection of gallery item view models to include in the collection view.</param>
+		/// <param name="categorize">Whether the collection view source should support categorization by including a group description based on <see cref="IBarGalleryItemViewModel.Category"/> property values.</param>
+		/// <returns>The <see cref="CollectionViewSource"/> of gallery item view models that was created.</returns>
+		public static CollectionViewSource CreateCollectionViewSource(IEnumerable<IBarGalleryItemViewModel> items, bool categorize) {
+			var viewSource = new CollectionViewSource() {
+				Source = items
+			};
+
+			if (categorize)
+				viewSource.GroupDescriptions.Add(new PropertyGroupDescription(nameof(IBarGalleryItemViewModel.Category)));
+
+			return viewSource;
 		}
-		
+
 		/// <summary>
 		/// Gets or sets the text description to display in screen tips for the gallery when it is rendered as a collapsed button.
 		/// </summary>
@@ -265,10 +278,37 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Gets the collection of gallery items.
+		/// Gets or sets whether the gallery control should keep its <c>SelectedItem</c> property synchronized with the current item in its <c>Items</c> property.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the <c>SelectedItem</c> is always synchronized with the current item in the <c>Items</c>; 
+		/// <c>false</c> if the <c>SelectedItem</c> is never synchronized with the current item; 
+		/// <c>null</c> if the <c>SelectedItem</c> is synchronized with the current item only if the gallery uses a <c>CollectionView</c>. 
+		/// The default value is <c>null</c>.
+		/// </value>
+		public bool? IsSynchronizedWithCurrentItem {
+			get => isSynchronizedWithCurrentItem;
+			set {
+				if (isSynchronizedWithCurrentItem != value) {
+					isSynchronizedWithCurrentItem = value;
+					this.NotifyPropertyChanged(nameof(IsSynchronizedWithCurrentItem));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the collection of gallery items.
 		/// </summary>
 		/// <value>The collection of gallery items.</value>
-		public ObservableCollection<BarGalleryItemViewModelBase> Items { get; } = new ObservableCollection<BarGalleryItemViewModelBase>();
+		public IEnumerable Items {
+			get => items;
+			set {
+				if (items != value) {
+					items = value;
+					this.NotifyPropertyChanged(nameof(Items));
+				}
+			}
+		}
 
 		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
 		public string KeyTipText {
@@ -336,12 +376,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
-		/// <summary>
-		/// Gets the collection of menu items that appear within the popup.
-		/// </summary>
-		/// <value>The collection of menu items that appear within the popup.</value>
-		public ObservableCollection<object> MenuItems { get; } = new ObservableCollection<object>();
 		
 		/// <summary>
 		/// Gets or sets a <see cref="ControlResizeMode"/> that indicates how the popup menu can resize.
@@ -412,10 +446,24 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
+		/// Gets or sets the <see cref="ICommand"/> that executes before the gallery's popup is opened, allowing its items to be customized in MVVM scenarios.
+		/// </summary>
+		/// <value>The <see cref="ICommand"/> that executes before the gallery's popup is opened, allowing its items to be customized in MVVM scenarios.</value>
+		public ICommand PopupOpeningCommand {
+			get => popupOpeningCommand;
+			set {
+				if (popupOpeningCommand != value) {
+					popupOpeningCommand = value;
+					this.NotifyPropertyChanged(nameof(PopupOpeningCommand));
+				}
+			}
+		}
+
+		/// <summary>
 		/// Gets or sets the selected item.
 		/// </summary>
 		/// <value>The selected item.</value>
-		public BarGalleryItemViewModelBase SelectedItem {
+		public IBarGalleryItemViewModel SelectedItem {
 			get => selectedItem;
 			set {
 				if (selectedItem != value) {
@@ -426,16 +474,21 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Selects an item in the gallery that matches the predicate., 
+		/// Selects an item in the gallery that matches the predicate.
 		/// </summary>
-		/// <typeparam name="T">The type of <see cref="BarGalleryItemViewModelBase"/> to examine.</typeparam>
+		/// <typeparam name="T">The type of <see cref="IBarGalleryItemViewModel"/> to examine.</typeparam>
 		/// <param name="predicate">A predicate that determines when an item matches criteria.</param>
-		public void SelectItemByValueMatch<T>(Func<T, bool> predicate) where T : BarGalleryItemViewModelBase {
+		/// <returns>
+		/// The <see cref="BarGalleryViewModelBase"/> that was selected.
+		/// </returns>
+		public virtual T SelectItemByValueMatch<T>(Func<T, bool> predicate) where T : IBarGalleryItemViewModel {
 			if (predicate == null)
 				throw new ArgumentNullException(nameof(predicate));
 
 			var newSelectedItem = this.Items.OfType<T>().FirstOrDefault(predicate);
 			this.SelectedItem = newSelectedItem;
+
+			return newSelectedItem;
 		}
 		
 		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>

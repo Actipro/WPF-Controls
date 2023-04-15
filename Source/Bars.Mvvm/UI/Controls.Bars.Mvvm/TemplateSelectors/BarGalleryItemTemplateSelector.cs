@@ -23,6 +23,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 			this.ColorMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemColorMenuItemDataTemplate] as DataTemplate;
 			this.ColorTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemColorDataTemplate] as DataTemplate;
+			this.DefaultTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemDefaultDataTemplate] as DataTemplate;
 			this.FontFamilyTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemFontFamilyDataTemplate] as DataTemplate;
 			this.FontSizeTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemFontSizeDataTemplate] as DataTemplate;
 			this.MenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemMenuItemDataTemplate] as DataTemplate;
@@ -30,30 +31,67 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.SymbolDataTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemSymbolDataTemplate] as DataTemplate;
 			this.TextStyleTemplate = dictionary[BarsMvvmResourceKeys.BarGalleryItemTextStyleDataTemplate] as DataTemplate;
 		}
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// NON-PUBLIC PROCEDURES
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <summary>
+		/// Returns the <see cref="BarGalleryBase"/> that contains the gallery item.
+		/// </summary>
+		/// <param name="container">The container control.</param>
+		/// <returns>The <see cref="BarGalleryBase"/> that contains the gallery item.</returns>
+		private static BarGalleryBase GetGallery(DependencyObject container) {
+			if (container is ContentPresenter presenter)
+				return ItemsControl.ItemsControlFromItemContainer(presenter.TemplatedParent) as BarGalleryBase;
+			else
+				return null;
+		}
+
+		/// <summary>
+		/// Returns whether the item should prefer menu item appearance, which is only when within a <see cref="BarMenuGallery"/>, 
+		/// and either <see cref="BarMenuGallery.UseMenuItemAppearance"/> is set or the item requests it via <see cref="BarGalleryItem.LayoutBehavior"/>.
+		/// </summary>
+		/// <param name="item">The item to examine.</param>
+		/// <param name="container">The container control.</param>
+		/// <returns>
+		/// <c>true</c> if the item should prefer menu item appearance; otherwise, <c>false</c>.
+		/// </returns>
+		private static bool PrefersMenuItemAppearance(object item, DependencyObject container) {
+			var containingGallery = GetGallery(container);
+			var prefersMenuItemAppearance = (containingGallery is BarMenuGallery menuGallery)
+				&& (
+					menuGallery.UseMenuItemAppearance 
+					|| ((item is IBarGalleryItemViewModel vm) && (vm.LayoutBehavior == BarGalleryItemLayoutBehavior.MenuItem))
+				);
+
+			return prefersMenuItemAppearance;
+		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc/>
-		public override DataTemplate SelectTemplate(object item, DependencyObject container)
-			=> item switch {
-				ColorBarGalleryItemViewModel vm => vm.LayoutBehavior == BarGalleryItemLayoutBehavior.MenuItem ? this.ColorMenuItemTemplate : this.ColorTemplate,
-				FontFamilyBarGalleryItemViewModel _ => this.FontFamilyTemplate,
-				FontSizeBarGalleryItemViewModel _ => this.FontSizeTemplate,
-				MenuItemBarGalleryItemViewModel _ => this.MenuItemTemplate,
-				Size _ => this.SizeSelectionTemplate,  // Assuming is for a BarSizeSelectionMenuGallery
-				SymbolBarGalleryItemViewModel _ => this.SymbolDataTemplate,
-				TextStyleBarGalleryItemViewModel _ => this.TextStyleTemplate,
+		public override DataTemplate SelectTemplate(object item, DependencyObject container) {
+			return item switch {
+				ColorBarGalleryItemViewModel => PrefersMenuItemAppearance(item, container) ? this.ColorMenuItemTemplate : this.ColorTemplate,
+				FontFamilyBarGalleryItemViewModel => this.FontFamilyTemplate,
+				FontSizeBarGalleryItemViewModel => this.FontSizeTemplate,
+				Size => this.SizeSelectionTemplate,  // Assuming is for a BarSizeSelectionMenuGallery
+				SymbolBarGalleryItemViewModel => this.SymbolDataTemplate,
+				TextStyleBarGalleryItemViewModel => this.TextStyleTemplate,
+				IBarGalleryItemViewModel => PrefersMenuItemAppearance(item, container) ? this.MenuItemTemplate : this.DefaultTemplate,
 				_ => base.SelectTemplate(item, container)
 			};
+		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC DATATEMPLATE PROPERTIES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="ColorBarGalleryItemViewModel"/> used in a menu item context.
+		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="ColorBarGalleryItemViewModel"/> using a menu item appearance.
 		/// </summary>
 		/// <value>The <see cref="DataTemplate"/> to use.</value>
 		public DataTemplate ColorMenuItemTemplate { get; set; }
@@ -63,6 +101,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The <see cref="DataTemplate"/> to use.</value>
 		public DataTemplate ColorTemplate { get; set; }
+		
+		/// <summary>
+		/// Gets or sets the <see cref="DataTemplate"/> to use for an <see cref="IBarGalleryItemViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="DataTemplate"/> to use.</value>
+		public DataTemplate DefaultTemplate { get; set; }
 
 		/// <summary>
 		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="FontFamilyBarGalleryItemViewModel"/>.
@@ -77,7 +121,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public DataTemplate FontSizeTemplate { get; set; }
 
 		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="MenuItemBarGalleryItemViewModel"/>.
+		/// Gets or sets the <see cref="DataTemplate"/> to use for an <see cref="IBarGalleryItemViewModel"/> using a menu item appearance.
 		/// </summary>
 		/// <value>The <see cref="DataTemplate"/> to use.</value>
 		public DataTemplate MenuItemTemplate { get; set; }

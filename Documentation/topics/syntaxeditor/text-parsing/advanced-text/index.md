@@ -51,7 +51,7 @@ See the [Structure Matching](structure-matching.md) topic for more information.
 
 ## Lipsum Generator
 
-A special utility class is included supports the generation of 'lorem ipsum' placeholder text.  Placeholder text is useful for developers and designers when prototyping out web pages and screens.  It is designed to contain unreadable gibberish sentences, which are ideal for layout.
+A special utility class is included that supports the generation of "lorem ipsum" placeholder text.  Placeholder text is useful for developers and designers when prototyping out web pages and screens.  It is designed to contain unreadable gibberish sentences, which are ideal for layout.
 
 See the [Lipsum Generator](lipsum-generator.md) topic for more information.
 

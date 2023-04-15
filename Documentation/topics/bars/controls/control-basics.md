@@ -227,7 +227,7 @@ Here is a list of common attached properties that are related to concepts descri
 | [MediumImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.MediumImageSourceProperty) | Medium 24x24 size image. |
 | [LargeImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LargeImageSourceProperty) | Large 32x32 size image. |
 | [TitleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.TitleProperty) | String title that can override the label in screen tips and customization UI. |
-| [VariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.VariantSizeProperty) | The current variant size of the control. |
+| [VariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.VariantSizeProperty) | The current variant size of the control.  Unless otherwise indicated, this property should only be manually set when the control is standalone, and not hosted by a bar control. |
 | [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the control can clone to the ribbon [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md). |
 | [HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) | Whether an external header (image/label) should be rendered for the control when in a ribbon control group stack. |
 

@@ -42,9 +42,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 		/// </summary>
 		/// <returns>A new <see cref="BarGalleryViewModel"/>.</returns>
 		private BarGalleryViewModel CreateAdvancedPastOptionsGalleryViewModel() {
-			var pasteOptionsGallery = new BarGalleryViewModel("PasteOptions", this.PasteSpecialCommand) {
+			var pasteOptionsGallery = new BarGalleryViewModel("PasteOptions", this.PasteSpecialCommand, this.PasteOptions) {
 				AreSurroundingSeparatorsAllowed = false,
-				CanCategorize = true,
 				MaxMenuColumnCount = 6,
 				IsSelectionSupported = false,
 				UseMenuItemIndent = true,
@@ -53,7 +52,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 				CategoryHeaderTemplate = this.FindResource("PasteOptionGalleryCategoryTemplate") as DataTemplate,
 				ItemTemplate = this.FindResource("PasteOptionGalleryItemTemplate") as DataTemplate,
 			};
-			pasteOptionsGallery.Items.AddRange(this.PasteOptions);
 
 			return pasteOptionsGallery;
 		}
@@ -83,7 +81,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 		/// </summary>
 		/// <returns>A new <see cref="BarPopupButtonViewModel"/>.</returns>
 		private BarPopupButtonViewModel CreateShowcaseSampleViewOptionsWithColorTaggingViewModel() {
-			var tagColorsGallery = new BarGalleryViewModel("TagColors") {
+			var tagColorsGallery = new BarGalleryViewModel("TagColors", this.TagColors) {
 				AreSurroundingSeparatorsAllowed = false,
 				ItemSpacing = 6,
 				MinMenuColumnCount = 7,
@@ -93,7 +91,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 				// Lookup the Style defined in SampleCommonDictionary.xaml
 				ItemContainerStyle = this.FindResource("CircularColorSwatchGalleryItemStyle") as Style,
 			};
-			tagColorsGallery.Items.AddRange(this.TagColors);
 
 			return new BarPopupButtonViewModel("ViewOptionsWithColorTagging", "View Options with Color Tagging") {
 				Description = "A sample 'View' menu that includes a gallery to provide color-based tagging.",

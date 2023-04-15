@@ -1,10 +1,7 @@
-using ActiproSoftware.SampleBrowser;
 using ActiproSoftware.Windows.Controls;
 using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,9 +12,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 	/// Manages commands and controls to be populated on a bar control (e.g., ribbon or toolbar).
 	/// </summary>
 	public partial class BarManager {
-
-		private ColorBarGalleryItemViewModel automaticColorGalleryItemViewModel;
-		private ColorBarGalleryItemViewModel noShadingColorGalleryItemViewModel;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -36,202 +30,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// NON-PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets a <see cref="ColorBarGalleryItemViewModel"/> used to represent an automatic color.
-		/// </summary>
-		/// <value>A <see cref="ColorBarGalleryItemViewModel"/> used to represent an automatic color.</value>
-		private ColorBarGalleryItemViewModel AutomaticColorGalleryItemViewModel {
-			get {
-				if (automaticColorGalleryItemViewModel == null) {
-					automaticColorGalleryItemViewModel = new ColorBarGalleryItemViewModel(category: String.Empty, Colors.Black, "Automatic") {
-						LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
-					};
-				}
-
-				return automaticColorGalleryItemViewModel;
-			}
-		}
-
-		/// <inheritdoc cref="CreateBitmapImage(BarImageOptions, string, string, string)"/>
-		private static ImageSource CreateBitmapImage(BarImageOptions options, string smallFileName)
-			=> CreateBitmapImage(options, smallFileName, mediumFileName: null, largeFileName: null);
-
-		/// <summary>
-		/// Creates an <see cref="ImageSource"/> based on the given options.
-		/// </summary>
-		/// <param name="options">The options which define the image to be created.</param>
-		/// <param name="smallFileName">The name of the resource file that represents the small image (e.g., 16x16).</param>
-		/// <param name="mediumFileName">The name of the resource file that represents the medium image (e.g., 24x24).</param>
-		/// <param name="largeFileName">The name of the resource file that represents the large image (e.g., 32x32).</param>
-		/// <returns>An <see cref="ImageSource"/> based on the given options, or <c>null</c> if a corresponding image is not available.</returns>
-		/// <seealso cref="RegisterImages"/>
-		private static ImageSource CreateBitmapImage(BarImageOptions options, string smallFileName, string mediumFileName, string largeFileName) {
-			// Determine the name of the resource file that is appropriate for the requested image size
-			string fileNameResolved = null;
-			switch (options.Size) {
-				case BarImageSize.Small:
-					fileNameResolved = smallFileName;
-					break;
-				case BarImageSize.Medium:
-					// Medium images not supported by this sample
-					break;
-				case BarImageSize.Large:
-					fileNameResolved = largeFileName;
-					break;
-			}
-			if (!string.IsNullOrEmpty(fileNameResolved))
-				return ImageLoader.GetIcon(fileNameResolved);
-
-			return null;
-		}
-
-		/// <inheritdoc cref="CreateBitmapImageWithColorBar(BarImageOptions, Color, string, string, string)"/>
-		private static ImageSource CreateBitmapImageWithColorBar(BarImageOptions options, Color defaultColor, string smallFileName)
-			=> CreateBitmapImageWithColorBar(options, defaultColor, smallFileName, mediumFileName: null, largeFileName: null);
-
-		/// <summary>
-		/// Creates an <see cref="ImageSource"/> based on the given options with a color bar overlay.
-		/// </summary>
-		/// <inheritdoc cref="CreateBitmapImage(BarImageOptions, string, string, string)"/>
-		/// <param name="defaultColor">The default color to be used for the color bar when <see cref="BarImageOptions.ContextualColor"/> is not defined.</param>
-		private static ImageSource CreateBitmapImageWithColorBar(BarImageOptions options, Color defaultColor, string smallFileName, string mediumFileName, string largeFileName) {
-			// Load the base image
-			var imageSource = CreateBitmapImage(options, smallFileName, mediumFileName, largeFileName);
-			if (imageSource != null) {
-
-				// Determine the bounds of the color bar
-				var imageHeight = imageSource.Height;
-				var imageWidth = imageSource.Width;
-				if (imageHeight > 0 && imageWidth > 0) {
-					var colorBarHeight = Math.Max(1, imageHeight / 4);
-					var colorBarBounds = new Rect(0, imageHeight - colorBarHeight, imageWidth, colorBarHeight);
-					if (!colorBarBounds.IsEmpty) {
-						// Add the color bar to the image
-						imageSource = Windows.Media.ImageProvider.GetImageSourceWithColorSwatch(imageSource, colorBarBounds, options.ContextualColor.GetValueOrDefault(defaultColor));
-					}
-				}
-
-				return imageSource;
-			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Creates a default collection of gallery item view models representing a number of border styles, intended for use in a gallery.
-		/// </summary>
-		/// <returns>The collection of gallery item view models that was created.</returns>
-		private IEnumerable<BorderBarGalleryItemViewModel> CreateBorderBarGalleryItemViewModels() {
-			return new BorderBarGalleryItemViewModel[] {
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.EdgeBordersCategory, BorderKind.Bottom, "Bottom Border",
-					ImageProvider.GetImageSource(BarControlKeys.BorderBottomGalleryItem, BarImageSize.Small)) { KeyTipText = "B" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.EdgeBordersCategory, BorderKind.Top, "Top Border",
-					ImageProvider.GetImageSource(BarControlKeys.BorderTopGalleryItem, BarImageSize.Small)) { KeyTipText = "T" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.EdgeBordersCategory, BorderKind.Left, "Left Border",
-					ImageProvider.GetImageSource(BarControlKeys.BorderLeftGalleryItem, BarImageSize.Small)) { KeyTipText = "L" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.EdgeBordersCategory, BorderKind.Right, "Right Border",
-					ImageProvider.GetImageSource(BarControlKeys.BorderRightGalleryItem, BarImageSize.Small)) { KeyTipText = "R" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.OtherBordersCategory, BorderKind.None, "No Border",
-					ImageProvider.GetImageSource(BarControlKeys.BorderNoneGalleryItem, BarImageSize.Small)) { KeyTipText = "N" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.OtherBordersCategory, BorderKind.All, "All Borders",
-					ImageProvider.GetImageSource(BarControlKeys.BorderAllGalleryItem, BarImageSize.Small)) { KeyTipText = "A" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.OtherBordersCategory, BorderKind.Outside, "Outside Borders",
-					ImageProvider.GetImageSource(BarControlKeys.BorderOutsideGalleryItem, BarImageSize.Small)) { KeyTipText = "O" },
-				new BorderBarGalleryItemViewModel(BorderBarGalleryItemViewModel.OtherBordersCategory, BorderKind.Inside, "Inside Borders",
-					ImageProvider.GetImageSource(BarControlKeys.BorderInsideGalleryItem, BarImageSize.Small)) { KeyTipText = "I" },
-			};
-		}
-
-		/// <inheritdoc cref="ColorBarGalleryItemViewModel.CreateDefaultColorPickerCollection" />
-		private IEnumerable<ColorBarGalleryItemViewModel> CreateFontColorPickerBarGalleryItemViewModels() {
-			return new ColorBarGalleryItemViewModel[] {
-				this.AutomaticColorGalleryItemViewModel
-			}.Concat(ColorBarGalleryItemViewModel.CreateDefaultColorPickerCollection());
-		}
-
-		/// <inheritdoc cref="FontFamilyBarGalleryItemViewModel.CreateDefaultCollection" />
-		private static IEnumerable<FontFamilyBarGalleryItemViewModel> CreateFontFamilyBarGalleryItemViewModels() {
-			const string RecentlyUsedCategory = "Recently-Used Fonts";
-
-			return new FontFamilyBarGalleryItemViewModel[] {
-				new FontFamilyBarGalleryItemViewModel(RecentlyUsedCategory, FontSettings.DefaultFontFamilyName)
-			}.Concat(FontFamilyBarGalleryItemViewModel.CreateDefaultCollection());
-		}
-
-		/// <inheritdoc cref="ColorBarGalleryItemViewModel.CreateDefaultColorPickerCollection" />
-		private IEnumerable<ColorBarGalleryItemViewModel> CreateShadingColorPickerBarGalleryItemViewModels() {
-			return ColorBarGalleryItemViewModel.CreateDefaultColorPickerCollection()
-				.Concat(new ColorBarGalleryItemViewModel[] {
-					this.NoShadingColorGalleryItemViewModel
-				});
-		}
-
-		/// <summary>
-		/// Creates a default collection of gallery item view models representing a number of symbols, intended for use in a gallery.
-		/// </summary>
-		/// <returns>The collection of gallery item view models that was created.</returns>
-		public static IEnumerable<SymbolBarGalleryItemViewModel> CreateSymbolBarGalleryItemViewModels() {
-			return new SymbolBarGalleryItemViewModel[] {
-				new SymbolBarGalleryItemViewModel("\u20AC", "Euro Sign"),
-				new SymbolBarGalleryItemViewModel("\u00A3", "Pound Sign"),
-				new SymbolBarGalleryItemViewModel("\u00A5", "Yen Sign"),
-				new SymbolBarGalleryItemViewModel("\u00A9", "Copyright Sign"),
-				new SymbolBarGalleryItemViewModel("\u00AE", "Registered Sign"),
-				new SymbolBarGalleryItemViewModel("\u2122", "Trademark Sign"),
-				new SymbolBarGalleryItemViewModel("\u00B1", "Plus-Minus Sign"),
-				new SymbolBarGalleryItemViewModel("\u2248", "Almost Equal To"),
-				new SymbolBarGalleryItemViewModel("\u2260", "Not Equal To"),
-				new SymbolBarGalleryItemViewModel("\u2264", "Less-Than or Equal To"),
-				new SymbolBarGalleryItemViewModel("\u2265", "Greater-Than or Equal To"),
-				new SymbolBarGalleryItemViewModel("\u00F7", "Division Sign"),
-				new SymbolBarGalleryItemViewModel("\u00D7", "Multiplication Sign"),
-				new SymbolBarGalleryItemViewModel("\u221E", "Infinity"),
-				new SymbolBarGalleryItemViewModel("\u00B5", "Micro Sign"),
-				new SymbolBarGalleryItemViewModel("\u03B1", "Greek Small Letter Alpha"),
-				new SymbolBarGalleryItemViewModel("\u03B2", "Greek Small Letter Beta"),
-				new SymbolBarGalleryItemViewModel("\u03C0", "Greek Small Letter Pi"),
-				new SymbolBarGalleryItemViewModel("\u2126", "Olm Sign"),
-				new SymbolBarGalleryItemViewModel("\u2211", "N-Ary Summation"),
-			};
-		}
-
-		/// <summary>
-		/// Creates a default collection of gallery item view models representing a number of text styles, intended for use in a gallery.
-		/// </summary>
-		/// <returns>The collection of gallery item view models that was created.</returns>
-		private static IEnumerable<TextStyleBarGalleryItemViewModel> CreateTextStyleBarGalleryItemViewModels() {
-			return new TextStyleBarGalleryItemViewModel[] {
-				new TextStyleBarGalleryItemViewModel("Normal", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black),
-				new TextStyleBarGalleryItemViewModel("Heading 1", FontSettings.HeadingFontFamilyName, FontSettings.Heading1FontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)),
-				new TextStyleBarGalleryItemViewModel("Heading 2", FontSettings.HeadingFontFamilyName, FontSettings.Heading2FontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)),
-				new TextStyleBarGalleryItemViewModel("Heading 3", FontSettings.HeadingFontFamilyName, FontSettings.Heading3FontSize, Color.FromArgb(0xff, 0x1f, 0x37, 0x63)),
-				new TextStyleBarGalleryItemViewModel("Heading 4", FontSettings.HeadingFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x2f, 0x54, 0x96)) { Italic = true },
-				new TextStyleBarGalleryItemViewModel("Title", FontSettings.HeadingFontFamilyName, FontSettings.TitleFontSize, Colors.Black),
-				new TextStyleBarGalleryItemViewModel("Subtitle", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x5a, 0x5a, 0x5a)),
-				new TextStyleBarGalleryItemViewModel("Subtle Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x40, 0x40, 0x40)) { Italic = true },
-				new TextStyleBarGalleryItemViewModel("Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black) { Italic = true },
-				new TextStyleBarGalleryItemViewModel("Intense Emphasis", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x44, 0x72, 0xc4)) { Italic = true },
-				new TextStyleBarGalleryItemViewModel("Strong", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Colors.Black) { Bold = true },
-				new TextStyleBarGalleryItemViewModel("Quote", FontSettings.DefaultFontFamilyName, FontSettings.DefaultFontSize, Color.FromArgb(0xff, 0x40, 0x40, 0x40)) { Italic = true },
-			};
-		}
-
-		/// <summary>
-		/// Gets a <see cref="ColorBarGalleryItemViewModel"/> used to represent a no shading color.
-		/// </summary>
-		/// <value>A <see cref="ColorBarGalleryItemViewModel"/> used to represent a no shading color.</value>
-		private ColorBarGalleryItemViewModel NoShadingColorGalleryItemViewModel {
-			get {
-				if (noShadingColorGalleryItemViewModel == null) {
-					noShadingColorGalleryItemViewModel = new ColorBarGalleryItemViewModel(category: String.Empty, Colors.Transparent, "No Color") {
-						LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
-					};
-				}
-
-				return noShadingColorGalleryItemViewModel;
-			}
-		}
 
 		/// <summary>
 		/// Registers control view models with <see cref="ControlViewModels"/>.
@@ -277,10 +75,11 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 
 			viewModels.Register(BarControlKeys.BordersGallery, key
-				=> new BarGalleryViewModel(key, "Borders", NotImplementedCommand, CreateBorderBarGalleryItemViewModels()) {
-					CanCategorize = true,
+				=> new BarGalleryViewModel(key, "Borders", NotImplementedCommand, BorderGalleryItems.View) {
 					HasCategoryHeaders = false,
+					IsSelectionSupported = false,
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
+					UseMenuItemAppearance = true,
 				});
 
 			viewModels.Register(BarControlKeys.BordersShadingDialog, key
@@ -298,16 +97,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.BulletsGallery, key
 				=> {
-					var bulletsGallery = new BarGalleryViewModel(key, "Bullets", NotImplementedCommand, BulletBarGalleryItemViewModel.CreateDefaultCollection()) {
-						CanCategorize = true,
+					var bulletsGallery = new BarGalleryViewModel(key, "Bullets", NotImplementedCommand, BulletGalleryItems.View) {
 						ItemTemplateSelector = this.GalleryItemTemplateSelector,
 						MinMenuColumnCount = 3,
 						MenuResizeMode = ControlResizeMode.Both,
-						MenuItems = {
+						BelowMenuItems = {
 							viewModels[BarControlKeys.DefineNewBullet]
 						}
 					};
-					bulletsGallery.SelectItemByValueMatch<BulletBarGalleryItemViewModel>(i => i.Kind == BulletKind.None);
+					bulletsGallery.SelectItemByValueMatch<BulletBarGalleryItemViewModel>(i => i.Value == BulletKind.None);
 					return bulletsGallery;
 				});
 
@@ -376,19 +174,19 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 
 			viewModels.Register(BarControlKeys.Font, key
-				=> new BarComboBoxViewModel(key, SetFontFamilyCommand) {
+				=> new BarComboBoxViewModel(key, SetFontFamilyCommand, FontFamilyGalleryItems.View) {
 					Description = "Pick a new font for your text.",
 					IsEditable = true,
 					IsPreviewEnabledWhenPopupClosed = true,
 					IsStarSizingAllowed = true,
 					IsUnmatchedTextAllowed = false,
+					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					KeyTipText = "FF",
-					MenuItems = {
-						viewModels[BarControlKeys.FontGallery],
+					BelowMenuItems = {
 						viewModels[BarControlKeys.FontMoreFontsDialog],
 					},
+					MenuResizeMode = ControlResizeMode.Vertical,
 					RequestedWidth = 120,
-					TextPath = nameof(FontFamilyBarGalleryItemViewModel.Label),
 				});
 			
 			viewModels.Register(BarControlKeys.FontColor, key
@@ -405,8 +203,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, "More Colors...", NotImplementedCommand));
 
 			viewModels.Register(BarControlKeys.FontColorPicker, key
-				=> new BarGalleryViewModel(key, "Font Colors", SetFontColorCommand, CreateFontColorPickerBarGalleryItemViewModels()) {
-					CanCategorize = true,
+				=> new BarGalleryViewModel(key, "Font Colors", SetFontColorCommand, FontColorPickerGalleryItems.View) {
 					ItemSpacing = 4,
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					MaxMenuColumnCount = 10,
@@ -414,38 +211,21 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 					UseAccentedItemBorder = true,
 				});
 			
-			viewModels.Register(BarControlKeys.FontGallery, key
-				=> new BarGalleryViewModel(key, SetFontFamilyCommand, CreateFontFamilyBarGalleryItemViewModels()) {
-					CanCategorize = true,
-					ItemTemplateSelector = this.GalleryItemTemplateSelector,
-					MaxMenuColumnCount = 1,
-					MenuResizeMode = ControlResizeMode.Vertical,
-					UseMenuItemAppearance = true,
-				});
-
 			viewModels.Register(BarControlKeys.FontMoreFontsDialog, key
 				=> new BarButtonViewModel(key, "Search for More Fonts...", NotImplementedCommand));
 
 			viewModels.Register(BarControlKeys.FontSize, key
-				=> new BarComboBoxViewModel(key, "Size", "FS", SetFontSizeCommand, viewModels[BarControlKeys.FontSizeGallery] as BarGalleryViewModel) {
+				=> new BarComboBoxViewModel(key, "Size", "FS", SetFontSizeCommand, FontSizeBarGalleryItemViewModel.CreateDefaultCollection()) {
 					Description = "Change the size of your text.",
 					IsEditable = true,
 					IsTextCompletionEnabled = false,
+					ItemTemplateSelector = this.GalleryItemTemplateSelector,
+					MenuResizeMode = ControlResizeMode.Vertical,
 					RequestedWidth = 45,
-					TextPath = nameof(FontSizeBarGalleryItemViewModel.Size),
 					Title = "Font Size",
 					UnmatchedTextCommand = UnknownFontSizeCommand,
 				});
 			
-			viewModels.Register(BarControlKeys.FontSizeGallery, key
-				=> new BarGalleryViewModel(key, "Size", "FS", SetFontSizeCommand, FontSizeBarGalleryItemViewModel.CreateDefaultCollection()) {
-					ItemTemplateSelector = this.GalleryItemTemplateSelector,
-					MaxMenuColumnCount = 1,
-					MenuResizeMode = ControlResizeMode.Vertical,
-					Title = "Font Size",
-					UseMenuItemAppearance = true,
-				});
-
 			viewModels.Register(BarControlKeys.FooterInsert, key
 				=> new BarButtonViewModel(key, "Footer", NotImplementedCommand) { Description = "Footers repeat content at the bottom of each page.", Title = "Add a Footer" });
 
@@ -490,6 +270,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 			viewModels.Register(BarControlKeys.LineSpacingGallery, key
 				=> new BarGalleryViewModel(key, "Line Spacing", NotImplementedCommand, LineSpacingBarGalleryItemViewModel.CreateDefaultCollection()) {
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
+					UseMenuItemAppearance = true,
 				});
 
 			viewModels.Register(BarControlKeys.LineSpacingOptions, key
@@ -520,16 +301,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.NumberingGallery, key
 				=> {
-					var numberingGallery = new BarGalleryViewModel(key, "Numbering", SetNumberingCommand, NumberingBarGalleryItemViewModel.CreateDefaultCollection()) {
-						CanCategorize = true,
+					var numberingGallery = new BarGalleryViewModel(key, "Numbering", SetNumberingCommand, NumberingGalleryItems.View) {
 						ItemTemplateSelector = this.GalleryItemTemplateSelector,
 						MinMenuColumnCount = 3,
 						MenuResizeMode = ControlResizeMode.Both,
-						MenuItems = {
+						BelowMenuItems = {
 							viewModels[BarControlKeys.DefineNewNumberFormat]
 						}
 					};
-					numberingGallery.SelectItemByValueMatch<NumberingBarGalleryItemViewModel>(i => i.Kind == NumberingKind.None);
+					numberingGallery.SelectItemByValueMatch<NumberingBarGalleryItemViewModel>(i => i.Value == NumberingKind.None);
 					return numberingGallery;
 				});
 			
@@ -576,13 +356,13 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, "Quick Parts", NotImplementedCommand) { Description = "A text box brings focus to its content.", Title = "Explore Quick Parts" });
 
 			viewModels.Register(BarControlKeys.QuickStylesGallery, key
-				=> new BarGalleryViewModel(key, "Styles", SetTextStyleCommand, CreateTextStyleBarGalleryItemViewModels()) {
+				=> new BarGalleryViewModel(key, "Styles", SetTextStyleCommand, CreateTextStyleBarGalleryItemViewModelsCollection()) {
 					CollapsedButtonDescription = "Styles give your document a consistent, polished look.",
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					KeyTipText = "L",
 					MinMenuColumnCount = 4,
 					MenuResizeMode = ControlResizeMode.Both,
-					MenuItems = {
+					BelowMenuItems = {
 						viewModels[BarControlKeys.CreateStyle],
 						viewModels[BarControlKeys.ClearFormatting],
 						viewModels[BarControlKeys.ApplyStyles],
@@ -606,7 +386,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarTextBoxViewModel(key, "Search", SearchForTextCommand) {
 					Description = "Search for text in the document.",
 					RequestedWidth = 100,
-					PlaceholderText = "(text)",
+					PlaceholderText = "(search text)",
 				});
 
 			viewModels.Register(BarControlKeys.SelectObjects, key
@@ -640,8 +420,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, "More Colors...", NotImplementedCommand));
 
 			viewModels.Register(BarControlKeys.ShadingColorPicker, key
-				=> new BarGalleryViewModel(key, "Shading Colors", NotImplementedCommand, CreateShadingColorPickerBarGalleryItemViewModels()) {
-					CanCategorize = true,
+				=> new BarGalleryViewModel(key, "Shading Colors", NotImplementedCommand, ShadingGalleryItems.View) {
 					ItemSpacing = 4,
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					MaxMenuColumnCount = 10,
@@ -650,8 +429,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 			
 			viewModels.Register(BarControlKeys.ShapesGallery, key
-				=> new BarGalleryViewModel(key, "Shapes", NotImplementedCommand, ShapeBarGalleryItemViewModel.CreateDefaultCollection()) {
-					CanCategorize = true,
+				=> new BarGalleryViewModel(key, "Shapes", NotImplementedCommand, ShapeGalleryItems.View) {
 					IsSelectionSupported = false,
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 				});
@@ -708,7 +486,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				});
 			
 			viewModels.Register(BarControlKeys.SymbolInsertGallery, key
-				=> new BarGalleryViewModel(key, "Symbols", InsertSymbolCommand, CreateSymbolBarGalleryItemViewModels()) {
+				=> new BarGalleryViewModel(key, "Symbols", InsertSymbolCommand, CreateSymbolBarGalleryItemViewModelsCollection()) {
 					IsSelectionSupported = false,
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					MinMenuColumnCount = 5,
@@ -809,11 +587,11 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						ItemTemplateSelector = this.GalleryItemTemplateSelector,
 						MaxMenuColumnCount = 1,
 						MenuResizeMode = ControlResizeMode.Vertical,
-						MenuItems = {
+						BelowMenuItems = {
 							viewModels[BarControlKeys.UnderlineMoreUnderlinesDialog]
 						}
 					};
-					underlineGallery.SelectItemByValueMatch<UnderlineBarGalleryItemViewModel>(i => i.Kind == UnderlineKind.None);
+					underlineGallery.SelectItemByValueMatch<UnderlineBarGalleryItemViewModel>(i => i.Value == UnderlineKind.None);
 					return underlineGallery;
 				});
 
@@ -962,19 +740,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </summary>
 		/// <value>A <see cref="BarControlViewModelCollection"/>.</value>
 		public BarControlViewModelCollection ControlViewModels { get; }
-
-		/// <summary>
-		/// Gets or sets the <see cref="System.Windows.Controls.DataTemplateSelector"/> that will be assigned to <see cref="BarGalleryViewModelBase.ItemTemplateSelector"/>
-		/// for each registered gallery view model.
-		/// </summary>
-		/// <value>The <see cref="System.Windows.Controls.DataTemplateSelector"/> that picks a <see cref="System.Windows.Controls.DataTemplateSelector"/> used to display the content for each gallery item.</value>
-		public BarGalleryItemTemplateSelector GalleryItemTemplateSelector { get; } = new CustomBarGalleryItemTemplateSelector();
-
-		/// <summary>
-		/// Gets the provider that will be used to provide images.
-		/// </summary>
-		/// <value>A <see cref="BarImageProvider"/>.</value>
-		public BarImageProvider ImageProvider { get; } = new BarImageProvider();
 
 		/// <summary>
 		/// Sets a value based on the current checked state of control view model that implements <see cref="ICheckable"/>.

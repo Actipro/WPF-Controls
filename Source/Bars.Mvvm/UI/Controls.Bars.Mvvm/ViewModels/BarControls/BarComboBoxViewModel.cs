@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System;
+using System.Collections;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -9,10 +8,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a combobox control within a bar control.
 	/// </summary>
-	public class BarComboBoxViewModel : BarKeyedObjectViewModelBase {
+	public class BarComboBoxViewModel : BarGalleryViewModel {
 
-		private bool canCloneToRibbonQuickAccessToolBar = true;
-		private ICommand command;
 		private string description;
 		private bool isEditable;
 		private bool isPreviewEnabledWhenPopupClosed;
@@ -22,13 +19,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isTextSearchCaseSensitive;
 		private bool isTextSearchEnabled = true;
 		private bool isUnmatchedTextAllowed = true;
-		private string keyTipText;
-		private string label;
 		private string placeholderText;
 		private double requestedWidth = 110.0;
-		private string text;
-		private string textPath;
-		private string title;
+		private string text = string.Empty;
+		private string textPath = nameof(IBarGalleryItemViewModel.Label);
 		private ICommand unmatchedTextCommand;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,62 +30,63 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarComboBoxViewModel() { }  // Parameterless constructor required for XAML support
+		public BarComboBoxViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string)"/>
 		public BarComboBoxViewModel(string key)
 			: this(key, label: null) { }
-		
+
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key.  The label and key tip text are auto-generated.
+		/// Initializes a new instance of the class with the specified key and items.  The label and key tip text are auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, BarGalleryViewModel menuGallery)
-			: this(key, label: null, menuGallery) { }
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, IEnumerable items)
+			: this(key, label: null, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
 		public BarComboBoxViewModel(string key, string label)
 			: this(key, label, keyTipText: null) { }
-		
+
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key and label.  The key tip text is auto-generated.
+		/// Initializes a new instance of the class with the specified key, label, and items.  The key tip text is auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="key"/> if <c>null</c>.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, string label, BarGalleryViewModel menuGallery)
-			: this(key, label, keyTipText: null, menuGallery) { }
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, string label, IEnumerable items)
+			: this(key, label, keyTipText: null, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
 		public BarComboBoxViewModel(string key, string label, string keyTipText)
-			: this(key, label, keyTipText, command: null) { }
-		
+			: this(key, label, keyTipText, items: null) { }
+
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, and key tip text.
+		/// Initializes a new instance of the class with the specified key, label, key tip text, and items.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="label"/> if <c>null</c>.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, string label, string keyTipText, BarGalleryViewModel menuGallery)
-			: this(key, label, keyTipText, command: null, menuGallery) { }
-		
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, string label, string keyTipText, IEnumerable items)
+			: this(key, label, keyTipText, command: null, items) { }
+
 		/// <inheritdoc cref="BarButtonViewModel(RoutedCommand)"/>
 		public BarComboBoxViewModel(RoutedCommand routedCommand)
 			: this(routedCommand?.Name, routedCommand) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified <see cref="RoutedCommand"/>, also used to auto-generate a key, label, and key tip text.
+		/// Initializes a new instance of the class with the specified items and <see cref="RoutedCommand"/>, also used to auto-generate a key, label, and key tip text.
 		/// </summary>
 		/// <param name="routedCommand">The command to attach to the control.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(RoutedCommand routedCommand, BarGalleryViewModel menuGallery)
-			: this(routedCommand?.Name, routedCommand, menuGallery) { }
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(RoutedCommand routedCommand, IEnumerable items)
+			: this(routedCommand?.Name, routedCommand, items) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, ICommand)"/>
 		public BarComboBoxViewModel(string key, ICommand command)
-			: this(key, label: null, keyTipText: null, command, menuGallery: null) { }
+			: this(key, label: null, command) { }
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string, ICommand)"/>
 		public BarComboBoxViewModel(string key, string label, ICommand command)
@@ -99,71 +94,45 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		/// <inheritdoc cref="BarButtonViewModel(string, string, string, ICommand)"/>
 		public BarComboBoxViewModel(string key, string label, string keyTipText, ICommand command)
-			: this(key, label, keyTipText, command, menuGallery: null) { }
+			: this(key, label, keyTipText, command, items: null) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key and command.  The label and key tip text are auto-generated.
+		/// Initializes a new instance of the class with the specified key, command, and items.  The label and key tip text are auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, ICommand command, BarGalleryViewModel menuGallery)
-			: this(key, label: null, keyTipText: null, command, menuGallery) { }
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, ICommand command, IEnumerable items)
+			: this(key, label: null, keyTipText: null, command, items) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, and command.  The key tip text is auto-generated.
+		/// Initializes a new instance of the class with the specified key, label, command, and items.  The key tip text is auto-generated.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="command"/> or <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, string label, ICommand command, BarGalleryViewModel menuGallery)
-			: this(key, label, keyTipText: null, command, menuGallery) { }
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, string label, ICommand command, IEnumerable items)
+			: this(key, label, keyTipText: null, command, items) { }
 
 		/// <summary>
-		/// Initializes a new instance of the class with the specified key, label, key tip text, and command.
+		/// Initializes a new instance of the class with the specified key, label, key tip text, command, and items.
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		/// <param name="label">The text label to display, which is auto-generated from the <paramref name="command"/> or <paramref name="key"/> if <c>null</c>.</param>
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="command"/> or <paramref name="label"/> if <c>null</c>.</param>
 		/// <param name="command">The command to attach to the control.</param>
-		/// <param name="menuGallery">The <see cref="BarGalleryViewModel"/> for the menu gallery in the drop-down.</param>
-		public BarComboBoxViewModel(string key, string label, string keyTipText, ICommand command, BarGalleryViewModel menuGallery)
-			: base(key) {
+		/// <param name="items">The collection of gallery items, where the items are typically of type <see cref="IBarGalleryItemViewModel"/>.</param>
+		public BarComboBoxViewModel(string key, string label, string keyTipText, ICommand command, IEnumerable items)
+			: base(key, label, keyTipText, command, items) {
 
-			this.label = label ?? LabelGenerator.FromCommand(command) ?? LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.label);
-			this.command = command;
-
-			if (menuGallery != null)
-				this.MenuItems.Add(menuGallery);
+			// Comboboxes default to single column
+			this.MaxMenuColumnCount = 1;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
-		public bool CanCloneToRibbonQuickAccessToolBar {
-			get => canCloneToRibbonQuickAccessToolBar;
-			set {
-				if (canCloneToRibbonQuickAccessToolBar != value) {
-					canCloneToRibbonQuickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(CanCloneToRibbonQuickAccessToolBar));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Command"/>
-		public ICommand Command {
-			get => command;
-			set {
-				if (command != value) {
-					command = value;
-					this.NotifyPropertyChanged(nameof(Command));
-				}
-			}
-		}
 
 		/// <inheritdoc cref="BarButtonViewModel.Description"/>
 		public string Description {
@@ -176,13 +145,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <summary>
-		/// Gets the first <see cref="BarGalleryViewModel"/> found in the <see cref="MenuItems"/> collection.
-		/// </summary>
-		/// <value>The first <see cref="BarGalleryViewModel"/> found in the <see cref="MenuItems"/> collection.</value>
-		protected BarGalleryViewModel FirstMenuGallery
-			=> this.MenuItems.OfType<BarGalleryViewModel>().FirstOrDefault();
-		
 		/// <summary>
 		/// Gets or sets whether the combobox is editable.
 		/// </summary>
@@ -324,38 +286,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
-		public string KeyTipText {
-			get => keyTipText;
-			set {
-				if (keyTipText != value) {
-					keyTipText = value;
-					this.NotifyPropertyChanged(nameof(KeyTipText));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get => label;
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-
 		/// <summary>
-		/// Gets the collection of menu items that appear within the drop-down.
+		/// Gets or sets the placeholder text to display when the control is empty.
 		/// </summary>
-		/// <value>The collection of menu items that appear within the drop-down.</value>
-		public ObservableCollection<object> MenuItems { get; } = new ObservableCollection<object>();
-		
-		/// <summary>
-		/// Gets or sets the text that is displayed in the control until the value is changed by a user action or some other operation.
-		/// </summary>
-		/// <value>The text that is displayed in the control until the value is changed by a user action or some other operation.</value>
+		/// <value>The placeholder text to display when the control is empty.</value>
 		public string PlaceholderText {
 			get => placeholderText;
 			set {
@@ -384,22 +318,42 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 		
 		/// <summary>
-		/// Selects an item in the <see cref="FirstMenuGallery"/> that matches the predicate, 
+		/// Selects an item in the gallery whose text representation matches the specified text,
+		/// </summary>
+		/// <typeparam name="T">The type of <see cref="IBarGalleryItemViewModel"/> to examine.</typeparam>
+		/// <param name="getItemTextFunc">A function that examines an item and returns its string value for comparison to <paramref name="text"/>.</param>
+		/// <param name="text">The text for which to search and that will be set to <see cref="Text"/>.</param>
+		public virtual void SelectItemByTextMatch<T>(Func<T, string> getItemTextFunc, string text) where T : IBarGalleryItemViewModel {
+			if (getItemTextFunc == null)
+				throw new ArgumentNullException(nameof(getItemTextFunc));
+
+			text ??= string.Empty;
+
+			base.SelectItemByValueMatch<T>(i => text.Equals(getItemTextFunc(i) ?? string.Empty));
+
+			this.Text = text;
+		}
+		
+		/// <summary>
+		/// Selects an item in the gallery that matches the predicate,
 		/// alternatively setting the specified fallback <see cref="Text"/> if no match is made.
 		/// </summary>
-		/// <typeparam name="T">The type of <see cref="BarGalleryItemViewModelBase"/> to examine.</typeparam>
-		/// <param name="predicate">A predicate that determines when an item matches criteria.</param>
+		/// <typeparam name="T">The type of <see cref="IBarGalleryItemViewModel"/> to examine.</typeparam>
+		/// <param name="matchPredicate">A predicate that determines when an item matches criteria.</param>
+		/// <param name="getMatchedItemTextFunc">A function that examines a matched item and returns the string value to set to <see cref="Text"/>.</param>
 		/// <param name="fallbackText">The fallback text to set to <see cref="Text"/> when there is no match.</param>
-		public virtual void SelectItemByValueMatch<T>(Func<T, bool> predicate, string fallbackText) where T : BarGalleryItemViewModelBase {
-			var firstMenuGallery = this.FirstMenuGallery;
-			if (firstMenuGallery != null) {
-				firstMenuGallery.SelectItemByValueMatch(predicate);
+		public virtual void SelectItemByValueMatch<T>(Func<T, bool> matchPredicate, Func<T, string> getMatchedItemTextFunc, string fallbackText) where T : IBarGalleryItemViewModel {
+			if (getMatchedItemTextFunc == null)
+				throw new ArgumentNullException(nameof(getMatchedItemTextFunc));
 
-				if (firstMenuGallery.SelectedItem != null)
-					return;
+			var matchedItem = base.SelectItemByValueMatch(matchPredicate);
+
+			if (matchedItem != null) {
+				this.Text = getMatchedItemTextFunc(matchedItem) ?? string.Empty;
+				return;
 			}
 
-			this.Text = fallbackText;
+			this.Text = fallbackText ?? string.Empty;
 		}
 		
 		/// <summary>
@@ -430,17 +384,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 		
-		/// <inheritdoc cref="BarButtonViewModel.Title"/>
-		public string Title {
-			get => title;
-			set {
-				if (title != value) {
-					title = value;
-					this.NotifyPropertyChanged(nameof(Title));
-				}
-			}
-		}
-
 		/// <summary>
 		/// Gets or sets the <see cref="ICommand"/> to execute when <see cref="Text"/> is committed that is unable to be matched to a gallery item
 		/// or when <see cref="ItemsControl.IsTextSearchEnabled"/> is <c>false</c>.

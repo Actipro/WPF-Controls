@@ -27,7 +27,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 <TextBox>
 	<TextBox.ContextMenu>
 		<bars:BarContextMenu>
-			<!-- Labels are auto-generated from Key -->
+			<!-- Labels are auto-generated from Command and Key -->
 			<bars:BarMenuItem Command="ApplicationCommands.Undo" SmallImageSource="/Images/Icons/Undo16.png" />
 			<bars:BarMenuItem Command="ApplicationCommands.Redo" SmallImageSource="/Images/Icons/Redo16.png" />
 			<bars:BarMenuSeparator />
@@ -36,13 +36,11 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 			<bars:BarMenuGallery
 				Key="PasteOptions"
 				AreSurroundingSeparatorsAllowed="False"
-				CanCategorize="True"
-				CategorizedItemsSource="{Binding PasteOptions}"
 				CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
-				CategoryPropertyName="Category"
 				Command="{Binding PasteSpecialCommand}"
-				IsSynchronizedWithCurrentItem="False"
+				IsSelectionSupported="False"
 				ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+				ItemsSource="{Binding PasteOptions}"
 				ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
 				MaxColumnCount="6"
 				UseMenuItemIndent="True" />

@@ -28,7 +28,7 @@ We've spent a lot of time adding numerous QuickStarts for Ribbon that are locate
 
 ## Add Assembly References
 
-Once you are ready to add Ribbon to your own application, first add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Ribbon.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+Once you are ready to add Ribbon to your own application, first add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.Ribbon.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
 
 ## The Visual Studio Item Templates (Ribbon Window, Ribbon Page)
 

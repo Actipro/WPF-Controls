@@ -35,7 +35,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public BarButtonViewModel() { }  // Parameterless constructor required for XAML support
+		public BarButtonViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified key.  The label and key tip text are auto-generated.

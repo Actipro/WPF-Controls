@@ -13,7 +13,8 @@ Commenting is performed by inserting language-specific comment delimiters.  Unco
 
 Line commenters implement the [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) interface.  This interface defines two methods.
 
-The [Comment](xref:ActiproSoftware.Text.ILineCommenter.Comment*) method has parameters that indicate the [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) to examine and the [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) to use when inserting comment delimiters.  The [Uncomment](xref:ActiproSoftware.Text.ILineCommenter.Uncomment*) method has the same parameters, although it removes comment delimiters instead.
+- The [Comment](xref:ActiproSoftware.Text.ILineCommenter.Comment*) method has parameters that indicate the [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) to examine and the [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions) to use when inserting comment delimiters.
+- The [Uncomment](xref:ActiproSoftware.Text.ILineCommenter.Uncomment*) method has the same parameters, although it removes comment delimiters instead.
 
 An [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) can be associated with an [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) by registering it with the language:
 
@@ -21,7 +22,7 @@ An [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) can be associated 
 language.RegisterService<ILineCommenter>(myLineCommenter);
 ```
 
-Registering line commenters with a language is optional, but recommended.
+Registering line commenters with a language is optional but recommended.
 
 ## Commenting a Range of Text
 
@@ -37,7 +38,7 @@ if (document.Language.LineCommenter != null) {
 
 ## Uncommenting a Range of Text
 
-This code uses an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s current language's line commenter to uncomment a range of text from offset `0`-`10`:
+This code uses an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s current language's line commenter to uncomment a range of text from offsets `0` to `10`:
 
 ```csharp
 if (document.Language.LineCommenter != null) {
@@ -51,7 +52,7 @@ if (document.Language.LineCommenter != null) {
 
 Line-based line commenters are used in languages like C# where `//` should be used to comment out lines of text.  To accomplish this, create a [LineBasedLineCommenter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter) object.
 
-[LineBasedLineCommenter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter) already has the comment and uncomment code implemented.  However it defines a [StartDelimiter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter.StartDelimiter) property that must be set to the start comment delimiter for your language.
+[LineBasedLineCommenter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter) already has the comment and uncomment code implemented.  However, it defines a [StartDelimiter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter.StartDelimiter) property that must be set to the start comment delimiter for your language.
 
 [LineBasedLineCommenter](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter) has a [CanCommentEmptyLines](xref:ActiproSoftware.Text.Implementation.LineBasedLineCommenter.CanCommentEmptyLines) property that determines whether to comment a line that is only whitespace. The default is `true`.
 
@@ -61,7 +62,7 @@ For C#, this would be set to the string `//`.  For VB, this would be set to the 
 
 Range line commenters are used in languages like XML where `<!-- -->` should be used to comment out lines of text.  To accomplish this, create a [RangeLineCommenter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter) object.
 
-[RangeLineCommenter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter) already has the comment and uncomment code implemented.  However it defines a [StartDelimiter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter.StartDelimiter) and [EndDelimiter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter.EndDelimiter) properties that must be set to the start and end comment delimiters for your language.
+[RangeLineCommenter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter) already has the comment and uncomment code implemented.  However, it defines a [StartDelimiter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter.StartDelimiter) and [EndDelimiter](xref:ActiproSoftware.Text.Implementation.RangeLineCommenter.EndDelimiter) properties that must be set to the start and end comment delimiters for your language.
 
 For XML, the start delimiter would be set to the string `<!--` and the end delimiter would be set to the string `-->`.
 

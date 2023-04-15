@@ -126,7 +126,7 @@ Sometimes this is not desired, and you may wish to keep documents open that were
 
 ## Persisting Custom Data in the Layout Data
 
-One benefit of our XML object hierarchy serialization framework is that you can insert and later retrieve information anywhere within the serialized data.  Any time an object is serialized or deserialized, an event fires.  You can intercept this event and save/load custom data.
+One benefit of our XML object hierarchy serialization framework is that you can insert and later retrieve information anywhere within the serialized data.  Any time an object is serialized or deserialized, an event is raised.  You can intercept this event and save/load custom data.
 
 The [Serialization](../../shared/windows-serialization.md) topic explains how to do this.
 

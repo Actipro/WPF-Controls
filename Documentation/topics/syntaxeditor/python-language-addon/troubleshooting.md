@@ -7,7 +7,7 @@ order: 99
 
 This topic provides answers to common questions and problems related to the add-on.
 
-## How Do I Get Started With Python Language?
+## How Do I Get Started with Python Language?
 
 The [Getting Started](python/getting-started.md) topic walks through all the requirements for using the Python language.  Be sure to follow all the steps in that topic so that the syntax language operates correctly.
 

@@ -348,18 +348,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 			}
 			else if (args.PropertyName == nameof(OptionsViewModel.UseCustomColors)) {
 				foreach (var colorGalleryViewModel in GetBarGalleryViewModels(new BarPopupButtonViewModel[] { largerSwatchesFontColorPickerViewModel })) {
-					colorGalleryViewModel.Items.Clear();
-					colorGalleryViewModel.Items.AddRange(this.FontColorItems);
+					colorGalleryViewModel.Items = this.FontColorItems;
 					colorGalleryViewModel.MinMenuColumnCount = colorGalleryViewModel.MaxMenuColumnCount = this.FontColorItemsColumnCount;
 				}
 				foreach (var colorGalleryViewModel in GetBarGalleryViewModels(new BarPopupButtonViewModel[] { fontColorPickerWithAutomaticViewModel })) {
-					colorGalleryViewModel.Items.Clear();
-					colorGalleryViewModel.Items.AddRange(this.FontColorItemsWithAutomatic);
+					colorGalleryViewModel.Items = this.FontColorItemsWithAutomatic;
 					colorGalleryViewModel.MinMenuColumnCount = colorGalleryViewModel.MaxMenuColumnCount = this.FontColorItemsColumnCount;
 				}
 				foreach (var highlightGalleryViewModel in GetBarGalleryViewModels(new BarPopupButtonViewModel[] { textHighlightColorPickerViewModel })) {
-					highlightGalleryViewModel.Items.Clear();
-					highlightGalleryViewModel.Items.AddRange(this.TextHighlightColorItems);
+					highlightGalleryViewModel.Items = this.TextHighlightColorItems;
 				}
 			}
 			else if (args.PropertyName == nameof(OptionsViewModel.UseMenuItemIndent)) {

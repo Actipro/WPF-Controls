@@ -16,7 +16,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="BarKeyedObjectViewModelBase"/> class.
 		/// </summary>
-		protected BarKeyedObjectViewModelBase() { }  // Parameterless constructor required for XAML support
+		protected BarKeyedObjectViewModelBase()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="BarKeyedObjectViewModelBase"/> class.

@@ -5,12 +5,14 @@ using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Media;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,6 +24,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 	/// </summary>
 	public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 
+		// NOTE: Galleries that support categorization must define a CollectionViewSource configured with grouping.
+		//		 Otherwise, any IEnumerable can be used as the items source.
+
 		private ColorBarGalleryItemViewModel	automaticColorGalleryItemViewModel;
 		private ImageSource						fontColorSmallImageSource;
 		private ICommand						moreColorsCommand;
@@ -29,6 +34,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		private ICommand						setTextHighlightColorCommand;
 		private ICommand						stopHighlightingCommand;
 		private ImageSource						textHighlightColorSmallImageSource;
+
+		private CollectionViewSource			customLayoutColorPickerItems;
+		private CollectionViewSource			customMenuItemColorPickerItems;
+		private CollectionViewSource			customStyleColorPickerItems;
+
+		private CollectionViewSource			defaultFontColorItems;
+		private CollectionViewSource			defaultFontColorItemsWithAutomatic;
+		private CollectionViewSource			customFontColorItems;
+		private CollectionViewSource			customFontColorItemsWithAutomatic;
 
 		#region Dependency Properties
 
@@ -70,7 +84,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		private ColorBarGalleryItemViewModel AutomaticColorGalleryItemViewModel {
 			get {
 				if (automaticColorGalleryItemViewModel is null) {
-					automaticColorGalleryItemViewModel = new ColorBarGalleryItemViewModel(category: null, Colors.Black, "Automatic") {
+					automaticColorGalleryItemViewModel = new ColorBarGalleryItemViewModel(Colors.Black, category: null, "Automatic") {
 						LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 					};
 				}
@@ -113,47 +127,49 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
 		private static ColorBarGalleryItemViewModel[] CreateFontBaseStandardColorItemsCollection() {
 			var category = "Standard Colors";
+
 			return new[] {
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#c00000").ToColor(), "Dark Red"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ff0000").ToColor(), "Red"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ffc000").ToColor(), "Orange"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ffff00").ToColor(), "Yellow"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#92d050").ToColor(), "Light Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#00b050").ToColor(), "Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#00b0f0").ToColor(), "Light Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#0070c0").ToColor(), "Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#002060").ToColor(), "Dark Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#7030a0").ToColor(), "Purple"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c00000").ToColor(), category, "Dark Red"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ff0000").ToColor(), category, "Red"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ffc000").ToColor(), category, "Orange"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ffff00").ToColor(), category, "Yellow"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#92d050").ToColor(), category, "Light Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#00b050").ToColor(), category, "Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#00b0f0").ToColor(), category, "Light Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#0070c0").ToColor(), category, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#002060").ToColor(), category, "Dark Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#7030a0").ToColor(), category, "Purple"),
 			};
 		}
 
 		/// <summary>
-		/// Creates a collection of gallery item view models for the layout that defines custom colors and groups.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models for the layout that defines custom colors and groups.
 		/// </summary>
-		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
-		private static ColorBarGalleryItemViewModel[] CreateFontCustomLayoutColorItemsCollection() {
+		/// <returns>A <see cref="CollectionViewSource"/> of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
+		private static CollectionViewSource CreateFontCustomLayoutColorItemsCollectionViewSource() {
 			var category = "Colors";
-			return new [] {
+
+			return BarGalleryViewModel.CreateCollectionViewSource(new [] {
 				// Row 1 - Group Start
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#fff600").ToColor(),"Yellow") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#00fff6").ToColor(),"Teal") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ff88ee").ToColor(),"Pink") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#fff600").ToColor(), category, "Yellow") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#00fff6").ToColor(), category, "Teal") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ff88ee").ToColor(), category, "Pink") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupStart },
 
 				// Row 2 - Group Inner
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ffba00").ToColor(),"Gold") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#00d2ff").ToColor(),"Aqua") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#fc00ff").ToColor(),"Purple") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ffba00").ToColor(), category, "Gold") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#00d2ff").ToColor(), category, "Aqua") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#fc00ff").ToColor(), category, "Purple") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupInner },
 
 				// Row 3 - Group End
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ff5a00").ToColor(),"Orange") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#00a2ff").ToColor(),"Blue") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#c000ff").ToColor(),"Purple") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ff5a00").ToColor(), category, "Orange") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#00a2ff").ToColor(), category, "Blue") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c000ff").ToColor(), category, "Purple") { LayoutBehavior = BarGalleryItemLayoutBehavior.GroupEnd },
 
 				// Row 4 - No Group
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#ff0000").ToColor(),"Red"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#0000ff").ToColor(),"Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#8000ff").ToColor(),"Purple"),
-			};
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ff0000").ToColor(), category, "Red"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#0000ff").ToColor(), category, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#8000ff").ToColor(), category, "Purple"),
+			}, categorize: true);
 		}
 
 		/// <summary>
@@ -162,65 +178,68 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
 		private static ColorBarGalleryItemViewModel[] CreateFontCustomThemeColorItemsCollection() {
 			var category = "Custom Theme Colors";
+
 			return new[] {
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#dfe3e5").ToColor(), "Ice Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#335b74").ToColor(), "Dark Teal"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#1cade4").ToColor(), "Turquoise"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#2683c6").ToColor(), "Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#27ced7").ToColor(), "Turquoise"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#42ba97").ToColor(), "Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#3e8853").ToColor(), "Dark Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#62a39f").ToColor(), "Teal"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#dfe3e5").ToColor(), category, "Ice Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#335b74").ToColor(), category, "Dark Teal"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#1cade4").ToColor(), category, "Turquoise"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#2683c6").ToColor(), category, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#27ced7").ToColor(), category, "Turquoise"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#42ba97").ToColor(), category, "Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#3e8853").ToColor(), category, "Dark Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#62a39f").ToColor(), category, "Teal"),
 			};
 		}
 
 		/// <summary>
-		/// Creates a collection of gallery item view models for the colors that might be used for tagging or categorization.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models for the colors that might be used for tagging or categorization.
 		/// </summary>
-		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
-		private static ColorBarGalleryItemViewModel[] CreateCategoryColorItemsCollection() {
+		/// <returns>A <see cref="CollectionViewSource"/> of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
+		private static CollectionViewSource CreateCategoryColorItemsCollectionViewSource() {
 			var category = "Category Colors";
-			return new[] {
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#f04f58").ToColor(), "Red"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#f1a247").ToColor(), "Orange"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#f3cf4a").ToColor(), "Yellow"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#5dd260").ToColor(), "Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#5c85f5").ToColor(), "Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#b163d3").ToColor(), "Purple"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#9c9ca0").ToColor(), "Gray"),
-			};
+
+			return BarGalleryViewModel.CreateCollectionViewSource(new[] {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f04f58").ToColor(), category, "Red"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f1a247").ToColor(), category, "Orange"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f3cf4a").ToColor(), category, "Yellow"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#5dd260").ToColor(), category, "Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#5c85f5").ToColor(), category, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#b163d3").ToColor(), category, "Purple"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#9c9ca0").ToColor(), category, "Gray"),
+			}, categorize: true);
 		}
 
 		/// <summary>
-		/// Creates a collection of gallery item view models for the colors that will be styled to look like traditional menu items.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models for the colors that will be styled to look like traditional menu items.
 		/// </summary>
-		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
-		private static ColorBarGalleryItemViewModel[] CreateMenuItemItemsCollection() {
+		/// <returns>A <see cref="CollectionViewSource"/> of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
+		private static CollectionViewSource CreateMenuItemItemsCollectionViewSource() {
 			var primaryColorsCategory = "Primary Colors";
 			var secondaryColorsCategory = "Secondary Colors";
-			return new[] {
+
+			return BarGalleryViewModel.CreateCollectionViewSource(new[] {
 				// Primary colors
-				new ColorBarGalleryItemViewModel(primaryColorsCategory, UIColor.FromWebColor("#f04f58").ToColor(), "Red") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f04f58").ToColor(), primaryColorsCategory, "Red") {
 					KeyTipText = "R", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
-				new ColorBarGalleryItemViewModel(primaryColorsCategory, UIColor.FromWebColor("#f3cf4a").ToColor(), "Yellow") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f3cf4a").ToColor(), primaryColorsCategory, "Yellow") {
 					KeyTipText = "Y", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
-				new ColorBarGalleryItemViewModel(primaryColorsCategory, UIColor.FromWebColor("#5c85f5").ToColor(), "Blue") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#5c85f5").ToColor(), primaryColorsCategory, "Blue") {
 					KeyTipText = "B", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
 				
 				// Secondary colors
-				new ColorBarGalleryItemViewModel(secondaryColorsCategory, UIColor.FromWebColor("#f1a247").ToColor(), "Orange") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f1a247").ToColor(), secondaryColorsCategory, "Orange") {
 					KeyTipText = "O", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
-				new ColorBarGalleryItemViewModel(secondaryColorsCategory, UIColor.FromWebColor("#5dd260").ToColor(), "Green") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#5dd260").ToColor(), secondaryColorsCategory, "Green") {
 					KeyTipText = "G", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
-				new ColorBarGalleryItemViewModel(secondaryColorsCategory, UIColor.FromWebColor("#b163d3").ToColor(), "Purple") {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#b163d3").ToColor(), secondaryColorsCategory, "Purple") {
 					KeyTipText = "P", LayoutBehavior = BarGalleryItemLayoutBehavior.MenuItem
 				},
-			};
+			}, categorize: true);
 		}
 
 		/// <summary>
@@ -229,27 +248,28 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
 		private static ColorBarGalleryItemViewModel[] CreateTextHighlightCustomColorItemsCollection() {
 			var category = "Text Highlight Colors";
+
 			return new[] {
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#335b74").ToColor(), "Dark Teal"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#1cade4").ToColor(), "Turquoise"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#2683c6").ToColor(), "Blue"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#27ced7").ToColor(), "Turquoise"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#42ba97").ToColor(), "Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#3e8853").ToColor(), "Dark Green"),
-				new ColorBarGalleryItemViewModel(category, UIColor.FromWebColor("#62a39f").ToColor(), "Teal"),
-				new ColorBarGalleryItemViewModel(category, Colors.Yellow, "Yellow"),
-				new ColorBarGalleryItemViewModel(category, Colors.Lime, "Lime"),
-				new ColorBarGalleryItemViewModel(category, Colors.Cyan, "Cyan"),
-				new ColorBarGalleryItemViewModel(category, Colors.Magenta, "Magenta"),
-				new ColorBarGalleryItemViewModel(category, Colors.Red, "Red"),
-				new ColorBarGalleryItemViewModel(category, Colors.Purple, "Purple"),
-				new ColorBarGalleryItemViewModel(category, Colors.Maroon, "Maroon"),
-				new ColorBarGalleryItemViewModel(category, Colors.Olive, "Olive"),
-				new ColorBarGalleryItemViewModel(category, Colors.AliceBlue, "Alice Blue"),
-				new ColorBarGalleryItemViewModel(category, Colors.Goldenrod, "Goldenrod"),
-				new ColorBarGalleryItemViewModel(category, Colors.DarkSlateGray, "Dark Slate Gray"),
-				new ColorBarGalleryItemViewModel(category, Colors.CornflowerBlue, "Cornflower Blue"),
-				new ColorBarGalleryItemViewModel(category, Colors.Pink, "Pink"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#335b74").ToColor(), category, "Dark Teal"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#1cade4").ToColor(), category, "Turquoise"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#2683c6").ToColor(), category, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#27ced7").ToColor(), category, "Turquoise"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#42ba97").ToColor(), category, "Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#3e8853").ToColor(), category, "Dark Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#62a39f").ToColor(), category, "Teal"),
+				new ColorBarGalleryItemViewModel(Colors.Yellow, category, "Yellow"),
+				new ColorBarGalleryItemViewModel(Colors.Lime, category, "Lime"),
+				new ColorBarGalleryItemViewModel(Colors.Cyan, category, "Cyan"),
+				new ColorBarGalleryItemViewModel(Colors.Magenta, category, "Magenta"),
+				new ColorBarGalleryItemViewModel(Colors.Red, category, "Red"),
+				new ColorBarGalleryItemViewModel(Colors.Purple, category, "Purple"),
+				new ColorBarGalleryItemViewModel(Colors.Maroon, category, "Maroon"),
+				new ColorBarGalleryItemViewModel(Colors.Olive, category, "Olive"),
+				new ColorBarGalleryItemViewModel(Colors.AliceBlue, category, "Alice Blue"),
+				new ColorBarGalleryItemViewModel(Colors.Goldenrod, category, "Goldenrod"),
+				new ColorBarGalleryItemViewModel(Colors.DarkSlateGray, category, "Dark Slate Gray"),
+				new ColorBarGalleryItemViewModel(Colors.CornflowerBlue, category, "Cornflower Blue"),
+				new ColorBarGalleryItemViewModel(Colors.Pink, category, "Pink"),
 			};
 		}
 
@@ -342,7 +362,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 			//
 
 			// Use the base standard colors as the collection of color items for the custom style sample
-			this.CustomStyleColorPickerItems = CreateCategoryColorItemsCollection();
+			customStyleColorPickerItems = CreateCategoryColorItemsCollectionViewSource();
 
 			//
 			// Custom Layout Font Colors
@@ -350,7 +370,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 
 			// Create a collection of items with a custom layout that includes grouping similar to the
 			// default collection of shaded alternate colors
-			this.CustomLayoutColorPickerItems = CreateFontCustomLayoutColorItemsCollection();
+			customLayoutColorPickerItems = CreateFontCustomLayoutColorItemsCollectionViewSource();
 			this.CustomLayoutColorPickerItemsColumnCount = 3;
 
 			//
@@ -358,7 +378,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 			//
 
 			// Create a collection of items that will be rendered like traditional menu items
-			this.CustomMenuItemColorPickerItems = CreateMenuItemItemsCollection();
+			customMenuItemColorPickerItems = CreateMenuItemItemsCollectionViewSource();
 
 			//
 			// Text Highlight Colors
@@ -448,10 +468,10 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Gets or sets the gallery item view models for a color picker using a custom layout.
+		/// Gets the gallery item view models for a color picker using a custom layout.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> CustomLayoutColorPickerItems { get; private set; }
+		/// <value>An <see cref="IEnumerable"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public IEnumerable CustomLayoutColorPickerItems => customLayoutColorPickerItems.View;
 
 		/// <summary>
 		/// Gets or sets the number of columns to be used when displaying <see cref="CustomLayoutColorPickerItems"/> in a gallery.
@@ -460,23 +480,34 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		public int CustomLayoutColorPickerItemsColumnCount { get; private set; }
 
 		/// <summary>
-		/// Gets or sets the gallery item view models for a color picker that will appear like traditional menu items.
+		/// Gets the gallery item view models for a color picker that will appear like traditional menu items.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> CustomMenuItemColorPickerItems { get; private set; }
+		/// <value>An <see cref="IEnumerable"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public IEnumerable CustomMenuItemColorPickerItems => customMenuItemColorPickerItems.View;
 
 		/// <summary>
-		/// Gets or sets the gallery item view models for a color picker using a custom style.
+		/// Gets the gallery item view models for a color picker using a custom style.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> CustomStyleColorPickerItems { get; private set; }
+		/// <value>An <see cref="IEnumerable"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public IEnumerable CustomStyleColorPickerItems => customStyleColorPickerItems.View;
 
 		/// <summary>
 		/// Gets the gallery item view models for a Font Color gallery.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> FontColorItems {
-			get => this.Options?.UseCustomColors == true ? CustomColorPickerItems : DefaultFontColorItems;
+		/// <value>An <see cref="ICollectionView"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public IEnumerable FontColorItems {
+			get {
+				if (this.Options?.UseCustomColors == true) {
+					if (customFontColorItems is null)
+						customFontColorItems = BarGalleryViewModel.CreateCollectionViewSource(CustomColorPickerItems, categorize: true);
+					return customFontColorItems.View;
+				}
+				else {
+					if (defaultFontColorItems is null)
+						defaultFontColorItems = BarGalleryViewModel.CreateCollectionViewSource(DefaultFontColorItems, categorize: true);
+					return defaultFontColorItems.View;
+				}
+			}
 		}
 		
 		/// <summary>
@@ -490,9 +521,20 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		/// <summary>
 		/// Gets the gallery item view models for a Font Color gallery.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> FontColorItemsWithAutomatic {
-			get => new ColorBarGalleryItemViewModel[] { this.AutomaticColorGalleryItemViewModel }.Concat(this.FontColorItems);
+		/// <value>An <see cref="ICollectionView"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public ICollectionView FontColorItemsWithAutomatic {
+			get {
+				if (this.Options?.UseCustomColors == true) {
+					if (customFontColorItemsWithAutomatic is null)
+						customFontColorItemsWithAutomatic = BarGalleryViewModel.CreateCollectionViewSource(new[] { this.AutomaticColorGalleryItemViewModel }.Concat(CustomColorPickerItems), categorize: true);
+					return customFontColorItemsWithAutomatic.View;
+				}
+				else {
+					if (defaultFontColorItemsWithAutomatic is null)
+						defaultFontColorItemsWithAutomatic = BarGalleryViewModel.CreateCollectionViewSource(new[] { this.AutomaticColorGalleryItemViewModel }.Concat(DefaultFontColorItems), categorize: true);
+					return defaultFontColorItemsWithAutomatic.View;
+				}
+			}
 		}
 
 		/// <summary>
@@ -594,12 +636,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 					setFontColorCommand = new PreviewableDelegateCommand<ColorBarGalleryItemViewModel>(
 						executeAction: param => {
 							if (param != null)
-								SetFontColor(param.Color, param.Label);
+								SetFontColor(param.Value, param.Label);
 						},
 						canExecuteFunc: param => true,
 						previewAction: param => {
 							if (param != null)
-								SetPreviewColor(param.Color);
+								SetPreviewColor(param.Value);
 						},
 						cancelPreviewAction: param => SetPreviewColor(Colors.Transparent)
 					);
@@ -620,12 +662,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 					setTextHighlightColorCommand = new PreviewableDelegateCommand<ColorBarGalleryItemViewModel>(
 						executeAction: param => {
 							if (param != null)
-								SetTextHighlightColor(param.Color, param.Label);
+								SetTextHighlightColor(param.Value, param.Label);
 						},
 						canExecuteFunc: param => true,
 						previewAction: param => {
 							if (param != null)
-								SetPreviewColor(param.Color);
+								SetPreviewColor(param.Value);
 						},
 						cancelPreviewAction: param => SetPreviewColor(Colors.Transparent)
 					);

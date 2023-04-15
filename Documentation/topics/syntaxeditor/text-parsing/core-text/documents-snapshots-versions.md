@@ -11,7 +11,7 @@ Documents, snapshots, and versions are used to store text data.  Documents allow
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) interface has a [CurrentSnapshot](xref:ActiproSoftware.Text.ITextDocument.CurrentSnapshot) property that returns the "current" [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) for the document.
 
-Think of [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) objects like .NET strings.  They are immutable, meaning their contents cannot be changed, and they can be used across threads.  Therefore you are able to examine and parse a snapshot without fear of its contents changing from some other operations in a separate thread.
+Think of [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) objects like .NET strings.  They are immutable, meaning their contents cannot be changed, and they can be used across threads.  Therefore, you are able to examine and parse a snapshot without fear of its contents changing from some other operations in a separate thread.
 
 There are multiple ways to examine text in a snapshot, some of the most common are described below.
 
@@ -25,15 +25,15 @@ Each snapshot is related to a single version.  Therefore, each [ITextSnapshot](x
 
 *A sequence of text changes made, showing how new snapshots and versions are created*
 
-As changes are made to a document, new snapshots and related versions are created.  For instance a blank document would have a current snapshot with version `0`.  If the text "Actipro" was appended to the document, it would now have a current snapshot with version `1`.  If the first three characters were removed, the document would now have a current snapshot with version `2`.  And so on.
+As changes are made to a document, new snapshots and related versions are created.  For instance, a blank document would have a current snapshot with version `0`.  If the text `"Actipro"` was appended to the document, it would now have a current snapshot with version `1`.  If the first three characters were removed, the document would now have a current snapshot with version `2`.  And so on.
 
-Essentially, the version increments with any change and provides the data needed for [snapshot translation](snapshot-translation.md).  Each snapshot references a single version and the snapshot contains a complete immutable copy of the text that is related to the version.
+Essentially, the version increments with any change and provides the data needed for [snapshot translation](snapshot-translation.md).  Each snapshot references a single version, and the snapshot contains a complete immutable copy of the text that is related to the version.
 
 ## Memory Usage and Performance
 
 After reading above that every change creates a completely new immutable copy of the document text in a snapshot, it would be conceivable to think that memory usage would be enormous and performance would suffer, especially for large documents.
 
-Actually this is not the case at all.  Snapshots are designed to share data as much as possible that is not different between consecutive snapshots.  Besides that, once a snapshot is no longer referenced by your code, it and its contents drop out of memory.  Therefore there really isn't much of a memory impact by adding the great features provided by snapshots.
+Actually, this is not the case at all.  Snapshots are designed to share data as much as possible that is not different between consecutive snapshots.  Besides that, once a snapshot is no longer referenced by your code, it and its contents drop out of memory.  Therefore, there really isn't much of a memory impact by adding the great features provided by snapshots.
 
 It's also important to mention that snapshots and their creation are designed to be very fast.  There is no performance decrease by using them.
 
@@ -63,4 +63,6 @@ The [Text Changes and Operations](text-changes.md) topic talks about making text
 
 As displayed by the diagram above, multiple snapshots can be active for a document at any given time.  Sometimes it's useful to store an offset range of text that was parsed from a particular snapshot and at some later arbitrary time, see where the same range is in the "current" snapshot for a document.
 
-This can easily be done and is really a neat feature provided by the snapshot/version design.  See the [Snapshot Translation](snapshot-translation.md) topic for more information on doing this.
+This can easily be done and is really a neat feature provided by the snapshot/version design.
+
+See the [Snapshot Translation](snapshot-translation.md) topic for more information on doing this.

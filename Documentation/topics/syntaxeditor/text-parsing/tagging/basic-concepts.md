@@ -11,7 +11,7 @@ Tags are objects that store data and can be applied to a text range.  Classifica
 
 Tags are any object inheriting [ITag](xref:ActiproSoftware.Text.Tagging.ITag) that can contain some data and can be applied to and tracked with a range of text in a document.
 
-There are several built-in tag types are used to drive various functionality pieces in the product.  This table lists the built-in tag interface types that are supported, along with optional implementation classes that can be used.
+There are several built-in tag types used to drive various functionality pieces in the product.  This table lists the built-in tag interface types that are supported, along with optional implementation classes that can be used.
 
 <table>
 <thead>
@@ -110,7 +110,7 @@ The [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) interfa
 
 Each [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) defines a string-based `Key` that identifies it, along with a more descriptive [Description](xref:ActiproSoftware.Text.IClassificationType.Description) that may be used in user interfaces.
 
-> [!NOTE]
+> [!TIP]
 > Several of the most common classification types are available via static properties on the [ClassificationTypes](xref:ActiproSoftware.Text.ClassificationTypes) class.
 
 The reuse of [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) instances is highly recommended.
@@ -119,11 +119,11 @@ The reuse of [IClassificationType](xref:ActiproSoftware.Text.IClassificationType
 
 [Tokens](../lexing/tokens.md) and classification tags are often related, especially in the case of token taggers.  Let us examine an example.
 
-In a C# document, consider a token that has been created via lexing for the keyword `foreach`.  Syntax languages (advanced ones at least) generally assign different token ID values for each individual keyword.  So the token ID for keyword `foreach` could be `50` for instance.  This value is likely defined in some enumeration or static class of integer constants for the C# language.  By doing this, when we later scan the tokens in the document, we know that this particular token is a `foreach` token without having to look at its text.
+In a C# document, consider a token that has been created via lexing for the keyword `foreach`.  Syntax languages (advanced ones at least) generally assign different token ID values for each individual keyword.  For instance, the token ID for keyword `foreach` could be `50`.  This value is likely defined in some enumeration or static class of integer constants for the C# language.  By doing this, when we later scan the tokens in the document, we know that this particular token is a `foreach` token without having to look at its text.
 
 Now assume that a classification tag has been applied over the same text range via a [token tagger](taggers.md).  This classification would apply a `Keyword` classification type over that text range.
 
-The difference is that where a token can be very specific as to what it represents, a classification tag over the same range is usually much more general.  When the text/parsing framework is used within an editor control such as SyntaxEditor, classification tags are what drive syntax highlighting.  In that scenario, each classification type is associated with a highlighting style.  Therefore when ranges of text are classified with a classification type, SyntaxEditor maps the classification type to its related highlighting style and renders the text in the range using that style.
+The difference is that where a token can be very specific as to what it represents, a classification tag over the same range is usually much more general.  When the text/parsing framework is used within an editor control such as SyntaxEditor, classification tags are what drive syntax highlighting.  In that scenario, each classification type is associated with a highlighting style.  Therefore, when ranges of text are classified with a classification type, SyntaxEditor maps the classification type to its related highlighting style and renders the text in the range using that style.
 
 Even though token taggers most often provide both [ITokenTag](xref:ActiproSoftware.Text.Tagging.ITokenTag) and [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) instances, additional [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) taggers can be layered on top of a token tagger to override and reclassify text.  When used in an editor, this allows for more customized syntax highlighting to be added that merges with the default syntax highlighting.
 

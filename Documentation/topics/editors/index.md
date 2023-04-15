@@ -21,7 +21,7 @@ Each of the controls features unique designs that have been specifically crafted
   - Typed-in values are validated when committed.
   - Use <kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> and <kbd>PgUp</kbd>/<kbd>PgDn</kbd> keys to cycle through known values in a current part.
   - Use <kbd>Left Arrow</kbd>/<kbd>Right Arrow</kbd> keys to move between parts in multi-part edit boxes.
-  - Optional null value support.
+  - Optional `null` value support.
   - Optional clear and popup buttons.
   - Optional read-only mode.
   - Optional non-editable mode, changing behavior to be similar to `ComboBox`.

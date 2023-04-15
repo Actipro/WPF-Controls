@@ -1,8 +1,11 @@
 ﻿using ActiproSoftware.Windows.Controls;
+using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus {
@@ -13,6 +16,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 	public abstract class SampleControlBase : UserControl {
 
 		private ICommand pasteSpecialCommand;
+		private CollectionViewSource pasteOptions;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -20,7 +24,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 
 		public SampleControlBase() {
 			// Initialize collections
-			this.PasteOptions = new ObservableCollection<PasteOptionGalleryItem>(PasteOptionGalleryItem.CreateDefaultCollection());
+			pasteOptions = PasteOptionGalleryItem.CreateDefaultCollectionViewSource();
 			this.TagColors = new ObservableCollection<TagColorGalleryItem>(TagColorGalleryItem.CreateDefaultCollection());
 		}
 
@@ -31,8 +35,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextM
 		/// <summary>
 		/// Gets the collection of view models for the available paste options used by the "Advanced Paste Options" sample.
 		/// </summary>
-		/// <value>An <see cref="ObservableCollection{T}"/> of type <see cref="PasteOptionGalleryItem"/>.</value>
-		public ObservableCollection<PasteOptionGalleryItem> PasteOptions { get; }
+		/// <value>An <see cref="ICollectionView"/> of type <see cref="PasteOptionGalleryItem"/>.</value>
+		public ICollectionView PasteOptions => pasteOptions.View;
 
 		/// <summary>
 		/// Gets the "Paste Special" command used by the "Advanced Paste Options" sample.

@@ -11,6 +11,9 @@ namespace ActiproSoftware.Products.Bars.Mvvm {
 	public enum SRName {
 
 		/// <summary>A user interface string.</summary>
+		UIApplicationButtonText,
+
+		/// <summary>A user interface string.</summary>
 		UINamedColorBlackText,
 		/// <summary>A user interface string.</summary>
 		UINamedColorBlueText,

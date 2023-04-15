@@ -43,15 +43,15 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Checked State
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the checked state of the control.  By default a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the checked state of the control.  By default, a [CheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.CheckableCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Checkable Controls](../../command-model/checkable-controls.md) topic for detailed information on using this command parameter to manage the checked state.
 
-In addition you can manage the checked state of this control programmatically by setting the [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) property.  When no command is set to the control, the control will automatically toggle [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) when it is clicked.  By default it will toggle between `true` and `false`, but if [IsThreeState](xref:@ActiproUIRoot.Controls.Ribbon.Controls.CheckBox.IsThreeState) is `true`, it will also toggle into an indeterminate state.
+In addition you can manage the checked state of this control programmatically by setting the [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) property.  When no command is set to the control, the control will automatically toggle [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) when it is clicked.  By default, it will toggle between `true` and `false`, but if [IsThreeState](xref:@ActiproUIRoot.Controls.Ribbon.Controls.CheckBox.IsThreeState) is `true`, it will also toggle into an indeterminate state.
 
 ## Checked State Events
 
-This control exposes three events that can fire when the [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) property changes value.  Each event fires for a certain value of [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked):
+This control exposes three events that can be raised when the [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked) property changes value.  Each event is raised for a certain value of [IsChecked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.IsChecked):
 
 - [Checked](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.Checked) event
 

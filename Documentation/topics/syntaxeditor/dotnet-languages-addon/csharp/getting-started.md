@@ -53,14 +53,14 @@ protected override void OnExit(ExitEventArgs e) {
 }
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > Failure to set up an ambient parse request dispatcher when using the language will result in unnecessary UI slowdown since parse operations will be performed in the UI thread instead of in a worker thread.
 
 ## Configure the Ambient Assembly Repository
 
 An ambient assembly repository should always be set up to ensure that the application reuses binary assembly reflection data whenever appropriate and that binary assembly references added to a project assembly are cached for future loading performance gains.
 
-The ambient assembly repository should be set up in your application startup code as described in the [Assemblies](../assemblies.md) topic.  The [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) class is the default implementation of an assembly repository, which supports the writing of binary assembly data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder @if (winrt) {(the app's data folder is advised). }@if (wpf) {(usually requires full trust).  If the application is a sandboxed XBAP, it can pass null as the cache path instead. }
+The ambient assembly repository should be set up in your application startup code as described in the [Assemblies](../assemblies.md) topic.  The [FileBasedAssemblyRepository](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileBasedAssemblyRepository) class is the default implementation of an assembly repository, which supports the writing of binary assembly data to a cache folder specified in its constructor, as long as the application has read/write permissions to that folder@if (winrt) { (the app's data folder is advised). }@if (wpf winforms) {. }
 
 @if (winrt) {
 
@@ -81,7 +81,7 @@ protected override void OnStartup(StartupEventArgs e) {
 protected override void OnStartup(StartupEventArgs e) {
 	...
 	// Use a path like this if in full trust; otherwise, pass null
-	string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+	string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 		@"YourCompanyName\YourApplicationName\Assembly Repository");
 	AmbientAssemblyRepositoryProvider.Repository = new FileBasedAssemblyRepository(appDataPath);
 	...
@@ -102,8 +102,8 @@ protected override void OnExit(ExitEventArgs e) {
 }
 ```
 
-> [!NOTE]
-> Failure to set up an ambient assembly repository provider may result in unnecessary increased memory usages and slowdown when loading assembly references.
+> [!IMPORTANT]
+> Failure to set up an ambient assembly repository provider may result in unnecessary increased memory usage and slowdown when loading assembly references.
 
 ## Configure the CSharpSyntaxLanguage and CSharpProjectAssembly
 
@@ -143,7 +143,7 @@ This code applies the language to a document in a [SyntaxEditor](xref:@ActiproUI
 editor.Document.Language = language;
 ```
 
-> [!NOTE]
+> [!TIP]
 > We recommend reusing your [CSharpSyntaxLanguage](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpSyntaxLanguage) instance among all the documents in your application that are editing C# code.  This saves on overall memory usage and reduces load times.
 
 ## Documents Should Have an Appropriate FileName

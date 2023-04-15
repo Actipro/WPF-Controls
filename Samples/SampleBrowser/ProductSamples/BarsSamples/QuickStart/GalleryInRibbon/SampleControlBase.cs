@@ -3,10 +3,12 @@ using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Media;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -17,6 +19,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 	/// </summary>
 	public abstract class SampleControlBase : UserControl {
 
+		private CollectionViewSource							colorItems;
 		private ICommand										configureOneRowLayoutCommand;
 		private ICommand										configureTwoRowLayoutCommand;
 		private ICommand										configureThreeRowLayoutCommand;
@@ -45,85 +48,86 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Creates a collection of gallery item view models for the base colors consistent with the default standard colors.
+		/// Creates a <see cref="CollectionViewSource"/> of gallery item view models for the base colors consistent with the default standard colors.
 		/// </summary>
-		/// <returns>An array of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
-		private static ColorBarGalleryItemViewModel[] CreateColorItemsCollection() {
+		/// <returns>A <see cref="CollectionViewSource"/> of <see cref="ColorBarGalleryItemViewModel"/>.</returns>
+		private static CollectionViewSource CreateColorItemsCollectionViewSource() {
 			var warmColorsCategory = "Warm Colors";
 			var coolColorsCategory = "Cool Colors";
 			var neutralColorsCategory = "Neutral Colors";
-			return new[] {
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#eeece1").ToColor(), "Tan"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#ddd9c3").ToColor(), "Tan, Darker 10%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#c4bd97").ToColor(), "Tan, Darker 25%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#938953").ToColor(), "Tan, Darker 50%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#494429").ToColor(), "Tan, Darker 75%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#1d1b10").ToColor(), "Tan, Darker 90%"),
 
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#1f497d").ToColor(), "Dark Blue"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#c6d9f0").ToColor(), "Dark Blue, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#8db3e2").ToColor(), "Dark Blue, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#548dd4").ToColor(), "Dark Blue, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#17365d").ToColor(), "Dark Blue, Darker 25%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#17365d").ToColor(), "Dark Blue, Darker 50%"),
+			return BarGalleryViewModel.CreateCollectionViewSource(new[] {
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#eeece1").ToColor(), neutralColorsCategory, "Tan"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ddd9c3").ToColor(), neutralColorsCategory, "Tan, Darker 10%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c4bd97").ToColor(), neutralColorsCategory, "Tan, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#938953").ToColor(), neutralColorsCategory, "Tan, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#494429").ToColor(), neutralColorsCategory, "Tan, Darker 75%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#1d1b10").ToColor(), neutralColorsCategory, "Tan, Darker 90%"),
 
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#4f81bd").ToColor(), "Blue"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#dbe5f1").ToColor(), "Blue, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#b8cce4").ToColor(), "Blue, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#95b3d7").ToColor(), "Blue, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#366092").ToColor(), "Blue, Darker 25%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#244061").ToColor(), "Blue, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#1f497d").ToColor(), coolColorsCategory, "Dark Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c6d9f0").ToColor(), coolColorsCategory, "Dark Blue, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#8db3e2").ToColor(), coolColorsCategory, "Dark Blue, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#548dd4").ToColor(), coolColorsCategory, "Dark Blue, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#17365d").ToColor(), coolColorsCategory, "Dark Blue, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#17365d").ToColor(), coolColorsCategory, "Dark Blue, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#c0504d").ToColor(), "Red"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#f2dbdb").ToColor(), "Red, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#e5b9b7").ToColor(), "Red, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#d99694").ToColor(), "Red, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#953734").ToColor(), "Red, Darker 25%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#632423").ToColor(), "Red, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#4f81bd").ToColor(), coolColorsCategory, "Blue"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#dbe5f1").ToColor(), coolColorsCategory, "Blue, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#b8cce4").ToColor(), coolColorsCategory, "Blue, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#95b3d7").ToColor(), coolColorsCategory, "Blue, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#366092").ToColor(), coolColorsCategory, "Blue, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#244061").ToColor(), coolColorsCategory, "Blue, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#f79646").ToColor(), "Orange"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#fdeada").ToColor(), "Orange, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#fbd5b5").ToColor(), "Orange, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#fac090").ToColor(), "Orange, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#e36c09").ToColor(), "Orange, Darker 25%"),
-				new ColorBarGalleryItemViewModel(warmColorsCategory, UIColor.FromWebColor("#974806").ToColor(), "Orange, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c0504d").ToColor(), warmColorsCategory, "Red"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f2dbdb").ToColor(), warmColorsCategory, "Red, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#e5b9b7").ToColor(), warmColorsCategory, "Red, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#d99694").ToColor(), warmColorsCategory, "Red, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#953734").ToColor(), warmColorsCategory, "Red, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#632423").ToColor(), warmColorsCategory, "Red, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#9bbb59").ToColor(), "Olive Green"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#ebf1dd").ToColor(), "Olive Green, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#d6e3bc").ToColor(), "Olive Green, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#c3d69b").ToColor(), "Olive Green, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#76923c").ToColor(), "Olive Green, Darker 25%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#4f6128").ToColor(), "Olive Green, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f79646").ToColor(), warmColorsCategory, "Orange"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#fdeada").ToColor(), warmColorsCategory, "Orange, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#fbd5b5").ToColor(), warmColorsCategory, "Orange, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#fac090").ToColor(), warmColorsCategory, "Orange, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#e36c09").ToColor(), warmColorsCategory, "Orange, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#974806").ToColor(), warmColorsCategory, "Orange, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#4bacc6").ToColor(), "Aqua"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#dbeef3").ToColor(), "Aqua, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#b6dde8").ToColor(), "Aqua, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#93cddc").ToColor(), "Aqua, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#31859b").ToColor(), "Aqua, Darker 25%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#205867").ToColor(), "Aqua, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#9bbb59").ToColor(), coolColorsCategory, "Olive Green"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ebf1dd").ToColor(), coolColorsCategory, "Olive Green, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#d6e3bc").ToColor(), coolColorsCategory, "Olive Green, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#c3d69b").ToColor(), coolColorsCategory, "Olive Green, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#76923c").ToColor(), coolColorsCategory, "Olive Green, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#4f6128").ToColor(), coolColorsCategory, "Olive Green, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#8064a2").ToColor(), "Purple"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#e5e0ec").ToColor(), "Purple, Lighter 80%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#ccc0d9").ToColor(), "Purple, Lighter 60%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#b2a2c7").ToColor(), "Purple, Lighter 40%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#5f497a").ToColor(), "Purple, Darker 25%"),
-				new ColorBarGalleryItemViewModel(coolColorsCategory, UIColor.FromWebColor("#3f3151").ToColor(), "Purple, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#4bacc6").ToColor(), coolColorsCategory, "Aqua"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#dbeef3").ToColor(), coolColorsCategory, "Aqua, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#b6dde8").ToColor(), coolColorsCategory, "Aqua, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#93cddc").ToColor(), coolColorsCategory, "Aqua, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#31859b").ToColor(), coolColorsCategory, "Aqua, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#205867").ToColor(), coolColorsCategory, "Aqua, Darker 50%"),
 
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#ffffff").ToColor(), "White"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#f2f2f2").ToColor(), "White, Darker 5%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#d8d8d8").ToColor(), "White, Darker 15%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#bfbfbf").ToColor(), "White, Darker 25%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#a5a5a5").ToColor(), "White, Darker 35%"),
-				new ColorBarGalleryItemViewModel(neutralColorsCategory, UIColor.FromWebColor("#7f7f7f").ToColor(), "White, Darker 50%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#8064a2").ToColor(), coolColorsCategory, "Purple"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#e5e0ec").ToColor(), coolColorsCategory, "Purple, Lighter 80%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ccc0d9").ToColor(), coolColorsCategory, "Purple, Lighter 60%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#b2a2c7").ToColor(), coolColorsCategory, "Purple, Lighter 40%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#5f497a").ToColor(), coolColorsCategory, "Purple, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#3f3151").ToColor(), coolColorsCategory, "Purple, Darker 50%"),
 
-			};
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#ffffff").ToColor(), neutralColorsCategory, "White"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#f2f2f2").ToColor(), neutralColorsCategory, "White, Darker 5%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#d8d8d8").ToColor(), neutralColorsCategory, "White, Darker 15%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#bfbfbf").ToColor(), neutralColorsCategory, "White, Darker 25%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#a5a5a5").ToColor(), neutralColorsCategory, "White, Darker 35%"),
+				new ColorBarGalleryItemViewModel(UIColor.FromWebColor("#7f7f7f").ToColor(), neutralColorsCategory, "White, Darker 50%"),
+
+			}, categorize: true);
 		}
 
 		/// <summary>
 		/// Initializes the collection of gallery item view models for the galleries used by this sample.
 		/// </summary>
 		private void InitializeColorGalleryItemViewModelCollections() {
-			this.ColorItems = CreateColorItemsCollection();
+			colorItems = CreateColorItemsCollectionViewSource();
 		}
 
 		/// <summary>
@@ -141,8 +145,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		/// <summary>
 		/// Gets the gallery item view models for a Font Color gallery.
 		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
-		public IEnumerable<ColorBarGalleryItemViewModel> ColorItems { get; private set; }
+		/// <value>An <see cref="IEnumerable"/> of <see cref="ColorBarGalleryItemViewModel"/>.</value>
+		public IEnumerable ColorItems => colorItems.View;
 
 		/// <summary>
 		/// Gets the command that will configure the gallery with a 1-row layout.
@@ -267,7 +271,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 					setColorCommand = new DelegateCommand<ColorBarGalleryItemViewModel>(
 						param => {
 							if (param != null) {
-								ThemedMessageBox.Show($"This is where you would apply the following selected color:\r\n\r\n{param.Color} {param.Label}",
+								ThemedMessageBox.Show($"This is where you would apply the following selected color:\r\n\r\n{param.Value} {param.Label}",
 									"Set Color", MessageBoxButton.OK, MessageBoxImage.Information);
 							}
 						},

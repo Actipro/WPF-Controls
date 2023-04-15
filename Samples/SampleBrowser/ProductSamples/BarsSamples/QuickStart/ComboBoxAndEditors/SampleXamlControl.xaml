@@ -30,10 +30,9 @@
 		<bars:Ribbon IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden">
 			
 			<!-- 
-				BarComboBox is a special control that behaves like a ComboBox and uses a BarMenuGallery to display the
-				items in the popup. It's essentially a BarPopupButton with an editable or non-editable textual element.
+				BarComboBox is a special control that behaves like a ComboBox and displays gallery items in its drop-down.
 			
-				All BarMenuGallery functionality can be applied to a BarComboBox popup including categories and filtering.
+				All BarMenuGallery functionality can be applied to a BarComboBox drop-down including categories and filtering.
 			-->
 
 			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
@@ -41,31 +40,47 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 						
 						<!-- Editable -->
-						<bars:BarComboBox Key="Editable" TextPath="Label" IsEditable="True" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
-										  ToolTip="A basic, editable combobox sample." PlaceholderText="Employee">
-							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
-												 ItemsSource="{Binding ComboBoxPersonItems}"
-												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
-												 UseMenuItemAppearance="True" />
+						<bars:BarComboBox 
+							Key="Editable" TextPath="Label" IsEditable="True" 
+							ToolTip="A basic, editable combobox sample." PlaceholderText="(employee)"
+							Command="{Binding ComboBoxGalleryCommand}" 
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+							CanCategorizeOnMenu="False"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxPersonItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 
 						<!-- Read-Only -->
-						<bars:BarComboBox Key="ReadOnly" Label="Read-only" IsEditable="True" IsReadOnly="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
-										  ToolTip="A basic, editable and read-only combobox sample.">
-							<bars:BarMenuGallery Key="EditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
-												 ItemsSource="{Binding ComboBoxPersonItems}"
-												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
-												 UseMenuItemAppearance="True" />
+						<bars:BarComboBox
+							Key="ReadOnly" Label="Read-only" IsEditable="True" IsReadOnly="True" TextPath="Label" 
+							ToolTip="A basic, editable and read-only combobox sample."
+							Command="{Binding ComboBoxGalleryCommand}" 
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+							CanCategorizeOnMenu="False"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxPersonItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 
 						<!-- Non-Editable -->
-						<bars:BarComboBox Key="NonEditable" Label="Non-Editable" TextPath="Label"
-										  ToolTip="A basic, non-editable combobox sample."
-										  >
-							<bars:BarMenuGallery Key="NonEditableGallery" Command="{Binding ComboBoxGalleryCommand}" IsSynchronizedWithCurrentItem="True"
-												 ItemsSource="{Binding ComboBoxPersonItems}"
-												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}"
-												 UseMenuItemAppearance="True" />
+						<bars:BarComboBox
+							Key="NonEditable" Label="Non-Editable" TextPath="Label"
+							ToolTip="A basic, non-editable combobox sample."
+							Command="{Binding ComboBoxGalleryCommand}" 
+							CanCategorizeOnMenu="False"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxPersonItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 
 					</bars:RibbonControlGroup>
@@ -74,32 +89,48 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 
 						<!-- Categorized items in a single column -->
-						<bars:BarComboBox Key="CategorizedSingleColumn" Label="Single-Column" IsEditable="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
-										  ToolTip="A combobox with items categorized and displayed in a single column.">
-							<bars:BarMenuGallery Key="CategorizedSingleColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
-												 MaxColumnCount="1"
-												 CategorizedItemsSource="{Binding ComboBoxPersonItems}"
-												 ItemTemplate="{StaticResource PersonComboBoxGalleryItemTemplate}" 
-												 UseMenuItemAppearance="True" />
+						<bars:BarComboBox
+							Key="CategorizedSingleColumn" Label="Single-Column" IsEditable="True" TextPath="Label" 
+							ToolTip="A combobox with items categorized and displayed in a single column."
+							Command="{Binding ComboBoxGalleryCommand}"
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxPersonItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 						
 						<!-- Categorized items in multiple columns -->
-						<bars:BarComboBox Key="CategorizedMultiColumn" Label="Multi-Column" IsEditable="True" TextPath="Label" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
-										  ToolTip="A combobox with items categorized and displayed using multiple columns.">
-							<bars:BarMenuGallery Key="CategorizedMultiColumnGallery" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
-												 MinColumnCount="5" MaxColumnCount="5"
-												 CategorizedItemsSource="{Binding ComboBoxNumberItems}"
-												 ItemTemplate="{StaticResource NumberComboBoxGalleryItemTemplate}" />
-						</bars:BarComboBox>
+						<bars:BarComboBox
+							Key="CategorizedMultiColumn" Label="Multi-Column" IsEditable="True" TextPath="Label" 
+							ToolTip="A combobox with items categorized and displayed using multiple columns."
+							Command="{Binding ComboBoxGalleryCommand}"
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							ItemTemplate="{StaticResource NumberComboBoxGalleryItemTemplate}" 
+							MinMenuColumnCount="5" 
+							MaxMenuColumnCount="5"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxNumberItems}" />
 
 						<!-- Categorized/Filtered items with menu item appearance consistent with large menu items -->
-						<bars:BarComboBox Key="MenuStyle" IsEditable="True" TextPath="Label"
-										  ToolTip="A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.">
-							<bars:BarMenuGallery Key="MenuStyleGallery" MaxColumnCount="1" CanFilter="True" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
-												 CategorizedItemsSource="{Binding ComboBoxColorItems}"
-												 ItemTemplate="{StaticResource LargeMenuComboBoxGalleryItemTemplate}"
-												 UseMenuItemAppearance="True" />
-							<bars:BarMenuItem Label="More colors..." Command="{Binding NotImplementedCommand}" />
+						<bars:BarComboBox 
+							Key="MenuStyle" IsEditable="True" TextPath="Label" 
+							ToolTip="A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items."
+							Command="{Binding ComboBoxGalleryCommand}"
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
+							CanFilterOnMenu="True" 
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							ItemTemplate="{StaticResource LargeMenuComboBoxGalleryItemTemplate}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemsSource="{Binding ComboBoxColorItems}">
+							<bars:BarComboBox.BelowMenuItems>
+								<x:Array Type="{x:Type bars:BarMenuItem}">
+									<bars:BarMenuItem Label="More colors..." Command="{Binding NotImplementedCommand}" />
+								</x:Array>
+							</bars:BarComboBox.BelowMenuItems>
 						</bars:BarComboBox>
 						
 					</bars:RibbonControlGroup>
@@ -108,29 +139,51 @@
 					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
 
 						<!-- Font family -->
-						<bars:BarComboBox Key="FontFamily" IsEditable="True" IsUnmatchedTextAllowed="False" TextPath="Label" RequestedWidth="120"
-										  ToolTip="A combobox with system fonts and a category for recently-used fonts.">
-							<bars:BarMenuGallery Key="FontFamilyGallery" MaxColumnCount="1" CanCategorize="True" CategoryPropertyName="Category" Command="{Binding ComboBoxGalleryCommand}"
-												 ResizeMode="Vertical"
-												 CategorizedItemsSource="{Binding ComboBoxFontFamilyItems}"
-												 UseMenuItemAppearance="True">
-								<bars:BarMenuGallery.ItemTemplateSelector>
-									<barsmvvm:BarGalleryItemTemplateSelector />
-								</bars:BarMenuGallery.ItemTemplateSelector>
-							</bars:BarMenuGallery>
+						<bars:BarComboBox
+							Key="FontFamily" IsEditable="True" IsUnmatchedTextAllowed="False" TextPath="Label" RequestedWidth="120"
+							ToolTip="A combobox with system fonts and a category for recently-used fonts."
+							Command="{Binding ComboBoxGalleryCommand}"
+							IsPreviewEnabledWhenPopupClosed="True"
+							MenuResizeMode="Vertical"
+							IsSynchronizedWithCurrentItem="True"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							ItemsSource="{Binding ComboBoxFontFamilyItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 
 						<!-- Font size -->
-						<bars:BarComboBox Key="FontSize" IsEditable="True" IsTextCompletionEnabled="False" TextPath="Label" RequestedWidth="45" UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
-										  ToolTip="A combobox with common font sizes.">
-							<bars:BarMenuGallery Key="FontSizeGallery" MaxColumnCount="1" Command="{Binding ComboBoxGalleryCommand}"
-												 ResizeMode="Vertical"
-												 CategorizedItemsSource="{Binding ComboBoxFontSizeItems}" IsSynchronizedWithCurrentItem="True"
-												 UseMenuItemAppearance="True">
-								<bars:BarMenuGallery.ItemTemplateSelector>
-									<barsmvvm:BarGalleryItemTemplateSelector />
-								</bars:BarMenuGallery.ItemTemplateSelector>
-							</bars:BarMenuGallery>
+						<bars:BarComboBox
+							Key="FontSize" IsEditable="True" IsTextCompletionEnabled="False" TextPath="Label" RequestedWidth="45" 
+							ToolTip="A combobox with common font sizes."
+							Command="{Binding ComboBoxGalleryCommand}"
+							UnmatchedTextCommand="{Binding ComboBoxUnmatchedNumberTextCommand}"
+							MenuResizeMode="Vertical"
+							IsSynchronizedWithCurrentItem="True"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							ItemsSource="{Binding ComboBoxFontSizeItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
+						</bars:BarComboBox>
+
+					</bars:RibbonControlGroup>
+				</bars:RibbonGroup>
+				<bars:RibbonGroup Key="EnumSamples">
+					<bars:RibbonControlGroup ItemVariantBehavior="AlwaysMedium">
+
+						<!-- Enum -->
+						<bars:BarComboBox
+							Key="EnumValue" IsUnmatchedTextAllowed="False" TextPath="Label" RequestedWidth="120"
+							ToolTip="A combobox with items automated generated from the fields of an Enum type."
+							Command="{Binding ComboBoxGalleryCommand}"
+							IsSynchronizedWithCurrentItem="True"
+							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
+							ItemsSource="{Binding ComboBoxEnumItems}">
+							<bars:BarComboBox.ItemTemplateSelector>
+								<barsmvvm:BarGalleryItemTemplateSelector />
+							</bars:BarComboBox.ItemTemplateSelector>
 						</bars:BarComboBox>
 
 					</bars:RibbonControlGroup>

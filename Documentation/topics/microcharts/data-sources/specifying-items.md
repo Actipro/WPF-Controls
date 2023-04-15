@@ -108,4 +108,4 @@ We can specify that the Y values should be pulled from the `Amount` property by 
 If instead we want the X values to be pulled from the `Date` property, then we would need to set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) to `"Date"`.
 
 > [!TIP]
-> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`"."`).  For example you can set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.
+> You can traverse complex hierarchies to get to the value you need by using a property path that is delimited by a period (`"."`).  For example, you can set [XPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.XPath) or [YPath](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.YPath) to something like `"MyProperty.MyOtherProperty.MyDoubleValue"`, similar to how binding paths work in XAML.

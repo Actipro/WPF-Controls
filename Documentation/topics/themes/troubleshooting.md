@@ -38,7 +38,7 @@ Therefore, in cases where a `ListView` is being used without an associated `Grid
 
 ### Ensuring Application.Current Is Initialized
 
-Actipro's theme manager and `Image` embedded resources (such as those used in our IntelliPrompt popups) with `"pack://"` URIs both require access to the WPF `Application.Current` object.  When hosting WPF controls in a WinForms or other non-WPF application, the `Application.Current` property will be null by default.
+Actipro's theme manager and `Image` embedded resources (such as those used in our IntelliPrompt popups) with `"pack://"` URIs both require access to the WPF `Application.Current` object.  When hosting WPF controls in a WinForms or other non-WPF application, the `Application.Current` property will be `null` by default.
 
 This effectively prevents the theme manager from dynamically changing the current theme, and any `"pack://"` URI references to `Image` embedded resources may fail with a `NotSupportedException` and message "The URI prefix is not recognized."
 

@@ -70,7 +70,7 @@ As indicated by a note in the [Customizing String Resources](customizing-string-
 
 ## Data Binding Errors at Run-Time
 
-Sometimes there may be some data binding errors that show up in the Visual Studio console window when executing an application that uses a WPF Studio product.  WPF Studio has some very large and complex templates for its products' controls and these error messages may show up in the VS console due to the timing between data binding resolution and visual tree creation.
+Sometimes there may be some data binding errors that show up in the Visual Studio console window when executing an application that uses a WPF Studio product.  WPF Studio has some very large and complex templates for its products' controls and these error messages may show up in the Visual Studio console due to the timing between data binding resolution and visual tree creation.
 
 It is very important to not that the data binding errors are NOT problems in our code.  If they were, the bindings would not work at all at run-time and you would see broken UI functionality.  This is not the case, everything works correctly at run-time after the visual tree has been fully constructed and the bindings have been re-evaluated by WPF.
 

@@ -5,9 +5,9 @@ order: 7
 ---
 # Example Text
 
-Syntax languages have to ability to expose a small code snippet showing many of the constructs in the language.
+Syntax languages have the ability to expose a small code snippet showing many of the constructs in the language.
 
-This can be used in options dialogs to show the current classifications / syntax highlighting settings affect a particular language.  In this case, it is best to use code the shows all the various classifications and related highlighting styles.
+This can be used in options dialogs to show how the current classifications / syntax highlighting settings affect a particular language.  In this case, it is best to use code that shows all the various classifications and related highlighting styles.
 
 ## Basic Concepts
 

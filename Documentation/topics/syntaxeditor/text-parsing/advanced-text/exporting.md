@@ -32,9 +32,9 @@ The text framework has four formats for exporting HTML, all available as methods
 </td>
 <td>
 
-Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to `HTML`, using `CSS` classes for syntax highlighting.
+Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to HTML, using CSS classes for syntax highlighting.
 
-`CSS` class references will be used for highlighting.  This type adds a `STYLE` tag block to the exported `HTML` where `CSS` classes are defined.  The text in the code block references these `CSS` classes, therefore allowing color settings to easily be altered for each highlighting style (i.e., keywords, comments, etc.).  Root `HTML`, `BODY` and other tags will be added to the output.
+CSS class references will be used for highlighting.  This type adds a `STYLE` tag block to the exported HTML where CSS classes are defined.  The text in the code block references these CSS classes, therefore allowing color settings to easily be altered for each highlighting style (i.e., keywords, comments, etc.).  Root `HTML`, `BODY` and other tags will be added to the output.
 
 </td>
 </tr>
@@ -47,7 +47,7 @@ Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExp
 </td>
 <td>
 
-Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to `HTML`, in a format that is compatible with the Windows clipboard HTML data format.
+Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to HTML, in a format that is compatible with the Windows clipboard HTML data format.
 
 The output of this exporter is the same as [CreateHtmlInlineFragment](xref:ActiproSoftware.Text.Exporters.TextExporterFactory.CreateHtmlInlineFragment*), except that some additional information is added to make the exported text compatible with the Windows clipboard HTML data format.
 
@@ -62,9 +62,9 @@ The output of this exporter is the same as [CreateHtmlInlineFragment](xref:Actip
 </td>
 <td>
 
-Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to `HTML`, using inline `CSS` for syntax highlighting.
+Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to HTML, using inline CSS for syntax highlighting.
 
-Inline `CSS` styles will be used for highlighting.  This type allows for the code block to be directly copied out of the exported document and pasted into another.  Root `HTML`, `BODY` and other tags will be added to the output.
+Inline CSS styles will be used for highlighting.  This type allows for the code block to be directly copied out of the exported document and pasted into another.  Root `HTML`, `BODY` and other tags will be added to the output.
 
 </td>
 </tr>
@@ -77,9 +77,9 @@ Inline `CSS` styles will be used for highlighting.  This type allows for the cod
 </td>
 <td>
 
-Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to `HTML`, using inline `CSS` for syntax highlighting and no root `HTML` or `BODY` tags.
+Returns the [IHtmlTextExporter](xref:ActiproSoftware.Text.Exporters.IHtmlTextExporter) that can export text to HTML, using inline CSS for syntax highlighting and no root `HTML` or `BODY` tags.
 
-Inline `CSS` styles will be used for highlighting.  This type allows for the code block to be directly copied out of the exported document and pasted into another.  Root `HTML`, `BODY` and other tags will not be added to the output.
+Inline CSS styles will be used for highlighting.  This type allows for the code block to be directly copied out of the exported document and pasted into another.  Root `HTML`, `BODY` and other tags will not be added to the output.
 
 </td>
 </tr>
@@ -99,9 +99,9 @@ The constructor of the [TextExporterFactory](xref:ActiproSoftware.Text.Exporters
 
 ## Exporting to a String
 
-Exporting to a string is done via the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[Export](xref:ActiproSoftware.Text.ITextSnapshot.Export*) method.
+Exporting to a `string` is done via the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[Export](xref:ActiproSoftware.Text.ITextSnapshot.Export*) method.
 
-This code shows how to export the contents of an [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) to a string in RTF format:
+This code shows how to export the contents of an [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) to a `string` in RTF format:
 
 ```csharp
 string text = document.CurrentSnapshot.Export(new TextExporterFactory().CreateRtf());
@@ -124,9 +124,9 @@ document.CurrentSnapshot.ExportToFile(new TextExporterFactory().CreateRtf(), pat
 
 ## Exporting Selected Text in a SyntaxEditor View
 
-Exporting to the selected text in a SyntaxEditor view to a string is done via the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[ExportSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.ExportSelectedText*) method.
+Exporting to the selected text in a SyntaxEditor view to a `string` is done via the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[ExportSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.ExportSelectedText*) method.
 
-This code shows how to export the selected text in the active view to a string in RTF format:
+This code shows how to export the selected text in the active view to a `string` in RTF format:
 
 ```csharp
 string text = editor.ActiveView.ExportSelectedText(new TextExporterFactory().CreateRtf());
@@ -136,7 +136,7 @@ string text = editor.ActiveView.ExportSelectedText(new TextExporterFactory().Cre
 
 The [ITextExporter](xref:ActiproSoftware.Text.Exporters.ITextExporter).[Export](xref:ActiproSoftware.Text.Exporters.ITextExporter.Export*) method allows for the exporting of any custom snapshot text range.
 
-This code shows how to export a snapshot text range to a string in RTF format:
+This code shows how to export a snapshot text range to a `string` in RTF format:
 
 ```csharp
 string text = new TextExporterFactory().CreateRtf().Export(snapshot, new TextRange[] { textRange });

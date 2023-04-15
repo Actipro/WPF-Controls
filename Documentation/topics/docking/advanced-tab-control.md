@@ -111,7 +111,7 @@ A new tab button can be displayed by setting the [AdvancedTabControl](xref:@Acti
 
 The style of the button can be set with the [NewTabButtonStyle](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.NewTabButtonStyle) property.
 
-When the button is clicked, the [NewTabRequested](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.NewTabRequested) event fires.  Handlers of that event should add a new tab to the control in response.
+When the button is clicked, the [NewTabRequested](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.NewTabRequested) event is raised.  Handlers of that event should add a new tab to the control in response.
 
 ## Embedded Buttons
 
@@ -147,7 +147,7 @@ By default, animation effects are applied during layout, such as when tabs are a
 
 ## Menus
 
-The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[MenuOpening](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.MenuOpening) event fires before a context or drop-down menu is opening.  Its event arguments specify the related [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem), if any, along with the default menu that will be displayed.  You can fully customize or change the menu to suit your needs.
+The [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl).[MenuOpening](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl.MenuOpening) event is raised before a context or drop-down menu is opening.  Its event arguments specify the related [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem), if any, along with the default menu that will be displayed.  You can fully customize or change the menu to suit your needs.
 
 ## Keyboard Shortcuts
 

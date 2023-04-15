@@ -17,7 +17,7 @@ The window offers the end-user the ability to reorder navigation pane buttons by
 
 The default overflow menu has a menu item for displaying the **Options** window.  This is executed via the [NavigationBarCommands](xref:@ActiproUIRoot.Controls.Navigation.NavigationBarCommands).[ShowOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBarCommands.ShowOptionsWindow) command.
 
-However you can manually show the **Options** window by calling [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar).[ShowOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.ShowOptionsWindow*).
+However, you can manually show the **Options** window by calling [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar).[ShowOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.ShowOptionsWindow*).
 
 That method calls [GetOptionsWindow](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.GetOptionsWindow*) first to get a reference to an **Options** window instance.  By creating a class that inherits [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) you can override that method to return any sort of custom `Window` that you'd like to use for the options.
 

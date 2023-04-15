@@ -34,4 +34,4 @@ Since this feature is installed as a "feature" service on the language and is in
 
 The [JsonTextFormatter](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JsonTextFormatter).[IsOpeningBraceOnNewLine](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JsonTextFormatter.IsOpeningBraceOnNewLine) property can be used to determine whether opening braces appear on a new line after a colon.
 
-It defaults to `false`, but can be changed to `true` to cause opening braces to move to the next line after a colon.
+It defaults to `false` but can be changed to `true` to cause opening braces to move to the next line after a colon.

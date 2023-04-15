@@ -238,13 +238,11 @@
 							<bars:BarMenuItem Key="Copy" Command="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
 							<bars:BarMenuGallery Key="PasteOptions"
 												 AreSurroundingSeparatorsAllowed="False"
-												 CanCategorize="True"
-												 CategorizedItemsSource="{Binding PasteOptions}"
 												 CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
-												 CategoryPropertyName="Category"
 												 Command="{Binding PasteSpecialCommand}"
 												 IsSelectionSupported="False"
 												 ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+												 ItemsSource="{Binding PasteOptions}"
 												 ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
 												 MaxColumnCount="6"
 												 UseMenuItemIndent="True" />
@@ -300,13 +298,11 @@
 					<bars:BarMenuItem Command="ApplicationCommands.Copy" SmallImageSource="/Images/Icons/Copy16.png" />
 					<bars:BarMenuGallery Key="PasteOptions"
 										 AreSurroundingSeparatorsAllowed="False"
-										 CanCategorize="True"
-										 CategorizedItemsSource="{Binding PasteOptions}"
 										 CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
-										 CategoryPropertyName="Category"
 										 Command="{Binding PasteSpecialCommand}"
-										 IsSynchronizedWithCurrentItem="False"
+										 IsSelectionSupported="False"
 										 ItemContainerStyle="{StaticResource BarGalleryItemStyle}"
+										 ItemsSource="{Binding PasteOptions}"
 										 ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
 										 MaxColumnCount="6"
 										 UseMenuItemIndent="True" />

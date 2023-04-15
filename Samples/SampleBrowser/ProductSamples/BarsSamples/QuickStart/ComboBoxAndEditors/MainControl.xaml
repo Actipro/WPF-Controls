@@ -21,7 +21,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					BarComboBox is a control that can be used with Actipro's Ribbon and toolbars to provide combobox-like functionality.
+					BarComboBox is a control that can be used with Actipro's ribbon and toolbars to provide combobox-like functionality.
 					Its popup content is presented as a menu where the traditional combobox items are managed by a BarMenuGallery.
 					This means all the great functionality of BarMenuGallery can also be applied to the popup of BarComboBox. 
 					That includes previewing items, filtering, and even showing additional menu items below the gallery items.
@@ -31,7 +31,7 @@
 					or when the Enter key is pressed.
 					<LineBreak /><LineBreak />
 					This sample also shows several examples of how other external controls like our Editors product's edit boxes can be used
-					within the Ribbon.
+					within the ribbon.
 				</TextBlock>
 			</Expander>
 

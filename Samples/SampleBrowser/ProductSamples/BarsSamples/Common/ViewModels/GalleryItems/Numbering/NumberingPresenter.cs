@@ -46,29 +46,24 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// <summary>
 		/// Gets all of the text values that will be displayed in the preview.
 		/// </summary>
+		/// <param name="kind">The numbering kind whose text will be generating.</param>
+		/// <param name="format">The format to be used.</param>
 		/// <returns>An array of 3 text values.</returns>
-		private string[] GetBulletTexts() {
-			var viewModel = this.ViewModel;
-			if (viewModel != null) {
-				var format = viewModel.Format;
-
-				switch (viewModel.Kind) {
-					case NumberingKind.ArabicNumeral:
-						return new string[] { string.Format(format, "1"), string.Format(format, "2"), string.Format(format, "3") };
-					case NumberingKind.LowerAlpha:
-						return new string[] { string.Format(format, "a"), string.Format(format, "b"), string.Format(format, "c") };
-					case NumberingKind.LowerRomanNumeral:
-						return new string[] { string.Format(format, "i"), string.Format(format, "ii"), string.Format(format, "iii") };
-					case NumberingKind.UpperAlpha:
-						return new string[] { string.Format(format, "A"), string.Format(format, "B"), string.Format(format, "C") };
-					case NumberingKind.UpperRomanNumeral:
-						return new string[] { string.Format(format, "I"), string.Format(format, "II"), string.Format(format, "III") };
-					default:  // None
-						return new string[] { "None" };
-				}
+		private string[] GetBulletTexts(NumberingKind kind, string format) {
+			switch (kind) {
+				case NumberingKind.ArabicNumeral:
+					return new string[] { string.Format(format, "1"), string.Format(format, "2"), string.Format(format, "3") };
+				case NumberingKind.LowerAlpha:
+					return new string[] { string.Format(format, "a"), string.Format(format, "b"), string.Format(format, "c") };
+				case NumberingKind.LowerRomanNumeral:
+					return new string[] { string.Format(format, "i"), string.Format(format, "ii"), string.Format(format, "iii") };
+				case NumberingKind.UpperAlpha:
+					return new string[] { string.Format(format, "A"), string.Format(format, "B"), string.Format(format, "C") };
+				case NumberingKind.UpperRomanNumeral:
+					return new string[] { string.Format(format, "I"), string.Format(format, "II"), string.Format(format, "III") };
+				default:
+					return new string[] { null, null, null };
 			}
-			else
-				return new string[] { null, null, null };
 		}
 
 		/// <summary>
@@ -100,10 +95,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 		/// <inheritdoc/>
 		protected override void OnRender(DrawingContext drawingContext) {
-			var bulletTexts = this.GetBulletTexts();
 
-			var viewModel = this.ViewModel;
-			if ((viewModel != null) && (viewModel.Kind != NumberingKind.None)) {
+			var viewModel = this.ViewModel ?? new NumberingBarGalleryItemViewModel(NumberingKind.None);
+			if (viewModel.Value == NumberingKind.None) {
+				var formattedText = this.CreateFormattedText(viewModel.Label);
+				var location = new Point((this.ActualWidth - formattedText.Width) / 2.0, (this.ActualHeight - formattedText.Height) / 2.0);
+				drawingContext.DrawText(formattedText, location, this.FlowDirection);
+			}
+			else {
+				var bulletTexts = this.GetBulletTexts(viewModel.Value, viewModel.Format);
 				var line1FormattedText = this.CreateFormattedText(bulletTexts[0]);
 				var line2FormattedText = this.CreateFormattedText(bulletTexts[1]);
 				var line3FormattedText = this.CreateFormattedText(bulletTexts[2]);
@@ -128,11 +128,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				drawingContext.DrawLine(lineVisualPen, 
 					new Point(location.X + line3FormattedText.Width + LineVisualSpacer, location.Y + line3FormattedText.Height / 2.0), 
 					new Point(this.ActualWidth - this.Padding.Right, location.Y + line3FormattedText.Height / 2.0));
-			}
-			else {
-				var formattedText = this.CreateFormattedText(bulletTexts[0]);
-				var location = new Point((this.ActualWidth - formattedText.Width) / 2.0, (this.ActualHeight - formattedText.Height) / 2.0);
-				drawingContext.DrawText(formattedText, location, this.FlowDirection);
 			}
 		}
 

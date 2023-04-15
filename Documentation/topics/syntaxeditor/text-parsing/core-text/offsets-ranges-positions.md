@@ -15,7 +15,7 @@ The first character in a document is at index `0`.  The offset past the last cha
 
 ## Text Ranges
 
-It is often necessary to work with an ordered pair of offsets.  For instance when getting a substring of text in a snapshot, you need to pass the offset range to obtain.
+It is often necessary to work with an ordered pair of offsets.  For instance, when getting a substring of text in a snapshot, you need to pass the offset range to obtain.
 
 The [TextRange](xref:ActiproSoftware.Text.TextRange) structure represents an ordered pair of two offsets.  It has many methods for comparing the range with other offsets and ranges.
 
@@ -33,7 +33,7 @@ TextRange range = TextRange.FromSpan(3, 2);
 
 ## Text Positions
 
-[TextPosition](xref:ActiproSoftware.Text.TextPosition) structures are similar to offsets in that they indicate a certain character within a string or snapshot.  However they work in terms of a line index and a character index within that line.
+[TextPosition](xref:ActiproSoftware.Text.TextPosition) structures are similar to offsets in that they indicate a certain character within a string or snapshot.  However, they work in terms of a line index and a character index within that line.
 
 The [Line](xref:ActiproSoftware.Text.TextPosition.Line) and [Character](xref:ActiproSoftware.Text.TextPosition.Character) values of text positions are zero-based so a text position representing line index `1` and character `7` references the eighth character on the second line in the text.
 
@@ -57,7 +57,7 @@ TextPositionRange positionRange = new TextPositionRange(1, 7, 2, 3);
 
 Sometimes it's useful to convert between offsets and text positions.  Likewise, conversion between text ranges and text positions is possible.
 
-These members in the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) inteface allow for conversion:
+These members in the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) interface allow for conversion:
 
 | Member | Description |
 |-----|-----|
@@ -78,11 +78,11 @@ This code creates a [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotO
 TextSnapshotOffset snapshotOffset = new TextSnapshotOffset(document.CurrentSnapshot, 5);
 ```
 
-Snapshot offsets can be translated to another snaphot.  Details on this are available in the [Snapshot Translation](snapshot-translation.md) topic.
+Snapshot offsets can be translated to another snapshot.  Details on this are available in the [Snapshot Translation](snapshot-translation.md) topic.
 
 ## Snapshot Ranges
 
-The [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) structure is similar to a [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) in that it references a specific [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).  The different is that it tracks two normalized locations within the snapshot.
+The [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) structure is similar to a [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) in that it references a specific [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).  The difference is that it tracks two normalized locations within the snapshot.
 
 Accordingly, it can do additional things like return the text contained within the range, give the offset/text positions of the start/end, etc.
 
@@ -98,7 +98,7 @@ This code creates a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRa
 TextSnapshotRange snapshotRange = TextSnapshotRange.FromSpan(document.CurrentSnapshot, 3, 2);
 ```
 
-Snapshot ranges can be translated to another snaphot.  Details on this are available in the [Snapshot Translation](snapshot-translation.md) topic.
+Snapshot ranges can be translated to another snapshot.  Details on this are available in the [Snapshot Translation](snapshot-translation.md) topic.
 
 ## Normalized Snapshot Range Collection
 
@@ -130,7 +130,7 @@ Version ranges can be translated to any snapshot for the same document:
 TextSnapshotRange snapshotRange = versionRange.Translate(document.CurrentSnapshot);
 ```
 
-Version ranges also can be translated to a text range for particular lightweight [ITextVersion](xref:ActiproSoftware.Text.ITextVersion) that is also from the same document.
+Version ranges also can be translated to a text range for a particular lightweight [ITextVersion](xref:ActiproSoftware.Text.ITextVersion) that is also from the same document.
 
 ```csharp
 TextRange range = versionRange.Translate(document.CurrentSnapshot.Version);

@@ -25,7 +25,7 @@ When the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase
 
 ## Null Values
 
-The [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsNullAllowed) property determines if a null value is permitted.  It can be set to `false` to designate that a non-null value is required.
+The [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsNullAllowed) property determines if a `null` value is permitted.  It can be set to `false` to designate that a non-`null` value is required.
 
 Many of the [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) properties are implemented as nullable types.  For instance, the [Int32EditBox](xref:@ActiproUIRoot.Controls.Editors.Int32EditBox).[Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property is of type `Nullable<Int32>`.  When [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsNullAllowed) is `false`, an integer will always be returned in the `Value` property and the control will make its default value show `0` instead of blank text.
 

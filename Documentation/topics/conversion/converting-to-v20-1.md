@@ -317,7 +317,7 @@ The list below is the entire detailed update log, including breaking changes.
 
 - Refined and improved our custom window chrome template, adding a lot of new customizable features along the way.
 - `HasTitleBar` property added, which hides the title bar when set to `false`.
-- Attached `TitleBarHeader` property added, which can be set on a `Window` to use different title text in the title bar.  Set it to null to hide the window's title bar text.
+- Attached `TitleBarHeader` property added, which can be set on a `Window` to use different title text in the title bar.  Set it to `null` to hide the window's title bar text.
 - `TitleBarHeaderTemplate` property added, which can be set to replace title bar text with custom header UI.
 - `TitleBarLeftContentTemplate` property and attached `TitleBarLeftContent` property added, both of which can be used to inject custom UI in the left side of the window's title bar, next to the icon.
 - `TitleBarRightContentTemplate` property and attached `TitleBarRightContent` property added, both of which can be used to inject custom UI in the right side of the window's title bar, next to the system title bar buttons.

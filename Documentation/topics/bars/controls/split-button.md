@@ -179,6 +179,8 @@ The `ICommand` in the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSpli
 
 A [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[Click](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton.Click) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).`Click` event is also raised in these scenarios.
 
+The [PopupOpeningCommand](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpeningCommand) command, if assigned, is executed prior to the popup opening.  This command can be handled in a view model, allowing for a MVVM way to update the items on the popup prior to display.
+
 See the [Using Commands](using-commands.md) topic for more information on commands.
 
 ## Input Gesture Text

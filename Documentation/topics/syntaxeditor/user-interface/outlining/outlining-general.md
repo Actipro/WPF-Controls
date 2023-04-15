@@ -23,7 +23,7 @@ A margin on the left of the text area visually renders the outlining structure f
 
 Hovering the mouse over a vertical line in the margin will cause a highlight to appear that shows the lines contained by the related outlining node.  The vertical line can be double-clicked to collapse the node.
 
-Once collapsed, the node's text content is hidden and a small adornment appears in its place.  By default this adornment renders "..." text, however that can be [customized via the node's definition](outlining-nodes.md).  Hovering the mouse over the collapsed node adornment will provide a quick info tip displaying the node's contents, if the proper service is registered (see below).  Single-clicking the collapsed node adornment will select the node's text range.  Double-clicking the collapsed node adornment will expand the node.
+Once collapsed, the node's text content is hidden, and a small adornment appears in its place.  By default, this adornment renders `"..."` text, however that can be [customized via the node's definition](outlining-nodes.md).  Hovering the mouse over the collapsed node adornment will provide a quick info tip displaying the node's contents, if the proper service is registered (see below).  Single-clicking the collapsed node adornment will select the node's text range.  Double-clicking the collapsed node adornment will expand the node.
 
 ## Outlining Mode (Automatic, Manual, etc.)
 
@@ -33,10 +33,10 @@ Automatic outlining is language-specific and uses an [outlining source](outlinin
 
 The [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[OutliningMode](xref:ActiproSoftware.Text.IEditorDocument.OutliningMode) property dictates which outlining modes are permitted:
 
-- Default - Automatic or manual are permitted and the end user may switch between them at any time.
-- Automatic - Only automatic is permitted.
-- Manual - Only manual is permitted.
-- None - No outlining is permitted.
+- `Default` - Automatic or manual are permitted, and the end user may switch between them at any time.
+- `Automatic` - Only automatic is permitted.
+- `Manual` - Only manual is permitted.
+- `None` - No outlining is permitted.
 
 The currently "active" mode is always available in the [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager).[ActiveMode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.ActiveMode) property.  This property will never return a value of `OutliningMode.Default`, since it always is a resolved result.
 
@@ -44,7 +44,7 @@ The currently "active" mode is always available in the [IOutliningManager](xref:
 
 An outlining manager, represented by the [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager) interface, maintains the outlining node hierarchy for a particular document.  It can be retrieved via the [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[OutliningManager](xref:ActiproSoftware.Text.IEditorDocument.OutliningManager) property.
 
-The outlining manager tracks outlining data based on its [ActiveMode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.ActiveMode) property.  When automatic outlining mode is active, the manager coordinates with an [outlining source](outlining-sources.md) provided by the current language to determine how to update the outlining node hierarchy when text changes occur.  These sorts of updates are generally syntax-driven based on the code in the editor.  When manual outlining mode is active, the end user typically indicates which outlining nodes are present by making a text selections and choosing to create outlining nodes from them.
+The outlining manager tracks outlining data based on its [ActiveMode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.ActiveMode) property.  When automatic outlining mode is active, the manager coordinates with an [outlining source](outlining-sources.md) provided by the current language to determine how to update the outlining node hierarchy when text changes occur.  These sorts of updates are generally syntax-driven based on the code in the editor.  When manual outlining mode is active, the end user typically indicates which outlining nodes are present by making a text selection and choosing to create outlining nodes from them.
 
 ### Getting Started with Automatic Outlining
 
@@ -56,7 +56,7 @@ See the [Outlining Sources and Providers](outlining-sources.md) topic for detail
 
 Manual nodes can be created programmatic via the [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager).[AddManualNode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.AddManualNode*) method and can be removed via the [RemoveManualNode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.RemoveManualNode*) or [RemoveAllManualNodes](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager.RemoveAllManualNodes*) methods.
 
-However in most cases the functionality provided by the [HideSelectionAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.HideSelectionAction) (and related [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands).[HideSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands.HideSelection) command) should be exposed directly to the end user via a menu/button.  This functionality allows the end user to create manual nodes based on the current selection.
+However, in most cases the functionality provided by the [HideSelectionAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.HideSelectionAction) (and related [EditorCommands](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands).[HideSelection](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditorCommands.HideSelection) command) should be exposed directly to the end user via a menu/button.  This functionality allows the end user to create manual nodes based on the current selection.
 
 Other commands, all of which are described below, are also used when performing manual outlining.
 
@@ -80,4 +80,4 @@ The commands can be easily wired up to any button or menu item.
 
 ## Collapsed Node Quick Info Tips
 
-By default no quick info tips will appear when hovering the mouse over a collapsed node adornment.  However a [CollapsedRegionQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) instance can be registered as a language service to automatically build quick info for collapsed node adornments.
+By default, no quick info tips will appear when hovering the mouse over a collapsed node adornment.  However, a [CollapsedRegionQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CollapsedRegionQuickInfoProvider) instance can be registered as a language service to automatically build quick info for collapsed node adornments.

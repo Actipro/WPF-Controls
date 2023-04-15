@@ -5,7 +5,7 @@ order: 8
 ---
 # Data Binding
 
-SyntaxEditor has the capability of allowing two-way binding of its text to any other data source.  This feature is disabled by default for performance reasons, but can be enabled via a property setting.
+SyntaxEditor has the capability of allowing two-way binding of its text to any other data source.  This feature is disabled by default for performance reasons but can be enabled via a property setting.
 
 ## Why is Data Binding Disabled by Default?
 
@@ -28,11 +28,12 @@ When that property is `true`, the [Text](xref:@ActiproUIRoot.Controls.SyntaxEdit
 This code demonstrates how to bind the SyntaxEditor's text to another TextBox:
 
 ```xaml
-<editor:SyntaxEditor AreLineModificationMarksVisible="False" 
-					 IsTextDataBindingEnabled="True"
-					 Text="{Binding ElementName=boundTextBox, Path=Text, Mode=TwoWay}" />
+<editor:SyntaxEditor AreLineModificationMarksVisible="False"
+                     IsTextDataBindingEnabled="True"
+                     Text="{Binding ElementName=boundTextBox, Path=Text, Mode=TwoWay}" />
 ```
 
 }
 
-Since data binding replaces the complete text of the document with each change in the data source, it is best to set the [AreLineModificationMarksVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreLineModificationMarksVisible) property to `false`.
+> [!TIP]
+> Since data binding replaces the complete text of the document with each change in the data source, it is best to set the [AreLineModificationMarksVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.AreLineModificationMarksVisible) property to `false`.

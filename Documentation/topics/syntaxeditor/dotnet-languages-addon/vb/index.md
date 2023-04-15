@@ -9,8 +9,8 @@ The advanced Visual Basic syntax language implementation in the SyntaxEditor .NE
 
 ![Screenshot](../../images/dotnet-addon-vb.png)
 
-> [!NOTE]
-> The syntax language and its parser supports Visual Basic 15.8 syntax.
+> [!IMPORTANT]
+> The syntax language and its parser support Visual Basic 15.8 syntax.
 
 ## Features
 
@@ -38,7 +38,7 @@ The Visual Basic language is packed with features, including:
 
 ## Licensing
 
-Even though the .NET Languages Add-on is distributed and demoed with the @@PlatformName controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and licenses are all Enterprise licenses, meaning they cover your entire organization.
+Even though the .NET Languages Add-on is distributed and demoed with the @@PlatformName controls, it is optional and is sold separately from SyntaxEditor and any containing bundles.  The pricing on the add-on is very cheap and the licenses are all Enterprise licenses, meaning they cover your entire organization.
 
 See the [Assemblies and Add-on Licensing](../../assemblies.md) topic for more information.
 
@@ -60,7 +60,7 @@ See the [Parsing and Parse Data](parsing.md) topic for more information.
 
 ## Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 See the [Indent Provider](indent-provider.md) topic for more information.
 

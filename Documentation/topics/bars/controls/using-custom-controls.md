@@ -95,29 +95,27 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 
 ### Menu
 
-Custom controls don't always work well in menu contexts, but a special [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) control is available to render an external label for a custom control and align it with other neighbor menu items.  This is great for controls like an edit box that don't render a label within their own template.
+Custom controls don't always work well in menu contexts, but a special [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) control is available to render an external label for a custom control and align everything with other neighboring menu items.  This is great for controls like an edit box that don't render a label within their own template.
 
-The [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) control inherits native `MenuItem`, but has a template that tailors it for hosting other custom controls.  The custom control should be placed in the wrapper's [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper).`Header` property for proper display.
+Bars menu controls will automatically wrap child controls that aren't flagged as menu controls with a [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) instance.  A control can be flagged as a menu control by setting the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsMenuControlProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsMenuControlProperty) attached property set to `true`.
+
+The [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) control inherits native `MenuItem` but has a template that tailors it for hosting other custom controls.  The custom control should be placed in the wrapper's [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper).`Header` property for proper display, which happens automatically if the custom control is within a Bars menu control.
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 ...
 <bars:BarContextMenu>
-	<bars:BarMenuControlWrapper>
-		<bars:BarMenuControlWrapper.Header>
-			<editors:Int32EditBox
-				bars:BarControlService.HasExternalHeader="True"
-				bars:BarControlService.Key="Minimum"
-				bars:BarControlService.Label="Minimum"
-				bars:BarControlService.PanelSpacingSuggestion="Both"
-				Width="60" MinHeight="24" MaxHeight="30"
-				UsageContext="ToolBar"
-				themes:ThemeProperties.CornerRadius="3"
-				Value="{Binding MinimumValue, Mode=TwoWay}"
-				/>
-		<bars:BarMenuControlWrapper.Header>
-	</bars:BarMenuControlWrapper>
+	<editors:Int32EditBox
+		bars:BarControlService.HasExternalHeader="True"
+		bars:BarControlService.Key="Minimum"
+		bars:BarControlService.Label="Minimum"
+		bars:BarControlService.PanelSpacingSuggestion="Both"
+		Width="60" MinHeight="24" MaxHeight="30"
+		UsageContext="ToolBar"
+		themes:ThemeProperties.CornerRadius="3"
+		Value="{Binding MinimumValue, Mode=TwoWay}"
+		/>
 	...
 </bars:BarContextMenu>
 ```

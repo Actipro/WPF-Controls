@@ -28,7 +28,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <summary>
 		/// Initializes a new instance of the class.
 		/// </summary>
-		public RibbonGroupViewModel() { }  // Parameterless constructor required for XAML support
+		public RibbonGroupViewModel()  // Parameterless constructor required for XAML support
+			: this(key: null) { }
 
 		/// <summary>
 		/// Initializes a new instance of the class with the specified key.  The label and collapsed button key tip text are auto-generated.

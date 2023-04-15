@@ -26,7 +26,7 @@ The following table gives an overview of the capabilities of the control.
 |-----|-----|
 | Supports tall size (fills height of [Group](../miscellaneous/group.md)) | No.  Is not for use in the ribbon itself, but rather on popups. |
 | Supports normal size | Yes, however the control's normal size can be quite large. |
-| Supports use in a [Menu](../miscellaneous/menu.md) | No.  This gallery should be used in a popup but outside of a [Menu](../miscellaneous/menu.md) control.  However one commonly-used technique is to use a native WPF `StackPanel` as the popup content with the `PopupGallery` as one child and a [Menu](../miscellaneous/menu.md) containing menu items above or below the gallery. |
+| Supports use in a [Menu](../miscellaneous/menu.md) | No.  This gallery should be used in a popup but outside of a [Menu](../miscellaneous/menu.md) control.  However, one commonly-used technique is to use a native WPF `StackPanel` as the popup content with the `PopupGallery` as one child and a [Menu](../miscellaneous/menu.md) containing menu items above or below the gallery. |
 | Base class | [PopupGallery](xref:@ActiproUIRoot.Controls.Ribbon.Controls.PopupGallery). |
 | Child items | Yes.  The items must be of type `SolidColorBrush` and gallery may be bound to an `ItemsSource` as well. |
 | Has popup | No. |
@@ -66,13 +66,13 @@ The gallery measures the size of the items for you and determines how wide to en
 
 ## Hiding the Selected Value
 
-By default, the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) will be drawn with a highlight to indicate its selected state to the end user.  However they may be cases where you wish to prevent the end user from seeing any sort of highlighted item in the gallery.  To do this, set the [IsSelectionHighlightVisible](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.IsSelectionHighlightVisible) property to `false`.
+By default, the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) will be drawn with a highlight to indicate its selected state to the end user.  However, they may be cases where you wish to prevent the end user from seeing any sort of highlighted item in the gallery.  To do this, set the [IsSelectionHighlightVisible](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.IsSelectionHighlightVisible) property to `false`.
 
 ## Processing Item Clicks and Managing the Selected Value
 
 When an item is clicked, the [ItemClick](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ItemClick) is raised.  This event passes arguments that specify which item was clicked.  The clicked item becomes the [SelectedItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.SelectedItem) and is passed through as the value to the command for the gallery.
 
-Galleries are designed to support the WPF [command model](../../command-model/index.md) for maintaining the selected value of the control.  By default an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
+Galleries are designed to support the WPF [command model](../../command-model/index.md) for maintaining the selected value of the control.  By default, an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value (selected item) and support live preview.
 
@@ -84,7 +84,7 @@ When the mouse moves over an item, the item becomes the [ActiveItem](xref:@Actip
 
 If you are using commands, the [Interaction with Value Controls](../../command-model/value-controls.md) topic explains how to support live preview using command can-execute handlers.
 
-Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItemChanged) event fires whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItem) property is changed.
+Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItemChanged) event is raised whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.GalleryBase.ActiveItem) property is changed.
 
 ## Categorizing Items
 
@@ -97,7 +97,7 @@ This sample XAML code shows how to apply the `Category` attached property to an 
 <media:SolidColorBrush ribbon:PopupGallery.Category="Standard Colors" Color="#FF0000" ribbon:ScreenTipService.ScreenTipHeader="Red" />
 ```
 
-By default the categorization feature is disabled in `PopupGallery`.  You can enable it by binding your items to the [CategorizedItemsSource](xref:@ActiproUIRoot.Controls.Ribbon.Controls.PopupGallery.CategorizedItemsSource) property instead of the normal `ItemsSource` property.  This tells `ColorPickerGallery` to switch to categorized item mode.
+By default, the categorization feature is disabled in `PopupGallery`.  You can enable it by binding your items to the [CategorizedItemsSource](xref:@ActiproUIRoot.Controls.Ribbon.Controls.PopupGallery.CategorizedItemsSource) property instead of the normal `ItemsSource` property.  This tells `ColorPickerGallery` to switch to categorized item mode.
 
 ## Categorized Item Filtering
 
