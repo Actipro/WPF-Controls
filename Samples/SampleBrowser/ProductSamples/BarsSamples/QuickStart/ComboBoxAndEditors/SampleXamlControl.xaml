@@ -127,9 +127,7 @@
 							IsSynchronizedWithCurrentItem="True"
 							ItemsSource="{Binding ComboBoxColorItems}">
 							<bars:BarComboBox.BelowMenuItems>
-								<x:Array Type="{x:Type bars:BarMenuItem}">
-									<bars:BarMenuItem Label="More colors..." Command="{Binding NotImplementedCommand}" />
-								</x:Array>
+								<bars:BarMenuItem Label="More colors..." Command="{Binding NotImplementedCommand}" />
 							</bars:BarComboBox.BelowMenuItems>
 						</bars:BarComboBox>
 						

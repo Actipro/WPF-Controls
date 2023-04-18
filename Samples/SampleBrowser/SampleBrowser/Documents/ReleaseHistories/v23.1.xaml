@@ -31,6 +31,7 @@
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the CanSnapToChangePrecision property to DoubleEditBox and SingleEditBox controls, which determines if the value should be snapped to the precision of the incremental change value prior to applying the increment." />
+				<sampleBrowser:BulletContentControl Content="Updated ByteEditBox, Int16EditBox, Int32EditBox, and SingleEditBox so out of range values (up to Int64 or Double) are trimmed to the allowed minimum/maximum range of the control instead of being treated as invalid input." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -54,6 +55,7 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the EmbeddedTextBox.CanSelectAllOnFocus property that if enabled, selects all text when the control receives focus." />
 				<sampleBrowser:BulletContentControl Content="Updated EmbeddedTextBox when read-only to disable the Paste command." />
+				<sampleBrowser:BulletContentControl Content="Updated ImageProvider to support adaptation of DrawingImages nested within other DrawingImages." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue with UIColor parsing decimal alpha values from colors in rgba() format on systems where the current culture recognizes the decimal point character (.) as the thousands separator." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>

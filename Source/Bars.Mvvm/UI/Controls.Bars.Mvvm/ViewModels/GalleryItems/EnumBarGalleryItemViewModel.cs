@@ -105,6 +105,9 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			return collection.OrderBy(vm => vm.Order);
 		}
 
+		/// <inheritdoc/>
+		public override bool IsLabelVisible => true;
+
 		/// <summary>
 		/// Gets or sets the sort order for this item, where lower values appear before higher values.
 		/// </summary>

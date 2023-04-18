@@ -59,9 +59,7 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 		ItemsSource="{Binding Employees}">
 
 		<bars:BarComboBox.BelowMenuItems>
-			<x:Array Type="{x:Type bars:BarMenuItem}">
-				<bars:BarMenuItem Label="Manage Employees..." Command="{Binding OpenEmployeesDialogCommand}" />
-			</x:Array>
+			<bars:BarMenuItem Label="Manage Employees..." Command="{Binding OpenEmployeesDialogCommand}" />
 		</bars:BarComboBox.BelowMenuItems>
 	</bars:BarComboBox>
 	...

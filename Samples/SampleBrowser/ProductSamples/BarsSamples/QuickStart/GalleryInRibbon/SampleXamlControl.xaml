@@ -57,11 +57,9 @@
 
 						<!-- Define additional menu items to be included when the gallery is displayed in a menu -->
 						<bars:RibbonGallery.BelowMenuItems>
-							<x:Array Type="{x:Type bars:BarMenuItem}">
-								<bars:BarMenuItem Key="OneRowLayout" Label="1-Row Layout" Command="{Binding ConfigureOneRowLayoutCommand}" SmallImageSource="{StaticResource OneRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 1 row."/>
-								<bars:BarMenuItem Key="TwoRowLayout" Label="2-Row Layout" Command="{Binding ConfigureTwoRowLayoutCommand}" SmallImageSource="{StaticResource TwoRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 2 rows."/>
-								<bars:BarMenuItem Key="ThreeRowLayout" Label="3-Row Layout" Command="{Binding ConfigureThreeRowLayoutCommand}" SmallImageSource="{StaticResource ThreeRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 3 rows."/>
-							</x:Array>
+							<bars:BarMenuItem Key="OneRowLayout" Label="1-Row Layout" Command="{Binding ConfigureOneRowLayoutCommand}" SmallImageSource="{StaticResource OneRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 1 row."/>
+							<bars:BarMenuItem Key="TwoRowLayout" Label="2-Row Layout" Command="{Binding ConfigureTwoRowLayoutCommand}" SmallImageSource="{StaticResource TwoRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 2 rows."/>
+							<bars:BarMenuItem Key="ThreeRowLayout" Label="3-Row Layout" Command="{Binding ConfigureThreeRowLayoutCommand}" SmallImageSource="{StaticResource ThreeRowLayoutSmallImage}" ToolTip="Configures the gallery with a layout that will typically display as 3 rows."/>
 						</bars:RibbonGallery.BelowMenuItems>
 
 					</bars:RibbonGallery>

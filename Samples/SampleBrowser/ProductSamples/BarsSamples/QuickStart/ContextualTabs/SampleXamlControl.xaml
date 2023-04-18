@@ -14,14 +14,12 @@
 		<bars:Ribbon LayoutMode="Classic" IsApplicationButtonVisible="False" QuickAccessToolBarMode="None" IsCollapsible="False">
 
 			<bars:Ribbon.ContextualTabGroups>
-				<x:Array Type="bars:RibbonContextualTabGroup">
-					<!-- 
-					The visibility of a RibbonContextualTabGroup will determine the visibility of all
-					RibbonTabItem instances whose ContextualTabGroupKey matches RibbonContextualTabGroup.Key
-					-->
-					<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.PictureTools}" Visibility="{Binding Options.IsPictureToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
-					<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.TableTools}" Visibility="{Binding Options.IsTableToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
-				</x:Array>
+				<!-- 
+				The visibility of a RibbonContextualTabGroup will determine the visibility of all
+				RibbonTabItem instances whose ContextualTabGroupKey matches RibbonContextualTabGroup.Key
+				-->
+				<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.PictureTools}" Visibility="{Binding Options.IsPictureToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+				<bars:RibbonContextualTabGroup Key="{x:Static local:ContextualTabGroupKeys.TableTools}" Visibility="{Binding Options.IsTableToolsContextualTabGroupVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
 			</bars:Ribbon.ContextualTabGroups>
 
 			<!-- Standard Tabs (Always Visible) -->

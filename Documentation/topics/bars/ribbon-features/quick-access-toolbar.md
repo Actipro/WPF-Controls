@@ -38,11 +38,9 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 				<!-- Common items can be added to the Items collection from a customize menu -->
 				<bars:RibbonQuickAccessToolBar.CommonItems>
-					<x:Array Type="DependencyObject">
-						<bars:BarButton Key="Undo" Command="Undo" SmallImageSource="/Images/Undo16.png" />
-						<bars:BarButton Key="Redo" Command="Redo" SmallImageSource="/Images/Redo16.png" />
-						<bars:BarButton Key="Save" Command="Save" SmallImageSource="/Images/Save16.png" />
-					</x:Array>
+					<bars:BarButton Key="Undo" Command="Undo" SmallImageSource="/Images/Undo16.png" />
+					<bars:BarButton Key="Redo" Command="Redo" SmallImageSource="/Images/Redo16.png" />
+					<bars:BarButton Key="Save" Command="Save" SmallImageSource="/Images/Save16.png" />
 				</bars:RibbonQuickAccessToolBar.CommonItems>
 
 				<!-- Only the following items are displayed -->

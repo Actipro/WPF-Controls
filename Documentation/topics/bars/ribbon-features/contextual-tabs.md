@@ -31,10 +31,8 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 		<!-- Define ContextualTabGroups -->
 		<bars:Ribbon.ContextualTabGroups>
-			<x:Array Type="bars:RibbonContextualTabGroup">
-				<bars:RibbonContextualTabGroup Key="PictureTools" />
-				<bars:RibbonContextualTabGroup Key="TableTools" />
-			</x:Array>
+			<bars:RibbonContextualTabGroup Key="PictureTools" />
+			<bars:RibbonContextualTabGroup Key="TableTools" />
 		</bars:Ribbon.ContextualTabGroups>
 
 		<!-- Standard Tabs (Always Visible) -->

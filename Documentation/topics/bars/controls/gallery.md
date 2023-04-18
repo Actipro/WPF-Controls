@@ -453,9 +453,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:RibbonGallery Key="TextStyles" ... >
 	<bars:RibbonGallery.BelowMenuItems>
-		<x:Array Type="{x:Type bars:BarMenuItem}">
-			<bars:BarMenuItem Key="MoreTextStyles" Command="{Binding MoreTextStylesCommand}" />
-		</x:Array>
+		<bars:BarMenuItem Key="MoreTextStyles" Command="{Binding MoreTextStylesCommand}" />
 	</bars:RibbonGallery.BelowMenuItems>
 </bars:RibbonGallery>
 ```

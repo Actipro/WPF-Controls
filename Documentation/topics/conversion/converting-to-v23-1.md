@@ -231,18 +231,7 @@ Replace `ribbon:Tab` declarations with `bars:RibbonTabItem`.
 
 In the legacy ribbon, contextual tab groups defined the tabs that were part of the group. In the Bars ribbon, contextual tabs are defined in the same collection as non-contextual (always visible) tabs except they are associated with a contextual group by a `Key`.
 
-To prepare for the conversion in Bars, initialize the `bars:Ribbon.ContextualTabGroups` property as an array of `bars:RibbonContextualTabGroup`.
-
-```xaml
-...
-<bars:Ribbon.ContextualTabGroups>
-	<x:Array Type="bars:RibbonContextualTabGroup">
-
-	</x:Array>
-</bars:Ribbon.ContextualTabGroups>
-```
-
-For each legacy `ribbon:ContextualTabGroup` defined on the `ribbon:Ribbon.ContextualTabGroups` property, add an entry to the array for a `bars:RibbonContextualTabGroup`.
+For each legacy `ribbon:ContextualTabGroup` defined on the `ribbon:Ribbon.ContextualTabGroups` property, add a `bars:RibbonContextualTabGroup` entry to the `bars:Ribbon.ContextualTabGroups` collection.
 - Set the `bars:RibbonContextualTabGroup.Key` property to a new value that will uniquely identify the group.
 - Migrate the `Label` property.
 - The legacy `ribbon:ContextualTabGroup.IsActive` property (a `boolean`) has been replaced by the standard WPF `Visibility` property, where `Visible` is the same as `IsActive = True` and `Collapsed` is the same as `IsActive = False`.
