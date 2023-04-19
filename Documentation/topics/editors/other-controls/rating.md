@@ -25,7 +25,7 @@ The [Value](xref:@ActiproUIRoot.Controls.Editors.Rating.Value) property is displ
 
 The [Rating](xref:@ActiproUIRoot.Controls.Editors.Rating) control is an `ItemsControl`, and as such, you can populate the `Items` collection directly with [RatingItem](xref:@ActiproUIRoot.Controls.Editors.RatingItem) instances, with each item representing a new "star" or rating value.
 
-To simplify the use of the `Rating` control, the [ItemCount](xref:@ActiproUIRoot.Controls.Editors.Rating.ItemCount) property can be used to automatically populate the `Items` collection with 0 or more instances of `RatingItem`.
+To simplify the use of the `Rating` control, the [ItemCount](xref:@ActiproUIRoot.Controls.Editors.Rating.ItemCount) property can be used to automatically populate the `Items` collection with zero or more instances of `RatingItem`.
 
 This XAML shows how five items can be created and the control's value bound to a view model property:
 
@@ -38,11 +38,8 @@ This XAML shows how five items can be created and the control's value bound to a
 The [RatingItem](xref:@ActiproUIRoot.Controls.Editors.RatingItem) class is used to present each "star" or rating glyph.  By default, a star glyph is shown, but this can easily be customized.  Using the following properties, one or more `DataTemplate`s can be specified to be used by the various states of a `RatingItem`:
 
 - [NormalGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.NormalGlyphTemplate) - Used when the item is in the normal (unselected) state.
-
 - [ActiveGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.ActiveGlyphTemplate) - Used when the end user's pointer actively over this item or one after it.
-
 - [AverageGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.AverageGlyphTemplate) - Used when the item is involved in rendering an average value for the overall rating.
-
 - [SelectedGlyphTemplate](xref:@ActiproUIRoot.Controls.Editors.RatingItem.SelectedGlyphTemplate) - Used when the item is involved in the end user's value selection.
 
 These properties can be set using a `Style` that targets the [RatingItem](xref:@ActiproUIRoot.Controls.Editors.RatingItem) class with a setter for each of the glyph templates.  Set the style to the rating's `ItemContainerStyle` property.
@@ -51,13 +48,13 @@ These properties can be set using a `Style` that targets the [RatingItem](xref:@
 
 *Custom glyph templates for each item*
 
-Alternatively, if the `Rating` control is manually populated (i.e. one or more `RatingItem` instances are manually added to the `Items` collection), the `RatingItem` properties can be set directly.  This approach is needed to achieve advanced display scenarios like in the screenshot above.
+Alternatively, if the `Rating` control is manually populated (i.e., one or more `RatingItem` instances are manually added to the `Items` collection), the `RatingItem` properties can be set directly.  This approach is needed to achieve advanced display scenarios like in the screenshot above.
 
 ## Item Content
 
 The [RatingItem](xref:@ActiproUIRoot.Controls.Editors.RatingItem) class inherits `ContentControl` and thus has several properties like `Content`, `ContentTemplate`, etc.  Any content-related properties that are set will render the content below each item when in a horizontal orientation, or next to each item when in a vertical orientation.
 
-In the screenshot above, the first item has "Poor" content, the second has "Fair" content, and the third has "Good" content.
+In the screenshot above, the first item has **Poor** content, the second has **Fair** content, and the third has **Good** content.
 
 ## Orientation
 

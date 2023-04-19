@@ -7,7 +7,7 @@ order: 2
 
 Actipro Ribbon has the most powerful and flexible ribbon resizing model of any ribbon control out there.  In fact it's capabilities match what Office can do!  To prove this, we've modeled the first two tabs of our sample application after the Home and Insert tabs found in Microsoft Word 2007.
 
-By default, Actipro Ribbon has code built-in to dynamically resize your ribbon.  However for those who want more control over what groups change how and in what order, Actipro Ribbon offers full control over those items as well.
+By default, Actipro Ribbon has code built-in to dynamically resize your ribbon.  However, for those who want more control over what groups change how and in what order, Actipro Ribbon offers full control over those items as well.
 
 ## Defining Group Size Scaling (Optional)
 
@@ -26,7 +26,7 @@ Therefore, each group can have up to four different variants for how it appears 
 
 So how exactly does scaling work?  Well, a number of layout controls such as [StackPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.StackPanel) and [RowPanel](xref:@ActiproUIRoot.Controls.Ribbon.Controls.RowPanel) have the ability to alter their layouts based on the currently active parent group variant size.  Groups start with a `Large` size.  As the width of the ribbon decreases, they will slowly transition by default in sequence to the next smaller group size until all groups are collapsed.  This sequential behavior can be overridden by using priorities as described below.
 
-Group variant sizes are controlled via a set of [GroupVariant](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GroupVariant) objects.  These are stored in the [Group](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group).[Variants](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group.Variants) collection.  The defining of group variants is completely optional because as described above, a default sequence will be used if no group variants are defined.  However if you do define variants, you have total control over the order of collapsing behavior.  It is how we made the Insert tab scale down the same as Word in the case study demonstration below.
+Group variant sizes are controlled via a set of [GroupVariant](xref:@ActiproUIRoot.Controls.Ribbon.Controls.GroupVariant) objects.  These are stored in the [Group](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group).[Variants](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Group.Variants) collection.  The defining of group variants is completely optional because as described above, a default sequence will be used if no group variants are defined.  However, if you do define variants, you have total control over the order of collapsing behavior.  It is how we made the Insert tab scale down the same as Word in the case study demonstration below.
 
 > [!NOTE]
 > It is good application design to define a prioritized set of group variants so that the least used group controls shrink and collapse before the more-often used group controls do.  For instance, `Clipboard` groups are most often the last thing to collapse on a tab since they are highly-used.

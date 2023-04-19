@@ -34,7 +34,7 @@ The [data factory](data-models.md) creates an [ICategoryEditorModel](xref:@Actip
 
 ## Example Category Editor
 
-This code shows how category editor is used to consume all properties in a "Colors" category that have a return type of `Color`:
+This code shows how category editor is used to consume all properties in a `"Colors"` category that have a return type of `Color`:
 
 @if (winrt) {
 
@@ -86,14 +86,14 @@ This code shows how category editor is used to consume all properties in a "Colo
 															Saturation="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Saturation, Mode=TwoWay}"
 															Brightness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Brightness, Mode=TwoWay}"
 															/>
-								</ControlTemplate>											
+								</ControlTemplate>
 							</editors:ColorPicker.Template>
 						</editors:ColorPicker>
 					</StackPanel>
 				</DataTemplate>
 			</gridsPropertyEditors:CategoryEditor.EditorTemplate>
 		</gridsPropertyEditors:CategoryEditor>
-						
+
 	</grids:PropertyGrid.CategoryEditors>
 </grids:PropertyGrid>
 ```
@@ -147,7 +147,7 @@ This code shows how category editor is used to consume all properties in a "Colo
 				</DataTemplate>
 			</grids:CategoryEditor.EditorTemplate>
 		</grids:CategoryEditor>
-						
+
 	</grids:PropertyGrid.CategoryEditors>
 </grids:PropertyGrid>
 ```

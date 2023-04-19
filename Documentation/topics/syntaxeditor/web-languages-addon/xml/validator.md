@@ -9,7 +9,7 @@ A Validator executes immediately after the main XML parser runs (still in the pa
 
 The [IXmlValidator](xref:ActiproSoftware.Text.Languages.Xml.IXmlValidator) interface provides the base requirements for this functionality.  It is installed into a language as a "feature" language service.
 
-The [XmlValidator](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlValidator) class is the default implementation of the [IXmlValidator](xref:ActiproSoftware.Text.Languages.Xml.IXmlValidator) interface.  By default it is not set up to allow DTD-based validation since DTDs sometimes access external resources.
+The [XmlValidator](xref:ActiproSoftware.Text.Languages.Xml.Implementation.XmlValidator) class is the default implementation of the [IXmlValidator](xref:ActiproSoftware.Text.Languages.Xml.IXmlValidator) interface.  By default, it is not set up to allow DTD-based validation since DTDs sometimes access external resources.
 
 ## Integration with Schema Resolver
 

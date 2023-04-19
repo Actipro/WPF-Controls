@@ -83,20 +83,20 @@ Each of the features listed in the table below describe functionality that is co
 
 ## Generating a New GUID
 
-The plus button in the edit box can be used to generate a new GUID value.
+The **Plus (+)** button in the edit box can be used to generate a new GUID value.
 
 ## Formats
 
 Standard GUID formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox.Format) property and affect the textual value display.  These formats are allowed:
 
-- N - 32 digits (uppercase)
-- n - 32 digits (lowercase)
-- D - 32 digits separated by hyphens (uppercase)
-- d - 32 digits separated by hyphens (lowercase)
-- B - 32 digits separated by hyphens, enclosed in braces (uppercase)
-- b - 32 digits separated by hyphens, enclosed in braces (lowercase)
-- P - 32 digits separated by hyphens, enclosed in parentheses (uppercase)
-- p - 32 digits separated by hyphens, enclosed in parentheses (lowercase)
+- `"N"` - 32 digits (uppercase)
+- `"n"` - 32 digits (lowercase)
+- `"D"` - 32 digits separated by hyphens (uppercase)
+- `"d"` - 32 digits separated by hyphens (lowercase)
+- `"B"` - 32 digits separated by hyphens, enclosed in braces (uppercase)
+- `"b"` - 32 digits separated by hyphens, enclosed in braces (lowercase)
+- `"P"` - 32 digits separated by hyphens, enclosed in parentheses (uppercase)
+- `"p"` - 32 digits separated by hyphens, enclosed in parentheses (lowercase)
 
 ## Sample XAML
 

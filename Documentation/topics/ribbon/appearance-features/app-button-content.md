@@ -13,7 +13,7 @@ Ribbon support several different layout and content styles for the application b
 
 ## Scenic Style with Text Content
 
-By default the application button in ribbon will display in Scenic style with the text `File` as its content.  This is a string resource and can be customized by altering the `SRName.UIApplicationButtonLabelText` string resource before the ribbon is created.  The leftmost ribbon in the screenshot shows the default `File` text content.
+By default, the application button in ribbon will display in Scenic style with the text `File` as its content.  This is a string resource and can be customized by altering the `SRName.UIApplicationButtonLabelText` string resource before the ribbon is created.  The leftmost ribbon in the screenshot shows the default `File` text content.
 
 ## Scenic Style with Image Content
 

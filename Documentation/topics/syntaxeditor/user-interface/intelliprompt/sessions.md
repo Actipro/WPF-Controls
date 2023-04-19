@@ -5,7 +5,7 @@ order: 2
 ---
 # Sessions
 
-An IntelliPrompt session is essentially a controller for a certain type of IntelliPrompt UI.  Each type of IntelliPrompt UI (completion list, quick info, etc.) has a related session.  The IntelliPrompt UI and functionality can be made activate by "opening" the related session.
+An IntelliPrompt session is essentially a controller for a certain type of IntelliPrompt UI.  Each type of IntelliPrompt UI (completion list, quick info, etc.) has a related session.  The IntelliPrompt UI and functionality can be activated by "opening" the related session.
 
 ## Built-In Sessions
 
@@ -39,7 +39,7 @@ This interface requires that each type specify a unique string-based `Key` that 
 
 The [IntelliPromptSessionType](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.IntelliPromptSessionType) class implements [IIntelliPromptSessionType](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSessionType) and can be used if you need to create your own session type.
 
-> [!NOTE]
+> [!TIP]
 > The [IntelliPromptSessionTypes](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IntelliPromptSessionTypes) class has a number of static properties that return the most common [IIntelliPromptSessionType](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSessionType) instances such as session types for Quick Info, Completion List, etc.
 
 ## Opening and Closing Sessions
@@ -48,14 +48,14 @@ When a session is "open", it is active within the user interface.  The [IIntelli
 
 A session can be opened by calling the [Open](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Open*) method.  This method accepts two parameters: the [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) in which the session should be opened and the [TextRange](xref:ActiproSoftware.Text.TextRange) in the view that is affected by the session.  The text range is most often the selection range or the text range of the word surrounding the caret.
 
-When a session opens, its [Opened](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Opened) event fires.
+When a session opens, its [Opened](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Opened) event is raised.
 
 > [!NOTE]
 > Some session implementations may add additional `Open` method overloads that should be used for that session implementation instead of the basic [Open](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Open*) method.
 
 A session can be closed by calling the [Close](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Close*) method.  This method accepts a `Boolean` parameter that indicates whether the session was cancelled or not.
 
-When a session opens, its [Closed](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Closed) event fires.  The event arguments of this event specify whether the session was cancelled.
+When a session opens, its [Closed](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IIntelliPromptSession.Closed) event is raised.  The event arguments of this event specify whether the session was cancelled.
 
 ## Session Information
 
@@ -77,7 +77,7 @@ The [CloseAllSessions](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.I
 
 ## Requesting Built-In IntelliPrompt Session Types
 
-Sometimes you may wish to programmatically request that a certain type of IntelliPrompt session be opened, but you want the current set of IntelliPrompt providers (generally designated from language services) to decide if an IntelliPrompt session should open and what should be in it.  An example scenario is if your language checks to see when the `.` key is pressed via an event sink service.  When that event occurs, it raises a request to see if an IntelliPrompt completion session should open.
+Sometimes you may wish to programmatically request that a certain type of IntelliPrompt session be opened, but you want the current set of IntelliPrompt providers (generally designated from language services) to decide if an IntelliPrompt session should open and what should be in it.  An example scenario is if your language checks to see when the `.` character is typed via an event sink service.  When that event occurs, it raises a request to see if an IntelliPrompt completion session should open.
 
 The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[IntelliPrompt](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView.IntelliPrompt) object has methods for requesting built-in session types:
 
@@ -85,7 +85,7 @@ The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Intell
 |-----|-----|
 | [RequestAutoComplete](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestAutoComplete*) Method | Performs an auto-complete if the language supports an IntelliPrompt completion session at the current offset. |
 | [RequestCompletionSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestCompletionSession*) Method | Displays a completion list if the language supports an IntelliPrompt completion session at the current offset. |
-| [RequestInsertSnippetSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestInsertSnippetSession*) Method | Displays IntelliPrompt 'expansion' code snippet selection at the current offset. |
+| [RequestInsertSnippetSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestInsertSnippetSession*) Method | Displays IntelliPrompt "expansion" code snippet selection at the current offset. |
 | [RequestParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestParameterInfoSession*) Method | Displays IntelliPrompt parameter info based on the current context. |
 | [RequestQuickInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestQuickInfoSession*) Method | Displays IntelliPrompt quick info based on the current context. |
-| [RequestSurroundWithSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestSurroundWithSession*) Method | Displays IntelliPrompt 'surrounds with' code snippet selection at the current offset. |
+| [RequestSurroundWithSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewIntelliPrompt.RequestSurroundWithSession*) Method | Displays IntelliPrompt "surrounds with" code snippet selection at the current offset. |

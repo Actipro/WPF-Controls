@@ -33,7 +33,7 @@ The built-in controls have several properties that are used for defining content
 
 ## Hiding the Popup Border
 
-By default the popup will display a border around its contents.  However sometimes it is necessary to hide the default border.  This sort of option is used for the [ApplicationMenu](miscellaneous/applicationmenu.md) since it has a custom draw border.
+By default, the popup will display a border around its contents.  However, sometimes it is necessary to hide the default border.  This sort of option is used for the [ApplicationMenu](miscellaneous/applicationmenu.md) since it has a custom draw border.
 
 Set the [PopupHasBorder](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupHasBorder) property to `false` to hide the border.
 
@@ -51,7 +51,7 @@ The most common content for a popup is a [Menu](miscellaneous/menu.md) control, 
 </ribbon:PopupButton>
 ```
 
-However there are probably times when you wish to create more complex layouts of controls on a popup.  In these scenarios, use a `Panel` as the [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent).
+However, there are probably times when you wish to create more complex layouts of controls on a popup.  In these scenarios, use a `Panel` as the [PopupContent](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupContent).
 
 For instance, use a native WPF `StackPanel` to stack a popup header banner image or a [PopupGallery](interactive/popupgallery.md) on top of a [Menu](miscellaneous/menu.md) of items.  This sort of layout is very often used in popups that contain a [PopupGallery](interactive/popupgallery.md) because you can place menu items above and below the [PopupGallery](interactive/popupgallery.md) as needed.
 
@@ -76,7 +76,7 @@ The built-in controls have several properties that can be used to determine wher
 
 ### With a Contained PopupGallery
 
-The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](interactive/popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However, the gripper is only intended to work if there is a [PopupGallery](interactive/popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
 
 ### Without a Contained PopupGallery
 
@@ -99,7 +99,7 @@ Here is some XAML code showing a sample implementation:
 
 Actipro Ribbon makes it easy to dynamically create/change a popup's content before the popup is displayed.  This feature is most commonly used to customize menu items for a popup that contains a menu.
 
-All the ribbon controls that display popups raise a [PopupOpening](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupOpening) event that fires right before a popup is displayed.  You can attach to this event and in that handler, alter the popup content however you require.
+All the ribbon controls that display popups raise a [PopupOpening](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupOpening) event right before a popup is displayed.  You can attach to this event and in that handler, alter the popup content however you require.
 
 Here is some code showing how to dynamically create a [Menu](miscellaneous/menu.md) for a popup before it is displayed.
 

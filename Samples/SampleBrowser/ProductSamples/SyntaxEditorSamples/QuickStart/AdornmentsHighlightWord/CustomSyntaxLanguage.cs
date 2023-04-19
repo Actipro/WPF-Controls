@@ -9,7 +9,7 @@ using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightWord {
     
     /// <summary>
-	/// Represents a syntax language definition that renders a custom background behind higlighted words.
+	/// Represents a syntax language definition that renders a custom background behind highlighted words.
     /// </summary>
     public class CustomSyntaxLanguage : SyntaxLanguage {
 

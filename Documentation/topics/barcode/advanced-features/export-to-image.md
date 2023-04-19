@@ -19,7 +19,7 @@ symbology.Value = "ABC-123";
 BitmapSource source = symbology.ToBitmap(96, 96);
 ```
 
-This sample code takes the `BitmapSource` from the previous sample code and writes it to a `PNG` file whose path is assumed to be in `outputPath`.
+This sample code takes the `BitmapSource` from the previous sample code and writes it to a PNG file whose path is assumed to be in `outputPath`.
 
 ```csharp
 FileStream outStream = new FileStream(outputPath, FileMode.Create);

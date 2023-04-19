@@ -35,8 +35,8 @@ See the [Outlining Sources and Outliners](outlining-sources.md) topic for more i
 
 ## Collapsing Regions without Outlining
 
-The code outlining feature decribed in earlier topics supports the collapsing of outlining nodes, where contained text becomes hidden.  SyntaxEditor's low-level collapsed region management feature is harnessed to achieve this functionality.  This same collapsed regions mechanism can be used independently of code outlining too.
+The code outlining feature described in earlier topics supports the collapsing of outlining nodes, where contained text becomes hidden.  SyntaxEditor's low-level collapsed region management feature is harnessed to achieve this functionality.  This same collapsed regions mechanism can be used independently of code outlining too.
 
-Various text regions can be collapsed (hidden) independent of the outlining features.  And in these cases you can even optionally replace the collapsed region with an adornment.
+Various text regions can be collapsed (hidden) independent of the outlining features.  And in these cases, you can even optionally replace the collapsed region with an adornment.
 
 See the [Collapsing Regions without Outlining](collapsed-regions.md) topic for more information.

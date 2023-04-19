@@ -5,7 +5,7 @@ order: 2
 ---
 # Switch
 
-[FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) supports two or three check states, and includes several options for customizing the look of the switch.
+[FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) supports two or three check states and includes several options for customizing the look of the switch.
 
 ## Checked State
 
@@ -35,7 +35,7 @@ The size of the switch is control by the [SwitchRadiusRatio](xref:@ActiproUIRoot
 
 ### Brush and Effect
 
-The switch can be broken down into two different parts; the base of the switch and then the switch itself. The brushed used for each part can be customized independenty.
+The switch can be broken down into two different parts: the base of the switch and then the switch itself. The brush used for each part can be customized independently.
 
 The base color can be customized by setting the [BaseBackground](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch.BaseBackground) property. Additionally, the accent color (the octagon) can be customized by setting the [BaseAccentBrush](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch.BaseAccentBrush) property.
 
@@ -51,5 +51,5 @@ The actual switch is made up of a ball, shaft, and a tip. The colors from these 
 
 The switch includes an effect that can be disabled by setting [IsSwitchEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch.IsSwitchEffectEnabled) to `false`.
 
-> [!NOTE]
-> The led effect is only supported when [IsSwitchEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch.IsSwitchEffectEnabled) is set to `true`**and** the associated brush is set to a `SolidColorBrush`.
+> [!IMPORTANT]
+> The switch effect is only supported when [IsSwitchEffectEnabled](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch.IsSwitchEffectEnabled) is set to `true` *and* the associated brush is set to a `SolidColorBrush`.

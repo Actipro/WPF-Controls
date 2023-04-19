@@ -9,12 +9,12 @@
 		/// Compares one document to another and stores the results as <see cref="OldDifferences"/> and <see cref="NewDifferences"/>.
 		/// </summary>
 		/// <param name="oldText">The text for the oldest version of a document.</param>
-		/// <param name="newText">The text for the lastest version of a document.</param>
+		/// <param name="newText">The text for the latest version of a document.</param>
 		/// <param name="ignoreWhiteSpace"><c>true</c> to ignore white space.</param>
 		void Compare(string oldText, string newText, bool ignoreWhiteSpace);
 
 		/// <summary>
-		/// Gets the collection of differences in the lastest document from the last compare operation.
+		/// Gets the collection of differences in the latest document from the last compare operation.
 		/// </summary>
 		IDifferenceCollection NewDifferences { get; }
 

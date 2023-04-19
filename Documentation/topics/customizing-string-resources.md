@@ -1,7 +1,7 @@
 ---
 title: "Customizing String Resources"
 page-title: "Customizing String Resources"
-order: 20
+order: 22
 ---
 # Customizing String Resources
 

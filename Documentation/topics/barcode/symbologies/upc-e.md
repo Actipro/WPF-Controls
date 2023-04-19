@@ -13,7 +13,7 @@ This symbology is also known as Universal Product Code version E.
 
 *A sample of this symbology*
 
-The 8 character value is divided into three parts: system code, product code, and check digit.
+The 8-character value is divided into three parts: system code, product code, and check digit.
 
 ## Symbology Characteristics
 
@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [UpcESymbology](xref:@ActiproUIRoot.Controls.BarCode.UpcESymbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [UpcEValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.UpcEValidationRule) |
+| Related `ValidationRule` Class | [UpcEValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.UpcEValidationRule) |
 | Encodable Characters | Number characters. |
 | Supports Checksum | No.  This symbology uses a check digit, but it is not currently calculated automatically. |
 | Has Special Start/Stop Characters | No. |

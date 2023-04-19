@@ -15,7 +15,7 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[IsDe
 
 ## Required Language Services
 
-The current syntax language must have two services registered so that delimiter highlighting can render: a structure matcher and a delimiter highlight tagger.
+The current syntax language must have two services registered so that delimiter highlighting can be rendered: a structure matcher and a delimiter highlight tagger.
 
 ### Structure Matcher
 
@@ -37,9 +37,10 @@ language.RegisterService(new TextViewTaggerProvider<DelimiterHighlightTagger>(ty
 
 ## Performance Optimizations
 
-The delimiter highlight mechanism can take time to execute when editing larger documents.  This can directly have a negative performance impact on caret movement and typing speed.  Thus this feature has been designed to do nearly all the work in worker threads, and utilizes the multi-threaded parser capabilities described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
+The delimiter highlight mechanism can take time to execute when editing larger documents.  This can directly have a negative performance impact on caret movement and typing speed.  Thus, this feature has been designed to do nearly all the work in worker threads, and utilizes the multi-threaded parser capabilities described in the [Parse Requests and Dispatchers](../../text-parsing/parsing/parse-requests-and-dispatchers.md) topic.
 
-It is very important that an ambient parse request dispatcher is configured per the instructions in that topic, otherwise the delimiter highlighting feature, when enabled, will run in the UI thread and negatively affect performance.
+> [!IMPORTANT]
+> It is very important that an ambient parse request dispatcher is configured per the instructions in that topic, otherwise the delimiter highlighting feature, when enabled, will run in the UI thread and negatively affect performance.
 
 ## Changing the Highlight Brush
 

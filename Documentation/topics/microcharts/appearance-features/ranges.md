@@ -34,7 +34,7 @@ In this example, the line series is set to a collection of doubles. Therefore, t
 
 The values of a range are specified using the [Maximum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYRange.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYRange.Minimum) properties.
 
-If either of these properties is unset (or set to `null`), then it's value will be auto-calculated based on the data points from all series.  The `Maximum` will run to the highest value and likewise the `Minimum` will run to the lowest value.
+If either of these properties is unset (or set to `null`), then its value will be auto-calculated based on the data points from all series.  The `Maximum` will run to the highest value and likewise the `Minimum` will run to the lowest value.
 
 For example, we can produce two ranges that run up (green) and down (red) from 0 using the following code:
 

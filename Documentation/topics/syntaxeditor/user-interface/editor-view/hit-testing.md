@@ -75,7 +75,7 @@ The [VisualElement](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Vis
 
 The [Type](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Type) property is useful for determining if the location is over a character in the text area.  When its value is `ViewTextAreaOverCharacter`, the location is directly over a character within an editor view.  When its value is `ViewTextAreaOverLine`, the location is not over a character within an editor view, but it is in the whitespace past the end of a view line.  When its value is `ViewTextArea`, the location is not over any editor view lines, but it is in the text area.
 
-Thus the [Offset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Offset) and [Position](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Position) properties return the exact character the location is over when [Type](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Type) is `ViewTextAreaOverCharacter`.  Otherwise, the offset/position of the closest character is returned.
+Thus, the [Offset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Offset) and [Position](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Position) properties return the exact character the location is over when [Type](xref:@ActiproUIRoot.Controls.SyntaxEditor.IHitTestResult.Type) is `ViewTextAreaOverCharacter`.  Otherwise, the offset/position of the closest character is returned.
 
 ## Scanning Text Around the Hit Test Result
 

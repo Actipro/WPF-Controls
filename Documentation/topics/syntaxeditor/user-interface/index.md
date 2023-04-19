@@ -15,7 +15,7 @@ See the [Editor View Features](editor-view/index.md) topic for more information.
 
 ## Input/Output Features
 
-In addition to the input/output features found in the [text framework](../text-parsing/index.md) such as file load/save, exporting to HTML/RTF, etc., SyntaxEditor has a lot of other i/o features built-in.
+In addition to the input/output features found in the [text framework](../text-parsing/index.md) such as file load/save, exporting to HTML/RTF, etc., SyntaxEditor has a lot of other I/O features built-in.
 
 See the [Input/Output](input-output/index.md) topic for more information.
 
@@ -31,7 +31,7 @@ SyntaxEditor's view search model interacts with the view's selection and provide
 
 @if (winrt wpf) {
 
-A standalone [EditorSearchView](searching/editor-search-view.md) control can be used to instantly recreate a classic Visual Studio-like search experience for end users. 
+A standalone [EditorSearchView](searching/editor-search-view.md) control can be used to instantly recreate a classic Visual Studio-like search experience for end users.
 
 }
 
@@ -51,7 +51,7 @@ See the [Theme and Highlighting Style Features](styles/index.md) topic for more 
 
 ## Adornment Features
 
-SyntaxEditor has a fully-extensible adornment layer framework that allows for any sort of custom content to be inserted within a view's text area.  This can include everything from alternating row highlights, to animated text decorations, or anything else you can imagine.
+SyntaxEditor has a fully-extensible adornment layer framework that allows for any sort of custom content to be inserted within a view's text area.  This can include everything from alternating row highlights to animated text decorations, or anything else you can imagine.
 
 All the built-in text area rendering is done using adornment layers, such as the text itself, selection, caret, and more.
 

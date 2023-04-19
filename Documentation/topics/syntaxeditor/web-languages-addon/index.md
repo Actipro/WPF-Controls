@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The Web Languages Add-on is an optional premium extra for SyntaxEditor customers that includes an advanced implementation of the XML, JavaScript, and JSON syntax languages.
+The Web Languages Add-on is an optional premium extra for SyntaxEditor customers that includes an advanced implementation of XML, JavaScript, and JSON syntax languages.
 
 The add-on has been built from the ground up by Actipro to take advantage of best practices for syntax language design.  While it is already packed with innovative features, the design is completely extensible and can be enhanced or modified as much as you like.
 

@@ -9,7 +9,7 @@ Actipro Charts are meant to help visualize quantitative data.  They are the full
 
 ![Screenshot](images/actipro-charts.png)
 
-*Sample sales illustrated using three line series on an XYChart*
+*Sample sales illustrated using three-line series on an XYChart*
 
 ![Screenshot](images/actipro-charts1.png)
 
@@ -17,40 +17,40 @@ Actipro Charts are meant to help visualize quantitative data.  They are the full
 
 Charts can be generated based on any custom data source.  They automatically calculate the best scales to fit data into the control, or you can customize the scales as needed.  They include support for aggregation of large data sets to improve performance and readability, highlighting ranges or key data points, and much more.
 
-Several types of charts are supported, which include Area, Bar, Line, Pie, Donut, and Scatter.  Stacked and 100% stacked variations of area and bar charts are available as well.
+Several types of charts are supported, which include [Area](chart-types/area.md), [Bar](chart-types/bar.md), [Line](chart-types/line.md), [Pie](chart-types/pie.md), [Donut](chart-types/pie.md), and [Scatter](chart-types/scatter.md).  Stacked and 100% stacked variations of area and bar charts are available as well.
 
 ## Features
 
 ### Chart Types
 
 - [Area](chart-types/area.md)
-  
+
   - Includes support for spline curves and stepped lines.
   - Optionally display a line along the series.
   - Optionally display markers to highlight data points.
   - Show markers for first, last, high, low, and negative data points.
 
 - [Bar](chart-types/bar.md)
-  
+
   - Quickly customize the spacing between the bars and groups of bars to fit your needs.
   - Stack bars side-by-side, on top of each other, or by percentage (100%).
   - Customize the range that a bar represents.
   - Advanced customization of bars using styles.
 
 - [Line](chart-types/line.md)
-  
+
   - Includes support for spline curves and stepped lines.
   - Optionally display markers to highlight data points.
-  - Show markers for for first, last, high, low, and negative data points.
+  - Show markers for first, last, high, low, and negative data points.
 
 - [Pie / Donut](chart-types/pie.md)
-  
+
   - Nest multiple series or support hierarchical data.
   - Several label display options.
   - 'Other' slice for aggregating small pie slices.
 
 - [Scatter](chart-types/scatter.md)
-  
+
   - Show markers for first, last, high, low, and negative data points.
 
 ### Data Source Features

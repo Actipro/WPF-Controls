@@ -5,13 +5,13 @@ order: 14
 ---
 # IntelliPrompt Navigable Symbol Provider
 
-Languages can choose to support an IntelliPrompt navigable symbol provider that lists the accessible symbols within an editor's document.  Once a language implements this provider service, the [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) control can be paired with a SyntaxEditor to provide VS type/member dropdown-like functionality.
+Languages can choose to support an IntelliPrompt navigable symbol provider that lists the accessible symbols within an editor's document.  Once a language implements this provider service, the [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) control can be paired with a SyntaxEditor to provide Visual Studio type/member dropdown-like functionality.
 
 ## Basic Concepts
 
 ### Navigable Symbols
 
-Navigable symbols are any object that implements the [INavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbol) interface.  The [NavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.NavigableSymbol) class is a default implementation.  Symbols represents a type or member within a document's text.  They each provide these bits of information:
+Navigable symbols are any object that implements the [INavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbol) interface.  The [NavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.NavigableSymbol) class is a default implementation.  Symbols represent a type or member within a document's text.  They each provide these bits of information:
 
 | Member | Description |
 |-----|-----|
@@ -35,9 +35,9 @@ The [INavigableSymbolProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Intelli
 - An [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) that is the snapshot to examine.
 - An optional parent [INavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbol) to examine.
 
-If the parent symbol is a null value, it means the request is for all root symbols within the document.  If a parent symbol is specified, then the request is for the members of that root symbol.
+If the parent symbol is a `null` value, it means the request is for all root symbols within the document.  If a parent symbol is specified, then the request is for the members of that root symbol.
 
-The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) provides access to its container [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument), and via that, the document's parse data, which usually contains information such as an AST.  That is assuming that the language has a parser that constructs an AST.
+The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) provides access to its container [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument), and via that, the document's parse data, which usually contains information such as an abstract syntax tree (AST).  That is assuming that the language has a parser that constructs an AST.
 
 The [GetSymbols](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbolProvider.GetSymbols*) method implementation should use information such as the AST to create [INavigableSymbol](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.INavigableSymbol) objects based on the parameters passed in, and then return those symbols.  By doing so, controls such as [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) can consume this information and provide an advanced editing experience for end users.
 
@@ -57,7 +57,7 @@ public IEnumerable<INavigableSymbol> GetSymbols(INavigableRequestContext context
 					this.AddMemberSymbolsFromAst(symbols, parseData.Snapshot ?? snapshot, parseData.Ast, parentSymbol);
 				else
 					this.AddTypeSymbolsFromAst(symbols, parseData.Snapshot ?? snapshot, parseData.Ast);
-				
+
 				// Sort (navigationSymbolComparer is a cached NavigableSymbolContentProviderComparer instance)
 				symbols.Sort(navigationSymbolComparer);
 

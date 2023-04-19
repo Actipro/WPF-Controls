@@ -9,9 +9,9 @@ The [DateTimePicker](xref:@ActiproUIRoot.Controls.Editors.DateTimePicker) contro
 
 ![Screenshot](../images/datetimepicker.png)
 
-Use the previous/next buttons in the calendar's header to navigate to a nearby month, or tap the current view's title to 'zoom out' to year, decade, or century views.
+Use the previous/next buttons in the calendar's header to navigate to a nearby month, or tap the current view's title to "zoom out" to year, decade, or century views.
 
-The time portion's inner radial slider sets the hours value.  It can be rotated up to two full cycles, where each cycle represents a 12 hour period.  The outer radial slider sets the minutes value, and can be rotated freely.
+The time portion's inner radial slider sets the hours value.  It can be rotated up to two full cycles, where each cycle represents a 12-hour period.  The outer radial slider sets the minutes value and can be rotated freely.
 
 The toggle at the top determines whether the [DateTimePicker](xref:@ActiproUIRoot.Controls.Editors.DateTimePicker) is currently modifying the date or time component of the `DateTime`.  The date component is edited with a [DatePicker](datepicker.md) and the time component is edited with a [TimePicker](timepicker.md).
 

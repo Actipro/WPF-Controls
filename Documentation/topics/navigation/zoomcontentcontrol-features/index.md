@@ -5,13 +5,13 @@ order: 1
 ---
 # Overview
 
-ZoomContentControl is a control that presents a selected item from a hierarchy in a linear fashion.
+`ZoomContentControl` is a control that presents a selected item from a hierarchy in a linear fashion.
 
 ![Screenshot](../images/zoomcontentcontrol-teaser.png)
 
 Some of the more major features include:
 
-- Adds [zooming and panning](view-manipulation.md) capabilities to the native WPF ContentControl.
+- Adds [zooming and panning](view-manipulation.md) capabilities to the native WPF `ContentControl`.
 - Supports [smooth animations](view-manipulation.md) when zooming and panning.
 - Vertical and horizontal [scrollbars](view-manipulation.md) can be used for panning or hidden.
 - [Mouse and keyboard behavior](input-bindings.md) can be easily customized using standard WPF input bindings.

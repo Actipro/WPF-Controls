@@ -71,7 +71,7 @@ See the [Working with Popups](../working-with-popups.md) topic for more detailed
 
 ### With a Contained PopupGallery
 
-The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
+The popup has a special gripper that can be used by assigning a value to the [PopupResizeMode](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.PopupButtonBase.PopupResizeMode) property.  However, the gripper is only intended to work if there is a [PopupGallery](popupgallery.md) control contained somewhere in the popup content since there is special resizing logic needed to handle that scenario.
 
 ### Without a Contained PopupGallery
 
@@ -126,7 +126,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:PopupButton ImageSourceLarge="/Images/Table32.png" Label="Table" KeyTipAccessText="T" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:PopupButton Command="ApplicationCommands.Paste" KeyTipAccessText="P" />

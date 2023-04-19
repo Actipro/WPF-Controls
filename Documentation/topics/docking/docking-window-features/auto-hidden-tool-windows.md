@@ -154,9 +154,9 @@ The [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost).[AutoHidePopupTool
 
 @if (wpf) {
 
-## Preventing an Auto-Hide Popup From Closing
+## Preventing an Auto-Hide Popup from Closing
 
-Auto-hide popups will close by default after a brief delay whenever the keyboard focus is moved outside of them.  This can be a problem in scenarios where a dialog `Window` is opened from the tool window displayed in the auto-hide popup.  In that scenario, the keyboard focus moves to the dialog and the auto-hide popup is closed.  However you may wish to keep the auto-hide popup visible while the dialog is displayed so that focus properly returns to it when the dialog is closed.
+Auto-hide popups will close by default after a brief delay whenever the keyboard focus is moved outside of them.  This can be a problem in scenarios where a dialog `Window` is opened from the tool window displayed in the auto-hide popup.  In that scenario, the keyboard focus moves to the dialog and the auto-hide popup is closed.  However, you may wish to keep the auto-hide popup visible while the dialog is displayed so that focus properly returns to it when the dialog is closed.
 
 This code shows how to display a dialog and keep any current auto-hide popup open:
 
@@ -174,13 +174,13 @@ finally {
 
 ## Dynamically Altering the Auto-Hide Side
 
-The [WindowsAutoHiding](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsAutoHiding) event fires whenever one or more tool windows are auto-hidden, allowing for the side upon which they are being auto-hidden to be customized.  This is useful in scenarios like when you wish to restrict auto-hiding to only the left/right or top/bottom of a dock host.
+The [WindowsAutoHiding](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsAutoHiding) event is raised whenever one or more tool windows are auto-hidden, allowing for the side upon which they are being auto-hidden to be customized.  This is useful in scenarios like when you wish to restrict auto-hiding to only the left/right or top/bottom of a dock host.
 
 The event is passed arguments of type [DockingWindowsAutoHidingEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingWindowsAutoHidingEventArgs), which has a [Side](xref:@ActiproUIRoot.Controls.Docking.DockingWindowsAutoHidingEventArgs.Side) property.  An event handler can examine the list of windows being auto-hidden and can choose to change the side to another side.
 
 ## Auto-Hide Popup Events
 
-The [WindowAutoHidePopupOpened](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowAutoHidePopupOpened) and [WindowAutoHidePopupClosed](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowAutoHidePopupClosed) events on [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) fire whenever the auto-hide popup is opened or closed.  The event arguments specify which tool window was opened or closed.
+The [WindowAutoHidePopupOpened](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowAutoHidePopupOpened) and [WindowAutoHidePopupClosed](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowAutoHidePopupClosed) events on [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) are raised whenever the auto-hide popup is opened or closed.  The event arguments specify which tool window was opened or closed.
 
 @if (wpf) {
 

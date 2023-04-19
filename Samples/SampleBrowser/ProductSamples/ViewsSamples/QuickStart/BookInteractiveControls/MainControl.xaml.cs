@@ -153,7 +153,7 @@ namespace ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookInteractive
 		/// </summary>
 		/// <value>
 		/// The text of the alert message.
-		/// The default value is <see langword="null"/>.
+		/// The default value is <c>null</c>.
 		/// </value>
 		public string AlertText {
 			get { return (string)this.GetValue(AlertTextProperty); }

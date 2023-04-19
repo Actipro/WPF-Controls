@@ -9,7 +9,7 @@ A code block finder finds the snapshot range of a logical code block that contai
 
 ## Basic Concepts
 
-Code block finders are classes implementing [ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) that can scan through text, tokens, or AST data to locate the snapshot range of a code block that contains the specified snapshot range.  Once the code block finder language service is implemented, SyntaxEditor's [Code Block Selection](../../user-interface/editor-view/code-block-selection.md) feature can be used.
+Code block finders are classes implementing [ICodeBlockFinder](xref:ActiproSoftware.Text.Analysis.ICodeBlockFinder) that can scan through text, tokens, or abstract syntax tree (AST) data to locate the snapshot range of a code block that contains the specified snapshot range.  Once the code block finder language service is implemented, SyntaxEditor's [Code Block Selection](../../user-interface/editor-view/code-block-selection.md) feature can be used.
 
 ## Registering with a Language
 

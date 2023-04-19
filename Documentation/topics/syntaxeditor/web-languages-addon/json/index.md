@@ -46,6 +46,6 @@ See the [Parsing and Parse Data](parsing.md) topic for more information.
 
 ## Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 See the [Indent Provider](indent-provider.md) topic for more information.

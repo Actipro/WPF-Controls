@@ -9,7 +9,7 @@ All menus displayed by this product can be customized or replaced entirely befor
 
 ## The MenuOpening Event
 
-The customization of menus is handled via the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MenuOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.MenuOpening) event.  This event fires whenever a menu is displayed for a docking window, when an options button is pressed for a docking window, etc.
+The customization of menus is handled via the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MenuOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.MenuOpening) event.  This event is raised whenever a menu is displayed for a docking window, when an options button is pressed for a docking window, etc.
 
 The event arguments that are passed are type [DockingMenuEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs), which indicates the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) for which the event was fired.  The [DockingMenuEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs).[Kind](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Kind) property supplies a [DockingMenuKind](xref:@ActiproUIRoot.Controls.Docking.DockingMenuKind) value that can be used to determine the type of menu being constructed.
 

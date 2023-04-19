@@ -5,7 +5,7 @@ order: 4
 ---
 # Baseline
 
-Baseline is the point on an axis that separates positive and negative values.  A baseline value can be used to alter the look of area and bar series, and can be optionally displayed on the chart.
+Baseline is the point on an axis that separates positive and negative values.  A baseline value can be used to alter the look of area and bar series and can be optionally displayed on the chart.
 
 ## Baseline Value
 
@@ -15,11 +15,11 @@ The baseline value can be customized using the `Baseline` property on [XYDoubleA
 
 In addition, area and bar series will pivot their polygons around the baseline value, which alters their appearance.
 
-In the following examples, the data rendered by the area chart uses the index postion along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
+In the following examples, the data rendered by the area chart uses the index position along the X-axis and the fixed values `10, 20, 10, 20, 10, 20, 10` for the Y-axis.  The first image shows the series using `10` as the minimum value along the Y-axis, and `20` for the maximum.  Since our baseline is `0` (the default), the polygon is not pivoted.
 
 ![Screenshot](../images/chart-types-area2.png)
 
-If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polyon will appear to pivot around the baseline.
+If we explicitly set our baseline value to `15`, then any values below the baseline will be considered "negative" and the polygon will appear to pivot around the baseline.
 
 ![Screenshot](../images/chart-types-area3.png)
 
@@ -31,7 +31,7 @@ For example, the following line series uses the same fixed values from above (`1
 
 ![Screenshot](../images/appearance-baseline1.png)
 
-If we set [IsAxisBaselineVisible](xref:@ActiproUIRoot.Controls.Charts.XYChart.IsAxisBaselineVisible) to `True`, then we can easily determine this information.
+If we set [IsAxisBaselineVisible](xref:@ActiproUIRoot.Controls.Charts.XYChart.IsAxisBaselineVisible) to `true`, then we can easily determine this information.
 
 ![Screenshot](../images/appearance-baseline2.png)
 

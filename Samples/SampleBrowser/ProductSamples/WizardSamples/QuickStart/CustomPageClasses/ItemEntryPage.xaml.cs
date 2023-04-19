@@ -62,7 +62,7 @@ namespace ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClas
 					e.Handled = true;
 					e.Cancel = true;
 
-					// Update the current item index and reinit the page
+					// Update the current item index and re-initialize the page
 					store.CurrentIndex = store.CurrentIndex + (isForwardProgress ? 1 : -1);
 					this.InitializePage();					
 				}

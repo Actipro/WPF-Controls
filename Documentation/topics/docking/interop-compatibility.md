@@ -42,7 +42,7 @@ Sometimes this mode doesn't work well with interop controls since they could hav
 
 ## Handling Focus Issues
 
-There are known issues in core WPF with how it tracks and reports focus movement in and out of `HwndHost`.  This makes it difficult to use standard WPF-based focus events when dealing with `HwndHost`-based scenarios, because the events don't fire properly.
+There are known issues in core WPF with how it tracks and reports focus movement in and out of `HwndHost`.  This makes it difficult to use standard WPF-based focus events when dealing with `HwndHost`-based scenarios, because the events aren't raised properly.
 
 We provide a workaround for most of these issues in the form of an [InteropFocusTracking](xref:@ActiproUIRoot.Controls.Docking.InteropFocusTracking).`IsEnabled` attached property that should be set on any `HwndHost`-based control, such as `WindowsFormsHost`, WPF `WebBrowser`, etc.  Set that attached property to `true` on such controls in your docking window hierarchy to enable our workarounds.
 
@@ -53,7 +53,7 @@ As a quick aside, we've noticed in certain scenarios that if you wrap a `Windows
 ```xaml
 xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
 ...
-					
+
 <Border Background="Transparent">
 	<WindowsFormsHost docking:InteropFocusTracking.IsEnabled="True">
 		<winforms:WebBrowser Url="http://www.actiprosoftware.com" />
@@ -61,9 +61,9 @@ xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms
 </Border>
 ```
 
-If the `Background` is left its default null value, or is set to a solid color, performance is significantly better.  This can occur anywhere in WPF (not just the Docking/MDI product), and we wanted to pass along the tip.
+If the `Background` is left with its default `null` value, or is set to a solid color, performance is significantly better.  This can occur anywhere in WPF (not just the Docking/MDI product), and we wanted to pass along the tip.
 
-It's important to note that [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow), and [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) have a transparent background by default.  Therefore any `WindowsFormsHost` control in them should be wrapped with a `Border` that has a solid background set.  Or alternatively, set the `Background` properties of those controls to a solid brush.
+It's important to note that [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow), and [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) have a transparent background by default.  Therefore, any `WindowsFormsHost` control in them should be wrapped with a `Border` that has a solid background set.  Or alternatively, set the `Background` properties of those controls to a solid brush.
 
 Some side effects of using transparent backgrounds around `WindowsFormsHost` may be seeing the size of the control resize and paint itself before the location of the control is updated and repainted, thereby creating a flicker effect.
 
@@ -74,7 +74,7 @@ This sample XAML code shows how to create a document window that contains a Wind
 ```xaml
 xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
 ...
-					
+
 <docking:DockSite>
 	<docking:Workspace>
 		<docking:TabbedMdiHost>

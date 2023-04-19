@@ -181,7 +181,7 @@ namespace ActiproSoftware.Windows.Controls.DataGrid {
 		/// Resets control template for the <c>DataGridRow</c> that presents the <c>CollectionView.NewItemPlaceholder</c> item.
 		/// </summary>
 		/// <param name="obj">The <c>DataGrid</c>.</param>
-		/// <returns><see langword="null"/>.</returns>
+		/// <returns><c>null</c>.</returns>
 		[SuppressMessage("Microsoft.Portability", "CA1903:UseOnlyApiFromTargetedFramework", MessageId = "System.Windows.Data.CollectionView.#get_NewItemPlaceholder()")]
 		private static object ResetNewItemTemplate(object obj) {
 			DataGridControl datagrid = obj as DataGridControl;

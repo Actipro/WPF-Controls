@@ -5,11 +5,16 @@ order: 7
 ---
 # Designer Interaction
 
-Ribbon has designer support for Visual Studio when using the .NET Framework version of the assemblies This enhanced functionality makes it much easier to quickly create your ribbon user interfaces and adjust the layout of ribbon controls.
+Ribbon has designer support for Visual Studio when using the .NET Framework version of the assemblies. This enhanced functionality makes it much easier to quickly create your ribbon user interfaces and adjust the layout of ribbon controls.
 
 ![Screenshot](images/vs-designer.gif)
 
 *The Visual Studio designer with a SplitButton selected, using the image picker on the SplitButton's task pane*
+
+> [!IMPORTANT]
+> The designer support outlined in this topic only applies to .NET Framework assemblies when used with Visual Studio 2019 and earlier.  Starting with Visual Studio 2022, Microsoft changed the designer extensibility APIs in order to support .NET Core assemblies, and those changes broke the Ribbon designer functionality.  Since this older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../bars/index.md), which has a much-improved design and appearance, this designer interaction will not be migrated to the new extensibility APIs.
+>
+> Visual Studio 2022 users can safely use the XAML designer when working with Ribbon, but the additional designer interaction described in this topic will not be available.
 
 ## Property Categorization / Descriptions
 

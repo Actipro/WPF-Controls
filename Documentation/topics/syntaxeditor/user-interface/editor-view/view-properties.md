@@ -11,7 +11,7 @@ The property returns an [PropertyDictionary](xref:ActiproSoftware.Text.Utility.P
 
 ## Storing Data
 
-In this code snippet we store an object referenced by the variable `someObject` into the properties dictionary under the string key `MyPropertyKey`:
+In this code snippet we store an object referenced by the variable `someObject` into the properties dictionary under the string key `"MyPropertyKey"`:
 
 ```csharp
 editor.ActiveView.Properties["MyPropertyKey"] = someObject;
@@ -19,7 +19,7 @@ editor.ActiveView.Properties["MyPropertyKey"] = someObject;
 
 ## Retriving Data
 
-In this code snippet we retrieve an object stored under the string key `MyPropertyKey`:
+In this code snippet we retrieve an object stored under the string key `"MyPropertyKey"`:
 
 ```csharp
 object someObject;

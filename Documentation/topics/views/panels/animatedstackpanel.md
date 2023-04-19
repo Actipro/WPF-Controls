@@ -20,7 +20,7 @@ Child elements are positioned or "stacked" based on the order that the elements 
 
 *`AnimatedStackPanel` with the elements stacked vertically (left) and horizontally (right)*
 
-Like the native WPF `StackPanel`, the `AnimatedStackPanel` implents `IScrollInfo` to support logical scrolling.  Physical scrolling is based on the size of the element being scrolled and can be thought of as "pixel-based" scrolling.  Logical scrolling is based on the number of elements in the `AnimatedStackPanel`, so it effectively moves a given element completely into the view (when possible).  If `ScrollViewer`.`CanContentScroll` is set to `false`, then logical scrolling will be disabled and physical scrolling will be used.
+Like the native WPF `StackPanel`, the `AnimatedStackPanel` implents `IScrollInfo` to support logical scrolling.  Physical scrolling is based on the size of the element being scrolled and can be thought of as "pixel-based" scrolling.  Logical scrolling is based on the number of elements in the `AnimatedStackPanel`, so it effectively moves a given element completely into the view (when possible).  If `ScrollViewer.CanContentScroll` is set to `false`, then logical scrolling will be disabled and physical scrolling will be used.
 
 ## Getting Started with AnimatedStackPanel
 

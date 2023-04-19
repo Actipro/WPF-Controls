@@ -5,7 +5,7 @@ order: 14
 ---
 # Interleaved 2 of 5
 
-Interleaved 2 of 5 is a linear symbology, that provides higher density than the Industrial 2 of 5 symbology that it is based on.
+Interleaved 2 of 5 is a linear symbology that provides higher density than the Industrial 2 of 5 symbology that it is based on.
 
 It is most commonly used by the distribution and warehouse industry.
 
@@ -13,7 +13,7 @@ It is most commonly used by the distribution and warehouse industry.
 
 *A sample of this symbology*
 
-This symbology can encode numeric digits, and requires that an even number of digits (including the optional check digit) are encoded.  This symbology implementation will automatically add a `0` at the start of the encoded value to ensure that an even number of digits are encoded.
+This symbology can encode numeric digits and requires that an even number of digits (including the optional check digit) are encoded.  This symbology implementation will automatically add a `0` at the start of the encoded value to ensure that an even number of digits are encoded.
 
 ## Symbology Characteristics
 
@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Interleaved2of5Symbology](xref:@ActiproUIRoot.Controls.BarCode.Interleaved2of5Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Interleaved2of5ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Interleaved2of5ValidationRule) |
+| Related `ValidationRule` Class | [Interleaved2of5ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Interleaved2of5ValidationRule) |
 | Encodable Characters | Number characters. |
 | Supports Checksum | Yes.  The implementation can optionally auto-calculate and insert a check digit. |
 | Has Special Start/Stop Characters | No. |

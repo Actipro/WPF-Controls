@@ -3,9 +3,9 @@ title: "The 'Simple' Language (used in samples)"
 page-title: "The 'Simple' Language (used in samples) - SyntaxEditor Reference"
 order: 12
 ---
-# The 'Simple' Language (used in samples)
+# The "Simple" Language (used in samples)
 
-The 'Simple' language is a very basic sort of language that we created to help demonstrate how to implement language-related features with SyntaxEditor and the text/parsing framework.  It is used in several samples.
+The *Simple* language is a very basic sort of language that we created to help demonstrate how to implement language-related features with SyntaxEditor and the text/parsing framework.  It is used in several samples.
 
 The Simple language supports statements, expressions, and function/variable declarations.
 
@@ -16,7 +16,7 @@ This snippet shows some sample Simple language code:
 ```
 /*
 	The Simple language demonstrates a C-like
-	language that only knows several keywords and 
+	language that only knows several keywords and
 	operators.  All variables are integer numbers.
 */
 
@@ -103,30 +103,30 @@ Statement:
 	VariableDeclarationStatement
 	AssignmentStatement
 	ReturnStatement
-	
+
 Block:
 	"{" StatementList? "}"
 
 EmptyStatement:
 	";"
-	
+
 VariableDeclarationStatement:
 	"var" "identifier" ";"
 
 AssignmentStatement:
 	"identifier" "=" Expression ";"
-	
+
 ReturnStatement:
 	"return" Expression ";"
-	
-Expression: 
+
+Expression:
 	EqualityExpression
 
 EqualityExpression:
 	AdditiveExpression
 	AdditiveExpression "==" EqualityExpression
 	AdditiveExpression "!=" EqualityExpression
-	
+
 AdditiveExpression:
 	MultiplicativeExpression
 	MultiplicativeExpression "+" AdditiveExpression
@@ -136,7 +136,7 @@ MultiplicativeExpression:
 	PrimaryExpression
 	PrimaryExpression "*" MultiplicativeExpression
 	PrimaryExpression "/" MultiplicativeExpression
-	
+
 PrimaryExpression:
 	NumberExpression
 	SimpleName

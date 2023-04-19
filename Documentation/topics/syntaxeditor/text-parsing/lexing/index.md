@@ -21,12 +21,12 @@ See the [Tokens](tokens.md) topic for more information.
 
 ## Dynamic Lexers
 
-Dynamic lexers are mergable lexers and use our custom pattern-based regular expression engine to match and tokenize text.  It is recommended that developers new to the text/parsing framework as well as developers who do not require much advanced parsing use dynamic lexers since they make it simple to get up and running quickly.
+Dynamic lexers are mergeable lexers and use our custom pattern-based regular expression engine to match and tokenize text.  It is recommended that developers new to the text/parsing framework as well as developers who do not require much advanced parsing use dynamic lexers since they make it simple to get up and running quickly.
 
 See the [Dynamic Lexers](dynamic-lexers.md) topic for more information.
 
 ## Programmatic Lexers
 
-The fastest lexers are handwritten classes (called "programmatic") that are hard-coded to parse a specific language's code.
+The fastest lexers are handwritten classes (called *programmatic*) that are hard-coded to parse a specific language's code.
 
 See the [Programmatic Lexers](programmatic-lexers.md) topic for more information.

@@ -5,13 +5,17 @@ order: 3
 ---
 # Headers and Content
 
-ExplorerBar has several configuration options for the display of its expander panes.
+`ExplorerBar` has several configuration options for the display of its expander panes.
 
 ## Headers
 
 For pane headers, the `Expander.Header` can be set to either a string or an [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo) object.
 
-If the header is a string, it will be displayed like `File and Folder Tasks` in the screenshot above.  Alternatively, the [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo) class gives you the option of displaying text and an image.
+![Screenshot](../images/explorerbar.png)
+
+*The ExplorerBar control with two panes*
+
+If the header is a string, it will be displayed like the **File and Folder Tasks** pane in the screenshot above.  Alternatively, the [ImageTextInfo](xref:@ActiproUIRoot.Controls.ImageTextInfo) class gives you the option of displaying text and an image, like shown in the **Picture Tasks** pane.
 
 ## Image/Text and Alternate Pane Style Example
 
@@ -19,8 +23,8 @@ This sample shows how to create an expander pane with an alternate style (which 
 
 ```xaml
 <navigation:ExplorerBar>
-    <shared:AnimatedExpander IsExpanded="True" Margin="0,7,0,0"
-		Style="{DynamicResource {x:Static themes:ExplorerBarCommonDictionary.ExpanderAlternateStyleKey}}">
+	<shared:AnimatedExpander IsExpanded="True" Margin="0,7,0,0"
+	                         Style="{DynamicResource {x:Static themes:ExplorerBarCommonDictionary.ExpanderAlternateStyleKey}}">
 		<shared:AnimatedExpander.Header>
 			<shared:ImageTextInfo ImageSourceLarge="/Resources/Images/PictureTasks32.png" Text="Picture Tasks" />
 		</shared:AnimatedExpander.Header>
@@ -31,4 +35,4 @@ This sample shows how to create an expander pane with an alternate style (which 
 
 ## Content
 
-Any sort of content can be placed in the content portion of a pane.  A common practice is to use a `StackPanel` of `Hyperlink` controls in some panes.  But the general rule of thumb for content of a pane is that it should relate in some way to the context outside of the ExplorerBar, such as providing tasks or information related to the outer content.
+Any sort of content can be placed in the content portion of a pane.  A common practice is to use a `StackPanel` of `Hyperlink` controls in some panes.  But the general rule of thumb for content of a pane is that it should relate in some way to the context outside of the `ExplorerBar`, such as providing tasks or information related to the outer content.

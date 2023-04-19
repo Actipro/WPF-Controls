@@ -9,7 +9,7 @@ Syntax languages support line commenters, which provide built-in functionality f
 
 ## Basic Concepts
 
-Line commenters are classes implementing [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) that can comment or comment a range of text.  The text/parsing framework includes two implementations of line commenters: one that comments out a specific line (like C#'s `//`) and one that comments out a specific range of text (like XML's `<!-- -->`).
+Line commenters are classes implementing [ILineCommenter](xref:ActiproSoftware.Text.ILineCommenter) that can comment or uncomment a range of text.  The text/parsing framework includes two implementations of line commenters: one that comments out a specific line (like C#'s `//`) and one that comments out a specific range of text (like XML's `<!-- -->`).
 
 See the [Line Commenting](../../text-parsing/advanced-text/line-commenting.md) topic for details on how to create and work with line commenter classes.
 

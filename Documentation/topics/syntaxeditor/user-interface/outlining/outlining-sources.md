@@ -13,9 +13,9 @@ An outliner is a language service that returns a language-specific outlining sou
 
 Outlining sources are represented by the [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) interface.  This interface defines a single [GetNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource.GetNodeAction*) method that is called by the [IOutliningManager](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningManager).
 
-When a text change occurs and the outlining node hierarchy needs to be incrementally updated, the manager iterates through the existing nodes and compares them to the actions indicated by an [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) at the same offset.  For each offset that is examined, the manager calls the [GetNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource.GetNodeAction*) method and passes it by reference the offset to examine.  It expects the outlining source to return the [OutliningNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.OutliningNodeAction) to take (`None`, `Start`, or `End`) at that offset. `None` means that no outlining node should start or end at this offset. `Start` means that an outlining node should start at this offset.  And likewise, `End` means that an outlining node should end at this offset.  If the action is `Start` or `End`, then an [IOutliningNodeDefinition](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningNodeDefinition) needs to be returned via an out parameter.  The node definition helps the manager to create new nodes and match ends to existing nodes.  Also for an optimization, the offset passed can be moved ahead to indicate the next meaningful offset for the outlining source.  When used properly this can result in a lot less calls to [GetNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource.GetNodeAction*) while still returning the same accurate data.
+When a text change occurs and the outlining node hierarchy needs to be incrementally updated, the manager iterates through the existing nodes and compares them to the actions indicated by an [IOutliningSource](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource) at the same offset.  For each offset that is examined, the manager calls the [GetNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource.GetNodeAction*) method and passes it by reference the offset to examine.  It expects the outlining source to return the [OutliningNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.OutliningNodeAction) to take (`None`, `Start`, or `End`) at that offset. `None` means that no outlining node should start or end at this offset. `Start` means that an outlining node should start at this offset.  And likewise, `End` means that an outlining node should end at this offset.  If the action is `Start` or `End`, then an [IOutliningNodeDefinition](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningNodeDefinition) needs to be returned via an out parameter.  The node definition helps the manager to create new nodes and match ends to existing nodes.  Also, for an optimization, the offset passed can be moved ahead to indicate the next meaningful offset for the outlining source.  When used properly this can result in a lot less calls to [GetNodeAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.IOutliningSource.GetNodeAction*) while still returning the same accurate data.
 
-SyntaxEditor comes with two built-in base classes that make it easier to construct an outlining source.  One typically executes in the main thread, uses simple token pairs to determine how to create outlining nodes, and is very quick to set up.  The other generally executes in a worker thread by a parser and is better suited for potential large documents, but requires a bit more code to get working.  Both are described in detail below.
+SyntaxEditor comes with two built-in base classes that make it easier to construct an outlining source.  One typically executes in the main thread, uses simple token pairs to determine how to create outlining nodes, and is very quick to set up.  The other generally executes in a worker thread by a parser and is better suited for potential large documents but requires a bit more code to get working.  Both are described in detail below.
 
 ## Outliners
 
@@ -58,19 +58,19 @@ public class JavascriptOutliningSource : TokenOutliningSourceBase {
 
 	private static OutliningNodeDefinition curlyBraceDefinition;
 	private static OutliningNodeDefinition multiLineCommentDefinition;
-	
+
 	static JavascriptOutliningSource() {
 		curlyBraceDefinition = new OutliningNodeDefinition("CurlyBrace");
 		curlyBraceDefinition.IsImplementation = true;
-		
+
 		multiLineCommentDefinition = new OutliningNodeDefinition("MultiLineComment");
 		multiLineCommentDefinition.DefaultCollapsedContent = "/**/";
 		multiLineCommentDefinition.IsImplementation = true;
 	}
-	
+
 	public JavascriptOutliningSource(ITextSnapshot snapshot) : base(snapshot) {}
-	
-	protected override OutliningNodeAction GetNodeActionForToken(IToken token, 
+
+	protected override OutliningNodeAction GetNodeActionForToken(IToken token,
 		out IOutliningNodeDefinition definition) {
 
 		switch (token.Key) {
@@ -103,11 +103,11 @@ language.RegisterService<IOutliner>(
 
 ## Range-Based Outlining Sources
 
-A range-based outlining source is generated by an IParser in a worker thread.  The parser scans and provides outlining data for the entire document in the form of text ranges and corresponding outlining node definitions.  This could be done via simple token scanning or by examining an AST (abstract syntax tree) that is constructed by the parser immediately beforehand.  Since a majority of the work is done in a separate thread, there is almost no impact to the UI thread.
+A range-based outlining source is generated by an IParser in a worker thread.  The parser scans and provides outlining data for the entire document in the form of text ranges and corresponding outlining node definitions.  This could be done via simple token scanning or by examining an abstract syntax tree (AST) that is constructed by the parser immediately beforehand.  Since a majority of the work is done in a separate thread, there is almost no impact to the UI thread.
 
 ### Benefits and Drawbacks
 
-The benefits of this sort of outlining source are that it doesn't slow down the main UI thread (even for relatively large documents) when typing, and allows for complete customization of what text ranges become outlining nodes.  For example, you can choose to only make outlining nodes for top-level curly braces, instead of curly braces at all levels.
+The benefits of this sort of outlining source are that it doesn't slow down the main UI thread (even for relatively large documents) when typing and allows for complete customization of what text ranges become outlining nodes.  For example, you can choose to only make outlining nodes for top-level curly braces, instead of curly braces at all levels.
 
 The drawbacks are that it is slightly more complex than the simpler token-based outlining source mechanism, and there can be a brief delay between when typing and when outlining node UI pops into the margin, due to the multi-threading.
 
@@ -116,7 +116,7 @@ The drawbacks are that it is slightly more complex than the simpler token-based 
 
 ### Using Abstract Syntax Trees
 
-Advanced syntax language developers will want to build an [IParser](xref:ActiproSoftware.Text.Parsing.IParser) to construct an AST of their document, and use that AST data to create the appropriate outlining node ranges for their outlining source.  Say your syntax language is for C# and assume you have a parser that makes an AST of the document.  Your AST knows which text ranges are namespaces, which are classes, etc.  Therefore that sort of AST node data can be used to construct related outlining node data.
+Advanced syntax language developers will want to build an [IParser](xref:ActiproSoftware.Text.Parsing.IParser) to construct an AST of their document, and use that AST data to create the appropriate outlining node ranges for their outlining source.  Say your syntax language is for C# and assume you have a parser that makes an AST of the document.  Your AST knows which text ranges are namespaces, which are classes, etc.  Therefore, that sort of AST node data can be used to construct related outlining node data.
 
 ### Implementation
 
@@ -126,23 +126,23 @@ Regardless of which method will be used to determine where outlining node ranges
 
 Sometimes certain nodes may not have an end.  This could happen in VB if a `Namespace ... End Namespace` block contains a `Class` declaration however no `End Class` has yet been typed.  In this case the outlining node for the `Class` is considered "open".  It can be added by calling the [AddOpenNode](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.Implementation.RangeOutliningSourceBase.AddOpenNode*) method.  That method accepts a start offset instead of a [TextRange](xref:ActiproSoftware.Text.TextRange).
 
-Here is some sample code showing how a range-based Javascript outlining source could be made that only creates outlining nodes for multi-line comments and top-level curly braces.  This sample does token scanning in the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).  However if you already have built an AST of the document, that would be more preferable for use.
+Here is some sample code showing how a range-based Javascript outlining source could be made that only creates outlining nodes for multi-line comments and top-level curly braces.  This sample does token scanning in the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).  However, if you already have built an AST of the document, that would be more preferable for use.
 
 ```csharp
 public class JavascriptOutliningSource : RangeOutliningSourceBase {
 
 	private static OutliningNodeDefinition curlyBraceDefinition;
 	private static OutliningNodeDefinition multiLineCommentDefinition;
-	
+
 	static JavascriptOutliningSource() {
 		curlyBraceDefinition = new OutliningNodeDefinition("CurlyBrace");
 		curlyBraceDefinition.IsImplementation = true;
-		
+
 		multiLineCommentDefinition = new OutliningNodeDefinition("MultiLineComment");
 		multiLineCommentDefinition.DefaultCollapsedContent = "/**/";
 		multiLineCommentDefinition.IsImplementation = true;
 	}
-	
+
 	public JavascriptOutliningSource(ITextSnapshot snapshot) : base(snapshot) {
 		int curlyBraceStartOffset = -1;
 		int curlyBraceLevel = 0;
@@ -202,7 +202,7 @@ public class JavascriptOutliningSource : RangeOutliningSourceBase {
 }
 ```
 
-This code shows a sample outliner for the outlining source above.  Note that since much of the outlining work is occuring in a worker thread, the editor control may already be on a new text snapshot by the time the parsing completes.  Therefore we do a quick call to [TranslateTo](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.Implementation.RangeOutliningSourceBase.TranslateTo*) to ensure the data in the outlining source that will be used by the outlining manager are up-to-date with the current snapshot in the editor.
+This code shows a sample outliner for the outlining source above.  Note that since much of the outlining work is occurring in a worker thread, the editor control may already be on a new text snapshot by the time the parsing completes.  Therefore we do a quick call to [TranslateTo](xref:@ActiproUIRoot.Controls.SyntaxEditor.Outlining.Implementation.RangeOutliningSourceBase.TranslateTo*) to ensure the data in the outlining source that will be used by the outlining manager are up-to-date with the current snapshot in the editor.
 
 ```csharp
 public class JavascriptOutliner : IOutliner {
@@ -210,10 +210,10 @@ public class JavascriptOutliner : IOutliner {
 	public IOutliningSource GetOutliningSource(ITextSnapshot snapshot) {
 		ICodeDocument document = snapshot.Document as ICodeDocument;
 		if (document != null) {
-			// Get the outlining source, which should be passed back by the IParser in the parse data 
+			// Get the outlining source, which should be passed back by the IParser in the parse data
 			JavacriptParseData parseData = document.ParseData as JavacriptParseData;
 			if ((parseData != null) && (parseData.OutliningSource != null)) {
-				// Translate the data to the desired snapshot, 
+				// Translate the data to the desired snapshot,
 				//   which could be slightly newer than the parsed source
 				parseData.OutliningSource.TranslateTo(snapshot);
 				return parseData.OutliningSource;
@@ -221,8 +221,8 @@ public class JavascriptOutliner : IOutliner {
 		}
 		return null;
 	}
-	
-	public AutomaticOutliningUpdateTrigger UpdateTrigger { 
+
+	public AutomaticOutliningUpdateTrigger UpdateTrigger {
 		get {
 			return AutomaticOutliningUpdateTrigger.ParseDataChanged;
 		}
@@ -240,6 +240,6 @@ language.RegisterService<IOutliner>(
 
 ## Performance Optimizations
 
-Remeber that token-based outlining sources are generally used in the main UI thread and thus can block the UI temporarily if editing a large document and a large incremental outlining update is being made.  In cases where this becomes noticable, a range-based outlining source should be used instead.  Range-based outlining sources are generally built in a worker thread by a parser, and only cause a minimal UI thread hit when merging the data into the outlining hierarchy.
+Remember that token-based outlining sources are generally used in the main UI thread and thus can block the UI temporarily if editing a large document and a large incremental outlining update is being made.  In cases where this becomes noticeable, a range-based outlining source should be used instead.  Range-based outlining sources are generally built in a worker thread by a parser, and only cause a minimal UI thread hit when merging the data into the outlining hierarchy.
 
-Code outlining has a lot of dependence on a language's [lexer](../../text-parsing/lexing/index.md).  Therefore a faster lexer can make a huge difference in outlining performance when compared to a slower lexer.  Keep this in mind when looking for ways to speed up outlining performance.  For instance, if you started off using a [dynamic lexer](../../text-parsing/lexing/dynamic-lexers.md) for your language, you should note that while dynamic lexers are great ways to get started, they are the slowest of the lexer types.  You can probably achieve a 2-300% code outlining speed increase by switching your language to a [programmatic lexer](../../text-parsing/lexing/programmatic-lexers.md) instead.
+Code outlining has a lot of dependence on a language's [lexer](../../text-parsing/lexing/index.md).  Therefore, a faster lexer can make a huge difference in outlining performance when compared to a slower lexer.  Keep this in mind when looking for ways to speed up outlining performance.  For instance, if you started off using a [dynamic lexer](../../text-parsing/lexing/dynamic-lexers.md) for your language, you should note that while dynamic lexers are great ways to get started, they are the slowest of the lexer types.  You can probably achieve a 2-300% code outlining speed increase by switching your language to a [programmatic lexer](../../text-parsing/lexing/programmatic-lexers.md) instead.

@@ -14,13 +14,11 @@ Actipro Software has been developing Windows Forms components since .NET was fir
 
 We've become very familiar with the in's and out's of WPF and have architected our products to implement WPF best practices.  Our object models are very refined and easy to work with.
 
-## Documentation, Samples, and Designer Support
+## Documentation and Samples
 
 We realize that creating a good product is only half the battle in product development.  The other half is providing thorough product documentation, samples, and having rich design-time functionality to aid in development efficiency.
 
 We've spent a lot of time creating extensive documentation along with numerous product demos and QuickStarts so that you can get up and running with our products in minutes.
-
-All our products also have designer interaction support when used in Visual Studio or Expression Blend.
 
 ## Attention to Detail
 

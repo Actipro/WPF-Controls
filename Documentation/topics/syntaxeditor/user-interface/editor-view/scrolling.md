@@ -13,23 +13,23 @@ Scrollbar acceleration allows scrolling speed to increase the longer a scrollbar
 
 @if (winrt wpf) {
 
-Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates. 
+Each editor view in SyntaxEditor also has four scrollbar tray areas, where custom controls can be inserted via data templates.
 
 }
 
 ## Scrolling Via Keyboard
 
-SyntaxEditor has [default key bindings](../input-output/default-key-bindings.md) for all of the standard scroll-related text editing keys, like `PgUp`, `PgDn`, `Ctrl+End`, etc.
+SyntaxEditor has [default key bindings](../input-output/default-key-bindings.md) for all of the standard scroll-related text editing keys, like <kbd>PgUp</kbd>, <kbd>PgDn</kbd>, <kbd>Ctrl</kbd>+<kbd>End</kbd>, etc.
 
 ## Scrolling Via Mouse Wheel
 
 ### Vertical Scrolling
 
-Vertical scrolling can be performed by spinning the mouse wheel.  Each wheel notch scrolled should scroll the view by an average view line height.  However if an operating system option is chosen that requests page-based scrolling with the mouse wheel, the view will scroll by the view height amount instead.
+Vertical scrolling can be performed by spinning the mouse wheel.  Each wheel notch scrolled should scroll the view by an average view line height.  However, if an operating system option is chosen that requests page-based scrolling with the mouse wheel, the view will scroll by the view height amount instead.
 
 ### Horizontal Scrolling
 
-Horizontal scrolling can be performed by holding the `Shift` key and spinning the mouse wheel.
+Horizontal scrolling can be performed by holding the <kbd>Shift</kbd> key and spinning the mouse wheel.
 
 ### Preventing Scrolling Over Unfocused Editor Views
 
@@ -45,7 +45,7 @@ The [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView).[Scroll
 
 An editor view can be scrolled such that it displays the line containing a specified [TextPosition](xref:ActiproSoftware.Text.TextPosition).  This is done by initializing a [TextViewScrollState](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewScrollState) object and passing it to the [IEditorViewScroller](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller).[ScrollTo](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewScroller.ScrollTo*) method.
 
-The following example shows how to scroll the view line containing the 24th document line (text positions are zero-based) to the center of the view.  The first parameter is the vertical anchor text position.  The second parameter is a [TextViewVerticalAnchorPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewVerticalAnchorPlacement) that indicates where the vertical anchor text position should be placed in the view (e.g. top, center, bottom).  The third parameter is a pixel delta from the placement, meaning you could scroll a text position to the top of the view but also displace it down a certain pixel amount so that lines above it are visible too for context.  The fourth parameter is the horizontal scroll amount.
+The following example shows how to scroll the view line containing the 24th document line (text positions are zero-based) to the center of the view.  The first parameter is the vertical anchor text position.  The second parameter is a [TextViewVerticalAnchorPlacement](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextViewVerticalAnchorPlacement) that indicates where the vertical anchor text position should be placed in the view (e.g., top, center, bottom).  The third parameter is a pixel delta from the placement, meaning you could scroll a text position to the top of the view but also displace it down a certain pixel amount so that lines above it are visible too for context.  The fourth parameter is the horizontal scroll amount.
 
 ```csharp
 var scrollState = new TextViewScrollState(new TextPosition(23, 0), TextViewVerticalAnchorPlacement.Center, 0, 0);
@@ -58,7 +58,7 @@ The [ITextView](xref:@ActiproUIRoot.Controls.SyntaxEditor.ITextView).[ScrollStat
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanScrollPastDocumentEnd](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanScrollPastDocumentEnd) property, which defaults to `true`, specifies whether scrolling can occur past the document end.  When this feature is enabled, the last line of the document can scroll to the top of an editor view under certain scrolling circumstances: scrollbar, mouse wheel, and touch-scrolling.
 
-The property can be set to `false` to prevent the above circumstances from scrolling the last document line above the bottom of the editor view.  That being said, only set the property to `false` if your editor isn't using multiple font families/sizes and your editor doesn't make use of intra-line adornments.  Both of those scenarios allow view lines with varying heights, and can prevent the proper calculation of a vertical scrollbar maximum.
+The property can be set to `false` to prevent the above circumstances from scrolling the last document line above the bottom of the editor view.  That being said, only set the property to `false` if your editor isn't using multiple font families/sizes and your editor doesn't make use of intra-line adornments.  Both of those scenarios allow view lines with varying heights and can prevent the proper calculation of a vertical scrollbar maximum.
 
 ## ScrollBar Visibility
 
@@ -80,7 +80,7 @@ This feature has been designed to make it easier for end users to scan past larg
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ScrollBarAccelerationMaximum](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ScrollBarAccelerationMaximum) property can be set to control the maximum number of scroll units to scroll per scroll event.
 
-By default this value is `4`, meaning that scrolling down for example starts at `1` line per scroll event.  If the mouse is held on the vertical scrollbar's down arrow button for a certain interval, then `2` lines scroll per event.  If the mouse is still held down after another interval, then `3` lines scroll per event.  If the mouse is still held down after another interval, then `4` lines scroll per event.  This is the largest number of lines that will be scrolled.  The lines scrolled per event resets when the mouse button is released.
+By default, this value is `4`, meaning that scrolling down for example starts at `1` line per scroll event.  If the mouse is held on the vertical scrollbar's down arrow button for a certain interval, then `2` lines scroll per event.  If the mouse is still held down after another interval, then `3` lines scroll per event.  If the mouse is still held down after another interval, then `4` lines scroll per event.  This is the largest number of lines that will be scrolled.  The lines scrolled per event reset when the mouse button is released.
 
 > [!TIP]
 > Set the [ScrollBarAccelerationMaximum](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ScrollBarAccelerationMaximum) property value to `1` to disable scrollbar acceleration.
@@ -128,8 +128,8 @@ The easiest way to define a data template is in XAML.  This code shows how to de
 	<editor:SyntaxEditor.ScrollBarTrayBottomTemplate>
 		<DataTemplate>
 			<ToggleButton ToolTip="ToggleButton in the bottom tray">
-				<Image Width="16" Height="16" Stretch="None" 
-					Source="/Resources/Images/Mail16.png" />
+				<Image Width="16" Height="16" Stretch="None"
+				       Source="/Resources/Images/Mail16.png" />
 			</ToggleButton>
 		</DataTemplate>
 	</editor:SyntaxEditor.ScrollBarTrayBottomTemplate>

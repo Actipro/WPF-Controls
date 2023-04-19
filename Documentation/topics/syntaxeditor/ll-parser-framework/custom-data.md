@@ -15,7 +15,7 @@ Although there are many things that can be tracked in custom data, here are a co
 
 ### XML Element Hierarchy Validation
 
-In the advanced XML syntax language in the [Web Languages Add-on](../web-languages-addon/index.md) we maintain a stack of elements in this custom data.  Any time we enter a new element, we push it on the stack.  When we exit an element we pop it off.  If the end tag name doesn't match the start tag name, we can intelligently report errors.
+In the advanced XML syntax language in the [Web Languages Add-on](../web-languages-addon/index.md) we maintain a stack of elements in this custom data.  Any time we enter a new element, we push it on the stack.  When we exit an element, we pop it off.  If the end tag name doesn't match the start tag name, we can intelligently report errors.
 
 ### Name Tables
 
@@ -23,7 +23,7 @@ Many parser implementations may wish to construct a name table.  The table could
 
 ## Bad Ways to Track Custom Data
 
-One way you may be tempted to track custom data during a parse is to put a member variable on your grammar class.  You would initialize it at some point and updated it in your callbacks.
+One way you may be tempted to track custom data during a parse is to put a member variable on your grammar class.  You would initialize it at some point and update it in your callbacks.
 
 The problem is that if more than one document is using the language, the grammar is potentially operating on multiple documents at the same time.  This of course means that each parser working on the documents could be modifying the member variable while the other is working with the variable, thus leading to invalid data and possible exceptions.
 
@@ -31,11 +31,11 @@ The use of member variables is not recommended and for this reason, we recommend
 
 ## Initializing Custom Data
 
-The [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState).[CustomData](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState.CustomData) property is the right place to store custom data for a parsing operation since it and its containing [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) are specific to each parse request.  The [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) object for a parsing operation is created interally by the LL(*) Parser Framework and then is passed to each callback in your grammar.  This begs the question, how can the custom data be initialized at the parsing operation start?
+The [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState).[CustomData](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState.CustomData) property is the right place to store custom data for a parsing operation since it and its containing [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) are specific to each parse request.  The [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) object for a parsing operation is created internally by the LL(*) Parser Framework and then is passed to each callback in your grammar.  This begs the question; how can the custom data be initialized at the parsing operation start?
 
 We recommend initializing the custom data in an initialize callback of the root production since that is the very first part of your grammar to be entered.
 
-This example show how to add initialize and complete callbacks to the root production.  Note that ellipses (...) indicate where the normal production terms and tree constructors would go.
+This example shows how to add initialize and complete callbacks to the root production.  Note that ellipses (`...`) indicate where the normal production terms and tree constructors would go.
 
 ```csharp
 this.Root.Production = (...).OnInitialize(CompilationUnitInitialize).OnComplete(CompilationUnitComplete);
@@ -58,7 +58,7 @@ Properties on the object can be updated as needed.  If the custom data is tracki
 
 A stack property can be added to the custom data object so that you can track scopes entered/exited as code is parsed.  That way you can know what sort of scope you are in when each callback is called.  A stack item would be pushed onto the stack by you from a callback whenever a scope is entered, and then popped when the scope is existed.
 
-These are just a couple ideas.  Really the custom data can be used to track anything while the parsing operation is active.
+These are just a couple of ideas.  Really the custom data can be used to track anything while the parsing operation is active.
 
 ## Performing Semantic Validation with Custom Data
 
@@ -81,7 +81,7 @@ private void CompilationUnitComplete(IParserState state) {
 
 Since the LL(*) Parser Framework is being used, the [IParser](xref:ActiproSoftware.Text.Parsing.IParser) for the language should inherit [LLParserBase](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParserBase).  This base class has a virtual [CreateParseData](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParserBase.CreateParseData*) method that creates the [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) returned by the parser.
 
-By creating a language-specific [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) object, you can get data from your [CustomData](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState.CustomData) object, store it in the [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData), and it will be returned to the document.  Thus it is available to consume by other language services such as IntelliPrompt since it is part of the parse data.
+By creating a language-specific [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData) object, you can get data from your [CustomData](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState.CustomData) object, store it in the [IParseData](xref:ActiproSoftware.Text.Parsing.IParseData), and it will be returned to the document.  Thus, it is available to consume by other language services such as IntelliPrompt since it is part of the parse data.
 
 This code sample shows a possible implementation of a `CreateParseData` override that moves data from the `MyParserContext` object to the `MyParseData` object that is returned to the document:
 
@@ -93,7 +93,7 @@ protected override IParseData CreateParseData(IParseRequest request, IParserStat
 		throw new ArgumentNullException("state");
 
 	MyParseData parseData = new MyParseData();
-			
+
 	// Initialize
 	this.InitializeParseData(parseData, state);
 

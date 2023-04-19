@@ -41,7 +41,7 @@ The recent document list is managed by the [RecentDocumentManager](xref:@Actipro
 
 See the [Document Management](../../../shared/windows-document-management.md) topic for details on how to manage the list using the [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager), including the ability to limit the number of documents shown.
 
-Since the `RecentDocumentMenu` is bound to the [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager) to which it is assigned, changes to that manager will automatically update the menu.  However certain changes such as updating a document reference's last-opened date/time may not be picked up by the manager as a change.  In these cases you must call [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager).[RebindFilteredDocuments](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.RebindFilteredDocuments*) explicitly.  This in turn updates the menu automatically.
+Since the `RecentDocumentMenu` is bound to the [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager) to which it is assigned, changes to that manager will automatically update the menu.  However, certain changes such as updating a document reference's last-opened date/time may not be picked up by the manager as a change.  In these cases you must call [RecentDocumentManager](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager).[RebindFilteredDocuments](xref:@ActiproUIRoot.DocumentManagement.RecentDocumentManager.RebindFilteredDocuments*) explicitly.  This in turn updates the menu automatically.
 
 ## Processing Clicks on Documents
 

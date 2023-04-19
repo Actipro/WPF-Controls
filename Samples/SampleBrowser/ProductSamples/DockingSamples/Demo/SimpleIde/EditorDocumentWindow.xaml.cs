@@ -61,7 +61,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.Demo.SimpleIde {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
-		/// Asssign a language and default text based on the current file type.
+		/// Assign a language and default text based on the current file type.
 		/// </summary>
 		/// <param name="text">The text to show in the editor.</param>
 		private void AssignLanguageAndTextForFileType(string text) {
@@ -186,7 +186,7 @@ End Class
 		}
 
 		/// <summary>
-		/// Occues when the document's modified state changes.
+		/// Occurs when the document's modified state changes.
 		/// </summary>
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">The <c>RoutedEventArgs</c> that contains data related to this event.</param>

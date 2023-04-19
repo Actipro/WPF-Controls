@@ -80,13 +80,15 @@ The data context of the `DataTemplate` will be the `DataContext` of the docking 
 
 ## Tool Window Container Title Bar Alignment
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsTitleBarContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsTitleBarContextContentAlignment) property can be set to a [ContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.ContextContentAlignment) that indicates if the context content is aligned to the near (left) side of the title, or to the far (right) side.  The far side is just left of any title bar buttons, and is the default alignment.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsTitleBarContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsTitleBarContextContentAlignment) property can be set to a [ContextContentAlignment](xref:@ActiproUIRoot.Controls.Docking.ContextContentAlignment) that indicates if the context content is aligned to the near (left) side of the title, or to the far (right) side.  The far side is just left of any title bar buttons and is the default alignment.
 
 ## Status Indicator Example
 
-Let's see how to reproduce the Status tool window in the screenshot above.
+Let's see how to reproduce the **Status** tool window in the screenshot above.
 
-This `DataTemplate` contains an ellipse whose fill color is bound to the value of the docking window's `DataContext`.  A special value converter is used to convert the value to a `Brush`.  See the related QuickStart in the Sample Browser for the full source code.
+This `DataTemplate` contains an ellipse whose fill color is bound to the value of the docking window's `DataContext`.  A special value converter is used to convert the value to a `Brush`.
+
+See the related QuickStart in the Sample Browser for the full source code.
 
 ```xaml
 <DataTemplate x:Key="StatusIconDataTemplate">
@@ -98,7 +100,7 @@ This `DataTemplate` contains an ellipse whose fill color is bound to the value o
 This XAML within a dock site shows how a tool widnow could be defined to use the `DataTemplate` above in all possible locations.  Note how its `DataContext` is initialized to a boolean value.
 
 ```xaml
-<docking:ToolWindow x:Name="statusToolWindow" Title="Status" 
+<docking:ToolWindow x:Name="statusToolWindow" Title="Status"
 	AutoHideTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
 	StandardMdiTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
 	TabbedMdiTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"

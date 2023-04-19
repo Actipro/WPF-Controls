@@ -9,7 +9,7 @@ We've engineered bar code to be extremely easy to use.
 
 ## Add Assembly References
 
-First, add references to the "ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll" and "ActiproSoftware.BarCode.@@PlatformAssemblySuffix.dll" assemblies.  They should have been installed in the GAC during the control installation process.  However they also will be located in the appropriate Program Files folders.  See the product's Readme for details on those locations.
+First, add references to the *ActiproSoftware.Shared.@@PlatformAssemblySuffix.dll* and *ActiproSoftware.BarCode.@@PlatformAssemblySuffix.dll* assemblies.  They should have been installed in the GAC during the control installation process.  However, they will also be located in the appropriate *Program Files* folders.  See the product's Readme for details on those locations.
 
 ## Add the BarCode Control
 
@@ -18,11 +18,11 @@ Then find the parent element that will contain the bar code.  This could be a `W
 Next, add a [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) control to the desired parent element.  In this sample we will add the [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) to a `FlowDocument`:
 
 ```xaml
-<FlowDocument 
+<FlowDocument
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode" 
-	FontFamily="Calibri" FontSize="14" TextAlignment="Left"	
+	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode"
+	FontFamily="Calibri" FontSize="14" TextAlignment="Left"
 	>
 	<barCode:BarCode>
 	</barCode:BarCode>
@@ -34,11 +34,11 @@ Next, add a [BarCode](xref:@ActiproUIRoot.Controls.BarCode.BarCode) control to t
 Now we need to set the type of symbology that we wish to use.  In this sample we will use Code 39 Extended, which is one of the most common types of bar codes and supports all lower ASCII characters.
 
 ```xaml
-<FlowDocument 
+<FlowDocument
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode" 
-	FontFamily="Calibri" FontSize="14" TextAlignment="Left"	
+	xmlns:barCode="http://schemas.actiprosoftware.com/winfx/xaml/barcode"
+	FontFamily="Calibri" FontSize="14" TextAlignment="Left"
 	>
 	<barCode:BarCode>
 		<barCode:Code39ExtendedSymbology Value="123456" BarHeight="25" />
@@ -54,6 +54,6 @@ That's all we need to do!  You can optionally configure many other settings for 
 
 It's very easy to use Bar Code and there are probably a lot of great features that you aren't aware of.
 
-Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough and the sample project demonstrates almost every feature of Bar Code.
+Run through the feature documentation and also look at the numerous QuickStarts located in the sample project.  The documentation is very thorough, and the sample project demonstrates almost every feature of Bar Code.
 
 If you require further assistance after looking through those, please visit our support forum for the product.

@@ -5,7 +5,7 @@ order: 6
 ---
 # Hiding Pane Buttons
 
-The [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) control can optionally hide its pane buttons, allowing it to be used as a simple headered container with the styles that match a "normal" looking NavigationBar.
+The [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) control can optionally hide its pane buttons, allowing it to be used as a simple headered container with the styles that match a "normal" looking `NavigationBar`.
 
 ![Screenshot](../images/navigationbar-container.gif)
 

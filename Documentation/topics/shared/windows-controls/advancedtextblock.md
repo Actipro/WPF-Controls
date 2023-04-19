@@ -5,7 +5,7 @@ order: 3
 ---
 # AdvancedTextBlock
 
-The [AdvancedTextBlock](xref:@ActiproUIRoot.Controls.AdvancedTextBlock) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e. filter match results).
+The [AdvancedTextBlock](xref:@ActiproUIRoot.Controls.AdvancedTextBlock) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e., filter match results).
 
 ## Setting the Text
 
@@ -23,4 +23,4 @@ A nice feature of the text block is that it will automatically set a tooltip on 
 
 A really powerful feature of the control is the ability to specify an ordered list of captured text ranges that should be highlighted.  These captures often come from filter match results.  The [Captures](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.Captures) property accepts an enumerable containing [StringFilterCapture](xref:@ActiproUIRoot.Data.Filtering.StringFilterCapture) results.  Each [StringFilterCapture](xref:@ActiproUIRoot.Data.Filtering.StringFilterCapture) is a pair of character index and length text ranges, and must be provided in non-overlapping ascending order.
 
-When one or more captured text ranges are specified, those ranges will be highlighted within the text block.  The highlight will be perfromed in bold font weight by default.  The @if (wpf) {[HighlightBackground](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightBackground), }[HighlightFontWeight](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightFontWeight), and [HighlightForeground](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightForeground) properties determine how the highlights render.
+When one or more captured text ranges are specified, those ranges will be highlighted within the text block.  The highlight will be performed in bold font weight by default.  The @if (wpf) {[HighlightBackground](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightBackground), }[HighlightFontWeight](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightFontWeight), and [HighlightForeground](xref:@ActiproUIRoot.Controls.AdvancedTextBlock.HighlightForeground) properties determine how the highlights render.

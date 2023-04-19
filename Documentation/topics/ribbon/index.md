@@ -5,6 +5,9 @@ order: 1
 ---
 # Overview
 
+> [!IMPORTANT]
+> This older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../bars/index.md), which has a much-improved design and appearance, and many of the latest features currently found in Office.  It is recommended to implement new ribbons using the Bars product instead, and to [migrate away from this older Ribbon product](../conversion/converting-to-v23-1.md) to the newer Bars ribbon when possible.
+
 Actipro Ribbon is a control suite that implements an Office-like user interface for WPF applications.  It meets the required and optional Microsoft licensing requirements for implementation of a ribbon user interface, and is the most feature-rich WPF ribbon available today.
 
 ![Screenshot](images/ribbon.png)
@@ -81,7 +84,7 @@ Since Actipro recognizes the need for developers to have a consistent look and f
 
 ### Theming
 
-Multiple built-in themes that mimic Office's blue, black and silver themes, as well as all system themes are included.  However you can also generate a completely custom theme with a single line of code.  Individual theme colors may also be altered as needed.  For advanced developers who want even more customization possibilities, we've made all our controls so that they can be styled and templated and all primitive elements that are used in our built-in control templates are public.
+Multiple built-in themes that mimic Office's blue, black and silver themes, as well as all system themes are included.  However, you can also generate a completely custom theme with a single line of code.  Individual theme colors may also be altered as needed.  For advanced developers who want even more customization possibilities, we've made all our controls so that they can be styled and templated and all primitive elements that are used in our built-in control templates are public.
 
 ### Right-to-left, Localization, and Scaling
 

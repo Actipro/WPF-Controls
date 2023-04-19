@@ -1,0 +1,165 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="rootSampleControl"
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.RecentDocuments.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	FocusManager.FocusedElement="{Binding ElementName=editor}"
+	>
+
+	<!-- Sample Options and Description -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" DisplayName="Document Limit" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=RecentDocumentManager.MaxFilteredDocumentCount}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="30" SmallChange="1" LargeChange="5" IsEditable="False" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=recentDocumentControl, Path=AllowGrouping}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Shared Library includes a RecentDocumentManager that can manage the 
+					documents that were recently opened.
+					<LineBreak /><LineBreak />
+					This sample has two ribbons defined, each with a RecentDocumentControl that binds to the recent files list 
+					in the RecentDocumentManager, providing a complex sorting of files by the date each file was last 
+					opened and whether the file has been pinned.
+					<LineBreak /><LineBreak />
+					Normally when a new document is added to the recent documents list, it will push the oldest document
+					off the visible list if the list has reached its maximum display size.
+					However, if an old document is pinned to the list, it will not be able to be pushed off and another
+					more recently-opened unpinned document will move off in its place.
+					<LineBreak /><LineBreak />
+					To see this functionality in action, use the Open Document button on the Ribbon
+					to open a random file on your computer then open the File menu to see the recent documents list.
+					Notice how it is added to the top of the recent documents list and moves other documents down.
+					Also experiment with pinning and unpinning documents and then opening new documents.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<Grid Style="{StaticResource SamplePanelFullStyle}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="200" />
+				<RowDefinition Height="40" />
+				<RowDefinition Height="*" MinHeight="300" />
+			</Grid.RowDefinitions>
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel>
+
+						<!-- Ribbon Control with recent documents on application menu -->
+						<bars:Ribbon IsApplicationButtonVisible="True"
+									 LayoutMode="Simplified" UserInterfaceDensity="Spacious"
+									 QuickAccessToolBarMode="None"
+									 FooterContent="Click the 'File' menu to see a small recent documents list on this ribbon's application menu.">
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:Ribbon.ApplicationButtonContent>
+								<bars:RibbonApplicationButton>
+									<!-- Menu Additional Content: displayed to the right of the menu items -->
+									<bars:RibbonApplicationButton.MenuAdditionalContent>
+										<DockPanel>
+											<TextBlock DockPanel.Dock="Top" Margin="10,6" Text="Recent Documents" FontWeight="SemiBold" />
+											<bars:RecentDocumentControl x:Name="recentDocumentControl2" UseLargeSize="False"
+																		Width="350" Height="350" Manager="{Binding RecentDocumentManager}"
+																		AllowGrouping="{Binding ElementName=recentDocumentControl, Path=AllowGrouping}" />
+										</DockPanel>
+									</bars:RibbonApplicationButton.MenuAdditionalContent>
+
+									<!-- Menu Footer: Displayed below the menu items-->
+									<bars:RibbonApplicationButton.MenuFooter>
+										<StackPanel Margin="0,4" Orientation="Horizontal" HorizontalAlignment="Right">
+											<bars:BarButton Key="Options" KeyTipText="I" SmallImageSource="/Images/Icons/Options16.png" VariantSize="Medium" />
+											<bars:BarButton Key="Exit" KeyTipText="X" Margin="7,0" SmallImageSource="/Images/Icons/Exit16.png" VariantSize="Medium" />
+										</StackPanel>
+									</bars:RibbonApplicationButton.MenuFooter>
+
+									<!-- Menu Items -->
+									<bars:BarMenuItem Key="New" LargeImageSource="/Images/Icons/New32.png" SmallImageSource="/Images/Icons/New16.png" UseLargeSize="True">
+										<bars:BarMenuItem Key="PlainText" LargeImageSource="/Images/Icons/BlankPage32.png" SmallImageSource="/Images/Icons/BlankPage16.png" UseLargeSize="True" Description="A plain text document" />
+										<bars:BarMenuItem Key="RichText" LargeImageSource="/Images/Icons/RichTextDocument32.png" SmallImageSource="/Images/Icons/RichTextDocument16.png" UseLargeSize="True" Description="A text document with rich formatting" />
+									</bars:BarMenuItem>
+									<bars:BarMenuItem Key="Open" Command="ApplicationCommands.Open" LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png" UseLargeSize="True" />
+									<bars:BarMenuItem Key="Save" LargeImageSource="/Images/Icons/Save32.png" SmallImageSource="/Images/Icons/Save16.png" UseLargeSize="True" />
+									<bars:BarMenuItem Key="SaveAs" Label="Save As" KeyTipText="A" LargeImageSource="/Images/Icons/SaveAs32.png" SmallImageSource="/Images/Icons/SaveAs16.png" UseLargeSize="True" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Print" LargeImageSource="/Images/Icons/Print32.png" SmallImageSource="/Images/Icons/Print16.png" UseLargeSize="True" />
+									<bars:BarMenuItem Key="Send" KeyTipText="D" LargeImageSource="/Images/Icons/Mail32.png" SmallImageSource="/Images/Icons/Mail16.png" UseLargeSize="True" />
+									<bars:BarMenuSeparator />
+									<bars:BarMenuItem Key="Close" LargeImageSource="/Images/Icons/Close32.png" SmallImageSource="/Images/Icons/Close16.png" UseLargeSize="True" />
+								</bars:RibbonApplicationButton>
+							</bars:Ribbon.ApplicationButtonContent>
+						</bars:Ribbon>
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with an application menu" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Grid.Row="2" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel>
+
+						<!-- Ribbon Control with recent documents on backstage -->
+						<bars:Ribbon IsApplicationButtonVisible="True"
+									 LayoutMode="Simplified" UserInterfaceDensity="Spacious"
+									 QuickAccessToolBarMode="None"
+									 FooterContent="Click the 'File' menu to see a large recent documents list on this ribbon's backstage.">
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+							<bars:Ribbon.BackstageContent>
+								<bars:RibbonBackstage x:Name="backstage">
+									<bars:RibbonBackstageTabItem Key="OpenRecent" SmallImageSource="/Images/Icons/OpenMono16.png">
+										<bars:RecentDocumentControl x:Name="recentDocumentControl" 
+																	Margin="40,10" MaxWidth="800" HorizontalAlignment="Left"
+																	Manager="{Binding RecentDocumentManager}" />
+									</bars:RibbonBackstageTabItem>
+								</bars:RibbonBackstage>
+							</bars:Ribbon.BackstageContent>
+						</bars:Ribbon>
+
+						<TextBox x:Name="editor" Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with a backstage" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+		</Grid>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

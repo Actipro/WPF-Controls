@@ -20,7 +20,7 @@ IEditorDocument document = new EditorDocument();
 document.Language = language;
 ```
 
-The [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[LanguageChanged](xref:ActiproSoftware.Text.ICodeDocument.LanguageChanged) event fires whenever the document's [Language](xref:ActiproSoftware.Text.ICodeDocument.Language) property changes.  Its event arguments pass the old and newly-assigned languages.
+The [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[LanguageChanged](xref:ActiproSoftware.Text.ICodeDocument.LanguageChanged) event is raised whenever the document's [Language](xref:ActiproSoftware.Text.ICodeDocument.Language) property changes.  Its event arguments pass the old and newly-assigned languages.
 
 ### Using with a SyntaxEditor
 
@@ -36,7 +36,7 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[Docu
 
 ## Packaging Options
 
-There are a few options for packaging the custom languages you've created with your application.  It is completely up to you as to how you package things, since any of these options work fine.
+There are a few options for packaging the custom languages you've created with your application.  It is completely up to you as to how you package things since any of these options work fine.
 
 ### Included in Application Assembly
 

@@ -5,7 +5,7 @@ order: 13
 ---
 # Trend Indicator
 
-The trend indicator is a three state control that is intended to reflect whether a numeric value is higher, the same as, or lower than an origin value.
+The trend indicator is a three-state control that is intended to reflect whether a numeric value is higher, the same as, or lower than an origin value.
 
 ![Screenshot](../images/micro-trend-indicator.png)
 

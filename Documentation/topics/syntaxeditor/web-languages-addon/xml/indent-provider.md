@@ -5,7 +5,7 @@ order: 7
 ---
 # Indent Provider
 
-An indent provider enables support for smart indent features when pressing ENTER.
+An indent provider enables support for smart indent features when pressing <kbd>Enter</kbd>.
 
 The [Indent Providers](../../user-interface/input-output/indent-providers.md) topic talks about indent providers in general and how to register them as a "feature" language service.
 
@@ -15,7 +15,7 @@ The [XmlIndentProvider](xref:ActiproSoftware.Text.Languages.Xml.Implementation.X
 
 ### Smart Indent
 
-The built-in indent provider will normally use block indent (same indent level as the previous line) except when it detects that ENTER is pressed on a line that ends with a start tag.  In this case, the caret is indented another level on the next line.
+The built-in indent provider will normally use block indent (same indent level as the previous line) except when it detects that <kbd>Enter</kbd> is pressed on a line that ends with a start tag.  In this case, the caret is indented another level on the next line.
 
 ### Block Element Handling
 
@@ -25,7 +25,7 @@ Also consider this scenario, where the caret is at `|`:
 <tag>|</tag>
 ```
 
-If the end user presses ENTER, the indent provider will make this the result:
+If the end user presses <kbd>Enter</kbd>, the indent provider will make this the result:
 
 ```xml
 <tag>
@@ -33,7 +33,7 @@ If the end user presses ENTER, the indent provider will make this the result:
 </tag>
 ```
 
-Note how the end tag is moved to the line below the caret and is properly indented to the same indent level of the start tag.  However the caret is indented on the line in the middle of the tags.
+Note how the end tag is moved to the line below the caret and is properly indented to the same indent level of the start tag.  However, the caret is indented on the line in the middle of the tags.
 
 ## Registering with a Syntax Language
 

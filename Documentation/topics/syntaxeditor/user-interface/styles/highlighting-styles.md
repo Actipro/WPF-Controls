@@ -35,7 +35,7 @@ IHighlightingStyle style = new HighlightingStyle(Colors.Maroon);
 
 All the properties in [HighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.Implementation.HighlightingStyle) are initially set to "default" values.  These default values are set up to not change formatting in any way.
 
-In the code example above however, we have assigned a `Maroon` foreground `Color` to the style.  This means that the style defined above will only change the foreground of text that it is applied against.  It will not alter the bold weight, font size, etc.
+In the code example above, however, we have assigned a `Maroon` foreground `Color` to the style.  This means that the style defined above will only change the foreground of text that it is applied against.  It will not alter the bold weight, font size, etc.
 
 There are scenarios in SyntaxEditor where two or more styles may be merged together to create resolved formatting options.  For instance, if the special [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider).[PlainText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.PlainText) classification type is used (see the [Highlighting Style Registries](highlighting-style-registries.md) topic for more information), then the style associated with that classification type is the default style for the text area.  Classifications made by an [ITagger<IClassificationTag>](../../text-parsing/tagging/taggers.md) may apply their own styles to specific ranges of text.  SyntaxEditor resolves the two styles together to get resolved formatting options for the text in the editor.
 
@@ -43,7 +43,7 @@ During the resolution process, any non-default property settings on the higher-p
 
 ## Relationship Between Classifications and Styles
 
-[Taggers](../../text-parsing/tagging/taggers.md) are objects that provide data (in the form of tags) over ranges of text.  One such tag is the [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag), which is a tag that indicates an [IClassificationType](xref:ActiproSoftware.Text.IClassificationType).  Thus these tags can provide logical classifications of text ranges.  All this functionality is built into the [text/parsing framework](../../text-parsing/index.md).
+[Taggers](../../text-parsing/tagging/taggers.md) are objects that provide data (in the form of tags) over ranges of text.  One such tag is the [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag), which is a tag that indicates an [IClassificationType](xref:ActiproSoftware.Text.IClassificationType).  Thus, these tags can provide logical classifications of text ranges.  All this functionality is built into the [text/parsing framework](../../text-parsing/index.md).
 
 Highlighting styles on the other hand purely deal with the user interface and how text is formatted.
 
@@ -61,19 +61,19 @@ The [Foreground](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlig
 
 It is recommended to generally use `Color` instances that have no transparency.
 
-A null reference value is considered the "default" value and will not alter formatting.
+A `null` reference value is considered the "default" value and will not alter formatting.
 
 ### Background Spans Virtual Whitespace
 
 The [BackgroundSpansVirtualSpace](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.BackgroundSpansVirtualSpace) property specifies whether the background should span virtual space when the styled range includes a line terminator.  When set to `true`, the background will be rendered to the right edge of the view, thereby covering virtual space.
 
-It is a `Boolean` type, where the default is `false`.  Since backgrounds are rendered in a layered fashion, a null reference value is not needed for this property.
+It is a `Boolean` type, where the default is `false`.  Since backgrounds are rendered in a layered fashion, a `null` reference value is not needed for this property.
 
 ### Bold and Italic
 
 The [Bold](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.Bold) and [Italic](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.Italic) properties are used to designate whether the text should be bold and/or italic.
 
-It is a nullable `Boolean` type, where a null reference value is considered the "default" value and will not alter formatting.
+It is a nullable `Boolean` type, where a `null` reference value is considered the "default" value and will not alter formatting.
 
 ### Border
 
@@ -87,7 +87,7 @@ Borders render with square corners by default but the [BorderCornerKind](xref:@A
 
 The [FontFamilyName](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle.FontFamilyName) property can be used to specify the font family name in which to render text.
 
-A null reference value is considered the "default" value and will not alter formatting.
+A `null` reference value is considered the "default" value and will not alter formatting.
 
 ### Font Size
 

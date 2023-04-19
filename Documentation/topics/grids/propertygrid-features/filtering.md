@@ -32,7 +32,7 @@ That enumeration has these values:
 | `Name` | The [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel).[Name](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel.Name) property should be used as the source. |
 | `ValueType` | The [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel).[ValueType](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel.ValueType) property should be used as the source. |
 
-This code shows how to only show properties that contain "is" in their display names:
+This code shows how to only show properties that contain `"is"` in their display names:
 
 ```xaml
 <grids:PropertyGrid ... IsFilterActive="True">
@@ -75,7 +75,7 @@ Multiple filters like [PropertyModelStringFilter](xref:@ActiproUIRoot.Controls.G
 
 See the [Tree Controls Filtering](../tree-control-features/filtering.md) topic for details on using group filters.
 
-This code shows how to only show properties that contain "is" in their display names and aren't read-only:
+This code shows how to only show properties that contain `"is"` in their display names and aren't read-only:
 
 ```xaml
 <grids:PropertyGrid ... IsFilterActive="True">

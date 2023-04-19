@@ -13,7 +13,7 @@ The [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings) i
 
 ## The Document Title
 
-The document title can optionally be displayed at the top of each page in a printer view.  It is visible when the [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[DocumentTitle](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.DocumentTitle) property is non-null and the [IsDocumentTitleMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.IsDocumentTitleMarginVisible) property is `true`, which is the default.
+The document title can optionally be displayed at the top of each page in a printer view.  It is visible when the [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[DocumentTitle](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.DocumentTitle) property is non-`null` and the [IsDocumentTitleMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.IsDocumentTitleMarginVisible) property is `true`, which is the default.
 
 This code sets the document title that is displayed at the top of each page:
 
@@ -27,7 +27,7 @@ Syntax highlighting is on by default for printer views.  To turn it off and make
 
 ## Using a Custom Highlighting Style Registry
 
-When syntax highlighting is on for printer views, it will use the [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) that is currently active in the editor.  However when the editor is using a dark theme, this is not a desirable registry to use for printouts.
+When syntax highlighting is on for printer views, it will use the [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) that is currently active in the editor.  However, when the editor is using a dark theme, this is not a desirable registry to use for printouts.
 
 A [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings).[HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.HighlightingStyleRegistry) property can be set to a custom [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) instance that will be used for printer output only, and is ideally set up with darker foreground colors and no backgrounds.
 
@@ -59,7 +59,7 @@ Squiggle lines, such as those that mark syntax errors, can be rendered when the 
 
 The [IPrintSettings](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings) interface has several properties that control the page size and margins.
 
-[PageSize](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.PageSize) determines the `Size` of each page.  A standard `8.5" x 11"` page would have values `96 * 8.5, 96 * 11`, where 1 inch = 96px in default resolution.
+[PageSize](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.PageSize) determines the `Size` of each page.  A standard 8.5" x 11" page would have values `{96 * 8.5, 96 * 11}`, where 1 inch = 96px in default resolution.
 
 [PageMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.IPrintSettings.PageMargin) gives the `Thickness` between the page content and the page edge.  The default value is `96 * 0.75`, where 1 inch = 96px in default resolution.  This means the default margin is `0.75in`.
 

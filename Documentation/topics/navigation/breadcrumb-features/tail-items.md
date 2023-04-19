@@ -7,7 +7,7 @@ order: 12
 
 By default, the last item displayed is the selected item. However, the [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control can be configured to display any number of tail items.
 
-Tail items are items that were part of the last selected branch, meaning they were either selected or contained the selection, and are below the currently selected item. In the image below, the *Actipro Software* item was selected and then the selection was changed to the *Desktop* item. In this scenario, the selection moved up the current branch. By retaining the tail items in the current branch, the user can quickly navigate back down.
+Tail items are items that were part of the last selected branch, meaning they were either selected or contained the selection, and are below the currently selected item. In the image below, the **Actipro Software** item was selected and then the selection was changed to the **Desktop** item. In this scenario, the selection moved up the current branch. By retaining the tail items in the current branch, the user can quickly navigate back down.
 
 If the selection is changed to a different branch, then the tail items below the selected item will be reset.
 
@@ -23,7 +23,7 @@ For example, if [MaxTailItemCount](xref:@ActiproUIRoot.Controls.Navigation.Bread
 
 ## Customizing Tail Items
 
-By default, tail items are display with an `Opacity` of `0.5`, or 50%, but this look can be fully customized using various properties.
+By default, tail items are displayed with an `Opacity` of `0.5` (50%), but this look can be fully customized using various properties.
 
 The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb).[TailItemOpacity](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.TailItemOpacity) property, can be used to quickly customize the opacity and more complex customization can be accomplish using a `Style`.
 
@@ -34,15 +34,13 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 ...
 <Style x:Key="BreadcrumbItemStyleProgressiveFade70"
        TargetType="{x:Type navigation:BreadcrumbItem}">
-    ...
-    <Style.Triggers>
-        <!-- This trigger will progressively dim the tail items -->
-        <Trigger Property="IsTailItem"
-                 Value="true">
-            <Setter Property="Opacity"
-                    Value="0.7" />
-        </Trigger>
-    </Style.Triggers>
+	<Style.Triggers>
+		<!-- This trigger will progressively dim the tail items -->
+		<Trigger Property="IsTailItem" Value="true">
+			<Setter Property="Opacity" Value="0.7" />
+		</Trigger>
+	</Style.Triggers>
+	...
 </Style>
 ...
 <navigation:Breadcrumb ItemContainerStyle="{StaticResource BreadcrumbItemStyleProgressiveFade70}"
@@ -64,4 +62,4 @@ The following [BreadcrumbItem](xref:@ActiproUIRoot.Controls.Navigation.Breadcrum
 | Member | Description |
 |-----|-----|
 | [IsTailItem](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.IsTailItem) Property | Gets a value indicating whether the item is a tail item. |
-| [TailIndex](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.TailIndex) Property | Gets the position of the tail item below the selected item. If the item is selected or contains the selection, then this index will be -1. |
+| [TailIndex](xref:@ActiproUIRoot.Controls.Navigation.BreadcrumbItem.TailIndex) Property | Gets the position of the tail item below the selected item. If the item is selected or contains the selection, then this index will be `-1`. |

@@ -21,13 +21,13 @@ Project assemblies, or types implementing [IProjectAssembly](xref:ActiproSoftwar
 
 @if (winrt) {
 
-Binary assemblies, or types implementing [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly), cannot automatically attempt to probe and look for .xml documentation files due to security sandboxing in @@PlatformName.  That being said, if .xml documentation files are accessible in certain folder paths, they can be manually loaded per the information in the following section. 
+Binary assemblies, or types implementing [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly), cannot automatically attempt to probe and look for XML documentation files due to security sandboxing in @@PlatformName.  That being said, if XML documentation files are accessible in certain folder paths, they can be manually loaded per the information in the following section.
 
 }
 
 @if (wpf winforms) {
 
-Binary assemblies, or types implementing [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly), will automatically attempt to probe and look for .xml documentation files of the same name as the .dll in certain file system locations.  This attempt will not succeed in cases such as in non-full trust XBAPs or where security prohibits access to certain file paths.  If the attempt does succeed and an appropriate .xml documentation file is located, it will be loaded up into a [FileAssemblyDocumentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileAssemblyDocumentation) instance that gets assigned to the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly).[Documentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly.Documentation) property.  If that property is null, then no documentation was able to be automatically loaded for the assembly. 
+Binary assemblies, or types implementing [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly), will automatically attempt to probe and look for XML documentation files of the same name as the DLL in certain file system locations.  This attempt will not succeed where security prohibits access to certain file paths.  If the attempt does succeed and an appropriate XML documentation file is located, it will be loaded up into a [FileAssemblyDocumentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileAssemblyDocumentation) instance that gets assigned to the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly).[Documentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly.Documentation) property.  If that property is `null`, then no documentation was able to be automatically loaded for the assembly.
 
 }
 
@@ -35,13 +35,13 @@ Binary assemblies, or types implementing [IBinaryAssembly](xref:ActiproSoftware.
 
 ### Probing Logic
 
-When probing for .xml files, it will first examine the folder that contained the .dll file, if that is known.  Within this folder, it will search for a localization child folder named by the current culture.  If a file is not found there, it will look in the folder that contains the .dll.  If a file is not found there, it will start searching through various known .NET 'Reference Assemblies' folder for the file.
+When probing for XML files, it will first examine the folder that contained the DLL file, if that is known.  Within this folder, it will search for a localization child folder named by the current culture.  If a file is not found there, it will look in the folder that contains the DLL.  If a file is not found there, it will start searching through various known .NET "Reference Assemblies" folders for the file.
 
 }
 
 ## Manually Loading Binary Assembly Documentation
 
-For scenarios where the automatic probing for .xml documentation comment files was unsuccessful (generally because of security restrictions or the files simply not being in a known location), but you know where the .xml file is located, it is possible to manually create a [FileAssemblyDocumentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileAssemblyDocumentation) instance and pass the file path in its constructor.  Then set that instance to the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly).[Documentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly.Documentation) property.
+For scenarios where the automatic probing for XML documentation comment files was unsuccessful (generally because of security restrictions or the files simply not being in a known location), but you know where the XML file is located, it is possible to manually create a [FileAssemblyDocumentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.FileAssemblyDocumentation) instance and pass the file path in its constructor.  Then set that instance to the [IBinaryAssembly](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IBinaryAssembly).[Documentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssembly.Documentation) property.
 
 As long as security permits access to the path, the documentation will be loaded properly as needed.
 
@@ -49,4 +49,4 @@ As long as security permits access to the path, the documentation will be loaded
 
 Custom [IAssemblyDocumentation](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.IAssemblyDocumentation) implementations can also be built if you would prefer to access type/member documentation in another fashion (web service, etc.).
 
-For instance, a class inheriting [StreamAssemblyDocumentationBase](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase) could be made to access .xml documentation files stored as a manifest resource in the application's .exe.  In this case, simply override the @if (winrt) {[GetStreamAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase.GetStreamAsync)}@if (wpf winforms) {[GetStream](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase.GetStream*)} method to return a `Stream` to the .xml file, and the base class will do the rest.
+For instance, a class inheriting [StreamAssemblyDocumentationBase](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase) could be made to access XML documentation files stored as a manifest resource in the application's EXE.  In this case, simply override the @if (winrt) {[GetStreamAsync](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase.GetStreamAsync)}@if (wpf winforms) {[GetStream](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.Implementation.StreamAssemblyDocumentationBase.GetStream*)} method to return a `Stream` to the XML file, and the base class will do the rest.

@@ -5,7 +5,7 @@ order: 4
 ---
 # View Control Pane
 
-The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) includes a view control pane, which allows the user to manipulate the view. This topic covers the view control pane and it's options.
+The [ZoomContentControl](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl) includes a view control pane, which allows the user to manipulate the view. This topic covers the view control pane and its options.
 
 ![Screenshot](../images/zoomcontentcontrol-view-control-pane.png)
 
@@ -15,13 +15,13 @@ The view control pane is visible by default, but can be hidden by setting the [I
 
 ## Expanding/Collapsing
 
-The view control pane can be collapsed and expanded by clicking the double arrow button. This minimizes the foot print of the view control pane, when the user wants to view more of the content.
+The view control pane can be collapsed and expanded by clicking the double arrow button. This minimizes the footprint of the view control pane when the user wants to view more of the content.
 
-The [IsViewControlPaneMinimized](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.IsViewControlPaneMinimized) property indicates whether the view control pane is current collapsed, and can be used to programmatically expand/collapse the pane.  Additionally, the [IsViewControlPaneMinimizable](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.IsViewControlPaneMinimizable) property can be used to prevent the view control pane from being interatively collapsed/expanded.
+The [IsViewControlPaneMinimized](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.IsViewControlPaneMinimized) property indicates whether the view control pane is current collapsed, and can be used to programmatically expand/collapse the pane.  Additionally, the [IsViewControlPaneMinimizable](xref:@ActiproUIRoot.Controls.Navigation.ZoomContentControl.IsViewControlPaneMinimizable) property can be used to prevent the view control pane from being interactively collapsed/expanded.
 
 ## Showing/Hiding Controls
 
-The various controls included on the view control pane can be shown or hidden individually to achive a custom look.  The following table lists the various properties used to show or hide the controls.
+The various controls included on the view control pane can be shown or hidden individually to achieve a custom look.  The following table lists the various properties used to show or hide the controls.
 
 | Property | Description |
 |-----|-----|

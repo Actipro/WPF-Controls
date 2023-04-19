@@ -13,7 +13,7 @@ EAN-13 bar codes are used worldwide for marking retail goods.
 
 *A sample of this symbology*
 
-The 13 character value is divided into four parts: system code, manufacturer code, product code, and check digit.
+The 13-character value is divided into four parts: system code, manufacturer code, product code, and check digit.
 
 ## Symbology Characteristics
 
@@ -23,7 +23,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Ean13Symbology](xref:@ActiproUIRoot.Controls.BarCode.Ean13Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Ean13ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Ean13ValidationRule) |
+| Related `ValidationRule` Class | [Ean13ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Ean13ValidationRule) |
 | Encodable Characters | Number characters. |
 | Supports Checksum | Yes.  This symbology implementation auto-calculates and inserts a check digit. |
 | Has Special Start/Stop Characters | No. |

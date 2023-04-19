@@ -18,7 +18,7 @@ TextSnapshotOffset snapshotOffset = syntaxEditor.ActiveView.Selection.EndSnapsho
 IPythonContext context = new PythonContextFactory().CreateContext(snapshotOffset);
 ```
 
-A context kind (via the [PythonContextKind](xref:ActiproSoftware.Text.Languages.Python.PythonContextKind) enumeration) can also be passed to a [CreateContext](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonContextFactory.CreateContext*) method overload.  The default value is `Self` but you can also pass `SelfAndSiblings` to indicate that alternate logic should be used when building the context.  When `SelfAndSiblings` is passed, the context factory will return a context object that focuses on the "parent" of the offset.  This allows resolver operations that use the context to enumerate a list of accessible members.
+A context kind (via the [PythonContextKind](xref:ActiproSoftware.Text.Languages.Python.PythonContextKind) enumeration) can also be passed to a [CreateContext](xref:ActiproSoftware.Text.Languages.Python.Implementation.PythonContextFactory.CreateContext*) method overload.  The default value is `Self`, but you can also pass `SelfAndSiblings` to indicate that alternate logic should be used when building the context.  When `SelfAndSiblings` is passed, the context factory will return a context object that focuses on the "parent" of the offset.  This allows resolver operations that use the context to enumerate a list of accessible members.
 
 ## .NET Context
 

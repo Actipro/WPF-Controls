@@ -95,7 +95,7 @@ Creates a hyperlink over the enclosed text.  The `href` attribute indicates the 
 `em`
 
 </td>
-<td>Renders the enclosed text using emphasis.  The default style renders in italics.</td>
+<td>Renders the enclosed text using emphasis.  The default style is rendered in italics.</td>
 </tr>
 
 <tr>
@@ -115,7 +115,7 @@ Creates a hyperlink over the enclosed text.  The `href` attribute indicates the 
 </td>
 <td>
 
-Renders an image.  The `src` specifies the image and the the `align` tag controls alignment.  See the special notes for this tag below.
+Renders an image.  The `src` specifies the image and the `align` tag controls alignment.  See the special notes for this tag below.
 
 </td>
 </tr>
@@ -162,10 +162,10 @@ The supported properties are:
 
 | Property | Description |
 |-----|-----|
-| `background-color` | The background color of the text.  This value can be specified using HTML format (e.g. `#RRGGBB`) or by referencing standard web colors by name (e.g. `Red`). |
-| `color` | The foreground color of the text.  This value can be specified using HTML format (e.g. `#RRGGBB`) or by referencing standard web colors by name (e.g. `Red`). |
-| `font-family` | The font family of the text.  This can be any valid font family name (e.g. `Tahoma`), even in quotes (e.g. `"Courier New"`).  It can also be one of the generic family names (`Monospace`, `Serif`, or `Sans-Serif`). |
-| `font-size` | The font size of the text.  This is currently always specified in points (e.g. `10pt`). |
+| `background-color` | The background color of the text.  This value can be specified using HTML format (e.g., `#RRGGBB`) or by referencing standard web colors by name (e.g., `Red`). |
+| `color` | The foreground color of the text.  This value can be specified using HTML format (e.g., `#RRGGBB`) or by referencing standard web colors by name (e.g., `Red`). |
+| `font-family` | The font family of the text.  This can be any valid font family name (e.g., `Tahoma`), even in quotes (e.g., `"Courier New"`).  It can also be one of the generic family names (`Monospace`, `Serif`, or `Sans-Serif`). |
+| `font-size` | The font size of the text.  This is currently always specified in points (e.g., `10pt`). |
 | `font-weight` | The font weight, or boldness, of the text.  These values map to a normal font: `normal`, `lighter`, `100`, `200`, `300`, `400`, `500`.  These values map to a bold font: `bold`, `bolder`, `600`, `700`, `800`, `900`. |
 | `font-style` | The font style of the text.  The values `italic` and `oblique` map to an italic font.  The value `normal` map to a normal font. |
 | `text-decoration` | The decoration for the text.  The value `none` uses no decoration.  The value `underline` draws a line under the text.  The value `line-through` draws a line through the middle of the text (strike-through). |
@@ -184,7 +184,7 @@ The `href` attribute of an `a` tag specifies the target of the hyperlink.  When 
 
 ### Working With the 'img' (Image) Tag
 
-Since there is no way to pass binary image data in the XML markup itself, the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider).[GetImage](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider.GetImage*) method is called when an `img` tag is encountered.  The `src` attribute value is passed in and the method returns an `Image`.  This method must be overridden in a custom class that inherits [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider), otherwise a null reference is always returned.
+Since there is no way to pass binary image data in the XML markup itself, the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider).[GetImage](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider.GetImage*) method is called when an `img` tag is encountered.  The `src` attribute value is passed in and the method returns an `Image`.  This method must be overridden in a custom class that inherits [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider), otherwise a `null` reference is always returned.
 
 The `align` attribute accepts values of `baseline` and `absbottom`.  The default is `baseline`.
 
@@ -225,7 +225,7 @@ Since the method is called on-demand, the content doesn't need to be loaded up f
 It is common to use the [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) to aid in dynamically generating content in custom content providers.  In this example of a [GetContent](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IContentProvider.GetContent*) implementation, there is a `Type` field in the custom content provider class called `targetType`.  A [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) is used to help provide nicely-formatted markup content describing the type.
 
 ```csharp
-string htmlSnippet = String.Format("Type: <b>{0}</b>", 
+string htmlSnippet = String.Format("Type: <b>{0}</b>",
 	HtmlContentProvider.Escape(targetType.FullName));
 return new HtmlContentProvider(htmlSnippet).GetContent();
 ```

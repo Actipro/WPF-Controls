@@ -69,6 +69,6 @@ See the [Menu Customization](menu-customization.md) topic for more information.
 
 ## Switchers
 
-Switchers are used during `Ctrl+Tab`, etc. key presses to easily navigate between open documents and tool windows.
+Switchers are used during <kbd>Ctrl</kbd>+<kbd>Tab</kbd>, etc. key presses to easily navigate between open documents and tool windows.
 
 See the [Switchers](switchers.md) topic for more information.

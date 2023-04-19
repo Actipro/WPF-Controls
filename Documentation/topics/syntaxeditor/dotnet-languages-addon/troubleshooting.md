@@ -7,7 +7,7 @@ order: 99
 
 This topic provides answers to common questions and problems related to the add-on.
 
-## How Do I Get Started With C# / Visual Basic Languages?
+## How Do I Get Started with C# / Visual Basic Languages?
 
 The [C# Getting Started](csharp/getting-started.md) topic walks through all the requirements for using the C# language.  Be sure to follow all the steps in that topic so that the syntax language operates correctly.
 
@@ -31,7 +31,7 @@ The add-on also supports caching of binary assembly data, so that the second and
 
 See the [C# Getting Started](csharp/getting-started.md) or [Visual Basic Getting Started](vb/getting-started.md) topics for more information on how to load project assembly references in a worker thread and configure an ambient assembly repository for caching.
 
-## No IntelliPrompt For System Types
+## No IntelliPrompt for System Types
 
 If automated IntelliPrompt features like quick info are not working for system types or for the language's native keywords, make sure that the project assembly in use has the proper assembly references to allow those types to be resolved.  For instance, at a minimum the `MsCorLib` assembly should always be added as a reference.
 

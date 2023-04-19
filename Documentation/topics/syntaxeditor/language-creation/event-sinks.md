@@ -11,7 +11,7 @@ Event sinks use the service locator architecture and thus are managed as service
 
 - Event notifications can be prioritized (IntelliPrompt sessions receive events before languages, etc.)
 - Custom event sink handlers can be externally swapped in without inheriting a language class
-- There are no extra ties between a SyntaxEditor, IEditorDocument, or ISyntaxLanguage meaning less chance for memory leaks
+- There are no extra ties between a `SyntaxEditor`, `IEditorDocument`, or `ISyntaxLanguage` meaning less chance for memory leaks
 - Languages continue to use basic .NET 2.0-based techniques for event handling, keeping their code platform independent
 
 > [!NOTE]
@@ -26,7 +26,7 @@ This table lists the built-in event sink service types that can be used with [IS
 | [IActiveEditorViewChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IActiveEditorViewChangeEventSink) | An object that can be notified of [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ActiveView](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ActiveView) change events. |
 | [ICodeDocumentLifecycleEventSink](xref:ActiproSoftware.Text.ICodeDocumentLifecycleEventSink) | An object that can be notified of when an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) becomes associated and disassociated with a language, via events such as a language change. |
 | [ICodeDocumentPropertyChangeEventSink](xref:ActiproSoftware.Text.ICodeDocumentPropertyChangeEventSink) | An object that can be notified of when attached [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) properties, such as [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) or [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName), are changed. |
-| [ICodeSnippetTemplateSessionEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink) | An object that can be notified of various events occur related to a code snippet template session.  See the [Code Snippets](../user-interface/intelliprompt/code-snippets.md) documentation for more information. |
+| [ICodeSnippetTemplateSessionEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.ICodeSnippetTemplateSessionEventSink) | An object that can be notified when various events occur that are related to a code snippet template session.  See the [Code Snippets](../user-interface/intelliprompt/code-snippets.md) documentation for more information. |
 | [IEditorDocumentTextChangeEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorDocumentTextChangeEventSink) | An object that can be notified of [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) text change events, both before and after a text change occurs. |
 | [IEditorViewKeyInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewKeyInputEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) keyboard input events, both key down and up.  These input events can be intercepted before the editor view ever receives them. |
 | [IEditorViewPointerInputEventSink](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewPointerInputEventSink) | An object that can be notified of [IEditorView](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorView) pointer input events, including all standard mouse events.  These input events can be intercepted before the editor view ever receives them. |
@@ -58,7 +58,7 @@ public class HtmlSyntaxLanguage : SyntaxLanguage, IEditorDocumentTextChangeEvent
 
 ### Implementing the IEditorDocumentTextChangeEventSink Interface
 
-Next we implement the interface on the language.  Again, we could have implemented this interface on any other object and registered that instead but for simplicity, we have chosen to implement it on the language itself.
+Next, we implement the interface on the language.  Again, we could have implemented this interface on any other object and registered that instead but for simplicity, we have chosen to implement it on the language itself.
 
 This code shows the two methods on the interface, added into the language class:
 
@@ -78,4 +78,4 @@ void IEditorDocumentTextChangeEventSink.NotifyDocumentTextChanging(SyntaxEditor 
 
 Note that in the text changed handler, we look to see if text that was typed was the `<` character.  If that scenario occurred, we'd call code to display a completion list.
 
-Of course we may also wish to add code to ensure we didn't type within a comment, etc.  This logic could be added by getting an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) and examining the token that was typed.
+Of course, we may also wish to add code to ensure we didn't type within a comment, etc.  This logic could be added by getting an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) and examining the token that was typed.

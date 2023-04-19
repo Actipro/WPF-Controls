@@ -13,7 +13,10 @@ To set a data source, set the [PieSeries](xref:@ActiproUIRoot.Controls.Charts.Pi
 
 ## Setting Value Path
 
-The value path is a property path that points to a numeric property on the items in your [ItemsSource](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ItemsSource) that will be used to determine how large the pie slice is in relation to the other pie slices. You **must** set [SliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.SliceValuePath) to use pie chart correctly.
+The value path is a property path that points to a numeric property on the items in your [ItemsSource](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ItemsSource) that will be used to determine how large the pie slice is in relation to the other pie slices.
+
+> [!WARNING]
+> You must set [SliceValuePath](xref:@ActiproUIRoot.Controls.Charts.PieSeries.SliceValuePath) to use pie chart correctly.
 
 As an example, let's say we have an `IEnumerable` of `Person` for our [PieSeries](xref:@ActiproUIRoot.Controls.Charts.PieSeries).[ItemsSource](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ItemsSource).
 
@@ -34,17 +37,17 @@ public class Person {
 
 ![Screenshot](../images/pie-specifying-items1.png)
 
-> [!NOTE]
-> The value path must point to a property with a numeric type (double, int, decimal, etc) or an exception will be thrown.
+> [!CAUTION]
+> The value path must point to a property with a numeric type (`double`, `int`, `decimal`, etc.) or an `Exception` will be thrown.
 
 > [!NOTE]
-> Negative values will be treated as zero (0).
+> Negative values will be treated as zero (`0`).
 
 ## Setting Title Path
 
-The value path is a property path that points to a property on the items in your [ItemsSource](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ItemsSource) that will be used to determine what the title of the pie slice is. The title is, by default, displayed on the pie chart legend, but also can optionally be displayed on the pie chart label.
+The title path is a property path that points to a property on the items in your [ItemsSource](xref:@ActiproUIRoot.Controls.Charts.PieSeries.ItemsSource) that will be used to determine what the title of the pie slice is. The title is, by default, displayed on the pie chart legend, but also can optionally be displayed on the pie chart label.
 
-Using the previous example of Person:
+Using the previous example of `Person`:
 
 ```csharp
 public class Person {

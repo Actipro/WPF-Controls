@@ -21,9 +21,9 @@ Formatters are free to implement any custom logic to perform the formatting. How
 
 1. Find the next token that allows whitespace between itself and the following non-whitespace token.
 
-1. Replace all whitespace between these two tokens with the new whitespace, which can either be no whitespace at all, or a combination of any number of linebreaks, tabs and spaces.
+1. Replace all whitespace between these two tokens with the new whitespace, which can either be no whitespace at all, or a combination of any number of line breaks, tabs and spaces.
 
-1. Repeat from step 1 until the entire range is formatted.
+1. Repeat from the first step until the entire range is formatted.
 
 ## Registering a Text Formatter with a Syntax Language
 
@@ -33,11 +33,11 @@ An [ITextFormatter](xref:ActiproSoftware.Text.ITextFormatter) can be associated 
 language.RegisterService<ITextFormatter>(myTextFormatter);
 ```
 
-Registering a text formatter with a language is optional, but recommended.
+Registering a text formatter with a language is optional but recommended.
 
 ## Formatting a Range of Text
 
-This code uses an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s current language's text formatter to format a range of text from offset `0`-`10`:
+This code uses an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument)'s current language's text formatter to format a range of text from offsets `0` to `10`:
 
 ```csharp
 ITextFormatter textFormatter = document.Language.GetService<ITextFormatter>();

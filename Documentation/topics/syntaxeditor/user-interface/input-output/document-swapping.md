@@ -5,7 +5,7 @@ order: 2
 ---
 # Document Swapping
 
-Documents can be attached to zero or more SyntaxEditor controls at any given time, and alternate [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) instances can be swapped into a SyntaxEditor.
+Documents can be attached to zero or more `SyntaxEditor` controls at any given time, and alternate [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) instances can be swapped into a `SyntaxEditor`.
 
 ## UI and Text Separation
 
@@ -19,6 +19,6 @@ The [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) interface provi
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is always editing a single [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) instance at a time.  The [Document](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.Document) property gets and sets which [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) is currently being edited.
 
-A second [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) could be opened and swapped in place of the SyntaxEditor's current document, by setting the [Document](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.Document) property to the new document instance.  When this occurs, the SyntaxEditor control detaches from the old document, attaches to the new document, and updates its views to display the text in the new document.
+A second [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) could be opened and swapped in place of the `SyntaxEditor`'s current document, by setting the [Document](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.Document) property to the new document instance.  When this occurs, the `SyntaxEditor` control detaches from the old document, attaches to the new document, and updates its views to display the text in the new document.
 
-So effectively you could have an application that has a single SyntaxEditor control instance, but a lot of [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) instances that are loaded in memory.  When the end user wishes to edit a particular document, you would swap that document into the editor.  This saves on overall memory since mutiple editor control instances are not required.
+So effectively you could have an application that has a single `SyntaxEditor` control instance, but a lot of [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument) instances that are loaded in memory.  When the end user wishes to edit a particular document, you would swap that document into the editor.  This saves on overall memory since multiple editor control instances are not required.

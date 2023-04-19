@@ -5,11 +5,11 @@ order: 12
 ---
 # Indent Provider (Auto-Indent)
 
-Syntax languages support indent providers, which provide functionality for auto-indentation of the code when the Enter key is pressed.
+Syntax languages support indent providers, which provide functionality for auto-indentation of the code when the <kbd>Enter</kbd> key is pressed.
 
 ## Basic Concepts
 
-Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) that can automatically indent text when the Enter key is pressed.
+Indent providers are classes that implement [IIndentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IIndentProvider) that can automatically indent text when the <kbd>Enter</kbd> key is pressed.
 
 See the [Indent Providers](../../user-interface/input-output/indent-providers.md) topic for details on how to create and work with indent provider classes.
 

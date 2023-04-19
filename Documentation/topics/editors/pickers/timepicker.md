@@ -9,7 +9,7 @@ The [TimePicker](xref:@ActiproUIRoot.Controls.Editors.TimePicker) control allows
 
 ![Screenshot](../images/timepicker.png)
 
-The inner radial slider sets the hours value.  It can be rotated up to two full cycles, where each cycle represents a 12 hour period.  The second cycle (for PM times) applies a subtle highlight effect on the track.  The outer radial slider sets the minutes value, and can be rotated freely.
+The inner radial slider sets the hours value.  It can be rotated up to two full cycles, where each cycle represents a 12-hour period.  The second cycle (for PM times) applies a subtle highlight effect on the track.  The outer radial slider sets the minutes value and can be rotated freely.
 
 ## Minimum and Maximum Values
 

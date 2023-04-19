@@ -5,7 +5,7 @@ order: 6
 ---
 # Default Actions
 
-A default action occurs when an item is double-tapped or `Enter` is pressed.  This action can be fully customized to execute custom logic.
+A default action occurs when an item is double-tapped or <kbd>Enter</kbd> is pressed.  This action can be fully customized to execute custom logic.
 
 ## Built-In Default Actions
 
@@ -19,13 +19,13 @@ If the [ItemDefaultActionExecuting](xref:@ActiproUIRoot.Controls.Grids.TreeListB
 
 @if (wpf) {
 
-The [TreeListBoxItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem).[DefaultActionCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem.DefaultActionCommand) can be set in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`PrepareContainerForItemOverride` override.  It alternatively be set via `Setter` binding in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`ItemContainerStyle` style. 
+The [TreeListBoxItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem).[DefaultActionCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem.DefaultActionCommand) can be set in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`PrepareContainerForItemOverride` override.  It alternatively can be set via `Setter` binding in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`ItemContainerStyle` style.
 
 }
 
 @if (winrt) {
 
-The [TreeListBoxItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem).[DefaultActionCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem.DefaultActionCommand) can be set in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`PrepareContainerForItemOverride` override. 
+The [TreeListBoxItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem).[DefaultActionCommand](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItem.DefaultActionCommand) can be set in a [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`PrepareContainerForItemOverride` override.
 
 }
 

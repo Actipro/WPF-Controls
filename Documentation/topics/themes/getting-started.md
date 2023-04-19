@@ -16,21 +16,21 @@ Leveraging Actipro Themes in your applications is as simple as setting a few pro
 Actipro Themes includes these predefined themes, whose names are defined as constants in the [ThemeNames](xref:@ActiproUIRoot.Themes.ThemeNames) class:
 
 - Standard
-  
+
   - `Black` - Modern black theme.
   - `Dark` - Modern dark theme.
   - `Light` - Modern light theme.
   - `White` - Modern white theme.
 
 - Metro
-  
+
   - `MetroBlack` - Similar to `MetroDark`, except has a black title bar area.
   - `MetroDark` - A very dark variation of `MetroLight`, similar to the Visual Studio's dark theme.
   - `MetroLight` - System default theme for Windows 8.x and newer.
   - `MetroWhite` - Similar to `MetroLight`, except has a white title bar area.
 
 - Office Colorful
-  
+
   - `OfficeColorfulBlue` - Office-like blue accented light theme, similar to Outlook's Colorful theme.
   - `OfficeColorfulGreen` - Office-like green accented light theme, similar to Excel's Colorful theme.
   - `OfficeColorfulIndigo` - Office-like indigo accented light theme, similar to Word's Colorful theme.
@@ -42,7 +42,7 @@ Actipro Themes includes these predefined themes, whose names are defined as cons
   - `OfficeColorfulYellow` - Office-like yellow accented light theme.
 
 - Office White
-  
+
   - `OfficeWhiteBlue` - Office-like blue accented white theme, similar to Outlook's White theme.
   - `OfficeWhiteGreen` - Office-like green accented white theme, similar to Excel's White theme.
   - `OfficeWhiteIndigo` - Office-like indigo accented white theme, similar to Word's White theme.
@@ -53,26 +53,26 @@ Actipro Themes includes these predefined themes, whose names are defined as cons
   - `OfficeWhiteTeal` - Office-like teal accented white theme, similar to Publisher's White theme.
   - `OfficeWhiteYellow` - Office-like yellow accented white theme.
 
-- Aero-Style *(These themes require the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly, along with special registration as described below) *
-  
+- Aero-Style *(These themes require the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly, along with special registration as described below) *
+
   - `AeroNormalColor` - Windows 7-like theme.
   - `Office2010Black` - Office 2010-like black theme.
   - `Office2010Blue` - Office 2010-like blue theme.
   - `Office2010Silver` - Office 2010-like silver theme.
 
 - Other
-  
+
   - `HighContrast` - High-contrast theme that should only be activated when the Windows system is in high-contrast mode.
 
 ## Add Assembly References
 
-To get started, add a reference to the `ActiproSoftware.Shared.Wpf.dll` assembly.  See the product's Readme for details on the default install location.
+To get started, add a reference to the *ActiproSoftware.Shared.Wpf.dll* assembly.  See the product's Readme for details on the default install location.
 
 ### Aero and Office 2010 Theme Registration
 
-If you'd like to leverage the optional `AeroNormalColor` or three supported Office 2010-like themes (`Office2010Black`, `Office2010Blue`, and `Office2010Silver`), you'll need to add a reference to the `ActiproSoftware.Themes.Aero.Wpf.dll` assembly.  The Aero theme in this assembly is similar to the Windows 7 system theme.  The Office themes in this assembly are similar to the Aero-style Office 2010 themes.  For support of themes similar to newer Office versions, use the Office accented themes instead (see above).
+If you'd like to leverage the optional `AeroNormalColor` or three supported Office 2010-like themes (`Office2010Black`, `Office2010Blue`, and `Office2010Silver`), you'll need to add a reference to the *ActiproSoftware.Themes.Aero.Wpf.dll* assembly.  The Aero theme in this assembly is similar to the Windows 7 system theme.  The Office themes in this assembly are similar to the Aero-style Office 2010 themes.  For support of themes similar to newer Office versions, use the Office accented themes instead (see above).
 
-> [!TIP]
+> [!IMPORTANT]
 > Only add this reference if these older-style themes are required for your application.
 
 Once the reference has been added, the Aero theme catalog must be registered with the theme manager in your application's `OnStartup` code:
@@ -139,29 +139,29 @@ This sample code shows how to change several theme settings as a single unit and
 ```csharp
 public partial class App : Application {
 
-    protected override void OnStartup(StartupEventArgs e) {
-        // Configure the Actipro theme manager
-        ThemeManager.BeginUpdate();
-        try {
-            // The older Aero and Office 2010 themes are in a separate assembly and must be registered if you will use them in the application
-            // ThemesAeroThemeCatalogRegistrar.Register();
+	protected override void OnStartup(StartupEventArgs e) {
+		// Configure the Actipro theme manager
+		ThemeManager.BeginUpdate();
+		try {
+			// The older Aero and Office 2010 themes are in a separate assembly and must be registered if you will use them in the application
+			// ThemesAeroThemeCatalogRegistrar.Register();
 
-            // Use the Actipro styles for native WPF controls that look great with Actipro's control products
-            ThemeManager.AreNativeThemesEnabled = true;
+			// Use the Actipro styles for native WPF controls that look great with Actipro's control products
+			ThemeManager.AreNativeThemesEnabled = true;
 
-            // Set the current app theme via a registered theme definition name
-            ThemeManager.CurrentTheme = ThemeNames.OfficeColorfulGreen;
-        }
-        finally {
-            ThemeManager.EndUpdate();
-        }
+			// Set the current app theme via a registered theme definition name
+			ThemeManager.CurrentTheme = ThemeNames.OfficeColorfulGreen;
+		}
+		finally {
+			ThemeManager.EndUpdate();
+		}
 
-        // ...
+		// ...
 
-        // Call the base method
-    	base.OnStartup(e);
-    }
-	
+		// Call the base method
+		base.OnStartup(e);
+	}
+
 }
 ```
 
@@ -172,7 +172,7 @@ While the Metro Light theme is used by default on all Windows systems, it's usef
 The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property returns a [SystemApplicationMode](xref:@ActiproUIRoot.Themes.SystemApplicationMode) enumeration value that indicates if Windows applications should render in a light theme, dark theme, or in high-contrast mode.  This result is determined by making various Windows API calls to resolve system settings.  The [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[SystemApplicationModeChanged](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationModeChanged) event is raised whenever the [SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property changes.
 
 > [!TIP]
-> Windows 10 and 11 users can set the desired light/dark mode for applications in the Settings' "Personalization / Colors" page, and the "Choose your default app mode" setting (Windows 10) or "Choose your mode" setting (Windows 11).  High-contrast mode is activated in the Settings' "Ease of Access / High contrast" page (Windows 10) or "Accessibility / Contrast themes" page (Windows 11).  High-contrast mode, when activated, takes priority over light/dark modes.
+> Windows 10 and 11 users can set the desired light/dark mode for applications in the Settings' **Personalization > Colors** page, and the **Choose your default app mode** setting (Windows 10) or **Choose your mode** setting (Windows 11).  High-contrast mode is activated in the Settings' **Ease of Access > High contrast** page (Windows 10) or **Accessibility > Contrast themes** page (Windows 11).  High-contrast mode, when activated, takes priority over light/dark modes.
 
 A handler of the [SystemApplicationModeChanged](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationModeChanged) event could set the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentTheme](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentTheme) property to an appropriate theme based on the [SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property value.  The special predefined `HighContrast` theme should only be used when the Windows system is in high-contrast mode, indicated by when the [SystemApplicationMode](xref:@ActiproUIRoot.Themes.ThemeManager.SystemApplicationMode) property returns `HighContrast`.
 
@@ -192,8 +192,9 @@ See the [Window Chrome](windowchrome.md) topic for more information on how it wo
 
 ## Theming SyntaxEditor
 
-SyntaxEditor will use the current theme's `TextBox` foreground and background for plain text, unless overridden in highlighting styles.  Other syntax highlighting and margin rendering will be based on registered highlighting styles for various syntax language and display classification types, which are usually specified by default for a light theme.  ScrollBars within the editor will use the current theme's `ScrollBar` style.
+`SyntaxEditor` will use the current theme's `TextBox` foreground and background for plain text, unless overridden in highlighting styles.  Other syntax highlighting and margin rendering will be based on registered highlighting styles for various syntax language and display classification types, which are usually specified by default for a light theme.  Scrollbars within the editor will use the current theme's `ScrollBar` style.
 
-While the defaults should look fine in lighter themes, darker themes require the registered highlighting styles for all the classification types of syntax languages you use, along with highlighting styles for the editor's display classification types, to be updated with values more appropriate for a dark theme.
+> [!IMPORTANT]
+> While the defaults should look fine in lighter themes, darker themes require the registered highlighting styles for all the classification types of syntax languages you use, along with highlighting styles for the editor's display classification types, to be updated with values more appropriate for a dark theme.
 
 See the [Highlighting Style Registries](../syntaxeditor/user-interface/styles/highlighting-style-registries.md) topic for more information on how to properly switch to a dark theme.

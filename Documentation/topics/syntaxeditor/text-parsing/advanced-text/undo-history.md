@@ -37,7 +37,7 @@ An undo operation can be performed like this:
 document.UndoHistory.Undo();
 ```
 
-An redo operation can be performed like this:
+A redo operation can be performed like this:
 
 ```csharp
 document.UndoHistory.Redo();
@@ -49,4 +49,7 @@ Other overloads for the [Undo](xref:ActiproSoftware.Text.Undo.IUndoHistory.Undo*
 
 The undo history tracks the change types for lines in the document, meaning whether lines have been modified at all, modified since the last save, or never modified.  The change type is represented by the [SavePointChangeType](xref:ActiproSoftware.Text.Undo.SavePointChangeType) enumeration and can be either `None`, `UnsavedChanges`, or `SavedChanges`.
 
-As changes occur in a document, the appropriate ranges are marked as unsaved changes.  When the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property changes to `false`, the unsaved changes are modified to be saved changes.  From that point on, any new changes that occur are marked unsaved again.  When the undo history gets cleared (see above), all change tracking is cleared, since it is assumed that the document has been reset.
+As changes occur in a document, the appropriate ranges are marked as unsaved changes.  When the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property changes to `false`, the unsaved changes are modified to be saved changes.  From that point on, any new changes that occur are marked unsaved again.
+
+> [!IMPORTANT]
+> When the undo history gets cleared (see above), all change tracking is cleared, since it is assumed that the document has been reset.

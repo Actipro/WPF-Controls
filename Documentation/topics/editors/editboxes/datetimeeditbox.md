@@ -85,17 +85,17 @@ Each of the features listed in the table below describe functionality that is co
 
 Standard date/time formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
-- g
-- G
-- f
-- F
-- MM/dd/yyyy hh:mm tt
-- MM/dd/yy h:mm:ss tt
-- yyyy-MM-dd HH:mm:ss
-- d MMMM yyyy HH:mm
-- d MMM yyyy HH:mm
-- dd.MM.yyyy HH:mm
-- d.M.yyyy HH:mm
+- `"g"`
+- `"G"`
+- `"f"`
+- `"F"`
+- `"MM/dd/yyyy hh:mm tt"`
+- `"MM/dd/yy h:mm:ss tt"`
+- `"yyyy-MM-dd HH:mm:ss"`
+- `"d MMMM yyyy HH:mm"`
+- `"d MMM yyyy HH:mm"`
+- `"dd.MM.yyyy HH:mm"`
+- `"d.M.yyyy HH:mm"`
 
 ## Minimum and Maximum Values
 

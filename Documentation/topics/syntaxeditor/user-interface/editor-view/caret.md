@@ -5,7 +5,7 @@ order: 2
 ---
 # Caret
 
-The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simulataneous editing in several document locations at the same time.
+The SyntaxEditor caret is the bar that blinks within an editor view and marks the location where typing will insert text.  It also is linked to the end position of a [selection](selection.md).  SyntaxEditor optionally supports multiple selections and therefore multiple carets, which enables simultaneous editing in several document locations at the same time.
 
 ## Accessing the Caret
 
@@ -18,7 +18,7 @@ The primary selection has several properties for determining its caret location.
 | Member | Description |
 |-----|-----|
 | [CaretCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretCharacterColumn) Property | Gets the character column of the primary caret within the active view. |
-| [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the the active view.  and adds one to the value for display purposes within a status bar. |
+| [CaretDisplayCharacterColumn](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretDisplayCharacterColumn) Property | Gets the character column of the primary caret within the active view.  and adds one to the value for display purposes within a status bar. |
 | [CaretOffset](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretOffset) Property | Gets or sets the offset of the primary caret within the active view. |
 | [CaretPosition](xref:@ActiproUIRoot.Controls.SyntaxEditor.IEditorViewSelection.CaretPosition) Property | Gets or sets the [TextPosition](xref:ActiproSoftware.Text.TextPosition) of the primary caret within the active view. |
 

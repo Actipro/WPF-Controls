@@ -101,7 +101,7 @@ document.SetText(TextChangeTypes.Custom, "New document text.");
 
 ## Multiple-Operation Text Changes
 
-Use the following techniques whenever you are going to perform a number of replaces that should be considered a single undoable modification.
+Use the following techniques whenever you are going to perform a number of replacements that should be considered a single undoable modification.
 
 ### Creating an ITextChange
 
@@ -146,7 +146,7 @@ while (!reader.IsAtSnapshotEnd) {
 
 ### Applying the Text Change
 
-Finally when you have completely constructed the text change, call its [Apply](xref:ActiproSoftware.Text.ITextChange.Apply*) method to perform the text change on the document.
+Finally, when you have completely constructed the text change, call its [Apply](xref:ActiproSoftware.Text.ITextChange.Apply*) method to perform the text change on the document.
 
 This code applies the text change.
 
@@ -181,7 +181,7 @@ By default, when a text change is applied, any attached editor will move its car
 
 Sometimes it's useful to know the source object that created the text change.  This most often is some sort of editor view and can be passed in the [Source](xref:ActiproSoftware.Text.ITextChangeOptions.Source) property.
 
-### Can Merge Into Previous Change
+### Can Merge into Previous Change
 
 When the [CanMergeIntoPreviousChange](xref:ActiproSoftware.Text.ITextChangeOptions.CanMergeIntoPreviousChange) property is `true`, the text change will try and merge into a previous text change on the undo stack.  This is useful when you want to apply a programmatically-created text change that shouldn't have its own undo history entry.  Enabling this feature means that if an undo occurs after this text change is applied, the undo will include all of the operations in the merged text change along with those of the text change they were merged into, all acting as a single atomic text change.
 
@@ -195,7 +195,7 @@ Assume that you scan a snapshot and determine that you would like to insert the 
 
 There are two ways around this.  The first and harder way is to keep some sort of delta variable yourself to determine that any operations you perform need to be offset by the delta.  Then after each operation, update the delta to account for the deletion and insertion lengths of the operation.  For the scenario example above, you'd have to tell the second insert operation to occur at offset `12`, not `10`, to achieve the correct results.
 
-Obviously that is tedious so the text framework provides a really handy feature to do the delta calculations for you.  The only caveat is that you must be performing the operations in forward sequence, meaning no operation can start at an offset that is earlier than the start offsets of any previously-added operation.
+Obviously, that is tedious, so the text framework provides a really handy feature to do the delta calculations for you.  The only caveat is that you must be performing the operations in forward sequence, meaning no operation can start at an offset that is earlier than the start offsets of any previously-added operation.
 
 In the multi-operation example above, we activate this feature by passing options to the text change that set [ITextChangeOptions](xref:ActiproSoftware.Text.ITextChangeOptions).[OffsetDelta](xref:ActiproSoftware.Text.ITextChangeOptions.OffsetDelta) to `TextChangeOffsetDelta.SequentialOnly`.  When this option is set, all offsets you pass for operations can be based on the original offsets in the snapshot you scan.  This means that in our scenario example above, you can tell the second insert operation to occur at offset `10`.
 

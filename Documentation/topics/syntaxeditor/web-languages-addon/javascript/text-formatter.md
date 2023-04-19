@@ -34,4 +34,4 @@ Since this feature is installed as a "feature" service on the language and is in
 
 The [JavaScriptTextFormatter](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JavaScriptTextFormatter).[IsOpeningBraceOnNewLine](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JavaScriptTextFormatter.IsOpeningBraceOnNewLine) property can be used to determine whether opening curly braces appear on a new line.
 
-It defaults to `false`, but can be changed to `true` to cause opening curly braces to move to the next line.
+It defaults to `false` but can be changed to `true` to cause opening curly braces to move to the next line.

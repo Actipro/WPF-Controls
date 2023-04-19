@@ -21,7 +21,7 @@ An important thing to note is that the [SeriesPaletteStyleSelector](xref:@Actipr
 
 Numerous built-in palettes are included with the product, each named via a value within the [PaletteKind](xref:@ActiproUIRoot.Controls.Charts.Palettes.PaletteKind) enumeration.
 
-A built-in palette can be assigned to a chart like this (in this case the Roman palette):
+A built-in palette can be assigned to a chart like this (in this case the `Roman` palette):
 
 ```xaml
 <charts:XYChart Width="100" Height="18">
@@ -49,7 +49,7 @@ Each palette has two mode options for how colors will be assigned to series in a
 | Mode | Description |
 |-----|-----|
 | Sequential | Pick palette colors sequentially.  The first series gets the first palette color.  The second series gets the second palette color, and so on. |
-| UniformDistribution | Pick palette colors based on a uniform distribution.  If the palette consists of nine base colors and the chart being rendered has three series, the first series gets one of the first three colors in the palette.  The second series gets one of the middle three colors in the palette.  And the third series gets one of the last three colors in the palette.  If there are more series being rendered than base colors in the palette, fallback is to Sequential mode. |
+| UniformDistribution | Pick palette colors based on a uniform distribution.  If the palette consists of nine base colors and the chart being rendered has three series, the first series gets one of the first three colors in the palette.  The second series gets one of the middle three colors in the palette.  And the third series gets one of the last three colors in the palette.<br/><br/>If there are more series being rendered than base colors in the palette, fallback is to `Sequential` mode. |
 
 The default is to use `UniformDistribution` mode on the built-in palettes, and `Sequential` mode on custom palettes.
 
@@ -81,7 +81,7 @@ This sample shows the creation of a palette that contains two custom colors:
 </charts:XYChart>
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 > When multiple series are used in a chart, make sure that your palette has enough base color entries to match or exceed your series count.  Or ensure that the shade generation feature (described above) is active.
 
 ## Customizing Highlight Effect Brushes
@@ -110,14 +110,14 @@ A custom `Brush`, if specified via properties like [AreaBrushCustom](xref:@Actip
 
 A brush kind can be specified via properties like [AreaBrushKind](xref:@ActiproUIRoot.Controls.Charts.Palettes.SeriesPaletteStyleSelector.AreaBrushKind).  This kind is of type [SeriesBrushKind](xref:@ActiproUIRoot.Controls.Charts.Palettes.SeriesBrushKind) and has many values that can "modify" the palette color assigned to the series:
 
-- Default - Use the exact palette color.
-- Light - Use a slightly lighter version of the palette color.
-- Dark - Use a slightly darker version of the palette color.
-- SemiTransparent - Use gradient, from a semi-transparent version of the palette color to transparent.
-- SemiTransparentGradient - Use a gradient, from a semi-transparent version of the palette color to an almost completely transparent version of the palette color.
-- DarkToLightGradient - Use a gradient, from the `Dark` to `Light` color.
-- LightToDarkGradient - Use a gradient, from the `Light` to `Dark` color.
-- CylinderGradient - Use a gradient, creating a cylindrical appearance.
+- `Default` - Use the exact palette color.
+- `Light` - Use a slightly lighter version of the palette color.
+- `Dark` - Use a slightly darker version of the palette color.
+- `SemiTransparent` - Use gradient, from a semi-transparent version of the palette color to transparent.
+- `SemiTransparentGradient` - Use a gradient, from a semi-transparent version of the palette color to an almost completely transparent version of the palette color.
+- `DarkToLightGradient` - Use a gradient, from the `Dark` to `Light` color.
+- `LightToDarkGradient` - Use a gradient, from the `Light` to `Dark` color.
+- `CylinderGradient` - Use a gradient, creating a cylindrical appearance.
 
 By using a brush kind setting instead of specifying an exact custom brush, the brush used for each series will be relative to the palette color assigned to that series.
 

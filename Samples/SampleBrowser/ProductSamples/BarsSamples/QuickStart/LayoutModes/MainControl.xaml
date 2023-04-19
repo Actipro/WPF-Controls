@@ -1,0 +1,92 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.LayoutModes.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
+	
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=classicRibbon, Path=CanChangeLayoutMode}" DisplayName="Can change layout mode on Ribbon Display Options menu" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon supports two different layout modes: Classic and Simplified.
+					<LineBreak /><LineBreak />
+					The Classic layout, first introduced with Office 2007, uses a taller ribbon with a combination of
+					large buttons and multi-row groups of controls that dynamically adjust to fill as much or as little
+					space as is available.
+					<LineBreak /><LineBreak />
+					The Simplified layout is a modern refinement of the ribbon that appears more like a traditional toolbar
+					with a single row of controls but can still dynamically adjust to fill the available space. When necessary,
+					controls that do not have room to appear on the primary ribbon are moved to an overflow menu.
+					<LineBreak /><LineBreak />
+					The Actipro Ribbon can switch between layouts at run-time without any change in configuration. Both ribbons
+					in this sample use the same configuration, and you can use the Ribbon Display Options button at the far bottom corner
+					of either ribbon to switch between layouts.
+					<LineBreak /><LineBreak />
+					Try resizing the window and watch as each ribbon adjusts the layout to accommodate the available space.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+
+						<!-- Ribbon Control with Classic layout -->
+						<bars:Ribbon x:Name="classicRibbon" IsApplicationButtonVisible="False"
+									 LayoutMode="Classic" UserInterfaceDensity="Compact"
+									 DataContext="{Binding Ribbon}"
+									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Classic Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+						
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="175">
+						
+						<!-- Ribbon Control with Simplified layout -->
+						<bars:Ribbon x:Name="simplifiedRibbon" IsApplicationButtonVisible="False"
+									 CanChangeLayoutMode="{Binding ElementName=classicRibbon, Path=CanChangeLayoutMode}"
+									 LayoutMode="Simplified" UserInterfaceDensity="Spacious"
+									 DataContext="{Binding Ribbon}"
+									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with Simplified Layout" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+						
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

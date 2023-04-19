@@ -13,7 +13,7 @@ A bar chart displays rectangular bars with lengths proportional to the values th
 
 The bar series will pivot it's bars based on the chart's baseline value, as specified by the [MicroXYChart](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart).[AxisBaselineValue](xref:@ActiproUIRoot.Controls.MicroCharts.MicroXYChart.AxisBaselineValue) property.  The default baseline for numeric values is `0`, and for date/time values it is `DateTime.MinValue`.
 
-In the following example, the data rendered by the chart uses the index postion along the X-axis and the fixed values `10, 25, 10, 20, 5, 20, 10` for the Y-axis.  The first image shows the series using `5` as the minimum value along the Y-axis, and `25` for the maximum.  Since our baseline is `0` (the default), the bars are not pivoted.
+In the following example, the data rendered by the chart uses the index position along the X-axis and the fixed values `10, 25, 10, 20, 5, 20, 10` for the Y-axis.  The first image shows the series using `5` as the minimum value along the Y-axis, and `25` for the maximum.  Since our baseline is `0` (the default), the bars are not pivoted.
 
 ![Screenshot](../images/micro-bar-series-style1.png)
 
@@ -41,4 +41,4 @@ The bar chart can be oriented horizontally (the default) or vertically by settin
 
 ## Bar Spacing
 
-The [BarSpacing](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroBarSeriesBase.BarSpacing) property can be used to configure the space between the bars. The default value is `1px`, which indicates there should be a 1 pixel space between the bars.
+The [BarSpacing](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroBarSeriesBase.BarSpacing) property can be used to configure the space between the bars. The default value is `1px`, which indicates there should be a 1-pixel space between the bars.

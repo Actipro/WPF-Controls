@@ -16,6 +16,6 @@ The [FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) control can be b
 
 ## Switch
 
-[FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) supports two or three check states, and includes several options for customizing the look of the switch.
+[FlipSwitch](xref:@ActiproUIRoot.Controls.Gauge.FlipSwitch) supports two or three check states and includes several options for customizing the look of the switch.
 
 See the [Switch](switch.md) topic for more information.

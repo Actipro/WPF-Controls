@@ -7,13 +7,13 @@ order: 6
 
 Once you have configured your language project and are ready to start testing it or generating code, it's time to build the project.  Building a project examines the project and reports whether there are any errors, warnings, or messages that you should be aware of.
 
-Project builds can be initiated from the ribbon, or by pressing the shortcut `Ctrl+Shift+B`.
+Project builds can be initiated from the ribbon, or by pressing the shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>.
 
 ## Error List and Status Bar
 
 The **Error List** tool window indicates the errors, warnings, and messages from the last build.  Each item in the list shows a general category, which relates to a configuration pane, along with a description.
 
-In addition, the status bar will show a project build result summary and at what time the last build succeeded or failed.
+In addition, the **Status Bar** will show a project build result summary and at what time the last build succeeded or failed.
 
 ## Fixing Errors
 

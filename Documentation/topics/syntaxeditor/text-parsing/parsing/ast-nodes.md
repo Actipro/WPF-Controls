@@ -5,7 +5,7 @@ order: 4
 ---
 # AST Nodes
 
-An abstract syntax tree (AST) is a structural tree representation of source code, without the specific details of the language, such as punctuation.  An AST is comprised of AST Nodes, each which represent a particular construct in the concrete syntax.
+An abstract syntax tree (AST) is a structural tree representation of source code, without the specific details of the language, such as punctuation.  An AST is comprised of AST nodes, each which represent a particular construct in the concrete syntax.
 
 ## An Example
 
@@ -27,11 +27,11 @@ Sample expression 1:
 
 ```
 "+" [
-    1
-    "/" [
-        4
-        7
-    ]
+	1
+	"/" [
+		4
+		7
+	]
 ]
 ```
 
@@ -61,7 +61,7 @@ For instance, a code outliner could consume the [IAstNode](xref:ActiproSoftware.
 
 The [DefaultAstNode](xref:ActiproSoftware.Text.Parsing.Implementation.DefaultAstNode) class provides a completely generic implementation of the [IAstNode](xref:ActiproSoftware.Text.Parsing.IAstNode) interface, where each node has a string [Value](xref:ActiproSoftware.Text.Parsing.IAstNode.Value) and can contain any other node in its [Children](xref:ActiproSoftware.Text.Parsing.IAstNode.Children) collection.
 
-This class is good to use when first prototyping out a grammar, or in scenarios where type-specific AST nodes are not required.  It is the default AST node type used by the [LL(*) Parser Framework's tree constructors](../../ll-parser-framework/tree-constructors.md) that don't designate a specific AST node type.
+This class is good to use when first prototyping out a grammar or in scenarios where type-specific AST nodes are not required.  It is the default AST node type used by the [LL(*) Parser Framework's tree constructors](../../ll-parser-framework/tree-constructors.md) that don't designate a specific AST node type.
 
 ## Type-Specific AST Nodes
 
@@ -92,7 +92,7 @@ public class ClassDeclaration : AstNodeBase {
 }
 ```
 
-The `ClassDeclaration` class is a type-specific AST node, where instead of wrapping our `Foo` value node with another `Name` node, we simply set a string property called `Name` to the value `Foo`.  The snippet that originally required three AST nodes to represent, now just uses one AST node with a property set.  Thus the overall complexity of the AST is reduced.
+The `ClassDeclaration` class is a type-specific AST node, where instead of wrapping our `Foo` value node with another `Name` node, we simply set a string property called `Name` to the value `Foo`.  The snippet that originally required three AST nodes to represent, now just uses one AST node with a property set.  Thus, the overall complexity of the AST is reduced.
 
 Another major benefit of using type-specific AST nodes is that since they are .NET classes, you can fully extend them with partial classes, etc.  This makes it easy to add helper methods/properties or to override the default `ToString` result.
 

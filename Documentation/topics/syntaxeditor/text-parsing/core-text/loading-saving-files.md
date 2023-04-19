@@ -77,7 +77,7 @@ Sometimes a document's text is fetched using an external process, such as from a
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) method can be used to completely replace the document text with a string.
 
-There are several overloads of the [SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) available.  The overload that only accepts a `String` parameter will will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  The other overloads will not do this.
+There are several overloads of the [SetText](xref:ActiproSoftware.Text.ITextDocument.SetText*) available.  The overload that only accepts a `String` parameter will reset the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` and will clear the undo history.  The other overloads will not do this.
 
 This code replaces the text content of a document from a string, marks the [IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false`, and clears the undo history:
 
@@ -191,4 +191,4 @@ See the [Exporting to HTML / RTF](../advanced-text/exporting.md) topic for more 
 
 The [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property can be used to store the file name (full path) of the file that has been loaded into the document.  The [LoadFile](xref:ActiproSoftware.Text.ITextDocument.LoadFile*) method overloads that read a file automatically set this property.
 
-When the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value is changed, the [FileNameChanged](xref:ActiproSoftware.Text.ITextDocument.FileNameChanged) event fires.
+When the [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value is changed, the [FileNameChanged](xref:ActiproSoftware.Text.ITextDocument.FileNameChanged) event is raised.

@@ -21,7 +21,7 @@ Now, when you drag tool windows around from the dock sites, notice how they rema
 
 @if (wpf) {
 
-Also try to float a tool window from within the inner dock site.  Then switch to the other document window.  Notice how the floating tool window automatically closes.  When you switch back to the original document window, the rafted window automatically reappears.  This auto-close behavior can be disabled by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[CanFloatingDockHostsHideOnDockSiteUnload](xref:@ActiproUIRoot.Controls.Docking.DockSite.CanFloatingDockHostsHideOnDockSiteUnload) property to `false`. 
+Also try to float a tool window from within the inner dock site.  Then switch to the other document window.  Notice how the floating tool window automatically closes.  When you switch back to the original document window, the rafted window automatically reappears.  This auto-close behavior can be disabled by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[CanFloatingDockHostsHideOnDockSiteUnload](xref:@ActiproUIRoot.Controls.Docking.DockSite.CanFloatingDockHostsHideOnDockSiteUnload) property to `false`.
 
 }
 
@@ -36,7 +36,7 @@ This sample XAML code shows how to create a nested scenario.
 		<docking:Workspace>
 			<docking:TabbedMdiHost>
 				<docking:TabbedMdiContainer>
-					
+
 					<docking:DocumentWindow Title="Document1">
 						<!-- Inner DockSite 1 -->
 						<docking:DockSite>
@@ -45,12 +45,12 @@ This sample XAML code shows how to create a nested scenario.
 									<TextBox BorderThickness="0" />
 								</docking:ToolWindow>
 								<docking:ToolWindow Title="Inner DockSite 1-2">
-									<TextBox BorderThickness="0" />										
+									<TextBox BorderThickness="0" />
 								</docking:ToolWindow>
 							</docking:ToolWindowContainer>
 						</docking:DockSite>
 					</docking:DocumentWindow>
-					
+
 					<docking:DocumentWindow Title="Document2">
 						<!-- Inner DockSite 2 -->
 						<docking:DockSite>
@@ -64,11 +64,11 @@ This sample XAML code shows how to create a nested scenario.
 							</docking:ToolWindowContainer>
 						</docking:DockSite>
 					</docking:DocumentWindow>
-					
+
 				</docking:TabbedMdiContainer>
 			</docking:TabbedMdiHost>
 		</docking:Workspace>
-		
+
 		<docking:ToolWindowContainer>
 			<docking:ToolWindow Title="Outer DockSite 1">
 				<TextBox BorderThickness="0" />

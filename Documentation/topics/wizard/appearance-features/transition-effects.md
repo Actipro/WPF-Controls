@@ -7,7 +7,7 @@ order: 2
 
 Wizard supports numerous types of animated transition effects to add some extra dazzle to your wizard dialogs during selected page changes.
 
-Different transitions may be applied to forward progress page changes and backward progress page changes.  This allows you to maybe perform a certain transition effect in one direction for forward movement through pages, and apply it in the opposite direction for backward movement through pages.
+Different transitions may be applied to forward progress page changes and backward progress page changes.  This allows you to maybe perform a certain transition effect in one direction for forward movement through pages and apply it in the opposite direction for backward movement through pages.
 
 ## Transition Types (Built-In and Custom)
 
@@ -95,11 +95,11 @@ This XAML code shows how to use a single diagonal [BarWipeTransition](xref:@Acti
 
 ```xaml
 <Window x:Class="Sample.Application.Window"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
-    xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-    >
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+        >
 	<wizard:Wizard TransitionDefaultDirection="ForwardDown">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
@@ -116,11 +116,11 @@ This XAML code shows how to have a [Transition](xref:@ActiproUIRoot.Media.Animat
 
 ```xaml
 <Window x:Class="Sample.Application.Window"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
-    xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-    >
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+        >
 	<wizard:Wizard TransitionDefaultDirection="ForwardDown">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
@@ -148,6 +148,6 @@ This XAML code shows how to have a [Transition](xref:@ActiproUIRoot.Media.Animat
 
 Although the [MultiTransitionSelector](xref:@ActiproUIRoot.Media.Animation.MultiTransitionSelector) generally provides the transition selection functionality you need, sometimes there may be cases where you would like to write more robust code to select transitions.  To do this, create a class that inherits [TransitionSelector](xref:@ActiproUIRoot.Media.Animation.TransitionSelector) and implement its [SelectTransition](xref:@ActiproUIRoot.Media.Animation.TransitionSelector.SelectTransition*) method.  Then assign your custom selector to the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard).[TransitionSelector](xref:@ActiproUIRoot.Controls.Wizard.Wizard.TransitionSelector) property.
 
-## Transition Performance When In Debug Mode
+## Transition Performance When in Debug Mode
 
-When running an application in debug mode from Visual Studio, sometimes animation performance is affected and the transitions will not appear to render smoothly.  However when running the application outside of the Visual Studio debug process, this should not be an issue.
+When running an application in debug mode from Visual Studio, sometimes animation performance is affected, and the transitions will not appear to render smoothly.  However, when running the application outside of the Visual Studio debug process, this should not be an issue.

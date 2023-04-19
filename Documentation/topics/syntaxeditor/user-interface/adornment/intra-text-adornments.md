@@ -7,7 +7,7 @@ order: 5
 
 SyntaxEditor supports the ability to insert intra-text spacers, or space between text characters, and have adornments render within the space that was created.
 
-This feature can be used to insert any sort of UI element in-line with the text of a view, and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for inserting in-line images, in-line buttons that can be used to take action on nearby document text, etc.
+This feature can be used to insert any sort of UI element in-line with the text of a view and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for inserting in-line images, in-line buttons that can be used to take action on nearby document text, etc.
 
 ![Screenshot](../../images/intra-text-adornment.png)
 
@@ -15,8 +15,8 @@ This feature can be used to insert any sort of UI element in-line with the text 
 
 There are two things that must be done to create intra-text adornments.
 
-- First, an intra-text spacer must be created, which tells the text formatting engine to reserve extra space between two characters.
-- Second, adornments must be added within the space that was created so that they are visible to the end user.
+1. An intra-text spacer must be created, which tells the text formatting engine to reserve extra space between two characters.
+1. Adornments must be added within the space that was created so that they are visible to the end user.
 
 ## Tagging Intra-Text Spacers
 

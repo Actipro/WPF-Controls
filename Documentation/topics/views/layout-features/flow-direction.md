@@ -5,7 +5,7 @@ order: 2
 ---
 # Flow Direction
 
-Views panels supports both left-to-right and right-to-left layouts via a simple property switch.
+Views panels support both left-to-right and right-to-left layouts via a simple property switch.
 
 By default, the controls will use the flow direction designated by the system.
 

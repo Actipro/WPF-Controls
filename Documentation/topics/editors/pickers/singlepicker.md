@@ -27,7 +27,7 @@ Value changes alter the current number component by `1`, which is the default fo
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7`, but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7` but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
 
 ## Sample XAML
 

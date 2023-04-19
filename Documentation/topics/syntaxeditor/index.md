@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-SyntaxEditor is a powerful text editing control that is packed with features for efficient code editing, including syntax highlighting, code outlining, parsing, line numbers, block selection, IntelliPrompt UI, split views, adornments, bi-di support, and much more.  It has many of the same code editing features found in the Visual Studio code editor.
+SyntaxEditor is a powerful text editing control that is packed with features for efficient code editing, including syntax highlighting, code outlining, parsing, line numbers, block selection, IntelliPrompt UI, split views, adornments, bi-directional support, and much more.  It has many of the same code editing features found in the Visual Studio code editor.
 
 @if (winrt) {
 
@@ -36,10 +36,10 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Block (rectangular) selection and ability to prevent certain selection methods.
 - Edit multiple lines at the same time with block selection.
 - Line selection in the selection margin.
-- Clipboard operations and drag/drop natively supported (cut, copy, paste), with support for any DataObject.
+- Clipboard operations and drag/drop natively supported (cut, copy, paste), with support for any `DataObject`.
 - Complete extended Unicode character@if (wpf winforms) {, IME (Input Method Editor)}, and bi-directional editing support.
 - Over 100 edit actions including everything found in Visual Studio such as caret movement, selection, indenting, tabification, transposition, and more.
-- Block, none, and customizable smart auto-indent modes when pressing Enter.
+- Block, none, and customizable smart auto-indent modes when pressing <kbd>Enter</kbd>.
 - Current line and delimiter (bracket) highlighting.
 - Delimiter (bracket) auto-completion.
 - Auto-case correct.
@@ -68,7 +68,7 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Animated zoom in and out, via keyboard, mouse wheel, or pinch.
 }
 - Smooth inertia-based touch scrolling.
-- Mouse wheel vertical scrolling, with horizontal scrolling supported when holding Shift.
+- Mouse wheel vertical scrolling, with horizontal scrolling supported when holding <kbd>Shift</kbd>.
 - Squiggle lines for marking errors and spelling mistakes.
 - Complete support for both automatic and manual code outlining (folding), with customizable outlining node options.
 - Collapse (hide) regions of text independently of the outlining feature.
@@ -106,7 +106,7 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Code snippets that allow pre-defined text fragments to be inserted into the editor, and declared fields edited.
 - Lazy load images and content used in IntelliPrompt popups.
 - Optional mini-HTML markup supported for popup content.
-- NavigableSymbolSelector control that provides functionality similar to the VS type/member drop-downs.
+- NavigableSymbolSelector control that provides functionality similar to the Visual Studio type/member drop-downs.
 @if (wpf winrt) {
 - Vector-based images for clarity in high DPI monitors.
 }
@@ -128,9 +128,9 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Custom search patterns can be created.
 - Incremental search mode that automatically searches the entire document as characters are typed.
 - In-line search result highlights.
-- Search overlay pane integrated on the editor surface that responds to Ctrl+F, Ctrl+H, and F3 key variations.
+- Search overlay pane integrated on the editor surface that responds to <kbd>Ctrl</kbd>+<kbd>F</kbd>, <kbd>Ctrl</kbd>+<kbd>H</kbd>, and <kbd>F3</kbd> key variations.
 @if (wpf winrt) {
-- EditorSearchView control that provides an implementation of a Visual Studio-like search dialog with animations.
+- `EditorSearchView` control that provides an implementation of a Visual Studio-like search dialog with animations.
 }
 
 ### Other Features
@@ -141,7 +141,7 @@ SyntaxEditor is built on top of our next-generation extensible text/parsing fram
 - Text statistics that calculate statistics such as line, word, character counts as well as readability scores.
 - Custom input processing handlers that can intercept and handle key and mouse events.
 - Ability to easily create a highlighting styles Options dialog.
-- A TextStylePreview control that can be used to display highlighting styles on an Options dialog.
+- A `TextStylePreview` control that can be used to display highlighting styles on an Options dialog.
 - Abstracted and extensible object model design.
 
 ### Free Add-ons

@@ -13,11 +13,11 @@ Scatter charts render data points where each point is represented by a marker.
 
 The scatter series can render various markers differently, which is specified using the [MarkerStyleKinds](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.MarkerStyleKinds) property.  Supported options include `First`, `Last`, `High`, `Low`, `Negative`, or any combination of those values.
 
-In the following example, the data rendered by the chart uses the index postion along the X-axis and the fixed values `10, 25, 10, 20, 5, 20, 10` for the Y-axis.  The first image shows the series using `5` as the minimum value along the Y-axis, and `25` for the maximum.
+In the following example, the data rendered by the chart uses the index position along the X-axis and the fixed values `10, 25, 10, 20, 5, 20, 10` for the Y-axis.  The first image shows the series using `5` as the minimum value along the Y-axis, and `25` for the maximum.
 
 ![Screenshot](../images/micro-scatter-series-style1.png)
 
-If we include the `First` and `Last` flags, then the first and last markers will render slightly different from the other markers.
+If we include the `First` and `Last` flags, then the first and last markers will be rendered slightly differently from the other markers.
 
 ![Screenshot](../images/micro-scatter-series-style2.png)
 
@@ -33,19 +33,19 @@ The normal style can be customized using the [MarkerStyle](xref:@ActiproUIRoot.C
 
 ## Marker Shape Kinds
 
-Markers support several built in shape kinds, which include:
+Markers support several built-in shape kinds, which include:
 
 | Kind | Example |
 |-----|-----|
-| Diamond | ![Screenshot](../images/marker-diamond.png) |
-| Ellipse | ![Screenshot](../images/marker-ellipse.png) |
-| Hexagon | ![Screenshot](../images/marker-hexagon.png) |
-| Pentagon | ![Screenshot](../images/marker-pentagon.png) |
-| Octagon | ![Screenshot](../images/marker-octagon.png) |
-| Rectangle | ![Screenshot](../images/marker-rectangle.png) |
-| RoundedRectangle | ![Screenshot](../images/marker-rounded-rectangle.png) |
-| Star4Points | ![Screenshot](../images/marker-star4-points.png) |
-| Star5Points | ![Screenshot](../images/marker-star5-points.png) |
-| Star6Points | ![Screenshot](../images/marker-star6-points.png) |
-| Star8Points | ![Screenshot](../images/marker-star8-points.png) |
-| Triangle | ![Screenshot](../images/marker-triangle.png) |
+| `Diamond` | ![Screenshot](../images/marker-diamond.png) |
+| `Ellipse` | ![Screenshot](../images/marker-ellipse.png) |
+| `Hexagon` | ![Screenshot](../images/marker-hexagon.png) |
+| `Pentagon` | ![Screenshot](../images/marker-pentagon.png) |
+| `Octagon` | ![Screenshot](../images/marker-octagon.png) |
+| `Rectangle` | ![Screenshot](../images/marker-rectangle.png) |
+| `RoundedRectangle` | ![Screenshot](../images/marker-rounded-rectangle.png) |
+| `Star4Points` | ![Screenshot](../images/marker-star4-points.png) |
+| `Star5Points` | ![Screenshot](../images/marker-star5-points.png) |
+| `Star6Points` | ![Screenshot](../images/marker-star6-points.png) |
+| `Star8Points` | ![Screenshot](../images/marker-star8-points.png) |
+| `Triangle` | ![Screenshot](../images/marker-triangle.png) |

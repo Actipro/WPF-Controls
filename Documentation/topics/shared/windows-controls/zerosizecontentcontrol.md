@@ -5,7 +5,7 @@ order: 36
 ---
 # ZeroSizeContentControl
 
-The [ZeroSizeContentControl](xref:@ActiproUIRoot.Controls.ZeroSizeContentControl) is a regular `ContentControl` that can return a zero width or height during its measuring pass.  This is useful in scenarios where the content should take up some space but you don't want the WPF layout routines to consider the space that it will take up during its measuring pass.
+The [ZeroSizeContentControl](xref:@ActiproUIRoot.Controls.ZeroSizeContentControl) is a regular `ContentControl` that can return a zero width or height during its measuring pass.  This is useful in scenarios where the content should take up some space, but you don't want the WPF layout routines to consider the space that it will take up during its measuring pass.
 
 The [ZeroSizeContentControl](xref:@ActiproUIRoot.Controls.ZeroSizeContentControl) class has these important members:
 

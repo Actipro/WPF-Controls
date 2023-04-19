@@ -7,7 +7,7 @@ order: 10
 
 SyntaxEditor supports the ability to insert intra-line spacers, or margin space around view lines, and have adornments render within the space that was created.
 
-This feature can be used to insert any sort of UI element in-line with a view line, and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for functionality similar to Code Lens and Peek Definition within the Visual Studio code editor.
+This feature can be used to insert any sort of UI element in-line with a view line and is different than normal adornments in that normal adornments don't alter text positioning.  This feature allows for functionality similar to Code Lens and Peek Definition within the Visual Studio code editor.
 
 ![Screenshot](../../images/intra-line-code-lens-adornment.png)
 

@@ -5,64 +5,55 @@ order: 9
 ---
 # Callbacks and Error Handling
 
-The next step in building a grammar is to make sure that it properly handles errors.  After all, since this grammar framework is intended to be used with [SyntaxEditor](../index.md), our code editor control, we have to assume that most of the time the document’s code passed to our grammar parser will be in an invalid state.  The user is continuously typing and modifying it.
+The next step in building a grammar is to make sure that it properly handles errors.  After all, since this grammar framework is intended to be used with [SyntaxEditor](../index.md), our code editor control, we have to assume that most of the time the document's code passed to our grammar parser will be in an invalid state.  The user is continuously typing and modifying it.
 
 In this topic, we will look at the various callbacks that are available to you, probably the most important of which are the error handling callbacks.  We'll also dig into error handling options.
 
 ## What is a Callback?
 
-As we’ve seen previously, our entire grammar is built directly in C# or VB code.  We do not do code generation like a lot of other parser generators do.  A benefit of this is that you can interact directly with objects in the grammar.
+As we've seen previously, our entire grammar is built directly in C# or VB code.  We do not do code generation like a lot of other parser generators do.  A benefit of this is that you can interact directly with objects in the grammar.
 
 One way to interact with objects is to assign callbacks to them.  All [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm)-based objects support four callbacks:
 
 - Initialize
-
 - Success
-
 - Error
-
 - Complete
 
 And as shown in other topics, [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal) objects can be assigned a can-match callback.
 
 Callbacks are simply delegates that get called when certain events occur.  You can point them to methods you declare or can inject lambda expressions as well.
 
-Let’s look at each of the five callbacks.
+Let's look at each of the five callbacks.
 
 ## EbnfTerm Callbacks
 
 ### Initialize and Complete callbacks
 
-The `Initialize` callback is called right before an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) is about to be parsed.  The `Complete` callback is called right after an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) has been parsed.  Thus they are always paired.
+The `Initialize` callback is called right before an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) is about to be parsed.  The `Complete` callback is called right after an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) has been parsed.  Thus, they are always paired.
 
-It is important to note that `Complete` is called regardless of whether the term’s parsing succeeded or failed.
+It is important to note that `Complete` is called regardless of whether the term's parsing succeeded or failed.
 
 ### Success and Error callbacks
 
-The `Success` callback is called right after an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) is parsed successfully.  Alternatively, if the [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) was not parsed successfully, the `Error` callback is called.  Thus each term that is attempted to be parsed will either have its `Success` or `Error` callbacks fired.
+The `Success` callback is called right after an [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) is parsed successfully.  Alternatively, if the [EbnfTerm](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfTerm) was not parsed successfully, the `Error` callback is called.  Thus, each term that is attempted to be parsed will either have its `Success` or `Error` callbacks fired.
 
-The Success and Error callbacks occur immediately before the Complete callback does.
+The `Success` and `Error` callbacks occur immediately before the `Complete` callback does.
 
 ### Summary of EbnfTerm Callbacks
 
 A term that is successfully parsed will offer this sequence of callbacks:
 
 - Initialize
-
 - (parsing attempt here)
-
 - Success
-
 - Complete
 
 A term that is not successfully parsed will offer this sequence of callbacks:
 
 - Initialize
-
 - (parsing attempt here)
-
 - Error
-
 - Complete
 
 ### Definitions
@@ -75,7 +66,7 @@ public delegate void ParserCallback(IParserState state);
 
 It is passed an [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) that gives you access to look-ahead tokens, custom data, and the matches that have been made at the current scope level.  You can update custom data, or even modify the matches collection if you wish in any of these callbacks.
 
-Custom data can be anything you wish.  Perhaps as you traverse through certain non-terminals, you want to maintain a stack of which ones you’ve visited.  Your custom data could contain such a stack.  In the `Initialize` callback for the non-terminals you wish to track, you could push an item on the stack.  In the `Complete` callback for the non-terminals you wish to track, you could pop an item off the stack.
+Custom data can be anything you wish.  Perhaps as you traverse through certain non-terminals, you want to maintain a stack of which ones you've visited.  Your custom data could contain such a stack.  In the `Initialize` callback for the non-terminals you wish to track, you could push an item on the stack.  In the `Complete` callback for the non-terminals you wish to track, you could pop an item off the stack.
 
 The `Error` callback has this definition:
 
@@ -83,16 +74,13 @@ The `Error` callback has this definition:
 public delegate IParserErrorResult ParserErrorCallback(IParserState state);
 ```
 
-The `Error` callback also gets an [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) passed to it.  However it differs from the others in that it expects an [IParserErrorResult](xref:ActiproSoftware.Text.Parsing.LLParser.IParserErrorResult) object returned.  Since the `Error` callback is called when an error occurs, this result tells the parser how to proceed.  There are options for preventing any errors from being reported and options for whether to continue on as if no error occurred.
+The `Error` callback also gets an [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) passed to it.  However, it differs from the others in that it expects an [IParserErrorResult](xref:ActiproSoftware.Text.Parsing.LLParser.IParserErrorResult) object returned.  Since the `Error` callback is called when an error occurs, this result tells the parser how to proceed.  There are options for preventing any errors from being reported and options for whether to continue on as if no error occurred.
 
 The standard set of options are provided in the [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults) object via static properties:
 
 - [Default](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Default) – Potentially report errors and return a match failure.
-
 - [Continue](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Continue) – Potentially report errors but continue on.
-
 - [Ignore](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Ignore) – Never report errors and continue on.
-
 - [NoReport](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.NoReport) – Never report errors and return a match failure.
 
 ### Sample callback
@@ -110,10 +98,10 @@ What happens is that if an error occurs while parsing FunctionDeclaration, the A
 
 ```csharp
 /// <summary>
-/// Advances the token reader to the next 'function' token from where parsing 
+/// Advances the token reader to the next 'function' token from where parsing
 /// can resume.
 /// </summary>
-/// <param name="state">A <see cref="IParserState"/> that provides information 
+/// <param name="state">A <see cref="IParserState"/> that provides information
 /// about the parser's current state.</param>
 /// <returns>An <see cref="IParserErrorResult"/> value indicating a result.</returns>
 private IParserErrorResult AdvanceToDefaultState(IParserState state) {
@@ -122,7 +110,7 @@ private IParserErrorResult AdvanceToDefaultState(IParserState state) {
 }
 ```
 
-You can see how it tells the token reader to advance to the next Function  token.  We have skipped over any potentially “bad” tokens and have gone right to the next token that we know will successfully start a FunctionDeclaration.
+You can see how it tells the token reader to advance to the next Function  token.  We have skipped over any potentially "bad" tokens and have gone right to the next token that we know will successfully start a FunctionDeclaration.
 
 The callback returns [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[Continue](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Continue), which means potentially report an error, but continue on instead of breaking out of the [ZeroOrMore](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.ZeroOrMore*) quantifier that contains the FunctionDeclaration non-terminal.
 
@@ -141,7 +129,7 @@ compilationUnit.Production = [your EBNF production here];
 compilationUnit.OnComplete(CompilationUnitComplete);
 ```
 
-Per above, the various OnXX calls on a symbol like [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal) will create an [EbnfNonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfNonTerminal) instance and will assign the callback to that.  Since we're not capturing the return value of the [OnComplete](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnComplete*) call here within a production, the EBNF term is discarded and the callback is never used.
+Per above, the various `OnXX` calls on a symbol like [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal) will create an [EbnfNonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.EbnfNonTerminal) instance and will assign the callback to that.  Since we're not capturing the return value of the [OnComplete](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnComplete*) call here within a production, the EBNF term is discarded and the callback is never used.
 
 One way to do what was intended is to do this instead:
 
@@ -160,15 +148,13 @@ compilationUnit.Production = ([your EBNF production here]).OnComplete(Compilatio
 
 ## Built-in Error Callbacks
 
-There are also some built-in `Error` callbacks that you can assign.  They don’t do anything other than return the various related [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults) values:
+There are also some built-in `Error` callbacks that you can assign.  They don't do anything other than return the various related [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults) values:
 
 - [OnErrorContinue](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnErrorContinue*) – Returns [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[Continue](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Continue).
-
 - [OnErrorIgnore](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnErrorIgnore*) – Returns [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[Ignore](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Ignore).
-
 - [OnErrorNoReport](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnErrorNoReport*) – Returns [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[NoReport](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.NoReport).
 
-This example shows the use of [OnErrorContinue](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnErrorContinue*), where we will report an error if the semi-colon isn’t matched, but we’ll continue on with parsing as if it was there:
+This example shows the use of [OnErrorContinue](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.OnErrorContinue*), where we will report an error if the semi-colon isn't matched, but we'll continue on with parsing as if it was there:
 
 ```csharp
 variableDeclarationStatement.Production = @var + @identifier["name"] + @semiColon.OnErrorContinue()
@@ -177,14 +163,14 @@ variableDeclarationStatement.Production = @var + @identifier["name"] + @semiColo
 
 ## Advanced Error Handling
 
-Sometimes errors will occur where a non-terminal is referenced however that non-terminal is capable of starting with multiple different terminals.  In that case, the parser doesn’t report an error by default since it doesn’t know what it should say.  Here’s a perfect example:
+Sometimes errors will occur where a non-terminal is referenced, however that non-terminal is capable of starting with multiple different terminals.  In that case, the parser doesn't report an error by default since it doesn't know what it should say.  Here's a perfect example:
 
 ```csharp
 returnStatement.Production = @return + expression["exp"].OnErrorContinue() + @semiColon.OnErrorContinue()
 	> Ast("ReturnStatement", AstFrom("exp"));
 ```
 
-Say the input for this production was `return return`.  Obviously that is invalid as the second `return` keyword doesn’t fit into an expression. `Expression` can start with numerous terminals so an error occurs but no parse error is reported into the parse errors collection since the parser doesn’t know what to tell the UI.
+Say the input for this production was `return return`.  Obviously, that is invalid as the second `return` keyword doesn't fit into an expression. `Expression` can start with numerous terminals so an error occurs, but no parse error is reported into the parse errors collection since the parser doesn't know what to tell the UI.
 
 We have two options for handling this scenario.
 
@@ -196,7 +182,7 @@ When a [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.N
 var expression = new NonTerminal("Expression") { ErrorAlias = "Expression" };
 ```
 
-That will tell the parser to automatically report an `Expression expected` parse error if `Expression` fails to match.  This is the easiest way to handle this scenario.
+That will tell the parser to automatically report an `"Expression expected"` parse error if `Expression` fails to match.  This is the easiest way to handle this scenario.
 
 ### Option 2 - Custom Error Callback
 
@@ -213,18 +199,18 @@ The error callback can be implemented like this:
 /// <summary>
 /// Occurs when an expression is expected but not found.
 /// </summary>
-/// <param name="state">A <see cref="IParserState"/> that provides information 
+/// <param name="state">A <see cref="IParserState"/> that provides information
 /// about the parser's current state.</param>
 /// <returns>An <see cref="IParserErrorResult"/> value indicating a result.</returns>
 private IParserErrorResult ExpressionExpected(IParserState state) {
-	// Report a custom error, and return a value telling the parser to not report 
+	// Report a custom error, and return a value telling the parser to not report
 	// errors and continue on
 	state.ReportError(ParseErrorLevel.Error, "Expression should have been here.");
 	return ParserErrorResults.Ignore;
 }
 ```
 
-Note that here we report an error `Expression should have been here` instead of the `Expression expected` message that comes from option #1.  We also return [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[Ignore](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Ignore) to ensure that no other error message is reported, and tell the parser to continue on.
+Note that here we report an error `"Expression should have been here"` instead of the `"Expression expected"` message that comes from option #1.  We also return [ParserErrorResults](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults).[Ignore](xref:ActiproSoftware.Text.Parsing.LLParser.ParserErrorResults.Ignore) to ensure that no other error message is reported, and tell the parser to continue on.
 
 > [!NOTE]
 > The [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState) interface defines multiple methods that can be used to report parse errors within callbacks.
@@ -233,15 +219,15 @@ Note that here we report an error `Expression should have been here` instead of 
 
 We've now seen how both terminals and non-terminals are capable of reporting parse errors that can be displayed in the user interface.  In some scenarios, multiple errors may be reported for a given text offset.  Allowing this can really confuse the end user.  The grammar framework has built in functionality such that it will only report the first parse error for a given offset, since that is the most important one.
 
-The parse error collection returned in the parse data result back to the document will also be sorted by each error’s location in the document.
+The parse error collection returned in the parse data result back to the document will also be sorted by each error's location in the document.
 
 ## Non-Terminal Can-Match Callbacks
 
-Can-match callbacks can optionally be assigned to any [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal).  Since our grammar is LL-based, each [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal) maintains a set of terminals that it knows are able to start it.  This is called the "first set".  For instance a Simple language `FunctionDeclaration` production always starts with a `Function` terminal.  Thus the `FunctionDeclaration`’s first set consists of a single `Function` terminal.
+Can-match callbacks can optionally be assigned to any [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal).  Since our grammar is LL-based, each [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal) maintains a set of terminals that it knows are able to start it.  This is called the "first set".  For instance, a Simple language `FunctionDeclaration` production always starts with a `Function` terminal.  Thus, the `FunctionDeclaration`'s first set consists of a single `Function` terminal.
 
 Sometimes you may have an alternation EBNF term with two or more non-terminal references that have intersecting first sets.  We see this in the Simple language where both the `SimpleName` and `FunctionAccessExpression` non-terminal productions start with `Identifier` terminals, and the `PrimaryExpression` non-terminal production is an alternation that contains both of them.  This situation is called ambiguity and the grammar will warn you when it detects the scenario so that you can fix it.
 
-When a can-match callback is specified, it effectively overrides the "first set" of the non-terminal.  Thus in the Simple language where the ambiguity occurred, the ambiguity is resolved by applying a can-match callback to one of the ambiguous non-terminals.
+When a can-match callback is specified, it effectively overrides the "first set" of the non-terminal.  Thus, in the Simple language where the ambiguity occurred, the ambiguity is resolved by applying a can-match callback to one of the ambiguous non-terminals.
 
 > [!NOTE]
 > The [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal).[CanMatch](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.CanMatch*) method can be used to determine if a specified [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParserState)'s look-ahead token can start to match the [NonTerminal](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.NonTerminal).  The method examines the non-terminal's "first set" as well as its can-match callbacks to determine the result.
@@ -258,7 +244,7 @@ It is passed an [IParserState](xref:ActiproSoftware.Text.Parsing.LLParser.IParse
 
 ### Sample callback
 
-The Simple language grammar’s `FunctionAccessExpression` has a can-match callback.  This code can be used to assign the callback:
+The Simple language grammar's `FunctionAccessExpression` has a can-match callback.  This code can be used to assign the callback:
 
 ```csharp
 functionAccessExpression.CanMatchCallback = CanMatchFunctionAccessExpression;
@@ -270,14 +256,14 @@ And here is the callback implementation:
 /// <summary>
 /// Returns whether the <c>FunctionAccessExpression</c> non-terminal can match.
 /// </summary>
-/// <param name="state">A <see cref="IParserState"/> that provides information 
+/// <param name="state">A <see cref="IParserState"/> that provides information
 /// about the parser's current state.</param>
 /// <returns>
 /// <c>true</c> if the <see cref="NonTerminal"/> can match with the current state;
 /// otherwise, <c>false</c>.
 /// </returns>
 private bool CanMatchFunctionAccessExpression(IParserState state) {
-	return (state.TokenReader.LookAheadToken.Id == SimpleTokenId.Identifier) && 
+	return (state.TokenReader.LookAheadToken.Id == SimpleTokenId.Identifier) &&
 		(state.TokenReader.GetLookAheadToken(2).Id == SimpleTokenId.OpenParenthesis);
 }
 ```
@@ -286,7 +272,7 @@ Smaller callback implementations can be entered directly in a single statement v
 
 ```csharp
 functionAccessExpression.CanMatchCallback = (state =>
-	(state.TokenReader.LookAheadToken.Id == SimpleTokenId.Identifier) && 
+	(state.TokenReader.LookAheadToken.Id == SimpleTokenId.Identifier) &&
 	(state.TokenReader.GetLookAheadToken(2).Id == SimpleTokenId.OpenParenthesis) );
 ```
 
@@ -352,27 +338,27 @@ this.Root.Production = functionDeclaration.OnError(AdvanceToDefaultState).ZeroOr
 
 What happens here is that if an error occurs in `FunctionDeclaration` it will advance to the next `function` token (per above) and will continue on with the next `FunctionDeclaration` match.
 
-But what happens if at the start of the document we have an invalid token instead, such as an `Identifier`? `FunctionDeclaration` doesn’t start with an `Identifier` terminal.  It only starts with a `Function` terminal.  Thus the entire [ZeroOrMore](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.ZeroOrMore*) quantifier will never be entered and your `CompilationUnit` AST node output will be empty, even if there are a lot of valid function declarations after that initial `Identifier`.
+But what happens if at the start of the document we have an invalid token instead, such as an `Identifier`? `FunctionDeclaration` doesn't start with an `Identifier` terminal.  It only starts with a `Function` terminal.  Thus, the entire [ZeroOrMore](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Symbol.ZeroOrMore*) quantifier will never be entered and your `CompilationUnit` AST node output will be empty, even if there are a lot of valid function declarations after that initial `Identifier`.
 
 We can easily handle this scenario by using the [Grammar](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Grammar).[CanAlwaysMatch](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Grammar.CanAlwaysMatch*) callback on `FunctionDeclaration`:
 
 ```csharp
-// Make sure FunctionDeclaration will always be examined, 
+// Make sure FunctionDeclaration will always be examined,
 // even if the next token is not 'function'
 functionDeclaration.CanMatchCallback = CanAlwaysMatch;
 ```
 
-Thus we have forced the "first set" of `FunctionDeclaration` to be overridden and even tokens like `Identifier` will cause us to enter `FunctionDeclaration`.  In that scenario, `Identifier` won’t match with the `Function` terminal and an error will be reported that indicates `'function' expected`.  This scenario is now properly handled.
+Thus, we have forced the "first set" of `FunctionDeclaration` to be overridden and even tokens like `Identifier` will cause us to enter `FunctionDeclaration`.  In that scenario, `Identifier` won't match with the `Function` terminal and an error will be reported that indicates `'function' expected`.  This scenario is now properly handled.
 
 ### Advanced Implementations
 
-What about languages such as C# where you could have a using statement, namespace, or type declaration at the root compilation unit level?  We’ll apply the same concepts.
+What about languages such as C# where you could have a using statement, namespace, or type declaration at the root compilation unit level?  We'll apply the same concepts.
 
 Make a new non-terminal called `CompilationUnitContent` that has an alternation between those other non-terminals.  Make the root production call `CompilationUnitContent` in the same way `FunctionDeclaration` was called above, with an error handler.  Then likewise, we set the [CanAlwaysMatch](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.Grammar.CanAlwaysMatch*) callback on the `CompilationUnitContent` non-terminal.
 
 The `AdvanceToDefaultState` method that we use needs to be designed to advance to the next `Using`, `Namespace`, etc. token.  This is easy as the [AdvanceTo](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader.AdvanceTo*) method we provide on [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader) can accept any number of token ID values.
 
-Finally we can use one of the two options listed in the Advanced Error Handling section above to report a helpful parse error to the end user.
+Finally, we can use one of the two options listed in the Advanced Error Handling section above to report a helpful parse error to the end user.
 
 ## Best Practices for Error Handling
 
@@ -438,7 +424,7 @@ Be careful of `.OnErrorContinue().OneOrMore()` scenarios.  Since at least one ma
 
 ### Watch For Can-Match Callback Infinite Loop Possibilities
 
-Similar to the previous tip, when setting a can-match that forces a non-terminal to match (such as is described in the `Proper Design of Iterative Productions` section above), callers of that non-terminal need to have a custom error handler that will force at least one token to be consumed, or else an infinite loop can occur if there is a syntax error.
+Similar to the previous tip, when setting a can-match that forces a non-terminal to match (such as is described in the "Proper Design of Iterative Productions" section above), callers of that non-terminal need to have a custom error handler that will force at least one token to be consumed, or else an infinite loop can occur if there is a syntax error.
 
 ### Break Out Alternation Options to Separate Non-Terminals
 

@@ -52,9 +52,9 @@ To avoid ambiguity with a new [ToggleSwitch](../shared/windows-controls/toggle-s
 
 ## PartEditBoxCommitTriggers Changes (Editors Library)
 
-The [PartEditBoxCommitTriggers](xref:@ActiproUIRoot.Controls.Editors.PartEditBoxCommitTriggers) enumeration determines the rules by which typed/changed values are committed to an edit box's [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property.  By default, it commits on focus loss, spinner change, and `Enter` key press.
+The [PartEditBoxCommitTriggers](xref:@ActiproUIRoot.Controls.Editors.PartEditBoxCommitTriggers) enumeration determines the rules by which typed/changed values are committed to an edit box's [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property.  By default, it commits on focus loss, spinner change, and <kbd>Enter</kbd> key press.
 
-Commit on focus loss didn't used to be an option and always occurred.  For this version, we've added an explicit `LostFocus` option to the enumeration for customers who might not want a commit to occur unless the end user pressed `Enter`.  The `Default` and `All` values include the `LostFocus` option so that they behave the same as before.  However, if any other custom values were previously used, you must now include the `LostFocus` value to retain the same behavior.
+Commit on focus loss didn't used to be an option and always occurred.  For this version, we've added an explicit `LostFocus` option to the enumeration for customers who might not want a commit to occur unless the end user pressed <kbd>Enter</kbd>.  The `Default` and `All` values include the `LostFocus` option so that they behave the same as before.  However, if any other custom values were previously used, you must now include the `LostFocus` value to retain the same behavior.
 
 As part of these changes, the former `None` option has been renamed to `Manual`.  Usage of the old `None` option should be replaced with the new `LostFocus` option to retain the same behavior as before.
 

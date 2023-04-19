@@ -7,7 +7,7 @@ order: 99
 
 This topic provides answers to common questions and problems related to the add-on.
 
-## How Do I Get Started With XML Language?
+## How Do I Get Started with XML Language?
 
 The [Getting Started](xml/getting-started.md) topic walks through all the requirements for using the XML language.  Be sure to follow all the steps in that topic so that the syntax language operates correctly.
 

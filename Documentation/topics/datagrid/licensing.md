@@ -5,7 +5,7 @@ order: 8
 ---
 # Licensing
 
-This topic convers the licensing of the WPF DataGrid, the Actipro WPF DataGrid Contrib, and the Actipro Editors/DataGrid Interop.
+This topic covers the licensing of the WPF DataGrid, the Actipro WPF DataGrid Contrib, and the Actipro Editors/DataGrid Interop.
 
 ## WPF DataGrid
 

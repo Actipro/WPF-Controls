@@ -9,7 +9,7 @@ The [ActiproSoftware.Windows.Controls](xref:@ActiproUIRoot.Controls) namespace c
 
 ## The AdvancedTextBlock Control
 
-The [AdvancedTextBlock](advancedtextblock.md) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e. filter match results).
+The [AdvancedTextBlock](advancedtextblock.md) control can show a tooltip when overflowed, and can highlight spans of text based on captured text ranges (i.e., filter match results).
 
 ## The AnimatedExpander Control
 
@@ -81,9 +81,17 @@ The [RingSlice](ringslice.md) control renders a portion (or the entire circle) o
 
 The [ShadowChrome](shadowchrome.md) control draws a modern shadow around its content.
 
+## The ToggleSwitch Control
+
+The [ToggleSwitch](toggle-switch.md) is modern refinement of a checkbox control that is typically toggled between on/off states and optionally supports an indeterminate state.
+
+## The User Prompt Controls
+
+The [User Prompt](user-prompt.md) controls include [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) as a fully themed drop-in replacement for the native `MessageBox` and the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) for creating more advanced user prompts beyond the what is available from `MessageBox`.
+
 ## The ZeroSizeContentControl Control
 
-The [ZeroSizeContentControl](zerosizecontentcontrol.md) control is a regular `ContentControl` that can return a zero width or height during its measuring pass.  This is useful in scenarios where the content should take up some space but you don't want the WPF layout routines to consider the space that it will take up during its measuring pass.
+The [ZeroSizeContentControl](zerosizecontentcontrol.md) control is a regular `ContentControl` that can return a zero width or height during its measuring pass.  This is useful in scenarios where the content should take up some space, but you don't want the WPF layout routines to consider the space that it will take up during its measuring pass.
 
 ## Progress Spinners
 

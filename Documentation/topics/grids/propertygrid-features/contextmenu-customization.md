@@ -29,7 +29,7 @@ The context menu also has a menu item for toggling the display of the [summary a
 
 ## Customizing the Menu or Items
 
-The customization of context menus is handled via the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[ItemMenuRequested](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemMenuRequested) event.  This event fires whenever a context menu is displayed for an item in the property grid.
+The customization of context menus is handled via the [PropertyGrid](xref:@ActiproUIRoot.Controls.Grids.PropertyGrid).[ItemMenuRequested](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemMenuRequested) event.  This event is raised whenever a context menu is displayed for an item in the property grid.
 
 The event arguments passed are of type [TreeListBoxItemMenuEventArgs](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemMenuEventArgs), which indicates the [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel) for which the event was fired in its [Item](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemEventArgs.Item) property.  This [IDataModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IDataModel) could be an [ICategoryModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryModel), [IPropertyModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.IPropertyModel), or [ICategoryEditorModel](xref:@ActiproUIRoot.Controls.Grids.PropertyData.ICategoryEditorModel).
 

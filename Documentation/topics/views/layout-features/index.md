@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-Views follows WPF best practices for areas such as layout, globalization and accessibility.
+Views follow WPF best practices for areas such as layout, globalization, and accessibility.
 
 Some of the more major features include:
 

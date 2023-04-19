@@ -56,7 +56,7 @@ This code sample shows how to easily define a context menu for a `RichTextBox` i
 
 Each [ButtonBase](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase) defines a [InputGestureText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.InputGestureText) property that indicates the keyboard shortcut text to display when in a small menu item context.
 
-If a command assigned to a menu item has a `KeyGesture`, its text will be used by default.  However you can override this value or set a custom one when not using a command by setting the [InputGestureText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.InputGestureText) property directly.
+If a command assigned to a menu item has a `KeyGesture`, its text will be used by default.  However, you can override this value or set a custom one when not using a command by setting the [InputGestureText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ButtonBase.InputGestureText) property directly.
 
 ## Adding Access Keys to Menu Items
 

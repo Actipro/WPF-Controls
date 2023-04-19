@@ -33,7 +33,7 @@ The [IXmlParseData](xref:ActiproSoftware.Text.Languages.Xml.Implementation.IXmlP
 
 As long as an [ambient parse request dispatcher](../../text-parsing/parsing/parse-requests-and-dispatchers.md) has been set up, all parsing and validation is performed in a worker thread.  The processing occurs after any text changes are made to documents using the language.  Since the work occurs in a worker thread, the results are returned asynchronously and may not be in perfect sync with the document text.  Although since the parse data includes the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) instance that was parsed, if known, you can easily translate offsets from the parse data snapshot to the current snapshot in a SyntaxEditor view or document.
 
-Once a parsing operation completes, the [IXmlParseData](xref:ActiproSoftware.Text.Languages.Xml.Implementation.IXmlParseData) results are placed into the [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property of the document that was parsed and its [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event fires.  The latest parse data results can be obtained at any time from that property.
+Once a parsing operation completes, the [IXmlParseData](xref:ActiproSoftware.Text.Languages.Xml.Implementation.IXmlParseData) results are placed into the [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property of the document that was parsed and its [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event is raised.  The latest parse data results can be obtained at any time from that property.
 
 See the [Parsers](../../text-parsing/parsing/parsers.md) topic for more detailed information on the parsing workflow and parse data.
 

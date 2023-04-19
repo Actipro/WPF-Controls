@@ -19,21 +19,21 @@ At a minimum, an item adapter must tell the control how to retrieve the child it
 
 ## Recommended Item and Adapter Samples
 
-The "Common" folder in the Grids portion of samples contains full source sample implementations of tree node models (e.g. the `TreeNodeModel` class) that can be used as a starting point for your own items.  There also is a `DefaultTreeListBoxItemAdapter` class that implements method overrides for all adapter methods and provides optimal performance (no binding usage) when working with items of type `TreeNodeModel`.  Using those classes, you can load hundreds of thousands of items nearly instantly.
+The "Common" folder in the Grids portion of samples contains full source sample implementations of tree node models (e.g., the `TreeNodeModel` class) that can be used as a starting point for your own items.  There also is a `DefaultTreeListBoxItemAdapter` class that implements method overrides for all adapter methods and provides optimal performance (no binding usage) when working with items of type `TreeNodeModel`.  Using those classes, you can load hundreds of thousands of items nearly instantly.
 
 ## Binding to Data
 
-Every tree has a root and that root item should be set to the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[RootItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItem) property.  The [RootItemChanged](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItemChanged) event fires when the root item is changed.
+Every tree has a root and that root item should be set to the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[RootItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItem) property.  The [RootItemChanged](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItemChanged) event is raised when the root item is changed.
 
 Do not ever set the `ItemsSource` property directly.  As the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[RootItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItem) and its tree is examined by the item adapter, internal [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) code updates the control's `ItemsSource` property based on the currently-expanded items.  This design allows the control to quickly display a tree structure in a "flat" `ItemsControl`.
 
 The root item is always expanded and can optionally be displayed in the tree (see below), but by default, it is not visible.  Whenever the control needs to query for child items, it will do so through the item adapter by a call to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method.
 
-A `Binding` can be set in XAML to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[ChildrenBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.ChildrenBinding) property to tell how an item should retrieve child items.  The [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method will use that binding if it is supplied, and will otherwise return null Please note that bindings aren't as performant as code, so for large trees or if you see performance issues, it is recommended to override the [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method instead with custom logic to retrieve the appropriate value.
+A `Binding` can be set in XAML to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[ChildrenBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.ChildrenBinding) property to tell how an item should retrieve child items.  The [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method will use that binding if it is supplied, and will otherwise return `null`.  Please note that bindings aren't as performant as code, so for large trees or if you see performance issues, it is recommended to override the [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method instead with custom logic to retrieve the appropriate value.
 
 The [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[ChildrenPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.ChildrenPath) property specifies the property name to watch for in case your item implements `INotifyPropertyChanged`.  When a change to that property is detected, the updated value will be requested by the control.  Note that even though a binding can be used via the [ChildrenBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.ChildrenBinding) property, for performance reasons, it is just used temporarily to get the value in the adapter method's default implementation.  The binding doesn't persist, and that's why the [ChildrenPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.ChildrenPath) property is required for property change notifications.  This is only needed if the children collection property itself will ever change.  The control will natively monitor any observable collection returned from [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) for changes to its items.
 
-Here's an example specifying a children binding right in XAML.  Note that this is not a recommended approach if you have very large trees or see any performance issues.  In those scenarios, it's better to override the [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method directly.
+Here's an example specifying a `ChildrenBinding` right in XAML.  Note that this is not a recommended approach if you have very large trees or see any performance issues.  In those scenarios, it's better to override the [GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) method directly.
 
 ```xaml
 <grids:TreeListBox>
@@ -58,7 +58,7 @@ Since items can be any custom type, it is essential that you supply an item temp
 
 For the single-column [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox) control, this can be done by setting a `DataTemplate` to the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).`ItemTemplate` property.  The `DataTemplate` can contain any elements and those elements can be bound to properties on your item.  All of this UI will appear indented based on item depth level and with an expander to the left of it.
 
-Here's an example of a common `DataTemplate` that includes a `Image` and a `TextBlock`.  This example assumes that you are using an item type that has `ImageSource` and `Name` properties.
+Here's an example of a common `DataTemplate` that includes an `Image` and a `TextBlock`.  This example assumes that you are using an item type that has `ImageSource` and `Name` properties.
 
 ```xaml
 <grids:TreeListBox>
@@ -118,7 +118,7 @@ There are two properties that determine the indentation of items for each depth 
 
 The primary property is [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[IndentIncrement](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.IndentIncrement), and that is the step indentation increment amount between depth levels.
 
-The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[TopLevelIndent](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.TopLevelIndent) is used for the top-level items only, to determine how far in they indent.  Set this property to zero when top-level items aren't expandable (see the [Expandability](expandability.md) topic for more informatation).  That ensures that the top-level items don't have empty whitespace on the left when they never show expanders.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[TopLevelIndent](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.TopLevelIndent) is used for the top-level items only, to determine how far in they indent.  Set this property to zero when top-level items aren't expandable (see the [Expandability](expandability.md) topic for more information).  That ensures that the top-level items don't have empty white space on the left when they never show expanders.
 
 ## Tree Lines
 

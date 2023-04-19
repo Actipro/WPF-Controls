@@ -34,7 +34,7 @@ The following table gives an overview of the capabilities of the control.
 | Has popup | Yes.  The items are displayed in the popup. |
 | Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
-| Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
+| Click event trigger | When the <kbd>Enter</kbd> key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
 | Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
@@ -43,7 +43,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default, an [ObjectValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ObjectValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 
@@ -53,7 +53,7 @@ When the mouse moves over an item, the item becomes the [ActiveItem](xref:@Actip
 
 If you are using commands, the [Interaction with Value Controls](../../command-model/value-controls.md) topic explains how to support live preview using command can-execute handlers.
 
-Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItemChanged) event fires whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItem) property is changed.
+Alternatively, if you would rather use events, the [ActiveItemChanged](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItemChanged) event is raised whenever the [ActiveItem](xref:@ActiproUIRoot.Controls.Ribbon.Controls.ComboBox.ActiveItem) property is changed.
 
 ## Text to Value Conversion
 
@@ -99,7 +99,7 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:ComboBox Width="140" ImageSourceSmall="/Images/Find16.png" Label="Find" KeyTipAccessText="F" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
 <ribbon:ComboBox Width="140" Command="ApplicationCommands.Find" KeyTipAccessText="F" />

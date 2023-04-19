@@ -21,9 +21,9 @@ Standard line terminators can be specified by the [LineTerminator](xref:ActiproS
 
 As mentioned above, it is important to know that when text added to an [ITextDocument](xref:ActiproSoftware.Text.ITextDocument), it is converted so that the internal buffer stores the text using a single line feed character for denoting line terminators, regardless of what sort of line terminator was originally used.
 
-The main reason for doing this is for performance when parsing.  If we didn't store line terminators this way, any parsing code would require more complicated and time consuming procedures to be looking for carriage return characters, line feed characters, or potentially both at each line terminator.  Using a single LF character makes it easy for parsing to perform quickly and efficiently since we know which specific single character denotes the end of a line.
+The main reason for doing this is for performance when parsing.  If we didn't store line terminators this way, any parsing code would require more complicated and time-consuming procedures to be looking for carriage return characters, line feed characters, or potentially both at each line terminator.  Using a single LF character makes it easy for parsing to perform quickly and efficiently since we know which specific single character denotes the end of a line.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Since text is tracked internally using only line feeds, see the following sections for information on how to retrieve text back out of the text framework with specific line terminators.
 
 ## Impact on Offsets
@@ -47,7 +47,7 @@ The bottom part of the diagram shows how an [ITextDocument](xref:ActiproSoftware
 
 To work around this issue, use the text framework to determine your offsets once it's in a document.
 
-> [!NOTE]
+> [!IMPORTANT]
 > If you will be doing any external parsing, use the [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method (described below) to retrieve the text with LF-only format so the offsets remain in sync.
 
 ## The ITextSnapshot.Text and GetSubstring Members

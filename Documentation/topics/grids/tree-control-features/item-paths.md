@@ -11,7 +11,7 @@ Sometimes it's handy to be able to supply a string path to obtain or work with a
 
 An item's path segment is provided to the control by calls to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[GetPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetPath*) method (via [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemAdapter)).
 
-A `Binding` can be set in XAML to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[PathBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.PathBinding) property to tell how an item should retrieve the path segment.  The [GetPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetPath*) method will use that binding if it is supplied, and will otherwise return null.  Please note that bindings aren't as performant as code, so for large trees or if you see performance issues, it is recommended to override the [GetPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetPath*) method instead with custom logic to retrieve the appropriate value.
+A `Binding` can be set in XAML to the [TreeListBoxItemAdapter](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter).[PathBinding](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.PathBinding) property to tell how an item should retrieve the path segment.  The [GetPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetPath*) method will use that binding if it is supplied, and will otherwise return `null`.  Please note that bindings aren't as performant as code, so for large trees or if you see performance issues, it is recommended to override the [GetPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetPath*) method instead with custom logic to retrieve the appropriate value.
 
 This example code shows how to override the method for a custom item type `TreeNodeModel`.  This is not only the most performant way of providing a result, but also supports returning different results for different item types or based on item state.
 
@@ -24,9 +24,9 @@ public override string GetPath(object item) {
 
 ## Setting the Path Separator
 
-The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[PathSeparator](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.PathSeparator) property is what defines the delimiter text that separates each item's path segment to build a full path.  Its default value is `\`.
+The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[PathSeparator](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.PathSeparator) property is what defines the delimiter text that separates each item's path segment to build a full path.  Its default value is `"\"`.
 
-## Getting an Item From a Full Path
+## Getting an Item from a Full Path
 
 If you know the full path of an item and wish to obtain the item itself, you can call the [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[GetItemByFullPath](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.GetItemByFullPath*) method, passing in the full path as an argument.
 
@@ -36,7 +36,7 @@ If you have an item reference and wish to obtain its full path, you can call the
 
 ## Other Operations by Full Path
 
-This methods can be executed by supplying a full path.
+These methods can be executed by supplying a full path.
 
 | Member | Description |
 |-----|-----|

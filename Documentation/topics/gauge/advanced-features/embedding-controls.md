@@ -14,9 +14,8 @@ Any `UIElement` can be embedded and precisely placed inside any of the gauge con
 This code shows how a `TextBlock` can be added to a [DigitalGauge](xref:@ActiproUIRoot.Controls.Gauge.DigitalGauge):
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:DigitalGauge Width="300" Height="100" Value="Actipro">
 	<gauge:DigitalGauge.Items>
 		<TextBlock Text="WPF" Foreground="White" />
@@ -31,9 +30,8 @@ By default, `UIElement` objects will be centered in the associated gauge control
 Continuing from the example above, this code shows how the `TextBlock` can be positioned 10-pixels to the right and 10-pixels down from the top-left corner:
 
 ```xaml
-xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"     
+xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
 ...
-
 <gauge:DigitalGauge Width="300" Height="100" Value="Actipro">
 	<gauge:DigitalGauge.Items>
 		<TextBlock gauge:DigitalGauge.Origin="TopLeft" gauge:DigitalGauge.X="10" gauge:DigitalGauge.Y="10" Text="WPF" Foreground="White" />

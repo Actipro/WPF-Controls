@@ -5,7 +5,7 @@ order: 2
 ---
 # Pane Buttons and Selection
 
-The NavigationBar control's run-time features are very easy to use.  The NavigationBar contains a number of panes of data, but only displays one [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) at a time.
+The `NavigationBar` control's run-time features are very easy to use.  The `NavigationBar` contains a number of panes of data, but only displays one [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) at a time.
 
 ![Screenshot](../images/navigationbar.png)
 
@@ -43,13 +43,13 @@ If the [NavigationBar](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar) is
 
 The end-user can adjust how many buttons are displayed in the bar area by clicking on the splitter and dragging it up or down.  This has the same effect as setting the [MaxLargePaneCount](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.MaxLargePaneCount) property, whose default value is `5`.
 
-The typical overflow menu also displays `Show More Buttons` and `Show Fewer Buttons` menu items that allow for adjusting how many buttons appear in the normal area.
+The typical overflow menu also displays **Show More Buttons** and **Show Fewer Buttons** menu items that allow for adjusting how many buttons appear in the normal area.
 
 ## Adding or Removing Buttons
 
 Buttons for a [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) can be added or removed by the end-user via two methods.
 
-An `Add or Remove Buttons` sub-menu is available on the overflow menu.  That sub-menu lists all of the panes and a checked state indicates whether the button for each is currently visible.  By clicking the menu item for a pane, the button's visibility is toggled.
+An **Add or Remove Buttons** sub-menu is available on the overflow menu.  That sub-menu lists all of the panes and a checked state indicates whether the button for each is currently visible.  By clicking the menu item for a pane, the button's visibility is toggled.
 
 The second way to add or remove buttons is to use the [Options window](options-window.md).  From there, panes can be checked or unchecked in a list to indicate whether they should be visible.
 

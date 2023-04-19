@@ -51,7 +51,7 @@ See the [FanPanel](fanpanel.md) topic for more information.
 
 ## MultiColumnPanel
 
-This panel can render child elements in multiple columns, collapsing columns down as available space decreases.  It's a space-efficient and visually-appealing way to render lists of items, or to break paragraphs of text up.
+This panel can render child elements in multiple columns, collapsing columns down as available space decreases.  It's a space-efficient and visually appealing way to render lists of items, or to break paragraphs of text up.
 
 See the [MultiColumnPanel](multicolumnpanel.md) topic for more information.
 

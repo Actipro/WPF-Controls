@@ -32,12 +32,12 @@ For now, all you need to do is create the class and the empty constructor.  Here
 /// Represents a <see cref="Grammar" /> for the <c>Simple</c> language.
 /// </summary>
 public class SimpleGrammar : Grammar {
-    
+
 	/// <summary>
 	/// Initializes a new instance of the <c>SimpleGrammar</c> class.
 	/// </summary>
 	public SimpleGrammar() : base("Simple") {
-    
+
 		// More code will be added here in the next several topics
 
 	}
@@ -48,7 +48,7 @@ public class SimpleGrammar : Grammar {
 
 An [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader) provides tokens to the parsing framework.  A token reader is an intermediate class that is created for each parse request and sits between the [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) that will be used to tokenize text for the parser, and the parser itself.  This means that it can also be used to filter out certain tokens that the parser won't care about.
 
-For instance, many parsers don't care about comments so those tokens can be skipped over by the token reader as it passes tokens up to the parser.  Many parsers find that whitespace is insignificant as well.  Thus whitespace can also generally be skipped over.  There may be other token types that are desirable to be skipped by the token reader as it iterates and passes tokens to the parser.
+For instance, many parsers don't care about comments so those tokens can be skipped over by the token reader as it passes tokens up to the parser.  Many parsers find that whitespace is insignificant as well.  Thus, whitespace can also generally be skipped over.  There may be other token types that are desirable to be skipped by the token reader as it iterates and passes tokens to the parser.
 
 If you are using a [mergable lexer](../text-parsing/lexing/basic-concepts.md) to supply tokens to the parser, it may be sufficient to use the built-in [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) class since it fully implements [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader).  The [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) class will by default provide every token from a mergable lexer to the parser.  If you have a mergable lexer but would like to filter out certain token types, such as whitespace in a whitespace insensitive language, you can subclass [MergableTokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.MergableTokenReader) as shown in sample below.
 
@@ -63,7 +63,7 @@ Here is an example token reader, based on [MergableTokenReader](xref:ActiproSoft
 /// Represents an object that can provide tokens to a <see cref="ILLParser"/> in a forward-only direction for the <c>Simple</c> language.
 /// </summary>
 public class SimpleTokenReader : MergableTokenReader {
-	
+
 	/// <summary>
 	/// Initializes a new instance of the <c>SimpleTokenReader</c> class.
 	/// </summary>
@@ -136,7 +136,7 @@ public class SimpleParser : LLParserBase {
 
 By default, a parser will generate an [LLParseData](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParseData) object.  This object implements the [ILLParseData](xref:ActiproSoftware.Text.Parsing.LLParser.ILLParseData) interface, which returns data containing the [IAstNode](xref:ActiproSoftware.Text.Parsing.IAstNode) that was parsed, [IParseError](xref:ActiproSoftware.Text.Parsing.IParseError) objects that were reported, and the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) that was used, if known. [ILLParseData](xref:ActiproSoftware.Text.Parsing.LLParser.ILLParseData) implements [IParseErrorProvider](xref:ActiproSoftware.Text.Parsing.IParseErrorProvider), meaning that it can easily be wired up to show squiggle lines where parse errors occur.
 
-It is possible that you will want to retain additional information from the parsing process than what is provisioned with this type.  For instance, an XML language may wish to store a boolean flag indicating whether the document is well-formed.  If this is the case, you can create a new parse data class that inherits from [LLParseData](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParseData).  You can then add any additional properties you wish to be available.
+It is possible that you will want to retain additional information from the parsing process than what is provisioned with this type.  For instance, an XML language may wish to store a `boolean` flag indicating whether the document is well-formed.  If this is the case, you can create a new parse data class that inherits from [LLParseData](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParseData).  You can then add any additional properties you wish to be available.
 
 If you do create a new parse data type, you will need to override the [CreateParseData](xref:ActiproSoftware.Text.Parsing.LLParser.Implementation.LLParserBase.CreateParseData*) member.  This override should look something like the following code.  The `SimpleParseData` type represents the custom parse data type that you would create for your language.
 
@@ -150,9 +150,9 @@ If you do create a new parse data type, you will need to override the [CreatePar
 protected virtual IParseData CreateParseData(IParseRequest request, IParserState state) {
 	SimpleParseData parseData = new SimpleParseData();
 	this.InitializeParseData(parseData, state);
-    
+
     // Add custom parse data to the parseData object
-	
+
 	return parseData;
 }
 ```
@@ -186,6 +186,6 @@ public class ExtendedSimpleSyntaxLanguage : SimpleSyntaxLanguage {
 }
 ```
 
-As mentioned in the [Lexer Preparation](lexer-preparation.md) topic, there are some rare cases where you might want a separate lexer defined for your syntax highlighting and for your parsing.  This scenario can occur if the tokenization required to support your parser is different than the tokenization of text needed to support syntax highlighting.
+As mentioned in the [Lexer Preparation](lexer-preparation.md) topic, there are some rare cases where you might want a separate lexer defined for your syntax highlighting and for your parsing.  This scenario could occur if the tokenization required to support your parser is different than the tokenization of text needed to support syntax highlighting.
 
-In this scenario, set up your syntax language like normal.  However when creating your [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader) in your [ILLParser](xref:ActiproSoftware.Text.Parsing.LLParser.ILLParser) class, make sure it is using a new instance of your alternate lexer that should be generating tokens for the parser.  The alternate [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) you use for parsing can be created using a second language project in the [Language Designer](../language-designer-tool/index.md) or you can create it using other techniques described in the [lexing](../text-parsing/lexing/index.md) portion of the Text/Parsing Framework documentation.
+In this scenario, set up your syntax language like normal.  However, when creating your [ITokenReader](xref:ActiproSoftware.Text.Parsing.LLParser.ITokenReader) in your [ILLParser](xref:ActiproSoftware.Text.Parsing.LLParser.ILLParser) class, make sure it is using a new instance of your alternate lexer that should be generating tokens for the parser.  The alternate [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) you use for parsing can be created using a second language project in the [Language Designer](../language-designer-tool/index.md) or you can create it using other techniques described in the [lexing](../text-parsing/lexing/index.md) portion of the Text/Parsing Framework documentation.

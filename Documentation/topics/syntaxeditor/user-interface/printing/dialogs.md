@@ -11,7 +11,7 @@ SyntaxEditor provides easy access to built-in print dialogs.
 
 ## The Print Flyout
 
-SyntaxEditor fully supports the Windows Print flyout:
+SyntaxEditor fully supports the **Windows Print** flyout:
 
 ![Screenshot](../../images/print-dialog.png)
 
@@ -28,7 +28,7 @@ private void AttachToPrintManager() {
 	if (printManager != null)
 		printManager.PrintTaskRequested += OnPrintManagerPrintTaskRequested;
 }
-	
+
 /// <summary>
 /// Detaches from the print manager.
 /// </summary>
@@ -52,7 +52,7 @@ private void OnPrintManagerPrintTaskRequested(PrintManager sender, PrintTaskRequ
 	PrintTask printTask = null;
 	printTask = e.Request.CreatePrintTask("SyntaxEditor Printout", async sourceRequestedArgs => {
 		var deferral = sourceRequestedArgs.GetDeferral();
-		
+
 		if (editor != null) {
 			await editor.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 				if (editor.PrintSettings != null) {
@@ -88,7 +88,7 @@ The printed content is based on the configuration of the [SyntaxEditor](xref:@Ac
 
 ## The Print Dialog
 
-The Print dialog can be displayed by calling the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ShowPrintDialog](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ShowPrintDialog*) method.
+The **Print** dialog can be displayed by calling the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ShowPrintDialog](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ShowPrintDialog*) method.
 
 ![Screenshot](../../images/print-dialog.png)
 
@@ -108,7 +108,7 @@ The printed content is based on the configuration of the [SyntaxEditor](xref:@Ac
 
 ## The Print Preview Dialog
 
-The Print Preview dialog can be displayed by calling the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ShowPrintPreviewDialog](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ShowPrintPreviewDialog*) method.
+The **Print Preview** dialog can be displayed by calling the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[ShowPrintPreviewDialog](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.ShowPrintPreviewDialog*) method.
 
 ![Screenshot](../../images/print-preview-dialog.png)
 

@@ -5,6 +5,9 @@ order: 1
 ---
 # Overview
 
+> [!IMPORTANT]
+> This older Ribbon product will be deprecated in the future in favor of the new ribbon implementation in the [Bars product](../../bars/index.md), which has a much-improved design and appearance, and many of the latest features currently found in Office.  It is recommended to implement new ribbons using the Bars product instead, and to [migrate away from this older Ribbon product](../../conversion/converting-to-v23-1.md) to the newer Bars ribbon when possible.
+
 Actipro Ribbon is designed to be tightly integrated with the great command model found in WPF.
 
 Every ribbon control implements `ICommandSource`, meaning that it has [Command](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.Command), [CommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.CommandParameter), and [CommandTarget](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ControlBase.CommandTarget) properties.  The `ICommand` that is assigned to a ribbon control can be any command, including those defined in the WPF framework in the `System.Windows.Input` namespace.
@@ -33,14 +36,14 @@ There is currently no WPF framework command for toggling strike-through so let's
 
 ```csharp
 public class ApplicationCommands {
-				
+
 	private static RibbonCommand toggleStrikethrough;
 
 	public static RoutedCommand ToggleStrikethrough {
 		get {
 			if (toggleStrikethrough == null)
-				toggleStrikethrough = new RibbonCommand("ToggleStrikethrough", typeof(Ribbon), 
-					"Strikethrough", null, "/Images/Strikethrough16.png", 
+				toggleStrikethrough = new RibbonCommand("ToggleStrikethrough", typeof(Ribbon),
+					"Strikethrough", null, "/Images/Strikethrough16.png",
 					"Draw a line through the middle of the selected text.");
 			return toggleStrikethrough;
 		}
@@ -53,7 +56,7 @@ Note that the command is of type [RibbonCommand](xref:@ActiproUIRoot.Controls.Ri
 Now say that we have a `RichTextBox` class override named `RichTextBoxExtended`.  In the override, we want to add a handler for a custom `ToggleStrikethrough` command like so:
 
 ```csharp
-this.CommandBindings.Add(new CommandBinding(ApplicationCommands.ToggleStrikethrough, 
+this.CommandBindings.Add(new CommandBinding(ApplicationCommands.ToggleStrikethrough,
 	OnToggleStrikethroughExecute, OnToggleStrikethroughCanExecute));
 ```
 

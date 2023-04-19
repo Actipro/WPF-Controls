@@ -1,0 +1,90 @@
+<sampleBrowser:ProductItemControl 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPickers"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" >
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!-- Define the options used by this sample -->
+		<local:OptionsViewModel x:Key="SampleOptions" />
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=UseCustomColors}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=UseAccentedItemBorder}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=ItemSpacing}">
+						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="50" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=UseMenuItemIndent}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=AreSurroundingSeparatorsAllowed}" DisplayName="Use surrounding separators" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=FontColorCanCategorize}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=FontColorCanFilter}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=TextHighlightColCount}" DisplayName="Highlight color col count">
+						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="20" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWay, Source={StaticResource SampleOptions}, Path=LivePreviewColor}">
+						<gridseditors:ColorPropertyEditor IsEditable="False" HasPopup="False" />
+					</grids:PropertyModel>
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Ribbon's BarMenuGallery control can be configured to provide an advanced color picker similar to
+					those in popular office applications.
+					Since it is implemented as a gallery, it supports some really neat features such as categorization of colors,
+					optional filtering (showing/hiding categories of colors), screen tips for colors, advanced selection tracking, and live preview.
+					Making the color button larger or smaller is a simple matter of altering the gallery's item template.
+					<LineBreak /><LineBreak />
+					The really neat optional feature that our predefined view models provide is the auto-generation of lighter and darker shades of 
+					base colors within a category.
+					The generated shades are grouped together in a vertical stack under the related base color.
+					<LineBreak /><LineBreak />
+					By default, each color will have a small margin around it and will appear standalone in the gallery.
+					However, as in the case of generated shade colors, you may wish to group several colors together.
+					What if you don't wish to use auto-generation of shades but still wish to group some colors together?
+					No problem, just use the BarGalleryItemLayoutBehavior property with
+					GroupStart, GroupInner, and GroupEnd values to properly lay out colors however you like.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- MVVM-Based Ribbon Sample Control -->
+					<local:SampleMvvmControl Options="{StaticResource SampleOptions}" Height="250" />
+					
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+
+					<!-- XAML-Based Ribbon Sample Control -->
+					<local:SampleXamlControl Options="{StaticResource SampleOptions}" Height="250" />
+
+				</Border>
+			</shared:ShadowChrome>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

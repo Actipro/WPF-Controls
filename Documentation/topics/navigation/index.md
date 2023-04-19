@@ -5,11 +5,11 @@ order: 1
 ---
 # Overview
 
-Actipro Navigation is a control suite that includes NavigationBar, ExplorerBar, Breadcrumb, and ZoomContentControl controls, along with styles for animated Expander controls.
+Actipro Navigation is a control suite that includes `NavigationBar`, `ExplorerBar`, `Breadcrumb`, and `ZoomContentControl` controls, along with styles for animated `Expander` controls.
 
 ### NavigationBar
 
-NavigationBar provides a facility for navigating through different panes of data.  This concept was introduced in Outlook, and NavigationBar implements all of the features found in Office.  It has an elegant user interface which uses buttons to control which navigation pane is selected. Panes can display data or simply act as a container for child controls.
+`NavigationBar` provides a facility for navigating through different panes of data.  This concept was introduced in Outlook, and `NavigationBar` implements all of the features found in Office.  It has an elegant user interface which uses buttons to control which navigation pane is selected. `Panes` can display data or simply act as a container for child controls.
 
 ![Screenshot](images/navigationbar.png)
 
@@ -17,13 +17,13 @@ NavigationBar provides a facility for navigating through different panes of data
 
 If screen real estate is available, large buttons can be used for pane selection.  The end-user has the option of using a splitter to move the large buttons into the overflow button tray, which uses smaller buttons. If not all of the buttons can fit in that tray, they flow out into the overflow menu, accessible by the chevron button.
 
-The NavigationBar can also be minimized, so that its selected pane's content can be displayed in a popup by clicking a button.
+The `NavigationBar` can also be minimized, so that its selected pane's content can be displayed in a popup by clicking a button.
 
 End user layout customizations can be persisted in XML format and restored later.
 
 ### ExplorerBar
 
-Explorer bar is an implementation of the task bar that was introduced in Windows XP's explorer.  It hosts a vertical stack of expandable panes that generally provide task-based information to the end user.
+`ExplorerBar` is an implementation of the task bar that was introduced in Windows XP's explorer.  It hosts a vertical stack of expandable panes that generally provide task-based information to the end user.
 
 ![Screenshot](images/explorerbar.png)
 
@@ -33,7 +33,7 @@ Each expander pane uses smooth animation to fade in and slide down its contents 
 
 ### Breadcrumb
 
-Breadcrumb is an implementation of the breadcrumb that was introduced in Windows Vista's explorer. It can be used to select a single item from hierarchical data, much like a TreeView but requiring less screen real estate.
+`Breadcrumb` is an implementation of the breadcrumb that was introduced in Windows Vista's explorer. It can be used to select a single item from hierarchical data, much like a `TreeView` but requiring less screen real estate.
 
 ![Screenshot](images/breadcrumb-theme-aero-normal-color.gif)
 
@@ -41,11 +41,11 @@ Breadcrumb is an implementation of the breadcrumb that was introduced in Windows
 
 Hierarchical data can be navigated using the buttons and menus available for each item, or the user can manually enter a new path or select an item from the drop-down list. If not all of the items can fit in control, they flow out into an overflow menu, accessible by a chevron button.
 
-The progress of long running operations can be presented to the user via an embedded progress bar in the Breadcrumb control.  In addition, any number of custom action buttons can be added to the right side.
+The progress of long running operations can be presented to the user via an embedded progress bar in the `Breadcrumb` control.  In addition, any number of custom action buttons can be added to the right side.
 
 ### ZoomContentControl
 
-ZoomContentControl allows any content to be interactively zoomed and scrolled using customizable mouse and keyboard behaviors.  Includes an optional built-in view control pane, which can be used to zoom or pan the content and collapsed when not needed.  Numerous methods, properties, and commands are provided which can be used to programmatically zoom/pan the display.
+`ZoomContentControl` allows any content to be interactively zoomed and scrolled using customizable mouse and keyboard behaviors.  Includes an optional built-in view control pane, which can be used to zoom or pan the content and collapsed when not needed.  Numerous methods, properties, and commands are provided which can be used to programmatically zoom/pan the display.
 
 ![Screenshot](images/zoomcontentcontrol-teaser.png)
 
@@ -96,7 +96,7 @@ ZoomContentControl allows any content to be interactively zoomed and scrolled us
 
 ### ZoomContentControl Features
 
-- Adds [zooming and panning](zoomcontentcontrol-features/view-manipulation.md) capabilities to the native WPF ContentControl.
+- Adds [zooming and panning](zoomcontentcontrol-features/view-manipulation.md) capabilities to the native WPF `ContentControl`.
 - Supports [smooth animations](zoomcontentcontrol-features/view-manipulation.md) when zooming and panning.
 - Vertical and horizontal [scrollbars](zoomcontentcontrol-features/view-manipulation.md) can be used for panning or hidden.
 - [Mouse and keyboard behavior](zoomcontentcontrol-features/input-bindings.md) can be easily customized using standard WPF input bindings.

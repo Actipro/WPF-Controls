@@ -19,7 +19,7 @@ By default, ranges will be aligned horizontally, which means they highlight valu
 
 *A line chart with a yellow range between the X values 2 and 5*
 
-In this example, the line series is set to a collection of doubles. Therefore, the X values will range from 0 to 7 (since there are 8 entries) and the actual values shown will be used along the Y axis:
+In this example, the line series is set to a collection of doubles. Therefore, the X values will range from `0` to `7` (since there are 8 entries) and the actual values shown will be used along the Y axis:
 
 ```xaml
 <charts:XYChart IsLegendVisible="True" ...>
@@ -42,9 +42,9 @@ In this example, the line series is set to a collection of doubles. Therefore, t
 
 The values of a range are specified using the [Maximum](xref:@ActiproUIRoot.Controls.Charts.XYRange.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Charts.XYRange.Minimum) properties.
 
-If either of these properties is unset (or set to `null`), then it's value will be auto-calculated based on the data points from all series.  The `Maximum` will run to the highest value and likewise the `Minimum` will run to the lowest value.
+If either of these properties is unset (or set to `null`), then its value will be auto-calculated based on the data points from all series.  The `Maximum` will run to the highest value and likewise the `Minimum` will run to the lowest value.
 
-For example, we can produce two ranges that run up (green) and down (red) from 0 using the following code:
+For example, we can produce two ranges that run up (green) and down (red) from `0` using the following code:
 
 ```xaml
 <charts:XYChart ...>

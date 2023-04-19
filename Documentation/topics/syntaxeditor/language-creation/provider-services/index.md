@@ -21,7 +21,7 @@ See the [Adornment Manager Provider](adornment-manager-provider.md) topic for mo
 
 ## IntelliPrompt Completion Provider
 
-Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to `Ctrl+Space`.
+Languages can choose to support [IntelliPrompt completion lists](../../user-interface/intelliprompt/completion-list.md) and respond to <kbd>Ctrl</kbd>+<kbd>Space</kbd>.
 
 See the [IntelliPrompt Completion Provider](completion-provider.md) topic for more information.
 
@@ -39,6 +39,6 @@ See the [IntelliPrompt Parameter Info Provider](parameter-info-provider.md) topi
 
 ## IntelliPrompt Code Snippet Provider
 
-Languages can choose to support [IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) that provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted and the end user can tab between the fields to edit their values.
+Languages can choose to support [IntelliPrompt code snippets](../../user-interface/intelliprompt/code-snippets.md) that provide a way to insert pre-defined fragments of text into the editor.  Each code snippet can declare multiple fields of text, and when a code snippet template session is activated in SyntaxEditor, the text is inserted, and the end user can <kbd>Tab</kbd> between the fields to edit their values.
 
 See the [IntelliPrompt Code Snippet Provider](code-snippet-provider.md) topic for more information.

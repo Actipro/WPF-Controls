@@ -58,7 +58,7 @@ A bar chart displays rectangular bars with lengths proportional to the values th
 
 ![Screenshot](../images/micro-line-series.png)
 
-A line chart render quantitative data as a series of points connected by line segments.  Lines can be straight, curved, or stepped.  Markers can optionally be displayed.
+A line chart renders quantitative data as a series of points connected by line segments.  Lines can be straight, curved, or stepped.  Markers can optionally be displayed.
 
 </td>
 </tr>
@@ -178,7 +178,7 @@ A segment chart provides a visual representation of an integer value in relation
 
 ![Screenshot](../images/micro-trend-indicator.png)
 
-The trend indicator is a three state control that is intended to reflect whether a numeric value is higher, the same as, or lower than an origin value.
+The trend indicator is a three-state control that is intended to reflect whether a numeric value is higher, the same as, or lower than an origin value.
 
 </td>
 </tr>

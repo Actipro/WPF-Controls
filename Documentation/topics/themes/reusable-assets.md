@@ -9,17 +9,17 @@ Actipro Themes includes several reusable assets resources, such as brushes, for 
 
 ## What is an Asset?
 
-Assets are primitive resources such as `Boolean`, `CornerRadius`, `Thickness`, as well as `SolidColorBrush`, `LinearGradientBrush`, and `RadialGradientBrush`.  Actipro Themes uses the same common asset (brush, thickness, etc.) pool for its native WPF control styles and custom control styles.  Thus no matter which native or Actipro controls you use together, the appearance will consistently look great.
+Assets are primitive resources such as `Boolean`, `CornerRadius`, `Thickness`, as well as `SolidColorBrush`, `LinearGradientBrush`, and `RadialGradientBrush`.  Actipro Themes uses the same common asset (brush, thickness, etc.) pool for its native WPF control styles and custom control styles.  Thus, no matter which native or Actipro controls you use together, the appearance will consistently look great.
 
 The keys for the assets in this common pool are defined in the [AssetResourceKeys](xref:@ActiproUIRoot.Themes.AssetResourceKeys) class, which includes close to 1,000 assets.
 
 ## Browsing Theme Assets
 
-The Actipro [Theme Designer application](theme-designer.md) includes a "Resource Browser" tab that lets you view all of the asset resources defined in the theme.  The list can be filtered and resource keys can be copied to the clipboard for easy usage within your application.
+The Actipro [Theme Designer application](theme-designer.md) includes a **Resource Browser** tab that lets you view all of the asset resources defined in the theme.  The list can be filtered and resource keys can be copied to the clipboard for easy usage within your application.
 
 ## Reusing Theme Assets
 
-Any of theme assets used in the Actipro and native control themes can be used in your application, or for any custom controls you may have.  Once you know which assets from [AssetResourceKeys](xref:@ActiproUIRoot.Themes.AssetResourceKeys) that you'd like to use, it's just a matter of setting up an appropriate `DynamicResource`.
+Any of the theme assets used in the Actipro and native control themes can be used in your application, or for any custom controls you may have.  Once you know which assets from [AssetResourceKeys](xref:@ActiproUIRoot.Themes.AssetResourceKeys) that you'd like to use, it's just a matter of setting up an appropriate `DynamicResource`.
 
 The first step in reusing assets in XAML is to declare the proper namespace:
 
@@ -31,7 +31,7 @@ This sample code shows how to use various low contrast container brushes in a `B
 
 ```xaml
 <Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
-	BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+        BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 	<StackPanel Margin="10">
 		<TextBlock Text="Reusable Theme Assets" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
 		<TextBlock Text="This is a description that renders more faintly." Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
@@ -39,8 +39,8 @@ This sample code shows how to use various low contrast container brushes in a `B
 </Border>
 ```
 
-> [!NOTE]
-> Use the Actipro [Theme Designer application](theme-designer.md)'s "Resource Browser" tab to quickly generate the `DynamicResource` references for any built-in asset.
+> [!TIP]
+> Use the Actipro [Theme Designer application](theme-designer.md)'s **Resource Browser** tab to quickly generate the `DynamicResource` references for any built-in asset.
 
 ## Customizing Theme Assets
 
@@ -56,17 +56,17 @@ This sample code shows how to customize a low contrast container background brus
 
 ```xaml
 <Application.Resources>
-    <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}" Color="#d0d0d0" />
+	<SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}" Color="#d0d0d0" />
 </Application.Resources>
 ```
 
-This will change the `ContainerBackgroundLowBrushKey` brush for you entire application.  Alternatively, the brush above can be defined in the resources of an WPF element to only affect that control hierarchy.
+This will change the `ContainerBackgroundLowBrushKey` brush for your entire application.  Alternatively, the brush above can be defined in the resources of an WPF element to only affect that control hierarchy.
 
 Theme catalogs know how to pull in resource dictionaries based on whichever theme is currently active.  If multiple themes can be used in your application, it is better to use theme catalogs to pull in appropriate resource dictionaries with the asset resource overrides, instead of hard-coding them in `Application.Resources`.  The [Architecture](architecture.md) topic covers theme catalogs in detail.
 
 ## Color-Related Assets
 
-Generated themes contain `Brush` asset resources for the entire color palette.  Each of the numerous color families (blue, green, indigo, etc.) has a `Brush` asset resource for each shade in the color family, which can be visualized in the [Theme Designer application](theme-designer.md)'s Color Palette tab.
+Generated themes contain `Brush` asset resources for the entire color palette.  Each of the numerous color families (blue, green, indigo, etc.) has a `Brush` asset resource for each shade in the color family, which can be visualized in the [Theme Designer application](theme-designer.md)'s **Color Palette** tab.
 
 Note that the asset resource keys are named using relative contrast notation where "low" means lowest contrast with the theme intent (light/dark) and "high" means highest contrast.  As an example, in a light theme, a "high" contrast blue would be very dark.
 

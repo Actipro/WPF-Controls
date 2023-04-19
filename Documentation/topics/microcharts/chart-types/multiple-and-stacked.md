@@ -24,7 +24,7 @@ This results in the following chart:
 
 ![Screenshot](../images/multiple-series1.png)
 
-The chart will automatically align the multiple series along the secondary axis (X in this example).  So, if the series have data with disparate values, then it will automatically adjust to fit the data.
+The chart will automatically align the multiple series along the secondary axis (X in this example).  So, if the series has data with disparate values, then it will automatically adjust to fit the data.
 
 In this example, we add additional data points to the line series:
 
@@ -41,7 +41,7 @@ This results in the following chart, which has extended the line series beyond t
 
 ## Normal Stacking
 
-Two or more series can be stacked one on top of the other to convey cumlative values to the end user.
+Two or more series can be stacked one on top of the other to convey cumulative values to the end user.
 
 By setting [StackKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Normal`, the values of each series will be added to the previous stacked series.
 
@@ -58,7 +58,7 @@ In this sample the second series will be stacked on top of the first series.
 
 ## Percentage Stacking
 
-Two or more area series can be stacked one on top of the other to convey proportional values to the end user.  In this mode, the series render to fill the chart height.  At any given location, the height of each rendered series indicates its value percentage relative to the total.
+Two or more area series can be stacked one on top of the other to convey proportional values to the end user.  In this mode, the series will render to fill the chart height.  At any given location, the height of each rendered series indicates its value percentage relative to the total.
 
 By setting [StackKind](xref:@ActiproUIRoot.Controls.MicroCharts.Primitives.MicroXYSeriesBase.StackKind) on the series to `Percentage`, the values of each series will be added to the previous stacked series and a percentage of the total value will be used.
 

@@ -25,7 +25,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 		/// <summary>
 		/// Defines and item that can be compared (e.g. a document line or individual text within a line).
 		/// </summary>
-		[DebuggerDisplay("CompariableItem[{Index}, {Hash}]; {Text}")]
+		[DebuggerDisplay("ComparableItem[{Index}, {Hash}]; {Text}")]
 		private struct ComparableItem {
 
 			/// <summary>
@@ -33,7 +33,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 			/// </summary>
 			/// <param name="index">The zero-based position of the item within a collection.</param>
 			/// <param name="text">The text associated with the item.</param>
-			/// <param name="ignoreWhiteSpace"><c>true</c> if insigificant differences in white space should be ignored.</param>
+			/// <param name="ignoreWhiteSpace"><c>true</c> if insignificant differences in white space should be ignored.</param>
 			public ComparableItem(int index, string text, bool ignoreWhiteSpace) {
 				this.Hash = CalculateHash(text, ignoreWhiteSpace);
 				this.Index = index;
@@ -48,7 +48,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 			/// Calculates the hash used to represent the item.
 			/// </summary>
 			/// <param name="text">The text associated with the item.</param>
-			/// <param name="ignoreWhiteSpace"><c>true</c> if insigificant differences in white space should be ignored.</param>
+			/// <param name="ignoreWhiteSpace"><c>true</c> if insignificant differences in white space should be ignored.</param>
 			/// <returns>The hash code.</returns>
 			private static int CalculateHash(string text, bool ignoreWhiteSpace) {
 				if (text is null)
@@ -128,7 +128,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					var nextNewItemMatchIndex = FindMatchingItem(newItems, newItemIndex + 1, oldItems[oldItemIndex]);
 					var nextOldItemMatchIndex = FindMatchingItem(oldItems, oldItemIndex + 1, newItems[newItemIndex]);
 					if (nextNewItemMatchIndex.HasValue && nextOldItemMatchIndex.HasValue) {
-						// Both sides match an item further ahead in the collection, so use the one with the cloest match
+						// Both sides match an item further ahead in the collection, so use the one with the closest match
 						// and a preference for non-white space matches
 						var newItemDelta = nextNewItemMatchIndex.Value - newItemIndex;
 						var oldItemDelta = nextOldItemMatchIndex.Value - oldItemIndex;

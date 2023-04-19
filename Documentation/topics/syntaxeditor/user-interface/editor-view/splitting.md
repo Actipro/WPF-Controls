@@ -29,7 +29,7 @@ These members control splitting features:
 
 ## Split State and Locations
 
-The following properties are used to determine if there is currently a split in the editor, and can also be used to create a split.
+The following properties are used to determine if there is currently a split in the editor and can also be used to create a split.
 
 | Member | Description |
 |-----|-----|

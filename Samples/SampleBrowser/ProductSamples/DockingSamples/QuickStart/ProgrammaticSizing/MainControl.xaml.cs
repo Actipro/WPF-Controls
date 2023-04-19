@@ -32,9 +32,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutEvenlyDistributeMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
-				foreach (var splitContainer in descendents)
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
+				foreach (var splitContainer in descendants)
 					splitContainer.ResizeSlots();
 			}
 		}
@@ -47,9 +47,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		private void OnLayoutEvenlyDistributeDocumentsOnlyMenuItemClick(object sender, RoutedEventArgs e) {
 			var workspace = dockSite.PrimaryDockHost.Workspace;
 			if (workspace != null) {
-				var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(workspace);
-				if (descendents != null) {
-					foreach (var splitContainer in descendents)
+				var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(workspace);
+				if (descendants != null) {
+					foreach (var splitContainer in descendants)
 						splitContainer.ResizeSlots();
 				}
 			}
@@ -61,9 +61,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutEvenlyDistributeFavorFocusedMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
-				foreach (var splitContainer in descendents) {
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
+				foreach (var splitContainer in descendants) {
 					// Look for SplitContainers that contain the focused element, and increase the ratios for that slot
 					var visualCount = splitContainer.Children.Count;
 					var desiredRatios = new double[visualCount];
@@ -92,9 +92,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutEvenlyDistributeFavorWorkspaceMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
-				foreach (var splitContainer in descendents) {
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
+				foreach (var splitContainer in descendants) {
 					// Look for SplitContainers that contain the Workspace, and increase the ratios for that slot
 					var visualCount = splitContainer.Children.Count;
 					var desiredRatios = new double[visualCount];
@@ -123,9 +123,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutEvenlyDistributeToolsOnlyMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
-				foreach (var splitContainer in descendents) {
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
+				foreach (var splitContainer in descendants) {
 					if (VisualTreeHelperExtended.GetAncestor<Workspace>(splitContainer) != null)
 						continue;
 
@@ -140,10 +140,10 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutRandomlyDistributeMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
 				var random = new Random();
-				foreach (var splitContainer in descendents) {
+				foreach (var splitContainer in descendants) {
 					splitContainer.ResizeSlots(
 						random.NextDouble() * 8 + 1,
 						random.NextDouble() * 6 + 1,
@@ -159,9 +159,9 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.ProgrammaticS
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnLayoutReverseAllMenuItemClick(object sender, RoutedEventArgs e) {
-			var descendents = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
-			if (descendents != null) {
-				foreach (var splitContainer in descendents)
+			var descendants = VisualTreeHelperExtended.GetAllDescendants<SplitContainer>(dockSite);
+			if (descendants != null) {
+				foreach (var splitContainer in descendants)
 					splitContainer.ReverseSlots();
 			}
 		}

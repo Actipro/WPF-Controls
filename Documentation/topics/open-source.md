@@ -5,7 +5,9 @@ order: 51
 ---
 # GitHub Open-Source
 
-Actipro hosts an open-source WPF Controls repository on GitHub: [https://github.com/Actipro/WPF-Controls](https://github.com/Actipro/WPF-Controls)
+Actipro hosts an open-source WPF Controls repository on GitHub:
+
+[https://github.com/Actipro/WPF-Controls](https://github.com/Actipro/WPF-Controls)
 
 ## Repository Contents
 
@@ -14,7 +16,9 @@ While the repository doesn't contain the source code for our commercial WPF cont
 - The Sample Browser application project's source code
 - Other sample projects' source code
 - This documentation's source Markdown topic files
-- Open-source control library code (enhancement libraries for the Microsoft WPF DataGrid)
+- Open-source control library code:
+  - Companion to the Bars product that supports easy MVVM integration
+  - Enhancement libraries for the Microsoft WPF DataGrid
 
 ## Support and Contributing
 

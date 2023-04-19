@@ -17,9 +17,9 @@ The [DefaultTextViewLineNumberProvider](xref:@ActiproUIRoot.Controls.SyntaxEdito
 
 ## Setting the Line Number Origin
 
-The [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[LineNumberOrigin](xref:ActiproSoftware.Text.IEditorDocument.LineNumberOrigin) property is the origin line number to use as the base for the first view line.  It defaults to `1`, but can be set to any other number as needed.  The [DefaultTextViewLineNumberProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.DefaultTextViewLineNumberProvider) implementation uses this origin value for the first view line.
+The [IEditorDocument](xref:ActiproSoftware.Text.IEditorDocument).[LineNumberOrigin](xref:ActiproSoftware.Text.IEditorDocument.LineNumberOrigin) property is the origin line number to use as the base for the first view line.  It defaults to `1` but can be set to any other number as needed.  The [DefaultTextViewLineNumberProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.DefaultTextViewLineNumberProvider) implementation uses this origin value for the first view line.
 
-For instance if the first view line in a document is meant to represent the 400th line in some code snippet, set the origin to `400`.
+For instance, if the first view line in a document is meant to represent the 400th line in some code snippet, set the origin to `400`.
 
 ## Registering with a Language
 

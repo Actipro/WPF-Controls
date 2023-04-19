@@ -31,7 +31,7 @@ The term tab size refers to the number of spaces that a tab character appears to
 
 *A tab size of eight spaces, instead of four, which is the default*
 
-The tab size can be altered by setting the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[TabSize](xref:ActiproSoftware.Text.ITextDocument.TabSize) property.  When this property is changed, the related [TabSizeChanged](xref:ActiproSoftware.Text.ITextDocument.TabSizeChanged) event fires.
+The tab size can be altered by setting the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[TabSize](xref:ActiproSoftware.Text.ITextDocument.TabSize) property.  When this property is changed, the related [TabSizeChanged](xref:ActiproSoftware.Text.ITextDocument.TabSizeChanged) event is raised.
 
 ## Tabs to Spaces Conversion While Typing
 
@@ -39,7 +39,7 @@ Tabs that are typed can be automatically converted to space characters if the [I
 
 ## Backspacing to the Previous Tab Stop
 
-When [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[AutoConvertTabsToSpaces](xref:ActiproSoftware.Text.ITextDocument.AutoConvertTabsToSpaces) is true, pressing the Backspace key before the first non-whitespace character of a line will backspace to the previous tab stop by default.  Set the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanBackspaceOverSpacesToTabStop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanBackspaceOverSpacesToTabStop) property is set to `false` to alter this behavior to only allow backspacing a single space at a time.
+When [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[AutoConvertTabsToSpaces](xref:ActiproSoftware.Text.ITextDocument.AutoConvertTabsToSpaces) is true, pressing the <kbd>Bkspace</kbd> key before the first non-whitespace character of a line will backspace to the previous tab stop by default.  Set the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CanBackspaceOverSpacesToTabStop](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CanBackspaceOverSpacesToTabStop) property is set to `false` to alter this behavior to only allow backspacing a single space at a time.
 
 ## Tabification and Tab to Space Conversion
 

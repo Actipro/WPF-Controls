@@ -8,7 +8,7 @@ using System.Windows.Media;
 namespace ActiproSoftware.ProductSamples.GaugeSamples.Demo.ScientificDashboard {
 
 	/// <summary>
-	/// Converts from fahrenheit to celsius.
+	/// Converts from Fahrenheit to Celsius.
 	/// </summary>
 	public sealed class CelsiusConverter : IValueConverter {
 

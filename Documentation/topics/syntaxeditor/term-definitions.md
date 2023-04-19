@@ -26,7 +26,7 @@ In this topic, we provide the complete list of categorized terms found in this p
 <td>Case Sensitivity</td>
 <td>
 
-Indicates how letter matching is performed when parsing, and is represented by the [CaseSensitivity](xref:ActiproSoftware.Text.CaseSensitivity) enumeration.
+Indicates how letter matching is performed when parsing and is represented by the [CaseSensitivity](xref:ActiproSoftware.Text.CaseSensitivity) enumeration.
 
 </td>
 </tr>
@@ -80,7 +80,7 @@ A line commenter (represented by the [ILineCommenter](xref:ActiproSoftware.Text.
 <td>Line Terminator</td>
 <td>
 
-Indicates the character or characters used to end a line, and is represented by the [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) enumeration.
+Indicates the character or characters used to end a line and is represented by the [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) enumeration.
 
 </td>
 </tr>
@@ -373,7 +373,7 @@ A lexical state ID provider (represented by the [ILexicalStateIdProvider](xref:A
 <td>Lexical State Transition</td>
 <td>
 
-A lexical state transition (represented by the [ILexicalStateTransition](xref:ActiproSoftware.Text.Lexing.ILexicalStateTransition) interface) specifies a transition that can occur from one lexical state to another, typically in a separate language (i.e. HTML to CSS).
+A lexical state transition (represented by the [ILexicalStateTransition](xref:ActiproSoftware.Text.Lexing.ILexicalStateTransition) interface) specifies a transition that can occur from one lexical state to another, typically in a separate language (i.e., HTML to CSS).
 
 </td>
 </tr>

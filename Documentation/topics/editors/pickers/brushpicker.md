@@ -29,7 +29,7 @@ When `false`, the picker will hide all brush kind options related to gradients.
 
 The [BrushPicker](xref:@ActiproUIRoot.Controls.Editors.BrushPicker).[IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.BrushPicker.IsNullAllowed) property can be set to `false` to always require that a valid `Brush` value is present, and that `null` is not supported.
 
-When `false`, the picker will hide the null brush kind option.
+When `false`, the picker will hide the `null` brush kind option.
 
 ## Reusing Brushes
 

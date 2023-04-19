@@ -202,7 +202,7 @@ namespace ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookVirtualizat
 		}
 
 		/// <summary>
-		/// Called when the prevous button is clicked.
+		/// Called when the previous button is clicked.
 		/// </summary>
 		/// <param name="sender">The sender.</param>
 		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>

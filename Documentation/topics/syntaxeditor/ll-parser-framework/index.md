@@ -15,7 +15,7 @@ The parser in our framework is LL(*), meaning it is a top-down parser that can r
 
 This normally would mean LL(1), however [can-match callbacks](callbacks-and-error-handling.md) allow infinite symbol look-ahead, thus making it LL(*).
 
-LL parsers do not support left recursion however grammars can generally be refactored to eliminate left recursion and turn it into right recursion instead.  Ambiguity can be resolved using can-match callbacks.  Examples of handling both scenarios are given in this framework's documentation.
+LL parsers do not support left recursion, however grammars can generally be refactored to eliminate left recursion and turn it into right recursion instead.  Ambiguity can be resolved using can-match callbacks.  Examples of handling both scenarios are given in this framework's documentation.
 
 ## Feature Summary
 
@@ -24,29 +24,17 @@ There are many types of parsers, each with their pros and cons.  Actipro's LL(*)
 The frameworks features include:
 
 - A top-down LL parser that supports infinite symbol look-ahead.
-
 - Grammars built directly in C#/VB code using EBNF-like syntax, made possible via operator overloading, implicit type conversion, and delegates.
-
 - No code generation, everything is interpreted.
-
 - Pre-existing grammars can be programmatically altered before they are compiled and used.
-
 - Can-match callbacks can provide code-based determination of whether a non-terminal can match with the parser's current state.
-
 - Custom code callbacks can be injected anywhere in the grammar before/after an EBNF term is parsed, or on success/error.
-
 - Automated parse error reporting and recovery options, with the ability to customize.
-
-- All productions support customized AST (abstract syntax tree) construction rules using numerous built-in tree constructor options, and ability to create custom tree constructors.
-
+- All productions support customized abstract syntax tree (AST) construction rules using numerous built-in tree constructor options, and ability to create custom tree constructors.
 - Generated [AST nodes](../text-parsing/parsing/ast-nodes.md) are automatically assigned the proper [text offsets](../text-parsing/core-text/offsets-ranges-positions.md).
-
 - Re-use [ILexer](../text-parsing/lexing/index.md) implementations that have already been made for a language.
-
 - Filter out tokens that are meaningless to the parser (comments, etc.).
-
 - Designed to integrate easily with [SyntaxEditor](../index.md).
-
 - Complete debugger UI in the [Language Designer](../language-designer-tool/index.md) tool that allows you to step through a parser to see exactly how it is matching and building results.
 
 ## Getting Started
@@ -93,7 +81,7 @@ See the [Walkthrough: Tree Constructors](walkthrough-tree-constructors.md) topic
 
 ## Callbacks and Error Handling
 
-The next step in building a grammar is to make sure that it properly handles errors.  After all, since this grammar framework is intended to be used with SyntaxEditor, we have to assume that most of the time the document’s code passed to our grammar parser will be in an invalid state.  The user is continuously typing and modifying it.
+The next step in building a grammar is to make sure that it properly handles errors.  After all, since this grammar framework is intended to be used with SyntaxEditor, we have to assume that most of the time the document's code passed to our grammar parser will be in an invalid state.  The user is continuously typing and modifying it.
 
 In this topic, we will look at the various callbacks that are available to you, probably the most important of which are the error handling callbacks.  We'll also dig into error handling options.
 
@@ -101,7 +89,7 @@ See the [Callbacks and Error Handling](callbacks-and-error-handling.md) topic fo
 
 ## Walkthrough: Callbacks and Error Handling
 
-In this topic we’ll examine the importance of adding error handling.  We’ll enhance our Simple language grammar to properly recover from nearly any invalid syntax in a document so that it can continue parsing the rest of the document.
+In this topic we'll examine the importance of adding error handling.  We'll enhance our Simple language grammar to properly recover from nearly any invalid syntax in a document so that it can continue parsing the rest of the document.
 
 See the [Walkthrough: Callbacks and Error Handling](walkthrough-callbacks-and-error-handling.md) topic for more information.
 

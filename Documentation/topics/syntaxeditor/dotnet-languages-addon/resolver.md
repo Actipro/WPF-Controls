@@ -21,7 +21,7 @@ The request's [IResolverRequest](xref:ActiproSoftware.Text.Languages.DotNet.Reso
 
 The resolver has a [Resolve](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolver.Resolve*) method that accepts an [IResolverRequest](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverRequest) parameter and returns an [IResolverResultSet](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResultSet).
 
-The result set consists of zero or more [IResolverResult](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResult) objects.  There can be more than one result in the set if there is ambiguity of the resolution result, such as when there are multiple overloads of a method that can match the expression to resolve.  In this scenario, the results are sorted by which match best.  So the first result is always the best match.
+The result set consists of zero or more [IResolverResult](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResult) objects.  There can be more than one result in the set if there is ambiguity of the resolution result, such as when there are multiple overloads of a method that can match the expression to resolve.  In this scenario, the results are sorted by which match best.  So, the first result is always the best match.
 
 Each [IResolverResult](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResult) includes a string [Name](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResult.Name) property and a [Type](xref:ActiproSoftware.Text.Languages.DotNet.Resolution.IResolverResult.Type) property that returns the resulting [ITypeDefinition](xref:ActiproSoftware.Text.Languages.DotNet.Reflection.ITypeDefinition) of the result if one is available (not applicable for namespaces).  For instance, if the result is for a type, this property returns the type.  If the result is for a member, this property returns the member's return type.
 
@@ -50,7 +50,7 @@ if (context.ProjectAssembly != null) {
 	// Create a request
 	var request = new ResolverRequest(context.TargetExpression);
 	request.Context = context;
-	
+
 	// Resolve
 	var resolver = context.ProjectAssembly.Resolver;
 	var resultSet = resolver.Resolve(request);
@@ -67,7 +67,7 @@ var resultSet = context.Resolve();
 
 ## Enumerating Members for an Offset
 
-The resolver is normally used to tell what is at an offset but it also can enumerate accessible namespaces, types, etc. for a given offset.  To do this, simply create the context whose kind is `DotNetContextKind.SelfAndSiblings`.
+The resolver is normally used to tell what is at an offset, but it also can enumerate accessible namespaces, types, etc. for a given offset.  To do this, simply create the context whose kind is `DotNetContextKind.SelfAndSiblings`.
 
 This code shows how to obtain a result set that includes all of the accessible namespaces, types, etc. for the current caret offset in a SyntaxEditor that is using a [CSharpSyntaxLanguage](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpSyntaxLanguage):
 

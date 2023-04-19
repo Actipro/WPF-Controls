@@ -13,7 +13,7 @@ Ranges can be used to highlight a value range of interest, and can be included b
 
 ## Value Range
 
-The area covered by a range is controled using the [StartValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RangeBase.StartValue) and [EndValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RangeBase.EndValue) properties.
+The area covered by a range is controlled using the [StartValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RangeBase.StartValue) and [EndValue](xref:@ActiproUIRoot.Controls.Gauge.Primitives.RangeBase.EndValue) properties.
 
 ![Screenshot](../images/linear-range-longer.gif)
 

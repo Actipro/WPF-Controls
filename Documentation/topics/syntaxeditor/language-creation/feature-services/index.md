@@ -33,7 +33,7 @@ See the [Line Commenter](line-commenter.md) topic for more information.
 
 ## Example Text
 
-Syntax languages have to ability to expose a small code snippet showing many of the constructs in the language.
+Syntax languages have the ability to expose a small code snippet showing many of the constructs in the language.
 
 See the [Example Text](example-text.md) topic for more information.
 
@@ -51,7 +51,7 @@ See the [Word Break Finder](word-break-finder.md) topic for more information.
 
 ## Indent Provider (Auto-Indent)
 
-Syntax languages support indent providers, which provide functionality for auto-indentation of the code when the Enter key is pressed.
+Syntax languages support indent providers, which provide functionality for auto-indentation of the code when the <kbd>Enter</kbd> key is pressed.
 
 See the [Indent Provider (Auto-Indent)](indent-provider.md) topic for more information.
 
@@ -63,7 +63,7 @@ See the [Text Formatter](text-formatter.md) topic for more information.
 
 ## IntelliPrompt Navigable Symbol Provider
 
-Languages can choose to support an IntelliPrompt navigable symbol provider that lists the accessible symbols within an editor's document.  Once a language implements this provider service, the [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) control can be paired with a SyntaxEditor to provide VS type/member dropdown-like functionality.
+Languages can choose to support an IntelliPrompt navigable symbol provider that lists the accessible symbols within an editor's document.  Once a language implements this provider service, the [Navigable Symbol Selector](../../user-interface/intelliprompt/navigable-symbol-selector.md) control can be paired with a `SyntaxEditor` control to provide Visual Studio type/member dropdown-like functionality.
 
 See the [IntelliPrompt Navigable Symbol Provider](navigable-symbol-provider.md) topic for more information.
 

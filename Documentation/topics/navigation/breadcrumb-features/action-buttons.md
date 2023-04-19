@@ -13,22 +13,22 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) control sup
 
 ## Adding an Action Button
 
-Any `Button`, or `Button` derived class, can be added to the [ActionButtons](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ActionButtons) collection property using XAML (as shown below) or by calling the `Add` or `Insert` methods directly. Because the embedded [progress bar](progressbar.md) can be shown under the action buttons, it is recommended that the [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control (with its transparency mode enabled) be used for action buttons.
+Any `Button`, or `Button`-derived class, can be added to the [ActionButtons](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb.ActionButtons) collection property using XAML (as shown below) or by calling the `Add` or `Insert` methods directly. Because the embedded [progress bar](progressbar.md) can be shown under the action buttons, it is recommended that the [PopupButton](xref:@ActiproUIRoot.Controls.PopupButton) control (with its transparency mode enabled) be used for action buttons.
 
 This sample code shows how to add an action button:
 
 ```xaml
 xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-...						
+...
 <navigation:Breadcrumb ... >
-    <navigation:Breadcrumb.ActionButtons>
-        <!-- Define action buttons here -->
-        <shared:PopupButton Content="New PopupButton"
-                            DisplayMode="ButtonOnly"
-                            IsRounded="false"
-                            IsTransparencyModeEnabled="true" />
-    </navigation:Breadcrumb.ActionButtons>
+	<navigation:Breadcrumb.ActionButtons>
+	<!-- Define action buttons here -->
+	<shared:PopupButton Content="New PopupButton"
+	                    DisplayMode="ButtonOnly"
+	                    IsRounded="false"
+	                    IsTransparencyModeEnabled="true" />
+	</navigation:Breadcrumb.ActionButtons>
 </navigation:Breadcrumb>
 ```
 
@@ -41,8 +41,8 @@ The [Breadcrumb](xref:@ActiproUIRoot.Controls.Navigation.Breadcrumb) supports th
 | `BrowseHome` | Selects the root item. |
 | `FirstPage` | Selects the root item. |
 | `GoToPage` | Selects the item whose path is indicated by the command parameter. |
-| `LastPage` | Selects the last visible item below the currently selected item. This command is only valid when 1 or more tail items are visible. |
-| `NextPage` | Selects the next visible item below the currently selected item. This command is only valid when 1 or more tail items are visible. |
+| `LastPage` | Selects the last visible item below the currently selected item. This command is only valid when one or more tail items are visible. |
+| `NextPage` | Selects the next visible item below the currently selected item. This command is only valid when one or more tail items are visible. |
 | `PreviousPage` | Selects the parent item of the currently selected item. |
 
 ## Associated Members

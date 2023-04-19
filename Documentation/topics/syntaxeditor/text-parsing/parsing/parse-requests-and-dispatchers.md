@@ -13,9 +13,9 @@ A parse request dispatcher is notified of incoming parse requests and queues the
 
 An [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) is an object that is capable of receiving parse requests ([IParseRequest](xref:ActiproSoftware.Text.Parsing.IParseRequest) instances).  Upon receipt of a request, it will generally queue the request, possibly disposing of similar previous requests that are still on the queue.
 
-One or more worker threads are then used to perform parsing operations, one by one, based on the data in the requests.  More than one worker thread is advantageous when there are potentially many parsing requests queued, while editing of a code document (via a SyntaxEditor control for instance) is taking place.  This allows the requests made by the code document to continue to get handled fast, intermixed with the other queued requests.
+One or more worker threads are then used to perform parsing operations, one by one, based on the data in the requests.  More than one worker thread is advantageous when there are potentially many parsing requests queued, while editing of a code document (via a `SyntaxEditor` control for instance) is taking place.  This allows the requests made by the code document to continue to get handled fast, intermixed with the other queued requests.
 
-> [!IMPORTANT]
+> [!WARNING]
 > By default, no ambient [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) is installed meaning parsing from code documents (explained in next section) will be done in the main UI thread.  Configure an ambient parse request dispatcher (see below) to ensure parsing operations are offloaded into worker threads.
 
 @if (winrt) {
@@ -32,7 +32,7 @@ One or more worker threads are then used to perform parsing operations, one by o
 
 [ThreadedParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.Implementation.ThreadedParseRequestDispatcher) is the default implementation of an [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) that ships with the parsing framework.  It is capable of handling parse requests on one or more worker threads.
 
-By default it creates a maximum number of worker threads that is equal to your machine's processor core count minus one.  Thus on a quad-core machine, up to three worker threads may be created.  If a worker thread is not used for some time, it will be disposed of.
+By default, it creates a maximum number of worker threads that is equal to your machine's processor core count minus one.  Thus, on a quad-core machine, up to three worker threads may be created.  If a worker thread is not used for some time, it will be disposed of.
 
 }
 
@@ -76,16 +76,16 @@ dispatcher.Dispose();
 
 Code documents ([CodeDocument](xref:ActiproSoftware.Text.Implementation.CodeDocument) instances) have special features built into them such that when a text change occurs, they look at the [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) that is attached to the document, if any.  If the language has an [IParser](xref:ActiproSoftware.Text.Parsing.IParser) registered as a service, an [IParseRequest](xref:ActiproSoftware.Text.Parsing.IParseRequest) is automatically generated and sent to the [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) specified by the [AmbientParseRequestDispatcherProvider](xref:ActiproSoftware.Text.Parsing.AmbientParseRequestDispatcherProvider) to be queued for processing.
 
-> [!NOTE]
+> [!IMPORTANT]
 > As indicated above, if no ambient parse request dispatcher is configured, parsing operations will be performed in the main UI thread, possibly blocking it if the parsing operations take time to complete.
 
-All of the parse request generation occurs automatically, as long as a parser is found on the language.  The results of the parse operation are returned asynchronously to the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property, at which time the document's [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event fires.
+All of the parse request generation occurs automatically, as long as a parser is found on the language.  The results of the parse operation are returned asynchronously to the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property, at which time the document's [ParseDataChanged](xref:ActiproSoftware.Text.ICodeDocument.ParseDataChanged) event is raised.
 
 Note that [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) implements [IParseTarget](xref:ActiproSoftware.Text.Parsing.IParseTarget), so any code document is capable of receiving parsing operation results.  That is how [CodeDocument](xref:ActiproSoftware.Text.Implementation.CodeDocument) knows when to update its [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property.
 
 ## Manually Triggering CodeDocument Parse Requests
 
-Sometimes there are situations where a configuration option that the parser uses has changed but the text of an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) has not been modified.  Thus the parse data for the document may no longer be valid.
+Sometimes there are situations where a configuration option that the parser uses has changed but the text of an [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument) has not been modified.  Thus, the parse data for the document may no longer be valid.
 
 The [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[QueueParseRequest](xref:ActiproSoftware.Text.ICodeDocument.QueueParseRequest*) method can be called in this scenario to manually queue up a parse request for the document.  Once the parse request is processed, the document's [ParseData](xref:ActiproSoftware.Text.ICodeDocument.ParseData) property will be updated.  As discussed above, like all parsing operations, this process may be asynchronous.
 
@@ -154,7 +154,7 @@ The [Tag](xref:ActiproSoftware.Text.Parsing.IParseRequest.Tag) property allows f
 
 ## Other Parse Request Dispatcher Features
 
-Generally it is not necessary to call any additional methods on [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) since the entire queue and dispatch processing is mostly automated for your convenience.  However there are a number of useful members on the dispatcher that can tell you what it is currently doing, etc.
+Generally it is not necessary to call any additional methods on [IParseRequestDispatcher](xref:ActiproSoftware.Text.Parsing.IParseRequestDispatcher) since the entire queue and dispatch processing is mostly automated for your convenience.  However, there are a number of useful members on the dispatcher that can tell you what it is currently doing, etc.
 
 Many of the methods on the dispatcher deal with parse hash keys, which can be retrieved from the [IParseRequest](xref:ActiproSoftware.Text.Parsing.IParseRequest).[ParseHashKey](xref:ActiproSoftware.Text.Parsing.IParseRequest.ParseHashKey) property.
 

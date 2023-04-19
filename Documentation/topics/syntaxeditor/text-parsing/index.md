@@ -5,7 +5,7 @@ order: 1
 ---
 # Overview
 
-The text and parsing framework included with this product provide for complete separation from the user interface and can be reused across mutiple platforms.
+The text and parsing framework included with this product provide for complete separation from the user interface and can be reused across multiple platforms.
 
 ## Core Text Features
 

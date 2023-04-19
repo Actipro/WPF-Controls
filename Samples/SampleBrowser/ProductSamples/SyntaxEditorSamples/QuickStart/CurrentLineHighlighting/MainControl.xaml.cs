@@ -29,7 +29,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CurrentL
 			DisplayItemClassificationTypeProvider provider = new DisplayItemClassificationTypeProvider();
 			provider.RegisterAll();
 
-			// Get the syle for the current line and bind it to the edit box
+			// Get the style for the current line and bind it to the edit box
 			IHighlightingStyle style = AmbientHighlightingStyleRegistry.Instance[provider.CurrentLine];
 			Binding valueBinding = new Binding();
 			valueBinding.Source = style;

@@ -27,7 +27,7 @@ See the [Line Terminators](line-terminators.md) topic for more information.
 
 ## Snapshot Translation
 
-Offsets and offset ranges can be translated from one snapshot to another using a feature called snapshot translation.  Snapshots are immutable views of a document and are able to determine the changes made between any two snapshots for the same document.  This allows for the locating of a certain offset or range of text in the current snapshot based on some offset/range created using an older snapshot, even with mutiple document changes being made in between the two snapshots.
+Offsets and offset ranges can be translated from one snapshot to another using a feature called snapshot translation.  Snapshots are immutable views of a document and are able to determine the changes made between any two snapshots for the same document.  This allows for the locating of a certain offset or range of text in the current snapshot based on some offset/range created using an older snapshot, even with multiple document changes being made in between the two snapshots.
 
 See the [Snapshot Translation](snapshot-translation.md) topic for more information.
 

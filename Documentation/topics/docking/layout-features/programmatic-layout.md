@@ -32,7 +32,7 @@ For example, this code shows a `SplitContainer` with two child elements, therefo
 ...
 ```
 
-This code can be used to evenly distribute the available space between the two elemnents in the above example:
+This code can be used to evenly distribute the available space between the two elements in the above example:
 
 ```csharp
 splitContainer.ResizeSlots();
@@ -44,20 +44,20 @@ This code can be used to give the first element twice as much space as the secon
 splitContainer.ResizeSlots(2, 1);
 ```
 
-The only restriction on the ratios passed is that they be greater than `0`.  If there are more ratios than there are slots, then the extra ratios will be ignored.  If there are more slots than there are ratios, then the last ratio will be repeated for the remaining slots.  As a result, passing a single ratio is equivalent to not passing any ratios, since all the slots will share the same ratio.
+The only restriction on the ratios passed is that they are greater than `0`.  If there are more ratios than there are slots, then the extra ratios will be ignored.  If there are more slots than there are ratios, then the last ratio will be repeated for the remaining slots.  As a result, passing a single ratio is equivalent to not passing any ratios, since all the slots will share the same ratio.
 
-There is no way to indicate that one slot should use star ('\*') sizing.  Instead, take into account the current size of the split container and adjust the ratios passed to the [ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method to get child controls into their desired sizes.
+There is no way to indicate that one slot should use star (`*`) sizing.  Instead, take into account the current size of the split container and adjust the ratios passed to the [ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method to get child controls into their desired sizes.
 
 The above code shows how to call the [ResizeSlots](xref:@ActiproUIRoot.Controls.Docking.SplitContainer.ResizeSlots*) method, but does not illustrate how the reference to the [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) was obtained.
 
-> [!NOTE]
-> You should never used XAML name references to obtain a specific `SplitContainer`, as these elements are created and destroyed dynamically as changes are made to the docking layout.
+> [!WARNING]
+> You should never use XAML `x:Name` references to obtain a specific `SplitContainer`, as these elements are created and destroyed dynamically as changes are made to the docking layout.
 
 The `VisualTreeHelper` and [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) can be used to locate the various [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) elements currently used. [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) offers several helper methods for walking up and down the visual tree.
 
 @if (wpf) {
 
-See the [Media](../../shared/windows-media.md) topic for more information on [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended). 
+See the [Media](../../shared/windows-media.md) topic for more information on [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended).
 
 }
 

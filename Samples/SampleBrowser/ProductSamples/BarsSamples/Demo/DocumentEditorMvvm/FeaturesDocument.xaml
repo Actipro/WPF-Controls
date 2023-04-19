@@ -1,0 +1,234 @@
+<sampleBrowser:SimpleFlowDocument Background="#ffffff" Foreground="#000000"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:barsCommon="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	FontFamily="{x:Static barsCommon:FontSettings.DefaultFontFamily}"
+	FontSize="{x:Static barsCommon:FontSettings.DefaultWpfFontSize}"
+	>
+	<sampleBrowser:SimpleFlowDocument.Resources>
+
+		<Style TargetType="Paragraph">
+			<Setter Property="Margin" Value="0,7" />
+		</Style>
+
+		<Style x:Key="TitleTextElementStyle" TargetType="TextElement">
+			<Setter Property="FontFamily" Value="{x:Static barsCommon:FontSettings.HeadingFontFamily}"/>
+			<Setter Property="FontSize" Value="{x:Static barsCommon:FontSettings.TitleWpfFontSize}"/>
+		</Style>
+
+		<Style x:Key="SubtitleTextElementStyle" TargetType="TextElement">
+			<Setter Property="FontFamily" Value="{x:Static barsCommon:FontSettings.DefaultFontFamily}"/>
+			<Setter Property="FontSize" Value="{x:Static barsCommon:FontSettings.DefaultWpfFontSize}"/>
+			<Setter Property="Foreground" Value="#5a5a5a"/>
+		</Style>
+
+		<Style x:Key="Heading1TextElementStyle" TargetType="Block">
+			<Setter Property="FontFamily" Value="{x:Static barsCommon:FontSettings.HeadingFontFamily}"/>
+			<Setter Property="FontSize" Value="{x:Static barsCommon:FontSettings.Heading1WpfFontSize}"/>
+			<Setter Property="Foreground" Value="#2f5496"/>
+			<Setter Property="Margin" Value="0,25,0,0"/>
+		</Style>
+
+		<Style x:Key="Heading2TextElementStyle" TargetType="Block">
+			<Setter Property="FontFamily" Value="{x:Static barsCommon:FontSettings.HeadingFontFamily}"/>
+			<Setter Property="FontSize" Value="{x:Static barsCommon:FontSettings.Heading2WpfFontSize}"/>
+			<Setter Property="Foreground" Value="#2f5496"/>
+			<Setter Property="Margin" Value="0,15,0,0"/>
+		</Style>
+
+	</sampleBrowser:SimpleFlowDocument.Resources>
+
+	<Paragraph Margin="0">
+		<Figure Width="200" Height="45" Margin="0,20,0,0">
+			<BlockUIContainer>
+				<shared:ActiproLogo>
+					<shared:ActiproLogo.LayoutTransform>
+						<ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+					</shared:ActiproLogo.LayoutTransform>
+					<shared:ActiproLogo.RenderTransform>
+						<TranslateTransform Y="-10" />
+					</shared:ActiproLogo.RenderTransform>
+				</shared:ActiproLogo>
+			</BlockUIContainer>
+		</Figure>
+	</Paragraph>
+	<Paragraph Style="{StaticResource TitleTextElementStyle}" Margin="0">
+		Actipro Bars
+		<Span Style="{StaticResource SubtitleTextElementStyle}">for WPF</Span>
+	</Paragraph>
+	<Paragraph>
+		Actipro Bars contains a comprehensive implementation of an Office-like ribbon user interface for WPF applications,
+		including its modern fluent design and ability to create content-rich galleries.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading1TextElementStyle}">
+		Features at a Glance
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Modern Fluent Design
+	</Paragraph>
+	<Paragraph>
+		The ribbon implements the modern ribbon features found in Office applications and is built to render a similar appearance.
+		Subtle fluent animations are used throughout the ribbon to provide an engaging experience to the end user.
+		Ribbon is extremely flexible and can switch from the larger Classic layout mode that is intended for applications with many controls,
+		to a newer Simplified layout mode that has a single row of child controls.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Dynamic Control Layouts
+	</Paragraph>
+	<Paragraph>
+		Actipro's Ribbon control has the most robust layout code found in any product of its type... and it's fast too!
+		All the controls included with Bars support multiple variant styles, and can be displayed in various stacks or rows of items within the ribbon.
+		As the ribbon is resized, you designate how groups and their child controls move through a sequence of progressively smaller variants to fill available width in an optimal way.
+		Actipro's ribbon layout features allow you to mimic the complex layout behavior found in Office.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Numerous Built-In Controls
+	</Paragraph>
+	<Paragraph>
+		Bars includes many advanced controls that can be used both inside and outside of a ribbon or toolbar, such as
+		buttons (normal, toggle, popup, split, split/toggle), checkboxes, galleries, comboboxes, textboxes, and more.
+		There are even controls indended for exclusive use in menus that match the functionality found in the main ribbon/toolbar controls.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		In-Ribbon and Menu Galleries
+	</Paragraph>
+	<Paragraph>
+		Galleries are controls that are designed to present a choice to the end user visually.
+		Galleries are often used to render things like styles, colors, underlines, bullets, etc. that may be applied to a document.
+		Both in-ribbon and menu galleries are included with Bars.
+		In-ribbon galleries always show items within a parent group, and can optionally scale their width to show items based on the available width.
+		Any control that has a popup menu (such as a popup button, split button, in-ribbon gallery, or menu item) can have a menu gallery on it, allowing galleries to even be used in toolbars.
+		Menu galleries support categorization, filtering, and popup resizing.
+		Any gallery item can be rendered via templates or custom drawn via code.
+		Gallery items support selection tracking and live preview as well.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Gallery Examples
+	</Paragraph>
+	<Paragraph>
+		The Bars samples demonstrate many usage scenarios for galleries:
+		font family, font size, color, symbol, text style, border, bullet, line spacing, numbering, shape, underline, and more.
+		Some of the gallery examples show various ways of providing advanced color selection, including auto-generation of color shades.
+		And several gallery examples show live preview features where hovering over a gallery item temporarily applies its result so
+		the end user can see the outcome of selecting the gallery item prior to actually choosing it.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Advanced Menus
+	</Paragraph>
+	<Paragraph>
+		The menus used in Bars controls are very flexible in the functionality that can be used.
+		Pre-built menu item controls are included that support basic menu items, popup menu items, split menu items,
+		menu headings, and content-rich menu galleries.
+		Other external controls like textboxes can be injected into menus and are wrapped by a special control that aligns them with other menu items properly.
+		All of these menu items can be used in any Bars control that has a menu popup, and even in context menus.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Backstage / Application Menu / Recent Documents Management
+	</Paragraph>
+	<Paragraph>
+		When the application button is clicked, it can display a backstage or a traditional application menu.
+		These menus are where application-level buttons and menu items are generally located.
+		The backstage is a large tab control that displays over the entire window.
+		It contains multiple tabs and can host buttons or separators in the tab area.
+		Its tabs' content can be anything, including a recent documents display control that comes with Bars and supports pinning capabilities.
+		The application menu on the other hand is a more traditional popup menu with optional footer and additional side content.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Quick Access ToolBar
+	</Paragraph>
+	<Paragraph>
+		The Quick Access ToolBar (QAT) may be located above the ribbon, below the ribbon or hidden completely.
+		It is always visible no matter which ribbon tab is selected.
+		The QAT has a customize menu to which you may add custom items, and will overflow items to a popup when space is limited.
+		Any end user customizations of the QAT can be serialized and restored in the next application session.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Ribbon Minimization
+	</Paragraph>
+	<Paragraph>
+		The ribbon may be minimized to increase the screen real estate.  
+		When in minimized mode, only the ribbon's tabs are visible.  
+		A tab may be clicked to display its groups in a popup.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Key Tips and Screen Tips
+	</Paragraph>
+	<Paragraph>
+		Ribbon implements key tips that provide easy keyboard access to any control on the ribbon or in its popups.
+		Ribbon also implements screen tips, which are enhanced tool tips that use standardized layouts to show details about a control and have contextual placement.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Contextual Tab Groups
+	</Paragraph>
+	<Paragraph>
+		Contextual tab groups may be displayed when the context of the selection is appropriate for them to be visible.
+		For instance a "Picture Tools" contextual tab group's tabs may become active when a picture is selected in a document.
+	</Paragraph>
+
+	<Paragraph Style="{StaticResource Heading2TextElementStyle}">
+		Complete MVVM Support
+	</Paragraph>
+	<Paragraph>
+		The entire ribbon control hierarchy has been built from the ground up with WPF best practices in mind that allow
+		all controls to be created and managed using MVVM techniques.
+		In fact, due to the complexity of a ribbon hierarchy, it's often recommended to build the ribbon from view models
+		instead of defining it all in XAML, which also is an option.
+		An open source companion MVVM library is available that provides a full set of view models and related UI bindings to
+		easily configure and manage your ribbons, toolbars, and menus.
+	</Paragraph>
+
+
+	<Paragraph Style="{StaticResource Heading1TextElementStyle}">
+		Some Things to Try in This Demo...
+	</Paragraph>
+	<List>
+		<ListItem>
+			<Paragraph>Resize the window width to see control layouts scale through their variants.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Use the ribbon's options button on its lower right to toggle between Classic and Simplified layout modes.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select some text in this document and hover over font family/size combobox items to see a live preview.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Select some text in this document and hover over text highlight color or font color gallery items to see a live preview.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Show the underline split button menu to see a gallery with vertical resizing and custom rendered items.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Show the bullets split button menu to see a gallery with categorization and dual resizing.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Press and release the Alt key to enter key tip mode.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Use context menus to add controls to and remove controls from to the Quick Access Toolbar (QAT).</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Look at all the Home and Insert tabs to see the variety of built-in controls that can be used, including those on menus.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Hover over various controls to see their screen tips.</Paragraph>
+		</ListItem>
+		<ListItem>
+			<Paragraph>Check out the recent documents list control on the Backstage's Open tab, accessible via the File application button.</Paragraph>
+		</ListItem>
+	</List>
+
+</sampleBrowser:SimpleFlowDocument>

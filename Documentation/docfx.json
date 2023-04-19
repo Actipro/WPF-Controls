@@ -3,50 +3,50 @@
 		{
 			"src": [
 				{
-					"src": "../../Source/bin/ReferenceAssemblies",
+					"src": "../../Deploy/Build/AssembliesDocFX",
 					"files": [
+						// WPF reference assemblies
 						"PresentationCore.dll",
 						"PresentationFramework.dll",
 						"System.Xaml.dll",
-						"WindowsBase.dll"
-					]
-				},
-				{
-					"src": "../../Source/bin/Release",
-					"files": [
-						"net452/Antlr3.Runtime.dll",
-						"net452/Irony.dll",
-						"net452/ActiproSoftware.Shared.Wpf.dll",
-						"net452/ActiproSoftware.BarCode.Wpf.dll",
-						"net452/ActiproSoftware.Charts.Wpf.dll",
-						"net452/ActiproSoftware.DataGrid.Contrib.Wpf.dll",
-						"net452/ActiproSoftware.Docking.Wpf.dll",
-						"net452/ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll",
-						"net452/ActiproSoftware.Editors.Interop.Grids.Wpf.dll",
-						"net452/ActiproSoftware.Editors.Wpf.dll",
-						"net452/ActiproSoftware.Gauge.Wpf.dll",
-						"net452/ActiproSoftware.Grids.Wpf.dll",
-						"net452/ActiproSoftware.MicroCharts.Wpf.dll",
-						"net452/ActiproSoftware.Navigation.Wpf.dll",
-						"net452/ActiproSoftware.Ribbon.Wpf.dll",
-						"net452/ActiproSoftware.Shell.Wpf.dll",
-						"net452/ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll",
-						"net452/ActiproSoftware.SyntaxEditor.Addons.JavaScript.Wpf.dll",
-						"net452/ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll",
-						"net452/ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll",
-						"net452/ActiproSoftware.SyntaxEditor.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.Antlr.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.DotNet.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.Irony.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.JavaScript.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.Python.Wpf.dll",
-						"net452/ActiproSoftware.Text.Addons.Xml.Wpf.dll",
-						"net452/ActiproSoftware.Text.LLParser.Wpf.dll",
-						"net452/ActiproSoftware.Text.Wpf.dll",
-						"net452/ActiproSoftware.Themes.Aero.Wpf.dll",
-						"net452/ActiproSoftware.Views.Wpf.dll",
-						"net452/ActiproSoftware.Wizard.Wpf.dll"
+						"WindowsBase.dll",
+						// Additional assemblies
+						"Antlr3.Runtime.dll",
+						"Irony.dll",
+						// Actipro assemblies
+						"ActiproSoftware.Shared.Wpf.dll",
+						"ActiproSoftware.BarCode.Wpf.dll",
+						"ActiproSoftware.Bars.Wpf.dll",
+						"ActiproSoftware.Bars.Mvvm.Wpf.dll",
+						"ActiproSoftware.Charts.Wpf.dll",
+						"ActiproSoftware.DataGrid.Contrib.Wpf.dll",
+						"ActiproSoftware.Docking.Wpf.dll",
+						"ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll",
+						"ActiproSoftware.Editors.Interop.Grids.Wpf.dll",
+						"ActiproSoftware.Editors.Wpf.dll",
+						"ActiproSoftware.Gauge.Wpf.dll",
+						"ActiproSoftware.Grids.Wpf.dll",
+						"ActiproSoftware.MicroCharts.Wpf.dll",
+						"ActiproSoftware.Navigation.Wpf.dll",
+						"ActiproSoftware.Ribbon.Wpf.dll",
+						"ActiproSoftware.Shell.Wpf.dll",
+						"ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll",
+						"ActiproSoftware.SyntaxEditor.Addons.JavaScript.Wpf.dll",
+						"ActiproSoftware.SyntaxEditor.Addons.Python.Wpf.dll",
+						"ActiproSoftware.SyntaxEditor.Addons.Xml.Wpf.dll",
+						"ActiproSoftware.SyntaxEditor.Wpf.dll",
+						"ActiproSoftware.Text.Addons.Antlr.Wpf.dll",
+						"ActiproSoftware.Text.Addons.DotNet.Wpf.dll",
+						"ActiproSoftware.Text.Addons.DotNet.Roslyn.Wpf.dll",
+						"ActiproSoftware.Text.Addons.Irony.Wpf.dll",
+						"ActiproSoftware.Text.Addons.JavaScript.Wpf.dll",
+						"ActiproSoftware.Text.Addons.Python.Wpf.dll",
+						"ActiproSoftware.Text.Addons.Xml.Wpf.dll",
+						"ActiproSoftware.Text.LLParser.Wpf.dll",
+						"ActiproSoftware.Text.Wpf.dll",
+						"ActiproSoftware.Themes.Aero.Wpf.dll",
+						"ActiproSoftware.Views.Wpf.dll",
+						"ActiproSoftware.Wizard.Wpf.dll"
 						// "**.csproj"
 					]
 				}
@@ -74,7 +74,7 @@
 					"**.png",
 					"**.gif",
 					"**.jpg"
-				],
+				]
 			}
 		],
 		"overwrite": [
@@ -96,7 +96,7 @@
 			"_docsCopyrightYears": "1999-2023",
 			"_docsProductHref": "https://www.actiprosoftware.com/products/controls/wpf",
 			"_docsProductName": "WPF Controls",
-			"_docsProductVersion": "22.1",
+			"_docsProductVersion": "23.1",
 			"_disableContribution": true,
 			"_enableNewTab": true,
 			"_gitContribute": {

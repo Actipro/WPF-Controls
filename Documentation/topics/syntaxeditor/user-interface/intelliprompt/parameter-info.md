@@ -60,13 +60,13 @@ When implementing a content provider for an [ISignatureItem](xref:@ActiproUIRoot
 
 The [IParameterizedContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterizedContentProvider) interface defines a [ParameterIndex](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterizedContentProvider.ParameterIndex) property that is a nullable integer, indicating the current parameter index, if known.  The content provider implementation can examine that property and provide some method of focusing the end user's attention on it, such as bolding the parameter name if a [HtmlContentProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.HtmlContentProvider) is used behind the scenes.
 
-The parameter index can be set by code described in the Managing Parameter Info Sessions topic above.
+The parameter index can be set by code described in the "Managing Parameter Info Sessions" topic above.
 
 @if (wpf) {
 
 ## Handling Link Clicks
 
-When links are present in quick info tip content, the [IParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession.RequestNavigate) event will fire if a link is clicked, requesting that you take some action.
+When links are present in quick info tip content, the [IParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession).[RequestNavigate](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession.RequestNavigate) event will be raised if a link is clicked, requesting that you take some action.
 
 }
 
@@ -76,7 +76,7 @@ The [IParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPro
 
 ## Arrow Key Selection
 
-When two or more signatures are displayed in a parameter info tip, arrow buttons appear in the tip's UI that allow for toggling between which one is selected.  The [IParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession).[IsArrowKeySelectionEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession.IsArrowKeySelectionEnabled) property determines whether the up and down arrow keys also can toggle between the selected signature.
+When two or more signatures are displayed in a parameter info tip, arrow buttons appear in the tip's UI that allow for toggling between which one is selected.  The [IParameterInfoSession](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession).[IsArrowKeySelectionEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IParameterInfoSession.IsArrowKeySelectionEnabled) property determines whether the <kbd>Up Arrow</kbd> and <kbd>Down Arrow</kbd> keys also can toggle between the selected signature.
 
 ## Programmatically Requesting Parameter Info
 

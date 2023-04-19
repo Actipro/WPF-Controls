@@ -1,0 +1,104 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenus.SampleXamlControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+			 xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenus"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+			 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<bars:RibbonContainerPanel>
+
+		<bars:Ribbon x:Name="ribbon" LayoutMode="Simplified" UserInterfaceDensity="Spacious"
+					 IsApplicationButtonVisible="False" QuickAccessToolBarMode="Hidden" IsCollapsible="False"
+					 MenuOpening="OnRibbonMenuOpening">
+
+			<bars:RibbonTabItem Key="XamlSamples" Label="XAML Samples">
+
+				<bars:RibbonGroup Key="Sample" CanAutoCollapse="False">
+					<bars:BarSplitButton Key="{x:Static local:BarControlKeys.OpenDocument}" Command="ApplicationCommands.Open"
+										 LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png"
+										 ToolBarItemVariantBehavior="All"
+										 ToolTip="The recent documents in this popup menu are dynamically generated.">
+						<bars:BarSplitButton.Items>
+							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
+						</bars:BarSplitButton.Items>
+					</bars:BarSplitButton>
+					<bars:BarPopupButton Key="{x:Static local:BarControlKeys.DynamicPopupButton}" Label="Popup Button with Dynamic Menu"
+										 LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
+										 ToolBarItemVariantBehavior="All"
+										 ToolTip="The menu of this popup button is dynamically generated when the popup is opened.">
+						<bars:BarPopupButton.Items>
+							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
+						</bars:BarPopupButton.Items>
+					</bars:BarPopupButton>
+				</bars:RibbonGroup>
+
+				<bars:RibbonGroup Key="SimplifiedLayoutOverflow" CanAutoCollapse="False">
+					<bars:BarPopupButton Key="{x:Static local:BarControlKeys.DynamicPopupOverflowButton}" Label="Popup Button Overflowed in Simplified Layout"
+										 LargeImageSource="/Images/Icons/QuickStartGreen32.png" SmallImageSource="/Images/Icons/QuickStartGreen16.png"
+										 ToolBarItemCollapseBehavior="Always"
+										 ToolTip="This button overflows as a standard menu when using simplified layout and menu items are dynamically generated when opened.">
+						<bars:BarPopupButton.Items>
+							<bars:BarPopupButton Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
+						</bars:BarPopupButton.Items>
+					</bars:BarPopupButton>
+				</bars:RibbonGroup>
+
+			</bars:RibbonTabItem>
+
+		</bars:Ribbon>
+
+		<DockPanel Margin="0,10,10,10">
+
+			<bars:StandaloneToolBar DockPanel.Dock="Left" Orientation="Vertical" BorderThickness="0" 
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+									MenuOpening="OnStandaloneToolBarMenuOpening">
+				<bars:StandaloneToolBar.Items>
+					<bars:BarPopupButton Key="{x:Static local:BarControlKeys.DynamicStandaloneToolBarButton}" Label="Popup Button with Dynamic Menu"
+										 SmallImageSource="/Images/Icons/QuickStart16.png"
+										 ToolTip="The menu of this popup button is dynamically generated when the popup is opened."/>
+				</bars:StandaloneToolBar.Items>
+			</bars:StandaloneToolBar>
+
+			<TextBox x:Name="textBox" Padding="10" BorderThickness="1" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" IsReadOnlyCaretVisible="True"
+					 Text="The ribbon controls above, the standalone toolbar on the left, and this control's context menu define menus that are dynamically generated when they are opened.">
+				<shared:HintProperties.Hint>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon defined with XAML" />
+				</shared:HintProperties.Hint>
+				
+				<TextBox.ContextMenu>
+					<!-- 
+						The context menu must have a RootBarControl set to either a Ribbon or StandaloneToolBar so
+						the MenuOpening event can be raised that allows for customizing the popup menu. See the MVVM
+						sample for an example of setting the property from code-behind instead.
+					-->
+					<bars:BarContextMenu bars:BarControlService.RootBarControl="{x:Reference ribbon}">
+
+						<bars:BarSplitMenuItem Key="{x:Static local:BarControlKeys.OpenDocument}" Command="ApplicationCommands.Open"
+											   LargeImageSource="/Images/Icons/Open32.png" SmallImageSource="/Images/Icons/Open16.png"
+											   ToolTip="The recent documents in this popup menu are dynamically generated.">
+							<bars:BarSplitMenuItem>
+								<bars:BarMenuItem Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
+							</bars:BarSplitMenuItem>
+						</bars:BarSplitMenuItem>
+						<bars:BarMenuItem Key="{x:Static local:BarControlKeys.DynamicPopupButton}" Label="Popup Button with Dynamic Menu"
+										  LargeImageSource="/Images/Icons/QuickStart32.png" SmallImageSource="/Images/Icons/QuickStart16.png"
+										  ToolTip="The menu of this popup button is dynamically generated when the popup is opened.">
+							<bars:BarMenuItem.Items>
+								<bars:BarMenuItem Key="{x:Static local:BarControlKeys.PlaceholderChild}" />
+							</bars:BarMenuItem.Items>
+						</bars:BarMenuItem>
+						
+					</bars:BarContextMenu>
+				</TextBox.ContextMenu>
+				
+			</TextBox>
+		</DockPanel>
+
+	</bars:RibbonContainerPanel>
+
+</local:SampleControlBase>

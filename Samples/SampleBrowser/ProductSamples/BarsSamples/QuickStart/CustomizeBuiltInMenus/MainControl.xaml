@@ -1,0 +1,74 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.CustomizeBuiltInMenus.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.Common"
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	FocusManager.FocusedElement="{Binding ElementName=textBox}"
+	>
+
+	<!-- Sample Side Bar Content -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Actipro Ribbon auto-generates context menus for most of the controls in it.
+					The auto-generated menu contains items for toggling the visibility of the Quick Access Toolbar (QAT),
+					minimizing the ribbon, etc.
+					<LineBreak /><LineBreak />
+					However, many times it is useful to add custom menu items to a specific control, or a certain type of control.
+					You can achieve this programmatically by listening for the Ribbon.MenuOpening event and altering the pre-defined
+					menu for one or more controls.
+					<LineBreak /><LineBreak />
+					You also can customize the items on the QAT Customize button's menu, the Ribbon Options button, and the
+					overflow menus for tabs and groups when using the Simplified layout.
+					<LineBreak /><LineBreak />
+					Right-click anywhere in the in the Ribbon to see the system-generated context menu that has been programmatically
+					altered to add a custom menu item.
+					<LineBreak /><LineBreak />
+					Ribbon is designed so that even popup menu items can have context menus when you right-click on them.  Try it!
+					<LineBreak /><LineBreak />
+					Also, click the QAT Customize button or Ribbon Options to see how a custom item was inserted into that as well.
+					Change the layout to Simplified and click the overflow buttons to see custom items there, too.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelFullStyle}">
+
+		<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+			<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+				<bars:RibbonContainerPanel>
+
+					<!-- Ribbon Control -->
+					<!--
+						Use pre-defined view model for Ribbon configuration in this sample so that we reduce redundant code
+						that takes away from the focus of this sample
+					-->
+					<bars:Ribbon x:Name="ribbon"
+								 DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
+								 MenuOpening="OnRibbonMenuOpening" />
+
+					<!-- TextBox -->
+					<TextBox x:Name="textBox" Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True"
+							 ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+						<shared:HintProperties.Hint>
+							<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+									   TextWrapping="Wrap" Text="Right-click a Ribbon button or open any built-in menu and the details of the menu will be shown here" />
+						</shared:HintProperties.Hint>
+					</TextBox>
+					
+				</bars:RibbonContainerPanel>
+			</Border>
+		</shared:ShadowChrome>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

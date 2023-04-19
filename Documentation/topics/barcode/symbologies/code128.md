@@ -21,7 +21,7 @@ The following table gives an overview of the characteristics of the symbology.
 |-----|-----|
 | Implementation Class | [Code128Symbology](xref:@ActiproUIRoot.Controls.BarCode.Code128Symbology) |
 | Base Class | [LinearBarCodeSymbology](xref:@ActiproUIRoot.Controls.BarCode.LinearBarCodeSymbology) |
-| Related ValidationRule Class | [Code128ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code128ValidationRule) |
+| Related `ValidationRule` Class | [Code128ValidationRule](xref:@ActiproUIRoot.Controls.BarCode.ValidationRules.Code128ValidationRule) |
 | Encodable Characters | All lower 128 ASCII characters. |
 | Supports Checksum | Yes.  This symbology implementation auto-calculates and inserts a check character. |
 | Has Special Start/Stop Characters | No. |

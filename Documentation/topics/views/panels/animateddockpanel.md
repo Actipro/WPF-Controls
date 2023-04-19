@@ -16,7 +16,7 @@ This panel allows child elements to be positioned either horizontally or vertica
 
 Child elements are positioned or "docked" to a specified edge, and relative to other child elements.  The [AnimatedDockPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedDockPanel).[DockProperty](xref:@ActiproUIRoot.Controls.Views.AnimatedDockPanel.DockProperty) attached property is used to specify the edge to which the element should be docked.
 
-If two child elements are docked to the left side of the panel, the first element will be aligned with the left edge of the panel, while the second element will be aligned with the right edge of the first element.  As elements are docked, their allotted space is reserved and any remaining child elements will be docked around them.
+If two child elements are docked to the left side of the panel, the first element will be aligned with the left edge of the panel, while the second element will be aligned with the right edge of the first element.  As elements are docked, their allotted space is reserved, and any remaining child elements will be docked around them.
 
 Special handling can be applied to the last child element. It can either be set to fill any remaining space, which is the default behavior.  Alternatively, it can be docked like other elements. This behavior can be customized using the [AnimatedDockPanel](xref:@ActiproUIRoot.Controls.Views.AnimatedDockPanel).[LastChildFill](xref:@ActiproUIRoot.Controls.Views.AnimatedDockPanel.LastChildFill) property.  When `LastChildFill` is set to `true`, the `DockProperty` on the last element is ignored.
 

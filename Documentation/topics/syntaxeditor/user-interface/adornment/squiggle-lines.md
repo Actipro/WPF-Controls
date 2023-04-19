@@ -17,7 +17,7 @@ The built-in squiggle lines [adornment layer](adornment-layers.md) uses a [tag a
 
 *Squiggle lines showing a syntax error*
 
-The [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag) interface has a [ClassificationType](xref:ActiproSoftware.Text.Tagging.ISquiggleTag.ClassificationType) property that allows an [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to be set.  When left null, the squiggle line will be rendered in red.  If the classification type has a [highlighting style](../styles/highlighting-styles.md) mapped to it via the ambient [highlighting style registry](../styles/highlighting-style-registries.md), the foreground of the style will be used to render the squiggle line.
+The [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag) interface has a [ClassificationType](xref:ActiproSoftware.Text.Tagging.ISquiggleTag.ClassificationType) property that allows an [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to be set.  When left `null`, the squiggle line will be rendered in red.  If the classification type has a [highlighting style](../styles/highlighting-styles.md) mapped to it via the ambient [highlighting style registry](../styles/highlighting-style-registries.md), the foreground of the style will be used to render the squiggle line.
 
 ## Automated Squiggle Lines for Parse Errors
 

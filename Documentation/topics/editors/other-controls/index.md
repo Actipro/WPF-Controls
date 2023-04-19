@@ -32,7 +32,7 @@ This table shows the additional controls that are included in the product:
 
 ![Screenshot](../images/autocompletebox.png)
 
-The AutoCompleteBox control allows text entry and provides suggestions for auto-completion.  This kind of control is ideal for use in search query and quick launch kinds of scenarios.
+The `AutoCompleteBox` control allows text entry and provides suggestions for auto-completion.  This kind of control is ideal for use in search query and quick launch kinds of scenarios.
 
 </td>
 </tr>
@@ -92,7 +92,7 @@ Allows for the selection of an ISO currency.
 
 ![Screenshot](../images/enumlistbox-flags.png)
 
-Presents the values of an enumeration in a list box.  The control supports both flags and non-flags enums.
+Presents the values of an enumeration in a list box.  The control supports both flags and non-flags enumerations.
 
 </td>
 </tr>

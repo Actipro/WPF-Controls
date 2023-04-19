@@ -9,9 +9,9 @@ The [RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) control renders a portio
 
 ![Screenshot](../images/ringslice-intro.png)
 
-*Several RingSlice controls combined to create an appealing radial graph.*
+*Several RingSlice controls combined to create an appealing radial graph*
 
-Ring slice controls can be combined in many interesting ways within UI, including being used to represent the 'track' or value of a [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider), used to create segmented progress indicators, etc.
+Ring slice controls can be combined in many interesting ways within UI, including being used to represent the "track" (or value) of a [RadialSlider](xref:@ActiproUIRoot.Controls.RadialSlider), used to create segmented progress indicators, etc.
 
 ## Angles, Radius, and Thickness
 
@@ -19,7 +19,7 @@ The control renders a ring slice between two angles, specified in degrees, where
 
 ![Screenshot](../images/ringslice-progress-indicator.png)
 
-*Several RingSlice controls used to render a four-step circular progress indicator.*
+*Several RingSlice controls used to render a four-step circular progress indicator*
 
 The control also has two properties that control its radius and thickness.  The [Radius](xref:@ActiproUIRoot.Controls.RingSlice.Radius) property specifies the outer radius of the ring.  The `StrokeThickness` property specifies the thickness of the ring, extending inward from the outer radius.
 
@@ -28,7 +28,7 @@ The control also has two properties that control its radius and thickness.  The 
 
 ## Other Stroke Properties
 
-[RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) also supports all of the standard stroke properties found on a shape control.  This includes setting start/end/dash caps to achieve circular, triangle, etc. line ends, or setting properties to renders dashed lines.
+[RingSlice](xref:@ActiproUIRoot.Controls.RingSlice) also supports all of the standard stroke properties found on a shape control.  This includes setting start/end/dash caps to achieve circular, triangle, etc. line ends, or setting properties to render dashed lines.
 
 ## Entire Circle
 

@@ -5,7 +5,7 @@ order: 8
 ---
 # Documentation Comment Auto-Completer
 
-A documentation comment auto-completer is an object that can attempt to auto-generate stub documentation comments for a type or member when `'''` is typed by the end user, can auto-complete end tags, and can insert continuation delimiters when pressing `Enter` in a documentation comment.
+A documentation comment auto-completer is an object that can attempt to auto-generate stub documentation comments for a type or member when `'''` is typed by the end user, can auto-complete end tags, and can insert continuation delimiters when pressing <kbd>Enter</kbd> in a documentation comment.
 
 The [IDocumentationCommentAutoCompleter](xref:ActiproSoftware.Text.Languages.DotNet.IDocumentationCommentAutoCompleter) interface provides the base requirements for this functionality.  It is installed into a language as a "feature" language service.
 
@@ -17,7 +17,7 @@ Auto-generation of stub documentation comments is made when `'''` is typed by th
 
 When a `>` character is typed by the end user to end a documentation comment start tag, the appropriate end tag will be inserted as long as the [VBDocumentationCommentAutoCompleter](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBDocumentationCommentAutoCompleter).[IsEndTagCompletionEnabled](xref:ActiproSoftware.Text.Languages.DotNet.Implementation.DocumentationCommentAutoCompleterBase.IsEndTagCompletionEnabled) property is set to `true`.
 
-When the end user presses `Enter` while in a documentation comment, `'''` is added to the next line as long as the [VBDocumentationCommentAutoCompleter](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBDocumentationCommentAutoCompleter).[IsNewLineGenerationEnabled](xref:ActiproSoftware.Text.Languages.DotNet.Implementation.DocumentationCommentAutoCompleterBase.IsNewLineGenerationEnabled) property is set to `true`.
+When the end user presses <kbd>Enter</kbd> while in a documentation comment, `'''` is added to the next line as long as the [VBDocumentationCommentAutoCompleter](xref:ActiproSoftware.Text.Languages.VB.Implementation.VBDocumentationCommentAutoCompleter).[IsNewLineGenerationEnabled](xref:ActiproSoftware.Text.Languages.DotNet.Implementation.DocumentationCommentAutoCompleterBase.IsNewLineGenerationEnabled) property is set to `true`.
 
 ## Registering with a Syntax Language
 

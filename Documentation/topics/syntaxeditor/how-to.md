@@ -45,7 +45,7 @@ The [Undo History](text-parsing/advanced-text/undo-history.md) topic describes h
 
 ### How to obtain statistics for snapshot text or a string?
 
-The [Text Statstics](text-parsing/advanced-text/statistics.md) topic shows how to easy obtain a wealth of statistics about snapshot text or text within a `String`.
+The [Text Statistics](text-parsing/advanced-text/statistics.md) topic shows how to easy obtain a wealth of statistics about snapshot text or text within a `String`.
 
 ### How to export a snapshot's text to HTML or RTF?
 

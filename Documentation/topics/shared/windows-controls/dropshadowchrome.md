@@ -51,7 +51,7 @@ Gets or sets the `Thickness` of the drop shadow borders.  The default value is `
 </td>
 <td>
 
-Gets or sets the color of the drop shadow.  The default value is `#71000000`.
+Gets or sets the color of the drop shadow.  The default value is `"#71000000"`.
 
 </td>
 </tr>

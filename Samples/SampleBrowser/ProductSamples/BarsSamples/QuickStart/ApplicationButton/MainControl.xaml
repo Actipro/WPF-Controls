@@ -1,0 +1,134 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+    xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
+    xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	FocusManager.FocusedElement="{Binding ElementName=editor}"
+	>
+	
+	<!-- Sample Options and Description -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=appButton, Path=Label}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=appButton, Path=KeyTipText}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=topRibbon, Path=IsApplicationButtonVisible}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+			
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					By default the Application Button in Ribbon will display with the text "File" as its content, which is a string resource
+					that can be customized at app startup.
+					Alternatively, the RibbonApplicationButton.Label property can be set at run-time to change it. The top Ribbon in this
+					sample has Application Button Label and KeyTipText bound to the Sample Options above.
+					<LineBreak /><LineBreak />
+					RibbonApplicationButton uses text by default, but any content can be used. The bottom Ribbon in this sample shows a
+					RibbonApplicationButton whose content is set to an image.
+					<LineBreak /><LineBreak />
+					The Application Button can optionally be hidden, preventing access to the application menu.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelFullStyle}">
+
+			<shared:ShadowChrome Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+					
+						<!-- Ribbon Control with text Application Button content-->
+						<bars:Ribbon x:Name="topRibbon" QuickAccessToolBarMode="None" IsCollapsible="False">
+
+							<!-- Configure Default RibbonApplicationButton -->
+							<bars:Ribbon.ApplicationButtonContent>
+								<bars:RibbonApplicationButton x:Name="appButton" />
+							</bars:Ribbon.ApplicationButtonContent>
+
+							<bars:Ribbon.BackstageContent>
+								<bars:RibbonBackstage>
+									<bars:RibbonBackstageTabItem Key="Info" SmallImageSource="/Images/Icons/HomeMono16.png">
+										<TextBlock Margin="20" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">This Ribbon sample is only used to demonstrate using text labels as the Application Button content.</TextBlock>
+									</bars:RibbonBackstageTabItem>
+								</bars:RibbonBackstage>
+							</bars:Ribbon.BackstageContent>
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Document" Command="ApplicationCommands.Save" SmallImageSource="/Images/Icons/Save16.png" LargeImageSource="/Images/Icons/Save32.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+						</bars:Ribbon>
+
+						<TextBox x:Name="editor" Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with text for Application Button content" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+			<shared:ShadowChrome Margin="0,40,0,0" Elevation="16" ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacitySoftDoubleKey}}">
+				<Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}}"
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
+					<bars:RibbonContainerPanel Height="250">
+
+						<!-- Ribbon Control with custom icon for Application Button content -->
+						<bars:Ribbon x:Name="bottomRibbon" QuickAccessToolBarMode="None" IsCollapsible="False"
+									 IsApplicationButtonVisible="{Binding ElementName=topRibbon, Path=IsApplicationButtonVisible}">
+
+							<!-- Configure RibbonApplicationButton with Image Content -->
+							<bars:Ribbon.ApplicationButtonContent>
+								<bars:RibbonApplicationButton>
+									<bars:RibbonApplicationButton.Content>
+										<shared:DynamicImage Width="16" Height="16" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="DownOnly"
+															 Source="/Images/Icons/ApplicationButtonDefault16.png" SnapsToDevicePixels="True" />
+									</bars:RibbonApplicationButton.Content>
+								</bars:RibbonApplicationButton>
+							</bars:Ribbon.ApplicationButtonContent>
+							
+							<bars:Ribbon.BackstageContent>
+								<bars:RibbonBackstage>
+									<bars:RibbonBackstageTabItem Key="Info" SmallImageSource="/Images/Icons/HomeMono16.png">
+										<TextBlock Margin="20" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap">This Ribbon sample is only used to demonstrate using an icon as the Application Button content.</TextBlock>
+									</bars:RibbonBackstageTabItem>
+								</bars:RibbonBackstage>
+							</bars:Ribbon.BackstageContent>
+
+							<bars:RibbonTabItem Key="Home">
+								<bars:RibbonGroup Key="Documents">
+									<bars:BarButton Key="Open" Label="Open Document" Command="ApplicationCommands.Open" SmallImageSource="/Images/Icons/Open16.png" LargeImageSource="/Images/Icons/Open32.png" ToolBarItemVariantBehavior="All" />
+									<bars:BarButton Key="Save" Label="Save Document" Command="ApplicationCommands.Save" SmallImageSource="/Images/Icons/Save16.png" LargeImageSource="/Images/Icons/Save32.png" ToolBarItemVariantBehavior="All" />
+								</bars:RibbonGroup>
+							</bars:RibbonTabItem>
+
+						</bars:Ribbon>
+
+						<TextBox Margin="0,10,0,0" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True">
+							<shared:HintProperties.Hint>
+								<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon with custom icon for Application Button content" />
+							</shared:HintProperties.Hint>
+						</TextBox>
+
+					</bars:RibbonContainerPanel>
+				</Border>
+			</shared:ShadowChrome>
+
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

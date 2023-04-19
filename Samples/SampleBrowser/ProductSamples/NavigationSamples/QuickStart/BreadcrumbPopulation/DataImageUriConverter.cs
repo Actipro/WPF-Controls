@@ -37,13 +37,13 @@ namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.Breadcrumb
 		}
 
 		/// <summary>
-		/// This method always returns  <see langword="null"/> and should not be used.
+		/// This method always returns  <c>null</c> and should not be used.
 		/// </summary>
 		/// <param name="value">Not used.</param>
 		/// <param name="targetType">Not used.</param>
 		/// <param name="parameter">Not used.</param>
 		/// <param name="culture">Not used.</param>
-		/// <returns> <see langword="null"/>.</returns>
+		/// <returns> <c>null</c>.</returns>
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
 			return null;
 		}

@@ -34,7 +34,7 @@ The following table gives an overview of the capabilities of the control.
 | Has popup | Yes.  The items are displayed in the popup. |
 | Key tip access | Yes.  Set via the [KeyTipAccessText](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ComboBoxBase.KeyTipAccessText) property. |
 | Is key tip scope | No. |
-| Click event trigger | When the `Enter` key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
+| Click event trigger | When the <kbd>Enter</kbd> key is pressed while in the control, when a new `ComboBox` selection is made, or when the control loses focus and the value is changed. |
 | Supports use outside of Ribbon | Yes. |
 | Supports commands | Yes. |
 | Supports [ICheckableCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.ICheckableCommandParameter) | No. |
@@ -43,7 +43,7 @@ The following table gives an overview of the capabilities of the control.
 
 ## Managing the Selected Value
 
-This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default an [DoubleValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.DoubleValueCommandParameter) is assigned as the `CommandParameter` of the control.
+This control is designed to use the WPF [command model](../../command-model/index.md) to maintain the selected value of the control.  By default, an [DoubleValueCommandParameter](xref:@ActiproUIRoot.Controls.Ribbon.Input.DoubleValueCommandParameter) is assigned as the `CommandParameter` of the control.
 
 See the [Interaction with Value Controls](../../command-model/value-controls.md) topic for detailed information on using this command parameter to manage the control's value and support live preview.
 
@@ -73,9 +73,9 @@ This code shows how to prototype this control in XAML-only:
 <ribbon:ComboBox MinWidth="40" Label="Font Size" KeyTipAccessText="FS" />
 ```
 
-This code shows how to prototype this control in in XAML but by also using a ribbon command to set up its user interface:
+This code shows how to prototype this control in XAML but by also using a ribbon command to set up its user interface:
 
 ```xaml
-<ribbon:FontSizeComboBox MinWidth="40" 
+<ribbon:FontSizeComboBox MinWidth="40"
 	Command="sample:ApplicationCommands.FontSize" KeyTipAccessText="FS" />
 ```

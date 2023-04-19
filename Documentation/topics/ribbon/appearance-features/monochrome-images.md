@@ -13,7 +13,7 @@ Several Actipro themes require the use of white monochrome images in specific po
 
 *Ribbon in the OfficeColorfulIndigo theme*
 
-When one of the Office Colorful themes is used, such as OfficeColorfulIndigo above, any button images in the QAT or in the tab panel must be switched over to monochrome variations.  Ribbon has logic in it to automatically perform this conversion on a ribbon button with a supplied normal image.
+When one of the Office Colorful themes is used, such as OfficeColorfulIndigo above, any button images in the QAT must be switched over to monochrome variations.  Ribbon has logic in it to automatically perform this conversion on a ribbon button with a supplied normal image.
 
 See the [Themes' Getting Started](../../themes/getting-started.md) page for a complete list of themes.
 

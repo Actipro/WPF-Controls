@@ -11,7 +11,7 @@ Highlighting style registries provide a mapping from classification types to hig
 
 A [classification type](../../text-parsing/tagging/basic-concepts.md) (which could represent an identifier, comment, etc.) is a logical category that can be assigned to ranges of text via a [tagger](../../text-parsing/tagging/taggers.md) for the [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) type.  Classifications are made within the [text/parsing framework](../../text-parsing/index.md) and therefore are not tied to the user interface.
 
-A highlighting style registry takes these classification types and maps them to highlighting styles.  Highlighting styles define formatting options that should be applied to text.  Therefore via the use of highlighting style registries allows the editor to determine how classified text should be rendered.
+A highlighting style registry takes these classification types and maps them to highlighting styles.  Highlighting styles define formatting options that should be applied to text.  Therefore, via the use of highlighting style registries allows the editor to determine how classified text should be rendered.
 
 Highlighting style registries are implementations of the [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) interface.  The [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.Implementation.HighlightingStyleRegistry) class implements this interface.
 
@@ -445,15 +445,15 @@ Please see the samples for a QuickStart on how to create a highlighting styles o
 
 ## Importing Visual Studio Settings
 
-The [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) allows for importing of Visual Studio settings files (.vssettings) to theme SyntaxEditor.
+The [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) allows for importing of Visual Studio settings files (*\*.vssettings*) to theme SyntaxEditor.
 
 ![Screenshot](../../images/vs-settings.png)
 
-*SyntaxEditor after importing some custom VS settings*
+*SyntaxEditor after importing some custom Visual Studio settings*
 
 You can see in the screenshot above that everything from basic text to the line number margin is themed.  This is all done using the highlighting style registry and the special classification types in [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) (see above).  All of these colors, etc. can be configured by the end user as well.
 
-This code imports a .vssettings file (pre-loaded in a `Stream` variable named `stream`) to theme the control:
+This code imports a Visual Studio settings file (pre-loaded in a `Stream` variable named `stream`) to theme the control:
 
 ```csharp
 AmbientHighlightingStyleRegistry.Instance.ImportHighlightingStyles(stream);
@@ -461,7 +461,7 @@ AmbientHighlightingStyleRegistry.Instance.ImportHighlightingStyles(stream);
 
 ## Defining and Using an Alternate Default Registry
 
-In most cases, the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is the only registry you need to use.  However in some scenarios, you may wish to support more than one highlighting style registry, for instance one for text editors and one for console windows.  Each registry can have different style settings for its known classification types.  In these scenarios, you can use the ambient registry for text editors and can create a custom [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.Implementation.HighlightingStyleRegistry) to use for console windows.  In fact, any number of custom registries can be created as needed.
+In most cases, the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is the only registry you need to use.  However, in some scenarios, you may wish to support more than one highlighting style registry, for instance one for text editors and one for console windows.  Each registry can have different style settings for its known classification types.  In these scenarios, you can use the ambient registry for text editors and can create a custom [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.Implementation.HighlightingStyleRegistry) to use for console windows.  In fact, any number of custom registries can be created as needed.
 
 The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.HighlightingStyleRegistry) property is used to indicate which [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) to use when mapping classification types to [highlighting styles](highlighting-styles.md).  If the property is left unassigned, then the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) is used.
 
@@ -486,7 +486,7 @@ Another alternate registry can be designated for use in printer output only.  Se
 
 Although most of the time, the classification types used by classification taggers are registered into the [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) instance used by the editor, there are cases where you may wish to not add certain classification types into that registry.
 
-One possible scenario is if you wish to have some classification types that should not be included in the list of classification types that are configuarable by the end user.  Another is if your classification tagger just keeps its types private.
+One possible scenario is if you wish to have some classification types that should not be included in the list of classification types that are configurable by the end user.  Another is if your classification tagger just keeps its types private.
 
 In these scenarios, it's possible to have an [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) specify an alternate [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) to use.  This is done by having the [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) implement the [IHighlightingStyleRegistryProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistryProvider) interface.  The classification tag returns the custom registry via the [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistryProvider.HighlightingStyleRegistry) property.  Classification taggers can use the [StyleRegistryClassificationTag](xref:ActiproSoftware.Text.Tagging.Implementation.StyleRegistryClassificationTag) class for this purpose.  When the normal highlighting style registry is fine for use, use the smaller [ClassificationTag](xref:ActiproSoftware.Text.Tagging.Implementation.ClassificationTag) class instead.
 
@@ -494,7 +494,7 @@ In these scenarios, it's possible to have an [IClassificationTag](xref:ActiproSo
 
 ## Switching to a Dark Theme
 
-All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and the built-in language implementations are intended to be used on an editor with a light background.  However in cases where a dark application theme has been applied, these default styles will not be very appealing.
+All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and the built-in language implementations are intended to be used on an editor with a light background.  However, in cases where a dark application theme has been applied, these default styles will not be very appealing.
 
 The [Actipro Themes](../../../themes/index.md) system supports dark themes, such as Metro Dark.  You can attach to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentThemeChanged](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentThemeChanged) event to know when the current theme is changed by the end user.  In this case, add some detection for whether the current theme has changed from a light to dark, or dark to light one.  If a theme is changing but both the old and new themes were light background themes, nothing needs to be done.
 
@@ -512,15 +512,15 @@ new DisplayItemClassificationTypeProvider().RegisterAll();
 // NOTE: Possibly load up syntax language instances you use so their various customized styles get registered
 ```
 
-The above code unregisters all the registered classification tyeps from the ambient registry.  Then it re-registers the display item classification types and optionally loads up syntax languages that are used by the app so their customized classification types and styles get re-registered.  At this point, the registry is ready to go for light themes.
+The above code unregisters all the registered classification types from the ambient registry.  Then it re-registers the display item classification types and optionally loads up syntax languages that are used by the app so their customized classification types and styles get re-registered.  At this point, the registry is ready to go for light themes.
 
 If a dark theme is becoming active, there is some additional work to do.  Each of the styles that have been registered into the registry needs to be altered to look good on a dark background.
 
 One way to do this is to enumerate through the registered styles and update the foreground and background colors as appropriate.  You could have stored some pre-defined colors in a custom data structure and used that to know how to update the styles.
 
-Alternatively, you could use the feature described in the "Importing Visual Studio Settings" section above.  The Sample Browser shows an example of this.  It has a pre-defined "Dark.vssettings" file that includes a number of style definitions that render well on dark editor backgrounds.  After the code above is executed, this "Dark.vssettings" file is loaded and it will update the styles of any styles that have already been registered on the registry.
+Alternatively, you could use the feature described in the "Importing Visual Studio Settings" section above.  The Sample Browser shows an example of this.  It has a pre-defined *Dark.vssettings* file that includes a number of style definitions that render well on dark editor backgrounds.  After the code above is executed, this *Dark.vssettings* file is loaded and it will update the styles of any styles that have already been registered on the registry.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Don't forget to also update the static [CommonImageSourceProvider.DefaultImageSet](../intelliprompt/image-source-providers.md) property appropriately after a theme change to ensure the proper image theme is loaded for IntelliPrompt.
 
 }

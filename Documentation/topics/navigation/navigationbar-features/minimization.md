@@ -5,7 +5,7 @@ order: 5
 ---
 # Minimization
 
-The NavigationBar supports a minimized mode in which it is collapsed to be very narrow.  A button appears in the original content area of the NavigationBar and when clicked, a popup displays containing the content of the currently-selected pane.
+The `NavigationBar` supports a minimized mode in which it is collapsed to be very narrow.  A button appears in the original content area of the `NavigationBar` and when clicked, a popup is displayed with the content of the currently selected pane.
 
 ![Screenshot](../images/navigationbar-minimized-popup.gif)
 
@@ -168,11 +168,11 @@ The [NavigationPane](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane) has
 
 | Member | Description |
 |-----|-----|
-| [PopupPadding](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.PopupPadding) Property | Gets or sets the amount of padding added around the pane's content, when displayed in a popup.  The default value is `0,0,0,0`. |
+| [PopupPadding](xref:@ActiproUIRoot.Controls.Navigation.NavigationPane.PopupPadding) Property | Gets or sets the amount of padding added around the pane's content, when displayed in a popup.  The default value is `"0,0,0,0"`. |
 
 ## Preventing Minimization
 
-When the [IsMinimizable](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimizable) property is `false`, no minimize button will be visible in the NavigationBar's header.
+When the [IsMinimizable](xref:@ActiproUIRoot.Controls.Navigation.NavigationBar.IsMinimizable) property is `false`, no minimize button will be visible in the `NavigationBar`'s header.
 
 ## Changing the Popup Resize Mode
 

@@ -10,7 +10,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 		/// <summary>
 		/// Gets the difference at the specified zero-based index in the collection.
 		/// </summary>
-		/// <param name="index">The zero-baesd index.</param>
+		/// <param name="index">The zero-based index.</param>
 		/// <returns>The <see cref="IDifference"/> at the given <paramref name="index"/>.</returns>
 		IDifference this[int index] { get; }
 
