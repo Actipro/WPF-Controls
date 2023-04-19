@@ -17,7 +17,7 @@
 
 		// Use DisplayAttribute for the most control and localization support
 		//	Name		-> Label
-		//	Description	-> ToolTip		TODO: Description is not appearing in a tooltip for XAML samples
+		//	Description	-> ToolTip
 		//	GroupName	-> Category
 		[System.ComponentModel.DataAnnotations.Display(Order = 1, Name = "Display Item 1", Description = "Description of Display Item 1", GroupName = "Using DisplayAttribute")]
 		DisplayItem1,

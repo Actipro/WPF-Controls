@@ -69,6 +69,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="ActiproSoftware.Controls.WPF" Version="23.1.0" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars.Mvvm" Version="23.1.0" />
 		<PackageReference Include="ActiproSoftware.Controls.WPF.DataGrid.Contrib" Version="23.1.0" />
 		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="23.1.0" />
 		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.JavaScript" Version="23.1.0" />

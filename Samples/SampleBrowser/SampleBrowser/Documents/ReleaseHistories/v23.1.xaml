@@ -10,7 +10,7 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/23/2023 - Version 23.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">4/19/2023 - Version 23.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added a public beta of our new Bars product, which implements advanced fluent ribbons, toolbars, menus, and related controls." />
@@ -51,9 +51,14 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated the Docstring property of the reflection definition types to use a beautified version of the string instead of raw string literal text." />
 			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the WindowChrome template so its AdornerDecorator only surrounds the window's content area instead of the entire chrome, which prevents adorners from showing on top of WindowChrome overlays." />
+			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the EmbeddedTextBox.CanSelectAllOnFocus property that if enabled, selects all text when the control receives focus." />
+				<sampleBrowser:BulletContentControl Content="Added the ImageProviderRequest.Source property and updated DynamicImage to pass itself as the source when making requests." />
 				<sampleBrowser:BulletContentControl Content="Updated EmbeddedTextBox when read-only to disable the Paste command." />
 				<sampleBrowser:BulletContentControl Content="Updated ImageProvider to support adaptation of DrawingImages nested within other DrawingImages." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue with UIColor parsing decimal alpha values from colors in rgba() format on systems where the current culture recognizes the decimal point character (.) as the thousands separator." />
