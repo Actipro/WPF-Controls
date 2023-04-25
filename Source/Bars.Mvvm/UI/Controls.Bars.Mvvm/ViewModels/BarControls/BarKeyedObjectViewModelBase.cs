@@ -24,9 +24,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <param name="key">A string that uniquely identifies the control.</param>
 		protected BarKeyedObjectViewModelBase(string key) {
-			if (string.IsNullOrEmpty(key))
-				throw new ArgumentNullException(nameof(key));
-
 			this.key = key;
 		}
 
