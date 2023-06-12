@@ -7,7 +7,7 @@ order: 2
 
 QR Code is a 2D symbology, originally used in automotive manufacturing, that is now used worldwide for a wide variety of purposes.
 
-It is readable by most mobile devices with cameras and can be used to display text to a user, add a vCard contact to the user's device, open a URL, or compose a text message or e-mail.
+It is readable by most mobile devices with cameras and can be used to display text to a user, compose a message, and much more.
 
 ![Screenshot](../images/symbology-qr-code.png)
 

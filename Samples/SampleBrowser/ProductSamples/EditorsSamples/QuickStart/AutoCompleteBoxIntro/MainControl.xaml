@@ -60,6 +60,12 @@
 				<editors:AutoCompleteBox.DataFilter>
 					<editors:AutoCompleteBoxStringFilter />
 				</editors:AutoCompleteBox.DataFilter>
+				<editors:AutoCompleteBox.ItemContainerStyle>
+					<Style TargetType="editors:EmbeddedListBoxItem" BasedOn="{StaticResource {x:Type editors:EmbeddedListBoxItem}}">
+						<Setter Property="AutomationProperties.Name" Value="{Binding FullName, Mode=OneWay}" />
+						<Setter Property="AutomationProperties.HelpText" Value="{Binding Position, Mode=OneWay}" />
+					</Style>
+				</editors:AutoCompleteBox.ItemContainerStyle>
 				<editors:AutoCompleteBox.ItemTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">

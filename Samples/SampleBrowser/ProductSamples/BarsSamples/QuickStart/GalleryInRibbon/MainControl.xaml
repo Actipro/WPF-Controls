@@ -22,7 +22,7 @@
 				<sampleBrowser:SampleOptionsPropertyGrid>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=UseAccentedItemBorder}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=ItemSpacing}">
-						<gridseditors:Int32PropertyEditor Minimum="0" Maximum="20" />
+						<gridseditors:Int32PropertyEditor Minimum="3" Maximum="6" />
 					</grids:PropertyModel>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, Source={StaticResource SampleOptions}, Path=MinMediumRibbonColumnCount}">
 						<gridseditors:Int32PropertyEditor Minimum="1" Maximum="50" />

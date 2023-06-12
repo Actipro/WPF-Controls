@@ -55,11 +55,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public RibbonGroupViewModel(string key, string label, string collapsedButtonKeyTipText)
 			: base(key) {
 
-			this.label = label ?? LabelGenerator.FromKey(key);
+			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
 
 			// By convention, the key tips for a collapsed RibbonGroup should start with "Z"
 			if (collapsedButtonKeyTipText is null) {
-				collapsedButtonKeyTipText = KeyTipTextGenerator.FromLabel(this.label);
+				collapsedButtonKeyTipText = BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 				if (!string.IsNullOrWhiteSpace(collapsedButtonKeyTipText))
 					collapsedButtonKeyTipText = "Z" + collapsedButtonKeyTipText;
 			}

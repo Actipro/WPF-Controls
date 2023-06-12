@@ -144,7 +144,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public BarGalleryViewModel(string key, string label, string keyTipText, ICommand command, IEnumerable items)
 			: base(key, label, command) {
 
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.Label);
+			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.Label);
 			this.items = items;
 		}
 		

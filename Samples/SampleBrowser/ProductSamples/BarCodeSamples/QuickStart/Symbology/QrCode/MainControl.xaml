@@ -61,7 +61,7 @@
 					<barCode:BarCode.LayoutTransform>
 						<ScaleTransform ScaleX="{Binding ElementName=barCode, Path=(themes:ThemeProperties.ZoomLevel)}" ScaleY="{Binding ElementName=barCode, Path=(themes:ThemeProperties.ZoomLevel)}" />
 					</barCode:BarCode.LayoutTransform>
-					<barCode:QrCodeSymbology x:Name="symbology" Value="http://www.actiprosoftware.com/" />
+					<barCode:QrCodeSymbology x:Name="symbology" Value="This is an example QR Code" />
 				</barCode:BarCode>
 			</sampleBrowser:LabeledCardControl>
 

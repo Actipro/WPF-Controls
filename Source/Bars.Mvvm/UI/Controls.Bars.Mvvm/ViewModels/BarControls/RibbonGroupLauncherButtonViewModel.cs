@@ -52,8 +52,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public RibbonGroupLauncherButtonViewModel(string key, string label, string keyTipText, ICommand command)
 			: base(key) {
 
-			this.label = label ?? LabelGenerator.FromCommand(command) ?? LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.label);
+			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
+			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 			this.command = command;
 		}
 

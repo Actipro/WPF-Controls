@@ -10,6 +10,56 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">6/12/2023 - Version 23.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added EnumBarGalleryItemViewModel.RefreshFromAttributes method to update view model properties from DisplayAttribute data after a locale change." />
+				<sampleBrowser:BulletContentControl Content="Improved internal BarMenuGallery-related layout logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where changes to a Ribbon's DataContext could cause a gallery to display items with an incorrect appearance." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where BarComboBox text was not updated if the corresponding property on the selected view model was changed." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where BarMenuGallery may not remeasure width properly when its gallery item content was changed after it was already opened." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a ribbon application menu with a very wide footer and no additional content displayed might render incorrectly." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a disabled BarComboBox still allowed its drop-down button to be clicked." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where RibbonControlGroup might not always properly display external headers for controls like BarComboBox when appropriate." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved MonthCalendar keyboard navigation." />
+				<sampleBrowser:BulletContentControl Content="Improved MonthCalendar UI automation peer configuration." />
+				<sampleBrowser:BulletContentControl Content="Improved ColorPicker UI automation peer configuration." />
+				<sampleBrowser:BulletContentControl Content="Updated the AutoCompleteBox suggestion list to announce the current selection in screen reader apps when keyboard navigation keys are used." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a TreeListView Sorting QuickStart sample that shows how to sort items in the control when a column header is tapped." />
+				<sampleBrowser:BulletContentControl Content="Added the TreeListViewColumn.Tag property." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where several ShellListView layout modes didn't always bring items into view properly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the IntelliPrompt completion list to announce the current selection in screen reader apps." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with view line offset to character index calculation logic." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed C# grammar not recognizing a throw expression used within the lambda body of a switch expression." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated multi-line TextBoxBase control templates to Stretch-align the hint presenter." />
+				<sampleBrowser:BulletContentControl Content="Updated change detection registration for system settings to prevent potential cross-thread exception." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved AnimatedPanelBase.ResetAnimationState logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed ToggleSwitch not taking focus when clicking on the parts of the control which support dragging." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">4/19/2023 - Version 23.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

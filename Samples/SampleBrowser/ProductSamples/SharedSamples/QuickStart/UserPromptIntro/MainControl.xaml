@@ -484,19 +484,19 @@ The 'Help' button is not supported by the WPF MessageBox API, but is supported b
 								<x:Array Type="Button">
 									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
 										<StackPanel Orientation="Horizontal">
-											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,4,0" VerticalAlignment="Center" />
+											<shared:DynamicImage Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,4,0" VerticalAlignment="Center" />
 											<AccessText VerticalAlignment="Center">_Left Image</AccessText>
 										</StackPanel>
 									</Button>
 									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}" IsDefault="True">
 										<StackPanel Orientation="Horizontal">
 											<AccessText VerticalAlignment="Center">_Right Image</AccessText>
-											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="4,0,0,0" VerticalAlignment="Center" />
+											<shared:DynamicImage Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="4,0,0,0" VerticalAlignment="Center" />
 										</StackPanel>
 									</Button>
 									<Button shared:UserPromptControl.ButtonResult="{x:Static shared:UserPromptStandardResult.CustomButton}">
 										<StackPanel Orientation="Vertical">
-											<Image Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,0,4" HorizontalAlignment="Center" />
+											<shared:DynamicImage Source="/Images/Icons/Save16.png" Height="16" Width="16" Margin="0,0,0,4" HorizontalAlignment="Center" />
 											<AccessText HorizontalAlignment="Center">_Center Image</AccessText>
 										</StackPanel>
 									</Button>

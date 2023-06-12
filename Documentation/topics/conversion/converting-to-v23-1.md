@@ -329,3 +329,13 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 1. Replace `ribbon:Ribbon.TabPanelItems` with a [Tab Row Toolbar](../bars/ribbon-features/tab-row-toolbar.md), moving existing controls to be direct children of a Bars `RibbonTabRowToolBar`.
 1. Replace `ribbon:Ribbon.QuickAccessToolBarItems` with a [Quick Access Toolbar](../bars/ribbon-features/quick-access-toolbar.md), moving existing controls to be direct children of a Bars `RibbonQuickAccessToolBar`.
 1. Replace `ribbon:RecentDocumentMenu` with a [Recent Document Control](../bars/ribbon-features/recent-documents.md).
+
+## Bars
+
+While the Bars product is in beta, some breaking changes may be necessary even for minor releases.
+
+### Converting Bars to v23.1.1
+
+[LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator) and [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator) have been converted from static classes to instance classes which implement new [ILabelGenerator](xref:@ActiproUIRoot.Controls.Bars.ILabelGenerator) and [IKeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.IKeyTipTextGenerator) interfaces.  Default instances of each class are available through the static properties [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelGenerator) and [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyTipTextGenerator). These read-write properties can be used to extend or replace the default generator implementations with custom classes.
+- Update any static method calls on `LabelGenerator` to use the default class instance accessed through the `BarControlService.LabelGenerator` property (e.g., `BarControlService.LabelGenerator.FromKey`).
+- Update any static method calls on `KeyTipTextGenerator` to use the default class instance accessed through the `BarControlService.KeyTipTextGenerator` property (e.g., `BarControlService.KeyTipTextGenerator.FromLabel`).

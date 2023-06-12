@@ -41,7 +41,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		protected PartEditBoxViewModelBase(string key, string label) 
 			: base(key) {
 
-			this.label = label ?? LabelGenerator.FromKey(key);
+			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

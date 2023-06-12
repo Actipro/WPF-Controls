@@ -200,7 +200,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DynamicPopupMenu
 			var unpinnedMenuItems = new List<object>();
 			foreach (IDocumentReference docReference in RecentDocumentManager.FilteredDocuments) {
 				var targetList = docReference.IsPinnedRecentDocument ? pinnedMenuItems : unpinnedMenuItems;
-				targetList.Add(new BarButtonViewModel($"DocRef:{docReference.Location?.LocalPath}") {
+				targetList.Add(new BarButtonViewModel() {
 					CanCloneToRibbonQuickAccessToolBar = false,
 					Command = ApplicationCommands.Open,
 					CommandParameter = docReference,

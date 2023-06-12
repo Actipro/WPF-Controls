@@ -35,8 +35,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public RibbonBackstageTabViewModel(string key, string label, string keyTipText)
 			: base(key) {
 
-			this.label = label ?? LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromLabel(this.label);
+			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
+			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
