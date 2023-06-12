@@ -64,7 +64,8 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 				var buttonResult = UserPromptControl.GetButtonResult(button);
 
 				// Confirm if the user wants to submit this result
-				var confirmationResult = ThemedMessageBox.Show($"Are you sure you want to respond '{buttonResult}'?", "Confirmation", MessageBoxButton.YesNo);
+				var confirmationResult = ThemedMessageBox.Show($"Are you sure you want to respond '{buttonResult}'?", "Confirmation",
+					MessageBoxButton.YesNo, MessageBoxImage.Question);
 				if (confirmationResult == MessageBoxResult.Yes) {
 					// Find the UserPromptControl that contains the button
 					var userPromptControl = FindUserPromptControl(button);

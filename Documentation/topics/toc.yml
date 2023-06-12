@@ -157,6 +157,8 @@ items:
       href: bars/menu-features/menu-customization.md
   - name: "MVVM Support"
     href: bars/mvvm-support.md
+  - name: "Localization"
+    href: bars/localization.md
   - name: "Troubleshooting"
     href: bars/troubleshooting.md
 - name: "Actipro Charts"

@@ -17,8 +17,9 @@ namespace ActiproSoftware.SampleBrowser {
 		/// Gets an <see cref="ImageSource"/>.
 		/// </summary>
 		/// <param name="relPath">The path of the resource file relative to the <c>Images</c> folder.</param>
+		/// <param name="freeze">When <c>true</c>, supported images will be frozen after they are loaded.</param>
 		/// <returns>An <see cref="ImageSource"/>.</returns>
-		private static ImageSource LoadImageResource(string relPath) {
+		private static ImageSource LoadImageResource(string relPath, bool freeze) {
 			if (relPath is null)
 				throw new ArgumentNullException(nameof(relPath));
 
@@ -29,7 +30,7 @@ namespace ActiproSoftware.SampleBrowser {
 				path += "/" + relPath;
 
 			var imageSource = new BitmapImage(new Uri(path, UriKind.Absolute));
-			if (imageSource.CanFreeze)
+			if (freeze && imageSource.CanFreeze)
 				imageSource.Freeze();
 			return imageSource;
 		}
@@ -43,14 +44,34 @@ namespace ActiproSoftware.SampleBrowser {
 		/// </summary>
 		/// <param name="fileName">The name of the file in the <c>/Images/Icons</c> folder.</param>
 		/// <returns>An <see cref="ImageSource"/>.</returns>
-		public static ImageSource GetIcon(string fileName) => LoadImageResource("/Icons/" + fileName);
+		public static ImageSource GetIcon(string fileName)
+			=> GetIcon(fileName, freeze: true);
+
+		/// <summary>
+		/// Gets an <see cref="ImageSource"/> for an icon.
+		/// </summary>
+		/// <param name="fileName">The name of the file in the <c>/Images/Icons</c> folder.</param>
+		/// <param name="freeze">When <c>true</c>, supported images will be frozen after they are loaded.</param>
+		/// <returns>An <see cref="ImageSource"/>.</returns>
+		public static ImageSource GetIcon(string fileName, bool freeze)
+			=> LoadImageResource("/Icons/" + fileName, freeze);
 
 		/// <summary>
 		/// Gets an <see cref="ImageSource"/> for an icon.
 		/// </summary>
 		/// <param name="fileName">The name of the file in the <c>/Images/Other</c> folder.</param>
 		/// <returns>An <see cref="ImageSource"/>.</returns>
-		public static ImageSource GetOther(string fileName) => LoadImageResource("/Other/" + fileName);
+		public static ImageSource GetOther(string fileName)
+			=> GetOther("/Other/" + fileName, freeze: true);
+
+		/// <summary>
+		/// Gets an <see cref="ImageSource"/> for an icon.
+		/// </summary>
+		/// <param name="fileName">The name of the file in the <c>/Images/Other</c> folder.</param>
+		/// <param name="freeze">When <c>true</c>, supported images will be frozen after they are loaded.</param>
+		/// <returns>An <see cref="ImageSource"/>.</returns>
+		public static ImageSource GetOther(string fileName, bool freeze)
+			=> LoadImageResource("/Other/" + fileName, freeze);
 
 
 	}

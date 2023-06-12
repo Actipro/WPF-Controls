@@ -160,7 +160,11 @@ The index of the column within its owner control can be retrieved via the [TreeL
 
 If a custom external sorting mechanism is used, the [TreeListViewColumn](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn).[SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property can display a glyph indicating ascending or descending sorting is active for the column.  The property is nullable and can be set to a `null` reference to remove the sort glyph.
 
-Handle the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnHeaderTapped](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnHeaderTapped) event to know when a column header is clicked, so that you can programmatically alter the [SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property appropriately (which updates the sort arrow glyph) and manually adjust the order of item children in your item nodes.
+Handle the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[ColumnHeaderTapped](xref:@ActiproUIRoot.Controls.Grids.TreeListView.ColumnHeaderTapped) event to know when a column header is clicked, so that you can programmatically alter the [SortDirection](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.SortDirection) property, which updates the sort arrow glyph.
+
+The column's [Tag](xref:@ActiproUIRoot.Controls.Grids.TreeListViewColumn.Tag) property can store custom data, such as the name of the property to use when sorting the column.  Then tell the item adapter about how to sort items so that its [TreeListBoxItemAdapter.GetChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBoxItemAdapter.GetChildren*) returns items in appropriate sorted order.  Finally, call [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).[InvalidateChildren](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.InvalidateChildren*) on the control's [RootItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.RootItem) to refresh the tree with the same items source.
+
+Alternatively, set the [TreeListView](xref:@ActiproUIRoot.Controls.Grids.TreeListView).`ItemsSource` property to a new collection that has its items already sorted appropriately.
 
 @if (wpf) {
 

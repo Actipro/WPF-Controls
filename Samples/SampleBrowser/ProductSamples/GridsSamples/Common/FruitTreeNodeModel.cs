@@ -7,7 +7,7 @@
 
 		private string colorCategory;
 		private string leadingProducer;
-		private string servingCalories;
+		private int? servingCalories;
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -51,7 +51,7 @@
 		/// Gets or sets the serving calories.
 		/// </summary>
 		/// <value>The serving calories.</value>
-		public string ServingCalories {
+		public int? ServingCalories {
 			get {
 				return servingCalories;
 			}

@@ -54,8 +54,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			// NOTE: This class has an ICommand, but it is primarily only used by derived classes and
 			//		 is why this overload is protected (instead of public)
 
-			this.label = label ?? LabelGenerator.FromCommand(command) ?? LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromCommand(command) ?? KeyTipTextGenerator.FromLabel(this.label);
+			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
+			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 			this.command = command;
 		}
 

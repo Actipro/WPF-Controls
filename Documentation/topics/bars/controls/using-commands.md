@@ -66,6 +66,9 @@ The WPF framework has a couple built-in types that implement `ICommand`.
 
 Screen tips and menu items are able to locate any `KeyBinding` that is on the `RoutedCommand` and can display its keyboard shortcut if no other input gesture text is specified.
 
+> [!IMPORTANT]
+> A `RoutedCommand` is dependent upon the visual tree for handling commands.  When working with [Ribbon](../ribbon-features/index.md), the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage)  and [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) controls are not always visual children of the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control. This means the ideal location to define a `CommandBinding` for a `RoutedCommand` is on the `Window` that contains the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) control.
+
 ## RoutedUICommand
 
 `RoutedUICommand` inherits `RoutedCommand` and has the same general design, but with the additional benefit that it contains a `Text` property too.

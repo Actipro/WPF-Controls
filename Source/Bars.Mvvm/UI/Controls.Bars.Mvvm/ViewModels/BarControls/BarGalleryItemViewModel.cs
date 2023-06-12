@@ -74,6 +74,38 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
+		/// Tests if the value type of this class is an enumeration.
+		/// </summary>
+		/// <value><c>true</c> if the value type of this class is an enumeration; otherwise <c>false</c>.</value>
+		private static bool IsEnumValueType => (isEnumValueType ??= typeof(TValue).IsEnum);
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// PUBLIC PROCEDURES
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc cref="IBarGalleryItemViewModel.Category"/>
+		public string Category {
+			get => category;
+			set {
+				if (category != value) {
+					category = value;
+					this.NotifyPropertyChanged(nameof(Category));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets the coerced value to use as the <see cref="Label"/> when an explicit value has not been defined.
+		/// </summary>
+		/// <returns>The coerced text label to display.</returns>
+		/// <seealso cref="Label"/>
+		protected virtual string CoerceLabel() {
+			return IsEnumValueType
+				? ConvertEnumValueToString(typeof(TValue), Value, useAttributes: true)
+				: Value?.ToString();
+		}
+
+		/// <summary>
 		/// Converts the specified enumeration value to a string representation.
 		/// </summary>
 		/// <param name="enumValue">The enumeration value.</param>
@@ -107,46 +139,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			if ((useAttributes) && (!string.IsNullOrEmpty(valueText))) {
 				var fieldInfo = enumType.GetField(valueText);
 				if (fieldInfo != null) {
-					var attributeText = fieldInfo.GetCustomAttribute<DescriptionAttribute>()?.Description
-						?? fieldInfo.GetCustomAttribute<DisplayAttribute>()?.GetName();
+					var attributeText = fieldInfo.GetCustomAttribute<DescriptionAttribute>()?.Description;
+					if (attributeText is null) {
+						var displayAttribute = fieldInfo.GetCustomAttribute<DisplayAttribute>();
+						attributeText = displayAttribute?.GetName() ?? displayAttribute?.GetShortName();
+					}
 					if (!string.IsNullOrEmpty(attributeText))
 						return attributeText;
 				}
 			}
 
 			return valueText;
-		}
-
-		/// <summary>
-		/// Tests if the value type of this class is an enumeration.
-		/// </summary>
-		/// <value><c>true</c> if the value type of this class is an enumeration; otherwise <c>false</c>.</value>
-		private static bool IsEnumValueType => (isEnumValueType ??= typeof(TValue).IsEnum);
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="IBarGalleryItemViewModel.Category"/>
-		public string Category {
-			get => category;
-			set {
-				if (category != value) {
-					category = value;
-					this.NotifyPropertyChanged(nameof(Category));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets the coerced value to use as the <see cref="Label"/> when an explicit value has not been defined.
-		/// </summary>
-		/// <returns>The coerced text label to display.</returns>
-		/// <seealso cref="Label"/>
-		protected virtual string CoerceLabel() {
-			return IsEnumValueType
-				? ConvertEnumValueToString(typeof(TValue), Value, useAttributes: true)
-				: Value?.ToString();
 		}
 
 		/// <inheritdoc cref="IBarGalleryItemViewModel.Description"/>

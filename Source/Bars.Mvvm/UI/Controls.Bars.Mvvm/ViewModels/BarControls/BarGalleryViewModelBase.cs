@@ -40,7 +40,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		protected BarGalleryViewModelBase(string key, string label, ICommand command)
 			: base(key) {
 
-			this.label = label ?? LabelGenerator.FromCommand(command) ?? LabelGenerator.FromKey(key);
+			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
 			this.command = command;
 		}
 

@@ -216,7 +216,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnGenericHyperlinkClick(object sender, RoutedEventArgs e) {
-			ThemedMessageBox.Show("Use this event handler to respond to the hyperlink.", "Hyperlink Clicked", MessageBoxButton.OK, MessageBoxImage.Information);
+			ThemedMessageBox.Show("Use this event handler to respond to the hyperlink.", "Hyperlink Clicked");
 		}
 
 		/// <summary>
@@ -225,16 +225,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 		/// <param name="sender">The sender of the event.</param>
 		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains the event data.</param>
 		private void OnOpenMessageSettingsHyperlinkClick(object sender, RoutedEventArgs e) {
-			ThemedMessageBox.Show("Use this event handler to open a Settings dialog.");
-		}
-
-		/// <summary>
-		/// Occurs when a button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnSaveChangesAndExitButtonClick(object sender, RoutedEventArgs e) {
-			ThemedMessageBox.Show("Use this event handler to save changes.");
+			ThemedMessageBox.Show("Use this event handler to open a Settings dialog.", "Settings");
 		}
 
 		/// <summary>
@@ -765,10 +756,12 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			//
 
 			// Initialize the images
-			var statusImageSource = ImageLoader.GetIcon("Actipro.ico");
+			var statusImageSource = ImageLoader.GetIcon("Actipro.ico", freeze: false);
 			ImageProvider.SetCanAdapt(statusImageSource, false); // Keep original colors
-			var footerImageSource = ImageLoader.GetIcon("Help16.png");
+			statusImageSource.Freeze();
+			var footerImageSource = ImageLoader.GetIcon("Help16.png", freeze: false);
 			ImageProvider.SetCanAdapt(footerImageSource, true); // Allow to adjust for dark themes
+			footerImageSource.Freeze();
 
 			// Initialize the prompt
 			var userPromptControl = new UserPromptControl() {
@@ -828,10 +821,10 @@ The content icon is configured to not change in dark themes, but the footer icon
 			if (userPromptControl.IsChecked) {
 				// Flag that the message should not be displayed again
 				standardCheckBoxSampleIsChecked = userPromptControl.IsChecked;
-				ThemedMessageBox.Show($"You selected '{result}' and selected not to show this message again.", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+				ThemedMessageBox.Show($"You selected '{result}' and elected not to show this message again.", "Result", MessageBoxButton.OK);
 			}
 			else {
-				ThemedMessageBox.Show($"You selected '{result}' and will continue to see this message.", "Result", MessageBoxButton.OK, MessageBoxImage.Information);
+				ThemedMessageBox.Show($"You selected '{result}' and will continue to see this message.", "Result", MessageBoxButton.OK);
 			}
 		}
 

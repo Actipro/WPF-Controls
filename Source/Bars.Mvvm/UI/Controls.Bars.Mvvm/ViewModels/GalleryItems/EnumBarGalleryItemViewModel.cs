@@ -61,6 +61,67 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
+		/// Extracts attribute data for the given enumeration value..
+		/// </summary>
+		/// <param name="value">The enumeration value to examine.</param>
+		/// <param name="label">Outputs the label, if any, that was resolved from the available attributes.</param>
+		/// <param name="category">Outputs the category, if any, that was resolved from the available attributes.</param>
+		/// <param name="description">Outputs the description, if any, that was resolved from the available attributes.</param>
+		/// <param name="order">Outputs the order, if any, that was resolved from the available attributes.</param>
+		private static void ExtractAttributeData(TEnum value, out string label, out string category, out string description, out int? order) {
+			FieldInfo field = FindField(value);
+			ExtractAttributeData(field, out label, out category, out description, out order);
+		}
+
+		/// <summary>
+		/// Extracts attribute data for the given <see cref="FieldInfo"/>.
+		/// </summary>
+		/// <param name="field">The <see cref="FieldInfo"/> to examine.</param>
+		/// <param name="label">Outputs the label, if any, that was resolved from the available attributes.</param>
+		/// <param name="category">Outputs the category, if any, that was resolved from the available attributes.</param>
+		/// <param name="description">Outputs the description, if any, that was resolved from the available attributes.</param>
+		/// <param name="order">Outputs the order, if any, that was resolved from the available attributes.</param>
+		private static void ExtractAttributeData(FieldInfo field, out string label, out string category, out string description, out int? order) {
+			// Initialize output arguments
+			label = null;
+			category = null;
+			description = null;
+			order = null;
+
+			// Read attribute data
+			if (field is not null) {
+				var displayAttribute = field.GetCustomAttribute<DisplayAttribute>();
+
+				label = field.GetCustomAttribute<DescriptionAttribute>()?.Description
+					?? displayAttribute?.GetName()
+					?? displayAttribute?.GetShortName();
+
+				category = displayAttribute?.GetGroupName();
+				description = displayAttribute?.GetDescription();
+				order = displayAttribute?.GetOrder();
+			}
+		}
+
+		/// <summary>
+		/// Finds the <see cref="FieldInfo"/> of an enumeration which corresponds to the given value.
+		/// </summary>
+		/// <param name="value">The value to examine.</param>
+		/// <returns>The <see cref="FieldInfo"/> which corresponds to the value; otherwise, <c>null</c> if a match was not found.</returns>
+		private static FieldInfo FindField(TEnum value) {
+			var enumType = typeof(TEnum);
+			return GetFields(enumType).FirstOrDefault(f => ((TEnum)f.GetValue(null)).Equals(value));
+		}
+
+		/// <summary>
+		/// Gets the <see cref="FieldInfo"/> for each value defined for an enumeration.
+		/// </summary>
+		/// <param name="enumType">The type of the enumeration.</param>
+		/// <returns>An <see cref="IEnumerable{T}"/> of <see cref="FieldInfo"/>.</returns>
+		private static IEnumerable<FieldInfo> GetFields(Type enumType) {
+			return enumType.GetFields().Where(f => f.IsStatic);
+		}
+
+		/// <summary>
 		/// Throws an exception if <typeparamref name="TEnum"/> is not an enumeration since generic type constraints are not specific enough.
 		/// </summary>
 		/// <param name="enumType">The type to examine.</param>
@@ -84,7 +145,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			ThrowIfNotEnumType(enumType);
 
 			var collection = new HashSet<EnumBarGalleryItemViewModel<TEnum>>();
-			foreach (var field in enumType.GetFields().Where(f => f.IsStatic)) {
+			foreach (FieldInfo field in GetFields(enumType)) {
 
 				try {
 					// Ignore fields explicitly marked as non-browsable
@@ -92,15 +153,19 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 					if (isNonBrowsable)
 						continue;
 
-					var displayAttribute = field.GetCustomAttribute<DisplayAttribute>();
-
 					var value = (TEnum)field.GetValue(null);
-					var category = displayAttribute?.GetGroupName();
-					var label = ConvertEnumValueToString(value, useAttributes: true);
 
+					// Use attribute data to initialize the view model
+					ExtractAttributeData(field, out var label, out var category, out var description, out int? order);
+
+					// Coerce values not defined by attributes
+					label ??= ConvertEnumValueToString(enumType, value, useAttributes: false);
+					order ??= DefaultOrder;
+
+					// Create the view model
 					var viewModel = new EnumBarGalleryItemViewModel<TEnum>(value, category, label) {
-						Description = displayAttribute?.GetDescription(),
-						Order = displayAttribute?.GetOrder() ?? DefaultOrder,
+						Description = description,
+						Order = order.Value,
 					};
 					collection.Add(viewModel);
 				}
@@ -123,6 +188,30 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>An integer value.</value>
 		public int Order { get; set; }
+
+		/// <summary>
+		/// Refreshes supported properties based the attributes, if any, defined on the enumeration field associated with this
+		/// view model's value. Properties are only updated if a non-null value is obtained from the corresponding attribute.
+		/// Otherwise, existing property values are unchanged.
+		/// </summary>
+		/// <remarks>
+		/// Call this method after any changes in locale since <see cref="DisplayAttribute"/> supports localization and is used to
+		/// populate several properties on this view model.
+		/// </remarks>
+		public void RefreshFromAttributes() {
+			// Read attribute data
+			ExtractAttributeData(this.Value, out var label, out var category, out var description, out int? order);
+
+			// Update properties from non-null attribute data
+			if (label is not null)
+				this.Label = label;
+			if (category is not null)
+				this.Category = category;
+			if (description is not null)
+				this.Description = description;
+			if (order.HasValue)
+				this.Order = order.Value;
+		}
 
 	}
 

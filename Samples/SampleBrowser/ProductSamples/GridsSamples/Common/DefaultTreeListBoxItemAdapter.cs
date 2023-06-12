@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Data;
 using System.Windows.Input;
 
 #if WINRT
@@ -16,7 +19,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 	/// instead of using bindings for updates.
 	/// </summary>
 	public class DefaultTreeListBoxItemAdapter : TreeListBoxItemAdapter {
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,7 +50,20 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 		/// <returns>An <see cref="IEnumerable"/> that will be used to provide child items for the specified parent item.</returns>
 		public override IEnumerable GetChildren(TreeListBox ownerControl, object item) {
 			var model = item as TreeNodeModel;
-			return (model != null ? model.Children : null);
+			var enumerable = (model != null ? model.Children : null);
+
+			// If a sort description is specified, sort the results in a collection view
+			if (this.SortDescription.HasValue) {
+				var collectionViewSource = new CollectionViewSource() {
+					SortDescriptions = {
+						this.SortDescription.Value
+					},
+					Source = enumerable,
+				};
+				return collectionViewSource.View;
+			}
+
+			return enumerable;
 		}
 		
 		/// <summary>
@@ -221,6 +237,15 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
 			if (model != null)
 				model.IsSelected = value;
 		}
+
+		/// <summary>
+		/// Gets or sets the optional <see cref="System.ComponentModel.SortDescription"/> to use for sorting children.
+		/// </summary>
+		/// <value>The optional <see cref="System.ComponentModel.SortDescription"/> to use for sorting children.</value>
+		/// <remarks>
+		/// When specified, an <see cref="ICollectionView"/> will be returned from the <see cref="GetChildren"/> method.
+		/// </remarks>
+		public SortDescription? SortDescription { get; set; }
 
 	}
 

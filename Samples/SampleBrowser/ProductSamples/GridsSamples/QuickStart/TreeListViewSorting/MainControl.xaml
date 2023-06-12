@@ -1,0 +1,76 @@
+﻿<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListViewSorting.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.Common"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<common:FruitTreeNodeModel x:Key="FruitData" Name="Fruits">
+			<common:FruitTreeNodeModel Name="Red" IsExpanded="True">
+				<common:FruitTreeNodeModel Name="Apple" ColorCategory="Red" LeadingProducer="China" ServingCalories="93" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Cherry" ColorCategory="Red" LeadingProducer="Turkey" ServingCalories="97" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Guava" ColorCategory="Red" LeadingProducer="India" ServingCalories="112" IsEditable="True" />
+			</common:FruitTreeNodeModel>
+			<common:FruitTreeNodeModel Name="Yellow/Orange" IsExpanded="True">
+				<common:FruitTreeNodeModel Name="Banana" ColorCategory="Yellow/Orange" LeadingProducer="India" ServingCalories="105" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Grapefruit" ColorCategory="Yellow/Orange" LeadingProducer="China" ServingCalories="41" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Lemon" ColorCategory="Yellow/Orange" LeadingProducer="India" ServingCalories="61" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Orange" ColorCategory="Yellow/Orange" LeadingProducer="Brazil" ServingCalories="62" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Pineapple" ColorCategory="Yellow/Orange" LeadingProducer="Brazil" ServingCalories="83" IsEditable="True" />
+			</common:FruitTreeNodeModel>
+			<common:FruitTreeNodeModel Name="Green" IsExpanded="True">
+				<common:FruitTreeNodeModel Name="Lime" ColorCategory="Green" LeadingProducer="China" ServingCalories="20" IsEditable="True" />
+				<common:FruitTreeNodeModel Name="Kiwi" ColorCategory="Green" LeadingProducer="China" ServingCalories="110" IsEditable="True" />
+			</common:FruitTreeNodeModel>
+			<common:FruitTreeNodeModel Name="Blue/Purple" IsExpanded="True">
+				<common:FruitTreeNodeModel Name="Plum" ColorCategory="Blue/Purple" LeadingProducer="China" ServingCalories="76" IsEditable="True" />
+			</common:FruitTreeNodeModel>
+		</common:FruitTreeNodeModel>
+
+		<DataTemplate x:Key="NameCellDataTemplate">
+			<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="ServingCaloriesCellDataTemplate">
+			<TextBlock Text="{Binding ServingCalories}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="LeadingProducerCellDataTemplate">
+			<TextBlock Text="{Binding LeadingProducer}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Columns can be sorted by handling the ColumnHeaderTapped event, setting a column's SortDirection property to display a sort direction glyph in its header,
+					updating the item adapter to return items in a new sort order, and invalidating the items source.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<Grid Style="{StaticResource SamplePanelWideStyle}">
+
+		<grids:TreeListView RootItem="{StaticResource FruitData}" HasTreeLines="True" ColumnHeaderTapped="OnTreeListViewColumnHeaderTapped">
+			<grids:TreeListBox.ItemAdapter>
+				<common:DefaultTreeListBoxItemAdapter />
+			</grids:TreeListBox.ItemAdapter>
+			<grids:TreeListView.Columns>
+				<grids:TreeListViewColumn Tag="Name" Header="Name"  CellTemplate="{StaticResource NameCellDataTemplate}" />
+				<grids:TreeListViewColumn Tag="ServingCalories" Header="Serving Calories" CellTemplate="{StaticResource ServingCaloriesCellDataTemplate}" HeaderHorizontalAlignment="Right" CellHorizontalAlignment="Right" />
+				<grids:TreeListViewColumn Tag="LeadingProducer" Header="Leading Producer" CellTemplate="{StaticResource LeadingProducerCellDataTemplate}" />
+			</grids:TreeListView.Columns>
+		</grids:TreeListView>
+
+	</Grid>
+
+</sampleBrowser:ProductItemControl>

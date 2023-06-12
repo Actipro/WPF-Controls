@@ -45,7 +45,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <param name="keyTipText">The key tip text, which is auto-generated from the <paramref name="label"/> if <c>null</c>.</param>
 		public RibbonApplicationButtonViewModel(string label, string keyTipText) {
 			this.label = label ?? SR.GetString(SRName.UIApplicationButtonText);
-			this.keyTipText = keyTipText ?? KeyTipTextGenerator.FromLabel(this.label);
+			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
