@@ -10,6 +10,14 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">6/14/2023 - Version 23.1.2</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in v23.1.0 where adorners would no longer show for title bar controls, which could prevent key tips for controls in a ribbon QAT from displaying." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+			
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">6/12/2023 - Version 23.1.1</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

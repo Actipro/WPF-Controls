@@ -62,7 +62,7 @@ namespace ActiproSoftware.SampleBrowser {
 		/// <param name="fileName">The name of the file in the <c>/Images/Other</c> folder.</param>
 		/// <returns>An <see cref="ImageSource"/>.</returns>
 		public static ImageSource GetOther(string fileName)
-			=> GetOther("/Other/" + fileName, freeze: true);
+			=> GetOther(fileName, freeze: true);
 
 		/// <summary>
 		/// Gets an <see cref="ImageSource"/> for an icon.
