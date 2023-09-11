@@ -9,6 +9,10 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v23.1.3
+
+- **SyntaxEditor:** Added the [Overlay Panes](syntaxeditor/user-interface/editor-view/overlay-panes.md) topic for developing custom overlay panes.
+
 ## Updates for v23.1.0
 
 - **Bars:** Added [documentation](bars/index.md) for the new product.

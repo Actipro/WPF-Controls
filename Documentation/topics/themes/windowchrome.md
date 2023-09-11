@@ -263,7 +263,7 @@ This example shows how the attached `WindowChrome.TitleBarHeader` property can b
 	<themes:WindowChrome.TitleBarHeader>
 		<Button Content="{Binding ElementName=window, Path=Title}" Margin="20,0" MaxWidth="300"
 		        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-		        Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+		        Foreground="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=(TextElement.Foreground)}"
 		        IsTabStop="False" Focusable="False" />
 	</themes:WindowChrome.TitleBarHeader>
 	...
@@ -355,7 +355,7 @@ This is an example of using the [TitleBarMenu](xref:@ActiproUIRoot.Controls.Titl
 		                     TitleBarLeftContentMaxWidthOverflowPercentage="0.75" TitleBarRightContentMaxWidthOverflowPercentage="0" />
 	</themes:WindowChrome.Chrome>
 	<themes:WindowChrome.TitleBarLeftContent>
-		<shared:TitleBarMenu x:Name="menu" Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}">
+		<shared:TitleBarMenu x:Name="menu" Foreground="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=(TextElement.Foreground)}">
 			<MenuItem Header="File">
 				<MenuItem Header="New" />
 				<MenuItem Header="Open..." />

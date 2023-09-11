@@ -93,6 +93,8 @@ Pointer values can be interactively changed, by the end-user, using the mouse wh
 
 By default, the pointer is not animated when the value is changed using the mouse. This behavior can be altered by setting [IsDraggingAnimated](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.IsDraggingAnimated) to `true`.
 
+If you wish for a left mouse down event anywhere in the gauge to trigger a pointer drag, set the pointer's [CanDrag](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.CanDrag) property to `true` and handle the gauge's `LeftMouseButtonDown` event.  In the event handler, invoke the pointer's [StartDrag](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.StartDrag*) method, passing in the event arguments sent to the event handler.
+
 ## Scale Placement
 
 Bar and marker pointers are positioned relative to the scale bar defined by the associated [LinearScale](xref:@ActiproUIRoot.Controls.Gauge.LinearScale) element. By default, these pointers will be overlayed and centered on the scale bar. The placement of these pointers can be altered using the [ScalePlacement](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.ScalePlacement) and [ScaleOffset](xref:@ActiproUIRoot.Controls.Gauge.Primitives.PointerBase.ScaleOffset) properties.

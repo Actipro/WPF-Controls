@@ -397,6 +397,7 @@ This list contains changes and removals only:
 - `MenuSeparatorHighlightNormalBrushKey` property removed due to template simplification.
 - `NavigationBarPopupButtonBackground*BrushKey` properties removed since they are no longer used.
 - `RaftingWindowBorderActiveBrushKey`, `RaftingWindowBorderInactiveBrushKey`, and `RaftingWindowBorderNormalCornerRadiusKey` properties removed since they are no longer used.
+- `RibbonGroupBackgroundPressedBrushKey`, `RibbonGroupBorderHoverBrushKey`, `RibbonGroupSeparatorOpacityMaskNormalBrushKey` properties removed since they are no longer used.
 - `RibbonSeparatorBorderNormalBrushKey`, `RibbonSeparatorBorderNormalThicknessKey`, and `RibbonSeparatorOpacityMaskNormalBrushKey ` properties removed since they are no longer used.
 - `RibbonTabItemBackgroundFocusedBrushKey`, `RibbonTabItemBackgroundSelectedBrushKey`, `RibbonTabItemBorderFocusedBrushKey`, `RibbonTabItemBorderHoverBrushKey`, `RibbonTabItemForegroundSelectedBrushKey`, `RibbonTabItemInnerBorderFocusedBrushKey`, RibbonTabItemInnerBorderHoverBrushKey properties removed since they are no longer used.
 - `RibbonToolBarTrayInnerBorderNormalBrushKey` property removed since it is no longer used.
@@ -490,10 +491,6 @@ This list contains changes and removals only:
 ### ContextualTabGroup (Ribbon product)
 
 - `AreEffectsEnabled`, `MaxTitleAreaWidth`, `OuterGlowBrush`, `UseColors` properties removed since contextual tab groups no longer render UI in the title bar.
-
-### Group (Ribbon product)
-
-- `RibbonGroupBackgroundPressedBrushKey`, `RibbonGroupBorderHoverBrushKey`, `RibbonGroupSeparatorOpacityMaskNormalBrushKey` properties removed since they are no longer needed.
 
 ### QuickAccessToolBar (Ribbon product)
 
