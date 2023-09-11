@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
+		<LangVersion>latest</LangVersion>
 
 		<AssemblyName>ActiproSoftware.DataGrid.Contrib.Wpf</AssemblyName>
 		<Product>DataGrid.Contrib</Product>
@@ -18,7 +19,6 @@
 		<Copyright>Copyright (c) 2007-2023 Actipro Software LLC.  All rights reserved.</Copyright>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
-		<DefineConstants Condition="'$(TargetFramework)' == 'netcoreapp3.1'">$(DefineConstants);NETCORE</DefineConstants>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
