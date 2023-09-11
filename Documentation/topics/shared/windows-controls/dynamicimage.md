@@ -37,7 +37,7 @@ The [DynamicImage](xref:@ActiproUIRoot.Controls.DynamicImage) class has these im
 | `IsEnabled` Property | When set to `false`, the image content will be rendered in grayscale.  Inherited from `Image`. |
 | `Source` Property | The `ImageSource` for the image content.  Inherited from `Image`. |
 | [UseMonochrome](xref:@ActiproUIRoot.Controls.DynamicImage.UseMonochrome) Property | Whether the `ImageSource` value in the `Source` property should be rendered as monochrome.  The default value is `false`.  When this property is `true`, the resulting monochrome image will be in the control's current foreground color (gathered from the [Foreground](xref:@ActiproUIRoot.Controls.DynamicImage.Foreground) property). |
-| `Width` Property | The height of the image control in device independent units.  It's always a good idea to set this property to ensure the image is displayed at its intended size, and must be set if your [Image Provider](../../themes/image-provider.md) can swap in high-DPI images.  Inherited from `Image`. |
+| `Width` Property | The width of the image control in device independent units.  It's always a good idea to set this property to ensure the image is displayed at its intended size, and must be set if your [Image Provider](../../themes/image-provider.md) can swap in high-DPI images.  Inherited from `Image`. |
 
 ## Using ImageConverter
 

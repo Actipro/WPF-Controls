@@ -1,0 +1,211 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.CustomEditBox.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.CustomEditBox"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					This sample shows how a custom edit box implementation can be created.  The edit box edits a SwitchPowerLevel class that
+					consists of a boolean On/Off and an integer power level value from 1 to 10.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+			<StackPanel.Resources>
+
+				<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+				<editors:InputScopeConverter x:Key="InputScopeConverter" />
+				<shared:ThicknessConverter x:Key="ThicknessConverter" />
+
+				<Style x:Key="SwitchPowerLevelEditBoxDefaultStyle" TargetType="local:SwitchPowerLevelEditBox">
+					<Setter Property="AllowDrop" Value="True" />
+					<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundNormalBrushKey}}" />
+					<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderNormalBrushKey}}" />
+					<Setter Property="BorderThickness" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderNormalThicknessKey}}" />
+					<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
+					<Setter Property="IsTabStop" Value="False" />
+					<Setter Property="Padding" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditPaddingNormalThicknessKey}}" />
+					<Setter Property="themes:ThemeProperties.CornerRadius" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderNormalCornerRadiusKey}}" />
+					<Setter Property="themes:ThemeProperties.IsAnimationEnabled" Value="{DynamicResource {x:Static themes:AssetResourceKeys.EditIsAnimationEnabledBooleanKey}}" />
+					<Setter Property="FocusVisualStyle">
+						<Setter.Value>
+							<Style>
+								<Setter Property="Control.Template">
+									<Setter.Value>
+										<ControlTemplate>
+											<Rectangle Margin="2" StrokeThickness="1"
+													   Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowDisabledBrushKey}}" StrokeDashArray="1 2"
+													   SnapsToDevicePixels="true" />
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Setter.Value>
+					</Setter>
+					<Setter Property="Validation.ErrorTemplate">
+						<Setter.Value>
+							<ControlTemplate>
+								<Grid>
+									<AdornedElementPlaceholder x:Name="controlWithError"/>
+									<Border BorderBrush="Red" BorderThickness="1" />
+								</Grid>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+
+					<Setter Property="HasPopup" Value="True" />
+					<Setter Property="InputScopeNameValue" Value="Number" />
+					<Setter Property="PopupBackground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PopupBackgroundNormalBrushKey}}" />
+					<Setter Property="PopupBorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PopupBorderNormalBrushKey}}" />
+					<Setter Property="SpinnerVisibility" Value="Visible" />
+
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="local:SwitchPowerLevelEditBox">
+
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*" />
+										<ColumnDefinition Width="Auto" />
+									</Grid.ColumnDefinitions>
+
+									<shared:ElementChrome x:Name="chrome" Grid.ColumnSpan="2" Background="{TemplateBinding Background}"
+										BackgroundDisabled="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundDisabledBrushKey}}"
+										BackgroundFocused="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundFocusedBrushKey}}"
+										BackgroundHover="{DynamicResource {x:Static themes:AssetResourceKeys.EditBackgroundHoverBrushKey}}"
+										BorderBrush="{TemplateBinding BorderBrush}"
+										BorderBrushDisabled="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderDisabledBrushKey}}"
+										BorderBrushFocused="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderFocusedBrushKey}}"
+										BorderBrushHover="{DynamicResource {x:Static themes:AssetResourceKeys.EditBorderHoverBrushKey}}"
+										BorderThickness="{TemplateBinding BorderThickness}"
+										IsAnimationEnabled="{TemplateBinding themes:ThemeProperties.IsAnimationEnabled}"
+										CornerRadius="{TemplateBinding themes:ThemeProperties.CornerRadius}"
+										SnapsToDevicePixels="true" />
+
+									<shared:EmbeddedTextBox x:Name="PART_TextBox" 
+										Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessConverter}, ConverterParameter='Left,Top,Bottom'}" 
+										Padding="{TemplateBinding Padding}"
+										AllowDrop="{TemplateBinding AllowDrop}"
+										Foreground="{TemplateBinding Foreground}"
+										shared:HintProperties.Hint="{TemplateBinding PlaceholderText}" TextAlignment="{TemplateBinding TextAlignment}"
+										IsReadOnly="{TemplateBinding IsReadOnly}" IsEnabled="{TemplateBinding IsEditable}" IsUndoEnabled="{TemplateBinding IsUndoEnabled}"
+										InputScope="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=InputScopeNameValue, Converter={StaticResource InputScopeConverter}}" 
+										AutomationProperties.Name="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(AutomationProperties.Name)}"
+										AutomationProperties.HelpText="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(AutomationProperties.HelpText)}"
+										TabIndex="{TemplateBinding TabIndex}"
+										/>
+
+									<editors:PartEditBoxInlinePanel x:Name="PART_InlinePanel" Grid.Column="1" 
+										Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessConverter}, ConverterParameter='Top,Right,Bottom'}">
+										<editors:Spinner x:Name="spinner" IncrementCommand="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallIncrementValueCommand}" 
+											DecrementCommand="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SmallDecrementValueCommand}" 
+											Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSpinnerVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+										<editors:DropDownButton x:Name="PopupButton" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}" 
+															  Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupButtonVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+									</editors:PartEditBoxInlinePanel>
+
+									<Popup x:Name="PART_Popup" Grid.ColumnSpan="2" AllowsTransparency="True"
+										IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsPopupOpen, Mode=TwoWay}"
+										PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+										<shared:ShadowChrome x:Name="shadow" Direction="{DynamicResource {x:Static themes:AssetResourceKeys.PopupShadowDirectionDoubleKey}}"
+												 ShadowOpacity="{DynamicResource {x:Static themes:AssetResourceKeys.ShadowOpacityNormalDoubleKey}}" SnapsToDevicePixels="True">
+											<Border Background="{TemplateBinding PopupBackground}" BorderBrush="{TemplateBinding PopupBorderBrush}" BorderThickness="1">
+												<StackPanel Margin="20">
+													<shared:ToggleSwitch Content="Active" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value.IsOn, Mode=TwoWay}" />
+
+													<TextBlock Margin="0,10,0,0" Text="Power Level" />
+													<shared:HorizontalListBox SelectedValue="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value.PowerLevel, Mode=TwoWay}">
+														<system:Int32>1</system:Int32>
+														<system:Int32>2</system:Int32>
+														<system:Int32>3</system:Int32>
+														<system:Int32>4</system:Int32>
+														<system:Int32>5</system:Int32>
+														<system:Int32>6</system:Int32>
+														<system:Int32>7</system:Int32>
+														<system:Int32>8</system:Int32>
+														<system:Int32>9</system:Int32>
+														<system:Int32>10</system:Int32>
+													</shared:HorizontalListBox>
+												</StackPanel>
+											</Border>
+										</shared:ShadowChrome>
+									</Popup>
+								</Grid>
+
+								<ControlTemplate.Triggers>
+									<Trigger Property="themes:ThemeProperties.UseBackgroundStates" Value="false">
+										<Setter TargetName="chrome" Property="BackgroundFocused" Value="{x:Null}" />
+										<Setter TargetName="chrome" Property="BackgroundHover" Value="{x:Null}" />
+									</Trigger>
+									<Trigger Property="themes:ThemeProperties.UseBorderStates" Value="false">
+										<Setter TargetName="chrome" Property="BorderBrushDisabled" Value="{x:Null}" />
+										<Setter TargetName="chrome" Property="BorderBrushFocused" Value="{x:Null}" />
+										<Setter TargetName="chrome" Property="BorderBrushHover" Value="{x:Null}" />
+									</Trigger>
+									<MultiTrigger>
+										<MultiTrigger.Conditions>
+											<Condition Property="themes:ThemeProperties.UseBorderStates" Value="false" />
+											<Condition Property="BorderBrush" Value="Transparent" />
+										</MultiTrigger.Conditions>
+										<Setter TargetName="chrome" Property="BorderStyle" Value="Default" />
+									</MultiTrigger>
+									<Trigger Property="BorderThickness" Value="0">
+										<Setter TargetName="PopupButton" Property="Margin" Value="0" />
+									</Trigger>
+									<Trigger Property="IsPopupButtonVisible" Value="True">
+										<Setter Property="FocusVisualStyle" Value="{StaticResource PartEditBoxWithPopupFocusVisualStyle}" />
+									</Trigger>
+									<Trigger Property="IsMouseOver" Value="true">
+										<Setter TargetName="chrome" Property="State" Value="Hover" />
+									</Trigger>
+									<MultiTrigger>
+										<MultiTrigger.Conditions>
+											<Condition Property="IsEditable" Value="False" />
+											<Condition Property="IsMouseOver" Value="True" />
+										</MultiTrigger.Conditions>
+										<Setter TargetName="PopupButton" Property="IsPointerOverParent" Value="True" />
+									</MultiTrigger>
+									<Trigger Property="IsKeyboardFocusWithin" Value="true">
+										<Setter TargetName="chrome" Property="State" Value="Focused" />
+									</Trigger>
+									<Trigger Property="IsEnabled" Value="false">
+										<Setter TargetName="PART_TextBox" Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowDisabledBrushKey}}" />
+										<Setter TargetName="chrome" Property="State" Value="Disabled" />
+									</Trigger>
+									<Trigger SourceName="PART_Popup" Property="Popup.HasDropShadow" Value="True">
+										<Setter TargetName="shadow" Property="Elevation" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PopupShadowElevationInt32Key}}" />
+										<Setter TargetName="shadow" Property="Margin" Value="{Binding ElementName=shadow, Path=ShadowThickness}" />
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+				
+			</StackPanel.Resources>
+
+			<local:SwitchPowerLevelEditBox x:Name="editBox" HorizontalAlignment="Center" MinWidth="170" Style="{StaticResource SwitchPowerLevelEditBoxDefaultStyle}">
+				<local:SwitchPowerLevelEditBox.Value>
+					<local:SwitchPowerLevel IsOn="True" PowerLevel="6" />
+				</local:SwitchPowerLevelEditBox.Value>
+			</local:SwitchPowerLevelEditBox>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

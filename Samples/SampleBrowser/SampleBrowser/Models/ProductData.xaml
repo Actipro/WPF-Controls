@@ -28,7 +28,7 @@
 					<BitmapImage UriSource="/Images/Screenshots/SyntaxEditor-SdiCodeEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
 				</sampleBrowser:ListItemInfo.ImageSource>
 			</sampleBrowser:ListItemInfo>
-			<sampleBrowser:ListItemInfo BlurbText="BETA!" Title="Bars" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
+			<sampleBrowser:ListItemInfo BlurbText="BETA" Title="Bars" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
 				<sampleBrowser:ListItemInfo.ImageSource>
 					<BitmapImage UriSource="/Images/Screenshots/Bars-DocumentEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
 				</sampleBrowser:ListItemInfo.ImageSource>
@@ -79,6 +79,10 @@
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="SyntaxEditor" Title="SyntaxEditor" LogoImageSource="{x:Static syntaxEditor:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="The ultimate syntax-highlighting code editor control">
+
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Go to Line (Custom Overlay)" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLineOverlay/MainControl"/>
+			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/SyntaxEditor" />
@@ -152,6 +156,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Exporting to HTML / RTF" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Exporting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Globalization" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Globalization/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Go to Line" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLine/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" BlurbText="New!" Title="Go to Line (Custom Overlay)" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLineOverlay/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Highlighting Style Viewer" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/HighlightingStyleViewer/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Hit Testing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/HitTesting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Indicators - Bookmark" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/IndicatorsBookmark/MainControl"/>
@@ -320,6 +325,7 @@
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Calculator" Path="/ProductSamples/EditorsSamples/QuickStart/CalculatorIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Country ComboBox" Path="/ProductSamples/EditorsSamples/QuickStart/CountryComboBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Currency ComboBox" Path="/ProductSamples/EditorsSamples/QuickStart/CurrencyComboBoxIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Other Controls" Title="Custom Edit Box" Path="/ProductSamples/EditorsSamples/QuickStart/CustomEditBox/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Enum ListBox" Path="/ProductSamples/EditorsSamples/QuickStart/EnumListBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Gradient Stop Slider" Path="/ProductSamples/EditorsSamples/QuickStart/GradientStopSliderIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Masked TextBox" Path="/ProductSamples/EditorsSamples/QuickStart/MaskedTextBoxIntro/MainControl" />

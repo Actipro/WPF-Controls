@@ -10,6 +10,65 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/11/2023 - Version 23.1.3</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where auto-hide tabs taps might not always display the related tool window when not using hosted popups." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a non-hosted auto-hide popup might not resize properly when the containing Window is resized." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a new Custom Edit Box QuickStart sample demonstrating how to build an edit box for a custom type." />
+				<sampleBrowser:BulletContentControl Content="Updated each edit box template to bind the TabIndex property down to the embedded TextBox control." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Gauge</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a PointerBase.StartDrag method that can programmatically start a pointer drag operation when the left mouse button is pressed elsewhere in the gauge." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBoxAutomationPeer's implementation of the IItemContainerProvider interface." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated shell service logic to better handle Microsoft's recent Windows 11 updates in root Desktop child folder results." />
+				<sampleBrowser:BulletContentControl Content="Updated dialogs launched from context menus to show at the menu's location." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the UsersFiles folder and some descendants couldn't be located via editing name when the Default or Desktop root folders were used." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where removable drives might not be located via editing name when the Default root folder was used." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where using a Desktop root special folder might result in unnecessary child refreshing in certain scenarios." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where an AccessViolationException could be thrown while processing the command string of shell menu items." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the IntelliPrompt completion list description tip to announce in screen reader apps." />
+				<sampleBrowser:BulletContentControl Content="Updated OverlayPaneCollection.AddSearch to close any existing overlay panes before adding the SearchOverlayPane." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where IME composition wouldn't work if SyntaxEditor was in a Popup." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the C# grammar with improved error handling within block statements." />
+				<sampleBrowser:BulletContentControl Content="Updated the VB grammar to support a first optional argument in an argument list." />
+				<sampleBrowser:BulletContentControl Content="Updated the binary assembly reflection logic to handle a possible exception when examining obfuscated assemblies." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the assembly repository cache mechanism wasn't working properly in .NET Core 3.1 or later applications." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the package repository cache mechanism wasn't working properly in .NET Core 3.1 or later applications." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated edit controls in a read-only state to have a slightly dimmer foreground than normal." />
+				<sampleBrowser:BulletContentControl Content="Updated several theme brushes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Refactored ResizableContentControl layout logic to better handle external constraints." />
+				<sampleBrowser:BulletContentControl Content="Updated UserPromptControl to make the content area's ScrollViewer focusable only when scrollbars are visible." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where setting SpectrumColorPicker.SelectedColor in XAML within a UserControl might not keep the desired color selected in a certain scenario." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">6/14/2023 - Version 23.1.2</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
