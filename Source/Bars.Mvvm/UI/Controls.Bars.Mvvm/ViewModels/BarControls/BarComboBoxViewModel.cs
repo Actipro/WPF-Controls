@@ -19,6 +19,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isTextSearchCaseSensitive;
 		private bool isTextSearchEnabled = true;
 		private bool isUnmatchedTextAllowed = true;
+		private double maxPopupHeight = double.PositiveInfinity;
 		private string placeholderText;
 		private double requestedWidth = 110.0;
 		private string text = string.Empty;
@@ -286,6 +287,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the maximum popup height.
+		/// </summary>
+		/// <value>
+		/// The maximum popup height.
+		/// The default value is <c>Double.PositiveInfinity</c>.
+		/// </value>
+		public double MaxPopupHeight {
+			get => maxPopupHeight;
+			set {
+				if (maxPopupHeight != value) {
+					maxPopupHeight = value;
+					this.NotifyPropertyChanged(nameof(MaxPopupHeight));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets the placeholder text to display when the control is empty.
 		/// </summary>

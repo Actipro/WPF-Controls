@@ -19,5 +19,5 @@ When that property is set to `false`, these properties are also automatically ad
 - [IsOutliningMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsOutliningMarginVisible) is set to `false`.
 - [IsSelectionMarginVisible](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsSelectionMarginVisible) is set to `false`.
 @if (winrt wpf) {
-- [InactiveSelectedTextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) is set to null.
+- [InactiveSelectedTextBackground](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.InactiveSelectedTextBackground) is set to `null`.
 }

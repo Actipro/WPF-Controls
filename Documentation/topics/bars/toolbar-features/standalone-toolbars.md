@@ -82,6 +82,10 @@ The toolbar can host all [Bars controls](../controls/index.md) that are meant fo
 
 *A standalone toolbar with a gallery open*
 
+Most controls define a `ToolBarItemVariantBehavior` property (e.g., [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[ToolBarItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.BarButton.ToolBarItemVariantBehavior)) that determines the allowed variant sizes of a control when it is displayed in a toolbar.  The property defaults to `AlwaysSmall`, causing controls to display in a `Small` variant, which often means icon only.
+
+Since the standalone toolbar doesn't dynamically adjust child control variants as space decreases like a ribbon in `Simplified` layout mode does, it only uses each child's `ToolBarItemVariantBehavior` property as a guideline for what single variant size to support for that child.  Therefore as an example, to display an icon and label for a particular button, set the [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).[ToolBarItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.BarButton.ToolBarItemVariantBehavior) property to `AlwaysMedium`.
+
 ## Key Tips
 
 Key tips in child controls are supported, but are not active by default and must be enabled by setting the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.KeyTipService.IsRootKeyTipScopeProperty) property to `true`.

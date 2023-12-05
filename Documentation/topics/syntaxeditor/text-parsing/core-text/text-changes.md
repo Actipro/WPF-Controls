@@ -144,6 +144,18 @@ while (!reader.IsAtSnapshotEnd) {
 }
 ```
 
+### Setting the Post-Change Selection
+
+After a text change is applied, an editor view's selection will by default be collapsed to the offset location after the last operation.  This is accurate for many scenarios, however in some cases, the exact selection needs to be set to something else.
+
+This can be done by setting the [ITextChange](xref:ActiproSoftware.Text.ITextChange).[PostSelectionPositionRanges](xref:ActiproSoftware.Text.ITextChange.PostSelectionPositionRanges) property to an [ITextPositionRangeCollection](xref:ActiproSoftware.Text.ITextPositionRangeCollection) instance.  The static [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange).[CreateCollection](xref:ActiproSoftware.Text.TextPositionRange.CreateCollection*) method can create an [ITextPositionRangeCollection](xref:ActiproSoftware.Text.ITextPositionRangeCollection) instance.  The first overload for that method is most commonly used.  It takes a single [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange) and indicates if it should be a block or continuous stream selection.  The second overload is for supporting multiple selection ranges.
+
+This code uses a [TextPositionRange](xref:ActiproSoftware.Text.TextPositionRange) value in variable `selectionPositionRange` to indicate what the final editor view selection should become after the text change is applied:
+
+```csharp
+change.PostSelectionPositionRanges = TextPositionRange.CreateCollection(selectionPositionRange, isBlock: false)
+```
+
 ### Applying the Text Change
 
 Finally, when you have completely constructed the text change, call its [Apply](xref:ActiproSoftware.Text.ITextChange.Apply*) method to perform the text change on the document.

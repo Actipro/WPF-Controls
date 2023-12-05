@@ -10,6 +10,52 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">12/5/2023 - Version 23.1.4</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the MaxPopupHeight property to the BarComboBox and BarComboBoxViewModel classes, which can restrict the maximum height of the drop-down." />
+				<sampleBrowser:BulletContentControl Content="Updated KeyTipService so that if the KeyTipInvoked attached event is unhandled and no target scope or focus restore occurred, the target element will be focused." />
+				<sampleBrowser:BulletContentControl Content="Updated all controls to flag e.Handled in KeyTipService.KeyTipInvoked attached event handlers when action is taken." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonTabHeader to use the AutomationProperties.AutomationId from its owner RibbonTabItem." />
+				<sampleBrowser:BulletContentControl Content="Updated CloneServiceBase logic with an improvement for Selected-based classes." />
+				<sampleBrowser:BulletContentControl Content="Updated logic for determining where context menus are allowed." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where StandaloneToolBar wasn't using the ToolBarItemVariantBehavior property of child controls as a hint for whether medium variant sizes could be supported." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved auto-hide popup container measurement logic." />
+				<sampleBrowser:BulletContentControl Content="Improved logic for tracking the last-focused dock host when dealing with interop controls." />
+				<sampleBrowser:BulletContentControl Content="Updated double-clicks on floating tool window container title bar icons to execute close functionality." />
+				<sampleBrowser:BulletContentControl Content="Updated DockSiteLayoutSerializer.CanKeepExistingDocumentWindowsOpen processing to not keep a document open if the deserialized layout data specifies it to be closed." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where rebuilding DockSite containers in certain MVVM scenarios could unintentionally close docking windows." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in a previous build where inactive hosted floating windows didn't fade out properly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the MonthCalendar control's title and day names to use CurrentUICulture-based conversion instead of CurrentCulture." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated ComboBox-based property editors to better support property value change cancellation." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the ribbon's toggle minimization button to not have an Add to QAT context menu item." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where QAT serialization didn't work properly for Backstage items." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved logic that retrieves language services." />
+				<sampleBrowser:BulletContentControl Content="Updated IME logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where moving the caret to a new view line while IntelliPrompt parameter info was displayed wouldn't reposition the popup." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue that could occur when loading .NET 8 assemblies with reflection." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/11/2023 - Version 23.1.3</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

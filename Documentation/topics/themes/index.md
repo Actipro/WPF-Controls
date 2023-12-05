@@ -23,7 +23,7 @@ Also included in Actipro Themes are optional styles and templates for all native
 - Over 30 professionally designed themes, including numerous modern themes, Office themes, and Metro themes.
 - An entire themes management framework that makes it simple to register themes and swap them in and out at run-time.
 - Consolidated and centralized collection of assets, such as brushes, that are used across all our WPF products.
-- Easily build a completely custom theme or tweak individual aspects of existing themes without having re-style or re-template controls.
+- Easily build a completely custom theme or tweak individual aspects of existing themes without having to re-style or re-template controls.
 - Define custom resources that will be loaded based on the current theme.
 - Quickly integrate custom controls into the theme management framework.
 - Reusable styles/templates for common controls such as embedded buttons.
