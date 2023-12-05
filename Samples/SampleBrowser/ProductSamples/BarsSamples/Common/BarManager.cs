@@ -170,6 +170,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.FlowDirection, key
 				=> new BarButtonViewModel(key, FlowDirectionCommand) {
+					KeyTipText = "D",
 					Description = "Toggles flow direction of the control so that you can see how right-to-left mode operates.",
 				});
 
@@ -383,7 +384,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, NotImplementedCommand) { Description = "Save this document." });
 
 			viewModels.Register(BarControlKeys.SearchForText, key
-				=> new BarTextBoxViewModel(key, "Search", SearchForTextCommand) {
+				=> new BarTextBoxViewModel(key, "Search", "H", SearchForTextCommand) {
 					Description = "Search for text in the document.",
 					RequestedWidth = 100,
 					PlaceholderText = "(search text)",

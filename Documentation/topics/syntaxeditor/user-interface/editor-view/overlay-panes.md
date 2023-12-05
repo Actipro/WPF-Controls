@@ -42,9 +42,9 @@ To prevent these keys (or any other key combination) from reaching the `SyntaxEd
 @if (winforms) {
 
 > [!TIP]
-> The [OverlayPaneBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneBase) control has built-in support for handling key presses. By default, <kbd>Esc</kbd> will be handled and used to close the overlay pane but can be disabled by setting [AllowEscKeyToClose](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneBase.AllowEscKeyToClose) = `false`.
+> The [OverlayPaneBase](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.OverlayPaneBase) control has built-in support for handling key presses. By default, <kbd>Esc</kbd> will be handled and used to close the overlay pane but can be disabled by setting [AllowEscKeyToClose](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.OverlayPaneBase.AllowEscKeyToClose) = `false`.
 >
->To customize the handling of additional keys, override the [ProcessKeyDown](xref:@ActiproUIRoot.Controls.SyntaxEditor.OverlayPaneBase.ProcessKeyDown) method and return `true` for any keys that were handled by the overlay pane.  For example, the <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys can optionally be handled to keep keyboard focus within the pane.
+>To customize the handling of additional keys, override the [ProcessKeyDown](xref:@ActiproUIRoot.Controls.SyntaxEditor.Implementation.OverlayPaneBase.ProcessKeyDown*) method and return `true` for any keys that were handled by the overlay pane.  For example, the <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> keys can optionally be handled to keep keyboard focus within the pane.
 
 }
 

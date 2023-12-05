@@ -42,8 +42,8 @@
 background, and other margins can be modified.  Brushes are also 
 available to alter how the caret and selection render.
 
-Use the brush pickers at the top to alter the brushes used in 
-this sample.
+Use the brush pickers displayed in the Sample Options to alter
+the brushes used in this sample.
 
 By tweaking the brushes used to render SyntaxEditor, you can
 give your application a truly unique style.

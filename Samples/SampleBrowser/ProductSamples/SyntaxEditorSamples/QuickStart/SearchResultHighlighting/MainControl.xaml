@@ -17,7 +17,8 @@
 		</StackPanel>
 		
 		<!-- SyntaxEditor -->
-		<editor:SyntaxEditor x:Name="editor" Grid.Row="1" WordWrapMode="Word" IsLineNumberMarginVisible="True" IsCurrentLineHighlightingEnabled="True">
+		<editor:SyntaxEditor x:Name="editor" Grid.Row="1" WordWrapMode="Word" IsLineNumberMarginVisible="True" IsCurrentLineHighlightingEnabled="True"
+							 ActiveViewChanged="OnEditorActiveViewChanged">
 			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/* 
 
 	SyntaxEditor can automatically highlight text that will be searched for

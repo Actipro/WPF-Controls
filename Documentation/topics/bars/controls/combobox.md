@@ -120,6 +120,10 @@ Placeholder text is a way to prompt the end user for the type of value that shou
 
 Placeholder text is faintly rendered when there is no value in the control, and can be designated via the [PlaceholderText](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.PlaceholderText) property.
 
+### Maximum Popup Height
+
+The maximum height of the popup is dynamically calculated to be a majority of the current screen's height.  The maximum popup height may be further restricted by setting the [MaxPopupHeight](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.MaxPopupHeight) property, which is similar to the `MaxDropDownHeight` property on a native `ComboBox` control.
+
 ## Editability and Read-Only State
 
 The [IsEditable](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.IsEditable) property determines if the combobox supports typing when it has focus.  This property is `false` by default, which means that clicking on the text portion of the combobox will display the popup.  When the property is `true`, any text value can be typed that may or may not match a combobox item.  See the "Unmatched Text" section below for more information on handling unmatched text values.

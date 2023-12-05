@@ -167,6 +167,7 @@
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
 			MaxMenuColumnCount="{Binding MaxMenuColumnCount}"
+			MaxPopupHeight="{Binding MaxPopupHeight}"
 			MediumImageSource="{Binding MediumImageSource}"
 			MenuResizeMode="{Binding MenuResizeMode}"
 			MinItemHeight="{Binding MinItemHeight}"
