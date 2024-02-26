@@ -10,7 +10,14 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/23/2024 - Version 24.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/26/2024 - Version 24.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where NumericBadge might throw an ExecutionEngineException during initialization." />
+			</StackPanel>
+
+			
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/26/2024 - Version 24.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="The Bars product has exited the beta phase and is considered ready for production scenarios." />
