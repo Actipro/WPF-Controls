@@ -141,7 +141,8 @@ These packages are optional and shipped separately from the metapackage:
 
 - **Frameworks:** .NET 5+, .NET Core 3.1, and .NET Framework 4.6.2+
 - **Architectures:** Any CPU, ARM64, x64, and x86
-- **IDEs:** Visual Studio 2017-2022
+- **IDEs:** Visual Studio 2019-2022
+- **SDKs:** .NET SDK required for sample projects
 
 ## Contributing
 
