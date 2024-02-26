@@ -7,7 +7,6 @@
 
 		<TargetFrameworks Label="Visual Studio 2019 Targets" Condition="'$(VisualStudioVersion)' == '16.0'">net5.0-windows</TargetFrameworks>
 		<TargetFrameworks Label="Default Targets" Condition="'$(TargetFrameworks)' == ''">net8.0-windows</TargetFrameworks>
-
 		
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
 
@@ -15,7 +14,7 @@
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 
-		<Version>24.1.0.0</Version>
+		<Version>24.1.1.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 

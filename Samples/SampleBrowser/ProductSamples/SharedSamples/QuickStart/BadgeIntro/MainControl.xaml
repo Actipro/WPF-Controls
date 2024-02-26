@@ -110,6 +110,7 @@
 								shared:BadgeService.VerticalAlignment="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalAlignment), Mode=OneWay}"
 								shared:BadgeService.HorizontalOffset="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.HorizontalOffset), Mode=OneWay}"
 								shared:BadgeService.VerticalOffset="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalOffset), Mode=OneWay}"
+								Visibility="{Binding Source={x:Reference badgeAdorned}, Path=Visibility, Mode=OneWay}"
 								>
 							<shared:BadgeService.Badge>
 								<shared:NumericBadge x:Name="numericBadge" Count="100"
@@ -120,7 +121,7 @@
 									CornerRadius="{Binding Source={x:Reference badge}, Path=CornerRadius, Mode=OneWay}"
 									Kind="{Binding Source={x:Reference badge}, Path=Kind, Mode=OneWay}"
 									FontSize="{Binding Source={x:Reference badge}, Path=FontSize, Mode=OneWay}"
-									 >
+									>
 								</shared:NumericBadge>
 							</shared:BadgeService.Badge>
 						</Border>
