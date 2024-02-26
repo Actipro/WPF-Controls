@@ -6,20 +6,21 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'C' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="C" LanguageDescription="C" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.C" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v101\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="C" LanguageDescription="C" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.C" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
-		<ClassificationType Key="PathSpec" DefaultStyle="#FF800000" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="PathSpec" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>
@@ -43,7 +44,7 @@ Actipro Syntax Language Project (.langproj)
 				<ExplicitPatternGroup Key="CloseCurlyBracePatternGroup" TokenKey="CloseCurlyBrace" Pattern="}" />
 				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenKey="OpenSquareBrace" Pattern="[" />
 				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. , : ;
 					]]></ExplicitPatterns>

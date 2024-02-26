@@ -545,6 +545,14 @@
 			/>
 	</ItemContainerTemplate>
 
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.MiniToolBarDefaultItemContainerTemplate}" DataType="local:MiniToolBarViewModel">
+		<bars:MiniToolBar
+			CanUseMultiRowLayout="{Binding CanUseMultiRowLayout}"
+			ItemsSource="{Binding Items}"
+			UserInterfaceDensity="{Binding UserInterfaceDensity}"
+			/>
+	</ItemContainerTemplate>
+
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonApplicationButtonDefaultItemContainerTemplate}" DataType="local:RibbonApplicationButtonViewModel">
 		<bars:RibbonApplicationButton
 			ItemsSource="{Binding MenuItems}"
@@ -635,7 +643,6 @@
 		<bars:RibbonGroup
 			CanAutoCollapse="{Binding CanAutoCollapse}"
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
-			CanUseMultiRowLayout="{Binding CanUseMultiRowLayout}"
 			ChildOverflowTarget="{Binding ChildOverflowTarget}"
 			CollapsedButtonKeyTipText="{Binding CollapsedButtonKeyTipText}"
 			CollapsedButtonToolTip="{Binding CollapsedButtonDescription}"
@@ -645,7 +652,6 @@
 			LauncherButtonContent="{Binding LauncherButton}"
 			ItemsSource="{Binding Items}"
 			SmallImageSource="{Binding SmallImageSource}"
-			ThreeRowItemSortOrder="{Binding ThreeRowItemSortOrder}"
 			Title="{Binding Title}"
 			/>
 	</ItemContainerTemplate>
@@ -660,6 +666,13 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonMultiRowControlGroupDefaultItemContainerTemplate}" DataType="local:RibbonMultiRowControlGroupViewModel">
+		<bars:RibbonMultiRowControlGroup
+			ItemsSource="{Binding Items}"
+			ThreeRowItemSortOrder="{Binding ThreeRowItemSortOrder}"
 			/>
 	</ItemContainerTemplate>
 

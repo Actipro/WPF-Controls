@@ -156,7 +156,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						}
 					},
 					new RibbonGroupViewModel(BarControlKeys.GroupFont, "Font") {
-						CanUseMultiRowLayout = true,
 						ChildOverflowTarget = RibbonGroupChildOverflowTarget.Group,
 						CollapsedButtonDescription = "Contains numerous commands for formatting fonts.",
 						LargeImageSource = imageProvider.GetImageSource(BarControlKeys.GroupFont, BarImageSize.Large),
@@ -164,79 +163,86 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 							Description = "Customize your text using advanced font and character options",
 						},
 						SmallImageSource = imageProvider.GetImageSource(BarControlKeys.GroupFont, BarImageSize.Small),
-						ThreeRowItemSortOrder = new Int32Collection { 0, 3, 2, 4, 1 },
 						Items = {
-							new RibbonControlGroupViewModel() {
-								SeparatorMode = RibbonControlGroupSeparatorMode.Never,
+							new RibbonMultiRowControlGroupViewModel() {
+								ThreeRowItemSortOrder = new Int32Collection { 0, 3, 2, 4, 1 },
 								Items = {
-									barManager.ControlViewModels[BarControlKeys.Font],
-									barManager.ControlViewModels[BarControlKeys.FontSize]
-								}
-							},
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.IncreaseFontSize],
-									barManager.ControlViewModels[BarControlKeys.DecreaseFontSize]
-								}
-							},
-							barManager.ControlViewModels[BarControlKeys.ClearFormatting],
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.Bold],
-									barManager.ControlViewModels[BarControlKeys.Italic],
-									barManager.ControlViewModels[BarControlKeys.Underline],
-									barManager.ControlViewModels[BarControlKeys.Strikethrough],
-									barManager.ControlViewModels[BarControlKeys.Subscript],
-									barManager.ControlViewModels[BarControlKeys.Superscript]
-								}
-							},
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.TextHighlightColor],
-									barManager.ControlViewModels[BarControlKeys.FontColor],
+									new RibbonControlGroupViewModel() {
+										SeparatorMode = RibbonControlGroupSeparatorMode.Never,
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.Font],
+											barManager.ControlViewModels[BarControlKeys.FontSize]
+										}
+									},
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.IncreaseFontSize],
+											barManager.ControlViewModels[BarControlKeys.DecreaseFontSize]
+										}
+									},
+									barManager.ControlViewModels[BarControlKeys.ClearFormatting],
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.Bold],
+											barManager.ControlViewModels[BarControlKeys.Italic],
+											barManager.ControlViewModels[BarControlKeys.Underline],
+											barManager.ControlViewModels[BarControlKeys.Strikethrough],
+											barManager.ControlViewModels[BarControlKeys.Subscript],
+											barManager.ControlViewModels[BarControlKeys.Superscript]
+										}
+									},
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.TextHighlightColor],
+											barManager.ControlViewModels[BarControlKeys.FontColor],
+										}
+									},
 								}
 							},
 						}
 					},
 					new RibbonGroupViewModel(BarControlKeys.GroupParagraph, "Paragraph") {
-						CanUseMultiRowLayout = true,
 						CollapsedButtonDescription = "Contains commands for formatting paragraphs.",
 						LargeImageSource = imageProvider.GetImageSource(BarControlKeys.GroupParagraph, BarImageSize.Large),
 						LauncherButton = new RibbonGroupLauncherButtonViewModel(BarControlKeys.GroupLauncherParagraph, "Paragraph Settings", "PG", barManager.NotImplementedCommand) {
 							Description = "Fine-tune the layout of the current paragraph.",
 						},
 						SmallImageSource = imageProvider.GetImageSource(BarControlKeys.GroupParagraph, BarImageSize.Small),
-						ThreeRowItemSortOrder = new Int32Collection { 0, 1, 4, 5, 6, 2, 3 },
 						Items = {
-							new RibbonControlGroupViewModel() {
+							new RibbonMultiRowControlGroupViewModel() {
+								ThreeRowItemSortOrder = new Int32Collection { 0, 1, 4, 5, 6, 2, 3 },
 								Items = {
-									barManager.ControlViewModels[BarControlKeys.Bullets],
-									barManager.ControlViewModels[BarControlKeys.Numbering],
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.Bullets],
+											barManager.ControlViewModels[BarControlKeys.Numbering],
+										}
+									},
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.DecreaseIndent],
+											barManager.ControlViewModels[BarControlKeys.IncreaseIndent],
+										}
+									},
+									barManager.ControlViewModels[BarControlKeys.Sort],
+									barManager.ControlViewModels[BarControlKeys.ShowSymbols],
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.AlignLeft],
+											barManager.ControlViewModels[BarControlKeys.AlignCenter],
+											barManager.ControlViewModels[BarControlKeys.AlignRight],
+											barManager.ControlViewModels[BarControlKeys.AlignJustify],
+										}
+									},
+									barManager.ControlViewModels[BarControlKeys.LineSpacing],
+									new RibbonControlGroupViewModel() {
+										Items = {
+											barManager.ControlViewModels[BarControlKeys.Shading],
+											barManager.ControlViewModels[BarControlKeys.Borders],
+										}
+									},
 								}
-							},
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.DecreaseIndent],
-									barManager.ControlViewModels[BarControlKeys.IncreaseIndent],
-								}
-							},
-							barManager.ControlViewModels[BarControlKeys.Sort],
-							barManager.ControlViewModels[BarControlKeys.ShowSymbols],
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.AlignLeft],
-									barManager.ControlViewModels[BarControlKeys.AlignCenter],
-									barManager.ControlViewModels[BarControlKeys.AlignRight],
-									barManager.ControlViewModels[BarControlKeys.AlignJustify],
-								}
-							},
-							barManager.ControlViewModels[BarControlKeys.LineSpacing],
-							new RibbonControlGroupViewModel() {
-								Items = {
-									barManager.ControlViewModels[BarControlKeys.Shading],
-									barManager.ControlViewModels[BarControlKeys.Borders],
-								}
-							},
+							}
 						}
 					},
 					new RibbonGroupViewModel(BarControlKeys.GroupStyles, "Styles") {

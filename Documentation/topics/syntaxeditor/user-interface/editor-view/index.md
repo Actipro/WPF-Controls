@@ -81,7 +81,7 @@ See the [Zooming](zooming.md) topic for more information.
 
 ## Current Line Highlighting
 
-SyntaxEditor supports highlighting of the current editor view line, meaning the view line that currently contains the caret.
+SyntaxEditor supports highlighting of the current editor view line or line number, meaning the view line that currently contains the caret.
 
 See the [Current Line Highlighting](current-line-highlighting.md) topic for more information.
 

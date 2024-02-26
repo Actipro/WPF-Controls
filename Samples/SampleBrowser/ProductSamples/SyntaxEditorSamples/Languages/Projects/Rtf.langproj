@@ -6,15 +6,15 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'RTF' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved. Actipro Software LLC
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved. Actipro Software LLC
 
 -->
-<LanguageProject LanguageKey="Rtf" LanguageDescription="RTF" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Rtf" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v101\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Rtf" LanguageDescription="RTF" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Rtf" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" />
-		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" />
-		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

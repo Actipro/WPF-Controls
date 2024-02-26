@@ -59,14 +59,15 @@
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
-								
-								<Ellipse Width="50" Height="50" Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-								<Image Width="48" Height="48" Source="{Binding PhotoUri}" HorizontalAlignment="Center" VerticalAlignment="Center">
-									<Image.Clip>
-										<EllipseGeometry Center="24,24" RadiusX="24" RadiusY="24" />
-									</Image.Clip>
-								</Image>
-								
+
+								<shared:Avatar Description="{Binding FullName}" 
+											   Width="50" Height="50"
+											   BorderThickness="1"
+											   BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+											   HorizontalAlignment="Center" VerticalAlignment="Center">
+									<Image Source="{Binding PhotoUri}" />
+								</shared:Avatar>
+
 								<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
 									<shared:AdvancedTextBlock Text="{Binding FullName}" FontSize="18" />
 									<shared:AdvancedTextBlock Text="{Binding EmailAddress}" />

@@ -15,7 +15,7 @@ The products have assemblies available for multiple frameworks, including:
 - .NET Core 3.1
 - .NET Framework 4.6.2 or later
 
-> [!NOTE]
+> [!IMPORTANT]
 > The @@PlatformName Controls installer only installs the product assemblies specifically for .NET Framework.  Please use our [NuGet packages](nuget.md) to make use of assemblies that can target any of the .NET variations listed above, including the .NET Framework ones.
 
 ## Architectures
@@ -33,4 +33,9 @@ The products work best at design-time with the following IDEs:
 
 - Visual Studio 2022
 - Visual Studio 2019
-- Visual Studio 2017
+
+> [!NOTE]
+> Older versions of Visual Studio should also work when building applications that use Actipro @@PlatformName controls but may not fully support all designer features and are not actively tested with new releases. Please understand that Actipro Support may not be able assist with issues arising from the use of unsupported IDEs.
+
+> [!IMPORTANT]
+> Our [Sample Browser](quick-starts.md) application requires the .NET SDK.

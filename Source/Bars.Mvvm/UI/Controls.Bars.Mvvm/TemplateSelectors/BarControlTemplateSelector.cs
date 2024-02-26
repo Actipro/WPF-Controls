@@ -43,6 +43,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.BarTextBoxMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate] as ItemContainerTemplate;
 			this.BarToggleButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.BarToggleButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.BarToggleButtonMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarToggleButtonMenuItemItemContainerTemplate] as ItemContainerTemplate;
+			this.MiniToolBarDefaultTemplate = dictionary[BarsMvvmResourceKeys.MiniToolBarDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonApplicationButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonApplicationButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonBackstageDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonBackstageDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonBackstageHeaderButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonBackstageHeaderButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
@@ -53,6 +54,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.RibbonFooterDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonGroupDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonGroupDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonGroupLauncherButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonGroupLauncherButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
+			this.RibbonMultiRowControlGroupDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonMultiRowControlGroupDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonQuickAccessToolBarDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonQuickAccessToolBarDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonTabDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonTabDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonTabRowToolBarDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonTabRowToolBarDefaultItemContainerTemplate] as ItemContainerTemplate;
@@ -199,6 +201,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
 		public ItemContainerTemplate BarToggleButtonMenuItemTemplate { get; set; }
+		
+		/// <summary>
+		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="MiniToolBarViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
+		public ItemContainerTemplate MiniToolBarDefaultTemplate { get; set; }
 
 		/// <summary>
 		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="RibbonApplicationButtonViewModel"/>.
@@ -259,6 +267,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
 		public ItemContainerTemplate RibbonGroupDefaultTemplate { get; set; }
+		
+		/// <summary>
+		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="RibbonMultiRowControlGroupViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
+		public ItemContainerTemplate RibbonMultiRowControlGroupDefaultTemplate { get; set; }
 
 		/// <summary>
 		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="RibbonQuickAccessToolBarViewModel"/>.
@@ -319,6 +333,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 					return isMenuItem ? this.BarSeparatorMenuItemTemplate : this.BarSeparatorDefaultTemplate;
 				case BarTextBoxViewModel _:
 					return isMenuItem ? this.BarTextBoxMenuItemTemplate : this.BarTextBoxDefaultTemplate;
+				case MiniToolBarViewModel _:
+					return this.MiniToolBarDefaultTemplate;
 				case RibbonApplicationButtonViewModel _:
 					return this.RibbonApplicationButtonDefaultTemplate;
 				case RibbonBackstageViewModel _:
@@ -339,6 +355,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 					return this.RibbonGroupDefaultTemplate;
 				case RibbonGroupLauncherButtonViewModel _:
 					return this.RibbonGroupLauncherButtonDefaultTemplate;
+				case RibbonMultiRowControlGroupViewModel _:
+					return this.RibbonMultiRowControlGroupDefaultTemplate;
 				case RibbonQuickAccessToolBarViewModel _:
 					return this.RibbonQuickAccessToolBarDefaultTemplate;
 				case RibbonTabRowToolBarViewModel _:

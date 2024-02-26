@@ -288,7 +288,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor 
 				// Open a language definition
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
-					SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
+					var serializer = new SyntaxLanguageDefinitionSerializer() {
+						// Enable the use of common classification types (like Comment and String)
+						// for consistent highlighting styles
+						UseBuiltInClassificiationTypes = true,
+					};
 					this.LoadLanguage(serializer.LoadFromStream(stream));
 				}
 			}

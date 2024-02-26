@@ -6,16 +6,16 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'Simple' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Simple" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.SimpleLanguage" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v111\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Simple" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.SimpleLanguage" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Delimiter" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
 		<ClassificationType Key="Operator" />
 	</LanguageProject.ClassificationTypes>

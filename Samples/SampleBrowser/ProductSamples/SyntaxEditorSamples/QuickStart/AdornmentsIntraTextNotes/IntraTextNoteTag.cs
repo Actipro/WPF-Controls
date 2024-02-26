@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Media;
+using System.Windows.Input;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Tagging;
-using ActiproSoftware.Text.Tagging.Implementation;
+using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
+using ActiproSoftware.Windows.Media;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraTextNotes {
     
@@ -15,9 +16,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 	/// </summary>
 	public class IntraTextNoteTag : IClassificationTag, IIntraTextSpacerTag {
 		
-		private static IClassificationType noteAcceptedClassificationType = new ClassificationType("NoteAccepted", "Note (accepted)");
-		private static IClassificationType notePendingClassificationType = new ClassificationType("NotePending", "Note (pending)");
-		private static IClassificationType noteRejectedClassificationType = new ClassificationType("NoteRejected", "Note (rejected)");
+		private static readonly IClassificationType noteAcceptedClassificationType = new ClassificationType("NoteAccepted", "Note (accepted)");
+		private static readonly IClassificationType notePendingClassificationType = new ClassificationType("NotePending", "Note (pending)");
+		private static readonly IClassificationType noteRejectedClassificationType = new ClassificationType("NoteRejected", "Note (rejected)");
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -27,9 +28,22 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		/// Initializes the <c>IntraTextNoteTag</c> class.
 		/// </summary>
 		static IntraTextNoteTag() {
-			AmbientHighlightingStyleRegistry.Instance.Register(noteAcceptedClassificationType, new HighlightingStyle(null, Color.FromArgb(0x40, 0x6C, 0xE2, 0x6C)));
-			AmbientHighlightingStyleRegistry.Instance.Register(notePendingClassificationType, new HighlightingStyle(null, Color.FromArgb(0x40, 0xFF, 0xF2, 0x0)));
-			AmbientHighlightingStyleRegistry.Instance.Register(noteRejectedClassificationType, new HighlightingStyle(null, Color.FromArgb(0x40, 0xE2, 0x6C, 0x6C)));
+			// This sample assumes the editor will use the AmbientHighlightingStyleRegistry
+			var registry = AmbientHighlightingStyleRegistry.Instance;
+
+			// Configure light/dark color palettes with default colors
+			registry.LightColorPalette?.SetBackground(noteAcceptedClassificationType.Key, UIColor.FromWebColor("#ebf1dd"));
+			registry.LightColorPalette?.SetBackground(notePendingClassificationType.Key, UIColor.FromWebColor("#ffee62"));
+			registry.LightColorPalette?.SetBackground(noteRejectedClassificationType.Key, UIColor.FromWebColor("#ffcccc"));
+			registry.DarkColorPalette?.SetBackground(noteAcceptedClassificationType.Key, UIColor.FromWebColor("#265e4d"));
+			registry.DarkColorPalette?.SetBackground(notePendingClassificationType.Key, UIColor.FromWebColor("#6f5a00"));
+			registry.DarkColorPalette?.SetBackground(noteRejectedClassificationType.Key, UIColor.FromWebColor("#3c0000"));
+
+			// Associate a default style with the classification type
+			// and the current color palette color will be automatically applied
+			registry.Register(noteAcceptedClassificationType, new HighlightingStyle());
+			registry.Register(notePendingClassificationType, new HighlightingStyle());
+			registry.Register(noteRejectedClassificationType, new HighlightingStyle());
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

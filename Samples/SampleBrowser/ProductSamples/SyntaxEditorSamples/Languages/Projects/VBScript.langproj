@@ -6,19 +6,20 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'VBScript' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="VBScript" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.VBScript" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="VBScript" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.VBScript" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>
@@ -34,7 +35,7 @@ Actipro Syntax Language Project (.langproj)
 				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
 				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
 				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
-				<ExplicitPatternGroup TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. ,
 					]]></ExplicitPatterns>
@@ -56,9 +57,9 @@ Actipro Syntax Language Project (.langproj)
 				</ExplicitPatternGroup>
 				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
-						Abs Array Asc As Atn Call Case CBool CByte CCur CDate CDbl Chr CInt Class CLng Const Cos CreateObject CSng
-						CStr DateAdd DateDiff DatePart DateSerial DateValue Date Day Dim Do Each ElseIf Else Empty End Erase
-						Error Eval ExecuteGlobal Execute Exit Explicit Exp Filter Fix FormatCurrency FormatDateTime
+						Abs Array Asc As Atn Call Case CBool CByte CCur CDate CDbl Chr CInt Class CLng Const Cos CreateObject
+						CSng CStr DateAdd DateDiff DatePart DateSerial DateValue Date Day Dim Do Each ElseIf Else Empty
+						End Erase Error Eval ExecuteGlobal Execute Exit Explicit Exp Filter Fix FormatCurrency FormatDateTime
 						FormatNumber FormatPercent For Function GetLocale GetObject GetRef Get Goto Hex Hour If InputBox
 						InStrRev InStr Int IsArray IsDate IsEmpty IsNull IsNumeric IsObject Join LBound LCase Left Len
 						Let LoadPicture Local Log Loop LTrim Mid Minute MonthName Month MsgBox New Next Nothing Now Null

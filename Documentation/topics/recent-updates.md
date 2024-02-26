@@ -9,6 +9,12 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v24.1.0
+
+- **Shared:** Restructured [User Prompt](shared/windows-controls/user-prompt/index.md) documentation across multiple topics.
+
+- **All:** Updated [Sample Code and QuickStarts](quick-starts.md) topic.
+
 ## Updates for v23.1.3
 
 - **SyntaxEditor:** Added the [Overlay Panes](syntaxeditor/user-interface/editor-view/overlay-panes.md) topic for developing custom overlay panes.
@@ -50,7 +56,7 @@ If you are looking for a list of recently added major new features to WPF Studio
 
 - **Themes:** Updated the [WindowChrome](themes/windowchrome.md) topic with information on the new corner kind option.
 
-- **Shared:** Added documentation for the new [ToggleSwitch](shared/windows-controls/toggle-switch.md) and [User Prompt](shared/windows-controls/user-prompt.md) controls.
+- **Shared:** Added documentation for the new [ToggleSwitch](shared/windows-controls/toggle-switch.md) and [User Prompt](shared/windows-controls/user-prompt/index.md) controls.
 
 ## Updates for v21.1.3
 

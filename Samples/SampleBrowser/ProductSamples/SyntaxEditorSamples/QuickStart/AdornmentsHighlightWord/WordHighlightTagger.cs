@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Windows.Media;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Tagging;
@@ -11,6 +10,7 @@ using ActiproSoftware.Windows.Controls.Rendering;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
+using ActiproSoftware.Windows.Media;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightWord {
 
@@ -19,11 +19,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 	/// </summary>
 	public class WordHighlightTagger : TaggerBase<IClassificationTag> {
 
-		private string		currentWord		= String.Empty;
-		private Regex		wordCheck		= new Regex(@"[A-Za-z_]\w*", RegexOptions.Compiled);
+		private string currentWord = String.Empty;
 		private IEditorView view;
 
-		private static IClassificationType wordHighlightClassificationType = new ClassificationType("WordHighlight", "Word Highlight");
+		private static readonly Regex wordCheck = new Regex(@"[A-Za-z_]\w*", RegexOptions.Compiled);
+		private static readonly IClassificationType wordHighlightClassificationType = new ClassificationType("WordHighlight", "Word Highlight");
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -33,11 +33,27 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		/// Initializes the <c>WordHighlightTagger</c> class.
 		/// </summary>
 		static WordHighlightTagger() {
-			IHighlightingStyle style = new HighlightingStyle(null, Color.FromArgb(0x40, 0xC0, 0xC0, 0xC0));
-			style.BorderColor = Color.FromArgb(0xFF, 0xC0, 0xC0, 0xC0);
-			style.BorderCornerKind = HighlightingStyleBorderCornerKind.Rounded;
-			style.BorderKind = LineKind.Solid;
-			AmbientHighlightingStyleRegistry.Instance.Register(wordHighlightClassificationType, style);
+			// This sample assumes the editor will use the AmbientHighlightingStyleRegistry
+			var registry = AmbientHighlightingStyleRegistry.Instance;
+
+			// Configure light/dark color palettes with default colors
+			var key = wordHighlightClassificationType.Key;
+			registry.LightColorPalette?.SetBackground(key, UIColor.FromWebColor("#40c0c0c0"));
+			registry.LightColorPalette?.SetBorder(key, UIColor.FromWebColor("#c0c0c0"));
+			registry.DarkColorPalette?.SetBackground(key, UIColor.FromWebColor("#40717171"));
+			registry.DarkColorPalette?.SetBorder(key, UIColor.FromWebColor("#717171"));
+
+			// Define a style with a border
+			var style = new HighlightingStyle() {
+				BorderCornerKind = HighlightingStyleBorderCornerKind.Rounded,
+				BorderKind = LineKind.Solid,
+				IsBorderEditable = true,
+				IsForegroundEditable = false,
+			};
+
+			// Associate the style with the classification type
+			// and the current color palette color will be automatically applied
+			registry.Register(wordHighlightClassificationType, style);
 		}
 
 		/// <summary>
@@ -83,7 +99,9 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			string oldCurrentWord = currentWord;
 
 			// Get the current word and ensure it has only letter or number characters
-			currentWord = view.GetCurrentWordText().Trim();
+			currentWord = view.Selection.Length == 0
+				? view.GetCurrentWordText().Trim()
+				: view.SelectedText;
 			Match match = wordCheck.Match(currentWord);
 			if ((match == null) || (match.Index != 0) || (match.Length != currentWord.Length))
 				currentWord = String.Empty;

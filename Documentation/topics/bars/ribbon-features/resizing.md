@@ -137,42 +137,44 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 ```
 
-### Multi-Row Layouts
+### Multi-Row Control Groups
 
-The highest density of commands can be achieved using multi-row layouts where all the controls in a ribbon group are arranged in either two or three rows using the `Small` variant of each control. To enable multi-row layouts, set [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[CanUseMultiRowLayout](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanUseMultiRowLayout) = `true`.
+The highest density of commands can be achieved using multi-row layouts where a number of controls in a ribbon group are arranged in either two or three rows using the `Small` variant of each control. To enable multi-row layouts, add a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) to the [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).`Items` collection, and add child [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) or other controls designed for a toolbar context into the [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup).`Items` collection.
 
 When using multi-row layouts, a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is used to group related controls.  Control groups will be arranged into two rows at the largest size and adjust to three rows when width is limited.
 
 ![Screenshot](../images/ribbon-group-two-rows.png)
 ![Screenshot](../images/ribbon-group-three-rows.png)
 
-*The same multi-row ribbon group using two rows compared to three rows*
+*The same multi-row control group using two rows compared to three rows*
 
-When arranged in two rows, control groups are sorted in the order they are defined.  In three-row mode, the default behavior will sort groups so each row is as narrow as possible.  When desired, the [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[ThreeRowItemSortOrder](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.ThreeRowItemSortOrder) property is used to set an explicit sort order where the zero-based index of each control group is listed in the preferred sort order, separated by spaces (e.g., `"0 1 3 4 2"`).  The following example demonstrates defining a three-row sort order.
+When arranged in two rows, control groups are sorted in the order they are defined.  In three-row mode, the default behavior will sort groups so each row is as narrow as possible.  When desired, the [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup).[ThreeRowItemSortOrder](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup.ThreeRowItemSortOrder) property is used to set an explicit sort order where the zero-based index of each control group is listed in the preferred sort order, separated by spaces (e.g., `"0 1 3 4 2"`).  The following example demonstrates defining a three-row sort order.
 
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
-<bars:RibbonGroup ... CanUseMultiRowLayout="True" ThreeRowItemSortOrder="0 1 3 4 2">
+<bars:RibbonGroup ... >
+	<bars:RibbonMultiRowControlGroup ThreeRowItemSortOrder="0 1 3 4 2">
 
-	<bars:RibbonControlGroup Key="Index0"> ... </bars:RibbonControlGroup>
-	<bars:RibbonControlGroup Key="Index1"> ... </bars:RibbonControlGroup>
+		<bars:RibbonControlGroup Key="Index0"> ... </bars:RibbonControlGroup>
+		<bars:RibbonControlGroup Key="Index1"> ... </bars:RibbonControlGroup>
 
-	<!-- In 3-row layout, this group will sort at the end based on ThreeRowItemSortOrder -->
-	<bars:RibbonControlGroup Key="Index2"> ... </bars:RibbonControlGroup>
+		<!-- In 3-row layout, this group will sort at the end based on ThreeRowItemSortOrder -->
+		<bars:RibbonControlGroup Key="Index2"> ... </bars:RibbonControlGroup>
 
-	<bars:RibbonControlGroup Key="Index3"> ... </bars:RibbonControlGroup>
-	<bars:RibbonControlGroup Key="Index4"> ... </bars:RibbonControlGroup>
+		<bars:RibbonControlGroup Key="Index3"> ... </bars:RibbonControlGroup>
+		<bars:RibbonControlGroup Key="Index4"> ... </bars:RibbonControlGroup>
 
-	...
+		...
+	</bars:RibbonMultiRowControlGroup>
 </bars:RibbonGroup>
 ...
 ```
 
 ### Separators
 
-Separators can be automatically rendered between neighboring [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) instances based on the current layout of the containing [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup); i.e., stacking (default) or multi-row.
+Separators can be automatically rendered between neighboring [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) instances based on the current layout of the containing [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) or [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup).
 
 #### Stacking Layout Separators
 
@@ -206,14 +208,14 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 #### Multi-Row Layout Separators
 
-By default, when a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) is configured for multi-row layout, separators are inserted between adjacent control groups on the same row to help visually differentiate the groups. For more exact control, the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).[SeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup.SeparatorMode) property can be set to any of the following [RibbonControlGroupSeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroupSeparatorMode) values to control when a separator is displayed:
+By default, when using a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup), separators are inserted between adjacent control groups on the same row to help visually differentiate the groups. For more exact control, the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).[SeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup.SeparatorMode) property can be set to any of the following [RibbonControlGroupSeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroupSeparatorMode) values to control when a separator is displayed:
 
 | Separator Mode | Description |
 | --- | --- |
 | `Default` or `Always` | Always show surrounding separators when there are neighbors that allow them. |
 | `Never` | Never show surrounding separators, which is ideal when the control group contains controls with visible borders such as [combobox](../controls/combobox.md) controls. |
-| `MultiRowTwoRowOnly` | Only show surrounding separators when in a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) that currently has a two-row layout. |
-| `MultiRowThreeRowOnly` | Only show surrounding separators when in a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) that currently has a three-row layout. |
+| `MultiRowTwoRowOnly` | Only show surrounding separators when in a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) that currently has a two-row layout. |
+| `MultiRowThreeRowOnly` | Only show surrounding separators when in a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) that currently has a three-row layout. |
 
 > [!NOTE]
 > There are other values defined for the [RibbonControlGroupSeparatorMode](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroupSeparatorMode) enumeration that do not apply to multi-row layouts. If used in a multi-row layout, the value will be treated the same as `Default`.

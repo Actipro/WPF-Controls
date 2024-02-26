@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Windows.Media;
-using ActiproSoftware.Text;
-using ActiproSoftware.Text.Implementation;
+﻿using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
 using ActiproSoftware.Text.Utility;
-using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
-using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
+using ActiproSoftware.Windows.Controls.SyntaxEditor;
+using System.Collections.Generic;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ReadOnlyRegions {
 
@@ -25,16 +22,18 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ReadOnly
 		/// Initializes the <c>CustomReadOnlyRegionTagger</c> class.
 		/// </summary>
 		static CustomReadOnlyRegionTagger() {
-			// Register the classification type with a grayed-out background
-			IHighlightingStyle style = new HighlightingStyle(null, Color.FromArgb(0x40, 0xB0, 0xB0, 0xB0));
-			AmbientHighlightingStyleRegistry.Instance.Register(ClassificationTypes.ReadOnlyRegion, style);
+			// Access the ReadOnlyRegion through BuiltInClassificationTypeProvider and it will automatically
+			//   register a default IHighlightingStyle to be used with ClassificationTypes.ReadOnlyRegion (which
+			//   is the default IClassificationType for ActiproSoftware.Text.Tagging.Implementation.ReadOnlyRegionTag).
+			_ = new BuiltInClassificationTypeProvider().ReadOnlyRegion;
 		}
 			
 		/// <summary>
 		/// Initializes a new instance of the <c>CustomReadOnlyRegionTagger</c> class.
 		/// </summary>
 		/// <param name="document">The document to which this tagger is attached.</param>
-		public CustomReadOnlyRegionTagger(ICodeDocument document) : base("Custom", new Ordering[] { new Ordering(TaggerKeys.Token, OrderPlacement.Before) }, document, true) {}
+		public CustomReadOnlyRegionTagger(ICodeDocument document)
+			: base("Custom", new Ordering[] { new Ordering(TaggerKeys.Token, OrderPlacement.Before) }, document, true) { }
 	
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// INTERFACE IMPLEMENTATION

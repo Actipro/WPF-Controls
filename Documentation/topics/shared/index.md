@@ -16,6 +16,10 @@ The Shared Library is not a product that is sold on its own, but any developer w
 - An [AdvancedTextBlock](windows-controls/advancedtextblock.md) control that can show a tooltip when overflowed and can highlight spans of text based on captured text ranges (i.e., filter match results).
 - An [AnimatedExpander](windows-controls/animatedexpander.md) control, which supports animated expand/collapse with fade in/out.
 - An [AnimatedProgressBar](windows-controls/animatedprogressbar.md) control, which is an enhanced Aero-like progressbar with smooth value change animations, multiple states, and animated highlights.
+- An [Avatar](windows-controls/avatar.md) control to represent people or objects.
+- An [AvatarGroup](windows-controls/avatar-group.md) control that renders multiple [Avatar](windows-controls/avatar.md) controls.
+- A [Badge](windows-controls/badge.md) control, which can be used to provide contextual information for other elements or can be used stand-alone.
+- A [CircularProgressBar](windows-controls/circular-progressbar.md) displays a ranged progress value using fluent animations.  It is similar to a native linear `ProgressBar`, except that it renders the progress in a ring shape.
 - A [CircularThumb](xref:@ActiproUIRoot.Controls.Primitives.CircularThumb) control, which is a thumb gripper with a circular shape and arrow adornment.
 - A [CustomDrawElement](windows-controls/customdrawelement.md) element, which is an element that raises an event when it is being rendered, allowing for custom drawing.
 - A [DropShadowChrome](windows-controls/dropshadowchrome.md) decorator, which can be used to render a drop shadow for a popup.
@@ -29,7 +33,7 @@ The Shared Library is not a product that is sold on its own, but any developer w
 - A [ReflectionContentControl](windows-controls/reflectioncontentcontrol.md) control, which is a content wrapper that makes it possible to create dazzling reflection effects in seconds.
 - A [ResizableContentControl](windows-controls/resizablecontentcontrol.md) control, which is a content wrapper that contains a gripper for resizing the content horizontally, vertically, or both.
 - A [ToggleSwitch](windows-controls/toggle-switch.md) control, which is a modern alternative to a checkbox that is typically toggled between on/off states and optionally supports an indeterminate state.
-- A [UserPromptControl](windows-controls/user-prompt.md) control that can be used to build rich user prompts and replace `MessageBox` usage with prompts that match the current theme.
+- A [UserPromptControl](windows-controls/user-prompt/index.md) control that can be used to build rich user prompts and replace `MessageBox` usage with prompts that match the current theme.
 - A [ZeroSizeContentControl](windows-controls/zerosizecontentcontrol.md) control, which is a content wrapper that can provide a zero-width or height during its measuring pass.
 
 ### Color Selection Features

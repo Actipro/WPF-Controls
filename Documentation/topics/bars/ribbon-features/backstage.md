@@ -88,13 +88,15 @@ The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) instanc
 
 ## Defining Backstage Items
 
-The [Backstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) control can contain these types of controls, which appear vertically in its header area: [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton), [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem), and [RibbonBackstageHeaderSeparator](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderSeparator).
+The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) control can contain these types of controls, which appear vertically in its header area: [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton), [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem), and [RibbonBackstageHeaderSeparator](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderSeparator).
 
 Controls will the same header alignment appear in the order in which they are defined in the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).  This allows you to freely intermix the order of buttons, tabs, and any separators. By default, each item is aligned to the top but setting the control's `HeaderAlignment` property to [RibbonBackstageHeaderAlignment](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment).[Bottom](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment.Bottom) will shift the alignment to the bottom.
 
 ### Buttons
 
 [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton) controls generally appear at the top and bottom of the backstage header area.  They are often set to the most common application commands such as **Save**, that can be easily executed with one click.
+
+These buttons will close the ancestor [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) when they are clicked.  This behavior can be disabled by setting the button's [CanCloseBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton.CanCloseBackstage) property to `false`.
 
 ### Tabs
 

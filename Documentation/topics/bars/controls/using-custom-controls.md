@@ -26,7 +26,7 @@ The [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService) cla
 
 ### RibbonGroup in a Classic Ribbon
 
-If the custom control is hosted directly within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) that is not using multi-row layout (via the [CanUseMultiRowLayout](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanUseMultiRowLayout) property), then it will have a large height, roughly three times the height of small controls.
+If the custom control is hosted directly within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup), it will have a large height, roughly three times the height of small controls.
 
 This kind of usage scenario is not typically recommended for custom controls except in special circumstances.
 

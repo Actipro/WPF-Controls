@@ -6,21 +6,22 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'VB' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="VB" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="VB" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
 		<ClassificationType Key="Operator" />
-		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
-		<ClassificationType Key="XmlDocumentationComment" Description="XML Doc Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="XmlDocumentationTag" Description="XML Doc Tag" DefaultStyle="#FF808080" />
+		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="XmlDocumentationComment" Description="XML Doc Comment" DefaultStyle="#FF008000" DarkStyle="#FF608B4E" />
+		<ClassificationType Key="XmlDocumentationTag" Description="XML Doc Tag" DefaultStyle="#FF808080" DarkStyle="#FF608B4E" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
@@ -62,7 +63,7 @@ Actipro Syntax Language Definition (.langdef)
 				<ExplicitPatternGroup TokenId="21" TokenKey="EndStructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Structure" LookAheadPattern="{NonWord}|\z" />
 				<ExplicitPatternGroup TokenId="22" TokenKey="EndModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Module" LookAheadPattern="{NonWord}|\z" />
 				<ExplicitPatternGroup TokenId="23" TokenKey="EndNamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Namespace" LookAheadPattern="{NonWord}|\z" />
-				<ExplicitPatternGroup TokenId="24" TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenId="24" TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. ,
 					]]></ExplicitPatterns>
@@ -213,7 +214,7 @@ Actipro Syntax Language Definition (.langdef)
 				<ExplicitPatternGroup TokenId="21" TokenKey="EndStructureKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Structure" LookAheadPattern="{NonWord}|\z" />
 				<ExplicitPatternGroup TokenId="22" TokenKey="EndModuleKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Module" LookAheadPattern="{NonWord}|\z" />
 				<ExplicitPatternGroup TokenId="23" TokenKey="EndNamespaceKeyword" ClassificationTypeKey="Keyword" LookBehindPattern="^|[^\.]" Pattern="End Namespace" LookAheadPattern="{NonWord}|\z" />
-				<ExplicitPatternGroup TokenId="24" TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenId="24" TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. ,
 					]]></ExplicitPatterns>

@@ -109,6 +109,36 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
+[CaretPrimary](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CaretPrimary) Property
+
+</td>
+<td>
+
+Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to use for the primary caret when multiple carets are active.
+
+Only the foreground is editable in the default [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) that is registered for this classification type.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[CaretSecondary](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CaretSecondary) Property
+
+</td>
+<td>
+
+Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to use for the secondary caret when multiple carets are active.
+
+Only the foreground is editable in the default [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) that is registered for this classification type.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [CodeSnippetDependentField](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CodeSnippetDependentField) Property
 
 </td>
@@ -304,14 +334,25 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
+[LineNumberCurrent](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.LineNumberCurrent) Property
+
+</td>
+<td>
+
+Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to use for the current line in the line number margin when [IsCurrentLineNumberHighlightingEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.IsCurrentLineNumberHighlightingEnabled) is active.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [LineNumbers](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.LineNumbers) Property
 
 </td>
 <td>
 
 Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to use for the line number margin.
-
-Only the foreground and background are editable in the default [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) that is registered for this classification type.
 
 </td>
 </tr>
@@ -436,6 +477,21 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 </td>
 </tr>
 
+<tr>
+<td>
+
+[WordWrapGlyph](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.WordWrapGlyph) Property
+
+</td>
+<td>
+
+Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to use for word wrap glyphs.
+
+Only the foreground is editable in the default [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) that is registered for this classification type.
+
+</td>
+</tr>
+
 </tbody>
 </table>
 
@@ -470,9 +526,15 @@ Back to the example scenario, for any [SyntaxEditor](xref:@ActiproUIRoot.Control
 This code creates a custom registry and assigns it to a console window SyntaxEditor:
 
 ```csharp
-SyntaxEditor console = new SyntaxEditor();
+// Create a custom registry
 IHighlightingStyleRegistry consoleWindowRegistry = new HighlightingStyleRegistry();
 consoleWindowRegistry.Description = "Console Window";
+
+// Optionally manage the registry for automatic changes in light/dark themes
+SyntaxEditorThemeManager.Manage(consoleWindowRegistry);
+
+// Configure the editor to use the custom registry
+SyntaxEditor console = new SyntaxEditor();
 console.DefaultHighlightingStyleRegistry = consoleWindowRegistry;
 ```
 
@@ -490,37 +552,6 @@ One possible scenario is if you wish to have some classification types that shou
 
 In these scenarios, it's possible to have an [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) specify an alternate [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry) to use.  This is done by having the [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag) implement the [IHighlightingStyleRegistryProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistryProvider) interface.  The classification tag returns the custom registry via the [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistryProvider.HighlightingStyleRegistry) property.  Classification taggers can use the [StyleRegistryClassificationTag](xref:ActiproSoftware.Text.Tagging.Implementation.StyleRegistryClassificationTag) class for this purpose.  When the normal highlighting style registry is fine for use, use the smaller [ClassificationTag](xref:ActiproSoftware.Text.Tagging.Implementation.ClassificationTag) class instead.
 
-@if (wpf) {
-
 ## Switching to a Dark Theme
 
-All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and the built-in language implementations are intended to be used on an editor with a light background.  However, in cases where a dark application theme has been applied, these default styles will not be very appealing.
-
-The [Actipro Themes](../../../themes/index.md) system supports dark themes, such as Metro Dark.  You can attach to the [ThemeManager](xref:@ActiproUIRoot.Themes.ThemeManager).[CurrentThemeChanged](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentThemeChanged) event to know when the current theme is changed by the end user.  In this case, add some detection for whether the current theme has changed from a light to dark, or dark to light one.  If a theme is changing but both the old and new themes were light background themes, nothing needs to be done.
-
-Let's see an example of how to reset the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) instance.  In cases where the end user is changing to a light theme from a dark theme, or vice versa, add this in the [CurrentThemeChanged](xref:@ActiproUIRoot.Themes.ThemeManager.CurrentThemeChanged) event handler:
-
-```csharp
-// Unregister all classification types
-var classificationTypes = AmbientHighlightingStyleRegistry.Instance.ClassificationTypes.ToArray();
-foreach (var classificationType in classificationTypes)
-	AmbientHighlightingStyleRegistry.Instance.Unregister(classificationType);
-
-// Re-register common classification types
-new DisplayItemClassificationTypeProvider().RegisterAll();
-
-// NOTE: Possibly load up syntax language instances you use so their various customized styles get registered
-```
-
-The above code unregisters all the registered classification types from the ambient registry.  Then it re-registers the display item classification types and optionally loads up syntax languages that are used by the app so their customized classification types and styles get re-registered.  At this point, the registry is ready to go for light themes.
-
-If a dark theme is becoming active, there is some additional work to do.  Each of the styles that have been registered into the registry needs to be altered to look good on a dark background.
-
-One way to do this is to enumerate through the registered styles and update the foreground and background colors as appropriate.  You could have stored some pre-defined colors in a custom data structure and used that to know how to update the styles.
-
-Alternatively, you could use the feature described in the "Importing Visual Studio Settings" section above.  The Sample Browser shows an example of this.  It has a pre-defined *Dark.vssettings* file that includes a number of style definitions that render well on dark editor backgrounds.  After the code above is executed, this *Dark.vssettings* file is loaded and it will update the styles of any styles that have already been registered on the registry.
-
-> [!IMPORTANT]
-> Don't forget to also update the static [CommonImageSourceProvider.DefaultImageSet](../intelliprompt/image-source-providers.md) property appropriately after a theme change to ensure the proper image theme is loaded for IntelliPrompt.
-
-}
+See the [Dark Themes](dark-themes.md) topic for details on how to support switching to a dark theme.

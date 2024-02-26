@@ -6,16 +6,16 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'CSS' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Css" LanguageDescription="CSS" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Css" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Css" LanguageDescription="CSS" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Css" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="CssSelector" Description="CSS Selector" DefaultStyle="#FF800000" />
-		<ClassificationType Key="CssPropertyName" Description="CSS Property Name" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="CssPropertyValue" Description="CSS Property Value" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="CssComment" Description="CSS Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="CssComment" Description="CSS Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="CssPropertyName" Description="CSS Property Name" DefaultStyle="#FFFF0000" DarkStyle="#FF9CDCFE" />
+		<ClassificationType Key="CssPropertyValue" Description="CSS Property Value" DefaultStyle="#FF0000FF" DarkStyle="#FFC8C8C8" />
+		<ClassificationType Key="CssSelector" Description="CSS Selector" DefaultStyle="#FF800000" DarkStyle="#FFD7BA7D" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

@@ -6,39 +6,40 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'MSIL' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Msil" LanguageDescription="MSIL" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Msil" LanguageDescription="MSIL" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="Label" DefaultStyle="#FF008080" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="Label" DefaultStyle="#FF008080" DarkStyle="#FF4EC9B0" />
 		<ClassificationType Key="Number" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="PrimaryString" />
 					<StateRef Key="AlternateString" />
 					<StateRef Key="SingleLineComment" />
 					<StateRef Key="MultiLineComment" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
-				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
-				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
-				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
-				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
-				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
-				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
-				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenId="5" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenId="6" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenId="7" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenId="8" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="Keyword" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						algorithm alignment ansi auto beforefieldinit bool boxed char cil class extends extern float32
 						float64 hidebysig init instance int16 int32 int64 int8 managed method modopt modreq native nested
@@ -46,14 +47,14 @@ Actipro Syntax Language Definition (.langdef)
 						unsigned valutype virtual void
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Directive" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="10" TokenKey="Directive" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						.assembly .class .corflags .culture .custom .data .entrypoint .field .file .hash .imagebase
 						.language .locale .locals .maxstack .method .module .mresource .namespace .publickeytoken
 						.publickey .subsystem .ver .vtfixup
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="OpCode" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="11" TokenKey="OpCode" ClassificationTypeKey="Keyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						add.ovf.un add.ovf add and arglist beq.s be bge.s bge.un.s bge.un bgt.s bgt.un.s bgt.un ble.s ble.un.s
 						ble.un blt.s blt.un.s blt.un bne.un.s bne.un box br.s break brfalse.s brfalse brtrue.s brtrue
@@ -75,78 +76,78 @@ Actipro Syntax Language Definition (.langdef)
 						stsfld sub.ovf.un sub.ovf sub switch tail. throw unaligned. unbox volatile. xor
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="Label" ClassificationTypeKey="Label" Pattern="{Alpha} ({Word})* \:" LookAheadPattern="[^\:]|\z" />
-				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
-				<ExplicitPatternGroup TokenKey="Punctuation">
+				<RegexPatternGroup TokenId="12" TokenKey="Label" ClassificationTypeKey="Label" Pattern="{Alpha} ({Word})* \:" LookAheadPattern="[^\:]|\z" />
+				<RegexPatternGroup TokenId="13" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="14" TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						! % & + - / :: < = > ^ |
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="15" TokenKey="RealNumber" ClassificationTypeKey="Number" LookAheadPattern="{NonWord}|\z">
 					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)? [FfDdMm]?" />
 					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+ [FfDdMm]?" />
 				</RegexPatternGroup>
-				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigitMacro}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
+				<RegexPatternGroup TokenId="16" TokenKey="IntegerNumber" ClassificationTypeKey="Number" Pattern="{Digit}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="17" TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigitMacro}+ (([Uu]? [Ll]?) | ([Ll]? [Uu]?))" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
 			</State>
 			<!-- PrimaryString state -->
-			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
+			<State Id="2" Key="PrimaryString" DefaultTokenId="18" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="19" TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
+							<RegexPatternGroup TokenId="20" TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
-				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+				<ExplicitPatternGroup TokenId="21" TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
+				<RegexPatternGroup TokenId="18" TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
 			</State>
 			<!-- AlternateString state -->
-			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="String">
+			<State Id="3" Key="AlternateString" DefaultTokenId="22" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="String">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="23" TokenKey="AlternateStringStartDelimiter" Pattern="'" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="['\n]" />
+							<RegexPatternGroup TokenId="24" TokenKey="AlternateStringEndDelimiter" Pattern="['\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<ExplicitPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\'" />
-				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
+				<ExplicitPatternGroup TokenId="25" TokenKey="AlternateStringEscapedDelimiter" Pattern="\'" />
+				<RegexPatternGroup TokenId="22" TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
 			</State>
 			<!-- SingleLineComment state -->
-			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+			<State Id="4" Key="SingleLineComment" DefaultTokenId="26" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
+							<ExplicitPatternGroup TokenId="27" TokenKey="SingleLineCommentStartDelimiter" Pattern="//" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+							<RegexPatternGroup TokenId="28" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+				<RegexPatternGroup TokenId="26" TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
 			</State>
 			<!-- MultiLineComment state -->
-			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
+			<State Id="5" Key="MultiLineComment" DefaultTokenId="29" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="Comment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+							<ExplicitPatternGroup TokenId="30" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+							<ExplicitPatternGroup TokenId="31" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
-				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
+				<RegexPatternGroup TokenId="32" TokenKey="MultiLineCommentLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="29" TokenKey="MultiLineCommentText" Pattern="[^\*\n]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

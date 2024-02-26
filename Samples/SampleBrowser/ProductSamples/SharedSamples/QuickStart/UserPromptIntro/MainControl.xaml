@@ -410,8 +410,9 @@
 												  >
 							<shared:UserPromptControl.ExpandedInformationContent>
 								<StackPanel>
-									<TextBlock Text="Stack Trace:" FontWeight="Bold" Margin="0,0,0,3" />
-									<TextBox IsReadOnly="True" MaxLines="5" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+									<Label Content="Stack Trace:" FontWeight="Bold" Padding="0" Margin="3" />
+									<TextBox IsReadOnly="True" MaxLines="5" themes:ThemeProperties.UseBackgroundStates="False"
+											 Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
 											 HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Text="{StaticResource StackTraceSampleText}" />
 								</StackPanel>
 							</shared:UserPromptControl.ExpandedInformationContent>
@@ -426,7 +427,7 @@
 						<shared:UserPromptControl Header="Overwrite file?"
 												  StandardButtons="YesNoCancel"
 												  DefaultResult="Cancel"
-												  StandardStatusImage="Question"												  
+												  StandardStatusImage="Question"
 												  ExpandedInformationCollapsedHeaderText="Show details"
 												  ExpandedInformationExpandedHeaderText="Hide details"
 												  Width="500" BorderThickness="1">

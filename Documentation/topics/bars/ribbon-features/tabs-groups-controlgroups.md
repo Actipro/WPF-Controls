@@ -227,3 +227,63 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonContr
 When a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) is within a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) and is vertically stacking its items (`Medium` or `Small` variant sizes), the [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup).`HorizontalContentAlignment` property determines how the items are horizontally aligned.  The default value is `Left`.
 
 In some cases, such as when using [ItemVariantBehavior](xref:@ActiproUIRoot.Controls.Bars.ItemVariantBehavior).[AlwaysMedium](xref:@ActiproUIRoot.Controls.Bars.ItemVariantBehavior.AlwaysMedium) for a set of buttons, it may be preferred to ensure all items are the same width by using the `HorizontalAlignment.Stretch` option.  This can be particularly useful when the items are [popup buttons](../controls/popup-button.md) or [split buttons](../controls/split-button.md) since the dropdown arrows will align on the right, even though the buttons have different label lengths.
+
+## Multi-Row Control Groups (Classic layout mode only)
+
+A [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) is only relevant when a ribbon is using the `Classic` layout mode and can be omitted if only the `Simplified` layout mode is to be supported.
+
+The primary purpose of a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) is to display contained controls in two or three rows within the parent ribbon group.  See the [Resizing and Variants](resizing.md) topic for more details on resizing.
+
+### Defining Multi-Row Control Groups
+
+The following XAML demonstrates how a multi-row control group might be used to display a set of controls that show in two or three rows, depending on available space:
+
+```xaml
+xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+...
+<bars:RibbonTabItem Key="Home" ... >
+
+	<bars:RibbonGroup Key="FontGroup" Label="Font">
+
+		<bars:RibbonMultiRowControlGroup>
+
+			<!-- Don't render separators next to this set of comboboxes -->
+			<bars:RibbonControlGroup SeparatorMode="Never">
+				<bars:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
+								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				<bars:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
+								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+			</bars:RibbonControlGroup>
+
+			<!-- Larger and smaller font size buttons -->
+			<bars:RibbonControlGroup>
+				<bars:BarButton Key="Larger" SmallImageSource="/Images/GrowFont16.png" KeyTipText="FG" />
+				<bars:BarButton Key="Smaller" SmallImageSource="/Images/ShrinkFont16.png" KeyTipText="FK" />
+			</bars:RibbonControlGroup>
+
+			<!-- Bold, italic, and underline buttons -->
+			<bars:RibbonControlGroup>
+				<bars:BarButton Key="Bold" SmallImageSource="/Images/Bold16.png" KeyTipText="B" />
+				<bars:BarButton Key="Italic" SmallImageSource="/Images/Italic16.png" KeyTipText="I" />
+				<bars:BarButton Key="Underline" SmallImageSource="/Images/Underline16.png" KeyTipText="U" />
+			</bars:RibbonControlGroup>
+
+		</bars:RibbonMultiRowControlGroup>
+
+	</bars:RibbonGroup>
+	...
+
+</bars:RibbonTabItem>
+...
+```
+
+See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
+
+### MVVM Support
+
+A multi-row control group may also be defined by setting the [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).`ItemsSource` property to an enumerable of view models, one of which generates a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) control via the ribbon's [ItemContainerTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Ribbon.ItemContainerTemplateSelector).
+
+The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonMultiRowControlGroupViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonMultiRowControlGroupViewModel) class that is intended to be used as a view model for a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) control, and the [BarControlTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarControlTemplateSelector) class in the library generates a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) for that view model.
+
+> [!TIP]
+> See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.

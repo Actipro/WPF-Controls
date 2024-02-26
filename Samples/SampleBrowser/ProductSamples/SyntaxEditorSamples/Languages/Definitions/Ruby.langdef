@@ -6,25 +6,26 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'Ruby' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Ruby" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Ruby" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="RubyVariable" Description="Ruby Variable" DefaultStyle="#FF008080" />
-		<ClassificationType Key="RubyIgnored" Description="Ruby Ignored Code" DefaultStyle="#FFA0A0A0" />
-		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Operator" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="RubyIgnored" Description="Ruby Ignored Code" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="RubyVariable" Description="Ruby Variable" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="String" />
 					<StateRef Key="Comment" />
@@ -40,7 +41,7 @@ Actipro Syntax Language Definition (.langdef)
 				<ExplicitPatternGroup Key="CloseCurlyBracePatternGroup" TokenId="7" TokenKey="CloseCurlyBrace" Pattern="}" />
 				<ExplicitPatternGroup Key="OpenSquareBracePatternGroup" TokenId="8" TokenKey="OpenSquareBrace" Pattern="[" />
 				<ExplicitPatternGroup Key="CloseSquareBracePatternGroup" TokenId="9" TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenId="10" TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenId="10" TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. , : ; `
 					]]></ExplicitPatterns>
@@ -70,7 +71,7 @@ Actipro Syntax Language Definition (.langdef)
 				<RegexPatternGroup TokenId="21" TokenKey="HexNumber" ClassificationTypeKey="Number" Pattern="0 [xX] {HexDigit}+ [Ll]? [Jj]?" LookAheadPattern="{NonWord}|\z" />
 			</State>
 			<!-- String state -->
-			<State Key="String" DefaultTokenId="22" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
+			<State Id="2" Key="String" DefaultTokenId="22" DefaultTokenKey="StringText" DefaultClassificationTypeKey="String">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
@@ -98,7 +99,7 @@ Actipro Syntax Language Definition (.langdef)
 				<RegexPatternGroup TokenId="22" TokenKey="StringText" Pattern="[^\\\&quot;'\n]+" />
 			</State>
 			<!-- Comment state -->
-			<State Key="Comment" DefaultTokenId="26" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
+			<State Id="3" Key="Comment" DefaultTokenId="26" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="Comment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
@@ -112,7 +113,7 @@ Actipro Syntax Language Definition (.langdef)
 				<RegexPatternGroup TokenId="26" TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
 			</State>
 			<!-- BeginEnd state -->
-			<State Key="BeginEnd" DefaultTokenId="29" DefaultTokenKey="BeginEndText" DefaultClassificationTypeKey="RubyIgnored">
+			<State Id="4" Key="BeginEnd" DefaultTokenId="29" DefaultTokenKey="BeginEndText" DefaultClassificationTypeKey="RubyIgnored">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
@@ -125,7 +126,7 @@ Actipro Syntax Language Definition (.langdef)
 				</State.Scopes>
 			</State>
 			<!-- End state -->
-			<State Key="End" DefaultTokenId="32" DefaultTokenKey="EndText" DefaultClassificationTypeKey="RubyIgnored">
+			<State Id="5" Key="End" DefaultTokenId="32" DefaultTokenKey="EndText" DefaultClassificationTypeKey="RubyIgnored">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>

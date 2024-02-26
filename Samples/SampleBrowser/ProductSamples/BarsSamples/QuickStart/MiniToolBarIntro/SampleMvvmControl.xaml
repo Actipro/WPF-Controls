@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.MiniToolBarIntro.SampleMvvmControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared">
+
+	<TextBox x:Name="textBox" Padding="10" BorderThickness="0" TextWrapping="Wrap" Text="This TextBox has a context menu defined using MVVM with a multi-row mini toolbar. Right-click to see the context menu and mini-toolbar.">
+		<shared:HintProperties.Hint>
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TextBox with a context menu and mini-toolbar defined using MVVM" />
+		</shared:HintProperties.Hint>
+	</TextBox>
+
+</UserControl>

@@ -435,8 +435,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </value>
 		public bool SelectionStrikethrough {
 			get {
-				var textDecorations = (TextDecorationCollection)this.Selection.GetPropertyValue(TextBlock.TextDecorationsProperty);
-				return textDecorations?.Any(d => d.Location == TextDecorationLocation.Strikethrough) == true;
+				if (this.Selection.GetPropertyValue(TextBlock.TextDecorationsProperty) is TextDecorationCollection textDecorations)
+					return textDecorations.Any(d => d.Location == TextDecorationLocation.Strikethrough);
+				return false;
 			}
 			set {
 				if (this.SelectionStrikethrough != value)
@@ -486,8 +487,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// </value>
 		public bool SelectionUnderline {
 			get {
-				var textDecorations = (TextDecorationCollection)this.Selection.GetPropertyValue(TextBlock.TextDecorationsProperty);
-				return textDecorations?.Any(d => d.Location == TextDecorationLocation.Underline) == true;
+				if (this.Selection.GetPropertyValue(TextBlock.TextDecorationsProperty) is TextDecorationCollection textDecorations)
+					return textDecorations.Any(d => d.Location == TextDecorationLocation.Underline);
+				return false;
 			}
 			set {
 				if (this.SelectionUnderline != value)

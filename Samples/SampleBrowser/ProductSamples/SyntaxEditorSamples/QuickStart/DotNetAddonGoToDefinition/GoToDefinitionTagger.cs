@@ -16,6 +16,7 @@ using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
 using ActiproSoftware.Windows.Input;
+using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Themes;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddonGoToDefinition {
@@ -32,6 +33,8 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		private bool									isCustomCursorActive;
 		private readonly IEditorView					view;
 
+		private static readonly Color					defaultDarkForegroundColor = UIColor.FromWebColor("#569cd6");
+		private static readonly Color					defaultLightForegroundColor = UIColor.FromWebColor("#0000ff");
 		private static readonly IClassificationType		goToDefinitionClassificationType = new ClassificationType("GoToDefinition", "Go To Definition");
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,16 +104,15 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 		private static void EnsureClassificationTypeRegistered() {
 			var registry = AmbientHighlightingStyleRegistry.Instance;
 			if (registry.GetClassificationType(goToDefinitionClassificationType.Key) is null) {
+				// Configure light/dark color palettes with default colors
+				registry.LightColorPalette?.SetForeground(goToDefinitionClassificationType.Key, defaultLightForegroundColor);
+				registry.DarkColorPalette?.SetForeground(goToDefinitionClassificationType.Key, defaultDarkForegroundColor);
 
-				// Choose a theme-appropriate color
-				var color = ThemeManager.IsDarkTheme(ThemeManager.CurrentTheme)
-					? Color.FromRgb(0x56, 0x9C, 0xD6)
-					: Colors.Blue;
-
-				// Define the style
-				var style = new HighlightingStyle(color, null) { UnderlineKind = LineKind.Solid };
+				// Define a style with the underline decoration
+				var style = new HighlightingStyle() { UnderlineKind = LineKind.Solid };
 
 				// Associate the style with the classification type
+				// and the current color palette color will be automatically applied
 				registry.Register(goToDefinitionClassificationType, style);
 			}
 		}

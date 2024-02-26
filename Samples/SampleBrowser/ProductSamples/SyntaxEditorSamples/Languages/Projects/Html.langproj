@@ -6,21 +6,21 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'HTML' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Html" LanguageDescription="HTML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Html" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v92\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Html" LanguageDescription="HTML" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Html" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FF800000" />
-		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="ServerSideScript" Description="Server-Side Script" DefaultStyle="#FF000000,,,#FFFFEE62" />
+		<ClassificationType Key="ServerSideScript" Description="Server-Side Script" DefaultStyle="#FF000000,,,#FFFFFF00" DarkStyle="#FF000000,,,#FFFFFFB3" />
+		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" DarkStyle="#FFC8C8C8" />
+		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" DarkStyle="#FFFFAAF9" />
+		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" DarkStyle="#FF808080" />
+		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FFA31515" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FF808080" DarkStyle="#FFC8C8C8" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

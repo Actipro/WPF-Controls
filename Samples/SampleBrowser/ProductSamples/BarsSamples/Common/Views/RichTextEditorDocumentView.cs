@@ -199,6 +199,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 						BarControlService.SetRootBarControl(contextMenu, this.RootBarControl);
 						foreach (var item in viewModel.GetContextMenuItems())
 							contextMenu.Items.Add(item);
+						var miniToolBar = viewModel.GetMiniToolBar();
+						if (miniToolBar?.Items.Count > 0)
+							contextMenu.MiniToolBarContent = miniToolBar;
 						if (contextMenu.Items.Count > 0)
 							this.ContextMenu = contextMenu;
 					}

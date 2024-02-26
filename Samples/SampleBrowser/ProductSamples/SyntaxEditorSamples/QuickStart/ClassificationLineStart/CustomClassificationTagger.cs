@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using ActiproSoftware.Text;
+﻿using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
-using ActiproSoftware.Windows.Controls;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
-using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
-using ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation;
+using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ClassificationLineStart {
 
@@ -23,10 +14,10 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Classifi
 	/// </summary>
 	public class CustomClassificationTagger : TaggerBase<IClassificationTag> {
 
-		private static IClassificationType commentCT = new ClassificationType("Comment");
-		private static IClassificationType errorCT = new ClassificationType("Error");
+		private static readonly IClassificationType commentCT = new ClassificationType("Comment");
+		private static readonly IClassificationType errorCT = new ClassificationType("Error");
 
-		private static HighlightingStyleRegistry styleRegistry;
+		private static readonly HighlightingStyleRegistry styleRegistry;
 	
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -41,8 +32,20 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Classifi
 			//   Normally the AmbientHighlightingStyleRegistry is used but in this sample we wanted to also show
 			//   how you can use custom IHighlightingStyleRegistry instances with classification tags
 			styleRegistry = new HighlightingStyleRegistry();
-			styleRegistry.Register(commentCT, new HighlightingStyle(Colors.Green));
-			styleRegistry.Register(errorCT, new HighlightingStyle(Colors.Maroon) { Bold = true });
+			styleRegistry.Register(commentCT, new HighlightingStyle() { Foreground = Colors.Green });
+			styleRegistry.Register(errorCT, new HighlightingStyle() { Foreground = Colors.Maroon, Bold = true });
+
+			// Allow SyntaxEditorThemeManager to automatically switch the style registry between the light and dark
+			//   color palettes when the application theme changes.  When a highlighting style is registered, the
+			//   provided colors are stored in the light color palette.  The same colors will also be stored in the
+			//   dark color palette unless...
+			//
+			//   1) Colors for the same classification type key have already been defined in the dark color palette, or
+			//   2) The light color is automatically mapped to a more appropriate dark color.
+			//
+			//   The Green and Maroon colors in this sample are examples of common colors that are automatically
+			//   mapped to more appropriate colors for use with dark themes, so no additional configuration is needed.
+			SyntaxEditorThemeManager.Manage(styleRegistry);
 		}
 		
 		/// <summary>

@@ -6,11 +6,11 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 -->
-<LanguageProject LanguageKey="Parent" LanguageDescription="Parent to C# example" OutputLanguageDefinition="False" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\Development\ProductSamples\SyntaxEditorSamples\QuickStart\DotNetAddOnServerTags" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Parent" LanguageDescription="Parent to C# example" OutputLanguageDefinition="False" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags" OutputPath="." OutputPlatformKind="Wpf" xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="TransitionDelimiter" DefaultStyle="#FF000000,,,#FFFFFF00" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="TransitionDelimiter" DefaultStyle="#FF000000,,,#FFFFFF00" DarkStyle="#FF000000,,,#FFEFF284" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

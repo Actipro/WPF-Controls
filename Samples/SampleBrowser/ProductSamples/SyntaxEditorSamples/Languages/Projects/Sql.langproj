@@ -6,21 +6,21 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'SQL' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Sql" LanguageDescription="SQL" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Sql" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Sql" LanguageDescription="SQL" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Sql" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="SqlKeyword" Description="SQL Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="SqlFunction" Description="SQL Function" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="SqlOperator" Description="SQL Operator" DefaultStyle="#FF808080" />
-		<ClassificationType Key="SqlDataType" Description="SQL Data Type" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="SqlVariable" Description="SQL Variable" DefaultStyle="#FF008000" />
-		<ClassificationType Key="SqlSystemVariable" Description="SQL System Variable" DefaultStyle="#FF008000,True" />
-		<ClassificationType Key="SqlNumber" Description="SQL Number" DefaultStyle="#FF800000,True" />
-		<ClassificationType Key="SqlString" Description="SQL String" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" />
+		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="SqlDataType" Description="SQL Data Type" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="SqlFunction" Description="SQL Function" DefaultStyle="#FFFF00FF" DarkStyle="#FFC975D5" />
+		<ClassificationType Key="SqlKeyword" Description="SQL Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="SqlNumber" Description="SQL Number" DefaultStyle="#FF800000,True" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="SqlOperator" Description="SQL Operator" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="SqlString" Description="SQL String" DefaultStyle="#FFFF0000" DarkStyle="#FFCB4141" />
+		<ClassificationType Key="SqlSystemVariable" Description="SQL System Variable" DefaultStyle="#FF008000,True" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="SqlVariable" Description="SQL Variable" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

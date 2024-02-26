@@ -6,38 +6,38 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'SQL' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Sql" LanguageDescription="SQL" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Sql" LanguageDescription="SQL" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="SqlKeyword" Description="SQL Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="SqlFunction" Description="SQL Function" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="SqlOperator" Description="SQL Operator" DefaultStyle="#FF808080" />
-		<ClassificationType Key="SqlDataType" Description="SQL Data Type" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="SqlVariable" Description="SQL Variable" DefaultStyle="#FF008000" />
-		<ClassificationType Key="SqlSystemVariable" Description="SQL System Variable" DefaultStyle="#FF008000,True" />
-		<ClassificationType Key="SqlNumber" Description="SQL Number" DefaultStyle="#FF800000,True" />
-		<ClassificationType Key="SqlString" Description="SQL String" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" />
+		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="SqlDataType" Description="SQL Data Type" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="SqlFunction" Description="SQL Function" DefaultStyle="#FFFF00FF" DarkStyle="#FFC975D5" />
+		<ClassificationType Key="SqlKeyword" Description="SQL Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="SqlNumber" Description="SQL Number" DefaultStyle="#FF800000,True" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="SqlOperator" Description="SQL Operator" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="SqlString" Description="SQL String" DefaultStyle="#FFFF0000" DarkStyle="#FFCB4141" />
+		<ClassificationType Key="SqlSystemVariable" Description="SQL System Variable" DefaultStyle="#FF008000,True" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="SqlVariable" Description="SQL Variable" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="String" />
 					<StateRef Key="SquareString" />
 					<StateRef Key="Comment" />
 					<StateRef Key="MultiLineComment" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
-				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
-				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenKey="OpenParenthesis" Pattern="(" />
-				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenKey="CloseParenthesis" Pattern=")" />
-				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="SqlKeyword" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup Key="OpenParenthesisPatternGroup" TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup Key="CloseParenthesisPatternGroup" TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenId="5" TokenKey="Keyword" ClassificationTypeKey="SqlKeyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						ADD ALTER AS ASC AUTHORIZATION BACKUP BEGIN BREAK BROWSE BULK BY CASCADE CHECK CHECKPOINT CLOSE
 						CLUSTERED COLUMN COMMIT COMMITTED COMPUTE CONFIRM CONSTRAINT CONTAINS CONTINUE CONTROLROW CREATE
@@ -54,7 +54,7 @@ Actipro Syntax Language Definition (.langdef)
 						VALUES VIEW WAITFOR WHEN WHERE WHILE WITH WORK WRITETEXT
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Function" ClassificationTypeKey="SqlFunction" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="6" TokenKey="Function" ClassificationTypeKey="SqlFunction" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						ABS ACOS APP_NAME ASCII ASIN ATAN ATN2 AVG CASE CAST CEILING CHARINDEX COALESCE COL_LENGTH COL_NAME
 						COLUMNPROPERTY CONTAINSTABLE CONVERT COS COT COUNT CURRENT_TIMESTAMP CURRENT_USER CURSOR_STATUS
@@ -70,100 +70,100 @@ Actipro Syntax Language Definition (.langdef)
 						YEAR
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="SqlOperator">
+				<ExplicitPatternGroup TokenId="7" TokenKey="Operator" ClassificationTypeKey="SqlOperator">
 					<ExplicitPatterns><![CDATA[
 						+ - * / % ~ & | ^ = > < >= <= <> != !> !<
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="SqlOperator" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="7" TokenKey="Operator" ClassificationTypeKey="SqlOperator" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						ALL AND ANY BETWEEN EXISTS IN LEFT JOIN LIKE NOT OR OUTER RIGHT SOME
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="DataType" ClassificationTypeKey="SqlDataType" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="8" TokenKey="DataType" ClassificationTypeKey="SqlDataType" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						bigint binary bit char character datetime dec decimal double float int integer image long money
 						national nchar ntext number nvarchar precision raw real single smalldatetime smallint smallmoney
 						text timestamp tinyint uniqueidentifier varbinary varchar varchar2 varying
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
-				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="SqlVariable" Pattern="@ {Word}+" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="SystemVariable" ClassificationTypeKey="SqlSystemVariable" Pattern="@@ {Word}+" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="Number" ClassificationTypeKey="SqlNumber" Pattern="{Digit}+ (\. {Digit}+)?" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="SqlNumber" Pattern="0 [x | X] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="9" TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
+				<RegexPatternGroup TokenId="10" TokenKey="Variable" ClassificationTypeKey="SqlVariable" Pattern="@ {Word}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="11" TokenKey="SystemVariable" ClassificationTypeKey="SqlSystemVariable" Pattern="@@ {Word}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="12" TokenKey="Number" ClassificationTypeKey="SqlNumber" Pattern="{Digit}+ (\. {Digit}+)?" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="13" TokenKey="HexNumber" ClassificationTypeKey="SqlNumber" Pattern="0 [x | X] {HexDigit}+" LookAheadPattern="{NonWord}|\z" />
 			</State>
 			<!-- String state -->
-			<State Key="String" DefaultTokenKey="StringText" DefaultClassificationTypeKey="SqlString">
+			<State Id="2" Key="String" DefaultTokenId="14" DefaultTokenKey="StringText" DefaultClassificationTypeKey="SqlString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="StringStartDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="15" TokenKey="StringStartDelimiter" Pattern="'" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="StringEndDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="16" TokenKey="StringEndDelimiter" Pattern="'" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="StringText" Pattern="[^']+" />
+				<RegexPatternGroup TokenId="14" TokenKey="StringText" Pattern="[^']+" />
 			</State>
 			<!-- SquareString state -->
-			<State Key="SquareString" DefaultTokenKey="SquareStringText" DefaultClassificationTypeKey="SqlString">
+			<State Id="3" Key="SquareString" DefaultTokenId="17" DefaultTokenKey="SquareStringText" DefaultClassificationTypeKey="SqlString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SquareStringStartDelimiter" Pattern="[" />
+							<ExplicitPatternGroup TokenId="18" TokenKey="SquareStringStartDelimiter" Pattern="[" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="SquareStringEndDelimiter" Pattern="]" />
+							<ExplicitPatternGroup TokenId="19" TokenKey="SquareStringEndDelimiter" Pattern="]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SquareStringText" Pattern="[^\]]+" />
+				<RegexPatternGroup TokenId="17" TokenKey="SquareStringText" Pattern="[^\]]+" />
 			</State>
 			<!-- Comment state -->
-			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="SqlComment">
+			<State Id="4" Key="Comment" DefaultTokenId="20" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="SqlComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenKey="RegionStartDelimiter" Pattern="-- {Whitespace}* Region" LookAheadPattern="{NonWord}|\z" />
+							<RegexPatternGroup TokenId="21" TokenKey="RegionStartDelimiter" Pattern="-- {Whitespace}* Region" LookAheadPattern="{NonWord}|\z" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+							<RegexPatternGroup TokenId="22" TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
 						</Scope.EndPatternGroup>
 					</Scope>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenKey="EndRegionStartDelimiter" Pattern="-- {Whitespace}* End {Whitespace}? Region" LookAheadPattern="{NonWord}|\z" />
+							<RegexPatternGroup TokenId="23" TokenKey="EndRegionStartDelimiter" Pattern="-- {Whitespace}* End {Whitespace}? Region" LookAheadPattern="{NonWord}|\z" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+							<RegexPatternGroup TokenId="22" TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
 						</Scope.EndPatternGroup>
 					</Scope>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="--" />
+							<ExplicitPatternGroup TokenId="24" TokenKey="CommentStartDelimiter" Pattern="--" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
+							<RegexPatternGroup TokenId="22" TokenKey="CommentStringEndDelimiter" Pattern="{LineTerminator}" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
+				<RegexPatternGroup TokenId="20" TokenKey="CommentText" Pattern="{NonLineTerminator}+" />
 			</State>
 			<!-- MultiLineComment state -->
-			<State Key="MultiLineComment" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="SqlComment">
+			<State Id="5" Key="MultiLineComment" DefaultTokenId="25" DefaultTokenKey="MultiLineCommentText" DefaultClassificationTypeKey="SqlComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
+							<ExplicitPatternGroup TokenId="26" TokenKey="MultiLineCommentStartDelimiter" Pattern="/*" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
+							<ExplicitPatternGroup TokenId="27" TokenKey="MultiLineCommentEndDelimiter" Pattern="*/" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="MultiLineCommentText" Pattern="[^\*]+" />
+				<RegexPatternGroup TokenId="25" TokenKey="MultiLineCommentText" Pattern="[^\*]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

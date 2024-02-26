@@ -25,12 +25,6 @@ namespace ActiproSoftware.SampleBrowser.Utilities.ColorBrowser {
 		public MainControl() {
 			InitializeComponent();
 
-			// Hide copy button if in XBAP
-			if (BrowserInteropHelper.IsBrowserHosted) {
-				this.contextMenu1.Visibility = Visibility.Collapsed;
-				this.contextMenu2.Visibility = Visibility.Collapsed;
-			}
-
 			// Register class command bindings
 			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(System.Windows.Input.ApplicationCommands.Copy, OnCopyExecuted, OnCopyCanExecute));
 			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(MainControl.CopyName, OnCopyNameExecuted, OnCopyCanExecute));

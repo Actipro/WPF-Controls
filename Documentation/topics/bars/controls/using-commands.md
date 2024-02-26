@@ -20,8 +20,8 @@ This table summarizes the command support across some of the interactive control
 | Control | Description |
 |-----|-----|
 | [Button](button.md) | Executes a command when clicked. |
-| [Popup Button](popup-button.md) | Only uses the command to determine enabled state. |
-| [Split Button](split-button.md) | Executes a command when the button portion is clicked. |
+| [Popup Button](popup-button.md) | Uses the popup opening command to allow for dynamic popup content initialization and to determine control enabled state. |
+| [Split Button](split-button.md) | Executes a command when the button portion is clicked. Uses the popup opening command to allow for dynamic popup content initialization and to determine the popup portion's enabled state. |
 | [Checkbox](checkbox.md) | Executes a command when clicked. |
 | [Gallery](gallery.md) | Executes a command when an item is clicked, passing the gallery item as the command parameter. |
 | [Combobox](combobox.md) | Executes a command when text is committed.  Executes another command when text is committed that doesn't match any known gallery items, with the unknown text passed as the parameter. |

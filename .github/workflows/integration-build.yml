@@ -18,13 +18,13 @@ jobs:
 
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      LICENSEKEY: ${{ secrets.ACTIPRO_CONTROLS_WPF_V23_1_LICENSEKEY }}
+      LICENSEKEY: ${{ secrets.ACTIPRO_CONTROLS_WPF_V24_1_LICENSEKEY }}
 
     steps:
     - name: Cancel duplicate runs
       uses: fkirc/skip-duplicate-actions@v5
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Run build project

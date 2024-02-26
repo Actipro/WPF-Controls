@@ -1,0 +1,137 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="sampleRootControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=Value}">
+							<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="5" LargeChange="10" Format="0" HasPopup="True" PickerKind="Default" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=IsIndeterminate}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=IsProgressTextAllowed}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=LineThickness}">
+							<gridseditors:DoublePropertyEditor Minimum="2" Maximum="20" SmallChange="2" LargeChange="4" Format="0" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=LineCap}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=IndicatorBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=TrackBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=Foreground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=FontSize}">
+							<gridseditors:DoublePropertyEditor Minimum="8" Maximum="34" SmallChange="1" LargeChange="3" Format="0" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=FontWeight}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=progressBar, Path=IsAnimationEnabled}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A circular progressbar displays a ranged progress value using fluent animations.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- Primary sample -->
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<shared:CircularProgressBar x:Name="progressBar" Width="100" Height="100" IndicatorBrush="#3b81f5" FontSize="24" Value="65" />
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- Dashboard -->
+				<sampleBrowser:LabeledCardControl Label="Use circular progressbars to create beautiful dashboards.">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="30" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="30" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<shared:CircularProgressBar
+							Width="80" Height="80" Value="91"
+							IndicatorBrush="#20b952" LineThickness="6" FontSize="30" ProgressTextFormat="{}{1}" />
+						<TextBlock Grid.Row="2" Text="User Average" TextAlignment="Center" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+						<TextBlock Grid.Row="3" Text="74 reviews" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+
+						<shared:CircularProgressBar
+							Grid.Column="2" Width="80" Height="80" Value="50"
+							IndicatorBrush="#3b81f5" LineThickness="6" LineDashOffset="-1" LineDashArray="7.7,2" FontSize="20" ProgressTextFormat="Fair" />
+						<TextBlock Grid.Row="2" Grid.Column="2" Text="Critic Rating" TextAlignment="Center" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+
+						<shared:CircularProgressBar 
+							Grid.Column="4" Width="80" Height="80" Value="68" 
+							IndicatorBrush="#f97215" LineThickness="6" FontSize="30" ProgressTextFormat="{}{1}" />
+						<TextBlock Grid.Row="2" Grid.Column="4" Text="Critic Average" TextAlignment="Center" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+						<TextBlock Grid.Row="3" Grid.Column="4" Text="23 reviews" TextAlignment="Center" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />
+					</Grid>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- Dashed lines -->
+				<sampleBrowser:LabeledCardControl Label="Use dashed lines to create a unique appearance.">
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+						<shared:CircularProgressBar
+							x:Name="dashProgressBar"
+							Width="100" Height="100"
+							LineThickness="10" LineCap="Flat" LineDashArray="1,0.175"
+							Value="70"
+							FontSize="18" FontWeight="Bold"
+							TrackBrush="#403b81f5"
+							IndicatorBrush="#3b81f5"
+							/>
+
+						<shared:CircularProgressBar
+							x:Name="dashProgressBar2"
+							Margin="30,0,0,0"
+							Width="100" Height="100"
+							LineThickness="6" LineDashOffset="-1" LineDashArray="2.9,2"
+							Value="{Binding ElementName=dashProgressBar, Path=Value}"
+							FontSize="26" FontWeight="Thin"
+							TrackBrush="#40ee4343"
+							IndicatorBrush="#ee4343"
+							/>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- Small size -->
+				<sampleBrowser:LabeledCardControl Label="Circular progressbars look great in smaller sizes.">
+					<shared:CircularProgressBar Width="50" Height="50" FontSize="14" FontWeight="SemiBold" Value="45" />
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- Progress text format -->
+				<sampleBrowser:LabeledCardControl Label="The progress text uses a default format that is appropriate for the current culture, but can be customized.  It is passed the control's Value, calculated percentage, Minimum, and Maximum values.">
+					<shared:CircularProgressBar x:Name="progressTextFormatProgressBar" Width="100" Height="100" IndicatorBrush="#f97215" FontSize="16"
+						Minimum="0" Maximum="10" Value="4" ProgressTextFormat="{}{0:0} of {3:0}" />
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

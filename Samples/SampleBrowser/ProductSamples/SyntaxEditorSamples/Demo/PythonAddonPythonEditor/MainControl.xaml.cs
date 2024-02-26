@@ -160,7 +160,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.PythonAddonPyt
 			dialog.Multiselect = false;
 			dialog.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
+				// Open a document (use dialog to help open the file because of possible security restrictions)
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
 					this.OpenFile(dialog.FileName, stream);

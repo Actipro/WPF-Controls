@@ -154,7 +154,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.WebAddonJavaSc
 			dialog.Multiselect = false;
 			dialog.Filter = "JavaScript files (*.js)|*.js|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
+				// Open a document (use dialog to help open the file because of possible security restrictions)
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
 					this.OpenFile(Path.GetFileName(dialog.FileName), stream);
