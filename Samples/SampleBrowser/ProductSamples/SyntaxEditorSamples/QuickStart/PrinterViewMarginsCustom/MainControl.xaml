@@ -3,14 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:editor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor" 
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
-	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
 	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.PrinterViewMarginsCustom"
     >
     <UserControl.Resources>
 
 		<!-- sample:CustomMargin Style -->
 		<Style x:Key="{x:Type sample:CustomMargin}" TargetType="{x:Type sample:CustomMargin}">
-			<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}" />
+			<Setter Property="BorderBrush" Value="#F0F0F0" />
 			<Setter Property="BorderThickness" Value="0,0,0,1" />
 			<Setter Property="Margin" Value="0,0,0,10" />
 			<Setter Property="Template">

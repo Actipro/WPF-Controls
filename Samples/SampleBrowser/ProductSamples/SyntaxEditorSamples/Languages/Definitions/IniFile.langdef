@@ -6,82 +6,82 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'INI File' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="IniFile" LanguageDescription="INI File" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="IniFile" LanguageDescription="INI File" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="Label" DefaultStyle="#FF008080" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="IniFileNumber" Description="INI File Number" DefaultStyle="#FF800080" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="IniFileNumber" Description="INI File Number" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
+		<ClassificationType Key="Label" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="Section" />
 					<StateRef Key="PrimaryString" />
 					<StateRef Key="SingleLineComment" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
-				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
-				<ExplicitPatternGroup TokenKey="Equals" Pattern="=" />
-				<ExplicitPatternGroup TokenKey="Comma" Pattern="," />
-				<ExplicitPatternGroup TokenKey="SemiColon" Pattern=";" />
-				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
-				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="IniFileNumber" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="Equals" Pattern="=" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="Comma" Pattern="," />
+				<ExplicitPatternGroup TokenId="5" TokenKey="SemiColon" Pattern=";" />
+				<RegexPatternGroup TokenId="6" TokenKey="Identifier" ClassificationTypeKey="Identifier" Pattern="(_ | {Alpha})({Word})*" />
+				<RegexPatternGroup TokenId="7" TokenKey="RealNumber" ClassificationTypeKey="IniFileNumber" LookAheadPattern="{NonWord}|\z">
 					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
 					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
 				</RegexPatternGroup>
-				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="IniFileNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="8" TokenKey="IntegerNumber" ClassificationTypeKey="IniFileNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
 			</State>
 			<!-- Section state -->
-			<State Key="Section" DefaultTokenKey="SectionText" DefaultClassificationTypeKey="Label">
+			<State Id="2" Key="Section" DefaultTokenId="9" DefaultTokenKey="SectionText" DefaultClassificationTypeKey="Label">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SectionStartDelimiter" Pattern="[" />
+							<ExplicitPatternGroup TokenId="10" TokenKey="SectionStartDelimiter" Pattern="[" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SectionEndDelimiter" Pattern="[\]\n]" />
+							<RegexPatternGroup TokenId="11" TokenKey="SectionEndDelimiter" Pattern="[\]\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SectionText" Pattern="[^\]\n]+" />
+				<RegexPatternGroup TokenId="9" TokenKey="SectionText" Pattern="[^\]\n]+" />
 			</State>
 			<!-- PrimaryString state -->
-			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
+			<State Id="3" Key="PrimaryString" DefaultTokenId="12" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="String">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="13" TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
+							<RegexPatternGroup TokenId="14" TokenKey="PrimaryStringEndDelimiter" Pattern="[\&quot;\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<ExplicitPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
-				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+				<ExplicitPatternGroup TokenId="15" TokenKey="PrimaryStringEscapedDelimiter" Pattern="\&quot;" />
+				<RegexPatternGroup TokenId="12" TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
 			</State>
 			<!-- SingleLineComment state -->
-			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
+			<State Id="4" Key="SingleLineComment" DefaultTokenId="16" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="Comment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern=";" />
+							<ExplicitPatternGroup TokenId="17" TokenKey="SingleLineCommentStartDelimiter" Pattern=";" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+							<RegexPatternGroup TokenId="18" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+				<RegexPatternGroup TokenId="16" TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

@@ -6,23 +6,23 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'EBNF' language created by Actipro Software LLC.
-  Copyright (c) 2009-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2009-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Ebnf" LanguageDescription="EBNF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2009-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Ebnf" LanguageDescription="EBNF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2009-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
 		<ClassificationType Key="AstNodeDeclaration" />
 		<ClassificationType Key="AstNodePropertyDeclaration" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="Label" DefaultStyle="#FF808080,,True" />
-		<ClassificationType Key="NonTerminal" DefaultStyle="#FF2B91AF" />
-		<ClassificationType Key="NonTerminalDeclaration" DefaultStyle="#FF800080" />
-		<ClassificationType Key="PropertyName" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="Label" DefaultStyle="#FF808080,,True" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="NonTerminal" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="NonTerminalDeclaration" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
+		<ClassificationType Key="PropertyName" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 		<ClassificationType Key="Punctuation" DefaultStyle=",True" />
-		<ClassificationType Key="String" DefaultStyle="#FFA31515" />
-		<ClassificationType Key="Terminal" DefaultStyle="#FF284082" />
+		<ClassificationType Key="String" DefaultStyle="#FFA31515" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="Terminal" DefaultStyle="#FF284082" DarkStyle="#FF84CADF" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>

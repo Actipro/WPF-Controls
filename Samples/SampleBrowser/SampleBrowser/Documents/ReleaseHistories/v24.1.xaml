@@ -1,0 +1,115 @@
+<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+			<Control x:Name="focusCaptureControl" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/23/2024 - Version 24.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="The Bars product has exited the beta phase and is considered ready for production scenarios." />
+				<sampleBrowser:BulletContentControl Content="Added the MiniToolBar control that can be displayed alongside a context menu, and a new sample to demonstrate the control." />
+				<sampleBrowser:BulletContentControl Content="Per customer request, split out ribbon group two and three-row layout functionality into a separate new RibbonMultiRowControlGroup control to allow multi-row layouts next to other controls in the same ribbon group." />
+				<sampleBrowser:BulletContentControl Content="Removed the RibbonGroup.CanUseMultiRowLayout and ThreeRowItemSortOrder properties, and the same for the MVVM library's RibbonGroupViewModel class.  See the 'Converting to v24.1' documentation topic for easy updates to the revised API." />
+				<sampleBrowser:BulletContentControl Content="Refactored how the BarPopupButton, BarSplitButton, BarMenuItem, and BarSplitMenuItem controls use the can-execute results of their commands to determine enabled states." />
+				<sampleBrowser:BulletContentControl Content="Updated the RecentDocumentControl template to support customizing some ScrollViewer properties." />
+				<sampleBrowser:BulletContentControl Content="Updated BarPopupButtonBase.GetContainerForItemOverride logic to generate a BarMenuItem container control instead of MenuItem as a final fallback option." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated logic for how XYGroupedAxis handles multiple series." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added UIA peers for dock guides." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated DateEditBox, DateTimeEditBox, and TimeEditBox when editing to only update DateTime components for which parts are displayed.  For example, a TimeEditBox only showing hour and minute parts will retain the existing DateTime's seconds component." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Gauge</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the Led.IsOffDelayEnabled property, which will delay the visual transition from the LED's On to Off state when enabled.  This allows the LED to remain lit slightly longer during quick transitions." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated multi-select TreeListBox controls to only deselect already-selected items on pointer button release, which allows press and drag actions on these items to possibly start a drag operation." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="The Ribbon product has been deprecated in favor of the newer Bars product." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added native support to switch between light and dark themes using distinct color palettes for each theme intent." />
+				<sampleBrowser:BulletContentControl Content="Added SyntaxEditorThemeManager that automatically watches for changes in ThemeManager.CurrentTheme to synchronize light/dark color palettes and the CommonImageSourceProvider.DefaultImageSet." />
+				<sampleBrowser:BulletContentControl Content="Added SyntaxEditor.IsCurrentLineNumberHighlightingEnabled feature that will render the current line number in a style defined by DisplayItemClassificationTypeProvider.LineNumberCurrent." />
+				<sampleBrowser:BulletContentControl Content="Added built-in Operator and Punctuation IClassificationType instances to ClassifictionTypes." />
+				<sampleBrowser:BulletContentControl Content="Added BuiltInClassificationTypesProvider that will automatically register highlighting styles for built-in IClassificationType instances defined in ClassificationTypes." />
+				<sampleBrowser:BulletContentControl Content="Added Punctuation classification type to sample language definitions (where appropriate)." />
+				<sampleBrowser:BulletContentControl Content="Added DisplayItemClassificationTypes.WordWrapGlyph to separate the word wrap glyph color from the visible white space color." />
+				<sampleBrowser:BulletContentControl Content="Added MarkdownDeleted classification type and highlighting style to the free Markdown language project and definition files." />
+				<sampleBrowser:BulletContentControl Content="Added support for primary and secondary carets to render with different brushes based on corresponding highlighting styles." />
+				<sampleBrowser:BulletContentControl Content="Updated collapsible region foreground, current line background/border, delimiter matching background, and find match highlight background colors to render with a default opacity when configured with opaque colors." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">JavaScript Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added Punctuation classification type." />
+				<sampleBrowser:BulletContentControl Content="Fixed Operator classification type not being applied." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser grammar to support C# 9.0 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the Roslyn extensions to use the latest Microsoft.CodeAnalysis.Compilers v4.8 NuGet package." />
+				<sampleBrowser:BulletContentControl Content="Improved resolver support for C# local functions." />
+				<sampleBrowser:BulletContentControl Content="Improved documentation comment display in IntelliPrompt to support 'para' and 'br' tags." />
+				<sampleBrowser:BulletContentControl Content="Added Punctuation classification type." />
+				<sampleBrowser:BulletContentControl Content="Fixed Operator classification type not being applied." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added support for IntelliPrompt to use type hint annotations." />
+				<sampleBrowser:BulletContentControl Content="Improved the resolver's ability to resolve types within external modules that were defined in other modules." />
+				<sampleBrowser:BulletContentControl Content="Added Punctuation classification type." />
+				<sampleBrowser:BulletContentControl Content="Fixed Operator classification type not being applied." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added new Avatar and AvatarGroup controls." />
+				<sampleBrowser:BulletContentControl Content="Added new Badge and NumericBadge controls for adorning an element with contextual information." />
+				<sampleBrowser:BulletContentControl Content="Added the CircularProgressBar control, which renders a progress percentage in a ring shape using fluent animations, and also supports an indeterminate state." />
+				<sampleBrowser:BulletContentControl Content="Added UserPromptBuilder to simplify creating and showing prompts based on UserPromptControl.  All Sample Browser samples updated to use UserPromptBuilder." />
+				<sampleBrowser:BulletContentControl Content="Added advanced customization to ThemedMessageBox by allowing the associated UserPromptBuilder to be configured before showing a message box. This includes global customization automatically applied to all message boxes." />
+				<sampleBrowser:BulletContentControl Content="Added support for user prompts to show CenterOwner or CenterScreen when using UserPromptBuilder. By default prompts will attempt to center over their owner and only show center screen when the prompt is too big for the owner." />
+				<sampleBrowser:BulletContentControl Content="Updated BorderChildClipConverter to scale corner radii if given values exceed the available width or height." />
+				<sampleBrowser:BulletContentControl Content="Updated StringFormatConverter to allow the string format to be alternately passed as the first value instead of the converter parameter since converter parameters do not support bindings themselves." />
+				<sampleBrowser:BulletContentControl Content="Fixed printer rendering when syntax highlighting was enabled and the editor was configured for use with a dark theme." />
+				<sampleBrowser:BulletContentControl Content="Deprecated UserPromptWindow.DefaultTitle. Use UserPromptBuilder.FallbackTitle instead." />
+				<sampleBrowser:BulletContentControl Content="Deprecated ThemedMessageBox.Show overload that accepted a Help action. Use overload with UserPromptBuilder to add the help action instead." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated and added UIA peers for numerous controls to better support accessibility updates in .NET 8." />
+				<sampleBrowser:BulletContentControl Content="API documentation is based on assemblies that target .NET 6 (previously .NET Framework)." />
+				<sampleBrowser:BulletContentControl Content="The Sample Browser application included with the installer will now multi-target .NET Framework 4.6.2 and .NET 6." />
+				<sampleBrowser:BulletContentControl Content="Removed official support for Visual Studio 2017 although users should still be able to continue using the IDE for their own applications. Sample Browser requires Visual Studio 2019 or newer." />
+				<sampleBrowser:BulletContentControl Content="Removed XBAP support." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+			
+			<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}"><Italic>
+				Use the navigation arrows in the header above to see the release histories for other versions.
+			</Italic></TextBlock>
+
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

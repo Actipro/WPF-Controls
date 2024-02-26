@@ -6,24 +6,25 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'Markdown' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Markdown" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Markdown" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="MarkdownCode" DefaultStyle="#FF74531F" />
-		<ClassificationType Key="MarkdownCodeBlockDelimiter" DefaultStyle="#FF2B91AF" />
-		<ClassificationType Key="MarkdownEmphasis" DefaultStyle="#FF8F08C4,,True" />
-		<ClassificationType Key="MarkdownEscapedCharacter" DefaultStyle="#FF808080" />
-		<ClassificationType Key="MarkdownHeadingDelimiter" DefaultStyle="#FF808080" />
-		<ClassificationType Key="MarkdownHeadingText" DefaultStyle="#FF008000,True" />
-		<ClassificationType Key="MarkdownHorizontalRule" DefaultStyle="#FFA31515,,,#FFE8E8E8,True" />
-		<ClassificationType Key="MarkdownLinkText" DefaultStyle="#FF2B91AF" />
-		<ClassificationType Key="MarkdownLinkUrl" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="MarkdownOperator" DefaultStyle="#FFA31515" />
-		<ClassificationType Key="MarkdownStrongEmphasis" DefaultStyle="#FF8F08C4,True" />
+		<ClassificationType Key="MarkdownCode" DefaultStyle="#FF74531F" DarkStyle="#FFDCDCAA" />
+		<ClassificationType Key="MarkdownCodeBlockDelimiter" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="MarkdownDeleted" DefaultStyle="#FFA5A5A5" DarkStyle="#FFA5A5A5" />
+		<ClassificationType Key="MarkdownEmphasis" DefaultStyle="#FF8F08C4,,True" DarkStyle="#FFD8A0DF" />
+		<ClassificationType Key="MarkdownEscapedCharacter" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="MarkdownHeadingDelimiter" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="MarkdownHeadingText" DefaultStyle="#FF008000,True" DarkStyle="#FF95DB7D" />
+		<ClassificationType Key="MarkdownHorizontalRule" DefaultStyle="#FFA31515,,,#FFE8E8E8,True" DarkStyle="#FFD69D85,,,#FF333333" />
+		<ClassificationType Key="MarkdownLinkText" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="MarkdownLinkUrl" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="MarkdownOperator" DefaultStyle="#FFA31515" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="MarkdownStrongEmphasis" DefaultStyle="#FF8F08C4,True" DarkStyle="#FFD8A0DF" />
 		<ClassificationType Key="Number" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
@@ -80,23 +81,24 @@ Actipro Syntax Language Definition (.langdef)
 				<ExplicitPatternGroup TokenId="9" TokenKey="TableDelimiter" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="\| [^\n]+" Pattern="|" />
 				<RegexPatternGroup TokenId="10" TokenKey="HtmlTag" ClassificationTypeKey="MarkdownOperator" Pattern="\&lt; /? {Word}+ [^\&gt;\n]* \&gt;" />
 				<RegexPatternGroup TokenId="11" TokenKey="EscapedCharacter" ClassificationTypeKey="MarkdownEscapedCharacter" Pattern="\\ [\\`*_\{\}\[\]\(\)#+\-\.!]" />
+				<RegexPatternGroup TokenId="12" TokenKey="Deleted" ClassificationTypeKey="MarkdownDeleted" Pattern="~~ [^~]+ ~~" />
 			</State>
 			<!-- Heading state -->
-			<State Id="2" Key="Heading" DefaultTokenId="12" DefaultTokenKey="HeadingText" DefaultClassificationTypeKey="MarkdownHeadingText">
+			<State Id="2" Key="Heading" DefaultTokenId="13" DefaultTokenKey="HeadingText" DefaultClassificationTypeKey="MarkdownHeadingText">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenId="13" TokenKey="HeadingStartDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="^ #{1,6}" />
+							<RegexPatternGroup TokenId="14" TokenKey="HeadingStartDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="^ #{1,6}" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenId="14" TokenKey="HeadingEndDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="(#{1,6} {Whitespace}*)? \n" />
+							<RegexPatternGroup TokenId="15" TokenKey="HeadingEndDelimiter" ClassificationTypeKey="MarkdownHeadingDelimiter" Pattern="(#{1,6} {Whitespace}*)? \n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenId="12" TokenKey="HeadingText" ClassificationTypeKey="MarkdownHeadingText" Pattern="[^#\n]+" />
+				<RegexPatternGroup TokenId="13" TokenKey="HeadingText" ClassificationTypeKey="MarkdownHeadingText" Pattern="[^#\n]+" />
 			</State>
 			<!-- QuickLink state -->
-			<State Id="3" Key="QuickLink" DefaultTokenId="15" DefaultTokenKey="LinkText">
+			<State Id="3" Key="QuickLink" DefaultTokenId="16" DefaultTokenKey="LinkText">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
@@ -107,17 +109,17 @@ Actipro Syntax Language Definition (.langdef)
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenId="15" TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^&gt;\n]+" />
+				<RegexPatternGroup TokenId="16" TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^&gt;\n]+" />
 			</State>
 			<!-- InlineLink state -->
 			<State Id="4" Key="InlineLink" DefaultTokenId="1" DefaultTokenKey="Text">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenId="16" TokenKey="LinkDelimiter" Pattern="\!? \[" LookAheadPattern="([^\]\n]* \] \() | (\! \[)" />
+							<RegexPatternGroup TokenId="17" TokenKey="LinkDelimiter" Pattern="\!? \[" LookAheadPattern="([^\]\n]* \] \() | (\! \[)" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenId="16" TokenKey="LinkDelimiter" Pattern="[\)\n]" />
+							<RegexPatternGroup TokenId="17" TokenKey="LinkDelimiter" Pattern="[\)\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
@@ -125,69 +127,69 @@ Actipro Syntax Language Definition (.langdef)
 					<StateRef Key="InlineLink" />
 					<StateRef Key="InlineLinkAttributes" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenId="15" TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkText" Pattern="[^\]\n]+" />
+				<RegexPatternGroup TokenId="16" TokenKey="LinkText" ClassificationTypeKey="MarkdownLinkText" Pattern="[^\]\n]+" />
 			</State>
 			<!-- InlineLinkAttributes state -->
-			<State Id="5" Key="InlineLinkAttributes" DefaultTokenId="17" DefaultTokenKey="LinkUrl">
+			<State Id="5" Key="InlineLinkAttributes" DefaultTokenId="18" DefaultTokenKey="LinkUrl">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenId="16" TokenKey="LinkDelimiter" Pattern="](" />
+							<ExplicitPatternGroup TokenId="17" TokenKey="LinkDelimiter" Pattern="](" />
 						</Scope.StartPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenId="18" TokenKey="LinkTitle" ClassificationTypeKey="MarkdownLinkText" Pattern="\&quot; [^\&quot;\)\n]* \&quot;" />
-				<RegexPatternGroup TokenId="17" TokenKey="LinkUrl" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^\)\&quot;\n]+" />
+				<RegexPatternGroup TokenId="19" TokenKey="LinkTitle" ClassificationTypeKey="MarkdownLinkText" Pattern="\&quot; [^\&quot;\)\n]* \&quot;" />
+				<RegexPatternGroup TokenId="18" TokenKey="LinkUrl" ClassificationTypeKey="MarkdownLinkUrl" Pattern="[^\)\&quot;\n]+" />
 			</State>
 			<!-- FencedCodeBlock state -->
-			<State Id="6" Key="FencedCodeBlock" DefaultTokenId="19" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+			<State Id="6" Key="FencedCodeBlock" DefaultTokenId="20" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenId="20" TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" LookBehindPattern="^" Pattern="``` .* \n" />
+							<RegexPatternGroup TokenId="21" TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" LookBehindPattern="^" Pattern="``` .* \n" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenId="21" TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="```" />
+							<ExplicitPatternGroup TokenId="22" TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="```" />
 						</Scope.EndPatternGroup>
 					</Scope>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenId="20" TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~ .* \n" />
+							<RegexPatternGroup TokenId="21" TokenKey="CodeBlockStartDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~ .* \n" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenId="21" TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~" />
+							<ExplicitPatternGroup TokenId="22" TokenKey="CodeBlockEndDelimiter" ClassificationTypeKey="MarkdownCodeBlockDelimiter" Pattern="~~~" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenId="19" TokenKey="CodeText" Pattern="[^`~]+" />
+				<RegexPatternGroup TokenId="20" TokenKey="CodeText" Pattern="[^`~]+" />
 			</State>
 			<!-- IndentedCodeBlock state -->
-			<State Id="7" Key="IndentedCodeBlock" DefaultTokenId="19" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+			<State Id="7" Key="IndentedCodeBlock" DefaultTokenId="20" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenId="20" TokenKey="CodeBlockStartDelimiter" LookBehindPattern="{LineTerminator} {Whitespace}* {LineTerminator}" Pattern="{FourOrMoreSpaces}" />
+							<RegexPatternGroup TokenId="21" TokenKey="CodeBlockStartDelimiter" LookBehindPattern="{LineTerminator} {Whitespace}* {LineTerminator}" Pattern="{FourOrMoreSpaces}" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenId="21" TokenKey="CodeBlockEndDelimiter" Pattern="{LineTerminator} {LineTerminator}" />
+							<RegexPatternGroup TokenId="22" TokenKey="CodeBlockEndDelimiter" Pattern="{LineTerminator} {LineTerminator}" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 			</State>
 			<!-- Code state -->
-			<State Id="8" Key="Code" DefaultTokenId="19" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
+			<State Id="8" Key="Code" DefaultTokenId="20" DefaultTokenKey="CodeText" DefaultClassificationTypeKey="MarkdownCode">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenId="22" TokenKey="CodeDelimiter" Pattern="`" />
+							<ExplicitPatternGroup TokenId="23" TokenKey="CodeDelimiter" Pattern="`" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenId="22" TokenKey="CodeDelimiter" Pattern="[`\n]" />
+							<RegexPatternGroup TokenId="23" TokenKey="CodeDelimiter" Pattern="[`\n]" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<ExplicitPatternGroup TokenId="23" TokenKey="EscapedCodeCharacter" Pattern="``" />
-				<RegexPatternGroup TokenId="19" TokenKey="CodeText" Pattern="[^`\n]+" />
+				<ExplicitPatternGroup TokenId="24" TokenKey="EscapedCodeCharacter" Pattern="``" />
+				<RegexPatternGroup TokenId="20" TokenKey="CodeText" Pattern="[^`\n]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

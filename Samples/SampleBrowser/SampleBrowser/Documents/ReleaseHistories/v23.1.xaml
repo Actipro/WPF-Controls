@@ -10,6 +10,33 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+            <TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/23/2024 - Version 23.1.5</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstageHeaderButton.CanCloseBackstage property, which defaults to true and determines if the Backstage closes when the header button is clicked." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated open non-hosted auto-hide popups to track when parent dock hosts are resized." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with ToolWindowContainer that prevented it from working in a multi-thread scenario." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a reopened document window's ContainerMinSize might not be applied to its floating dock host." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListView to include UIA peers for column headers." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a C# grammar issue related to pattern expression parsing." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the parsing of subscription expressions." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">12/5/2023 - Version 23.1.4</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars (Beta)</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

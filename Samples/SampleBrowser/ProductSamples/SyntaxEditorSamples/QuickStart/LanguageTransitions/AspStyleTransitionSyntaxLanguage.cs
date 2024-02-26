@@ -11,6 +11,8 @@ using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Lexing.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
+using ActiproSoftware.Windows.Media;
+using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.LanguageTransitions {
 
@@ -40,11 +42,22 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Language
 			DynamicLexer childLexer = cSharpLanguage.GetLexer() as DynamicLexer;
 			
 			// Get the classification types that will be used (create and register if necessary)
-			IClassificationType serverSideScriptClassificationType = AmbientHighlightingStyleRegistry.Instance["ServerSideScript"];
+			const string serverSideScriptKey = "ServerSideScript";
+			IClassificationType serverSideScriptClassificationType = AmbientHighlightingStyleRegistry.Instance[serverSideScriptKey];
 			if (serverSideScriptClassificationType == null) {
-				serverSideScriptClassificationType = new ClassificationType("ServerSideScript", "Server-Side Script");
-				AmbientHighlightingStyleRegistry.Instance.Register(serverSideScriptClassificationType,
-					new HighlightingStyle(Colors.Black, Color.FromArgb(0xff, 0xff, 0xee, 0x62)));
+				// Ensure Light/Dark color palettes are configured for the highlighting style
+				var lightColors = AmbientHighlightingStyleRegistry.Instance.LightColorPalette;
+				var darkColors = AmbientHighlightingStyleRegistry.Instance.DarkColorPalette;
+				lightColors?.SetForeground(serverSideScriptKey, UIColor.FromWebColor("#000000"));
+				lightColors?.SetBackground(serverSideScriptKey, UIColor.FromWebColor("#ffff00"));
+				darkColors?.SetForeground(serverSideScriptKey, UIColor.FromWebColor("#000000"));
+				darkColors?.SetBackground(serverSideScriptKey, UIColor.FromWebColor("#ffffb3"));
+
+				// Register the classification type with a default highlighting style and the current color palette will be applied
+				serverSideScriptClassificationType = new ClassificationType(serverSideScriptKey, "Server-Side Script");
+				AmbientHighlightingStyleRegistry.Instance.Register(
+					serverSideScriptClassificationType,
+					new HighlightingStyle());
 			}
 			
 			// Since we will be dynamically modifying the parent lexer, wrap it with a change batch

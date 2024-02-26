@@ -6,39 +6,39 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'Perl' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Perl" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Perl" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="PerlComment" Description="Perl Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PerlComment" Description="Perl Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="PerlIdentifier" Description="Perl Identifier" />
-		<ClassificationType Key="PerlKeyword" Description="Perl Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="PerlNumber" Description="Perl Number" DefaultStyle="#FF800000" />
+		<ClassificationType Key="PerlKeyword" Description="Perl Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="PerlNumber" Description="Perl Number" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 		<ClassificationType Key="PerlOperator" Description="Perl Operator" />
 		<ClassificationType Key="PerlString" Description="Perl String" DefaultStyle=",True" />
-		<ClassificationType Key="PerlVariable" Description="Perl Variable" DefaultStyle="#FF800080" />
+		<ClassificationType Key="PerlVariable" Description="Perl Variable" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="PrimaryString" />
 					<StateRef Key="AlternateString" />
 					<StateRef Key="SingleLineComment" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
-				<RegexPatternGroup TokenKey="LineTerminator" Pattern="{LineTerminator}" />
-				<ExplicitPatternGroup TokenKey="OpenParenthesis" Pattern="(" />
-				<ExplicitPatternGroup TokenKey="CloseParenthesis" Pattern=")" />
-				<ExplicitPatternGroup TokenKey="OpenCurlyBrace" Pattern="{" />
-				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
-				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
-				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenKey="Keyword" ClassificationTypeKey="PerlKeyword" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="1" TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="2" TokenKey="LineTerminator" Pattern="{LineTerminator}" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="OpenParenthesis" Pattern="(" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="CloseParenthesis" Pattern=")" />
+				<ExplicitPatternGroup TokenId="5" TokenKey="OpenCurlyBrace" Pattern="{" />
+				<ExplicitPatternGroup TokenId="6" TokenKey="CloseCurlyBrace" Pattern="}" />
+				<ExplicitPatternGroup TokenId="7" TokenKey="OpenSquareBrace" Pattern="[" />
+				<ExplicitPatternGroup TokenId="8" TokenKey="CloseSquareBrace" Pattern="]" />
+				<ExplicitPatternGroup TokenId="9" TokenKey="Keyword" ClassificationTypeKey="PerlKeyword" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						-X abs accept alarm atan2 bind binmode bless caller chdir chmod chomp chop chown chroot chr closedir
 						close connect continue cos crypt dbmclose dbmopen defined delete die do dump each else elsif endgrent
@@ -59,74 +59,74 @@ Actipro Syntax Language Definition (.langdef)
 						wait wantarray warn while write y/// __DATA__ __END__ __FILE__ __LINE__
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="Variable" ClassificationTypeKey="PerlVariable">
+				<RegexPatternGroup TokenId="10" TokenKey="Variable" ClassificationTypeKey="PerlVariable">
 					<RegexPattern Value="\$+ (_ | {AlphaMacro})({WordMacro})*" />
 					<RegexPattern Value="@ (_ | {AlphaMacro})({WordMacro})*" />
 					<RegexPattern Value="% (_ | {AlphaMacro})({WordMacro})*" />
 				</RegexPatternGroup>
-				<RegexPatternGroup TokenKey="Identifier" ClassificationTypeKey="PerlIdentifier" Pattern="(_ | {Alpha})({Word})*" />
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PerlOperator">
+				<RegexPatternGroup TokenId="11" TokenKey="Identifier" ClassificationTypeKey="PerlIdentifier" Pattern="(_ | {Alpha})({Word})*" />
+				<ExplicitPatternGroup TokenId="12" TokenKey="Operator" ClassificationTypeKey="PerlOperator">
 					<ExplicitPatterns><![CDATA[
 						!= !~ ! %= % && &= & **= ** *= * ++ += + , -- -= -> - ... .. .= . /= / : << <=> <= < == => =~ = >= >> > ? x= \ ^= ^ |= || | ~
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenKey="Operator" ClassificationTypeKey="PerlOperator" LookAheadPattern="{NonWord}|\z">
+				<ExplicitPatternGroup TokenId="12" TokenKey="Operator" ClassificationTypeKey="PerlOperator" LookAheadPattern="{NonWord}|\z">
 					<ExplicitPatterns><![CDATA[
 						and cmp eq ge gt le lt ne not or xor x
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<RegexPatternGroup TokenKey="RealNumber" ClassificationTypeKey="PerlNumber" LookAheadPattern="{NonWord}|\z">
+				<RegexPatternGroup TokenId="13" TokenKey="RealNumber" ClassificationTypeKey="PerlNumber" LookAheadPattern="{NonWord}|\z">
 					<RegexPattern Value="{Digit}* \. {Digit}+ ([Ee] [\+\-]? {Digit}+)?" />
 					<RegexPattern Value="{Digit}+ [Ee] [\+\-]? {Digit}+" />
 				</RegexPatternGroup>
-				<RegexPatternGroup TokenKey="IntegerNumber" ClassificationTypeKey="PerlNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
-				<RegexPatternGroup TokenKey="HexNumber" ClassificationTypeKey="PerlNumber" Pattern="0x {HexDigit}+" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
+				<RegexPatternGroup TokenId="14" TokenKey="IntegerNumber" ClassificationTypeKey="PerlNumber" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="15" TokenKey="HexNumber" ClassificationTypeKey="PerlNumber" Pattern="0x {HexDigit}+" LookAheadPattern="{NonWord}|\z" CaseSensitivity="Insensitive" />
 			</State>
 			<!-- PrimaryString state -->
-			<State Key="PrimaryString" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PerlString">
+			<State Id="2" Key="PrimaryString" DefaultTokenId="16" DefaultTokenKey="PrimaryStringText" DefaultClassificationTypeKey="PerlString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="17" TokenKey="PrimaryStringStartDelimiter" Pattern="&quot;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
+							<ExplicitPatternGroup TokenId="18" TokenKey="PrimaryStringEndDelimiter" Pattern="&quot;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
-				<RegexPatternGroup TokenKey="PrimaryStringEscapedDelimiter" Pattern="\\." />
-				<RegexPatternGroup TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
+				<RegexPatternGroup TokenId="19" TokenKey="PrimaryStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="20" TokenKey="PrimaryStringEscapedDelimiter" Pattern="\\." />
+				<RegexPatternGroup TokenId="16" TokenKey="PrimaryStringText" Pattern="[^\&quot;\\\n]+" />
 			</State>
 			<!-- AlternateString state -->
-			<State Key="AlternateString" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PerlString">
+			<State Id="3" Key="AlternateString" DefaultTokenId="21" DefaultTokenKey="AlternateStringText" DefaultClassificationTypeKey="PerlString">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="AlternateStringStartDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="22" TokenKey="AlternateStringStartDelimiter" Pattern="'" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="AlternateStringEndDelimiter" Pattern="'" />
+							<ExplicitPatternGroup TokenId="23" TokenKey="AlternateStringEndDelimiter" Pattern="'" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="AlternateStringLineTerminator" Pattern="\n" />
-				<RegexPatternGroup TokenKey="AlternateStringEscapedDelimiter" Pattern="\\." />
-				<RegexPatternGroup TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
+				<RegexPatternGroup TokenId="24" TokenKey="AlternateStringLineTerminator" Pattern="\n" />
+				<RegexPatternGroup TokenId="25" TokenKey="AlternateStringEscapedDelimiter" Pattern="\\." />
+				<RegexPatternGroup TokenId="21" TokenKey="AlternateStringText" Pattern="[^'\\\n]+" />
 			</State>
 			<!-- SingleLineComment state -->
-			<State Key="SingleLineComment" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PerlComment">
+			<State Id="4" Key="SingleLineComment" DefaultTokenId="26" DefaultTokenKey="SingleLineCommentText" DefaultClassificationTypeKey="PerlComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
+							<ExplicitPatternGroup TokenId="27" TokenKey="SingleLineCommentStartDelimiter" Pattern="#" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
+							<RegexPatternGroup TokenId="28" TokenKey="SingleLineCommentEndDelimiter" Pattern="\n" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<RegexPatternGroup TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
+				<RegexPatternGroup TokenId="26" TokenKey="SingleLineCommentText" Pattern="[^\n]+" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

@@ -225,7 +225,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonVBE
 			dialog.Multiselect = false;
 			dialog.Filter = "Visual Basic files (*.vb)|*.vb|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
+				// Open a document (use dialog to help open the file because of possible security restrictions)
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
 					this.OpenFile(Path.GetFileName(dialog.FileName), stream);

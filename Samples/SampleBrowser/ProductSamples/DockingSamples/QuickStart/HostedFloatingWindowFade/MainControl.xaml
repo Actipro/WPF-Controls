@@ -29,7 +29,6 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					This sample shows a floating tool window that is hosted within the dock site, meaning it can't be dragged in an external window.
-					This mode is required when using docking windows in XBAPs.
 					<LineBreak /><LineBreak />
 					Several properties control how a built-in feature works that auto-fades hosted floating windows when they don't contain focus.
 					The delay and duration are sped up to five seconds in the sample.

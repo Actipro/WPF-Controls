@@ -82,8 +82,10 @@
 
 					<!-- Separator and Sample Buttons (which execute a default command) -->
 					<bars:RibbonBackstageHeaderSeparator Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" />
-					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}" Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
-					<bars:RibbonBackstageHeaderButton Key="SampleButton2" KeyTipText="S2" Command="{Binding BackstageHeaderButtonCommand}" Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}" 
+													  Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					<bars:RibbonBackstageHeaderButton Key="SampleButton2" KeyTipText="S2" Command="{Binding BackstageHeaderButtonCommand}" 
+													  Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
 					
 					<!--
 					  The following items are aligned to the bottom
@@ -203,6 +205,7 @@
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
 									</Grid.RowDefinitions>
 									
 									<TextBlock Grid.Row="0" Grid.Column="0" Text="Use initial backstage view" VerticalAlignment="Center" />
@@ -229,16 +232,20 @@
 										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMaxHeaderWidth}" />
 									</StackPanel>
 
-									<TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
-									<TextBox Grid.Row="6" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="6" Grid.Column="0" Text="Third sample button closes backstage" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="6" Grid.Column="1" Margin="4" IsChecked="{Binding SampleButton3CanCloseBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
+									<TextBox Grid.Row="7" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
 								</Grid>
 								
 							</StackPanel>
 						</ScrollViewer>
 					</bars:RibbonBackstageTabItem>
 					
-					<!-- Another Sample Button (which execute a default command) -->
-					<bars:RibbonBackstageHeaderButton Key="SampleButton3" Label="{Binding SampleButton3Label}" KeyTipText="S3" HeaderAlignment="Bottom" Command="{Binding BackstageHeaderButtonCommand}" SmallImageSource="{Binding SampleButtonImageSource}" />
+					<!-- Another Sample Button (which executes a default command) -->
+					<bars:RibbonBackstageHeaderButton Key="SampleButton3" Label="{Binding SampleButton3Label}" KeyTipText="S3" CanCloseBackstage="{Binding SampleButton3CanCloseBackstage}"
+													  HeaderAlignment="Bottom" Command="{Binding BackstageHeaderButtonCommand}" SmallImageSource="{Binding SampleButtonImageSource}" />
 					
 				</bars:RibbonBackstage>
 			</bars:Ribbon.BackstageContent>

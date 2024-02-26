@@ -19,6 +19,22 @@ The [AnimatedExpander](animatedexpander.md) control is a regular `Expander` that
 
 The [AnimatedProgressBar](animatedprogressbar.md) control includes all the features of the native WPF `ProgressBar`, additional features such as animated value updates, animated highlights, and multiple states.
 
+## The Avatar Control
+
+The [Avatar](avatar.md) control is used to represent people or objects.  They can render a full-size image, a centered glyph, a person's initials, or text.
+
+## The AvatarGroup Control
+
+The [AvatarGroup](avatar-group.md) control renders multiple [Avatar](avatar.md) controls.
+
+## The Badge Control
+
+The [Badge](badge.md) control is used to provide contextual information for other elements or can be used stand-alone.
+
+## The CircularProgressBar Control
+
+[CircularProgressBar](circular-progressbar.md) displays a ranged progress value using fluent animations.  It is similar to a native linear `ProgressBar`, except that it renders the progress in a ring shape.
+
 ## The CustomDrawElement FrameworkElement
 
 The [CustomDrawElement](customdrawelement.md) element is a simple `FrameworkElement` that provides a [CustomDraw](xref:@ActiproUIRoot.Controls.CustomDrawElement.CustomDraw) event, allowing for easy, event-based custom rendering.
@@ -87,7 +103,7 @@ The [ToggleSwitch](toggle-switch.md) is modern refinement of a checkbox control 
 
 ## The User Prompt Controls
 
-The [User Prompt](user-prompt.md) controls include [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) as a fully themed drop-in replacement for the native `MessageBox` and the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) for creating more advanced user prompts beyond the what is available from `MessageBox`.
+The [User Prompt](user-prompt/index.md) controls include [ThemedMessageBox](xref:@ActiproUIRoot.Controls.ThemedMessageBox) as a fully themed drop-in replacement for the native `MessageBox` and the [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl) for creating more advanced user prompts beyond the what is available from `MessageBox`.
 
 ## The ZeroSizeContentControl Control
 

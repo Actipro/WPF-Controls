@@ -88,13 +88,6 @@ namespace ActiproSoftware.SampleBrowser {
 				ThemeManager.AreNativeThemesEnabled = true;
 				logger?.LogDebug("ThemeManager.AreNativeThemesEnabled = {0}", ThemeManager.AreNativeThemesEnabled);
 
-				// Update the SyntaxEditor highlighting style registry and image set if the theme changes backgrounds from light to dark, or vice versa
-				ThemeManager.CurrentThemeChanged += (sender, args) => {
-					logger?.LogDebug("ThemeManager.CurrentThemeChanged; New theme {0}", ThemeManager.CurrentTheme);
-					ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common.SyntaxEditorHelper.UpdateHighlightingStyleRegistryForThemeChange();
-					ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common.SyntaxEditorHelper.UpdateImageSetForThemeChange();
-				};
-
 				// Set a Metro Light theme
 				ThemeManager.CurrentTheme = ThemeNames.MetroLight;
 				logger?.LogDebug("ThemeManager.CurrentTheme = {0}", ThemeManager.CurrentTheme);

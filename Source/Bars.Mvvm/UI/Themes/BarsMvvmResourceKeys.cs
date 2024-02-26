@@ -38,6 +38,7 @@ namespace ActiproSoftware.Windows.Themes {
 		private static ComponentResourceKey barTextBoxMenuItemContainerTemplate;
 		private static ComponentResourceKey barToggleButtonDefaultItemContainerTemplate;
 		private static ComponentResourceKey barToggleButtonMenuItemItemContainerTemplate;
+		private static ComponentResourceKey miniToolBarDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonApplicationButtonDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonBackstageDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonBackstageHeaderButtonDefaultItemContainerTemplate;
@@ -48,6 +49,7 @@ namespace ActiproSoftware.Windows.Themes {
 		private static ComponentResourceKey ribbonFooterDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonGroupDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonGroupLauncherButtonDefaultItemContainerTemplate;
+		private static ComponentResourceKey ribbonMultiRowControlGroupDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonQuickAccessToolBarDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonTabDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonTabRowToolBarDefaultItemContainerTemplate;
@@ -279,6 +281,13 @@ namespace ActiproSoftware.Windows.Themes {
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
 		/// </summary>
 		/// <value>A resource key.</value>
+		public static ResourceKey MiniToolBarDefaultItemContainerTemplate
+			=> (miniToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(MiniToolBarDefaultItemContainerTemplate)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+		/// </summary>
+		/// <value>A resource key.</value>
 		public static ResourceKey RibbonApplicationButtonDefaultItemContainerTemplate
 			=> (ribbonApplicationButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonApplicationButtonDefaultItemContainerTemplate)));
 		
@@ -344,6 +353,13 @@ namespace ActiproSoftware.Windows.Themes {
 		/// <value>A resource key.</value>
 		public static ResourceKey RibbonGroupLauncherButtonDefaultItemContainerTemplate
 			=> (ribbonGroupLauncherButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonGroupLauncherButtonDefaultItemContainerTemplate)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey RibbonMultiRowControlGroupDefaultItemContainerTemplate
+			=> (ribbonMultiRowControlGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonMultiRowControlGroupDefaultItemContainerTemplate)));
 		
 		/// <summary>
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.

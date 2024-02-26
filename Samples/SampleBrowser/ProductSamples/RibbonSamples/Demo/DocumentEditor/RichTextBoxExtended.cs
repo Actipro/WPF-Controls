@@ -703,8 +703,8 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Demo.DocumentEditor {
 			// Call the base method
 			base.OnMouseUp(e);
 
-			// If a selection was just made with the mouse and we are not in an XBAP...
-			if ((e.ChangedButton == MouseButton.Left) && (!this.Selection.IsEmpty) && (!BrowserInteropHelper.IsBrowserHosted)) {
+			// If a selection was just made with the mouse...
+			if ((e.ChangedButton == MouseButton.Left) && (!this.Selection.IsEmpty)) {
 				// Show the mini-toolbar
 				MiniToolBarService.Show(new ActiproSoftware.ProductSamples.RibbonSamples.Common.RichTextBoxMiniToolBar(), 
 					this, e.GetPosition(this));

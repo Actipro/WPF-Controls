@@ -282,101 +282,109 @@
 							
 							<!-- Multi-Row Layouts with Separators -->
 							<bars:RibbonTabItem x:Name="ClassicMultiRowTab" Label="Multi-Row Layouts" KeyTipText="R">
-								<bars:RibbonGroup Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
-										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
-										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
-										<bars:BarButton Key="Format Painter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
-										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
-										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
-									</bars:RibbonControlGroup>
+								<bars:RibbonGroup Key="Default" SmallImageSource="/Images/Icons/QuickStart16.png" CanAutoCollapse="False">
+									<bars:RibbonMultiRowControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+											<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+											<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+											<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+											<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+											<bars:BarButton Key="Format Painter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+											<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+											<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+										</bars:RibbonControlGroup>
+									</bars:RibbonMultiRowControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Key="TwoRowOnly" Label="2-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
-									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
-										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
-										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
-										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
-										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
-										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
-										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
-										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
-										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
-										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
-										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
-									</bars:RibbonControlGroup>
+								<bars:RibbonGroup Key="TwoRowOnly" Label="2-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanAutoCollapse="False">
+									<bars:RibbonMultiRowControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+											<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+											<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+											<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+											<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+											<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+											<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+											<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+											<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+											<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+											<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+											<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowTwoRowOnly">
+											<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+										</bars:RibbonControlGroup>
+									</bars:RibbonMultiRowControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Key="ThreeRowOnly" Label="3-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
-									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
-										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
-										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
-										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
-										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
-										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
-										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
-										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
-										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
-										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
-										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
-									</bars:RibbonControlGroup>
+								<bars:RibbonGroup Key="ThreeRowOnly" Label="3-Row Only" SmallImageSource="/Images/Icons/QuickStart16.png" CanAutoCollapse="False">
+									<bars:RibbonMultiRowControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+											<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+											<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+											<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+											<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+											<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+											<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+											<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+											<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+											<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+											<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+											<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="MultiRowThreeRowOnly">
+											<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+										</bars:RibbonControlGroup>
+									</bars:RibbonMultiRowControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Key="Never" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True" CanAutoCollapse="False">
-									<bars:RibbonControlGroup SeparatorMode="Never">
-										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Never">
-										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
-										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Never">
-										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
-										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
-										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Never">
-										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
-										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
-										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Never">
-										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
-									</bars:RibbonControlGroup>
+								<bars:RibbonGroup Key="Never" SmallImageSource="/Images/Icons/QuickStart16.png" CanAutoCollapse="False">
+									<bars:RibbonMultiRowControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Never">
+											<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+											<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Never">
+											<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+											<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Never">
+											<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+											<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+											<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+											<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Never">
+											<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+											<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+											<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Never">
+											<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+										</bars:RibbonControlGroup>
+									</bars:RibbonMultiRowControlGroup>
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 							
@@ -426,38 +434,38 @@
 										<bars:BarButton Key="Three" LargeImageSource="/Images/Icons/Paste32.png" SmallImageSource="/Images/Icons/Paste16.png" />
 									</bars:RibbonControlGroup>
 								</bars:RibbonGroup>
-								<bars:RibbonGroup Key="GroupC" Label="Group C (Multi-Row)" CollapsedButtonKeyTipText="ZC" SmallImageSource="/Images/Icons/QuickStart16.png" CanUseMultiRowLayout="True"
-												  ThreeRowItemSortOrder="0 1 3 4 2"
-												  >
-									<!--
-									In Two-Row mode, items are sorted in the order they are defined.
+								<bars:RibbonGroup Key="GroupC" Label="Group C (Multi-Row)" CollapsedButtonKeyTipText="ZC" SmallImageSource="/Images/Icons/QuickStart16.png">
+									<bars:RibbonMultiRowControlGroup ThreeRowItemSortOrder="0 1 3 4 2">
+										<!--
+										In Two-Row mode, items are sorted in the order they are defined.
 									
-									In Three-Row mode, the default sort order can be changed using ThreeRowItemSortOrder where
-									the zero-based index of each item is listed in the order. In this example, the group with
-									Clipboard commands (index 2) is moved to the end when in three-row mode.
-									-->
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-										<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
-										<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-										<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
-										<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
-										<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
-										<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
-										<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
-									</bars:RibbonControlGroup>
-									<bars:RibbonControlGroup SeparatorMode="Default">
-										<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
-									</bars:RibbonControlGroup>
+										In Three-Row mode, the default sort order can be changed using ThreeRowItemSortOrder where
+										the zero-based index of each item is listed in the order. In this example, the group with
+										Clipboard commands (index 2) is moved to the end when in three-row mode.
+										-->
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+											<bars:BarButton Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="New" SmallImageSource="/Images/Icons/New16.png" />
+											<bars:BarButton Key="Open" SmallImageSource="/Images/Icons/Open16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+											<bars:BarButton Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+											<bars:BarButton Key="Paste" SmallImageSource="/Images/Icons/Paste16.png" />
+											<bars:BarButton Key="FormatPainter" SmallImageSource="/Images/Icons/FormatPainter16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Bold" SmallImageSource="/Images/Icons/Bold16.png" />
+											<bars:BarButton Key="Underline" SmallImageSource="/Images/Icons/Underline16.png" />
+											<bars:BarButton Key="Italic" SmallImageSource="/Images/Icons/Italic16.png" />
+										</bars:RibbonControlGroup>
+										<bars:RibbonControlGroup SeparatorMode="Default">
+											<bars:BarButton Key="Save" SmallImageSource="/Images/Icons/Save16.png" />
+										</bars:RibbonControlGroup>
+									</bars:RibbonMultiRowControlGroup>
 								</bars:RibbonGroup>
 							</bars:RibbonTabItem>
 

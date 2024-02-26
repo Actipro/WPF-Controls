@@ -37,7 +37,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			// Implementation Note:
 			//
 			// The IClassificationType must be registered and associated with an IHighlightingStyle
-			// so the editor's view can determine the format to be applied for the highlighted ranged.
+			// so the editor's view can determine the format to be applied for the highlighted range.
 			// Each editor is associated with an IHighlightingStyleRegistry which defines the styles
 			// to use for each IClassificationType. The AmbientHighlightingStyleRegistry is a global
 			// IHighlightingStyleRegistry which is used by default. If you choose to use a different

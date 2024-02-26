@@ -38,7 +38,7 @@
 			</ScrollViewer>
 			
 			<!-- SyntaxEditor -->
-			<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreWordWrapGlyphsVisible="True">
+			<editor:SyntaxEditor x:Name="editor" WordWrapMode="Word" AreIndentationGuidesVisible="True" AreWordWrapGlyphsVisible="True">
 				<editor:EditorDocument xml:space="preserve">
 					<editor:EditorDocument.Language>
 						<sample:SimpleSyntaxLanguage />

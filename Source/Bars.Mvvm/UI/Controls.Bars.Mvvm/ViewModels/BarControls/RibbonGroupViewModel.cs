@@ -10,7 +10,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		private bool canAutoCollapse = true;
 		private bool canCloneToRibbonQuickAccessToolBar = true;
-		private bool canUseMultiRowLayout;
 		private RibbonGroupChildOverflowTarget childOverflowTarget = RibbonGroupChildOverflowTarget.Tab;
 		private string collapsedButtonDescription;
 		private string collapsedButtonKeyTipText;
@@ -18,7 +17,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ImageSource largeImageSource;
 		private RibbonGroupLauncherButtonViewModel launcherButton;
 		private ImageSource smallImageSource;
-		private Int32Collection threeRowItemSortOrder;
 		private string title;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,25 +98,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets whether the items can be arranged in a multi-row layout.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the items can be arranged in a multi-row layout; otherwise, <c>false</c>.
-		/// The default value is <c>false</c>.
-		/// </value>
-		public bool CanUseMultiRowLayout {
-			get {
-				return canUseMultiRowLayout;
-			}
-			set {
-				if (canUseMultiRowLayout != value) {
-					canUseMultiRowLayout = value;
-					this.NotifyPropertyChanged(nameof(CanUseMultiRowLayout));
-				}
-			}
-		}
-		
 		/// <summary>
 		/// Gets or sets a <see cref="RibbonGroupChildOverflowTarget"/> indicating where items overflow when in a Simplified layout mode.
 		/// </summary>
@@ -231,22 +210,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets a collection of integers that indicates the indices of how items should be sorted when in a three-row layout.
-		/// </summary>
-		/// <value>A collection of integers that indicates the indices of how items should be sorted when in a three-row layout.</value>
-		public Int32Collection ThreeRowItemSortOrder {
-			get {
-				return threeRowItemSortOrder;
-			}
-			set {
-				if (threeRowItemSortOrder != value) {
-					threeRowItemSortOrder = value;
-					this.NotifyPropertyChanged(nameof(ThreeRowItemSortOrder));
-				}
-			}
-		}
-		
 		/// <inheritdoc cref="BarButtonViewModel.Title"/>
 		public string Title {
 			get => title;

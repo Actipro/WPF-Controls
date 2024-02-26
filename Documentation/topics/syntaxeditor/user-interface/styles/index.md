@@ -24,3 +24,11 @@ See the [Highlighting Style Registries](highlighting-style-registries.md) topic 
 The `TextStylePreview` control is a small control that is used on options dialogs to show the end user a preview of how an [IHighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyle) will render.
 
 See the [TextStylePreview Control](text-style-preview.md) topic for more information.
+
+## Dark Themes
+
+[SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) supports the ability to easily switch between light and dark themes.
+
+All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) as well as the built-in language implementations are designed to support either light or dark themes.  However, any custom language implementations may require additional configuration to support a dark theme since most styles intended for use on a light background are not very appealing on a dark background.
+
+See the [Dark Themes](dark-themes.md) topic for more information.

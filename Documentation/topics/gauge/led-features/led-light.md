@@ -15,7 +15,11 @@ The LED light can be in one of three states (on, off, or blinking), which is set
 
 *Two Led controls with the LED light on (left) and off (right)*
 
-When blinking, the light will be toggle between on and off at the interval specified by the [BlinkInterval](xref:@ActiproUIRoot.Controls.Gauge.Led.BlinkInterval).
+When blinking, the light will be toggle between on and off at the interval specified by the [BlinkInterval](xref:@ActiproUIRoot.Controls.Gauge.Led.BlinkInterval) property.
+
+### Delaying the Off State Transition
+
+When a LED light is quickly toggling on and off, it may be distracting.  The [IsOffDelayEnabled](xref:@ActiproUIRoot.Controls.Gauge.Led.IsOffDelayEnabled) property can be set to `true` to introduce a delay when transitioning from the `On` to `Off` state.  This allows a temporary `On` signal to keep the LED lit a little longer than what its real state would normally allow.  The delay is governed by the value of the [BlinkInterval](xref:@ActiproUIRoot.Controls.Gauge.Led.BlinkInterval) property.
 
 ## Appearance
 

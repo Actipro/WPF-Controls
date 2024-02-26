@@ -6,18 +6,19 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'Formula' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Formula" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Formula" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
+		<ClassificationType Key="Delimiter" />
+		<ClassificationType Key="DelimiterAlt" Description="Delimiter (Alternate)" DefaultStyle="#FFFF0000" DarkStyle="#FFD69D85" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
 		<ClassificationType Key="Operator" />
-		<ClassificationType Key="Delimiter" />
-		<ClassificationType Key="DelimiterAlt" Description="Delimiter (Alternate)" DefaultStyle="#FFFF0000" />
+		<ClassificationType Key="Punctuation" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
@@ -51,15 +52,11 @@ Actipro Syntax Language Definition (.langdef)
 						= != + - * /
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenId="5" TokenKey="Punctuation">
-					<ExplicitPatterns><![CDATA[
-						,
-					]]></ExplicitPatterns>
-				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="5" TokenKey="Punctuation" ClassificationTypeKey="Punctuation" Pattern="," />
 				<RegexPatternGroup TokenId="6" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}* \. {Digit}+" LookAheadPattern="{NonWord}|\z" />
 				<RegexPatternGroup TokenId="6" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
 			</State>
-			<!-- Nested parenthesis state -->
+			<!-- NestedParenthesis state -->
 			<State Id="2" Key="NestedParenthesis">
 				<State.Scopes>
 					<Scope>
@@ -86,11 +83,7 @@ Actipro Syntax Language Definition (.langdef)
 						= != + - * /
 					]]></ExplicitPatterns>
 				</ExplicitPatternGroup>
-				<ExplicitPatternGroup TokenId="5" TokenKey="Punctuation">
-					<ExplicitPatterns><![CDATA[
-						,
-					]]></ExplicitPatterns>
-				</ExplicitPatternGroup>
+				<ExplicitPatternGroup TokenId="5" TokenKey="Punctuation" ClassificationTypeKey="Punctuation" Pattern="," />
 				<RegexPatternGroup TokenId="6" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}* \. {Digit}+" LookAheadPattern="{NonWord}|\z" />
 				<RegexPatternGroup TokenId="6" TokenKey="Number" ClassificationTypeKey="Number" Pattern="{Digit}+" LookAheadPattern="{NonWord}|\z" />
 			</State>

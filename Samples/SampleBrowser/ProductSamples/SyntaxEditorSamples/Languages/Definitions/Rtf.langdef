@@ -6,25 +6,25 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'RTF' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved. Actipro Software LLC
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved. Actipro Software LLC
 
 -->
-<LanguageDefinition LanguageKey="Rtf" LanguageDescription="RTF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Rtf" LanguageDescription="RTF" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved. Actipro Software LLC" xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" />
-		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" />
-		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="ControlSymbol" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="ControlWord" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="GroupDelimiter" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
 		<DynamicLexer>
 			<!-- Default state -->
-			<State Key="Default">
-				<RegexPatternGroup TokenKey="ControlWordToken" ClassificationTypeKey="ControlWord" Pattern="(\\)({Alpha}+)((-)?({Digit}+)|{Digit}*)" />
-				<RegexPatternGroup TokenKey="ControlSymbolToken" ClassificationTypeKey="ControlSymbol" Pattern="\\ [^\p{C}\p{Z}]" />
-				<ExplicitPatternGroup TokenKey="BeginGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="{" />
-				<ExplicitPatternGroup TokenKey="EndGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="}" />
+			<State Id="1" Key="Default">
+				<RegexPatternGroup TokenId="1" TokenKey="ControlWordToken" ClassificationTypeKey="ControlWord" Pattern="(\\)({Alpha}+)((-)?({Digit}+)|{Digit}*)" />
+				<RegexPatternGroup TokenId="2" TokenKey="ControlSymbolToken" ClassificationTypeKey="ControlSymbol" Pattern="\\ [^\p{C}\p{Z}]" />
+				<ExplicitPatternGroup TokenId="3" TokenKey="BeginGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="{" />
+				<ExplicitPatternGroup TokenId="4" TokenKey="EndGroupToken" ClassificationTypeKey="GroupDelimiter" Pattern="}" />
 			</State>
 		</DynamicLexer>
 	</LanguageDefinition.Lexer>

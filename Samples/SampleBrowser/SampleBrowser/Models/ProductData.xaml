@@ -28,7 +28,7 @@
 					<BitmapImage UriSource="/Images/Screenshots/SyntaxEditor-SdiCodeEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
 				</sampleBrowser:ListItemInfo.ImageSource>
 			</sampleBrowser:ListItemInfo>
-			<sampleBrowser:ListItemInfo BlurbText="BETA" Title="Bars" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
+			<sampleBrowser:ListItemInfo Title="Bars" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open">
 				<sampleBrowser:ListItemInfo.ImageSource>
 					<BitmapImage UriSource="/Images/Screenshots/Bars-DocumentEditor-200x150.png" shared:ImageProvider.CanAdapt="False" />
 				</sampleBrowser:ListItemInfo.ImageSource>
@@ -47,8 +47,9 @@
 		
 		<sampleBrowser:ProductData.ReleaseHistory>
 			<sampleBrowser:ProductFamilyInfo ShortTitle="Documents" Title="Documents" LogoImageSource="{x:Static shared:AssemblyInfo.ActiproIconImageSource}">
-                <sampleBrowser:ProductItemInfo Category="Release History" Title="v23.1" Path="/SampleBrowser/Documents/ReleaseHistories/v23.1" />
-                <sampleBrowser:ProductItemInfo Category="Release History" Title="v22.1" Path="/SampleBrowser/Documents/ReleaseHistories/v22.1" />
+				<sampleBrowser:ProductItemInfo Category="Release History" Title="v24.1" Path="/SampleBrowser/Documents/ReleaseHistories/v24.1" />
+				<sampleBrowser:ProductItemInfo Category="Release History" Title="v23.1" Path="/SampleBrowser/Documents/ReleaseHistories/v23.1" />
+				<sampleBrowser:ProductItemInfo Category="Release History" Title="v22.1" Path="/SampleBrowser/Documents/ReleaseHistories/v22.1" />
                 <sampleBrowser:ProductItemInfo Category="Release History" Title="v21.1" Path="/SampleBrowser/Documents/ReleaseHistories/v21.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v20.1" Path="/SampleBrowser/Documents/ReleaseHistories/v20.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v19.1" Path="/SampleBrowser/Documents/ReleaseHistories/v19.1" />
@@ -81,7 +82,7 @@
 										 Summary="The ultimate syntax-highlighting code editor control">
 
 			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title="Go to Line (Custom Overlay)" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLineOverlay/MainControl"/>
+				<sampleBrowser:ListItemInfo Title="Highlight current line number" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/CurrentLineHighlighting/MainControl"/>
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -142,7 +143,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Collapsed Regions - Advanced" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CollapsedRegionsAdvanced/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Compare Files" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CompareFiles/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Column Guides" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/ColumnGuides/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Current Line Highlighting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CurrentLineHighlighting/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" BlurbText="Updated!" Title="Current Line Highlighting" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/CurrentLineHighlighting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Data Binding" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DataBinding/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Drag and Drop" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DragAndDrop/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Document Sharing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/DocumentSharing/MainControl"/>
@@ -156,7 +157,7 @@
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Exporting to HTML / RTF" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Exporting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Globalization" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/Globalization/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Go to Line" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLine/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="General QuickStarts" BlurbText="New!" Title="Go to Line (Custom Overlay)" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLineOverlay/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Go to Line (Custom Overlay)" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/GoToLineOverlay/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Highlighting Style Viewer" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/HighlightingStyleViewer/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Hit Testing" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/HitTesting/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="General QuickStarts" Title="Indicators - Bookmark" Path="/ProductSamples/SyntaxEditorSamples/QuickStart/IndicatorsBookmark/MainControl"/>
@@ -401,7 +402,7 @@
 		<!--
 			Bars
 		-->
-		<sampleBrowser:ProductFamilyInfo BlurbText="BETA" ShortTitle="Bars" Title="Bars" LogoImageSource="{x:Static bars:AssemblyInfo.ProductLogoImageSource}"
+		<sampleBrowser:ProductFamilyInfo ShortTitle="Bars" Title="Bars" LogoImageSource="{x:Static bars:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Advanced fluent ribbons, toolbars, menus and related controls">
 
 			<sampleBrowser:ProductFamilyInfo.News>
@@ -436,6 +437,7 @@
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="User Interface Density" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/UserInterfaceDensity/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Variant Sizing" Path="/ProductSamples/BarsSamples/QuickStart/VariantSizing/MainControl"/>
 
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Toolbar QuickStarts" Title="Mini-Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/MiniToolBarIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Toolbar QuickStarts" Title="Standalone Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/StandaloneToolBarIntro/MainControl"/>
 
 		</sampleBrowser:ProductFamilyInfo>
@@ -829,9 +831,10 @@
 										 Summary="Useful components and controls for the WPF framework">
 
 			<sampleBrowser:ProductFamilyInfo.News>
-				<sampleBrowser:ListItemInfo Title=".NET 5 targets moved to .NET 6" />
-				<sampleBrowser:ListItemInfo Title=".NET 7 compatibility verified" />
-				<sampleBrowser:ListItemInfo Title="Updated all assemblies to be code-signed" />
+				<sampleBrowser:ListItemInfo Title="Avatar control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title="AvatarGroup control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarGroupIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title="Badge and NumericBadge controls" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/BadgeIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title="CircularProgressBar control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/CircularProgressBarIntro/MainControl" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -843,6 +846,10 @@
 
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Animated Expander" Path="/ProductSamples/SharedSamples/QuickStart/AnimatedExpanderIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Animated ProgressBar" Path="/ProductSamples/SharedSamples/QuickStart/AnimatedProgressBarIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Avatar" Path="/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl" SideBarWidth="Narrow" CanFocusOnLoad="False"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Avatar Group" Path="/ProductSamples/SharedSamples/QuickStart/AvatarGroupIntro/MainControl" SideBarWidth="Narrow"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Badge" Path="/ProductSamples/SharedSamples/QuickStart/BadgeIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Circular Progressbar" Path="/ProductSamples/SharedSamples/QuickStart/CircularProgressBarIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Color Selection" Path="/ProductSamples/SharedSamples/QuickStart/ColorSelection/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Drop Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/DropShadowChromeIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Dynamic Image" Path="/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl"/>
@@ -872,7 +879,7 @@
 			Ribbon
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Ribbon" Title="Ribbon" LogoImageSource="{x:Static ribbon:AssemblyInfo.ProductLogoImageSource}"
-										 Summary="Original Ribbon control that will be replaced by the new Bars product">
+										 Summary="Original Ribbon control that was replaced by the newer Bars product">
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Ribbon" />

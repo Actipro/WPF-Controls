@@ -197,6 +197,7 @@
 					<MenuItem Header="Indentation Guides Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=AreIndentationGuidesVisible, Mode=TwoWay}" />
 					<MenuItem Header="Line Modification Marks Visible" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=AreLineModificationMarksVisible, Mode=TwoWay}" />
 					<MenuItem Header="Current Line Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsCurrentLineHighlightingEnabled, Mode=TwoWay}" />
+					<MenuItem Header="Current Line Number Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsCurrentLineNumberHighlightingEnabled, Mode=TwoWay}" />
 					<MenuItem Header="Delimiter Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsDelimiterHighlightingEnabled, Mode=TwoWay}" />
 					<MenuItem Header="Search Result Highlighting Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsSearchResultHighlightingEnabled, Mode=TwoWay}" />
 					<MenuItem Header="Auto-Correct Enabled" IsCheckable="True" IsChecked="{Binding ElementName=editor, Path=IsAutoCorrectEnabled, Mode=TwoWay}" />

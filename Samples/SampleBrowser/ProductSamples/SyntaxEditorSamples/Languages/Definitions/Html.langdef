@@ -6,21 +6,21 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'HTML' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Html" LanguageDescription="HTML" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Html" LanguageDescription="HTML" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FF800000" />
-		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="ServerSideScript" Description="Server-Side Script" DefaultStyle="#FF000000,,,#FFFFEE62" />
+		<ClassificationType Key="ServerSideScript" Description="Server-Side Script" DefaultStyle="#FF000000,,,#FFFFFF00" DarkStyle="#FF000000,,,#FFFFFFB3" />
+		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" DarkStyle="#FFC8C8C8" />
+		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" DarkStyle="#FFFFAAF9" />
+		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" DarkStyle="#FF808080" />
+		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FFA31515" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FF808080" DarkStyle="#FFC8C8C8" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
@@ -31,7 +31,7 @@ Actipro Syntax Language Definition (.langdef)
 				<Macro Key="TagName" Pattern="[a-zA-Z_0-9\-:\.]" />
 			</DynamicLexer.Macros>
 			<!-- Default state -->
-			<State Key="Default">
+			<State Id="1" Key="Default">
 				<State.ChildStates>
 					<StateRef Key="EndTag" />
 					<StateRef Key="Comment" />
@@ -44,19 +44,19 @@ Actipro Syntax Language Definition (.langdef)
 					<StateRef Key="JavaScriptStartTag" />
 					<StateRef Key="StartTag" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="Entity" ClassificationTypeKey="XmlEntity" Pattern="&amp; \#? {Word}+ ;?" />
-				<RegexPatternGroup TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
-				<RegexPatternGroup TokenKey="Whitespace" Pattern="{Whitespace}+" />
+				<RegexPatternGroup TokenId="1" TokenKey="Entity" ClassificationTypeKey="XmlEntity" Pattern="&amp; \#? {Word}+ ;?" />
+				<RegexPatternGroup TokenId="2" TokenKey="Identifier" Pattern="{Alpha}({Word})*" />
+				<RegexPatternGroup TokenId="3" TokenKey="Whitespace" Pattern="{Whitespace}+" />
 			</State>
 			<!-- StartTag state -->
-			<State Key="StartTag" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
+			<State Id="2" Key="StartTag" DefaultTokenId="4" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" />
+							<ExplicitPatternGroup TokenId="5" TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
+							<RegexPatternGroup TokenId="6" TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
@@ -65,11 +65,11 @@ Actipro Syntax Language Definition (.langdef)
 				</State.ChildStates>
 			</State>
 			<!-- StartTagAttribute state -->
-			<State Key="StartTagAttribute" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlAttribute">
+			<State Id="3" Key="StartTagAttribute" DefaultTokenId="4" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlAttribute">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagName" ClassificationTypeKey="XmlName" Pattern="{LineTerminatorWhitespace}* {TagName}+ {LineTerminatorWhitespace}*" />
+							<RegexPatternGroup TokenId="7" TokenKey="StartTagName" ClassificationTypeKey="XmlName" Pattern="{LineTerminatorWhitespace}* {TagName}+ {LineTerminatorWhitespace}*" />
 						</Scope.StartPatternGroup>
 					</Scope>
 				</State.Scopes>
@@ -77,59 +77,59 @@ Actipro Syntax Language Definition (.langdef)
 					<StateRef Key="StartTagAttributeStringValue" />
 					<StateRef Key="StartTagAttributeValue" />
 				</State.ChildStates>
-				<RegexPatternGroup TokenKey="StartTagAttribute" ClassificationTypeKey="XmlAttribute" Pattern="{Word}+" LookAheadPattern="{NonWord}|\z" />
+				<RegexPatternGroup TokenId="8" TokenKey="StartTagAttribute" ClassificationTypeKey="XmlAttribute" Pattern="{Word}+" LookAheadPattern="{NonWord}|\z" />
 			</State>
 			<!-- StartTagAttributeValue state -->
-			<State Key="StartTagAttributeValue" DefaultTokenKey="StartTagAttributeValueText" DefaultClassificationTypeKey="XmlAttributeValue">
+			<State Id="4" Key="StartTagAttributeValue" DefaultTokenId="9" DefaultTokenKey="StartTagAttributeValueText" DefaultClassificationTypeKey="XmlAttributeValue">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagAttributeValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}*" />
+							<RegexPatternGroup TokenId="10" TokenKey="StartTagAttributeValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}*" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagAttributeValueEndDelimiter" Pattern="{LineTerminatorWhitespace}+" />
+							<RegexPatternGroup TokenId="11" TokenKey="StartTagAttributeValueEndDelimiter" Pattern="{LineTerminatorWhitespace}+" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup Pattern="{Word}+" />
 			</State>
 			<!-- StartTagAttributeStringValue state -->
-			<State Key="StartTagAttributeStringValue" DefaultTokenKey="StartTagAttributeStringValueText" DefaultClassificationTypeKey="XmlAttributeValue">
+			<State Id="5" Key="StartTagAttributeStringValue" DefaultTokenId="12" DefaultTokenKey="StartTagAttributeStringValueText" DefaultClassificationTypeKey="XmlAttributeValue">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagAttributeStringValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}* \&quot;" />
+							<RegexPatternGroup TokenId="13" TokenKey="StartTagAttributeStringValueStartDelimiter" Pattern="= {LineTerminatorWhitespace}* \&quot;" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagAttributeStringValueEndDelimiter" Pattern="\&quot;" />
+							<RegexPatternGroup TokenId="14" TokenKey="StartTagAttributeStringValueEndDelimiter" Pattern="\&quot;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup Pattern="[^&quot;]+" />
 			</State>
 			<!-- EndTag state -->
-			<State Key="EndTag" DefaultTokenKey="EndTagText" DefaultClassificationTypeKey="XmlName">
+			<State Id="6" Key="EndTag" DefaultTokenId="15" DefaultTokenKey="EndTagText" DefaultClassificationTypeKey="XmlName">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" />
+							<ExplicitPatternGroup TokenId="16" TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="EndTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
+							<ExplicitPatternGroup TokenId="17" TokenKey="EndTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup Pattern="[^&gt;]+" />
 			</State>
 			<!-- AspDirectiveResponseWrite state -->
-			<State Key="AspDirectiveResponseWrite">
+			<State Id="7" Key="AspDirectiveResponseWrite">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="AspDirectiveStartDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="&lt;%" LookAheadPattern="=" />
+							<ExplicitPatternGroup TokenId="18" TokenKey="AspDirectiveStartDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="&lt;%" LookAheadPattern="=" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="AspDirectiveEndDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="%&gt;" />
+							<ExplicitPatternGroup TokenId="19" TokenKey="AspDirectiveEndDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="%&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
@@ -142,14 +142,14 @@ Actipro Syntax Language Definition (.langdef)
 				</State.Transition>
 			</State>
 			<!-- AspDirectiveCode state -->
-			<State Key="AspDirectiveCode">
+			<State Id="8" Key="AspDirectiveCode">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="AspDirectiveStartDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="&lt;%" />
+							<ExplicitPatternGroup TokenId="18" TokenKey="AspDirectiveStartDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="&lt;%" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="AspDirectiveEndDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="%&gt;" />
+							<ExplicitPatternGroup TokenId="19" TokenKey="AspDirectiveEndDelimiter" ClassificationTypeKey="ServerSideScript" Pattern="%&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
@@ -162,14 +162,14 @@ Actipro Syntax Language Definition (.langdef)
 				</State.Transition>
 			</State>
 			<!-- StyleStartTag state -->
-			<State Key="StyleStartTag" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
+			<State Id="9" Key="StyleStartTag" DefaultTokenId="4" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="style" />
+							<ExplicitPatternGroup TokenId="5" TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="style" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
+							<RegexPatternGroup TokenId="6" TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
 						</Scope.EndPatternGroup>
 						<Scope.Transition>
 							<StateTransition>
@@ -179,7 +179,7 @@ Actipro Syntax Language Definition (.langdef)
 								<StateTransition.ChildScope>
 									<Scope>
 										<Scope.EndPatternGroup>
-											<ExplicitPatternGroup TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="style" />
+											<ExplicitPatternGroup TokenId="16" TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="style" />
 										</Scope.EndPatternGroup>
 									</Scope>
 								</StateTransition.ChildScope>
@@ -192,14 +192,14 @@ Actipro Syntax Language Definition (.langdef)
 				</State.ChildStates>
 			</State>
 			<!-- JavaScriptStartTag state -->
-			<State Key="JavaScriptStartTag" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
+			<State Id="10" Key="JavaScriptStartTag" DefaultTokenId="4" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="script" />
+							<ExplicitPatternGroup TokenId="5" TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="script" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
+							<RegexPatternGroup TokenId="6" TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
 						</Scope.EndPatternGroup>
 						<Scope.Transition>
 							<StateTransition>
@@ -209,7 +209,7 @@ Actipro Syntax Language Definition (.langdef)
 								<StateTransition.ChildScope>
 									<Scope>
 										<Scope.EndPatternGroup>
-											<ExplicitPatternGroup TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="script" />
+											<ExplicitPatternGroup TokenId="16" TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="script" />
 										</Scope.EndPatternGroup>
 									</Scope>
 								</StateTransition.ChildScope>
@@ -222,14 +222,14 @@ Actipro Syntax Language Definition (.langdef)
 				</State.ChildStates>
 			</State>
 			<!-- VBScriptStartTag state -->
-			<State Key="VBScriptStartTag" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
+			<State Id="11" Key="VBScriptStartTag" DefaultTokenId="4" DefaultTokenKey="StartTagText" DefaultClassificationTypeKey="XmlName">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="script {LineTerminatorWhitespace}* language=\&quot; (&quot;VBS&quot; | &quot;VBScript&quot;)" />
+							<ExplicitPatternGroup TokenId="5" TokenKey="StartTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;" LookAheadPattern="script {LineTerminatorWhitespace}* language=\&quot; (&quot;VBS&quot; | &quot;VBScript&quot;)" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<RegexPatternGroup TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
+							<RegexPatternGroup TokenId="6" TokenKey="StartTagEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="/? &gt;" />
 						</Scope.EndPatternGroup>
 						<Scope.Transition>
 							<StateTransition>
@@ -239,7 +239,7 @@ Actipro Syntax Language Definition (.langdef)
 								<StateTransition.ChildScope>
 									<Scope>
 										<Scope.EndPatternGroup>
-											<ExplicitPatternGroup TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="script" />
+											<ExplicitPatternGroup TokenId="16" TokenKey="EndTagStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;/" LookAheadPattern="script" />
 										</Scope.EndPatternGroup>
 									</Scope>
 								</StateTransition.ChildScope>
@@ -252,42 +252,42 @@ Actipro Syntax Language Definition (.langdef)
 				</State.ChildStates>
 			</State>
 			<!-- Comment state -->
-			<State Key="Comment" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="XmlComment">
+			<State Id="12" Key="Comment" DefaultTokenId="20" DefaultTokenKey="CommentText" DefaultClassificationTypeKey="XmlComment">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="CommentStartDelimiter" Pattern="&lt;!--" />
+							<ExplicitPatternGroup TokenId="21" TokenKey="CommentStartDelimiter" Pattern="&lt;!--" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="CommentEndDelimiter" Pattern="--&gt;" />
+							<ExplicitPatternGroup TokenId="22" TokenKey="CommentEndDelimiter" Pattern="--&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup Pattern="[^\-]+" />
 			</State>
 			<!-- ProcessingInstruction state -->
-			<State Key="ProcessingInstruction" DefaultTokenKey="ProcessingInstructionText" DefaultClassificationTypeKey="XmlProcessingInstruction">
+			<State Id="13" Key="ProcessingInstruction" DefaultTokenId="23" DefaultTokenKey="ProcessingInstructionText" DefaultClassificationTypeKey="XmlProcessingInstruction">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="ProcessingInstructionStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;?" />
+							<ExplicitPatternGroup TokenId="24" TokenKey="ProcessingInstructionStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;?" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="ProcessingInstructionEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="?&gt;" />
+							<ExplicitPatternGroup TokenId="25" TokenKey="ProcessingInstructionEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="?&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
 				<RegexPatternGroup Pattern="[^\?]+" />
 			</State>
 			<!-- Declaration state -->
-			<State Key="Declaration" DefaultTokenKey="DeclarationText" DefaultClassificationTypeKey="XmlDeclaration">
+			<State Id="14" Key="Declaration" DefaultTokenId="26" DefaultTokenKey="DeclarationText" DefaultClassificationTypeKey="XmlDeclaration">
 				<State.Scopes>
 					<Scope>
 						<Scope.StartPatternGroup>
-							<ExplicitPatternGroup TokenKey="DeclarationStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;!" />
+							<ExplicitPatternGroup TokenId="27" TokenKey="DeclarationStartDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&lt;!" />
 						</Scope.StartPatternGroup>
 						<Scope.EndPatternGroup>
-							<ExplicitPatternGroup TokenKey="DeclarationEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
+							<ExplicitPatternGroup TokenId="28" TokenKey="DeclarationEndDelimiter" ClassificationTypeKey="XmlDelimiter" Pattern="&gt;" />
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>

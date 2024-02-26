@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
-using ActiproSoftware.Text.Languages.DotNet.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Reflection;
-using ActiproSoftware.Text.Languages.JavaScript.Implementation;
-using ActiproSoftware.Text.Languages.Python.Implementation;
-using ActiproSoftware.Text.Languages.Xml.Implementation;
-using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation;
@@ -28,8 +21,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 		public const string SnippetsPath = "ActiproSoftware.ProductSamples.SyntaxEditorSamples.Languages.Snippets.";
 		public const string ThemesPath = "ActiproSoftware.ProductSamples.SyntaxEditorSamples.Languages.Themes.";
 		public const string XmlSchemasPath = "ActiproSoftware.ProductSamples.SyntaxEditorSamples.Languages.XmlSchemas.";
-
-		private static bool isDarkThemeActive;
 
 		/// <summary>
 		/// Adds common "System" assembly references to a .NET <see cref="IProjectAssembly"/> to enable IntelliPrompt
@@ -49,17 +40,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 			}
 		}
 
-		/// <summary>
-		/// Returns whether a dark theme is currently active.
-		/// </summary>
-		/// <returns>
-		/// <c>true</c> if a dark theme is currently active; otherwise, <c>false</c>.
-		/// </returns>
-		private static bool GetIsDarkThemeActive() {
-			var isDark = ThemeManager.IsDarkTheme(ThemeManager.CurrentTheme);
-			return isDark;
-		}
-		
 		/// <summary>
 		/// Creates an <see cref="ICodeSnippetFolder"/> and initializes it with specified code snippets from embedded resources.
 		/// </summary>
@@ -93,7 +73,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 			string path = DefinitionPath + filename;
 			using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path)) {
 				if (stream != null) {
-					SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
+					var serializer = new SyntaxLanguageDefinitionSerializer() {
+						// Enable the use of common classification types (like Comment and String)
+						// for consistent highlighting styles
+						UseBuiltInClassificiationTypes = true,
+					};
 					serializer.InitializeFromStream(language, stream);
 				}
 			}
@@ -108,7 +92,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 			string path = DefinitionPath + filename;
 			using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path)) {
 				if (stream != null) {
-					SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
+					var serializer = new SyntaxLanguageDefinitionSerializer() {
+						// Enable the use of common classification types (like Comment and String)
+						// for consistent highlighting styles
+						UseBuiltInClassificiationTypes = true,
+					};
 					return serializer.LoadFromStream(stream);
 				}
 				else
@@ -176,62 +164,5 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common {
 			return rootFolder;
 		}
 
-		/// <summary>
-		/// Updates the image set for a theme change.
-		/// </summary>
-		public static void UpdateImageSetForThemeChange() {
-			switch (ThemeManager.CurrentTheme) {
-				case ThemeNames.AeroNormalColor:
-				case ThemeNames.Office2010Black:
-				case ThemeNames.Office2010Blue:
-				case ThemeNames.Office2010Silver:
-					// Only needed if these older Aero-style themes are supported in your app
-					CommonImageSourceProvider.DefaultImageSet = CommonImageSet.Classic;
-					break;
-				default:
-					CommonImageSourceProvider.DefaultImageSet = (GetIsDarkThemeActive() ? CommonImageSet.MetroDark : CommonImageSet.MetroLight);
-					break;
-			}
-		}
-
-		/// <summary>
-		/// Updates the highlighting style registry for a theme change.
-		/// </summary>
-		public static void UpdateHighlightingStyleRegistryForThemeChange() {
-			var oldIsDarkThemeActive = isDarkThemeActive;
-			isDarkThemeActive = GetIsDarkThemeActive();
-
-			if (isDarkThemeActive != oldIsDarkThemeActive) {
-				// Unregister all classification types
-				var classificationTypes = AmbientHighlightingStyleRegistry.Instance.ClassificationTypes.ToArray();
-				foreach (var classificationType in classificationTypes)
-					AmbientHighlightingStyleRegistry.Instance.Unregister(classificationType);
-
-				// Re-register common classification types for general display (plain text, margins, etc.) and add-ons (which also include common ones like keywords, strings, etc.)
-				new DisplayItemClassificationTypeProvider().RegisterAll();
-				new DotNetClassificationTypeProvider().RegisterAll();
-				new JavaScriptClassificationTypeProvider().RegisterAll();
-				new PythonClassificationTypeProvider().RegisterAll();
-				new XmlClassificationTypeProvider().RegisterAll();
-				new CompareFilesClassificationTypeProvider().RegisterAll();
-
-				// Load HTML, Markdown, XAML, and Formula languages just so their custom classification types get re-registered
-				LoadLanguageDefinitionFromResourceStream("Html.langdef");
-				LoadLanguageDefinitionFromResourceStream("Markdown.langdef");
-				LoadLanguageDefinitionFromResourceStream("Xaml.langdef");
-				LoadLanguageDefinitionFromResourceStream("CustomFormula.langdef");
-				// NOTE: Any other languages that are active would need to reload to ensure their custom classification types get re-registered as well
-
-				if (isDarkThemeActive) {
-					// Load a dark theme, which has some example pre-defined styles for some of the more common syntax languages
-					string path = ThemesPath + "Dark.vssettings";
-					using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path)) {
-						if (stream != null)
-							AmbientHighlightingStyleRegistry.Instance.ImportHighlightingStyles(stream);
-					}
-				}
-			}
-		}
-		
 	}
 }

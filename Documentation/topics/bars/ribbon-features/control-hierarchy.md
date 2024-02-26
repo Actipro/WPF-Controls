@@ -92,6 +92,8 @@ The following hierarchy shows the definition of a [Ribbon](xref:@ActiproUIRoot.C
       - [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
         - [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
           - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+        - [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
+          - [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) *or toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
         - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
 
 ### Toolbar Controls

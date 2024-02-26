@@ -14,6 +14,7 @@
 			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
 				<sampleBrowser:SampleOptionsPropertyGrid>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=LedState}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=IsOffDelayEnabled}" />
 
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=RimType}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=led, Path=RimBrush}" />

@@ -8,10 +8,12 @@
     
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Margin="20,10" Orientation="Horizontal">
-			<CheckBox Content="Is line highlighting enabled" VerticalAlignment="Center"
+			<CheckBox Content="Is line number highlighting enabled" VerticalAlignment="Center"
+					  IsChecked="{Binding ElementName=editor, Path=IsCurrentLineNumberHighlightingEnabled}" />
+			<CheckBox Margin="30,0,0,0" Content="Is line highlighting enabled" VerticalAlignment="Center"
 					  IsChecked="{Binding ElementName=editor, Path=IsCurrentLineHighlightingEnabled}" />
 
-			<TextBlock Margin="30,0,0,0" Text="Highlight color" VerticalAlignment="Center" />
+			<TextBlock Margin="30,0,0,0" Text="Line highlight color" VerticalAlignment="Center" />
 			<editors:ColorEditBox x:Name="colorEditbox" Margin="5,0,0,0" MinWidth="120" VerticalAlignment="Center" IsNullAllowed="True" PlaceholderText="(no background)" />
 		</StackPanel>
 		
@@ -20,12 +22,23 @@
 							 IsOutliningMarginVisible="False" IsCurrentLineHighlightingEnabled="True">
 			<editor:EditorDocument x:Name="document" xml:space="preserve"><![CDATA[/*
 
-This sample shows the current line highlighting feature, which renders
-a highlight in the active view over the view line that contains the caret.
+This sample shows two options for emphasizing the line in the active view
+that contains the caret.
+
+Current line highlighting renders a border above and below the current
+line with an optional background color.
 
 Set the SyntaxEditor.IsCurrentLineHighlightingEnabled property to true
 to activate it.  The highlight color can be set via a style associated
 with the pre-defined DisplayItemClassificationTypes.CurrentLine 
+classification type.
+
+Current line number highlighting uses a different style in the line
+number margin to render the current line.
+
+Set the SyntaxEditor.IsCurrentLineNumberHighlightingEnabled property to
+true to activate it.  The highlight color can be set via a style associated
+with the pre-defined DisplayItemClassificationTypes.LineNumberCurrent
 classification type.
 
 */

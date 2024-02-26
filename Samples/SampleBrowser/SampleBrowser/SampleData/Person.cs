@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ActiproSoftware.Windows.Media;
+using System;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ActiproSoftware.SampleBrowser.SampleData {
 
@@ -6,7 +9,9 @@ namespace ActiproSoftware.SampleBrowser.SampleData {
 	/// Represents a person.
 	/// </summary>
 	public class Person {
-		
+
+		private BitmapImage _photo;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +75,26 @@ namespace ActiproSoftware.SampleBrowser.SampleData {
 		/// </summary>
 		/// <value>The ID.</value>
 		public int Id { get; private set; }
+
+		/// <summary>
+		/// The photo loaded from the <see cref="PhotoUri"/>.
+		/// </summary>
+		public ImageSource Photo {
+			get {
+				if (_photo is null) {
+					// Create the ImageSource
+					_photo = new BitmapImage();
+					_photo.BeginInit();
+					_photo.UriSource = PhotoUri;
+					_photo.EndInit();
+
+					// Prevent the photo from being adapted for dark themes
+					ImageProvider.SetCanAdapt(_photo, false);
+				}
+
+				return _photo;
+			}
+		}
 
 		/// <summary>
 		/// Gets the photo URI.

@@ -192,6 +192,9 @@ Pass the format string in the converter's parameter.  Since curly brace characte
 <MultiBinding Converter="{StaticResource StringFormatConverter}" ConverterParameter="{}{0} of {1}">...
 ```
 
+> [!IMPORTANT]
+> If the converter's parameter is undefined, the first value of the multi-binding must define the string format.  This is useful when the string format needs to be configured with a `Binding` since WPF does not support bindings for converter parameters.
+
 ## ThicknessConverter Class
 
 The [ThicknessConverter](xref:@ActiproUIRoot.Data.ThicknessConverter) represents a value converter that converts between a `Thickness` and a number.

@@ -1,0 +1,271 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="sampleRootControl"
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.AvatarIntro.MainControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatar, Path=Description}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatar, Path=TextAppearanceKind}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel DisplayName="Length" CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatar, Path=Width}">
+							<gridseditors:DoublePropertyEditor Minimum="10" Maximum="100" SmallChange="2" LargeChange="10" Format="0" />
+						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatar, Path=BorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatar, Path=CornerRadius}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Avatar controls are used to represent people or objects.  They can render a full-size image, a centered glyph, a person's initials, or text.
+					<LineBreak/><LineBreak/>
+					When the Description property is set to the full name of a person, an unset Content property will be coerced using built-in logic to up to two initials based on the full name.  The Description will be used as the tooltip.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<shared:Avatar x:Name="avatar" Description="Actipro Software"
+								CornerRadius="50"
+								Width="100"
+								Height="{Binding RelativeSource={RelativeSource Self}, Path=Width}" />
+			</sampleBrowser:LabeledCardControl>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: Combine with badge -->
+				<sampleBrowser:LabeledCardControl MaxWidth="250" Label="Use an avatar with a badge control to indicate status, such as in a user list" >
+					<StackPanel>
+						<StackPanel.Resources>
+							<Style TargetType="shared:Avatar">
+								<Setter Property="Margin" Value="5" />
+								<Setter Property="CornerRadius" Value="5" />
+								<Setter Property="Height" Value="24" />
+								<Setter Property="Width" Value="24" />
+								<Setter Property="shared:BadgeService.HorizontalOffset" Value="4" />
+								<Setter Property="shared:BadgeService.VerticalOffset" Value="4" />
+								<Setter Property="shared:BadgeService.HorizontalAlignment" Value="InsideOfTargetRightEdge" />
+								<Setter Property="shared:BadgeService.VerticalAlignment" Value="InsideOfTargetBottomEdge" />
+							</Style>
+
+							<Style x:Key="StatusBadgeStyle" TargetType="shared:Badge">
+								<Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}" />
+								<Setter Property="BorderThickness" Value="2" />
+								<Setter Property="CornerRadius" Value="6" />
+								<Setter Property="DotLength" Value="12" />
+								<Setter Property="Kind" Value="Dot" />
+							</Style>
+						</StackPanel.Resources>
+
+						<StackPanel Orientation="Horizontal">
+							<shared:Avatar Description="Michael Thomas" ToolTip="Status: Online">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource StatusBadgeStyle}" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" />
+								</shared:BadgeService.Badge>
+
+								<Image Source="/Images/ProfilePhotos/Man04.jpg" />
+							</shared:Avatar>
+
+							<TextBlock Margin="7,0,0,0" Text="Michael Thomas" VerticalAlignment="Center" />
+						</StackPanel>
+
+						<StackPanel Orientation="Horizontal">
+							<shared:Avatar Description="Philip Hortman" ToolTip="Status: Online">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource StatusBadgeStyle}" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}" />
+								</shared:BadgeService.Badge>
+							</shared:Avatar>
+
+							<TextBlock Margin="7,0,0,0" Text="Philip Hortman" VerticalAlignment="Center" />
+						</StackPanel>
+
+						<StackPanel Orientation="Horizontal">
+							<shared:Avatar Description="Sally Jenkins" ToolTip="Status: Offline">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource StatusBadgeStyle}" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" />
+								</shared:BadgeService.Badge>
+
+								<Image Source="/Images/ProfilePhotos/Woman04.jpg" />
+							</shared:Avatar>
+
+							<TextBlock Margin="7,0,0,0" Text="Sally Jenkins" VerticalAlignment="Center" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Corner radius and border -->
+				<sampleBrowser:LabeledCardControl MaxWidth="350" Label="Adjust the corner radius to achieve different looks; a border can create separation from surrounding content" >
+					<StackPanel>
+						<StackPanel.Resources>
+							<Style TargetType="shared:Avatar">
+								<Setter Property="Margin" Value="5" />
+								<Setter Property="Width" Value="64" />
+								<Setter Property="Height" Value="64" />
+								<Setter Property="BorderThickness" Value="1" />
+								<Setter Property="Content">
+									<Setter.Value>
+										<BitmapImage UriSource="/Images/ProfilePhotos/Woman01.jpg" shared:ImageProvider.CanAdapt="False" />
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</StackPanel.Resources>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<shared:Avatar Description="Full-round" />
+							<shared:Avatar Description="Somewhat rounded" CornerRadius="10" />
+							<shared:Avatar Description="Square" CornerRadius="0" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Text content -->
+				<sampleBrowser:LabeledCardControl MaxWidth="400" Label="When a string is set to the Content property (including auto-generated initials), the avatar can automatically adjust its background and foreground based on the text value" >
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+						<StackPanel.Resources>
+							<Style TargetType="shared:Avatar">
+								<Setter Property="Margin" Value="5,0" />
+								<Setter Property="Width" Value="48" />
+								<Setter Property="Height" Value="48" />
+							</Style>
+						</StackPanel.Resources>
+						<shared:Avatar Content="Yoda" />
+						<shared:Avatar Content="Chewie" />
+						<shared:Avatar Content="C-3PO" />
+						<shared:Avatar Content="R2-D2" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Size gallery -->
+				<sampleBrowser:LabeledCardControl Label="Avatars can be displayed at any size" >
+					<StackPanel>
+						<StackPanel.Resources>
+							<Style TargetType="shared:Avatar">
+								<Setter Property="Margin" Value="5" />
+							</Style>
+						</StackPanel.Resources>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<shared:Avatar Width="96" Height="96">
+								<BitmapImage UriSource="/Images/ProfilePhotos/Woman06.jpg" shared:ImageProvider.CanAdapt="False" />
+							</shared:Avatar>
+							<shared:Avatar Width="64" Height="64">
+								<BitmapImage UriSource="/Images/ProfilePhotos/Man02.jpg" shared:ImageProvider.CanAdapt="False" />
+							</shared:Avatar>
+							<shared:Avatar Width="48" Height="48">
+								<BitmapImage UriSource="/Images/ProfilePhotos/Woman02.jpg" shared:ImageProvider.CanAdapt="False" />
+							</shared:Avatar>
+							<shared:Avatar Width="32" Height="32">
+								<BitmapImage UriSource="/Images/ProfilePhotos/Man01.jpg" shared:ImageProvider.CanAdapt="False" />
+							</shared:Avatar>
+							<shared:Avatar Width="24" Height="24">
+								<BitmapImage UriSource="/Images/ProfilePhotos/Woman03.jpg" shared:ImageProvider.CanAdapt="False" />
+							</shared:Avatar>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<shared:Avatar Width="96" Height="96" />
+							<shared:Avatar Width="64" Height="64" />
+							<shared:Avatar Width="48" Height="48" />
+							<shared:Avatar Width="32" Height="32" />
+							<shared:Avatar Width="24" Height="24" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<shared:Avatar Width="96" Height="96" Description="Han Solo" />
+							<shared:Avatar Width="64" Height="64" Description="Leia Organa" />
+							<shared:Avatar Width="48" Height="48" Description="Obi-Wan Kenobi" />
+							<shared:Avatar Width="32" Height="32" Description="Luke Skywalker" />
+							<shared:Avatar Width="24" Height="24" Description="Jabba the Hutt" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+							<shared:Avatar Width="96" Height="96" TextAppearanceKind="AutomaticSoft" Description="Han Solo" />
+							<shared:Avatar Width="64" Height="64" TextAppearanceKind="AutomaticSoft" Description="Leia Organa" />
+							<shared:Avatar Width="48" Height="48" TextAppearanceKind="AutomaticSoft" Description="Obi-Wan Kenobi" />
+							<shared:Avatar Width="32" Height="32" TextAppearanceKind="AutomaticSoft" Description="Luke Skywalker" />
+							<shared:Avatar Width="24" Height="24" TextAppearanceKind="AutomaticSoft" Description="Jabba the Hutt" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Profile page usage -->
+				<sampleBrowser:LabeledCardControl Label="Use a large avatar with bold headings underneath for a pleasing profile page design" >
+					<StackPanel HorizontalAlignment="Center">
+						<shared:Avatar Width="192" Height="192">
+							<Image Source="/Images/ProfilePhotos/Woman05.jpg" />
+						</shared:Avatar>
+
+						<TextBlock Margin="0,8,0,0" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}" FontWeight="SemiBold" Text="Marina Carpenter" TextAlignment="Center" />
+						<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundMidMutedBrushKey}}" Text="Account Manager" TextAlignment="Center" />
+
+						<TextBlock Margin="0,20" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundMidSubtleBrushKey}}" Text="12 mutual contacts" TextAlignment="Center" />
+
+						<Button Content="Follow" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Glyph content -->
+				<sampleBrowser:LabeledCardControl Label="Centered glyph content can be displayed in the avatar" >
+					<shared:Avatar Width="48" Height="48">
+						<Viewbox>
+							<ContentPresenter ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonHelpGlyphTemplateKey}}" />
+						</Viewbox>
+					</shared:Avatar>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Actionable avatar -->
+				<sampleBrowser:LabeledCardControl MaxWidth="400" Label="Avatar controls inherit button, but are not focusable by default; click on the avatar above to display a message" >
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+						<shared:Avatar Width="64" Height="64" Cursor="Hand" Focusable="True"
+									   Description="Sam Hartwell"
+									   Command="{Binding ElementName=sampleRootControl, Path=AvatarClickedCommand}"
+									   CommandParameter="{Binding ElementName=actionableAvatarNameTextBlock, Path=Text}"
+									   >
+							<Image Source="/Images/ProfilePhotos/Man02.jpg" />
+						</shared:Avatar>
+
+						<StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+							<TextBlock x:Name="actionableAvatarNameTextBlock" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}" FontWeight="SemiBold" Text="Sam Hartwell" />
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundMidSubtleBrushKey}}" Text="Senior Analyst" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

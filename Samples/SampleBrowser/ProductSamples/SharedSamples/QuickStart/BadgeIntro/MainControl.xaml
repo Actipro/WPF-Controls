@@ -1,0 +1,351 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.BadgeIntro.MainControl"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	<sampleBrowser:ProductItemControl.Resources>
+		<Style x:Key="Block" TargetType="Border">
+			<Setter Property="Width" Value="48" />
+			<Setter Property="Height" Value="48" />
+			<Setter Property="CornerRadius" Value="8" />
+			<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundMidBrushKey}}" />
+			<Setter Property="Margin" Value="10" />
+		</Style>
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}" Header="COMMON SAMPLE OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=Background}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=Foreground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=BorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=BorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=CornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=Kind}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=IsActive}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}" Header="NUMERIC SAMPLE OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=numericBadge, Path=Count}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=numericBadge, Path=OverflowCount}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=numericBadge, Path=IsActiveWhenZero}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}" >
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=Content}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=FontSize}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badge, Path=IsAnimationEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badgeAdorned, Path=(shared:BadgeService.HorizontalAlignment)}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalAlignment)}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badgeAdorned, Path=(shared:BadgeService.HorizontalOffset)}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalOffset)}" />
+						<grids:PropertyModel DisplayName="Visibility (adorned)" CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=badgeAdorned, Path=Visibility}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Badge and NumericBadge controls can be used to add contextual information.
+					Badge can display any content and NumericBadge is specifically designed to
+					show a numeric count.
+					<LineBreak/>
+					<LineBreak/>
+					BadgeService can be used to adorn any visual with a Badge/NumericBadge, or
+					the controls can be used stand-alone.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="60" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					
+					<!-- Badge -->
+					<StackPanel Grid.Column="0">
+						<Border x:Name="badgeAdorned" Style="{StaticResource Block}">
+							<shared:BadgeService.Badge>
+								<shared:Badge x:Name="badge" Content="Badge" />
+							</shared:BadgeService.Badge>
+						</Border>
+						<TextBlock FontWeight="DemiBold" HorizontalAlignment="Center">Badge</TextBlock>
+					</StackPanel>
+
+					<!-- NumericBadge -->
+					<StackPanel Grid.Column="2">
+						<Border Style="{StaticResource Block}"
+								shared:BadgeService.HorizontalAlignment="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.HorizontalAlignment), Mode=OneWay}"
+								shared:BadgeService.VerticalAlignment="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalAlignment), Mode=OneWay}"
+								shared:BadgeService.HorizontalOffset="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.HorizontalOffset), Mode=OneWay}"
+								shared:BadgeService.VerticalOffset="{Binding ElementName=badgeAdorned, Path=(shared:BadgeService.VerticalOffset), Mode=OneWay}"
+								>
+							<shared:BadgeService.Badge>
+								<shared:NumericBadge x:Name="numericBadge" Count="100"
+									Background="{Binding Source={x:Reference badge}, Path=Background, Mode=OneWay}"
+									Foreground="{Binding Source={x:Reference badge}, Path=Foreground, Mode=OneWay}"
+									BorderBrush="{Binding Source={x:Reference badge}, Path=BorderBrush, Mode=OneWay}"
+									BorderThickness="{Binding Source={x:Reference badge}, Path=BorderThickness, Mode=OneWay}"
+									CornerRadius="{Binding Source={x:Reference badge}, Path=CornerRadius, Mode=OneWay}"
+									Kind="{Binding Source={x:Reference badge}, Path=Kind, Mode=OneWay}"
+									FontSize="{Binding Source={x:Reference badge}, Path=FontSize, Mode=OneWay}"
+									 >
+								</shared:NumericBadge>
+							</shared:BadgeService.Badge>
+						</Border>
+						<TextBlock FontWeight="DemiBold" HorizontalAlignment="Center">NumericBadge</TextBlock>
+					</StackPanel>
+
+				</Grid>
+			</sampleBrowser:LabeledCardControl>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: Use the 'Dot' kind for smaller visuals -->
+				<sampleBrowser:LabeledCardControl Label="Use the 'Dot' kind for smaller visuals" >
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<TextBlock shared:BadgeService.HorizontalAlignment="OutsideOfTargetRightEdge"
+								   shared:BadgeService.VerticalAlignment="InsideOfTargetTopEdge">
+							<Hyperlink>Annoucements</Hyperlink>
+							<shared:BadgeService.Badge>
+								<shared:Badge Kind="Dot"
+											  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}"
+											  ToolTip="A new annoucement is available"
+											  />
+								
+							</shared:BadgeService.Badge>
+						</TextBlock>
+						
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Stand-alone usage -->
+				<sampleBrowser:LabeledCardControl Label="Stand-alone usage" >
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="{x:Type shared:Badge}">
+							<Setter Property="Margin" Value="4" />
+							<Setter Property="VerticalAlignment" Value="Center" />
+						</Style>
+						<Style TargetType="{x:Type shared:NumericBadge}">
+							<Setter Property="Margin" Value="4" />
+							<Setter Property="VerticalAlignment" Value="Center" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<shared:Badge Content="NEW"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowestBrushKey}}"
+									BorderThickness="1"
+									CornerRadius="8"
+									BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}"
+									Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}"
+									/>
+
+						<shared:NumericBadge Count="100" />
+
+						<shared:Badge Height="16" Width="16" CornerRadius="8"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}"
+									ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.MenuCheckGlyphTemplateKey}}" />
+
+						<shared:Badge Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}" />
+
+						<shared:Badge Content="!" Padding="2" CornerRadius="8" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteOrangeBackgroundHighBrushKey}}" />
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Use glyphs as content -->
+				<sampleBrowser:LabeledCardControl Label="Use glyphs as content" >
+					<sampleBrowser:LabeledCardControl.Resources>
+						<Style TargetType="{x:Type shared:Badge}">
+							<Setter Property="Margin" Value="4" />
+							<Setter Property="VerticalAlignment" Value="Center" />
+						</Style>
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<Border Style="{StaticResource Block}">
+							<shared:BadgeService.Badge>
+								<shared:Badge Height="16" Width="16" CornerRadius="8"
+											  BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+											  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}"
+											  ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.MenuCheckGlyphTemplateKey}}" />
+							</shared:BadgeService.Badge>
+						</Border>
+
+						<Border Style="{StaticResource Block}">
+							<shared:BadgeService.Badge>
+								<shared:Badge Height="16" Width="16" CornerRadius="8"
+											  BorderThickness="1"
+											  BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowestBrushKey}}"
+											  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteOrangeBackgroundHighBrushKey}}"
+											  ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.SmallMinusGlyphTemplateKey}}" />
+							</shared:BadgeService.Badge>
+						</Border>
+
+						<Border Style="{StaticResource Block}">
+							<shared:BadgeService.Badge>
+								<shared:Badge Height="16" Width="16" CornerRadius="4"
+											  BorderThickness="1"
+											  BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteTealBackgroundHigherBrushKey}}"
+											  Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteTealBackgroundLowestBrushKey}}"
+											  Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteTealBackgroundHigherBrushKey}}"
+											  ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.SmallPlusGlyphTemplateKey}}" />
+							</shared:BadgeService.Badge>
+						</Border>
+
+						<Border Style="{StaticResource Block}">
+							<shared:BadgeService.Badge>
+								<shared:Badge Height="16" Width="16" CornerRadius="8"
+											  Background="Transparent"
+											  Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}"
+											  ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.CloseGlyphTemplateKey}}" />
+							</shared:BadgeService.Badge>
+						</Border>
+
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Add and remove at run-time -->
+				<sampleBrowser:LabeledCardControl Label="Add and remove at run-time" >
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<Border x:Name="runtimeAdornedSample" Style="{StaticResource Block}" />
+
+						<StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+							<Button Click="OnRuntimeSampleToggleBadgeButtonClick">Toggle Badge</Button>
+						</StackPanel>
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Multiple options for adorner alignment -->
+				<sampleBrowser:LabeledCardControl Label="Multiple options for adorner alignment (plus more not shown)" >
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<Grid>
+							<Grid.Resources>
+								<Style TargetType="Border" BasedOn="{StaticResource Block}" />
+
+								<Style x:Key="AlignmentBadge" TargetType="{x:Type shared:Badge}">
+									<Setter Property="Kind" Value="Dot" />
+									<Setter Property="DotLength" Value="12" />
+									<Setter Property="CornerRadius" Value="6" />
+								</Style>
+							</Grid.Resources>
+
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+
+							<Border Grid.Column="0" Grid.Row="0" shared:BadgeService.HorizontalAlignment="CenterOnTargetLeftEdge" shared:BadgeService.VerticalAlignment="CenterOnTargetTopEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="1" Grid.Row="0" shared:BadgeService.HorizontalAlignment="CenterOnTarget" shared:BadgeService.VerticalAlignment="CenterOnTargetTopEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="2" Grid.Row="0" shared:BadgeService.HorizontalAlignment="CenterOnTargetRightEdge" shared:BadgeService.VerticalAlignment="CenterOnTargetTopEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="0" Grid.Row="1" shared:BadgeService.HorizontalAlignment="CenterOnTargetLeftEdge" shared:BadgeService.VerticalAlignment="CenterOnTarget">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="1" Grid.Row="1" shared:BadgeService.HorizontalAlignment="CenterOnTarget" shared:BadgeService.VerticalAlignment="CenterOnTarget">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="2" Grid.Row="1" shared:BadgeService.HorizontalAlignment="CenterOnTargetRightEdge" shared:BadgeService.VerticalAlignment="CenterOnTarget">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="0" Grid.Row="3" shared:BadgeService.HorizontalAlignment="CenterOnTargetLeftEdge" shared:BadgeService.VerticalAlignment="CenterOnTargetBottomEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="1" Grid.Row="3" shared:BadgeService.HorizontalAlignment="CenterOnTarget" shared:BadgeService.VerticalAlignment="CenterOnTargetBottomEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+							<Border Grid.Column="2" Grid.Row="3" shared:BadgeService.HorizontalAlignment="CenterOnTargetRightEdge" shared:BadgeService.VerticalAlignment="CenterOnTargetBottomEdge">
+								<shared:BadgeService.Badge>
+									<shared:Badge Style="{StaticResource AlignmentBadge}" />
+								</shared:BadgeService.Badge>
+							</Border>
+
+						</Grid>
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

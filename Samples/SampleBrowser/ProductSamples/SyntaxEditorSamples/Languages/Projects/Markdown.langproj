@@ -6,24 +6,25 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'Markdown' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Markdown" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.SimpleLanguage" OutputPath="S:\Code\ActiproSoftware\WPF-Controls\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Markdown" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Markdown" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="MarkdownCode" DefaultStyle="#FF74531F" />
-		<ClassificationType Key="MarkdownCodeBlockDelimiter" DefaultStyle="#FF2B91AF" />
-		<ClassificationType Key="MarkdownEmphasis" DefaultStyle="#FF8F08C4,,True" />
-		<ClassificationType Key="MarkdownEscapedCharacter" DefaultStyle="#FF808080" />
-		<ClassificationType Key="MarkdownHeadingDelimiter" DefaultStyle="#FF808080" />
-		<ClassificationType Key="MarkdownHeadingText" DefaultStyle="#FF008000,True" />
-		<ClassificationType Key="MarkdownHorizontalRule" DefaultStyle="#FFA31515,,,#FFE8E8E8,True" />
-		<ClassificationType Key="MarkdownLinkText" DefaultStyle="#FF2B91AF" />
-		<ClassificationType Key="MarkdownLinkUrl" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="MarkdownOperator" DefaultStyle="#FFA31515" />
-		<ClassificationType Key="MarkdownStrongEmphasis" DefaultStyle="#FF8F08C4,True" />
+		<ClassificationType Key="MarkdownCode" DefaultStyle="#FF74531F" DarkStyle="#FFDCDCAA" />
+		<ClassificationType Key="MarkdownCodeBlockDelimiter" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="MarkdownDeleted" DefaultStyle="#FFA5A5A5" DarkStyle="#FFA5A5A5" />
+		<ClassificationType Key="MarkdownEmphasis" DefaultStyle="#FF8F08C4,,True" DarkStyle="#FFD8A0DF" />
+		<ClassificationType Key="MarkdownEscapedCharacter" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="MarkdownHeadingDelimiter" DefaultStyle="#FF808080" DarkStyle="#FF9B9B9B" />
+		<ClassificationType Key="MarkdownHeadingText" DefaultStyle="#FF008000,True" DarkStyle="#FF95DB7D" />
+		<ClassificationType Key="MarkdownHorizontalRule" DefaultStyle="#FFA31515,,,#FFE8E8E8,True" DarkStyle="#FFD69D85,,,#FF333333" />
+		<ClassificationType Key="MarkdownLinkText" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="MarkdownLinkUrl" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="MarkdownOperator" DefaultStyle="#FFA31515" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="MarkdownStrongEmphasis" DefaultStyle="#FF8F08C4,True" DarkStyle="#FFD8A0DF" />
 		<ClassificationType Key="Number" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
@@ -80,6 +81,7 @@ Actipro Syntax Language Project (.langproj)
 				<ExplicitPatternGroup TokenKey="TableDelimiter" ClassificationTypeKey="MarkdownOperator" LookBehindPattern="\| [^\n]+" Pattern="|" />
 				<RegexPatternGroup TokenKey="HtmlTag" ClassificationTypeKey="MarkdownOperator" Pattern="\&lt; /? {Word}+ [^\&gt;\n]* \&gt;" />
 				<RegexPatternGroup TokenKey="EscapedCharacter" ClassificationTypeKey="MarkdownEscapedCharacter" Pattern="\\ [\\`*_\{\}\[\]\(\)#+\-\.!]" />
+				<RegexPatternGroup TokenKey="Deleted" ClassificationTypeKey="MarkdownDeleted" Pattern="~~ [^~]+ ~~" />
 			</State>
 			<!-- Heading state -->
 			<State Key="Heading" DefaultTokenKey="HeadingText" DefaultClassificationTypeKey="MarkdownHeadingText">

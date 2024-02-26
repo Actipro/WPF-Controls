@@ -10,11 +10,8 @@ using System.Drawing;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Highlighting.Implementation;
+using ActiproSoftware.Windows.Media;
 using System.Windows.Media;
-#endif
-
-#if USE_BORDERS_FOR_INLINE_DIFF
-using ActiproSoftware.Windows.Controls.Rendering;
 #endif
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles {
@@ -23,9 +20,6 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 	/// Represents a provider of <see cref="IClassificationType"/> objects for the UI display items within a <see cref="SyntaxEditor"/>.
 	/// </summary>
 	public class CompareFilesClassificationTypeProvider {
-
-		// IMPLEMENTATION NOTE: The default colors are based on a light theme. The Sample Browser defines dark theme colors in the
-		// following file which is imported when changing to a dark theme: /ProductSamples/SyntaxEditorSamples/Languages/Themes/Dark.vssettings
 
 		private readonly IHighlightingStyleRegistry registry;
 
@@ -36,19 +30,18 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 		private IClassificationType diffRemoved;
 
 		// Default foreground colors
-		private static Color DefaultDiffImaginaryForegroundColor	= Color.FromArgb(byte.MaxValue, 208, 208, 208);
+		private static Color DefaultDiffImaginaryForegroundLightColor		= UIColor.FromWebColor("#d0d0d0");
+		private static Color DefaultDiffImaginaryForegroundDarkColor		= UIColor.FromWebColor("#3d3d3d");
 
 		// Default background colors
-		private static Color DefaultDiffAddedBackgroundColor		= Color.FromArgb(byte.MaxValue, 215, 227, 188);
-		private static Color DefaultDiffModifiedNewBackgroundColor	= Color.FromArgb(byte.MaxValue, 235, 241, 221);
-		private static Color DefaultDiffModifiedOldBackgroundColor	= Color.FromArgb(byte.MaxValue, 255, 204, 204);
-		private static Color DefaultDiffRemovedBackgroundColor		= Color.FromArgb(byte.MaxValue, 255, 153, 153);
-
-		#if USE_BORDERS_FOR_INLINE_DIFF
-		// Default border colors
-		private static Color DefaultDiffAddedBorderColor			= Color.FromArgb(byte.MaxValue, 118, 146, 60);
-		private static Color DefaultDiffRemovedBorderColor			= Color.FromArgb(byte.MaxValue, 255, 102, 102);
-		#endif
+		private static Color DefaultDiffAddedBackgroundLightColor			= UIColor.FromWebColor("#d7e3bc");
+		private static Color DefaultDiffAddedBackgroundDarkColor			= UIColor.FromWebColor("#265e4d");
+		private static Color DefaultDiffModifiedNewBackgroundLightColor		= UIColor.FromWebColor("#ebf1dd");
+		private static Color DefaultDiffModifiedNewBackgroundDarkColor		= UIColor.FromWebColor("#15352c");
+		private static Color DefaultDiffModifiedOldBackgroundLightColor		= UIColor.FromWebColor("#ffcccc");
+		private static Color DefaultDiffModifiedOldBackgroundDarkColor		= UIColor.FromWebColor("#2d0000");
+		private static Color DefaultDiffRemovedBackgroundLightColor			= UIColor.FromWebColor("#ff9999");
+		private static Color DefaultDiffRemovedBackgroundDarkColor			= UIColor.FromWebColor("#3c0000");
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -81,18 +74,18 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					diffAdded = registry.GetClassificationType(CompareFilesClassificationTypes.DifferenceAdded.Key);
 					if (diffAdded == null) {
 						diffAdded = CompareFilesClassificationTypes.DifferenceAdded;
+
+						// Configure the color palettes with light/dark colors for this style
+						registry.LightColorPalette?.SetBackground(diffAdded.Key, DefaultDiffAddedBackgroundLightColor);
+						registry.DarkColorPalette?.SetBackground(diffAdded.Key, DefaultDiffAddedBackgroundDarkColor);
+
+						// Register the style and the colors for the current color palette will be applied
 						registry.Register(diffAdded,
 							new HighlightingStyle() {
-								Background = DefaultDiffAddedBackgroundColor,
 								IsBackgroundEditable = true,
 								IsBoldEditable = false,
 								IsForegroundEditable = false,
-								IsItalicEditable = false,
-								#if USE_BORDERS_FOR_INLINE_DIFF
-								BorderColor = DefaultDiffAddedBorderColor,
-								BorderKind = LineKind.Solid,
-								IsBorderEditable = true,
-								#endif
+								IsItalicEditable = false
 							});
 					}
 				}
@@ -113,8 +106,14 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					diffImaginary = registry.GetClassificationType(CompareFilesClassificationTypes.DifferenceImaginary.Key);
 					if (diffImaginary == null) {
 						diffImaginary = CompareFilesClassificationTypes.DifferenceImaginary;
+
+						// Configure the color palettes with light/dark colors for this style
+						registry.LightColorPalette?.SetForeground(diffImaginary.Key, DefaultDiffImaginaryForegroundLightColor);
+						registry.DarkColorPalette?.SetForeground(diffImaginary.Key, DefaultDiffImaginaryForegroundDarkColor);
+
+						// Register the style and the colors for the current color palette will be applied
 						registry.Register(diffImaginary,
-							new HighlightingStyle(DefaultDiffImaginaryForegroundColor) {
+							new HighlightingStyle() {
 								IsBackgroundEditable = false,
 								IsBoldEditable = false,
 								IsForegroundEditable = true,
@@ -139,9 +138,14 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					diffModifiedNew = registry.GetClassificationType(CompareFilesClassificationTypes.DifferenceModifiedNew.Key);
 					if (diffModifiedNew == null) {
 						diffModifiedNew = CompareFilesClassificationTypes.DifferenceModifiedNew;
+
+						// Configure the color palettes with light/dark colors for this style
+						registry.LightColorPalette?.SetBackground(diffModifiedNew.Key, DefaultDiffModifiedNewBackgroundLightColor);
+						registry.DarkColorPalette?.SetBackground(diffModifiedNew.Key, DefaultDiffModifiedNewBackgroundDarkColor);
+
+						// Register the style and the colors for the current color palette will be applied
 						registry.Register(diffModifiedNew,
 							new HighlightingStyle() {
-								Background = DefaultDiffModifiedNewBackgroundColor,
 								IsBackgroundEditable = true,
 								IsBoldEditable = false,
 								IsForegroundEditable = false,
@@ -166,9 +170,14 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					diffModifiedOld = registry.GetClassificationType(CompareFilesClassificationTypes.DifferenceModifiedOld.Key);
 					if (diffModifiedOld == null) {
 						diffModifiedOld = CompareFilesClassificationTypes.DifferenceModifiedOld;
+
+						// Configure the color palettes with light/dark colors for this style
+						registry.LightColorPalette?.SetBackground(diffModifiedOld.Key, DefaultDiffModifiedOldBackgroundLightColor);
+						registry.DarkColorPalette?.SetBackground(diffModifiedOld.Key, DefaultDiffModifiedOldBackgroundDarkColor);
+
+						// Register the style and the colors for the current color palette will be applied
 						registry.Register(diffModifiedOld,
 							new HighlightingStyle() {
-								Background = DefaultDiffModifiedOldBackgroundColor,
 								IsBackgroundEditable = true,
 								IsBoldEditable = false,
 								IsForegroundEditable = false,
@@ -190,18 +199,18 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareF
 					diffRemoved = registry.GetClassificationType(CompareFilesClassificationTypes.DifferenceRemoved.Key);
 					if (diffRemoved == null) {
 						diffRemoved = CompareFilesClassificationTypes.DifferenceRemoved;
+
+						// Configure the color palettes with light/dark colors for this style
+						registry.LightColorPalette?.SetBackground(diffRemoved.Key, DefaultDiffRemovedBackgroundLightColor);
+						registry.DarkColorPalette?.SetBackground(diffRemoved.Key, DefaultDiffRemovedBackgroundDarkColor);
+
+						// Register the style and the colors for the current color palette will be applied
 						registry.Register(diffRemoved,
 							new HighlightingStyle() {
-								Background = DefaultDiffRemovedBackgroundColor,
 								IsBackgroundEditable = true,
 								IsBoldEditable = false,
 								IsForegroundEditable = false,
-								IsItalicEditable = false,
-								#if USE_BORDERS_FOR_INLINE_DIFF
-								BorderColor = DefaultDiffRemovedBorderColor,
-								BorderKind = LineKind.Solid,
-								IsBorderEditable = true,
-								#endif
+								IsItalicEditable = false
 							});
 					}
 				}

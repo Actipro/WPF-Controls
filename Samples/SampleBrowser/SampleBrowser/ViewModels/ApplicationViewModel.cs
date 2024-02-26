@@ -77,11 +77,11 @@ namespace ActiproSoftware.SampleBrowser {
 		
 		private const int MaximumSearchResults = 50;
 
-		private const string DefaultSampleUri = null;
-		// private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
-		// private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/GridsSamples/QuickStart/TreeListViewFlatList/MainControl";
-		
-		private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
+        private const string DefaultSampleUri = null;
+        // private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
+        // private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl";
+
+        private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT

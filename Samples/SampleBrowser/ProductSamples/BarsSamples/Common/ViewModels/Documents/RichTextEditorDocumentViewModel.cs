@@ -264,15 +264,12 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 		/// Gets the items to be displayed in a context menu of a view for this document.
 		/// </summary>
 		/// <returns>An <see cref="IEnumerable{T}"/> of view models for each object to be displayed in the context menu.</returns>
-		public IEnumerable<object> GetContextMenuItems() {
+		public virtual IEnumerable<object> GetContextMenuItems() {
 			yield return this.BarManager.ControlViewModels[BarControlKeys.Cut];
 			yield return this.BarManager.ControlViewModels[BarControlKeys.Copy];
 			yield return this.BarManager.ControlViewModels[BarControlKeys.Paste];
 			yield return new BarSeparatorViewModel();
 			yield return this.BarManager.ControlViewModels[BarControlKeys.SelectAll];
-			yield return new BarSeparatorViewModel();
-			yield return this.BarManager.ControlViewModels[BarControlKeys.FontColor];
-			yield return this.BarManager.ControlViewModels[BarControlKeys.TextHighlightColor];
 		}
 
 		/// <inheritdoc/>
@@ -297,6 +294,35 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				{ barManager.ToggleUnderlineCommand, this.ToggleUnderlineCommand },
 				{ barManager.UnknownFontSizeCommand, this.UnknownFontSizeCommand },
 			});
+		}
+
+		/// <summary>
+		/// Gets the items to be displayed in a mini toolbar with the context menu of a view for this document.
+		/// </summary>
+		/// <returns>An <see cref="IEnumerable{T}"/> of view models for each object to be displayed in the mini toolbar.</returns>
+		public virtual MiniToolBarViewModel GetMiniToolBar() {
+			return new MiniToolBarViewModel() {
+				CanUseMultiRowLayout = true,
+				Items = {
+					BarManager.ControlViewModels[BarControlKeys.Font],
+					BarManager.ControlViewModels[BarControlKeys.FontSize],
+					new BarSeparatorViewModel(),
+					BarManager.ControlViewModels[BarControlKeys.IncreaseFontSize],
+					BarManager.ControlViewModels[BarControlKeys.DecreaseFontSize],
+					new BarSeparatorViewModel(),
+					BarManager.ControlViewModels[BarControlKeys.ClearFormatting],
+					new BarSeparatorViewModel(),
+					BarManager.ControlViewModels[BarControlKeys.Bold],
+					BarManager.ControlViewModels[BarControlKeys.Italic],
+					BarManager.ControlViewModels[BarControlKeys.Underline],
+					BarManager.ControlViewModels[BarControlKeys.Strikethrough],
+					BarManager.ControlViewModels[BarControlKeys.Subscript],
+					BarManager.ControlViewModels[BarControlKeys.Superscript],
+					new BarSeparatorViewModel(),
+					BarManager.ControlViewModels[BarControlKeys.TextHighlightColor],
+					BarManager.ControlViewModels[BarControlKeys.FontColor],
+				}
+			};
 		}
 
 		/// <summary>

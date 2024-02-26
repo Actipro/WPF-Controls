@@ -46,7 +46,7 @@ namespace SyntaxEditorSamples {
 		</editor:SyntaxEditor>
 
 		<editor:SyntaxEditor x:Name="rightEditor" Grid.Column="2" WordWrapMode="Word" AreWordWrapGlyphsVisible="True" 
-							 Document="{Binding ElementName=document}" CaretBrush="#ffffff" />
+							 Document="{Binding ElementName=document}" />
 	</Grid>
 
 </UserControl>

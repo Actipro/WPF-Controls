@@ -15,14 +15,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 
 		private ICommand backstageHeaderButtonCommand;
 
-		private int			backstageMinHeaderWidth		= 0;
-		private int			backstageMaxHeaderWidth		= 300;
-		private bool		canClose					= true;
-		private bool		isBackstageOpen				= true;
-		private bool		isFirstBackstage			= true;
-		private string		sampleButton3Label			= "Sample Button 3";
-		private bool		selectOptionsTabOnOpen	= false;
-		private bool		useSampleButtonImages		= false;
+		private int			backstageMinHeaderWidth			= 0;
+		private int			backstageMaxHeaderWidth			= 300;
+		private bool		canClose						= true;
+		private bool		isBackstageOpen					= true;
+		private bool		isFirstBackstage				= true;
+		private bool		sampleButton3CanCloseBackstage	= true;
+		private string		sampleButton3Label				= "Sample Button 3";
+		private bool		selectOptionsTabOnOpen			= false;
+		private bool		useSampleButtonImages			= false;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// EVENTS
@@ -86,7 +87,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 			get {
 				if (backstageHeaderButtonCommand is null) {
 					backstageHeaderButtonCommand = new DelegateCommand<object>(param => {
-						ThemedMessageBox.Show("When a RibbonBackstageHeaderButton is invoked, the Backstage automatically closes.\r\n\r\nThese buttons are typically associated with commands that perform simple operations like Help, Save, or Close that do not need the additional content area of a RibbonBackstageTabItem.",
+						ThemedMessageBox.Show("When a RibbonBackstageHeaderButton is invoked and its CanCloseBackstage property is the default of true, the Backstage automatically closes.\r\n\r\nThese buttons are typically associated with commands that perform simple operations like Help, Save, or Close that do not need the additional content area of a RibbonBackstageTabItem.",
 							"About RibbonBackstageHeaderButton", MessageBoxButton.OK, MessageBoxImage.Information);
 					});
 				}
@@ -185,6 +186,22 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		/// <value>One of the <see cref="VariantSize"/> values.</value>
 		public VariantSize PrimaryBackstageTabVariantSize => (IsFirstBackstage) ? VariantSize.Large : VariantSize.Small;
 
+		/// <summary>
+		/// Gets or sets whether the third sample button can close backstage.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the third sample button can close backstage; otherwise, <c>false</c>.
+		/// </value>
+		public bool SampleButton3CanCloseBackstage {
+			get => sampleButton3CanCloseBackstage;
+			set {
+				if (sampleButton3CanCloseBackstage != value) {
+					sampleButton3CanCloseBackstage = value;
+					NotifyPropertyChanged(nameof(SampleButton3CanCloseBackstage));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets the label to be displayed on the third sample button.
 		/// </summary>

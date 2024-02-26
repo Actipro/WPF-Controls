@@ -36,7 +36,7 @@ namespace CSharpReadOnlyRegionsQuickStart {
 		/// </summary>
 		/// <remarks>
 		/// The read-only text range can also optionally be rendered differently,
-		/// such as with a gray background, to visually denote the text range.
+		/// such as with a different background, to visually denote the text range.
 		/// </remarks>
 		public int Actipro { get; set; }
 

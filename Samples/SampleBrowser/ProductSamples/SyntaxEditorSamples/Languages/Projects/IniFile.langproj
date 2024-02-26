@@ -6,17 +6,17 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'INI File' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="IniFile" LanguageDescription="INI File" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.IniFile" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="IniFile" LanguageDescription="INI File" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.IniFile" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Label" DefaultStyle="#FF008080" />
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="IniFileNumber" Description="INI File Number" DefaultStyle="#FF800080" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="IniFileNumber" Description="INI File Number" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
+		<ClassificationType Key="Label" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

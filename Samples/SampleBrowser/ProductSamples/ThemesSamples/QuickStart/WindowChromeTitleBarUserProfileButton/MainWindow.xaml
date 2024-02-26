@@ -41,9 +41,14 @@
 										<MenuItem.Template>
 											<ControlTemplate>
 												<DockPanel Margin="10">
-													<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}" BorderThickness="1" VerticalAlignment="Center">
-														<Image Width="48" Height="48" Source="{Binding PhotoUri}" />
-													</Border>
+													<shared:Avatar Width="48" Height="48" CornerRadius="4"
+																   BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.MenuSeparatorBackgroundNormalBrushKey}}"
+																   BorderThickness="1"
+																   Description="{Binding FullName}"
+																   IsHitTestVisible="False"
+																   VerticalAlignment="Center">
+														<Image Source="{Binding PhotoUri}" />
+													</shared:Avatar>
 
 													<StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
 														<shared:AdvancedTextBlock Text="{Binding FullName}" FontSize="18" />
@@ -57,12 +62,10 @@
 									<MenuItem Header="Sign Out" />
 								</ContextMenu>
 							</shared:PopupButton.PopupMenu>
-							
-							<Image Width="24" Height="24" Source="{Binding PhotoUri}">
-								<Image.Clip>
-									<EllipseGeometry Center="12,12" RadiusX="12" RadiusY="12" />
-								</Image.Clip>
-							</Image>
+
+							<shared:Avatar Width="24" Height="24" Description="{Binding FullName}" IsHitTestVisible="False">
+								<Image Source="{Binding PhotoUri}" />
+							</shared:Avatar>
 						</shared:PopupButton>
 					</shared:AutoCollapseStackPanel>
 				</DataTemplate>

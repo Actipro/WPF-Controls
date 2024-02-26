@@ -18,7 +18,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Actipro Software LLC")]
 [assembly: AssemblyProduct("WPF Controls Sample Browser")]
-[assembly: AssemblyCopyright("Copyright (c) 2007-2023 Actipro Software LLC.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2007-2024 Actipro Software LLC.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -64,5 +64,5 @@ using System.Windows;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("23.1.4.0")]
-[assembly: AssemblyInformationalVersion("23.1.4.0 - 20230911")]
+[assembly: AssemblyVersion("24.1.0.0")]
+[assembly: AssemblyInformationalVersion("24.1.0.0 - 20240206")]

@@ -94,15 +94,17 @@ This table summarizes most of the `ItemsControl`-based controls in Bars and whic
 | [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) | Various [Bars controls](controls/index.md) for menu context. |
 | [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) | Various [Bars controls](controls/index.md) for menu context. |
 | [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton) | Various [Bars controls](controls/index.md) for menu context. |
+| [MiniToolBar](xref:@ActiproUIRoot.Controls.Bars.MiniToolBar) | Various [Bars controls](controls/index.md) for toolbar context. |
 | [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) | [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem). |
 | [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) | [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem), [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton), or [RibbonBackstageHeaderSeparator](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderSeparator). |
 | [RibbonContextualTabGroupItemsControl](xref:@ActiproUIRoot.Controls.Bars.Primitives.RibbonContextualTabGroupItemsControl) | [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup). |
 | [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) | Various [Bars controls](controls/index.md) for ribbon context. |
 | [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) | [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem). |
-| [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) | [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) or various [Bars controls](controls/index.md) for ribbon context. |
+| [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) | [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup), or various [Bars controls](controls/index.md) for ribbon context. |
+| [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) | [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) or various [Bars controls](controls/index.md) for ribbon context. |
 | [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) | Various [Bars controls](controls/index.md) for ribbon context. |
 | [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem) | [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup). |
-| [RibbonTabRowToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonTabRowToolBar) | Various [Bars controls](controls/index.md) for ribbon context. |
+| [RibbonTabRowToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonTabRowToolBar) | Various [Bars controls](controls/index.md) for toolbar context. |
 | [StandaloneToolBar](xref:@ActiproUIRoot.Controls.Bars.StandaloneToolBar) | Various [Bars controls](controls/index.md) for toolbar context. |
 | [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) | [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem). |
 
@@ -159,6 +161,7 @@ The following table shows various bar control view model types defined in the MV
 | [BarSplitToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitToggleButtonViewModel) | Toggle [split button](controls/split-button.md) control. |
 | [BarTextBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarTextBoxViewModel) | [Textbox](controls/textbox.md) control. |
 | [BarToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarToggleButtonViewModel) | Toggle [button](controls/button.md) control. |
+| [MiniToolBarViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.MiniToolBarViewModel) | [Mini-toolbar](toolbar-features/mini-toolbars.md) control. |
 | [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton) | [Application button](ribbon-features/application-button.md) control. |
 | [RibbonBackstageHeaderButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageHeaderButtonViewModel) | [Backstage](ribbon-features/backstage.md) header button control. |
 | [RibbonBackstageHeaderSeparatorViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageHeaderSeparatorViewModel) | [Backstage](ribbon-features/backstage.md) header separator control. |
@@ -168,11 +171,12 @@ The following table shows various bar control view model types defined in the MV
 | [RibbonFooterViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonFooterViewModel) | [Footer](ribbon-features/footer.md) control. |
 | [RibbonGroupLauncherButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonGroupLauncherButtonViewModel) | [Group launcher button](ribbon-features/tabs-groups-controlgroups.md) control. |
 | [RibbonGroupViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonGroupViewModel) | [Group](ribbon-features/tabs-groups-controlgroups.md) control. |
+| [RibbonMultiRowControlGroupViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonMultiRowControlGroupViewModel) | [Multi-row control group](ribbon-features/tabs-groups-controlgroups.md) control. |
 | [RibbonQuickAccessToolBarViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonQuickAccessToolBarViewModel) | [Quick access toolbar](ribbon-features/quick-access-toolbar.md) control. |
 | [RibbonTabRowToolBarViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonTabRowToolBarViewModel) | [Tab row toolbar](ribbon-features/tab-row-toolbar.md) control. |
 | [RibbonTabViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonTabViewModel) | [Tab](ribbon-features/tabs-groups-controlgroups.md) control. |
 | [RibbonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonViewModel) | [Ribbon](ribbon-features/index.md) control. |
-| [StandaloneToolBar](xref:@ActiproUIRoot.Controls.Bars.StandaloneToolBar) | [Standalone toolbar](toolbar-features/standalone-toolbars.md) control. |
+| [StandaloneToolBarViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.StandaloneToolBarViewModel) | [Standalone toolbar](toolbar-features/standalone-toolbars.md) control. |
 
 > [!NOTE]
 > Some view models may generate a different control based on the usage context.  For instance, a [BarButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarButtonViewModel) will generate a [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) control when in a ribbon/toolbar context, and a [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control when in a menu context.

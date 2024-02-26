@@ -60,15 +60,15 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptOver
 		private async void OnShowPromptButtonClick(object sender, RoutedEventArgs e) {
 
 			// Create the prompt to be displayed
-			var userPromptControl = new UserPromptControl() {
-				Header = "This is a warning message.",
-				Content = "This prompt acts like a modal dialog by blocking interaction with the application until the prompt is addressed.",
-				StandardButtons = UserPromptStandardButtons.OKCancel,
-				DefaultResult = UserPromptStandardResult.Cancel,
-				CornerRadius = new CornerRadius(5),
-				BorderThickness = new Thickness(1),
-				StandardStatusImage = UserPromptStandardImage.Warning,
-			};
+			var userPromptControl = UserPromptBuilder.Configure()
+				.WithHeaderContent("This is a warning message.")
+				.WithContent("This prompt acts like a modal dialog by blocking interaction with the application until the prompt is addressed.")
+				.WithStandardButtons(UserPromptStandardButtons.OKCancel)
+				.WithDefaultResult(UserPromptStandardResult.Cancel)
+				.WithStatusImage(UserPromptStandardImage.Warning)
+				.BuildWithoutShowing();
+			userPromptControl.CornerRadius = new CornerRadius(5);
+			userPromptControl.BorderThickness = new Thickness(1);
 
 			// Show the prompt and handle the result
 			var result = await ShowPrompt(userPromptControl);
@@ -82,7 +82,7 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptOver
 		/// <returns>A <see cref="Task"/> of type <see cref="UserPromptStandardResult"/> which, when completed, will define the result of interacting with the user prompt.</returns>
 		private async Task<UserPromptStandardResult> ShowPrompt(UserPromptControl userPromptControl) {
 			// NOTE: This sample assumes the overlay is not being used for any other purpose. For
-			//		 more complicated applications that those using a Ribbon Backstage, more coordination
+			//		 more complicated applications like those using a Ribbon Backstage, more coordination
 			//		 is required to ensure the proper overlay is displayed and traditional dialog-based
 			//		 prompts may be preferred.
 

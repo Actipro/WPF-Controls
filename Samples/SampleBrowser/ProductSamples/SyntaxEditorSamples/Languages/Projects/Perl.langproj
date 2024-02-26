@@ -6,19 +6,19 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'Perl' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Perl" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Perl" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v91\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Perl" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Perl" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="PerlComment" Description="Perl Comment" DefaultStyle="#FF008000" />
+		<ClassificationType Key="PerlComment" Description="Perl Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="PerlIdentifier" Description="Perl Identifier" />
-		<ClassificationType Key="PerlKeyword" Description="Perl Keyword" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="PerlNumber" Description="Perl Number" DefaultStyle="#FF800000" />
+		<ClassificationType Key="PerlKeyword" Description="Perl Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="PerlNumber" Description="Perl Number" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 		<ClassificationType Key="PerlOperator" Description="Perl Operator" />
 		<ClassificationType Key="PerlString" Description="Perl String" DefaultStyle=",True" />
-		<ClassificationType Key="PerlVariable" Description="Perl Variable" DefaultStyle="#FF800080" />
+		<ClassificationType Key="PerlVariable" Description="Perl Variable" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>

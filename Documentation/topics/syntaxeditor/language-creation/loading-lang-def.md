@@ -18,7 +18,7 @@ The benefit of distributing the language definition as a file with your applicat
 This code creates a syntax language object based on an *ECMAScript.langdef* file:
 
 ```csharp
-SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
+var serializer = new SyntaxLanguageDefinitionSerializer();
 string path = @"C:\ECMAScript.langdef";
 ISyntaxLanguage language = serializer.LoadFromFile(path);
 ```
@@ -32,7 +32,7 @@ A language definition can also be distributed in any other form, such as an embe
 This code creates a syntax language object based on a `Stream` in the variable `stream`:
 
 ```csharp
-SyntaxLanguageDefinitionSerializer serializer = new SyntaxLanguageDefinitionSerializer();
+var serializer = new SyntaxLanguageDefinitionSerializer();
 ISyntaxLanguage language = serializer.LoadFromStream(stream);
 ```
 
@@ -60,7 +60,7 @@ public class EcmaScriptSyntaxLanguage : SyntaxLanguage {
 The language can then be instantiated like this:
 
 ```csharp
-EcmaScriptSyntaxLanguage language = new EcmaScriptSyntaxLanguage();
+var language = new EcmaScriptSyntaxLanguage();
 ```
 
 The [SyntaxLanguageDefinitionSerializer](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer) class has:
@@ -70,3 +70,23 @@ The [SyntaxLanguageDefinitionSerializer](xref:ActiproSoftware.Text.Implementatio
 }
 
 - An [InitializeFromStream](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.InitializeFromStream*) method for initializing an existing syntax language from a `Stream`
+
+## Using Built-in Classification Types
+
+When a language definition is loaded, the classification types in the *.langdef* are registered with their associated [highlighting styles](../user-interface/styles/highlighting-styles.md).  If a classification type with the same key has not already been registered, the styles defined in the *.langdef* will be used.  If a classification type was already defined, the previously registered styles will be used instead.
+
+There are several built-in classification types (e.g., [Comment](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.Comment) or [String](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.String)) available from the [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) class that are pre-defined with common styles supporting light and [dark themes](../user-interface/styles/dark-themes.md), but these classification types are only used, by default, if they were previously registered.  When loading a *.langdef*, you can instruct the serializer to use built-in classification types, if available, for any of the classification types defined by the language even if that classification type was not previously registered.  Simply set the [UseBuiltInClassificiationTypes](xref:ActiproSoftware.Text.Implementation.SyntaxLanguageDefinitionSerializer.UseBuiltInClassificiationTypes) property to `true` and the built-in classification types and their styles will be preferred over those defined in the *.langdef* file.
+
+> [!TIP]
+> Language definition files created before version 24.1 will not have the `DarkStyle` data used to define foreground and background colors for use with a dark theme, so using built-in classification types will allow older files to use pre-defined dark colors for certain classification types and improve their appearance in a dark theme.
+
+The following code demonstrates loading a language from a file using built-in classification types, when available:
+
+```csharp
+var serializer = new SyntaxLanguageDefinitionSerializer();
+serializer.UseBuiltInClassificiationTypes = true;
+ISyntaxLanguage language = serializer.LoadFromFile(@"C:\MyFile.langdef");
+```
+
+> [!IMPORTANT]
+> To use built-in classification types, make sure the keys used in the *.langdef* file match those defined by [ClassificationTypeKeys](xref:ActiproSoftware.Text.ClassificationTypeKeys).

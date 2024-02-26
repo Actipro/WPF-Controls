@@ -6,21 +6,21 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'PHP' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Php" LanguageDescription="PHP" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Php" LanguageDescription="PHP" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" />
-		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="PhpComment" Description="PHP Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="PhpConstant" Description="PHP Constant" DefaultStyle="#FFFF00FF" DarkStyle="#FFFFAAF9" />
+		<ClassificationType Key="PhpFunction" Description="PHP Function" DefaultStyle="#FF008080" DarkStyle="#FF4EC9B0" />
+		<ClassificationType Key="PhpKeyword" Description="PHP Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="PhpNumber" Description="PHP Number" />
 		<ClassificationType Key="PhpOperator" Description="PHP Operator" />
 		<ClassificationType Key="PhpString" Description="PHP String" DefaultStyle=",True" />
-		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" />
+		<ClassificationType Key="PhpVariable" Description="PHP Variable" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
@@ -326,7 +326,7 @@ Actipro Syntax Language Definition (.langdef)
 	</LanguageDefinition.Lexer>
 	<!-- Example text -->
 	<LanguageDefinition.ExampleText><![CDATA[/* 
-	Simple PHP code to greets players on a team.
+	Simple PHP code to greet players on a team.
  */
 class GreetPlayers extends Team {
 	// The team players
@@ -336,7 +336,7 @@ class GreetPlayers extends Team {
 	// and then greets everyone.
 	public function __construct($players) {
 		if (is_array($players)) {
-			$this->players = $players;			
+			$this->players = $players;
 			$this->greetPlayers(); # Greet the players.
 		}
 	}

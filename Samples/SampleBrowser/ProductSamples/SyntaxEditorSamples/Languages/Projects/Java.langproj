@@ -6,20 +6,21 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'Java' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Java" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.Java" OutputPath="S:\Code\ActiproSoftware\WPFStudio.v92\Samples\SampleBrowser\ProductSamples\SyntaxEditorSamples\Languages\Definitions" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Java" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.Java" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
-		<ClassificationType Key="Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="JavadocComment" Description="Javadoc Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="JavadocCommentTag" Description="Javadoc Comment Tag" DefaultStyle="#FF808080" />
+		<ClassificationType Key="Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
 		<ClassificationType Key="Identifier" />
-		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" />
+		<ClassificationType Key="JavadocComment" Description="Javadoc Comment" DefaultStyle="#FF008000" DarkStyle="#FF608B4E" />
+		<ClassificationType Key="JavadocCommentTag" Description="Javadoc Comment Tag" DefaultStyle="#FF808080" DarkStyle="#FF608B4E" />
+		<ClassificationType Key="Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Number" />
 		<ClassificationType Key="Operator" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" />
+		<ClassificationType Key="Punctuation" />
+		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 	</LanguageProject.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageProject.Lexer>
@@ -41,7 +42,7 @@ Actipro Syntax Language Project (.langproj)
 				<ExplicitPatternGroup TokenKey="CloseCurlyBrace" Pattern="}" />
 				<ExplicitPatternGroup TokenKey="OpenSquareBrace" Pattern="[" />
 				<ExplicitPatternGroup TokenKey="CloseSquareBrace" Pattern="]" />
-				<ExplicitPatternGroup TokenKey="Punctuation">
+				<ExplicitPatternGroup TokenKey="Punctuation" ClassificationTypeKey="Punctuation">
 					<ExplicitPatterns><![CDATA[
 						. , : ;
 					]]></ExplicitPatterns>

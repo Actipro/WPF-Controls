@@ -119,7 +119,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.WebAddonXmlEdi
 			dialog.Multiselect = false;
 			dialog.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
+				// Open a document (use dialog to help open the file because of possible security restrictions)
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
 					this.OpenFile(Path.GetFileName(dialog.FileName), stream);
@@ -140,7 +140,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.WebAddonXmlEdi
 			dialog.Multiselect = false;
 			dialog.Filter = "XSD files (*.xsd)|*.xsd|All files (*.*)|*.*";
 			if (dialog.ShowDialog() == true) {
-				// Open a document (use dialog to help open the file because of security restrictions in XBAP/Silverlight)
+				// Open a document (use dialog to help open the file because of possible security restrictions)
 				using (Stream stream = dialog.OpenFile()) {
 					// Read the file
 					this.OpenSchema(Path.GetFileName(dialog.FileName), null, stream);

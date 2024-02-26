@@ -61,6 +61,11 @@ There are several image sets that are included with SyntaxEditor:
 
 To change the image set that is currently in effect, set the [CommonImageSourceProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider).[DefaultImageSet](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSourceProvider.DefaultImageSet) property to a [CommonImageSet](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.CommonImageSet) value.  Note that some UI, such as for the [NavigableSymbolSelector](navigable-symbol-selector.md), may need to be reloaded following a change to this property.
 
+```csharp
+// Configure image set for dark theme
+CommonImageSourceProvider.DefaultImageSet = CommonImageSet.MetroDark;
+```
+
 ## Custom Image Source Providers
 
 It's easy to write your own custom image source provider if none of the implementations above work for your scenario.  Simply create a class that implements [IImageSourceProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IImageSourceProvider).

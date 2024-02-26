@@ -18,7 +18,7 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Actipro Software LLC")]
 [assembly: AssemblyProduct("Editors.Interop.DataGrid")]
-[assembly: AssemblyCopyright("Copyright (c) 2009-2023 Actipro Software LLC.  All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2024 Actipro Software LLC.  All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -43,5 +43,5 @@ using System.Windows.Markup;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("23.1.4.0")]  // WPF
-[assembly: AssemblyInformationalVersion("23.1.4.0")]  // WPF
+[assembly: AssemblyVersion("24.1.0.0")]  // WPF
+[assembly: AssemblyInformationalVersion("24.1.0.0")]  // WPF

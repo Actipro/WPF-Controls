@@ -6,21 +6,21 @@ Actipro Syntax Language Definition (.langdef)
   http://www.actiprosoftware.com
 
 'XML' language created by Actipro Software LLC.
-  Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageDefinition LanguageKey="Xml" LanguageDescription="XML" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2023 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
+<LanguageDefinition LanguageKey="Xml" LanguageDescription="XML" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langdef/1.0">
 	<!-- Classification types -->
 	<LanguageDefinition.ClassificationTypes>
-		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlCDataSection" Description="XML CData Section" DefaultStyle="#FF808080" />
-		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" />
-		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" />
-		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" />
-		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" />
-		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FF800000" />
-		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FFFF00FF" />
+		<ClassificationType Key="XmlAttribute" Description="XML Attribute" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlAttributeValue" Description="XML Attribute Value" DefaultStyle="#FF0000FF" DarkStyle="#FFC8C8C8" />
+		<ClassificationType Key="XmlCDataSection" Description="XML CData Section" DefaultStyle="#FF808080" DarkStyle="#FFE9D585" />
+		<ClassificationType Key="XmlComment" Description="XML Comment" DefaultStyle="#FF008000" DarkStyle="#FF57A64A" />
+		<ClassificationType Key="XmlDeclaration" Description="XML Declaration" DefaultStyle="#FFFF00FF" DarkStyle="#FFFFAAF9" />
+		<ClassificationType Key="XmlDelimiter" Description="XML Delimiter" DefaultStyle="#FF0000FF" DarkStyle="#FF808080" />
+		<ClassificationType Key="XmlEntity" Description="XML Entity" DefaultStyle="#FFFF0000" DarkStyle="#FF92CAF4" />
+		<ClassificationType Key="XmlName" Description="XML Name" DefaultStyle="#FF800000" DarkStyle="#FF569CD6" />
+		<ClassificationType Key="XmlProcessingInstruction" Description="XML Processing Instruction" DefaultStyle="#FFFF00FF" DarkStyle="#FFC8C8C8" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
