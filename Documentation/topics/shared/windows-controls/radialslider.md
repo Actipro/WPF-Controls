@@ -1,7 +1,7 @@
 ---
 title: "RadialSlider"
 page-title: "RadialSlider - Shared Library Controls"
-order: 27
+order: 80
 ---
 # RadialSlider
 

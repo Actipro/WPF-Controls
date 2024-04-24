@@ -592,44 +592,55 @@
 		<Setter Property="ItemTemplate">
 			<Setter.Value>
 				<DataTemplate>
+					<shared:Card Margin="0,0,22,20" Focusable="True" Padding="0" CornerRadius="7"
+						BadgeHorizontalAlignment="InsideOfTargetRightEdge"
+						BadgeVerticalAlignment="InsideOfTargetTopEdge"
+						BadgeVerticalOffset="20"
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+						Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}"
+						CommandParameter="{Binding TargetUri}"
+						Footer="{Binding}" FooterBorderThickness="1"
+						FooterBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+						FooterBorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+						>
 
-					<Button Margin="0,0,22,20" Padding="0" Style="{StaticResource SoftButtonStyle}" 
-							Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}" CommandParameter="{Binding TargetUri}">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="*" />
-								<RowDefinition Height="Auto" />
-							</Grid.RowDefinitions>
+						<shared:Card.Badge>
+							<shared:Badge IsActive="{Binding HasBlurbText}" Content="{Binding BlurbText}">
+								<shared:Badge.Template>
+									<ControlTemplate TargetType="{x:Type shared:Badge}">
+										<StackPanel Height="18" Orientation="Horizontal">
+											<Path Data="M 10,0 L 0,0 L 5,5 L 0,10 L 10,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
+											<Border BorderThickness="0,0,1,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="3,0,8,2">
+												<shared:PixelSnapper>
+													<TextBlock Text="{TemplateBinding Content, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
+														FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
+												</shared:PixelSnapper>
+											</Border>
+										</StackPanel>
+									</ControlTemplate>
+								</shared:Badge.Template>
+							</shared:Badge>
+						</shared:Card.Badge>
 
-							<Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" >
-								<shared:DynamicImage Width="200" Height="150" Source="{Binding ImageSource}" />
-							</Border>
-
-							<Border Grid.Row="1" Padding="15,4" CornerRadius="0,0,4,4"
-									BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" 
-									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+						<Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+							<shared:DynamicImage Width="200" Height="150" Source="{Binding ImageSource}" />
+						</Border>
+						
+						<shared:Card.FooterTemplate>
+							<DataTemplate>
 								<shared:PixelSnapper>
-									<DockPanel>
-										<ContentPresenter DockPanel.Dock="Right" Margin="7,0,0,0" ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" Opacity="0.3" 
-														  VerticalAlignment="Center" SnapsToDevicePixels="True" Visibility="{Binding IsExternal, Converter={StaticResource BooleanToVisibilityConverter}}" />
+									<DockPanel Margin="15,4">
+										<ContentPresenter DockPanel.Dock="Right" Margin="7,0,0,0" Opacity="0.3" VerticalAlignment="Center" SnapsToDevicePixels="True"
+											ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}"
+											Visibility="{Binding IsExternal, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
 										<TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
 									</DockPanel>
 								</shared:PixelSnapper>
-							</Border>
-
-							<StackPanel Margin="0,20,-1,0" Height="18" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal"
-										Visibility="{Binding Path=HasBlurbText, Converter={StaticResource BooleanToVisibilityConverter}}">
-								<Path Data="M 10,0 L 0,0 L 5,5 L 0,10 L 10,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
-								<Border BorderThickness="0,0,1,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="3,0,8,2">
-									<shared:PixelSnapper>
-										<TextBlock Text="{Binding BlurbText, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
-												   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
-									</shared:PixelSnapper>
-								</Border>
-							</StackPanel>
-						</Grid>
-					</Button>
+							</DataTemplate>
+						</shared:Card.FooterTemplate>
+						
+					</shared:Card>
 
 				</DataTemplate>
 			</Setter.Value>
@@ -690,9 +701,33 @@
 		<Setter Property="ItemTemplate">
 			<Setter.Value>
 				<DataTemplate>
+					<shared:Card Margin="0,0,20,20" Padding="15,10" CornerRadius="7" Width="294" Focusable="True"
+						BadgeHorizontalAlignment="InsideOfTargetLeftEdge"
+						BadgeVerticalAlignment="InsideOfTargetBottomEdge"
+						BadgeVerticalOffset="-10"
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+						Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}"
+						CommandParameter="{Binding OverviewItem}"
+						>
 
-					<Button Margin="0,0,20,20" Width="294" Style="{StaticResource SoftButtonStyle}" HorizontalContentAlignment="Stretch"
-							Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ItemsControl}, Path=DataContext.NavigateViewToItemInfoCommand}" CommandParameter="{Binding OverviewItem}">
+						<shared:Card.Badge>
+							<shared:Badge IsActive="{Binding HasBlurbText}" Content="{Binding BlurbText}">
+								<shared:Badge.Template>
+									<ControlTemplate TargetType="{x:Type shared:Badge}">
+										<StackPanel Height="18" Orientation="Horizontal">
+											<Border BorderThickness="1,0,0,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="8,0,3,2">
+												<shared:PixelSnapper>
+													<TextBlock Text="{Binding BlurbText, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
+												   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
+												</shared:PixelSnapper>
+											</Border>
+											<Path Data="M 0,0 L 10,0 L 5,5 L 10,10 L 0,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
+										</StackPanel>
+									</ControlTemplate>
+								</shared:Badge.Template>
+							</shared:Badge>
+						</shared:Card.Badge>
+
 						<Grid>
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
@@ -720,20 +755,9 @@
 									<Run Text="{Binding Summary, Mode=OneWay}" />
 								</TextBlock>
 							</StackPanel>
-
-							<StackPanel Grid.ColumnSpan="2" Margin="-16,0,0,-1" Height="18" HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Horizontal"
-										Visibility="{Binding Path=HasBlurbText, Converter={StaticResource BooleanToVisibilityConverter}}">
-								<Border BorderThickness="1,0,0,0" BorderBrush="#801000" Background="{StaticResource WarningBackgroundBrush}" Padding="8,0,3,2">
-									<shared:PixelSnapper>
-										<TextBlock Text="{Binding BlurbText, Converter={StaticResource UppercaseConverter}}" Foreground="#ffffff" 
-												   FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" TextOptions.TextFormattingMode="Ideal" VerticalAlignment="Center" />
-									</shared:PixelSnapper>
-								</Border>
-								<Path Data="M 0,0 L 10,0 L 5,5 L 10,10 L 0,10 Z" Fill="{StaticResource WarningBackgroundBrush}" Stretch="Fill" />
-							</StackPanel>
 						</Grid>
-					</Button>
 
+					</shared:Card>
 				</DataTemplate>
 			</Setter.Value>
 		</Setter>

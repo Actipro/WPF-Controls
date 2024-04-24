@@ -89,19 +89,28 @@ Some controls support a single image size, while other controls with variant siz
 | Medium | 24x24 | Medium images are only used in [Simplified layout mode](../ribbon-features/layout-and-density.md) for some controls. |
 | Large | 32x32 | Large images are used in certain controls when in large variant sizes. |
 
-When a button is in a ribbon with [Simplified layout mode](../ribbon-features/layout-and-density.md) active, it will fall back to using its small image if a medium image is not available.
-
 #### Fallback Label and Images
 
 If an image is not defined and is vital to the normal appearance of the control, a fallback display mechanism can occur, primarily in buttons.
 
 In many cases, a missing image for small and medium variant size buttons will result in the label being displayed instead.
 
-In other cases, such as when the control is within the ribbon's [quick access toolbar](../ribbon-features/quick-access-toolbar.md) or when the control is a collapsed ribbon group, then a default fallback image will be used.
+In other cases, such as when the control is within the ribbon's [quick access toolbar](../ribbon-features/quick-access-toolbar.md) or when the control is a collapsed ribbon group, then a default missing fallback image will be used.
 
 ![Screenshot](../images/fallback-image.png)
 
 *The fallback image*
+
+The following table describes the priority order of properties (e.g., `SmallImageSource`, `LargeImageSource`) used to resolve an image for a desired image size.
+
+| Desired Image Size | Resolution Priority |
+|-----|-----|
+| Small (16x16) | Small, Large (downscaled), Medium (downscaled), Missing (if no label visible) |
+| Medium (24x24) | Medium, Small (centered), Large (downscaled), Missing (if no label visible) |
+| Large (32x32) | Large, Medium (centered), Small (centered), Missing |
+
+> [!TIP]
+> When using a vector image for a button with the intention of using a single image for all image sizes, it is best to make a single 32x32 size vector image and assign it to the button's `LargeImageSource` property.  Per the table above, a `Large` image can scale down as a fallback for other image sizes.  When using raster images, it is much better to use a distinct image design for the `Large` and `Small` image sizes at a minimum.
 
 ### Title
 

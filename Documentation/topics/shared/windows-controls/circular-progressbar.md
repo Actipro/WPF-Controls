@@ -1,7 +1,7 @@
 ---
 title: "CircularProgressBar"
 page-title: "CircularProgressBar- Shared Library Controls"
-order: 11
+order: 35
 ---
 # CircularProgressBar
 

@@ -1,7 +1,7 @@
 ---
 title: "HorizontalListBox"
 page-title: "HorizontalListBox - Shared Library Controls"
-order: 19
+order: 60
 ---
 # HorizontalListBox
 

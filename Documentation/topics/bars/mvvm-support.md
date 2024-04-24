@@ -187,7 +187,8 @@ The following table shows the ribbon footer content view model types defined in 
 
 | Name | Description |
 |-----|-----|
-| [RibbonFooterSimpleContentViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonFooterSimpleContentViewModel) | Specifies an `ImageSource` and text message to render in the ribbon [footer](ribbon-features/footer.md).   |
+| [RibbonFooterInfoBarContentViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonFooterInfoBarContentViewModel) | Configures an [InfoBar](../shared/windows-controls/info-bar.md) to render in the ribbon [footer](ribbon-features/footer.md) |
+| [RibbonFooterSimpleContentViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonFooterSimpleContentViewModel) | Specifies an `ImageSource` and text message to render in the ribbon [footer](ribbon-features/footer.md). |
 
 #### Gallery Item View Models
 

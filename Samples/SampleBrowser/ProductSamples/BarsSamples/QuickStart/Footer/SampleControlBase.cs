@@ -38,13 +38,13 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer {
 		/// </summary>
 		/// <returns>A new <see cref="RibbonViewModel"/>.</returns>
 		private RibbonViewModel InitializeRibbonViewModels() {
-			// The focus of this sample is the Ribbon Footer, so base the MVVM- and XAML-based samples
+			// The focus of this sample is the Ribbon Footer, so the MVVM- and XAML-based samples
 			// will reuse the same core Ribbon MVVM configuration for non-footer configuration to keep
 			// sample focused only on the footer configuration
-			var ribbon = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel().Ribbon;
-			ribbon.IsApplicationButtonVisible = false;
-			ribbon.IsCollapsible = false;
-			return ribbon;
+			var ribbonViewModel = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel().Ribbon;
+			ribbonViewModel.IsApplicationButtonVisible = false;
+			ribbonViewModel.IsCollapsible = false;
+			return ribbonViewModel;
 		}
 
 		/// <summary>

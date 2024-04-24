@@ -124,9 +124,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <value>The string category name.</value>
 		public static string DefaultCategory => SR.GetString(SRName.UIGalleryItemCategoryFontSizesText);
 
-		/// <summary>
 		/// <inheritdoc/>
-		/// </summary>
 		public override bool IsLabelVisible => true;
 
 		/// <inheritdoc/>

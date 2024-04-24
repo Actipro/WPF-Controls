@@ -1,0 +1,286 @@
+<sampleBrowser:ProductItemControl 
+	x:Name="sampleRootControl"
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.SettingsIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	>
+
+	<sampleBrowser:ProductItemControl.Resources>
+		<!--
+			Icons from: https://icon-sets.iconify.design/fluent-mdl2/ and https://icon-sets.iconify.design/fluent/
+			- These icons do not have any margin so the icon sizes have been reduced to 20x20
+			- Alternatively, 24x24 icons (the default size) could be used with 2px margin around the glyph content
+		-->
+		<system:Double x:Key="{x:Static themes:AssetResourceKeys.SettingsCardHeaderIconLengthDoubleKey}">20</system:Double>
+		<Geometry x:Key="icon-fluent-mdl2-header-1">M1792 384v1408h-128V646q-66 59-149 90t-171 32V640q54 0 103-15t92-44t75-69t55-89l17-39zm-896 0h128v1408H896v-640H256v640H128V384h128v640h640z</Geometry>
+		<Geometry x:Key="icon-fluent-mdl2-header-2">M768 384h128v1408H768v-640H128v640H0V384h128v640h640zm1186 373q0 82-19 147t-52 119t-79 99t-97 86t-109 81t-113 84q-22 17-45 37t-44 42t-38 47t-26 52q-8 25-11 56t-4 57h603v128h-768q0-57 1-113t18-112q19-65 55-117t84-98t101-84t108-80t103-82t87-92t60-109t23-135q0-59-18-105t-51-79t-80-50t-106-18q-48 0-94 13t-88 37t-80 54t-69 65V517q39-37 78-62t83-41t90-23t100-7q85 0 157 25t126 73t84 117t30 158</Geometry>
+		<Geometry x:Key="icon-fluent-mdl2-line-spacing">m448 102l365 365l-90 90l-211-210v549H384V347L173 557l-90-90zm275 1389l90 90l-365 365l-365-365l90-90l211 210v-549h128v549zM2048 384v128H1024V384zM1024 768h1024v128H1024zm0 384h1024v128H1024zm0 384h1024v128H1024z</Geometry>
+		<Geometry x:Key="icon-fluent-mdl2-settings">M1783 988v18q0 9 1 18v18q0 9-1 18l259 161l-159 383l-297-68q-24 26-50 50l68 297l-383 159l-161-259h-18q-9 0-18 1h-18q-9 0-18-1l-161 259l-383-159l68-297q-26-24-50-50l-297 68L6 1221l259-161v-18q0-9-1-18v-18q0-9 1-18L6 827l159-383l297 68q24-26 50-50l-68-297L827 6l161 259h18q9 0 18-1h18q9 0 18 1L1221 6l383 159l-68 297q26 24 50 50l297-68l159 383zm-117 130q2-24 4-47t2-48q0-23-2-47t-4-47l236-147l-86-208l-271 63q-31-38-63-70t-71-64l63-271l-208-86l-148 236q-23-2-47-4t-47-2q-24 0-47 2t-48 4L782 146l-208 86l63 271q-38 31-70 63t-64 71l-271-63l-86 208l236 148q-2 24-4 47t-2 48q0 23 2 47t4 47l-236 147l86 208l271-63q31 38 63 70t71 64l-63 271l208 86l148-236q23 2 47 4t47 2q24 0 47-2t48-4l147 236l208-86l-63-271q38-31 70-63t64-71l271 63l86-208zm-642-470q78 0 146 29t120 81t80 119t30 147q0 78-29 146t-81 120t-119 80t-147 30q-78 0-146-29t-120-81t-80-119t-30-147q0-78 29-146t81-120t119-80t147-30m0 640q55 0 103-20t84-57t56-84t21-103q0-55-20-103t-57-84t-84-56t-103-21q-55 0-103 20t-84 57t-56 84t-21 103q0 55 20 103t57 84t84 56t103 21</Geometry>
+		<Geometry x:Key="icon-fluent-cursor-20-regular">M7.5 2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5M3.61 3.61a.5.5 0 0 1 .708 0l1.414 1.415a.5.5 0 1 1-.707.707L3.611 4.318a.5.5 0 0 1 0-.707m7.78 0a.5.5 0 0 1 0 .708L9.974 5.732a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0M2 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m6.64-.2A1 1 0 0 0 7 8.067v9.101c0 .924 1.145 1.354 1.753.659l2.026-2.316A1.5 1.5 0 0 1 11.908 15h3.211c.935 0 1.359-1.17.64-1.768zM8 17.17V8.067L15.119 14h-3.211a2.5 2.5 0 0 0-1.882.854z</Geometry>
+
+	</sampleBrowser:ProductItemControl.Resources>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}" Header="SAMPLE OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Header}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Description}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsHeaderIconVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=WrapThreshold}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=expander, Path=IsAnimationEnabled}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					Use SettingsCard, SettingsExpander, and SettingsGroup to organize and
+					present configurable settings.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<StackPanel>
+
+				<views:SettingsGroup Header="Use SettingsCard for an individual setting">
+					<views:SettingsCard x:Name="card"
+						Header="Setting name"
+						HeaderIcon="{StaticResource icon-fluent-mdl2-settings}"
+						Description="Settings can have a description for additional context"
+						>
+
+						<shared:ToggleSwitch />
+
+					</views:SettingsCard>
+				</views:SettingsGroup>
+
+				<views:SettingsGroup Header="Use SettingsExpander to show other settings when expanded" Margin="0">
+					<views:SettingsExpander x:Name="expander"
+						Header="Expander setting name"
+						HeaderIcon="{StaticResource icon-fluent-mdl2-settings}"
+						Description="Most of the SettingsCard properties are supported"
+						IsEnabled="{Binding ElementName=card, Path=IsEnabled}"
+						IsExpanded="True"
+						IsHeaderIconVisible="{Binding ElementName=card, Path=IsHeaderIconVisible}"
+						IsItemsFooterVisible="False"
+						WrapThreshold="{Binding ElementName=card, Path=WrapThreshold}"
+						>
+						
+						<views:SettingsExpander.ItemsHeader>
+							<shared:InfoBar Message="Any content can be displayed above the child settings"
+								BorderThickness="0" CanClose="False"
+								Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundLowestBrushKey}}" />
+						</views:SettingsExpander.ItemsHeader>
+
+						<views:SettingsExpander.ItemsFooter>
+							<shared:InfoBar Severity="Success" Message="Any content can be displayed below the child settings"
+								BorderThickness="0" CanClose="False"
+								Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowestBrushKey}}" />
+						</views:SettingsExpander.ItemsFooter>
+							
+						<views:SettingsExpander.Content>
+							<TextBox Text="Optional Setting" />
+						</views:SettingsExpander.Content>
+
+						<views:SettingsCard IsWrapped="True"
+							Header="SettingsExpander can display any content above or below the items">
+							<StackPanel>
+								<CheckBox IsChecked="{Binding ElementName=expander, Path=IsItemsHeaderVisible}" Content="Show items header" />
+								<CheckBox IsChecked="{Binding ElementName=expander, Path=IsItemsFooterVisible}" Content="Show items footer" Margin="0,5,0,0" />
+							</StackPanel>
+						</views:SettingsCard>
+
+						<views:SettingsCard Header="Use any SettingsCard within a SettingsExpander.Items collection">
+							<editors:ColorEditBox Value="Orange" />
+						</views:SettingsCard>
+
+						<views:SettingsCard Header="SettingsExpander can also have its own Content for an individual setting">
+							<shared:ToggleSwitch />
+						</views:SettingsCard>
+
+						<views:SettingsCard x:Name="expanderIndentSettingsCard" IsWrapped="True"
+							Header="By default, each SettingsCard is automatically indented by showing the header and action icons even when no icons are defined. Toggle the options below to see how this SettingsCard is impacted by the indentation.">
+							<StackPanel>
+								<CheckBox IsChecked="{Binding ElementName=expanderIndentSettingsCard, Path=IsHeaderIconVisible}" Content="Is header icon visible" />
+								<CheckBox IsChecked="{Binding ElementName=expanderIndentSettingsCard, Path=IsActionIconVisible}" Content="Is action icon visible" Margin="0,5,0,0" />
+							</StackPanel>
+						</views:SettingsCard>
+
+					</views:SettingsExpander>
+				</views:SettingsGroup>
+					
+			</StackPanel>
+
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+				<sampleBrowser:SampleGalleryControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel />
+					</ItemsPanelTemplate>
+				</sampleBrowser:SampleGalleryControl.ItemsPanel>
+
+				<sampleBrowser:LabeledCardControl Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+					Label="Use a clickable SettingsCard to attach an action directly to the card"
+					Margin="0,20,0,0">
+
+					<views:SettingsGroup Header="Actionable card" Margin="0">
+
+						<views:SettingsCard x:Name="clickableCommandSettingsCard"
+							Header="Command property"
+							HeaderIcon="{StaticResource icon-fluent-cursor-20-regular}"
+							Description="Assign a 'Command' and the setting is automatically clickable."
+							Command="{Binding ElementName=sampleRootControl, Path=SettingClickedCommand}"
+							CommandParameter="Clickable sample">
+							<views:SettingsCard.ActionIcon>
+								<ContentPresenter ContentTemplate="{StaticResource {x:Static themes:SharedResourceKeys.ExternalWindowGlyphTemplateKey}}" />
+							</views:SettingsCard.ActionIcon>
+							<CheckBox Content="Is action icon visible" IsChecked="{Binding ElementName=clickableCommandSettingsCard, Path=IsActionIconVisible}" />
+						</views:SettingsCard>
+						
+						<views:SettingsCard x:Name="clickableEventSettingsCard"
+							Header="Click event"
+							HeaderIcon="{StaticResource icon-fluent-cursor-20-regular}"
+							Description="Set 'IsClickEnabled=True' to respond to the 'Click' event."
+							IsClickEnabled="True" Click="OnSettingClick">
+							<views:SettingsCard.ActionIcon>
+								<ContentPresenter ContentTemplate="{StaticResource {x:Static themes:SharedResourceKeys.LargeRightArrowGlyphTemplateKey}}" />
+							</views:SettingsCard.ActionIcon>
+							<CheckBox Content="Is click enabled" IsChecked="{Binding ElementName=clickableEventSettingsCard, Path=IsClickEnabled}" />
+						</views:SettingsCard>
+
+					</views:SettingsGroup>
+				
+				</sampleBrowser:LabeledCardControl>
+
+
+				<sampleBrowser:LabeledCardControl Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+					Label="SettingsGroup helps visually organize related settings"
+					Margin="0,20,0,0">
+
+					<StackPanel>
+						<views:SettingsGroup x:Name="groupSample"
+							Header="Group name"
+							Description="Use groups to organize related settings under a header"
+							IsItemsFooterVisible="False"
+							IsAnimationEnabled="{Binding ElementName=expander, Path=IsAnimationEnabled}">
+
+							<views:SettingsGroup.ItemsHeader>
+								<shared:InfoBar Message="Any content can be displayed above the child settings"
+									Margin="0,0,0,2" CornerRadius="3" CanClose="False"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteBlueBackgroundLowestBrushKey}}" />
+							</views:SettingsGroup.ItemsHeader>
+
+							<views:SettingsGroup.ItemsFooter>
+								<shared:InfoBar Severity="Success" Message="Any content can be displayed below the child settings"
+									Margin="0,2,0,0" CornerRadius="3" CanClose="False"
+									Background="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowestBrushKey}}" />
+							</views:SettingsGroup.ItemsFooter>
+
+							<views:SettingsCard IsWrapped="True"
+								Header="SettingsGroup can display any content above or below the items">
+								<StackPanel>
+									<CheckBox IsChecked="{Binding ElementName=groupSample, Path=IsItemsHeaderVisible}" Content="Show items header" />
+									<CheckBox IsChecked="{Binding ElementName=groupSample, Path=IsItemsFooterVisible}" Content="Show items footer" Margin="0,5,0,0" />
+								</StackPanel>
+							</views:SettingsCard>
+
+							<views:SettingsCard Header="Use any SettingsCard in a group">
+								<ComboBox SelectedIndex="0">
+									<ComboBoxItem>Item 1</ComboBoxItem>
+									<ComboBoxItem>Item 2</ComboBoxItem>
+									<ComboBoxItem>Item 3</ComboBoxItem>
+								</ComboBox>
+							</views:SettingsCard>
+
+							<views:SettingsExpander Header="SettingsExpander can also be used in a group" IsExpanded="True">
+
+								<views:SettingsCard IsWrapped="True" HorizontalContentAlignment="Stretch"
+									Header="Header"
+									HeaderIcon="{StaticResource icon-fluent-mdl2-header-1}"
+									Description="Each group can optionally define a header"
+									>
+									<TextBox Text="{Binding ElementName=groupSample, Path=Header}" />
+								</views:SettingsCard>
+
+								<views:SettingsCard IsWrapped="True" HorizontalContentAlignment="Stretch"
+									Header="Description"
+									HeaderIcon="{StaticResource icon-fluent-mdl2-header-2}"
+									Description="Each group can optionally define a description"
+									>
+									<TextBox Text="{Binding ElementName=groupSample, Path=Description}" />
+								</views:SettingsCard>
+
+							</views:SettingsExpander>
+
+						</views:SettingsGroup>
+
+						
+						<views:SettingsGroup Header="Another group" Description="Each SettingsGroup has a default margin for consistent vertical spacing between groups">
+
+							<views:SettingsCard Header="Individual settings within a group also have consistent spacing" HeaderIcon="{StaticResource icon-fluent-mdl2-line-spacing}" />
+
+							<views:SettingsExpander Header="Compare the spacing of the items in this expander">
+								<views:SettingsCard Header="There is no spaing between expander items" />
+								<views:SettingsCard Header="Another setting">
+									<shared:ToggleSwitch />
+								</views:SettingsCard>
+							</views:SettingsExpander>
+
+							<views:SettingsCard Header="Is first SettingsGroup enabled">
+								<shared:ToggleSwitch IsChecked="{Binding ElementName=groupSample, Path=IsEnabled}" />
+							</views:SettingsCard>
+
+						</views:SettingsGroup>
+
+						
+						<views:SettingsGroup Margin="0">
+							<views:SettingsCard Header="A SettingsGroup doesn't have to have a header or description" Description="These settings are in a group without a header or description" />
+
+							<views:SettingsCard Header="Set Margin='0' on the last SettingsGroup to prevent the default margin from appearing below the group" />
+
+							<views:SettingsCard Header="Another setting">
+								<shared:ToggleSwitch />
+							</views:SettingsCard>
+
+						</views:SettingsGroup>
+
+					</StackPanel>
+
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>
+
+

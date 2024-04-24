@@ -1,7 +1,7 @@
 ---
 title: "AnimatedProgressBar"
 page-title: "AnimatedProgressBar - Shared Library Controls"
-order: 7
+order: 15
 ---
 # AnimatedProgressBar
 

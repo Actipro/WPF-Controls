@@ -33,9 +33,8 @@
 					Actipro Ribbon includes a built-in footer for displaying additional content below the Ribbon. The footer
 					can be set to any content and is great for tips or notifications.
 					<LineBreak /><LineBreak />
-					This sample has been configured with an
-					image and a custom background color to draw attention to the message. By default, the footer will have the
-					same background brush as the Quick Access Toolbar.
+					This sample has been configured with an image. The background color can be changed to draw attention to the message.
+					By default, the footer will have the same background brush as the Quick Access Toolbar.
 					<LineBreak /><LineBreak />
 					The footer fully supports the Quick Access Toolbar displaying below the Ribbon.
 					<LineBreak /><LineBreak />

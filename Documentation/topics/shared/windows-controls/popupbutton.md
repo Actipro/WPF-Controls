@@ -1,7 +1,7 @@
 ---
 title: "PopupButton"
 page-title: "PopupButton - Shared Library Controls"
-order: 25
+order: 75
 ---
 # PopupButton
 

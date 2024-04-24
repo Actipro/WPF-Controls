@@ -1,0 +1,540 @@
+<sampleBrowser:ProductItemControl 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.CardIntro.MainControl"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	<sampleBrowser:ProductItemControl.Resources>
+
+		<!--
+		
+		SAMPLE RESOURCES
+		
+		-->
+
+		<shared:BorderChildClipConverter x:Key="BorderChildClipConverter" />
+
+		<RadialGradientBrush x:Key="CoverBrush" GradientOrigin="0.25,0" RadiusX="1" RadiusY="1">
+			<RadialGradientBrush.GradientStops>
+				<GradientStop Color="#cc8cdb" Offset="0.0" />
+				<GradientStop Color="#ffb781fd" Offset="0.3" />
+				<GradientStop Color="#ff7999fd" Offset="0.6" />
+				<GradientStop Color="#ffeed5d5" Offset="1" />
+			</RadialGradientBrush.GradientStops>
+		</RadialGradientBrush>
+
+		<!--
+		
+		SAMPLE STYLES
+		
+		-->
+
+		<Style x:Key="CoverButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Background" Value="#60000000" />
+			<Setter Property="BorderThickness" Value="0" />
+
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}" CornerRadius="5">
+							<ContentPresenter Content="{TemplateBinding Content}"
+											  HorizontalAlignment="Center"
+											  VerticalAlignment="Center"
+											  TextElement.Foreground="{TemplateBinding Foreground}"
+											  />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#ff000000" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="AccentButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundHighestNormalBrushKey}}" />
+			<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHighBrushKey}}" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+			<Setter Property="Padding" Value="8" />
+			<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+									
+						<Border Padding="{TemplateBinding Padding}" CornerRadius="5" Background="{TemplateBinding Background}">
+							<ContentPresenter Content="{TemplateBinding Content}"
+											  TextElement.FontSize="{TemplateBinding FontSize}"
+											  TextElement.Foreground="{TemplateBinding Foreground}"
+											  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+											  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHigherBrushKey}}" />
+				</Trigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHighestBrushKey}}" />
+				</Trigger>
+			</Style.Triggers>
+			
+		</Style>
+		
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}" Header="SAMPLE OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Title}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Description}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Content}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Footer}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsClickEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsShadowEnabled}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}" Header="ADVANCED OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Foreground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Background}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=BorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=BorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=HeaderForeground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=HeaderBackground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=HeaderBorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=HeaderBorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=FooterForeground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=FooterBackground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=FooterBorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=FooterBorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=CornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Padding}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsAnimationEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=CoverDock}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsCoverVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsHeaderVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsThumbnailVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsFooterVisible}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					The Card control is used to group related information for a single subject.
+					<LineBreak/>
+					<LineBreak/>
+					Cards can be display-only or actionable like a button.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<shared:Card x:Name="card" HorizontalAlignment="Center" MaxWidth="400"
+				Title="Card Title" Description="The description is integrated into the header."
+				Content="Any content can be hosted in the body of the card. This paragraph is part of the content. The Header, Footer, Cover, and Thumbnail also fully support custom content."
+				Footer="This is the footer area."
+				>
+				<shared:Card.Cover>
+					<Border MinHeight="75" MinWidth="100" Background="{StaticResource CoverBrush}">
+						<TextBlock Text="Cover" HorizontalAlignment="Center" VerticalAlignment="Center"
+							Foreground="White" FontWeight="SemiBold"
+							FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge4FontSizeDoubleKey}}"/>
+					</Border>
+				</shared:Card.Cover>
+				<shared:Card.Thumbnail>
+					<Border CornerRadius="4">
+						<Decorator>
+							<Decorator.Clip>
+								<!-- Prevent child content from extending into rounded corners -->
+								<MultiBinding Converter="{StaticResource BorderChildClipConverter}">
+									<Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
+									<Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+									<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="BorderThickness" />
+									<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="CornerRadius" />
+								</MultiBinding>
+							</Decorator.Clip>
+
+							<shared:DynamicImage Width="32" Height="32">
+								<shared:DynamicImage.Source>
+									<BitmapImage UriSource="/Images/Icons/Actipro.ico" shared:ImageProvider.CanAdapt="False" />
+								</shared:DynamicImage.Source>
+							</shared:DynamicImage>
+
+						</Decorator>
+					</Border>
+				</shared:Card.Thumbnail>
+			</shared:Card>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: Appearance -->
+				<sampleBrowser:LabeledCardControl Label="Use the 'IsShadowEnabled' property to toggle between an elevated (default) or flat appearance with different mouse over effects for actionable cards">
+
+					<Grid HorizontalAlignment="Center">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="5" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="10" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="40" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+
+						<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold" Text="IsShadowEnabled = True" />
+						<TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold" Text="IsShadowEnabled = False" />
+
+						<shared:Card Grid.Row="2" Grid.Column="0" Width="175" IsShadowEnabled="True" Title="Standard" Content="Elevated appearance" />
+						<shared:Card Grid.Row="4" Grid.Column="0" Width="175" IsShadowEnabled="True" Title="Actionable" IsClickEnabled="True" Content="Elevated appearance" />
+						<shared:Card Grid.Row="6" Grid.Column="0" Width="175" IsShadowEnabled="True" Title="Dividers" HeaderBorderThickness="1" Content="Elevated appearance" />
+						<shared:Card Grid.Row="8" Grid.Column="0" Width="175" IsShadowEnabled="True" Title="Disabled" IsEnabled="False" Content="Elevated appearance" />
+
+						<shared:Card Grid.Row="2" Grid.Column="2" Width="175" IsShadowEnabled="False" Title="Standard" Content="Flat appearance" />
+						<shared:Card Grid.Row="4" Grid.Column="2" Width="175" IsShadowEnabled="False" Title="Actionable" IsClickEnabled="True" Content="Flat appearance" />
+						<shared:Card Grid.Row="6" Grid.Column="2" Width="175" IsShadowEnabled="False" Title="Dividers" HeaderBorderThickness="1" Content="Flat appearance" />
+						<shared:Card Grid.Row="8" Grid.Column="2" Width="175" IsShadowEnabled="False" Title="Disabled" IsEnabled="False" Content="Flat appearance" />
+
+					</Grid>
+
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Header and footer borders -->
+				<sampleBrowser:LabeledCardControl Label="Header and footer dividers sample">
+
+					<shared:Card Title="Header and Footer Borders" Width="400"
+						Content="Card can optionally display a border between the content and header/footer areas. Note how the control padding is consistently applied around the borders."
+						Footer="Use 'HeaderBorderBrush', 'FooterBorderBrush', 'HeaderBorderThickness.Bottom', and 'FooterBorderThickness.Top' to configure the colors or thicknesses."
+						HeaderBorderThickness="1"
+						FooterBorderThickness="1"
+						/>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Header and footer backgrounds -->
+				<sampleBrowser:LabeledCardControl Label="Header and footer background colors sample">
+
+					<shared:Card Title="Header and Footer Backgrounds" Width="400"
+						Content="The header/footer can optionally have a different background brush than the content.  Note how the control padding is consistently applied above and below the transition in background color."
+						Footer="Use 'HeaderBackground' and 'FooterBackground' properties to control the colors."
+						HeaderBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+						FooterBackground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
+						/>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Thumbnail -->
+				<sampleBrowser:LabeledCardControl Label="Thumbnail sample">
+					<shared:Card Title="Thumbnail" Width="400"
+						Description="Use a custom style to change the thumbnail alignment to the top, if preferred."
+						>
+						<shared:Card.ThumbnailStyle>
+							<Style TargetType="ContentPresenter">
+								<Setter Property="VerticalAlignment" Value="Top" />
+								<Setter Property="Margin" Value="0,4,10,0" />
+							</Style>
+						</shared:Card.ThumbnailStyle>
+						<shared:Card.Thumbnail>
+
+							<Border CornerRadius="4">
+								<Decorator>
+									<Decorator.Clip>
+										<!-- Prevent child content from extending into rounded corners -->
+										<MultiBinding Converter="{StaticResource BorderChildClipConverter}">
+											<Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
+											<Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+											<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="BorderThickness" />
+											<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="CornerRadius" />
+										</MultiBinding>
+									</Decorator.Clip>
+
+									<Image Width="32" Height="32" Source="/Images/Icons/Actipro.ico" />
+
+								</Decorator>
+							</Border>
+
+						</shared:Card.Thumbnail>
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Cover content -->
+				<sampleBrowser:LabeledCardControl Label="Cover sample with docking option">
+
+					<shared:Card Title="Cover Content" Width="400"
+						Content="Cover is typically docked to the top for vertical layouts or left for horizontal layouts."
+						>
+						<shared:Card.Cover>
+							<Border Background="{StaticResource CoverBrush}" MinWidth="75" MinHeight="75" />
+						</shared:Card.Cover>
+						<shared:Card.Footer>
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="Cover Dock: " FontWeight="DemiBold" VerticalAlignment="Center" />
+								<editors:EnumEditBox EnumType="{x:Type Dock}" Value="{Binding CoverDock, RelativeSource={RelativeSource AncestorType={x:Type shared:Card}}}" />
+							</StackPanel>
+						</shared:Card.Footer>
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Actionable card -->
+				<sampleBrowser:LabeledCardControl Label="Actionable card sample">
+
+					<shared:Card Title="Actionable Card" Width="400" IsClickEnabled="True"
+						Content="An actionable card supports Command properties or Click events like a button and responds to IsMouseOver and IsPressed states."
+						Footer="To make a Card actionable, set 'IsClickEnabled' to 'True'."
+						Click="OnActionableCardClick" />
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Integrated badge -->
+				<sampleBrowser:LabeledCardControl Label="Integrated badge sample">
+
+					<shared:Card Title="Integrated Badge" Width="400" IsClickEnabled="True"
+						Content="Card includes integrated support for a Badge adorner.  See the Badge control sample for more examples of how Badge can be used."
+						Click="OnActionableCardClick"
+						BadgeHorizontalAlignment="InsideOfTargetRightEdge"
+						BadgeVerticalAlignment="InsideOfTargetTopEdge"
+						BadgeVerticalOffset="-5"
+						BadgeHorizontalOffset="5">
+						<shared:Card.Badge>
+							<shared:Badge Content="Badge" />
+						</shared:Card.Badge>
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom header button -->
+				<sampleBrowser:LabeledCardControl Label="Custom header sample with an 'Options' button">
+
+					<shared:Card Title="Profile" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+						<shared:Card.Header>
+							<DockPanel>
+								<!-- Add an Options Button -->
+								<Button DockPanel.Dock="Right" ToolTip="Options" MinWidth="25" MinHeight="25" HorizontalAlignment="Right" VerticalAlignment="Top"
+									Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}">
+									<Button.Content>
+										<Canvas Width="16" Height="16">
+											<Path StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+												Data="M 0,4.5 L 10,4.5  M 11.5,6.5 A 2,2 180 1 1 11.6,6.5  M 14,4.5 L 16,4.5  M 0,11.5 L 2,11.5  M 4.5,13.5 A 2,2 180 1 1 4.6,13.5  M 7,11.5 L 16,11.5" />
+										</Canvas>
+									</Button.Content>
+								</Button>
+
+								<!-- Add the Title (reusing the TitleTheme) -->
+								<TextBlock VerticalAlignment="Center"
+										   Style="{Binding TitleStyle, RelativeSource={RelativeSource AncestorType={x:Type shared:Card}}}"
+										   Text="{Binding Title, RelativeSource={RelativeSource AncestorType={x:Type shared:Card}}}"
+										   />
+							</DockPanel>
+						</shared:Card.Header>
+
+						<StackPanel>
+							<shared:Avatar Height="192">
+								<Image Source="/Images/ProfilePhotos/Woman05.jpg" />
+							</shared:Avatar>
+
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" Margin="0,8,0,0" FontWeight="SemiBold" Text="Marina Carpenter" TextAlignment="Center" />
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}"
+									   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}"
+									   Text="@marina_carpenter" TextAlignment="Center" />
+
+						</StackPanel>
+
+						<shared:Card.Footer>
+							<TextBlock Text="12 mutual contacts" TextAlignment="Center"
+									   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" />
+						</shared:Card.Footer>
+
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom cover button -->
+				<sampleBrowser:LabeledCardControl Label="Custom cover sample with a 'Menu' button">
+
+					<shared:Card HorizontalAlignment="Center" MaxWidth="200"
+								 HorizontalContentAlignment="Center">
+						<shared:Card.Cover>
+							<Grid>
+								<!-- Full size image -->
+								<Image Source="/Images/ProfilePhotos/Man02.jpg" Stretch="UniformToFill" />
+
+								<!-- Menu button -->
+								<Button HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="25" MinHeight="25"
+									Style="{StaticResource CoverButtonStyle}"
+									Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type shared:Card}}}"
+									>
+									<Button.Content>
+										<Canvas Width="16" Height="16">
+											<Path StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+												Data="M 3,4 L 13,4 L 13,5 L 3,5 Z  M 3,8 L 13,8 L 13,9 L 3,9 Z  M 3,12 L 13,12 L 13,13 L 3,13 Z" />
+										</Canvas>
+									</Button.Content>
+								</Button>
+
+							</Grid>
+						</shared:Card.Cover>
+
+						<StackPanel HorizontalAlignment="Center">
+
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" FontWeight="SemiBold" Text="Cliff Ellington" TextAlignment="Center" />
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}"
+								Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}"
+								Text="Manager" TextAlignment="Center" />
+
+						</StackPanel>
+
+						<shared:Card.Footer>
+							<TextBlock Text="@cliff_ellington" TextAlignment="Center"
+									   Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestSubtleBrushKey}}" />
+						</shared:Card.Footer>
+
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+
+				<!-- SAMPLE: Custom cover padding -->
+				<sampleBrowser:LabeledCardControl Label="Custom cover padding sample (which normally does not have padding)">
+
+					<shared:Card HorizontalAlignment="Center" MaxWidth="250" Padding="10"
+						  Title="Erik Lai" Description="erik.lai@corpticaenterprises.com">
+
+						<shared:Card.Resources>
+							<!-- Cover padding is only applied to Left/Top/Right since Bottom already has padding -->
+							<shared:ThicknessConverter x:Key="ThicknessConverter" />
+						</shared:Card.Resources>
+
+						<shared:Card.Cover>
+							<Border
+								Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type shared:Card}}, Converter={StaticResource ThicknessConverter}, ConverterParameter='Left,Top,Right'}"
+								CornerRadius="5">
+
+								<Decorator>
+									<Decorator.Clip>
+										<!-- Prevent child content from extending into rounded corners -->
+										<MultiBinding Converter="{StaticResource BorderChildClipConverter}">
+											<Binding RelativeSource="{RelativeSource Self}" Path="ActualWidth" />
+											<Binding RelativeSource="{RelativeSource Self}" Path="ActualHeight" />
+											<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="BorderThickness" />
+											<Binding RelativeSource="{RelativeSource AncestorType={x:Type Border}}" Path="CornerRadius" />
+										</MultiBinding>
+									</Decorator.Clip>
+
+									<Image Source="/Images/ProfilePhotos/Man05.jpg" Stretch="UniformToFill" />
+
+								</Decorator>
+
+							</Border>
+						</shared:Card.Cover>
+
+						<Button Content="Connect" Style="{StaticResource AccentButtonStyle}" />
+
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Accented header -->
+				<sampleBrowser:LabeledCardControl Label="Complex header sample">
+
+					<shared:Card Width="350" HeaderBackground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHighBrushKey}}" >
+
+						<shared:Card.Header>
+							<StackPanel Orientation="Horizontal">
+								<StackPanel.Resources>
+									<Style x:Key="HeaderLabel" TargetType="TextBlock">
+										<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundHigherNormalBrushKey}}" />
+									</Style>
+									<Style x:Key="HeaderValue" TargetType="TextBlock">
+										<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundHigherNormalBrushKey}}" />
+										<Setter Property="FontSize" Value="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" />
+										<Setter Property="FontWeight" Value="DemiBold" />
+									</Style>
+								</StackPanel.Resources>
+								<shared:Avatar Height="64" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundHigherNormalBrushKey}}" BorderThickness="2">
+									<Image Source="/Images/ProfilePhotos/Woman02.jpg" />
+								</shared:Avatar>
+								<StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+									<TextBlock Style="{DynamicResource HeaderLabel}" Text="Posts" />
+									<TextBlock Style="{DynamicResource HeaderValue}" Text="42" />
+								</StackPanel>
+								<StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+									<TextBlock Style="{DynamicResource HeaderLabel}" Text="Followers" />
+									<TextBlock Style="{DynamicResource HeaderValue}" Text="183" />
+								</StackPanel>
+								<StackPanel Margin="20,0,0,0" VerticalAlignment="Center">
+									<TextBlock Style="{DynamicResource HeaderLabel}" Text="Following" />
+									<TextBlock Style="{DynamicResource HeaderValue}" Text="301" />
+								</StackPanel>
+							</StackPanel>
+						</shared:Card.Header>
+
+						<StackPanel>
+							<TextBlock Text="Tammy Mitchell" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="SemiBold" />
+							<TextBlock Text="Accountant" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}" />
+						</StackPanel>
+
+						<shared:Card.Footer>
+							<StackPanel HorizontalAlignment="Stretch">
+								<TextBlock Text="About" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.SmallFontSizeDoubleKey}}" FontWeight="SemiBold" />
+								<TextBlock TextWrapping="Wrap" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraSmallFontSizeDoubleKey}}" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowestMutedBrushKey}}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut. Molestie nunc non blandit massa enim nec. Blandit turpis cursus in hac.</TextBlock>
+							</StackPanel>
+						</shared:Card.Footer>
+
+					</shared:Card>
+
+				</sampleBrowser:LabeledCardControl>
+
+
+			</sampleBrowser:SampleGalleryControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

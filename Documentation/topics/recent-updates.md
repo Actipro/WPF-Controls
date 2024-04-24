@@ -9,9 +9,20 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v24.1.2
+
+- **Bars:** Updated [Footer](bars/ribbon-features/footer.md) documentation with details on using [InfoBar](shared/windows-controls/info-bar.md) in the ribbon footer.
+
+- **Views:** Added documentation for the new [SettingsCard](views/controls/settings-card.md), [SettingsExpander](xref:@ActiproUIRoot.Controls.Views.SettingsExpander), and [SettingsGroup](xref:@ActiproUIRoot.Controls.Views.SettingsGroup) controls.
+
+- **Shared:** Added documentation for the new [Card](shared/windows-controls/card.md) and [InfoBar](shared/windows-controls/info-bar.md) controls.
+
+- **Shared:** Added documentation for [Template Selectors](shared/windows-controls/template-selectors.md) which includes the new [ImageTemplateSelector](xref:@ActiproUIRoot.Controls.ImageTemplateSelector).
+
 ## Updates for v24.1.0
 
 - **Shared:** Restructured [User Prompt](shared/windows-controls/user-prompt/index.md) documentation across multiple topics.
+- **Shared:** Added documentation for the new [Avatar](shared/windows-controls/avatar.md), [AvatarGroup](shared/windows-controls/avatar-group.md), [Badge](shared/windows-controls/badge.md), and [CircularProgressBar](shared/windows-controls/circular-progressbar.md) controls.
 
 - **All:** Updated [Sample Code and QuickStarts](quick-starts.md) topic.
 

@@ -8,7 +8,7 @@
 		https://www.actiprosoftware.com/docs/controls/wpf/nuget
 	 -->
 	<PropertyGroup>
-		<ActiproVersion>24.1.1</ActiproVersion>
+		<ActiproVersion>24.1.2</ActiproVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

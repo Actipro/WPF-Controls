@@ -63,7 +63,6 @@ namespace ActiproSoftware.SampleBrowser {
 			// Adjust the margin between children
 			var container = element as FrameworkElement;
 			if (container != null) {
-				container.HorizontalAlignment = HorizontalAlignment.Left;
 				container.Margin = new Thickness(0, 0, -this.Padding.Right, -this.Padding.Bottom);
 				container.VerticalAlignment = VerticalAlignment.Top;
 			}

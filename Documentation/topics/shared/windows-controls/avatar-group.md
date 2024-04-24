@@ -1,7 +1,7 @@
 ---
 title: "AvatarGroup"
 page-title: "Avatar Group - Shared Library Controls"
-order: 9
+order: 21
 ---
 # AvatarGroup
 

@@ -1,7 +1,7 @@
 ---
 title: "Avatar"
 page-title: "Avatar - Shared Library Controls"
-order: 8
+order: 20
 ---
 # Avatar
 

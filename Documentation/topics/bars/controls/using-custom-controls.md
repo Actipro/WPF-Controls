@@ -111,6 +111,7 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 		bars:BarControlService.Key="Minimum"
 		bars:BarControlService.Label="Minimum"
 		bars:BarControlService.PanelSpacingSuggestion="Both"
+		bars:BarControlService.SmallImageSource="/Images/Minimum16.png"
 		Width="60" MinHeight="24" MaxHeight="30"
 		UsageContext="ToolBar"
 		themes:ThemeProperties.CornerRadius="3"
@@ -119,6 +120,8 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 	...
 </bars:BarContextMenu>
 ```
+
+When a label and/or small image are applied to a custom control with the attached [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) and [SmallImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallImageSourceProperty) properties, they will be displayed in the [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) alongside the custom control itself.  The small image will align in the icon column with other menu items.
 
 ## Screen Tips
 

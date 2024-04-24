@@ -66,18 +66,19 @@ namespace ActiproSoftware.Windows.Themes {
 		private static ComponentResourceKey barGalleryItemTextStyleDataTemplate;
 
 		// Ribbon footer content data templates
+		private static ComponentResourceKey ribbonFooterContentInfoBarDataTemplate;
 		private static ComponentResourceKey ribbonFooterContentSimpleDataTemplate;
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		/// <summary>
 		/// Initializes the <see cref="BarsMvvmResourceKeys"/> class.
 		/// </summary>
 		static BarsMvvmResourceKeys() {
 			// Ensure the resources are registered in the app
-            ThemeManager.RegisterThemeCatalog(nameof(BarsMvvmThemeCatalog), new BarsMvvmThemeCatalog());
+			ThemeManager.RegisterThemeCatalog(nameof(BarsMvvmThemeCatalog), new BarsMvvmThemeCatalog());
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -448,11 +449,18 @@ namespace ActiproSoftware.Windows.Themes {
 		/// <value>A resource key.</value>
 		public static ResourceKey BarGalleryItemTextStyleDataTemplate
 			=> (barGalleryItemTextStyleDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemTextStyleDataTemplate)));
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// RESOURCE KEYS (RIBBON FOOTER CONTENT DATA TEMPLATES)
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey RibbonFooterContentInfoBarDataTemplate
+			=> (ribbonFooterContentInfoBarDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterContentInfoBarDataTemplate)));
+
 		/// <summary>
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
 		/// </summary>

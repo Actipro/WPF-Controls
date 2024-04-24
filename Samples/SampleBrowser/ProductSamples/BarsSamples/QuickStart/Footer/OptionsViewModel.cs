@@ -67,7 +67,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer {
 		/// Gets or sets the location of the Quick Access Toolbar.
 		/// </summary>
 		/// <value>One of the <see cref="RibbonQuickAccessToolBarLocation"/> values.</value>
-		[DisplayName("QAT Location")]
+		[DisplayName("QAT location")]
 		public RibbonQuickAccessToolBarLocation QuickAccessToolBarLocation {
 			get => qatLocation;
 			set {

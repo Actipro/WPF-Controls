@@ -1,7 +1,7 @@
 ---
 title: "Badge"
 page-title: "Badge - Shared Library Controls"
-order: 10
+order: 25
 ---
 # Badge
 

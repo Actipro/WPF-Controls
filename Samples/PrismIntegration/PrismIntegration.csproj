@@ -8,7 +8,7 @@
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>24.1.1.0</Version>
+		<Version>24.1.2.0</Version>
 
 		<RootNamespace>ActiproSoftware.Windows.PrismIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>

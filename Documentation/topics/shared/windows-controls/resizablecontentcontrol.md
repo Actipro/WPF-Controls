@@ -1,7 +1,7 @@
 ---
 title: "ResizableContentControl"
 page-title: "ResizableContentControl - Shared Library Controls"
-order: 32
+order: 95
 ---
 # ResizableContentControl
 

@@ -1,7 +1,7 @@
 ---
 title: "ImageTextInfo"
 page-title: "ImageTextInfo - Shared Library Controls"
-order: 21
+order: 65
 ---
 # ImageTextInfo
 
