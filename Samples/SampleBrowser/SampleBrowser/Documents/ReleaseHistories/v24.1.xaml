@@ -10,11 +10,79 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">4/24/2024 - Version 24.1.2</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstage.CanSelectFirstTabOnOpen property, which determines if Backstage should automatically select its first tab when it opens." />
+				<sampleBrowser:BulletContentControl Content="Added the Ribbon.ClearFooterCommand property, which, by default, will set the Ribbon.FooterContent property to null when invoked.  In MVVM scenarios, RibbonViewModel replaces the default command with one that will set the RibbonViewModel.Footer property to null when invoked." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonFooterInfoBarContentViewModel that, once configured and assigned to RibbonViewModel.Footer property, will display an InfoBar in the footer for MVVM scenarios." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonGallery.CanAutoScrollToSelectedItem property that can be set to true to automatically scroll the gallery to the selected item on selection changes." />
+				<sampleBrowser:BulletContentControl Content="Updated BarControlService logic for resolving images, which now allows for more flexibility in downscaling large images as fallback when smaller images aren't available." />
+				<sampleBrowser:BulletContentControl Content="Updated BarMenuItem logic for determining its enabled state." />
+				<sampleBrowser:BulletContentControl Content="Updated BarPopupButtonBase logic for determining its enabled state." />
+				<sampleBrowser:BulletContentControl Content="Updated BarPopupButtonBase to ensure its popup is at least as wide as the button." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonGroup controls to center their content." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonGallery to ensure it displays its menu gallery with correct width when its ItemsSource is dynamically updated in its PopupOpeningCommand's handler." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonGallery when items change to invalidate its containing tab's variants." />
+				<sampleBrowser:BulletContentControl Content="Updated BarMenuControlWrapper to support displaying a small image in its menu icon column." />
+				<sampleBrowser:BulletContentControl Content="Updated QAT Customize menu items representing common items to use the automation ID from the related common item UI control." />
+				<sampleBrowser:BulletContentControl Content="Updated UIA peers to use Key values for AutomationId when a higher priority source is not available." />
+				<sampleBrowser:BulletContentControl Content="Updated UIA peers to prioritize explicit AutomationProperties.Name settings over Label values." />
+				<sampleBrowser:BulletContentControl Content="Updated UIA peers for dynamically-created menu items to have automation IDs." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a tab's layout might not be correct after changing ribbon layout modes while the ribbon is minimized." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where canceling the DockSite.MenuOpening event wouldn't prevent docking window tabs from showing a context menu." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated EnumEditBox and EnumListBox to refresh their values if UseDisplayAttributes is enabled and the Language property is changed." />
+				<sampleBrowser:BulletContentControl Content="Updated EnumEditBox and EnumListBox to use DisplayAttribute.Order when UseDisplayAttributes is enabled and an explicit sort comparer is undefined." />
+				<sampleBrowser:BulletContentControl Content="Updated EnumEditBox and EnumListBox to support the use of DisplayAttribute.ShortName if DisplayAttribute.Name is undefined." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox nodes to use weak references when attaching PropertyChanged and CollectionChanged events for items." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated visible whitespace tab arrows to only render when there is enough space." />
+				<sampleBrowser:BulletContentControl Content="Updated outlining margin rendering logic for view lines with intra-line spacers." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where VBIndentProvider might not indent properly after lines containing commas." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated Office themes to use rounded corners by default." />
+				<sampleBrowser:BulletContentControl Content="Updated change detection registration for system settings to prevent potential cross-thread exception." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the SettingsCard, SettingsExpander, and SettingsGroup controls, which can be used to organize and present configurable settings." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the Card control and multiple samples to demonstrate the control." />
+				<sampleBrowser:BulletContentControl Content="Added the InfoBar control and multiple samples to demonstrate the control." />
+				<sampleBrowser:BulletContentControl Content="Added a SharedResourceKeys.HorizontalListBoxItemStyleKey Style resource so that custom HorizontalListBox item styles can inherit it." />
+				<sampleBrowser:BulletContentControl Content="Added ImageTemplateSelector which can be used to present images from multiple common data types and string formats." />
+				<sampleBrowser:BulletContentControl Content="Added UserPromptBuilder.Tag property and WithTag method for storing arbitrary data." />
+				<sampleBrowser:BulletContentControl Content="Updated ResizableContentControl to set its Width/Height properties to the resulting size after resize dragging completes." />
+				<sampleBrowser:BulletContentControl Content="Updated the default value of Badge.CornerRadius from 4 to 3 which is now based on AssetResourceKeys.BadgeBorderNormalCornerRadiusKey." />
+				<sampleBrowser:BulletContentControl Content="Fixed a possible exception when assinging the owner of a UserPromptWindow if the explicit owner was undefined and the coerced owner was not valid." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/26/2024 - Version 24.1.1</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where NumericBadge might throw an ExecutionEngineException during initialization." />
 			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
 
 			
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">2/26/2024 - Version 24.1.0</TextBlock>
@@ -85,6 +153,10 @@
 				<sampleBrowser:BulletContentControl Content="Improved the resolver's ability to resolve types within external modules that were defined in other modules." />
 				<sampleBrowser:BulletContentControl Content="Added Punctuation classification type." />
 				<sampleBrowser:BulletContentControl Content="Fixed Operator classification type not being applied." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Adjusted the default font size ratios for smaller sizes." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

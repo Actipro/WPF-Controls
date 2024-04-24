@@ -31,6 +31,7 @@
 		<Setter Property="ApplicationButtonContent" Value="{Binding ApplicationButton}" />
 		<Setter Property="BackstageContent" Value="{Binding Backstage}" />
 		<Setter Property="CanChangeLayoutMode" Value="{Binding CanChangeLayoutMode, Mode=TwoWay}" />
+		<Setter Property="ClearFooterCommand" Value="{Binding ClearFooterCommand, Mode=TwoWay}" />
 		<Setter Property="CollapseThresholdSize" Value="{Binding CollapseThresholdSize, Mode=TwoWay}" />
 		<Setter Property="ContextualTabGroups" Value="{Binding ContextualTabGroups}" />
 		<Setter Property="FooterContent" Value="{Binding Footer}" />
@@ -195,6 +196,7 @@
 			AboveMenuItems="{Binding AboveMenuItems}"
 			AreSurroundingSeparatorsAllowedOnMenu="{Binding AreSurroundingSeparatorsAllowed}"
 			BelowMenuItems="{Binding BelowMenuItems}"
+			CanAutoScrollToSelectedItem="{Binding CanRibbonAutoScrollToSelectedItem}"
 			CanCategorizeOnMenu="{Binding CanCategorize}"
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			CanFilterOnMenu="{Binding CanFilter}"
@@ -304,7 +306,7 @@
 			/>
 	</ItemContainerTemplate>
 
-	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarHeadingMenuItemItemContainerTemplate}" DataType="local:BarMenuHeadingViewModel">
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarHeadingMenuItemItemContainerTemplate}" DataType="local:BarHeadingViewModel">
 		<bars:BarMenuHeading Label="{Binding Label}" />
 	</ItemContainerTemplate>
 
@@ -354,7 +356,7 @@
 		<bars:BarMenuSeparator />
 	</ItemContainerTemplate>
 
-	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSizeSelectionGalleryMenuItemItemContainerTemplate}" DataType="local:BarSizeSelectionGalleryViewModel">
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSizeSelectionGalleryMenuItemItemContainerTemplate}" DataType="local:BarSizeSelectionMenuGalleryViewModel">
 		<bars:BarSizeSelectionMenuGallery
 			AreSurroundingSeparatorsAllowed="{Binding AreSurroundingSeparatorsAllowed}"
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
@@ -629,7 +631,7 @@
 			/>
 	</ItemContainerTemplate>
 
-	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterDefaultItemContainerTemplate}" DataType="local:RibbonFooterControlViewModel">
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterDefaultItemContainerTemplate}" DataType="local:RibbonFooterViewModel">
 		<bars:RibbonFooterControl
 			ContentTemplateSelector="{Binding ContentTemplateSelector}"
 			ContentTemplate="{Binding ContentTemplate}"
@@ -798,6 +800,27 @@
 		RIBBON FOOTER CONTENT TEMPLATES
 	
 	-->
+
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterContentInfoBarDataTemplate}" DataType="local:RibbonFooterInfoBarContentViewModel">
+		<shared:InfoBar
+			Action="{Binding Action}"
+			ActionTemplate="{Binding ActionTemplate}"
+			ActionTemplateSelector="{Binding ActionTemplateSelector}"
+			BorderThickness="0"
+			CanClose="{Binding CanClose}"
+			CloseButtonCommand="{Binding RelativeSource={RelativeSource AncestorType={x:Type bars:Ribbon}}, Path=ClearFooterCommand}"
+			Content="{Binding Content}"
+			ContentTemplate="{Binding ContentTemplate}"
+			ContentTemplateSelector="{Binding ContentTemplateSelector}"
+			Icon="{Binding IconSource}"
+			IsAnimationEnabled="False"
+			IsIconVisible="{Binding IsIconVisible}"
+			Message="{Binding Message}" 
+			Padding="{Binding Padding}"
+			Severity="{Binding Severity}"
+			Title="{Binding Title}"
+			/>
+	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate}" DataType="local:RibbonFooterSimpleContentViewModel">
 		<DockPanel>

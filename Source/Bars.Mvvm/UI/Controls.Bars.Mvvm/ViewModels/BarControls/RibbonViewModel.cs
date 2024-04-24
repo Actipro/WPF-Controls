@@ -1,6 +1,8 @@
-﻿using ActiproSoftware.Windows.Themes;
+﻿using ActiproSoftware.Windows.Input;
+using ActiproSoftware.Windows.Themes;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
@@ -12,6 +14,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private RibbonApplicationButtonViewModel applicationButton;
 		private RibbonBackstageViewModel backstage;
 		private bool canChangeLayoutMode = true;
+		private ICommand clearFooterCommand;
 		private Size collapseThresholdSize = new Size(270, 170);
 		private RibbonFooterViewModel footer;
 		private bool isApplicationButtonVisible = true;
@@ -46,6 +49,9 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.userInterfaceDensity = (layoutMode == RibbonLayoutMode.Classic)
 				? UserInterfaceDensity.Compact
 				: UserInterfaceDensity.Spacious;
+
+			// Initialize the clear footer command
+			this.clearFooterCommand = new DelegateCommand<object>(_ => this.Footer = null);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +102,24 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <summary>
+		/// Gets or sets a command that, when invoked, will clear the footer.
+		/// </summary>
+		/// <value>
+		/// An <see cref="ICommand"/>.
+		/// The default value is a command that sets the <see cref="Footer"/> property to <c>null</c>.
+		/// </value>
+		public ICommand ClearFooterCommand {
+			get => clearFooterCommand;
+			set {
+				if (clearFooterCommand != value) {
+					clearFooterCommand = value;
+					this.NotifyPropertyChanged(nameof(ClearFooterCommand));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
 		/// </summary>

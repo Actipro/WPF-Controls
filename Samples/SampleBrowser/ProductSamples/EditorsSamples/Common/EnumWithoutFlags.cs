@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ActiproSoftware.ProductSamples.EditorsSamples.Common {
 	
@@ -11,43 +12,43 @@ namespace ActiproSoftware.ProductSamples.EditorsSamples.Common {
 		/// <summary>
 		/// Indicates no value.
 		/// </summary>
-		[Description("Nada")]
+		[Display(Order = 0, Name = "Nada")]
 		None = 0,
 
 		/// <summary>
 		/// Indicates the value 1.
 		/// </summary>
-		[Description("Uno")]
+		[Display(Order = 1, Name = "Uno")]
 		One = 0x01,
 
 		/// <summary>
 		/// Indicates the value 2.
 		/// </summary>
-		[Description("One and One")]
+		[Display(Order = 2, Name = "One and One")]
 		Two = 0x02,
 
 		/// <summary>
 		/// Indicates the value 4.
 		/// </summary>
-		[Description("Square root of 16")]
+		[Display(Order = 4, Name = "Square root of 16")]
 		Four = 0x04,
 
 		/// <summary>
 		/// Indicates the value 8.
 		/// </summary>
-		[Description("2 to the power of 3")]
+		[Display(Order = 8, Name = "2 to the power of 3")]
 		Eight = 0x08,
 
 		/// <summary>
 		/// Indicates the union of One and Two.
 		/// </summary>
-		[Description("An odd number")]
+		[Display(Order = 3, Name = "An odd number")]
 		Three = One | Two,
 
 		/// <summary>
 		/// Indicates the union of One, Two, Four, and Eight.
 		/// </summary>
-		[Description("Everything")]
+		[Display(Name = "Everything")]
 		All = One | Two | Four | Eight
 
 	}

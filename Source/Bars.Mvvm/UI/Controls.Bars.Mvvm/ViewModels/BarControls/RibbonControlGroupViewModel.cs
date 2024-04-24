@@ -42,10 +42,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
 		
 		/// <summary>
-		/// Gets or sets an <see cref="itemVariantBehavior"/> that indicates how variant sizes should be applied to items.
+		/// Gets or sets an <see cref="Bars.ItemVariantBehavior"/> that indicates how variant sizes should be applied to items.
 		/// </summary>
 		/// <value>
-		/// An <see cref="itemVariantBehavior"/> that indicates how variant sizes should be applied to items.
+		/// An <see cref="Bars.ItemVariantBehavior"/> that indicates how variant sizes should be applied to items.
 		/// The default value is <see cref="ItemVariantBehavior.All"/>.
 		/// </value>
 		public ItemVariantBehavior ItemVariantBehavior {

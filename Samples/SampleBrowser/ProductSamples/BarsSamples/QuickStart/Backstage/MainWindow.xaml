@@ -20,7 +20,8 @@
 
 			<!-- Configure the Backstage -->
 			<bars:Ribbon.BackstageContent>
-				<bars:RibbonBackstage CanClose="{Binding CanClose}" MinHeaderWidth="{Binding BackstageMinHeaderWidth}" MaxHeaderWidth="{Binding BackstageMaxHeaderWidth}"
+				<bars:RibbonBackstage CanClose="{Binding CanClose}" CanSelectFirstTabOnOpen="{Binding CanSelectFirstTabOnOpen}"
+									  MinHeaderWidth="{Binding BackstageMinHeaderWidth}" MaxHeaderWidth="{Binding BackstageMaxHeaderWidth}"
 									  IsOpen="{Binding IsBackstageOpen}" IsOpenChanged="OnBackstageIsOpenChanged">
 					<!-- Introduction Tab -->
 					<bars:RibbonBackstageTabItem Key="Introduction" SmallImageSource="/Images/Icons/HomeMono16.png" LargeImageSource="/Images/Icons/HomeMono32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
@@ -206,37 +207,41 @@
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
 										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
 									</Grid.RowDefinitions>
 									
 									<TextBlock Grid.Row="0" Grid.Column="0" Text="Use initial backstage view" VerticalAlignment="Center" />
 									<shared:ToggleSwitch Grid.Row="0" Grid.Column="1" Margin="4" IsChecked="{Binding IsFirstBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="1" Grid.Column="0" Text="Can close" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="1" Grid.Column="1" Margin="4" IsChecked="{Binding CanClose}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="1" Grid.Column="0" Text="Can select first tab on open" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="1" Grid.Column="1" Margin="4" IsChecked="{Binding CanSelectFirstTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="2" Grid.Column="0" Text="Show images on sample buttons" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="2" Grid.Column="1" Margin="4" IsChecked="{Binding UseSampleButtonImages}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="2" Grid.Column="0" Text="Can close" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="2" Grid.Column="1" Margin="4" IsChecked="{Binding CanClose}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="3" Grid.Column="0" Text="Select this 'Options' tab on open" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="3" Grid.Column="1" Margin="4" IsChecked="{Binding SelectOptionsTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="3" Grid.Column="0" Text="Show images on sample buttons" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="3" Grid.Column="1" Margin="4" IsChecked="{Binding UseSampleButtonImages}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="4" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+									<TextBlock Grid.Row="4" Grid.Column="0" Text="Select this 'Options' tab on open" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="4" Grid.Column="1" Margin="4" IsChecked="{Binding SelectOptionsTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+									<TextBlock Grid.Row="5" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
 										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMinHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
 										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMinHeaderWidth}" />
 									</StackPanel>
 
-									<TextBlock Grid.Row="5" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+									<TextBlock Grid.Row="6" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
+									<StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
 										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMaxHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
 										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMaxHeaderWidth}" />
 									</StackPanel>
 
-									<TextBlock Grid.Row="6" Grid.Column="0" Text="Third sample button closes backstage" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="6" Grid.Column="1" Margin="4" IsChecked="{Binding SampleButton3CanCloseBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="7" Grid.Column="0" Text="Third sample button closes backstage" VerticalAlignment="Center" />
+									<shared:ToggleSwitch Grid.Row="7" Grid.Column="1" Margin="4" IsChecked="{Binding SampleButton3CanCloseBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
 
-									<TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
-									<TextBox Grid.Row="7" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+									<TextBlock Grid.Row="8" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
+									<TextBox Grid.Row="8" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
 								</Grid>
 								
 							</StackPanel>

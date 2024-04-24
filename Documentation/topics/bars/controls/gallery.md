@@ -324,6 +324,10 @@ The gallery's `SelectedItem` property may be set at any time to alter the select
 
 The [IsSelectionSupported](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.IsSelectionSupported) property, which defaults to `true`, can be set to `false` to prevent a selection from being retained when an item is clicked.  It does this by automatically clearing the `SelectedItem` after a selection is made.  This feature is handy for galleries that should take an action when an item is clicked, such as a gallery that inserts a symbol into a document based on the item that was clicked.
 
+### Automatically Scrolling to the Selected Item (RibbonGallery only)
+
+The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanAutoScrollToSelectedItem](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.CanAutoScrollToSelectedItem) property, which defaults to `false`, can be set to `true` to automatically scroll to the in-ribbon gallery's selected item when the selection changes.  This ensures that external changes to the selection keep the newly-selected item visible in the user interface.
+
 ### Item Templates
 
 Gallery controls generate a [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) container for each gallery item in the gallery's `ItemsSource`.

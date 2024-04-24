@@ -1560,6 +1560,12 @@ items:
       href: views/controls/book.md
     - name: "InertiaScrollViewer"
       href: views/controls/inertia-scroll-viewer.md
+    - name: "SettingsCard"
+      href: views/controls/settings-card.md
+    - name: "SettingsExpander"
+      href: views/controls/settings-expander.md
+    - name: "SettingsGroup"
+      href: views/controls/settings-group.md
     - name: "TaskBoard"
       href: views/controls/taskboard.md
   - name: "Panels"
@@ -1690,6 +1696,8 @@ items:
       href: shared/windows-controls/avatar-group.md
     - name: "Badge"
       href: shared/windows-controls/badge.md
+    - name: "Card"
+      href: shared/windows-controls/card.md
     - name: "CircularProgressBar"
       href: shared/windows-controls/circular-progressbar.md
     - name: "CustomDrawElement"
@@ -1704,6 +1712,8 @@ items:
       href: shared/windows-controls/horizontallistbox.md
     - name: "ImageTextInfo"
       href: shared/windows-controls/imagetextinfo.md
+    - name: "InfoBar"
+      href: shared/windows-controls/info-bar.md
     - name: "PixelSnapper"
       href: shared/windows-controls/pixelsnapper.md
     - name: "PopupButton"
@@ -1749,6 +1759,8 @@ items:
       href: shared/windows-controls/zerosizecontentcontrol.md
     - name: "Progress Spinners"
       href: shared/windows-controls/progress-spinners.md
+    - name: "Template Selectors"
+      href: shared/windows-controls/template-selectors.md
   - name: "Color Selection"
     href: shared/windows-controls-color-selection.md
   - name: "Data"

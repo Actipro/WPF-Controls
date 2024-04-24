@@ -20,6 +20,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public RibbonFooterContentTemplateSelector() {
 			var dictionary = BarsMvvmResourceDictionary.Instance;
 
+			this.InfoBarDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentInfoBarDataTemplate] as DataTemplate;
 			this.SimpleDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate] as DataTemplate;
 		}
 		
@@ -30,9 +31,16 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <inheritdoc/>
 		public override DataTemplate SelectTemplate(object item, DependencyObject container)
 			=> item switch {
+				RibbonFooterInfoBarContentViewModel _ => this.InfoBarDataTemplate,
 				RibbonFooterSimpleContentViewModel _ => this.SimpleDataTemplate,
 				_ => base.SelectTemplate(item, container)
 			};
+
+		/// <summary>
+		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterInfoBarContentViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="DataTemplate"/> to use.</value>
+		public DataTemplate InfoBarDataTemplate { get; set; }
 
 		/// <summary>
 		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterSimpleContentViewModel"/>.

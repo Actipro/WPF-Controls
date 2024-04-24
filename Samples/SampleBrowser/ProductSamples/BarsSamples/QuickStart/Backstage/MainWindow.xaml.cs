@@ -18,6 +18,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		private int			backstageMinHeaderWidth			= 0;
 		private int			backstageMaxHeaderWidth			= 300;
 		private bool		canClose						= true;
+		private bool		canSelectFirstTabOnOpen			= true;
 		private bool		isBackstageOpen					= true;
 		private bool		isFirstBackstage				= true;
 		private bool		sampleButton3CanCloseBackstage	= true;
@@ -137,6 +138,20 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 				if (canClose != value) {
 					canClose = value;
 					NotifyPropertyChanged(nameof(CanClose));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets if the first tab should be selected when the Backstage is opened.
+		/// </summary>
+		/// <value><c>true</c> if the first tab should be selected when the Backstage is opened; otherwise <c>false</c>.</value>
+		public bool CanSelectFirstTabOnOpen {
+			get => canSelectFirstTabOnOpen;
+			set {
+				if (canSelectFirstTabOnOpen != value) {
+					canSelectFirstTabOnOpen = value;
+					NotifyPropertyChanged(nameof(CanSelectFirstTabOnOpen));
 				}
 			}
 		}

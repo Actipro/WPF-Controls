@@ -77,11 +77,11 @@ namespace ActiproSoftware.SampleBrowser {
 		
 		private const int MaximumSearchResults = 50;
 
-        private const string DefaultSampleUri = null;
-        // private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
-        // private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl";
+		private const string DefaultSampleUri = null;
+		// private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
+		// private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/ViewsSamples/Demo/ApplicationSettings/MainControl";
 
-        private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
+		private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -157,8 +157,8 @@ namespace ActiproSoftware.SampleBrowser {
 		/// </summary>
 		/// <returns>The file system path to the sample project's folder.</returns>
 		private static string GetSampleProjectPath() {
-			var uri = new Uri(Assembly.GetEntryAssembly().GetName().CodeBase);
-			var path = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(uri.LocalPath), @"..\..\.."));
+			var location = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+			var path = Path.GetFullPath(Path.Combine(location, @"..\..\.."));
 			return path;
 		}
 

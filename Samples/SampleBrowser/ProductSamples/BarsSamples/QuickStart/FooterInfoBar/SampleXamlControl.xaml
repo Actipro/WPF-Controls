@@ -1,0 +1,74 @@
+﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.FooterInfoBar.SampleXamlControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.FooterInfoBar"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	mc:Ignorable="d" 
+	d:DesignHeight="450" d:DesignWidth="800">
+
+	<bars:RibbonContainerPanel x:Name="rootPanel">
+
+		<!-- Ribbon Control -->
+		<!--
+			Use pre-defined view model for Ribbon configuration in this sample so that we reduce redundant code
+			that takes away from the focus of this sample
+		-->
+		<bars:Ribbon x:Name="ribbon" DataContext="{Binding Ribbon}" Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
+					 IsApplicationButtonVisible="False"
+					 QuickAccessToolBarLocation="{Binding ElementName=rootPanel, Path=DataContext.Options.QuickAccessToolBarLocation, Mode=TwoWay}">
+
+			<bars:Ribbon.Resources>
+				
+				<!-- Configure implicit style for InfoBar displayed in a Ribbon footer -->
+				<Style TargetType="{x:Type shared:InfoBar}" BasedOn="{StaticResource {x:Type shared:InfoBar}}">
+					
+					<!-- Footer has it's own border, so hide the InfoBar border -->
+					<Setter Property="BorderThickness" Value="0" />
+					
+					<!-- Ribbon already animates the opening/closing of the footer, so disable the InfoBar animation -->
+					<Setter Property="IsAnimationEnabled" Value="False" />
+
+					<!-- By default, closing the InfoBar should clear the ribbon footer -->
+					<Setter Property="CloseButtonCommand" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type bars:Ribbon}}, Path=ClearFooterCommand}" />
+
+					<Style.Triggers>
+						<!-- Allow the default footer background to display with the default severity -->
+						<Trigger Property="Severity" Value="Information">
+							<Setter Property="Background" Value="Transparent" />
+						</Trigger>
+					</Style.Triggers>
+					
+				</Style>
+			</bars:Ribbon.Resources>
+
+			<!-- Configure the Ribbon Footer -->
+			<bars:Ribbon.FooterContent>
+				<bars:RibbonFooterControl x:Name="footer" Padding="0">
+					<shared:InfoBar x:Name="infoBar"
+						CanClose="{Binding ElementName=rootPanel, Path=DataContext.Options.CanClose}"
+						IsIconVisible="{Binding ElementName=rootPanel, Path=DataContext.Options.IsIconVisible}"
+						Message="Use an info bar for essential app messages." 
+						Padding="{Binding ElementName=rootPanel, Path=DataContext.Options.Padding}"
+						Severity="{Binding ElementName=rootPanel, Path=DataContext.Options.Severity}"
+						Title="InfoBar" 
+						/>
+				</bars:RibbonFooterControl>
+			</bars:Ribbon.FooterContent>
+
+		</bars:Ribbon>
+		
+		<!-- TextBox -->
+		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">
+			<shared:HintProperties.Hint>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Ribbon footer defined with XAML" />
+			</shared:HintProperties.Hint>
+		</TextBox>
+
+	</bars:RibbonContainerPanel>
+
+
+</local:SampleControlBase>

@@ -1,7 +1,7 @@
 ---
 title: "AdvancedTextBlock"
 page-title: "AdvancedTextBlock - Shared Library Controls"
-order: 3
+order: 5
 ---
 # AdvancedTextBlock
 

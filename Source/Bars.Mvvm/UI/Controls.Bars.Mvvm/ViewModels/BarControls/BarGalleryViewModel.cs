@@ -20,6 +20,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		private bool canCategorize = true;
 		private bool canFilter;
+		private bool canRibbonAutoScrollToSelectedItem;
 		private DataTemplate categoryHeaderTemplate;
 		private string collapsedButtonDescription;
 		private bool hasCategoryHeaders = true;
@@ -194,6 +195,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (canFilter != value) {
 					canFilter = value;
 					this.NotifyPropertyChanged(nameof(CanFilter));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets whether to automatically scroll a ribbon gallery to the selected item on selection changes.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the ribbon gallery selected item should automatically be scrolled into view on selection changes; otherwise, <c>false</c>.
+		/// The default value is <c>false</c>.
+		/// </value>
+		public bool CanRibbonAutoScrollToSelectedItem {
+			get => canRibbonAutoScrollToSelectedItem;
+			set {
+				if (canRibbonAutoScrollToSelectedItem != value) {
+					canRibbonAutoScrollToSelectedItem = value;
+					this.NotifyPropertyChanged(nameof(CanRibbonAutoScrollToSelectedItem));
 				}
 			}
 		}

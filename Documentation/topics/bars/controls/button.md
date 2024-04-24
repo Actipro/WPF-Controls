@@ -118,10 +118,12 @@ The [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[Label](xref:@A
 
 The controls can display images that help identify their function.
 
-All [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumImageSource), falling back to [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource) if a medium image is not available.
+All [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumImageSource).
+
+> [!TIP]
+> See the [Control Basics](control-basics.md) topic for more detail on the fallback logic for button images.
 
 [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
-
 
 ### Description (BarMenuItem only)
 

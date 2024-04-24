@@ -1,0 +1,297 @@
+<sampleBrowser:ProductItemControl x:Name="sampleRootControl"
+	x:Class="ActiproSoftware.ProductSamples.SharedSamples.QuickStart.InfoBarIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:windows="clr-namespace:System.Windows;assembly=PresentationFramework"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	>
+	<sampleBrowser:ProductItemControl.Resources>
+		<system:String x:Key="ShortMessage">An essential application message for the user.</system:String>
+	</sampleBrowser:ProductItemControl.Resources>
+	
+	<!-- Sample Configuration -->
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}" Header="SAMPLE OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Title}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Message}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Severity}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsIconVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsOpen}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=CanClose}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderAdvancedOptionsExpanderStyle}" Header="ADVANCED OPTIONS">
+				<StackPanel>
+					<sampleBrowser:SampleOptionsPropertyGrid>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Foreground}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Background}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=BorderBrush}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=BorderThickness}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=CornerRadius}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Padding}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsAnimationEnabled}" />
+					</sampleBrowser:SampleOptionsPropertyGrid>
+				</StackPanel>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					InfoBar can be used to display essential information to a user without disrupting the user flow.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!-- 
+	
+			PRIMARY SAMPLE - Configured using Sample Options
+	
+			-->
+
+			<shared:ToggleTransitionPresenter IsAlternateContentVisible="{Binding ElementName=infobar, Path=IsOpen}">
+				<shared:ToggleTransitionPresenter.Content>
+					<TextBlock TextAlignment="Center">Info bar closed.  <Hyperlink Command="{Binding Path=ShowInfoBarCommand, ElementName=sampleRootControl}" CommandParameter="{Binding ElementName=infobar}">Re-open</Hyperlink></TextBlock>
+				</shared:ToggleTransitionPresenter.Content>
+				<shared:ToggleTransitionPresenter.AlternateContent>
+
+					<shared:InfoBar x:Name="infobar" HorizontalAlignment="Center"
+						Title="Title" Message="{StaticResource ShortMessage}"
+						>
+					</shared:InfoBar>
+
+				</shared:ToggleTransitionPresenter.AlternateContent>
+			</shared:ToggleTransitionPresenter>
+
+			<!-- 
+	
+			INDIVIDUAL SAMPLES
+	
+			-->
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!-- SAMPLE: Pre-defined severity -->
+				<sampleBrowser:LabeledCardControl Label="Several pre-defined severity levels are available">
+					<StackPanel>
+						<StackPanel.Resources>
+							<Style TargetType="shared:InfoBar" BasedOn="{StaticResource {x:Type shared:InfoBar}}">
+								<Setter Property="Margin" Value="0,5" />
+								<Setter Property="CloseButtonCommand" Value="{Binding Path=NoCloseCommand, ElementName=sampleRootControl}" />
+								<Setter Property="Message" Value="{StaticResource ShortMessage}" />
+							</Style>
+						</StackPanel.Resources>
+						
+						<shared:InfoBar Title="Information" Severity="Information" />
+						<shared:InfoBar Title="Success" Severity="Success" />
+						<shared:InfoBar Title="Warning" Severity="Warning" />
+						<shared:InfoBar Title="Error" Severity="Error" />
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Action element -->
+				<sampleBrowser:LabeledCardControl Label="Optionally include an interactive element the user can act upon">
+					<StackPanel MaxWidth="400">
+						<StackPanel.Resources>
+							<shared:ConditionalConverter x:Key="AlignmentConditionalConverter"
+								TrueValue="{x:Static windows:HorizontalAlignment.Left}"
+								FalseValue="{x:Static windows:HorizontalAlignment.Right}" />
+						</StackPanel.Resources>
+						
+						<!-- Short message with right-aligned Button action that changes to left-aligned when wrapped -->
+						<shared:InfoBar x:Name="actionButtonInfoBar"
+							Title="Metered Connection"
+							Message="Syncing paused."
+							Severity="Warning"
+							CloseButtonCommand="{Binding Path=NoCloseCommand, ElementName=sampleRootControl}"
+							>
+							<shared:InfoBar.Action>
+								<Button HorizontalAlignment="{Binding ElementName=actionButtonInfoBar, Path=IsWrapped, Converter={StaticResource AlignmentConditionalConverter}}"
+									Command="{Binding Path=ActionCommand, ElementName=sampleRootControl}"
+									Content="Resume Sync" />
+							</shared:InfoBar.Action>
+						</shared:InfoBar>
+						
+						<!-- Long message with Hyperlink action -->
+						<shared:InfoBar Margin="0,20,0,0"
+							Title="Metered Connection"
+							Message="Syncing has been paused to preserve data over a metered connection. Syncing will resume once an unmetered connection is available, or click 'Resume Sync' to force syncing now."
+							Severity="Warning"
+							CloseButtonCommand="{Binding Path=NoCloseCommand, ElementName=sampleRootControl}"
+							>
+							<shared:InfoBar.Action>
+								<TextBlock><Hyperlink Command="{Binding Path=ActionCommand, ElementName=sampleRootControl}">Resume Sync</Hyperlink></TextBlock>
+							</shared:InfoBar.Action>
+						</shared:InfoBar>
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom content -->
+				<sampleBrowser:LabeledCardControl Label="Any content can be added below the message">
+					<StackPanel MaxWidth="400">
+
+						<!-- Short message -->
+						<shared:InfoBar
+							Title="Sync In Progress"
+							Message="Syncing app settings with the cloud."
+							CanClose="False"
+							>
+							<shared:AnimatedProgressBar IsIndeterminate="True" Height="4" />
+						</shared:InfoBar>
+
+						<!-- Long message -->
+						<shared:InfoBar Margin="0,20,0,0"
+							Title="Sync In Progress"
+							Message="Syncing application settings with the cloud.  Update your profile to control which settings are synchronized with the cloud so your configuration is consistent on every machine where you work."
+							CanClose="False"
+							>
+							<shared:AnimatedProgressBar IsIndeterminate="True" Height="4" />
+						</shared:InfoBar>
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Animation -->
+				<sampleBrowser:LabeledCardControl Label="Opening and closing an info bar can be animated for fluent transitions">
+					<StackPanel MaxWidth="400">
+
+						<Border Height="200" CornerRadius="5" Padding="5" BorderThickness="1"
+							BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+
+								<shared:InfoBar x:Name="animationInfoBar" Grid.Row="0"
+									Title="Title"
+									Message="{StaticResource ShortMessage}"
+									Severity="Success"
+									CornerRadius="3"
+									Margin="0,0,0,5"
+									/>
+
+								<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+									<Border CornerRadius="3" Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}">
+										<StackPanel Margin="20">
+											<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">The InfoBar is displayed above this area and will animate into position while opening and closing.</TextBlock>
+											<CheckBox IsChecked="{Binding ElementName=animationInfoBar, Path=IsAnimationEnabled}" Content="Is animation enabled" Margin="0,20,0,0" />
+											<CheckBox IsChecked="{Binding ElementName=animationInfoBar, Path=IsOpen}" Content="Is info bar open" Margin="0,10,0,0" />
+										</StackPanel>
+									</Border>
+								</ScrollViewer>
+							</Grid>
+						</Border>
+
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--  SAMPLE: Cancel close -->
+				<sampleBrowser:LabeledCardControl Label="Use the 'Closing' event to cancel an attempt to close the info bar">
+					<shared:ToggleTransitionPresenter IsAlternateContentVisible="{Binding ElementName=cancelCloseInfoBar, Path=IsOpen}">
+						<shared:ToggleTransitionPresenter.Content>
+							<TextBlock TextAlignment="Center">Info bar closed.  <Hyperlink Command="{Binding Path=ShowInfoBarCommand, ElementName=sampleRootControl}" CommandParameter="{Binding ElementName=cancelCloseInfoBar}">Re-open</Hyperlink></TextBlock>
+						</shared:ToggleTransitionPresenter.Content>
+						<shared:ToggleTransitionPresenter.AlternateContent>
+
+							<shared:InfoBar x:Name="cancelCloseInfoBar" Title="Title"
+								Message="Check the 'Cancel close' option to prevent closing."
+								Severity="Error"
+								Closing="OnInfoBarClosing"
+								>
+								<CheckBox x:Name="cancelCloseCheckBox" Content="Cancel close" IsChecked="True" />
+							</shared:InfoBar>
+
+						</shared:ToggleTransitionPresenter.AlternateContent>
+					</shared:ToggleTransitionPresenter>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Close button command -->
+				<sampleBrowser:LabeledCardControl Label="Any ICommand can be associated with the close button">
+					<shared:ToggleTransitionPresenter IsAlternateContentVisible="{Binding ElementName=closeButtonCommandInfoBar, Path=IsOpen}">
+						<shared:ToggleTransitionPresenter.Content>
+							<TextBlock TextAlignment="Center">Info bar closed.  <Hyperlink Command="{Binding Path=ShowInfoBarCommand, ElementName=sampleRootControl}" CommandParameter="{Binding ElementName=closeButtonCommandInfoBar}">Re-open</Hyperlink></TextBlock>
+						</shared:ToggleTransitionPresenter.Content>
+						<shared:ToggleTransitionPresenter.AlternateContent>
+
+							<shared:InfoBar x:Name="closeButtonCommandInfoBar" Title="Title"
+								Message="{StaticResource ShortMessage}"
+								CloseButtonCommand="{Binding Path=CloseButtonCommand, ElementName=sampleRootControl}"
+								CloseButtonCommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+								/>
+
+						</shared:ToggleTransitionPresenter.AlternateContent>
+					</shared:ToggleTransitionPresenter>
+				</sampleBrowser:LabeledCardControl>
+
+				<!-- SAMPLE: Custom appearance -->
+				<sampleBrowser:LabeledCardControl Label="Customize the icon, brushes, close button, and other properties for a unique look">
+					
+					<shared:InfoBar Title="Microphone Muted" Message="Meeting attendees cannot hear you speak."
+						Background="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundLowestBrushKey}}"
+						BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundLowestNormalBrushKey}}"
+						BorderThickness="2"
+						Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundLowestNormalBrushKey}}"
+						CloseButtonCommand="{Binding Path=NoCloseCommand, ElementName=sampleRootControl}"
+						CornerRadius="16">
+						
+						<!-- Custom Icon ( https://pictogrammers.com/library/mdi/icon/microphone-off/ ) -->
+						<shared:InfoBar.Icon>
+							<DrawingImage>
+								<DrawingImage.Drawing>
+									<GeometryDrawing Brush="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundMidBrushKey}}" Geometry="M19,11C19,12.19 18.66,13.3 18.1,14.28L16.87,13.05C17.14,12.43 17.3,11.74 17.3,11H19M15,11.16L9,5.18V5A3,3 0 0,1 12,2A3,3 0 0,1 15,5V11L15,11.16M4.27,3L21,19.73L19.73,21L15.54,16.81C14.77,17.27 13.91,17.58 13,17.72V21H11V17.72C7.72,17.23 5,14.41 5,11H6.7C6.7,14 9.24,16.1 12,16.1C12.81,16.1 13.6,15.91 14.31,15.58L12.65,13.92L12,14A3,3 0 0,1 9,11V10.28L3,4.27L4.27,3Z" />
+								</DrawingImage.Drawing>
+							</DrawingImage>
+						</shared:InfoBar.Icon>
+
+						<!-- Custom Close Button ( https://pictogrammers.com/library/mdi/icon/close-circle-outline/ ) -->
+						<shared:InfoBar.CloseButtonStyle>
+							<Style TargetType="Button">
+								<Setter Property="Opacity" Value="0.4" />
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="Button">
+											<Border Background="Transparent" SnapsToDevicePixels="True" UseLayoutRounding="True">
+												<Viewbox ClipToBounds="True" Width="16" Height="16">
+													<Path Fill="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundLowestNormalBrushKey}}" Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+												</Viewbox>
+											</Border>
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsMouseOver" Value="True">
+													<Setter Property="Opacity" Value="0.7" />
+												</Trigger>
+												<Trigger Property="IsPressed" Value="True">
+													<Setter Property="Opacity" Value="1.0" />
+												</Trigger>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</shared:InfoBar.CloseButtonStyle>
+					</shared:InfoBar>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

@@ -358,6 +358,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 
 			viewModels.Register(BarControlKeys.QuickStylesGallery, key
 				=> new BarGalleryViewModel(key, "Styles", SetTextStyleCommand, CreateTextStyleBarGalleryItemViewModelsCollection()) {
+					CanRibbonAutoScrollToSelectedItem = false,
 					CollapsedButtonDescription = "Styles give your document a consistent, polished look.",
 					ItemTemplateSelector = this.GalleryItemTemplateSelector,
 					KeyTipText = "L",

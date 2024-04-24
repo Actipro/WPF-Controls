@@ -93,7 +93,7 @@ Sometimes it is helpful to display an alternate text version of an enumeration v
 
 This scenario is fully supported by [EnumEditBox](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox).  A `System.ComponentModel.DataAnnotations.DisplayAttribute` can be applied to a value to give it an alternate textual description.  Then as long as the [UseDisplayAttributes](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.UseDisplayAttributes) property is set to `true`, that alternate text will be used.
 
-If the `DisplayAttribute.ResourceType` property is left blank, it will use the direct value specified by the `Name` property.  Otherwise, it will look in the specified resource `Type` for a localized resource value within the property indicated by `Name`.
+If the `DisplayAttribute.ResourceType` property is left blank, it will use the direct value specified by the `Name` property.  Otherwise, it will look in the specified resource `Type` for a localized resource value within the property indicated by `Name`.  If the `Name` property is undefined, the `ShortName` property will be used instead.
 
 In this example, the `DisplayAttribute` will look for a property named `MyFirstValue` in the string resources type `MyResources` and use that property's value:
 
@@ -119,6 +119,8 @@ public enum SampleEnum {
 By default, values are listed in the order they are defined.  The exception is that in flags enumerations, group values get placed together.
 
 Sorting can be altered by implementing a custom `IComparer<Enum>` class and assigning it to the [EnumSortComparer](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.EnumSortComparer) property.  The [EnumValueNameSortComparer](xref:@ActiproUIRoot.Controls.Editors.Primitives.EnumValueNameSortComparer).[Instance](xref:@ActiproUIRoot.Controls.Editors.Primitives.EnumValueNameSortComparer.Instance) static property provides access to a pre-built comparer for listing enumeration values alphabetically by name.
+
+Alternatively, the `DisplayAttribute.Order` property can be used to define the sort order if the [UseDisplayAttributes](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.UseDisplayAttributes) property is set to `true` and a custom [EnumSortComparer](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.EnumSortComparer) is undefined.  Values that define a `DisplayAttribute.Order` will always be sorted before values that do not define the attribute.
 
 ## Hiding Enumeration Values
 

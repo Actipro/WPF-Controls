@@ -115,9 +115,13 @@ When there are not many tabs or buttons to display in the backstage, the backsta
 
 ## Auto-Selecting a Tab When Backstage Opens
 
+The first tab is auto-selected if no tab is currently selected when the backstage opens or when the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[CanSelectFirstTabOnOpen](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.CanSelectFirstTabOnOpen) property is `true`, which is that property's default value.
+
 The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[IsOpen](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.IsOpen) property gets or sets whether the backstage is currently open.  A related [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[IsOpenChanged](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.IsOpenChanged) event is raised whenever that property changes.  This is an ideal place to initialize the backstage so that a certain tab is always selected when it opens.
 
 The event handler for the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[IsOpenChanged](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.IsOpenChanged) event can check to see if the backstage is being opened and, if so, ensure the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).`SelectedItem` property is set to the desired tab.
+
+Set the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[CanSelectFirstTabOnOpen](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage.CanSelectFirstTabOnOpen) property to `false` if the selected tab will be set programmatically.
 
 ## TaskTabControl
 

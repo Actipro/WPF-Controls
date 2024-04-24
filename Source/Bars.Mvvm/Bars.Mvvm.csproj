@@ -8,9 +8,9 @@
 		<Product>Bars.Mvvm</Product>
 		<Title>Actipro Bars MVVM (for WPF)</Title>
 		<Description>Common view models, templates, and other types used when implementing Bars controls with MVVM (Model-View-ViewModel) patterns.</Description>
-		<PackageTags>Actipro UI Controls WPF XAML MVVM MMoodel View ViewModel Bars</PackageTags>
+		<PackageTags>Actipro UI Controls WPF XAML MVVM Model View ViewModel Bars</PackageTags>
 
-		<Version>24.1.1.0</Version>
+		<Version>24.1.2.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -34,7 +34,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="24.1.1" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="24.1.2" />
 	</ItemGroup>
 
 	<ItemGroup Label=".NET Framework" Condition="'$(TargetFramework)' == 'net462'">

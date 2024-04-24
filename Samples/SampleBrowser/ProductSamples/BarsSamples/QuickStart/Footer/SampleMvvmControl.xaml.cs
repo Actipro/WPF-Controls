@@ -67,7 +67,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer {
 			FooterViewModel.Padding = Options.Padding;
 			FooterViewModel.Kind = Options.FooterKind;
 
-			// A footer is only visible with the RibbonViewModel.Footer property is populated
+			// A footer is only visible when the RibbonViewModel.Footer property is populated
 			Ribbon.Footer = Options.IsFooterVisible
 				? FooterViewModel
 				: null;

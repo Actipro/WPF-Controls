@@ -406,6 +406,7 @@
 										 Summary="Advanced fluent ribbons, toolbars, menus and related controls">
 
 			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Footer (InfoBar)" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/FooterInfoBar/MainControl" />
 				<sampleBrowser:ListItemInfo Title="Document Editor (MVVM)" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/OverviewDocument?action=open" />
 				<sampleBrowser:ListItemInfo Title="Getting Started Series" TargetUri="https://ActiproSoftware/ProductSamples/BarsSamples/QuickStart/GettingStarted/MainControl" />
 				<sampleBrowser:ListItemInfo Title="Numerous other QuickStart samples" />
@@ -426,6 +427,7 @@
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Customize Built-in Menus" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/CustomizeBuiltInMenus/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Dynamic Popup Menus" Path="/ProductSamples/BarsSamples/QuickStart/DynamicPopupMenus/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Footer" Path="/ProductSamples/BarsSamples/QuickStart/Footer/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Ribbon QuickStarts" Title="Footer (InfoBar)" Path="/ProductSamples/BarsSamples/QuickStart/FooterInfoBar/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery Color Pickers" Path="/ProductSamples/BarsSamples/QuickStart/GalleryColorPickers/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery in Ribbon" Path="/ProductSamples/BarsSamples/QuickStart/GalleryInRibbon/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Layout Modes" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl"/>
@@ -703,10 +705,16 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Views" Title="Views" LogoImageSource="{x:Static views:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Animated panels to add some sizzle to your user interface">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Application Settings demo" TargetUri="https://ActiproSoftware/ProductSamples/ViewsSamples/Demo/ApplicationSettings/MainControl"/>
+				<sampleBrowser:ListItemInfo Title="Settings controls" TargetUri="https://ActiproSoftware/ProductSamples/ViewsSamples/QuickStart/SettingsIntro/MainControl"/>
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Views" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
 
+			<sampleBrowser:ProductItemInfo Category="Demos" Title="Application Settings" BlurbText="New!" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/Demo/ApplicationSettings/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Task Planning" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/Demo/TaskPlanning/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Repair Shop Scheduling" HasCustomStatusBar="True" CanFocusOnLoad="False" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/Demo/RepairShopScheduling/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Album Viewer" Path="/ProductSamples/ViewsSamples/Demo/AlbumViewer/MainControl"/>
@@ -717,6 +725,7 @@
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Wall Calendar" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/Demo/WallCalendar/MainControl"/>
 
 			<sampleBrowser:ProductItemInfo Category="Controls" Title="InertiaScrollViewer" CanFocusOnLoad="False" Path="/ProductSamples/ViewsSamples/QuickStart/InertiaScrollViewerIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo Category="Controls" Title="Settings" BlurbText="New!" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/SettingsIntro/MainControl"/>
 
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="AnimatedCanvas" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/AnimatedCanvasIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Panels" Title="AnimatedDockPanel" SideBarWidth="Narrow" Path="/ProductSamples/ViewsSamples/QuickStart/AnimatedDockPanelIntro/MainControl"/>
@@ -834,7 +843,9 @@
 				<sampleBrowser:ListItemInfo Title="Avatar control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl" />
 				<sampleBrowser:ListItemInfo Title="AvatarGroup control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/AvatarGroupIntro/MainControl" />
 				<sampleBrowser:ListItemInfo Title="Badge and NumericBadge controls" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/BadgeIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title="Card control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/CardIntro/MainControl" />
 				<sampleBrowser:ListItemInfo Title="CircularProgressBar control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/CircularProgressBarIntro/MainControl" />
+				<sampleBrowser:ListItemInfo Title="InfoBar control" TargetUri="https://ActiproSoftware/ProductSamples/SharedSamples/QuickStart/InfoBarIntro/MainControl" />
 			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -849,12 +860,14 @@
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Avatar" Path="/ProductSamples/SharedSamples/QuickStart/AvatarIntro/MainControl" SideBarWidth="Narrow" CanFocusOnLoad="False"/>
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Avatar Group" Path="/ProductSamples/SharedSamples/QuickStart/AvatarGroupIntro/MainControl" SideBarWidth="Narrow"/>
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Badge" Path="/ProductSamples/SharedSamples/QuickStart/BadgeIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Card" CanFocusOnLoad="False" Path="/ProductSamples/SharedSamples/QuickStart/CardIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Circular Progressbar" Path="/ProductSamples/SharedSamples/QuickStart/CircularProgressBarIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Color Selection" Path="/ProductSamples/SharedSamples/QuickStart/ColorSelection/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Drop Shadow Chrome" Path="/ProductSamples/SharedSamples/QuickStart/DropShadowChromeIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Dynamic Image" Path="/ProductSamples/SharedSamples/QuickStart/DynamicImageIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Gradient Brush Slider" Path="/ProductSamples/SharedSamples/QuickStart/GradientBrushSliderIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Horizontal ListBox" Path="/ProductSamples/SharedSamples/QuickStart/HorizontalListBoxIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Control QuickStarts" Title="Info Bar" CanFocusOnLoad="False" Path="/ProductSamples/SharedSamples/QuickStart/InfoBarIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Pixel Snapper" Path="/ProductSamples/SharedSamples/QuickStart/PixelSnapperIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Popup Button" Path="/ProductSamples/SharedSamples/QuickStart/PopupButtonIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Control QuickStarts" Title="Progress Spinners" Path="/ProductSamples/SharedSamples/QuickStart/ProgressSpinners/MainControl"/>

@@ -19,11 +19,13 @@ The Shared Library is not a product that is sold on its own, but any developer w
 - An [Avatar](windows-controls/avatar.md) control to represent people or objects.
 - An [AvatarGroup](windows-controls/avatar-group.md) control that renders multiple [Avatar](windows-controls/avatar.md) controls.
 - A [Badge](windows-controls/badge.md) control, which can be used to provide contextual information for other elements or can be used stand-alone.
+- A [Card](windows-controls/card.md) control to displays visually grouped information for a single subject.
 - A [CircularProgressBar](windows-controls/circular-progressbar.md) displays a ranged progress value using fluent animations.  It is similar to a native linear `ProgressBar`, except that it renders the progress in a ring shape.
 - A [CircularThumb](xref:@ActiproUIRoot.Controls.Primitives.CircularThumb) control, which is a thumb gripper with a circular shape and arrow adornment.
 - A [CustomDrawElement](windows-controls/customdrawelement.md) element, which is an element that raises an event when it is being rendered, allowing for custom drawing.
 - A [DropShadowChrome](windows-controls/dropshadowchrome.md) decorator, which can be used to render a drop shadow for a popup.
 - A [HorizontalListBox](windows-controls/horizontallistbox.md) control, which allows for selection of items that are arranged horizontally with a uniform width.
+- An [InfoBar](windows-controls/info-bar.md) control, which can be used to display essential information to a user without disrupting the user flow.
 - A [PixelSnapper](windows-controls/pixelsnapper.md) decorator, which helps prevent image and border blurring in WPF.
 - A [PopupButton](windows-controls/popupbutton.md) control, which provides an implementation of a popup and split button that can display context menu popups or a popup containing any other WPF content.
 - A [RadialSlider](windows-controls/radialslider.md) controls, which is a circular slider that can be used to input any scalar value.

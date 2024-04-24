@@ -1,7 +1,7 @@
 ---
 title: "ToggleSwitch"
 page-title: "ToggleSwitch - Shared Library Controls"
-order: 35
+order: 110
 ---
 # ToggleSwitch
 

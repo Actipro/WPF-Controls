@@ -31,6 +31,10 @@ The [AvatarGroup](avatar-group.md) control renders multiple [Avatar](avatar.md) 
 
 The [Badge](badge.md) control is used to provide contextual information for other elements or can be used stand-alone.
 
+## The Card Control
+
+The [Card](card.md) control is typically used to present visually grouped information for a single subject.
+
 ## The CircularProgressBar Control
 
 [CircularProgressBar](circular-progressbar.md) displays a ranged progress value using fluent animations.  It is similar to a native linear `ProgressBar`, except that it renders the progress in a ring shape.
@@ -64,6 +68,10 @@ The [HorizontalListBox](horizontallistbox.md) control is a restyled native `List
 ## The ImageTextInfo Class
 
 The [ImageTextInfo](imagetextinfo.md) class is a simple helper class that can be used to store image and text data for databinding.
+
+## The InfoBar Control
+
+The [InfoBar](info-bar.md) control can be used to display essential information to a user without disrupting the user flow.
 
 ## The PixelSnapper Decorator
 
