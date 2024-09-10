@@ -9,11 +9,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		private string description;
 		private RibbonBackstageHeaderAlignment headerAlignment = RibbonBackstageHeaderAlignment.Top;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private ImageSource largeImageSource;
 		private ImageSource smallImageSource;
 		private string title;
+		private VariantSize variantSize = VariantSize.Medium;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -71,6 +73,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
 		public string KeyTipText {
 			get => keyTipText;
@@ -122,6 +135,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (title != value) {
 					title = value;
 					this.NotifyPropertyChanged(nameof(Title));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the variant size of the tab.
+		/// </summary>
+		/// <value>
+		/// One of the <see cref="Bars.VariantSize"/> value.
+		/// The default value is <see cref="VariantSize.Medium"/>.
+		/// </value>
+		public VariantSize VariantSize {
+			get => variantSize;
+			set {
+				if (variantSize != value) {
+					variantSize = value;
+					this.NotifyPropertyChanged(nameof(VariantSize));
 				}
 			}
 		}

@@ -221,6 +221,10 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Docking" Title="Docking/MDI" LogoImageSource="{x:Static docking:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="A docking tool window and multiple document interface solution">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Bars ribbon and toolbar integration" TargetUri="https://ActiproSoftware/ProductSamples/DockingSamples/QuickStart/BarsIntegration/OverviewDocument"/>
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Docking" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -229,6 +233,7 @@
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Simple IDE (external window)" Path="/ProductSamples/DockingSamples/Demo/SimpleIde/OverviewDocument"/>
 
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="AdvancedTabControl Styling" SideBarWidth="Narrow" Path="/ProductSamples/DockingSamples/QuickStart/AdvancedTabControlStyling/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="QuickStarts" Title="Bars Integration" Path="/ProductSamples/DockingSamples/QuickStart/BarsIntegration/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Browser UI" HasInterop="True" SideBarWidth="Narrow" Path="/ProductSamples/DockingSamples/QuickStart/BrowserUI/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Capabilities" SideBarWidth="Narrow" Path="/ProductSamples/DockingSamples/QuickStart/Capabilities/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Container Size Restrictions" SideBarWidth="Narrow" Path="/ProductSamples/DockingSamples/QuickStart/ContainerSizeRestrictions/MainControl"/>
@@ -430,12 +435,12 @@
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Ribbon QuickStarts" Title="Footer (InfoBar)" Path="/ProductSamples/BarsSamples/QuickStart/FooterInfoBar/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery Color Pickers" Path="/ProductSamples/BarsSamples/QuickStart/GalleryColorPickers/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Gallery in Ribbon" Path="/ProductSamples/BarsSamples/QuickStart/GalleryInRibbon/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Layout Modes" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Ribbon QuickStarts" Title="Layout Modes" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/LayoutModes/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Popup and Context Menus" Path="/ProductSamples/BarsSamples/QuickStart/PopupAndContextMenus/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Recent Documents" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/RecentDocuments/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Screen Tips" Path="/ProductSamples/BarsSamples/QuickStart/ScreenTips/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (MVVM)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationMvvm/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Serialization (XAML)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationXaml/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Ribbon QuickStarts" Title="Serialization (MVVM)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationMvvm/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Ribbon QuickStarts" Title="Serialization (XAML)" Path="/ProductSamples/BarsSamples/QuickStart/SerializationXaml/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="User Interface Density" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/UserInterfaceDensity/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Variant Sizing" Path="/ProductSamples/BarsSamples/QuickStart/VariantSizing/MainControl"/>
 
@@ -755,6 +760,10 @@
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Bar Code" Title="Bar Code" LogoImageSource="{x:Static barCode:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Vector-based bar codes that scale cleanly on any type of media">
+
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="QR Code Extended Channel Interpretation support" TargetUri="https://ActiproSoftware/ProductSamples/BarCodeSamples/QuickStart/Symbology/QrCode/MainControl"/>
+			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/BarCode" />

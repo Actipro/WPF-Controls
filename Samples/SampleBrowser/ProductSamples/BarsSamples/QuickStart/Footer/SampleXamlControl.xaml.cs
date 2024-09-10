@@ -28,7 +28,7 @@
 			if (Options is null)
 				return;
 
-			// A footer is only visible with the Ribbon.FooterContent property is populated
+			// A footer is only visible when the Ribbon.FooterContent property is populated
 			// NOTE: The 'footer' element is defined in XAML
 			ribbon.FooterContent = Options.IsFooterVisible
 				? footer

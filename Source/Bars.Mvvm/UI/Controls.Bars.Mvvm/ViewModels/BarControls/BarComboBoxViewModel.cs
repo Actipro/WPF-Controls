@@ -11,6 +11,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	public class BarComboBoxViewModel : BarGalleryViewModel {
 
 		private string description;
+		private string inlineImageSourcePath = string.Empty;
 		private bool isEditable;
 		private bool isPreviewEnabledWhenPopupClosed;
 		private bool isReadOnly;
@@ -145,7 +146,21 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-
+		
+		/// <summary>
+		/// Gets or sets the path to an <c>ImageSource</c> gallery item property, corresponding to optional inline image display.
+		/// </summary>
+		/// <value>The path to an <c>ImageSource</c> gallery item property, corresponding to optional inline image display.</value>
+		public string InlineImageSourcePath {
+			get => inlineImageSourcePath;
+			set {
+				if (inlineImageSourcePath != value) {
+					inlineImageSourcePath = value;
+					this.NotifyPropertyChanged(nameof(InlineImageSourcePath));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets whether the combobox is editable.
 		/// </summary>
@@ -347,7 +362,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 			text ??= string.Empty;
 
-			base.SelectItemByValueMatch<T>(i => text.Equals(getItemTextFunc(i) ?? string.Empty));
+			this.SelectItemByValueMatch<T>(i => text.Equals(getItemTextFunc(i) ?? string.Empty));
 
 			this.Text = text;
 		}
@@ -364,7 +379,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			if (getMatchedItemTextFunc == null)
 				throw new ArgumentNullException(nameof(getMatchedItemTextFunc));
 
-			var matchedItem = base.SelectItemByValueMatch(matchPredicate);
+			var matchedItem = this.SelectItemByValueMatch(matchPredicate);
 
 			if (matchedItem != null) {
 				this.Text = getMatchedItemTextFunc(matchedItem) ?? string.Empty;

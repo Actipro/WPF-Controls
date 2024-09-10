@@ -23,7 +23,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		private bool		isFirstBackstage				= true;
 		private bool		sampleButton3CanCloseBackstage	= true;
 		private string		sampleButton3Label				= "Sample Button 3";
-		private bool		selectOptionsTabOnOpen			= false;
+		private string		selectedTabKeyOnOpen			= "(Previous Selection)";
 		private bool		useSampleButtonImages			= false;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,15 +64,16 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 			// Optionally pre-select the 'Options' tab when opening the backstage
 			if (sender is RibbonBackstage backstage
 				&& backstage.IsOpen
-				&& this.SelectOptionsTabOnOpen) {
+				&& !this.CanSelectFirstTabOnOpen
+				&& !string.IsNullOrWhiteSpace(this.SelectedTabKeyOnOpen)) {
 
 				// Find the desired tab to select
-				var optionsTab = backstage.Items.OfType<RibbonBackstageTabItem>()
-					.FirstOrDefault(tabItem => tabItem.Key == "Options");
+				var tab = backstage.Items.OfType<RibbonBackstageTabItem>()
+					.FirstOrDefault(tabItem => tabItem.Key == SelectedTabKeyOnOpen);
 
 				// Configure the backstage selection
-				if (optionsTab != null)
-					backstage.SelectedItem = optionsTab;
+				if (tab != null)
+					backstage.SelectedItem = tab;
 			}
 		}
 
@@ -199,7 +200,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		/// This property is used to show large variants of the most important tabs when the backstage is initially displayed.
 		/// </remarks>
 		/// <value>One of the <see cref="VariantSize"/> values.</value>
-		public VariantSize PrimaryBackstageTabVariantSize => (IsFirstBackstage) ? VariantSize.Large : VariantSize.Small;
+		public VariantSize PrimaryBackstageTabVariantSize => (IsFirstBackstage) ? VariantSize.Large : VariantSize.Medium;
 
 		/// <summary>
 		/// Gets or sets whether the third sample button can close backstage.
@@ -238,15 +239,15 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage {
 		public ImageSource SampleButtonImageSource => UseSampleButtonImages ? new BitmapImage(new Uri("/Images/Icons/QuickStart16.png", UriKind.Relative)) : null;
 
 		/// <summary>
-		/// Gets or sets if the "Options" tab should be selected when opening the backstage.
+		/// Gets or sets the key of the tab that should be manually selected when the backstage opens.
 		/// </summary>
-		/// <value><c>true</c> to select the "Options" tab when the backstage is opened; otherwise, <c>false</c> to use the default selection.</value>
-		public bool SelectOptionsTabOnOpen {
-			get => selectOptionsTabOnOpen;
+		/// <value>A string value.</value>
+		public string SelectedTabKeyOnOpen {
+			get => selectedTabKeyOnOpen;
 			set {
-				if (selectOptionsTabOnOpen != value) {
-					selectOptionsTabOnOpen = value;
-					NotifyPropertyChanged(nameof(SelectOptionsTabOnOpen));
+				if (SelectedTabKeyOnOpen != value) {
+					selectedTabKeyOnOpen = value;
+					NotifyPropertyChanged(nameof(SelectedTabKeyOnOpen));
 				}
 			}
 		}

@@ -10,6 +10,118 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/9/2024 - Version 24.1.3</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bar Code</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated QRCodeSymbology to support Extended Channel Interpretation (ECI), which allows all UTF-8 characters." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the Ribbon.AreTabsVisible property, which can be set to false to hide ribbon tabs when there is only a single tab in the ribbon.  It is recommended to also hide the application button and the tab row toolbar when using this feature." />
+				<sampleBrowser:BulletContentControl Content="Added the Ribbon.GroupLabelMode property, which can be set to Always when a ribbon in Simplified layout mode should display group labels." />
+				<sampleBrowser:BulletContentControl Content="Added the BarComboBox.InlineImageSourcePath property that can bind to an ImageSource-based property on the selected gallery item to render a small image next to the inline text." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstageViewModel.SelectedItem property to allow the selected tab to be controlled using MVVM." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstageTabViewModel.VariantSize property to allow variant sizing to be controlled using MVVM." />
+				<sampleBrowser:BulletContentControl Content="Added IsVisible property to appropriate view models to toggle the visibility of the corresponding control." />
+				<sampleBrowser:BulletContentControl Content="Added AllowLabelsOnQuickAccessToolBar property to RibbonViewModel." />
+				<sampleBrowser:BulletContentControl Content="Added the BarMenuItem.CanSelectOnPointerOver property." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonQuickAccessToolBar.KeyTipTextPrefix property, which can optionally be set when the auto-generated numeric key tip text for QAT items might conflict with ribbon tab key tip text." />
+				<sampleBrowser:BulletContentControl Content="Updated the Layout Modes QuickStart to demonstrate the new Ribbon.AreTabsVisible and GroupLabelMode features." />
+				<sampleBrowser:BulletContentControl Content="Updated ribbon tab appearance when the ribbon is in a minimized state." />
+				<sampleBrowser:BulletContentControl Content="Updated BarComboBox to open the popup when the Alt+Down key is pressed." />
+				<sampleBrowser:BulletContentControl Content="Updated how BarComboBox restores focus when its popup is open and the Esc key is pressed." />
+				<sampleBrowser:BulletContentControl Content="Updated a non-editable BarComboBox to open the popup when the Up or Down arrow keys are pressed." />
+				<sampleBrowser:BulletContentControl Content="Updated a non-editable BarComboBox to support text search." />
+				<sampleBrowser:BulletContentControl Content="Updated an editable BarComboBox that programmatically receives focus to move focus to its embedded TextBox." />
+				<sampleBrowser:BulletContentControl Content="Updated BarComboBoxAutomationPeer to implement IValueProvider." />
+				<sampleBrowser:BulletContentControl Content="Updated BarComboBoxViewModel's calls to SelectItemByValueMatch to support overridden versions." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonQuickAccessToolBar when in a title bar to better support menu mode focus tracking." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonBackstage tabs and buttons to support wrapping of long labels." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonBackstage tabs to support coerced images when the small and/or large image source is undefined." />
+				<sampleBrowser:BulletContentControl Content="Updated BarPopupButtonBase logic for ensuring the popup is at least as wide as the button to work better with menu galleries." />
+				<sampleBrowser:BulletContentControl Content="Updated the BarMenuGallery filter button to show in the UIA peer tree when visible." />
+				<sampleBrowser:BulletContentControl Content="Updated BarMenuGallery in a popup that is opened via key tip to properly commit the initially-selected gallery item on Enter or Space press." />
+				<sampleBrowser:BulletContentControl Content="Updated BarSplitButtonAutomationPeer to return a control type of SplitButton instead of MenuItem." />
+				<sampleBrowser:BulletContentControl Content="Updated the themes to use SystemThemeCatalogRegistrar." />
+				<sampleBrowser:BulletContentControl Content="Updated KeyTipTextGenerator logic for examining labels to better handle other cultures." />
+				<sampleBrowser:BulletContentControl Content="Updated screen tip positioning logic." />
+				<sampleBrowser:BulletContentControl Content="Updated serialization to include support for the Ribbon.AllowLabelsOnQuickAccessToolbar property." />
+				<sampleBrowser:BulletContentControl Content="Updated BarSplitMenuItem to support display of input gesture text." />
+				<sampleBrowser:BulletContentControl Content="Updated how disabled button images render when in a title bar QAT that requires monochrome images." />
+				<sampleBrowser:BulletContentControl Content="Updated how data contexts are cleared for generated controls." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a RibbonGallery popup might not cover the gallery properly on touchscreen PCs." />
+				<sampleBrowser:BulletContentControl Content="Fixed IsInputGestureTextVisible property incorrectly defaulting to false instead of true." />
+				<sampleBrowser:BulletContentControl Content="Fixed RibbonContextualTabItemForegroundHoverBrushKey theme resource being applied to non-contextual tabs instead of contextual tabs.  Updated the RibbonContextualTabItemForegroundHoverBrushKey to be the same as RibbonContextualTabItemForegroundNormalBrushKey since modern themes do not change foreground on mouse over." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where key tips in a Window with RTL flow direction appeared reversed." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where BarSplitMenuItem screen tip placement could be on the wrong side." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where switching from Classic layout mode to Simplified layout mode and back might keep some controls hidden." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a BarCheckBox that was overflowed to a menu in simplified layout would not update the IsChecked property when the menu item was invoked." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a BarTextBox that was overflowed to a menu in simplified layout would not update the Text property when the menu item was updated." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a Bars Integration sample showing how Ribbon and StandaloneToolBar can be used on a main Window without changing the active docking window when there are floating docking windows." />
+				<sampleBrowser:BulletContentControl Content="Added the DockSite.FloatingWindowOwnerMode property that can be set to Always to force floating windows with MDI to always remain on top of the main window." />
+				<sampleBrowser:BulletContentControl Content="Added UIA peers for scroll and overflow buttons within docking window containers." />
+				<sampleBrowser:BulletContentControl Content="Updated the tabbed MDI open documents menu to include DocumentWindow.FileName as a tooltip on menu items." />
+				<sampleBrowser:BulletContentControl Content="Updated how the ToolWindow.ContainerAutoHideSize property is set." />
+				<sampleBrowser:BulletContentControl Content="Updated context menus to support access keys." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where an exception could be thrown when drag-docking windows in a certain scenario." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the AutoCompleteBox.CanAutoSelectFirstItem property that determines if the first suggestion item can be automatically selected in certain scenarios, such as when typing is occurring." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox to not request bringing a tree node that is stopping editing into view." />
+				<sampleBrowser:BulletContentControl Content="Updated context menus to support access keys." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where inserting TreeListBox nodes when filtering was active could lead to the new node displaying in the wrong location." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where TreeListView tree lines could scroll horizontally when there were frozen columns." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where TreeListBoxItemAdapter.OnDragHover was passed the incorrect target item." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Group template to better handle UIA peer updates in .NET 8." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated RAR files to be treated like files instead of expandable archive folders within a TreeListBox." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where Shell context menus could throw an exception in a certain scenario." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated all key processing to consistently handle modifier keys." />
+				<sampleBrowser:BulletContentControl Content="Updated the logic for pasting a full line when there is a selection to match current Visual Studio editor behavior." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt completion session logic for canceling the session if the placement bounds are no longer in view." />
+				<sampleBrowser:BulletContentControl Content="Updated data bindings to the SyntaxEditor.Text property to support OneWay mode." />
+				<sampleBrowser:BulletContentControl Content="Updated hit test logic." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the IntelliPrompt completion list might cover the caret when very near the left edge of the screen." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt tips to include documentation comment remarks sections, if available." />
+				<sampleBrowser:BulletContentControl Content="Updated the Roslyn binary assembly loading logic." />
+				<sampleBrowser:BulletContentControl Content="Updated C# context factory logic related to range operators." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the WindowChrome.CanMouseActivateOverToolBar property, which can be set to false to prevent the containing Window from being activated on click over any control with the WindowChrome.ElementKind attached property set to ToolBar." />
+				<sampleBrowser:BulletContentControl Content="Improved menu item check border contrast in dark themes." />
+				<sampleBrowser:BulletContentControl Content="Updated style setter bindings on several ItemsControl item containers." />
+				<sampleBrowser:BulletContentControl Content="Updated the ThemeManager attached property for setting the theme on a hierarchy to work when no WPF Application is available." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved PopupResizeGrip resize logic." />
+				<sampleBrowser:BulletContentControl Content="Improved DynamicImage logic for determining when to update images." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with InfoBar throwing an exception during the arrange pass if the available width was too small." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue UserPromptBuilder not invoking the BeforeShow callback." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where ITextLayout may not apply text formats properly in a certain scenario." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">4/24/2024 - Version 24.1.2</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -49,10 +161,6 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated visible whitespace tab arrows to only render when there is enough space." />
 				<sampleBrowser:BulletContentControl Content="Updated outlining margin rendering logic for view lines with intra-line spacers." />
-			</StackPanel>
-			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
-			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
-				<sampleBrowser:BulletContentControl Content="Fixed an issue where VBIndentProvider might not indent properly after lines containing commas." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

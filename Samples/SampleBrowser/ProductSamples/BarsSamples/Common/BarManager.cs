@@ -395,7 +395,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Common {
 				=> new BarButtonViewModel(key, NotImplementedCommand) { Description = "Select objects that are behind the text." });
 
 			viewModels.Register(BarControlKeys.SelectAll, key
-				=> new BarButtonViewModel(key, ApplicationCommands.SelectAll) { KeyTipText = "SA", Description = "Select all text and objects." });
+				=> new BarButtonViewModel(key, ApplicationCommands.SelectAll) { KeyTipText = "A", Description = "Select all text and objects." });
 
 			viewModels.Register(BarControlKeys.SelectMenu, key
 				=> new BarPopupButtonViewModel(key, "Select", "SL") {

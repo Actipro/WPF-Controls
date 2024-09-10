@@ -48,6 +48,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				return null;
 		}
 
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// PUBLIC PROCEDURES
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		/// <summary>
 		/// Returns whether the item should prefer menu item appearance, which is only when within a <see cref="BarMenuGallery"/>, 
 		/// and either <see cref="BarMenuGallery.UseMenuItemAppearance"/> is set or the item requests it via <see cref="BarGalleryItem.LayoutBehavior"/>.
@@ -57,7 +61,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <returns>
 		/// <c>true</c> if the item should prefer menu item appearance; otherwise, <c>false</c>.
 		/// </returns>
-		private static bool PrefersMenuItemAppearance(object item, DependencyObject container) {
+		protected virtual bool PrefersMenuItemAppearance(object item, DependencyObject container) {
 			var containingGallery = GetGallery(container);
 			var prefersMenuItemAppearance = (containingGallery is BarMenuGallery menuGallery)
 				&& (
@@ -67,10 +71,6 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 			return prefersMenuItemAppearance;
 		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <inheritdoc/>
 		public override DataTemplate SelectTemplate(object item, DependencyObject container) {

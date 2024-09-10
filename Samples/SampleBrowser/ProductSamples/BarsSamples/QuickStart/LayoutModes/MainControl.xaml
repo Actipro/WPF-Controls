@@ -14,6 +14,8 @@
 			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
 				<sampleBrowser:SampleOptionsPropertyGrid>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=classicRibbon, Path=CanChangeLayoutMode}" DisplayName="Can change layout mode on Ribbon Display Options menu" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=classicRibbon, Path=GroupLabelMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=classicRibbon, Path=AreTabsVisible}" />
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>
 
@@ -71,7 +73,9 @@
 						
 						<!-- Ribbon Control with Simplified layout -->
 						<bars:Ribbon x:Name="simplifiedRibbon" IsApplicationButtonVisible="False"
+									 AreTabsVisible="{Binding ElementName=classicRibbon, Path=AreTabsVisible}"
 									 CanChangeLayoutMode="{Binding ElementName=classicRibbon, Path=CanChangeLayoutMode}"
+									 GroupLabelMode="{Binding ElementName=classicRibbon, Path=GroupLabelMode}"
 									 LayoutMode="Simplified" UserInterfaceDensity="Spacious"
 									 DataContext="{Binding Ribbon}"
 									 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}" />

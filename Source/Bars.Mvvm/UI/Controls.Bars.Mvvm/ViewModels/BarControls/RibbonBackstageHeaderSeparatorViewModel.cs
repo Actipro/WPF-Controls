@@ -6,6 +6,7 @@
 	public class RibbonBackstageHeaderSeparatorViewModel : ObservableObjectBase {
 
 		private RibbonBackstageHeaderAlignment headerAlignment = RibbonBackstageHeaderAlignment.Top;
+		private bool isVisible = true;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -45,7 +46,18 @@
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 	}
 
 }

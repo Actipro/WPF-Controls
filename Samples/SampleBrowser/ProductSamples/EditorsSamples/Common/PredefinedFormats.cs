@@ -279,6 +279,8 @@ namespace ActiproSoftware.ProductSamples.EditorsSamples.Common {
 					new PredefinedFormat("Constant (invariant)", "c"),
 					new PredefinedFormat("General (short)", "g"),
 					new PredefinedFormat("General (long)", "G"),
+					new PredefinedFormat(@"Custom (hh:mm)", @"hh:mm"),
+					new PredefinedFormat(@"Custom (+hh:mm)", @"+hh:mm"),
 					new PredefinedFormat(@"Custom (hh\h mm\m ss\s)", @"hh\h mm\m ss\s"),
 					new PredefinedFormat(@"Custom (+dd:hh:mm:ss.fff)", @"+dd:hh:mm:ss.fff"),
 				};

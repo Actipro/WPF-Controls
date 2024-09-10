@@ -219,6 +219,9 @@ Menu galleries that contain many items displayed in multiple columns generally u
 
 The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[MenuResizeMode](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MenuResizeMode) and [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[ResizeMode](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.ResizeMode) properties set the resize mode for the containing menu to use.
 
+> [!TIP]
+> For performance reasons in properly supporting virtualization, it is recommended that galleries that can grow vertically to more than a handful of rows should be set to either `Vertical` or `Both` resize mode, per the advice above.
+
 ### Surrounding Separators on Menu
 
 Menu galleries will automatically render a separator between them and surrounding menu items.  In some scenarios, this may be undesired.

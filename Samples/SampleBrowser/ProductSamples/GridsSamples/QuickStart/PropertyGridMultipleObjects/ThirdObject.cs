@@ -9,6 +9,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMul
 	public class ThirdObject : ObservableObjectBase {
 
 		private string name;
+		private int number;
 		private string thirdOnly;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +29,24 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMul
 				if (this.name != value) {
 					this.name = value;
 					this.NotifyPropertyChanged("Name");
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the number.
+		/// </summary>
+		/// <value>The number.</value>
+		[DefaultValue(0)]
+		[Description("The number of the object, which is defined in a separate class but will still be merged.")]
+		public int Number {
+			get {
+				return this.number;
+			}
+			set {
+				if (this.number != value) {
+					this.number = value;
+					this.NotifyPropertyChanged("Number");
 				}
 			}
 		}

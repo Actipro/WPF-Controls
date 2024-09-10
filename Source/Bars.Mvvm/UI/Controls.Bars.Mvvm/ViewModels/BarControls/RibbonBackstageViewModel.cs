@@ -10,6 +10,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		private DataTemplateSelector contentTemplateSelector;
 		private bool isOpen;
+		private object selectedItem;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -66,6 +67,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.IsOpen = true;
 		}
 
+		/// <summary>
+		/// Gets or sets the Backstage's selected item, which is a tab item in the <see cref="Items"/> collection.
+		/// </summary>
+		/// <value>
+		/// The selected item.
+		/// </value>
+		public object SelectedItem {
+			get => selectedItem;
+			set {
+				if (selectedItem != value) {
+					selectedItem = value;
+					this.NotifyPropertyChanged(nameof(SelectedItem));
+				}
+			}
+		}
+		
 		/// <inheritdoc/>
 		public override string ToString() {
 			return $"{this.GetType().FullName}[{this.Items.Count} items]";

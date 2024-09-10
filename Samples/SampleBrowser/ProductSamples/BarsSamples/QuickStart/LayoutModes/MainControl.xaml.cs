@@ -18,7 +18,10 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.LayoutModes {
 		public MainControl() {
 			InitializeComponent();
 
-			this.DataContext = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel();
+			// Don't use a tab row toolbar in this sample
+			var viewModel = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel();
+			viewModel.Ribbon.TabRowToolBar = null;
+			this.DataContext = viewModel;
 		}
 
 	}

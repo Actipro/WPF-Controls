@@ -11,6 +11,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private VariantCollection controlVariants;
 		private string description;
 		private VariantCollection groupVariants;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private string title;
@@ -108,7 +109,21 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		/// <remarks>
+		/// This property should not be set to control the visibility of contextual tabs.
+		/// </remarks>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
 		public string KeyTipText {
 			get {

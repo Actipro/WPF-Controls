@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
@@ -13,6 +12,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private object commandParameter;
 		private string description;
 		private RibbonBackstageHeaderAlignment headerAlignment = RibbonBackstageHeaderAlignment.Top;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private ImageSource smallImageSource;
@@ -109,6 +109,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (headerAlignment != value) {
 					headerAlignment = value;
 					this.NotifyPropertyChanged(nameof(HeaderAlignment));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
 				}
 			}
 		}

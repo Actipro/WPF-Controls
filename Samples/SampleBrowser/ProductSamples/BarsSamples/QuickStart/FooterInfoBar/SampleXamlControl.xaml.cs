@@ -38,8 +38,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.FooterInfoBar {
 		/// Shows the footer.
 		/// </summary>
 		private void ShowFooter() {
-			// When the footer is closed the FooterContent is cleared.  Show the footer again
-			// by re-assigning the original RibbonFooterControl to the FooterContent
+			// When the footer is closed the FooterContent is cleared.
+			// Show the footer again by re-assigning the original RibbonFooterControl to the FooterContent.
 			ribbon.FooterContent = footer;
 		}
 
@@ -49,7 +49,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.FooterInfoBar {
 
 		/// <inheritdoc/>
 		protected override void OnOptionsPropertyValueChanged(OptionsViewModel oldValue, OptionsViewModel newValue) {
-			// Configure the command to show the MVVM-based footer
+			// Configure the command to show the XAML-based footer
 			if (newValue is not null)
 				newValue.ShowFooterXamlCommand = new DelegateCommand<object>(_ => ShowFooter());
 

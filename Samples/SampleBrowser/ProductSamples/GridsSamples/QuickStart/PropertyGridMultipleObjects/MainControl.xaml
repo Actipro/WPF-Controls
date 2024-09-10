@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMultipleObjects"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	>
@@ -44,6 +45,8 @@
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="3" />
 							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
+							<RowDefinition Height="Auto" />
 						</Grid.RowDefinitions>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" MinWidth="80" />
@@ -53,15 +56,19 @@
 
 						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
 						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-						<TextBlock Grid.Row="2" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
-						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-						<TextBlock Grid.Row="4" Text="FirstOnly" TextAlignment="Right" VerticalAlignment="Center" />
-						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].FirstOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="Number" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="4" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="6" Text="FirstOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="6" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[0].FirstOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 
 					<TextBlock Margin="0,10,0,5" Text="Second Object Properties" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
 					<Grid>
 						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="3" />
 							<RowDefinition Height="Auto" />
@@ -76,15 +83,19 @@
 
 						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
 						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-						<TextBlock Grid.Row="2" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
-						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-						<TextBlock Grid.Row="4" Text="SecondOnly" TextAlignment="Right" VerticalAlignment="Center" />
-						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].SecondOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="Number" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="4" Text="DerivedOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].DerivedOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="6" Text="SecondOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="6" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[1].SecondOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 
 					<TextBlock Margin="0,10,0,5" Text="Third Object Properties" Style="{StaticResource SampleSectionHeadingTextBlockStyle}" />
 					<Grid>
 						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="3" />
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="3" />
 							<RowDefinition Height="Auto" />
@@ -97,8 +108,10 @@
 
 						<TextBlock Text="Name" TextAlignment="Right" VerticalAlignment="Center" />
 						<TextBox Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-						<TextBlock Grid.Row="2" Text="ThirdOnly" TextAlignment="Right" VerticalAlignment="Center" />
-						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].ThirdOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="2" Text="Number" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBlock Grid.Row="4" Text="ThirdOnly" TextAlignment="Right" VerticalAlignment="Center" />
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding ElementName=objectsListBox, Path=Items[2].ThirdOnly, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 					</Grid>
 
 				</StackPanel>
@@ -121,7 +134,10 @@
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 
 		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
-							DataObjects="{Binding ElementName=objectsListBox, Path=SelectedItems}" IsCategorized="False" CanClearDataObjectOnUnload="True" />
+							DataObjects="{Binding ElementName=objectsListBox, Path=SelectedItems}" 
+							gridseditors:BuiltinPropertyEditors.IsEnabled="True" 
+							IsCategorized="False" CanClearDataObjectOnUnload="True">
+		</grids:PropertyGrid>
 
 	</Grid>
 

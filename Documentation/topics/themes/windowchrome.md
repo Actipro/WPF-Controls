@@ -41,6 +41,7 @@ Features include:
 - Full interop (WinForms, etc.) and ClearType support
 - Replacement of the Win32-based system menu with a themeable WPF one, whose menu items can be customized
 - Support for animated overlay UI that temporarily overlays the entire window, such as for a home screen, Backstage, or processing indicator
+- Support for preventing window activation when clicking a ribbon or toolbar
 
 The ability to use semi-transparent border outer glow effects and still have full support for interop controls is rather unique, since normally windows with transparent backgrounds don't render interop controls in WPF.  We have created special code to work around this.  By default, only modern themes activate the outer glow effects.
 
@@ -513,6 +514,12 @@ This code shows how the title bar height can be used as a top margin for a contr
 ...
 <Grid Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}"> ... </Grid>
 ```
+
+## Preventing Window Activation When Clicking a Ribbon or ToolBar
+
+The [CanMouseActivateOverToolBar](xref:@ActiproUIRoot.Themes.WindowChrome.CanMouseActivateOverToolBar) property can be set to `false` to prevent the `Window` from being activated when clicking a ribbon or toolbar control.  This feature is useful when working with floating docking windows, such as in the Actipro Docking/MDI product.
+
+See the [Floating Dock Hosts](../docking/docking-window-features/floating-dock-hosts.md) topic for a detailed explanation of how to use this feature.
 
 ## WindowChrome Samples
 

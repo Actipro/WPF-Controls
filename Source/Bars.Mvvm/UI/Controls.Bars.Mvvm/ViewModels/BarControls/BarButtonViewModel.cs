@@ -17,6 +17,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string description;
 		private string inputGestureText;
 		private bool isInputGestureTextVisible = true;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private ImageSource largeImageSource;
@@ -194,7 +195,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <summary>
+		/// Gets or sets whether the control is currently visible.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the key tip text used to access the control.
 		/// </summary>

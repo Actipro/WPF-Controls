@@ -21,6 +21,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.LayoutMode}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.UserInterfaceDensity}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.MinimizedState}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarAllowLabels}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarLocation}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarMode}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=rootSampleControl, Path=OptionsModel.QuickAccessToolBarItems}" />
@@ -40,7 +41,7 @@
 					a feature like the Simplified layout, the serializer will ignore those settings
 					even if they are present in the serialized data.
 					<LineBreak /><LineBreak />
-					Make changes to the Ribbon layout like moving the location of the Quick Access Toolbar,
+					Make changes to the Ribbon layout like moving the location of the Quick Access Toolbar (QAT),
 					changing the user interface density, or minimzing the Ribbon. Save the layout at any
 					time and Restore it later. Use the Restore Original button to revert all changes
 					back to the state at the time the sample was loaded.

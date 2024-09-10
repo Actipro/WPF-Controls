@@ -16,6 +16,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 		private string category;
 		private string description;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private BarGalleryItemLayoutBehavior layoutBehavior = BarGalleryItemLayoutBehavior.Default;
@@ -223,6 +224,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// <inheritdoc cref="IBarGalleryItemViewModel.IsLabelVisible"/>
 		public virtual bool IsLabelVisible
 			=> layoutBehavior == BarGalleryItemLayoutBehavior.MenuItem;
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
 
 		/// <inheritdoc cref="IBarGalleryItemViewModel.KeyTipText"/>
 		public string KeyTipText {

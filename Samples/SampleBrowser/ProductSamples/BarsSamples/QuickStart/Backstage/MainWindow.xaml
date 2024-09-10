@@ -5,6 +5,8 @@
 	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="Actipro Backstage Sample" Height="600" Width="800"
 	ResizeMode="CanResizeWithGrip"
 	FocusManager.FocusedElement="{Binding ElementName=editor}"
@@ -25,7 +27,7 @@
 									  IsOpen="{Binding IsBackstageOpen}" IsOpenChanged="OnBackstageIsOpenChanged">
 					<!-- Introduction Tab -->
 					<bars:RibbonBackstageTabItem Key="Introduction" SmallImageSource="/Images/Icons/HomeMono16.png" LargeImageSource="/Images/Icons/HomeMono32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
-						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+						<ScrollViewer Margin="40,20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
 							<StackPanel>
 								<TextBlock Text="Introduction" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
 								<TextBlock TextWrapping="Wrap">
@@ -60,7 +62,7 @@
 					
 					<!-- Appearance Tab -->
 					<bars:RibbonBackstageTabItem Key="Appearance" KeyTipText="P" SmallImageSource="/Images/Icons/ColorPicker16.png" LargeImageSource="/Images/Icons/ColorPicker32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
-						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+						<ScrollViewer Margin="40,20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
 							<StackPanel>
 								<TextBlock Text="Mica Effect" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
 								<TextBlock TextWrapping="Wrap">
@@ -97,7 +99,7 @@
 					
 					<!-- Backstage Controls Tab -->
 					<bars:RibbonBackstageTabItem Key="BackstageControls" HeaderAlignment="Bottom">
-						<Grid Margin="20">
+						<Grid Margin="40,20">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
@@ -189,63 +191,69 @@
 
 					<!-- Options Tab -->
 					<bars:RibbonBackstageTabItem Key="Options" HeaderAlignment="Bottom">
-						<ScrollViewer Margin="20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
-							<StackPanel>
-								<TextBlock Text="Options" Margin="0,0,0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+						<Grid Margin="40,0,0,0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							
+							<TextBlock Grid.Row="0" Text="Options" Margin="0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
+							<ScrollViewer Grid.Row="1" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
+								<StackPanel Margin="0,0,40,0">
+
+									<views:SettingsGroup Header="Opening backstage" Description="These options affect the backstage when it is opened.">
+										<views:SettingsCard Header="Use initial backstage view" Description="This sample shows a more limited Backstage when initially opened and hides buttons that might not be useful at first launch.">
+											<shared:ToggleSwitch IsChecked="{Binding IsFirstBackstage}" />
+										</views:SettingsCard>
+										<views:SettingsExpander Header="Select first tab" Description="Selects the first tab when opened. Disable to keep previous tab selected or manually select a tab.">
+											<views:SettingsExpander.Content>
+												<shared:ToggleSwitch IsChecked="{Binding CanSelectFirstTabOnOpen}" />
+											</views:SettingsExpander.Content>
+											<views:SettingsCard Header="Manually select tab" Description="Manually select a specific tab when opening (requires disabling 'Can select first tab on open')." IsEnabled="{Binding !CanSelectFirstTabOnOpen}">
+												<ComboBox SelectedItem="{Binding SelectedTabKeyOnOpen}">
+													<sys:String>(Previous Selection)</sys:String>
+													<sys:String>Introduction</sys:String>
+													<sys:String>Appearance</sys:String>
+													<sys:String>BackstageControls</sys:String>
+													<sys:String>Options</sys:String>
+												</ComboBox>
+											</views:SettingsCard>
+										</views:SettingsExpander>
+									</views:SettingsGroup>
+									<views:SettingsGroup Header="General properties">
+										<views:SettingsCard Header="Can close" Description="Toggle the visibility of the close button.  The backstage can still close programmatically.">
+											<shared:ToggleSwitch IsChecked="{Binding CanClose}" />
+										</views:SettingsCard>
+										<views:SettingsCard Header="Show images on sample buttons" Description="Toggle the visibility of small images on buttons which are not disabled by default.">
+											<shared:ToggleSwitch IsChecked="{Binding UseSampleButtonImages}" />
+										</views:SettingsCard>
+										<views:SettingsExpander Header="Header width" Description="Adjust the width of the header where tabs and buttons are displayed.">
+											<views:SettingsCard Header="Minimum">
+												<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+													<TextBlock Margin="0,0,10,0" Text="{Binding BackstageMinHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
+													<Slider Width="100" Minimum="0" Maximum="400" Value="{Binding BackstageMinHeaderWidth}" />
+												</StackPanel>
+											</views:SettingsCard>
+											<views:SettingsCard Header="Maximum">
+												<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+													<TextBlock Margin="0,0,10,0" Text="{Binding BackstageMaxHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
+													<Slider Width="100" Minimum="0" Maximum="400" Value="{Binding BackstageMaxHeaderWidth}" />
+												</StackPanel>
+											</views:SettingsCard>
+										</views:SettingsExpander>
+									</views:SettingsGroup>
+									<views:SettingsGroup Header="Third Sample Button">
+										<views:SettingsCard Header="Closes backstage" Description="By default, clicking a button closes the backstage. Use this option to toggle the behavior of the third button.">
+											<shared:ToggleSwitch IsChecked="{Binding SampleButton3CanCloseBackstage}" />
+										</views:SettingsCard>
+										<views:SettingsCard Header="Label" Description="Customize the label of the third sample button.">
+											<TextBox MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+										</views:SettingsCard>
+									</views:SettingsGroup>
 								
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="Auto" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-										<RowDefinition Height="Auto" />
-									</Grid.RowDefinitions>
-									
-									<TextBlock Grid.Row="0" Grid.Column="0" Text="Use initial backstage view" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="0" Grid.Column="1" Margin="4" IsChecked="{Binding IsFirstBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="1" Grid.Column="0" Text="Can select first tab on open" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="1" Grid.Column="1" Margin="4" IsChecked="{Binding CanSelectFirstTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="2" Grid.Column="0" Text="Can close" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="2" Grid.Column="1" Margin="4" IsChecked="{Binding CanClose}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="3" Grid.Column="0" Text="Show images on sample buttons" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="3" Grid.Column="1" Margin="4" IsChecked="{Binding UseSampleButtonImages}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="4" Grid.Column="0" Text="Select this 'Options' tab on open" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="4" Grid.Column="1" Margin="4" IsChecked="{Binding SelectOptionsTabOnOpen}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="5" Grid.Column="0" Text="Header minimum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMinHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
-										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMinHeaderWidth}" />
-									</StackPanel>
-
-									<TextBlock Grid.Row="6" Grid.Column="0" Text="Header maximum width" VerticalAlignment="Center" />
-									<StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-										<TextBlock Margin="4" Width="20" Text="{Binding BackstageMaxHeaderWidth}" VerticalAlignment="Center" TextAlignment="Right" />
-										<Slider Margin="4,4,0,4" Width="100" Minimum="0" Maximum="300" Value="{Binding BackstageMaxHeaderWidth}" />
-									</StackPanel>
-
-									<TextBlock Grid.Row="7" Grid.Column="0" Text="Third sample button closes backstage" VerticalAlignment="Center" />
-									<shared:ToggleSwitch Grid.Row="7" Grid.Column="1" Margin="4" IsChecked="{Binding SampleButton3CanCloseBackstage}" VerticalAlignment="Center" HorizontalAlignment="Right" />
-
-									<TextBlock Grid.Row="8" Grid.Column="0" VerticalAlignment="Center">Label for third sample button:</TextBlock>
-									<TextBox Grid.Row="8" Grid.Column="1" Margin="4" MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
-								</Grid>
-								
-							</StackPanel>
-						</ScrollViewer>
+								</StackPanel>
+							</ScrollViewer>
+						</Grid>
 					</bars:RibbonBackstageTabItem>
 					
 					<!-- Another Sample Button (which executes a default command) -->

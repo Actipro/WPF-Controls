@@ -124,10 +124,69 @@ To ensure that a portion of the hosted floating windows are always visible to th
 
 ## Determining Which Floating Windows Show in the Windows TaskBar
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowShowInTaskBarMode) property can be used to determine which kinds of non-hosted floating windows are displayed in the Windows taskbar.  The default behavior is for any floating window that contains a "workspace" (such as a floating tabbed MDI document) to show up in the taskbar and not be "owned" by the main window.  This means that the floating window can appear behind the main window when the main window is activated, but it is ok since the floating window can be accessed via the taskbar.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowShowInTaskBarMode) property can be used to determine which kinds of non-hosted floating windows are displayed in the Windows taskbar.  The default behavior is for any floating window that contains a "workspace" (such as a floating tabbed MDI document) to show up in the taskbar and not be "owned" by the main window.  This means that the floating window can appear behind the main window when the main window is activated, but it is ok since the floating window can be accessed via the taskbar.  Note that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property can alter the default owner behavior.
 
 Change the property to `FloatingWindowShowInTaskBarMode.Never` to prevent all floating windows from showing in the taskbar.  In this scenario, all floating windows will be "owned" by the main window so that they remain accessible.
 
-Change the property to `FloatingWindowShowInTaskBarMode.Always` to force all floating windows to show in the taskbar.  In this scenario, no floating windows will be "owned" by the main window and they all will be able to appear behind it when the main window is activated.
+Change the property to `FloatingWindowShowInTaskBarMode.Always` to force all floating windows to show in the taskbar.  In this scenario, no floating windows will be "owned" by the main window and they all will be able to appear behind it when the main window is activated, unless this behavior is altered by the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property.
 
 }
+
+## Use With Ribbons or ToolBars on the Main Window
+
+WPF will move focus to the last-focused control within a `Window` when the `Window` is activated.  This can be a problem when working with floating docking windows and wanting to use a main `Window`'s ribbon or toolbar to execute commands on the active floating docking window.  As soon as a ribbon or toolbar's button is clicked, the main `Window` is activated, which then can focus another docking window within the main `Window`, causing the button's command to work on it instead of the intended floating docking window.
+
+The Actipro [WindowChrome](../../themes/windowchrome.md) class has a [CanMouseActivateOverToolBar](xref:@ActiproUIRoot.Themes.WindowChrome.CanMouseActivateOverToolBar) property that can be set to `false` to prevent toolbar clicks from activating the `Window`.  A toolbar is considered any control with the `WindowChrome.ElementKind` attached property set to [WindowChromeElementKind.ToolBar](xref:@ActiproUIRoot.Themes.WindowChromeElementKind.ToolBar).  Bars' [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) and [StandaloneToolBar](xref:@ActiproUIRoot.Controls.Bars.StandaloneToolBar) controls have this attached property set by default.
+
+.NET also has a couple properties that should be applied in app startup that help prevent `Window` activation when working with menus,
+such as a menu that opens when pressing a [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton).
+
+When these features are combined, controls on main `Window` ribbons and toolbars can execute commands on active floating document windows.
+
+### Configuring WindowChrome
+
+A regular `Window` can be configured through [WindowChrome](../../themes/windowchrome.md) to prevent mouse activation over any control with the `WindowChrome.ElementKind` attached property set to [WindowChromeElementKind.ToolBar](xref:@ActiproUIRoot.Themes.WindowChromeElementKind.ToolBar):
+
+```xaml
+<Window ...>
+	<themes:WindowChrome.Chrome>
+		<themes:WindowChrome CanMouseActivateOverToolBar="False" />
+	</themes:WindowChrome.Chrome>
+	...
+</Window>
+```
+
+Or if using a Bars [RibbonWindow](../../bars/ribbon-features/ribbon-window.md):
+
+```xaml
+<bars:RibbonWindow ...>
+	<themes:WindowChrome.Chrome>
+		<themes:RibbonWindowChrome CanMouseActivateOverToolBar="False" />
+	</themes:WindowChrome.Chrome>
+	...
+</bars:RibbonWindow>
+```
+
+### Preventing Mouse Activation on a Native ToolBar
+
+If a [WindowChrome](../../themes/windowchrome.md) is applied to the main `Window` as above, an attached property can be set on a `ToolBar` to prevent mouse activation of the ancestor `Window` when the toolbar is clicked.
+
+```xaml
+<ToolBar ... themes:WindowChrome.ElementKind="ToolBar">
+	...
+</ToolBar>
+```
+
+### Additional WPF Properties
+
+Two WPF properties were added in .NET Framework 4.0 to allow Visual Studio to support a toolbar system that functioned with floating docking windows:
+
+- `HwndSource.DefaultAcquireHwndFocusInMenuMode` - Whether a `Window` can acquire Win32 focus for the WPF containing window when the user interacts with menus.
+- `Keyboard.DefaultRestoreFocusMode` - Determines the behavior when WPF restores focus.
+
+When attempting to use main `Window` ribbons or toolbars with floating docking windows, these two properties should be set to the following values in application startup logic:
+
+```csharp
+HwndSource.DefaultAcquireHwndFocusInMenuMode = false;
+Keyboard.DefaultRestoreFocusMode = RestoreFocusMode.None;
+```
