@@ -76,6 +76,13 @@ Most ribbon tabs are always visible, but some tabs are only relevant when the ap
 
 See the [Contextual Tabs](contextual-tabs.md) topic for more details on that feature.
 
+### Hiding Tabs
+
+Some applications with only one ribbon tab may wish to hide the tab row entirely, so that a minimal ribbon is presented.  This appearance can be achieved by setting these [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) properties:
+- [AreTabsVisible](xref:@ActiproUIRoot.Controls.Bars.Ribbon.AreTabsVisible) = `false`
+- [ApplicationButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ApplicationButton) = `null`
+- [TabRowToolBarContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.TabRowToolBarContent) = `null`
+
 ## Groups
 
 Groups are used to organize related controls within a tab and can have a different effect based on the ribbon's layout mode.
@@ -87,7 +94,6 @@ In the `Classic` layout mode, groups are prominently displayed in the UI with se
 See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to prevent a group from collapsing.
 
 See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Classic` modde.
-
 
 ### Simplified Layout Mode
 
@@ -104,6 +110,10 @@ Groups have a string [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label
 The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) can be auto-generated based on the group's [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) property.  For instance, a group with [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Key) of `"FontSettings"` will automatically assign `"Font Settings"` as the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) value.  The auto-generated default can be overridden by setting the [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.Label) property.
 
 See the [Label and Key Tip Generation](../controls/auto-generation.md) topic for more information on auto-generated labels.
+
+### Label Mode
+
+Group labels only show by default on the ribbon when in `Classic` layout mode.  In scenarios where a ribbon in `Simplified` layout mode should also show group labels, set the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[GroupLabelMode](xref:@ActiproUIRoot.Controls.Bars.Ribbon.GroupLabelMode) property to [Always](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLabelMode.Always) instead of its default value of [Default](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLabelMode.Default).
 
 ### Collapsed Button Key Tip (Classic layout mode only)
 

@@ -493,7 +493,7 @@
 									
 									<!-- Multi-Row Footer Message -->
 									<TextBlock TextWrapping="Wrap" Visibility="{Binding ElementName=ClassicMultiRowTab, Path=IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
-										This groups in this sample show different values for SeparatorMode.
+										The groups in this sample show different values for SeparatorMode.
 									</TextBlock>
 									
 									<!-- Explicit Sizing Message -->

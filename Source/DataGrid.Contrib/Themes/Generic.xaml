@@ -394,12 +394,12 @@
 									SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 
 							<DataGridDetailsPresenter
-									SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=AreRowDetailsFrozen, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}}"
+									SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=AreRowDetailsFrozen, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, FallbackValue=Both}"
 									Grid.Column="1" Grid.Row="1" Visibility="{TemplateBinding DetailsVisibility}" />
 
 							<DataGridRowHeader SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
 									Grid.RowSpan="2"
-									Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Row}}" />
+									Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, FallbackValue=Visible}" />
 						</SelectiveScrollingGrid>
 					</Border>
 				</ControlTemplate>
@@ -456,15 +456,15 @@
 										</Grid.ColumnDefinitions>
 
 										<Button Style="{DynamicResource {x:Static datagridThemes:DataGridResourceKeys.DataGridSelectAllButtonStyleKey}}"
-												Width="{Binding Path=CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-												Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.All}}" />
+												Width="{Binding Path=CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, FallbackValue=0.0}"
+												Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.All}, FallbackValue=Visible}" />
 										
 										<!-- 12/12/2011 - Updated to use scrollbar background for top-left corner -->
 										<Border Grid.Column="2" Background="{Binding ElementName=PART_VerticalScrollBar, Path=Background}" />
 
 										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
 												Grid.Column="1" Style="{StaticResource DataGridColumnHeadersPresenterStyle}"
-												Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Column}}" />
+												Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, FallbackValue=Visible}" />
 
 										<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2"
 												Grid.Row="1" Content="{TemplateBinding Content}"
@@ -483,7 +483,7 @@
 										<Grid Grid.Column="1" Grid.Row="2">
 											<Grid.ColumnDefinitions>
 												<ColumnDefinition
-														Width="{Binding Path=NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+														Width="{Binding Path=NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, FallbackValue=0.0}" />
 												<ColumnDefinition Width="*" />
 											</Grid.ColumnDefinitions>
 

@@ -123,7 +123,7 @@ Several Actipro themes require the use of white monochrome images in specific po
 
 When one of the Office Colorful themes is used, such as [OfficeColorfulIndigo](xref:@ActiproUIRoot.Themes.ThemeNames.OfficeColorfulIndigo) above, any button images in the Quick Access Toolbar must be switched over to monochrome variations.  Ribbon has logic in it to automatically perform this conversion on a ribbon button with a supplied normal image.
 
-See the [Themes' Getting Started](../../themes/getting-started.md) page for a complete list of themes.
+See the [Themes' Getting Started](../../themes/getting-started.md) topic for a complete list of themes.
 
 ### Optimal Image Design
 
@@ -141,3 +141,9 @@ In some cases, such as for a vector icon that has a portion showing a selected c
 This can be achieved by setting the attached [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).`CanAdapt` property to `false` on the portion for the selected color.  That will tell the converter to skip over converting colors within that portion of the image.
 
 See the [Image Provider](../../themes/image-provider.md) topic for more details on working with image adaptation.
+
+## Key Tips
+
+Key tips for controls in the quick access toolbar are auto-generated, beginning with numbers.  In some cases, the numbers might conflict with a ribbon tab that also uses a key tip beginning with a number.  In this scenario, the [KeyTipTextPrefix](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar.KeyTipTextPrefix) property can be set to an unused character like `'Q'`, which will prefix the auto-generated key tip text, thereby removing the conflict.
+
+See the [Key Tips](key-tips.md) topic for additional details on key tips in general.

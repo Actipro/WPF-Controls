@@ -132,6 +132,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 											new BarComboBoxViewModel("MenuStyle", this.ComboBoxGalleryCommand, this.ComboBoxColorItems) {
 												CanFilter = true,
 												Description = "A combobox using a menu-like appearance for items, filtering, and an additional menu item below the list of combobox items.",
+												InlineImageSourcePath = nameof(TextBarGalleryItemViewModel.ImageSource),
 												IsEditable = true,
 												IsSynchronizedWithCurrentItem = true,
 												ItemTemplate = (DataTemplate)FindResource(LocalResourceKeys.LargeMenuComboBoxGalleryItemTemplate),

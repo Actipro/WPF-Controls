@@ -9,6 +9,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	public class RibbonControlGroupViewModel : ObservableObjectBase {
 
 		private HorizontalAlignment horizontalContentAlignment = HorizontalAlignment.Left;
+		private bool isVisible = true;
 		private ItemVariantBehavior itemVariantBehavior = ItemVariantBehavior.All;
 		private RibbonControlGroupSeparatorMode separatorMode = RibbonControlGroupSeparatorMode.Default;
 
@@ -34,7 +35,20 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get {
+				return isVisible;
+			}
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets the collection of items in the control.
 		/// </summary>

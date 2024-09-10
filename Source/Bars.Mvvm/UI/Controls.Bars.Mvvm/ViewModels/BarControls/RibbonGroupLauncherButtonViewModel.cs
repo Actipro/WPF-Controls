@@ -11,6 +11,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ICommand command;
 		private object commandParameter;
 		private string description;
+		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
 		private ImageSource smallImageSource;
@@ -99,7 +100,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
 		public string KeyTipText {
 			get {

@@ -11,12 +11,15 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class RibbonViewModel : ObservableObjectBase {
 
+		private bool allowLabelsOnQuickAccessToolBar;
 		private RibbonApplicationButtonViewModel applicationButton;
+		private bool areTabsVisible = true;
 		private RibbonBackstageViewModel backstage;
 		private bool canChangeLayoutMode = true;
 		private ICommand clearFooterCommand;
 		private Size collapseThresholdSize = new Size(270, 170);
 		private RibbonFooterViewModel footer;
+		private RibbonGroupLabelMode groupLabelMode = RibbonGroupLabelMode.Default;
 		private bool isApplicationButtonVisible = true;
 		private bool isCollapsible = true;
 		private bool isMinimizable = true;
@@ -59,6 +62,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
+		/// Gets or sets whether the quick-access toolbar allows labels when it is below the ribbon.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>false</c>.
+		/// </value>
+		public bool AllowLabelsOnQuickAccessToolBar {
+			get => allowLabelsOnQuickAccessToolBar;
+			set {
+				if (allowLabelsOnQuickAccessToolBar != value) {
+					allowLabelsOnQuickAccessToolBar = value;
+					this.NotifyPropertyChanged(nameof(AllowLabelsOnQuickAccessToolBar));
+				}
+			}
+		}
+
+		/// <summary>
 		/// Gets or sets a <see cref="RibbonApplicationButtonViewModel"/> for the application button.
 		/// </summary>
 		/// <value>A <see cref="RibbonApplicationButtonViewModel"/> for the application button.</value>
@@ -72,6 +91,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 		
+		/// <summary>
+		/// Gets or sets whether tabs are visible above the ribbon's main content area.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool AreTabsVisible {
+			get => areTabsVisible;
+			set {
+				if (areTabsVisible != value) {
+					areTabsVisible = value;
+					this.NotifyPropertyChanged(nameof(AreTabsVisible));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets a <see cref="RibbonApplicationButtonViewModel"/> for the optional Backstage.
 		/// </summary>
@@ -157,6 +192,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 		
+		/// <summary>
+		/// Gets or sets the <see cref="RibbonGroupLabelMode"/> that specifies when a <see cref="RibbonGroup"/> is labeled.
+		/// </summary>
+		/// <value>
+		/// The <see cref="RibbonGroupLabelMode"/> that specifies when a <see cref="RibbonGroup"/> is labeled.
+		/// The default value is <see cref="RibbonGroupLabelMode.Default"/>.
+		/// </value>
+		public RibbonGroupLabelMode GroupLabelMode {
+			get => groupLabelMode;
+			set {
+				if (groupLabelMode != value) {
+					groupLabelMode = value;
+					this.NotifyPropertyChanged(nameof(GroupLabelMode));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets whether the application button is visible.
 		/// </summary>

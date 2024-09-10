@@ -13,6 +13,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool areSurroundingSeparatorsAllowed = true;
 		private bool canCloneToRibbonQuickAccessToolBar = true;
 		private ICommand command;
+		private bool isVisible = true;
 		private Style itemContainerStyle;
 		private StyleSelector itemContainerStyleSelector;
 		private double itemSpacing;
@@ -83,6 +84,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (command != value) {
 					command = value;
 					this.NotifyPropertyChanged(nameof(Command));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
 				}
 			}
 		}

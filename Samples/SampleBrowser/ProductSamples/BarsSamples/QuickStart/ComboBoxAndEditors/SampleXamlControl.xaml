@@ -122,6 +122,7 @@
 							Command="{Binding ComboBoxGalleryCommand}"
 							UnmatchedTextCommand="{Binding ComboBoxUnmatchedTextCommand}"
 							CanFilterOnMenu="True" 
+							InlineImageSourcePath="ImageSource"
 							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"
 							ItemTemplate="{StaticResource LargeMenuComboBoxGalleryItemTemplate}"
 							IsSynchronizedWithCurrentItem="True"
@@ -209,7 +210,7 @@
 						<editors:DateEditBox bars:BarControlService.HasExternalHeader="True" 
 											 bars:BarControlService.Key="Date" 
 											 bars:BarControlService.Label="Date"
-											  bars:BarControlService.PanelSpacingSuggestion="Both"
+											 bars:BarControlService.PanelSpacingSuggestion="Both"
 											 Width="100" MinHeight="24" MaxHeight="30"
 											 UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3">
 							<editors:DateEditBox.ToolTip>

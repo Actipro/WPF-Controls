@@ -5,6 +5,7 @@
 	/// </summary>
 	public class BarHeadingViewModel : ObservableObjectBase {
 
+		private bool isVisible = true;
 		private string label;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +29,17 @@
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
 
 		/// <inheritdoc cref="BarButtonViewModel.Label"/>
 		public string Label {

@@ -8,12 +8,24 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class StandaloneToolBarViewModel : ObservableObjectBase {
 
+		private bool isVisible = true;
 		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
 		private UserInterfaceDensity userInterfaceDensity;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
 
 		/// <summary>
 		/// Gets the collection of items in the control.

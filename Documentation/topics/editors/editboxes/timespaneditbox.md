@@ -83,11 +83,14 @@ Each of the features listed in the table below describe functionality that is co
 
 ## Formats
 
-Standard time formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.Format) property and affect the textual value display.  These formats are recommended:
+Standard timespan formats are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.Format) property and affect the textual value display.  These formats are recommended:
 
 - `"c"`
 - `"g"`
 - `"G"`
+
+> [!NOTE]
+> If a custom timespan format is used instead of a standard timespan format, the format should begin with a `+` (plus sign) to indicate that negative timespans are supported.  If a custom timespan format does not begin with a plus sign, then the [Minimum](xref:@ActiproUIRoot.Controls.Editors.TimeSpanEditBox.Minimum) property should be set to a zero or higher timespan value.
 
 ## Minimum and Maximum Values
 

@@ -13,7 +13,7 @@ It is readable by most mobile devices with cameras and can be used to display te
 
 *A sample of this symbology*
 
-This symbology can encode up to 7,089 numeric characters, 4,296 alpha numeric characters, or 2,953 bytes.  Encoding modes are automatically switched when it is most efficient to do so.  This symbology implementation also auto-calculates the QR Code symbol version and inserts error correction codewords.
+This symbology can encode up to 7,089 numeric characters, 4,296 alpha numeric characters, or 2,953 bytes.  Extended Channel Interpretation (ECI) support also allows all UTF-8 characters to be encoded.  Encoding modes are automatically switched when it is most efficient to do so.  This symbology implementation also auto-calculates the QR Code symbol version and inserts error correction codewords.
 
 > [!IMPORTANT]
 > When using larger version numbers (i.e., version 25 and up), it may be necessary to lower the default cell size in order for QR code readers to properly read the value.
@@ -89,6 +89,19 @@ Gets or sets the `Brush` to use for rendering the background.
 
 </td>
 <td>Gets the display name of the symbology.</td>
+</tr>
+
+<tr>
+<td>
+
+[EciMode](xref:@ActiproUIRoot.Controls.BarCode.QrCodeSymbology.EciMode) Property
+
+</td>
+<td>
+
+Gets or sets the Extended Channel Interpretation (ECI) mode used to encode the specified value, when the `EncodingMode` resolves to `QrEncodingMode.Binary`.  The default value is `null`, which indicates the ECI mode will be auto-selected based on the specified value.
+
+</td>
 </tr>
 
 <tr>

@@ -13,6 +13,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private RibbonGroupChildOverflowTarget childOverflowTarget = RibbonGroupChildOverflowTarget.Tab;
 		private string collapsedButtonDescription;
 		private string collapsedButtonKeyTipText;
+		private bool isVisible = true;
 		private string label;
 		private ImageSource largeImageSource;
 		private RibbonGroupLauncherButtonViewModel launcherButton;
@@ -148,7 +149,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets the collection of items in the control.
 		/// </summary>

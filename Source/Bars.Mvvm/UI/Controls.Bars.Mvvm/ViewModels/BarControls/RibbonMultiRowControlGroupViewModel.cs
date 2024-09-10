@@ -8,11 +8,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class RibbonMultiRowControlGroupViewModel : ObservableObjectBase {
 
+		private bool isVisible = true;
 		private Int32Collection threeRowItemSortOrder;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					this.NotifyPropertyChanged(nameof(IsVisible));
+				}
+			}
+		}
 		
 		/// <summary>
 		/// Gets the collection of items in the control.

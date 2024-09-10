@@ -252,6 +252,10 @@ The affected controls grouped by product are:
 - Shared Library - `UserPromptControl`.
 - Views - `Book`, `TaskBoard`, and related controls.
 
+## Context Menu Access Key Updates
+
+Built-in context menus for the Docking and Grids products now support access keys.  An access key is designated by placing an underscore (`_`) character before the desired letter of a menu header.  Previously, all underscore characters in context menus were escaped.  Since the text of a context menu is a [customizable string resource](../customizing-string-resources.md) and underscores are no longer escaped, any custom strings that wish to display an underscore character without it being used as an access key must escape the character by using two underscores (e.g., `"Escaped __Underscore"` will display as `"Escaped _Underscore"`).
+
 ## Removed XBAP Support
 
 XBAP (WPF Browser Application) support has been removed since this feature is no longer supported by .NET or modern browsers.

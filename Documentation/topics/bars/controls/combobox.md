@@ -31,7 +31,7 @@ In summary, a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery)
 | Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) property. |
+| Has image | Yes, inline via the [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property or externally via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) property. |
 | Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
 | Is checkable | No. |
 | Variant sizes | None. |
@@ -88,7 +88,7 @@ There are several appearance-related properties that determine how the controls 
 
 The [Text](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.Text) property gets or sets the text that is displayed within the combobox.
 
-The [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies the path to a property off the view model gallery item class to display in the combobox when a gallery item is selected.
+The [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies the path to a string-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
 
 ### Label
 
@@ -102,7 +102,9 @@ The `Label` can be auto-generated based on the control's `Key` property.  For in
 
 ### Images
 
-The control can display an image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) that helps identify its function.  The image is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup)), or in customization UI.
+An image from the selected gallery item can be displayed inline within the control, before the combobox text.  This image will update when the combobox's selection is changed.  The [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property specifies the path to an `ImageSource`-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
+
+Alternatively, the control can display a static image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) that helps identify its function.  The image is not tied to the selected item and is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup)), or in customization UI.
 
 ### Title
 
@@ -200,5 +202,6 @@ Since the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) control i
 The [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) control changes the default value of the following inherited gallery property to a common setting for a combobox drop-down appearance:
 
 - [MaxMenuColumnCount](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MaxMenuColumnCount) = `1` - Uses a single column for gallery items.
+- [MenuResizeMode](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.MenuResizeMode) = `Vertical` - Allows vertical gallery resizing and properly supports virtualization of gallery items, which aids in performance with large galleries.
 
 See the [Gallery](gallery.md) topic for more information on galleries.

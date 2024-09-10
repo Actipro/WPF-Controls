@@ -10,6 +10,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMul
 
 		private string derivedOnly;
 		private string name;
+		private int number;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -47,6 +48,24 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMul
 				if (this.name != value) {
 					this.name = value;
 					this.NotifyPropertyChanged("Name");
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the number.
+		/// </summary>
+		/// <value>The number.</value>
+		[DefaultValue(0)]
+		[Description("The number of the object, which can appear more than once in this sample. Changes in one entry will be reflected all duplicate entries.")]
+		public int Number {
+			get {
+				return this.number;
+			}
+			set {
+				if (this.number != value) {
+					this.number = value;
+					this.NotifyPropertyChanged("Number");
 				}
 			}
 		}

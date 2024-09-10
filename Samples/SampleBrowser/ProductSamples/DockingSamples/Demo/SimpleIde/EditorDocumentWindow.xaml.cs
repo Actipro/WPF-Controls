@@ -90,8 +90,8 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.Demo.SimpleIde {
 			set {
 				this.DataContext = value;
 
-				this.BindToProperty(DocumentWindow.FileNameProperty, value, "FileName", BindingMode.OneWay);
-				this.BindToProperty(DocumentWindow.TitleProperty, value, "Title", BindingMode.OneWay);
+				this.BindToProperty(DocumentWindow.FileNameProperty, value, nameof(DocumentData.FileName), BindingMode.OneWay);
+				this.BindToProperty(DocumentWindow.TitleProperty, value, nameof(DocumentData.Title), BindingMode.OneWay);
 			}
 		}
 

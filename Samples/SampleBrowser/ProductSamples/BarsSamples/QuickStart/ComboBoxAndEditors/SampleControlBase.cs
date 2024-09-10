@@ -138,7 +138,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 						// The items of BarComboBox support previewing the current item just like other gallery-based controls
 						previewAction:			param => this.ComboboxPreviewLabel = param?.Label ?? "<Unknown>",
 						cancelPreviewAction:	param => this.ComboboxPreviewLabel = "<None>"
-					);;
+					);
 				}
 				return comboBoxGalleryCommand;
 			}
@@ -284,7 +284,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 					textBoxCommitCommand = new DelegateCommand<string>(
 						executeAction:			param => ThemedMessageBox.Show($"The value '{GetTextBoxCommitCommandText(param)}' was committed from the textbox.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
 						canExecuteFunc:			param => true
-					);;
+					);
 				}
 				return textBoxCommitCommand;
 			}

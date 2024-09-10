@@ -61,8 +61,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.FooterInfoBar {
 		/// Shows the footer.
 		/// </summary>
 		private void ShowFooter() {
-			// When the footer is closed the view model is cleared.  Show the footer again
-			// by re-assigning the view model that defines the footer
+			// When the footer is closed the view model is cleared.
+			// Show the footer again by re-assigning the view model that defines the footer.
 			Ribbon.Footer = this.FooterViewModel;
 		}
 

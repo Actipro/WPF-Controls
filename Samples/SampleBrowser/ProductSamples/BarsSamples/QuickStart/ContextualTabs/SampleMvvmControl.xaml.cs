@@ -179,7 +179,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ContextualTabs {
 										Items = {
 											new BarCheckBoxViewModel("HeaderRow"),
 											new BarCheckBoxViewModel("TotalRow"),
-											new BarCheckBoxViewModel("BandedRow"),
+											new BarCheckBoxViewModel("BandedRows"),
 											new BarCheckBoxViewModel("FirstColumn"),
 											new BarCheckBoxViewModel("LastColumn"),
 											new BarCheckBoxViewModel("BandedColumns"),

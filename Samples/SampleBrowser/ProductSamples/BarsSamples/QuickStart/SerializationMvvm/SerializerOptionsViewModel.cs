@@ -1,5 +1,6 @@
 ﻿using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls.Bars;
+using System.ComponentModel;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvvm {
 
@@ -10,6 +11,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 
 		private bool layoutMode = true;
 		private bool minimizedStated = true;
+		private bool quickAccessToolBarAllowLabels = true;
 		private bool quickAccessToolBarItems = true;
 		private bool quickAccessToolBarLocation = true;
 		private bool quickAccessToolBarMode = true;
@@ -32,6 +34,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 				options |= RibbonSerializerOptions.LayoutMode;
 			if (MinimizedState)
 				options |= RibbonSerializerOptions.MinimizedState;
+			if (QuickAccessToolBarAllowLabels)
+				options |= RibbonSerializerOptions.QuickAccessToolBarAllowLabels;
 			if (QuickAccessToolBarItems)
 				options |= RibbonSerializerOptions.QuickAccessToolBarItems;
 			if (QuickAccessToolBarLocation)
@@ -73,9 +77,25 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 		}
 
 		/// <summary>
+		/// Gets or sets if <see cref="Ribbon.AllowLabelsOnQuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
+		/// </summary>
+		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
+		[DisplayName("QAT allow labels")]
+		public bool QuickAccessToolBarAllowLabels {
+			get => quickAccessToolBarAllowLabels;
+			set {
+				if (quickAccessToolBarAllowLabels != value) {
+					quickAccessToolBarAllowLabels = value;
+					NotifyPropertyChanged(nameof(QuickAccessToolBarAllowLabels));
+				}
+			}
+		}
+
+		/// <summary>
 		/// Gets or sets if the items displayed in <see cref="Ribbon.QuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
 		/// </summary>
 		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
+		[DisplayName("QAT items")]
 		public bool QuickAccessToolBarItems {
 			get => quickAccessToolBarItems;
 			set {
@@ -90,6 +110,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 		/// Gets or sets if <see cref="Ribbon.QuickAccessToolBarLocation"/> will be processed when serializing or deserializing the Ribbon.
 		/// </summary>
 		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
+		[DisplayName("QAT location")]
 		public bool QuickAccessToolBarLocation {
 			get => quickAccessToolBarLocation;
 			set {
@@ -104,6 +125,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvv
 		/// Gets or sets if <see cref="Ribbon.QuickAccessToolBarMode"/> will be processed when serializing or deserializing the Ribbon.
 		/// </summary>
 		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
+		[DisplayName("QAT mode")]
 		public bool QuickAccessToolBarMode {
 			get => quickAccessToolBarMode;
 			set {

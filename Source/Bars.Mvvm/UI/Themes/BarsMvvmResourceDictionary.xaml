@@ -28,13 +28,16 @@
 		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
 		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
 
+		<Setter Property="AllowLabelsOnQuickAccessToolBar" Value="{Binding AllowLabelsOnQuickAccessToolBar, Mode=TwoWay}" />
 		<Setter Property="ApplicationButtonContent" Value="{Binding ApplicationButton}" />
+		<Setter Property="AreTabsVisible" Value="{Binding AreTabsVisible, Mode=TwoWay}" />
 		<Setter Property="BackstageContent" Value="{Binding Backstage}" />
 		<Setter Property="CanChangeLayoutMode" Value="{Binding CanChangeLayoutMode, Mode=TwoWay}" />
 		<Setter Property="ClearFooterCommand" Value="{Binding ClearFooterCommand, Mode=TwoWay}" />
 		<Setter Property="CollapseThresholdSize" Value="{Binding CollapseThresholdSize, Mode=TwoWay}" />
 		<Setter Property="ContextualTabGroups" Value="{Binding ContextualTabGroups}" />
 		<Setter Property="FooterContent" Value="{Binding Footer}" />
+		<Setter Property="GroupLabelMode" Value="{Binding GroupLabelMode, Mode=TwoWay}" />
 		<Setter Property="IsApplicationButtonVisible" Value="{Binding IsApplicationButtonVisible, Mode=TwoWay}" />
 		<Setter Property="IsCollapsible" Value="{Binding IsCollapsible, Mode=TwoWay}" />
 		<Setter Property="IsMinimizable" Value="{Binding IsMinimizable, Mode=TwoWay}" />
@@ -62,6 +65,10 @@
 	-->
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarButtonDefaultItemContainerTemplate}" DataType="local:BarButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarButton
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -78,10 +85,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarButtonMenuItemItemContainerTemplate}" DataType="local:BarButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -97,10 +109,15 @@
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarCheckBoxDefaultItemContainerTemplate}" DataType="local:BarCheckBoxViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarCheckBox
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -115,10 +132,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarCheckBoxMenuItemItemContainerTemplate}" DataType="local:BarCheckBoxViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -133,10 +155,15 @@
 			Label="{Binding Label}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarComboBoxDefaultItemContainerTemplate}" DataType="local:BarComboBoxViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarComboBox
 			AboveMenuItems="{Binding AboveMenuItems}"
 			AreSurroundingSeparatorsAllowedOnMenu="{Binding AreSurroundingSeparatorsAllowed}"
@@ -147,6 +174,7 @@
 			CategoryHeaderTemplate="{Binding CategoryHeaderTemplate}"
 			Command="{Binding Command}"
 			HasCategoryHeadersOnMenu="{Binding HasCategoryHeaders}"
+			InlineImageSourcePath="{Binding InlineImageSourcePath}"
 			IsEditable="{Binding IsEditable}"
 			IsPreviewEnabledWhenPopupClosed="{Binding IsPreviewEnabledWhenPopupClosed}"
 			IsReadOnly="{Binding IsReadOnly}"
@@ -188,10 +216,15 @@
 			UnmatchedTextCommand="{Binding UnmatchedTextCommand}"
 			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
 			UseMenuItemIndent="{Binding UseMenuItemIndent}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryDefaultItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonGallery
 			AboveMenuItems="{Binding AboveMenuItems}"
 			AreSurroundingSeparatorsAllowedOnMenu="{Binding AreSurroundingSeparatorsAllowed}"
@@ -233,10 +266,15 @@
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
 			UseMenuItemIndent="{Binding UseMenuItemIndent}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryMenuItemItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuGallery
 			AreSurroundingSeparatorsAllowed="{Binding AreSurroundingSeparatorsAllowed}"
 			CanCategorize="{Binding CanCategorize}"
@@ -268,15 +306,21 @@
 			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
 			UseMenuItemAppearance="{Binding UseMenuItemAppearance}"
 			UseMenuItemIndent="{Binding UseMenuItemIndent}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryOverflowMenuItemItemContainerTemplate}" DataType="local:BarGalleryViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuItem
 			Key="{Binding Key}"
 			Label="{Binding Label}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			>
 			<bars:BarMenuItem.Resources>
 				<shared:ArrayConverter x:Key="ArrayConverter" />
@@ -307,10 +351,21 @@
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarHeadingMenuItemItemContainerTemplate}" DataType="local:BarHeadingViewModel">
-		<bars:BarMenuHeading Label="{Binding Label}" />
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
+		<bars:BarMenuHeading
+			Label="{Binding Label}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarPopupButtonDefaultItemContainerTemplate}" DataType="local:BarPopupButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarPopupButton
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -327,10 +382,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarPopupButtonMenuItemItemContainerTemplate}" DataType="local:BarPopupButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -345,18 +405,35 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSeparatorDefaultItemContainerTemplate}" DataType="local:BarSeparatorViewModel">
-		<bars:BarSeparator />
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
+		<bars:BarSeparator
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSeparatorMenuItemItemContainerTemplate}" DataType="local:BarSeparatorViewModel">
-		<bars:BarMenuSeparator />
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
+		<bars:BarMenuSeparator
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSizeSelectionGalleryMenuItemItemContainerTemplate}" DataType="local:BarSizeSelectionMenuGalleryViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarSizeSelectionMenuGallery
 			AreSurroundingSeparatorsAllowed="{Binding AreSurroundingSeparatorsAllowed}"
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
@@ -376,10 +453,15 @@
 			SizeHeadingTextFormat="{Binding SizeHeadingTextFormat}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitButtonDefaultItemContainerTemplate}" DataType="local:BarSplitButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarSplitButton
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -398,10 +480,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitButtonMenuItemItemContainerTemplate}" DataType="local:BarSplitButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarSplitMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -420,10 +507,15 @@
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitToggleButtonDefaultItemContainerTemplate}" DataType="local:BarSplitToggleButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarSplitToggleButton
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -443,10 +535,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarSplitToggleButtonMenuItemItemContainerTemplate}" DataType="local:BarSplitToggleButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarSplitMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -466,10 +563,15 @@
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxDefaultItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarTextBox
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -485,10 +587,15 @@
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate}" DataType="local:BarTextBoxViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarTextBox
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -502,10 +609,15 @@
 			Text="{Binding Text, Mode=TwoWay}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarToggleButtonDefaultItemContainerTemplate}" DataType="local:BarToggleButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarToggleButton
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -523,10 +635,15 @@
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarToggleButtonMenuItemItemContainerTemplate}" DataType="local:BarToggleButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:BarMenuItem
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
@@ -544,6 +661,7 @@
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
@@ -574,10 +692,15 @@
 			ContentTemplateSelector="{Binding ContentTemplateSelector}"
 			IsOpen="{Binding IsOpen, Mode=TwoWay}"
 			ItemsSource="{Binding Items}"
+			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageHeaderButtonDefaultItemContainerTemplate}" DataType="local:RibbonBackstageHeaderButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonBackstageHeaderButton
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
@@ -588,16 +711,26 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate}" DataType="local:RibbonBackstageHeaderSeparatorViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonBackstageHeaderSeparator
 			HeaderAlignment="{Binding HeaderAlignment}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageTabDefaultItemContainerTemplate}" DataType="local:RibbonBackstageTabViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonBackstageTabItem
 			HeaderAlignment="{Binding HeaderAlignment}"
 			Key="{Binding Key}"
@@ -607,6 +740,8 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
+			VariantSize="{Binding VariantSize}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
@@ -623,11 +758,16 @@
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonControlGroupDefaultItemContainerTemplate}" DataType="local:RibbonControlGroupViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonControlGroup
 			HorizontalContentAlignment="{Binding HorizontalContentAlignment}"
 			ItemVariantBehavior="{Binding ItemVariantBehavior}"
 			SeparatorMode="{Binding SeparatorMode}"
 			ItemsSource="{Binding Items}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
@@ -642,6 +782,10 @@
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonGroupDefaultItemContainerTemplate}" DataType="local:RibbonGroupViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonGroup
 			CanAutoCollapse="{Binding CanAutoCollapse}"
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
@@ -655,10 +799,15 @@
 			ItemsSource="{Binding Items}"
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonGroupLauncherButtonDefaultItemContainerTemplate}" DataType="local:RibbonGroupLauncherButtonViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonGroupLauncherButton
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
@@ -668,13 +817,19 @@
 			SmallImageSource="{Binding SmallImageSource}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonMultiRowControlGroupDefaultItemContainerTemplate}" DataType="local:RibbonMultiRowControlGroupViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonMultiRowControlGroup
 			ItemsSource="{Binding Items}"
 			ThreeRowItemSortOrder="{Binding ThreeRowItemSortOrder}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
@@ -687,6 +842,10 @@
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonTabDefaultItemContainerTemplate}" DataType="local:RibbonTabViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonTabItem
 			ContextualTabGroupKey="{Binding ContextualTabGroupKey}"
 			ControlVariants="{Binding ControlVariants}"
@@ -697,12 +856,18 @@
 			HeaderToolTip="{Binding Description}"
 			ItemsSource="{Binding Groups}"
 			Title="{Binding Title}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonTabRowToolBarDefaultItemContainerTemplate}" DataType="local:RibbonTabRowToolBarViewModel">
+		<ItemContainerTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</ItemContainerTemplate.Resources>
+
 		<bars:RibbonTabRowToolBar
 			ItemsSource="{Binding Items}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
 
@@ -715,18 +880,24 @@
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemColorDataTemplate}" DataType="local:ColorBarGalleryItemViewModel">
 		<DataTemplate.Resources>
 			<bars:BarGalleryItemBorderThicknessConverter x:Key="BarGalleryItemBorderThicknessConverter" />
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 		</DataTemplate.Resources>
 
 		<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"
-				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}">
+				BorderThickness="{Binding LayoutBehavior, Converter={StaticResource BarGalleryItemBorderThicknessConverter}}"
+				Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
 			<Border.Background>
 				<SolidColorBrush Color="{Binding Value}" />
 			</Border.Background>
 		</Border>
 	</DataTemplate>
 
-	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemColorMenuItemDataTemplate}" DataType="local:ColorPickerBarGalleryItemViewModel" >
-		<Grid>
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemColorMenuItemDataTemplate}" DataType="local:ColorBarGalleryItemViewModel" >
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<Grid Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemIconColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
 				<ColumnDefinition Width="*" />
@@ -750,21 +921,40 @@
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemDefaultDataTemplate}" DataType="local:IBarGalleryItemViewModel">
-		<TextBlock Margin="15,4" Text="{Binding Label}" />
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<TextBlock Margin="15,4"
+			Text="{Binding Label}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemFontFamilyDataTemplate}" DataType="local:FontFamilyBarGalleryItemViewModel">
-		<Decorator MinHeight="26">
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<Decorator MinHeight="26" Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
 			<TextBlock Margin="22,0" Text="{Binding Label}" FontSize="16" FontFamily="{Binding Value}" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" />
 		</Decorator>
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemFontSizeDataTemplate}" DataType="local:FontSizeBarGalleryItemViewModel">
-		<TextBlock Margin="12,4" Text="{Binding Label}" />
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<TextBlock Margin="12,4" Text="{Binding Label}" Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
 	</DataTemplate>
 
-	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemMenuItemDataTemplate}" DataType="local:MenuItemBarGalleryItemViewModel`1" >
-		<Grid>
+	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemMenuItemDataTemplate}" DataType="local:IBarGalleryItemViewModel" >
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<Grid Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemIconColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup" />
 				<ColumnDefinition Width="*" />
@@ -783,16 +973,27 @@
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemSizeSelectionDataTemplate}">
-		<Border Margin="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" BorderThickness="1" />
+		<Border Margin="1"
+			BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}"
+			BorderThickness="1"/>
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemSymbolDataTemplate}" DataType="local:SymbolBarGalleryItemViewModel">
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
 		<local:SymbolPresenter MinWidth="30" MinHeight="30" 
-							   TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" />
+			TextElement.FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 	</DataTemplate>
 
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarGalleryItemTextStyleDataTemplate}" DataType="local:TextStyleBarGalleryItemViewModel">
-		<local:TextStylePresenter Background="#ffffff" />
+		<DataTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		</DataTemplate.Resources>
+
+		<local:TextStylePresenter Background="#ffffff" Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}" />
 	</DataTemplate>
 
 	<!--

@@ -48,11 +48,15 @@ To prevent these keys (or any other key combination) from reaching the `SyntaxEd
 
 }
 
+@if (wpf) {
+
 ## Control Key Down Opacity
 
 Overlay panes can become semi-transparent when the <kbd>Ctrl</kbd> key is held down, thereby allowing the end user to see the text behind it. The [IOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.IOverlayPane).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.IOverlayPane.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
 
 The property value `0.25` is recommended for transparency. Set this property to `1.0` to prevent the pane from becoming semi-transparent.
+
+}
 
 ## Single or Multiple Views
 

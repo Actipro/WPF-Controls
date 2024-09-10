@@ -36,6 +36,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		bool IsLabelVisible { get; }
 
 		/// <summary>
+		/// Gets whether the control is currently visible.
+		/// </summary>
+		bool IsVisible { get; }
+
+		/// <summary>
 		/// Gets or sets the key tip text used to access the control.
 		/// </summary>
 		/// <value>The key tip text used to access the control.</value>

@@ -18,6 +18,7 @@
 				<sampleBrowser:SampleOptionsPropertyGrid>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsReadOnly}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=InputMode}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=CanAutoSelectFirstItem}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=HasClearButton}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=HasPopupButton}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBox, Path=IsPopupOpenedOnFocus}" />

@@ -7,8 +7,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 	/// </summary>
 	public class SimpleComboBoxGalleryItem : BarGalleryItemViewModel<string> {
 
-		// NOTE: This class is only used to organize the structure of this sample and directly a class
-		//		 like TextMenuItemBarGalleryItemViewModel in the MVVM Library is also an option
+		// NOTE: This class is used to demonstrate how to wrap any value type in a view model for
+		//		 use with a combobox. For string values, the existing TextBarGalleryItemViewModel
+		//		 class in the MVVM Library can be used instead.
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
