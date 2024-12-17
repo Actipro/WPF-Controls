@@ -49,12 +49,12 @@ EXPECTED OPERATION:
 
 		<!-- Ribbon Control -->
 		<!--
-		SAMPLE NOTE 3.1:
+		SAMPLE NOTE 2.1:
 			The Ribbon.DataContext is now bound to a RibbonViewModel defined by the SampleWindowViewModel.Ribbon
 			property. The Ribbon property for QuickAccessToolBarMode has been moved from the XAML definition to
 			the RibbonViewModel definition.
 
-		SAMPLE NOTE 3.2:
+		SAMPLE NOTE 2.2:
 			The Style defined by BarsMvvmResourceKeys.RibbonStyle is a pre-defined style in the MVVM library
 			which automatically binds properties on the Ribbon control to equivalent properties on RibbonViewModel.
 		-->

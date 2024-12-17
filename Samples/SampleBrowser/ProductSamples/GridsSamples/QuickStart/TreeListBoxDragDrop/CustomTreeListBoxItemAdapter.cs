@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using ActiproSoftware.ProductSamples.GridsSamples.Common;
 using ActiproSoftware.Windows.Controls.Grids;
 
@@ -214,6 +215,7 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDrag
 						}
 
 						// Move items
+						var movedItemModels = new List<TreeNodeModel>();
 						foreach (var item in items) {
 							var nav = targetControl.GetItemNavigator(item);
 							if (nav.GoToParent()) {
@@ -233,12 +235,24 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxDrag
 								else
 									break;
 
+								movedItemModels.Add(itemModel);
+
 								targetModel.Children.Insert(Math.Max(0, Math.Min(targetModel.Children.Count, targetDropIndex++)), itemModel);
 								targetModel.IsExpanded = true;
-										
+							}
+						}
+
+						if (movedItemModels.Any()) {
+							using (var batch = targetControl.CreateSelectionBatch()) {
+								// If the target control supports multi-select, ensure each moved item is reselected
+								if (targetControl.SelectionMode != SelectionMode.Single) {
+									targetControl.SelectedItem = null;
+									foreach (var movedItemModel in movedItemModels)
+										movedItemModel.IsSelected = true;
+								}
+
 								// Focus the last item
-								if (items[items.Count - 1] == item)
-									targetControl.FocusItem(itemModel);
+								targetControl.FocusItem(movedItemModels.Last());
 							}
 						}
 					}

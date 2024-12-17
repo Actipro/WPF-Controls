@@ -26,6 +26,22 @@ In summary, a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery)
 
 *A BarComboBox example*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | Yes, inline via the [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property or externally via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) property. |
+| Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) and [UnmatchedTextCommand](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.UnmatchedTextCommand) properties. |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarComboBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarComboBoxViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
@@ -40,7 +56,33 @@ In summary, a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery)
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarComboBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarComboBoxViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarComboBox
+		Key="Employee"
+		TextPath="Name"
+		IsEditable="True"
+		Command="{Binding EmployeeSelectedCommand}"
+		UnmatchedTextCommand="{Binding EmployeeUnmatchedTextCommand}"
+		ItemTemplate="{StaticResource EmployeeGalleryItemTemplate}"
+		ItemContainerTheme="{StaticResource {x:Static actipro:BarsMvvmResourceKeys.BarGalleryItemControlTheme}}"
+		ItemsSource="{Binding Employees}">
+
+		<actipro:BarComboBox.BelowMenuItems>
+			<actipro:BarMenuItem Label="Manage Employees..." Command="{Binding OpenEmployeesDialogCommand}" />
+		</actipro:BarComboBox.BelowMenuItems>
+	</actipro:BarComboBox>
+	...
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -65,9 +107,10 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	...
 </bars:StandaloneToolBar>
 ```
+}
 
 > [!IMPORTANT]
-> When defining a `BarComboBox` in XAML and binding the items source to instances of [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) from the [MVVM Library](../mvvm-support.md), the `ItemContainerStyle` must be defined as shown in the sample above to establish important bindings between [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) and [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).
+> When defining a `BarComboBox` in XAML and binding the items source to instances of [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) from the [MVVM Library](../mvvm-support.md), the @if (avalonia) { `ItemContainerTheme` }@if (wpf) { `ItemContainerStyle` } must be defined as shown in the sample above to establish important bindings between [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) and [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).
 
 ### Menu Contexts
 
@@ -180,7 +223,7 @@ The controls support screen tips, which are formatted tool tips.
 
 The control's `Title` is used as the default screen tip header, falling back to `Label` if no `Title` is available.  The [ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.ScreenTipHeader) property can override the default screen tip header value if desired.
 
-If the control's `ToolTip` property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
+If the control's @if (avalonia) { `ToolTip.Tip` }@if (wpf) { `ToolTip` } property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
 
 If the optional [ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.ScreenTipFooter) property is specified, it will appear in a footer area of the screen tip.
 

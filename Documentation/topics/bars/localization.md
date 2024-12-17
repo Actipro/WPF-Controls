@@ -11,6 +11,19 @@ order: 405
 
 Many controls utilize built-in strings as part of their presentation, and these strings are defined as resources which can be customized. For example, the [Ribbon Options Button](ribbon-features/options-button.md) displays several commands whose labels are based on string resources.
 
+@if (avalonia) {
+Bars string resources are customized using the `ActiproSoftware.Properties.Bars.SR` class and an enumeration of available resource names is available using `ActiproSoftware.Properties.Bars.SRName`.
+
+> [!NOTE]
+> For those working with [MVVM](mvvm-support.md), additional string resources for that library can be customized using the `ActiproSoftware.Properties.Bars.Mvvm.SR` class and `ActiproSoftware.Properties.Bars.MVVM.SRName` enumeration.
+
+The following example demonstrates how one might customize the `UIRibbonMenuItemAlwaysShowRibbonText` string resource:
+
+```csharp
+ActiproSoftware.Properties.Bars.SR.SetCustomString(ActiproSoftware.Properties.Bars.SRName.UIRibbonMenuItemAlwaysShowRibbonText, "Show Full Ribbon");
+```
+}
+@if (wpf) {
 Bars string resources are customized using the `ActiproSoftware.Products.Bars.SR` class and an enumeration of available resource names is available using `ActiproSoftware.Products.Bars.SRName`.
 
 > [!NOTE]
@@ -21,6 +34,7 @@ The following example demonstrates how one might customize the `UIRibbonMenuItem
 ```csharp
 ActiproSoftware.Products.Bars.SR.SetCustomString(ActiproSoftware.Products.Bars.SRName.UIRibbonMenuItemAlwaysShowRibbonText.ToString(), "Show Full Ribbon");
 ```
+}
 
 See the [Customizing String Resources](../customizing-string-resources.md) topic for additional details.
 

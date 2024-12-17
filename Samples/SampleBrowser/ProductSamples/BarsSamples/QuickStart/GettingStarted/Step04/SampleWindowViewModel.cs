@@ -55,7 +55,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.S
 				//		has properties to define the content of each tab.
 				//
 				//		Initialize the Tabs collection to include a RibbonTabViewModel that will define
-				//		a "Help" tab containing a "Learn More" control group with a single "Help" button.
+				//		a "Help" tab containing a "Resources" control group with a single "Help" button.
 				Tabs = {
 
 					//	SAMPLE NOTE 4.2:

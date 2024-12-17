@@ -46,11 +46,20 @@ All Bars controls have a `KeyTipText` property (such as [BarButton](xref:@Actipr
 
 This code sample shows how to assign key tip text for a [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton).
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarButton KeyTipText="V" Command="{Binding PasteCommand}" />
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:BarButton KeyTipText="V" Command="ApplicationCommands.Paste" />
 ```
+}
 
 ## KeyTipService
 
@@ -65,6 +74,7 @@ It has these important properties:
 | [KeyTipOpeningEvent](xref:@ActiproUIRoot.Controls.Bars.KeyTipService.KeyTipOpeningEvent) Routed Event | Gets the event that is raised when a key tip is opening. The [KeyTipOpeningEventArgs](xref:@ActiproUIRoot.Controls.Bars.KeyTipOpeningEventArgs) data can be used to position key tips differently than the default location. |
 | [KeyTipTextProperty](xref:@ActiproUIRoot.Controls.Bars.KeyTipService.KeyTipTextProperty) Attached Property | Gets or sets the key tip text for the element to which it is applied.  All Bars controls that support key tips wrap this attached property with a `KeyTipText` property. |
 
+@if (wpf) {
 > [!WARNING]
 > The Bars [KeyTipService](xref:@ActiproUIRoot.Controls.Bars.KeyTipService) class name is ambiguous with Microsoft Ribbon's `Sytem.Windows.Controls.KeyTipService` class and may require using a fully-qualified domain name to resolve the ambiguity. In XAML, you must use a namespace prefix as shown below:
 > ```xaml
@@ -72,6 +82,7 @@ It has these important properties:
 > ...
 > <bars:StandaloneToolBar bars:KeyTipService.IsRootKeyTipScope="True" ... />
 > ```
+}
 
 ### Key Tip Mode Shortcuts
 

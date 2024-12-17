@@ -5,9 +5,14 @@ order: 20
 ---
 # Application Button
 
-Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save** operations.
+@if (avalonia) {
+Ribbon supports an application button that can open a [backstage](backstage.md) when the button is clicked.
+}
+@if (wpf) {
+Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save**.
 
 Either a traditional [application menu](application-menu.md) or more modern [backstage](backstage.md) can be displayed when the button is clicked.  See the respective topics for more details on configuring each style.
+}
 
 The application button can also be hidden if a corresponding menu is not necessary or desired.
 
@@ -24,6 +29,20 @@ The application button can be defined in XAML or code-behind by assigning a [Rib
 
 This code sample shows how to define the application button for a ribbon:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+		<actipro:Ribbon.ApplicationButtonContent>
+			<actipro:RibbonApplicationButton />
+		</actipro:Ribbon.ApplicationButtonContent>
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -35,6 +54,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 ## MVVM Support
 
@@ -45,9 +65,16 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonAppli
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
 
+@if (avalonia) {
+## Customizing the Application Button Theme
+
+The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton) instance can be customized by setting a `ControlTheme` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[ApplicationButtonTheme](xref:@ActiproUIRoot.Controls.Bars.Ribbon.ApplicationButtonTheme) property.  This `ControlTheme` is applied to the control when it is added to the ribbon.
+}
+@if (wpf) {
 ## Customizing the Application Button Style
 
 The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton) instance can be customized by setting a `Style` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[ApplicationButtonStyle](xref:@ActiproUIRoot.Controls.Bars.Ribbon.ApplicationButtonStyle) property.  This `Style` is applied to the control when it is added to the ribbon.
+}
 
 ## Customizing Default Text
 
@@ -67,6 +94,20 @@ See the [Customizing String Resources](../../customizing-string-resources.md) to
 
 As an alternative to customizing the string resource, the [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).[Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) and [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).[KeyTipText](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.KeyTipText) can be set directly to the desired value as illustrated in the following example:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+		<actipro:Ribbon.ApplicationButtonContent>
+			<actipro:RibbonApplicationButton Label="Home" KeyTipText="H" />
+		</actipro:Ribbon.ApplicationButtonContent>
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -78,10 +119,33 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 ## Custom Button Content
 
-The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).[Content](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton.Content) property can be set to any `Object` which is supported by `ContentPresenter`, so custom content like an image can easily be used instead of text.  The following example shows how to set an image for the content using a [DynamicImage](../../shared/windows-controls/dynamicimage.md).
+@if (avalonia) {
+The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).`Content` property can be set to any `Object` which is supported by `ContentPresenter`, so custom content like an image can easily be used instead of text.  The following example shows how to set an image for the content using a [DynamicImage](../../shared/controls/dynamic-image.md):
+
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+		<actipro:Ribbon.ApplicationButtonContent>
+			<actipro:RibbonApplicationButton>
+				<actipro:RibbonApplicationButton.Content>
+					<actipro:DynamicImage Width="16" Height="16" VerticalAlignment="Center"
+					                      Stretch="Uniform" StretchDirection="DownOnly"
+					                      Source="/Images/SomeImage.png" />
+				</actipro:RibbonApplicationButton.Content>
+			</actipro:RibbonApplicationButton>
+		</actipro:Ribbon.ApplicationButtonContent>
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
+The [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton).[Content](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton.Content) property can be set to any `Object` which is supported by `ContentPresenter`, so custom content like an image can easily be used instead of text.  The following example shows how to set an image for the content using a [DynamicImage](../../shared/windows-controls/dynamicimage.md):
 
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
@@ -101,13 +165,14 @@ xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 > [!TIP]
 > See the "Application Button" Bars Ribbon QuickStart of the Sample Browser application for a full demonstration of setting the button content.
 
 ## Hiding the Application Button
 
-If your application does not need an [Application Menu](application-menu.md) or [Backstage](backstage.md), you may want to hide the application button completely by setting the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[IsApplicationButtonVisible](xref:@ActiproUIRoot.Controls.Bars.Ribbon.IsApplicationButtonVisible) property to `false`.
+If your application does not need @if (wpf) { an [Application Menu](application-menu.md) or } a [Backstage](backstage.md), you may want to hide the application button completely by setting the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[IsApplicationButtonVisible](xref:@ActiproUIRoot.Controls.Bars.Ribbon.IsApplicationButtonVisible) property to `false`.
 
 ![Screenshot](../images/application-button-hidden.png)
 

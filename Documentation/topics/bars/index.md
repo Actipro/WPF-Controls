@@ -17,8 +17,10 @@ Ribbon implements an Office-like user interface, complete with dynamic variant s
 
 See the [Ribbon Overview](ribbon-features/index.md) topic for additional information on working with a ribbon.
 
+@if (wpf) {
 > [!NOTE]
 > The Bars product has no dependency on the older [Ribbon product](../ribbon/index.md).  Bars includes a newer ribbon control implementation with a much-improved design and appearance, and with many of the latest features currently found in Office.  The older Ribbon product [will be deprecated](../conversion/converting-to-v23-1.md) in the future in favor of the ribbon implementation in the Bars product, so it is recommended to implement new ribbons using the Bars product instead.
+}
 
 ## Standalone Toolbar
 

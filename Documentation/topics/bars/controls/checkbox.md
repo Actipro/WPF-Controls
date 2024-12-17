@@ -22,6 +22,22 @@ Use the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox) control to 
 
 *A BarCheckBox example*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarToggleButton), which indirectly inherits native `Button`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarButton.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarButton.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | No. |
+| Has popup | No. |
+| Is checkable | Yes. |
+| Variant sizes | None. |
+| Command support | Yes, via the `Command` property. |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarButton.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarButton.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarCheckBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarCheckBoxViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarToggleButton), which indirectly inherits native `Button`. |
@@ -36,7 +52,23 @@ Use the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox) control to 
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarButton.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarCheckBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarCheckBoxViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarCheckBox
+		Key="ShowWhitespace"
+		Command="{Binding ShowWhitespaceCommand}"
+		/>
+	...
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -49,6 +81,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:StandaloneToolBar>
 ```
+}
 
 ### Menu Contexts
 
@@ -56,8 +89,24 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 
 ![Screenshot](../images/checkbox-menu.png)
 
-*A BarMenuItem example*
+*A checkable BarMenuItem example in checked state*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | Native `MenuItem`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) properties. |
+| Has popup | Not when a checkbox concept is desired. |
+| Is checkable | Yes, when the `ToggleType` property is set to `CheckBox` or `Radio`. |
+| Variant sizes | None, but has a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that triggers a large height and displays an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description). |
+| Command support | Yes, via the `Command` property. |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarCheckBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarCheckBoxViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | Native `MenuItem`. |
@@ -72,7 +121,24 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarCheckBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarCheckBoxViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarMenuItem
+		Key="ShowWhitespace"
+		ToggleType="CheckBox"
+		Command="{Binding UndoCommand}"
+		/>
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -86,6 +152,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:BarContextMenu>
 ```
+}
 
 ## Appearance
 
@@ -150,8 +217,13 @@ See the [Using Commands](using-commands.md) topic for more information on comman
 The control can have input gesture text associated with it that describes a related keyboard shortcut,
 and is displayed in the screen tip for the control or in the menu item itself.
 
+@if (avalonia) {
+Input gesture text can be specified in the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[InputGesture](xref:@ActiproUIRoot.Controls.Bars.BarButton.InputGesture) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).`InputGesture` properties.
+}
+@if (wpf) {
 This input gesture text is automatically derived from commands that inherit `RoutedCommand` and have a `KeyGesture` set.
 Or input gesture text can be specified in the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[InputGestureText](xref:@ActiproUIRoot.Controls.Bars.BarButton.InputGestureText) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).`InputGestureText` properties.
+}
 
 Input gesture text may be hidden altogether in UI by setting the [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarButton.IsInputGestureTextVisible) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.IsInputGestureTextVisible) properties to `false`.
 
@@ -161,7 +233,7 @@ The controls support screen tips, which are formatted tool tips.
 
 The control's `Title` is used as the default screen tip header, falling back to `Label` if no `Title` is available.  The [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarButton.ScreenTipHeader) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipHeader) properties can override the default screen tip header value if desired.
 
-If the control's `ToolTip` property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
+If the control's @if (avalonia) { `ToolTip.Tip` }@if (wpf) { `ToolTip` } property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
 
 If the optional [BarCheckBox](xref:@ActiproUIRoot.Controls.Bars.BarCheckBox).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarButton.ScreenTipFooter) and [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipFooter) properties are specified, they will appear in a footer area of the screen tip.
 

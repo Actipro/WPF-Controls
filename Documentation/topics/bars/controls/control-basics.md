@@ -144,11 +144,13 @@ Some controls define a `ToolBarItemOverflowBehavior` property that defaults to `
 
 See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on variant sizes.
 
+@if (wpf) {
 ### User Interface Density
 
 Many controls support a user interface density option where values ranging from compact to spacious may be set to designate how much padding is used.  `Compact` is best for more dense user interfaces where there is a need to display many controls at a time.  `Spacious` is better for user interfaces with fewer controls that should be more touch-friendly.  There also is a third option that strikes a balance between the other two.
 
 See the [Layout Modes and Density](../ribbon-features/layout-and-density.md) topic for more information on user interface density.
+}
 
 ## Key Tips
 
@@ -186,7 +188,12 @@ Input gestures are keyboard shortcuts that provide access to a control's command
 
 Input gesture text is a textual representation of a keyboard shortcut, allowing the end user to learn which keyboard shortcut executes a command.  Input gesture text is shown in screen tip headers and in menu items.
 
+@if (avalonia) {
+Controls that support the display of input gesture text have an `InputGesture` property that can be set to strings which parse as a `KeyGesture` (e.g., `"Ctrl+Shift+T"`).  The gesture's string representation will then be used as the input gesture text.
+}
+@if (wpf) {
 Controls that support the display of input gesture text have an `InputGestureText` property that can be set to any string (e.g., `"Ctrl+Shift+T"` or `"Ctrl+V or Shift+Ins"`).  If an `InputGestureText` property value is not specified, screen tips and menu items will attempt to find a `KeyGesture` within the control's command.  The command instance must be derived from `RoutedCommand` and have a `KeyGesture` assigned.  The gesture's string representation will then be used as the input gesture text.
+}
 
 ### Input Gesture Text Visibility
 
@@ -198,16 +205,24 @@ Screen tips are advanced variations of standard tooltips that can display a head
 
 Most controls build their screen tip content using these properties:
 
+@if (avalonia) {
+- `Label` - Used in the screen tip header.
+- `Title` - If specified, overrides the `Label` value displayed in the screen tip header.
+- `InputGestureText` - When present, is displayed in the screen tip header, next to the content from `Label` or `Title`.
+- `ToolTip.Tip` - If the native `ToolTip.Tip` property is set to a value that doesn't derive from the `ToolTip` class, it is used as the screen tip's extended description.
+}
+@if (wpf) {
 - `Label` - Used in the screen tip header.
 - `Title` - If specified, overrides the `Label` value displayed in the screen tip header.
 - `InputGestureText` - When present, is displayed in the screen tip header, next to the content from `Label` or `Title`.
 - `ToolTip` - If the native `ToolTip` property is set to a value that doesn't derive from the `ToolTip` class, it is used as the screen tip's extended description.
+}
 
 ![Screenshot](../images/screen-tips.png)
 
 *Several screen tip examples*
 
-For other more complex scenarios that need to display additional content, a [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) instance with its various properties configured can be set to the native `ToolTip` property.  It is generally recommended to use the properties listed above to ensure screen tips for all controls render in a consistent way.
+For other more complex scenarios that need to display additional content, a [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) instance with its various properties configured can be set to the native @if (avalonia) { `ToolTip.Tip` }@if (wpf) { `ToolTip` } property.  It is generally recommended to use the properties listed above to ensure screen tips for all controls render in a consistent way.
 
 See the [Screen Tips](../ribbon-features/screen-tips.md) topic for more information on screen tips.
 
@@ -220,7 +235,7 @@ As an example, when a ribbon configured with the library's template selectors en
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on MVVM support and the pre-built MVVM library of view models and template selectors designed for Bars controls.
 
-While the open source companion MVVM library provides the most straightforward way to integrate MVVM concepts into Bars controls, it is not required, as there are no dependencies in Bars to any types in that MVVM library.  Any configuration of custom view models and template selectors can be used instead if desired.
+While the open source companion MVVM library provides the most straightforward way to integrate MVVM concepts into Bars controls, it is not required, as there are no dependencies in Bars to any types in that MVVM library.  If desired, any configuration of custom view models and template selectors can be used instead.
 
 ## BarControlService Attached Properties
 

@@ -22,6 +22,22 @@ Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control to im
 
 *A BarTextBox example*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | Native `TextBox`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) property. |
+| Has popup | No. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Command) property. |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarTextBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarTextBoxViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | Native `TextBox`. |
@@ -36,7 +52,24 @@ Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control to im
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarTextBoxViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarTextBoxViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<!-- Label is auto-generated from Key -->
+	<actipro:TextBox
+		Key="Search"
+		RequestedWidth="120"
+		Command="{Binding SearchCommand}"
+		/>
+	...
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -50,17 +83,33 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:StandaloneToolBar>
 ```
+}
 
 ### Menu Contexts
 
 Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control described above to implement a textbox concept within a menu context.
 
-Since [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) is not flagged as a menu control via the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsMenuControlProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsMenuControlProperty) attached property, it will be wrapped by a [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) instance when parented by a Bars menu control. [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) is a special control that can wrap interactive controls like [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) that are not normally intended for use in a menu.  It displays the wrapped control's label externally from the wrapped control itself and applies horizontal margins to align everything with surrounding menu items properly.
+Since [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) is not flagged as a menu control via the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsMenuControlProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsMenuControlProperty) attached property, it will be wrapped by a @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } instance when parented by a Bars menu control. @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } is a special control that can wrap interactive controls like [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) that are not normally intended for use in a menu.  It displays the wrapped control's label externally from the wrapped control itself and applies horizontal margins to align everything with surrounding menu items properly.
 
 ![Screenshot](../images/textbox-menu.png)
 
 *A BarTextBox when in a menu, wrapped by BarMenuControlWrapper*
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarTextBox
+		Key="Search"
+		Command="{Binding SearchCommand}"
+		/>
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -73,9 +122,10 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:BarContextMenu>
 ```
+}
 
 > [!NOTE]
-> See the [Using Custom Controls](using-custom-controls.md) topic for more information on [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper).
+> See the [Using Custom Controls](using-custom-controls.md) topic for more information on @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) }.
 
 ## Appearance
 
@@ -87,7 +137,7 @@ The `Text` property gets or sets the text that is displayed within the textbox.
 
 ### Label
 
-The control has a string [Label](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Label) that can be set, which is visible in UI.  The label is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), in screen tips, or in customization UI.
+The control has a string [Label](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Label) that can be set, which is visible in UI.  The label is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), in screen tips, or in customization UI.
 
 ![Screenshot](../images/textbox-medium.png)
 
@@ -97,7 +147,7 @@ The `Label` can be auto-generated based on the control's `Key` property.  For in
 
 ### Images
 
-The control can display an image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) that helps identify its function.  The image is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), or in customization UI.
+The control can display an image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) that helps identify its function.  The image is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), or in customization UI.
 
 ### Title
 
@@ -145,7 +195,7 @@ The controls support screen tips, which are formatted tool tips.
 
 The control's `Title` is used as the default screen tip header, falling back to `Label` if no `Title` is available.  The [ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.ScreenTipHeader) property can override the default screen tip header value if desired.
 
-If the control's `ToolTip` property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
+If the control's @if (avalonia) { `ToolTip.Tip` }@if (wpf) { `ToolTip` } property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
 
 If the optional [ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.ScreenTipFooter) property is specified, it will appear in a footer area of the screen tip.
 

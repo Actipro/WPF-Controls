@@ -45,14 +45,20 @@ See the [Resizing and Variants](resizing.md) topic for more information.
 
 ## Application Button
 
-Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save** operations.
+@if (avalonia) {
+Ribbon supports an application button that can open a [backstage](backstage.md) when the button is clicked.
+}
+@if (wpf) {
+Ribbon supports an application button that can open a menu that is generally populated by application-wide options such as **New**, **Open**, and **Save**.
 
 Either a traditional application menu or more modern backstage can be displayed when the button is clicked.  See the respective topics for more details on configuring each style.
+}
 
 The application button can also be hidden if a corresponding menu is not necessary or desired.
 
 See the [Application Button](application-button.md) topic for more information.
 
+@if (wpf) {
 ## Application Menu
 
 The application menu is a medium-sized popup that can be displayed when clicking the application button and is generally populated by application-wide menu items such as file operations or printing.
@@ -62,6 +68,7 @@ A section at the bottom of the application menu is optional and can be used for 
 Any content can optionally be placed on the far side of the application menu as well.  A list of recent documents is commonly displayed there.
 
 See the [Application Menu](application-menu.md) topic for more information.
+}
 
 ## Backstage
 
@@ -129,7 +136,12 @@ See the [Options Button](options-button.md) topic for more information.
 
 ## Recent Documents
 
+@if (avalonia) {
+A recent document control is intended to be used within a backstage.
+}
+@if (wpf) {
 A recent document control is intended to be used within a backstage or an application menu.
+}
 
 Recently opened documents are listed in a sorted order and can be clicked to open them.  Hovering the mouse over a document provides its full path.
 

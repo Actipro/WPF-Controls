@@ -31,11 +31,20 @@ See the "Explicit Variant Sizing" section below for more details on controlling 
 
 An individual group on the ribbon can be configured to define its own **Group Overflow** button instead of using the default **Tab Overflow** button. To enable this functionality, set [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[ChildOverflowTarget](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.ChildOverflowTarget) = [RibbonGroupChildOverflowTarget](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupChildOverflowTarget).[Group](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupChildOverflowTarget.Group) as shown in the following example:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonGroup Key="Clipboard" ... ChildOverflowTarget="Group" />
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:RibbonGroup Key="Clipboard" ... ChildOverflowTarget="Group" />
 ```
+}
 
 When enabled and controls in a group need to overflow, a **Group Overflow** button will appear as the last item in the group. Overflowed controls will appear in the popup menu just like they appear in the **Tab Overflow** menu except there is no need to display the group's label as a header.
 
@@ -72,6 +81,25 @@ Most controls define a `ToolBarItemCollapseBehavior` property (e.g., [BarButton]
 
 The following example shows buttons using the `ToolBarItemVariantBehavior` and `ToolBarItemCollapseBehavior` properties in a ribbon using `Simplified` layout mode:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+
+<!-- Will show a label when space is available -->
+<actipro:BarSplitButton Key="New" ... ToolBarItemVariantBehavior="All" />
+
+<!-- Will always show a label -->
+<actipro:BarButton Key="Open" ... ToolBarItemVariantBehavior="AlwaysMedium" />
+
+<!-- Will never collapse to overflow -->
+<actipro:BarToggleButton Key="Bold" ... ToolBarItemCollapseBehavior="Never" />
+
+<!-- Will always collapse to overflow -->
+<actipro:BarButton Key="IncreaseFontSize" ... ToolBarItemCollapseBehavior="Always" />
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -88,6 +116,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 <!-- Will always collapse to overflow -->
 <bars:BarButton Key="IncreaseFontSize" ... ToolBarItemCollapseBehavior="Always" />
 ```
+}
 
 ## Classic Layout Strategy
 
@@ -123,6 +152,22 @@ By default, a control group will attempt all variant sizes from `Large` to `Smal
 
 The following example defines three buttons that will always appear in a single vertical stack because they are defined in a control group that does not support the `Large` variant size. Labels will be visible when the control group is `Medium`, and only icons will display when the control group is `Small`.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonGroup ... >
+	<actipro:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+		<actipro:BarButton Key="Cut" SmallImageSource="/Images/Cut16.png" />
+		<actipro:BarButton Key="Copy" SmallImageSource="/Images/Copy16.png" />
+		<actipro:BarButton Key="Paste" SmallImageSource="/Images/Paste16.png" />
+	</actipro:RibbonControlGroup>
+	...
+</actipro:RibbonGroup>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -136,6 +181,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonGroup>
 ...
 ```
+}
 
 ### Multi-Row Control Groups
 
@@ -148,9 +194,46 @@ When using multi-row layouts, a [RibbonControlGroup](xref:@ActiproUIRoot.Control
 
 *The same multi-row control group using two rows compared to three rows*
 
+@if (avalonia) {
+When arranged in two rows, control groups are sorted in the order they are defined.  In three-row mode, the default behavior will sort groups so each row is as narrow as possible.  When desired, the [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup).[ThreeRowItemSortOrder](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup.ThreeRowItemSortOrder) property is used to set an explicit sort order where the zero-based index of each control group is defined by a `List<Int32>` in the preferred sort order.  The following example demonstrates defining a three-row sort order.
+}
+@if (wpf) {
 When arranged in two rows, control groups are sorted in the order they are defined.  In three-row mode, the default behavior will sort groups so each row is as narrow as possible.  When desired, the [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup).[ThreeRowItemSortOrder](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup.ThreeRowItemSortOrder) property is used to set an explicit sort order where the zero-based index of each control group is listed in the preferred sort order, separated by spaces (e.g., `"0 1 3 4 2"`).  The following example demonstrates defining a three-row sort order.
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+xmlns:generic="using:System.Collections.Generic"
+...
+<actipro:RibbonGroup ... >
+	<actipro:RibbonMultiRowControlGroup>
+		<actipro:RibbonMultiRowControlGroup.ThreeRowItemSortOrder>
+			<generic:List x:TypeArguments="x:Int32">
+				<x:Int32>0</x:Int32>
+				<x:Int32>1</x:Int32>
+				<x:Int32>3</x:Int32>
+				<x:Int32>4</x:Int32>
+				<x:Int32>2</x:Int32>
+			</generic:List>
+		</actipro:RibbonMultiRowControlGroup.ThreeRowItemSortOrder>
 
+		<actipro:RibbonControlGroup Key="Index0"> ... </actipro:RibbonControlGroup>
+		<actipro:RibbonControlGroup Key="Index1"> ... </actipro:RibbonControlGroup>
+
+		<!-- In 3-row layout, this group will sort at the end based on ThreeRowItemSortOrder -->
+		<actipro:RibbonControlGroup Key="Index2"> ... </actipro:RibbonControlGroup>
+
+		<actipro:RibbonControlGroup Key="Index3"> ... </actipro:RibbonControlGroup>
+		<actipro:RibbonControlGroup Key="Index4"> ... </actipro:RibbonControlGroup>
+
+		...
+	</actipro:RibbonMultiRowControlGroup>
+</actipro:RibbonGroup>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -171,6 +254,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonGroup>
 ...
 ```
+}
 
 ### Separators
 
@@ -192,6 +276,22 @@ By default, separators are not displayed between neighboring control groups in a
 
 The following example defines four buttons, where the last three are part of a control group. The control group is configured to only show a separator when the group of three buttons is the same variant size as the first button (which, since it is not in a control group, will always be `Large`). A separator will not be displayed if the control group is a `Medium` or `Small` variant size.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonGroup ... >
+	<actipro:BarButton Key="LargeButton" ... />
+	<actipro:RibbonControlGroup SeparatorMode="StackingNeighborSameVariantSize">
+		<actipro:BarButton Key="VariantButton1" ... />
+		<actipro:BarButton Key="VariantButton2" ... />
+		<actipro:BarButton Key="VariantButton3" ... />
+	</actipro:RibbonControlGroup>
+	...
+</actipro:RibbonGroup>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -205,6 +305,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:RibbonGroup>
 ```
+}
 
 #### Multi-Row Layout Separators
 
@@ -254,6 +355,84 @@ Normally, items are overflowed one-by-one starting at the far side of the ribbon
 > [!NOTE]
 > In the Simplified layout mode, [VariantSize](xref:@ActiproUIRoot.Controls.Bars.VariantSize).[Collapsed](xref:@ActiproUIRoot.Controls.Bars.VariantSize.Collapsed) indicates a control should appear on the appropriate **Overflow Menu**.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonTabItem ... >
+
+	<!-- Define the ControlVariants -->
+	<actipro:RibbonTabItem.ControlVariants>
+		<actipro:VariantCollection>
+			<!-- All controls in the Undo group overflow at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="Undo" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="Redo" Size="Collapsed" />
+			</actipro:VariantSet>
+
+			<!-- Subscript and Superscript in the Font group overflow at the same time, other Font controls remain -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="Subscript" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="Superscript" Size="Collapsed" />
+			</actipro:VariantSet>
+
+			<!-- All controls in the Clipboard group overflow at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="FormatPainter" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="Cut" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="Copy" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="Paste" Size="Collapsed" />
+			</actipro:VariantSet>
+
+			<!-- The New button moves from Medium to Small -->
+			<actipro:SizeVariant TargetKey="New" Size="Small" />
+
+			<!-- All remaining controls in the Font group overflow at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="IncreaseFontSize" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="DecreaseFontSize" Size="Collapsed" />
+			</actipro:VariantSet>
+
+			<!-- All remining controls (those in File and Format groups) will implicitly overflow one-by-one from far side of the ribbon -->
+
+		</actipro:VariantCollection>
+	</actipro:RibbonTabItem.ControlVariants>
+
+	<!-- Define Groups/Controls -->
+	<actipro:RibbonGroup Label="Undo">
+		<actipro:BarButton Key="Undo" ... />
+		<actipro:BarButton Key="Redo" ... />
+	</actipro:RibbonGroup>
+	<actipro:RibbonGroup Label="File">
+		<actipro:BarButton Key="New" ... ToolBarItemVariantBehavior="All" />
+		<actipro:BarButton Key="Open" ... />
+		<actipro:BarButton Key="Save" ... />
+	</actipro:RibbonGroup>
+	<actipro:RibbonGroup Label="Clipboard" ChildOverflowTarget="Group">
+		<actipro:RibbonControlGroup>
+			<actipro:BarButton Key="Cut" ... />
+			<actipro:BarButton Key="Copy" ... />
+			<actipro:BarButton Key="Paste" ... />
+			<actipro:BarButton Key="FormatPainter" ... />
+		</actipro:RibbonControlGroup>
+	</actipro:RibbonGroup>
+	<actipro:RibbonGroup Label="Format">
+		<actipro:BarButton Key="Bold" ... />
+		<actipro:BarButton Key="Underline" ... />
+		<actipro:BarButton Key="Italic" ... />
+	</actipro:RibbonGroup>
+	<actipro:RibbonGroup Label="Font">
+		<actipro:BarButton Key="IncreaseFontSize" ... />
+		<actipro:BarButton Key="DecreaseFontSize" ... />
+		<actipro:BarButton Key="Subscript" ... />
+		<actipro:BarButton Key="Superscript" ... />
+	</actipro:RibbonGroup>
+
+</actipro:RibbonTabItem>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -329,6 +508,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonTabItem>
 ...
 ```
+}
 
 ### Applying to Classic Layout Mode
 
@@ -353,6 +533,61 @@ Normally, group sizes are reduced from `Large` to `Small` before collapsing and 
    a. `GroupE` moves from `Small` to `Collapsed`.
    a. `GroupD` moves from `Small` to `Collapsed`.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonTabItem ... >
+
+	<!-- Define the Group Variants -->
+	<actipro:RibbonTabItem.GroupVariants>
+		<actipro:VariantCollection>
+
+			<!-- Both GroupA1 and GroupA2 move to the Medium size at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="GroupA1" Size="Medium" />
+				<actipro:SizeVariant TargetKey="GroupA2" Size="Medium" />
+			</actipro:VariantSet>
+
+			<!-- GroupB collapses -->
+			<actipro:SizeVariant TargetKey="GroupB" Size="Collapsed" />
+
+			<!-- GroupC moves to the Small size -->
+			<actipro:SizeVariant TargetKey="GroupC" Size="Small" />
+
+			<!-- Both GroupA1 and GroupA2 move to the Small size at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="GroupA1" Size="Small" />
+				<actipro:SizeVariant TargetKey="GroupA2" Size="Small" />
+			</actipro:VariantSet>
+
+			<!-- Both GroupA1 and GroupA2 collapse at the same time -->
+			<actipro:VariantSet>
+				<actipro:SizeVariant TargetKey="GroupA1" Size="Collapsed" />
+				<actipro:SizeVariant TargetKey="GroupA2" Size="Collapsed" />
+			</actipro:VariantSet>
+
+			<!-- GroupC collapses -->
+			<actipro:SizeVariant TargetKey="GroupC" Size="Collapsed" />
+
+			<!-- All remaining groups (GroupD and GroupE) will implicitly collapse -->
+
+		</actipro:VariantCollection>
+	</actipro:RibbonTabItem.GroupVariants>
+
+	<!-- Define the Groups -->
+	<actipro:RibbonGroup Key="GroupA1" ... > ... </actipro:RibbonGroup>
+	<actipro:RibbonGroup Key="GroupA2" ... > ... </actipro:RibbonGroup>
+	<actipro:RibbonGroup Key="GroupB" ... > ... </actipro:RibbonGroup>
+	<actipro:RibbonGroup Key="GroupC" ... > ... </actipro:RibbonGroup>
+	<actipro:RibbonGroup Key="GroupD" ... > ... </actipro:RibbonGroup>
+	<actipro:RibbonGroup Key="GroupE" ... > ... </actipro:RibbonGroup>
+
+</actipro:RibbonTabItem>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -405,12 +640,13 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonTabItem>
 ...
 ```
+}
 
 ### Implicit Sizing Fallback
 
 The [VariantCollection](xref:@ActiproUIRoot.Controls.Bars.VariantCollection) does not have to define sizing for all items. Any item whose key *is not* explicitly defined by at least one [SizeVariant](xref:@ActiproUIRoot.Controls.Bars.SizeVariant).[TargetKey](xref:@ActiproUIRoot.Controls.Bars.SizeVariant.TargetKey) entry will implicitly reduce in size using the default logic (e.g., `Large` to `Medium` to `Small` before collapsing/overflowing).
 
-Any item that *is* explicitly defined by at least one [SizeVariant](xref:@ActiproUIRoot.Controls.Bars.SizeVariant).[TargetKey](xref:@ActiproUIRoot.Controls.Bars.SizeVariant.TargetKey) entry will still implicitly collapse as the next stage (skipping all other variant sizes) even if a `Collapsed` variant size was not explicitly set.  In the `Classic` layout mode only, this implicit auto-collapse behavior can be preventing by setting [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[CanAutoCollapse](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanAutoCollapse) = `false`.
+Any item that *is* explicitly defined by at least one [SizeVariant](xref:@ActiproUIRoot.Controls.Bars.SizeVariant).[TargetKey](xref:@ActiproUIRoot.Controls.Bars.SizeVariant.TargetKey) entry will still implicitly collapse as the next stage (skipping all other variant sizes) even if a `Collapsed` variant size was not explicitly set.  In the `Classic` layout mode only, this implicit auto-collapse behavior can be prevented by setting [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup).[CanAutoCollapse](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup.CanAutoCollapse) = `false`.
 
 ## RibbonGallery
 

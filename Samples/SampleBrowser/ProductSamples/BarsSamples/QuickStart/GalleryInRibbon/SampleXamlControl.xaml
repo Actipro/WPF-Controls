@@ -1,4 +1,4 @@
-﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon.SampleXamlControl"
+<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon.SampleXamlControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -53,6 +53,7 @@
 										ItemSpacing="{Binding Options.ItemSpacing}"
 										ItemsSource="{Binding ColorItems}"
 										ItemTemplate="{Binding Options.ItemTemplate}"
+										SelectedFilterCategory="{Binding Options.SelectedColorCategory}"
 										UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}">
 
 						<!-- Define additional menu items to be included when the gallery is displayed in a menu -->

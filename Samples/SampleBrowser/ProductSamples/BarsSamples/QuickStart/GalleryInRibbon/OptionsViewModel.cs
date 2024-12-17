@@ -21,6 +21,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 		private int					minMediumRibbonColumnCount	= 3;
 		private ControlResizeMode	menuResizeMode				= ControlResizeMode.Both;
 		private int					minMenuColumnCount			= 1;
+		private string				selectedColorCategory;
 		private bool				useAccentedItemBorder		= true;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,7 +199,21 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon 
 				}
 			}
 		}
-
+		
+		/// <summary>
+		/// Gets or sets the selected color category.
+		/// </summary>
+		/// <value>The selected color category.</value>
+		public string SelectedColorCategory {
+			get => selectedColorCategory;
+			set {
+				if (selectedColorCategory != value) {
+					selectedColorCategory = value;
+					NotifyPropertyChanged(nameof(SelectedColorCategory));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets if an accented border is displayed around gallery items.
 		/// </summary>

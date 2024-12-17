@@ -191,7 +191,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 										Items = {
 
 											new BarComboBoxViewModel("EnumValue", this.ComboBoxGalleryCommand, this.ComboBoxEnumItems) {
-												Description = "A combobox with items automated generated from the fields of an Enum type.",
+												Description = "A combobox with items automatically generated from the fields of an Enum type.",
 												IsSynchronizedWithCurrentItem = true,
 												IsUnmatchedTextAllowed = false,
 												ItemTemplateSelector = new BarGalleryItemTemplateSelector(),

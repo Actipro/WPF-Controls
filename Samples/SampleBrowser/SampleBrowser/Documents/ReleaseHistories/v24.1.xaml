@@ -10,6 +10,70 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">12/17/2024 - Version 24.1.4</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the StandaloneToolBar.OverflowButtonKeyTipText property." />
+				<sampleBrowser:BulletContentControl Content="Improved keyboard navigation within an editable BarComboBox popup." />
+				<sampleBrowser:BulletContentControl Content="Improved how KeyTipService tracks root key tip scopes." />
+				<sampleBrowser:BulletContentControl Content="Improved how screen tips derive content." />
+				<sampleBrowser:BulletContentControl Content="Improved StandaloneToolBar overflow layout logic." />
+				<sampleBrowser:BulletContentControl Content="Improved BarPopupButtonBase logic for exiting menu mode." />
+				<sampleBrowser:BulletContentControl Content="Updated BasePopupButtonBase-based controls to have a Button UIA peer control type." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where BarComboBox could clear its Text on unmatched commit." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a button control defined purely in XAML and overflowed to a menu in simplified layout with the Command property assigned to a Binding would clear the Binding on click before the associated command was invoked." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a ribbon tab added while the ribbon wasn't visible might not later initially be visible." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the DockSite.FloatingToolWindowContainerTitleBarDoubleClickMode property that can be set to Dock to allow double-clicks on floating tool window containers to restore them to the primary dock host." />
+				<sampleBrowser:BulletContentControl Content="Updated auto-hide popups to ensure that a solid background color is used, even if the containing dock host has a transparent background." />
+				<sampleBrowser:BulletContentControl Content="Updated AdvancedTabControl to prevent base TabControl logic from processing unhandled Home/End key presses when focus is within a tab's content area." />
+				<sampleBrowser:BulletContentControl Content="Updated DockSite to support the use of virtual factory methods for creating new instances of common controls." />
+				<sampleBrowser:BulletContentControl Content="Updated DockSite to not clip to bounds, which is necessary when using hosted floating windows and the DockSite.HostedFloatingWindowContainer property is set." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the layout deserialization process in tool window-only mode could throw an exception if the XML file contained document window data." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated BrushEditBox and ColorEditBox to have their swatches fill the available width when text is hidden." />
+				<sampleBrowser:BulletContentControl Content="Updated EnumEditBox to properly handle flags enumerations that are based on UInt32 or Int16 types." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved TreeListBox remove node logic and updated the Drag/Drop QuickStart's item adapter logic to reselect all moved items." />
+				<sampleBrowser:BulletContentControl Content="Improved TreeListBox post-filter logic to restore the pre-filter selection if no selection changes were made while filtering." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Language Designer app to open a .langproj file when its full path is supplied via a command line argument." />
+				<sampleBrowser:BulletContentControl Content="Updated the Language Designer app to have splitters in the LL Parser Debugger pane." />
+				<sampleBrowser:BulletContentControl Content="Updated the IntelliPrompt completion list to announce the item count via UI accessibility readers." />
+				<sampleBrowser:BulletContentControl Content="Improved vertical scrollbar maximum calculation logic when word wrap is active." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where changing the background color of SyntaxEditor between &quot;light&quot; and &quot;dark&quot; colors might not update the caret to use the corresponding constrasting color." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with clipped text area rendering when zoomed out below 100%." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt tips to include documentation comment remarks sections for type members, if available." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt completion following a VB For Each to list previously-declared variables." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the resolver's logic for locating imported modules with aliases." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated animated panels to better support control adornments." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the AvatarGroup.Orientation and OverflowOrientation properties that allow for customizing the layout orientation of non-overflowed and overflowed avatars respectively." />
+				<sampleBrowser:BulletContentControl Content="Updated UserPromptControl and UserPromptBuilder with support for HorizontalContentAlignment and VerticalContentAlignment properties." />
+				<sampleBrowser:BulletContentControl Content="Fixed UserPromptBuilder did not apply scrollbar visibility properties to the UserPromptControl." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/9/2024 - Version 24.1.3</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bar Code</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

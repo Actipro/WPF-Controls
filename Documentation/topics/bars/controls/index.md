@@ -17,7 +17,7 @@ These subjects and others are discussed in the [Control Basics](control-basics.m
 
 The built-in controls documentation is organized by control concept.  There are often multiple controls that implement a certain concept, one for each context where that control concept should be used.
 
-For instance, a regular button concept described in the [Button](button.md) topic is implemented by a [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) control for use in ribbons and toolbars, and a [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control for use in menus.  Each topic below explains details on the control classes involved in implementation of the related control concept.
+For instance, a regular button concept described in the [Button](button.md) topic is implemented by a [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) control for use in ribbons and toolbars, and a [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control for use in menus.  Each topic below explains details on the control classes involved in the implementation of the related control concept.
 
 <table>
 <thead>
@@ -180,7 +180,7 @@ Implemented as a separator bar in ribbons, toolbars, and menus.
 
 ## Using Commands
 
-All interactive controls in this product are designed to work well with MVVM patterns and the WPF command model.
+All interactive controls in this product are designed to work well with MVVM patterns and the @@PlatformTitle command model.
 
 Controls will execute their command when a primary action occurs on the control and use the command's can-execute result to determine if the control is enabled.  Commands can be used to support live preview of gallery items as well.
 
@@ -190,7 +190,12 @@ See the [Using Commands](using-commands.md) topic for more information.
 
 The wide array of controls described above should cover nearly all the control types needed for use in ribbons, toolbars, and menus.  If the built-in controls don't fully meet your needs, custom controls can also be used.
 
+@if (avalonia) {
+An example is where you may wish to host some native editors, like `NumericUpDown` or `CalendarDatePicker`, within bars.
+}
+@if (wpf) {
 An example is where you may wish to host some edit boxes from the [Actipro Editors](../../editors/index.md) product like [Int32EditBox](../../editors/editboxes/int32editbox.md) within bars.  Even though the edit box is an Actipro control, it wasn't made explicitly for use in bars and therefore is treated as a custom control for the purposes of this topic.
+}
 
 See the [Using Custom Controls](using-custom-controls.md) topic for more information.
 
@@ -198,7 +203,9 @@ See the [Using Custom Controls](using-custom-controls.md) topic for more informa
 
 Many controls have `Key`, `Label`, and `KeyTipText` properties. Since these properties are closely related, controls can auto-generate a `Label` value based on the `Key` if no other `Label` has been explicitly set.  Likewise, a `KeyTipText` value can be auto-generated from a `Label` if no other `KeyTipText` has been expicitly set.
 
+@if (wpf) {
 Other contextual values (like certain `ICommand` types) can also be used when auto-generating property values.
+}
 
 This time-saving feature helps reduce the need to specify many `Label` and `KeyTipText` values, except in scenarios where a customized value is necessary!
 

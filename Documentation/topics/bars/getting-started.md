@@ -13,7 +13,9 @@ Once you are ready to add Bars controls to your own application, first add refer
 
 [NuGet packages](../nuget.md) are available for all assemblies and are the recommended way to reference Actipro product assemblies.
 
-For customers who prefer direct references to DLL files in their .NET Framework-based applications, the WPF Controls installer by default will install assemblies to the GAC, as well as into a *Program Files* folder whose path is listed in the product's Readme file.
+@if (wpf) {
+For customers who prefer direct references to DLL files in their .NET Framework-based applications, the WPF Controls installer will, by default, install assemblies to the GAC, as well as into a *Program Files* folder whose path is listed in the product's Readme file.
+}
 
 ## Read the Documentation Topics
 
@@ -39,6 +41,28 @@ The "Getting Started" series is probably the best place to go for quickly gettin
 
 This code shows the base XAML that you can use to define an empty [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) along with the recommended [RibbonWindow](ribbon-features/ribbon-window.md) and [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) controls:
 
+@if (avalonia) {
+```xaml
+<actipro:RibbonWindow
+	xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+	...
+	>
+	<actipro:RibbonContainerPanel>
+
+		<!-- Define the ribbon here -->
+		<actipro:Ribbon ... >
+
+			<!-- Additional ribbon configuration here -->
+
+		</actipro:Ribbon>
+
+		<!-- Define other window content here, such as a document display area -->
+
+	</actipro:RibbonContainerPanel>
+</actipro:RibbonWindow>
+```
+}
+@if (wpf) {
 ```xaml
 <bars:RibbonWindow
 	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
@@ -58,6 +82,7 @@ This code shows the base XAML that you can use to define an empty [Ribbon](xref:
 	</bars:RibbonContainerPanel>
 </bars:RibbonWindow>
 ```
+}
 
 ## Getting Started with Toolbar
 
@@ -65,6 +90,25 @@ See the [Controls Overview](controls/index.md) for topics related to individual 
 
 This code shows sample XAML that you can use to define a standalone toolbar with buttons:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<DockPanel>
+
+	<actipro:StandaloneToolBar DockPanel.Dock="Top" BorderThickness="0" ... >
+
+		<!-- Define toolbar controls here -->
+		<actipro:BarButton Key="Save" SmallImageSource="/Images/Save16.png" Command="{Binding SaveCommand}" />
+		...
+
+	</actipro:StandaloneToolBar>
+
+	...
+</DockPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -81,6 +125,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </DockPanel>
 ```
+}
 
 ## Getting Started with Menu
 
@@ -88,6 +133,24 @@ See the [Controls Overview](controls/index.md) for topics related to individual 
 
 This code sample shows how to define a context menu for a `TextBox`:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<TextBox>
+	<TextBox.ContextMenu>
+		<actipro:BarContextMenu>
+
+			<!-- Define menu controls here -->
+			<actipro:BarMenuItem Key="Save" SmallImageSource="/Images/Save16.png" Command="{Binding SaveCommand}" />
+			...
+
+		</actipro:BarContextMenu>
+	</TextBox.ContextMenu>
+</TextBox>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -103,11 +166,13 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</TextBox.ContextMenu>
 </TextBox>
 ```
+}
 
 ## Examine the Other QuickStarts
 
 We've spent a lot of time adding numerous QuickStarts for Bars that are in the sample project.  Each QuickStart focuses on a specific feature area and provides some great code that you can look at to use in your own applications.
 
+See the @if (avalonia) { [Samples](../samples.md) }@if (wpf) { [Sample Code and QuickStarts](../quick-starts.md) } topic for more information on accessing the sample project.
 
 ## Copy Code from the Sample Project
 

@@ -17,6 +17,7 @@ The `StandaloneToolBar` control is meant to be a replacement for a native `ToolB
 
 See the [Standalone Toolbars](standalone-toolbars.md) topic for more information.
 
+@if (wpf) {
 ## Mini-Toolbars
 
 The [MiniToolBar](xref:@ActiproUIRoot.Controls.Bars.MiniToolBar) control is intended for display in a popup, providing a compact set of controls that can alter the current selection or state of a target control.  Any toolbar controls, including popup buttons with galleries, can be used on the mini-toolbar.
@@ -26,3 +27,4 @@ The [MiniToolBar](xref:@ActiproUIRoot.Controls.Bars.MiniToolBar) control is inte
 *A context menu with a multi-row mini-toolbar*
 
 See the [Mini-Toolbars](mini-toolbars.md) topic for more information.
+}

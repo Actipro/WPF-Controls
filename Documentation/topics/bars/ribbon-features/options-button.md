@@ -81,8 +81,15 @@ The menu item labels for each option are defined by the following string resourc
 
 The following example demonstrates how to change the `"Always Show Ribbon"` menu item label to `"Show Full Ribbon"`:
 
+@if (avalonia) {
+```csharp
+ActiproSoftware.Properties.Bars.SR.SetCustomString(ActiproSoftware.Properties.Bars.SRName.UIRibbonMenuItemAlwaysShowRibbonText, "Show Full Ribbon");
+```
+}
+@if (wpf) {
 ```csharp
 ActiproSoftware.Products.Bars.SR.SetCustomString(ActiproSoftware.Products.Bars.SRName.UIRibbonMenuItemAlwaysShowRibbonText.ToString(), "Show Full Ribbon");
 ```
+}
 
 See the [Customizing String Resources](../../customizing-string-resources.md) topic for additional details.

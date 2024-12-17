@@ -27,6 +27,38 @@ To make it easy for users to add or remove common items from the toolbar, additi
 
 This code sample shows how to define the quick access toolbar items for a ribbon.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+
+		<actipro:Ribbon.QuickAccessToolBarContent>
+			<actipro:RibbonQuickAccessToolBar>
+
+				<!-- Common items can be added to the Items collection from a customize menu -->
+				<actipro:RibbonQuickAccessToolBar.CommonItems>
+					<actipro:BarButton Key="Undo" Command="{Binding UndoCommand}" SmallImageSource="/Images/Undo16.png" />
+					<actipro:BarButton Key="Redo" Command="{Binding RedoCommand}" SmallImageSource="/Images/Redo16.png" />
+					<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallImageSource="/Images/Save16.png" />
+				</actipro:RibbonQuickAccessToolBar.CommonItems>
+
+				<!-- Only the following items are displayed -->
+				<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallImageSource="/Images/Save16.png" />
+				<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallImageSource="/Images/Cut16.png" />
+				<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallImageSource="/Images/Copy16.png" />
+				<actipro:BarButton Key="Paste" Command="{Binding PasteCommand}" SmallImageSource="/Images/Paste16.png" />
+
+			</actipro:RibbonQuickAccessToolBar>
+		</actipro:Ribbon.QuickAccessToolBarContent>
+		...
+
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -56,6 +88,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 ## MVVM Support
 
@@ -66,9 +99,16 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonQuick
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
 
+@if (avalonia) {
+## Customizing the Toolbar Theme
+
+The [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) instance can be customized by setting a `ControlTheme` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarTheme](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarTheme) property.  This `ControlTheme` is applied to the control when it is added to the ribbon.
+}
+@if (wpf) {
 ## Customizing the Toolbar Style
 
 The [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) instance can be customized by setting a `Style` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarStyle](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarStyle) property.  This `Style` is applied to the control when it is added to the ribbon.
+}
 
 ## Quick Access Toolbar Mode
 
@@ -113,6 +153,7 @@ Ribbon includes a very flexible framework for supporting multiple forms of end-u
 
 See the [Serialization](serialization.md) topic for details on how to persist the state of the quick access toolbar to be restored later.
 
+@if (wpf) {
 ## Monochrome Images
 
 Several Actipro themes require the use of white monochrome images in specific portions of the ribbon user interface.  Ribbon has special logic that will automatically convert `BitmapSource` and `DrawingImage` images to a pure white monochrome equivalent for proper display in these scenarios.  This allows you to use a single image set for your entire UI while still supporting modern UI.
@@ -141,6 +182,7 @@ In some cases, such as for a vector icon that has a portion showing a selected c
 This can be achieved by setting the attached [ImageProvider](xref:@ActiproUIRoot.Media.ImageProvider).`CanAdapt` property to `false` on the portion for the selected color.  That will tell the converter to skip over converting colors within that portion of the image.
 
 See the [Image Provider](../../themes/image-provider.md) topic for more details on working with image adaptation.
+}
 
 ## Key Tips
 

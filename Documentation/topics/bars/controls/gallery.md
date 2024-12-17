@@ -29,6 +29,22 @@ Use the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control
 
 *An in-ribbon gallery*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified.  |
+| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.LargeImageSource) properties. |
+| Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
+| Is checkable | No. |
+| Variant sizes | `Small` (collapsed gallery popup button), `Medium` (several columns), `Large` (many columns). |
+| Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) property.  The gallery item that is selected/previewed is passed as the command parameter. |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery.KeyTipText) property, for the `More` button when expanded and the collapsed gallery popup button.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
@@ -43,7 +59,44 @@ Use the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | Yes, via the [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.UserInterfaceDensity) property. |
 | [MVVM Library](../mvvm-support.md) VM | [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<Application.Resources>
+	<DataTemplate x:Key="ColorGalleryItemTemplate" x:DataType="{x:Type actipro:ColorBarGalleryItemViewModel}">
+		<Border
+			BorderBrush="{actipro:ThemeResource Container3BorderBrush}"
+			BorderThickness="1" Width="32" Height="16">
+			<Border.Background>
+				<SolidColorBrush Color="{Binding Value}" />
+			</Border.Background>
+		</Border>
+	</DataTemplate>
+</Application.Resources>
+...
+<actipro:Ribbon>
+	<!-- Label is auto-generated from Key -->
+	<actipro:RibbonTabItem Key="Home">
+		<actipro:RibbonGroup Key="Colors">
+			<actipro:RibbonGallery
+				Key="ColorPicker"
+				LargeImageSource="/Images/ColorPicker32.png"
+				SmallImageSource="/Images/ColorPicker16.png"
+				Command="{Binding SetColorCommand}"
+				ItemsSource="{Binding ColorItems}"
+				ItemTemplate="{StaticResource ColorGalleryItemTemplate}"
+				UseAccentedItemBorder="True"
+				/>
+		</actipro:RibbonGroup>
+	</actipro:RibbonTabItem>
+	...
+</actipro:Ribbon>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -78,11 +131,32 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	...
 </bars:Ribbon>
 ```
+}
 
 ### Ribbon and Toolbar Contexts
 
 Galleries can be used in other ways within a ribbon, and in toolbar contexts as well.  This is supported by placing a [Popup Button](popup-button.md) or [Split Button](split-button.md) in the toolbar and then using a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) control (described below) in the popup menu.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarPopupButton Key="SetColor">
+		<actipro:BarMenuGallery
+			Key="ColorPicker"
+			Command="{Binding SetColorCommand}"
+			ItemsSource="{Binding ColorItems}"
+			ItemTemplate="{StaticResource ColorGalleryItemTemplate}"
+			UseAccentedItemBorder="True"
+			/>
+		...
+	</actipro:BarContextMenu>
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -100,6 +174,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:BarContextMenu>
 </bars:StandaloneToolBar>
 ```
+}
 
 ### Menu Contexts
 
@@ -109,6 +184,22 @@ Use the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) contr
 
 *A list numbering gallery*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase), which inherits native `Selector`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified.  |
+| Has image | No. |
+| Has popup | No. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) property.  The gallery item that is selected/previewed is passed as the command parameter. |
+| Key tip support | None. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Not directly.  Ribbon logic will look for a containing [Popup Button](popup-button.md) or [Split Button](split-button.md) to clone to the Quick Access Toolbar instead. |
+| [MVVM Library](../mvvm-support.md) VM | [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase), which inherits native `Selector`. |
@@ -123,7 +214,26 @@ Use the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) contr
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Not directly.  Ribbon logic will look for a containing [Popup Button](popup-button.md) or [Split Button](split-button.md) to clone to the Quick Access Toolbar instead. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarMenuGallery
+		Key="ColorPicker"
+		Command="{Binding SetColorCommand}"
+		ItemsSource="{Binding ColorItems}"
+		ItemTemplate="{StaticResource ColorGalleryItemTemplate}"
+		UseAccentedItemBorder="True"
+		/>
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -139,6 +249,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:BarContextMenu>
 ```
+}
 
 ## Appearance
 
@@ -262,9 +373,11 @@ When a gallery is solely presented within the menu of a containing [Popup Button
 
 This feature can be enabled by setting the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.UseMenuItemAppearance) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[UseMenuItemAppearance](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.UseMenuItemAppearance) property to `true`.  It is recommended to restrict the gallery to a single column when using this feature.  The "Columns Displayed on Menu" section above explains how to restrict the column count.
 
+@if (wpf) {
 ### User Interface Density (RibbonGallery only)
 
 The [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.UserInterfaceDensity) property can alter the appearance of the gallery, such as its size and padding used.  This property is not generally set on the gallery instance itself, and is instead meant to be set on the root bar control to inherit down, such as with the [Ribbon.UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property.
+}
 
 ## Key Tips
 
@@ -298,7 +411,7 @@ This view model class maps over to the appropriate view controls described above
 
 A [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel) interface defines the common requirements for gallery item view models, and a [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1) class is intended to be used directly, or as a base class for any gallery item view model.  Each kind of gallery should define a separate view model class for its items.  For instance, a gallery related to selection of a color defines a [ColorBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.ColorBarGalleryItemViewModel) class for its items, which inherits [BarGalleryItemViewModel\<Color\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1).
 
-It is recommended to build a custom `DataTemplateSelector` that can be assigned to the gallery's `ItemTemplateSelector` property to apply a `DataTemplate` for the related gallery item view model type.
+It is recommended to build a custom @if (avalonia) { `IDataTemplateSelector` }@if (wpf) { `DataTemplateSelector` } that can be assigned to the gallery's `ItemTemplateSelector` property to apply @if (avalonia) { an `IDataTemplate` }@if (wpf) { a `DataTemplate` } for the related gallery item view model type.
 
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
@@ -311,8 +424,14 @@ Gallery items are often very visual in nature.  Some galleries maintain a select
 
 It is recommended to always use custom view model types for gallery items, and to bind an enumerable of view model instances to the gallery's `ItemsSource` property.
 
+@if (avalonia) {
+> [!NOTE]
+> If gallery categorizing or filtering support is desired, an [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView) instance must be bound to the gallery's `ItemsSource` property.  The [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView).[Groups](xref:@ActiproUIRoot.Data.ICollectionView.Groups) collection should have a [CollectionViewGroup](xref:@ActiproUIRoot.Data.CollectionViewGroup) added to it that defines the category name to be used for each gallery item view model instance.  See the "Item Categorization" section below for more information.
+}
+@if (wpf) {
 > [!NOTE]
 > If gallery categorizing or filtering support is desired, an `ICollectionView` instance must be bound to the gallery's `ItemsSource` property.  The `ICollectionView.GroupDescriptions` collection should have a `PropertyGroupDescription` added to it that specifies the name of the category property on the gallery item view model `Type`.  See the "Item Categorization" section below for more information.
+}
 
 > [!CAUTION]
 > There are several scenarios where multiple gallery controls may be created for the same conceptual set of gallery items.  For instance, the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control has an implicitly created [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) that appears in its **More** button's popup menu, and the [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) control has an implicitly-created [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) that appears in its drop-down menu.  Galleries may also be cloned to the [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) or cloned for overflow purposes.
@@ -335,27 +454,45 @@ The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanAutoScr
 
 Gallery controls generate a [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) container for each gallery item in the gallery's `ItemsSource`.
 
-A `DataTemplate` for the view model type can be supplied via the [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase).`ItemTemplate` property, or alternatively, a `DataTemplateSelector`-based class instance can be set to the gallery's `ItemTemplateSelector` property.  These concepts are all fundamental to how any data-bound `ItemsControl` works.
+A `DataTemplate` for the view model type can be supplied via the [BarGalleryBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase).`ItemTemplate` property, or alternatively, @if (avalonia) { an `IDataTemplateSelector`-based }@if (wpf) { a `DataTemplateSelector`-based } class instance can be set to the gallery's `ItemTemplateSelector` property.  These concepts are all fundamental to how any data-bound `ItemsControl` works.
 
 Any UI elements can be placed in a `DataTemplate`, allowing you to make your gallery items' appearance as simple or complex as you wish.
 
 Here's an example of a template for a font size view model that has a `FontSize` property and uses a basic `TextBlock` for display.
 
+@if (avalonia) {
+```xaml
+<DataTemplate x:Key="FontSizeGalleryItemTemplate" x:DataType="local:FontSizeBarGalleryItemViewModel">
+	<TextBlock Margin="12,4" Text="{Binding FontSize}" />
+</DataTemplate>
+```
+}
+@if (wpf) {
 ```xaml
 <DataTemplate x:Key="FontSizeGalleryItemTemplate" DataType="local:FontSizeBarGalleryItemViewModel">
 	<TextBlock Margin="12,4" Text="{Binding FontSize}" />
 </DataTemplate>
 ```
+}
 
 Note that no borders are usually necessary in a gallery item template since the containing [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem) will render the chrome of the item.
 
 In the following example for an insert symbol gallery, we use a custom `SymbolPresenter` element.  This element could be a custom templated `Control` itself.  Or it could be a more basic element that overrides its `OnRender` method to render the content in code-behind via a `DrawingContext`.
 
+@if (avalonia) {
+```xaml
+<DataTemplate x:Key="SymbolGalleryItemTemplate" x:DataType="local:SymbolBarGalleryItemViewModel">
+	<local:SymbolPresenter Width="30" Height="30" />
+</DataTemplate>
+```
+}
+@if (wpf) {
 ```xaml
 <DataTemplate x:Key="SymbolGalleryItemTemplate" DataType="local:SymbolBarGalleryItemViewModel">
 	<local:SymbolPresenter Width="30" Height="30" />
 </DataTemplate>
 ```
+}
 
 While the template examples above only contain a single element, any complex element hierarchy can be placed within the template to achieve the look you desire.
 
@@ -403,7 +540,7 @@ The [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).[Label](x
 
 It doesn't make sense for galleries that show a label within the item itself to also display a tooltip containing simple label content.  For instance, a font size gallery shows the font size number, which is the label, in each gallery item.  Having a tooltip that would show the same value is not helpful.  For cases like this, set the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[IsLabelVisibleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.IsLabelVisibleProperty) property to `true` on [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).  If you are using the [MVVM Library](../mvvm-support.md), have the [BarGalleryItemViewModel\<T\>](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1).[IsLabelVisible](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryItemViewModel`1.IsLabelVisible) property return `true`, which will bind over to the attached property that prevents a simple tooltip from showing.
 
-Set the [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).`ToolTip` property to a string to add an extended description for a gallery item.  Alternatively, the value may be any `ToolTip`-derived class, including our [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) class.
+Set the @if (avalonia) { [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).`ToolTip.Tip` }@if (wpf) { [BarGalleryItem](xref:@ActiproUIRoot.Controls.Bars.BarGalleryItem).`ToolTip` } property to a string to add an extended description for a gallery item.  Alternatively, the value may be any `ToolTip`-derived class, including our [ScreenTip](xref:@ActiproUIRoot.Controls.Bars.ScreenTip) class.
 
 ### Item Categorization
 
@@ -413,6 +550,23 @@ Gallery items can be placed in categories.  These categories will not show up in
 
 *A color picker gallery with categorized colors*
 
+@if (avalonia) {
+Menu gallery categorization requires that the gallery item view model collection is bound to the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).`ItemsSource` property, and the collection must be an [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView).  The [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView).[Groups](xref:@ActiproUIRoot.Data.ICollectionView.Groups) collection must have a [CollectionViewGroup](xref:@ActiproUIRoot.Data.CollectionViewGroup) added to it that defines the category name to be used for each gallery item view model instance.  For instance, if using gallery item view models from our [MVVM Library](../mvvm-support.md), the category can be returned from the [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel).[Category](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel.Category) property.
+
+Here is a helper method on [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) that shows how to set up an [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView) for categorizing a collection of gallery items:
+
+```csharp
+public static ICollectionView CreateCollectionView(IEnumerable<IBarGalleryItemViewModel> items, bool categorize) {
+	var collectionView = new CollectionView<IBarGalleryItemViewModel>(items);
+
+	if (categorize)
+		collectionView.GroupDescriptions.Add(new GroupDescription<IBarGalleryItemViewModel>(x => x.Category));
+
+	return collectionView;
+}
+```
+}
+@if (wpf) {
 Menu gallery categorization requires that the gallery item view model collection is bound to the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).`ItemsSource` property, and the collection must be an `ICollectionView`.  The `ICollectionView.GroupDescriptions` collection must have a `PropertyGroupDescription` added to it that specifies the name of the category property on the gallery item view model `Type`.  For instance, if using gallery item view models from our [MVVM Library](../mvvm-support.md), the category property there is [IBarGalleryItemViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel).[Category](xref:@ActiproUIRoot.Controls.Bars.Mvvm.IBarGalleryItemViewModel.Category) so a `PropertyGroupDescription` would specify `"Category"`.
 
 Here is a helper method on [BarGalleryViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarGalleryViewModel) that shows how to set up an `ICollectionView` for categorizing a collection of gallery items:
@@ -428,8 +582,9 @@ public static ICollectionView CreateCollectionView(IEnumerable<IBarGalleryItemVi
 	return viewSource.View;
 }
 ```
+}
 
-The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanCategorizeOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.CanCategorizeOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanCategorize](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanCategorize) property must also be set to `true` to support categorization, which is the default.  The property can be set to `false` to turn off categorization for an `ICollectionView`-based `ItemsSource`.  Binding `ItemsSource` to an `IEnumerable` that does not implement `ICollectionSource` will also prevent categorization from working.
+The [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanCategorizeOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.CanCategorizeOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[CanCategorize](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.CanCategorize) property must also be set to `true` to support categorization, which is the default.  The property can be set to `false` to turn off categorization for an @if (avalonia) { [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView)-based }@if (wpf) { `ICollectionView`-based } `ItemsSource`.  Binding `ItemsSource` to an `IEnumerable` that does not implement @if (avalonia) { [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView) }@if (wpf) { `ICollectionView` } will also prevent categorization from working.
 
 When categorization is active, a category header that displays the category name will appear above all items in the category.  One exception is that if the category is `null`, no category header will be displayed.
 
@@ -438,6 +593,11 @@ When categorization is active, a category header that displays the category name
 *A menu gallery that has category headers hidden, while still displaying menu separators*
 
 In a scenario where you wish for a gallery to break items into multiple categories with a separator in between, but not display a category header for any categories, set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[HasCategoryHeadersOnMenu](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.HasCategoryHeadersOnMenu) or [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery).[HasCategoryHeaders](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery.HasCategoryHeaders) property to `false`.
+
+@if (avalonia) {
+> [!WARNING]
+> The [ICollectionView](xref:@ActiproUIRoot.Data.ICollectionView) interface and related types are experimental implementations used to support grouping and filtering in Avalonia since `ItemsControl` does not natively support the functionality.  While they are public classes from the Shared Library, they are subject to breaking changes and should only be used as directed when working with Bars controls.  These types may be removed in a future release if `ItemsControl` implements the necessary native support.
+}
 
 ### Categorized Item Filtering (BarMenuGallery only)
 
@@ -455,6 +615,18 @@ Set the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery).[CanFil
 
 [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) has the ability to display additional menu items above or below the menu gallery on its **More** button's popup menu.  This can be achieved by adding menu items into its [AboveMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.AboveMenuItems) and [BelowMenuItems](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase.BelowMenuItems) collections.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonGallery Key="TextStyles" ... >
+	<actipro:RibbonGallery.BelowMenuItems>
+		<actipro:BarMenuItem Key="MoreTextStyles" Command="{Binding MoreTextStylesCommand}" />
+	</actipro:RibbonGallery.BelowMenuItems>
+</actipro:RibbonGallery>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -464,6 +636,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:RibbonGallery.BelowMenuItems>
 </bars:RibbonGallery>
 ```
+}
 
 ## Size Selection Menu Gallery
 

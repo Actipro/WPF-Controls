@@ -38,6 +38,29 @@ See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on
 
 The following sample shows a ribbon with **Home** and **View** tabs defined using labels and key tips that are auto-generated from the defined key:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+
+		<!-- Other ribbon configuration here -->
+
+		<!-- Define tabs -->
+		<actipro:RibbonTabItem Key="Home" ... >
+			<!-- Tab groups here -->
+		</actipro:RibbonTabItem>
+		<actipro:RibbonTabItem Key="View" ... >
+			<!-- Tab groups here -->
+		</actipro:RibbonTabItem>
+		...
+
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -58,6 +81,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
@@ -80,7 +104,7 @@ See the [Contextual Tabs](contextual-tabs.md) topic for more details on that fea
 
 Some applications with only one ribbon tab may wish to hide the tab row entirely, so that a minimal ribbon is presented.  This appearance can be achieved by setting these [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) properties:
 - [AreTabsVisible](xref:@ActiproUIRoot.Controls.Bars.Ribbon.AreTabsVisible) = `false`
-- [ApplicationButton](xref:@ActiproUIRoot.Controls.Ribbon.Controls.Primitives.ApplicationButton) = `null`
+- [IsApplicationButtonVisible](xref:@ActiproUIRoot.Controls.Bars.Ribbon.IsApplicationButtonVisible) = `false`
 - [TabRowToolBarContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.TabRowToolBarContent) = `null`
 
 ## Groups
@@ -93,7 +117,7 @@ In the `Classic` layout mode, groups are prominently displayed in the UI with se
 
 See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to prevent a group from collapsing.
 
-See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Classic` modde.
+See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Classic` mode.
 
 ### Simplified Layout Mode
 
@@ -101,7 +125,7 @@ In the `Simplified` layout mode, controls still visible in the ribbon will rende
 
 See the [Resizing and Variants](resizing.md) topic for more details on how groups impact resizing and how to configure a **Group Overflow** menu.
 
-See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Simplified` modde.
+See the [Layout Modes and Density](layout-and-density.md) topic for more details on `Simplified` mode.
 
 ### Label
 
@@ -147,6 +171,35 @@ Unlike other buttons, however, the [SmallImageSource](xref:@ActiproUIRoot.Contro
 
 The following XAML sample demonstrates how to define a [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) using labels and key tips that are auto-generated from the defined key:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonTabItem Key="Home" ... >
+
+	<!-- Tab groups here -->
+	<actipro:RibbonGroup Key="FontSettings">
+
+		<!-- Launcher button -->
+		<actipro:RibbonGroup.LauncherButtonContent>
+			<actipro:RibbonGroupLauncherButton
+				Key="FontSettingsLauncher"
+				Label="Font Settings"
+				KeyTipText="FN"
+				ToolTip.Tip="Customize your text to give it the exact look you want."
+				Command="{Binding OpenFontSettingsCommand}" />
+		</actipro:RibbonGroup.LauncherButtonContent>
+
+		<!-- Define controls and/or control groups here -->
+		<actipro:BarButton Key="IncreaseFontSize" ... />
+		...
+
+	</actipro:RibbonGroup>
+</actipro:RibbonTabItem>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -173,6 +226,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonTabItem>
 ...
 ```
+}
 
 See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
@@ -197,6 +251,32 @@ The primary purpose of a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.
 
 The following XAML demonstrates how a control group might be used to achieve a result similar to Office's **Clipboard** group where the **Paste** control is always a large button and the related **Cut**, **Copy**, and **Format Painter** controls are stacked vertically in a group that never uses the [Large](xref:@ActiproUIRoot.Controls.Bars.VariantSize.Large) variant size:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonTabItem Key="Home" ... >
+
+	<actipro:RibbonGroup Key="Clipboard">
+
+		<!-- Large Paste control -->
+		<actipro:BarSplitButton Key="Paste" ... > ... </actipro:BarSplitButton>
+
+		<!-- Group of other clipboard controls -->
+		<actipro:RibbonControlGroup ItemVariantBehavior="NeverLarge">
+			<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallImageSource="/Images/Cut16.png" />
+			<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallImageSource="/Images/Copy16.png" />
+			<actipro:BarButton Key="FormatPainter" Command="{Binding FormatPainterCommand}" SmallImageSource="/Images/FormatPainter16.png" />
+		</actipro:RibbonControlGroup>
+
+	</actipro:RibbonGroup>
+	...
+
+</actipro:RibbonTabItem>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -220,6 +300,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonTabItem>
 ...
 ```
+}
 
 See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
@@ -248,6 +329,47 @@ The primary purpose of a [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Contro
 
 The following XAML demonstrates how a multi-row control group might be used to display a set of controls that show in two or three rows, depending on available space:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonTabItem Key="Home" ... >
+
+	<actipro:RibbonGroup Key="FontGroup" Label="Font">
+
+		<actipro:RibbonMultiRowControlGroup>
+
+			<!-- Don't render separators next to this set of comboboxes -->
+			<actipro:RibbonControlGroup SeparatorMode="Never">
+				<actipro:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
+				                     MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" />
+				<actipro:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
+				                     MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" />
+			</actipro:RibbonControlGroup>
+
+			<!-- Larger and smaller font size buttons -->
+			<actipro:RibbonControlGroup>
+				<actipro:BarButton Key="Larger" SmallImageSource="/Images/GrowFont16.png" KeyTipText="FG" />
+				<actipro:BarButton Key="Smaller" SmallImageSource="/Images/ShrinkFont16.png" KeyTipText="FK" />
+			</actipro:RibbonControlGroup>
+
+			<!-- Bold, italic, and underline buttons -->
+			<actipro:RibbonControlGroup>
+				<actipro:BarButton Key="Bold" SmallImageSource="/Images/Bold16.png" KeyTipText="B" />
+				<actipro:BarButton Key="Italic" SmallImageSource="/Images/Italic16.png" KeyTipText="I" />
+				<actipro:BarButton Key="Underline" SmallImageSource="/Images/Underline16.png" KeyTipText="U" />
+			</actipro:RibbonControlGroup>
+
+		</actipro:RibbonMultiRowControlGroup>
+
+	</actipro:RibbonGroup>
+	...
+
+</actipro:RibbonTabItem>
+...
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -260,9 +382,9 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 			<!-- Don't render separators next to this set of comboboxes -->
 			<bars:RibbonControlGroup SeparatorMode="Never">
 				<bars:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
-								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				                  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
 				<bars:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
-								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				                  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
 			</bars:RibbonControlGroup>
 
 			<!-- Larger and smaller font size buttons -->
@@ -286,6 +408,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 </bars:RibbonTabItem>
 ...
 ```
+}
 
 See the "MVVM Support" section below for details on alternatively binding the items using MVVM techniques.
 
