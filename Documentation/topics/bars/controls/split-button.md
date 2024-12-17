@@ -26,6 +26,22 @@ If the button should be checkable, use the [BarSplitToggleButton](xref:@ActiproU
 
 *BarSplitButton examples in several variant sizes (large, medium, and small)*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton), which indirectly inherits native `Menu`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource) properties. |
+| Has popup | Yes. |
+| Is checkable | Yes, but only when using [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton). |
+| Variant sizes | `Small` (image only), `Medium` (image and label), `Large` (tall size, image and multi-line label). |
+| Command support | Yes, via the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Command) property (related to the button portion) and the [PopupOpeningCommand](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.PopupOpeningCommand) property (related to the popup portion). |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarSplitButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitButtonViewModel) class for regular buttons, [BarSplitToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitToggleButtonViewModel) class for toggle buttons. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton), which indirectly inherits native `Menu`. |
@@ -40,7 +56,31 @@ If the button should be checkable, use the [BarSplitToggleButton](xref:@ActiproU
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | Yes, via the [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.UserInterfaceDensity) property. |
 | [MVVM Library](../mvvm-support.md) VM | [BarSplitButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitButtonViewModel) class for regular buttons, [BarSplitToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitToggleButtonViewModel) class for toggle buttons. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarSplitButton
+		Key="Shapes"
+		SmallImageSource="/Images/Shapes16.png"
+		Command="{Binding InsertLastShapeCommand}">
+
+		<actipro:BarSplitButton.Items>
+			<actipro:BarMenuItem
+				Key="Rectangle"
+				Command="{Binding InsertRectangleCommand}"
+				/>
+		</actipro:BarSplitButton.Items>
+	</actipro:BarSplitButton>
+	...
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -49,7 +89,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	<bars:BarSplitButton
 		Key="Shapes"
 		SmallImageSource="/Images/Shapes16.png"
-		Command="{Binding InsertLastShapeCommand">
+		Command="{Binding InsertLastShapeCommand}">
 
 		<bars:BarSplitButton.Items>
 			<bars:BarMenuItem
@@ -61,6 +101,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:StandaloneToolBar>
 ```
+}
 
 ### Menu Contexts
 
@@ -72,6 +113,22 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) class
 
 *A BarSplitMenuItem example*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem), which indirectly inherits native `MenuItem`. |
+| Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Key) property. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) property.  Auto-generated from the `Key` value if not specified. |
+| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) properties. |
+| Has popup | Yes. |
+| Is checkable | Yes, when the `ToggleType` property is set to `CheckBox` or `Radio`. |
+| Variant sizes | None, but has a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that triggers a large height and displays an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description). |
+| Command support | Yes, via the `Command` property (related to the button portion) and the [PopupOpeningCommand](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.PopupOpeningCommand) property (related to the popup portion). |
+| Key tip support | Yes, via the [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.KeyTipText) property.  Auto-generated from the `Label` value if not specified. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.CanCloneToRibbonQuickAccessToolBar) property. |
+| [MVVM Library](../mvvm-support.md) VM | [BarSplitButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitButtonViewModel) class for non-checkable menu items, [BarSplitToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitToggleButtonViewModel) class for checkable menu items. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem), which indirectly inherits native `MenuItem`. |
@@ -86,7 +143,29 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) class
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | Yes, via the [CanCloneToRibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.CanCloneToRibbonQuickAccessToolBar) property. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarSplitButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitButtonViewModel) class for non-checkable menu items, [BarSplitToggleButtonViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSplitToggleButtonViewModel) class for checkable menu items. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<!-- Label is auto-generated from Key -->
+	<actipro:BarSplitMenuItem
+		Key="Shapes"
+		SmallImageSource="/Images/Shapes16.png">
+		Command="{Binding InsertLastShapeCommand}">
+
+		<actipro:BarMenuItem
+			Key="Rectangle"
+			Command="{Binding InsertRectangleCommand}"
+			/>
+	</actipro:BarSplitMenuItem>
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -105,6 +184,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:BarContextMenu>
 ```
+}
 
 ## Appearance
 
@@ -118,11 +198,20 @@ The `Label` can be auto-generated based on the control's `Key` property.  For in
 
 The [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) is rendered on the button when it is in a `Medium` or `Large` variant size.  When using a `Large` variant size button, the label will wrap words to two lines to minimize overall width.  In cases where a run of label text should not be broken up into two lines, use a non-breaking space character (ASCII code 160) in place of any whitespace, like this:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarSplitButton ... Label="Data&#160;Set" />
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:BarSplitButton ... Label="Data&#160;Set" />
 ```
+}
 
 The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) is rendered on the menu item as its primary content.
 
@@ -130,7 +219,7 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[Labe
 
 The controls can display images that help identify their function.
 
-All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
+All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  @if (avalonia) { When the button is located on a ribbon with `Simplified` layout mode, }@if (wpf) { When the button has a `Spacious` UI density,} it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
 
 > [!TIP]
 > See the [Control Basics](control-basics.md) topic for more detail on the fallback logic for button images.
@@ -156,9 +245,11 @@ While [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) doe
 
 See the [Resizing and Variants](../ribbon-features/resizing.md) topic for more information on ribbon's variant sizing features.
 
+@if (wpf) {
 ### User Interface Density (BarSplitButton only)
 
 The [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.UserInterfaceDensity) property can alter the appearance of the button, such as its size, padding, and image used.  This property is not generally set on the button instance itself, and is instead meant to be set on the root bar control to inherit down, such as with the [Ribbon.UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property.
+}
 
 ### Checked State (BarToggleSplitButton and BarSplitMenuItem only)
 
@@ -188,13 +279,19 @@ See the [Using Commands](using-commands.md) topic for more information on comman
 
 ## Input Gesture Text
 
-The control can have input gesture text associated with it that describes a related keyboard shortcut,
-and is displayed in the screen tip for the control or in the menu item itself.
+The control can have input gesture text associated with it that describes a related keyboard shortcut, and is displayed in the screen tip for the control or in the menu item itself.
 
+@if (avalonia) {
+Input gesture text can be specified in the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[InputGesture](xref:@ActiproUIRoot.Controls.Bars.BarButton.InputGesture) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).`InputGesture` properties.
+
+Input gesture text may be hidden altogether in UI by setting the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.IsInputGestureTextVisible) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.IsInputGestureTextVisible) properties to `false`.
+}
+@if (wpf) {
 This input gesture text is automatically derived from commands that inherit `RoutedCommand` and have a `KeyGesture` set.
 Or input gesture text can be specified in the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[InputGestureText](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton.InputGestureText) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).`InputGestureText` properties.
 
 Input gesture text may be hidden altogether in UI by setting the [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton.IsInputGestureTextVisible) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[IsInputGestureTextVisible](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.IsInputGestureTextVisible) properties to `false`.
+}
 
 ## Screen Tips
 
@@ -202,7 +299,7 @@ The controls support screen tips, which are formatted tool tips.
 
 The control's `Title` is used as the default screen tip header, falling back to `Label` if no `Title` is available.  The [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ScreenTipHeader) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[ScreenTipHeader](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipHeader) properties can override the default screen tip header value if desired.
 
-If the control's `ToolTip` property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
+If the control's @if (avalonia) { `ToolTip.Tip` }@if (wpf) { `ToolTip` } property is set to a value that doesn't derive from a native `ToolTip` control, such as a string, the value will be used in the screen tip's content area, with the screen tip header becoming bold.  The screen tip's content area is where extended descriptions are displayed.
 
 If the optional [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.ScreenTipFooter) and [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[ScreenTipFooter](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.ScreenTipFooter) properties are specified, they will appear in a footer area of the screen tip.
 

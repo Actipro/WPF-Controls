@@ -15,6 +15,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 		private bool	fontColorCanFilter				= false;
 		private int		itemSpacing						= 4;
 		private Color	livePreviewColor				= Colors.Transparent;
+		private string	selectedFontColorCategory;
 		private Color	textHighlightColor				= Colors.Yellow;
 		private int		textHighlightColCount			= 5;
 		private bool	useAccentedItemBorder			= true;
@@ -111,6 +112,20 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryColorPick
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the selected font color category.
+		/// </summary>
+		/// <value>The selected font color category.</value>
+		public string SelectedFontColorCategory {
+			get => selectedFontColorCategory;
+			set {
+				if (selectedFontColorCategory != value) {
+					selectedFontColorCategory = value;
+					NotifyPropertyChanged(nameof(SelectedFontColorCategory));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets the current text highlight color.
 		/// </summary>

@@ -38,6 +38,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private int minMenuColumnCount = 1;
 		private ICommand popupOpeningCommand;
 		private IBarGalleryItemViewModel selectedItem;
+		private string selectedFilterCategory;
 		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
 		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
 		private bool useAccentedItemBorder;
@@ -477,6 +478,20 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the selected filter category.
+		/// </summary>
+		/// <value>The selected filter category.</value>
+		public string SelectedFilterCategory {
+			get => selectedFilterCategory;
+			set {
+				if (selectedFilterCategory != value) {
+					selectedFilterCategory = value;
+					this.NotifyPropertyChanged(nameof(SelectedFilterCategory));
+				}
+			}
+		}
+		
 		/// <summary>
 		/// Gets or sets the selected item.
 		/// </summary>

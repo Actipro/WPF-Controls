@@ -35,6 +35,22 @@ Use the [BarSeparator](xref:@ActiproUIRoot.Controls.Bars.BarSeparator) control t
 
 *A separator in a toolbar*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | Native `Separator`. |
+| Has key | No. |
+| Has label | No. |
+| Has image | No. |
+| Has popup | No. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | None. |
+| Key tip support | None. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
+| [MVVM Library](../mvvm-support.md) VM | [BarSeparatorViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSeparatorViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | Native `Separator`. |
@@ -49,7 +65,24 @@ Use the [BarSeparator](xref:@ActiproUIRoot.Controls.Bars.BarSeparator) control t
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarSeparatorViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSeparatorViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:StandaloneToolBar>
+	<actipro:BarButton Key="Undo" />
+	<actipro:BarButton Key="Redo" />
+	<actipro:BarSeparator />
+	<actipro:BarButton Key="Cut" />
+	<actipro:BarButton Key="Copy" />
+	<actipro:BarButton Key="Paste" />
+	...
+</actipro:StandaloneToolBar>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -63,6 +96,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:StandaloneToolBar>
 ```
+}
 
 ### Menu Contexts
 
@@ -72,6 +106,22 @@ Use the [BarMenuSeparator](xref:@ActiproUIRoot.Controls.Bars.BarMenuSeparator) c
 
 *A separator in a menu*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | Native `Separator`. |
+| Has key | No. |
+| Has label | No. |
+| Has image | No. |
+| Has popup | No. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | None. |
+| Key tip support | None. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
+| [MVVM Library](../mvvm-support.md) VM | [BarSeparatorViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSeparatorViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | Native `Separator`. |
@@ -86,7 +136,24 @@ Use the [BarMenuSeparator](xref:@ActiproUIRoot.Controls.Bars.BarMenuSeparator) c
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarSeparatorViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarSeparatorViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<actipro:BarMenuItem Key="Undo" />
+	<actipro:BarMenuItem Key="Redo" />
+	<actipro:BarSeparator />
+	<actipro:BarMenuItem Key="Cut" />
+	<actipro:BarMenuItem Key="Copy" />
+	<actipro:BarMenuItem Key="Paste" />
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -100,6 +167,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	...
 </bars:BarContextMenu>
 ```
+}
 
 #### Separators Surrounding Menu Galleries
 

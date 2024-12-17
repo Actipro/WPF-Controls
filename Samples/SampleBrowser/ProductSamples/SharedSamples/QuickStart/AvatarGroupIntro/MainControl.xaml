@@ -28,6 +28,8 @@
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatarGroup, Path=ItemLength}">
 							<gridseditors:DoublePropertyEditor Minimum="16" Maximum="100" SmallChange="2" LargeChange="4" Format="0" />
 						</grids:PropertyModel>
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatarGroup, Path=Orientation}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=avatarGroup, Path=OverflowOrientation}" />
 					</sampleBrowser:SampleOptionsPropertyGrid>
 				</StackPanel>
 			</Expander>

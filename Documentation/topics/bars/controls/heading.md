@@ -26,6 +26,22 @@ Use the [BarMenuHeading](xref:@ActiproUIRoot.Controls.Bars.BarMenuHeading) contr
 
 *A heading at the top of a menu*
 
+@if (avalonia) {
+| Specification | Details |
+|-----|-----|
+| Base class | Native `Separator`. |
+| Has key | No. |
+| Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuHeading.Label) property. |
+| Has image | No. |
+| Has popup | No. |
+| Is checkable | No. |
+| Variant sizes | None. |
+| Command support | None. |
+| Key tip support | None. |
+| [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
+| [MVVM Library](../mvvm-support.md) VM | [BarHeadingViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarHeadingViewModel) class. |
+}
+@if (wpf) {
 | Specification | Details |
 |-----|-----|
 | Base class | Native `MenuItem`. |
@@ -40,18 +56,34 @@ Use the [BarMenuHeading](xref:@ActiproUIRoot.Controls.Bars.BarMenuHeading) contr
 | [Ribbon QAT](../ribbon-features/quick-access-toolbar.md) support | None. |
 | UI density support | None. |
 | [MVVM Library](../mvvm-support.md) VM | [BarHeadingViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarHeadingViewModel) class. |
+}
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarContextMenu>
+	<actipro:BarMenuHeading Label="Clipboard Operations" />
+	<actipro:BarMenuItem Key="Cut" />
+	<actipro:BarMenuItem Key="Copy" />
+	<actipro:BarMenuItem Key="Paste" />
+	...
+</actipro:BarContextMenu>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
 <bars:BarContextMenu>
-	<bars:BarHeading Label="Clipboard Operations" />
+	<bars:BarMenuHeading Label="Clipboard Operations" />
 	<bars:BarMenuItem Key="Cut" />
 	<bars:BarMenuItem Key="Copy" />
 	<bars:BarMenuItem Key="Paste" />
 	...
 </bars:BarContextMenu>
 ```
+}
 
 ## MVVM Support
 

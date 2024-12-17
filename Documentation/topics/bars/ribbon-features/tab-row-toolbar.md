@@ -5,7 +5,7 @@ order: 67
 ---
 # Tab Row Toolbar
 
-The ribbon's tab row toolbar is a control that can optionally be displayed on the far-right side of the ribbon, in the same row as the ribbon tabs.  It generally shows common controls that are always available, such as `Sharing` or `Feedback` buttons.
+The ribbon's tab row toolbar is a control that can optionally be displayed on the far side of the ribbon, in the same row as the ribbon tabs.  It generally shows common controls that are always available, such as `Sharing` or `Feedback` buttons.
 
 ![Screenshot](../images/ribbon-tab-row-toolbar.png)
 
@@ -22,6 +22,25 @@ The items to be displayed in the toolbar are assigned to the [RibbonTabRowToolBa
 
 This code sample shows how to define the tab row toolbar items for a ribbon.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+
+		<actipro:Ribbon.TabRowToolBarContent>
+			<actipro:RibbonTabRowToolBar>
+				<actipro:BarButton Key="Share" Command="{Binding ShareCommand}" SmallImageSource="/Images/Share16.png" />
+			</actipro:RibbonTabRowToolBar>
+		</actipro:Ribbon.TabRowToolBarContent>
+
+		...
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -38,6 +57,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 ## MVVM Support
 
@@ -48,6 +68,18 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonTabRo
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
 
+@if (avalonia) {
+## Customizing the Toolbar Theme
+
+The [RibbonTabRowToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonTabRowToolBar) instance can be customized by setting a `ControlTheme` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[TabRowToolBarTheme](xref:@ActiproUIRoot.Controls.Bars.Ribbon.TabRowToolBarTheme) property.  This `ControlTheme` is applied to the control when it is added to the ribbon.
+}
+@if (wpf) {
 ## Customizing the Toolbar Style
 
 The [RibbonTabRowToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonTabRowToolBar) instance can be customized by setting a `Style` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[TabRowToolBarStyle](xref:@ActiproUIRoot.Controls.Bars.Ribbon.TabRowToolBarStyle) property.  This `Style` is applied to the control when it is added to the ribbon.
+}
+
+@if (avalonia) {
+> [!TIP]
+> See the "Tab Row Toolbar" Bars Ribbon QuickStart of the Sample Browser application for a full demonstration of working with tab row toolbar.
+}

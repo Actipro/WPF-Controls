@@ -89,6 +89,13 @@ private void OnDockSiteFloatingWindowOpening(object sender, FloatingWindowOpenin
 }
 ```
 
+## Double-Clicking Floating Tool Window Container Title Bars
+
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingToolWindowContainerTitleBarDoubleClickMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingToolWindowContainerTitleBarDoubleClickMode) property determines the behavior for double-clicks on floating tool window container title bars.  It can be set to one of these two values:
+
+- [ToggleMaximized](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowTitleBarDoubleClickMode.ToggleMaximized) (default) - The floating window toggles between maximized and restored states.
+- [Dock](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowTitleBarDoubleClickMode.Dock) - The floating window docks back into another dock host.
+
 @if (wpf) {
 
 ## Non-Hosted vs. Hosted Floating Windows

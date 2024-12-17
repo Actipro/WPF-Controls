@@ -12,7 +12,7 @@ CHANGES SINCE LAST STEP:
 	
 	A note was added about the importance of using RibbonContainerPanel when working with Backstage.
 	
-	See the SampleWindowViewModel class for details on configuring the Quick Access Toolbar.
+	See the SampleWindowViewModel class for details on configuring the Backstage.
 	
 EXPECTED OPERATION:
 	

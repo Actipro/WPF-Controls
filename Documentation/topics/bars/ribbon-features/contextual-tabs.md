@@ -23,6 +23,42 @@ See the [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic f
 
 The following code sample shows how to define two contextual tab groups for a ribbon (`PictureTools` and `TableTools`) and then associate tabs with the corresponding group:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+
+		<!-- Define ContextualTabGroups -->
+		<actipro:Ribbon.ContextualTabGroups>
+			<actipro:RibbonContextualTabGroup Key="PictureTools" />
+			<actipro:RibbonContextualTabGroup Key="TableTools" />
+		</actipro:Ribbon.ContextualTabGroups>
+
+		<!-- Standard Tabs (Always Visible) -->
+		<actipro:RibbonTabItem Key="Home">
+			...
+		</actipro:RibbonTabItem>
+
+		<!-- Picture Tools Contextual Tabs -->
+		<actipro:RibbonTabItem Key="PictureFormat" ContextualTabGroupKey="PictureTools">
+			...
+		</actipro:RibbonTabItem>
+
+		<!-- Table Tools Contextual Tabs -->
+		<actipro:RibbonTabItem Key="TableDesign" ContextualTabGroupKey="TableTools">
+			...
+		</actipro:RibbonTabItem>
+		<actipro:RibbonTabItem Key="Layout" ContextualTabGroupKey="TableTools">
+			...
+		</actipro:RibbonTabItem>
+
+	</actipro:Ribbon>
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -56,15 +92,38 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
 
 ## Showing / Hiding a Contextual Tab Group
 
+@if (avalonia) {
+The [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup).`IsVisible` property determines the visibility of the associated [tab](tabs-groups-controlgroups.md) controls.
+
+When the [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup).`IsVisible` property is set to `true`, all its associated [tab](tabs-groups-controlgroups.md) controls are displayed.  Likewise, setting the `IsVisible` property to `false` hides all its associated tabs.  Multiple contextual tab groups can be visible at the same time.
+}
+@if (wpf) {
 The [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup).`Visibility` property determines the visibility of the associated [tab](tabs-groups-controlgroups.md) controls.
 
 When the [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup).`Visibility` property is set to `Visible`, all its associated [tab](tabs-groups-controlgroups.md) controls are displayed.  Likewise, setting the `Visibility` property to `Collapsed` hides all its associated tabs.  Multiple contextual tab groups can be visible at the same time.
+}
 
 The following code sample demonstrates one way to show all the tabs associated with a [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup):
 
+@if (avalonia) {
+```csharp
+using ActiproSoftware.UI.Avalonia.Controls.Bars;
+using System.Linq;
+...
+Ribbon ribbon;
+...
+var pictureToolsGroup = ribbon.ContextualTabGroups
+	.OfType<RibbonContextualTabGroup>()
+	.FirstOrDefault(group => group.Key == "PictureTools")
+if (pictureToolsGroup != null)
+	pictureToolsGroup.IsVisible = true;
+```
+}
+@if (wpf) {
 ```csharp
 using ActiproSoftware.Windows.Controls.Bars;
 using System.Linq;
@@ -77,6 +136,7 @@ var pictureToolsGroup = ribbon.ContextualTabGroups
 if (pictureToolsGroup != null)
 	pictureToolsGroup.Visibility = System.Windows.Visibility.Visible;
 ```
+}
 
 > [!TIP]
 > See the "Contextual Tabs" Bars Ribbon QuickStart of the Sample Browser application for a full demonstration of working with contextual tabs.

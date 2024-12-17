@@ -7,7 +7,9 @@ order: 210
 
 Many controls have `Key`, `Label`, and `KeyTipText` properties. Since these properties are closely related, controls can auto-generate a `Label` value based on the `Key` if no other `Label` has been explicitly set.  Likewise, a `KeyTipText` value can be auto-generated from a `Label` if no other `KeyTipText` has been expicitly set.
 
+@if (wpf) {
 Other contextual values (like certain `ICommand` types) can also be used when auto-generating property values.
+}
 
 This time-saving feature helps reduce the need to specify many `Label` and `KeyTipText` values, except in scenarios where a customized value is necessary!
 
@@ -48,13 +50,17 @@ Exception for the first word in "camelCase", all recognized words will use the c
 
 ### Label from Command
 
+@if (avalonia) {
+The default [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator.FromCommand*) method implementation will always return `null`, but this method can be overridden by derived classes to automatically provide labels for known commands.
+}
+@if (wpf) {
 The default [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator.FromCommand*) method implementation will analyze an `ICommand` to determine the best label.
 - The `ApplicationCommands.NotACommand` command is ignored and will always return a value of `null`.
 - Any other `RoutedUICommand` will use the `RoutedUICommand.Text` property as the label.
 - Any `RoutedCommand` will use the `RoutedCommand.Name` property as the label.
 
-
 A value of `null` will be returned if a label could not be determined from the command.
+}
 
 ## Key Tip Generation
 
@@ -87,11 +93,16 @@ A value of `null` will be returned if a value for key tip text could not be dete
 
 ### Key Tip from Command
 
+@if (avalonia) {
+The default [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromCommand*) method implementation will always return `null`, but this method can be overridden by derived classes to automatically provide key tips for known commands.
+}
+@if (wpf) {
 The default [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromCommand*) method implementation will analyze an `ICommand` to determine the best key tip text.
 
 If the `ICommand` is a `RoutedCommand`, the `RoutedCommand.InputGestures` collection will be queried for gestures of type `KeyGesture`. The first `KeyGesture` that returns a non-`null` value when passed to [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromKeyGesture](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromKeyGesture*) will be used as the key tip text.
 
 A value of `null` will be returned if a value for key tip text could not be determined from the `ICommand`.
+}
 
 ## Localization
 
@@ -105,7 +116,7 @@ The following steps can be used to implement localized label generation:
 
 1. Create a new class that derives from [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).
 1. Override the [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).[FromKey](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator.FromKey*) method to return a localized label for the given key.
-1. Optionally override the [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator.FromCommand*) method to return a localized label for the given command. This is only necessary if the `RoutedUICommand.Text` or `RoutedCommand.Name` properties are not already localized.
+1. Optionally override the [LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.LabelGenerator.FromCommand*) method to return a localized label for the given command.@if (wpf) { This is only necessary if the `RoutedUICommand.Text` or `RoutedCommand.Name` properties are not already localized. }
 1. During application startup before any UI is initialized, set the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[LabelGenerator](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelGenerator) property to an instance of the custom class.
 
 > [!NOTE]
@@ -119,7 +130,7 @@ The following steps can be used to implement localized key tip generation:
 
 1. Create a new class that derives from [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).
 1. Override the [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromLabel](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromLabel*) method to return a localized key tip text for the given label.
-1. Optionally override the [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromCommand*) method to return a localized key tip text for the given command. This is only necessary if key tip text cannot be auto-generated from a `KeyGesture` defined within `RoutedCommand.InputGestures`.
+1. Optionally override the [KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator).[FromCommand](xref:@ActiproUIRoot.Controls.Bars.KeyTipTextGenerator.FromCommand*) method to return a localized key tip text for the given command.@if (wpf) { This is only necessary if key tip text cannot be auto-generated from a `KeyGesture` defined within `RoutedCommand.InputGestures`. }
 1. During application startup before any UI is initialized, set the [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[KeyTipTextGenerator](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyTipTextGenerator) property to an instance of the custom class.
 
 > [!NOTE]

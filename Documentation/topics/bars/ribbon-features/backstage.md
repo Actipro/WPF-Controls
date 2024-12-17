@@ -9,15 +9,22 @@ The backstage was introduced in Office 2010 and can be displayed when clicking t
 
 ![Screenshot](../images/backstage-buttons.png)
 
+@if (avalonia) {
+*A backstage with styled buttons*
+}
+@if (wpf) {
 *A backstage with styled buttons and backdrop effect*
+}
 
 The backstage is organized such that buttons and tabs appear on the near side (the header area) and the selected tab's content appears on the far side (the content area).
 
+@if (wpf) {
 > [!IMPORTANT]
 > A ribbon must be hosted within a [RibbonWindow](ribbon-window.md) and [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) to support the backstage taking over the entire window.
 
 > [!NOTE]
 > See the [Application Menu](application-menu.md) topic for details on how to define a more traditional application menu instead of a backstage.
+}
 
 ## Defining a Backstage
 
@@ -28,6 +35,40 @@ The backstage can be defined in XAML or code-behind by assigning a [RibbonBackst
 
 This code sample shows how to define a backstage for a ribbon.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:RibbonContainerPanel>
+	<actipro:Ribbon>
+		<actipro:Ribbon.BackstageContent>
+			<actipro:RibbonBackstage>
+
+				<!-- Tabs, buttons and separators go here in any order -->
+
+				<actipro:RibbonBackstageTabItem Key="Info">
+					<!-- Tab content goes here -->
+				</actipro:RibbonBackstageTabItem>
+				<actipro:RibbonBackstageHeaderSeparator />
+				<actipro:RibbonBackstageHeaderButton Key="Save" Command="{Binding SaveCommand}" />
+
+				<!-- The following are aligned to the bottom -->
+				<actipro:RibbonBackstageHeaderSeparator HeaderAlignment="Bottom" />
+				<actipro:RibbonBackstageTabItem Key="Options" HeaderAlignment="Bottom">
+					<!-- Tab content goes here -->
+				</actipro:RibbonBackstageTabItem>
+				<actipro:RibbonBackstageHeaderButton Key="Exit" HeaderAlignment="Bottom" />
+
+			</actipro:RibbonBackstage>
+		</actipro:Ribbon.BackstageContent>
+	</actipro:Ribbon>
+
+	<!-- Content below the ribbon goes here -->
+
+</actipro:RibbonContainerPanel>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -59,10 +100,14 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 </bars:RibbonContainerPanel>
 ```
+}
 
+@if (wpf) {
 > [!IMPORTANT]
 > The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) that defines a backstage should be a child of a [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) for the backstage to display properly. When a backstage is opened, it will cover the entire area defined by the [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel) (with additional support when hosted inside a [RibbonWindow](xref:@ActiproUIRoot.Controls.Bars.RibbonWindow)).  See the [Control Hierarchy](control-hierarchy.md) topic for more information on optionally defining the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) inside a `ContentControl`.
+}
 
+@if (wpf) {
 ## Header Area Transparency
 
 The backstage template is set up to use a transparent background in its tab header area when a system backdrop like Mica (available starting in Windows 11) is enabled on the containing `Window`'s [WindowChrome](../../themes/windowchrome.md).  It is important to use the control hierarchy described above that involves [RibbonContainerPanel](xref:@ActiproUIRoot.Controls.Bars.RibbonContainerPanel), as the panel will hide when backstage is open, allowing the system backdrop background to show through to the backstage header area instead of content like a ribbon control that is underneath the backstage.
@@ -72,6 +117,7 @@ In a scenario where there is other content outside of the panel that is showing 
 When the containing window's chrome is not configured to use a system backdrop, or on pre-Windows 11 systems, the backstage header area will use an opaque background.
 
 See the [WindowChrome](../../themes/windowchrome.md) topic for complete details on the application and operating system requirements necessary to support transparency.
+}
 
 ## MVVM Support
 
@@ -82,15 +128,22 @@ The optional companion [MVVM Library](../mvvm-support.md) defines a [RibbonBacks
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.
 
+@if (avalonia) {
+## Customizing the Backstage Theme
+
+The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) instance can be customized by setting a `ControlTheme` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[BackstageTheme](xref:@ActiproUIRoot.Controls.Bars.Ribbon.BackstageTheme) property.  This `ControlTheme` is applied to the control when it is added to the ribbon.
+}
+@if (wpf) {
 ## Customizing the Backstage Style
 
 The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) instance can be customized by setting a `Style` to the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[BackstageStyle](xref:@ActiproUIRoot.Controls.Bars.Ribbon.BackstageStyle) property.  This `Style` is applied to the control when it is added to the ribbon.
+}
 
 ## Defining Backstage Items
 
 The [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) control can contain these types of controls, which appear vertically in its header area: [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton), [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem), and [RibbonBackstageHeaderSeparator](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderSeparator).
 
-Controls will the same header alignment appear in the order in which they are defined in the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).  This allows you to freely intermix the order of buttons, tabs, and any separators. By default, each item is aligned to the top but setting the control's `HeaderAlignment` property to [RibbonBackstageHeaderAlignment](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment).[Bottom](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment.Bottom) will shift the alignment to the bottom.
+Controls with the same header alignment appear in the order in which they are defined in the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).  This allows you to freely intermix the order of buttons, tabs, and any separators. By default, each item is aligned to the top but setting the control's `HeaderAlignment` property to [RibbonBackstageHeaderAlignment](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment).[Bottom](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderAlignment.Bottom) will shift the alignment to the bottom.
 
 ### Buttons
 
@@ -125,7 +178,7 @@ Set the [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage).[Ca
 
 ## TaskTabControl
 
-The [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) is a styled version of a native WPF `TabControl` that renders its tabs on the left side.  The selected tab's content appears on the right side.  This tab control is ideal for use on a [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) since it provides a secondary level of tabs.  It can be used externally to backstage as well.
+The [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) is a styled version of a native `TabControl` that renders its tabs on the left side.  The selected tab's content appears on the right side.  This tab control is ideal for use on a [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) since it provides a secondary level of tabs.  It can be used externally to backstage as well.
 
 ![Screenshot](../images/backstage-controls.png)
 
@@ -135,12 +188,30 @@ The items of a [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl
 
 Use the [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[Label](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.Label) and [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.LargeImageSource) properties to define the tab header.
 
-## BarButton and BarPopupButton Styles
+@if (avalonia) {
+## Backstage Button Themes
+
+The backstage content area commonly uses large buttons.  The various button controls ([BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton), [BarToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarToggleButton), [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton), [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton), and [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton)) have special themes that can be applied to display as a large button.}
+@if (wpf) {
+## Backstage Button Styles
 
 The backstage content area commonly uses large buttons.  Both the [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) and [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) controls have special styles that can be applied to display as a large button.
+}
 
-Use of those properties can trigger the style of buttons found in Office's Backstage, and as seen in the `TaskTabControl` screenshot above. The following example shows how to apply the styles:
+Use of those @if (avalonia) { themes }@if (wpf) { styles } results in buttons with an appearance similar to Office's Backstage, and as seen in the `TaskTabControl` screenshot above. The following example shows how to apply the @if (avalonia) { themes }@if (wpf) { styles }:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:BarButton Theme="{actipro:ControlTheme RibbonBackstageBarButtonOutline}" />
+<actipro:BarToggleButton Theme="{actipro:ControlTheme RibbonBackstageBarButtonOutline}" />
+<actipro:BarPopupButton Theme="{actipro:ControlTheme RibbonBackstageBarPopupButtonOutline}" />
+<actipro:BarSplitButton Theme="{actipro:ControlTheme RibbonBackstageBarSplitButtonOutline}" />
+<actipro:BarSplitToggleButton Theme="{actipro:ControlTheme RibbonBackstageBarSplitButtonOutline}" />
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -148,6 +219,7 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 <bars:BarButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" />
 <bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}" />
 ```
+}
 
 ## Preventing Backstage from Closing
 

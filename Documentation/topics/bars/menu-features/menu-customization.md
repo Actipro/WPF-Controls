@@ -36,7 +36,7 @@ The [RibbonQuickAccessToolBarCustomizeButton](xref:@ActiproUIRoot.Controls.Bars.
 Existing menu items can be modified/removed, and new menu items can be added.  The following code shows an event handler for the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[MenuOpening](xref:@ActiproUIRoot.Controls.Bars.Ribbon.MenuOpening) event that updates the **Customize** menu to add an additional menu item (via a `CreateCustomMenuItem` method that you would create):
 
 ```csharp
-private void OnRibbonMenuOpening(object sender, BarMenuEventArgs e) {
+private void OnRibbonMenuOpening(object? sender, BarMenuEventArgs e) {
 	// Test for the QAT customize menu
 	if (e.Kind == BarMenuKind.RibbonQuickAccessToolBarCustomizeButtonMenu
 		&& e.Menu != null) {
@@ -65,7 +65,7 @@ The [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu).`Items` c
 Existing menu items can be modified/removed, and new menu items can be added.  The following code shows an event handler for the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[MenuOpening](xref:@ActiproUIRoot.Controls.Bars.Ribbon.MenuOpening) event that updates the context menu to add an additional menu item (via a `CreateCustomMenuItem` method that you would create):
 
 ```csharp
-private void OnRibbonMenuOpening(object sender, BarMenuEventArgs e) {
+private void OnRibbonMenuOpening(object? sender, BarMenuEventArgs e) {
 	// Test for a control context menu
 	if (e.Kind == BarMenuKind.ControlContextMenu
 		&& e.Owner != null

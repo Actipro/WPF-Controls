@@ -12,11 +12,11 @@ All of the Bars controls have been built from the ground up to support both XAML
 
 ## XAML Configuration
 
-All Bars controls can be defined directly in XAML and are designed to support common WPF usage scenarios like data binding.
+All Bars controls can be defined directly in XAML and are designed to support common usage scenarios like data binding.
 
 ### Pros
 
-XAML is familiar to most WPF developers and popular IDEs like Visual Studio provide designers that make it easy to visualize the run-time appearance of controls as their XAML is written. Newer IDEs even support hot reload of XAML definitions to modify a control at run-time and immediately see the impact of a change.  Getting started with XAML can be very quick and the entire control definition can often be contained in a single file.
+XAML is familiar to most @@PlatformTitle developers and popular IDEs like Visual Studio provide designers that make it easy to visualize the run-time appearance of controls as their XAML is written. Newer IDEs even support hot reload of XAML definitions to modify a control at run-time and immediately see the impact of a change.  Getting started with XAML can be very quick and the entire control definition can often be contained in a single file.
 
 ### Cons
 
@@ -24,7 +24,7 @@ Some controls are used in multiple locations, and using XAML will typically requ
 
 ## MVVM Configuration
 
-MVVM is an extremely popular pattern used for WPF and one that is fully supported by Bars controls.
+MVVM is an extremely popular pattern used for @@PlatformTitle and one that is fully supported by Bars controls.
 
 ### Pros
 
@@ -39,7 +39,7 @@ In general, the MVVM pattern also has its own inherent benefits, like unit testi
 
 ### Cons
 
-The MVVM pattern is naturally more complex than working directly in XAML and involves multiple view model classes, template selectors, styles, and other classes working together to achieve the desired result.  Our companion [MVVM Library](mvvm-support.md) and extensive samples can get developers moving quickly, but configuring at least one central repository of view models for controls will be necessary.  Testing design changes usually requires running the application since a visual designer may not be able to support the MVVM configuration at design-time.
+The MVVM pattern is naturally more complex than working directly in XAML and involves multiple view model classes, template selectors, @if (avalonia) { themes, }@if (wpf) { styles, } and other classes working together to achieve the desired result.  Our companion [MVVM Library](mvvm-support.md) and extensive samples can get developers moving quickly, but configuring at least one central repository of view models for controls will be necessary.  Testing design changes usually requires running the application since a visual designer may not be able to support the MVVM configuration at design-time.
 
 Getting started with MVVM will typically take longer than XAML even if there are long-term efficiency gains. For simple projects, MVVM benefits may not be worth the extra effort.
 

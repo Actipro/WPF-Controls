@@ -175,7 +175,7 @@
 						<!-- Enum -->
 						<bars:BarComboBox
 							Key="EnumValue" IsUnmatchedTextAllowed="False" TextPath="Label" RequestedWidth="120"
-							ToolTip="A combobox with items automated generated from the fields of an Enum type."
+							ToolTip="A combobox with items automatically generated from the fields of an Enum type."
 							Command="{Binding ComboBoxGalleryCommand}"
 							IsSynchronizedWithCurrentItem="True"
 							ItemContainerStyle="{StaticResource {x:Static themes:BarsMvvmResourceKeys.BarGalleryItemStyle}}"

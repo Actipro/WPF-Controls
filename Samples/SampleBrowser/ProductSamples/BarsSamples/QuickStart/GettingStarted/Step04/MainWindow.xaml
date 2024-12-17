@@ -14,7 +14,7 @@ CHANGES SINCE LAST STEP:
 EXPECTED OPERATION:
 	
 	This step finally starts to populate the Ribbon. When this sample window is opened, the Ribbon
-	should display with a "Help" tab pre-selected. The tab should contain a "Learn More" group
+	should display with a "Help" tab pre-selected. The tab should contain a "Resources" group
 	with a single "Help" button. Clicking the button should display the same message that has
 	been displayed by the stand-alone Button in the previous steps.
 

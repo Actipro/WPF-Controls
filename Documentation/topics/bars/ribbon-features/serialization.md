@@ -23,14 +23,27 @@ By default, the `Serialize` and `Deserialize` methods will include all supported
 
 [RibbonSerializerOptions](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions) is an enumeration that allows multiple flags to be set that determine which options should be processed during the serialization/deserialization process.  The following flags are available:
 
+@if (avalonia) {
 | Flag | Description |
 | ---- | ---- |
 | [LayoutMode](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.LayoutMode) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[LayoutMode](xref:@ActiproUIRoot.Controls.Bars.Ribbon.LayoutMode) property should be processed. |
 | [MinimizedState](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.MinimizedState) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[IsMinimized](xref:@ActiproUIRoot.Controls.Bars.Ribbon.IsMinimized) property should be processed. |
+| [QuickAccessToolBarAllowLabels](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarAllowLabels) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[AllowLabelsOnQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Ribbon.AllowLabelsOnQuickAccessToolBar) property should be processed. |
+| [QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarLocation) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarLocation) property should be processed. |
+| [QuickAccessToolBarMode](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarMode) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarMode](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarMode) property should be processed. |
+| [QuickAccessToolBarItems](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarItems) | Indicates if the ribbon's [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar).`Items` collection should be processed. |
+}
+@if (wpf) {
+| Flag | Description |
+| ---- | ---- |
+| [LayoutMode](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.LayoutMode) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[LayoutMode](xref:@ActiproUIRoot.Controls.Bars.Ribbon.LayoutMode) property should be processed. |
+| [MinimizedState](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.MinimizedState) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[IsMinimized](xref:@ActiproUIRoot.Controls.Bars.Ribbon.IsMinimized) property should be processed. |
+| [QuickAccessToolBarAllowLabels](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarAllowLabels) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[AllowLabelsOnQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.Ribbon.AllowLabelsOnQuickAccessToolBar) property should be processed. |
 | [QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarLocation) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarLocation) property should be processed. |
 | [QuickAccessToolBarMode](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarMode) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarMode](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarMode) property should be processed. |
 | [QuickAccessToolBarItems](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.QuickAccessToolBarItems) | Indicates if the ribbon's [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar).`Items` collection should be processed. |
 | [UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.RibbonSerializerOptions.UserInterfaceDensity) | Indicates if the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property should be processed. |
+}
 
 ## Restoring Quick Access Toolbar Items
 
@@ -40,7 +53,8 @@ The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[OnQuickAccessToolBarItem
 
 The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) will first search any [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar).[CommonItems](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar.CommonItems) for a matching `Key`. If not found, the currently configured ribbon tabs and their content will be recursively searched, but not all controls can be found in this manner (like popup-based controls whose popup content is not loaded).
 
-When an item of the desired `Key` cannot be automatically located, the [RibbonQuickAccessToolBarItemAddingEventArgs](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs).[Item](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs.Item) property must be manually assigned an appropriate item. If this property remains `null`, the `Key` will be ignored and nothing will be restored.
+> [!WARNING]
+> When an item of the desired `Key` cannot be automatically located, the [RibbonQuickAccessToolBarItemAddingEventArgs](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs).[Item](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs.Item) property must be manually assigned an appropriate item. If this property remains `null`, the `Key` will be ignored and nothing will be restored.
 
 > [!IMPORTANT]
 > If the [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar).`Items` collection is populated with view models, the item assigned to the [RibbonQuickAccessToolBarItemAddingEventArgs](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs).[Item](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarItemAddingEventArgs.Item) property should also be a view model. Otherwise, if the `Items` collection is populated with controls, the `Item` should be a control.

@@ -330,6 +330,19 @@ Gets or sets whether floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls
 <tr>
 <td>
 
+[DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingToolWindowContainerTitleBarDoubleClickMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingToolWindowContainerTitleBarDoubleClickMode) Property
+
+</td>
+<td>
+
+Gets or sets what happens when floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) controls' title bars are double-clicked.  The default value is [ToggleMaximized](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowTitleBarDoubleClickMode.ToggleMaximized).
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[HasTabCloseButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabCloseButtons) Property
 
 </td>

@@ -14,10 +14,10 @@ CHANGES SINCE LAST STEP:
 	
 EXPECTED OPERATION:
 	
-	When this sample window is opened, The Undo/Redo commands will be displayed in the Quick Access Toolbar (QAT)
-	shown below the Ribbon control. Clicking the drop-down arrow next to the QAT will display the
-	Cut/Copy/Paste commands in the Customize menu. Selecting any of the Cut/Copy/Paste commands in the
-	customize menu will add the corresponding command to the QAT.
+	When this sample window is opened, The Undo/Redo and Cut/Copy/Paste commands will be displayed in
+	the Quick Access Toolbar (QAT) shown below the Ribbon control. Clicking the drop-down arrow next to
+	the QAT will display the Cut/Copy/Paste commands in the Customize menu. Selecting any of the
+	Cut/Copy/Paste commands in the customize menu will add/remove the corresponding command to/from the QAT.
 
 -->
 

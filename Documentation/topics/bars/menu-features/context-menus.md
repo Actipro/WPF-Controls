@@ -21,6 +21,38 @@ A context menu is most often assigned to a control via its `ContextMenu` propert
 
 This sample code shows how to define a context menu for a `TextBox`:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<TextBox>
+	<TextBox.ContextMenu>
+		<actipro:BarContextMenu>
+			<!-- Labels are auto-generated from Key -->
+			<actipro:BarMenuItem Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
+			<actipro:BarMenuItem Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+			<actipro:BarMenuSeparator />
+			<actipro:BarMenuItem Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
+			<actipro:BarMenuItem Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+			<actipro:BarMenuGallery
+				Key="PasteOptions"
+				AreSurroundingSeparatorsAllowed="False"
+				CategoryHeaderTemplate="{StaticResource PasteOptionGalleryCategoryTemplate}"
+				Command="{Binding PasteSpecialCommand}"
+				IsSelectionSupported="False"
+				ItemContainerTheme="{actipro:ControlTheme BarGalleryItem}"
+				ItemsSource="{Binding PasteOptions}"
+				ItemTemplate="{StaticResource PasteOptionGalleryItemTemplate}"
+				MaxColumnCount="6"
+				UseMenuItemIndent="True" />
+			<actipro:BarMenuSeparator />
+			<actipro:BarMenuItem Key="SelectAll" />
+		</actipro:BarContextMenu>
+	</TextBox.ContextMenu>
+</TextBox>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -50,6 +82,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</TextBox.ContextMenu>
 </TextBox>
 ```
+}
 
 ## Stay Open on Menu Item Click
 
@@ -71,6 +104,20 @@ By setting the [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu
 
 The optional companion [MVVM Library](../mvvm-support.md) includes a [BarControlTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarControlTemplateSelector) class that is designed for use with the `ItemContainerTemplateSelector` property, when the control view models from the library are the items being bound via the control's `ItemsSource` property.
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<TextBox>
+	<TextBox.ContextMenu>
+		<actipro:BarContextMenu
+			ItemContainerTemplateSelector="{Binding ItemContainerTemplateSelector}"
+			ItemsSource="{Binding ContextMenuItems}" />
+	</TextBox.ContextMenu>
+</TextBox>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 ...
@@ -82,6 +129,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</TextBox.ContextMenu>
 </TextBox>
 ```
+}
 
 > [!TIP]
 > See the [MVVM Support](../mvvm-support.md) topic for more information on how to use the library's view models and view templates to create and manage your application's bars controls with MVVM techniques.

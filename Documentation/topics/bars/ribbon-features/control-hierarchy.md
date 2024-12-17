@@ -25,10 +25,28 @@ For composible UI frameworks like Prism, it may not be reasonable to define a `R
 
 The following sample demonstrates how a `ContentControl` might be configured within a `RibbonContainerPanel`:
 
+@if (avalonia) {
 ```xaml
-xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
-...
-<bars:RibbonWindow>
+<actipro:RibbonWindow ...
+	xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui">
+
+	<actipro:RibbonContainerPanel>
+
+		<!-- Ribbon Placeholder -->
+		<ContentControl x:Name="ribbonContent" Panel.ZIndex="1" />
+
+		<!-- Other main window content here -->
+
+	</actipro:RibbonContainerPanel>
+
+</actipro:RibbonWindow>
+ ```
+}
+@if (wpf) {
+```xaml
+<bars:RibbonWindow ...
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars">
+
 	<bars:RibbonContainerPanel>
 
 		<!-- Ribbon Placeholder -->
@@ -37,11 +55,12 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 		<!-- Other main window content here -->
 
 	</bars:RibbonContainerPanel>
+
 </bars:RibbonWindow>
  ```
+ }
 
 In the code-behind, the `ribbonContent.Content` should be assigned an instance of `Ribbon`.
-
 
 ## Ribbon
 
@@ -50,6 +69,46 @@ The following hierarchy shows the definition of a [Ribbon](xref:@ActiproUIRoot.C
 > [!NOTE]
 > Any `ItemsControl` listed below that does not explicitly identify a property as a child in the hierarchy should be assumed to be the `Items` or `ItemsSource` property.  Likewise, the child of a `ContentControl` should be assumed to be the `Content` property.
 
+@if (avalonia) {
+- [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) : `ItemsControl`
+  - [QuickAccessToolBarContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarContent) : `object` *(see [Quick Access Toolbar](quick-access-toolbar.md) topic)*
+    - [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) : `ItemsControl`
+      - [CommonItems](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar.CommonItems) : `IEnumerable`
+        - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+      - `ItemsControl.Items`
+        - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+  - [ApplicationButtonContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.ApplicationButtonContent) : `object` *(see [Application Button](application-button.md) topic)*
+    - [RibbonApplicationButton](xref:@ActiproUIRoot.Controls.Bars.RibbonApplicationButton) : `Button`
+  - [BackstageContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.BackstageContent) : `object` *(see [Backstage](backstage.md) topic)*
+    - [RibbonBackstage](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstage) : `TabControl`, `ItemsControl`
+      - [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) : `TabItem`
+        - `ContentControl.Content` *(commonly used backstage controls listed below)*
+          - [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) : `TabControl`, `ItemsControl`
+            - [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem) : `TabItem`
+          - [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl) : `ItemsControl` *(see [Recent Documents](recent-documents.md) topic)*
+            - [RecentDocumentItem](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem) : `Button`
+          - `BarButton`, `BarPopupButton` *(with backstage styles applied)*
+          - *Any object*
+      - [RibbonBackstageHeaderButton](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderButton) : `Button`
+      - [RibbonBackstageHeaderSeparator](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageHeaderSeparator) : `Separator`
+  - [FooterContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.FooterContent) : `object` *(see [Footer](footer.md) topic)*
+    - [RibbonFooterControl](xref:@ActiproUIRoot.Controls.Bars.RibbonFooterControl) : `ContentControl`
+    - *Any object*
+  - [TabRowToolBarContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.TabRowToolBarContent) : `object` (see [Tab Row Toolbar](tab-row-toolbar.md) topic)
+    - [RibbonTabRowToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonTabRowToolBar) : `ItemsControl`
+      - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+  - [ContextualTabGroups](xref:@ActiproUIRoot.Controls.Bars.Ribbon.ContextualTabGroups) : `IEnumerable` *(see [Contextual Tabs](contextual-tabs.md) topic)*
+    - [RibbonContextualTabGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonContextualTabGroup) : `Control`
+  - `ItemsControl.Items`
+    - [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
+      - [RibbonGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
+        - [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
+          - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+        - [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
+          - [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) *or toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+        - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
+}
+@if (wpf) {
 - [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon) : `ItemsControl`
   - [QuickAccessToolBarContent](xref:@ActiproUIRoot.Controls.Bars.Ribbon.QuickAccessToolBarContent) : `object` *(see [Quick Access Toolbar](quick-access-toolbar.md) topic)*
     - [RibbonQuickAccessToolBar](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBar) : `ItemsControl`
@@ -95,7 +154,7 @@ The following hierarchy shows the definition of a [Ribbon](xref:@ActiproUIRoot.C
         - [RibbonMultiRowControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonMultiRowControlGroup) : `ItemsControl` *(see [Tabs, Groups, and Control Groups](tabs-groups-controlgroups.md) topic)*
           - [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) *or toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
         - *Toolbar controls (e.g., `BarButton`... see "Toolbar Controls" section)*
-
+}
 ### Toolbar Controls
 
 The following controls can appear within the context of a toolbar and show their respective hierarchies:

@@ -100,7 +100,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.S
 			//		derived from the Key or RoutedUICommand) and is typically defined as the first letter
 			//		of the first word.
 			//
-			//		This sample previously defined a Key of "Help", an explicit Label of "Help", an explicit
+			//		This sample previously defined a Key of "Help", an explicit Label of "Help", and an explicit
 			//		KeyTipText of "H". Since the RoutedUICommand of ApplicationCommands.Help has a default
 			//		text of "Help" (en-US), both the Label and KeyTipText properties can be automatically
 			//		derived and do not need to be explicitly passed.
