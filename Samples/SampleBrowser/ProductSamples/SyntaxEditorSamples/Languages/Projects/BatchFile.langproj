@@ -6,10 +6,10 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'Batch File' language created by Actipro Software LLC.
-  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2025 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="BatchFile" LanguageDescription="Batch File" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.BatchFile" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="BatchFile" LanguageDescription="Batch File" OutputLanguageDefinition="True" OutputLanguageKey="VB" OutputNamespaceName="ActiproSoftware.Text.Languages.BatchFile" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2025 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="BatchFileVariable" Description="Batch File Variable" DefaultStyle="#FF2B91AF" DarkStyle="#FF4EC9B0" />

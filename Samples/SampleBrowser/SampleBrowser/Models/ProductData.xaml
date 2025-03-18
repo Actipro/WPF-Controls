@@ -427,7 +427,7 @@
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Button" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationButton/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Application Menu" Path="/ProductSamples/BarsSamples/QuickStart/ApplicationMenu/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Backstage" Path="/ProductSamples/BarsSamples/QuickStart/Backstage/OverviewDocument"/>
-			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Combobox and Editors" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/ComboBoxAndEditors/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Ribbon QuickStarts" Title="Combobox and Editors" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/ComboBoxAndEditors/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Contextual Tabs" Path="/ProductSamples/BarsSamples/QuickStart/ContextualTabs/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Customize Built-in Menus" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/CustomizeBuiltInMenus/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Ribbon QuickStarts" Title="Dynamic Popup Menus" Path="/ProductSamples/BarsSamples/QuickStart/DynamicPopupMenus/MainControl"/>
@@ -464,6 +464,7 @@
 
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="ShellTreeListBox Intro" Path="/ProductSamples/ShellSamples/QuickStart/ShellTreeListBoxIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="ShellListView Intro" Path="/ProductSamples/ShellSamples/QuickStart/ShellListViewIntro/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="QuickStarts" Title="ShellListView Columns" Path="/ProductSamples/ShellSamples/QuickStart/ShellListViewColumns/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Custom Shell Objects" Path="/ProductSamples/ShellSamples/QuickStart/CustomShellObjects/MainControl"/>
 
 		</sampleBrowser:ProductFamilyInfo>

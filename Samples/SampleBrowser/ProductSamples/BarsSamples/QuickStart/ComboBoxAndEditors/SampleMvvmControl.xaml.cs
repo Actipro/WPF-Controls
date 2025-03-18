@@ -1,5 +1,6 @@
 ﻿using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
+using ActiproSoftware.Windows.Controls.Editors;
 using System;
 using System.Windows;
 using System.Windows.Media;
@@ -228,6 +229,16 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 												Description = "An editbox from Actipro Editors for selecting an Int32.",
 												RequestedWidth = 60,
 												Value = 10
+											},
+
+											new AutoCompleteBoxViewModel("Country") {
+												Description = "An AutoCompleteBox from Actipro Editors for selecting a country with auto-complete support.",
+												RequestedWidth = 100,
+												PopupHeader = "Select a country:",
+												HasClearButton = true,
+												ItemsSource = Country.Countries,
+												ItemsSourceDisplayMemberPath = nameof(Country.Name),
+												ItemsSourceTextMemberPath = nameof(Country.Name),
 											}
 
 										}

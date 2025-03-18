@@ -42,7 +42,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LayoutSeriali
 
 			// Update the UI
 			saveToolWindowLayoutOnlyMenuItem.IsChecked = (layoutSerializationBehavior == DockSiteSerializationBehavior.ToolWindowsOnly);
-			layoutXmlTextBox.Text = layoutXml;
+			xmlDataEditor.Text = layoutXml;
 			this.UpdateWindowDeserializationBehavior();
 
 			// Save the default layout
@@ -218,7 +218,7 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LayoutSeriali
 				defaultLayoutXml = layoutSerializer.SaveToString(dockSite);
 			else {
 				layoutXml = layoutSerializer.SaveToString(dockSite);
-				layoutXmlTextBox.Text = layoutXml;
+				xmlDataEditor.Text = layoutXml;
 			}
 		}
 

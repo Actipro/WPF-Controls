@@ -41,6 +41,7 @@
 		<Setter Property="IsApplicationButtonVisible" Value="{Binding IsApplicationButtonVisible, Mode=TwoWay}" />
 		<Setter Property="IsCollapsible" Value="{Binding IsCollapsible, Mode=TwoWay}" />
 		<Setter Property="IsMinimizable" Value="{Binding IsMinimizable, Mode=TwoWay}" />
+		<Setter Property="IsOptionsButtonVisible" Value="{Binding IsOptionsButtonVisible, Mode=TwoWay}" />
 		<Setter Property="ItemsSource" Value="{Binding Tabs}" />
 		<Setter Property="LayoutMode" Value="{Binding LayoutMode, Mode=TwoWay}" />
 		<Setter Property="QuickAccessToolBarContent" Value="{Binding QuickAccessToolBar}" />
@@ -965,7 +966,7 @@
 				<ColumnDefinition MinWidth="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPopupColumnWidthDoubleKey}}" Width="Auto" SharedSizeGroup="MenuItemPopupArrowColumnGroup" />
 			</Grid.ColumnDefinitions>
 
-			<shared:DynamicImage Margin="2" Width="16" Height="16" Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ImageSource}" 
+			<shared:DynamicImage Margin="2" Width="16" Height="16" Stretch="Uniform" StretchDirection="{x:Static bars:BarControlService.DefaultImageStretchDirection}" Source="{Binding ImageSource}" 
 								 HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" />
 
 			<shared:PixelSnapper Grid.Column="1" VerticalRoundMode="CeilingToEven" Margin="{DynamicResource {x:Static themes:AssetResourceKeys.MenuItemPaddingNormalThicknessKey}}">
@@ -1028,7 +1029,7 @@
 	<DataTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate}" DataType="local:RibbonFooterSimpleContentViewModel">
 		<DockPanel>
 			<shared:DynamicImage DockPanel.Dock="Left" Margin="0,0,5,0" Width="16" Height="16" 
-								 Stretch="Uniform" StretchDirection="DownOnly" Source="{Binding ImageSource}" 
+								 Stretch="Uniform" StretchDirection="{x:Static bars:BarControlService.DefaultImageStretchDirection}" Source="{Binding ImageSource}" 
 								 HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 			<TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Text}"/>
 		</DockPanel>

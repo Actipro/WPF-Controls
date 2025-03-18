@@ -14,7 +14,7 @@
 					When a tool window has already been in the dock site layout and then is closed, it leaves a breadcrumb behind so that it knows exactly where to appear when reopened later.
 					For tool windows that are being opened for the first time and don't yet have a breadcrumb available, default location information is requested.
 					<LineBreak /><LineBreak />
-					This sample creates a number of tool windows is code behind.
+					This sample creates a number of tool windows in code behind.
 					It shows off the various ways, everything from simple properties to events, 
 					to provide default location information when a tool window is told to open without being passed specific location information.
 					This concept is especially important in MVVM scenarios.

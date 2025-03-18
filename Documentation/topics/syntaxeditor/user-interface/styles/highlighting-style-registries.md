@@ -535,7 +535,7 @@ SyntaxEditorThemeManager.Manage(consoleWindowRegistry);
 
 // Configure the editor to use the custom registry
 SyntaxEditor console = new SyntaxEditor();
-console.DefaultHighlightingStyleRegistry = consoleWindowRegistry;
+console.HighlightingStyleRegistry = consoleWindowRegistry;
 ```
 
 You must populate the entries into the custom registry.

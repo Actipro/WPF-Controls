@@ -52,6 +52,8 @@ namespace ActiproSoftware.ProductSamples.DockingSamples.Demo.SimpleIde {
 		public MainControl() {
 			InitializeComponent();
 
+			CreateSyntaxEditorDocument(".cs", null, null);
+
 			CreateSyntaxEditorDocument(".txt", "About.txt", @"This demo shows off a simple example of building an IDE using tool windows 
 and a multiple document interface (MDI), powerful UI mechanisms made 
 available with the Actipro Docking & MDI control product.
@@ -86,8 +88,8 @@ more about the enormous feature set this product provides.");
 		/// <summary>
 		/// Creates and activates a new editor document.
 		/// </summary>
-		/// <param name="fileName">The file name.</param>
 		/// <param name="extension">The file extension, used to determine a language.</param>
+		/// <param name="fileName">The file name.</param>
 		/// <param name="text">The optional text to use.</param>
 		private void CreateSyntaxEditorDocument(string extension, string fileName, string text) {
 			if (fileName != null) {
