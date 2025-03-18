@@ -5,6 +5,7 @@
 	xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:syntaxeditor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
 	>
 
 	<sampleBrowser:ProductItemControl.Resources>
@@ -69,7 +70,20 @@
 					<docking:TabbedMdiHost x:Name="tabbedMdiHost">
 						<docking:TabbedMdiContainer>
 							<docking:DocumentWindow SerializationId="LayoutDataDocument" Title="Saved Layout XML" ImageSource="/Images/Icons/TextDocument16.png" CanClose="False">
-								<TextBox x:Name="layoutXmlTextBox" BorderThickness="0" AcceptsReturn="True" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+								<syntaxeditor:SyntaxEditor x:Name="xmlDataEditor" BorderThickness="0"
+									AreLineModificationMarksVisible="False"
+									CanSplitHorizontally="False"
+									IsLineNumberMarginVisible="True"
+									IsOutliningMarginVisible="False"
+									HorizontalScrollBarVisibility="Auto"
+									VerticalScrollBarVisibility="Auto"
+									>
+									<syntaxeditor:EditorDocument xml:space="preserve" TabSize="2">
+										<syntaxeditor:EditorDocument.Language>
+											<syntaxeditor:XmlSyntaxLanguage />
+										</syntaxeditor:EditorDocument.Language>
+									</syntaxeditor:EditorDocument>
+								</syntaxeditor:SyntaxEditor>
 							</docking:DocumentWindow>
 						</docking:TabbedMdiContainer>
 					</docking:TabbedMdiHost>

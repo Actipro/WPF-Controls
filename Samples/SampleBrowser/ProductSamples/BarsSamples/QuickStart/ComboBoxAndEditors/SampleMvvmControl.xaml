@@ -23,6 +23,39 @@
 
 			<local:CustomBarControlTemplateSelector x:Key="CustomTemplateSelector">
 
+				<local:CustomBarControlTemplateSelector.AutoCompleteBoxDefaultTemplate>
+					<ItemContainerTemplate>
+						<editors:AutoCompleteBox bars:BarControlService.HasExternalHeader="True" 
+												 bars:BarControlService.Key="{Binding Key}" 
+												 bars:BarControlService.Label="{Binding Label}"
+												 bars:BarControlService.PanelSpacingSuggestion="Both"
+												 Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
+												 UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+												 ItemsSource="{Binding ItemsSource}"
+												 TextMemberPath="{Binding ItemsSourceTextMemberPath}"
+												 DisplayMemberPath="{Binding ItemsSourceDisplayMemberPath}"
+												 InputMode="ComboBox"
+												 HasClearButton="{Binding HasClearButton}"
+												 PopupHeader="{Binding PopupHeader}"
+												 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+												 >
+							<editors:AutoCompleteBox.DataFilter>
+								<editors:AutoCompleteBoxStringFilter />
+							</editors:AutoCompleteBox.DataFilter>
+							<editors:AutoCompleteBox.PopupHeaderTemplate>
+								<DataTemplate>
+									<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+										<TextBlock Margin="4" Text="{Binding}" TextWrapping="Wrap" />
+									</Border>
+								</DataTemplate>
+							</editors:AutoCompleteBox.PopupHeaderTemplate>
+							<editors:AutoCompleteBox.ToolTip>
+								<bars:ScreenTip Header="{Binding Label}" Content="{Binding Description}" />
+							</editors:AutoCompleteBox.ToolTip>
+						</editors:AutoCompleteBox>
+					</ItemContainerTemplate>
+				</local:CustomBarControlTemplateSelector.AutoCompleteBoxDefaultTemplate>
+
 				<local:CustomBarControlTemplateSelector.ColorEditBoxDefaultTemplate>
 					<ItemContainerTemplate>
 						<editors:ColorEditBox bars:BarControlService.HasExternalHeader="True" 
@@ -42,12 +75,12 @@
 				<local:CustomBarControlTemplateSelector.DateEditBoxDefaultTemplate>
 					<ItemContainerTemplate>
 						<editors:DateEditBox bars:BarControlService.HasExternalHeader="True" 
-											  bars:BarControlService.Key="{Binding Key}" 
-											  bars:BarControlService.Label="{Binding Label}"
-											  bars:BarControlService.PanelSpacingSuggestion="Both"
-											  Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
-											  UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
-											  Value="{Binding Value, Mode=TwoWay}">
+											 bars:BarControlService.Key="{Binding Key}" 
+											 bars:BarControlService.Label="{Binding Label}"
+											 bars:BarControlService.PanelSpacingSuggestion="Both"
+											 Width="{Binding RequestedWidth}" MinHeight="24" MaxHeight="30"
+											 UsageContext="ToolBar" themes:ThemeProperties.CornerRadius="3"
+											 Value="{Binding Value, Mode=TwoWay}">
 							<editors:DateEditBox.ToolTip>
 								<bars:ScreenTip Header="{Binding Label}" Content="{Binding Description}" />
 							</editors:DateEditBox.ToolTip>

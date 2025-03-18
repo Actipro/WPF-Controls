@@ -75,3 +75,13 @@ public override void SetIsSelected(object item, bool value) {
 The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[SelectionChanged](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectionChanged) event is raised whenever the selection (such the values stored in the [SelectedItem](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItem) and [SelectedItems](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.SelectedItems) properties) has changed.
 
 The [TreeListBox](xref:@ActiproUIRoot.Controls.Grids.TreeListBox).[ItemSelecting](xref:@ActiproUIRoot.Controls.Grids.TreeListBox.ItemSelecting) event is raised before an item is about to be selected.  The `Cancel` property on the event arguments can be set to `true` to prevent the item from being selected.
+
+## Bulk Selection Updates
+
+When making a large number of selection updates, it is beneficial for performance reasons to minimize the events that are raised.  Bulk selection updates can be made within a `using` block for a selection block to improve performance.
+
+```csharp
+using (var batch = treeListBox.CreateSelectionBatch()) {
+	...
+}
+```

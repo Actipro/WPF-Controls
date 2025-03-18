@@ -182,7 +182,7 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 		bars:BarControlService.PanelSpacingSuggestion="Both"
 		bars:BarControlService.SmallImageSource="/Images/Minimum16.png"
 		Width="60" MinHeight="24" MaxHeight="30"
-		UsageContext="ToolBar"
+		UsageContext="Menu"
 		themes:ThemeProperties.CornerRadius="3"
 		Value="{Binding MinimumValue, Mode=TwoWay}"
 		/>

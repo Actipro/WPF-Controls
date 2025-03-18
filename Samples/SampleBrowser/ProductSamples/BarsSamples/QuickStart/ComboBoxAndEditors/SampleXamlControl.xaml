@@ -195,6 +195,7 @@
 										 Command="{Binding ElementName=rootSampleControl, Path=TextBoxCommitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
 										 ToolTip="A textbox control that commits changed text on Enter or focus loss." />
 
+						<!-- ColorEditBox -->
 						<editors:ColorEditBox bars:BarControlService.HasExternalHeader="True" 
 											  bars:BarControlService.Key="Color" 
 											  bars:BarControlService.Label="Color"
@@ -207,6 +208,7 @@
 							</editors:ColorEditBox.ToolTip>
 						</editors:ColorEditBox>
 
+						<!-- DateEditBox -->
 						<editors:DateEditBox bars:BarControlService.HasExternalHeader="True" 
 											 bars:BarControlService.Key="Date" 
 											 bars:BarControlService.Label="Date"
@@ -218,6 +220,7 @@
 							</editors:DateEditBox.ToolTip>
 						</editors:DateEditBox>
 
+						<!-- Int32EditBox -->
 						<editors:Int32EditBox bars:BarControlService.HasExternalHeader="True" 
 											  bars:BarControlService.Key="Number" 
 											  bars:BarControlService.Label="Number"
@@ -230,6 +233,33 @@
 							</editors:Int32EditBox.ToolTip>
 						</editors:Int32EditBox>
 
+						<!-- AutoCompleteBox -->
+						<editors:AutoCompleteBox x:Name="countryBox" bars:BarControlService.HasExternalHeader="True" 
+												 bars:BarControlService.Key="Country" 
+												 bars:BarControlService.Label="Country"
+												 bars:BarControlService.PanelSpacingSuggestion="Both"
+												 Width="100" MinHeight="24" MaxHeight="30"
+												 themes:ThemeProperties.CornerRadius="3"
+												 TextMemberPath="Name" DisplayMemberPath="Name"
+												 InputMode="ComboBox"
+												 HasClearButton="True"
+												 PopupHeader="Select a country:"
+												 UsageContext="ToolBar">
+							<editors:AutoCompleteBox.DataFilter>
+								<editors:AutoCompleteBoxStringFilter />
+							</editors:AutoCompleteBox.DataFilter>
+							<editors:AutoCompleteBox.PopupHeaderTemplate>
+								<DataTemplate>
+									<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}">
+										<TextBlock Margin="4" Text="{Binding}" TextWrapping="Wrap" />
+									</Border>
+								</DataTemplate>
+							</editors:AutoCompleteBox.PopupHeaderTemplate>
+							<editors:AutoCompleteBox.ToolTip>
+								<bars:ScreenTip Header="Countries" Content="An AutoCompleteBox from Actipro Editors for selecting a country with auto-complete support." />
+							</editors:AutoCompleteBox.ToolTip>
+						</editors:AutoCompleteBox>
+						
 					</bars:RibbonControlGroup>
 				</bars:RibbonGroup>
 			</bars:RibbonTabItem>

@@ -6,10 +6,10 @@ Actipro Syntax Language Project (.langproj)
   http://www.actiprosoftware.com
 
 'SQL' language created by Actipro Software LLC.
-  Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved.
+  Copyright (c) 2001-2025 Actipro Software LLC.  All rights reserved.
 
 -->
-<LanguageProject LanguageKey="Sql" LanguageDescription="SQL" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Sql" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2024 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
+<LanguageProject LanguageKey="Sql" LanguageDescription="SQL" OutputLanguageDefinition="True" OutputLanguageKey="CSharp" OutputNamespaceName="ActiproSoftware.Text.Languages.Sql" OutputPath="..\Definitions" OutputPlatformKind="Wpf" Creator="Actipro Software LLC" Copyright="Copyright (c) 2001-2025 Actipro Software LLC.  All rights reserved." xmlns="http://schemas.actiprosoftware.com/langproj/1.0">
 	<!-- Classification types -->
 	<LanguageProject.ClassificationTypes>
 		<ClassificationType Key="SqlComment" Description="SQL Comment" DefaultStyle="#FF008080" DarkStyle="#FF4EC9B0" />

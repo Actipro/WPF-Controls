@@ -12,7 +12,7 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					While a common use of the Actipro Docking &amp; MDI package is to have tool windows
-					that surround a MDI (Multiple Document Interface) area, in many cases you may not wish to have documents in your application.
+					that surround an MDI (Multiple Document Interface) area, in many cases you may not wish to have documents in your application.
 					In these cases you may wish to just place some sort of arbitrary content 
 					in the "workspace" area of your application with tool windows surrounding it.
 					<LineBreak /><LineBreak />

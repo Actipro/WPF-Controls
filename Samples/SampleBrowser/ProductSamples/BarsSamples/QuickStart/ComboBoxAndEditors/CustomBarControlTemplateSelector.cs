@@ -10,11 +10,17 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 	/// generally assigned to root bar controls, like to <see cref="Ribbon"/>'s <see cref="Ribbon.ItemContainerTemplateSelector"/> property.
 	/// </summary>
 	public class CustomBarControlTemplateSelector : BarControlTemplateSelector {
-		
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
+		/// <summary>
+		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="AutoCompleteBoxViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
+		public ItemContainerTemplate AutoCompleteBoxDefaultTemplate { get; set; }
+
 		/// <summary>
 		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="ColorEditBoxViewModel"/>.
 		/// </summary>
@@ -36,6 +42,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEdito
 		/// <inheritdoc/>
 		public override DataTemplate SelectTemplate(object item, ItemsControl parentItemsControl) {
 			switch (item) {
+				case AutoCompleteBoxViewModel _:
+					return this.AutoCompleteBoxDefaultTemplate;
 				case ColorEditBoxViewModel _:
 					return this.ColorEditBoxDefaultTemplate;
 				case DateEditBoxViewModel _:

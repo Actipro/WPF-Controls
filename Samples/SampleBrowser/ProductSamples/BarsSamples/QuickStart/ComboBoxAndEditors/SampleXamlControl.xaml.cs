@@ -1,4 +1,6 @@
-﻿namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors {
+﻿using ActiproSoftware.Windows.Controls.Editors;
+
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors {
 
 	/// <summary>
 	/// Provides the user control for this sample that uses a XAML-based ribbon configuration.
@@ -17,6 +19,9 @@
 
 			// Configure this code-behind to be the view model for this sample
 			this.DataContext = this;
+
+			// Additional configuration for other editors
+			countryBox.ItemsSource = Country.Countries;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

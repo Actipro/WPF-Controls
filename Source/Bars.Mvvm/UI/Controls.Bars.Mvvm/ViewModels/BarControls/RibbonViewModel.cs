@@ -23,6 +23,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private bool isApplicationButtonVisible = true;
 		private bool isCollapsible = true;
 		private bool isMinimizable = true;
+		private bool isOptionsButtonVisible = true;
 		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
 		private RibbonLayoutMode layoutMode = RibbonLayoutMode.Classic;
 		private RibbonQuickAccessToolBarViewModel quickAccessToolBar;
@@ -257,6 +258,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (isMinimizable != value) {
 					isMinimizable = value;
 					this.NotifyPropertyChanged(nameof(IsMinimizable));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether the options button is visible.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the options button is visible; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsOptionsButtonVisible {
+			get => isOptionsButtonVisible;
+			set {
+				if (isOptionsButtonVisible != value) {
+					isOptionsButtonVisible = value;
+					this.NotifyPropertyChanged(nameof(IsOptionsButtonVisible));
 				}
 			}
 		}

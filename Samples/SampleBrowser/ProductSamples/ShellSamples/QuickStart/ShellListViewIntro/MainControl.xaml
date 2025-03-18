@@ -57,27 +57,7 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 	
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
-		<shell:ShellListView x:Name="listView" RootSpecialFolderKind="Computer">
-			<shell:ShellListView.Columns>
-				<grids:TreeListViewColumn Header="Name" Width="272">
-					<DataTemplate>
-						<Grid Background="Transparent" ToolTip="{Binding ToolTipText}">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="Auto" />
-								<ColumnDefinition Width="*" />
-							</Grid.ColumnDefinitions>
-						
-							<Image Width="16" Height="16" VerticalAlignment="Center" Source="{Binding SmallIcon, Mode=OneWay}" />
-							<Image Width="16" Height="16" VerticalAlignment="Center" Source="{Binding SmallIconOverlay, Mode=OneWay}" />
-							<shared:EditableContentControl Grid.Column="1" Margin="2" Content="{Binding Name, Mode=TwoWay}" IsEditing="{Binding IsEditing, Mode=TwoWay}" />
-						</Grid>
-					</DataTemplate>
-				</grids:TreeListViewColumn>
-				<grids:TreeListViewColumn Header="Date Modified" Width="120" />
-				<grids:TreeListViewColumn Header="Type" Width="120" />
-				<grids:TreeListViewColumn Header="Size" Width="80" />
-			</shell:ShellListView.Columns>
-		</shell:ShellListView>
+		<shell:ShellListView x:Name="listView" RootSpecialFolderKind="Computer" />
 	</Grid>
 	
 </sampleBrowser:ProductItemControl>
