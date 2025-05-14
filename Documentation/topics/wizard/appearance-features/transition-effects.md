@@ -94,12 +94,13 @@ Each transition uses a `Duration` to determine how long the effect animates.  Ma
 This XAML code shows how to use a single diagonal [BarWipeTransition](xref:@ActiproUIRoot.Media.Animation.BarWipeTransition) for page transitions:
 
 ```xaml
-<Window x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-        >
+<Window
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
 	<wizard:Wizard TransitionDefaultDirection="ForwardDown">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
@@ -115,12 +116,13 @@ This XAML code shows how to use a single diagonal [BarWipeTransition](xref:@Acti
 This XAML code shows how to have a [Transition](xref:@ActiproUIRoot.Media.Animation.Transition) randomly selected at run-time for each page change from a supplied list of transitions:
 
 ```xaml
-<Window x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-        >
+<Window
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	>
 	<wizard:Wizard TransitionDefaultDirection="ForwardDown">
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>

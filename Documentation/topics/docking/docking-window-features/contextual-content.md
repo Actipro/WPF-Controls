@@ -13,9 +13,9 @@ Contextual content, such as buttons or status indicators, can be displayed throu
 
 ## Contextual Content Locations
 
-There are five locations that support contextual content.  Each of the properties below can be assigned a `DataTemplate` that specifies the contextual content to use for the related location.
+There are five locations that support contextual content.  Each of the properties below can be assigned @if (avalonia) { an `IDataTemplate` }@if (wpf) { a `DataTemplate` } that specifies the contextual content to use for the related location.
 
-The data context of the `DataTemplate` will be the `DataContext` of the docking window, unless the `DataContext` is a `UIElement`.  In that case, no data context is passed since it could otherwise lead to logical tree issues.
+The data context of the @if (avalonia) { `IDataTemplate` }@if (wpf) { `DataTemplate` } will be the `DataContext` of the docking window, unless the `DataContext` is a @if (avalonia) { `Visual`. }@if (wpf) { `UIElement`. }  In that case, no data context is passed since it could otherwise lead to logical tree issues.
 
 <table>
 <thead>
@@ -46,7 +46,6 @@ The data context of the `DataTemplate` will be the `DataContext` of the docking 
 <td>The title bar of a standard MDI document.</td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -55,7 +54,6 @@ The data context of the `DataTemplate` will be the `DataContext` of the docking 
 </td>
 <td>The tab of a tabbed MDI document.</td>
 </tr>
-}
 
 <tr>
 <td>
@@ -86,17 +84,55 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsTitleB
 
 Let's see how to reproduce the **Status** tool window in the screenshot above.
 
-This `DataTemplate` contains an ellipse whose fill color is bound to the value of the docking window's `DataContext`.  A special value converter is used to convert the value to a `Brush`.
+This @if (avalonia) { `IDataTemplate` }@if (wpf) { `DataTemplate` } contains an ellipse whose fill color is bound to the value of the docking window's `DataContext`.  A special value converter is used to convert the value to a `Brush`.
 
 See the related QuickStart in the Sample Browser for the full source code.
 
+@if (avalonia) {
 ```xaml
-<DataTemplate x:Key="StatusIconDataTemplate">
-	<Ellipse Margin="2" Width="12" Height="12" StrokeThickness="1" Stroke="#ffffff" HorizontalAlignment="Center" VerticalAlignment="Center"
-	Fill="{Binding Converter={StaticResource StatusLightConditionalConverter}}" />
+<DataTemplate x:Key="StatusIconDataTemplate" x:DataType="x:Boolean">
+	<Ellipse Margin="2"
+		Width="12" Height="12"
+		HorizontalAlignment="Center" VerticalAlignment="Center"
+		StrokeThickness="1" Stroke="#ffffff"
+		Fill="{Binding, Converter={StaticResource StatusLightComparisonConverter}}"
+		/>
 </DataTemplate>
 ```
+}
+@if (wpf) {
+```xaml
+<DataTemplate x:Key="StatusIconDataTemplate">
+	<Ellipse Margin="2"
+		Width="12" Height="12"
+		HorizontalAlignment="Center" VerticalAlignment="Center"
+		StrokeThickness="1" Stroke="#ffffff"
+		Fill="{Binding Converter={StaticResource StatusLightConditionalConverter}}"
+		/>
+</DataTemplate>
+```
+}
 
+@if (avalonia) {
+This XAML within a dock site shows how a tool widnow could be defined to use the `IDataTemplate` above in all possible locations.  Note how its `DataContext` is initialized to a boolean value.
+
+```xaml
+<actipro:ToolWindow x:Name="statusToolWindow"
+	Title="Status"
+	AutoHideTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+	StandardMdiTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+	TabbedMdiTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+	ToolWindowContainerTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+	ToolWindowContainerTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
+	>
+	<actipro:ToolWindow.DataContext>
+		<x:False />
+	</actipro:ToolWindow.DataContext>
+	...
+</actipro:ToolWindow>
+```
+}
+@if (wpf) {
 This XAML within a dock site shows how a tool widnow could be defined to use the `DataTemplate` above in all possible locations.  Note how its `DataContext` is initialized to a boolean value.
 
 ```xaml
@@ -113,27 +149,49 @@ This XAML within a dock site shows how a tool widnow could be defined to use the
 	...
 </docking:ToolWindow>
 ```
-
-@if (wpf) {
+}
 
 ## Tool Window Title Bar Buttons
 
 Buttons can be embedded in tool window title bar containers.  To achieve the same appearance as the built-in buttons, define the button with these properties:
 
+@if (avalonia) {
 ```xaml
-<Button Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}"
-	Padding="2" VerticalAlignment="Center">
+<Button Padding="3" x:DataType="x:Object"
+	Theme="{actipro:ControlTheme DockingEmbeddedButton}"
+	VerticalAlignment="Center"
+	>
 	<Button.ContentTemplate>
 		<DataTemplate>
-  			<Canvas Width="10" Height="10">
-				<Path Width="10" Height="10" StrokeThickness="1" Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
-						Data="M 0.5,3.5 A 3,3 90 0 1 3.5,0.5 A 3,3 90 0 1 6.5,3.5 A 3,3 90 0 1 3.5,6.5 A 3,3 90 0 1 0.5,3  M 5.5,6 L 9,9.5 L 9.5,9 L 6,5.5 Z"  />
-  			</Canvas>
+			<Canvas Width="10" Height="10">
+				<Path Width="10" Height="10" StrokeThickness="1"
+					Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+					Data="M 0.5,3.5 A 3,3 90 0 1 3.5,0.5 A 3,3 90 0 1 6.5,3.5 A 3,3 90 0 1 3.5,6.5 A 3,3 90 0 1 0.5,3  M 5.5,6 L 9,9.5 L 9.5,9 L 6,5.5 Z"
+					/>
+			</Canvas>
 		</DataTemplate>
 	</Button.ContentTemplate>
 </Button>
 ```
+}
+@if (wpf) {
+```xaml
+<Button Padding="2"
+	Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedButtonBaseOverrideStyleKey}}"
+	VerticalAlignment="Center"
+	>
+	<Button.ContentTemplate>
+		<DataTemplate>
+			<Canvas Width="10" Height="10">
+				<Path Width="10" Height="10" StrokeThickness="1"
+					Stroke="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+					Data="M 0.5,3.5 A 3,3 90 0 1 3.5,0.5 A 3,3 90 0 1 6.5,3.5 A 3,3 90 0 1 3.5,6.5 A 3,3 90 0 1 0.5,3  M 5.5,6 L 9,9.5 L 9.5,9 L 6,5.5 Z"
+					/>
+			</Canvas>
+		</DataTemplate>
+	</Button.ContentTemplate>
+</Button>
+```
+}
 
 The sample above produces a button with a search icon.
-
-}

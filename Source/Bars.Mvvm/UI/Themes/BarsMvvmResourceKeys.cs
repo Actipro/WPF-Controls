@@ -10,6 +10,8 @@ namespace ActiproSoftware.Windows.Themes {
 
 		// Styles
 		private static ComponentResourceKey barGalleryItemStyle;
+		private static ComponentResourceKey barMainMenuStyle;
+		private static ComponentResourceKey dockableToolBarHostStyle;
 		private static ComponentResourceKey ribbonStyle;
 		private static ComponentResourceKey standaloneToolBarStyle;
 
@@ -38,6 +40,7 @@ namespace ActiproSoftware.Windows.Themes {
 		private static ComponentResourceKey barTextBoxMenuItemContainerTemplate;
 		private static ComponentResourceKey barToggleButtonDefaultItemContainerTemplate;
 		private static ComponentResourceKey barToggleButtonMenuItemItemContainerTemplate;
+		private static ComponentResourceKey dockableToolBarDefaultItemContainerTemplate;
 		private static ComponentResourceKey miniToolBarDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonApplicationButtonDefaultItemContainerTemplate;
 		private static ComponentResourceKey ribbonBackstageDefaultItemContainerTemplate;
@@ -91,6 +94,20 @@ namespace ActiproSoftware.Windows.Themes {
 		/// <value>A resource key.</value>
 		public static ResourceKey BarGalleryItemStyle
 			=> (barGalleryItemStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemStyle)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey BarMainMenuStyle
+			=> (barMainMenuStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarMainMenuStyle)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey DockableToolBarHostStyle
+			=> (dockableToolBarHostStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarHostStyle)));
 		
 		/// <summary>
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
@@ -277,6 +294,13 @@ namespace ActiproSoftware.Windows.Themes {
 		/// <value>A resource key.</value>
 		public static ResourceKey BarToggleButtonMenuItemItemContainerTemplate
 			=> (barToggleButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarToggleButtonMenuItemItemContainerTemplate)));
+		
+		/// <summary>
+		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+		/// </summary>
+		/// <value>A resource key.</value>
+		public static ResourceKey DockableToolBarDefaultItemContainerTemplate
+			=> (dockableToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarDefaultItemContainerTemplate)));
 		
 		/// <summary>
 		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.

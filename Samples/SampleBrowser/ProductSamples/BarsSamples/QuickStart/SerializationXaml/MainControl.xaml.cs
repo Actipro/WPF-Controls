@@ -154,7 +154,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationXam
 					restoreLayoutCommand = new DelegateCommand<object>(param => {
 						var currentLayout = this.CurrentLayout;
 						if (string.IsNullOrEmpty(currentLayout)) {
-							MessageBox.Show("The current layout is undefined and cannot be restored.", "Restore", MessageBoxButton.OK, MessageBoxImage.Error);
+							MessageBox.Show("The current layout is undefined and cannot be restored.  Please save the current layout first", "Restore", MessageBoxButton.OK, MessageBoxImage.Error);
 							return;
 						}
 
@@ -174,7 +174,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationXam
 			get {
 				if (restoreOriginalCommand is null) {
 					restoreOriginalCommand = new DelegateCommand<object>(param => {
-						if (originalLayout is null) {
+						if (string.IsNullOrEmpty(originalLayout)) {
 							MessageBox.Show("The original layout is undefined and cannot be restored.", "Restore", MessageBoxButton.OK, MessageBoxImage.Error);
 							return;
 						}

@@ -202,8 +202,12 @@ xmlns:sample="clr-namespace:ActiproSoftware.Windows.ProductSamples.ViewsSamples.
 ...
 <sample:RandomPanel>
 	<sample:RandomPanel.ArrangeAnimation>
-		<views:ArrangeAnimation EnterAnimation="Fade,Rotate,Scale,Translate" LeaveAnimation="Fade,Rotate,Scale,Translate"
-		                        ScaleEnterUniformScale="0" ScaleLeaveUniformScale="5" />
+		<views:ArrangeAnimation
+			EnterAnimation="Fade,Rotate,Scale,Translate"
+			LeaveAnimation="Fade,Rotate,Scale,Translate"
+			ScaleEnterUniformScale="0"
+			ScaleLeaveUniformScale="5"
+			/>
 	</sample:RandomPanel.ArrangeAnimation>
 	<!-- Both buttons will be randomly placed -->
 	<Button Content="One" \>

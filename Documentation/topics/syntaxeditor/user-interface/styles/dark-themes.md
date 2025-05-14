@@ -42,7 +42,7 @@ The following code shows how to change the global color scheme to Metro Dark and
 
 ```csharp
 // Set the global color scheme
-UIRendererManager.ColorScheme = WindowsColorSchemeType.MetroDark;
+UIRendererManager.ColorScheme = WindowsColorScheme.MetroDark;
 
 // Configure default colors to match the color scheme
 editor.ForeColor = UIRendererManager.ColorScheme.GetKnownColor(KnownColor.WindowText);

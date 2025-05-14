@@ -155,7 +155,12 @@ These buttons will close the ancestor [RibbonBackstage](xref:@ActiproUIRoot.Cont
 
 [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) controls can be added when there are multiple configuration possibilities or there is data that needs to be displayed.  For instance, an **Info** tab may provide information and statistics about the current document.  A **Recent** tab might show a [Recent Documents](recent-documents.md) control (with its [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) property set to `true`) allowing for recent documents to be selected.  A **New** tab might show multiple options for creating new documents.
 
+@if (avalonia) {
+The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.Label) and optional image ([LargeIcon](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.LargeIcon) or [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.SmallIcon)) of the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) are what is rendered in the backstage header area.  The tab's content is displayed in the backstage content area when the tab is selected.
+}
+@if (wpf) {
 The [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.Label) and optional image ([LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.LargeImageSource) or [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.SmallImageSource)) of the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem) are what is rendered in the backstage header area.  The tab's content is displayed in the backstage content area when the tab is selected.
+}
 
 When there are not many tabs or buttons to display in the backstage, the backstage can look empty.  This is common, for example, when an application is first launched and no document is open.  To help fill the vertical space, the [RibbonBackstageTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem).[VariantSize](xref:@ActiproUIRoot.Controls.Bars.RibbonBackstageTabItem.VariantSize) can be set to `Large` to display tabs that are significantly larger.
 
@@ -186,7 +191,12 @@ The [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) is a styl
 
 The items of a [TaskTabControl](xref:@ActiproUIRoot.Controls.Bars.TaskTabControl) can be either [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem) or standard `Separator` controls.
 
+@if (avalonia) {
+Use the [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[Label](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.Label) and [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[LargeIcon](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.LargeIcon) properties to define the tab header.
+}
+@if (wpf) {
 Use the [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[Label](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.Label) and [TaskTabItem](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem).[LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.TaskTabItem.LargeImageSource) properties to define the tab header.
+}
 
 @if (avalonia) {
 ## Backstage Button Themes

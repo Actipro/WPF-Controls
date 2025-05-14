@@ -32,8 +32,7 @@ This sample code shows how more complex looks can be achieved by using the [Brea
 ```xaml
 xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 ...
-<Style x:Key="BreadcrumbItemStyleProgressiveFade70"
-       TargetType="{x:Type navigation:BreadcrumbItem}">
+<Style x:Key="BreadcrumbItemStyleProgressiveFade70" TargetType="{x:Type navigation:BreadcrumbItem}">
 	<Style.Triggers>
 		<!-- This trigger will progressively dim the tail items -->
 		<Trigger Property="IsTailItem" Value="true">
@@ -43,9 +42,11 @@ xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 	...
 </Style>
 ...
-<navigation:Breadcrumb ItemContainerStyle="{StaticResource BreadcrumbItemStyleProgressiveFade70}"
-                       MaxTailItemCount="10"
-                       ... />
+<navigation:Breadcrumb
+	ItemContainerStyle="{StaticResource BreadcrumbItemStyleProgressiveFade70}"
+	MaxTailItemCount="10"
+	...
+	/>
 ```
 
 ## Associated Members

@@ -115,6 +115,35 @@ Each [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) define
 
 The reuse of [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) instances is highly recommended.
 
+## Classification Type Providers
+
+A classification type provider has a number of properties that return [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) instances.  These properties also ensure that each returned [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) has a default [highlighting style](../../user-interface/styles/highlighting-styles.md) registered on the target [highlighting style registry](../../user-interface/styles/highlighting-style-registries.md).
+
+When an [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) is registered with a [highlighting style](../../user-interface/styles/highlighting-styles.md) in a [highlighting style registry](../../user-interface/styles/highlighting-style-registries.md), it can have its rendering attributes like colors customized, even by an application end user if a highlighting style configuration dialog is provided.
+
+### Built-In Classification Type Provider
+
+The [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) class can register the most common classification types, those found in the [ClassificationTypes](xref:ActiproSoftware.Text.ClassificationTypes) class, with a highlighting style registry.  This provider allows the colors used for tokens like strings, comments, etc. in most syntax languages to be customized.
+
+The following code registers all the classification types from this provider with the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) instance.  An alternate target [highlighting style registry](../../user-interface/styles/highlighting-style-registries.md) can be specified in a constructor overload.
+
+```csharp
+new BuiltInClassificationTypeProvider().RegisterAll();
+```
+
+### Display Classification Type Provider
+
+The [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) class can register classification types for various UI display items with a highlighting style registry.  This provider allows the colors used for display items like editor margins, indicators, and glyphs tp be customized.
+
+> [!IMPORTANT]
+> It is essential that display item classification types are registered before using editor features like indicators.  Otherwise, some related highlighting style alterations (e.g., breakpoint backgrounds) may not occur.
+
+The following code registers all the classification types from this provider with the [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry) instance.  An alternate target [highlighting style registry](../../user-interface/styles/highlighting-style-registries.md) can be specified in a constructor overload.
+
+```csharp
+new DisplayItemClassificationTypeProvider().RegisterAll();
+```
+
 ## Tokens vs. Classifications
 
 [Tokens](../lexing/tokens.md) and classification tags are often related, especially in the case of token taggers.  Let us examine an example.

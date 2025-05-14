@@ -1,0 +1,82 @@
+<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+			<Control x:Name="focusCaptureControl" />
+
+			
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">5/13/2025 - Version 25.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added dockable toolbars that can be dragged to any side of an application or even floated.  This functionality is found in popular IDE applications." />
+				<sampleBrowser:BulletContentControl Content="Added a BarMainMenu control that is a top-level main menu, configurable via MVVM." />
+				<sampleBrowser:BulletContentControl Content="Added a new Dockable Toolbars QuickStart sample to demonstrate the new controls." />
+				<sampleBrowser:BulletContentControl Content="Added RibbonBackstageTabViewModel.Content, ContentTemplate, and ContentTemplateSelector properties." />
+				<sampleBrowser:BulletContentControl Content="Added RibbonBackstageViewModel.CanClose property." />
+				<sampleBrowser:BulletContentControl Content="Added Tag property to all view models that can be used to store custom data." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonTabHeader to use SemiBold font weight for selected tabs since many font families do not render Medium font weight differently than Normal." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added SingleTabLayoutBehavior support to TabbedMdiHost." />
+				<sampleBrowser:BulletContentControl Content="Added support for AdvancedTabControl to directly activate preview tabs using keys Ctrl+Shift+1 through Ctrl+Shift+9." />
+				<sampleBrowser:BulletContentControl Content="Updated DockSite MVVM logic to not update existing item view model open states when an items source is set to null." />
+				<sampleBrowser:BulletContentControl Content="Updated AdvancedTabControl so Ctrl+9 and Ctrl+Alt+9 activate the last tab instead of the ninth tab.  Accessing the tenth tab with the 0 key is no longer supported." />
+				<sampleBrowser:BulletContentControl Content="Improved handling of window activation via MVVM." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with Switcher arrow key navigation when the same arrow key was also part of a key gesture that moved between document or tool windows." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox to not update the selected state of items removed from the control, thereby allowing an item to be reselected if added back later." />
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox logic for processing item updates from other threads." />
+				<sampleBrowser:BulletContentControl Content="Updated MergedPropertyModel to dispose its child models when it is disposed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the IIntraTextSpacerTag.IsSpacerBefore property that allows an intra-text adornment to render after the tagged range instead of before, which is useful for features like AI suggestions." />
+				<sampleBrowser:BulletContentControl Content="Updated a couple samples to demonstrate intra-text adornment placement options." />
+				<sampleBrowser:BulletContentControl Content="Updated the outlining margin to render with the modern appearance found in recent Visual Studio versions." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the C# language to syntax highlight interpolated string expressions and support IntelliPrompt within the expressions." />
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser to support C# 13 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser to support C# 12 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser to support C# 11 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser to support C# 10 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the C# parser to properly handle deconstruction." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Web Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the XML formatter to better retain whitespace at the end of a format selection edit action." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the native ComboBox template to avoid a binding warning in a certain scenario." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added UserPromptBuilder.CanResize and WithCanResize members that can pre-configure a user prompt to be resizable.  Improved configuration of UserPromptControl to work better in resizable windows." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added .NET assembly targets for .NET 8." />
+				<sampleBrowser:BulletContentControl Content="Updated .NET assemblies to target .NET 6 instead of .NET Core 3.1." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+			
+			<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}"><Italic>
+				Use the navigation arrows in the header above to see the release histories for other versions.
+			</Italic></TextBlock>
+
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

@@ -24,10 +24,12 @@ xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 <navigation:Breadcrumb ... >
 	<navigation:Breadcrumb.ActionButtons>
 	<!-- Define action buttons here -->
-	<shared:PopupButton Content="New PopupButton"
-	                    DisplayMode="ButtonOnly"
-	                    IsRounded="false"
-	                    IsTransparencyModeEnabled="true" />
+	<shared:PopupButton
+		Content="New PopupButton"
+		DisplayMode="ButtonOnly"
+		IsRounded="false"
+		IsTransparencyModeEnabled="true"
+		/>
 	</navigation:Breadcrumb.ActionButtons>
 </navigation:Breadcrumb>
 ```

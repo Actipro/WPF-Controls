@@ -118,11 +118,16 @@ This example shows a different color set on parent and child pie slice labels.
 
 ```xaml
 <charts:PieChart>
-	<charts:PieSeries LabelPosition="Inside" ChildLabelPosition="Sides"
-					  ChildrenPosition="Outside"
-					  AreLabelsVisible="True" AreChildLabelsVisible="True"
-					  LabelBrush="White" ChildLabelBrush="Black"
-					  [...]/>
+	<charts:PieSeries
+		AreLabelsVisible="True"
+		AreChildLabelsVisible="True"
+		LabelPosition="Inside"
+		ChildLabelPosition="Sides"
+		ChildrenPosition="Outside"
+		LabelBrush="White"
+		ChildLabelBrush="Black"
+		...
+		/>
 </charts:PieChart>
 ```
 

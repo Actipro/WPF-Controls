@@ -32,7 +32,7 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) that owns the dock
 | [WindowsDragging](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsDragging) Event | Occurs before one or more [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) controls are dragged by the end user. |
 | [WindowsDragOver](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsDragOver) Event | Occurs when one or more docking windows are dragged over a new dock target, allowing for certain dock guides to be hidden. |
 | [WindowsOpened](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpened) Event | Occurs after one or more [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) controls have been opened. |
-| [WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) Event | Occurs before one or more [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) controls is opened. |
+| [WindowsOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsOpening) Event | Occurs before one or more [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) controls are opened. |
 | [WindowsStateChanged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsStateChanged) Event | Occurs after one or more [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) controls' states have changed. |
 | [WindowUnregistered](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowUnregistered) Event | Occurs after a [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) has been unregistered. |
 
@@ -40,13 +40,13 @@ Most of the event arguments pass references to the related [DockingWindow](xref:
 
 ## Displaying a StatusBar Message During Drags
 
-It is a common practice to display a status bar message during tool window drags to indicate to the end user that they can move over the dock guides to docks a tool window.
+It is a common practice to display a status bar message during tool window drags to indicate to the end user that they can move over the dock guides to dock a tool window.
 
 To accomplish this, handle the [WindowsDragging](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsDragging) and display a message like this in your status bar:
 
-`Use the guide diamond to choose a docking location.  To prevent docking, hold down CTRL.`
+`"Use the guide diamond to choose a docking location.  To prevent docking, hold down CTRL."`
 
-Handle the [WindowsDragged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsDragged) event and restore the status bar message back to something like `Ready`.
+Handle the [WindowsDragged](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowsDragged) event and restore the status bar message back to something like `"Ready"`.
 
 ## Customizing Menus
 

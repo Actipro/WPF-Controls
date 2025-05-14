@@ -15,7 +15,7 @@ See the [Lifecycle and Docking Management](../docking-window-features/lifecycle-
 
 ## Additional Document Window Properties
 
-Document windows have a couple additional properties that aid in their user interface presentation.
+Document windows have additional properties that aid in their user interface presentation.
 
 The [DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow).[FileName](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow.FileName) property should be set to the full file or URL path of the document content, if appropriate.  If this doesn't apply, leave the value `null`.
 
@@ -27,15 +27,15 @@ Opening a document will make it visible in the UI, but it won't necessarily be s
 
 A call to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Open](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Open*) method will open the document.  Alternatively, the [IsOpen](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsOpen) property can be set to `true`.
 
-[DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) controls will always open in the MDI area. [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) controls on the other hand will only open in the MDI area if their [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) is `Document` before the open occurs.
+[DocumentWindow](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow) controls will always open in the MDI area. [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) controls, on the other hand, will only open in the MDI area if their [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) is [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document) before the open occurs.
 
 ## Activating a Document
 
-Activating a document will open it, select it, and focus its content as well.  There is no need to open a document before activating it, because activating includes the open behavior.
+Activating a document will open it, select it, and focus its content.  There is no need to open a document before activating it, because activating includes the open behavior.
 
 A call to the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Activate](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Activate*) method will activate the document.  An overload of this method allows you to ensure the document is selected but not focused.  Alternatively, the [IsActive](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.IsActive) property can be set to `true`.
 
-As described above, to ensure that a [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) opens in the MDI area, make sure its [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) property is set to `Document` before activating it.
+As described above, to ensure that a [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow) opens in the MDI area, make sure its [State](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.State) property is set to [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document) before activating it.
 
 ## Enumerating Open Documents
 

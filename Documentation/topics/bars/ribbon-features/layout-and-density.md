@@ -34,6 +34,11 @@ The `Simplified` layout mode is a modern refinement of the ribbon that appears m
 > It is recommended that when using the `Simplified` layout mode, set the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[UserInterfaceDensity](xref:@ActiproUIRoot.Controls.Bars.Ribbon.UserInterfaceDensity) property to `Spacious`, which is more touch-friendly than the `Compact` default.  The `Spacious` density will also use medium size images when available in place of small size images.
 }
 
+@if (avalonia) {
+> [!WARNING]
+> The overflow menu used by the `Simplified` layout requires cloning controls from the ribbon to an equivalent overflowed menu item. This cloning process is limited when using controls are defined using XAML.  Refer to the [XAML vs. MVVM Configuration](../configuration.md) topic for additional details.
+}
+
 > [!TIP]
 > See the "Layout Modes" Bars Ribbon QuickStart of the Sample Browser application for a demonstration of layout modes and user options.
 

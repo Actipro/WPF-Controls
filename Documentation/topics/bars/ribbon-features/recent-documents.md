@@ -55,8 +55,8 @@ The following key properties are available for [RecentDocumentItem](xref:@Actipr
 
 |Property Name|Description|
 |-----|-----|
-| [ImageSourceLarge](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.ImageSourceLarge) | An `IImage` that is displayed for the document when [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl).[UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) is `true`. |
-| [ImageSourceSmall](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.ImageSourceSmall) | An `IImage` that is displayed for the document when [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl).[UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) is `false`. |
+| [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.LargeIcon) | An `object` that is displayed for the document when [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl).[UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) is `true`. |
+| [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.SmallIcon) | An `object` that is displayed for the document when [RecentDocumentControl](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl).[UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentControl.UseLargeSize) is `false`. |
 | [IsPinned](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.IsPinned) | Indicates if the document is pinned to the top of the list. |
 | [LastOpenedDateTime](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.LastOpenedDateTime) | The date and time when the document was last opened.  Documents are sorted so the most recently opened documents appear at the top. |
 | [Location](xref:@ActiproUIRoot.Controls.Bars.RecentDocumentItem.Location) | A `Uri` indicating the location of the document. |

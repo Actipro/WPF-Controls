@@ -22,6 +22,14 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Collapse
 		/// This property can return the height of the spacer to sit the spacer on top of the text baseline.
 		/// </remarks>
 		public double Baseline { get; set; }
+		
+		/// <summary>
+		/// Gets whether the spacer appears before the tagged range.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the spacer appears before the tagged range; otherwise, <c>false</c>.
+		/// </value>
+		public bool IsSpacerBefore => true;
 
 		/// <summary>
 		/// Gets or sets an object that can be used to uniquely identify the spacer.

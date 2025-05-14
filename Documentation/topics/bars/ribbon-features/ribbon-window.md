@@ -37,8 +37,7 @@ The following example shows how to modify the [WindowChrome](../../themes/window
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes">
 
 	<themes:WindowChrome.Chrome>
-		<themes:RibbonWindowChrome BackdropKind="None"
-		                           TitleBarHeaderAlignment="Center" />
+		<themes:RibbonWindowChrome BackdropKind="None" TitleBarHeaderAlignment="Center" />
 	</themes:WindowChrome.Chrome>
 
 </bars:RibbonWindow>

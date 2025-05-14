@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+	<!--
+		For more information on working with Actipro NuGet packages (including how to use
+		a local package source instead of nuget.org), please refer to the following:
+
+		https://www.actiprosoftware.com/docs/controls/wpf/nuget
+	 -->
+	<PropertyGroup>
+		<ActiproVersion>25.1.0</ActiproVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="$(ActiproVersion)" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="$(ActiproVersion)" />
+	</ItemGroup>
+</Project>

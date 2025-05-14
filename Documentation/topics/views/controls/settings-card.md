@@ -139,8 +139,11 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 ...
 <!-- HeaderIcon uses a Geometry Path with the default ImageTemplateSelector -->
-<views:SettingsCard Header="Setting name" Command="{Binding SomeExternalWindowCommand}"
-    HeaderIcon="M19,13H5V11H19V13Z">
+<views:SettingsCard
+	Header="Setting name"
+	Command="{Binding SomeExternalWindowCommand}"
+	HeaderIcon="M19,13H5V11H19V13Z"
+	>
 
 	<!-- Use a built-in Actipro glyph template to indicate the setting opens an external window -->
 	<actipro:SettingsCard.ActionIcon>

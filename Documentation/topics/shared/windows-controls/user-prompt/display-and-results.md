@@ -173,6 +173,29 @@ UserPromptBuilder.Configure()
 ```
 }
 
+## Resizable
+
+If large or complex information needs to be displayed in the prompt, it may be desirable to enable the prompt to be resizable.
+
+When using the [builder pattern](builder-pattern.md), the [WithCanResize](xref:@ActiproUIRoot.Controls.UserPromptBuilder.WithCanResize*) method is used to indicate if the prompt is resizable:
+
+@if (avalonia) {
+```csharp
+await UserPromptBuilder.Configure()
+	// ... other configuration options here
+	.WithCanResize(true)
+	.Show();
+```
+}
+@if (wpf) {
+```csharp
+UserPromptBuilder.Configure()
+	// ... other configuration options here
+	.WithCanResize(true)
+	.Show();
+```
+}
+
 ## Configuring and Evaluating Results
 
 The [UserPromptControl](xref:@ActiproUIRoot.Controls.UserPromptControl).[Result](xref:@ActiproUIRoot.Controls.UserPromptControl.Result) property is used to read or write the user's response to a prompt and is typically only used when working with custom buttons.
@@ -251,7 +274,7 @@ UserPromptBuilder.Configure()
 
 When the user prompt is shown as a modal dialog, it must have an owner `Window`. Some of the [UserPromptWindow](xref:@ActiproUIRoot.Controls.UserPromptWindow).[ShowDialog](xref:@ActiproUIRoot.Controls.UserPromptWindow.ShowDialog*) overloads allow an owner to be specified.  If one is not specified, a default owner `Window` will be determined by the currently active `Window`.
 
-When using the [builder pattern](builder-pattern.md), the [WithOwner](xref:@ActiproUIRoot.Controls.UserPromptBuilder.WithOwner*) method is used to assign a non-default owner. Since the builder pattern supports displaying dialogs or overlays, the owner is specified as a `TopLevel` (which, on desktop applications, is typically a `Window`).
+When using the [builder pattern](builder-pattern.md), the [WithOwner](xref:@ActiproUIRoot.Controls.UserPromptBuilder.WithOwner*) method is used to assign a non-default owner. @if (avalonia) { Since the builder pattern supports displaying dialogs or overlays, the owner is specified as a `TopLevel` (which, on desktop applications, is typically a `Window`). }
 
 ## Startup Location
 

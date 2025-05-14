@@ -8,7 +8,7 @@
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>24.1.5.0</Version>
+		<Version>25.1.0.0</Version>
 
 		<RootNamespace>ActiproSoftware.Windows.WindowsWorkflowIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -32,9 +32,7 @@
 		<Reference Include="System.Activities.Presentation" />
 	</ItemGroup>
 	
-	<ItemGroup Label="Actipro References">
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="24.1.5" />
-		<PackageReference Include="ActiproSoftware.Controls.WPF.SyntaxEditor.Addons.DotNet" Version="24.1.5" />
-	</ItemGroup>
+	<!-- Define Actipro assembly references -->
+	<Import Project="ActiproSoftware.References.props" />
 	
 </Project>

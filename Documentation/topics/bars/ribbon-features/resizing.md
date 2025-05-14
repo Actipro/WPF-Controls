@@ -158,9 +158,9 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
 <actipro:RibbonGroup ... >
 	<actipro:RibbonControlGroup ItemVariantBehavior="NeverLarge">
-		<actipro:BarButton Key="Cut" SmallImageSource="/Images/Cut16.png" />
-		<actipro:BarButton Key="Copy" SmallImageSource="/Images/Copy16.png" />
-		<actipro:BarButton Key="Paste" SmallImageSource="/Images/Paste16.png" />
+		<actipro:BarButton Key="Cut" SmallIcon="{StaticResource CutIcon}" />
+		<actipro:BarButton Key="Copy" SmallIcon="{StaticResource CopyIcon}" />
+		<actipro:BarButton Key="Paste" SmallIcon="{StaticResource PasteIcon}" />
 	</actipro:RibbonControlGroup>
 	...
 </actipro:RibbonGroup>

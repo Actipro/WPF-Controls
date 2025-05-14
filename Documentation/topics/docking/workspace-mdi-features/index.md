@@ -21,7 +21,7 @@ See the [Tabbed MDI](tabbed-mdi.md) topic for more information.
 
 ## Standard MDI
 
-A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) control that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
+A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a @if (avalonia) { [Window Control](../../fundamentals/controls/window-control.md) }@if (wpf) { [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) } that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
 
 See the [Standard MDI](standard-mdi.md) topic for more information.
 

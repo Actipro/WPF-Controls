@@ -21,7 +21,7 @@ The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanAtta
 
 ## Programmatically Docking a Tool Window
 
-A tool window can be programmatically docked by calling the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[Dock](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.Dock*) method.  An overload of the method allows you to specify the [IDockTarget](xref:@ActiproUIRoot.Controls.Docking.IDockTarget) and [Side](xref:@ActiproUIRoot.Controls.Side) against which to dock around the target.
+A tool window can be programmatically docked by calling the [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow).[Dock](xref:@ActiproUIRoot.Controls.Docking.ToolWindow.Dock*) method.  An overload of the method allows you to specify the [IDockTarget](xref:@ActiproUIRoot.Controls.Docking.IDockTarget) and @if (avalonia) { `Dock` side }@if (wpf) { [Side](xref:@ActiproUIRoot.Controls.Side) } against which to dock around the target.
 
 The [IDockTarget](xref:@ActiproUIRoot.Controls.Docking.IDockTarget) can be a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite), [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost), [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace), or another docking window.
 
@@ -48,7 +48,7 @@ These options control the appearance of tool window containers:
 </td>
 <td>
 
-Gets or sets whether `ToolWindowContainer` controls can have title bar close buttons.
+Gets or sets whether [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) controls can have title bar close buttons.
 
 </td>
 </tr>
@@ -61,7 +61,7 @@ Gets or sets whether `ToolWindowContainer` controls can have title bar close but
 </td>
 <td>
 
-Gets or sets whether `ToolWindowContainer` controls can have title bar options buttons.
+Gets or sets whether [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) controls can have title bar options buttons.
 
 </td>
 </tr>
@@ -84,6 +84,20 @@ Gets or sets whether `ToolWindowContainer` controls can have title bar options b
 <td>Gets or sets the global setting for whether tool windows display a title bar when not in MDI.</td>
 </tr>
 
+@if (avalonia) {
+<tr>
+<td>
+
+[DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowTabItemContainerTheme](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowTabItemContainerTheme) Property
+
+</td>
+<td>
+
+Gets or sets the `ControlTheme` to use for rendering the tab item containers in a [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer).
+
+</td>
+</tr>
+}
 @if (wpf) {
 <tr>
 <td>
@@ -93,7 +107,7 @@ Gets or sets whether `ToolWindowContainer` controls can have title bar options b
 </td>
 <td>
 
-Gets or sets the `Style` to use for rendering the tab item containers in a `ToolWindowContainer`.
+Gets or sets the `Style` to use for rendering the tab item containers in a [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer).
 
 </td>
 </tr>
@@ -102,11 +116,11 @@ Gets or sets the `Style` to use for rendering the tab item containers in a `Tool
 </tbody>
 </table>
 
-The [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) control also defines [TitleBarMinHeight](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleBarMinHeight), [TitleFontFamily](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontFamily), and [TitleFontSize](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontSize) properties that can adjust the look of a title in a tool window container.  These properties can only be altered with an implicit `Style` that targets [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) that is in your application's `Resources`.
+The [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) control also defines [TitleBarMinHeight](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleBarMinHeight), [TitleFontFamily](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontFamily), and [TitleFontSize](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontSize) properties that can adjust the look of a title in a tool window container.  These properties can only be altered with an implicit @if (avalonia) { `ControlTheme` }@if (wpf) { `Style` } that targets [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) that is in your application's `Resources`.
 
 ## Title vs. Tab Text
 
-The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the standard switcher.  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as `"Properties - Document1.txt"`, while having shorter text that renders on tabs, such as `"Properties"`.  This allows your title to provide more extensive contextual information.
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the [standard switcher](switchers.md).  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as `"Properties - Document1.txt"`, while having shorter text that renders on tabs, such as `"Properties"`.  This allows your title to provide more extensive contextual information.
 
 By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabText) property to a non-`null` value, its value will be used to render the tab text instead of the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value.  In that scenario, the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value will still be used in title bars and on the standard switcher when the window is selected.
 
@@ -114,11 +128,20 @@ By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabT
 
 The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabToolTip](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabToolTip) property is automatically bound to the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property for tool windows.  Override the [TabToolTip](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabToolTip) property to set alternate tool tip content.
 
+@if (avalonia) {
+## Tab Icons
+
+By default, the icon defined by [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Icon](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Icon) will not appear on tool window tabs.
+
+You can force the icon to display on the tabs by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsHaveTabIcons](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsHaveTabIcons) property to `true`.
+}
+@if (wpf) {
 ## Tab Images
 
 By default, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image will not appear on tool window tabs.
 
 You can force the image to display on the tabs by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsHaveTabImages](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsHaveTabImages) property to `true`.
+}
 
 ## Tab and Title Bar Contextual Content
 

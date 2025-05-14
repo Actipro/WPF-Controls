@@ -33,11 +33,12 @@ This control has these important properties:
 This XAML code shows how to create the color picker displayed above with all the bounds `TextBox` controls:
 
 ```xaml
-<Window x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        >
+<Window
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
 	<Grid>
 		<Grid.Resources>
 			<shared:ColorToStringConverter x:Key="ColorToStringConverter" />
@@ -59,16 +60,23 @@ This XAML code shows how to create the color picker displayed above with all the
 
 		<Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">R:</Label>
 		<TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3"
-		         Text="{Binding ElementName=spectrumColorPicker, Path=R}" />
+			Text="{Binding ElementName=spectrumColorPicker, Path=R}"
+			/>
+
 		<Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">G:</Label>
 		<TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3"
-		         Text="{Binding ElementName=spectrumColorPicker, Path=G}" />
+			Text="{Binding ElementName=spectrumColorPicker, Path=G}"
+			/>
+
 		<Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">B:</Label>
 		<TextBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="30" MaxLength="3"
-		         Text="{Binding ElementName=spectrumColorPicker, Path=B}"></TextBox>
+			Text="{Binding ElementName=spectrumColorPicker, Path=B}"
+			/>
+
 		<TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"
-		         Margin="0,0,0,21" MinWidth="70" MaxLength="9"
-		         Text="{Binding ElementName=spectrumColorPicker, Path=SelectedColor, Converter={StaticResource ColorToStringConverter}, ConverterParameter=False}" />
+			Margin="0,0,0,21" MinWidth="70" MaxLength="9"
+			Text="{Binding ElementName=spectrumColorPicker, Path=SelectedColor, Converter={StaticResource ColorToStringConverter}, ConverterParameter=False}"
+			/>
 
 	</Grid>
 </Window>

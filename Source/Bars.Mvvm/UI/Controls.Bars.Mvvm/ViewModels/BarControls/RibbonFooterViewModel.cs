@@ -6,13 +6,14 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a footer within a ribbon.
 	/// </summary>
-	public class RibbonFooterViewModel : ObservableObjectBase {
+	public class RibbonFooterViewModel : ObservableObjectBase, IHasTag {
 
 		private object content;
 		private DataTemplate contentTemplate;
 		private DataTemplateSelector contentTemplateSelector = new RibbonFooterContentTemplateSelector();
 		private RibbonFooterKind kind;
 		private Thickness padding = new Thickness(10, 5, 10, 5);
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -93,7 +94,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString() {
 			return $"{this.GetType().FullName}[Content='{this.Content}']";

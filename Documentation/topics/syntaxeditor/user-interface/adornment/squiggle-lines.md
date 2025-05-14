@@ -26,3 +26,9 @@ If you are using a [parser](../../text-parsing/parsing/index.md) your language, 
 There is a built-in tagger called [ParseErrorTagger](xref:ActiproSoftware.Text.Tagging.Implementation.ParseErrorTagger) that can be attached to a document via a document-oriented tagger provider service.  See the [Tagger Provider](../../language-creation/provider-services/tagger-provider.md) topic for details on making tagger provider services.
 
 When this parse error tagger is attached to a document, it will monitor the document's parse data for changes.  If the parse data is updated, it will automatically get the list of parse errors from it (assuming the parse data implements [IParseErrorProvider](xref:ActiproSoftware.Text.Parsing.IParseErrorProvider)) and will return [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag) tags for each one.  This automatically drives the squiggle line display when used in an editor.
+
+## Squiggle Line Quick Info
+
+By default, nothing happens when the pointer is hovered over squiggle line adornments. There is a built-in [IQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.IQuickInfoProvider) implementation called [SquiggleTagQuickInfoProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.IntelliPrompt.Implementation.SquiggleTagQuickInfoProvider) that watches for pointer hovers over squiggle adorned regions and will automatically show a quick info tip containing content such as an error description from the [ISquiggleTag](xref:ActiproSoftware.Text.Tagging.ISquiggleTag).[ContentProvider](xref:ActiproSoftware.Text.Tagging.ISquiggleTag.ContentProvider) on pointer hovers.
+
+See the [IntelliPrompt Quick Info Provider](../../language-creation/provider-services/quick-info-provider.md) topic for additional detail on the built-in squiggle tag quick info provider and how to use it.

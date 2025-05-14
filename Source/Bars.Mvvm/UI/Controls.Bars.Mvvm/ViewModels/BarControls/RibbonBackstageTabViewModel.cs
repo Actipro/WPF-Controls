@@ -1,4 +1,6 @@
-﻿using System.Windows.Media;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
@@ -7,6 +9,9 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// </summary>
 	public class RibbonBackstageTabViewModel : BarKeyedObjectViewModelBase {
 
+		private object content;
+		private DataTemplate contentTemplate;
+		private DataTemplateSelector contentTemplateSelector;
 		private string description;
 		private RibbonBackstageHeaderAlignment headerAlignment = RibbonBackstageHeaderAlignment.Top;
 		private bool isVisible = true;
@@ -44,7 +49,46 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
+		/// <summary>
+		/// The content for the tab's content area, which can be a UI control, a data object, or even this view model instance.
+		/// </summary>
+		public object Content {
+			get => content;
+			set {
+				if (content != value) {
+					content = value;
+					this.NotifyPropertyChanged(nameof(Content));
+				}
+			}
+		}
+
+		/// <summary>
+		/// The <see cref="DataTemplate"/> for the tab's <see cref="Content"/>.
+		/// </summary>
+		public DataTemplate ContentTemplate {
+			get => contentTemplate;
+			set {
+				if (contentTemplate != value) {
+					contentTemplate = value;
+					this.NotifyPropertyChanged(nameof(ContentTemplate));
+				}
+			} 
+		}
+
+		/// <summary>
+		/// The <see cref="DataTemplateSelector"/> for the tab's <see cref="Content"/>.
+		/// </summary>
+		public DataTemplateSelector ContentTemplateSelector {
+			get => contentTemplateSelector;
+			set {
+				if (contentTemplateSelector != value) {
+					contentTemplateSelector = value;
+					this.NotifyPropertyChanged(nameof(ContentTemplateSelector));
+				}
+			}
+		}
+
 		/// <inheritdoc cref="BarButtonViewModel.Description"/>
 		public string Description {
 			get => description;

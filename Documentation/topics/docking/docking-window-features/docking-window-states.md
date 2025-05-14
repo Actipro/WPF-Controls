@@ -7,7 +7,7 @@ order: 2
 
 There are three states in which docking windows can be: auto-hide, docked, and document.  Docking windows can be in these states even when they are in a floating dock host.  These states are represented by the [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration.
 
-Document windows can only be in the `Document` state, while tool windows are more flexible and can be in any of the three states.
+Document windows can only be in the [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document) state, while tool windows are more flexible and can be in any of the three states.
 
 > [!NOTE]
 > See the [Floating Dock Hosts](floating-dock-hosts.md) topic for an explanation of why there is no specific floating state.
@@ -20,21 +20,21 @@ A tool window is in auto-hide state when its tab appears along one of four outer
 
 *The Solution Explorer tool window in AutoHide state with its popup displayed*
 
-The `AutoHide` state is only available to tool windows.  Auto-hide is always supported in the primary dock host and is only supported in floating dock hosts that have a workspace visible.
+The [AutoHide](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.AutoHide) state is only available to tool windows.  Auto-hide is always supported in the primary dock host and is only supported in floating dock hosts that have a workspace visible.
 
 ## The Docked State
 
-A tool window is considered `Docked` when it is within a dock host hierarchy but not in auto-hide and not in MDI (the document area).
+A tool window is considered [Docked](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Docked) when it is within a dock host hierarchy but not in auto-hide and not in MDI (the document area).
 
 ![Screenshot](../images/state-docked.png)
 
 *The Solution Explorer tool window in Docked state*
 
-The `Docked` state is only available to tool windows.  Tool windows that are dragged to float are considered in a `Docked` state in their containing floating dock host.
+The [Docked](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Docked) state is only available to tool windows.  Tool windows that are dragged to float are considered in a [Docked](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Docked) state in their containing floating dock host.
 
 ## The Document State
 
-A docking window is in `Document` state when it is within the MDI area.  It could be a tab in tabbed MDI or a window in standard MDI.
+A docking window is in [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document) state when it is within the MDI area.  It could be a tab in tabbed MDI or a window in standard MDI.
 
 ![Screenshot](../images/state-document-tabbed.png)
 
@@ -44,7 +44,7 @@ A docking window is in `Document` state when it is within the MDI area.  It coul
 
 *The Solution Explorer tool window in Document state (standard MDI)*
 
-The `Document` state is available to both tool and document windows.  Documents that are dragged to float will create an MDI host in their containing floating dock host.
+The [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document) state is available to both tool and document windows.  Documents that are dragged to float will create an MDI host in their containing floating dock host.
 
 ## State Changes
 

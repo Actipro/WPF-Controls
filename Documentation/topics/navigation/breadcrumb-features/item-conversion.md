@@ -20,8 +20,7 @@ This sample code shows how to define an event handler for the [ConvertItem](xref
 ```xaml
 xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 ...
-<navigation:Breadcrumb ConvertItem="OnBreadcrumbConvertItem"
-                       ... />
+<navigation:Breadcrumb ConvertItem="OnBreadcrumbConvertItem" ... />
 ```
 
 ```csharp

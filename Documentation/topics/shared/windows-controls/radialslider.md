@@ -58,8 +58,12 @@ In this example, a slider is set to snap at 30-degree increments and a `TextBloc
 
 ```xaml
 <controls:RadialSlider x:Name="snappingSlider2" Radius="100" Value="120" LargeChange="30" SmallChange="30" />
-<TextBlock FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center"
-           Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}" />
+<TextBlock
+	FontSize="28"
+	HorizontalAlignment="Center"
+	VerticalAlignment="Center"
+	Text="{Binding ElementName=snappingSlider2, Path=Value, Converter={StaticResource DegreeToScalarConverter}, ConverterParameter=30.0}"
+	/>
 ```
 
 While the converter above is a simple example, the degree value could be converted to a percentage or even a text label instead.

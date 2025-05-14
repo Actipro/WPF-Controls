@@ -6,9 +6,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a multi-row control group control within a ribbon group.
 	/// </summary>
-	public class RibbonMultiRowControlGroupViewModel : ObservableObjectBase {
+	public class RibbonMultiRowControlGroupViewModel : ObservableObjectBase, IHasTag {
 
 		private bool isVisible = true;
+		private object tag;
 		private Int32Collection threeRowItemSortOrder;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +32,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of items in the control.</value>
 		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets a collection of integers that indicates the indices of how items should be sorted when in a three-row layout.
 		/// </summary>

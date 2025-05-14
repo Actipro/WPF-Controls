@@ -65,10 +65,14 @@ public class Person {
 
 ```xaml
 <charts:PieChart>
-	<charts:PieSeries ItemsSource="{Binding People}" ChildrenPath="Employees"
-					  SliceValuePath="Income" SliceTitlePath="Name"
-					  ChildSliceValuePath="Income" ChildSliceTitlePath="Name"
-					  Length="5" ChildrenLength="1" [...]/>
+	<charts:PieSeries
+		ItemsSource="{Binding People}"
+		SliceValuePath="Income" SliceTitlePath="Name"
+		ChildrenPath="Employees"
+		ChildSliceValuePath="Income" ChildSliceTitlePath="Name"
+		Length="5" ChildrenLength="1"
+		...
+		/>
 </charts:PieChart>
 ```
 

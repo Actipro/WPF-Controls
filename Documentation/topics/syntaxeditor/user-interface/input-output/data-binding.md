@@ -28,9 +28,11 @@ When that property is `true`, the [Text](xref:@ActiproUIRoot.Controls.SyntaxEdit
 This code demonstrates how to bind the SyntaxEditor's text to another TextBox:
 
 ```xaml
-<editor:SyntaxEditor AreLineModificationMarksVisible="False"
-                     IsTextDataBindingEnabled="True"
-                     Text="{Binding ElementName=boundTextBox, Path=Text, Mode=TwoWay}" />
+<editor:SyntaxEditor
+	AreLineModificationMarksVisible="False"
+	IsTextDataBindingEnabled="True"
+	Text="{Binding ElementName=boundTextBox, Path=Text, Mode=TwoWay}"
+	/>
 ```
 
 }

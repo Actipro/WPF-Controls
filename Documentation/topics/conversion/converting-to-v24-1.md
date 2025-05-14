@@ -55,9 +55,11 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 		<!-- Don't render separators next to this set of comboboxes -->
 		<bars:RibbonControlGroup SeparatorMode="Never">
 			<bars:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
-							  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value"
+				/>
 			<bars:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
-							  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value"
+				/>
 		</bars:RibbonControlGroup>
 
 		<!-- Larger and smaller font size buttons -->
@@ -94,9 +96,11 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 			<!-- Don't render separators next to this set of comboboxes -->
 			<bars:RibbonControlGroup SeparatorMode="Never">
 				<bars:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
-								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+					MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value"
+					/>
 				<bars:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
-								  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+					MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value"
+					/>
 			</bars:RibbonControlGroup>
 
 			<!-- Larger and smaller font size buttons -->

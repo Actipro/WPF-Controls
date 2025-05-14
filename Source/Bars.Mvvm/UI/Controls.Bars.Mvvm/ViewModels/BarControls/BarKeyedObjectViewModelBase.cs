@@ -5,9 +5,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents an abstract view model base for an observable object that is identified by a unique string key.
 	/// </summary>
-	public abstract class BarKeyedObjectViewModelBase : ObservableObjectBase, IHasKey {
+	public abstract class BarKeyedObjectViewModelBase : ObservableObjectBase, IHasKey, IHasTag {
 
 		private string key;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -44,7 +45,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString()
 			=> $"{this.GetType().FullName}[Key='{this.Key}']";

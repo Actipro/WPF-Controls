@@ -52,6 +52,33 @@ private void OnRibbonMenuOpening(object? sender, BarMenuEventArgs e) {
 
 ## Customizing a Ribbon Context Menu
 
+@if (avalonia) {
+The ribbon control auto-generates context menu flyouts for most of the controls in it unless a control has a context menu explicitly assigned to it.  The auto-generated menu contains items for toggling the visibility of the quick access toolbar, minimizing the ribbon, etc.  However, many times it is useful to add custom menu items to a specific control or to certain types of controls.
+
+You can achieve this programmatically by listening for the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[MenuOpening](xref:@ActiproUIRoot.Controls.Bars.Ribbon.MenuOpening) event.  When raised for the context menu of a control...
+
+- [BarMenuEventArgs](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs).[Kind](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs.Kind) will be set to the value [BarMenuKind](xref:@ActiproUIRoot.Controls.Bars.BarMenuKind).[ControlContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarMenuKind.ControlContextMenu),
+- [BarMenuEventArgs](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs).[Menu](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs.Menu) will be initialized with a [BarMenuFlyout](xref:@ActiproUIRoot.Controls.Bars.BarMenuFlyout), and
+- [BarMenuEventArgs](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs).[Owner](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs.Owner) will be set to the control whose context menu is opening.
+
+The [BarMenuEventArgs](xref:@ActiproUIRoot.Controls.Bars.BarMenuEventArgs).`Items` collection will be pre-populated with types like [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) and [BarMenuSeparator](xref:@ActiproUIRoot.Controls.Bars.BarMenuSeparator) that define the default context menu.
+
+Existing menu items can be modified/removed, and new menu items can be added.  The following code shows an event handler for the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[MenuOpening](xref:@ActiproUIRoot.Controls.Bars.Ribbon.MenuOpening) event that updates the context menu to add an additional menu item (via a `CreateCustomMenuItem` method that you would create):
+
+```csharp
+private void OnRibbonMenuOpening(object? sender, BarMenuEventArgs e) {
+	// Test for a control context menu
+	if (e.Kind == BarMenuKind.ControlContextMenu
+		&& e.Owner != null
+		&& e.Menu != null) {
+
+		// Add a menu item returned from the custom function
+		e.Items.Add(CreateCustomMenuItem());
+	}
+}
+```
+}
+@if (wpf) {
 The ribbon control auto-generates context menus for most of the controls in it unless a control has a `ContextMenu` explicitly assigned to it.  The auto-generated menu contains items for toggling the visibility of the quick access toolbar, minimizing the ribbon, etc.  However, many times it is useful to add custom menu items to a specific control or to certain types of controls.
 
 You can achieve this programmatically by listening for the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[MenuOpening](xref:@ActiproUIRoot.Controls.Bars.Ribbon.MenuOpening) event.  When raised for the context menu of a control...
@@ -76,6 +103,7 @@ private void OnRibbonMenuOpening(object? sender, BarMenuEventArgs e) {
 	}
 }
 ```
+}
 
 > [!IMPORTANT]
 > See details below about blocking a context menu from being allowed on dynamic menu items.

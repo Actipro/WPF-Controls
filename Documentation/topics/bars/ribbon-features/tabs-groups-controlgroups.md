@@ -165,7 +165,7 @@ Launcher buttons should be used to display additional UI (e.g., a dialog window 
 
 The launcher button is configured in a manner consistent with other Bars button controls including support for common properties like `Command`, [Key](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.Key), [Label](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.Label) (with support to auto-generate from `Key`), and [KeyTipText](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.KeyTipText) (with support to auto-generate from `Label`).  [Screen Tips](screen-tips.md) are also supported.
 
-Unlike other buttons, however, the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.SmallImageSource) property does not define the button content.  Instead, this image is *only* displayed when the ribbon is using the `Simplified` layout mode and the launcher button has been moved to an overflow menu. In the overflow menu, the icon will be displayed in the icon column consistent with other menu items.
+Unlike other buttons, however, the @if (avalonia) { [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.SmallIcon) }@if (wpf) { [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.RibbonGroupLauncherButton.SmallImageSource) } property does not define the button content.  Instead, this image is *only* displayed when the ribbon is using the `Simplified` layout mode and the launcher button has been moved to an overflow menu. In the overflow menu, the icon will be displayed in the icon column consistent with other menu items.
 
 ### Defining Groups
 
@@ -264,9 +264,9 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 
 		<!-- Group of other clipboard controls -->
 		<actipro:RibbonControlGroup ItemVariantBehavior="NeverLarge">
-			<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallImageSource="/Images/Cut16.png" />
-			<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallImageSource="/Images/Copy16.png" />
-			<actipro:BarButton Key="FormatPainter" Command="{Binding FormatPainterCommand}" SmallImageSource="/Images/FormatPainter16.png" />
+			<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallIcon="{StaticResource CutIcon}" />
+			<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallIcon="{StaticResource CopyIcon}" />
+			<actipro:BarButton Key="FormatPainter" Command="{Binding FormatPainterCommand}" SmallIcon="{StaticResource FormatPainterIcon}" />
 		</actipro:RibbonControlGroup>
 
 	</actipro:RibbonGroup>
@@ -341,23 +341,34 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 
 			<!-- Don't render separators next to this set of comboboxes -->
 			<actipro:RibbonControlGroup SeparatorMode="Never">
-				<actipro:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
-				                     MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" />
-				<actipro:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
-				                     MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" />
+				<actipro:BarComboBox x:Name="fontFamilyComboBox"
+					IsStarSizingAllowed="True"
+					KeyTipText="FF"
+					MenuResizeMode="Vertical"
+					RequestedWidth="115"
+					TextMemberBinding="{Binding Label, x:DataType=actipro:IBarGalleryItemViewModel}"
+					UseMenuItemAppearance="True"
+					/>
+				<actipro:BarComboBox x:Name="fontSizeComboBox"
+					RequestedWidth="40"
+					KeyTipText="FS"
+					MenuResizeMode="Vertical"
+					TextMemberBinding="{Binding Label, x:DataType=actipro:IBarGalleryItemViewModel}"
+					UseMenuItemAppearance="True"
+					/>
 			</actipro:RibbonControlGroup>
 
 			<!-- Larger and smaller font size buttons -->
 			<actipro:RibbonControlGroup>
-				<actipro:BarButton Key="Larger" SmallImageSource="/Images/GrowFont16.png" KeyTipText="FG" />
-				<actipro:BarButton Key="Smaller" SmallImageSource="/Images/ShrinkFont16.png" KeyTipText="FK" />
+				<actipro:BarButton Key="Larger" SmallIcon="{StaticResource GrowFontIcon}" KeyTipText="FG" />
+				<actipro:BarButton Key="Smaller" SmallIcon="{StaticResource ShrinkFontIcon}" KeyTipText="FK" />
 			</actipro:RibbonControlGroup>
 
 			<!-- Bold, italic, and underline buttons -->
 			<actipro:RibbonControlGroup>
-				<actipro:BarButton Key="Bold" SmallImageSource="/Images/Bold16.png" KeyTipText="B" />
-				<actipro:BarButton Key="Italic" SmallImageSource="/Images/Italic16.png" KeyTipText="I" />
-				<actipro:BarButton Key="Underline" SmallImageSource="/Images/Underline16.png" KeyTipText="U" />
+				<actipro:BarButton Key="Bold" SmallIcon="{StaticResource BoldIcon}" KeyTipText="B" />
+				<actipro:BarButton Key="Italic" SmallIcon="{StaticResource ItalicIcon}" KeyTipText="I" />
+				<actipro:BarButton Key="Underline" SmallIcon="{StaticResource UnderlineIcon}" KeyTipText="U" />
 			</actipro:RibbonControlGroup>
 
 		</actipro:RibbonMultiRowControlGroup>
@@ -381,10 +392,25 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 
 			<!-- Don't render separators next to this set of comboboxes -->
 			<bars:RibbonControlGroup SeparatorMode="Never">
-				<bars:BarComboBox x:Name="fontFamilyComboBox" RequestedWidth="115" KeyTipText="FF" IsStarSizingAllowed="True"
-				                  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
-				<bars:BarComboBox x:Name="fontSizeComboBox" RequestedWidth="40" KeyTipText="FS"
-				                  MenuResizeMode="Vertical" TextPath="Label" UseMenuItemAppearance="True" SelectedValuePath="Value" />
+				<bars:BarComboBox
+					x:Name="fontFamilyComboBox"
+					IsStarSizingAllowed="True"
+					KeyTipText="FF"
+					MenuResizeMode="Vertical"
+					RequestedWidth="115"
+					SelectedValuePath="Value"
+					TextPath="Label"
+					UseMenuItemAppearance="True"
+					/>
+				<bars:BarComboBox
+					x:Name="fontSizeComboBox"
+					KeyTipText="FS"
+					MenuResizeMode="Vertical"
+					RequestedWidth="40"
+					SelectedValuePath="Value"
+					TextPath="Label"
+					UseMenuItemAppearance="True"
+					/>
 			</bars:RibbonControlGroup>
 
 			<!-- Larger and smaller font size buttons -->

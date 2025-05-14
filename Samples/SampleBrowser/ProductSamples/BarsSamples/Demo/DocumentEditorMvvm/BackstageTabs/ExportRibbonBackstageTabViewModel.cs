@@ -23,6 +23,9 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
 			: base(BarControlKeys.BackstageTabExport, "Export") {
 
 			this.barManager = barManager;
+
+			// Use this tab viewmodel as content
+			Content = this;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

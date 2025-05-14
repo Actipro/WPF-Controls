@@ -8,7 +8,7 @@ order: 40
 This topic contains troubleshooting data specific to the Docking & MDI product.
 
 > [!NOTE]
-> For some more troubleshooting information that relates both to this product as well as other WPF Studio products, please see the more general [TroubleShooting](../troubleshooting.md) topic.
+> For some more troubleshooting information that relates both to this product as well as other Actipro @@PlatformName products, please see the more general [TroubleShooting](../troubleshooting.md) topic.
 
 ## Document/Tool Window Content Sizing Is Incorrect
 
@@ -35,6 +35,21 @@ While that may work on the initial load, the problem is that as soon as the layo
 
 If the content of your docking windows will rely on a data context that normally would be inherited down, you should explicitly bind your docking window's `DataContext` property to the dock site's `DataContext` like this:
 
+@if (avalonia) {
+```xaml
+<actipro:DockSite x:Name="dockSite">
+	<actipro:SplitContainer>
+		<actipro:Workspace />
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="DataContext Test" DataContext="{Binding #dockSite.DataContext}">
+				<TextBlock Text="{Binding}" />
+			</actipro:ToolWindow>
+		</actipro:ToolWindowContainer>
+	</actipro:SplitContainer>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 <docking:DockSite x:Name="dockSite">
 	<docking:SplitContainer>
@@ -47,6 +62,7 @@ If the content of your docking windows will rely on a data context that normally
 	</docking:SplitContainer>
 </docking:DockSite>
 ```
+}
 
 By doing that, you ensure that the docking window data contexts will still match the dock site's data context, even when any layout changes occur, such as floating windows.
 
@@ -62,12 +78,8 @@ We include a helper that is generally able to work around the focus tracking iss
 
 }
 
-@if (wpf) {
-
 ## Implicit Style/DataTemplate Is Not Always Applied
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) leverages one or more `Window` instances that contain a [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost) for floating document and/or tool windows when [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedFloatingWindows) is `false` (the default).  Therefore, any implicit `Style` or `DataTemplate` definitions must be defined in the application resources, so they will be available to the main window and any floating windows.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) leverages one or more `Window` instances that contain a [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost) for floating document and/or tool windows when [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedFloatingWindows) is `false` (the default).  Therefore, any implicit @if (avalonia) { `ControlTheme` or `IDataTemplate` }@if (wpf) { `Style` or `DataTemplate`} definitions must be defined in the application resources, so they will be available to the main window and any floating windows.
 
-Alternatively, the implicit `Style` or `DataTemplate` definitions can be redefined/merged in the resources of a floating [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost).  This can be accomplished in a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOpening) event handler.
-
-}
+Alternatively, the implicit @if (avalonia) { `ControlTheme` or `IDataTemplate` }@if (wpf) { `Style` or `DataTemplate`} definitions can be redefined/merged in the resources of a floating [DockHost](xref:@ActiproUIRoot.Controls.Docking.DockHost).  This can be accomplished in a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOpening](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOpening) event handler.

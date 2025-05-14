@@ -37,24 +37,22 @@ This topic covers several methods for programmatically arranging and resizing th
 
 See the [Programmatic Layout](programmatic-layout.md) topic for more information.
 
-@if (wpf) {
-
 ## Flow Direction
 
 Docking & MDI supports both left-to-right and right-to-left layouts via a simple property switch.
 
 See the [Flow Direction](flow-direction.md) topic for more information.
 
-}
-
 ## Localization
 
-All strings that are displayed in the user interface can be customized and localized. @if (wpf) {In addition, all user interface text properties have the `Localizability` attribute applied to them.}
+All strings that are displayed in the user interface can be customized and localized. @if (wpf) { In addition, all user interface text properties have the `Localizability` attribute applied to them. }
 
 See the [Localization](localization.md) topic for more information.
 
+@if (wpf) {
 ## UI Automation
 
-This product follows the WPF accessibility model for UI automation.
+This product follows the @@PlatformName accessibility model for UI automation.
 
 See the [UI Automation](ui-automation.md) topic for more information.
+}

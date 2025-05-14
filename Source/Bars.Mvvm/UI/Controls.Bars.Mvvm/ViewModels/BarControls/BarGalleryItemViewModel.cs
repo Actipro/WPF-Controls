@@ -21,6 +21,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string label;
 		private BarGalleryItemLayoutBehavior layoutBehavior = BarGalleryItemLayoutBehavior.Default;
 		private ImageSource imageSource;
+		private object tag;
 		private TValue value;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -280,7 +281,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.NotifyPropertyChanged(nameof(Value));
 			this.NotifyPropertyChanged(nameof(Label));
 		}
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString() {
 			// The label is coerced from the value when label is not explicitly defined,

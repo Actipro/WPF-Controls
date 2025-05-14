@@ -32,6 +32,20 @@ A standalone toolbar with built-in overflow support can be used as a window's ma
 
 See the [Standalone Toolbars](toolbar-features/standalone-toolbars.md) topic for additional information on working with a standalone toolbar.
 
+@if (wpf) {
+## Dockable Toolbars
+
+Each dockable toolbar within a dockable toolbar host is a toolbar that can be dragged to any side of the host, or even floated.  Dockable toolbars are very common in IDE applications and can be used in complex line of business applications as well, in scenarios where a ribbon may not be appropriate.
+
+![Screenshot](images/dockable-toolbars.png)
+
+*Multiple dockable toolbars in various placements around their host*
+
+Any toolbar controls, including popup buttons with galleries, can be used on a dockable toolbar.  Variant sizes from medium (showing label) to small (no label) to collapsed (moved to overflow popup) are all supported for each control within the toolbar.  The entire host and its toolbars can be configured via MVVM.
+
+See the [Dockable Toolbars](toolbar-features/dockable-toolbars.md) topic for more information.
+}
+
 ## Controls
 
 An enormous set of controls intended for use within ribbons, toolbars, and menus is included as well: everything from popup and split buttons to comboboxes and graphically-rich galleries.

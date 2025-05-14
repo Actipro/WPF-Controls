@@ -9,7 +9,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a ribbon control.
 	/// </summary>
-	public class RibbonViewModel : ObservableObjectBase {
+	public class RibbonViewModel : ObservableObjectBase, IHasTag {
 
 		private bool allowLabelsOnQuickAccessToolBar;
 		private RibbonApplicationButtonViewModel applicationButton;
@@ -30,6 +30,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private RibbonQuickAccessToolBarLocation quickAccessToolBarLocation = RibbonQuickAccessToolBarLocation.Above;
 		private RibbonQuickAccessToolBarMode quickAccessToolBarMode = RibbonQuickAccessToolBarMode.Visible;
 		private RibbonTabRowToolBarViewModel tabRowToolBar;
+		private object tag;
 		private UserInterfaceDensity userInterfaceDensity = UserInterfaceDensity.Compact;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -377,6 +378,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of tabs within the ribbon.</value>
 		public ObservableCollection<RibbonTabViewModel> Tabs { get; } = new ObservableCollection<RibbonTabViewModel>();
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
 
 		/// <inheritdoc/>
 		public override string ToString() {

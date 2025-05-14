@@ -15,6 +15,25 @@ The [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer).[Resiz
 
 For example, this code shows a `SplitContainer` with two child elements, therefore the `SplitContainer` has two slots:
 
+@if (avalonia) {
+```xaml
+...
+<actipro:SplitContainer Orientation="Horizontal">
+	<actipro:TabbedMdiContainer>
+		<actipro:DocumentWindow Title="Upper-1">
+			<TextBox TextWrapping="Wrap" Text="A document window in the upper-left corner of the tabbed MDI area." />
+		</actipro:DocumentWindow>
+	</actipro:TabbedMdiContainer>
+	<actipro:TabbedMdiContainer>
+		<actipro:DocumentWindow Title="Upper-2">
+			<TextBox TextWrapping="Wrap" Text="A document window in the upper-right corner of the tabbed MDI area." />
+		</actipro:DocumentWindow>
+	</actipro:TabbedMdiContainer>
+</actipro:SplitContainer>
+...
+```
+}
+@if (wpf) {
 ```xaml
 ...
 <docking:SplitContainer Orientation="Horizontal">
@@ -31,6 +50,7 @@ For example, this code shows a `SplitContainer` with two child elements, therefo
 </docking:SplitContainer>
 ...
 ```
+}
 
 This code can be used to evenly distribute the available space between the two elements in the above example:
 
@@ -53,15 +73,13 @@ The above code shows how to call the [ResizeSlots](xref:@ActiproUIRoot.Controls.
 > [!WARNING]
 > You should never use XAML `x:Name` references to obtain a specific `SplitContainer`, as these elements are created and destroyed dynamically as changes are made to the docking layout.
 
-The `VisualTreeHelper` and [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) can be used to locate the various [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) elements currently used. [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) offers several helper methods for walking up and down the visual tree.
-
 @if (wpf) {
+
+The `VisualTreeHelper` and [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) can be used to locate the various [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) elements currently used. [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended) offers several helper methods for walking up and down the visual tree.
 
 See the [Media](../../shared/windows-media.md) topic for more information on [VisualTreeHelperExtended](xref:@ActiproUIRoot.Media.VisualTreeHelperExtended).
 
 }
-
-@if (wpf) {
 
 ## Reversing Split Container Slots
 
@@ -72,8 +90,6 @@ This code reverses the order of the [SplitContainer](xref:@ActiproUIRoot.Control
 ```csharp
 splitContainer.ReverseSlots();
 ```
-
-}
 
 ## Arranging Tabbed MDI Windows
 

@@ -31,7 +31,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 
 		<actipro:Ribbon.TabRowToolBarContent>
 			<actipro:RibbonTabRowToolBar>
-				<actipro:BarButton Key="Share" Command="{Binding ShareCommand}" SmallImageSource="/Images/Share16.png" />
+				<actipro:BarButton Key="Share" Command="{Binding ShareCommand}" SmallIcon="{StaticResource ShareIcon}" />
 			</actipro:RibbonTabRowToolBar>
 		</actipro:Ribbon.TabRowToolBarContent>
 

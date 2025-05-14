@@ -28,7 +28,9 @@ It is recommended that glyphs be restricted to 16x16 size.  See the custom indic
 
 While the [IIndicatorTag](xref:ActiproSoftware.Text.Tagging.IIndicatorTag) interface just handles the rendering of the glyphs, more often than not, indicators also intend to style the contained text range differently.  You see this sort of thing with breakpoints, where they highlight the background of the text red.  This is accomplished by having the tag instance also implement [IClassificationTag](xref:ActiproSoftware.Text.Tagging.IClassificationTag).
 
-See the [Tags and Classification Types](../../text-parsing/tagging/basic-concepts.md) topic for more information on how classification tags can be used to override default syntax highlighting.
+> [!IMPORTANT]
+> Display item classification types need to be registered with the highlighting style registry in use for these text range color alterations to occur.
+> See the [Tags and Classification Types](../../text-parsing/tagging/basic-concepts.md) topic for more information on how classification tags can be used to override default syntax highlighting, and how to register display item classification types.
 
 ### Taggers and Indicator Managers
 

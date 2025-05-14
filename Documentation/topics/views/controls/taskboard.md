@@ -80,8 +80,15 @@ By using both those methods, it's possible to determine which card is at a certa
 This basic XAML shows how to create the basic appearance for the Task Planning demo, whose complete source is in the sample project.
 
 ```xaml
-<views:TaskBoard x:Name="taskBoard" ItemsSource="{Binding Lists}" ColumnItemsSourcePath="Tasks"
-                 Padding="15" ColumnSpacing="15" ColumnPadding="10" FontSize="14">
+<views:TaskBoard
+	x:Name="taskBoard"
+	ItemsSource="{Binding Lists}"
+	ColumnItemsSourcePath="Tasks"
+	Padding="15"
+	ColumnSpacing="15"
+	ColumnPadding="10"
+	FontSize="14"
+	>
 	<views:TaskBoard.ItemContainerStyle>
 		<Style TargetType="views:TaskColumn">
 			<Setter Property="Background" Value="#80ffffff" />

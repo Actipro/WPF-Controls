@@ -242,10 +242,15 @@ This example shows how the [TitleBarHeaderTemplate](xref:@ActiproUIRoot.Themes.W
 		<themes:WindowChrome>
 			<themes:WindowChrome.TitleBarHeaderTemplate>
 				<DataTemplate>
-					<Button Content="{Binding}" Margin="20,0" MaxWidth="300"
-					        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-					        Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
-					        IsTabStop="False" Focusable="False" />
+					<Button
+						Margin="20,0"
+						Content="{Binding}"
+						Focusable="False"
+						Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+						IsTabStop="False"
+						MaxWidth="300"
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+						/>
 				</DataTemplate>
 			</themes:WindowChrome.TitleBarHeaderTemplate>
 		</themes:WindowChrome>
@@ -262,10 +267,15 @@ This example shows how the attached `WindowChrome.TitleBarHeader` property can b
 		<themes:WindowChrome />
 	</themes:WindowChrome.Chrome>
 	<themes:WindowChrome.TitleBarHeader>
-		<Button Content="{Binding ElementName=window, Path=Title}" Margin="20,0" MaxWidth="300"
-		        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-		        Foreground="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=(TextElement.Foreground)}"
-		        IsTabStop="False" Focusable="False" />
+		<Button
+			Margin="20,0"
+			Content="{Binding ElementName=window, Path=Title}"
+			Focusable="False"
+			Foreground="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=(TextElement.Foreground)}"
+			IsTabStop="False"
+			Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+			MaxWidth="300"
+			/>
 	</themes:WindowChrome.TitleBarHeader>
 	...
 </Window>
@@ -294,16 +304,21 @@ This example shows how the [TitleBarRightContentTemplate](xref:@ActiproUIRoot.Th
 		<themes:WindowChrome>
 			<themes:WindowChrome.TitleBarRightContentTemplate>
 				<DataTemplate>
-					<Button Command="{Binding CustomButtonCommand}"
-					        Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-					        themes:ThemeProperties.IsActive="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=IsActive}"
-					        ToolTip="Custom TitleBar Button">
+					<Button
+						Command="{Binding CustomButtonCommand}"
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+						themes:ThemeProperties.IsActive="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=IsActive}"
+						ToolTip="Custom TitleBar Button"
+						>
 						<Button.ContentTemplate>
 							<DataTemplate>
 								<Canvas Margin="6,0" Width="16" Height="16">
-									<Path Canvas.Left="3" Canvas.Top="11"
-									      Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
-									      Data="M 0,0 L 2,0 L 2,2 L 0,2 Z M 4,0 L 6,0 L 6,2 L 4,2 Z M 8,0 L 10,0 L 10,2 L 8,2 Z"/>
+									<Path
+										Canvas.Left="3"
+										Canvas.Top="11"
+										Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextElement.Foreground)}"
+										Data="M 0,0 L 2,0 L 2,2 L 0,2 Z M 4,0 L 6,0 L 6,2 L 4,2 Z M 8,0 L 10,0 L 10,2 L 8,2 Z"
+										/>
 								</Canvas>
 							</DataTemplate>
 						</Button.ContentTemplate>
@@ -352,8 +367,13 @@ This is an example of using the [TitleBarMenu](xref:@ActiproUIRoot.Controls.Titl
 ```xaml
 <Window ...>
 	<themes:WindowChrome.Chrome>
-		<themes:WindowChrome x:Name="chrome" TitleBarHeaderAlignment="Center" TitleBarHeaderMinWidth="70"
-		                     TitleBarLeftContentMaxWidthOverflowPercentage="0.75" TitleBarRightContentMaxWidthOverflowPercentage="0" />
+		<themes:WindowChrome
+			x:Name="chrome"
+			TitleBarHeaderAlignment="Center"
+			TitleBarHeaderMinWidth="70"
+			TitleBarLeftContentMaxWidthOverflowPercentage="0.75"
+			TitleBarRightContentMaxWidthOverflowPercentage="0"
+			/>
 	</themes:WindowChrome.Chrome>
 	<themes:WindowChrome.TitleBarLeftContent>
 		<shared:TitleBarMenu x:Name="menu" Foreground="{Binding RelativeSource={RelativeSource AncestorType=ContentControl}, Path=(TextElement.Foreground)}">
@@ -448,7 +468,9 @@ It may be desired to bind the attached `WindowChrome.IsOverlayVisible` property 
 
 ```xaml
 <Window x:Name="window" ...
-        themes:WindowChrome.IsOverlayVisible="{Binding IsWindowOverlayVisible}}"> ... </Window>
+	themes:WindowChrome.IsOverlayVisible="{Binding IsWindowOverlayVisible}}">
+	...
+</Window>
 ```
 
 For convenience, the static [WindowChrome](xref:@ActiproUIRoot.Themes.WindowChrome).[SetIsOverlayVisible](xref:@ActiproUIRoot.Themes.WindowChrome.SetIsOverlayVisible*) method can also be called from code to set the current value of the attached property.
@@ -487,7 +509,9 @@ It's a common practice with Office-like Backstage overlays to bind the attached 
 
 ```xaml
 <Window x:Name="window" ...
-        themes:WindowChrome.UseAlternateTitleBarStyle="{Binding RelativeSource={RelativeSource Self}, Path=(themes:WindowChrome.IsOverlayVisible)}"> ... </Window>
+	themes:WindowChrome.UseAlternateTitleBarStyle="{Binding RelativeSource={RelativeSource Self}, Path=(themes:WindowChrome.IsOverlayVisible)}">
+	...
+</Window>
 ```
 
 ## Setting the Minimum Title Bar Height
@@ -496,7 +520,9 @@ The minimum title bar height can be set using the attached [TitleBarMinHeightPro
 
 ```xaml
 <Window x:Name="window" ...
-        themes:WindowChrome.TitleBarMinHeight="28"> ... </Window>
+	themes:WindowChrome.TitleBarMinHeight="28">
+	...
+</Window>
 ```
 
 ## Getting the Title Bar Height
@@ -512,7 +538,9 @@ This code shows how the title bar height can be used as a top margin for a contr
 	<shared:ThicknessConverter x:Key="ThicknessConverter" />
 <Window.Resources>
 ...
-<Grid Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}"> ... </Grid>
+<Grid Margin="{Binding ElementName=window, Path=(themes:WindowChrome.TitleBarHeight), Converter={StaticResource ThicknessConverter}, ConverterParameter='Top'}">
+	...
+</Grid>
 ```
 
 ## Preventing Window Activation When Clicking a Ribbon or ToolBar

@@ -13,15 +13,15 @@ The customization of menus is handled via the [DockSite](xref:@ActiproUIRoot.Con
 
 The event arguments that are passed are type [DockingMenuEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs), which indicates the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow) for which the event was fired.  The [DockingMenuEventArgs](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs).[Kind](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Kind) property supplies a [DockingMenuKind](xref:@ActiproUIRoot.Controls.Docking.DockingMenuKind) value that can be used to determine the type of menu being constructed.
 
-@if (winrt) {
+@if (avalonia) {
 
-The event arguments passes a pre-configured `MenuFlyout` in its [Menu](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Menu) property. 
+The event arguments passes a pre-configured `MenuFlyout` in its [Menu](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Menu) property.
 
 }
 
 @if (wpf) {
 
-The event arguments passes a pre-configured `ContextMenu` in its [Menu](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Menu) property. 
+The event arguments passes a pre-configured `ContextMenu` in its [Menu](xref:@ActiproUIRoot.Controls.Docking.DockingMenuEventArgs.Menu) property.
 
 }
 

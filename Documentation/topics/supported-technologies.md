@@ -11,8 +11,7 @@ The @@PlatformName Controls are compatible with a number of different technologi
 
 The products have assemblies available for multiple frameworks, including:
 
-- .NET 5 or later
-- .NET Core 3.1
+- .NET 6 or later
 - .NET Framework 4.6.2 or later
 
 > [!IMPORTANT]
@@ -32,10 +31,11 @@ The products have been tested and are supported under the following architecture
 The products work best at design-time with the following IDEs:
 
 - Visual Studio 2022
-- Visual Studio 2019
 
 > [!NOTE]
-> Older versions of Visual Studio should also work when building applications that use Actipro @@PlatformName controls but may not fully support all designer features and are not actively tested with new releases. Please understand that Actipro Support may not be able assist with issues arising from the use of unsupported IDEs.
+> Older versions of Visual Studio should also work when building applications that use Actipro @@PlatformName controls but may not fully support all designer features and are not actively tested with new releases.  For example, Visual Studio 2019 does not support .NET 6+, so it should only be used for applications that target .NET Framework.
+>
+> Please understand that Actipro Support may not be able assist with issues arising from the use of unsupported IDEs.
 
 > [!IMPORTANT]
-> Our [Sample Browser](quick-starts.md) application requires the .NET SDK.
+> Our [Sample Browser](quick-starts.md) application project configuration requires the .NET SDK even if targeting .NET Framework.
