@@ -21,7 +21,7 @@ See the [Control Hierarchy](../control-hierarchy.md) topic for help on which con
 
 ## Workspace with Custom Content
 
-As mentioned above, any sort of content can be placed as the child of a workspace.  Just set the custom content to the `Content` property of the [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace).
+As mentioned above, any sort of content can be placed as the child of a workspace.  Just set the custom content to the [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace).`Content` property.
 
 The screenshot above shows a workspace with custom content loaded.
 
@@ -31,7 +31,7 @@ When placing custom content in a workspace, a [TabbedMdiHost](xref:@ActiproUIRoo
 
 If you want to have tabbed MDI features in your docking layout, you must place a [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) control directly as the `Content` of the [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace).
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property returns `Tabbed` when a tabbed MDI host is present.  Additionally, [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDockHost](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDockHost).[MdiHost](xref:@ActiproUIRoot.Controls.Docking.DockHost.MdiHost) returns the MDI host registered with the primary dock host (the one implicitly defined within the dock site).
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property returns [Tabbed](xref:@ActiproUIRoot.Controls.Docking.MdiKind.Tabbed) when a tabbed MDI host is present.  Additionally, [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDockHost](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDockHost).[MdiHost](xref:@ActiproUIRoot.Controls.Docking.DockHost.MdiHost) returns the MDI host registered with the primary dock host (the one implicitly defined within the dock site).
 
 Tabbed MDI will not function correctly if the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) is placed elsewhere.
 
@@ -39,7 +39,7 @@ Tabbed MDI will not function correctly if the [TabbedMdiHost](xref:@ActiproUIRoo
 
 If you want to have standard MDI features in your docking layout, you must place a [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) control directly as the `Content` of the [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace).
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property returns `Standard` when a standard MDI host is present.  Additionally, [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDockHost](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDockHost).[MdiHost](xref:@ActiproUIRoot.Controls.Docking.DockHost.MdiHost) returns the MDI host registered with the primary dock host (the one implicitly defined within the dock site).
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property returns [Standard](xref:@ActiproUIRoot.Controls.Docking.MdiKind.Standard) when a standard MDI host is present.  Additionally, [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[PrimaryDockHost](xref:@ActiproUIRoot.Controls.Docking.DockSite.PrimaryDockHost).[MdiHost](xref:@ActiproUIRoot.Controls.Docking.DockHost.MdiHost) returns the MDI host registered with the primary dock host (the one implicitly defined within the dock site).
 
 Standard MDI will not function correctly if the [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) is placed elsewhere.
 

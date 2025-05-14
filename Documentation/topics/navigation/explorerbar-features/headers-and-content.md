@@ -23,8 +23,11 @@ This sample shows how to create an expander pane with an alternate style (which 
 
 ```xaml
 <navigation:ExplorerBar>
-	<shared:AnimatedExpander IsExpanded="True" Margin="0,7,0,0"
-	                         Style="{DynamicResource {x:Static themes:ExplorerBarCommonDictionary.ExpanderAlternateStyleKey}}">
+	<shared:AnimatedExpander
+		IsExpanded="True"
+		Margin="0,7,0,0"
+		Style="{DynamicResource {x:Static themes:ExplorerBarCommonDictionary.ExpanderAlternateStyleKey}}"
+		>
 		<shared:AnimatedExpander.Header>
 			<shared:ImageTextInfo ImageSourceLarge="/Resources/Images/PictureTasks32.png" Text="Picture Tasks" />
 		</shared:AnimatedExpander.Header>

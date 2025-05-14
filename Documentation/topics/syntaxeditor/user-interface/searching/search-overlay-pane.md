@@ -122,11 +122,15 @@ The [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[View
 
 Search results can be highlighted as the find text and other search options are altered in the search overlay pane.  For this functionality to work, please make sure the appropriate display classification type is registered per the requirements listed in the [Search Result Highlighting](search-result-highlighting.md) topic.
 
+@if (wpf) {
+
 ## Control Key Down Opacity
 
 The search overlay pane animates to be semi-transparent when the <kbd>Ctrl</kbd> key is held down, thereby allowing the end user to see the text behind it. [SearchOverlayPane](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane).[ControlKeyDownOpacity](xref:@ActiproUIRoot.Controls.SyntaxEditor.Primitives.SearchOverlayPane.ControlKeyDownOpacity) property specifies the opacity when the popup is semi-transparent.
 
 Set this property to `1.0` to prevent the pane from being semi-transparent.
+
+}
 
 ## Programmatically Opening the Pane
 

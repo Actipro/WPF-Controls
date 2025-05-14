@@ -30,8 +30,11 @@ xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 This sample code shows how to use various low contrast container brushes in a `Border` element with some text:
 
 ```xaml
-<Border Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
-        BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
+<Border
+	Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+	BorderThickness="1"
+	BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}"
+	>
 	<StackPanel Margin="10">
 		<TextBlock Text="Reusable Theme Assets" Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}" />
 		<TextBlock Text="This is a description that renders more faintly." Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowSubtleBrushKey}}" />

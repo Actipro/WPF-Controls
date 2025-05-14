@@ -32,7 +32,7 @@ In summary, a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery)
 | Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, inline via the [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property or externally via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) property. |
+| Has image | Yes, inline via the [InlineIconMemberBinding](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineIconMemberBinding) property or externally via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallIcon) property. |
 | Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
 | Is checkable | No. |
 | Variant sizes | None. |
@@ -66,7 +66,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarComboBox
 		Key="Employee"
-		TextPath="Name"
+		TextMemberBinding="{Binding Name, x:DataType=local:Employee}"
 		IsEditable="True"
 		Command="{Binding EmployeeSelectedCommand}"
 		UnmatchedTextCommand="{Binding EmployeeUnmatchedTextCommand}"
@@ -131,7 +131,12 @@ There are several appearance-related properties that determine how the controls 
 
 The [Text](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.Text) property gets or sets the text that is displayed within the combobox.
 
+@if (avalonia) {
+The [TextMemberBinding](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextMemberBinding) property specifies the `IBinding` to a string-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
+}
+@if (wpf) {
 The [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies the path to a string-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
+}
 
 ### Label
 
@@ -145,9 +150,18 @@ The `Label` can be auto-generated based on the control's `Key` property.  For in
 
 ### Images
 
-An image from the selected gallery item can be displayed inline within the control, before the combobox text.  This image will update when the combobox's selection is changed.  The [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property specifies the path to an `ImageSource`-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
+An image from the selected gallery item can be displayed inline within the control, before the combobox text.  This image will update when the combobox's selection is changed.
+
+@if (avalonia) {
+The [InlineIconMemberBinding](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineIconMemberBinding) property specifies an `IBinding` to an `object`-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
+
+Alternatively, the control can display a static image via [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallIcon) that helps identify its function.  The image is not tied to the selected item and is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup)), or in customization UI.
+}
+@if (wpf) {
+The [InlineImageSourcePath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.InlineImageSourcePath) property specifies the path to an `ImageSource`-based property off the view model gallery item class to display in the combobox when a gallery item is selected.
 
 Alternatively, the control can display a static image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource) that helps identify its function.  The image is not tied to the selected item and is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup)), or in customization UI.
+}
 
 ### Title
 
@@ -205,7 +219,16 @@ See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on
 
 ## Commands and Events
 
-A commit is attempted by an editable [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) when <kbd>Enter</kbd> is pressed while the control is focused, or the control's text changes and then focus is lost.  As long as the `IsTextSearchEnabled` property is `true`, the commit logic will examine the gallery items and will look for an item that matches the typed text.  `IsTextSearchCaseSensitive` determines whether a case-sensitive text search is made.  The attached `TextSearch.Text` property value from the gallery item (if it is a `DependencyObject`) will be examined first when looking for matches.  If no match is made on that, and the [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies a property name on the item to examine, that property on the item will be looked at next for a match.
+A commit is attempted by an editable [BarComboBox](xref:@ActiproUIRoot.Controls.Bars.BarComboBox) when <kbd>Enter</kbd> is pressed while the control is focused, or the control's text changes and then focus is lost.  As long as the `IsTextSearchEnabled` property is `true`, the commit logic will examine the gallery items and will look for an item that matches the typed text.  `IsTextSearchCaseSensitive` determines whether a case-sensitive text search is made.
+
+The attached `TextSearch.Text` property value from the gallery item (if it is a `DependencyObject`) will be examined first when looking for matches.
+
+@if (avalonia) {
+If no match is made on that, and the [TextMemberBinding](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextMemberBinding) property specifies an `IBinding` to a property on the item to examine, that property on the item will be looked at next for a match.
+}
+@if (wpf) {
+If no match is made on that, and the [TextPath](xref:@ActiproUIRoot.Controls.Bars.BarComboBox.TextPath) property specifies a property name on the item to examine, that property on the item will be looked at next for a match.
+}
 
 If a matching gallery item is located, the [Command](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Command) is executed and is passed the matching gallery item as a command parameter.
 

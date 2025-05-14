@@ -10,7 +10,7 @@ The advanced C# syntax language implementation in the SyntaxEditor .NET Language
 ![Screenshot](../../images/dotnet-addon-csharp.png)
 
 > [!IMPORTANT]
-> The syntax language and its parser supports C# 9.0 syntax.
+> The syntax language and its parser supports C# 13 syntax.
 
 ## Features
 

@@ -139,7 +139,6 @@ Gets or sets the global setting for whether document windows may be contained in
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -152,7 +151,6 @@ Gets or sets whether [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[
 
 </td>
 </tr>
-}
 
 <tr>
 <td>
@@ -292,12 +290,11 @@ Gets or sets the global setting for whether tool windows may be attached to anot
 </td>
 <td>
 
-Gets or sets whether containers have new tab buttons.  The default value is `false`.
+Gets or sets whether containers have **New Tab** buttons.  The default value is `false`.
 
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -310,9 +307,7 @@ Gets or sets whether floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls
 
 </td>
 </tr>
-}
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -321,11 +316,10 @@ Gets or sets whether floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls
 </td>
 <td>
 
-Gets or sets whether floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) controls can have title bar maximize buttons.  The default value is `false`.
+Gets or sets whether floating [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) controls can have title bar minimize buttons.  The default value is `false`.
 
 </td>
 </tr>
-}
 
 <tr>
 <td>
@@ -349,19 +343,6 @@ Gets or sets what happens when floating [ToolWindowContainer](xref:@ActiproUIRoo
 <td>
 
 Gets or sets whether close buttons should appear on document tabs.  The default value is `true`.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-[TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabOverflowBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabOverflowBehavior) Property
-
-</td>
-<td>
-
-Gets or sets the global setting for the overflow behavior of the document tabs.  The default value is `TabOverflowBehavior.Menu`.
 
 </td>
 </tr>
@@ -421,12 +402,43 @@ Gets or sets whether animation effects are applied during tab layout, such as wh
 <tr>
 <td>
 
+[TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[SingleTabLayoutBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.SingleTabLayoutBehavior) Property
+
+</td>
+<td>
+
+Gets or sets the global setting for the behavior used when a single docking window is in the MDI host.  The default value is [Show](xref:@ActiproUIRoot.Controls.Docking.SingleTabLayoutBehavior.Show).
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabOverflowBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabOverflowBehavior) Property
+
+</td>
+<td>
+
+Gets or sets the global setting for the overflow behavior of the document tabs.  The default value is [Menu](xref:@ActiproUIRoot.Controls.Docking.TabOverflowBehavior.Menu).
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabStripPlacement](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabStripPlacement) Property
 
 </td>
 <td>
 
-Gets or sets a [Side](xref:@ActiproUIRoot.Controls.Side) indicating the side upon which the tabs are located.  The default value is `Top`.
+@if (avalonia) {
+Gets or sets a `Dock` side indicating the side upon which the tabs are located.  The default value is `Dock.Top`.
+}
+@if (wpf) {
+Gets or sets a [Side](xref:@ActiproUIRoot.Controls.Side) indicating the side upon which the tabs are located.  The default value is [Top](xref:@ActiproUIRoot.Controls.Side.Top).
+}
 
 </td>
 </tr>
@@ -504,7 +516,7 @@ Gets or sets whether [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.
 </td>
 <td>
 
-Gets or sets the global setting for the behavior used when a single tool window is in a container.  The default value is `SingleTabLayoutBehavior.Hide`.
+Gets or sets the global setting for the behavior used when a single tool window is in a container.  The default value is [Hide](xref:@ActiproUIRoot.Controls.Docking.SingleTabLayoutBehavior.Hide).
 
 </td>
 </tr>
@@ -517,7 +529,7 @@ Gets or sets the global setting for the behavior used when a single tool window 
 </td>
 <td>
 
-Gets or sets the global setting for the overflow behavior of the tool window tabs.  The default value is `TabOverflowBehavior.Shrink`.
+Gets or sets the global setting for the overflow behavior of the tool window tabs.  The default value is [Shrink](xref:@ActiproUIRoot.Controls.Docking.TabOverflowBehavior.Shrink).
 
 </td>
 </tr>
@@ -530,7 +542,7 @@ Gets or sets the global setting for the overflow behavior of the tool window tab
 </td>
 <td>
 
-Gets or sets the global setting for the overflow behavior of the tool window tabs.  The default value is `Bottom`.
+Gets or sets the global setting for the side upon which the tool window tabs are located.  The default value is @if (avalonia) { `Dock.Bottom` }@if (wpf) { [Bottom](xref:@ActiproUIRoot.Controls.Side.Bottom) }.
 
 </td>
 </tr>
@@ -548,7 +560,6 @@ Gets or sets whether to use float previews when dragging windows instead of inst
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -561,9 +572,7 @@ Gets or sets whether floating windows should be hosted within the bounds of the 
 
 </td>
 </tr>
-}
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -576,7 +585,6 @@ Gets or sets whether popups should be hosted within the bounds of the dock site.
 
 </td>
 </tr>
-}
 
 </tbody>
 </table>
@@ -605,7 +613,7 @@ All of the global default options listed above will apply to docking windows by 
 
 In some situations, you may wish to keep docking windows in their current container but still want to allow them to be reordered.
 
-To accomplish this, turn all the appropriate options off such as `CanDock` and `CanRaft`, etc.  but leave `CanDrag` on.  This will allow the user to reorder tabs by dragging them within their container but will prevent the docking window from moving outside of the container.
+To accomplish this, turn all the appropriate options off such as [CanDock](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanDock) and [CanFloat](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanFloat), etc. but leave [CanDragTab](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanDragTab) on.  This will allow the user to reorder tabs by dragging them within their container but will prevent the docking window from moving outside of the container.
 
 ## Limiting the Allowed Dock Guides While Dragging
 
@@ -627,19 +635,39 @@ Magnetism can be configured using [DockSite](xref:@ActiproUIRoot.Controls.Dockin
 
 ## Images on Tabs Option
 
-The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image can appear on docking window tabs when tab images are enabled. @if (wpf) {Several themes, such as the non-Metro themes, turn this feature on by default. }
+@if (avalonia) {
+The image defined by [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Icon](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Icon) can appear on docking window tabs when tab images are enabled.
+
+You can force the image to display on the tool window tabs by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsHaveTabIcons](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsHaveTabIcons) property to `true`, or on tabbed MDI tabs by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabIcons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabIcons) property to `true`.
+}
+@if (wpf) {
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image can appear on docking window tabs when tab images are enabled.  Several themes, such as the non-Metro themes, turn this feature on by default.
 
 You can force the image to display on the tool window tabs by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsHaveTabImages](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsHaveTabImages) property to `true`, or on tabbed MDI tabs by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabImages](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabImages) property to `true`.
+}
 
 ## Single Tab Layout Behavior
 
+### Tool Windows
+
 By default, when a [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) only has a single [ToolWindow](xref:@ActiproUIRoot.Controls.Docking.ToolWindow), then the tabs are hidden.  This mimics the behavior seen in Visual Studio but can be customized.  The tab for the single window can be hidden or shown.
 
-The behavior can be customized using the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsSingleTabLayoutBehavior](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsSingleTabLayoutBehavior) property, whose default value is `Hide`.
+The behavior can be customized using the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[ToolWindowsSingleTabLayoutBehavior](xref:@ActiproUIRoot.Controls.Docking.DockSite.ToolWindowsSingleTabLayoutBehavior) property, whose default value is [Hide](xref:@ActiproUIRoot.Controls.Docking.SingleTabLayoutBehavior.Hide).
 
+@if (avalonia) {
+![Screenshot](../images/single-tab-layout-behavior.png)
+}
+@if (wpf) {
 ![Screenshot](../images/single-tab-layout-behavior-hide.png)![Screenshot](../images/single-tab-layout-behavior-show.png)
+}
 
 *A ToolWindowContainer with a single window using Hide and Show behaviors*
+
+### Tabbed MDI
+
+By default, tabs are always displayed in a [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).  For some applications, it might be desirable to hide the tabs when there is only one [TabbedMdiContainer](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiContainer) in a [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost) and that container only has a single [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).
+
+The behavior can be customized using the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[SingleTabLayoutBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.SingleTabLayoutBehavior) property, whose default value is [Show](xref:@ActiproUIRoot.Controls.Docking.SingleTabLayoutBehavior.Show).
 
 ## Tinting Tabs
 
@@ -651,11 +679,13 @@ Tabs can be tinted towards a color by setting the [DockingWindow](xref:@ActiproU
 
 ## Flashing Tabs
 
-Tabs can enter a flashing mode by setting the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property to either `Blink` or `Smooth`.  The `Blink` mode will cause the tab to appear as flashing for a bit, then instantly restore it to normal for a bit, then appear as flashing for a bit, and so on until the mode is changed back to `None`.  The `Smooth` mode will do a smooth transition between the flashing appearance and normal appearance.
+Tabs can enter a flashing mode by setting the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property to either [Blink](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.Blink) or [Smooth](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.Smooth).
+- The [Blink](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.Blink) mode will cause a tab to instantly toggle between flashing and normal appearances, holding each for a brief duration, until the mode is changed back to [None](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.None).
+- The [Smooth](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.Smooth) mode will do a smooth transition between the flashing and normal appearances until the mode is changed back to [None](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.None).
 
 The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabFlashColor](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashColor) property specifies the color used to tint the tab for its flash effect.
 
-Flashing is best used to grab the end user's attention and let them know that a tab should be clicked.  Watch the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event to see when the docking window is activated.  At that point, set the [TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property back to `None` to disable flashing.
+Flashing is best used to grab the end user's attention and let them know that a tab should be clicked.  Watch the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[WindowActivated](xref:@ActiproUIRoot.Controls.Docking.DockSite.WindowActivated) event to see when the docking window is activated.  At that point, set the [TabFlashMode](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabFlashMode) property back to [None](xref:@ActiproUIRoot.Controls.Docking.TabFlashMode.None) to disable flashing.
 
 ## ToolWindowContainer Title Font
 
@@ -665,8 +695,18 @@ The [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContain
 - [TitleFontSize](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontSize)
 - [TitleFontWeight](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer.TitleFontWeight)
 
-Properties like these should never be set directly on specific instances of container controls since containers are created and destroyed dynamically at run-time with layout changes.  Instead, if you wish to change these properties, use an implicit `Style` that targets [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) in your application's `Resources`:
+Properties like these should never be set directly on specific instances of container controls since containers are created and destroyed dynamically at run-time with layout changes.  Instead, if you wish to change these properties, use an implicit `Style` that targets [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) in your application's @if (avalonia) { `Styles` }@if (wpf) { `Resources` }:
 
+@if (avalonia) {
+```xaml
+<Style Selector="actipro|ToolWindowContainer">
+	<Setter Property="TitleFontFamily" Value="Verdana" />
+	<Setter Property="TitleFontSize" Value="14" />
+	<Setter Property="TitleFontWeight" Value="Bold" />
+</Style>
+```
+}
+@if (wpf) {
 ```xaml
 <Style TargetType="docking:ToolWindowContainer">
 	<Setter Property="TitleFontFamily" Value="Verdana" />
@@ -674,5 +714,6 @@ Properties like these should never be set directly on specific instances of cont
 	<Setter Property="TitleFontWeight" Value="Bold" />
 </Style>
 ```
+}
 
 That implicit `Style` will update all instances of the container within your application.

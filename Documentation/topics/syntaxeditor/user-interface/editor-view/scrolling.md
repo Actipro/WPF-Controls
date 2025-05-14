@@ -128,8 +128,11 @@ The easiest way to define a data template is in XAML.  This code shows how to de
 	<editor:SyntaxEditor.ScrollBarTrayBottomTemplate>
 		<DataTemplate>
 			<ToggleButton ToolTip="ToggleButton in the bottom tray">
-				<Image Width="16" Height="16" Stretch="None"
-				       Source="/Resources/Images/Mail16.png" />
+				<Image
+					Width="16" Height="16"
+					Stretch="None"
+					Source="/Resources/Images/Mail16.png"
+					/>
 			</ToggleButton>
 		</DataTemplate>
 	</editor:SyntaxEditor.ScrollBarTrayBottomTemplate>

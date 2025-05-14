@@ -16,11 +16,13 @@ Here's an example of a `DataTemplate` that includes a `CheckBox`.  This example 
 ```xaml
 <DataTemplate>
 	<StackPanel Orientation="Horizontal">
-		<CheckBox Margin="0,0,4,0" VerticalAlignment="Center"
-				  Visibility="{Binding IsCheckable, Converter={StaticResource BooleanToVisibilityConverter}}"
-				  IsThreeState="{Binding IsThreeState}" IsChecked="{Binding IsChecked, Mode=TwoWay}"
-				  />
-
+		<CheckBox
+			Margin="0,0,4,0"
+			VerticalAlignment="Center"
+			Visibility="{Binding IsCheckable, Converter={StaticResource BooleanToVisibilityConverter}}"
+			IsChecked="{Binding IsChecked, Mode=TwoWay}"
+			IsThreeState="{Binding IsThreeState}"
+			/>
 		<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
 	</StackPanel>
 </DataTemplate>

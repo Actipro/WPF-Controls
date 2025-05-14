@@ -30,7 +30,7 @@ Use the [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) contr
 | Base class | [BarPopupButtonBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase), which inherits native `Menu`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) property.  Auto-generated from the `Key` value if not specified.  |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallIcon), [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumIcon), and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeIcon) properties. |
 | Has popup | Yes. |
 | Is checkable | No. |
 | Variant sizes | `Small` (image only), `Medium` (image and label), `Large` (tall size, image and multi-line label). |
@@ -64,7 +64,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarPopupButton
 		Key="Shapes"
-		SmallImageSource="/Images/Shapes16.png">
+		SmallIcon="{StaticResource ShapesIcon}">
 
 		<actipro:BarPopupButton.Items>
 			<actipro:BarMenuItem
@@ -120,7 +120,7 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 | Base class | Native `MenuItem`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) properties. |
 | Has popup | Yes. |
 | Is checkable | No. |
 | Variant sizes | None, but has a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that triggers a large height and displays an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description). |
@@ -150,11 +150,11 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarMenuItem
 		Key="Shapes"
-		SmallImageSource="/Images/Shapes16.png">
+		SmallIcon="{StaticResource ShapesIcon}">
 
 		<actipro:BarMenuItem
 			Key="Rectangle"
@@ -162,7 +162,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 			/>
 	</actipro:BarMenuItem>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {
@@ -218,12 +218,22 @@ The [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[Label](xref:@A
 
 The controls can display images that help identify their function.
 
-All [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  @if (avalonia) { When the button is located on a ribbon with `Simplified` layout mode, }@if (wpf) { When the button has a `Spacious` UI density,} it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
+@if (avalonia) {
+All [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) instances should set a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallIcon) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeIcon).  When the button is located on a ribbon with `Simplified` layout mode, it will try to use [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumIcon).
+
+> [!TIP]
+> See the [Control Basics](control-basics.md) topic for more detail on the fallback logic and custom data templates for button icons.
+
+[BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) property is used instead.
+}
+@if (wpf) {
+All [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
 
 > [!TIP]
 > See the [Control Basics](control-basics.md) topic for more detail on the fallback logic for button images.
 
 [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.
+}
 
 ### Description (BarMenuItem only)
 

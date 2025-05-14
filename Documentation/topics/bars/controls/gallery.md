@@ -35,7 +35,7 @@ Use the [RibbonGallery](xref:@ActiproUIRoot.Controls.Bars.RibbonGallery) control
 | Base class | [BarMenuGalleryHostBase](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuGalleryHostBase), which indirectly inherits native `Selector`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.Label) property.  Auto-generated from the `Key` value if not specified.  |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.SmallIcon), [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.MediumIcon), and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarGalleryBase.LargeIcon) properties. |
 | Has popup | Yes, which shows a [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) with the same items, and optionally additional menu items. |
 | Is checkable | No. |
 | Variant sizes | `Small` (collapsed gallery popup button), `Medium` (several columns), `Large` (many columns). |
@@ -83,8 +83,8 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 		<actipro:RibbonGroup Key="Colors">
 			<actipro:RibbonGallery
 				Key="ColorPicker"
-				LargeImageSource="/Images/ColorPicker32.png"
-				SmallImageSource="/Images/ColorPicker16.png"
+				LargeIcon="{StaticResource ColorPickerIconLarge}"
+				SmallIcon="{StaticResource ColorPickerIconSmall}"
 				Command="{Binding SetColorCommand}"
 				ItemsSource="{Binding ColorItems}"
 				ItemTemplate="{StaticResource ColorGalleryItemTemplate}"
@@ -152,7 +152,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 			UseAccentedItemBorder="True"
 			/>
 		...
-	</actipro:BarContextMenu>
+	</actipro:BarPopupButton>
 </actipro:StandaloneToolBar>
 ```
 }
@@ -171,7 +171,7 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 			UseAccentedItemBorder="True"
 			/>
 		...
-	</bars:BarContextMenu>
+	</bars:BarPopupButton>
 </bars:StandaloneToolBar>
 ```
 }
@@ -220,7 +220,7 @@ Use the [BarMenuGallery](xref:@ActiproUIRoot.Controls.Bars.BarMenuGallery) contr
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarMenuGallery
 		Key="ColorPicker"
@@ -230,7 +230,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 		UseAccentedItemBorder="True"
 		/>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {

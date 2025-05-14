@@ -17,9 +17,9 @@ This code shows how the input for a property is validated in the property setter
 
 ```csharp
 set {
-    if (value == "BadInput")
-        throw new ArgumentException("Bad input");
-    this.myProperty = value;
+	if (value == "BadInput")
+		throw new ArgumentException("Bad input");
+	this.myProperty = value;
 }
 ```
 
@@ -31,13 +31,13 @@ This code shows a custom `ValidationRule` that requires an integer value to be g
 
 ```csharp
 public class PositiveInt32ValidationRule : ValidationRule {
-    public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-        int i = Convert.ToInt32(value);
-        if (i > 0)
-            return new ValidationResult(true, null);
-        else
-            return new ValidationResult(false, "Value is not positive");
-    }
+	public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
+		int i = Convert.ToInt32(value);
+		if (i > 0)
+			return new ValidationResult(true, null);
+		else
+			return new ValidationResult(false, "Value is not positive");
+	}
 }
 ```
 
@@ -49,16 +49,16 @@ xmlns:sample="clr-namespace:CustomRuleNamespace"
 ...
 
 <DataTemplate x:Key="CustomTextBoxValueTemplate">
-    <TextBox IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}">
-        <TextBox.Text>
+	<TextBox IsReadOnly="{Binding IsReadOnly}" Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedTextBoxStyleKey}}">
+		<TextBox.Text>
 			<Binding Path="Value" Mode="TwoWay" NotifyOnValidationError="True">
-                <Binding.ValidationRules>
-                    <sample:PositiveInt32ValidationRule />
-                    <ExceptionValidationRule />
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox.Text>
-    </TextBox>
+				<Binding.ValidationRules>
+					<sample:PositiveInt32ValidationRule />
+					<ExceptionValidationRule />
+				</Binding.ValidationRules>
+			</Binding>
+		</TextBox.Text>
+	</TextBox>
 </DataTemplate>
 ```
 
@@ -78,22 +78,24 @@ This code shows how to define a custom `ErrorTemplate` that shows a pulsing red 
 
 ```xaml
 <ControlTemplate x:Key="CustomValidationTemplate">
-    <Grid>
-        <Border IsHitTestVisible="False" Background="Pink" BorderBrush="Red" BorderThickness="1" Opacity="0.1">
-            <Border.Triggers>
-                <EventTrigger RoutedEvent="Control.Loaded">
-                    <BeginStoryboard>
-                        <Storyboard RepeatBehavior="Forever">
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To="0.4"
-                                    DecelerationRatio="0.25" AccelerationRatio="0.25" AutoReverse="True"
-                                    Duration="0:0:0.75" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Border.Triggers>
-        </Border>
-        <AdornedElementPlaceholder />
-    </Grid>
+	<Grid>
+		<Border IsHitTestVisible="False" Background="Pink" BorderBrush="Red" BorderThickness="1" Opacity="0.1">
+			<Border.Triggers>
+				<EventTrigger RoutedEvent="Control.Loaded">
+					<BeginStoryboard>
+						<Storyboard RepeatBehavior="Forever">
+							<DoubleAnimation
+								Storyboard.TargetProperty="Opacity" From="0.1" To="0.4"
+								DecelerationRatio="0.25" AccelerationRatio="0.25" AutoReverse="True"
+								Duration="0:0:0.75"
+								/>
+						</Storyboard>
+					</BeginStoryboard>
+				</EventTrigger>
+			</Border.Triggers>
+		</Border>
+		<AdornedElementPlaceholder />
+	</Grid>
 </ControlTemplate>
 ```
 
@@ -116,7 +118,7 @@ This code shows how to hook up an event handler for the `Validation.Error` event
 
 ```xaml
 <grids:PropertyGrid Validation.Error="OnPropertyGridValidationError">
-    ...
+	...
 </grids:PropertyGrid>
 
 ```

@@ -21,9 +21,33 @@
 		<Setter Property="KeyTipText" Value="{Binding KeyTipText, Mode=TwoWay}" />
 		<Setter Property="Label" Value="{Binding Label, Mode=TwoWay}" />
 		<Setter Property="LayoutBehavior" Value="{Binding LayoutBehavior, Mode=TwoWay}" />
+		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
 		<Setter Property="ToolTip" Value="{Binding Description, Mode=TwoWay}" />
 	</Style>
-	
+
+	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.BarMainMenuStyle}" TargetType="bars:BarMainMenu">
+		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
+		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
+
+		<Setter Property="ItemsSource" Value="{Binding Items}" />
+		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
+	</Style>
+
+	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.DockableToolBarHostStyle}" TargetType="bars:DockableToolBarHost">
+		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
+		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
+
+		<Setter Property="CanToolBarsFloat" Value="{Binding CanToolBarsFloat, Mode=TwoWay}" />
+		<Setter Property="ControlVariants" Value="{Binding ControlVariants}" />
+		<Setter Property="ItemsSource" Value="{Binding ToolBars}" />
+		<Setter Property="LineSpacing" Value="{Binding LineSpacing, Mode=TwoWay}" />
+		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
+		<Setter Property="ToolBarSpacing" Value="{Binding ToolBarSpacing, Mode=TwoWay}" />
+		<Setter Property="ToolBarsHaveGrippers" Value="{Binding ToolBarsHaveGrippers, Mode=TwoWay}" />
+		<Setter Property="ToolBarsHaveOptionsButtons" Value="{Binding ToolBarsHaveOptionsButtons, Mode=TwoWay}" />
+		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
+	</Style>
+
 	<Style x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonStyle}" TargetType="bars:Ribbon">
 		<!-- NOTE: Include the ItemContainerTemplateSelector selector first for best performance -->
 		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
@@ -48,6 +72,7 @@
 		<Setter Property="QuickAccessToolBarLocation" Value="{Binding QuickAccessToolBarLocation, Mode=TwoWay}" />
 		<Setter Property="QuickAccessToolBarMode" Value="{Binding QuickAccessToolBarMode, Mode=TwoWay}" />
 		<Setter Property="TabRowToolBarContent" Value="{Binding TabRowToolBar}" />
+		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
 		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
 	</Style>
 
@@ -56,6 +81,7 @@
 		<Setter Property="ItemContainerTemplateSelector" Value="{Binding ItemContainerTemplateSelector}" />
 
 		<Setter Property="ItemsSource" Value="{Binding Items}" />
+		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
 		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
 	</Style>
 
@@ -82,6 +108,7 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -108,6 +135,7 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -129,6 +157,7 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -154,6 +183,7 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -208,6 +238,7 @@
 			RequestedWidth="{Binding RequestedWidth}"
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Text="{Binding Text, Mode=TwoWay}"
 			TextPath="{Binding TextPath}"
 			Title="{Binding Title}"
@@ -263,6 +294,7 @@
 			SelectedFilterCategory="{Binding SelectedFilterCategory}"
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -305,6 +337,7 @@
 			SelectedFilterCategory="{Binding SelectedFilterCategory}"
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseAccentedItemBorder="{Binding UseAccentedItemBorder}"
 			UseMenuItemAppearance="{Binding UseMenuItemAppearance}"
@@ -323,6 +356,7 @@
 			Label="{Binding Label}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			>
 			<bars:BarMenuItem.Resources>
@@ -349,6 +383,7 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LayoutBehavior="{Binding LayoutBehavior}"
+			Tag="{Binding Tag}"
 			ToolTip="{Binding Description}"
 			/>
 	</ItemContainerTemplate>
@@ -360,6 +395,7 @@
 
 		<bars:BarMenuHeading
 			Label="{Binding Label}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -381,6 +417,7 @@
 			MediumImageSource="{Binding MediumImageSource}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -406,6 +443,7 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -418,6 +456,7 @@
 		</ItemContainerTemplate.Resources>
 
 		<bars:BarSeparator
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -428,6 +467,7 @@
 		</ItemContainerTemplate.Resources>
 
 		<bars:BarMenuSeparator
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -455,6 +495,7 @@
 			RowCount="{Binding MenuRowCount}"
 			SizeHeadingTextFormat="{Binding SizeHeadingTextFormat}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
@@ -479,6 +520,7 @@
 			MediumImageSource="{Binding MediumImageSource}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -507,6 +549,7 @@
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
@@ -534,6 +577,7 @@
 			MediumImageSource="{Binding MediumImageSource}"
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -564,6 +608,7 @@
 			PopupOpeningCommand="{Binding PopupOpeningCommand}"
 			SmallImageSource="{Binding SmallImageSource}"
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -586,6 +631,7 @@
 			PlaceholderText="{Binding PlaceholderText}"
 			RequestedWidth="{Binding RequestedWidth}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Text="{Binding Text, Mode=TwoWay}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
@@ -609,6 +655,7 @@
 			Label="{Binding Label}"
 			PlaceholderText="{Binding PlaceholderText}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Text="{Binding Text, Mode=TwoWay}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
@@ -634,6 +681,7 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			MediumImageSource="{Binding MediumImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolBarItemCollapseBehavior="{Binding ToolBarItemCollapseBehavior}"
 			ToolBarItemVariantBehavior="{Binding ToolBarItemVariantBehavior}"
@@ -662,8 +710,25 @@
 			LargeImageSource="{Binding LargeImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
 			StaysOpenOnClick="{Binding StaysOpenOnClick}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
+			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
+			/>
+	</ItemContainerTemplate>
+
+	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.DockableToolBarDefaultItemContainerTemplate}" DataType="local:DockableToolBarViewModel">
+		<bars:DockableToolBar
+			HasGripper="{Binding HasGripper}"
+			HasOptionsButton="{Binding HasOptionsButton}"
+			ItemsSource="{Binding Items}"
+			Key="{Binding Key}"
+			LineIndex="{Binding LineIndex, Mode=TwoWay}"
+			Offset="{Binding Offset, Mode=TwoWay}"
+			Placement="{Binding Placement, Mode=TwoWay}"
+			SortOrder="{Binding SortOrder, Mode=TwoWay}"
+			Tag="{Binding Tag}"
+			Title="{Binding Title}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -672,6 +737,7 @@
 		<bars:MiniToolBar
 			CanUseMultiRowLayout="{Binding CanUseMultiRowLayout}"
 			ItemsSource="{Binding Items}"
+			Tag="{Binding Tag}"
 			UserInterfaceDensity="{Binding UserInterfaceDensity}"
 			/>
 	</ItemContainerTemplate>
@@ -687,15 +753,18 @@
 			MenuFooter="{Binding MenuFooter}"
 			MenuFooterTemplate="{Binding MenuFooterTemplate}"
 			MenuFooterTemplateSelector="{Binding MenuFooterTemplateSelector}"
+			Tag="{Binding Tag}"
 			/>
 	</ItemContainerTemplate>
 
 	<ItemContainerTemplate x:Key="{x:Static localThemes:BarsMvvmResourceKeys.RibbonBackstageDefaultItemContainerTemplate}" DataType="local:RibbonBackstageViewModel">
 		<bars:RibbonBackstage
+			CanClose="{Binding CanClose, Mode=TwoWay}"
 			ContentTemplateSelector="{Binding ContentTemplateSelector}"
 			IsOpen="{Binding IsOpen, Mode=TwoWay}"
 			ItemsSource="{Binding Items}"
 			SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+			Tag="{Binding Tag}"
 			/>
 	</ItemContainerTemplate>
 
@@ -712,6 +781,7 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -725,6 +795,7 @@
 
 		<bars:RibbonBackstageHeaderSeparator
 			HeaderAlignment="{Binding HeaderAlignment}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -735,12 +806,16 @@
 		</ItemContainerTemplate.Resources>
 
 		<bars:RibbonBackstageTabItem
+			Content="{Binding Content}"
+			ContentTemplate="{Binding ContentTemplate}"
+			ContentTemplateSelector="{Binding ContentTemplateSelector}"
 			HeaderAlignment="{Binding HeaderAlignment}"
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			LargeImageSource="{Binding LargeImageSource}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
 			VariantSize="{Binding VariantSize}"
@@ -756,6 +831,7 @@
 		<bars:RibbonContextualTabGroup
 			Key="{Binding Key}"
 			Label="{Binding Label}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsActive, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -770,6 +846,7 @@
 			ItemVariantBehavior="{Binding ItemVariantBehavior}"
 			SeparatorMode="{Binding SeparatorMode}"
 			ItemsSource="{Binding Items}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -781,6 +858,7 @@
 			Content="{Binding Content}"
 			Kind="{Binding Kind}"
 			Padding="{Binding Padding}"
+			Tag="{Binding Tag}"
 			/>
 	</ItemContainerTemplate>
 
@@ -801,6 +879,7 @@
 			LauncherButtonContent="{Binding LauncherButton}"
 			ItemsSource="{Binding Items}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
@@ -818,6 +897,7 @@
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
 			SmallImageSource="{Binding SmallImageSource}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			ToolTip="{Binding Description}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -831,6 +911,7 @@
 
 		<bars:RibbonMultiRowControlGroup
 			ItemsSource="{Binding Items}"
+			Tag="{Binding Tag}"
 			ThreeRowItemSortOrder="{Binding ThreeRowItemSortOrder}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
@@ -841,6 +922,7 @@
 			CommonItems="{Binding CommonItems}"
 			IsCustomizeButtonVisible="{Binding IsCustomizeButtonVisible}"
 			ItemsSource="{Binding Items}"
+			Tag="{Binding Tag}"
 			/>
 	</ItemContainerTemplate>
 
@@ -858,6 +940,7 @@
 			GroupVariants="{Binding GroupVariants}"
 			HeaderToolTip="{Binding Description}"
 			ItemsSource="{Binding Groups}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
@@ -870,6 +953,7 @@
 
 		<bars:RibbonTabRowToolBar
 			ItemsSource="{Binding Items}"
+			Tag="{Binding Tag}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>
@@ -1022,6 +1106,7 @@
 			Message="{Binding Message}" 
 			Padding="{Binding Padding}"
 			Severity="{Binding Severity}"
+			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			/>
 	</DataTemplate>

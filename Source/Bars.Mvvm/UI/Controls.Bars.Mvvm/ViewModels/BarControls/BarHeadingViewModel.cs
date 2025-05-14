@@ -3,10 +3,11 @@
 	/// <summary>
 	/// Represents a view model for a heading control within a bar control.
 	/// </summary>
-	public class BarHeadingViewModel : ObservableObjectBase {
+	public class BarHeadingViewModel : ObservableObjectBase, IHasTag {
 
 		private bool isVisible = true;
 		private string label;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -48,6 +49,17 @@
 				if (label != value) {
 					label = value;
 					this.NotifyPropertyChanged(nameof(Label));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
 				}
 			}
 		}

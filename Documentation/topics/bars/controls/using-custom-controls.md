@@ -18,6 +18,17 @@ An example is where you may wish to host some edit boxes from the [Actipro Edito
 
 The [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService) class defines many attached properties that are reused across a number of bars controls.  These properties are commonly assigned to custom controls:
 
+@if (avalonia) {
+| Attached Property | Details |
+|-----|-----|
+| [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) | The string key that identifies the control. |
+| [HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) | Whether the custom control has an external header (image/label) that can render in certain scenarios. |
+| [SmallIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallIconProperty) | The small image for the control, which can show in an external header and in customization UI. |
+| [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) | The label for the control, which can show in an external header, in screen tips, and in customization UI. |
+| [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the custom control can clone to the Ribbon [Quick Access ToolBar](../ribbon-features/quick-access-toolbar.md).  The [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) must also be set if allowing cloning to the QAT. |
+| [PanelSpacingSuggestionProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.PanelSpacingSuggestionProperty) | A [PanelSpacingSuggestion](xref:@ActiproUIRoot.Controls.Bars.PanelSpacingSuggestion) value that gives a hint on what kind of spacing should surround the custom control. |
+}
+@if (wpf) {
 | Attached Property | Details |
 |-----|-----|
 | [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) | The string key that identifies the control. |
@@ -26,6 +37,7 @@ The [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService) cla
 | [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) | The label for the control, which can show in an external header, in screen tips, and in customization UI. |
 | [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the custom control can clone to the Ribbon [Quick Access ToolBar](../ribbon-features/quick-access-toolbar.md).  The [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) must also be set if allowing cloning to the QAT. |
 | [PanelSpacingSuggestionProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.PanelSpacingSuggestionProperty) | A [PanelSpacingSuggestion](xref:@ActiproUIRoot.Controls.Bars.PanelSpacingSuggestion) value that gives a hint on what kind of spacing should surround the custom control. |
+}
 
 ## Usage Contexts
 
@@ -39,7 +51,7 @@ This kind of usage scenario is not typically recommended for custom controls exc
 
 If the custom control is hosted in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) instead, it will use a small height if the control group is arranging children vertically.  It's best to stick to a maximum control height that matches a native `TextBox` control height.
 
-[RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) instances in this scenario will attempt to render the small image and/or label of any child custom controls that are encountered, if the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) property is set to `true`.  The attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[SmallImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallImageSourceProperty) and [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) set these UI values respectively.
+[RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup) instances in this scenario will attempt to render the small image and/or label of any child custom controls that are encountered, if the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) property is set to `true`.  The attached @if (avalonia) { [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[SmallIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallIconProperty) }@if (wpf) { [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[SmallImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallImageSourceProperty) } and [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) set these UI values respectively.
 
 @if (avalonia) {
 ```xaml
@@ -155,18 +167,18 @@ The @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.P
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<NumericUpDown
 		actipro:BarControlService.HasExternalHeader="True"
 		actipro:BarControlService.Key="Minimum"
 		actipro:BarControlService.Label="Minimum"
 		actipro:BarControlService.PanelSpacingSuggestion="Both"
-		actipro:BarControlService.SmallImageSource="/Images/Minimum16.png"
+		actipro:BarControlService.SmallIcon="{StaticResource MinimumIcon}"
 		FormatString="0"
 		Value="{Binding MinimumValue, Mode=TwoWay}"
 		/>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {
@@ -191,7 +203,7 @@ xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 ```
 }
 
-When a label and/or small image are applied to a custom control with the attached [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) and [SmallImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallImageSourceProperty) properties, they will be displayed in the @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } alongside the custom control itself.  The small image will align in the icon column with other menu items.
+When a label and/or small image are applied to a custom control with the attached [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) and @if (avalonia) { [SmallIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallIconProperty) }@if (wpf) { [SmallImageSourceProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallImageSourceProperty) } properties, they will be displayed in the @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } alongside the custom control itself.  The small image will align in the icon column with other menu items.
 
 ## Screen Tips
 

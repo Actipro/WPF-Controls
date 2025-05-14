@@ -26,11 +26,15 @@ The use of item templates is the fastest way to get started with our products in
 Next, create a new empty WPF `Window` that looks like this:
 
 ```xaml
-<Window x:Name="window" x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Width="600" SizeToContent="Height" ResizeMode="CanResize"
-        >
+<Window
+	x:Name="window"
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Width="600"
+	SizeToContent="Height"
+	ResizeMode="CanResize"
+	>
 
 </Window>
 ```
@@ -42,13 +46,17 @@ Note that by using those `Width`, `SizeToContent`, and `ResizeMode` settings, th
 Now in the root `Window` tag, add an `xmlns` declaration for the wizard namespace like this:
 
 ```xaml
-<Window x:Name="window" x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-        Width="600" SizeToContent="Height" ResizeMode="CanResize"
-        >
+<Window
+	x:Name="window"
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Width="600"
+	SizeToContent="Height"
+	ResizeMode="CanResize"
+	>
 
 </Window>
 ```
@@ -60,8 +68,14 @@ The xmlns attribute declares that the use of the `wizard` namespace in this `Win
 Next, add a [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control as the sole child of the `Window`:
 
 ```xaml
-<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack"
-               BackwardProgressTransitionDuration="0:0:0.5" ForwardProgressTransitionDuration="0:0:0.5">
+<wizard:Wizard
+	x:Name="wizard"
+	WindowTitleBehavior="PageTitle"
+	WindowTitleBaseText="Wizard Sample"
+	PageSequenceType="Stack"
+	BackwardProgressTransitionDuration="0:0:0.5"
+	ForwardProgressTransitionDuration="0:0:0.5"
+	>
 	<wizard:Wizard.TransitionSelector>
 		<shared:MultiTransitionSelector>
 			<!-- This adds a single bar wipe transition -->
@@ -79,9 +93,13 @@ Note that several optional attributes were also added, making the `Wizard` add t
 Next, add a welcome [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control:
 
 ```xaml
-<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
-                   Caption="Welcome to the Wizard Sample Application"
-                   Description="Thank you for downloading the Actipro Wizard control.">
+<wizard:WizardPage
+	x:Name="welcomePage"
+	PageType="Exterior"
+	Caption="Welcome to the Wizard Sample Application"
+	Description="Thank you for downloading the Actipro Wizard control."
+	>
+
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
@@ -90,6 +108,7 @@ Next, add a welcome [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage)
 
 		<TextBlock Grid.Row="1" TextWrapping="Wrap">To continue, click Next.</TextBlock>
 	</Grid>
+
 </wizard:WizardPage>
 ```
 
@@ -100,11 +119,15 @@ The welcome page is an [exterior page](page-button-features/page-types.md), whic
 Next, add an interior [WizardPage](xref:@ActiproUIRoot.Controls.Wizard.WizardPage) as an item of the [Wizard](xref:@ActiproUIRoot.Controls.Wizard.Wizard) control after the existing welcome page:
 
 ```xaml
-<wizard:WizardPage x:Name="interiorPage"
-                   Caption="Interior Page Sample"
-                   Description="This is a sample interior page that represents a step in your wizard."
-                   Title="Interior Page">
+<wizard:WizardPage
+	x:Name="interiorPage"
+	Caption="Interior Page Sample"
+	Description="This is a sample interior page that represents a step in your wizard."
+	Title="Interior Page"
+	>
+
 	<TextBlock TextWrapping="Wrap">Add your content here.</TextBlock>
+
 </wizard:WizardPage>
 ```
 
@@ -119,17 +142,27 @@ Also ensure that the wizard is set up to receive focus when the `Window` opens. 
 The complete sample code is:
 
 ```xaml
-<Window x:Name="window" x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-        Width="600" SizeToContent="Height" ResizeMode="CanResize"
-        FocusManager.FocusedElement="{Binding ElementName=wizard}"
-        >
+<Window
+	x:Name="window"
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Width="600"
+	SizeToContent="Height"
+	ResizeMode="CanResize"
+	FocusManager.FocusedElement="{Binding ElementName=wizard}"
+	>
 
-	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack"
-	               BackwardProgressTransitionDuration="0:0:0.5" ForwardProgressTransitionDuration="0:0:0.5">
+	<wizard:Wizard
+		x:Name="wizard"
+		WindowTitleBehavior="PageTitle"
+		WindowTitleBaseText="Wizard Sample"
+		PageSequenceType="Stack"
+		BackwardProgressTransitionDuration="0:0:0.5"
+		ForwardProgressTransitionDuration="0:0:0.5"
+		>
 		<wizard:Wizard.TransitionSelector>
 			<shared:MultiTransitionSelector>
 				<!-- This adds a single bar wipe transition -->
@@ -137,9 +170,12 @@ The complete sample code is:
 			</shared:MultiTransitionSelector>
 		</wizard:Wizard.TransitionSelector>
 
-		<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
-		                   Caption="Welcome to the Wizard Sample Application"
-		                   Description="Thank you for downloading the Actipro Wizard control.">
+		<wizard:WizardPage
+			x:Name="welcomePage"
+			PageType="Exterior"
+			Caption="Welcome to the Wizard Sample Application"
+			Description="Thank you for downloading the Actipro Wizard control."
+			>
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />
@@ -150,10 +186,12 @@ The complete sample code is:
 			</Grid>
 		</wizard:WizardPage>
 
-		<wizard:WizardPage x:Name="interiorPage"
-		                   Caption="Interior Page Sample"
-		                   Description="This is a sample interior page that represents a step in your wizard."
-		                   Title="Interior Page">
+		<wizard:WizardPage
+			x:Name="interiorPage"
+			Caption="Interior Page Sample"
+			Description="This is a sample interior page that represents a step in your wizard."
+			Title="Interior Page"
+			>
 			<TextBlock TextWrapping="Wrap">Add your content here.</TextBlock>
 		</wizard:WizardPage>
 

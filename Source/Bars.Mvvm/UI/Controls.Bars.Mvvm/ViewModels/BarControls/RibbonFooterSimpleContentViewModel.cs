@@ -5,9 +5,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for image and text content within a ribbon footer.
 	/// </summary>
-	public class RibbonFooterSimpleContentViewModel : ObservableObjectBase {
+	public class RibbonFooterSimpleContentViewModel : ObservableObjectBase, IHasTag {
 
 		private ImageSource imageSource;
+		private object tag;
 		private string text;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +28,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the text content.
 		/// </summary>

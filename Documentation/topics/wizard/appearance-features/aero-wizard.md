@@ -31,27 +31,32 @@ When creating a `Window` for an Aero wizard, you will want to set its `Icon` and
 The complete sample code is:
 
 ```xaml
-<Window x:Name="wizardDemo"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
-        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
-        Icon="/Images/Icons/Actipro.ico"
-        Title="Aero Wizard Demo"
-        Width="600" Height="450"
-        WindowStartupLocation="CenterScreen"
-        themes:WindowChrome.TitleBarLeftContent="{Binding ElementName=wizard}"
-        FocusManager.FocusedElement="{Binding ElementName=wizard}"
-        >
+<Window
+	x:Name="wizardDemo"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+	Icon="/Images/Icons/Actipro.ico"
+	Title="Aero Wizard Demo"
+	Width="600"
+	Height="450"
+	WindowStartupLocation="CenterScreen"
+	themes:WindowChrome.TitleBarLeftContent="{Binding ElementName=wizard}"
+	FocusManager.FocusedElement="{Binding ElementName=wizard}"
+	>
 
 	<themes:WindowChrome.Chrome>
 		<themes:WindowChrome HasIcon="False">
 			<themes:WindowChrome.TitleBarLeftContentTemplate>
 				<DataTemplate>
-					<Button Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
-					        ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
-					        Command="{x:Static wizard:WizardCommands.PreviousPage}" CommandTarget="{Binding}" />
+					<Button
+						Style="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBaseStyleKey}}"
+						ContentTemplate="{DynamicResource {x:Static themes:SharedResourceKeys.WindowTitleBarButtonBackGlyphTemplateKey}}"
+						Command="{x:Static wizard:WizardCommands.PreviousPage}"
+						CommandTarget="{Binding}"
+						/>
 				</DataTemplate>
 			</themes:WindowChrome.TitleBarLeftContentTemplate>
 		</themes:WindowChrome>

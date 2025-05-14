@@ -38,6 +38,26 @@ Each [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) has a
 
 This example shows two attached tool windows docked on the right side of a workspace with empty tabbed MDI:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+
+<actipro:DockSite>
+	<actipro:SplitContainer>
+		<actipro:Workspace>
+			<actipro:TabbedMdiHost />
+		</actipro:Workspace>
+
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="Tool Window 1" />
+			<actipro:ToolWindow Title="Tool Window 2" />
+		</actipro:ToolWindowContainer>
+	</actipro:SplitContainer>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 ...
@@ -55,6 +75,7 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 	</docking:SplitContainer>
 </docking:DockSite>
 ```
+}
 
 ### Auto-Hide Configuration
 
@@ -69,6 +90,36 @@ To add tool windows into an auto-hide state, use the four auto-hide properties:
 
 This example shows two tool windows docked vertically on the right side of a workspace with empty tabbed MDI, and an auto-hidden tool window on the left:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+
+<actipro:DockSite>
+	<actipro:DockSite.AutoHideLeftContainers>
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="Tool Window 3" />
+		</actipro:ToolWindowContainer>
+	</actipro:DockSite.AutoHideLeftContainers>
+
+	<actipro:SplitContainer>
+		<actipro:Workspace>
+			<actipro:TabbedMdiHost />
+		</actipro:Workspace>
+
+		<actipro:SplitContainer Orientation="Vertical">
+			<actipro:ToolWindowContainer>
+				<actipro:ToolWindow Title="Tool Window 1" />
+			</actipro:ToolWindowContainer>
+			<actipro:ToolWindowContainer>
+				<actipro:ToolWindow Title="Tool Window 2" />
+			</actipro:ToolWindowContainer>
+		</actipro:SplitContainer>
+	</actipro:SplitContainer>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 ...
@@ -79,12 +130,12 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 			<docking:ToolWindow Title="Tool Window 3" />
 		</docking:ToolWindowContainer>
 	</docking:DockSite.AutoHideLeftContainers>
-							
+
 	<docking:SplitContainer>
 		<docking:Workspace>
 			<docking:TabbedMdiHost />
 		</docking:Workspace>
-							
+
 		<docking:SplitContainer Orientation="Vertical">
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow Title="Tool Window 1" />
@@ -96,6 +147,7 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 	</docking:SplitContainer>
 </docking:DockSite>
 ```
+}
 
 ## Tabbed MDI Hierarchy
 
@@ -119,6 +171,25 @@ Each [SplitContainer](xref:@ActiproUIRoot.Controls.Docking.SplitContainer) has a
 
 This example shows a single document open in tabbed MDI:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+
+<actipro:DockSite>
+	<actipro:Workspace>
+		<actipro:TabbedMdiHost>
+			<actipro:TabbedMdiContainer>
+				<actipro:DocumentWindow Title="Document1.txt" Description="Text document" FileName="Document1.rtf">
+					<TextBox BorderThickness="0" TextWrapping="Wrap" Text="This is a document window." />
+				</actipro:DocumentWindow>
+			</actipro:TabbedMdiContainer>
+		</actipro:TabbedMdiHost>
+	</actipro:Workspace>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 ...
@@ -130,11 +201,12 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 				<docking:DocumentWindow Title="Document1.txt" Description="Text document" FileName="Document1.rtf">
 					<TextBox BorderThickness="0" TextWrapping="Wrap" Text="This is a document window." />
 				</docking:DocumentWindow>
-			</docking:TabbedMdiContainer>						
+			</docking:TabbedMdiContainer>
 		</docking:TabbedMdiHost>
 	</docking:Workspace>
 </docking:DockSite>
 ```
+}
 
 ## Standard MDI Hierarchy
 
@@ -148,6 +220,23 @@ The [StandardMdiHost](xref:@ActiproUIRoot.Controls.Docking.StandardMdiHost) cont
 
 This example shows a single document open in standard MDI:
 
+@if (avalonia) {
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+
+<actipro:DockSite>
+	<actipro:Workspace>
+		<actipro:StandardMdiHost>
+			<actipro:DocumentWindow Title="Document1.txt" Description="Text document" FileName="Document1.rtf">
+				<TextBox BorderThickness="0" TextWrapping="Wrap" Text="This is a document window." />
+			</actipro:DocumentWindow>
+		</actipro:StandardMdiHost>
+	</actipro:Workspace>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 ...
@@ -162,3 +251,4 @@ xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
 	</docking:Workspace>
 </docking:DockSite>
 ```
+}

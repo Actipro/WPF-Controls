@@ -146,6 +146,8 @@ items:
       href: bars/toolbar-features/index.md
     - name: "Standalone Toolbars"
       href: bars/toolbar-features/standalone-toolbars.md
+    - name: "Dockable Toolbars"
+      href: bars/toolbar-features/dockable-toolbars.md
     - name: "Mini-Toolbars"
       href: bars/toolbar-features/mini-toolbars.md
   - name: "Menu Features"
@@ -153,6 +155,8 @@ items:
     items:
     - name: "Overview"
       href: bars/menu-features/index.md
+    - name: "Main Menu"
+      href: bars/menu-features/main-menu.md
     - name: "Context Menus"
       href: bars/menu-features/context-menus.md
     - name: "Menu Customization"
@@ -1807,6 +1811,8 @@ items:
   items:
   - name: "Overview"
     href: conversion/index.md
+  - name: "Converting to v25.1"
+    href: conversion/converting-to-v25-1.md
   - name: "Converting to v24.1"
     href: conversion/converting-to-v24-1.md
   - name: "Converting to v23.1"
@@ -1835,6 +1841,8 @@ items:
   href: open-source.md
 - name: "Support"
   href: support.md
+- name: "Third-Party Software"
+  href: third-party.md
 - name: "API Reference"
   href: api/
   homepage: api/index.md

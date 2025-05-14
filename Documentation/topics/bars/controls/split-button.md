@@ -32,7 +32,7 @@ If the button should be checkable, use the [BarSplitToggleButton](xref:@ActiproU
 | Base class | [BarPopupButton](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton), which indirectly inherits native `Menu`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarPopupButtonBase.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallIcon), [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumIcon), and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeIcon) properties. |
 | Has popup | Yes. |
 | Is checkable | Yes, but only when using [BarSplitToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitToggleButton). |
 | Variant sizes | `Small` (image only), `Medium` (image and label), `Large` (tall size, image and multi-line label). |
@@ -66,7 +66,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarSplitButton
 		Key="Shapes"
-		SmallImageSource="/Images/Shapes16.png"
+		SmallIcon="{StaticResource ShapesIcon}"
 		Command="{Binding InsertLastShapeCommand}">
 
 		<actipro:BarSplitButton.Items>
@@ -119,7 +119,7 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) class
 | Base class | [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem), which indirectly inherits native `MenuItem`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) properties. |
 | Has popup | Yes. |
 | Is checkable | Yes, when the `ToggleType` property is set to `CheckBox` or `Radio`. |
 | Variant sizes | None, but has a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that triggers a large height and displays an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description). |
@@ -149,11 +149,11 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) class
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarSplitMenuItem
 		Key="Shapes"
-		SmallImageSource="/Images/Shapes16.png">
+		SmallIcon="{StaticResource ShapesIcon}">
 		Command="{Binding InsertLastShapeCommand}">
 
 		<actipro:BarMenuItem
@@ -162,7 +162,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 			/>
 	</actipro:BarSplitMenuItem>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {
@@ -219,13 +219,22 @@ The [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem).[Labe
 
 The controls can display images that help identify their function.
 
-All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  @if (avalonia) { When the button is located on a ribbon with `Simplified` layout mode, }@if (wpf) { When the button has a `Spacious` UI density,} it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
+@if (avalonia) {
+All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances should set a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallIcon) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeIcon).  When the button is located on a ribbon with `Simplified` layout mode, it will try to use [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumIcon).
+
+> [!TIP]
+> See the [Control Basics](control-basics.md) topic for more detail on the fallback logic and custom data templates for button icons.
+
+[BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) instances can optionally define a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
+}
+@if (wpf) {
+All [BarSplitButton](xref:@ActiproUIRoot.Controls.Bars.BarSplitButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarPopupButton.MediumImageSource).
 
 > [!TIP]
 > See the [Control Basics](control-basics.md) topic for more detail on the fallback logic for button images.
 
 [BarSplitMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarSplitMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
-
+}
 
 ### Description (BarSplitMenuItem only)
 

@@ -6,10 +6,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a standalone toolbar control.
 	/// </summary>
-	public class StandaloneToolBarViewModel : ObservableObjectBase {
+	public class StandaloneToolBarViewModel : ObservableObjectBase, IHasTag {
 
 		private bool isVisible = true;
 		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
+		private object tag;
 		private UserInterfaceDensity userInterfaceDensity;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,6 +44,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (itemContainerTemplateSelector != value) {
 					itemContainerTemplateSelector = value;
 					this.NotifyPropertyChanged(nameof(ItemContainerTemplateSelector));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
 				}
 			}
 		}

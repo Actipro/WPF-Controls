@@ -28,7 +28,7 @@ Use the [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) control to im
 | Base class | Native `TextBox`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) property. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallIcon) property. |
 | Has popup | No. |
 | Is checkable | No. |
 | Variant sizes | None. |
@@ -99,14 +99,14 @@ Since [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) is not flagged 
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<!-- Label is auto-generated from Key -->
 	<actipro:BarTextBox
 		Key="Search"
 		Command="{Binding SearchCommand}"
 		/>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {
@@ -147,7 +147,7 @@ The `Label` can be auto-generated based on the control's `Key` property.  For in
 
 ### Images
 
-The control can display an image via [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) that helps identify its function.  The image is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), or in customization UI.
+The control can display an image via @if (avalonia) { [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallIcon) }@if (wpf) { [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarTextBox.SmallImageSource) } that helps identify its function.  The image is not rendered by the control itself, but can show externally (such as when in a [RibbonControlGroup](xref:@ActiproUIRoot.Controls.Bars.RibbonControlGroup), or when @if (avalonia) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.Primitives.BarMenuControlWrapper) }@if (wpf) { [BarMenuControlWrapper](xref:@ActiproUIRoot.Controls.Bars.BarMenuControlWrapper) } wraps [BarTextBox](xref:@ActiproUIRoot.Controls.Bars.BarTextBox) in a menu), or in customization UI.
 
 ### Title
 

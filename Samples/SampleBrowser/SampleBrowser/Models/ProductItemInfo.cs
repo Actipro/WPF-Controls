@@ -7,6 +7,8 @@ namespace ActiproSoftware.SampleBrowser {
     /// </summary>
     public class ProductItemInfo {
 
+		private string blurbText;
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +17,10 @@ namespace ActiproSoftware.SampleBrowser {
 		/// Gets or sets the blurb text.
 		/// </summary>
 		/// <value>The blurb text.</value>
-		public string BlurbText { get; set; }
+		public string BlurbText {
+			get => blurbText ?? (IsPrivate ? "Private!" : null);
+			set => blurbText = value;
+		}
 
 		/// <summary>
 		/// Gets or sets whether the sample can be auto-focused following load.
@@ -75,7 +80,12 @@ namespace ActiproSoftware.SampleBrowser {
 		/// <c>true</c> if the item has any interop controls that may cause airspace issues with Backstage overlays; otherwise, <c>false</c>.
 		/// </value>
         public bool HasInterop { get; set; }
-		
+
+		/// <summary>
+		/// Gets or sets Whether this item is a private item not intended for inclusion in public projects.
+		/// </summary>
+		public bool IsPrivate { get; set; }
+
 		/// <summary>
 		/// Gets whether this item is a product overview document.
 		/// </summary>

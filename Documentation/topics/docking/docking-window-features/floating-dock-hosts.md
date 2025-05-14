@@ -43,15 +43,15 @@ The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[IsFloat
 var isOnFloatingDockHost = (window.IsOpen) && (window.IsFloating);
 ```
 
-Note that the [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration doesn't have a `Floating` item.  This is due to the fact that Docking/MDI's advanced floating dock host features allow tool windows to be in a docked, auto-hide, or in document state when they are in a floating dock host.
+Note that the [DockingWindowState](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState) enumeration doesn't have a `Floating` item.  This is due to the fact that Docking/MDI's advanced floating dock host features allow tool windows to be in a docked, auto-hidden, or in document state even when they are in a floating dock host.
 
-For instance, if a tool window is floated, it will show up in a single [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) inside of a floating dock host and its state will be `Docked`.  If a document window is floated, it will show up in an MDI area inside of a floating dock host and its state will be `Document`.  A tool window could then be dragged and docked next to that MDI area.  Once that is done, it could be auto-hidden, and its state would be `AutoHide`.  These examples show how various docking window states can exist within a floating dock host.
+For instance, if a tool window is floated, it will show up in a single [ToolWindowContainer](xref:@ActiproUIRoot.Controls.Docking.ToolWindowContainer) inside of a floating dock host and its state will be [Docked](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Docked).  If a document window is floated, it will show up in an MDI area inside of a floating dock host and its state will be [Document](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.Document).  A tool window could then be dragged and docked next to that MDI area.  Once that is done, it could be auto-hidden, and its state would be [AutoHide](xref:@ActiproUIRoot.Controls.Docking.DockingWindowState.AutoHide).  These examples show how various docking window states can exist within a floating dock host.
 
 ## Floating Window Icon and Title
 
 A floating dock host can have its icon and title set via the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowIcon](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowIcon) and [FloatingWindowTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitle) properties respectively.  It's generally a good practice to use an application icon as the icon and the application title as the title.
 
-The floating dock host's title will also combine with the dock host's primary document's title (if there is a document in the dock host), which gives better clarity as to its contents in the Windows taskbar and <kbd>Alt</kbd>+<kbd>Tab</kbd> screens.  The primary document's title will appear before the [FloatingWindowTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitle) value and will be delimited by the [FloatingWindowTitleDelimiter](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitleDelimiter) value when both are present.
+The floating dock host's title will also combine with the dock host's primary document's title (if there is a document in the dock host), which gives better clarity as to its contents in the @if (avalonia) { operation system }@if (wpf) { Windows } taskbar and [switchers](switchers.md) screens.  The primary document's title will appear before the [FloatingWindowTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitle) value and will be delimited by the [FloatingWindowTitleDelimiter](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowTitleDelimiter) value when both are present.
 
 The virtual [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[GetFloatingDockHostTitle](xref:@ActiproUIRoot.Controls.Docking.DockSite.GetFloatingDockHostTitle*) method does the work of generating the resolved title text for the floating dock host and can be overridden if custom logic should be used instead.
 
@@ -96,17 +96,13 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingToolWindo
 - [ToggleMaximized](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowTitleBarDoubleClickMode.ToggleMaximized) (default) - The floating window toggles between maximized and restored states.
 - [Dock](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowTitleBarDoubleClickMode.Dock) - The floating window docks back into another dock host.
 
-@if (wpf) {
-
 ## Non-Hosted vs. Hosted Floating Windows
 
-Non-hosted floating windows are used by default in WPF desktop applications, which means that when a floating dock host is created, it will be contained by its own `Window` that can be independently moved anywhere.  Drags of non-hosted floating windows make use of Windows' Snap features, meaning you can drag to the top of a screen to maximize it, to the side to make it take up half the screen, or to a corner to make it take up a quarter of the screen.
+Non-hosted floating windows are used by default in desktop applications, which means that when a floating dock host is created, it will be contained by its own `Window` that can be independently moved anywhere.  Drags of non-hosted floating windows make use of Windows' Snap features, meaning you can drag to the top of a screen to maximize it, to the side to make it take up half the screen, or to a corner to make it take up a quarter of the screen.
 
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedFloatingWindows) property can be set to `true` to force floating dock hosts to use a hosted floating window instead.  In this scenario, a [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) is used as a wrapper around the floating dock host and is allowed to move anywhere within the bounds of the dock site, or [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[HostedFloatingWindowContainer](xref:@ActiproUIRoot.Controls.Docking.DockSite.HostedFloatingWindowContainer) if specified.
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedFloatingWindows](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedFloatingWindows) property can be set to `true` to force floating dock hosts to use a hosted floating window instead.  In this scenario, a @if (avalonia) { [WindowControl](xref:@ActiproUIRoot.Controls.WindowControl) } @if (wpf) { [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) } is used as a wrapper around the floating dock host and is allowed to move anywhere within the bounds of the dock site, or [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[HostedFloatingWindowContainer](xref:@ActiproUIRoot.Controls.Docking.DockSite.HostedFloatingWindowContainer) if specified.
 
-When using hosted floating windows, the floating dock host is embedded within the same root `Window` as the dock site.  Hosted floating windows have a subtle outer glow that gives them some depth and distinguishes them from the content dock site underneath.
-
-}
+When using hosted floating windows, the floating dock host is embedded within the same root `Window` as the dock site.  Hosted floating windows have a subtle @if (avalonia) { shadow }@if (wpf) { outer glow } that gives them some depth and distinguishes them from the content dock site underneath.
 
 ## Hosted Floating Window Inactivity Animations
 
@@ -127,17 +123,15 @@ These [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) properties contr
 
 To ensure that a portion of the hosted floating windows are always visible to the end user, their bounds are coerced such that part of the title bar is always visible.  The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[HostedFloatingWindowContainer](xref:@ActiproUIRoot.Controls.Docking.DockSite.HostedFloatingWindowContainer) property can be set to any visual ancestor of the `DockSite`, and hosted floating window bounds will be constrained to the bounds of the specified container.  If a container is not specified, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) will be used as the container.
 
+## Determining Which Floating Windows Show in the TaskBar
+
+The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowShowInTaskBarMode) property can be used to determine which kinds of non-hosted floating windows are displayed in the @if (avalonia) { operating system }@if (wpf) { Windows } taskbar.  The default behavior is for any floating window that contains a "workspace" (such as a floating tabbed MDI document) to show up in the taskbar and not be "owned" by the main window.  This means that the floating window can appear behind the main window when the main window is activated, but it is ok since the floating window can be accessed via the taskbar.  Note that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property can alter the default owner behavior.
+
+Change the property to [FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowShowInTaskBarMode).[Never](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowShowInTaskBarMode.Never) to prevent all floating windows from showing in the taskbar.  In this scenario, all floating windows will be "owned" by the main window so that they remain accessible.
+
+Change the property to [FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowShowInTaskBarMode).[Always](xref:@ActiproUIRoot.Controls.Docking.FloatingWindowShowInTaskBarMode.Always) to force all floating windows to show in the taskbar.  In this scenario, no floating windows will be "owned" by the main window and they all will be able to appear behind it when the main window is activated, unless this behavior is altered by the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property.
+
 @if (wpf) {
-
-## Determining Which Floating Windows Show in the Windows TaskBar
-
-The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowShowInTaskBarMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowShowInTaskBarMode) property can be used to determine which kinds of non-hosted floating windows are displayed in the Windows taskbar.  The default behavior is for any floating window that contains a "workspace" (such as a floating tabbed MDI document) to show up in the taskbar and not be "owned" by the main window.  This means that the floating window can appear behind the main window when the main window is activated, but it is ok since the floating window can be accessed via the taskbar.  Note that the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property can alter the default owner behavior.
-
-Change the property to `FloatingWindowShowInTaskBarMode.Never` to prevent all floating windows from showing in the taskbar.  In this scenario, all floating windows will be "owned" by the main window so that they remain accessible.
-
-Change the property to `FloatingWindowShowInTaskBarMode.Always` to force all floating windows to show in the taskbar.  In this scenario, no floating windows will be "owned" by the main window and they all will be able to appear behind it when the main window is activated, unless this behavior is altered by the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[FloatingWindowOwnerMode](xref:@ActiproUIRoot.Controls.Docking.DockSite.FloatingWindowOwnerMode) property.
-
-}
 
 ## Use With Ribbons or ToolBars on the Main Window
 
@@ -197,3 +191,5 @@ When attempting to use main `Window` ribbons or toolbars with floating docking w
 HwndSource.DefaultAcquireHwndFocusInMenuMode = false;
 Keyboard.DefaultRestoreFocusMode = RestoreFocusMode.None;
 ```
+
+}

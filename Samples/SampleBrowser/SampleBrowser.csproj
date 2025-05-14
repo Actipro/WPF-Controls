@@ -5,16 +5,15 @@
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
 
-		<TargetFrameworks Label="Visual Studio 2019 Targets" Condition="'$(VisualStudioVersion)' == '16.0'">net5.0-windows</TargetFrameworks>
-		<TargetFrameworks Label="Default Targets" Condition="'$(TargetFrameworks)' == ''">net8.0-windows</TargetFrameworks>
-		
+		<TargetFrameworks>net8.0-windows</TargetFrameworks>
+
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
 
 		<AssemblyName>SampleBrowser</AssemblyName>
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
 
-		<Version>24.1.5.0</Version>
+		<Version>25.1.0.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 
@@ -43,7 +42,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="ProductSamples\SyntaxEditorSamples\Languages\Projects\**\*.langproj" />
+		<None Include="ProductSamples\SyntaxEditorSamples\**\*.langproj" />
 	</ItemGroup>
 
 	<ItemGroup Label="External Assembly References">
@@ -58,15 +57,11 @@
 		<Reference Include="System.Printing" />
 	</ItemGroup>
 
-	<ItemGroup Label=".NET Core References" Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
+	<ItemGroup Label=".NET References" Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
 		<PackageReference Include="System.Drawing.Common" Version="4.7.2" />
-	</ItemGroup>
-	
-	<ItemGroup Label="Microsoft Logging" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants), '^(.*;)*MS_LOGGING(;.*)*$'))">
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
 	</ItemGroup>
 
 	<!-- Define Actipro assembly references -->
 	<Import Project="ActiproSoftware.References.props" />
-	
+
 </Project>

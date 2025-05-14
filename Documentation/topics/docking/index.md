@@ -7,25 +7,18 @@ order: 1
 
 Actipro Docking & MDI is a complete solution for easily adding a docking tool window and/or multiple document interface to your applications.
 
-@if (winrt) {
-
-![Screenshot](images/docking-teaser.png)
-
-*Docking windows and tabbed MDI provided by this product*
-
-}
-
-@if (wpf) {
-
 ![Screenshot](images/docking.png)
 
 *Docking windows and tabbed MDI provided by this product*
 
-}
-
 Docking & MDI has been implemented with flexibility in mind.  It has more appearance and functionality options than nearly any other competitive product out there, and while it supports all the types of standard layouts you find in most docking window products, it also supports unique extended functionality.
 
+@if (avalonia) {
+Float document windows and use either tabbed or standard MDI styles.  Use custom workspace content or switch to tool window inner fill mode, where there is no workspace area.  MVVM is fully supported.
+}
+@if (wpf) {
 Float document windows and use either tabbed or standard MDI styles.  Use custom workspace content or switch to tool window inner fill mode, where there is no workspace area.  Use MVVM and optionally integrate with frameworks like Prism.
+}
 
 Nest dock sites (create a self-contained set of docking windows within another docking window), position dock sites side-by-side (two or more self-contained sets of docking windows next to each other), and optionally link dock sites (two or more self-contained sets of docking windows whose windows can be moved to either site).
 
@@ -35,7 +28,12 @@ Nest dock sites (create a self-contained set of docking windows within another d
 
 - Bind to separate document and tool view-model collections.
 - Bind to VM properties to open, close, activate, and change the state of docking windows.
+@if (avalonia) {
+- Fully customizable themes and data templates for both document and tool windows.
+}
+@if (wpf) {
 - Fully customizable styles and data templates for both document and tool windows.
+}
 - Can be optionally used in conjunction with non-MVVM defined document and tool windows.
 
 ### Docking Window Features
@@ -64,7 +62,9 @@ Nest dock sites (create a self-contained set of docking windows within another d
 - Subtle fluid animations that occur throughout use of the product.
 - Ability to create hosted floating windows that can fade out with inactivity.
 - Create tool windows that don't have a title bar and/or cannot be moved.
+@if (wpf) {
 - An implementation of a control that mimics a standard Window but can be used in any control context.
+}
 - Specify custom contextual content (status indicators, buttons, etc.) within tabs or title bars.
 - Tint specific docking window tabs.
 - Built-in tab flashing capabilities to grab attention.

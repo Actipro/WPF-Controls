@@ -5,6 +5,7 @@
 	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
+	FocusManager.FocusedElement="{Binding ElementName=editor}"
     >
     
 	<DockPanel>
@@ -58,6 +59,10 @@ an enabled state.  When disabled, a breakpoint should be ignored by the
 debugger.  Press the 'Run' button to start the simulation.  A current
 statement indicator appears at the first enabled breakpoint.  Continue
 pressing the 'Run' button to continue to the next enabled breakpoint.
+
+This sample also demonstrates how an intra-text adornment can be added at
+the end of the current statement's line that, when running, will indicate 
+the elapsed time of code execution since the last breakpoint.
 
 */
 

@@ -27,17 +27,15 @@ There are three kinds of tabs available: pinned, normal, and preview.
 
 *The three kinds of tabs*
 
-Normal tabs are the default kind of tab and render normally.
-
-Pinned tabs are tabs that have been pinned by the end user and align to the leftmost end of the tab strip.  They also render like normal tabs other than having an unpin button visible.
-
-Preview tabs render on the far-right side of the tab strip, generally in a slightly faded-out appearance.  They have a keep open button visible that when clicked, will make the tab a normal tab.  It is advisable to only have a single preview tab in the UI at any given time.
+1. [Normal](xref:@ActiproUIRoot.Controls.Docking.TabLayoutKind.Normal) tabs are the default kind of tab and render normally.
+1. [Pinned](xref:@ActiproUIRoot.Controls.Docking.TabLayoutKind.Pinned) tabs are tabs that have been pinned by the end user and align to the leftmost end of the tab strip.  They also render like normal tabs other than having an **Unpin** button visible.
+1. [Preview](xref:@ActiproUIRoot.Controls.Docking.TabLayoutKind.Preview) tabs render on the far-right side of the tab strip, generally in a slightly faded-out appearance.  They have a **Keep Open** button visible that, when clicked, will make the tab a normal tab.  While multiple preview tabs are supported, it is advisable to only have a single preview tab in the UI at any given time.
 
 ### Switching Kinds
 
 The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabbedMdiLayoutKind](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabbedMdiLayoutKind) property specifies which kind of tab to use for the docking window when in tabbed MDI.
 
-The end user can use context menus and tab buttons when appropriate to alter the tab layout kind.  You can toggle it manually by setting the above property.
+The end user can use context menus and tab buttons, when appropriate, to alter the tab layout kind.  You can toggle it manually by setting the above property.
 
 ## Behavior Options
 
@@ -46,20 +44,20 @@ Tabbed MDI has numerous behavior capability options that are available.  Several
 | Member | Description |
 |-----|-----|
 | [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[CanDocumentsAttach](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.CanDocumentsAttach) Property | Gets or sets the global setting for whether documents may be attached to another document, creating a tabbed grouping.  The default value is `true`. |
-| [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[CanDocumentsCloseOnMiddleClick](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.CanDocumentsCloseOnMiddleClick) Property | Gets or sets a value indicating whether documents can be closed by clicking the tab with the middle mouse button.  The default value is `true`. |
+| [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[CanDocumentsCloseOnMiddleClick](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.CanDocumentsCloseOnMiddleClick) Property | Gets or sets a value indicating whether documents can be closed by clicking the tab with the middle pointer button.  The default value is `true`. |
 | [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[CanDocumentTabsDrag](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.CanDocumentTabsDrag) Property | Gets or sets the global setting for whether document tabs may be dragged to another location.  The default value is `true`. |
 
 ## Tab Close Buttons
 
-By default, a close button appears directly on the tabs.  This feature can be disabled by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabCloseButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabCloseButtons) property to `false`.
+By default, a **Close** button appears directly on the tabs.  This feature can be disabled by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabCloseButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabCloseButtons) property to `false`.
 
 ## Tab Pin Buttons
 
-By default, no pin button appears directly on 'normal' tabs.  This feature can be enabled by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabPinButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabPinButtons) property to `true`.  That option will force a pin button to show on 'normal' tabs when the pointer is over the tab.
+By default, no pin button appears directly on [Normal](xref:@ActiproUIRoot.Controls.Docking.TabLayoutKind.Normal) tabs.  This feature can be enabled by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabPinButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabPinButtons) property to `true`.  That option will force a **Pin** button to show on [Normal](xref:@ActiproUIRoot.Controls.Docking.TabLayoutKind.Normal) tabs when the pointer is over the tab.
 
 ## Title vs. Tab Text
 
-The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the standard switcher.  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as `"Properties - Document1.txt"`, while having shorter text that renders on tabs, such as `"Properties"`.  This allows your title to provide more extensive contextual information.
+The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property is normally set to determine the title text that is rendered in tabs as well as in title bars and on the [standard switcher](../docking-window-features/switchers.md).  In some cases, it might be desirable to have longer text for the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title), such as `"Properties - Document1.txt"`, while having shorter text that renders on tabs, such as `"Properties"`.  This allows your title to provide more extensive contextual information.
 
 By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabText) property to a non-`null` value, its value will be used to render the tab text instead of the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value.  In that scenario, the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) value will still be used in title bars and on the standard switcher when the window is selected.
 
@@ -67,11 +65,20 @@ By setting the [TabText](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabT
 
 The [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[TabToolTip](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabToolTip) property is automatically bound to the [Title](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Title) property for tool windows and to the [FileName](xref:@ActiproUIRoot.Controls.Docking.DocumentWindow.FileName) property for document windows.  Override the [TabToolTip](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.TabToolTip) property to set alternate tool tip content.
 
+@if (avalonia) {
+## Tab Icons
+
+By default, the icon defined by [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[Icon](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.Icon) will not appear on document tabs.
+
+You can force the icon to display on the tabs by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabIcons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabIcons) property to `true`.
+}
+@if (wpf) {
 ## Tab Images
 
 By default, the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[ImageSource](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.ImageSource) image will not appear on document tabs.
 
 You can force the image to display on the tabs by setting the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[HasTabImages](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.HasTabImages) property to `true`.
+}
 
 ## Tab Contextual Content
 
@@ -97,15 +104,16 @@ The [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[AreNewTabsInserte
 
 ## New Tab Buttons
 
-The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[ContainersHaveNewTabButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.ContainersHaveNewTabButtons) property can be set to `true` to display a new tab button.  When this button is clicked, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[NewWindowRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.NewWindowRequested) event is raised.  A handler of this event should activate a new document.
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[ContainersHaveNewTabButtons](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.ContainersHaveNewTabButtons) property can be set to `true` to display a **New Tab** button.  When this button is clicked, the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[NewWindowRequested](xref:@ActiproUIRoot.Controls.Docking.DockSite.NewWindowRequested) event is raised.  A handler of this event should activate a new document.
 
-This feature is useful for browser-like applications and works best when the [TabOverflowBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabOverflowBehavior) is set to `Shrink` or `ShrinkWithMenu`.
+This feature is useful for browser-like applications and works best when the [TabOverflowBehavior](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabOverflowBehavior) is set to [Shrink](xref:@ActiproUIRoot.Controls.Docking.TabOverflowBehavior.Shrink) or [ShrinkWithMenu](xref:@ActiproUIRoot.Controls.Docking.TabOverflowBehavior.ShrinkWithMenu).
 
 ## Content for Empty MDI Hosts
 
-The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[EmptyContentTemplate](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContentTemplate) property can be set to a `DataTemplate` that should be displayed in the MDI host whenever there are no documents open.  If additional data needs to be passed into the data template, set it to the [EmptyContent](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContent) property.
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[EmptyContentTemplate](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContentTemplate) property can be set to @if (avalonia) { an `IDataTemplate` }@if (wpf) { a `DataTemplate` } that should be displayed in the MDI host whenever there are no documents open.  If additional data needs to be passed into the data template, set it to the [EmptyContent](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.EmptyContent) property.
 
-This is a great place to include a company/application logo or give end users instructions on what to do next to open a document.
+> [!TIP]
+> This is a great place to include a company/application logo or give end users instructions on what to do next to open a document.
 
 ## Listing All Documents in the MDI Host
 
@@ -127,7 +135,7 @@ Alternatively, two methods on [DockSite](xref:@ActiproUIRoot.Controls.Docking.Do
 
 ## Switching to Tabbed MDI at Run-Time
 
-You can easily switch to tabbed MDI mode at run-time by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property to `Tabbed`, as long as a [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) is defined in the dock site.
+You can easily switch to tabbed MDI mode at run-time by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property to [Tabbed](xref:@ActiproUIRoot.Controls.Docking.MdiKind.Tabbed), as long as a [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) is defined in the dock site.
 
 ## Floating Documents
 
@@ -141,11 +149,48 @@ To float a document window, click on the associated tab and drag it away from th
 
 To enable this feature and allow document windows to be floated, set the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[CanDocumentWindowsFloat](xref:@ActiproUIRoot.Controls.Docking.DockSite.CanDocumentWindowsFloat) property to `true`.
 
+@if (avalonia) {
+## Tab Control Custom Themes
+
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabControlTheme](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabControlTheme) property can be set to a custom `ControlTheme` for the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) that is used within the templates of [TabbedMdiContainer](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiContainer) controls in the host.
+
+This code shows a custom `ControlTheme` assigned to the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabControlTheme](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabControlTheme) property to give the tabs a unique appearance:
+
+```xaml
+<ControlTheme TargetType="actipro:AdvancedTabControl"
+	BasedOn="{StaticResource {x:Type actipro:AdvancedTabControl}}">
+
+	<Setter Property="TabCornerRadius" Value="2,7,7,2" />
+	<Setter Property="TabSpacing" Value="2" />
+
+</Style>
+```
+
+The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerTheme](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerTheme) property can be set to a custom `ControlTheme` for the [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem) controls that render the tabs within those [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) controls.
+
+Use these properties to customize the appearance of the tab controls and their tabs.
+
+This code shows the default XAML assigned to the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerTheme](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerTheme) property:
+
+```xaml
+<ControlTheme TargetType="actipro:AdvancedTabItem"
+	x:DataType="actipro:DockingWindow"
+	BasedOn="{StaticResource {x:Type actipro:AdvancedTabItem}}">
+
+	<Setter Property="Header" Value="{Binding TabTextResolved}" />
+	<Setter Property="HeaderTemplate">
+		<DataTemplate>
+			<TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+		</DataTemplate>
+	</Setter>
+
+</ControlTheme>
+```
+}
+@if (wpf) {
 ## Tab Control Custom Styling
 
 The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabControlStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabControlStyle) property can be set to a custom `Style` for the [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) that is used within the templates of [TabbedMdiContainer](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiContainer) controls in the host.
-
-@if (wpf) {
 
 This code shows a custom `Style` assigned to the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabControlStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabControlStyle) property to give the tabs a unique appearance:
 
@@ -156,21 +201,9 @@ This code shows a custom `Style` assigned to the [TabbedMdiHost](xref:@ActiproUI
 </Style>
 ```
 
-}
-
-@if (wpf) {
-
 The [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerStyle) property can be set to a custom `Style` for the [AdvancedTabItem](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabItem) controls that render the tabs within those [AdvancedTabControl](xref:@ActiproUIRoot.Controls.Docking.AdvancedTabControl) controls.
 
-}
-
-@if (wpf) {
-
 Use these properties to customize the appearance of the tab controls and their tabs.
-
-}
-
-@if (wpf) {
 
 This code shows the default XAML assigned to the [TabbedMdiHost](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost).[TabItemContainerStyle](xref:@ActiproUIRoot.Controls.Docking.TabbedMdiHost.TabItemContainerStyle) property:
 
@@ -186,7 +219,6 @@ This code shows the default XAML assigned to the [TabbedMdiHost](xref:@ActiproUI
 	</Setter>
 </Style>
 ```
-
 }
 
 ## Keyboard Shortcuts

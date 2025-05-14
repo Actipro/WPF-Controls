@@ -7,7 +7,7 @@ order: 6
 
 Many keyboard shortcuts are automatically bound to allow keyboard access to most of the built-in [edit actions](edit-actions.md).
 
-The following tables describe the default key bindings that are in place when the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is created.  These can be modified by using the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).`InputBindings` collection.
+The following tables describe the default key bindings that are in place when the [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) control is created.  These can be modified by using the @if (winforms) { [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).[CommandLinks](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor.CommandLinks) } @if (wpf) { [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor).`InputBindings` } collection.
 
 ## Clipboard/Undo Edit Actions
 

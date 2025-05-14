@@ -109,29 +109,26 @@ using System.Linq;
 namespace DotNetLanguagesAddon {
 
 	/// <summary>
-	/// Advanced C# code editing for your end users with the 
-	/// .NET Languages Add-on for Actipro SyntaxEditor.
+	/// Advanced C# code editing for your end users with the .NET Languages Add-on 
+	/// for Actipro SyntaxEditor.
 	///	</summary>
 	public class CSharpLanguage {
 	
 		/// <summary>
-		/// Edit this document to see background parsing 
-		/// update automatic outlining, the document outline 
-		/// (AST), and syntax errors.
+		/// Edit this document to see background parsing update automatic outlining, 
+		/// the document outline (AST), and syntax errors.
 		///	</summary>
 		public void DemoTest() {
 		
-			// Here is a syntax error... note the squiggle 
-			//   line that shows:
-			int errorTest = 1
+			// Here is a syntax error... note the squiggle line that shows:
+			var errorTest = $"{nameof(DemoTest)} - Error occurred."
 			
 			// Write the error to the console
 			Debug.WriteLine(errorTest);
 			
-			// This syntax language implementation is part of
-			// the .NET Languages Add-on for SyntaxEditor, 
-			// which is optional and sold separately from 
-			// SyntaxEditor and containing bundles.
+			// This syntax language implementation is part of the .NET Languages Add-on 
+			// for SyntaxEditor, which is optional and sold separately from SyntaxEditor 
+			// and containing bundles.
 			
 		}
 	}	

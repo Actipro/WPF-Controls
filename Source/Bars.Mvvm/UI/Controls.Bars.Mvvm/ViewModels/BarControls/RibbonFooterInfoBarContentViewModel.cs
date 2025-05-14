@@ -7,7 +7,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for image and text content within a ribbon footer.
 	/// </summary>
-	public class RibbonFooterInfoBarContentViewModel : ObservableObjectBase {
+	public class RibbonFooterInfoBarContentViewModel : ObservableObjectBase, IHasTag {
 
 		private object action;
 		private DataTemplate actionTemplate;
@@ -21,6 +21,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private string message;
 		private Thickness padding = new Thickness(10, 5, 10, 5);
 		private InfoBarSeverity severity = InfoBarSeverity.Information;
+		private object tag;
 		private string title;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,6 +146,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public InfoBarSeverity Severity {
 			get => severity;
 			set => SetProperty(ref severity, value);
+		}
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set => SetProperty(ref tag, value);
 		}
 
 		/// <summary>

@@ -23,8 +23,13 @@ This XAML code shows how to load a header image and header background for a page
 ```xaml
 <wizard:WizardPage x:Name="welcomePage" HeaderImage="/Sample;component/Images/HatLogo.png">
 	<wizard:WizardPage.HeaderBackground>
-		<ImageBrush TileMode="Tile" Stretch="None" Viewport="0,0,164,450"
-		            ViewportUnits="Absolute" ImageSource="/Sample;component/Images/WelcomeBG.png" />
+		<ImageBrush
+			TileMode="Tile"
+			Stretch="None"
+			Viewport="0,0,164,450"
+			ViewportUnits="Absolute"
+			ImageSource="/Sample;component/Images/WelcomeBG.png"
+			/>
 	</wizard:WizardPage.HeaderBackground>
 </wizard:WizardPage>
 ```
@@ -85,27 +90,39 @@ This code shows how to alter the [WizardButtonContainer](xref:@ActiproUIRoot.Con
 	<Setter Property="Template">
 		<Setter.Value>
 			<ControlTemplate TargetType="wizard:WizardButtonContainer">
-				<Border Background="{TemplateBinding Background}"
-				        BorderBrush="{TemplateBinding BorderBrush}"
-				        BorderThickness="{TemplateBinding BorderThickness}"
-				        Padding="{TemplateBinding Padding}"
-				        SnapsToDevicePixels="True">
+				<Border
+					Background="{TemplateBinding Background}"
+					BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}"
+					Padding="{TemplateBinding Padding}"
+					SnapsToDevicePixels="True"
+					>
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-						<Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75" Command="wizard:WizardCommands.Cancel"
-						        Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}"
-						        Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.CancelButtonVisibility)}" />
-						<Button x:Name="PART_BackButton" MinWidth="75" Command="wizard:WizardCommands.PreviousPage"
-						        Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}"
-						        Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.BackButtonVisibility)}" />
-						<Button x:Name="PART_NextButton" MinWidth="75" Command="wizard:WizardCommands.NextPage"
-						        Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}"
-						        Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.NextButtonVisibility)}" />
-						<Button x:Name="PART_FinishButton" MinWidth="75" Command="wizard:WizardCommands.Finish"
-						        Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}"
-						        Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.FinishButtonVisibility)}" />
-						<Button x:Name="PART_HelpButton" Margin="7,0,0,0" MinWidth="75" Command="wizard:WizardCommands.Help"
-						        Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}"
-						        Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.HelpButtonVisibility)}" />
+						<Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75"
+							Command="wizard:WizardCommands.Cancel"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}"
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.CancelButtonVisibility)}"
+							/>
+						<Button x:Name="PART_BackButton" MinWidth="75"
+							Command="wizard:WizardCommands.PreviousPage"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}"
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.BackButtonVisibility)}"
+							/>
+						<Button x:Name="PART_NextButton" MinWidth="75"
+							Command="wizard:WizardCommands.NextPage"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}"
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.NextButtonVisibility)}"
+							/>
+						<Button x:Name="PART_FinishButton" MinWidth="75"
+							Command="wizard:WizardCommands.Finish"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}"
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.FinishButtonVisibility)}"
+							/>
+						<Button x:Name="PART_HelpButton" Margin="7,0,0,0" MinWidth="75"
+							Command="wizard:WizardCommands.Help"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}"
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.HelpButtonVisibility)}"
+							/>
 					</StackPanel>
 				</Border>
 			</ControlTemplate>

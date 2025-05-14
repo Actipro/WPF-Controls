@@ -18,12 +18,15 @@ The [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresente
 This XAML code shows how to create a [TransitionPresenter](xref:@ActiproUIRoot.Media.Animation.TransitionPresenter):
 
 ```xaml
-<Window x:Class="Sample.Application.Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
-        >
+<Window
+	x:Class="Sample.Application.Window"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	>
+
 	<shared:TransitionPresenter x:Name="Presenter" />
+
 </Window>
 ```
 

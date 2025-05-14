@@ -25,6 +25,45 @@ When in tool window inner-fill mode, no MDI is available and tool windows fill t
 
 This sample XAML code shows how to create a tool window inner-fill scenario.
 
+@if (avalonia) {
+```xaml
+<actipro:DockSite x:Name="dockSite">
+	<actipro:DockSite.AutoHideLeftContainers>
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="Tool Window 8" />
+			<actipro:ToolWindow Title="Tool Window 9" />
+		</actipro:ToolWindowContainer>
+	</actipro:DockSite.AutoHideLeftContainers>
+	<actipro:DockSite.AutoHideBottomContainers>
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="Tool Window 10" />
+			<actipro:ToolWindow Title="Tool Window 11" />
+		</actipro:ToolWindowContainer>
+	</actipro:DockSite.AutoHideBottomContainers>
+
+	<actipro:SplitContainer>
+		<actipro:SplitContainer Orientation="Vertical">
+			<actipro:ToolWindowContainer>
+				<actipro:ToolWindow Title="Tool Window 1" />
+				<actipro:ToolWindow Title="Tool Window 2" />
+			</actipro:ToolWindowContainer>
+
+			<actipro:ToolWindowContainer>
+				<actipro:ToolWindow Title="Tool Window 3" />
+				<actipro:ToolWindow Title="Tool Window 4" />
+				<actipro:ToolWindow Title="Tool Window 5" />
+			</actipro:ToolWindowContainer>
+		</actipro:SplitContainer>
+
+		<actipro:ToolWindowContainer>
+			<actipro:ToolWindow Title="Tool Window 6" />
+			<actipro:ToolWindow Title="Tool Window 7" />
+		</actipro:ToolWindowContainer>
+	</actipro:SplitContainer>
+</actipro:DockSite>
+```
+}
+@if (wpf) {
 ```xaml
 <docking:DockSite x:Name="dockSite">
 	<docking:DockSite.AutoHideLeftContainers>
@@ -39,21 +78,21 @@ This sample XAML code shows how to create a tool window inner-fill scenario.
 			<docking:ToolWindow Title="Tool Window 11" />
 		</docking:ToolWindowContainer>
 	</docking:DockSite.AutoHideBottomContainers>
-	
+
 	<docking:SplitContainer>
 		<docking:SplitContainer Orientation="Vertical">
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow Title="Tool Window 1" />
 				<docking:ToolWindow Title="Tool Window 2" />
 			</docking:ToolWindowContainer>
-			
+
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow Title="Tool Window 3" />
 				<docking:ToolWindow Title="Tool Window 4" />
 				<docking:ToolWindow Title="Tool Window 5" />
 			</docking:ToolWindowContainer>
 		</docking:SplitContainer>
-		
+
 		<docking:ToolWindowContainer>
 			<docking:ToolWindow Title="Tool Window 6" />
 			<docking:ToolWindow Title="Tool Window 7" />
@@ -61,3 +100,4 @@ This sample XAML code shows how to create a tool window inner-fill scenario.
 	</docking:SplitContainer>
 </docking:DockSite>
 ```
+}

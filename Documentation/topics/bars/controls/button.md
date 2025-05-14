@@ -32,7 +32,7 @@ If the button should be checkable, use the [BarToggleButton](xref:@ActiproUIRoot
 | Base class | Native `Button`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarButton.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarButton.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource), [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumImageSource), and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallIcon), [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumIcon), and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeIcon) properties. |
 | Has popup | No. |
 | Is checkable | Yes, but only when using [BarToggleButton](xref:@ActiproUIRoot.Controls.Bars.BarToggleButton). |
 | Variant sizes | `Small` (image only), `Medium` (image and label), `Large` (tall size, image and multi-line label). |
@@ -67,7 +67,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 	<actipro:BarButton
 		Key="Undo"
 		KeyTipText="AZ"
-		SmallImageSource="/Images/Undo16.png"
+		SmallIcon="{StaticResource UndoIcon}"
 		Command="{Binding UndoCommand}"
 		/>
 	...
@@ -105,7 +105,7 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 | Base class | Native `MenuItem`. |
 | Has key | Yes, via the [Key](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Key) property. |
 | Has label | Yes, via the [Label](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Label) property.  Auto-generated from the `Key` value if not specified. |
-| Has image | Yes, via the [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) and [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) properties. |
+| Has image | Yes, via the [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) and [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) properties. |
 | Has popup | Not when a button concept is desired. |
 | Is checkable | Yes, when the `ToggleType` property is set to `CheckBox` or `Radio`. |
 | Variant sizes | None, but has a [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) property that triggers a large height and displays an extended [Description](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.Description). |
@@ -135,16 +135,16 @@ Use the [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) control to 
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
-<actipro:BarContextMenu>
+<actipro:BarMenuFlyout>
 	<!-- Label is auto-generated from Key, but we want to override the auto-generated KeyTipText -->
 	<actipro:BarMenuItem
 		Key="Undo"
 		KeyTipText="AZ"
-		SmallImageSource="/Images/Undo16.png"
+		SmallIcon="{StaticResource UndoIcon}"
 		Command="{Binding UndoCommand}"
 		/>
 	...
-</actipro:BarContextMenu>
+</actipro:BarMenuFlyout>
 ```
 }
 @if (wpf) {
@@ -197,12 +197,21 @@ The [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem).[Label](xref:@A
 
 The controls can display images that help identify their function.
 
-All [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeImageSource).  @if (avalonia) { When the button is located on a ribbon with `Simplified` layout mode, }@if (wpf) { When the button has a `Spacious` UI density,} it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumImageSource).
+@if (avalonia) {
+All [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) instances should set a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallIcon) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeIcon).  When the button is located on a ribbon with `Simplified` layout mode, it will try to use [MediumIcon](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumIcon).
+
+> [!TIP]
+> See the [Control Basics](control-basics.md) topic for more detail on the fallback logic and custom data templates for button icons.
+
+[BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallIcon) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeIcon](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeIcon) property is used instead.  When the menu item is checked, a highlight box will appear around the image.  If no image is specified, a standard check glyph will be used in place of the image.}
+@if (wpf) {
+All [BarButton](xref:@ActiproUIRoot.Controls.Bars.BarButton) instances should set a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.SmallImageSource) at a minimum, which is generally used for `Small` and `Medium` variants, as well as in the [Ribbon Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md) and if the control overflows to a menu.  If the button supports a `Large` variant size, it should also define a [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.LargeImageSource).  When the button has a `Spacious` UI density, it will try to use [MediumImageSource](xref:@ActiproUIRoot.Controls.Bars.BarButton.MediumImageSource).
 
 > [!TIP]
 > See the [Control Basics](control-basics.md) topic for more detail on the fallback logic for button images.
 
-[BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear  around the image.  If no image is specified, a standard check glyph will be used in place of the image.
+[BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) instances can optionally define a [SmallImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.SmallImageSource) that appears in the menu's icon column.  When [UseLargeSize](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.UseLargeSize) is set to create a large menu item, the [LargeImageSource](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem.LargeImageSource) property is used instead.  When the menu item is checked, a highlight box will appear around the image.  If no image is specified, a standard check glyph will be used in place of the image.
+}
 
 ### Description (BarMenuItem only)
 

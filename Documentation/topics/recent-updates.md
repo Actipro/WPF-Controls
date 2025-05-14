@@ -9,6 +9,10 @@ WPF Studio's documentation has frequent updates, so this topic is the best place
 
 If you are looking for a list of recently added major new features to WPF Studio products, please see the Sample Browser's Recent Updates page instead.
 
+## Updates for v25.1.0
+
+- **All:** Added [Third-Party Software](third-party.md) topic.
+
 ## Updates for v24.1.2
 
 - **Bars:** Updated [Footer](bars/ribbon-features/footer.md) documentation with details on using [InfoBar](shared/windows-controls/info-bar.md) in the ribbon footer.

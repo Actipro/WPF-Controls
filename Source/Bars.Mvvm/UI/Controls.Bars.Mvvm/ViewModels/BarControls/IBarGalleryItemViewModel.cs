@@ -7,7 +7,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a gallery item within a bar gallery control.
 	/// </summary>
-	public interface IBarGalleryItemViewModel : INotifyPropertyChanged, IEquatable<IBarGalleryItemViewModel> {
+	public interface IBarGalleryItemViewModel : INotifyPropertyChanged, IEquatable<IBarGalleryItemViewModel>, IHasTag {
 
 		/// <summary>
 		/// Gets or sets the item's category.

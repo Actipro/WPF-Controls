@@ -39,16 +39,16 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 
 				<!-- Common items can be added to the Items collection from a customize menu -->
 				<actipro:RibbonQuickAccessToolBar.CommonItems>
-					<actipro:BarButton Key="Undo" Command="{Binding UndoCommand}" SmallImageSource="/Images/Undo16.png" />
-					<actipro:BarButton Key="Redo" Command="{Binding RedoCommand}" SmallImageSource="/Images/Redo16.png" />
-					<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallImageSource="/Images/Save16.png" />
+					<actipro:BarButton Key="Undo" Command="{Binding UndoCommand}" SmallIcon="{StaticResource UndoIcon}" />
+					<actipro:BarButton Key="Redo" Command="{Binding RedoCommand}" SmallIcon="{StaticResource RedoIcon}" />
+					<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallIcon="{StaticResource SaveIcon}" />
 				</actipro:RibbonQuickAccessToolBar.CommonItems>
 
 				<!-- Only the following items are displayed -->
-				<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallImageSource="/Images/Save16.png" />
-				<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallImageSource="/Images/Cut16.png" />
-				<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallImageSource="/Images/Copy16.png" />
-				<actipro:BarButton Key="Paste" Command="{Binding PasteCommand}" SmallImageSource="/Images/Paste16.png" />
+				<actipro:BarButton Key="Save" Command="{Binding SaveCommand}" SmallIcon="{StaticResource SaveIcon}" />
+				<actipro:BarButton Key="Cut" Command="{Binding CutCommand}" SmallIcon="{StaticResource CutIcon}" />
+				<actipro:BarButton Key="Copy" Command="{Binding CopyCommand}" SmallIcon="{StaticResource CopyIcon}" />
+				<actipro:BarButton Key="Paste" Command="{Binding PasteCommand}" SmallIcon="{StaticResource PasteIcon}" />
 
 			</actipro:RibbonQuickAccessToolBar>
 		</actipro:Ribbon.QuickAccessToolBarContent>
@@ -88,6 +88,18 @@ xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	</bars:Ribbon>
 </bars:RibbonContainerPanel>
 ```
+}
+
+## XAML Support
+
+Defining the quick access toolbar in XAML may require duplicating some control definitions if the same control is defined, by default, in both the quick access toolbar and the ribbon.  Duplication may also be required if a control currently displayed in the quick access toolbar is also included in the common items.
+
+> [!IMPORTANT]
+> When more than one control definition exists for what is effectively the same command, it is important that all control definitions are assigned the same value for the `Key` property.
+
+@if (avalonia) {
+> [!WARNING]
+> By default, users can add controls from the ribbon to the quick access toolbar. This requires cloning the original control since the same control cannot be displayed in two locations at the same time, and cloning has limitations.  Refer to the [XAML vs. MVVM Configuration](../configuration.md) topic for additional details.  Controls can set the attached [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService).[CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) to `false` to disable moving the control to the quick access toolbar if cloning is an issue.
 }
 
 ## MVVM Support
@@ -133,6 +145,12 @@ The [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[QuickAccessToolBarLocati
 
 > [!NOTE]
 > When the ribbon is hosted in a [Ribbon Window](ribbon-window.md) and the location is set to [RibbonQuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarLocation).[Above](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarLocation.Above), the toolbar will be displayed within the window title bar.
+
+@if (avalonia) {
+### External Host
+
+When the location is set to [RibbonQuickAccessToolBarLocation](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarLocation).[Above](xref:@ActiproUIRoot.Controls.Bars.RibbonQuickAccessToolBarLocation.Above), most users expect the toolbar to be displayed in a titebar.  The [Ribbon Window](ribbon-window.md) supports this feature automatically.  For custom scenarios when not using [Ribbon Window](ribbon-window.md), the location of the toolbar host can be defined by placing a [RibbonQuickAccessToolBarHost](xref:@ActiproUIRoot.Controls.Bars.Primitives.RibbonQuickAccessToolBarHost) control anywhere within the visual tree of the ribbon's ancestor `TopLevel` and setting the [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Ribbon).[AllowExternalQuickAccessToolBarHost](xref:@ActiproUIRoot.Controls.Bars.Ribbon.AllowExternalQuickAccessToolBarHost) property to `true`.
+}
 
 ## Hiding the Customize Button
 

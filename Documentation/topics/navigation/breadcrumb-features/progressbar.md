@@ -38,10 +38,12 @@ This sample code shows how to create a [PopupButton](xref:@ActiproUIRoot.Control
 ```xaml
 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 ...
-<shared:PopupButton Content="New PopupButton"
-                    DisplayMode="ButtonOnly"
-                    IsRounded="false"
-                    IsTransparencyModeEnabled="true" />
+<shared:PopupButton
+	Content="New PopupButton"
+	DisplayMode="ButtonOnly"
+	IsRounded="false"
+	IsTransparencyModeEnabled="true"
+	/>
 ```
 
 ## Associated Members

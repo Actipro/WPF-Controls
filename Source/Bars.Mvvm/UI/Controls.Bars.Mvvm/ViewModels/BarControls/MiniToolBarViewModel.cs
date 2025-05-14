@@ -6,10 +6,11 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a mini-toolbar control.
 	/// </summary>
-	public class MiniToolBarViewModel : ObservableObjectBase {
+	public class MiniToolBarViewModel : ObservableObjectBase, IHasTag {
 
 		private bool canUseMultiRowLayout;
 		private UserInterfaceDensity userInterfaceDensity = UserInterfaceDensity.Compact;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -37,7 +38,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of items in the control.</value>
 		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString() {
 			return $"{this.GetType().FullName}[{this.Items.Count} items]";

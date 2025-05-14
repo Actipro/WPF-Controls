@@ -5,9 +5,10 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a quick-access toolbar control within a ribbon.
 	/// </summary>
-	public class RibbonQuickAccessToolBarViewModel : ObservableObjectBase {
+	public class RibbonQuickAccessToolBarViewModel : ObservableObjectBase, IHasTag {
 
 		private bool isCustomizeButtonVisible = true;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -43,7 +44,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		/// </summary>
 		/// <value>The collection of items in the control.</value>
 		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString() {
 			return $"{this.GetType().FullName}[{this.Items.Count} items]";

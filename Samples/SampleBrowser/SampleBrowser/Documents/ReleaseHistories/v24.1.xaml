@@ -62,7 +62,7 @@
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
-				<sampleBrowser:BulletContentControl Content="Updated EmnbeddedTextBox select all on focus logic to keep long text scrolled to the start." />
+				<sampleBrowser:BulletContentControl Content="Updated EmbeddedTextBox select all on focus logic to keep long text scrolled to the start." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where DynamicImage might not resolve the proper DPI scale when first displayed in high-DPI scenarios." />
 			</StackPanel>
 			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />

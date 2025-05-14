@@ -43,6 +43,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.BarTextBoxMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarTextBoxMenuItemContainerTemplate] as ItemContainerTemplate;
 			this.BarToggleButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.BarToggleButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.BarToggleButtonMenuItemTemplate = dictionary[BarsMvvmResourceKeys.BarToggleButtonMenuItemItemContainerTemplate] as ItemContainerTemplate;
+			this.DockableToolBarDefaultTemplate = dictionary[BarsMvvmResourceKeys.DockableToolBarDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.MiniToolBarDefaultTemplate = dictionary[BarsMvvmResourceKeys.MiniToolBarDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonApplicationButtonDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonApplicationButtonDefaultItemContainerTemplate] as ItemContainerTemplate;
 			this.RibbonBackstageDefaultTemplate = dictionary[BarsMvvmResourceKeys.RibbonBackstageDefaultItemContainerTemplate] as ItemContainerTemplate;
@@ -203,6 +204,12 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public ItemContainerTemplate BarToggleButtonMenuItemTemplate { get; set; }
 		
 		/// <summary>
+		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="DockableToolBarViewModel"/>.
+		/// </summary>
+		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
+		public ItemContainerTemplate DockableToolBarDefaultTemplate { get; set; }
+		
+		/// <summary>
 		/// Gets or sets the <see cref="ItemContainerTemplate"/> to use for a <see cref="MiniToolBarViewModel"/>.
 		/// </summary>
 		/// <value>The <see cref="ItemContainerTemplate"/> to use.</value>
@@ -333,6 +340,8 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 					return isMenuItem ? this.BarSeparatorMenuItemTemplate : this.BarSeparatorDefaultTemplate;
 				case BarTextBoxViewModel _:
 					return isMenuItem ? this.BarTextBoxMenuItemTemplate : this.BarTextBoxDefaultTemplate;
+				case DockableToolBarViewModel _:
+					return this.DockableToolBarDefaultTemplate;
 				case MiniToolBarViewModel _:
 					return this.MiniToolBarDefaultTemplate;
 				case RibbonApplicationButtonViewModel _:

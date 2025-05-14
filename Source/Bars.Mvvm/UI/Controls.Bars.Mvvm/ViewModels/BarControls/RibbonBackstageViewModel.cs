@@ -6,16 +6,40 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a Backstage control within a ribbon.
 	/// </summary>
-	public class RibbonBackstageViewModel : ObservableObjectBase {
+	public class RibbonBackstageViewModel : ObservableObjectBase, IHasTag {
 
+		private bool canClose = true;
 		private DataTemplateSelector contentTemplateSelector;
 		private bool isOpen;
 		private object selectedItem;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
+		/// <summary>
+		/// Gets or sets whether the Backstage close button should be visible, and whether <c>Esc</c> can close Backstage.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the Backstage close button should be visible, and whether <c>Esc</c> can close Backstage; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		/// <remarks>
+		/// This feature is useful for scenarios where there is no document open in the main window yet, and Backstage is open, allowing
+		/// for an end user to select a new document or open a document.
+		/// In this scenario, you don't want the end user to be able to close Backstage until they take some action.
+		/// </remarks>
+		public bool CanClose {
+			get => canClose;
+			set {
+				if (canClose != value) {
+					canClose = value;
+					this.NotifyPropertyChanged(nameof(CanClose));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Closes the Backstage.
 		/// </summary>
@@ -82,7 +106,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string ToString() {
 			return $"{this.GetType().FullName}[{this.Items.Count} items]";

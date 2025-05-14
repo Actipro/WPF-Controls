@@ -5,19 +5,31 @@ order: 10
 ---
 # Context Menus
 
+@if (avalonia) {
+The [BarMenuFlyout](xref:@ActiproUIRoot.Controls.Bars.BarMenuFlyout) control implements a `MenuFlyout` that can host any [Bars controls](../controls/index.md) intended for menu contexts, including [split menu items](../controls/split-button.md) or graphically-rich [menu galleries](../controls/gallery.md), and supports other advanced features like MVVM configuration of its items.
+}
+@if (wpf) {
 The [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) control implements a context menu that can host any [Bars controls](../controls/index.md) intended for menu contexts, including [split menu items](../controls/split-button.md) or graphically-rich [menu galleries](../controls/gallery.md), and supports other advanced features like MVVM configuration of its items.
+}
 
 ![Screenshot](../images/context-menu.png)
 
 *A sample context menu used for an edit control*
 
+@if (avalonia) {
+## Native MenuFlyout Compatibility
+
+Since the [BarMenuFlyout](xref:@ActiproUIRoot.Controls.Bars.BarMenuFlyout) class inherits the native `MenuFlyout` class and its features, [BarMenuFlyout](xref:@ActiproUIRoot.Controls.Bars.BarMenuFlyout) may be used anywhere that a regular `MenuFlyout` can be used.
+}
+@if (wpf) {
 ## Native ContextMenu Compatibility
 
 Since the [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) class inherits the native `ContextMenu` class and its features, [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu) may be used anywhere that a regular `ContextMenu` can be used.
+}
 
 ## Defining a Context Menu
 
-A context menu is most often assigned to a control via its `ContextMenu` property.  The control will automatically show the context menu when it is right-clicked or the keyboard's context menu key is pressed.
+A context menu is most often assigned to a control via its @if (avalonia) { `ContextFlyout` }@if (wpf) { `ContextMenu` } property.  The control will automatically show the context menu when it is right-clicked or the keyboard's context menu key is pressed.
 
 This sample code shows how to define a context menu for a `TextBox`:
 
@@ -26,14 +38,14 @@ This sample code shows how to define a context menu for a `TextBox`:
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
 <TextBox>
-	<TextBox.ContextMenu>
-		<actipro:BarContextMenu>
+	<TextBox.ContextFlyout>
+		<actipro:BarMenuFlyout>
 			<!-- Labels are auto-generated from Key -->
-			<actipro:BarMenuItem Key="Undo" SmallImageSource="/Images/Icons/Undo16.png" />
-			<actipro:BarMenuItem Key="Redo" SmallImageSource="/Images/Icons/Redo16.png" />
+			<actipro:BarMenuItem Key="Undo" SmallIcon="{StaticResource UndoIcon}" />
+			<actipro:BarMenuItem Key="Redo" SmallIcon="{StaticResource RedoIcon}" />
 			<actipro:BarMenuSeparator />
-			<actipro:BarMenuItem Key="Cut" SmallImageSource="/Images/Icons/Cut16.png" />
-			<actipro:BarMenuItem Key="Copy" SmallImageSource="/Images/Icons/Copy16.png" />
+			<actipro:BarMenuItem Key="Cut" SmallIcon="{StaticResource CutIcon}" />
+			<actipro:BarMenuItem Key="Copy" SmallIcon="{StaticResource CopyIcon}" />
 			<actipro:BarMenuGallery
 				Key="PasteOptions"
 				AreSurroundingSeparatorsAllowed="False"
@@ -47,8 +59,8 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 				UseMenuItemIndent="True" />
 			<actipro:BarMenuSeparator />
 			<actipro:BarMenuItem Key="SelectAll" />
-		</actipro:BarContextMenu>
-	</TextBox.ContextMenu>
+		</actipro:BarMenuFlyout>
+	</TextBox.ContextFlyout>
 </TextBox>
 ```
 }
@@ -100,7 +112,7 @@ See the [Control Basics](../controls/control-basics.md) topic for more informati
 
 ## MVVM Support
 
-By setting the [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu).`ItemContainerTemplateSelector` property to a template selector that can construct controls intended for a menu context, the context menu's `ItemsSource` can be bound to a collection of view-models.
+By setting the @if (avalonia) { [BarMenuFlyout](xref:@ActiproUIRoot.Controls.Bars.BarMenuFlyout).`ItemContainerTemplateSelector` }@if (wpf){ [BarContextMenu](xref:@ActiproUIRoot.Controls.Bars.BarContextMenu).`ItemContainerTemplateSelector` } property to a template selector that can construct controls intended for a menu context, the context menu's `ItemsSource` can be bound to a collection of view-models.
 
 The optional companion [MVVM Library](../mvvm-support.md) includes a [BarControlTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.BarControlTemplateSelector) class that is designed for use with the `ItemContainerTemplateSelector` property, when the control view models from the library are the items being bound via the control's `ItemsSource` property.
 
@@ -109,11 +121,11 @@ The optional companion [MVVM Library](../mvvm-support.md) includes a [BarControl
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
 <TextBox>
-	<TextBox.ContextMenu>
-		<actipro:BarContextMenu
+	<TextBox.ContextFlyout>
+		<actipro:BarMenuFlyout
 			ItemContainerTemplateSelector="{Binding ItemContainerTemplateSelector}"
 			ItemsSource="{Binding ContextMenuItems}" />
-	</TextBox.ContextMenu>
+	</TextBox.ContextFlyout>
 </TextBox>
 ```
 }

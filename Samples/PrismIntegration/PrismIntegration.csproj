@@ -4,11 +4,11 @@
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
 
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>24.1.5.0</Version>
+		<Version>25.1.0.0</Version>
 
 		<RootNamespace>ActiproSoftware.Windows.PrismIntegration</RootNamespace>
 		<Company>Actipro Software LLC</Company>
@@ -31,8 +31,7 @@
 		<PackageReference Include="Prism.Unity" Version="8.1.97" />
 	</ItemGroup>
 
-	<ItemGroup Label="Actipro References">
-	    <PackageReference Include="ActiproSoftware.Controls.WPF.Docking" Version="24.1.5" />
-	</ItemGroup>
+	<!-- Define Actipro assembly references -->
+	<Import Project="ActiproSoftware.References.props" />
 
 </Project>

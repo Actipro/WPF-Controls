@@ -5,7 +5,7 @@ order: 4
 ---
 # Standard MDI
 
-A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) control that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
+A standard (windowed) MDI option is implemented by Actipro Docking & MDI via a @if (avalonia) { [Window Control](../../fundamentals/controls/window-control.md) }@if (wpf) { [WindowControl](xref:@ActiproUIRoot.Controls.Docking.WindowControl) } that mimics the functionality of a native window with resizable borders, minimize/maximize/close buttons, etc.
 
 A context menu is displayed whenever clicking the window icon or right-clicking the title bar.
 
@@ -27,7 +27,7 @@ The **Maximize** and **Minimize** buttons on windows within the standard MDI are
 
 Individual windows can have its **Maximize** and **Minimize** buttons selectively shown or hidden using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMaximize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMaximize) and [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[CanStandardMdiMinimize](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.CanStandardMdiMinimize) properties, respectively.
 
-In addition to hiding the **Maximize** button, the `StandardMdiHost.CanWindowsMaximize` and `DockingWindow.CanStandardMdiMaximize` properties will disable the ability to double click the titlebar of a window to maximize it. Windows that do not display their **Maximize** or **Minimize** buttons can still be programmatically maximized/minimized.
+In addition to hiding the **Maximize** button, the `StandardMdiHost.CanWindowsMaximize` and `DockingWindow.CanStandardMdiMaximize` properties will disable the ability to double click the title bar of a window to maximize it. Windows that do not display their **Maximize** or **Minimize** buttons can still be programmatically maximized/minimized.
 
 ## Window State
 
@@ -35,7 +35,7 @@ The state, such as normal/minimized/maximized, of the MDI child windows can be r
 
 ## Restored Window Bounds
 
-The restored window bounds and be retrieved or set using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[StandardMdiBounds](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.StandardMdiBounds) property.
+The restored window bounds can be retrieved or set using the [DockingWindow](xref:@ActiproUIRoot.Controls.Docking.DockingWindow).[StandardMdiBounds](xref:@ActiproUIRoot.Controls.Docking.DockingWindow.StandardMdiBounds) property.
 
 ## Making Windows Maximized
 
@@ -99,4 +99,4 @@ This setting is set to `false` by default.
 
 ## Switching to Standard MDI at Run-Time
 
-You can easily switch to standard MDI mode at run-time by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property to `Standard`, as long as a [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) is defined in the dock site.
+You can easily switch to standard MDI mode at run-time by setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[MdiKind](xref:@ActiproUIRoot.Controls.Docking.DockSite.MdiKind) property to [Standard](xref:@ActiproUIRoot.Controls.Docking.MdiKind.Standard), as long as a [Workspace](xref:@ActiproUIRoot.Controls.Docking.Workspace) is defined in the dock site.

@@ -101,7 +101,7 @@ In other cases, such as when the control is within the ribbon's [quick access to
 
 *The fallback image*
 
-The following table describes the priority order of properties (e.g., `SmallImageSource`, `LargeImageSource`) used to resolve an image for a desired image size.
+The following table describes the priority order of properties @if (avalonia) { (e.g., `SmallIcon`, `LargeIcon`) }@if (wpf) { (e.g., `SmallImageSource`, `LargeImageSource`) } used to resolve an image for a desired image size.
 
 | Desired Image Size | Resolution Priority |
 |-----|-----|
@@ -110,7 +110,19 @@ The following table describes the priority order of properties (e.g., `SmallImag
 | Large (32x32) | Large, Medium (centered), Small (centered), Missing |
 
 > [!TIP]
-> When using a vector image for a button with the intention of using a single image for all image sizes, it is best to make a single 32x32 size vector image and assign it to the button's `LargeImageSource` property.  Per the table above, a `Large` image can scale down as a fallback for other image sizes.  When using raster images, it is much better to use a distinct image design for the `Large` and `Small` image sizes at a minimum.
+> When using a vector image for a button with the intention of using a single image for all image sizes, it is best to make a single 32x32 size vector image and assign it to the button's @if (avalonia) { `LargeIcon` }@if (wpf) { `LargeImageSource` } property.  Per the table above, a `Large` image can scale down as a fallback for other image sizes.  When using raster images, it is much better to use a distinct image design for the `Large` and `Small` image sizes at a minimum.
+
+@if (avalonia) {
+#### Icon Data Template
+
+Since icon properties are defined as `object` value types, a corresponding `IDataTemplate` is typically required to define how the value should be presented.
+
+The individual control themes are configured to use an [Icon Presenter](../../themes/icon-presenter.md) for showing icons.  `IImage` is the most common value type and is supported by default, but custom or third-party value types can also be supported.  See the [Icon Presenter](../../themes/icon-presenter.md) topic for details on how to add support for additional data types.
+
+> [!WARNING]
+> Since the same icon property value might need to be used in multiple parts of the UI at the same time, the icon property should never be assigned an instance of a visual.
+
+}
 
 ### Title
 
@@ -243,6 +255,19 @@ The [BarControlService](xref:@ActiproUIRoot.Controls.Bars.BarControlService) cla
 
 Here is a list of common attached properties that are related to concepts described earlier in this topic:
 
+@if (avalonia) {
+| Attached Property | Description |
+|-----|-----|
+| [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) | String key that identifies the control. |
+| [LabelProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LabelProperty) | String label displayed in UI. |
+| [SmallIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.SmallIconProperty) | Small 16x16 size image. |
+| [MediumIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.MediumIconProperty) | Medium 24x24 size image. |
+| [LargeIconProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.LargeIconProperty) | Large 32x32 size image. |
+| [TitleProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.TitleProperty) | String title that can override the label in screen tips and customization UI. |
+| [VariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.VariantSizeProperty) | The current variant size of the control.  Unless otherwise indicated, this property should only be manually set when the control is standalone, and not hosted by a bar control. |
+| [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the control can clone to the ribbon [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md). |
+| [HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) | Whether an external header (image/label) should be rendered for the control when in a ribbon control group stack. |}
+@if (wpf) {
 | Attached Property | Description |
 |-----|-----|
 | [KeyProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.KeyProperty) | String key that identifies the control. |
@@ -254,6 +279,7 @@ Here is a list of common attached properties that are related to concepts descri
 | [VariantSizeProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.VariantSizeProperty) | The current variant size of the control.  Unless otherwise indicated, this property should only be manually set when the control is standalone, and not hosted by a bar control. |
 | [CanCloneToRibbonQuickAccessToolBarProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.CanCloneToRibbonQuickAccessToolBarProperty) | Whether the control can clone to the ribbon [Quick Access Toolbar](../ribbon-features/quick-access-toolbar.md). |
 | [HasExternalHeaderProperty](xref:@ActiproUIRoot.Controls.Bars.BarControlService.HasExternalHeaderProperty) | Whether an external header (image/label) should be rendered for the control when in a ribbon control group stack. |
+}
 
 ### Usage Scenarios
 
@@ -262,9 +288,9 @@ Use of the attached properties can sometimes make property retrieval much more e
 ```csharp
 string label = null;
 if (control is BarButton barButton)
-    label = barButton.Label;
+	label = barButton.Label;
 else if (control is BarMenuItem barMenuItem)
-    label = barMenuItem.Label;
+	label = barMenuItem.Label;
 else if ...  // More tests
 ```
 

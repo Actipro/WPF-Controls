@@ -6,12 +6,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a control group control within a ribbon group.
 	/// </summary>
-	public class RibbonControlGroupViewModel : ObservableObjectBase {
+	public class RibbonControlGroupViewModel : ObservableObjectBase, IHasTag {
 
 		private HorizontalAlignment horizontalContentAlignment = HorizontalAlignment.Left;
 		private bool isVisible = true;
 		private ItemVariantBehavior itemVariantBehavior = ItemVariantBehavior.All;
 		private RibbonControlGroupSeparatorMode separatorMode = RibbonControlGroupSeparatorMode.Default;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -89,6 +90,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (separatorMode != value) {
 					separatorMode = value;
 					this.NotifyPropertyChanged(nameof(SeparatorMode));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
 				}
 			}
 		}

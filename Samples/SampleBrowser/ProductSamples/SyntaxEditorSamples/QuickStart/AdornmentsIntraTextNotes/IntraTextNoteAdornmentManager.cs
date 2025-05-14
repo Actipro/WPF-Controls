@@ -39,6 +39,24 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		/// <summary>
+		/// Changes the placement of the specified note tag.
+		/// </summary>
+		/// <param name="tagRange">The tag range.</param>
+		/// <param name="isBefore">Whether the adornment is before the tagged range.</param>
+		private void ChangeNotePlacement(TagSnapshotRange<IntraTextNoteTag> tagRange, bool isBefore) {
+			// Get the tagger from the code document
+			ICodeDocument document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
+			if (document != null) {
+				IntraTextNoteTagger tagger = null;
+				if (document.Properties.TryGetValue(typeof(IntraTextNoteTagger), out tagger)) {
+					// Change the tag's placement and raise an event so the UI knows to update
+					tagRange.Tag.IsSpacerBefore = isBefore;
+					tagger.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.SnapshotRange));
+				}
+			}
+		}
+		
+		/// <summary>
 		/// Changes the status of the specified note tag.
 		/// </summary>
 		/// <param name="tagRange">The tag range.</param>
@@ -111,6 +129,17 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 				}
 			}
 		}
+		
+		/// <summary>
+		/// Occurs when a menu item is clicked.
+		/// </summary>
+		/// <param name="sender">The sender of the event.</param>
+		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
+		private void OnToggleNotePlacement(object sender, RoutedEventArgs e) {
+			MenuItem item = (MenuItem)sender;
+			var tagRange = (TagSnapshotRange<IntraTextNoteTag>)item.Tag;
+			this.ChangeNotePlacement(tagRange, !tagRange.Tag.IsSpacerBefore);
+		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC PROCEDURES
@@ -178,6 +207,15 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.Adornmen
 			rejectedItem.Click += new RoutedEventHandler(OnMarkNoteAsRejected);
 			contextMenu.Items.Add(rejectedItem);
 
+			contextMenu.Items.Add(new Separator());
+			
+			MenuItem placementItem = new MenuItem();
+			placementItem.Header = "Note Before Text";
+			placementItem.IsChecked = tagRange.Tag.IsSpacerBefore;
+			placementItem.Tag = tagRange;
+			placementItem.Click += new RoutedEventHandler(OnToggleNotePlacement);
+			contextMenu.Items.Add(placementItem);
+			
 			// Get the location
 			Point location = new Point(Math.Round(bounds.Left) + 1, Math.Round(bounds.Top + (bounds.Height - tagRange.Tag.Size.Height) / 2));
 

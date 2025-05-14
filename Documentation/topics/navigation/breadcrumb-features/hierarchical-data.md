@@ -42,15 +42,19 @@ This sample code shows how to define a `HierarchicalDataTemplate` for the sample
 	<TextBlock Text="{Binding XPath=@Name}" />
 </DataTemplate>
 
-<HierarchicalDataTemplate x:Key="MyChildXmlElementTemplate"
-                          ItemsSource="{Binding XPath=MyGrandchildXmlElement}"
-                          ItemTemplate="{StaticResource MyGrandchildXmlElementTemplate}">
+<HierarchicalDataTemplate
+	x:Key="MyChildXmlElementTemplate"
+	ItemsSource="{Binding XPath=MyGrandchildXmlElement}"
+	ItemTemplate="{StaticResource MyGrandchildXmlElementTemplate}"
+	>
 	<TextBlock Text="{Binding XPath=@Name}" />
 </HierarchicalDataTemplate>
 
-<HierarchicalDataTemplate x:Key="MyRootXmlElementTemplate"
-                          ItemsSource="{Binding XPath=MyChildXmlElement}"
-                          ItemTemplate="{StaticResource MyChildXmlElementTemplate}">
+<HierarchicalDataTemplate
+	x:Key="MyRootXmlElementTemplate"
+	ItemsSource="{Binding XPath=MyChildXmlElement}"
+	ItemTemplate="{StaticResource MyChildXmlElementTemplate}"
+	>
 	<TextBlock Text="{Binding XPath=@Name}" />
 </HierarchicalDataTemplate>
 ```
@@ -80,11 +84,13 @@ This sample code shows how to define a `Style` for the sample XML data below:
 	<TextBlock Text="{Binding XPath=@Name}" />
 </DataTemplate>
 
-<Style ...>
-	<Setter Property="ItemsSource"
-	        Value="{Binding XPath=MyXmlElement}" />
-	<Setter Property="ItemTemplate"
-	        Value="{StaticResource MyXmlElementTemplate}" />
+<Style ... >
+	<Setter
+		Property="ItemsSource"
+		Value="{Binding XPath=MyXmlElement}" />
+	<Setter
+		Property="ItemTemplate"
+		Value="{StaticResource MyXmlElementTemplate}" />
 </Style>
 ```
 
@@ -114,21 +120,27 @@ This sample code shows how to define a `Style` for the sample XML data below, wh
 </Style>
 
 <Style x:Key="MyChildXmlElementStyle" ... >
-	<Setter Property="ItemsSource"
-	        Value="{Binding XPath=MyGrandchildXmlElement}" />
-	<Setter Property="ItemContainerStyle"
-	        Value="{StaticResource MyGrandchildXmlElementStyle}" />
-	<Setter Property="ItemTemplate"
-	        Value="{StaticResource MyXmlElementTemplate}" />
+	<Setter
+		Property="ItemsSource"
+		Value="{Binding XPath=MyGrandchildXmlElement}" />
+	<Setter
+		Property="ItemContainerStyle"
+		Value="{StaticResource MyGrandchildXmlElementStyle}" />
+	<Setter
+		Property="ItemTemplate"
+		Value="{StaticResource MyXmlElementTemplate}" />
 </Style>
 
 <Style x:Key="MyRootXmlElementStyle" ... >
-	<Setter Property="ItemsSource"
-	        Value="{Binding XPath=MyChildXmlElement}" />
-	<Setter Property="ItemContainerStyle"
-	        Value="{StaticResource MyChildXmlElementStyle}" />
-	<Setter Property="ItemTemplate"
-	        Value="{StaticResource MyXmlElementTemplate}" />
+	<Setter
+		Property="ItemsSource"
+		Value="{Binding XPath=MyChildXmlElement}" />
+	<Setter
+		Property="ItemContainerStyle"
+		Value="{StaticResource MyChildXmlElementStyle}" />
+	<Setter
+		Property="ItemTemplate"
+		Value="{StaticResource MyXmlElementTemplate}" />
 </Style>
 ```
 

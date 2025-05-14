@@ -10,7 +10,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// Represents a view model for an application button control within a ribbon.
 	/// </summary>
 	[ContentProperty(nameof(MenuItems))]
-	public class RibbonApplicationButtonViewModel : ObservableObjectBase {
+	public class RibbonApplicationButtonViewModel : ObservableObjectBase, IHasTag {
 
 		private string keyTipText;
 		private string label;
@@ -20,6 +20,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private object menuFooter;
 		private DataTemplate menuFooterTemplate;
 		private DataTemplateSelector menuFooterTemplateSelector;
+		private object tag;
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT
@@ -157,7 +158,18 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-				
+
+		/// <inheritdoc cref="IHasTag.Tag"/>
+		public object Tag {
+			get => tag;
+			set {
+				if (tag != value) {
+					tag = value;
+					this.NotifyPropertyChanged(nameof(Tag));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets the collection of items that appear within the menu.
 		/// </summary>

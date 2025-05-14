@@ -27,6 +27,7 @@ The [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag)
 | Member | Description |
 |-----|-----|
 | [Baseline](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Baseline) | Gets the baseline of the spacer, which is the distance from the top of the spacer to the text baseline.  This property can return the height of the spacer to sit the spacer on top of the text baseline. |
+| [IsSpacerBefore](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.IsSpacerBefore) | Gets whether the spacer appears before the tagged range.  Most spacers return `true` for this value. |
 | [Key](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Key) | Gets an object that can be used to uniquely identify the spacer, so that an adornment can be rendered within its bounds. |
 | [Size](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.Size) | Gets the size of the spacer.  This must be a fixed size. |
 
@@ -90,6 +91,16 @@ Spacer characters are embedded in between other real text characters.  While spa
 
 </tbody>
 </table>
+
+## Spacers After Tagged Ranges
+
+While most intra-text spacers appear before the tagged text range, there are some scenarios where a spacer should appear at the end of the tagged text range instead.  A couple examples of this are zero-length tags at the end of a line that create space for adornments either indicating potential Artificial Intelligence completions or displaying the elapsed time between statements while debugging.
+
+![Screenshot](../../images/intra-text-adornment-elapsed-time.png)
+
+*An elapsed time intra-text adornment at the end of a line*
+
+The [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag).[IsSpacerBefore](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.IsSpacerBefore) property returns if the spacer should appear before the tagged text range.
 
 ## Creating an Intra-Text Adornment Manager
 

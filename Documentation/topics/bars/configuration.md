@@ -22,6 +22,13 @@ XAML is familiar to most @@PlatformTitle developers and popular IDEs like Visual
 
 Some controls are used in multiple locations, and using XAML will typically require controls to be redefined everywhere they are used. For instance, a button that appears on a ribbon tab, a quick access toolbar, and a context menu might have to be defined three times.  Care must be taken to ensure the same `Key` value is used for each control instance and common UI-centric properties like labels, tooltips, and icons will need to be repeated and synchronized between each control instance.
 
+@if (avalonia) {
+> [!WARNING]
+> Some ribbon and toolbar functionality requires cloning a control from one context (like a Ribbon group) to another (like the Quick Access Toolbar). When objects are defined in XAML, every effort is made to create a new object and copy relevant properties to the copy, but the process is not guaranteed to fully clone the control.  This process also requires the use of reflection and may encounter issues if trimming is enabled.  Properties assigned with bindings will typically only clone the current value of the `Binding` (not the `Binding` itself), so clones may not be notified when the value of a `Binding` changes.  Additionally, event handlers (like `Click` events on buttons) will not be cloned.
+>
+> MVVM does not have this issue since cloned objects can share the same view model.
+}
+
 ## MVVM Configuration
 
 MVVM is an extremely popular pattern used for @@PlatformTitle and one that is fully supported by Bars controls.
