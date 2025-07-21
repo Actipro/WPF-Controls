@@ -164,3 +164,7 @@ Our [Support](https://github.com/Actipro/.github/blob/main/Support.md) document 
 While the source code in this repo falls under the terms of the [included license document](https://github.com/Actipro/WPF-Controls/blob/develop/License.md), the Actipro End-User License Agreement (EULA) applies to usage of our commercial WPF control products.  
 
 Visit the [Actipro purchasing page](https://www.actiprosoftware.com/purchase) to learn more about product licensing or to order developer licenses.  [Contact our sales team](https://www.actiprosoftware.com/company/contact) if you have any questions.
+
+## Related Community Projects
+
+- [Bars.Mvvm.FluidAPI.Generator](https://github.com/bsundsbo/Bars.Mvvm.FluidAPI.Generator) - Fluid API and code generators for Actipro's Bars MVVM library.
