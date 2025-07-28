@@ -167,4 +167,4 @@ Visit the [Actipro purchasing page](https://www.actiprosoftware.com/purchase) to
 
 ## Related Community Projects
 
-- [Bars.Mvvm.FluidAPI.Generator](https://github.com/bsundsbo/Bars.Mvvm.FluidAPI.Generator) - Fluid API and code generators for Actipro's Bars MVVM library.
+- [Bars.Mvvm.FluentApi.Generator](https://github.com/bsundsbo/Bars.Mvvm.FluentApi.Generator) - Fluent API and code generators for Actipro's Bars MVVM library.
