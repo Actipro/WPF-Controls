@@ -97,10 +97,7 @@
 								</editor:EditorDocument.Language><![CDATA[# Advanced Python code editing for your end users with the 
 # Python Language Add-on for Actipro SyntaxEditor.
 #
-# Both v3.x and v2.x are supported.  Select the version from the
-# ComboBox above in the toolbar.
-#
-# Next, click the 'Locate Standard Lib' button and browse to any
+# Click the 'Locate Standard Lib' button and browse to any
 # .py file in your Python standard library's Lib folder so that
 # the resolver knows where the library is located and can provide
 # related IntelliPrompt.  This feature requires a desktop app.

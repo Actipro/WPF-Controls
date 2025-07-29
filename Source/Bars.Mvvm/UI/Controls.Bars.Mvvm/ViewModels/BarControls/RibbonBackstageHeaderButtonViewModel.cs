@@ -6,7 +6,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a button control within a ribbon backstage header.
 	/// </summary>
-	public class RibbonBackstageHeaderButtonViewModel : BarKeyedObjectViewModelBase {
+	public class RibbonBackstageHeaderButtonViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
 
 		private ICommand command;
 		private object commandParameter;
@@ -57,6 +57,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
 			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 			this.command = command;
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// INTERFACE IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.LargeImageSource {
+			get => null;
+			set { /* No-op since a large image is not supported by the control */ }
+		}
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.MediumImageSource {
+			get => null;
+			set { /* No-op since a medium image is not supported by the control */ }
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,11 +1,12 @@
 ﻿using System.Windows.Input;
+using System.Windows.Media;
 
 namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 	/// <summary>
 	/// Represents a view model for a size selection gallery control within a bar control.
 	/// </summary>
-	public class BarSizeSelectionMenuGalleryViewModel : BarGalleryViewModelBase {
+	public class BarSizeSelectionMenuGalleryViewModel : BarGalleryViewModelBase, IHasVariantImages {
 
 		private string defaultHeadingText;
 		private int menuColumnCount = 10;
@@ -43,6 +44,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 			ItemSpacing = 1.0;
 			MinItemHeight = 20.0;
 			MinItemWidth = 20.0;
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// INTERFACE IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.LargeImageSource {
+			get => null;
+			set { /* No-op since a large image is not supported by the control */ }
+		}
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.MediumImageSource {
+			get => null;
+			set { /* No-op since a medium image is not supported by the control */ }
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

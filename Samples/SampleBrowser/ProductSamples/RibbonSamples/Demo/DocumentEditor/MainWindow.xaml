@@ -787,7 +787,7 @@
 									<ribbon:Button Command="EditingCommands.AlignJustify" />
 								</ribbon:Menu>
 							</ribbon:SplitButton>
-							<ribbon:SplitButton Label="Disabled" ImageSourceSmall="/Images/Icons/FormatPainter16.png">
+							<ribbon:SplitButton Label="Disabled" ImageSourceSmall="/Images/Icons/FormatPainter16.png" Command="sample:ApplicationCommands.Disabled">
 								<ribbon:Menu>
 									<ribbon:Button Command="sample:ApplicationCommands.Disabled" />
 								</ribbon:Menu>
@@ -811,7 +811,7 @@
 									<ribbon:Button Command="EditingCommands.AlignJustify" />
 								</ribbon:Menu>
 							</ribbon:SplitButton>
-							<ribbon:SplitButton Label="Disabled" ImageSourceSmall="/Images/Icons/FormatPainter16.png">
+							<ribbon:SplitButton Label="Disabled" ImageSourceSmall="/Images/Icons/FormatPainter16.png" Command="sample:ApplicationCommands.Disabled">
 								<ribbon:Menu>
 									<ribbon:Button Command="sample:ApplicationCommands.Disabled" />
 								</ribbon:Menu>

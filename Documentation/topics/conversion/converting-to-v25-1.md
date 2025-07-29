@@ -66,3 +66,26 @@ No application logic updates should be required for this change, but user docume
 This version enhances the [Intra-Text Adornments](../syntaxeditor/user-interface/adornment/intra-text-adornments.md) feature with the ability to position the intra-text adornment after the tagged text range instead of before.  This option is handy for scenarios such as when AI suggestions should be displayed at the end of a line, after the last character.
 
 The [IsSpacerBefore](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag.IsSpacerBefore) property was added to the [IIntraTextSpacerTag](xref:ActiproSoftware.Text.Tagging.IIntraTextSpacerTag) interface to support this new option.  Any classes implementing this interface should return `true` for this property to retain prior version functionality where the adornment appears before the tagged range.
+
+## Shared Library String Resource Updates
+
+These existing string resources were updated to include underscore characters so that menu item accelerators are available:
+
+- `SRName.UICommandCloseWindowText`
+- `SRName.UICommandMaximizeWindowText`
+- `SRName.UICommandMinimizeWindowText`
+- `SRName.UICommandMoveWindowText`
+- `SRName.UICommandRestoreWindowText`
+- `SRName.UICommandSizeWindowText`
+
+Since some controls like window title bar buttons previously used the above string resources, new resources have been added that do not have underscores.  Use these new string resources in non-menu item contexts:
+
+- `SRName.UICloseButtonToolTip`
+- `SRName.UIMaximizeButtonToolTip`
+- `SRName.UIMinimizeButtonToolTip`
+- `SRName.UIMoveButtonToolTip`
+- `SRName.UIRestoreButtonToolTip`
+- `SRName.UISizeButtonToolTip`
+
+> [!TIP]
+> If you have previously localized the original string resources, you should also localize the new set of string resources.

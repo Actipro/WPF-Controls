@@ -116,19 +116,19 @@ In this example code, we will create and return a [MergableTokenReader](xref:Act
 /// </summary>
 public class SimpleParser : LLParserBase {
 
-    /// <summary>
-    /// Initializes a new instance of the <c>SimpleParser</c> class.
-    /// </summary>
-    public SimpleParser() : base(new SimpleGrammar()) {}
+	/// <summary>
+	/// Initializes a new instance of the <c>SimpleParser</c> class.
+	/// </summary>
+	public SimpleParser() : base(new SimpleGrammar()) {}
 
-    /// <summary>
-    /// Creates an <see cref="ITokenReader"/> that is used by the parser to read through tokens.
-    /// </summary>
-    /// <param name="reader">The <see cref="ITextBufferReader"/> that provides access to the text buffer.</param>
-    /// <returns>An <see cref="ITokenReader"/> that is used by the parser to read through tokens.</returns>
-    public override ITokenReader CreateTokenReader(ITextBufferReader reader) {
-        return new MergableTokenReader(reader, new SimpleLexer(new SimpleClassificationTypeProvider()));
-    }
+	/// <summary>
+	/// Creates an <see cref="ITokenReader"/> that is used by the parser to read through tokens.
+	/// </summary>
+	/// <param name="reader">The <see cref="ITextBufferReader"/> that provides access to the text buffer.</param>
+	/// <returns>An <see cref="ITokenReader"/> that is used by the parser to read through tokens.</returns>
+	public override ITokenReader CreateTokenReader(ITextBufferReader reader) {
+		return new MergableTokenReader(reader, new SimpleLexer(new SimpleClassificationTypeProvider()));
+	}
 }
 ```
 
@@ -151,7 +151,7 @@ protected virtual IParseData CreateParseData(IParseRequest request, IParserState
 	SimpleParseData parseData = new SimpleParseData();
 	this.InitializeParseData(parseData, state);
 
-    // Add custom parse data to the parseData object
+	// Add custom parse data to the parseData object
 
 	return parseData;
 }

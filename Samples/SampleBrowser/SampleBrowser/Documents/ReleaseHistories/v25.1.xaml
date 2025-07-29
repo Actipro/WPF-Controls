@@ -9,7 +9,79 @@
 		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
 			<Control x:Name="focusCaptureControl" />
 
-			
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">7/29/2025 - Version 25.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added missing gallery item brushes when in a high contrast theme." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonTabViewModel.IsEnabled property." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstageTabViewModel.IsEnabled property." />
+				<sampleBrowser:BulletContentControl Content="Added the RibbonBackstageViewModel.CanSelectFirstTabOnOpen property." />
+				<sampleBrowser:BulletContentControl Content="Added a setter declaration to the IHasTag.Tag property." />
+				<sampleBrowser:BulletContentControl Content="Added IHasVariantImages interface implementation to any view model that had at least one SmallImageSource, MediumImageSource, or LargeImageSource property defined." />
+				<sampleBrowser:BulletContentControl Content="Added a BarGalleryBase.StaysOpenOnClick property that prevents focus from moving back to the main focus scope after a gallery item click." />
+				<sampleBrowser:BulletContentControl Content="Updated a popup BarMenuItem whose key tip is accessed to focus its first child menu item." />
+				<sampleBrowser:BulletContentControl Content="Updated KeyTipService to not start key tip mode when the mouse wheel is turned while Alt is initially held down." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonTabHeader to match the IsEnabled state of the corresponding RibbonTab." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonGroupLauncherButton.ContentTemplate to support glyph customization." />
+				<sampleBrowser:BulletContentControl Content="Updated menus with multiple sequential BarMenuSeparator controls to only render the first one." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt completion list rendering to slightly improve performance." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where a disabled BarComboBox didn't always render properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where RibbonBackstage might auto-select a first tab that was configured to not be visible." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the minimized Ribbon popup could close when an in-ribbon gallery's scroll buttons were clicked." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where showing labels on items in a QAT below the ribbon could throw an exception." />
+				<sampleBrowser:BulletContentControl Content="Fixed InvalidOperationException that could be thrown in rare scenarios when deserializing a Ribbon." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added support to close auto-hide tool window tabs on middle-click." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the Spinner control's Style to better support customization." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated TreeListBox tree lines to scroll horizontally when appropriate." />
+				<sampleBrowser:BulletContentControl Content="Updated the TreeListView header cell used for padding to not render a right-side border." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Ribbon</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated control templates to improve the rendering of disabled checked buttons." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the logic for executing shell context menu item commands." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved selection adjustment logic after text changes." />
+				<sampleBrowser:BulletContentControl Content="Updated the recently added IIntraTextSpacerTag.IsSpacerBefore property to have a default implementation in .NET." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved handling of interpolated string expressions." />
+				<sampleBrowser:BulletContentControl Content="Updated the resolver to properly locate local functions declared in scope but after the context location." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added an IncludeSourceLocation option on Python IntelliPrompt providers that can be set to false to hide the source module path." />
+				<sampleBrowser:BulletContentControl Content="Updated IntelliPrompt to display docstrings defined for fields and variables." />
+				<sampleBrowser:BulletContentControl Content="Updated the Python parser to support Python v3.11 syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the Python parser to support Python v3.10 syntax." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the Slider control templates." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Refactored ResizablePopupContentHost to facilitate virtualization in some scenarios." />
+				<sampleBrowser:BulletContentControl Content="Updated UICommand*WindowText string resources to have underscores for menu item accelerator support, and added new UI*ButtonToolTip string resources for use with window title bar buttons." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where Avatar wasn't deriving initials for e-mail addresses properly." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">5/13/2025 - Version 25.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

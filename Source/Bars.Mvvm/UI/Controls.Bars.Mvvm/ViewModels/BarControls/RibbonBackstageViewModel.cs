@@ -9,6 +9,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	public class RibbonBackstageViewModel : ObservableObjectBase, IHasTag {
 
 		private bool canClose = true;
+		private bool canSelectFirstTabOnOpen = true;
 		private DataTemplateSelector contentTemplateSelector;
 		private bool isOpen;
 		private object selectedItem;
@@ -36,6 +37,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (canClose != value) {
 					canClose = value;
 					this.NotifyPropertyChanged(nameof(CanClose));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether the first tab should be selected when the Backstage is opened.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool CanSelectFirstTabOnOpen {
+			get => canSelectFirstTabOnOpen;
+			set {
+				if (canSelectFirstTabOnOpen != value) {
+					canSelectFirstTabOnOpen = value;
+					this.NotifyPropertyChanged(nameof(CanSelectFirstTabOnOpen));
 				}
 			}
 		}

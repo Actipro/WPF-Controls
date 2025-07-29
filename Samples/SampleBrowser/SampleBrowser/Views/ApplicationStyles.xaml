@@ -553,6 +553,25 @@
 		<Setter Property="Margin" Value="0,20" />
 	</Style>
 
+	<!-- SampleSectionVerticalRuleStyle -->
+	<Style x:Key="SampleSectionVerticalRuleStyle" TargetType="Separator">
+		<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}" />
+		<Setter Property="Margin" Value="30,0" />
+		<Setter Property="Width" Value="1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Separator">
+					<Rectangle Fill="{TemplateBinding Background}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<!-- SampleSectionSmallVerticalRuleStyle -->
+	<Style x:Key="SampleSectionSmallVerticalRuleStyle" TargetType="Separator" BasedOn="{StaticResource SampleSectionVerticalRuleStyle}">
+		<Setter Property="Margin" Value="20,0" />
+	</Style>
+
 	<!-- SampleFigureHeadingTextBlockStyle -->
 	<Style x:Key="SampleFigureHeadingTextBlockStyle" TargetType="TextBlock">
 		<Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />

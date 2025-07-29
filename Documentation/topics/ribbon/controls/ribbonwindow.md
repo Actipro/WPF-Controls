@@ -56,9 +56,9 @@ Properties like [TitleBarRightContentTemplate](xref:@ActiproUIRoot.Themes.Window
 
 ```xaml
 <ribbon:RibbonWindow.Resources>
-    <DataTemplate x:Key="TitleBarRightContent">
-        <TextBlock>This is the right content</TextBlock>
-    </DataTemplate>
+	<DataTemplate x:Key="TitleBarRightContent">
+		<TextBlock>This is the right content</TextBlock>
+	</DataTemplate>
 </ribbon:RibbonWindow.Resources>
 ```
 
@@ -66,16 +66,16 @@ This template can then be applied to the `WindowChrome` of the `RibbonWindow` in
 
 ```csharp
 public MainWindow() {
-    ' Allow component initialization to complete first
-    InitializeComponent();
+	' Allow component initialization to complete first
+	InitializeComponent();
 
-    ' Attempt to locate the DataTemplate defined as a resource (make sure the key matches the resource)
-    var template = TryFindResource("TitleBarRightContent") as DataTemplate;
-    if (template != null) {
-        ' Get the WindowChrome pre-installed by this RibbonWindow
-        var chrome = WindowChrome.GetChrome(this);
-        ' Assign the template
-        chrome.TitleBarRightContentTemplate = template;
-    }
+	' Attempt to locate the DataTemplate defined as a resource (make sure the key matches the resource)
+	var template = TryFindResource("TitleBarRightContent") as DataTemplate;
+	if (template != null) {
+		' Get the WindowChrome pre-installed by this RibbonWindow
+		var chrome = WindowChrome.GetChrome(this);
+		' Assign the template
+		chrome.TitleBarRightContentTemplate = template;
+	}
 }
 ```

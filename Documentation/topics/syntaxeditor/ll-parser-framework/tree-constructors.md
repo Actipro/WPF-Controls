@@ -376,7 +376,7 @@ This example creates an AST node with value `CompilationUnit` that contains the 
 
 ```csharp
 compilationUnit.Production = functionDeclaration.ZeroOrMore().SetLabel("decl")
-    > Ast("CompilationUnit", AstChildrenFrom("decl"));
+	> Ast("CompilationUnit", AstChildrenFrom("decl"));
 ```
 
 When parsing the following input, the result is shown in the diagram below:
@@ -402,7 +402,7 @@ This example creates a `FunctionAccessExpression` AST node whose first child com
 
 ```csharp
 functionAccessExp.Production = @identifier["name"] + @openParenthesis + functionArgumentList["args"].Optional() + @closeParenthesis
-    > Ast("FunctionAccessExpression", AstFrom("name"), AstConditionalFrom("Arguments", "args"));
+	> Ast("FunctionAccessExpression", AstFrom("name"), AstConditionalFrom("Arguments", "args"));
 ```
 
 When parsing the following input, the result is shown in the diagram below:
