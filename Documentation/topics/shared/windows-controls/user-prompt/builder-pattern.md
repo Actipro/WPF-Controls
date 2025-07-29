@@ -55,7 +55,7 @@ The following example demonstrates how a global callback can be registered to cu
 ```csharp
 UserPromptBuilder.RegisterGlobalConfigureCallback(_ => _
 	.WithHeaderFontSize(16)
-    .WithHeaderForeground(new SolidColorBrush(Colors.Blue))
+	.WithHeaderForeground(new SolidColorBrush(Colors.Blue))
 );
 ```
 }

@@ -85,6 +85,7 @@
 			<sampleBrowser:ProductFamilyInfo.News>
 				<sampleBrowser:ListItemInfo Title="C# parser updated to support C# 13 syntax" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/DotNetAddonCSharpEditor/MainControl"/>
 				<sampleBrowser:ListItemInfo Title="C# syntax highlights interpolated string expressions and supports IntelliPrompt within" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/DotNetAddonCSharpEditor/MainControl"/>
+				<sampleBrowser:ListItemInfo Title="Python parser updated to support Python 3.11 syntax" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/PythonAddonPythonEditor/MainControl"/>
 				<sampleBrowser:ListItemInfo Title="Intra-text adornments can render after tagged ranges" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/QuickStart/AdornmentsIntraTextNotes/MainControl"/>
 				<sampleBrowser:ListItemInfo Title="Outlining margin appearance modernized" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/MainControl"/>
 				<sampleBrowser:ListItemInfo Title="XML language improved formatting" TargetUri="https://ActiproSoftware/ProductSamples/SyntaxEditorSamples/Demo/WebAddonXmlEditor/MainControl"/>
@@ -98,7 +99,7 @@
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="SDI Code Editor (external window)" CanFocusOnLoad="False" Path="/ProductSamples/SyntaxEditorSamples/Demo/SdiCodeEditor/OverviewDocument"/>
 			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Demos" Title="C# Editor (.NET Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/DotNetAddonCSharpEditor/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="Visual Basic Editor (.NET Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/DotNetAddonVBEditor/MainControl"/>
-			<sampleBrowser:ProductItemInfo Category="Demos" Title="Python Editor (Python Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/PythonAddonPythonEditor/MainControl"/>
+			<sampleBrowser:ProductItemInfo BlurbText="Updated!" Category="Demos" Title="Python Editor (Python Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/PythonAddonPythonEditor/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="JavaScript Editor (Web Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/WebAddonJavaScriptEditor/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="HTML Editor (Web Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/WebAddonHtmlEditor/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Demos" Title="XML Editor (Web Lang. Add-on)" HasCustomStatusBar="True" Path="/ProductSamples/SyntaxEditorSamples/Demo/WebAddonXmlEditor/MainControl"/>

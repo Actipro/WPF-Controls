@@ -11,6 +11,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private VariantCollection controlVariants;
 		private string description;
 		private VariantCollection groupVariants;
+		private bool isEnabled = true;
 		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
@@ -106,6 +107,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (groupVariants != value) {
 					groupVariants = value;
 					this.NotifyPropertyChanged(nameof(GroupVariants));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether the control is currently enabled.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsEnabled {
+			get => isEnabled;
+			set {
+				if (isEnabled != value) {
+					isEnabled = value;
+					this.NotifyPropertyChanged(nameof(IsEnabled));
 				}
 			}
 		}

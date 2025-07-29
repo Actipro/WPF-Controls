@@ -258,9 +258,7 @@ The [DockableToolBar](xref:@ActiproUIRoot.Controls.Bars.DockableToolBar).[HasOpt
 
 ## Key Tips
 
-Key tips in child controls are supported since [BarMainMenu](xref:@ActiproUIRoot.Controls.Bars.BarMainMenu) is a root key tip scope.  Pressing keys like <kbd>Alt</kbd> will activate key tip mode the same as with a ribbon.
-
-See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
+[Key Tips](../ribbon-features/key-tips.md) are not supported within dockable toolbars.
 
 ## Screen Tips
 

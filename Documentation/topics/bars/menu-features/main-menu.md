@@ -81,7 +81,9 @@ Those [BarMenuItem](xref:@ActiproUIRoot.Controls.Bars.BarMenuItem) children can 
 
 ## Key Tips
 
-[Key Tips](../ribbon-features/key-tips.md) are not supported within a main menu.
+Key tips in child controls are supported since [BarMainMenu](xref:@ActiproUIRoot.Controls.Bars.BarMainMenu) is a root key tip scope.  Pressing keys like <kbd>Alt</kbd> will activate key tip mode the same as with a ribbon.
+
+See the [Key Tips](../ribbon-features/key-tips.md) topic for more information on key tips.
 
 ## Screen Tips
 

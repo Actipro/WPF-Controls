@@ -276,15 +276,37 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="Slider">
-					<StackPanel>
-						<Slider Width="150" TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7" />
-						<Slider Width="150" TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7"
-								IsEnabled="False" />
-						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
-						<Slider Width="150" TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
-								SelectionEnd="7" />
-						<Slider Width="150" TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
-								SelectionEnd="7" IsEnabled="False" />
+					<StackPanel Orientation="Horizontal">
+						<StackPanel Width="150">
+							<Slider TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7" />
+							<Slider Margin="0,10,0,0" TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7"
+									IsEnabled="False" />
+							<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+							<Slider TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" />
+							<Slider Margin="0,10,0,0" TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" IsEnabled="False" />
+							<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+							<Slider TickPlacement="BottomRight" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" />
+							<Slider Margin="0,10,0,0" TickPlacement="BottomRight" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" IsEnabled="False" />
+						</StackPanel>
+						<StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+							<Slider Orientation="Vertical" TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7" />
+							<Slider Margin="10,0,0,0" Orientation="Vertical" TickPlacement="Both" IsSelectionRangeEnabled="True" SelectionStart="3" SelectionEnd="7"
+									IsEnabled="False" />
+							<Separator Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" />
+							<Slider Orientation="Vertical" TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" />
+							<Slider Margin="10,0,0,0" Orientation="Vertical" TickPlacement="TopLeft" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" IsEnabled="False" />
+							<Separator Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" />
+							<Slider Orientation="Vertical" TickPlacement="BottomRight" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" />
+							<Slider Margin="10,0,0,0" Orientation="Vertical" TickPlacement="BottomRight" IsSelectionRangeEnabled="True" SelectionStart="3"
+									SelectionEnd="7" IsEnabled="False" />
+						</StackPanel>
 					</StackPanel>
 				</sampleBrowser:LabeledCardControl>
 

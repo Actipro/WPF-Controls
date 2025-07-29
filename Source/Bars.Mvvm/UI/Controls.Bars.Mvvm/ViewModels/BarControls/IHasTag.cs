@@ -8,7 +8,7 @@
 		/// <summary>
 		/// Gets or sets a user-defined object attached to the control.
 		/// </summary>
-		object Tag { get; }
+		object Tag { get; set; }
 
 	}
 

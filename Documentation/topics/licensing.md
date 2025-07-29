@@ -85,6 +85,24 @@ public partial class App : Application {
 > [!WARNING]
 > When using this licensing option, *do not* include any Actipro entries in your application's *licenses.licx* file.
 
+### Notes on Unit Tests
+
+If your application build job runs any unit tests that create Actipro UI controls, the `ActiproLicenseManager.RegisterLicense` method must be called before the Actipro UI controls are created to avoid any licensing-related prompts or exceptions.
+
+```csharp
+using ActiproSoftware.Products;
+...
+public void OnTestActiproControl() {
+	// NOTE: Set "licensee" and "licenseKey" variables to your license information
+	ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
+
+	// Unit test logic here that creates an Actipro control
+	...
+}
+```
+
+The license registration could alternatively be placed in a more centralized location, such as in the unit test class constructor.  The important thing is that it is called before Actipro UI controls are created.
+
 ## Licensing Via a Licenses.licx File
 
 This legacy licensing option is only available for applications that target the classic .NET Framework and is what Actipro exclusively used prior to v20.1.
@@ -152,7 +170,7 @@ The contents of a *licenses.licx* file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the *licenses.licx* file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=25.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=25.1.1.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 > [!IMPORTANT]

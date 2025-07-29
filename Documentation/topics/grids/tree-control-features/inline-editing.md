@@ -45,7 +45,7 @@ By specifying a `ContentTemplate` on the content control, you can surround the b
 
 ```xaml
 <DataTemplate>
-    <StackPanel Orientation="Horizontal">
+	<StackPanel Orientation="Horizontal">
 		<Image Width="16" Height="16" Source="{Binding ImageSource}" Stretch="None" VerticalAlignment="Center" />
 		<shared:EditableContentControl Margin="2,0,0,0" Content="{Binding Name, Mode=TwoWay}" IsEditing="{Binding IsEditing, Mode=TwoWay}">
 			<shared:EditableContentControl.ContentTemplate>
@@ -58,7 +58,7 @@ By specifying a `ContentTemplate` on the content control, you can surround the b
 				</DataTemplate>
 			</shared:EditableContentControl.ContentTemplate>
 		</shared:EditableContentControl>
-    </StackPanel>
+	</StackPanel>
 </DataTemplate>
 ```
 

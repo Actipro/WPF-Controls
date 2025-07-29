@@ -32,6 +32,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private int maxMenuColumnCount = int.MaxValue;
 		private int maxRibbonColumnCount = 15;
 		private ImageSource mediumImageSource;
+		private double maxMenuGalleryHeight = 1000.0;
 		private ControlResizeMode menuResizeMode = ControlResizeMode.None;
 		private int minLargeRibbonColumnCount = 5;
 		private int minMediumRibbonColumnCount = 3;
@@ -364,6 +365,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (maxMenuColumnCount != value) {
 					maxMenuColumnCount = value;
 					this.NotifyPropertyChanged(nameof(MaxMenuColumnCount));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Gets or sets the maximum height of the menu gallery in the popup.
+		/// </summary>
+		/// <value>
+		/// The maximum popup height.
+		/// The default value is <c>1000.0</c>.
+		/// </value>
+		public double MaxMenuGalleryHeight {
+			get => maxMenuGalleryHeight;
+			set {
+				if (maxMenuGalleryHeight != value) {
+					maxMenuGalleryHeight = value;
+					this.NotifyPropertyChanged(nameof(MaxMenuGalleryHeight));
 				}
 			}
 		}

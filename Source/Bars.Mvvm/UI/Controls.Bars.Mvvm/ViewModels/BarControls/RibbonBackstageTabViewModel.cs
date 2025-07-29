@@ -7,13 +7,14 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a tab control within a ribbon backstage.
 	/// </summary>
-	public class RibbonBackstageTabViewModel : BarKeyedObjectViewModelBase {
+	public class RibbonBackstageTabViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
 
 		private object content;
 		private DataTemplate contentTemplate;
 		private DataTemplateSelector contentTemplateSelector;
 		private string description;
 		private RibbonBackstageHeaderAlignment headerAlignment = RibbonBackstageHeaderAlignment.Top;
+		private bool isEnabled = true;
 		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
@@ -44,6 +45,16 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
 			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// INTERFACE IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.MediumImageSource {
+			get => null;
+			set { /* No-op since a medium image is not supported by the control */ }
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,6 +124,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (headerAlignment != value) {
 					headerAlignment = value;
 					this.NotifyPropertyChanged(nameof(HeaderAlignment));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether the control is currently enabled.
+		/// </summary>
+		/// <value>
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool IsEnabled {
+			get => isEnabled;
+			set {
+				if (isEnabled != value) {
+					isEnabled = value;
+					this.NotifyPropertyChanged(nameof(IsEnabled));
 				}
 			}
 		}

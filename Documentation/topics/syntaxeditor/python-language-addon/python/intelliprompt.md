@@ -53,6 +53,18 @@ language.RegisterService(new PythonParameterInfoProvider() { DocstringDisplayMod
 language.RegisterService(new PythonQuickInfoProvider() { DocstringDisplayMode = PythonDocstringDisplayMode.All });
 ```
 
+## Hiding Source Location Information
+
+By default, source location information such as module path is included in IntelliPrompt popups.  This behavior can be altered for various IntelliPrompt providers if that source location information should not be displayed.
+
+This code tells each IntelliPrompt provider to hide source location information:
+
+```csharp
+language.RegisterService(new PythonCompletionProvider() { IncludeSourceLocation = false });
+language.RegisterService(new PythonParameterInfoProvider() { IncludeSourceLocation = false });
+language.RegisterService(new PythonQuickInfoProvider() { IncludeSourceLocation = false });
+```
+
 ## Disabling Automated IntelliPrompt
 
 Automated IntelliPrompt features can be easily turned off for a language by unregistering the appropriate services that are installed by default.

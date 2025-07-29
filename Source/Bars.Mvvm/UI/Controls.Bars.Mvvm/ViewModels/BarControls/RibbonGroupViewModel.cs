@@ -6,7 +6,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 	/// <summary>
 	/// Represents a view model for a group within a ribbon tab.
 	/// </summary>
-	public class RibbonGroupViewModel : BarKeyedObjectViewModelBase {
+	public class RibbonGroupViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
 
 		private bool canAutoCollapse = true;
 		private bool canCloneToRibbonQuickAccessToolBar = true;
@@ -63,6 +63,16 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 					collapsedButtonKeyTipText = "Z" + collapsedButtonKeyTipText;
 			}
 			this.collapsedButtonKeyTipText = collapsedButtonKeyTipText;
+		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// INTERFACE IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		/// <inheritdoc/>
+		ImageSource IHasVariantImages.MediumImageSource {
+			get => null;
+			set { /* No-op since a medium image is not supported by the control */ }
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
