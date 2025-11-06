@@ -2,6 +2,7 @@
 	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumListBoxIntro.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.Common"
 	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -14,6 +15,8 @@
 
 			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
 				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listBox1, Path=IsNullAllowed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listBox1, Path=NullValueText}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listBox1, Path=UseDisplayAttributes}" />
 					<grids:PropertyModel DisplayName="Sort comparer">
 						<grids:PropertyModel.ValueTemplate>
@@ -56,15 +59,18 @@
 
 				<sampleBrowser:LabeledCardControl MinWidth="250" Label="Enum w/ FlagsAttribute" HorizontalAlignment="Center">
 					<StackPanel>
-						<editors:EnumListBox x:Name="listBox1" EnumValue="{Binding EnumWithFlags}" />
+						<editors:EnumListBox x:Name="listBox1" EnumType="{x:Type common:EnumWithFlags}" EnumValue="{Binding EnumWithFlags}" />
 						<TextBlock Margin="0,20,0,0" Text="{Binding ElementName=listBox1, Path=EnumValue}" Style="{StaticResource SampleLargeValueTextBlockStyle}" />
 					</StackPanel>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl MinWidth="250" Label="Enum w/o FlagsAttribute" HorizontalAlignment="Center">
 					<StackPanel>
-						<editors:EnumListBox x:Name="listBox2" EnumValue="{Binding EnumWithoutFlags}" 
-												 UseDisplayAttributes="{Binding ElementName=listBox1, Path=UseDisplayAttributes}" />
+						<editors:EnumListBox x:Name="listBox2" EnumType="{x:Type common:EnumWithoutFlags}" EnumValue="{Binding EnumWithoutFlags}" 
+											 IsNullAllowed="{Binding ElementName=listBox1, Path=IsNullAllowed}"
+											 NullValueText="{Binding ElementName=listBox1, Path=NullValueText}"
+											 UseDisplayAttributes="{Binding ElementName=listBox1, Path=UseDisplayAttributes}"
+											 />
 						<TextBlock Margin="0,20,0,0" Text="{Binding ElementName=listBox2, Path=EnumValue}" Style="{StaticResource SampleLargeValueTextBlockStyle}" />
 					</StackPanel>
 				</sampleBrowser:LabeledCardControl>

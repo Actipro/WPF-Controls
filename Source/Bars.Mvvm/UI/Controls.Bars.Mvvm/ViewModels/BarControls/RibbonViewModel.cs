@@ -29,6 +29,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private RibbonQuickAccessToolBarViewModel quickAccessToolBar;
 		private RibbonQuickAccessToolBarLocation quickAccessToolBarLocation = RibbonQuickAccessToolBarLocation.Above;
 		private RibbonQuickAccessToolBarMode quickAccessToolBarMode = RibbonQuickAccessToolBarMode.Visible;
+		private RibbonTabViewModel selectedItem;
 		private RibbonTabRowToolBarViewModel tabRowToolBar;
 		private object tag;
 		private UserInterfaceDensity userInterfaceDensity = UserInterfaceDensity.Compact;
@@ -358,7 +359,21 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <summary>
+		/// Gets or sets a <see cref="RibbonTabViewModel"/> for the currently selected tab.
+		/// </summary>
+		/// <value>A <see cref="RibbonTabViewModel"/> for the currently selected tab.</value>
+		public RibbonTabViewModel SelectedItem {
+			get => selectedItem;
+			set {
+				if (selectedItem != value) {
+					selectedItem = value;
+					this.NotifyPropertyChanged(nameof(SelectedItem));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets a <see cref="RibbonTabRowToolBarViewModel"/> for the tab row toolbar that optionally appears to the right of the tabs.
 		/// </summary>

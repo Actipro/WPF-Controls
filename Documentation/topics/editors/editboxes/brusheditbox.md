@@ -97,6 +97,8 @@ When `false`, the edit box will only allow selection of solid color brushes.
 
 The [BrushEditBox](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox).[HasSwatch](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.HasSwatch) property defaults to `true`, meaning that a small swatch will display the `Brush` value.  Set the property to `false` to hide the swatch.
 
+The [CanSwatchStretch](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.CanSwatchStretch) property determines if the swatch stretches horizontally when the [HasText](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.HasText) property is `false`.
+
 The [SwatchMargin](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.SwatchMargin) property sets the margin thickness around the swatch.
 
 ## Text Display

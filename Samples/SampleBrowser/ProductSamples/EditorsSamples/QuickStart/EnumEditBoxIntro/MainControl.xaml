@@ -2,6 +2,7 @@
 	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumEditBoxIntro.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.Common"
 	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -16,7 +17,8 @@
 			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
 				<sampleBrowser:SampleOptionsPropertyGrid>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNullAllowed}" />
-					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=NullValueText}" />
+                    <grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=UseDisplayAttributes}" />
 					<grids:PropertyModel DisplayName="Sort comparer">
@@ -58,7 +60,7 @@
 		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
 
 			<editors:EnumEditBox x:Name="editBox" HorizontalAlignment="Center" MinWidth="250" PlaceholderText="Enum" 
-								 IsNullAllowed="True" EnumType="{Binding EnumWithFlagsType}" Value="{Binding EnumWithFlagsCurrentValue}" />
+								 IsNullAllowed="True" EnumType="{x:Type common:EnumWithFlags}" Value="{Binding NullableEnumWithFlagsCurrentValue}" />
 
 			<views:MultiColumnPanel MaxWidth="{StaticResource SampleNarrowMaxWidth}" MaxColumnCount="2" ColumnMinWidth="200">
 				<StackPanel Margin="0,50,0,0">
@@ -75,20 +77,20 @@
 
 			<sampleBrowser:SampleGalleryControl>
 
-				<sampleBrowser:LabeledCardControl Label="A non-Flags enumeration (note the alternate popup style)">
-					<editors:EnumEditBox MinWidth="200" Value="{Binding EnumWithoutFlagsCurrentValue}" PlaceholderText="Enum value" IsNullAllowed="True" HorizontalAlignment="Left" />
+				<sampleBrowser:LabeledCardControl Label="A non-Flags enumeration (note the alternate popup style) with nulls allowed">
+					<editors:EnumEditBox MinWidth="200" Value="{Binding NullableEnumWithoutFlagsCurrentValue}" PlaceholderText="Enum value" IsNullAllowed="True" HorizontalAlignment="Left" />
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="A non-Flags enumeration with name-based sorting">
-					<editors:EnumEditBox x:Name="sortedEditBox" MinWidth="200" Value="{Binding EnumWithoutFlagsCurrentValue}" PlaceholderText="Enum value" IsNullAllowed="True" HorizontalAlignment="Left" />
+					<editors:EnumEditBox x:Name="sortedEditBox" MinWidth="200" Value="{Binding EnumWithoutFlagsCurrentValue}" PlaceholderText="Enum value" HorizontalAlignment="Left" />
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="Editable with placeholder text telling the user the kind of data to enter">
-					<editors:EnumEditBox MinWidth="200" EnumType="{Binding EnumWithFlagsType}" PlaceholderText="Enum value" IsNullAllowed="True" IsEditable="True" HorizontalAlignment="Left" />
+					<editors:EnumEditBox MinWidth="200" EnumType="{x:Type common:EnumWithFlags}" PlaceholderText="Enum value" IsNullAllowed="True" Value="{x:Null}" IsEditable="True" HorizontalAlignment="Left" />
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="By disabling null values, a value will always be required">
-					<editors:EnumEditBox MinWidth="200" EnumType="{Binding EnumWithFlagsType}" HorizontalAlignment="Left" />
+					<editors:EnumEditBox MinWidth="200" EnumType="{x:Type common:EnumWithFlags}" HorizontalAlignment="Left" />
 				</sampleBrowser:LabeledCardControl>
 
 			</sampleBrowser:SampleGalleryControl>

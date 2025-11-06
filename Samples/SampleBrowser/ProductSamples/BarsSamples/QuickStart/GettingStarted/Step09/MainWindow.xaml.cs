@@ -49,7 +49,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.S
 
 			// SAMPLE NOTE 9.1:
 			//		Each RibbonBackstageTabViewModel configured for the Backstage must have a view to associated with the view model,
-			//		so configure the RibbonBackstageViewModel to use the custom DataTemplateSelected configured in the XAML of this sample.
+			//		so configure the RibbonBackstageViewModel to use the custom DataTemplateSelector configured in the XAML of this sample.
 			viewModel.Ribbon.Backstage.ContentTemplateSelector = this.FindResource(SampleResourceKeys.SampleBackstageTabContentTemplateSelector) as DataTemplateSelector;
 			this.ViewModel = viewModel;
 		}

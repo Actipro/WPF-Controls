@@ -25,7 +25,9 @@ Visual Studio 2019 does not support .NET 6 or higher, so it can no longer be use
 
 The [RibbonBackstageTabViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel) class added new [Content](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel.Content), [ContentTemplate](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel.ContentTemplate), and [ContentTemplateSelector](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel.ContentTemplateSelector) properties.
 
-Previously, most backstage tab view models would typically use an implicit `DataTemplate` based on the derived view model type.  To continue using an implicit `DataTemplate` in this manner, most view models that derive from [RibbonBackstageTabViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel) will need to initialize the `Content` property to an instance of the view model since the `Type` of the `Content` will determine the implicit `DataTemplate`.  The following example demonstrates this approach:
+Previously, most backstage tab view models would typically use an implicit `DataTemplate` based on the derived view model type.  To continue using an implicit `DataTemplate` in this manner, most view models that derive from [RibbonBackstageTabViewModel](xref:@ActiproUIRoot.Controls.Bars.Mvvm.RibbonBackstageTabViewModel) will need to initialize the `Content` property to an instance of the view model since the `Type` of the `Content` will determine the implicit `DataTemplate`.
+
+Starting with v25.1.2, each `RibbonBackstageTabViewModel` will initialize the `Content` property to an instance of itself to improve the out-of-the-box experience.  Those using *only* v25.1.0 or v25.1.1 will need to explicitly assign the `Content` property as demonstrated in the following sample:
 
 ```csharp
 public class CustomRibbonBackstageTabViewModel : RibbonBackstageTabViewModel {

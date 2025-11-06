@@ -13,6 +13,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ICommand command;
 		private object commandParameter;
 		private string description;
+		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
 		private bool isStarSizingAllowed;
 		private bool isVisible = true;
 		private string keyTipText;
@@ -125,6 +126,17 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (description != value) {
 					description = value;
 					this.NotifyPropertyChanged(nameof(Description));
+				}
+			}
+		}
+
+		/// <inheritdoc cref="BarGalleryViewModel.InvocationFocusBehavior"/>
+		public InvocationFocusBehavior InvocationFocusBehavior {
+			get => invocationFocusBehavior;
+			set {
+				if (invocationFocusBehavior != value) {
+					invocationFocusBehavior = value;
+					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
 				}
 			}
 		}

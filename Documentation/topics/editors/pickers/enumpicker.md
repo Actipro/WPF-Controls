@@ -68,6 +68,10 @@ public enum SampleEnum {
 }
 ```
 
+## Null Value Support
+
+When the [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.IsNullAllowed) property is `true`, the end user can set a `null` value.  A `"(Not Set)"` option will be available in the picker that corresponds to a `null` value.  That text can be changed by altering the [NullValueText](xref:@ActiproUIRoot.Controls.Editors.EnumPicker.NullValueText) property.
+
 ## Sample XAML
 
 This control can be placed within any other XAML container control, such as a `Page` or `Panel` with this sort of XAML:

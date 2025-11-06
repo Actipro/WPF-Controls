@@ -61,3 +61,25 @@ language.RegisterParser(new CSharpParser(grammar));
 
 > [!NOTE]
 > The [SyntaxLanguageExtensions](xref:ActiproSoftware.Text.SyntaxLanguageExtensions).[RegisterParser](xref:ActiproSoftware.Text.SyntaxLanguageExtensions.RegisterParser*) method in the code snippet above is a helper extension method that gets added to [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) objects when the `ActiproSoftware.Text` namespace is imported.  See the [Service Locator Architecture](../../language-creation/service-locator-architecture.md) topic for details on registering and retrieving various service object instances, both via extension methods and generically, as there are some additional requirements for using the extension methods.
+
+## Supporting Custom Preprocessor Directives
+
+The prebuilt [CSharpLexer](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpLexer) supports lexing all preprocessor directives in the C# specification.  The lexer is used for syntax highlighting and parser.  Unrecognized preprocessor directives will not be syntax highlighted and will yield parse errors.
+
+A static [CSharpLexer](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpLexer).[OtherPreprocessorDirectives](xref:ActiproSoftware.Text.Languages.CSharp.Implementation.CSharpLexer.OtherPreprocessorDirectives) property is a collection of additional preprocessor directive names that should be allowed beyond the default set.  For instance, if using C# scripting and ".csx" files, you may wish to allow the lexer to support `#load` and `#r` preprocessor directives.
+
+This code at app startup would allow those additional preprocessor directives to be recognized:
+
+```csharp
+// Update the lexer to recognize a couple custom preprocessor directive names
+CSharpLexer.OtherPreprocessorDirectives.Clear();
+CSharpLexer.OtherPreprocessorDirectives.Add("load");
+CSharpLexer.OtherPreprocessorDirectives.Add("r");
+```
+
+Without the configuration above, the following lines in a C# document would trigger syntax errors:
+
+```csharp
+#load "script.csx"
+#r "System.Linq"
+```

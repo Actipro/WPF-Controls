@@ -10,9 +10,15 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 	/// Represents a data-bound column for use in a <c>DataGrid</c> that utilizes the <see cref="ColorEditBox"/> control.
 	/// </summary>
 	public class DataGridColorColumn : DataGridPartEditBoxColumnBase<Color?> {
-	
+
 		#region Dependency Properties
-		
+
+		/// <summary>
+		/// Identifies the <see cref="CanSwatchStretch"/> dependency property.  This field is read-only.
+		/// </summary>
+		/// <value>The identifier for the <see cref="CanSwatchStretch"/> dependency property.</value>
+		public static readonly DependencyProperty CanSwatchStretchProperty = DependencyProperty.Register("CanSwatchStretch", typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
+
 		/// <summary>
 		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
 		/// </summary>
@@ -61,13 +67,30 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 		protected override void ApplyStandardValues(FrameworkElement targetElement) {
 			base.ApplyStandardValues(targetElement);
 			if (targetElement is ColorEditBox) {
+				this.ApplyValue(CanSwatchStretchProperty, targetElement, ColorEditBox.CanSwatchStretchProperty);
 				this.ApplyValue(DefaultValueProperty, targetElement, ColorEditBox.DefaultValueProperty);
 				this.ApplyValue(HasSwatchProperty, targetElement, ColorEditBox.HasSwatchProperty);
 				this.ApplyValue(HasTextProperty, targetElement, ColorEditBox.HasTextProperty);
 				this.ApplyValue(IsAlphaEnabledProperty, targetElement, ColorEditBox.IsAlphaEnabledProperty);
 			}
 		}
-		
+
+		/// <summary>
+		/// Gets or sets whether the swatch can stretch when <see cref="HasText"/> is <c>false</c>.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the swatch can stretch when <see cref="HasText"/> is <c>false</c>; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool CanSwatchStretch {
+			get {
+				return (bool)this.GetValue(CanSwatchStretchProperty);
+			}
+			set {
+				this.SetValue(CanSwatchStretchProperty, value);
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets the value to set when incrementing/decrementing from a null value.
 		/// </summary>

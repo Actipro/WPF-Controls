@@ -78,10 +78,10 @@ namespace ActiproSoftware.SampleBrowser {
 		private const int MaximumSearchResults = 50;
 
 		private const string DefaultSampleUri = null;
-		// private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
-		// private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/ViewsSamples/Demo/ApplicationSettings/MainControl";
+        // private const string DefaultSampleUri = "https://ActiproSoftware/SampleBrowser/Documents/ProductOverviews/Themes";
+        // private const string DefaultSampleUri = "https://ActiproSoftware/ProductSamples/ViewsSamples/Demo/ApplicationSettings/MainControl";
 
-		private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
+        private const string OnlineDocumentationUrl = "https://www.actiprosoftware.com/docs/controls/wpf/index";
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		// OBJECT

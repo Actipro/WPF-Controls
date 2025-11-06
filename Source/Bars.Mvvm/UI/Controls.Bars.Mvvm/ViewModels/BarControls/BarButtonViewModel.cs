@@ -16,6 +16,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private object commandParameter;
 		private string description;
 		private string inputGestureText;
+		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
 		private bool isInputGestureTextVisible = true;
 		private bool isVisible = true;
 		private string keyTipText;
@@ -180,6 +181,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		}
 
 		/// <summary>
+		/// Gets or sets how the button outside of a menu context processes focus when it is clicked.
+		/// </summary>
+		/// <value>
+		/// The default value is <see cref="InvocationFocusBehavior.Default"/>.
+		/// </value>
+		public InvocationFocusBehavior InvocationFocusBehavior {
+			get => invocationFocusBehavior;
+			set {
+				if (invocationFocusBehavior != value) {
+					invocationFocusBehavior = value;
+					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
+				}
+			}
+		}
+
+		/// <summary>
 		/// Gets or sets whether the input gesture text is allowed to be visible in the user interface.
 		/// </summary>
 		/// <value>
@@ -272,7 +289,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
 		/// <summary>
 		/// Gets or sets whether menus should try and remain open when the control is clicked.
 		/// </summary>

@@ -15,8 +15,9 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCol
 		/// <summary>
 		/// Initializes an instance of the <c>ChildObject</c> class.
 		/// </summary>
-		public ChildObject() {
-			this.Name = "Child";
+		/// <param name="name">The optional string name.</param>
+		public ChildObject(string name = null) {
+			this.Name = name ?? "Child";
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

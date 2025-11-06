@@ -52,6 +52,9 @@ public override IEnumerable GetChildren(object item) {
 }
 ```
 
+> [!IMPORTANT]
+> When "moving" items in a child collection, due to the internal data structures needed to convert the tree to a "flat" list bound to `TreeListBox.ItemsSource`, it is critical that you remove the item from its original position before inserting the item into its new position.  If doing the reverse instead where you insert the item into its new position before removing it from its old position, two instances of the item are temporarily in the control, and some scenarios may result in the tree structure becoming corrupted.
+
 ## Item Templates
 
 Since items can be any custom type, it is essential that you supply an item template containing UI for your items.

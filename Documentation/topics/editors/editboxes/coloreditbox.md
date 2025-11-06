@@ -99,6 +99,8 @@ If the property is set to `false`, the picker hue ring's fill area will be compl
 
 The [ColorEditBox](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox).[HasSwatch](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.HasSwatch) property defaults to `true`, meaning that a small swatch will display the `Color` value.  Set the property to `false` to hide the swatch.
 
+The [CanSwatchStretch](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.CanSwatchStretch) property determines if the swatch stretches horizontally when the [HasText](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.HasText) property is `false`.
+
 The [SwatchMargin](xref:@ActiproUIRoot.Controls.Editors.ColorEditBox.SwatchMargin) property sets the margin thickness around the swatch.
 
 ## Text Display
