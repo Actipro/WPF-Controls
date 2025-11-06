@@ -24,6 +24,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private DataTemplate categoryHeaderTemplate;
 		private string collapsedButtonDescription;
 		private bool hasCategoryHeaders = true;
+		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
 		private bool isSelectionSupported = true;
 		private bool? isSynchronizedWithCurrentItem = null;
 		private IEnumerable items;
@@ -279,7 +280,23 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				}
 			}
 		}
-		
+
+		/// <summary>
+		/// Gets or sets how the control processes focus when a commit occurs.
+		/// </summary>
+		/// <value>
+		/// The default value is <see cref="InvocationFocusBehavior.Default"/>.
+		/// </value>
+		public InvocationFocusBehavior InvocationFocusBehavior {
+			get => invocationFocusBehavior;
+			set {
+				if (invocationFocusBehavior != value) {
+					invocationFocusBehavior = value;
+					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets whether selection is supported by the gallery.
 		/// </summary>

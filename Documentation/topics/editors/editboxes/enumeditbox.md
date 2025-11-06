@@ -138,6 +138,15 @@ public enum SampleEnum {
 }
 ```
 
+## Null Value Support
+
+When the [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsNullAllowed) property is `true`, the end user can set a `null` value.  A `"(Not Set)"` option will be available in the popup picker that corresponds to a `null` value, and the edit box will support empty text to represent a `null` value.
+
+> [!IMPORTANT]
+> When setting the [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsNullAllowed) property is `true`, make sure your edit box's [Value](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.Value) property is bound to a property whose type is a nullable enumeration (e.g, `HorizontalAlignment?`).
+
+The [NullValueText](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox.NullValueText) property determines the text to display in the popup picker when the edit box has a `null` value.
+
 ## Parts and Incrementing/Decrementing
 
 This edit box has a single part.

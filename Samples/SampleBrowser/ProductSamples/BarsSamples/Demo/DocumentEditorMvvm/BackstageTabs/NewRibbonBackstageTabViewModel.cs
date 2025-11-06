@@ -24,9 +24,6 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
 
 			this.barManager = barManager;
 
-			// Use this tab viewmodel as content
-			Content = this;
-
 			this.LargeImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Large);
 			this.SmallImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Small);
 		}

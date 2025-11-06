@@ -71,6 +71,7 @@
 		<Setter Property="QuickAccessToolBarContent" Value="{Binding QuickAccessToolBar}" />
 		<Setter Property="QuickAccessToolBarLocation" Value="{Binding QuickAccessToolBarLocation, Mode=TwoWay}" />
 		<Setter Property="QuickAccessToolBarMode" Value="{Binding QuickAccessToolBarMode, Mode=TwoWay}" />
+		<Setter Property="SelectedItem" Value="{Binding SelectedItem, Mode=TwoWay}" />
 		<Setter Property="TabRowToolBarContent" Value="{Binding TabRowToolBar}" />
 		<Setter Property="Tag" Value="{Binding Tag, Mode=TwoWay}" />
 		<Setter Property="UserInterfaceDensity" Value="{Binding UserInterfaceDensity, Mode=TwoWay}" />
@@ -101,6 +102,7 @@
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
 			InputGestureText="{Binding InputGestureText}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
@@ -152,6 +154,7 @@
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
 			InputGestureText="{Binding InputGestureText}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsChecked="{Binding IsChecked, Mode=TwoWay}"
 			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
 			Key="{Binding Key}"
@@ -206,6 +209,7 @@
 			Command="{Binding Command}"
 			HasCategoryHeadersOnMenu="{Binding HasCategoryHeaders}"
 			InlineImageSourcePath="{Binding InlineImageSourcePath}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsEditable="{Binding IsEditable}"
 			IsPreviewEnabledWhenPopupClosed="{Binding IsPreviewEnabledWhenPopupClosed}"
 			IsReadOnly="{Binding IsReadOnly}"
@@ -270,6 +274,7 @@
 			CollapsedButtonToolTip="{Binding CollapsedButtonDescription}"
 			Command="{Binding Command}"
 			HasCategoryHeadersOnMenu="{Binding HasCategoryHeaders}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsSelectionSupported="{Binding IsSelectionSupported}"
 			IsSynchronizedWithCurrentItem="{Binding IsSynchronizedWithCurrentItem}"
 			ItemContainerStyle="{Binding ItemContainerStyle}"
@@ -412,6 +417,7 @@
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			ItemsSource="{Binding MenuItems}"
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
@@ -514,6 +520,7 @@
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
 			InputGestureText="{Binding InputGestureText}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
 			ItemsSource="{Binding MenuItems}"
 			Key="{Binding Key}"
@@ -570,6 +577,7 @@
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
 			InputGestureText="{Binding InputGestureText}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsChecked="{Binding IsChecked, Mode=TwoWay}"
 			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
 			ItemsSource="{Binding MenuItems}"
@@ -627,6 +635,7 @@
 			CanCloneToRibbonQuickAccessToolBar="{Binding CanCloneToRibbonQuickAccessToolBar}"
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsStarSizingAllowed="{Binding IsStarSizingAllowed}"
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
@@ -676,6 +685,7 @@
 			Command="{Binding Command}"
 			CommandParameter="{Binding CommandParameter}"
 			InputGestureText="{Binding InputGestureText}"
+			InvocationFocusBehavior="{Binding InvocationFocusBehavior}"
 			IsChecked="{Binding IsChecked, Mode=TwoWay}"
 			IsInputGestureTextVisible="{Binding IsInputGestureTextVisible}"
 			Key="{Binding Key}"

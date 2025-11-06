@@ -1,3 +1,4 @@
+using ActiproSoftware.Extensions;
 using ActiproSoftware.ProductSamples.SharedSamples.Common;
 using ActiproSoftware.SampleBrowser;
 using ActiproSoftware.Windows.Controls;
@@ -5,6 +6,8 @@ using ActiproSoftware.Windows.Extensions;
 using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Media;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -386,7 +389,21 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 			// SAMPLE: Customize the header and content
 			//
 
-			ConfigureUserPrompt()
+			var statusText = new TextBlock() {
+				Text = "Estimated time remaining:",
+				Margin = new Thickness(0, 2, 0, 2)
+			};
+
+			var progressBar = new AnimatedProgressBar() {
+				Margin = new Thickness(0, 5, 0, 0),
+				Minimum = 0,
+				Maximum = 100,
+				Value = 0,
+				Height = 20,
+				State = OperationState.Normal
+			};
+
+			ConfigureUserPrompt(displayResult: true)
 				// Setting any header background will align the status icon and header content
 				.WithHeaderContent("Exporting Project (Sample Project)")
 				.WithHeaderForeground(Colors.White)
@@ -407,22 +424,55 @@ namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.UserPromptIntr
 								new Run(@" (C:\Templates\ProjectTemplates)"),
 							}
 						},
-						new TextBlock() {
-							Text = "Estimated time remaining: 1 minute",
-							Margin = new Thickness(0, 2, 0, 2)
-						},
-						new AnimatedProgressBar() {
-							Margin = new Thickness(0, 5, 0, 0),
-							Minimum = 0,
-							Maximum = 100,
-							Value = 25,
-							Height = 20,
-							State = OperationState.Normal
-						}
+						statusText,
+						progressBar
 					}
 				})
+				.WithCheckBoxContent("Check this box to simulate an exception")
 				.WithWindowStartupLocation(WindowStartupLocation.CenterOwner)
 				.WithAutoSize(true, minimumWidth: 400)
+				.BeforeShow(builder => {
+					// Do background work here while the dialog is shown
+					Task.Run(() => {
+						var totalTime = TimeSpan.FromSeconds(10);
+						var startTaskTime = DateTime.Now;
+						var isCompleted = false;
+						var throwException = false;
+						try {
+							do {
+								if (throwException)
+									throw new ApplicationException("An error was encountered during export.");
+								Thread.Sleep(100);
+								var elapsedTime = DateTime.Now - startTaskTime;
+								var remainingTime = totalTime - elapsedTime;
+								var percentageComplete = ((elapsedTime.TotalSeconds / Math.Max(1, totalTime.TotalSeconds)) * 100);
+								Dispatcher.InvokeAsync(() => {
+									// Must interact with UI controls on the UI thread that owns them
+									throwException = builder.Instance?.IsChecked == true;
+									if (!throwException) {
+										progressBar.Value = percentageComplete;
+										statusText.Text = $"Estimated time remaining: {remainingTime.TotalSeconds.Round(RoundMode.Ceiling)} seconds";
+										isCompleted = (progressBar.IsCompleted || (builder.Instance?.Result is not null));
+									}
+								});
+							} while (!isCompleted);
+							if (isCompleted) {
+								// Assign a user prompt result to automatically close the prompt once the work is complete
+								Dispatcher.InvokeAsync(() => {
+									if ((builder.Instance is not null) && (builder.Instance.Result is null))
+										builder.Instance.Result = builder.Instance.DefaultResult;
+								});
+							}
+						}
+						catch (Exception ex) {
+							// Report the error and show the progress bar in an error state
+							Dispatcher.InvokeAsync(() => {
+								statusText.Text = "Error: " + ex.Message;
+								progressBar.State = OperationState.Error;
+							});
+						}
+					});
+				})
 				.Show();
 		}
 

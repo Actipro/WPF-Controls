@@ -24,12 +24,13 @@ The [SettingsExpander](xref:@ActiproUIRoot.Controls.Views.SettingsExpander) cont
 - [Header](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.Header) - The primary label for the setting.
 - [Description](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.Description) - An additional description for the setting.
 - [HeaderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.HeaderIcon) - The primary icon for the setting.
+- [ExpanderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIcon) - The primary icon for the expansion indicator.
 - `Content` (Editor) - The control used to edit the setting (e.g., `ToggleSwitch`, `ComboBox`).
 
-Each content area, including the icon, can optionally be set to any value supported by `ContentPresenter` and the layout will adjust to only show the areas where content is defined.
+Each content area, including the icons, can optionally be set to any value supported by `ContentPresenter` and the layout will adjust to only show the areas where content is defined.
 
 > [!NOTE]
-> In some scenarios, content may not be automatically detected. For instance, if a `DataTemplate` is used to define content without setting the corresponding content property, the control will not know that content is available.  Use the [IsHeaderVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsHeaderVisible), [IsDescriptionVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsDescriptionVisible), and [IsHeaderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsHeaderIconVisible) properties to manually control the visibility of each content area.
+> In some scenarios, content may not be automatically detected. For instance, if a `DataTemplate` is used to define content without setting the corresponding content property, the control will not know that content is available.  Use the [IsHeaderVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsHeaderVisible), [IsDescriptionVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsDescriptionVisible), [IsHeaderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsHeaderIconVisible), and [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsExpanderIconVisible) properties to manually control the visibility of each content area.
 
 > [!TIP]
 > The [SettingsExpander](xref:@ActiproUIRoot.Controls.Views.SettingsExpander) control has all the same content areas as [SettingsCard](settings-card.md) *except* [ActionIcon](xref:@ActiproUIRoot.Controls.Views.SettingsCard.ActionIcon) since the expansion indicator is displayed in this area.
@@ -107,9 +108,9 @@ The [SettingsExpander](xref:@ActiproUIRoot.Controls.Views.SettingsExpander) supp
 > The [HeaderIconTemplateSelector](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.HeaderIconTemplateSelector) is pre-configured with a default [ImageTemplateSelector](xref:@ActiproUIRoot.Controls.ImageTemplateSelector), so it supports `ImageSource` and `Geometry` data values.  See the [Template Selectors](../../shared/windows-controls/template-selectors.md) topic for more details.
 }
 
-The following sample demonstrates using a @if (avalonia) { `PathIcon` }@if (wpf) { `Geometry` } for defining the icon, but any content supported by `ContentPresenter` can be used to define the icon (like `Image` or @if (avalonia) { [DynamicImage](../../shared/controls/dynamic-image.md) }@if (wpf) { [DynamicImage](../../shared/windows-controls/dynamicimage.md) } controls):
-
 @if (avalonia) {
+The following sample demonstrates using a `PathIcon` for defining the icon, but any content supported by [Icon Presenter](../../themes/icon-presenter.md) can be used to define the icon (like `IImage` data or [DynamicImage](../../shared/controls/dynamic-image.md) control):
+
 ```xaml
 xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ...
@@ -126,6 +127,7 @@ xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
 ```
 }
 @if (wpf) {
+The following sample demonstrates using a `Geometry` for defining the icon, but any content supported by `ContentPresenter` can be used to define the icon (like `Image` or [DynamicImage](../../shared/windows-controls/dynamicimage.md) controls):
 ```xaml
 xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 ...
@@ -134,6 +136,64 @@ xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 </views:SettingsExpander>
 ```
 }
+
+> [!TIP]
+> The [HeaderIconTemplate](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.HeaderIconTemplate) property can also be used to define an icon. If this property is used when [HeaderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.HeaderIcon) is not defined, the icon will not be automatically detected and [IsHeaderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsHeaderIconVisible) must also be set to `true`.
+
+### Expander Icon
+
+The [SettingsExpander](xref:@ActiproUIRoot.Controls.Views.SettingsExpander) supports an [ExpanderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIcon).  This icon is displayed on the right side of the card with a default size of `16x16`.
+
+@if (wpf) {
+> [!TIP]
+> The [ExpanderIconTemplateSelector](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIconTemplateSelector) is pre-configured with a default [ImageTemplateSelector](xref:@ActiproUIRoot.Controls.ImageTemplateSelector), so it supports `ImageSource` and `Geometry` data values.  See the [Template Selectors](../../shared/windows-controls/template-selectors.md) topic for more details.
+}
+
+@if (avalonia) {
+This icon is typically used to indicate the expansion state and defaults to a down arrow that rotates when expanded.  Rotation can be disabled by setting [CanRotateExpanderIcon](xref:@ActiproUIRoot.Controls.SettingsExpander.CanRotateExpanderIcon) to `false`.
+
+The following sample demonstrates using a `PathIcon` for defining the icon, but any content supported by [Icon Presenter](../../themes/icon-presenter.md) can be used to define the icon (like `IImage` data or [DynamicImage](../../shared/controls/dynamic-image.md) control):
+
+```xaml
+xmlns:actipro="http://schemas.actiprosoftware.com/avaloniaui"
+...
+<actipro:SettingsExpander Header="Setting name" ExpanderIconTemplate="{x:Null}">
+
+	<!-- Use a PathIcon as the primary icon -->
+	<actipro:SettingsExpander.ExpanderIcon>
+		<PathIcon Data="M0,640h2048L1024 1664z" />
+	</actipro:SettingsExpander.ExpanderIcon>
+
+	...
+
+</actipro:SettingsExpander>
+```
+}
+@if (wpf) {
+This icon is typically used to indicate the expansion state and defaults to a down arrow when collapsed or an up arrow when expanded.
+
+The following sample demonstrates using a `Geometry` for defining the icon, but any content supported by `ContentPresenter` can be used to define the icon (like `Image` or [DynamicImage](../../shared/windows-controls/dynamicimage.md) controls):
+
+```xaml
+xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+...
+<views:SettingsExpander Header="Setting name" ExpanderIcon="M0,640h2048L1024 1664z" ExpanderIconTemplate="{x:Null}">
+	...
+</views:SettingsExpander>
+```
+}
+
+@if (avalonia) {
+> [!IMPORTANT]
+> By default, the control template sets the [ExpanderIconTemplate](xref:@ActiproUIRoot.Controls.SettingsExpander.ExpanderIconTemplate) to a down arrow glyph and sets [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.SettingsExpander.IsExpanderIconVisible) to `true` to force visibility.  If a custom icon is assigned to [ExpanderIcon](xref:@ActiproUIRoot.Controls.SettingsExpander.ExpanderIcon), the corresponding [ExpanderIconTemplate](xref:@ActiproUIRoot.Controls.SettingsExpander.ExpanderIconTemplate) must be set to `null` to allow a default template to be used for the icon content.  Additionally, setting [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.SettingsExpander.IsExpanderIconVisible) to `null` will restore the default behavior of only showing the icon when [ExpanderIcon](xref:@ActiproUIRoot.Controls.SettingsExpander.ExpanderIcon) is defined.
+}
+@if (wpf) {
+> [!IMPORTANT]
+> By default, the control template sets the [ExpanderIconTemplate](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIconTemplate) to either a down or up arrow glyph based on expansion state and sets [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsExpanderIconVisible) to `true` to force visibility.  If a custom icon is assigned to [ExpanderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIcon), the corresponding [ExpanderIconTemplate](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIconTemplate) must be set to `null` to allow a default template to be used for the icon content.  Additionally, setting [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsExpanderIconVisible) to `null` will restore the default behavior of only showing the icon when [ExpanderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIcon) is defined.
+}
+
+> [!TIP]
+> The [ExpanderIconTemplate](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIconTemplate) property can also be used to define an icon. If this property is used when [ExpanderIcon](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.ExpanderIcon) is not defined, the icon will not be automatically detected and [IsExpanderIconVisible](xref:@ActiproUIRoot.Controls.Views.SettingsExpander.IsExpanderIconVisible) must also be set to `true`.
 
 ### Content (Editor)
 

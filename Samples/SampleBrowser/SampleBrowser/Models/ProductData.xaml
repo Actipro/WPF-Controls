@@ -411,6 +411,8 @@
 			<sampleBrowser:ProductItemInfo Category="TreeListView QuickStarts" Title="Inline Editing" SideBarWidth="Narrow" Path="/ProductSamples/GridsSamples/QuickStart/TreeListViewInlineEditing/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="TreeListView QuickStarts" Title="Sorting" SideBarWidth="Narrow" Path="/ProductSamples/GridsSamples/QuickStart/TreeListViewSorting/MainControl"/>
 
+			
+
 		</sampleBrowser:ProductFamilyInfo>
 
 		<!--

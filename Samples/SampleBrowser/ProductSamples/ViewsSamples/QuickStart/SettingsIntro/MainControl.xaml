@@ -36,6 +36,7 @@
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Header}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Description}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsHeaderIconVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=expander, Path=IsExpanderIconVisible}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=WrapThreshold}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsEnabled}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=expander, Path=IsAnimationEnabled}" />

@@ -24,29 +24,29 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCol
 		/// </summary>
 		public ParentObject() {
 			this.list1 = new List<ChildObject>();
-			this.list1.Add(new ChildObject());
-			this.list1.Add(new ChildObject());
-			this.list1.Add(new ChildObject());
+			this.list1.Add(new ChildObject("Child 1-1"));
+			this.list1.Add(new ChildObject("Child 1-2"));
+			this.list1.Add(new ChildObject("Child 1-3"));
 
 			this.list2 = new List<ChildObject>();
-			this.list2.Add(new ChildObject());
-			this.list2.Add(new ChildObject());
-			this.list2.Add(new ChildObject());
+			this.list2.Add(new ChildObject("Child 2-1"));
+			this.list2.Add(new ChildObject("Child 2-2"));
+			this.list2.Add(new ChildObject("Child 2-3"));
 
 			this.list3 = new List<ChildObject>();
-			this.list3.Add(new ChildObject());
-			this.list3.Add(new ChildObject());
-			this.list3.Add(new ChildObject());
+			this.list3.Add(new ChildObject("Child 3-1"));
+			this.list3.Add(new ChildObject("Child 3-2"));
+			this.list3.Add(new ChildObject("Child 3-3"));
 
 			this.list4 = new List<ChildObject>();
-			this.list4.Add(new ChildObject());
-			this.list4.Add(new ChildObject());
-			this.list4.Add(new ChildObject());
+			this.list4.Add(new ChildObject("Child 4-1"));
+			this.list4.Add(new ChildObject("Child 4-2"));
+			this.list4.Add(new ChildObject("Child 4-3"));
 
 			this.list5 = new List<ReadOnlyChildObject>();
-			this.list5.Add(new ReadOnlyChildObject());
-			this.list5.Add(new ReadOnlyChildObject());
-			this.list5.Add(new ReadOnlyChildObject());
+			this.list5.Add(new ReadOnlyChildObject("Read-Only Child 5-1"));
+			this.list5.Add(new ReadOnlyChildObject("Read-Only Child 5-2"));
+			this.list5.Add(new ReadOnlyChildObject("Read-Only Child 5-3"));
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -69,3 +69,7 @@ public enum SampleEnum {
 	...
 }
 ```
+
+## Null Value Support
+
+When the [IsNullAllowed](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.IsNullAllowed) property is `true`, the end user can set a `null` value.  A `"(Not Set)"` option will be available in the control that corresponds to a `null` value.  That text can be changed by altering the [NullValueText](xref:@ActiproUIRoot.Controls.Editors.EnumListBox.NullValueText) property.

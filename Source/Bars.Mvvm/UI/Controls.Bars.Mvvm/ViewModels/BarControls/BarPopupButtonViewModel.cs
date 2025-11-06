@@ -16,6 +16,7 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		private ICommand command;
 		private object commandParameter;
 		private string description;
+		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
 		private bool isVisible = true;
 		private string keyTipText;
 		private string label;
@@ -104,6 +105,22 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 				if (description != value) {
 					description = value;
 					this.NotifyPropertyChanged(nameof(Description));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets how the button processes focus when an item is clicked.
+		/// </summary>
+		/// <value>
+		/// The default value is <see cref="InvocationFocusBehavior.Default"/>.
+		/// </value>
+		public InvocationFocusBehavior InvocationFocusBehavior {
+			get => invocationFocusBehavior;
+			set {
+				if (invocationFocusBehavior != value) {
+					invocationFocusBehavior = value;
+					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
 				}
 			}
 		}

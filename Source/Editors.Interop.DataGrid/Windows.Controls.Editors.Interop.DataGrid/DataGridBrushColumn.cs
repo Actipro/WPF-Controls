@@ -10,9 +10,15 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 	/// Represents a data-bound column for use in a <c>DataGrid</c> that utilizes the <see cref="BrushEditBox"/> control.
 	/// </summary>
 	public class DataGridBrushColumn : DataGridPartEditBoxColumnBase<Brush> {
-	
+
 		#region Dependency Properties
-		
+
+		/// <summary>
+		/// Identifies the <see cref="CanSwatchStretch"/> dependency property.  This field is read-only.
+		/// </summary>
+		/// <value>The identifier for the <see cref="CanSwatchStretch"/> dependency property.</value>
+		public static readonly DependencyProperty CanSwatchStretchProperty = DependencyProperty.Register("CanSwatchStretch", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
+
 		/// <summary>
 		/// Identifies the <see cref="HasSwatch"/> dependency property.  This field is read-only.
 		/// </summary>
@@ -66,10 +72,27 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 			if (targetEditBox != null) {
 				targetEditBox.CanReuseBrush = false;
 
+				this.ApplyValue(CanSwatchStretchProperty, targetElement, BrushEditBox.CanSwatchStretchProperty);
 				this.ApplyValue(HasSwatchProperty, targetElement, BrushEditBox.HasSwatchProperty);
 				this.ApplyValue(HasTextProperty, targetElement, BrushEditBox.HasTextProperty);
 				this.ApplyValue(IsAlphaEnabledProperty, targetElement, BrushEditBox.IsAlphaEnabledProperty);
 				this.ApplyValue(IsGradientAllowedProperty, targetElement, BrushEditBox.IsGradientAllowedProperty);
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets whether the swatch can stretch when <see cref="HasText"/> is <c>false</c>.
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if the swatch can stretch when <see cref="HasText"/> is <c>false</c>; otherwise, <c>false</c>.
+		/// The default value is <c>true</c>.
+		/// </value>
+		public bool CanSwatchStretch {
+			get {
+				return (bool)this.GetValue(CanSwatchStretchProperty);
+			}
+			set {
+				this.SetValue(CanSwatchStretchProperty, value);
 			}
 		}
 

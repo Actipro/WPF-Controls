@@ -21,7 +21,6 @@ namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumEditBoxIn
 		public MainControl() {
 			InitializeComponent();
 
-			this.EnumWithFlagsType = typeof(EnumWithFlags);
 			this.DataContext = this;
 
 			sortedEditBox.EnumSortComparer = EnumValueNameSortComparer.Instance;
@@ -57,18 +56,24 @@ namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumEditBoxIn
 		/// </summary>
 		/// <value>The current value.</value>
 		public EnumWithFlags EnumWithFlagsCurrentValue { get; set; }
-	
-		/// <summary>
-		/// Gets or sets the current value.
-		/// </summary>
-		/// <value>The current value.</value>
-		public Type EnumWithFlagsType { get; set; }
-	
+
 		/// <summary>
 		/// Gets or sets the current value.
 		/// </summary>
 		/// <value>The current value.</value>
 		public EnumWithoutFlags EnumWithoutFlagsCurrentValue { get; set; }
-	
+
+		/// <summary>
+		/// Gets or sets the current value.
+		/// </summary>
+		/// <value>The current value.</value>
+		public EnumWithFlags? NullableEnumWithFlagsCurrentValue { get; set; } = EnumWithFlags.None;
+
+		/// <summary>
+		/// Gets or sets the current value.
+		/// </summary>
+		/// <value>The current value.</value>
+		public EnumWithoutFlags? NullableEnumWithoutFlagsCurrentValue { get; set; } = EnumWithoutFlags.None;
+
 	}
 }

@@ -43,6 +43,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 		public RibbonBackstageTabViewModel(string key, string label, string keyTipText)
 			: base(key) {
 
+			// It is critical that the content of this view model is initialized to itself so
+			// that the DataTemplateSelector assigned to RibbonBackstage.ContentTemplateSelector
+			// can use the view model instance to select the appropriate template. If a
+			// DataTemplate is not defined, the view model's ToString() output will be displayed
+			// as an indicator that a template is needed.
+			Content = this;
+
 			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
 			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
 		}

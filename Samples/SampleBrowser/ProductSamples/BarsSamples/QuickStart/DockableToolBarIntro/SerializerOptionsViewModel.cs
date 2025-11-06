@@ -10,6 +10,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 
 		private bool floatingLocation = true;
 		private bool isFloating = true;
+		private bool isVisible = true;
 		private bool lineIndex = true;
 		private bool offset = true;
 		private bool placement = true;
@@ -32,6 +33,8 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 				options |= DockableToolBarSerializerOptions.FloatingLocation;
 			if (IsFloating)
 				options |= DockableToolBarSerializerOptions.IsFloating;
+			if (IsVisible)
+				options |= DockableToolBarSerializerOptions.IsVisible;
 			if (LineIndex)
 				options |= DockableToolBarSerializerOptions.LineIndex;
 			if (Offset)
@@ -68,6 +71,20 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 				if (isFloating != value) {
 					isFloating = value;
 					NotifyPropertyChanged(nameof(IsFloating));
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets if the option will be processed when serializing or deserializing.
+		/// </summary>
+		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
+		public bool IsVisible {
+			get => isVisible;
+			set {
+				if (isVisible != value) {
+					isVisible = value;
+					NotifyPropertyChanged(nameof(IsVisible));
 				}
 			}
 		}

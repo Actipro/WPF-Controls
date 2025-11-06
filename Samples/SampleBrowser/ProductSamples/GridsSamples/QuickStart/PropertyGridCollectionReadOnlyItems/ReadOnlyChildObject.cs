@@ -16,8 +16,9 @@ namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCol
 		/// <summary>
 		/// Initializes an instance of the <c>ReadOnlyChildObject</c> class.
 		/// </summary>
-		public ReadOnlyChildObject() {
-			this.Name = "Read-only Child";
+		/// <param name="name">The optional string name.</param>
+		public ReadOnlyChildObject(string name = null) {
+			this.Name = name ?? "Read-Only Child";
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////

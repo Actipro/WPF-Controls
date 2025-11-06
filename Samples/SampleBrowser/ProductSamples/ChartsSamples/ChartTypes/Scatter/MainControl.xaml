@@ -80,7 +80,7 @@
 					</charts:XYChart>
 				</sampleBrowser:LabeledCardControl>
 
-				<sampleBrowser:LabeledCardControl Label="Markers rendered as squares; Mesa palette">
+				<sampleBrowser:LabeledCardControl Label="Markers rendered as squares with index displayed inside; Mesa palette">
 					<charts:XYChart GridLineMajorVisibility="Y">
 						<charts:XYChart.SeriesStyleSelector>
 							<charts:SeriesPaletteStyleSelector>
@@ -101,8 +101,11 @@
 									<Setter Property="Template">
 										<Setter.Value>
 											<ControlTemplate TargetType="charts:ChartMarker">
-												<Rectangle x:Name="PART_Path" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}"
-												StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness.Left}" Stretch="Fill" />
+												<Grid>
+													<Rectangle x:Name="PART_Path" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}"
+															   StrokeThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness.Left}" Stretch="Fill" />
+													<TextBlock Text="{Binding Index}" FontSize="11" Foreground="#ffffff" HorizontalAlignment="Center" VerticalAlignment="Center" />
+												</Grid>
 											</ControlTemplate>
 										</Setter.Value>
 									</Setter>

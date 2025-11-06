@@ -67,6 +67,11 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.DotNetAddonCSh
 			var language = new CSharpSyntaxLanguage();
 			language.RegisterProjectAssembly(projectAssembly);
 			codeEditor.Document.Language = language;
+
+			// Update the lexer to recognize a couple custom preprocessor directive names
+			CSharpLexer.OtherPreprocessorDirectives.Clear();
+			CSharpLexer.OtherPreprocessorDirectives.Add("load");
+			CSharpLexer.OtherPreprocessorDirectives.Add("r");
 		}
 		
 		private void DotNetProjectAssemblyReferenceLoader(object sender, DoWorkEventArgs e) {

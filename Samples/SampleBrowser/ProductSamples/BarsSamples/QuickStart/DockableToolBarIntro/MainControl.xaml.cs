@@ -172,6 +172,11 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 										IsChecked = true,
 										StaysOpenOnClick = true
 									},
+									new BarToggleButtonViewModel("SerializationOptionIsVisible", "IsVisible",
+										new DelegateCommand<object>(_ => { OptionsViewModel.IsVisible = !OptionsViewModel.IsVisible; })) {
+										IsChecked = true,
+										StaysOpenOnClick = true
+									},
 								}
 							},
 							new BarButtonViewModel("SaveLayout", "Save Layout", SaveLayoutCommand),
@@ -321,7 +326,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 		private bool TryRestoreLayout(string xmlLayout) {
 			try {
 				// Initialize the options that will be supported during restore based on current settings
-				var options = DockableToolBarSerializerOptions.All;
+				var options = OptionsViewModel.CreateOptions();
 
 				// Deserialize the layout to the host
 				var serializer = new DockableToolBarSerializer();
@@ -347,7 +352,7 @@ namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarI
 		/// <returns><c>true</c> if the layout was successfully saved; otherwise <c>false</c>.</returns>
 		private bool TrySaveLayout(out string layout) {
 			try {
-				// Initialize the options that will be supported during restore based on current settings
+				// Initialize the options that will be supported during save based on current settings
 				var options = OptionsViewModel.CreateOptions();
 
 				// Serialize the layout from the host
