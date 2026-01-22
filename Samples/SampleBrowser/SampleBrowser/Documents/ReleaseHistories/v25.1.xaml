@@ -10,6 +10,63 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/22/2025 - Version 25.1.3</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved UI Automation for BarComboBox." />
+				<sampleBrowser:BulletContentControl Content="Updated RibbonViewModel to synchronize the SelectedItem property with the Tabs collection by always selecting the first tab when no selection is currently defined or the previous seletion is removed." />
+				<sampleBrowser:BulletContentControl Content="Updated some bar controls to use a new resource brush for focused borders." />
+				<sampleBrowser:BulletContentControl Content="Fixed InvalidOperationException that might be thrown when using a background thread to change properties of the selected item in a BarComboBox." />
+				<sampleBrowser:BulletContentControl Content="Fixed a rare issue with a Ribbon using simplified layout where some non-Bars controls might not render in the ribbon if the RibbonGroup was collapsing." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved X/Y and pie charts to support binding to DataTable and DataView objects as an ItemsSource." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added DateTimeEditBox.ParsingStyles property that can be used to influence how strings are parsed as date/time values." />
+				<sampleBrowser:BulletContentControl Content="Updated CoerceValidValue logic to better handle when nulls are not allowed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated PropertyModelStringFilter logic to only include category models via descendants and only include category editor models on Category match." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved X/Y micro charts to support binding to DataTable and DataView objects as an ItemsSource." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue recently introduced in the Language Designer where lexical pattern group pattern types could incorrectly change from Regex to Explicit." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue in the C# parser grammar where the 'record' keyword couldn't be used as a variable properly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the Python resolver logic for resolving classes." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated shell watcher unregistration logic to help prevent against thread locks." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the native MenuItem Style in High Contrast themes to render properly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Views</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added SettingsExpander.CanToggleExpansion property that, when set to False, prevents the user from changing the expansion state without having to disable the entire control." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed a rare exception that might be thrown from InfoBarPanel due to a negative calculated width of the center column." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">11/5/2025 - Version 25.1.2</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

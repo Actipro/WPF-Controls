@@ -556,6 +556,10 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Charts" Title="Charts" LogoImageSource="{x:Static charts:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Advanced line, area, bar, pie, donut, and scatter charts">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Support binding to DataTable and DataView objects" />
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Charts" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -604,6 +608,10 @@
 		-->
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Micro Charts" Title="Micro Charts" LogoImageSource="{x:Static microCharts:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Small charts, also called sparklines, designed to visualize complex data">
+
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="Support binding to DataTable and DataView objects" />
+			</sampleBrowser:ProductFamilyInfo.News>
 
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/MicroCharts" />

@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<RootNamespace>ActiproSoftware.Tools.Builds</RootNamespace>
 		<StartupObject>ActiproSoftware.Tools.Builds.Build</StartupObject>
 
@@ -18,7 +18,7 @@
 		<RootNamespace>ActiproSoftware.Tools.Builds</RootNamespace>
 		<Company>Actipro Software LLC</Company>
 		<Authors>Actipro Software LLC</Authors>
-		<Copyright>Copyright (c) 2020-2025 Actipro Software LLC.  All rights reserved.</Copyright>
+		<Copyright>Copyright (c) 2020-2026 Actipro Software LLC.  All rights reserved.</Copyright>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 

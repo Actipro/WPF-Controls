@@ -113,6 +113,15 @@ This edit box has multiple parts:
 
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
 
+## Parsing
+
+When text is entered directly into the control, the value is initially parsed based on the current [Format](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.Format).  If unsuccessful, additional date formats will be attempted.
+
+The [ParsingStyles](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.ParsingStyles) property, which defaults to `DateTimeStyles.AllowWhiteSpaces`, can be used to provide additional control over how values are parsed, including options such as which time zone is applied when one is not specified.
+
+> [!WARNING]
+> When setting [ParsingStyles](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.ParsingStyles) to a new value, it is recommend to OR the value with `DateTimeStyles.AllowWhiteSpaces` or else white space may not be parsed correctly.  For example, to assume UTC when no time zone is specified and keep the default white space handling, set [ParsingStyles](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox.ParsingStyles) to `DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeUniversal`.
+
 ## Sample XAML
 
 This control can be placed within any other XAML container control, such as a `Page` or `Panel` with this sort of XAML:
