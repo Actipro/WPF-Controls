@@ -1,6 +1,7 @@
 ﻿using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Themes;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -58,6 +59,13 @@ namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
 
 			// Initialize the clear footer command
 			this.clearFooterCommand = new DelegateCommand<object>(_ => this.Footer = null);
+
+			// Keep SelectedItem in sync with Tabs collection by always selecting the first
+			//   tab when selection has yet to be defined or the previous selection is removed
+			Tabs.CollectionChanged += (_, _) => {
+				if (SelectedItem is not { } selectedItem || !Tabs.Contains(selectedItem))
+					SelectedItem = Tabs.FirstOrDefault();
+			};
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
