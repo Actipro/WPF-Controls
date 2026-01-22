@@ -10,7 +10,7 @@
 			<Control x:Name="focusCaptureControl" />
 
 
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/22/2025 - Version 25.1.3</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/22/2026 - Version 25.1.3</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Improved UI Automation for BarComboBox." />
