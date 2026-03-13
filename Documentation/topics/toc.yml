@@ -1841,6 +1841,8 @@ items:
   href: open-source.md
 - name: "Support"
   href: support.md
+- name: "Security"
+  href: security.md
 - name: "Third-Party Software"
   href: third-party.md
 - name: "API Reference"

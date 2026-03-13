@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using ActiproSoftware.Security;
 using ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives;
 
 namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
@@ -115,7 +116,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
 				textBox = (MaskedTextBox)cell.Content;
 
 			if (textBox == null)
-				textBox = (MaskedTextBox)Activator.CreateInstance(typeof(MaskedTextBox));
+				textBox = (MaskedTextBox)TrustedCodeService.CreateInstance(typeof(MaskedTextBox));
 
 			this.ApplyStandardValues(textBox);
 			if (isEditing)

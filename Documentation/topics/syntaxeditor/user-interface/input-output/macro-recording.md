@@ -66,6 +66,9 @@ The commands use the related edit actions described in the previous section.
 
 SyntaxEditor can serialize a macro to XML by using the [MacroAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.MacroAction).[WriteToXml](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.MacroAction.WriteToXml*) method.  To deserialize a macro later, create an instance of the [MacroAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.MacroAction) and call its [ReadFromXml](xref:@ActiproUIRoot.Controls.SyntaxEditor.EditActions.MacroAction.ReadFromXml*) method.  All the child edit actions of the macro should load into the macro so that it is ready to be run.
 
+> [!IMPORTANT]
+> Custom edit action classes serialize their type and assembly name in string format for later restoration during deserialization.  Due to our secure-by-default design, resolution of string type names will fail trust checks and not be loaded without additional configuration and handling described in the [Security](../../../security.md) topic.
+
 ## Injecting Custom Macro Action Implementations
 
 It is possible to use your own custom [IMacroAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.IMacroAction) implementation when you wish to create even more advanced macro functionality.  This could be done in scenarios where you wish to implement additional functionality like conditionals, looping, or nesting.  The first step is to build out a custom class that implements [IMacroAction](xref:@ActiproUIRoot.Controls.SyntaxEditor.IMacroAction).
