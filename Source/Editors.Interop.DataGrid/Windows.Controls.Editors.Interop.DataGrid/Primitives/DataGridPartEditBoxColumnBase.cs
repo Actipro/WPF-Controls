@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using ActiproSoftware.Security;
 using ActiproSoftware.Windows.Controls.Editors.Primitives;
 
 namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives {
@@ -114,7 +115,7 @@ namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives {
 				editBox = (PartEditBoxBase<T>)cell.Content;
 
 			if (editBox == null)
-				editBox = (PartEditBoxBase<T>)Activator.CreateInstance(type);
+				editBox = (PartEditBoxBase<T>)TrustedCodeService.CreateInstance(type);
 
 			this.ApplyStandardValues(editBox);
 			if (isEditing)

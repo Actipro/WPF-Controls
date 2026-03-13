@@ -4,13 +4,15 @@ using Microsoft.Extensions.Logging;
 using LoggerFactory = ActiproSoftware.Products.Logging.LoggerFactory;
 #endif
 
-using System;
-using System.IO;
-using System.Windows;
 using ActiproSoftware.Products.Logging;
+using ActiproSoftware.Security;
 using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Themes;
 using ActiproSoftware.Windows.Themes.Generation;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Windows;
 
 namespace ActiproSoftware.SampleBrowser {
 	
@@ -55,10 +57,22 @@ namespace ActiproSoftware.SampleBrowser {
 		/// </summary>
 		/// <param name="e">A <see cref="StartupEventArgs"/> that contains data related to this event.</param>
 		protected override void OnStartup(StartupEventArgs e) {
+			// Mark this project's assembly as trusted for dynamic loading of samples
+			TrustedCodeService.AddTrustedAssembly(Assembly.GetExecutingAssembly());
+			TrustedCodeService.TypeResolutionRequested += (sender, e) => {
+				// Some type names in deserialization scenarios may only include the pure assembly name
+				//   (no version or public key token) for context, so trust those types that are defined in this assembly
+				e.IsTrusted |= (e.TrustLevel == StringTypeNameTrustLevel.ConditionallyTrusted) && (e.AssemblyName == Assembly.GetExecutingAssembly().GetName().Name);
+			};
+
+			// ------------------------------------------------------------------------------------------------------
+
 			// Tell images to chromatically adapt for dark themes when needed
 			logger?.LogInformation("Configuring ImageProvider ...");
 			ImageProvider.Default.ChromaticAdaptationMode = ImageChromaticAdaptationMode.DarkThemes;
 			ImageProvider.Default.UseMonochromeInHighContrast = true;
+
+			// ------------------------------------------------------------------------------------------------------
 
 			// NOTE: This is the ideal place to set the application theme, load native styles, or set customized string resources
 			logger?.LogInformation("Configuring ThemeManager ...");

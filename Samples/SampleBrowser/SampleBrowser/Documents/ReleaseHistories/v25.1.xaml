@@ -10,6 +10,54 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">3/13/2026 - Version 25.1.4</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated BarComboBox to commit the current previewed item on mouse clicks outside of the popup." />
+				<sampleBrowser:BulletContentControl Content="Updated control templates to better propagate font family and size to ItemsControls with popups." />
+				<sampleBrowser:BulletContentControl Content="Updated button click handlers to perform InvocationFocusBehavior logic before processing the click." />
+				<sampleBrowser:BulletContentControl Content="Updated BarPopupButtonBase to work around a possible cached Foreground issue in TextBlocks on the popup that can occur after theme changes." />
+				<sampleBrowser:BulletContentControl Content="Updated automatic Label property generation on controls to not occur when the Label is an empty string." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved X/Y charts to support binding to ICollectionView objects as an ItemsSource." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the background rendering of tinted tabs in light themes." />
+				<sampleBrowser:BulletContentControl Content="Fixed an exception that could be thrown when dragging to float an auto-hidden tool window with a certain configuration." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved X/Y charts to support binding to ICollectionView objects as an ItemsSource." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where text containing extreme numbers of diacritics could cause problems with the text layout engine." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue in the C# parser where nesting a record struct caused a parse error." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved how the Python resolver handles with statements." />
+				<sampleBrowser:BulletContentControl Content="Improved how the Python module loader processes string literal type annotations." />
+				<sampleBrowser:BulletContentControl Content="Improved support for Python return type annotations." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved the appearance of embedded ComboBox controls." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the TrustedCodeService class that manages dynamic loading of types in a secure-by-default manner. This change may be potentially breaking for certain rarely used features, so it's important to review the related documentation for details." />
+				<sampleBrowser:BulletContentControl Content="Removed a MaxLines setter in EmbeddedTextBox's default style, as it seemed to cause a minor layout issue in some scenarios." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">1/22/2026 - Version 25.1.3</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">

@@ -8,7 +8,12 @@
 
 	<sampleBrowser:ProductItemControl.Resources>
 
-		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator" DataPointCount="6" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator6" DataPointCount="6" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator5" DataPointCount="5" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator4" DataPointCount="4" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator3" DataPointCount="3" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator2" DataPointCount="2" StartAmount="10" StepRange="4" Trend="Upward" />
+		<sampleData:TimeAggregatedDataGenerator x:Key="PrimaryDataGenerator1" DataPointCount="1" StartAmount="10" StepRange="4" Trend="Upward" />
 												
 		<charts:PieSlicePaletteStyleSelector x:Key="SequentialSliceStyleSelector">
 			<charts:Palette Kind="Mesa" ColorSelectionHint="Sequential" />
@@ -98,67 +103,67 @@
 
 				<sampleBrowser:LabeledCardControl Grid.Row="1" Grid.Column="0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator6}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="1" Grid.Column="2">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator6}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Grid.Row="2" Grid.Column="0" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator5}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="2" Grid.Column="2" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator5}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Grid.Row="3" Grid.Column="0" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator4}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="3" Grid.Column="2" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator4}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Grid.Row="4" Grid.Column="0" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator3}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="4" Grid.Column="2" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator3}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Grid.Row="5" Grid.Column="0" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator2}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="5" Grid.Column="2" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator2}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Grid.Row="6" Grid.Column="0" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesSequentialStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator1}" Style="{StaticResource PieSeriesSequentialStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="6" Grid.Column="2" Margin="0,20,0,0">
 					<charts:PieChart Style="{StaticResource ChartStyle}">
-						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" Style="{StaticResource PieSeriesUniformStyle}"/>
+						<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator1}" Style="{StaticResource PieSeriesUniformStyle}"/>
 					</charts:PieChart>
 				</sampleBrowser:LabeledCardControl>
 			</Grid>
