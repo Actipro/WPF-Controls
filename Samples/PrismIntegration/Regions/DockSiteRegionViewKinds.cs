@@ -1,33 +1,29 @@
-using System;
+namespace ActiproSoftware.Windows.PrismIntegration.Regions;
 
-namespace ActiproSoftware.Windows.PrismIntegration.Regions {
+/// <summary>
+/// Indicates the view kinds supported by <see cref="DockSiteRegionAdapter"/>.
+/// </summary>
+[Flags]
+internal enum DockSiteRegionViewKinds {
 
 	/// <summary>
-	/// Indicates the view kinds supported by <see cref="DockSiteRegionAdapter"/>.
+	/// No views are supported.
 	/// </summary>
-	[Flags]
-	internal enum DockSiteRegionViewKinds {
+	None = 0x0,
 
-		/// <summary>
-		/// No views are supported.
-		/// </summary>
-		None = 0x0,
+	/// <summary>
+	/// Indicates the views are documents.
+	/// </summary>
+	Document = 0x1,
 
-		/// <summary>
-		/// Indicates the views are documents.
-		/// </summary>
-		Document = 0x1,
-		
-		/// <summary>
-		/// Indicates the view are tools.
-		/// </summary>
-		Tool = 0x2,
+	/// <summary>
+	/// Indicates the view are tools.
+	/// </summary>
+	Tool = 0x2,
 
-		/// <summary>
-		/// Indicates the views can be documents or tools.
-		/// </summary>
-		Both = Document | Tool,
-
-	}
+	/// <summary>
+	/// Indicates the views can be documents or tools.
+	/// </summary>
+	Both = Document | Tool,
 
 }

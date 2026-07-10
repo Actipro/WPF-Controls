@@ -55,6 +55,10 @@ The Shared Library is not a product that is sold on its own, but any developer w
 
 - Multiple classes for maintaining [document references](windows-document-management.md) and tracking/persisting recently used documents.
 
+### Extension Methods
+
+- Various [extension methods](extension-methods.md) are provided for several common .NET types.
+
 ### Media
 
 - A [UIColor](xref:@ActiproUIRoot.Media.UIColor) structure that provides an enhanced representation of a `Color` object that supports the RGB, HSB, and HLS color models, conversion between models, and numerous other color helper methods.
@@ -71,6 +75,11 @@ The Shared Library is not a product that is sold on its own, but any developer w
 - Slide - A slide transition between two pages that moves one page over the other.
 - Push - A slide transition between two pages that pushes one page out of the way for the other.
 - Wedge wipe - A wipe transition between two pages that uses a wedge shape.
+
+### Menu Factory
+
+- Easily customize the built-in contextual menus shown by Actipro products.
+- Swap out native menu controls with [Bars Context Menus](../bars/menu-features/context-menus.md).
 
 ### Serialization
 

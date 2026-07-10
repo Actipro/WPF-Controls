@@ -47,7 +47,7 @@ editor.ActiveView.HighlightedResultSearchOptions = options;
 This code is required to be called once per application instance since it registers the classification types and related styles for the highlights.
 
 ```csharp
-new DisplayItemClassificationTypeProvider().RegisterAll();
+new BuiltInClassificationTypeProvider().RegisterAll();
 ```
 
 > [!IMPORTANT]

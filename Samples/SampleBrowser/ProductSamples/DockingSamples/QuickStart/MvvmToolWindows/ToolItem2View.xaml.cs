@@ -1,21 +1,19 @@
-﻿namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows;
+
+/// <summary>
+/// Provides the tool view.
+/// </summary>
+public partial class ToolItem2View {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the tool view.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class ToolItem2View {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>ToolItem2View</c> class.
-		/// </summary>
-		public ToolItem2View() {
-			InitializeComponent();
-		}
-		
+	public ToolItem2View() {
+		InitializeComponent();
 	}
 
 }

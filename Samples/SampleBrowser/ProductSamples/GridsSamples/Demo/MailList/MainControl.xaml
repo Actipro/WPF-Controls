@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.Demo.MailList.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -91,7 +91,7 @@
 		</Grid.ColumnDefinitions>
 
 		<grids:TreeListBox x:Name="treeListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-						   ItemContainerStyleSelector="{StaticResource CustomStyleSelector}" ItemTemplateSelector="{StaticResource CustomTemplateSelector}" 
+						   ItemContainerStyleSelector="{StaticResource CustomStyleSelector}" ItemTemplateSelector="{StaticResource CustomTemplateSelector}"
 						   TopLevelIndent="26" IndentIncrement="-26" HorizontalAlignment="Left"
 						   SelectionChanged="OnTreeListBoxSelectionChanged">
 			<grids:TreeListBox.ItemAdapter>

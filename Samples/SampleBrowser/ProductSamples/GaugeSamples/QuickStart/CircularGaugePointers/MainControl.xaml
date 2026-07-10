@@ -1,9 +1,9 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
-	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -24,7 +24,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=NeedleType}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=PointerExtent, Converter={StaticResource UnitToDoubleConverter}}" DisplayName="Needle extent">
 						<gridseditors:DoublePropertyEditor Minimum="25" Maximum="125" SmallChange="5" LargeChange="25" HasPopup="True" PickerKind="Default" />
@@ -38,7 +38,7 @@
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=HasDropShadow}" DisplayName="Needle has drop shadow" />
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=Visibility}" DisplayName="Cap visibility" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=CapType}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=PointerExtent, Converter={StaticResource UnitToDoubleConverter}}" DisplayName="Cap extent">
@@ -47,22 +47,22 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=Background}" DisplayName="Cap background" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=IsBackgroundEffectEnabled}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=cap, Path=HasDropShadow}" DisplayName="Cap has drop shadow" />
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=secondNeedle, Path=Visibility}" DisplayName="Second needle visibility" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=secondNeedle, Path=Value}" DisplayName="Second needle value">
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Visibility}" DisplayName="Bar visibility" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=bar, Path=Value}" DisplayName="Bar value">
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=marker, Path=Visibility}" DisplayName="Marker visibility" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=marker, Path=Value}" DisplayName="Marker value">
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
 						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
 					</grids:PropertyModel>

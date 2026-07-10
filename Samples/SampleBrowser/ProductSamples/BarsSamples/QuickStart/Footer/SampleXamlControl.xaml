@@ -1,13 +1,13 @@
-﻿<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer.SampleXamlControl"
+<local:SampleControlBase x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer.SampleXamlControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Footer"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
-	mc:Ignorable="d" 
+	mc:Ignorable="d"
 	d:DesignHeight="450" d:DesignWidth="800">
 
 	<bars:RibbonContainerPanel x:Name="rootPanel">
@@ -34,7 +34,7 @@
 			</bars:Ribbon.FooterContent>
 
 		</bars:Ribbon>
-		
+
 		<!-- TextBox -->
 		<TextBox Margin="0,10,0,0" Padding="10" BorderThickness="0" AcceptsReturn="True">
 			<shared:HintProperties.Hint>

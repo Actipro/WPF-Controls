@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 RIBBON GETTING STARTED SERIES - STEP 9
 
@@ -18,44 +18,38 @@ CHANGES SINCE LAST STEP:
 */
 
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09 {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09;
+
+/// <summary>
+/// Gets a <see cref="DataTemplateSelector"/> for view models that define a
+/// tab on the Backstage of the Ribbon.
+/// </summary>
+public class SampleBackstageTabContentTemplateSelector : DataTemplateSelector {
 
 	/// <summary>
-	/// Gets a <see cref="DataTemplateSelector"/> for view models that define a
-	/// tab on the Backstage of the Ribbon.
+	/// The <see cref="DataTemplate"/> for the "Home" tab.
 	/// </summary>
-	public class SampleBackstageTabContentTemplateSelector : DataTemplateSelector {
+	public DataTemplate? HomeTemplate { get; set; }
 
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> for the "Home" tab.
-		/// </summary>
-		/// <value>A <see cref="DataTemplate"/>.</value>
-		public DataTemplate HomeTemplate { get; set; }
+	/// <summary>
+	/// The <see cref="DataTemplate"/> for the "New" tab.
+	/// </summary>
+	public DataTemplate? NewTemplate { get; set; }
 
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> for the "New" tab.
-		/// </summary>
-		/// <value>A <see cref="DataTemplate"/>.</value>
-		public DataTemplate NewTemplate { get; set; }
-
-		/// <inheritdoc />
-		public override DataTemplate SelectTemplate(object item, DependencyObject container) {
-			if (item is RibbonBackstageTabViewModel viewModel) {
-				// Determine which DataTemplate to use based on the view model key
-				switch (viewModel.Key) {
-					case SampleBarControlKeys.BackstageTabHome:
-						return this.HomeTemplate;
-					case SampleBarControlKeys.BackstageTabNew:
-						return this.NewTemplate;
-				}
+	/// <inheritdoc/>
+	public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
+		if (item is RibbonBackstageTabViewModel viewModel) {
+			// Determine which DataTemplate to use based on the view model key
+			switch (viewModel.Key) {
+				case SampleBarControlKeys.BackstageTabHome:
+					return HomeTemplate;
+				case SampleBarControlKeys.BackstageTabNew:
+					return NewTemplate;
 			}
-
-			return base.SelectTemplate(item, container);
 		}
 
+		return base.SelectTemplate(item, container);
 	}
 
 }

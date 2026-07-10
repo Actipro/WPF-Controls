@@ -1,49 +1,24 @@
-﻿using System.ComponentModel;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionReadOnlyItems;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionReadOnlyItems {
-	
+/// <summary>
+/// Represents a child object.
+/// </summary>
+/// <param name="name">The optional string name.</param>
+[TypeConverter(typeof(ChildObjectConverter))]
+public class ChildObject(string? name = null) {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Represents a child object.
+	/// The name.
 	/// </summary>
-	[TypeConverter(typeof(ChildObjectConverter))]
-	public class ChildObject {
+	[NotifyParentProperty(true)]
+	public string Name { get; set; } = name ?? "Child";
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>ChildObject</c> class.
-		/// </summary>
-		/// <param name="name">The optional string name.</param>
-		public ChildObject(string name = null) {
-			this.Name = name ?? "Child";
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		[NotifyParentProperty(true)]
-		public string Name {
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Returns a <see cref="String"/> that represents the current <see cref="Object"/>.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="String"/> that represents the current <see cref="Object"/>.
-		/// </returns>
-		public override string ToString() {
-			return this.Name;
-		}
-
-	}
+	/// <inheritdoc/>
+	public override string ToString()
+		=> Name;
 
 }

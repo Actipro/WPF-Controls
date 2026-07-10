@@ -3,14 +3,14 @@
 	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationMvvm.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
     xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
     xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"	
 	xmlns:syntaxeditor="http://schemas.actiprosoftware.com/winfx/xaml/syntaxeditor"
     xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
-	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
-	xmlns:barsmvvm="http://schemas.actiprosoftware.com/winfx/xaml/barsmvvm"
 	FocusManager.FocusedElement="{Binding ElementName=xmlDataEditor}"
+	DataContext="{Binding ElementName=rootSampleControl}"	
 	>
 
 	<sampleBrowser:ProductItemControl.SideBarContent>
@@ -62,21 +62,13 @@
 				<bars:RibbonContainerPanel>
 					
 					<!-- Ribbon Control -->
-					<bars:Ribbon x:Name="ribbon" ItemsSource="{Binding RibbonTabs}"
+					<bars:Ribbon x:Name="ribbon" 
+								 DataContext="{Binding RibbonViewModel}"
+								 Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.RibbonStyle}}"
 								 IsApplicationButtonVisible="False"
-								 QuickAccessToolBarItemAdding="OnQuickAccessToolBarItemAdding">
-						
-						<bars:Ribbon.QuickAccessToolBarContent>
-							<bars:RibbonQuickAccessToolBar CommonItems="{Binding QuickAccessToolBarCommonItems}" ItemsSource="{Binding QuickAccessToolBarActiveItems}" />
-						</bars:Ribbon.QuickAccessToolBarContent>
+								 QuickAccessToolBarItemAdding="OnQuickAccessToolBarItemAdding" />
 
-						<!-- Configure pre-defined template selector for Bars view models -->
-						<bars:Ribbon.ItemContainerTemplateSelector>
-							<barsmvvm:BarControlTemplateSelector/>
-						</bars:Ribbon.ItemContainerTemplateSelector>
 
-					</bars:Ribbon>
-					
 					<!-- Serialized Data Editor -->
 					<syntaxeditor:SyntaxEditor x:Name="xmlDataEditor" BorderThickness="0" Margin="0,10,0,0"
 											   AreLineModificationMarksVisible="False"

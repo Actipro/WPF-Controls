@@ -1,66 +1,57 @@
-﻿using System;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents an abstract view model base for an observable object that is identified by a unique string key.
+/// </summary>
+public abstract class BarKeyedObjectViewModelBase : ObservableObjectBase, IHasKey, IHasTag {
+
+	private string? _key;
+	private object? _tag;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents an abstract view model base for an observable object that is identified by a unique string key.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public abstract class BarKeyedObjectViewModelBase : ObservableObjectBase, IHasKey, IHasTag {
+	protected BarKeyedObjectViewModelBase()  // Parameterless constructor required for XAML support
+		: this(key: null) { }
 
-		private string key;
-		private object tag;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BarKeyedObjectViewModelBase"/> class.
-		/// </summary>
-		protected BarKeyedObjectViewModelBase()  // Parameterless constructor required for XAML support
-			: this(key: null) { }
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BarKeyedObjectViewModelBase"/> class.
-		/// </summary>
-		/// <param name="key">A string that uniquely identifies the control.</param>
-		protected BarKeyedObjectViewModelBase(string key) {
-			this.key = key;
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="IHasKey.Key"/>
-		public string Key {
-			get => key;
-			set {
-				if (key != value) {
-					if (!string.IsNullOrEmpty(key))
-						throw new ArgumentException("The key cannot be changed once it has been set.", nameof(value));
-
-					key = value;
-					this.NotifyPropertyChanged(nameof(Key));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-			=> $"{this.GetType().FullName}[Key='{this.Key}']";
-
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	/// <param name="key">A string that uniquely identifies the control.</param>
+	protected BarKeyedObjectViewModelBase(string? key) {
+		_key = key;
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="IHasKey.Key"/>
+	public string? Key {
+		get => _key;
+		set {
+			if (_key != value) {
+				if (!string.IsNullOrEmpty(_key))
+					throw new ArgumentException("The key cannot be changed once it has been set.", nameof(value));
+
+				_key = value;
+				OnPropertyChanged();
+			}
+		}
+	}
+
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[Key='{Key}']";
 
 }

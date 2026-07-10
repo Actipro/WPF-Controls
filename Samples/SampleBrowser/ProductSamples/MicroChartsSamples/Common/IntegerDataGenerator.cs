@@ -1,50 +1,44 @@
-using System;
-using System.Collections.Generic;
+using ActiproSoftware.Extensions;
 
-namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Common {
+namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Common;
 
-	/// <summary>
-	/// Dynamically generates random data to be used with various samples.
-	/// Normally, data would come from sources such as database instead.
-	/// </summary>
-	public class IntegerDataGenerator : DataGeneratorBase<IntegerDataOptions, IntegerData> {
+/// <summary>
+/// Dynamically generates random data to be used with various samples.
+/// Normally, data would come from sources such as database instead.
+/// </summary>
+public class IntegerDataGenerator : DataGeneratorBase<IntegerDataOptions, IntegerData> {
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Generates a single data set based on the current options.
-		/// </summary>
-		/// <returns>The collection of generated data.</returns>
-		protected override ICollection<IntegerData> Generate() {
-			// Create the results
-			List<IntegerData> results = new List<IntegerData>();
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			if (this.Options != null) {
-				// Initialize the date
-				DateTime date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(-this.Options.Count);
+	/// <inheritdoc/>
+	protected override ICollection<IntegerData> Generate() {
+		// Create the results
+		var results = new List<IntegerData>();
 
-				// Initialize the results with the first data item
-				results.Add(new IntegerData(date, this.Options.StartValue));
-				date.AddMonths(1);
+		if (Options is { } options) {
+			// Initialize the date
+			var date = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(-options.Count);
 
-				double delta = this.Options.TrendPercentage * this.Options.StepRange;
-				for (int index = 1; index < this.Options.Count; index++) {
-					double step = this.Random.NextDouble() * this.Options.StepRange;
-					int count = (int)Math.Round(results[index - 1].Value + step - delta);
+			// Initialize the results with the first data item
+			results.Add(new IntegerData(date, options.StartValue));
+			date.AddMonths(1);
 
-					if (!this.AllowNegativeNumbers)
-						count = Math.Max(0, count);
+			var delta = options.TrendPercentage * options.StepRange;
+			for (var index = 1; index < options.Count; index++) {
+				var step = Random.NextDouble() * options.StepRange;
+				var count = (int)Math.Round(results[index - 1].Value + step - delta);
 
-					results.Add(new IntegerData(date, count));
-					date = date.AddMonths(1);
-				}
+				if (!AllowNegativeNumbers)
+					count = count.ClampToNonnegative();
+
+				results.Add(new IntegerData(date, count));
+				date = date.AddMonths(1);
 			}
-
-			return results;
 		}
 
+		return results;
 	}
 
 }

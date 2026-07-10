@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDynamicProperties.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -23,7 +23,7 @@
 					This sample shows how property models can have dynamic features such as being selectively read-only or visible based on another property's value.
 					It also shows how a property model's standard values can be altered on the fly.
 					<LineBreak /><LineBreak />
-					One way to accomplish this is to define a custom data factory, property model, and interface that can be used to make 
+					One way to accomplish this is to define a custom data factory, property model, and interface that can be used to make
 					property model features dynamic as needed.
 					<LineBreak /><LineBreak />
 					Toggle the Target property and see how other properties adjust themselves in the property grid.
@@ -36,7 +36,7 @@
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 
 		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
-							DataObject="{StaticResource DisplayOutput}" IsCategorized="False" SortComparer="{x:Null}" 
+							DataObject="{StaticResource DisplayOutput}" IsCategorized="False" SortComparer="{x:Null}"
 							CanSummaryAutoSize="True" SummaryHeight="Auto" CanClearDataObjectOnUnload="True">
 			<grids:PropertyGrid.DataFactory>
 				<sample:CustomDataFactory />

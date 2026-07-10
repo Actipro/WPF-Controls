@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 RIBBON GETTING STARTED SERIES - STEP 9
 
@@ -6,32 +6,32 @@ STEP SUMMARY:
 
 	Update the Backstage with "Home" and "New" tabs that, when selected, will present tab-specific
 	content in the Backstage.
-	
+
 CHANGES SINCE LAST STEP:
-	
+
 	Added "SampleBackstageHeadingTextBlockStyle" and "SampleBackstageSubHeadingTextBlockStyle" styles
 	to be reused within Backstage Tab content.
-	
+
 	Added the "DefaultDocumentTemplate" FlowDocument resource that will be loaded when a new document
 	is created from a default template.
-	
+
 	Added a SampleBackstageTabContentTemplateSelector instance as a resource and populated the DataTemplate
 	to be used for the Home and New tabs. Updated RibbonBackstageViewModel.ContentTemplateSelector to use this
 	resource (via code behind).
-	
+
 	Added SampleResourceKeys class as a best practice to centralize the definition of resource key values.
 
 	Prior sample comments were removed/condensed.
-	
+
 EXPECTED OPERATION:
-	
+
 	When this sample window is opened, the "File" Application Button will be displayed next to the Ribbon Tabs.
 	Clicking the Application Button will reveal a RibbonBackstage that covers the entire application window. The
 	"Home" and "New" tabs are displayed aligned to the top and separated from the previously defined "Close"
 	and "Print" buttons.
-	
+
 	Clicking the "Home" or "New" tabs will show additional content without closing the Backstage.
-	
+
 	On the "New" tab, clicking either button for a new document will close the Backstage and update the
 	editor with the selected option.
 
@@ -53,8 +53,8 @@ EXPECTED OPERATION:
 	>
 
 	<bars:RibbonWindow.Resources>
-		
-		<!-- 
+
+		<!--
 			SAMPLE NOTE 9.1:
 				Add some reusable styles that will be applied to controls displayed on the Backstage.
 		-->
@@ -69,7 +69,7 @@ EXPECTED OPERATION:
 			<Setter Property="Margin" Value="0,0,0,10" />
 			<Setter Property="TextWrapping" Value="Wrap" />
 		</Style>
-		
+
 		<!--
 			SAMPLE NOTE 9.2:
 				Define a non-empty document that can be loaded in the editor when the "Default Template"
@@ -88,11 +88,11 @@ EXPECTED OPERATION:
 				is defined with this sample and includes a DataTemplate property for each Backstage tab.
 				The code behind for this view will associated this static resource with the view model
 				for the Backstage.
-		
+
 				Define the DataTemplate to use for the Home and New tabs.
 		-->
 		<local:SampleBackstageTabContentTemplateSelector x:Key="{x:Static local:SampleResourceKeys.SampleBackstageTabContentTemplateSelector}">
-			
+
 			<!-- Backstage Home Tab Content -->
 			<local:SampleBackstageTabContentTemplateSelector.HomeTemplate>
 				<DataTemplate>
@@ -107,7 +107,7 @@ EXPECTED OPERATION:
 								SAMPLE NOTE 9.4:
 									The "Home" tab can be used like a landing page for an application with a set of
 									common-used actions or other information that might be relevant.
-							
+
 									This sample will display a simple "welcome" message.
 							-->
 							<TextBlock Grid.Row="0" Text="Actipro Ribbon Sample" Style="{StaticResource SampleBackstageHeadingTextBlockStyle}" />
@@ -136,7 +136,7 @@ EXPECTED OPERATION:
 								<ColumnDefinition Width="Auto" />
 								<ColumnDefinition Width="*" MinWidth="200" MaxWidth="500" />
 							</Grid.ColumnDefinitions>
-							
+
 							<!--
 								SAMPLE NOTE 9.5:
 									The "New" tab for this sample is designed to present the user with options for
@@ -147,7 +147,7 @@ EXPECTED OPERATION:
 							<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="New" Style="{StaticResource SampleBackstageHeadingTextBlockStyle}" />
 
 							<!-- Blank Document Option -->
-							<bars:BarButton Grid.Row="1" Margin="0,0,15,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" 
+							<bars:BarButton Grid.Row="1" Margin="0,0,15,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}"
 										LargeImageSource="/Images/Icons/BlankPage32.png" Label="Blank Document" KeyTipText="B" Command="ApplicationCommands.New" />
 							<StackPanel Grid.Row="1" Grid.Column="1">
 								<TextBlock Style="{StaticResource SampleBackstageSubHeadingTextBlockStyle}" Text="No Content" />
@@ -155,18 +155,18 @@ EXPECTED OPERATION:
 							</StackPanel>
 
 							<!-- Default Template Option -->
-							<bars:BarButton Grid.Row="3" Margin="0,0,15,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" 
+							<bars:BarButton Grid.Row="3" Margin="0,0,15,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}"
 										LargeImageSource="/Images/Icons/RichTextDocument32.png" Label="Default Document" KeyTipText="I" Command="ApplicationCommands.New" CommandParameter="{x:Static local:SampleResourceKeys.DefaultDocumentTemplate}" />
 							<StackPanel Grid.Row="3" Grid.Column="1">
 								<TextBlock Style="{StaticResource SampleBackstageSubHeadingTextBlockStyle}" Text="Default Content" />
 								<TextBlock TextWrapping="Wrap" Text="Create a document that has some default content." />
 							</StackPanel>
-							
+
 						</Grid>
 					</ScrollViewer>
 				</DataTemplate>
 			</local:SampleBackstageTabContentTemplateSelector.NewTemplate>
-			
+
 		</local:SampleBackstageTabContentTemplateSelector>
 
 	</bars:RibbonWindow.Resources>
@@ -187,14 +187,14 @@ EXPECTED OPERATION:
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<samplesCommon:RichTextBoxExtended x:Name="editor">
-							
+
 							<!-- Configure Ribbon-based context menu -->
 							<samplesCommon:RichTextBoxExtended.ContextMenu>
 								<bars:BarContextMenu ItemsSource="{Binding EditorContextMenuItems}"
 													 ItemContainerTemplateSelector="{Binding Ribbon.ItemContainerTemplateSelector}">
 								</bars:BarContextMenu>
 							</samplesCommon:RichTextBoxExtended.ContextMenu>
-							
+
 						</samplesCommon:RichTextBoxExtended>
 					</Border>
 				</shared:ShadowChrome>
@@ -204,5 +204,5 @@ EXPECTED OPERATION:
 
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

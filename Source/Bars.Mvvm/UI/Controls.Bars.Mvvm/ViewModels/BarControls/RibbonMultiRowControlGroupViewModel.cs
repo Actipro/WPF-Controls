@@ -1,70 +1,45 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Media;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a multi-row control group control within a ribbon group.
+/// </summary>
+public class RibbonMultiRowControlGroupViewModel : ObservableObjectBase, IHasTag {
+
+	private bool _isVisible = true;
+	private object? _tag;
+	private Int32Collection? _threeRowItemSortOrder;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
 
 	/// <summary>
-	/// Represents a view model for a multi-row control group control within a ribbon group.
+	/// The collection of items in the control.
 	/// </summary>
-	public class RibbonMultiRowControlGroupViewModel : ObservableObjectBase, IHasTag {
+	public ObservableCollection<object> Items { get; } = [];
 
-		private bool isVisible = true;
-		private object tag;
-		private Int32Collection threeRowItemSortOrder;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of items in the control.
-		/// </summary>
-		/// <value>The collection of items in the control.</value>
-		public ObservableCollection<object> Items { get; } = new ObservableCollection<object>();
-
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets a collection of integers that indicates the indices of how items should be sorted when in a three-row layout.
-		/// </summary>
-		/// <value>A collection of integers that indicates the indices of how items should be sorted when in a three-row layout.</value>
-		public Int32Collection ThreeRowItemSortOrder {
-			get {
-				return threeRowItemSortOrder;
-			}
-			set {
-				if (threeRowItemSortOrder != value) {
-					threeRowItemSortOrder = value;
-					this.NotifyPropertyChanged(nameof(ThreeRowItemSortOrder));
-				}
-			}
-		}
-		
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[{this.Items.Count} item(s)']";
-		}
-
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
 	}
+
+	/// <summary>
+	/// A collection of integers that indicates the indices of how items should be sorted when in a three-row layout.
+	/// </summary>
+	public Int32Collection? ThreeRowItemSortOrder {
+		get => _threeRowItemSortOrder;
+		set => SetProperty(ref _threeRowItemSortOrder, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[{Items.Count} item(s)']";
 
 }

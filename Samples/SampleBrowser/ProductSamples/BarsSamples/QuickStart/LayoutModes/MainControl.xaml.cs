@@ -1,28 +1,26 @@
 using ActiproSoftware.ProductSamples.BarsSamples.Common;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.LayoutModes {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.LayoutModes;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-
-			// Don't use a tab row toolbar in this sample
-			var viewModel = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel();
-			viewModel.Ribbon.TabRowToolBar = null;
-			this.DataContext = viewModel;
-		}
-
+		// Don't use a tab row toolbar in this sample
+		var viewModel = SampleViewModelFactory.CreateDefaultRichTextEditorRibbonWindowViewModel();
+		viewModel.Ribbon.TabRowToolBar = null;
+		DataContext = viewModel;
 	}
+
 }

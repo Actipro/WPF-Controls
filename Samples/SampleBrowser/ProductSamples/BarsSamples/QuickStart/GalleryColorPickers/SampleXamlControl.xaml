@@ -134,7 +134,7 @@
 												 UseAccentedItemBorder="{Binding Options.UseAccentedItemBorder}"
 												 UseMenuItemIndent="{Binding Options.UseMenuItemIndent}"
 												 ItemContainerStyle="{StaticResource BarGalleryItemCircleStyle}"
-												 ItemTemplate="{StaticResource CircleStyleGalleryItemItemplate}"/>
+												 ItemTemplate="{StaticResource CircleStyleGalleryItemTemplate}"/>
 							<bars:BarMenuItem Key="CustomStyleFontColorPickerMoreColors" Label="Customize..." Command="{Binding MoreColorsCommand}" />
 						</bars:BarMenuItem>
 										

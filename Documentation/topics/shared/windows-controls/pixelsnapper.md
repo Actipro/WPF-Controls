@@ -35,12 +35,12 @@ The [PixelSnapper](xref:@ActiproUIRoot.Controls.PixelSnapper) class has these im
 
 | Member | Description |
 |-----|-----|
-| [HorizontalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is `RoundMode.Ceiling`. |
-| [VerticalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is `RoundMode.Ceiling`. |
+| [HorizontalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is `RoundMode.Ceiling`. |
+| [VerticalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is `RoundMode.Ceiling`. |
 
 ## RoundMode Enumeration
 
-The [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration has these values:
+The [RoundMode](xref:ActiproSoftware.RoundMode) enumeration has these values:
 
 | Value | Description |
 |-----|-----|

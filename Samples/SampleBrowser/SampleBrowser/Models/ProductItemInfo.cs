@@ -1,191 +1,145 @@
-﻿using System;
+﻿
+namespace ActiproSoftware.SampleBrowser;
 
-namespace ActiproSoftware.SampleBrowser {
+/// <summary>
+/// Provides information about a product item.
+/// </summary>
+public class ProductItemInfo {
 
-    /// <summary>
-    /// Provides information about a product item.
-    /// </summary>
-    public class ProductItemInfo {
+	private string? _blurbText;
 
-		private string blurbText;
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the blurb text.
-		/// </summary>
-		/// <value>The blurb text.</value>
-		public string BlurbText {
-			get => blurbText ?? (IsPrivate ? "Private!" : null);
-			set => blurbText = value;
-		}
+	/// <summary>
+	/// The blurb text.
+	/// </summary>
+	public string? BlurbText {
+		get => _blurbText ?? (IsPrivate ? "Private!" : null);
+		set => _blurbText = value;
+	}
 
-		/// <summary>
-		/// Gets or sets whether the sample can be auto-focused following load.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the sample can be auto-focused following load; otherwise, <c>false</c>.
-		/// </value>
-		public bool CanFocusOnLoad { get; set; } = true;
+	/// <summary>
+	/// Indicates whether the sample can be auto-focused following load.
+	/// </summary>
+	public bool CanFocusOnLoad { get; set; } = true;
 
-        /// <summary>
-        /// Gets or sets the category.
-        /// </summary>
-        /// <value>The category.</value>
-        public string Category { get; set; }
+	/// <summary>
+	/// The category.
+	/// </summary>
+	public string? Category { get; set; }
 
-		/// <summary>
-		/// Gets the path to the folder containing the product item.
-		/// </summary>
-		/// <value>The path to the folder containing the product item.</value>
-		public string FolderPath {
-			get {
-				var path = this.Path;
-				if (!string.IsNullOrEmpty(path)) {
-					var lastSlashIndex = path.LastIndexOf('/');
-					if (lastSlashIndex != -1)
-						path = path.Substring(0, lastSlashIndex);
-				}
-
-				return path;
+	/// <summary>
+	/// The path to the folder containing the product item.
+	/// </summary>
+	public string? FolderPath {
+		get {
+			var path = Path;
+			if (!string.IsNullOrEmpty(path)) {
+				var lastSlashIndex = path!.LastIndexOf('/');
+				if (lastSlashIndex != -1)
+					path = path.Substring(0, lastSlashIndex);
 			}
-		}
 
-		/// <summary>
-		/// Gets whether there is any blurb text.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if there is any blurb text; otherwise, <c>false</c>.
-		/// </value>
-		public bool HasBlurbText {
-			get {
-				return !string.IsNullOrEmpty(this.BlurbText);
+			return path;
+		}
+	}
+
+	/// <summary>
+	/// Indicates whether there is any blurb text.
+	/// </summary>
+	public bool HasBlurbText
+		=> !string.IsNullOrEmpty(BlurbText);
+
+	/// <summary>
+	/// Indicates whether the item has a custom status bar.
+	/// </summary>
+	public bool HasCustomStatusBar { get; set; }
+
+	/// <summary>
+	/// Indicates whether the item has any interop controls that may cause airspace issues with Backstage overlays.
+	/// </summary>
+	public bool HasInterop { get; set; }
+
+	/// <summary>
+	/// Indicates whether this item is a private item not intended for inclusion in public projects.
+	/// </summary>
+	public bool IsPrivate { get; set; }
+
+	/// <summary>
+	/// Indicates whether this item is a product overview document.
+	/// </summary>
+	public bool IsProductOverview
+		=> ProductFamily?.OverviewItem == this;
+
+	/// <summary>
+	/// Indicates whether this item is a release history.
+	/// </summary>
+	public bool IsReleaseHistory
+		=> Category == "Release History";
+
+	/// <summary>
+	/// Indicates whether this item is a utility.
+	/// </summary>
+	public bool IsUtility
+		=> Category == "Utilities";
+
+	/// <summary>
+	/// The next <see cref="ProductItemInfo"/>, if any.
+	/// </summary>
+	public ProductItemInfo? NextItem {
+		get {
+			if (ProductFamily is { } productFamily) {
+				var index = productFamily.Items.IndexOf(this);
+				if (index < productFamily.Items.Count - 1)
+					return productFamily.Items[index + 1];
 			}
+
+			return null;
 		}
-		
-        /// <summary>
-        /// Gets or sets whether the item has a custom status bar.
-        /// </summary>
-        /// <value>
-		/// <c>true</c> if the item has a custom status bar; otherwise, <c>false</c>.
-		/// </value>
-        public bool HasCustomStatusBar { get; set; }
-		
-        /// <summary>
-        /// Gets or sets whether the item has any interop controls that may cause airspace issues with Backstage overlays.
-        /// </summary>
-        /// <value>
-		/// <c>true</c> if the item has any interop controls that may cause airspace issues with Backstage overlays; otherwise, <c>false</c>.
-		/// </value>
-        public bool HasInterop { get; set; }
+	}
 
-		/// <summary>
-		/// Gets or sets Whether this item is a private item not intended for inclusion in public projects.
-		/// </summary>
-		public bool IsPrivate { get; set; }
+	/// <summary>
+	/// The file path to the sample.
+	/// </summary>
+	public string? Path { get; set; }
 
-		/// <summary>
-		/// Gets whether this item is a product overview document.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if this item is a product overview document; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsProductOverview {
-			get {
-				return (this.ProductFamily?.OverviewItem == this);
+	/// <summary>
+	/// The previous <see cref="ProductItemInfo"/>, if any.
+	/// </summary>
+	public ProductItemInfo? PreviousItem {
+		get {
+			if (ProductFamily is { } productFamily) {
+				var index = productFamily.Items.IndexOf(this);
+				if (index > 0)
+					return productFamily.Items[index - 1];
+				else if ((index == 0) && (productFamily.OverviewItem is not null))
+					return ProductFamily.OverviewItem;
 			}
+
+			return null;
 		}
-		
-		/// <summary>
-		/// Gets whether this item is a release history.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if this item is a release history; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsReleaseHistory {
-			get {
-				return (this.Category == "Release History");
-			}
-		}
-		
-		/// <summary>
-		/// Gets whether this item is a utility.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if this item is a utility; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsUtility {
-			get {
-				return (this.Category == "Utilities");
-			}
-		}
-		
-		/// <summary>
-		/// Gets the next <see cref="ProductItemInfo"/>, if any.
-		/// </summary>
-		/// <value>The next <see cref="ProductItemInfo"/>, if any.</value>
-		public ProductItemInfo NextItem {
-			get {
-				if (this.ProductFamily != null) {
-					var index = this.ProductFamily.Items.IndexOf(this);
-					if (index < this.ProductFamily.Items.Count - 1)
-						return this.ProductFamily.Items[index + 1];
-				}
+	}
 
-				return null;
-			}
-		}
+	/// <summary>
+	/// The <see cref="ProductFamilyInfo"/> that owns this item.
+	/// </summary>
+	public ProductFamilyInfo? ProductFamily { get; set; }
 
-		/// <summary>
-		/// Gets or sets the file path to the sample.
-		/// </summary>
-		/// <value>The file path to the sample.</value>
-		public string Path { get; set; }
-		
-		/// <summary>
-		/// Gets the previous <see cref="ProductItemInfo"/>, if any.
-		/// </summary>
-		/// <value>The previous <see cref="ProductItemInfo"/>, if any.</value>
-		public ProductItemInfo PreviousItem {
-			get {
-				if (this.ProductFamily != null) {
-					var index = this.ProductFamily.Items.IndexOf(this);
-					if (index > 0)
-						return this.ProductFamily.Items[index - 1];
-					else if ((index == 0) && (this.ProductFamily.OverviewItem != null))
-						return this.ProductFamily.OverviewItem;
-				}
+	/// <summary>
+	/// The search score.
+	/// </summary>
+	public int SearchScore { get; set; }
 
-				return null;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="ProductFamilyInfo"/> that owns this item.
-		/// </summary>
-		/// <value>The <see cref="ProductFamilyInfo"/> that owns this item.</value>
-		public ProductFamilyInfo ProductFamily { get; set; }
+	/// <summary>
+	/// The sidebar width.
+	/// </summary>
+	public PredefinedSideBarWidth SideBarWidth { get; set; } = PredefinedSideBarWidth.Wide;
 
-		/// <summary>
-		/// Gets or sets the search score.
-		/// </summary>
-		/// <value>The search score.</value>
-		public int SearchScore { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sidebar width.
-        /// </summary>
-        /// <value>The sidebar width.</value>
-        public PredefinedSideBarWidth SideBarWidth { get; set; } = PredefinedSideBarWidth.Wide;
-
-        /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
-        /// <value>The title.</value>
-        public string Title { get; set; }
-
-    }
+	/// <summary>
+	/// The title.
+	/// </summary>
+	public string? Title { get; set; }
 
 }

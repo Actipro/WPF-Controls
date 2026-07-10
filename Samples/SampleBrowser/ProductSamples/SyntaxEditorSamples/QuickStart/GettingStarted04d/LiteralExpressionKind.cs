@@ -1,22 +1,18 @@
-using System;
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted04d;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted04d {
-	
+/// <summary>
+/// Specifies the type of literal expression.
+/// </summary>
+public enum LiteralExpressionKind {
+
 	/// <summary>
-	/// Specifies the type of literal expression.
+	/// No kind indicated.
 	/// </summary>
-	public enum LiteralExpressionKind {
-		
-		/// <summary>
-		/// No kind indicated.
-		/// </summary>
-		None,
+	None,
 
-		/// <summary>
-		/// A number.
-		/// </summary>
-		Number,
-
-	}
+	/// <summary>
+	/// A number.
+	/// </summary>
+	Number,
 
 }

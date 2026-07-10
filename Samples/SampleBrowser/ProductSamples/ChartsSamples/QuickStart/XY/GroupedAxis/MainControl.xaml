@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootControl"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.GroupedAxis.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -31,7 +31,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					XYGroupedAxis can be used to bind to data that is not a value type, such as strings and complex classes. 
+					XYGroupedAxis can be used to bind to data that is not a value type, such as strings and complex classes.
 					You can customize how data is grouped, labeled, and sorted.
 				</TextBlock>
 			</Expander>
@@ -54,15 +54,15 @@
 							</charts:SeriesPaletteStyleSelector>
 						</charts:XYChart.SeriesStyleSelector>
 						<charts:XYChart.YAxes>
-							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="25" 
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="25"
 													Title="Calories" Minimum="0" AreLabelsVisible="True"
 													TitleStyle="{StaticResource AxisTitleStyle}"/>
 						</charts:XYChart.YAxes>
 						<charts:XYChart.XAxes>
-							<charts:XYGroupedAxis AreMajorTicksVisible="True" AreLabelsVisible="True" LabelAngle="-45" 
+							<charts:XYGroupedAxis AreMajorTicksVisible="True" AreLabelsVisible="True" LabelAngle="-45"
 													BarSpacing="4px"/>
 						</charts:XYChart.XAxes>
-						<charts:BarSeries ItemsSource="{Binding ElementName=rootControl, Path=FruitData}" 
+						<charts:BarSeries ItemsSource="{Binding ElementName=rootControl, Path=FruitData}"
 											XPath="Name" YPath="Calories"/>
 					</charts:XYChart>
 				</sampleBrowser:LabeledCardControl>
@@ -77,7 +77,7 @@
 							</charts:SeriesPaletteStyleSelector>
 						</charts:XYChart.SeriesStyleSelector>
 						<charts:XYChart.YAxes>
-							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1" 
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1"
 													Title="Count" Minimum="0" AreLabelsVisible="True"
 													TitleStyle="{StaticResource AxisTitleStyle}"/>
 						</charts:XYChart.YAxes>
@@ -100,9 +100,9 @@
 							</charts:SeriesPaletteStyleSelector>
 						</charts:XYChart.SeriesStyleSelector>
 						<charts:XYChart.YAxes>
-							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1" 
+							<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="1"
 													Title="Count"
-													Minimum="0" AreLabelsVisible="True" 
+													Minimum="0" AreLabelsVisible="True"
 													TitleStyle="{StaticResource AxisTitleStyle}"/>
 						</charts:XYChart.YAxes>
 						<charts:XYChart.XAxes>

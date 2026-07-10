@@ -13,7 +13,10 @@ apiRules:
     uidRegex: ^ActiproSoftware\.Compatibility$
     type: Namespace
 - exclude:
-    uidRegex: ^ActiproSoftware\.Products
+    uidRegex: ^ActiproSoftware\.Tests
+    type: Namespace
+- exclude:
+    uidRegex: ^ActiproSoftware\..*\.Internal
     type: Namespace
 
 # Exclude third-party code

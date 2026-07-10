@@ -1,17 +1,17 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootControl"
-	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.InertiaScrollViewerIntro.MainControl" 
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
-	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.InertiaScrollViewerIntro.MainControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.InertiaScrollViewerIntro"
-	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser" 
-	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared" 
-	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
-	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
 	mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="400"
 	>
 
@@ -69,8 +69,8 @@
 			<sampleBrowser:SampleGalleryControl Label="{x:Null}" UseLowerContrast="False">
 
 				<sampleBrowser:LabeledCardControl Label="InertiaScrollViewer with horizontal scrolling">
-					<views:InertiaScrollViewer x:Name="firstScrollViewer" Height="400" Width="400" 
-												HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" 
+					<views:InertiaScrollViewer x:Name="firstScrollViewer" Height="400" Width="400"
+												HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
 												EasingFunction="{Binding SelectedEasingFunction}">
 						<StackPanel Orientation="Horizontal">
 							<Border Width="100" Height="400" Background="#CFF09E" />
@@ -111,8 +111,8 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="InertiaScrollViewer with vertical scrolling">
-					<views:InertiaScrollViewer Height="400" Width="400" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" 
-												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}" 
+					<views:InertiaScrollViewer Height="400" Width="400" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}"
 												VelocityTimeRatio="{Binding ElementName=firstScrollViewer, Path=VelocityTimeRatio}"
 												EasingFunction="{Binding SelectedEasingFunction}">
 						<StackPanel Orientation="Vertical">
@@ -154,8 +154,8 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="InertiaScrollViewer with horizontal and vertical scrolling">
-					<views:InertiaScrollViewer Height="400" Width="400" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" 
-												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}" 
+					<views:InertiaScrollViewer Height="400" Width="400" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}"
 												VelocityTimeRatio="{Binding ElementName=firstScrollViewer, Path=VelocityTimeRatio}"
 												EasingFunction="{Binding SelectedEasingFunction}">
 						<WrapPanel Width="1500">
@@ -197,9 +197,9 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="Even with touch enabled, users are able to interact with elements inside InertiaScrollViewer; Press the buttons and note that they still receive input events">
-					<views:InertiaScrollViewer Margin="0,10,0,0" Height="400" Width="400" HorizontalScrollBarVisibility="Disabled" 
-												VerticalScrollBarVisibility="Auto" 
-												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}" 
+					<views:InertiaScrollViewer Margin="0,10,0,0" Height="400" Width="400" HorizontalScrollBarVisibility="Disabled"
+												VerticalScrollBarVisibility="Auto"
+												VelocityDistanceRatio="{Binding ElementName=firstScrollViewer, Path=VelocityDistanceRatio}"
 												VelocityTimeRatio="{Binding ElementName=firstScrollViewer, Path=VelocityTimeRatio}"
 												EasingFunction="{Binding SelectedEasingFunction}">
 						<StackPanel Orientation="Vertical">

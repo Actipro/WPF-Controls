@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -78,6 +69,11 @@ Each of the features listed in the table below describe functionality that is co
 <td>No wrap.</td>
 </tr>
 
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
 </tbody>
 </table>
 
@@ -88,6 +84,8 @@ Each of the features listed in the table below describe functionality that is co
 - `"F"`
 - `"Fx"`, where x is the number of decimal places (e.g., `"F1"`)
 - `"G"`
+
+Composite numeric formats (e.g., `"{0:F}"`) are also supported.
 
 ## Minimum and Maximum Values
 
@@ -121,6 +119,15 @@ Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox.IsNaNA
 Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign <kbd>-</kbd> and then the letter <kbd>I</kbd>.
 
 Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.VectorEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter <kbd>I</kbd>.
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, only the following text may be entered into the edit box:
+- Valid input for a numeric part based on the current format.
+- The part separator character `,` (or `;` if the current culture uses `,` as the decimal separator).
+- The space character.
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML
 

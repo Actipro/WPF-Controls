@@ -1,53 +1,46 @@
-﻿using ActiproSoftware.Windows.Themes;
-using System.Windows;
-using System.Windows.Controls;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Provides a <see cref="DataTemplateSelector"/> that selects content templates for various ribbon footer content view models,
+/// generally used with a <see cref="RibbonFooterControl"/> and assigned to its <see cref="ContentControl.ContentTemplateSelector"/> property.
+/// </summary>
+public class RibbonFooterContentTemplateSelector : DataTemplateSelector {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides a <see cref="DataTemplateSelector"/> that selects content templates for various ribbon footer content view models,
-	/// generally used with a <see cref="RibbonFooterControl"/> and assigned to its <see cref="ContentControl.ContentTemplateSelector"/> property.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class RibbonFooterContentTemplateSelector : DataTemplateSelector {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="RibbonFooterContentTemplateSelector"/> class.
-		/// </summary>
-		public RibbonFooterContentTemplateSelector() {
-			var dictionary = BarsMvvmResourceDictionary.Instance;
+	public RibbonFooterContentTemplateSelector() {
+		var dictionary = BarsMvvmResourceDictionary.Instance;
 
-			this.InfoBarDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentInfoBarDataTemplate] as DataTemplate;
-			this.SimpleDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate] as DataTemplate;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <inheritdoc/>
-		public override DataTemplate SelectTemplate(object item, DependencyObject container)
-			=> item switch {
-				RibbonFooterInfoBarContentViewModel _ => this.InfoBarDataTemplate,
-				RibbonFooterSimpleContentViewModel _ => this.SimpleDataTemplate,
-				_ => base.SelectTemplate(item, container)
-			};
-
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterInfoBarContentViewModel"/>.
-		/// </summary>
-		/// <value>The <see cref="DataTemplate"/> to use.</value>
-		public DataTemplate InfoBarDataTemplate { get; set; }
-
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterSimpleContentViewModel"/>.
-		/// </summary>
-		/// <value>The <see cref="DataTemplate"/> to use.</value>
-		public DataTemplate SimpleDataTemplate { get; set; }
-
+		InfoBarDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentInfoBarDataTemplate] as DataTemplate;
+		SimpleDataTemplate = dictionary[BarsMvvmResourceKeys.RibbonFooterContentSimpleDataTemplate] as DataTemplate;
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
+		return item switch {
+			RibbonFooterInfoBarContentViewModel _ => InfoBarDataTemplate,
+			RibbonFooterSimpleContentViewModel _ => SimpleDataTemplate,
+			_ => base.SelectTemplate(item, container)
+		};
+	}
+
+	/// <summary>
+	/// The <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterInfoBarContentViewModel"/>.
+	/// </summary>
+	public DataTemplate? InfoBarDataTemplate { get; set; }
+
+	/// <summary>
+	/// The <see cref="DataTemplate"/> to use for a <see cref="RibbonFooterSimpleContentViewModel"/>.
+	/// </summary>
+	public DataTemplate? SimpleDataTemplate { get; set; }
 
 }

@@ -1,17 +1,10 @@
-﻿using System;
+namespace ActiproSoftware.ProductSamples.Charts.Common;
 
-namespace ActiproSoftware.ProductSamples.Charts.Common {
+internal class EnumValueProvider(Type enumType) {
 
-	internal class EnumValueProvider {
+	private readonly Type _enumType = enumType;
 
-		private Type _enumType;
+	public Array EnumValues
+		=> Enum.GetValues(_enumType);
 
-		public EnumValueProvider(Type enumType) {
-			_enumType = enumType;
-		}
-
-		public Array EnumValues {
-			get { return Enum.GetValues(_enumType); }
-		}
-	}
 }

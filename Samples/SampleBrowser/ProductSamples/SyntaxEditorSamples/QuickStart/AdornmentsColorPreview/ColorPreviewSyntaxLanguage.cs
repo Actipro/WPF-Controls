@@ -1,35 +1,32 @@
-﻿using System;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Tagging.Implementation;
-using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsColorPreview {
-    
-    /// <summary>
-	/// Represents a syntax language definition that can render color previews.
-    /// </summary>
-    public class ColorPreviewSyntaxLanguage : SyntaxLanguage {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsColorPreview;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>ColorPreviewSyntaxLanguage</c> class.
-		/// </summary>
-		public ColorPreviewSyntaxLanguage() : base("ColorPreview") {
-			// Initialize this language from a language definition
-			SyntaxEditorHelper.InitializeLanguageFromResourceStream(this, "Css.langdef");
+/// <summary>
+/// Represents a syntax language definition that can render color previews.
+/// </summary>
+public class ColorPreviewSyntaxLanguage : SyntaxLanguage {
 
-			// Register a tagger provider on the language as a service that can create ColorPreviewTag objects
-			this.RegisterService(new CodeDocumentTaggerProvider<ColorPreviewTagger>(typeof(ColorPreviewTagger)));
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
-			// Register a provider service that can create the custom adornment manager
-			this.RegisterService(new AdornmentManagerProvider<ColorPreviewAdornmentManager>(typeof(ColorPreviewAdornmentManager)));
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public ColorPreviewSyntaxLanguage() : base("ColorPreview") {
+		// Initialize this language from a language definition
+		SyntaxEditorHelper.InitializeLanguageFromResourceStream(this, "Css.langdef");
 
-		}
-		
-    }
-	
+		// Register a tagger provider on the language as a service that can create ColorPreviewTag objects
+		RegisterService(new CodeDocumentTaggerProvider<ColorPreviewTagger>(typeof(ColorPreviewTagger)));
+
+		// Register a provider service that can create the custom adornment manager
+		RegisterService(new AdornmentManagerProvider<ColorPreviewAdornmentManager>(typeof(ColorPreviewAdornmentManager)));
+
+	}
+
 }

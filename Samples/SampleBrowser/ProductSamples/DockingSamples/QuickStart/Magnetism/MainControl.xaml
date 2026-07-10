@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.Magnetism.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -34,7 +34,7 @@
 					Additionally, the resizing of windows will also use magnetism to "snap" edges to the location of other nearby window edges.
 					<LineBreak /><LineBreak />
 					Try floating the tool windows and watch as they attempt to snap together while dragging them near each other.
-					You can also see how the standard MDI windows will snap together. 
+					You can also see how the standard MDI windows will snap together.
 					Finally, try increasing the snap distance, which controls how far away windows must be before they snap together.
 				</TextBlock>
 			</Expander>

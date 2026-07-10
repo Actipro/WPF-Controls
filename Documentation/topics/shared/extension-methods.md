@@ -5,57 +5,29 @@ order: 13
 ---
 # Extension Methods
 
-The following topic describes the various extension methods provided for several .NET and WPF types.
+Various extension methods are provided for several common .NET types.
 
-## Decimal Extensions
+> [!IMPORTANT]
+> The `ActiproSoftware.Windows.Extensions` namespace must be imported for the extensions described below to be available.
 
-The [DecimalExtensions](xref:@ActiproUIRoot.Extensions.DecimalExtensions) type contains extension methods for the `Decimal` type.
+> [!TIP]
+> The Core Library defines many additional [Extension Methods](../core/extension-methods.md) for common types that are not associated with a UI framework.
 
-| Type | Description |
+## DependencyObject Extensions
+
+The [DependencyObjectExtensions](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions) type contains extension methods for the `DependencyObject` type.  Some of the most frequently used extension methods are highlighted below.  Refer to the API documentation for additional methods.
+
+> [!IMPORTANT]
+> The WPF platform defines both `Visual` and `Visual3D` as visual objects, but `DependencyObject` (which is not explicitly a visual) is the only common base class.  Any extension methods that interact with the visual tree must accept a `DependencyObject` but will ignore the object if it is not a `Visual` or `Visual3D` instance.  For example, calling [GetVisualParent](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.GetVisualParent*) on an object that is not a `Visual` or `Visual3D` instance will always return `null`.
+
+| Member | Description |
 |-----|-----|
-| [IsWithin](xref:@ActiproUIRoot.Extensions.DecimalExtensions.IsWithin*) | Determines whether the two values are within a specified range. |
-| [Range](xref:@ActiproUIRoot.Extensions.DecimalExtensions.Range*) | Returns the specified value constrained to the specified minimum and maximum values. |
-| [Round](xref:@ActiproUIRoot.Extensions.DecimalExtensions.Round*) | Returns a rounded number using the specified [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode). |
+| [FindAncestorOfType&lt;T&gt;](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.FindAncestorOfType*) | Finds the first ancestor of the given type in the **visual tree**. |
+| [FindDescendantOfType&lt;T&gt;](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.FindDescendantOfType*) | Finds the first descendant of the given type in the **visual tree**. |
+| [FindLogicalAncestorOfType&lt;T&gt;](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.FindLogicalAncestorOfType*) | Finds the first ancestor of the given type in the **logical tree**. |
+| [FindLogicalDescendantOfType&lt;T&gt;](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.FindLogicalDescendantOfType*) | Finds the first descendant of the given type in the **logical tree**. |
+| [GetVisualAncestors](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.GetVisualAncestors*) | Enumerates the ancestors of a visual in the **visual tree** and can be easily combined with LINQ queries. |
+| [GetVisualDescendants](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.GetVisualDescendants*) | Enumerates the descendants of a visual in the **visual tree** and can be easily combined with LINQ queries. |
+| [GetLogicalAncestors](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.GetLogicalAncestors*) | Enumerates the ancestors of an object in the **logical tree** and can be easily combined with LINQ queries. |
+| [GetLogicalDescendants](xref:@ActiproUIRoot.Extensions.DependencyObjectExtensions.GetLogicalDescendants*) | Enumerates the descendants of an object in the **logical tree** and can be easily combined with LINQ queries. |
 
-## Double Extensions
-
-The [DoubleExtensions](xref:@ActiproUIRoot.Extensions.DoubleExtensions) type contains extension methods for the `Double` type.
-
-| Type | Description |
-|-----|-----|
-| [IsEffectivelyEqual](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsEffectivelyEqual*) | Determines whether the two values are close enough to be considered equal. |
-| [IsEffectivelyGreaterThan](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsEffectivelyGreaterThan*) | Determines whether the left value is effectively greater than the right value. |
-| [IsEffectivelyGreaterThanOrEqual](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsEffectivelyGreaterThanOrEqual*) | Determines whether the left value is effectively greater than or equal to the right value. |
-| [IsEffectivelyLessThan](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsEffectivelyLessThan*) | Determines whether the left value is effectively less than the right value. |
-| [IsEffectivelyLessThanOrEqual](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsEffectivelyLessThanOrEqual*) | Determines whether the left value is effectively less than or equal to the right value. |
-| [IsWithin](xref:@ActiproUIRoot.Extensions.DoubleExtensions.IsWithin*) | Determines whether the two values are within a specified range. |
-| [Range](xref:@ActiproUIRoot.Extensions.DoubleExtensions.Range*) | Returns the specified value constrained to the specified minimum and maximum values. |
-| [Round](xref:@ActiproUIRoot.Extensions.DoubleExtensions.Round*) | Returns a rounded number using the specified [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode). |
-
-## Int32 Extensions
-
-The [Int32Extensions](xref:@ActiproUIRoot.Extensions.Int32Extensions) type contains extension methods for the `Int32` type.
-
-| Type | Description |
-|-----|-----|
-| [IsWithin](xref:@ActiproUIRoot.Extensions.Int32Extensions.IsWithin*) | Determines whether the two values are within a specified range. |
-| [Range](xref:@ActiproUIRoot.Extensions.Int32Extensions.Range*) | Returns the specified value constrained to the specified minimum and maximum values. |
-
-## Point Extensions
-
-The [PointExtensions](xref:@ActiproUIRoot.Extensions.PointExtensions) type contains extension methods for the `Point` type.
-
-| Type | Description |
-|-----|-----|
-| [IsEffectivelyEqual](xref:@ActiproUIRoot.Extensions.PointExtensions.IsEffectivelyEqual*) | Determines whether the two values are close enough to be considered equal. |
-| [IsWithin](xref:@ActiproUIRoot.Extensions.PointExtensions.IsWithin*) | Determines whether the two values are within a specified range. |
-| [Midpoint](xref:@ActiproUIRoot.Extensions.PointExtensions.Midpoint*) | Gets the mid-point between the specified points. |
-
-## Size Extensions
-
-The [SizeExtensions](xref:@ActiproUIRoot.Extensions.SizeExtensions) type contains extension methods for the `Size` type.
-
-| Type | Description |
-|-----|-----|
-| [IsEffectivelyEqual](xref:@ActiproUIRoot.Extensions.SizeExtensions.IsEffectivelyEqual*) | Determines whether the two values are close enough to be considered equal. |
-| [IsWithin](xref:@ActiproUIRoot.Extensions.SizeExtensions.IsWithin*) | Determines whether the two values are within a specified range. |

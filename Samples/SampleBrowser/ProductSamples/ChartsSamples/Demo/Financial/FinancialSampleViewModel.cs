@@ -1,59 +1,42 @@
-﻿using System.Collections.ObjectModel;
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial;
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial {
+/// <summary>
+/// A sample view model for the Financial demo.
+/// </summary>
+public class FinancialSampleViewModel {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// A sample view model for the Financial demo.
+	/// The selected stock.
 	/// </summary>
-	public class FinancialSampleViewModel {
+	public Stock? SelectedStock { get; set; }
 
-		private readonly ObservableCollection<Stock> stocks = new ObservableCollection<Stock>();
-		private readonly ObservableCollection<StockMarket> stockMarkets = new ObservableCollection<StockMarket>();
+	/// <summary>
+	/// The selected stock deferred.
+	/// </summary>
+	public Stock? SelectedStockDeferred { get; set; }
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The stocks.
+	/// </summary>
+	public ObservableCollection<Stock> Stocks { get; } = [];
 
-		/// <summary>
-		/// Gets or sets the selected stock.
-		/// </summary>
-		/// <value>The selected stock.</value>
-		public Stock SelectedStock { get; set; }
+	/// <summary>
+	/// The stock markets.
+	/// </summary>
+	public ObservableCollection<StockMarket> StockMarkets { get; } = [];
 
-		/// <summary>
-		/// Gets or sets the selected stock deferred.
-		/// </summary>
-		/// <value>The selected stock deferred.</value>
-		public Stock SelectedStockDeferred { get; set; }
+	/// <summary>
+	/// The Y axis minimum.
+	/// </summary>
+	public decimal? YAxisMinimum { get; set; }
 
-		/// <summary>
-		/// Gets the stocks.
-		/// </summary>
-		/// <value>The stocks.</value>
-		public ObservableCollection<Stock> Stocks {
-			get { return stocks; }
-		}
+	/// <summary>
+	/// The Y axis maximum.
+	/// </summary>
+	public decimal? YAxisMaximum { get; set; }
 
-		/// <summary>
-		/// Gets the stock markets.
-		/// </summary>
-		/// <value>The stock markets.</value>
-		public ObservableCollection<StockMarket> StockMarkets {
-			get { return stockMarkets; }
-		}
-
-		/// <summary>
-		/// Gets or sets the Y axis minimum.
-		/// </summary>
-		/// <value>The Y axis minimum.</value>
-		public decimal? YAxisMinimum { get; set; }
-
-		/// <summary>
-		/// Gets or sets the Y axis maximum.
-		/// </summary>
-		/// <value>The Y axis maximum.</value>
-		public decimal? YAxisMaximum { get; set; }
-
-		#endregion PUBLIC PROCEDURES
-	}
 }

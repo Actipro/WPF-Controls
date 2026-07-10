@@ -1,149 +1,104 @@
-﻿using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls.Bars;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarIntro {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.DockableToolBarIntro;
+
+/// <summary>
+/// Defines a view model for turning options on or off that will be used during dockable toolbar serialization.
+/// </summary>
+public class SerializerOptionsViewModel : ObservableObjectBase {
+
+	private bool _floatingLocation = true;
+	private bool _isFloating = true;
+	private bool _isVisible = true;
+	private bool _lineIndex = true;
+	private bool _offset = true;
+	private bool _placement = true;
+	private bool _sortOrder = true;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Defines a view model for turning options on or off that will be used during dockable toolbar serialization.
+	/// The <see cref="DockableToolBarSerializerOptions"/> that are reflected by the current configuration.
 	/// </summary>
-	public class SerializerOptionsViewModel : ObservableObjectBase {
+	public DockableToolBarSerializerOptions CreateOptions() {
+		// Start with no options enabled
+		var options = DockableToolBarSerializerOptions.None;
 
-		private bool floatingLocation = true;
-		private bool isFloating = true;
-		private bool isVisible = true;
-		private bool lineIndex = true;
-		private bool offset = true;
-		private bool placement = true;
-		private bool sortOrder = true;
+		// Add each option that is currently turned on
+		if (FloatingLocation)
+			options |= DockableToolBarSerializerOptions.FloatingLocation;
+		if (IsFloating)
+			options |= DockableToolBarSerializerOptions.IsFloating;
+		if (IsVisible)
+			options |= DockableToolBarSerializerOptions.IsVisible;
+		if (LineIndex)
+			options |= DockableToolBarSerializerOptions.LineIndex;
+		if (Offset)
+			options |= DockableToolBarSerializerOptions.Offset;
+		if (Placement)
+			options |= DockableToolBarSerializerOptions.Placement;
+		if (SortOrder)
+			options |= DockableToolBarSerializerOptions.SortOrder;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the <see cref="DockableToolBarSerializerOptions"/> that are reflected by the current configuration.
-		/// </summary>
-		/// <returns>One or more of the <see cref="DockableToolBarSerializerOptions"/> values.</returns>
-		public DockableToolBarSerializerOptions CreateOptions() {
-			// Start with no options enabled
-			var options = DockableToolBarSerializerOptions.None;
-
-			// Add each option that is currently turned on
-			if (FloatingLocation)
-				options |= DockableToolBarSerializerOptions.FloatingLocation;
-			if (IsFloating)
-				options |= DockableToolBarSerializerOptions.IsFloating;
-			if (IsVisible)
-				options |= DockableToolBarSerializerOptions.IsVisible;
-			if (LineIndex)
-				options |= DockableToolBarSerializerOptions.LineIndex;
-			if (Offset)
-				options |= DockableToolBarSerializerOptions.Offset;
-			if (Placement)
-				options |= DockableToolBarSerializerOptions.Placement;
-			if (SortOrder)
-				options |= DockableToolBarSerializerOptions.SortOrder;
-
-			return options;
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool FloatingLocation {
-			get => floatingLocation;
-			set {
-				if (floatingLocation != value) {
-					floatingLocation = value;
-					NotifyPropertyChanged(nameof(FloatingLocation));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool IsFloating {
-			get => isFloating;
-			set {
-				if (isFloating != value) {
-					isFloating = value;
-					NotifyPropertyChanged(nameof(IsFloating));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool LineIndex {
-			get => lineIndex;
-			set {
-				if (lineIndex != value) {
-					lineIndex = value;
-					NotifyPropertyChanged(nameof(LineIndex));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool Offset {
-			get => offset;
-			set {
-				if (offset != value) {
-					offset = value;
-					NotifyPropertyChanged(nameof(Offset));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool Placement {
-			get => placement;
-			set {
-				if (placement != value) {
-					placement = value;
-					NotifyPropertyChanged(nameof(Placement));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the option will be processed when serializing or deserializing.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool SortOrder {
-			get => sortOrder;
-			set {
-				if (sortOrder != value) {
-					sortOrder = value;
-					NotifyPropertyChanged(nameof(SortOrder));
-				}
-			}
-		}
-
+		return options;
 	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool FloatingLocation {
+		get => _floatingLocation;
+		set => SetProperty(ref _floatingLocation, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool IsFloating {
+		get => _isFloating;
+		set => SetProperty(ref _isFloating, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool LineIndex {
+		get => _lineIndex;
+		set => SetProperty(ref _lineIndex, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool Offset {
+		get => _offset;
+		set => SetProperty(ref _offset, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool Placement {
+		get => _placement;
+		set => SetProperty(ref _placement, value);
+	}
+
+	/// <summary>
+	/// Indicates if the option will be processed when serializing or deserializing.
+	/// </summary>
+	public bool SortOrder {
+		get => _sortOrder;
+		set => SetProperty(ref _sortOrder, value);
+	}
+
 }

@@ -406,8 +406,6 @@
 				<StatusBarItem Grid.Column="2">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="{Binding ProductData.ProductVersionWithBuildText}" />
-						<TextBlock Text=" on " />
-						<TextBlock Text="{Binding ProductData.BuildDateText}" />
 					</StackPanel>
 				</StatusBarItem>
 			</StatusBar>

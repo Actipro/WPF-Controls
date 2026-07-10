@@ -7,37 +7,37 @@ order: 5
 
 The fastest lexers are handwritten classes (called *programmatic*) that are hard-coded to parse a specific language's code.
 
-## Mergable vs. Non-Mergable
+## Mergeable vs. Non-Mergeable
 
-Programmatic lexers can be mergable or non-mergable.  Mergable lexers allow a language to be merged with other languages at run-time via language transitions.  An example of a language that uses merging is HTML since it can transition to CSS, VBScript, etc.
+Programmatic lexers can be mergeable or non-mergeable.  Mergeable lexers allow a language to be merged with other languages at run-time via language transitions.  An example of a language that uses merging is HTML since it can transition to CSS, VBScript, etc.
 
-Mergable lexers provide this functionality by implementing the [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) interface.  While this merging functionality is useful for certain scenarios, it does add a bit of overhead and thus results in some performance loss.  This performance loss may not be very significant in many situations, but still if you wish to make your lexer as fast as possible and it doesn't need to merge with other language, you should make your lexer non-mergable.
+Mergeable lexers provide this functionality by implementing the [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) interface.  While this merging functionality is useful for certain scenarios, it does add a bit of overhead and thus results in some performance loss.  This performance loss may not be very significant in many situations, but still if you wish to make your lexer as fast as possible and it doesn't need to merge with other language, you should make your lexer non-mergeable.
 
-A non-mergable lexer has the best performance among the various lexer types, although it requires a little more work to get started.
+A non-mergeable lexer has the best performance among the various lexer types, although it requires a little more work to get started.
 
-## Implementing a Mergable Programmatic Lexer
+## Implementing a Mergeable Programmatic Lexer
 
-A mergable programmatic lexer is made by creating a class that implements the [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) interface, although inheriting the [MergableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase) class is the easiest way to accomplish this.  When inheriting [MergableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase), the only method we are required to implement is the [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase.GetNextToken*) method.
+A mergeable programmatic lexer is made by creating a class that implements the [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) interface, although inheriting the [MergeableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase) class is the easiest way to accomplish this.  When inheriting [MergeableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase), the only method we are required to implement is the [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase.GetNextToken*) method.
 
 That method is passed an [ITextBufferReader](xref:ActiproSoftware.Text.ITextBufferReader) and an [ILexicalState](xref:ActiproSoftware.Text.Lexing.ILexicalState) that indicates the current lexical state.  The reader is already initialized to the current offset that should be scanned to look for tokens.  See the [Scanning Text Using a Reader](../core-text/scanning-text.md) topic for some more details on the low-level [ITextBufferReader](xref:ActiproSoftware.Text.ITextBufferReader) class.
 
-The [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase.GetNextToken*) method asks us to return a [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult) object.  So after we scan a range of text using the reader and identify a token, we need to return an appropriate [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult) instance.
+The [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase.GetNextToken*) method asks us to return a [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult) object.  So after we scan a range of text using the reader and identify a token, we need to return an appropriate [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult) instance.
 
 This code shows how to return a result for some text that was successfully identified as a token:
 
 ```csharp
-return new MergableLexerResult(MatchType.ExactMatch, new LexicalStateTokenData(lexicalState, tokenId));
+return new MergeableLexerResult(MatchType.ExactMatch, new LexicalStateTokenData(lexicalState, tokenId));
 ```
 
 In that example we indicate there was an exact case-sensitive match and also indicates the [ILexicalState](xref:ActiproSoftware.Text.Lexing.ILexicalState) that match was made in (in case we moved to a new lexical state), along with the ID of the token.  The token ID is user defined and varies for each language.  For instance, a CSS property name token may have ID value `10`.  A token is created for you behind-the-scenes based on the result value that spans from the reader's original offset through to the reader's current offset.
 
-If there was no successful match, we want to move the reader back to the offset it started at and return [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult).[NoMatch](xref:ActiproSoftware.Text.Lexing.MergableLexerResult.NoMatch) instead.
+If there was no successful match, we want to move the reader back to the offset it started at and return [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult).[NoMatch](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult.NoMatch) instead.
 
-There is an example of a mergable programmatic lexer in the sample project for the Simple language.
+There is an example of a mergeable programmatic lexer in the sample project for the Simple language.
 
-## Implementing a Non-Mergable Programmatic Lexer
+## Implementing a Non-Mergeable Programmatic Lexer
 
-A non-mergable programmatic lexer is made by creating a class that implements the core [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) interface.  The main member of this interface is the [Parse](xref:ActiproSoftware.Text.Lexing.ILexer.Parse*) method.
+A non-mergeable programmatic lexer is made by creating a class that implements the core [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) interface.  The main member of this interface is the [Parse](xref:ActiproSoftware.Text.Lexing.ILexer.Parse*) method.
 
 This method passes a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange) indicating the [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) and the range to parse, along with an [ILexerTarget](xref:ActiproSoftware.Text.Lexing.ILexerTarget).  A [TextRange](xref:ActiproSoftware.Text.TextRange) is returned that specifies the snapshot range that was modified.
 

@@ -28,7 +28,7 @@
 									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
 
-								<ListBox x:Name="themeListBox" HorizontalAlignment="Left" SelectionChanged="themeListBox_SelectionChanged">
+								<ListBox x:Name="themeListBox" HorizontalAlignment="Left" SelectionChanged="OnThemeListBoxSelectionChanged">
 									<ListBoxItem IsSelected="True">(Default)</ListBoxItem>
 									<ListBoxItem Tag="WizardMetalTheme.xaml">Brushed Metal Wizard</ListBoxItem>
 									<ListBoxItem Tag="WizardRedTheme.xaml">Red Wizard with Custom Button Style</ListBoxItem>

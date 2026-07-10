@@ -1,6 +1,6 @@
-using System;
 using ActiproSoftware.Windows.Controls.Ribbon.Controls;
 using ActiproSoftware.Windows.DocumentManagement;
+using System;
 
 namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 
@@ -9,22 +9,23 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 	/// </summary>
 	public partial class WordApplicationMenu : ApplicationMenu {
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 
 		/// <summary>
-		/// Initializes an instance of the <c>WordApplicationMenu</c> class.
+		/// Initializes an instance of the class.
 		/// </summary>
 		public WordApplicationMenu() {
 			InitializeComponent();
 
-			Random rand = new Random();
+			var rand = new Random();
 			DateTime dateTime = DateTime.Now;
 			recentDocManager.Documents.BeginUpdate();
 			for (int index = 0; index < 10; index++) {
-				DocumentReference docRef = new DocumentReference(new Uri(String.Format(@"C:\Documents\Another document {0}.rtf", index + 1)));
-				docRef.LastOpenedDateTime = dateTime;
+				var docRef = new DocumentReference(new Uri(string.Format(@"C:\Documents\Another document {0}.rtf", index + 1))) {
+					LastOpenedDateTime = dateTime
+				};
 				if (rand.NextDouble() < 0.35)
 					docRef.IsPinnedRecentDocument = true;
 				recentDocManager.Documents.Add(docRef);

@@ -1,18 +1,18 @@
-﻿<sampleBrowser:ProductItemControl
+<sampleBrowser:ProductItemControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
-	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts" 
-	xmlns:Financial="clr-namespace:ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial" 
-	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
+	xmlns:microcharts="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+	xmlns:Financial="clr-namespace:ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial.MainControl"
     mc:Ignorable="d"
     d:DesignHeight="830" d:DesignWidth="1212">
-	
+
 	<d:DesignProperties.DataContext>
-		<Financial:FinancialSampleViewModel/>	
+		<Financial:FinancialSampleViewModel/>
 	</d:DesignProperties.DataContext>
 
 	<sampleBrowser:ProductItemControl.DataContext>
@@ -20,7 +20,7 @@
 	</sampleBrowser:ProductItemControl.DataContext>
 
 	<sampleBrowser:ProductItemControl.Resources>
-		
+
 		<Financial:ChangeValueConverter x:Key="ChangeValueConverter"/>
 		<Financial:BooleanToStockValueBrushConverter x:Key="BooleanToStockValueBrushConverter"/>
 		<Financial:CurrencyValueConverter x:Key="CurrencyValueConverter"/>
@@ -35,7 +35,7 @@
 			<Setter Property="FontWeight" Value="Light"/>
 			<Setter Property="FontFamily" Value="Segoe UI Light"/>
 		</Style>
-		
+
 		<DataTemplate x:Key="StockTemplate">
 			<Grid Margin="10,5">
 				<Grid.RowDefinitions>
@@ -56,7 +56,7 @@
 				</microcharts:MicroXYChart>
 			</Grid>
 		</DataTemplate>
-		
+
 		<Style x:Key="StockContainerTemplate" TargetType="ListBoxItem">
 			<Setter Property="Padding" Value="3"/>
 			<Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -137,11 +137,11 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		
+
 		<Storyboard x:Key="ShowChart">
 			<DoubleAnimation To="1.0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="chart" BeginTime="0:0:0.25" Duration="0:0:0.2"/>
 		</Storyboard>
-		
+
 	</sampleBrowser:ProductItemControl.Resources>
 
 	<Grid x:Name="LayoutRoot" Background="{StaticResource DarkBrush}">
@@ -153,9 +153,9 @@
 			<ColumnDefinition/>
 			<ColumnDefinition Width="2*"/>
 		</Grid.ColumnDefinitions>
-		<ListBox Background="{x:Null}" BorderBrush="{x:Null}" 
+		<ListBox Background="{x:Null}" BorderBrush="{x:Null}"
 				 ItemsSource="{Binding Stocks}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-				 SelectedItem="{Binding Path=SelectedStock, Mode=TwoWay}" ItemTemplate="{StaticResource StockTemplate}" 
+				 SelectedItem="{Binding Path=SelectedStock, Mode=TwoWay}" ItemTemplate="{StaticResource StockTemplate}"
 				 ItemContainerStyle="{StaticResource StockContainerTemplate}" HorizontalContentAlignment="Stretch" Grid.Row="1"/>
 		<charts:XYChart x:Name="chart" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" BorderBrush="#505050"
 						PaddingPercentage="0.0, 0.2, 0.0, 0.0" GridLineMajorVisibility="Y" GridLineMajorBrush="#11FFFFFF" Padding="50,10,50,50"
@@ -181,8 +181,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Your Portfolio" 
-						   Foreground="{StaticResource LightBrush}" FontSize="36" FontFamily="Segoe UI Light" Margin="20,0,0,0" 
+				<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Your Portfolio"
+						   Foreground="{StaticResource LightBrush}" FontSize="36" FontFamily="Segoe UI Light" Margin="20,0,0,0"
 						   FontWeight="ExtraLight" Opacity="0.9"/>
 				<ItemsControl ItemsSource="{Binding StockMarkets}" Grid.Column="2" VerticalAlignment="Center" Foreground="{StaticResource LightBrush}">
 					<ItemsControl.ItemTemplate>
@@ -202,7 +202,7 @@
 									<microcharts:MicroXYChart Height="20" VerticalAlignment="Top" Width="80" Grid.Row="1" Background="Transparent" HorizontalAlignment="Left">
 										<microcharts:MicroLineSeries ItemsSource="{Binding StockPrices}" XPath="Date" YPath="Price"/>
 									</microcharts:MicroXYChart>
-									<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" 
+									<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap"
 											   Text="{Binding CurrentPrice.Price, Converter={StaticResource CurrencyValueConverter}, Mode=OneWay}" Grid.Column="2" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="16"/>
 								</Grid>
 							</Border>

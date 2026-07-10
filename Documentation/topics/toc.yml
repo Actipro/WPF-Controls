@@ -377,6 +377,8 @@ items:
       href: editors/editboxes/dateeditbox.md
     - name: "DateTimeEditBox"
       href: editors/editboxes/datetimeeditbox.md
+    - name: "DecimalEditBox"
+      href: editors/editboxes/decimaleditbox.md
     - name: "DoubleEditBox"
       href: editors/editboxes/doubleeditbox.md
     - name: "EnumEditBox"
@@ -424,6 +426,8 @@ items:
       href: editors/pickers/datepicker.md
     - name: "DateTimePicker"
       href: editors/pickers/datetimepicker.md
+    - name: "DecimalPicker"
+      href: editors/pickers/decimalpicker.md
     - name: "DoublePicker"
       href: editors/pickers/doublepicker.md
     - name: "EnumPicker"
@@ -479,6 +483,8 @@ items:
       href: editors/other-controls/maskedtextbox.md
     - name: "MonthCalendar"
       href: editors/other-controls/monthcalendar.md
+    - name: "Range Slider"
+      href: editors/other-controls/range-slider.md
     - name: "Rating"
       href: editors/other-controls/rating.md
   - name: "Interoperability"
@@ -937,8 +943,6 @@ items:
       href: ribbon/command-model/value-controls.md
     - name: "Using Commands to Provide User Interface Elements"
       href: ribbon/command-model/command-ui-provider.md
-  - name: "Designer Interaction"
-    href: ribbon/designer-interaction.md
   - name: "Microsoft Ribbon UI Design Guidelines"
     href: ribbon/ribbonui-guidelines.md
   - name: "Troubleshooting"
@@ -1781,10 +1785,21 @@ items:
     href: shared/windows-media-animation.md
   - name: "Serialization"
     href: shared/windows-serialization.md
+  - name: "Menu Factory"
+    href: shared/menu-factory.md
   - name: "Extension Methods"
     href: shared/extension-methods.md
   - name: "Value Converters"
     href: shared/value-converters.md
+- name: "Actipro Core Library"
+  href: core/index.md
+  items:
+  - name: "Overview"
+    href: core/index.md
+  - name: "Object Model"
+    href: core/object-model.md
+  - name: "Extension Methods"
+    href: core/extension-methods.md
 - name: "Customizing String Resources"
   href: customizing-string-resources.md
 - name: "Licensing"
@@ -1811,6 +1826,8 @@ items:
   items:
   - name: "Overview"
     href: conversion/index.md
+  - name: "Converting to v26.1"
+    href: conversion/converting-to-v26-1.md
   - name: "Converting to v25.1"
     href: conversion/converting-to-v25-1.md
   - name: "Converting to v24.1"

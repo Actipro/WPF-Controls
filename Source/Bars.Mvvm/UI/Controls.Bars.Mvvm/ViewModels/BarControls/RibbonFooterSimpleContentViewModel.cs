@@ -1,64 +1,42 @@
-﻿using System.Windows.Media;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for image and text content within a ribbon footer.
+/// </summary>
+public class RibbonFooterSimpleContentViewModel : ObservableObjectBase, IHasTag {
+
+	private ImageSource? _imageSource;
+	private object? _tag;
+	private string? _text;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for image and text content within a ribbon footer.
+	/// The <see cref="System.Windows.Media.ImageSource"/> for the image.
 	/// </summary>
-	public class RibbonFooterSimpleContentViewModel : ObservableObjectBase, IHasTag {
-
-		private ImageSource imageSource;
-		private object tag;
-		private string text;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the <see cref="System.Windows.Media.ImageSource"/> for the image.
-		/// </summary>
-		/// <value>The <see cref="System.Windows.Media.ImageSource"/> for the image.</value>
-		public ImageSource ImageSource {
-			get => imageSource;
-			set {
-				if (imageSource != value) {
-					imageSource = value;
-					this.NotifyPropertyChanged(nameof(ImageSource));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the text content.
-		/// </summary>
-		/// <value>The text content.</value>
-		public string Text {
-			get => text;
-			set {
-				if (text != value) {
-					text = value;
-					this.NotifyPropertyChanged(nameof(Text));
-				}
-			}
-		}
-		
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Text='{this.Text}']";
-		}
-		
+	public ImageSource? ImageSource {
+		get => _imageSource;
+		set => SetProperty(ref _imageSource, value);
 	}
+
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
+	}
+
+	/// <summary>
+	/// The text content.
+	/// </summary>
+	public string? Text {
+		get => _text;
+		set => SetProperty(ref _text, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[Text='{Text}']";
 
 }

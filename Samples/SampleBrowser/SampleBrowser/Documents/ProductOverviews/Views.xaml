@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -24,9 +24,9 @@
 				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
 					Views is a set of unique WPF controls and advanced panels that support fluid animated item layout.
 				</TextBlock>
-				
+
 				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
-					It contains a task board control with reorderable columns and cards, 
+					It contains a task board control with reorderable columns and cards,
 					a book control that renders its content as pages in a book,
 					a smooth-scrolling ScrollViewer variation that reacts to touch and supports flicks,
 					and numerous Panel layout controls.

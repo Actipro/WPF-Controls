@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling.MainControl"
+<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling.MainControl"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
@@ -12,7 +12,7 @@
 	<sampleBrowser:ProductItemControl.Resources>
 		<shared:ThicknessConverter x:Key="ThicknessConverter" />
 	</sampleBrowser:ProductItemControl.Resources>
-	
+
 	<sampleBrowser:ProductItemControl.SideBarContent>
 		<StackPanel>
 
@@ -21,7 +21,7 @@
 					This demo shows how the TaskBoard control can be used to manage a queue of work orders to be performed at an auto repair shop.
 					Each column represents an employee in the shop, and each card represents a queued work order for that employee.
 					<LineBreak /><LineBreak />
-					This sample shows how the task board's appearance can be altered very easily and how 
+					This sample shows how the task board's appearance can be altered very easily and how
 					different types of data (e.g. scheduled downtime) can be presented in a completely custom format.
 					Use the Options button in the toolbar to customize several appearance-related task board properties.
 					<LineBreak /><LineBreak />
@@ -33,7 +33,7 @@
 
 		</StackPanel>
 	</sampleBrowser:ProductItemControl.SideBarContent>
-	
+
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
@@ -41,12 +41,12 @@
 			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
-        
+
 		<!-- ToolBar -->
 		<ToolBar Margin="0,5,0,5" Background="Transparent">
 			<shared:PopupButton DisplayMode="Merged" Content="Options" Style="{StaticResource {x:Static themes:SharedResourceKeys.ToolBarEmbeddedPopupButtonStyleKey}}">
 				<shared:PopupButton.PopupContent>
-					<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" BorderThickness="1" 
+					<Border BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowerBrushKey}}" BorderThickness="1"
 							Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowerBrushKey}}"
 							TextElement.Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerForegroundLowNormalBrushKey}}"
 							Padding="10">
@@ -54,27 +54,27 @@
 							<TextBlock Text="Columns" FontWeight="Bold" VerticalAlignment="Center" />
 							<StackPanel Orientation="Horizontal">
 								<CheckBox Content="Can drag" IsChecked="{Binding ElementName=taskBoard, Path=CanColumnsDrag, Mode=TwoWay}" VerticalAlignment="Center" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Drag rotation" VerticalAlignment="Center" />
 								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="10" Value="{Binding ElementName=taskBoard, Path=ColumnDragRotationAngle, Mode=TwoWay}" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Corner radius" VerticalAlignment="Center" />
 								<editors:CornerRadiusEditBox Width="100" Value="{Binding ElementName=taskBoard, Path=ColumnCornerRadius, Mode=TwoWay}" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Spacing" VerticalAlignment="Center" />
 								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="30" Value="{Binding ElementName=taskBoard, Path=ColumnSpacing, Mode=TwoWay}" />
 							</StackPanel>
-								
+
 							<TextBlock Margin="0,7,0,0" Text="Cards" FontWeight="Bold" VerticalAlignment="Center" />
 							<StackPanel Orientation="Horizontal">
 								<CheckBox Content="Can drag" IsChecked="{Binding ElementName=taskBoard, Path=CanCardsDrag, Mode=TwoWay}" VerticalAlignment="Center" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Drag rotation" VerticalAlignment="Center" />
 								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="10" Value="{Binding ElementName=taskBoard, Path=CardDragRotationAngle, Mode=TwoWay}" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Corner radius" VerticalAlignment="Center" />
 								<editors:CornerRadiusEditBox Width="100" Value="{Binding ElementName=taskBoard, Path=CardCornerRadius, Mode=TwoWay}" />
-			
+
 								<TextBlock Margin="20,0,5,0" Text="Spacing" VerticalAlignment="Center" />
 								<editors:DoubleEditBox Width="50" Minimum="0" Maximum="30" Value="{Binding ElementName=taskBoard, Path=CardSpacing, Mode=TwoWay}" />
 							</StackPanel>
@@ -88,10 +88,10 @@
 			<Separator />
 			<Button Content="Add Service" Click="OnAddServiceButtonClick" />
 		</ToolBar>
-		
+
 		<!-- Separator -->
 		<Rectangle Grid.Row="1" Height="1" Fill="{DynamicResource {x:Static themes:AssetResourceKeys.TaskColumnBorderNormalBrushKey}}" />
-		
+
 		<!-- StatusBar -->
 		<StatusBar Grid.Row="3">
 			<StatusBar.ItemsPanel>
@@ -99,12 +99,12 @@
 					<Grid />
 				</ItemsPanelTemplate>
 			</StatusBar.ItemsPanel>
-			
+
 			<StatusBarItem>
 				<TextBlock x:Name="statusTextBlock" Text="Ready" TextTrimming="CharacterEllipsis" />
 			</StatusBarItem>
 		</StatusBar>
-		
+
 		<!-- Task board -->
 		<views:TaskBoard x:Name="taskBoard" Grid.Row="2" ItemsSource="{Binding Employees}" ColumnItemsSourcePath="Tasks" ColumnCornerRadius="3,25,3,3"
 						 ColumnPadding="{Binding RelativeSource={RelativeSource Self}, Path=CardSpacing, Converter={StaticResource ThicknessConverter}}"
@@ -137,6 +137,6 @@
 				</Style>
 			</views:TaskBoard.CardContainerStyle>
 		</views:TaskBoard>
-		
+
     </Grid>
 </sampleBrowser:ProductItemControl>

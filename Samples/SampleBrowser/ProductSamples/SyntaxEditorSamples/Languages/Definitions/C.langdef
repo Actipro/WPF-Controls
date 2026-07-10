@@ -20,7 +20,7 @@ Actipro Syntax Language Definition (.langdef)
 		<ClassificationType Key="PathSpec" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
 		<ClassificationType Key="PreprocessorKeyword" Description="Preprocessor Keyword" DefaultStyle="#FF0000FF" DarkStyle="#FF569CD6" />
 		<ClassificationType Key="Punctuation" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="String" DefaultStyle="#FFA31515" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>
@@ -286,7 +286,7 @@ Actipro Syntax Language Definition (.langdef)
 						</Scope.EndPatternGroup>
 					</Scope>
 				</State.Scopes>
-				<ExplicitPatternGroup TokenId="51" TokenKey="PathSpecText" Pattern="[^&gt;\\\n]+" />
+				<RegexPatternGroup TokenId="51" TokenKey="PathSpecText" Pattern="[^&gt;\\\n]+" />
 			</State>
 			<!-- PragmaDirective state -->
 			<State Id="10" Key="PragmaDirective">

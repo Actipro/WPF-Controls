@@ -1,27 +1,19 @@
-﻿#if WINRT
-using Windows.UI.Xaml.Controls;
-#else
-using System.Windows.Controls;
-#endif
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball;
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball {
+/// <summary>
+/// Represents a player card view.
+/// </summary>
+public partial class PlayerCard : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a player card view.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class PlayerCard : UserControl {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>PlayerCard</c> class.
-		/// </summary>
-		public PlayerCard() {
-			InitializeComponent();
-		}
-
-		#endregion OBJECT
+	public PlayerCard() {
+		InitializeComponent();
 	}
+
 }

@@ -17,17 +17,17 @@ Negative values have a distinct appearance from positive values.
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPickerBase`1.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPickerBase`1.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
 ## Incrementing/Decrementing
 
-Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.SmallChange) property.
+Value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPickerBase`1.SmallChange) property.
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7` but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SinglePicker.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `6` but can be set to any value in the range `0` to `6`.  Or set the value to `null` to prevent rounding.
 
 ## Sample XAML
 

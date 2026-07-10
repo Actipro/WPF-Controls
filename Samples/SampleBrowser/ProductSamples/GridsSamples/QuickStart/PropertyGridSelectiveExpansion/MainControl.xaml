@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridSelectiveExpansion.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -33,7 +33,7 @@
 			<ColumnDefinition Width="20" />
 			<ColumnDefinition Width="*" MaxWidth="500" />
 		</Grid.ColumnDefinitions>
-		
+
 		<TextBlock Margin="0,0,0,3" Text="Address property expanded:" />
 
 		<grids:PropertyGrid Grid.Row="1" DataObject="{Binding}" IsCategorized="False" IsSummaryVisible="False" CanClearDataObjectOnUnload="True">
@@ -41,11 +41,11 @@
 				<sample:CustomDataFactory />
 			</grids:PropertyGrid.DataFactory>
 		</grids:PropertyGrid>
-		
+
 		<TextBlock Grid.Column="2" Margin="0,0,0,3" Text="All properties expanded:" />
 
 		<grids:PropertyGrid Grid.Row="1" Grid.Column="2" DataObject="{Binding}" IsCategorized="False" IsSummaryVisible="False" ArePropertiesAutoExpanded="True" CanClearDataObjectOnUnload="True" />
 
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

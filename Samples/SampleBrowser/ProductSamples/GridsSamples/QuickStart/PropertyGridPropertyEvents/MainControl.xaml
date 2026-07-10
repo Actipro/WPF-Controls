@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootSampleControl"
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridPropertyEvents.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -26,8 +26,8 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					The property grid includes several events, such as PropertyValueChanging and PropertyValueChanged that let
-					you know before and after a property's value is changed, respectively. 
-					In addition, the ChildPropertyAdding, ChildPropertyAdded, ChildPropertyRemoving, 
+					you know before and after a property's value is changed, respectively.
+					In addition, the ChildPropertyAdding, ChildPropertyAdded, ChildPropertyRemoving,
 					and ChildPropertyRemoved events are raised when items are added or removed from collections.
 					<LineBreak /><LineBreak />
 					This example logs the events above as they are raised, and shows a message box confirming the addition or removal of any children.

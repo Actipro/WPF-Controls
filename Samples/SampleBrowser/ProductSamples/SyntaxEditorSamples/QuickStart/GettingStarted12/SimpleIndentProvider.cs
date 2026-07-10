@@ -1,165 +1,138 @@
-﻿using System;
-
+using ActiproSoftware.Extensions;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03b;
 using ActiproSoftware.Text;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation;
-using ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03b;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted12 {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted12;
+
+/// <summary>
+/// Provides a <c>Simple</c> language indent provider service.
+/// </summary>
+public class SimpleIndentProvider : DelimiterIndentProvider {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides a <c>Simple</c> language indent provider service.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class SimpleIndentProvider : DelimiterIndentProvider {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>SimpleIndentProvider</c> class.
-		/// </summary>
-		public SimpleIndentProvider() {
-			// Initialize
-			this.CloseCurlyBraceTokenId = SimpleTokenId.CloseCurlyBrace;
-			this.OpenCurlyBraceTokenId = SimpleTokenId.OpenCurlyBrace;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Returns the ideal amount of indent, always in columns, for the line containing the snapshot offset.
-		/// </summary>
-		/// <param name="snapshotOffset">The <see cref="TextSnapshotOffset"/> whose line should be examined.</param>
-		/// <param name="defaultAmount">The default indent amount, which is the amount used in <c>Block</c> mode.</param>
-		/// <returns>The ideal amount of indent, always in columns, for the line containing the snapshot offset.</returns>
-		/// <remarks>
-		/// This method is called when the <see cref="IndentMode"/> is <c>Smart</c>.
-		/// The containing <see cref="ITextDocument"/> is accessible via the snapshot range's <see cref="ITextSnapshot"/>.
-		/// </remarks>
-		public override int GetIndentAmount(TextSnapshotOffset snapshotOffset, int defaultAmount) {
-			// If the snapshot offset is deleted, return the default amount
-			if (snapshotOffset.IsDeleted)
-				return defaultAmount;
+	public SimpleIndentProvider() {
+		// Initialize
+		CloseCurlyBraceTokenId = SimpleTokenId.CloseCurlyBrace;
+		OpenCurlyBraceTokenId = SimpleTokenId.OpenCurlyBrace;
+	}
 
-			// Get the ICodeDocument from the snapshot
-			ICodeDocument document = snapshotOffset.Snapshot.Document as ICodeDocument;
-			if (document == null)
-				return defaultAmount;
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Get the tab size
-			int tabSize = document.TabSize;
+	/// <inheritdoc/>
+	public override int GetIndentAmount(TextSnapshotOffset snapshotOffset, int defaultAmount) {
+		// Get the ICodeDocument from the snapshot
+		if (snapshotOffset.Snapshot.Document is not ICodeDocument document)
+			return defaultAmount;
 
-			// Get a reader
-			ITextSnapshotReader reader = snapshotOffset.Snapshot.GetReader(snapshotOffset.Offset);
-			if (reader == null)
-				return defaultAmount;
-			
-			// Get the indentation base line index
-			int indentationBaseLineIndex = Math.Max(0, snapshotOffset.Line.Index - 1);
+		// Get a reader
+		var reader = snapshotOffset.Snapshot.GetReader(snapshotOffset.Offset);
+		if (reader is null)
+			return defaultAmount;
 
-			// Ensure we are at the start of the current token
-			if(!reader.IsAtTokenStart)
-				reader.GoToCurrentTokenStart();
+		// Get the indentation base line index
+		var indentationBaseLineIndex = (snapshotOffset.Line.Index - 1).ClampToNonnegative();
 
-			// If finding indentation for an open curly brace, move back a token
-			bool isForOpenCurlyBrace = (reader.Token.Id == SimpleTokenId.OpenCurlyBrace);
-			if (isForOpenCurlyBrace)
-				reader.GoToPreviousToken();
+		// Ensure we are at the start of the current token
+		if (!reader.IsAtTokenStart)
+			reader.GoToCurrentTokenStart();
 
-			// Loop backwards
-			bool keywordFoundAfterStatement = false;
-			bool statementFound = false;
-			while (true) {
-				switch (reader.Token.Id) {
-					case SimpleTokenId.OpenCurlyBrace: {
-						// Indent from this open curly brace
-						return reader.SnapshotLine.IndentAmount + tabSize;
-					}
-					case SimpleTokenId.CloseCurlyBrace:
-						// Return the indent level of the matching {
-						reader.GoToPreviousMatchingTokenById(SimpleTokenId.CloseCurlyBrace, SimpleTokenId.OpenCurlyBrace);
-						return reader.SnapshotLine.IndentAmount;
-					case SimpleTokenId.CloseParenthesis:
-					case SimpleTokenId.SemiColon:
-						if (!statementFound) {
-							// Flag that a statement was found
-							statementFound = true;
+		// If finding indentation for an open curly brace, move back a token
+		var isForOpenCurlyBrace = (reader.Token?.Id == SimpleTokenId.OpenCurlyBrace);
+		if (isForOpenCurlyBrace)
+			reader.GoToPreviousToken();
 
-							if (!keywordFoundAfterStatement) {
-								// Use this line as indentation base
-								indentationBaseLineIndex = reader.SnapshotLine.Index;
-							}
-						}
-						break;
-					default:
-						if ((!keywordFoundAfterStatement) && (!statementFound) && (reader.Offset < snapshotOffset.Offset) && 
-							(reader.Token.Id >= SimpleTokenId.Function) && (reader.Token.Id <= SimpleTokenId.Var)) {
-							// Flag that a keyword was found
-							keywordFoundAfterStatement = true;
+		// Get the tab size
+		var tabSize = document.TabSize;
 
+		// Loop backwards
+		var keywordFoundAfterStatement = false;
+		var statementFound = false;
+		while (true) {
+			switch (reader.Token?.Id) {
+				case SimpleTokenId.OpenCurlyBrace:
+					// Indent from this open curly brace
+					return reader.SnapshotLine.IndentAmount + tabSize;
+				case SimpleTokenId.CloseCurlyBrace:
+					// Return the indent level of the matching {
+					reader.GoToPreviousMatchingTokenById(SimpleTokenId.CloseCurlyBrace, SimpleTokenId.OpenCurlyBrace);
+					return reader.SnapshotLine.IndentAmount;
+				case SimpleTokenId.CloseParenthesis:
+				case SimpleTokenId.SemiColon:
+					if (!statementFound) {
+						// Flag that a statement was found
+						statementFound = true;
+
+						if (!keywordFoundAfterStatement) {
 							// Use this line as indentation base
 							indentationBaseLineIndex = reader.SnapshotLine.Index;
 						}
-						break;
-				}
+					}
+					break;
+				default:
+					if (
+						!keywordFoundAfterStatement
+						&& !statementFound
+						&& reader.Offset < snapshotOffset.Offset
+						&& reader.Token is not null
+						&& ((reader.Token.Id >= SimpleTokenId.Function) && (reader.Token.Id <= SimpleTokenId.Var))
+					) {
+						// Flag that a keyword was found
+						keywordFoundAfterStatement = true;
 
-				// Go to the previous token
-				if (!reader.GoToPreviousToken())
+						// Use this line as indentation base
+						indentationBaseLineIndex = reader.SnapshotLine.Index;
+					}
 					break;
 			}
 
-			// Indent a level if on the statement after the keyword
-			return reader.Snapshot.Lines[indentationBaseLineIndex].IndentAmount + (keywordFoundAfterStatement && isForOpenCurlyBrace ? tabSize : 0);
-		}
-		
-		/// <summary>
-		/// Gets the <see cref="IndentMode"/> that specifies the mode by which to indent text.
-		/// </summary>
-		/// <value>The <see cref="IndentMode"/> that specifies the mode by which to indent text.</value>
-		public override IndentMode Mode {
-			get {
-				return IndentMode.Smart;
-			}
+			// Go to the previous token
+			if (!reader.GoToPreviousToken())
+				break;
 		}
 
-		/// <summary>
-		/// Occurs after a text change occurs to an <see cref="IEditorDocument"/> that uses this language.
-		/// </summary>
-		/// <param name="editor">The <see cref="SyntaxEditor"/> whose <see cref="IEditorDocument"/> is changed.</param>
-		/// <param name="e">The <c>EditorSnapshotChangedEventArgs</c> that contains the event data.</param>
-		protected override void OnDocumentTextChanged(SyntaxEditor editor, EditorSnapshotChangedEventArgs e) {
-			// If the user is typing a '}' character...
-			if ((e.TextChange.Operations.Count == 1) && (e.TypedText == "}")) {
-				// Ensure the '}' is the first non-whitespace character on the line
-				ITextSnapshotLine startLine = e.ChangedSnapshotRange.StartLine;
-				if (startLine.FirstNonWhitespaceCharacterOffset != e.ChangedSnapshotRange.StartOffset)
-					return;
-
-				// Get the indent amount of the previous line
-				int previousLineIndex = Math.Max(0, startLine.Index - 1);
-				int previousLineIndentAmount = startLine.Snapshot.Lines[previousLineIndex].IndentAmount;
-
-				// The new indent should be a tab stop out
-				int indentAmount = Math.Max(0, this.GetIndentAmount(new TextSnapshotOffset(e.ChangedSnapshotRange.Snapshot, e.ChangedSnapshotRange.StartOffset), previousLineIndentAmount));
-				startLine.IndentAmount = indentAmount;
-			}
-
-			// Call the base method
-			base.OnDocumentTextChanged(editor, e);
-		}
-
-		/// <summary>
-		/// Occurs before a text change occurs to an <see cref="IEditorDocument"/> that uses this language.
-		/// </summary>
-		/// <param name="editor">The <see cref="SyntaxEditor"/> whose <see cref="IEditorDocument"/> that is changing.</param>
-		/// <param name="e">The <c>EditorSnapshotChangingEventArgs</c> that contains the event data.</param>
-		protected override void OnDocumentTextChanging(SyntaxEditor editor, EditorSnapshotChangingEventArgs e) {
-			// Call the base method
-			base.OnDocumentTextChanging(editor, e);
-		}
-		
+		// Indent a level if on the statement after the keyword
+		return reader.Snapshot.Lines[indentationBaseLineIndex].IndentAmount + (keywordFoundAfterStatement && isForOpenCurlyBrace ? tabSize : 0);
 	}
+
+	/// <inheritdoc/>
+	public override IndentMode Mode
+		=> IndentMode.Smart;
+
+	/// <inheritdoc/>
+	protected override void OnDocumentTextChanged(SyntaxEditor editor, EditorSnapshotChangedEventArgs e) {
+		// If the user is typing a '}' character...
+		if ((e.TextChange?.Operations.Count == 1) && (e.TypedText == "}")) {
+			// Ensure the '}' is the first non-whitespace character on the line
+			var startLine = e.ChangedSnapshotRange.StartLine;
+			if (startLine.FirstNonWhitespaceCharacterOffset != e.ChangedSnapshotRange.StartOffset)
+				return;
+
+			// Get the indent amount of the previous line
+			var previousLineIndex = (startLine.Index - 1).ClampToNonnegative();
+			var previousLineIndentAmount = startLine.Snapshot.Lines[previousLineIndex].IndentAmount;
+
+			// The new indent should be a tab stop out
+			var indentAmount = Math.Max(0, GetIndentAmount(new TextSnapshotOffset(e.ChangedSnapshotRange.Snapshot, e.ChangedSnapshotRange.StartOffset), previousLineIndentAmount));
+			startLine.IndentAmount = indentAmount;
+		}
+
+		base.OnDocumentTextChanged(editor, e);
+	}
+
+	/// <inheritdoc/>
+	protected override void OnDocumentTextChanging(SyntaxEditor editor, EditorSnapshotChangingEventArgs e) {
+		// While not used in this sample, this override can be used to preview changes before they are applied
+		base.OnDocumentTextChanging(editor, e);
+	}
+
 }

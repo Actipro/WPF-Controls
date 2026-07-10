@@ -1,10 +1,3 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Utility;
@@ -13,230 +6,191 @@ using ActiproSoftware.Windows.Controls.SyntaxEditor;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation;
+using System.Windows.Media.Imaging;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraTextNotes {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraTextNotes;
 
-    /// <summary>
-	/// Represents an adornment manager for a view that renders intra-text notes.
-    /// </summary>
-    public class IntraTextNoteAdornmentManager : IntraTextAdornmentManagerBase<IEditorView, IntraTextNoteTag> {
+/// <summary>
+/// Represents an adornment manager for a view that renders intra-text notes.
+/// </summary>
+/// <param name="view">The view to which this manager is attached.</param>
+public class IntraTextNoteAdornmentManager(IEditorView view) : IntraTextAdornmentManagerBase<IEditorView, IntraTextNoteTag>(view, _layerDefinition) {
 
-		private static AdornmentLayerDefinition layerDefinition = 
-			new AdornmentLayerDefinition("IntraTextNote", new Ordering(AdornmentLayerDefinitions.TextForeground.Key, OrderPlacement.Before));
+	private static readonly AdornmentLayerDefinition _layerDefinition = new("IntraTextNote", new Ordering(AdornmentLayerDefinitions.TextForeground.Key, OrderPlacement.Before));
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>IntraTextNoteAdornmentManager</c> class.
-		/// </summary>
-		/// <param name="view">The view to which this manager is attached.</param>
-		public IntraTextNoteAdornmentManager(IEditorView view) : base(view, layerDefinition) {}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Changes the placement of the specified note tag.
-		/// </summary>
-		/// <param name="tagRange">The tag range.</param>
-		/// <param name="isBefore">Whether the adornment is before the tagged range.</param>
-		private void ChangeNotePlacement(TagSnapshotRange<IntraTextNoteTag> tagRange, bool isBefore) {
-			// Get the tagger from the code document
-			ICodeDocument document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
-			if (document != null) {
-				IntraTextNoteTagger tagger = null;
-				if (document.Properties.TryGetValue(typeof(IntraTextNoteTagger), out tagger)) {
-					// Change the tag's placement and raise an event so the UI knows to update
-					tagRange.Tag.IsSpacerBefore = isBefore;
-					tagger.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.SnapshotRange));
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Changes the placement of the specified note tag.
+	/// </summary>
+	/// <param name="tagRange">The tag range.</param>
+	/// <param name="isBefore">Whether the adornment is before the tagged range.</param>
+	private static void ChangeNotePlacement(TagSnapshotRange<IntraTextNoteTag> tagRange, bool isBefore) {
+		// Get the tagger from the code document
+		var document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
+		if (document is not null) {
+			if (document.Properties.TryGetValue<IntraTextNoteTagger>(out var tagger)) {
+				// Change the tag's placement and raise an event so the UI knows to update
+				tagRange.Tag.IsSpacerBefore = isBefore;
+				tagger!.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.SnapshotRange));
+			}
+		}
+	}
+
+	/// <summary>
+	/// Changes the status of the specified note tag.
+	/// </summary>
+	/// <param name="tagRange">The tag range.</param>
+	/// <param name="status">The new status.</param>
+	private static void ChangeNoteStatus(TagSnapshotRange<IntraTextNoteTag> tagRange, ReviewStatus status) {
+		// Get the tagger from the code document
+		var document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
+		if (document is not null) {
+			if (document.Properties.TryGetValue<IntraTextNoteTagger>(out var tagger)) {
+				// Change the tag's status and raise an event so the UI knows to update
+				tagRange.Tag.Status = status;
+				tagger!.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.SnapshotRange));
+			}
+		}
+	}
+
+	private void OnMarkNoteAsAccepted(object sender, RoutedEventArgs e) {
+		var item = (MenuItem)sender;
+		ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Accepted);
+	}
+
+	private void OnMarkNoteAsPending(object sender, RoutedEventArgs e) {
+		var item = (MenuItem)sender;
+		ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Pending);
+	}
+
+	private void OnMarkNoteAsRejected(object sender, RoutedEventArgs e) {
+		var item = (MenuItem)sender;
+		ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Rejected);
+	}
+
+	private void OnRemoveNote(object sender, RoutedEventArgs e) {
+		var item = (MenuItem)sender;
+
+		// Get the tag range
+		var tagRange = (TagSnapshotRange<IntraTextNoteTag>)item.Tag;
+
+		// Get the tagger from the code document
+		var document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
+		if (document is not null) {
+			if (document.Properties.TryGetValue<IntraTextNoteTagger>(out var tagger)) {
+				// Try and find the tag version range that contains the tag
+				if (tagger![tagRange.Tag] is { } tagVersionRange) {
+					// Remove the tag version range from the tagger
+					tagger.Remove(tagVersionRange);
 				}
 			}
 		}
-		
-		/// <summary>
-		/// Changes the status of the specified note tag.
-		/// </summary>
-		/// <param name="tagRange">The tag range.</param>
-		/// <param name="status">The new status.</param>
-		private void ChangeNoteStatus(TagSnapshotRange<IntraTextNoteTag> tagRange, ReviewStatus status) {
-			// Get the tagger from the code document
-			ICodeDocument document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
-			if (document != null) {
-				IntraTextNoteTagger tagger = null;
-				if (document.Properties.TryGetValue(typeof(IntraTextNoteTagger), out tagger)) {
-					// Change the tag's status and raise an event so the UI knows to update
-					tagRange.Tag.Status = status;
-					tagger.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.SnapshotRange));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Occurs when a menu item is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnMarkNoteAsAccepted(object sender, RoutedEventArgs e) {
-			MenuItem item = (MenuItem)sender;
-			this.ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Accepted);
-		}
+	}
 
-		/// <summary>
-		/// Occurs when a menu item is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnMarkNoteAsPending(object sender, RoutedEventArgs e) {
-			MenuItem item = (MenuItem)sender;
-			this.ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Pending);
-		}
+	private void OnToggleNotePlacement(object sender, RoutedEventArgs e) {
+		var item = (MenuItem)sender;
+		var tagRange = (TagSnapshotRange<IntraTextNoteTag>)item.Tag;
+		ChangeNotePlacement(tagRange, !tagRange.Tag.IsSpacerBefore);
+	}
 
-		/// <summary>
-		/// Occurs when a menu item is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnMarkNoteAsRejected(object sender, RoutedEventArgs e) {
-			MenuItem item = (MenuItem)sender;
-			this.ChangeNoteStatus((TagSnapshotRange<IntraTextNoteTag>)item.Tag, ReviewStatus.Rejected);
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Occurs when a menu item is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnRemoveNote(object sender, RoutedEventArgs e) {
-			MenuItem item = (MenuItem)sender;
+	/// <inheritdoc/>
+	protected override void AddAdornment(AdornmentChangeReason reason, ITextViewLine viewLine, TagSnapshotRange<IntraTextNoteTag> tagRange, TextBounds bounds) {
+		// Create the adornment
+		var image = new DynamicImage {
+			Width = 16,
+			Height = 16,
+			SnapsToDevicePixels = true,
+			Source = new BitmapImage(new Uri("/Images/Icons/Notes16.png", UriKind.Relative)),
+			Stretch = Stretch.Fill
+		};
 
-			// Get the tag range
-			TagSnapshotRange<IntraTextNoteTag> tagRange = (TagSnapshotRange<IntraTextNoteTag>)item.Tag;
+		// Create a popup button
+		var button = new PopupButton {
+			Content = image,
+			Cursor = Cursors.Arrow,
+			DisplayMode = PopupButtonDisplayMode.Merged,
+			Focusable = false,
+			IsTabStop = false,
+			IsTransparencyModeEnabled = true,
+			Margin = new Thickness(0),
+			Padding = new Thickness(-1),
+			ToolTip = new HtmlContentProvider(
+				string.Format(
+					"<span style=\"color: green;\">{0}</span><br/>Created at <b>{1}</b> by <span style=\"color: blue;\">{2}</span><br/>Status: <b>{3}</b>",
+					tagRange.Tag.Message, tagRange.Tag.Created.ToShortTimeString(), tagRange.Tag.Author, tagRange.Tag.Status
+				)).GetContent()
+		};
 
-			// Get the tagger from the code document
-			ICodeDocument document = tagRange.SnapshotRange.Snapshot.Document as ICodeDocument;
-			if (document != null) {
-				IntraTextNoteTagger tagger = null;
-				if (document.Properties.TryGetValue(typeof(IntraTextNoteTagger), out tagger)) {
-					// Try and find the tag version range that contains the tag
-					TagVersionRange<IIntraTextSpacerTag> tagVersionRange = tagger[tagRange.Tag];
-					if (tagVersionRange != null) {
-						// Remove the tag version range from the tagger
-						tagger.Remove(tagVersionRange);
-					}
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Occurs when a menu item is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to this event.</param>
-		private void OnToggleNotePlacement(object sender, RoutedEventArgs e) {
-			MenuItem item = (MenuItem)sender;
-			var tagRange = (TagSnapshotRange<IntraTextNoteTag>)item.Tag;
-			this.ChangeNotePlacement(tagRange, !tagRange.Tag.IsSpacerBefore);
-		}
+		// Add a context menu
+		var contextMenu = new ContextMenu();
+		button.PopupMenu = contextMenu;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Adds an adornment to the <see cref="AdornmentLayer"/>.
-		/// </summary>
-		/// <param name="reason">An <see cref="AdornmentChangeReason"/> indicating the add reason.</param>
-		/// <param name="viewLine">The current <see cref="ITextViewLine"/> being examined.</param>
-		/// <param name="tagRange">The <see cref="ITag"/> and the range it covers.</param>
-		/// <param name="bounds">The text bounds in which to render an adornment.</param>
-		protected override void AddAdornment(AdornmentChangeReason reason, ITextViewLine viewLine, TagSnapshotRange<IntraTextNoteTag> tagRange, TextBounds bounds) {
-			// Create the adornment
-			var image = new DynamicImage();
-			image.Width = 16;
-			image.Height = 16;
-			image.SnapsToDevicePixels = true;
-			image.Source = new BitmapImage(new Uri("/Images/Icons/Notes16.png", UriKind.Relative));
-			image.Stretch = Stretch.Fill;
+		var removeItem = new MenuItem {
+			Header = "Remove Note",
+			Tag = tagRange
+		};
+		removeItem.Click += OnRemoveNote;
+		contextMenu.Items.Add(removeItem);
 
-			// Create a popup button
-			PopupButton button = new PopupButton();
-			button.Content = image;
-			button.Cursor = Cursors.Arrow;
-			button.DisplayMode = PopupButtonDisplayMode.Merged;
-			button.Focusable = false;
-			button.IsTabStop = false;
-			button.IsTransparencyModeEnabled = true;
-			button.Margin = new Thickness(0);
-			button.Padding = new Thickness(-1);
-			button.ToolTip = new HtmlContentProvider(String.Format("<span style=\"color: green;\">{0}</span><br/>Created at <b>{1}</b> by <span style=\"color: blue;\">{2}</span><br/>Status: <b>{3}</b>",
-				tagRange.Tag.Message, tagRange.Tag.Created.ToShortTimeString(), tagRange.Tag.Author, tagRange.Tag.Status)).GetContent();
+		contextMenu.Items.Add(new Separator());
 
-			// Add a context menu
-			ContextMenu contextMenu = new ContextMenu();
-			button.PopupMenu = contextMenu;
+		var pendingItem = new MenuItem {
+			Header = "Mark as Pending",
+			IsChecked = (tagRange.Tag.Status == ReviewStatus.Pending),
+			Tag = tagRange
+		};
+		pendingItem.Click += OnMarkNoteAsPending;
+		contextMenu.Items.Add(pendingItem);
 
-			MenuItem removeItem = new MenuItem();
-			removeItem.Header = "Remove Note";
-			removeItem.Tag = tagRange;
-			removeItem.Click += new RoutedEventHandler(OnRemoveNote);
-			contextMenu.Items.Add(removeItem);
-			
-			contextMenu.Items.Add(new Separator());
+		var acceptedItem = new MenuItem {
+			Header = "Mark as Accepted",
+			IsChecked = (tagRange.Tag.Status == ReviewStatus.Accepted),
+			Tag = tagRange
+		};
+		acceptedItem.Click += OnMarkNoteAsAccepted;
+		contextMenu.Items.Add(acceptedItem);
 
-			MenuItem pendingItem = new MenuItem();
-			pendingItem.Header = "Mark as Pending";
-			pendingItem.IsChecked = (tagRange.Tag.Status == ReviewStatus.Pending);
-			pendingItem.Tag = tagRange;
-			pendingItem.Click += new RoutedEventHandler(OnMarkNoteAsPending);
-			contextMenu.Items.Add(pendingItem);
-			
-			MenuItem acceptedItem = new MenuItem();
-			acceptedItem.Header = "Mark as Accepted";
-			acceptedItem.IsChecked = (tagRange.Tag.Status == ReviewStatus.Accepted);
-			acceptedItem.Tag = tagRange;
-			acceptedItem.Click += new RoutedEventHandler(OnMarkNoteAsAccepted);
-			contextMenu.Items.Add(acceptedItem);
+		var rejectedItem = new MenuItem {
+			Header = "Mark as Rejected",
+			IsChecked = (tagRange.Tag.Status == ReviewStatus.Rejected),
+			Tag = tagRange
+		};
+		rejectedItem.Click += OnMarkNoteAsRejected;
+		contextMenu.Items.Add(rejectedItem);
 
-			MenuItem rejectedItem = new MenuItem();
-			rejectedItem.Header = "Mark as Rejected";
-			rejectedItem.IsChecked = (tagRange.Tag.Status == ReviewStatus.Rejected);
-			rejectedItem.Tag = tagRange;
-			rejectedItem.Click += new RoutedEventHandler(OnMarkNoteAsRejected);
-			contextMenu.Items.Add(rejectedItem);
+		contextMenu.Items.Add(new Separator());
 
-			contextMenu.Items.Add(new Separator());
-			
-			MenuItem placementItem = new MenuItem();
-			placementItem.Header = "Note Before Text";
-			placementItem.IsChecked = tagRange.Tag.IsSpacerBefore;
-			placementItem.Tag = tagRange;
-			placementItem.Click += new RoutedEventHandler(OnToggleNotePlacement);
-			contextMenu.Items.Add(placementItem);
-			
-			// Get the location
-			Point location = new Point(Math.Round(bounds.Left) + 1, Math.Round(bounds.Top + (bounds.Height - tagRange.Tag.Size.Height) / 2));
+		var placementItem = new MenuItem {
+			Header = "Note Before Text",
+			IsChecked = tagRange.Tag.IsSpacerBefore,
+			Tag = tagRange
+		};
+		placementItem.Click += OnToggleNotePlacement;
+		contextMenu.Items.Add(placementItem);
 
-			// Add the adornment to the layer
-			this.AdornmentLayer.AddAdornment(reason, button, location, tagRange.Tag.Key, null);
-		}
+		// Get the location
+		var location = new Point(
+			Math.Round(bounds.Left) + 1,
+			Math.Round(bounds.Top + (bounds.Height - tagRange.Tag.Size.Height) / 2)
+		);
 
-		/// <summary>
-		/// Occurs when the manager is closed and detached from the view.
-		/// </summary>
-		/// <remarks>
-		/// Overrides should release any event handlers set up in the manager's constructor.
-		/// </remarks>
-		protected override void OnClosed() {
-			// Remove any remaining adornments
-			this.AdornmentLayer.RemoveAllAdornments(AdornmentChangeReason.ManagerClosed);
-		
-			// Call the base method
-			base.OnClosed();
-		}
+		// Add the adornment to the layer
+		AdornmentLayer.AddAdornment(reason, button, location, tagRange.Tag.Key, removedCallback: null);
+	}
 
-    }
-	
+	/// <inheritdoc/>
+	protected override void OnClosed() {
+		// Remove any remaining adornments
+		AdornmentLayer.RemoveAllAdornments(AdornmentChangeReason.ManagerClosed);
+
+		base.OnClosed();
+	}
+
 }

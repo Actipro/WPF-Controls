@@ -1,74 +1,72 @@
-using System;
-using System.Windows;
-using System.Windows.Controls;
 using ActiproSoftware.Windows.Controls.Wizard;
 
-namespace ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses {
+namespace ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses;
+
+/// <summary>
+/// Represents an item entry page.
+/// </summary>
+public partial class ItemEntryPage {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents an item entry page.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class ItemEntryPage {
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>ItemEntryPage</c> class.
-		/// </summary>
-		public ItemEntryPage() {
-			// This call to InitializeComponent must be here or your XAML code will not be applied
-			this.InitializeComponent();
-		}
+	public ItemEntryPage() {
+		InitializeComponent();
+	}
 
-		/// <summary>
-		/// Initializes the page.
-		/// </summary>
-		private void InitializePage() {
-			ItemStore store = (ItemStore)this.Wizard.Tag;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Update the caption and content of the page (content will be the item being edited)
-			this.Caption = String.Format("Item #{0} Details", store.CurrentIndex + 1);
-			this.Content = store.Items[store.CurrentIndex];
-		}
-		
-		/// <summary>
-		/// Raises the <see cref="SelectingEvent"/> event. 
-		/// </summary>
-		/// <param name="e">A <see cref="WizardSelectedPageChangeEventArgs"/> that contains the event data.</param>
-		protected override void OnSelecting(WizardSelectedPageChangeEventArgs e) {
-			// Call the base method
-			base.OnSelecting(e);
+	/// <summary>
+	/// Initializes the page.
+	/// </summary>
+	private void InitializePage() {
+		var store = (ItemStore)Wizard!.Tag;
 
-			// Initialize the page
-			this.InitializePage();
-		}
+		// Update the caption and content of the page (content will be the item being edited)
+		Caption = string.Format("Item #{0} Details", store.CurrentIndex + 1);
+		Content = store.Items[store.CurrentIndex];
+	}
 
-		/// <summary>
-		/// Raises the <see cref="SelectingEvent"/> event. 
-		/// </summary>
-		/// <param name="e">A <see cref="WizardSelectedPageChangeEventArgs"/> that contains the event data.</param>
-		protected override void OnUnselecting(WizardSelectedPageChangeEventArgs e) {
-			// Call the base method
-			base.OnUnselecting(e);
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			if (!e.Handled) {
-				bool isForwardProgress = ((e.SelectionFlags & WizardPageSelectionFlags.ForwardProgress) == WizardPageSelectionFlags.ForwardProgress);
-				bool isBackwardProgress = ((e.SelectionFlags & WizardPageSelectionFlags.BackwardProgress) == WizardPageSelectionFlags.BackwardProgress);
+	/// <inheritdoc/>
+	protected override void OnSelecting(WizardSelectedPageChangeEventArgs e) {
+		base.OnSelecting(e);
 
-				ItemStore store = (ItemStore)this.Wizard.Tag;
-				if (
-					((isForwardProgress) && (store.CurrentIndex < store.Items.Count - 1)) ||
-					((isBackwardProgress) && (store.CurrentIndex > 0))
-					) {
-					// Cancel the page change
-					e.Handled = true;
-					e.Cancel = true;
+		// Initialize the page
+		InitializePage();
+	}
 
-					// Update the current item index and re-initialize the page
-					store.CurrentIndex = store.CurrentIndex + (isForwardProgress ? 1 : -1);
-					this.InitializePage();					
-				}
+	/// <inheritdoc/>
+	protected override void OnUnselecting(WizardSelectedPageChangeEventArgs e) {
+		base.OnUnselecting(e);
+
+		if (!e.Handled) {
+			bool isForwardProgress = ((e.SelectionFlags & WizardPageSelectionFlags.ForwardProgress) == WizardPageSelectionFlags.ForwardProgress);
+			bool isBackwardProgress = ((e.SelectionFlags & WizardPageSelectionFlags.BackwardProgress) == WizardPageSelectionFlags.BackwardProgress);
+
+			var store = (ItemStore)Wizard!.Tag;
+			if (
+				(isForwardProgress && (store.CurrentIndex < store.Items.Count - 1))
+				|| (isBackwardProgress && (store.CurrentIndex > 0))
+			) {
+				// Cancel the page change
+				e.Handled = true;
+				e.Cancel = true;
+
+				// Update the current item index and re-initialize the page
+				store.CurrentIndex = store.CurrentIndex + (isForwardProgress ? 1 : -1);
+				InitializePage();
 			}
 		}
-
 	}
 
 }

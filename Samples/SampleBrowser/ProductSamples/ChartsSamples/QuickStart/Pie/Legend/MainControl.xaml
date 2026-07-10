@@ -1,10 +1,10 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.Pie.Legend.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
-	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser" 
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
 	>
 
@@ -80,7 +80,7 @@
 
 			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
 				<charts:PieChart x:Name="chart" Width="450" IsLegendVisible="True">
-					<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" SliceValuePath="Amount" SliceTitlePath="Title" 
+					<charts:PieSeries ItemsSource="{StaticResource PrimaryDataGenerator}" SliceValuePath="Amount" SliceTitlePath="Title"
 									  LabelPosition="Sides" AreLabelsVisible="True">
 						<charts:PieSeries.SliceStyleSelector>
 							<charts:PieSlicePaletteStyleSelector>

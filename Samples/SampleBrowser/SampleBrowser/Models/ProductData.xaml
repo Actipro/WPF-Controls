@@ -44,9 +44,10 @@
 				</sampleBrowser:ListItemInfo.ImageSource>
 			</sampleBrowser:ListItemInfo>
 		</sampleBrowser:ProductData.FeaturedSamples>
-		
+
 		<sampleBrowser:ProductData.ReleaseHistory>
 			<sampleBrowser:ProductFamilyInfo ShortTitle="Documents" Title="Documents" LogoImageSource="{x:Static shared:AssemblyInfo.ActiproIconImageSource}">
+				<sampleBrowser:ProductItemInfo Category="Release History" Title="v26.1" Path="/SampleBrowser/Documents/ReleaseHistories/v26.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v25.1" Path="/SampleBrowser/Documents/ReleaseHistories/v25.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v24.1" Path="/SampleBrowser/Documents/ReleaseHistories/v24.1" />
 				<sampleBrowser:ProductItemInfo Category="Release History" Title="v23.1" Path="/SampleBrowser/Documents/ReleaseHistories/v23.1" />
@@ -284,6 +285,12 @@
 		<sampleBrowser:ProductFamilyInfo ShortTitle="Editors" Title="Editors" LogoImageSource="{x:Static editors:AssemblyInfo.ProductLogoImageSource}"
 										 Summary="Part-based and masked editors, for everything from date/time to currency">
 
+			<sampleBrowser:ProductFamilyInfo.News>
+				<sampleBrowser:ListItemInfo Title="New RangeSlider control" TargetUri="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/RangeSliderIntro/MainControl"/>
+				<sampleBrowser:ListItemInfo Title="New DecimalEditBox control" TargetUri="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/DecimalEditBoxIntro/MainControl"/>
+				<sampleBrowser:ListItemInfo Title="New DecimalPicker control" TargetUri="https://ActiproSoftware/ProductSamples/EditorsSamples/QuickStart/DecimalPickerIntro/MainControl"/>
+			</sampleBrowser:ProductFamilyInfo.News>
+
 			<sampleBrowser:ProductFamilyInfo.OverviewItem>
 				<sampleBrowser:ProductItemInfo Category="Documents" Title="Overview" Path="/SampleBrowser/Documents/ProductOverviews/Editors" />
 			</sampleBrowser:ProductFamilyInfo.OverviewItem>
@@ -296,6 +303,7 @@
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="CornerRadius" Path="/ProductSamples/EditorsSamples/QuickStart/CornerRadiusEditBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="Date" Path="/ProductSamples/EditorsSamples/QuickStart/DateEditBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="DateTime" Path="/ProductSamples/EditorsSamples/QuickStart/DateTimeEditBoxIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Edit Boxes" Title="Decimal" Path="/ProductSamples/EditorsSamples/QuickStart/DecimalEditBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="Double" Path="/ProductSamples/EditorsSamples/QuickStart/DoubleEditBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="Enum" Path="/ProductSamples/EditorsSamples/QuickStart/EnumEditBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Edit Boxes" Title="Guid" Path="/ProductSamples/EditorsSamples/QuickStart/GuidEditBoxIntro/MainControl" />
@@ -318,6 +326,7 @@
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="CornerRadius" Path="/ProductSamples/EditorsSamples/QuickStart/CornerRadiusPickerIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="Date" Path="/ProductSamples/EditorsSamples/QuickStart/DatePickerIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="DateTime" Path="/ProductSamples/EditorsSamples/QuickStart/DateTimePickerIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Pickers" Title="Decimal" Path="/ProductSamples/EditorsSamples/QuickStart/DecimalPickerIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="Double" Path="/ProductSamples/EditorsSamples/QuickStart/DoublePickerIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="Enum" Path="/ProductSamples/EditorsSamples/QuickStart/EnumPickerIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Pickers" Title="HSB Color" Path="/ProductSamples/EditorsSamples/QuickStart/HsbColorPickerIntro/MainControl" />
@@ -345,11 +354,14 @@
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Gradient Stop Slider" Path="/ProductSamples/EditorsSamples/QuickStart/GradientStopSliderIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Masked TextBox" Path="/ProductSamples/EditorsSamples/QuickStart/MaskedTextBoxIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Month Calendar" Path="/ProductSamples/EditorsSamples/QuickStart/MonthCalendarIntro/MainControl" />
+			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Other Controls" Title="Range Slider" Path="/ProductSamples/EditorsSamples/QuickStart/RangeSliderIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Rating" Path="/ProductSamples/EditorsSamples/QuickStart/RatingIntro/MainControl" />
 			<sampleBrowser:ProductItemInfo Category="Other Controls" Title="Spinner" Path="/ProductSamples/EditorsSamples/QuickStart/SpinnerIntro/MainControl" />
 
 			<sampleBrowser:ProductItemInfo Category="QuickStarts" Title="Ribbon Integration (Interop)" SideBarWidth="Narrow" Path="/ProductSamples/EditorsSamples/QuickStart/RibbonIntegrationInterop/MainControl"/>
+
 			
+
 		</sampleBrowser:ProductFamilyInfo>
 
 		<!--
@@ -457,6 +469,7 @@
 			<sampleBrowser:ProductItemInfo BlurbText="New!" Category="Toolbar QuickStarts" Title="Mini-Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/MiniToolBarIntro/MainControl"/>
 			<sampleBrowser:ProductItemInfo Category="Toolbar QuickStarts" Title="Standalone Toolbar" SideBarWidth="Narrow" Path="/ProductSamples/BarsSamples/QuickStart/StandaloneToolBarIntro/MainControl"/>
 
+			
 			
 			
 			

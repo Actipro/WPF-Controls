@@ -1,46 +1,33 @@
-﻿using ActiproSoftware.Windows.Controls.Bars.Mvvm;
+using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Media;
-using System.Windows.Media;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.PopupAndContextMenus;
+
+/// <summary>
+/// Represents a tag color for a gallery item used by the "View Options with Color Tagging" showcase sample.
+/// </summary>
+/// <param name="value">The color associated with the tag.</param>
+/// <param name="label">The label associated with the tag.</param>
+public class TagColorGalleryItem(Color value, string label) : ColorBarGalleryItemViewModel(value, category: null, label) {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a tag color for a gallery item used by the "View Options with Color Tagging" showcase sample.
+	/// Creates the default collection of <see cref="TagColorGalleryItem"/> instances.
 	/// </summary>
-	public class TagColorGalleryItem : ColorBarGalleryItemViewModel {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="TagColorGalleryItem"/> class.
-		/// </summary>
-		/// <param name="value">The color associated with the tag.</param>
-		/// <param name="label">The label associated with the tag.</param>
-		public TagColorGalleryItem(Color value, string label)
-			: base(value, category: null, label) { }
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Creates the default collection of <see cref="TagColorGalleryItem"/> instances.
-		/// </summary>
-		/// <returns>An array of type <see cref="TagColorGalleryItem"/>.</returns>
-		public static TagColorGalleryItem[] CreateDefaultCollection() {
-			return new TagColorGalleryItem[] {
-				new TagColorGalleryItem(UIColor.FromWebColor("#f04f58").ToColor(), "Red"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#f1a247").ToColor(), "Orange"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#f3cf4a").ToColor(), "Yellow"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#5dd260").ToColor(), "Green"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#5c85f5").ToColor(), "Blue"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#b163d3").ToColor(), "Purple"),
-				new TagColorGalleryItem(UIColor.FromWebColor("#9c9ca0").ToColor(), "Gray"),
-			};
-		}
-
+	/// <returns>An array of type <see cref="TagColorGalleryItem"/>.</returns>
+	public static TagColorGalleryItem[] CreateDefaultCollection() {
+		return [
+			new(UIColor.FromWebColor("#f04f58").ToColor(), "Red"),
+			new(UIColor.FromWebColor("#f1a247").ToColor(), "Orange"),
+			new(UIColor.FromWebColor("#f3cf4a").ToColor(), "Yellow"),
+			new(UIColor.FromWebColor("#5dd260").ToColor(), "Green"),
+			new(UIColor.FromWebColor("#5c85f5").ToColor(), "Blue"),
+			new(UIColor.FromWebColor("#b163d3").ToColor(), "Purple"),
+			new(UIColor.FromWebColor("#9c9ca0").ToColor(), "Gray"),
+		];
 	}
 
 }

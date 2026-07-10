@@ -105,6 +105,18 @@
 
 									</DockPanel>
 								</docking:ToolWindow>
+								<docking:ToolWindow Title="Spacer Separator" ContainerDockedSize="230,200">
+									<DockPanel>
+										<bars:StandaloneToolBar x:Name="toolWindowToolBarWithSpacer" DockPanel.Dock="Top" DataContext="{Binding ToolWindowStandaloneToolBarWithSpacer}" BorderThickness="0" 
+																Background="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBackgroundLowBrushKey}}"
+																Style="{StaticResource {x:Static themes:BarsMvvmResourceKeys.StandaloneToolBarStyle}}" />
+
+										<Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ToolWindowContainerTabItemBorderSelectedBrushKey}}">
+											<common:RichTextEditorDocumentView DataContext="{Binding ToolWindowWithSpacerDocument}" BorderThickness="0" Padding="0" RootBarControl="{Binding ElementName=toolWindowToolBarWithSpacer}" />
+										</Border>
+
+									</DockPanel>
+								</docking:ToolWindow>
 							</docking:ToolWindowContainer>
 						</docking:SplitContainer>
 					</docking:DockSite>

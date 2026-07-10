@@ -1,20 +1,18 @@
-﻿namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDynamicProperties {
-	
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDynamicProperties;
+
+/// <summary>
+/// Specifies the kind of display target.
+/// </summary>
+public enum DisplayTarget {
+
 	/// <summary>
-	/// Specifies the kind of display target.
+	/// Output to a full external screen.
 	/// </summary>
-	public enum DisplayTarget {
-		
-		/// <summary>
-		/// Output to a full external screen.
-		/// </summary>
-		Screen,
+	Screen,
 
-		/// <summary>
-		/// Output to a pane within the current monitor.
-		/// </summary>
-		Pane,
-
-	}
+	/// <summary>
+	/// Output to a pane within the current monitor.
+	/// </summary>
+	Pane,
 
 }

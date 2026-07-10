@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.StandardSwitchers.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -19,15 +19,15 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-				    A switcher is presented when Ctrl+Tab (switch between documents) or Alt+F7 (switch between tool windows) 
-				    is pressed while focus is within the docking hierarchy, 
+				    A switcher is presented when Ctrl+Tab (switch between documents) or Alt+F7 (switch between tool windows)
+				    is pressed while focus is within the docking hierarchy,
 				    which allows the end-user to visually activate any document or tool window.
 				    The default switcher used is a StandardSwitcher that mimics Visual Studio.
 				    <LineBreak /><LineBreak />
 				    This QuickStart shows the StandardSwitcher in action, and allows some of its display options to be set.
 				    Press one of the key combinations above to show the switcher.
 				    <LineBreak /><LineBreak />
-				    While the switcher is displayed and while continuing to hold down the Ctrl or Alt modifier key, 
+				    While the switcher is displayed and while continuing to hold down the Ctrl or Alt modifier key,
 				    use arrow keys to move the switcher's selection around.  When the modifier key is released, the selected docking window
 				    in the switcher will become active.
 				</TextBlock>

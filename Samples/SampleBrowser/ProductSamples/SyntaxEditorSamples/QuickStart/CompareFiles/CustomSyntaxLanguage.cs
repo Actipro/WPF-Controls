@@ -1,4 +1,4 @@
-﻿using ActiproSoftware.Text;
+using ActiproSoftware.Text;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
 using ActiproSoftware.Text.Tagging.Implementation;
 
@@ -8,33 +8,31 @@ using ActiproSoftware.UI.WinForms.Controls.SyntaxEditor.Adornments.Implementatio
 using ActiproSoftware.Windows.Controls.SyntaxEditor.Adornments.Implementation;
 #endif
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles;
+
+/// <summary>
+/// Represents a syntax language definition that renders backgrounds behind alternating rows.
+/// </summary>
+public class CustomSyntaxLanguage : CSharpSyntaxLanguage {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a syntax language definition that renders backgrounds behind alternating rows.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class CustomSyntaxLanguage : CSharpSyntaxLanguage {
+	public CustomSyntaxLanguage() : base() {
+		// Register a tagger provider on the language as a service that can create real and imaginary difference tag objects
+		RegisterService(new TextViewTaggerProvider<CompareFilesRealLinesTagger>(typeof(CompareFilesRealLinesTagger)));
+		RegisterService(new TextViewTaggerProvider<CompareFilesImaginaryLinesTagger>(typeof(CompareFilesImaginaryLinesTagger)));
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>CustomSyntaxLanguage</c> class.
-		/// </summary>
-		public CustomSyntaxLanguage() : base() {
-			// Register a tagger provider on the language as a service that can create real and imaginary difference tag objects
-			this.RegisterService(new TextViewTaggerProvider<CompareFilesRealLinesTagger>(typeof(CompareFilesRealLinesTagger)));
-			this.RegisterService(new TextViewTaggerProvider<CompareFilesImaginaryLinesTagger>(typeof(CompareFilesImaginaryLinesTagger)));
+		// Register a provider service that can create the custom adornment managers for real and imaginary lines
+		RegisterService(new AdornmentManagerProvider<CompareFilesRealLinesAdornmentManager>(typeof(CompareFilesRealLinesAdornmentManager)));
+		RegisterService(new AdornmentManagerProvider<CompareFilesImaginaryLinesAdornmentManager>(typeof(CompareFilesImaginaryLinesAdornmentManager)));
 
-			// Register a provider service that can create the custom adornment managers for real and imaginary lines
-			this.RegisterService(new AdornmentManagerProvider<CompareFilesRealLinesAdornmentManager>(typeof(CompareFilesRealLinesAdornmentManager)));
-			this.RegisterService(new AdornmentManagerProvider<CompareFilesImaginaryLinesAdornmentManager>(typeof(CompareFilesImaginaryLinesAdornmentManager)));
-
-			// Remove outlining since side-by-side views must be kept in sync
-			this.UnregisterOutliner();
-		}
-
+		// Remove outlining since side-by-side views must be kept in sync
+		this.UnregisterOutliner();
 	}
-	
+
 }

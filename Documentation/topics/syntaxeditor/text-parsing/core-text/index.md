@@ -21,7 +21,7 @@ See the [Offsets, Ranges, and Positions](offsets-ranges-positions.md) topic for 
 
 ## Line Terminators
 
-While the text framework can load text using any sort of standard line terminator character sequence, the framework internally tracks all line terminators as a single line feed character.  Text can easily be exported back out with any line terminator.
+The text framework can load text using any standard line terminator character sequence.  Document snapshots can return the line terminator kind that is used within the document and report when mixed line terminators are used.  Text can easily be normalized to any line terminator.
 
 See the [Line Terminators](line-terminators.md) topic for more information.
 

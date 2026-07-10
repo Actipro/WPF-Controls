@@ -379,37 +379,37 @@ A lexical state transition (represented by the [ILexicalStateTransition](xref:Ac
 </tr>
 
 <tr>
-<td>Mergable Lexer</td>
+<td>Mergeable Lexer</td>
 <td>
 
-A mergable lexer (represented by the [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) interface) is a lexer that supports transitioning into other languages that have mergable lexers.
+A mergeable lexer (represented by the [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) interface) is a lexer that supports transitioning into other languages that have mergeable lexers.
 
 </td>
 </tr>
 
 <tr>
-<td>Mergable Lexical Result</td>
+<td>Mergeable Lexical Result</td>
 <td>
 
-A mergable lexer result (represented by the [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult) class) provides information for the next token that has been read by a mergable lexer.
+A mergeable lexer result (represented by the [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult) class) provides information for the next token that has been read by a mergeable lexer.
 
 </td>
 </tr>
 
 <tr>
-<td>Mergable Token</td>
+<td>Mergeable Token</td>
 <td>
 
-A mergable token (represented by the [IMergableToken](xref:ActiproSoftware.Text.Lexing.IMergableToken) interface) is a token that is created by a mergable lexer.
+A mergeable token (represented by the [IMergeableToken](xref:ActiproSoftware.Text.Lexing.IMergeableToken) interface) is a token that is created by a mergeable lexer.
 
 </td>
 </tr>
 
 <tr>
-<td>Mergable Token Lexer Data</td>
+<td>Mergeable Token Lexer Data</td>
 <td>
 
-Mergable token lexical parse data (represented by the [IMergableTokenLexerData](xref:ActiproSoftware.Text.Lexing.IMergableTokenLexerData) interface) is part of a mergable lexical parse result and gets assigned to mergable tokens.
+Mergeable token lexical parse data (represented by the [IMergeableTokenLexerData](xref:ActiproSoftware.Text.Lexing.IMergeableTokenLexerData) interface) is part of a mergeable lexical parse result and gets assigned to mergeable tokens.
 
 </td>
 </tr>

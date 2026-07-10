@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionReadOnlyItems.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -22,7 +22,7 @@
 					This means that the end user can type in a new value, which may or may not result in an error.
 					There are several ways to ensure that all or some of the collection items are presented as read-only.
 					<LineBreak /><LineBreak />
-					This example shows various ways to mark the items as read-only. 
+					This example shows various ways to mark the items as read-only.
 					Select the entries for List 1-5 to see a description of how it accomplishes the task.
 				</TextBlock>
 			</Expander>

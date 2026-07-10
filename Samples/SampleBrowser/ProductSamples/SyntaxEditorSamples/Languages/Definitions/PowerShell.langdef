@@ -19,7 +19,7 @@ Actipro Syntax Language Definition (.langdef)
 		<ClassificationType Key="Operator" />
 		<ClassificationType Key="PowerShellVariable" Description="PowerShell Variable" DefaultStyle="#FF800080" DarkStyle="#FFD8A0DF" />
 		<ClassificationType Key="Punctuation" />
-		<ClassificationType Key="String" DefaultStyle="#FF800000" DarkStyle="#FFD69D85" />
+		<ClassificationType Key="String" DefaultStyle="#FFA31515" DarkStyle="#FFD69D85" />
 	</LanguageDefinition.ClassificationTypes>
 	<!-- Lexer -->
 	<LanguageDefinition.Lexer>

@@ -1,5 +1,5 @@
-using System;
 using ActiproSoftware.Windows.Controls.Ribbon.Controls;
+using System;
 
 namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 
@@ -8,12 +8,12 @@ namespace ActiproSoftware.ProductSamples.RibbonSamples.Common {
 	/// </summary>
 	public partial class RichTextBoxMiniToolBar : MiniToolBar {
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 
 		/// <summary>
-		/// Initializes an instance of the <c>RichTextBoxMiniToolBar</c> class.
+		/// Initializes an instance of the class.
 		/// </summary>
 		public RichTextBoxMiniToolBar() {
 			InitializeComponent();

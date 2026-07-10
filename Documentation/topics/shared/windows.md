@@ -25,7 +25,7 @@ These general types are found in the namespace:
 <tr>
 <td>
 
-[DisposableObjectBase](xref:@ActiproUIRoot.DisposableObjectBase)
+[DisposableObjectBase](xref:ActiproSoftware.DisposableObjectBase)
 
 </td>
 <td>
@@ -76,7 +76,7 @@ Provides the base requirements for an element that can add and remove logical ch
 <tr>
 <td>
 
-[ObservableObjectBase](xref:@ActiproUIRoot.ObservableObjectBase)
+[ObservableObjectBase](xref:ActiproSoftware.ObservableObjectBase)
 
 </td>
 <td>

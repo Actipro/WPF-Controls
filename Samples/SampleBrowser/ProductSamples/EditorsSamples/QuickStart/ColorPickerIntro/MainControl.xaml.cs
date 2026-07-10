@@ -1,20 +1,19 @@
-namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.ColorPickerIntro {
+namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.ColorPickerIntro;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-		}
-		
+	public MainControl() {
+		InitializeComponent();
 	}
+
 }

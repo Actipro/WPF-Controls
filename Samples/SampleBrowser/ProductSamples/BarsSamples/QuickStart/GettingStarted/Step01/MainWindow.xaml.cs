@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 RIBBON GETTING STARTED SERIES - STEP 1
 
@@ -10,7 +10,7 @@ STEP SUMMARY:
 	Getting Started series, the code behind for the RibbonWindow is only responsible for
 	defining the methods associated with the CommandBinding	configured to handle the
 	RoutedCommand for Help.
-	
+
 	Notes similar to these will also be reflected in other C# code files that accompany each step.
 
 CHANGES SINCE LAST STEP:
@@ -20,49 +20,43 @@ CHANGES SINCE LAST STEP:
 
 */
 
-using ActiproSoftware.Windows.Controls;
-using System.Windows;
-using System.Windows.Input;
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step01;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step01 {
+/// <summary>
+/// Provides the main window for this sample.
+/// </summary>
+public partial class MainWindow {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main window for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainWindow {
+	public MainWindow() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MainWindow"/> class.
-		/// </summary>
-		public MainWindow() {
-			InitializeComponent();
-
-			//	SAMPLE NOTE 1.1:
-			//		Configure a CommandBinding so this window can handle the standard RoutedCommand for Help.
-			//		For this sample, this command is bound to a standard Button. In later steps of the series,
-			//		the command will be bound to controls on the Ribbon. This step makes sure the RoutedCommand
-			//		is being properly handled before starting to configure the Ribbon.
-			this.CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Executes the <see cref="ApplicationCommands.Help"/> command.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The event data.</param>
-		private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e) {
-			ThemedMessageBox.Show("This is where contextual Help would be displayed.", "Help", MessageBoxButton.OK, MessageBoxImage.Information);
-		}
-
+		// SAMPLE NOTE 1.1:
+		//   Configure a CommandBinding so this window can handle the standard RoutedCommand for Help.
+		//   For this sample, this command is bound to a standard Button. In later steps of the series,
+		//   the command will be bound to controls on the Ribbon. This step makes sure the RoutedCommand
+		//   is being properly handled before starting to configure the Ribbon.
+		CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Executes the <see cref="ApplicationCommands.Help"/> command.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e)
+		=> MessageBox.Show("This is where contextual Help would be displayed.", "Help", MessageBoxButton.OK, MessageBoxImage.Information);
 
 }

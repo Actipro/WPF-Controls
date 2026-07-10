@@ -46,12 +46,12 @@ These members on [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) are re
 | Member | Description |
 |-----|-----|
 | [GetReader](xref:ActiproSoftware.Text.ITextSnapshot.GetReader*) Method | Returns an [ITextSnapshotReader](xref:ActiproSoftware.Text.ITextSnapshotReader) that can be used to navigate through the text and token contents of the snapshot. |
-| [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) Method | Returns a substring from the snapshot text using the specified [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) for line ends. |
-| [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) Method | Returns the entire text of the snapshot using the specified [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) for line ends. |
+| [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) Method | Returns a substring from the snapshot text, optionally normalizing line ends with a specified [LineTerminator](xref:ActiproSoftware.Text.LineTerminator). |
+| [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) Method | Returns the entire text of the snapshot, optionally normalizing line ends with a specified [LineTerminator](xref:ActiproSoftware.Text.LineTerminator). |
 | [GetWordText](xref:ActiproSoftware.Text.ITextSnapshot.GetWordText*) Method | Gets the text of the word at the specified offset. |
 | [Length](xref:ActiproSoftware.Text.ITextSnapshot.Length) Property | Gets the number of characters in the snapshot, excluding any carriage-returns but including newlines. |
 | [Lines](xref:ActiproSoftware.Text.ITextSnapshot.Lines) Property | Gets the collection of [ITextSnapshotLine](xref:ActiproSoftware.Text.ITextSnapshotLine) objects, each of which represents a line in the snapshot. |
-| [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) Property | Gets the entire text of the snapshot using `LineTerminator.CarriageReturnNewline` for line ends, which is not intended to be used for parsing for classification reasons. |
+| [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) Property | Gets the entire text of the snapshot. |
 
 ## Writing Text, Use Document
 

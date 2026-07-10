@@ -1,188 +1,123 @@
-﻿using System.Collections.ObjectModel;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a tab control within a ribbon.
+/// </summary>
+public class RibbonTabViewModel : BarKeyedObjectViewModelBase {
+
+	private string? _contextualTabGroupKey;
+	private VariantCollection? _controlVariants;
+	private string? _description;
+	private VariantCollection? _groupVariants;
+	private bool _isEnabled = true;
+	private bool _isVisible = true;
+	private string? _keyTipText;
+	private string? _label;
+	private string? _title;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel()"/>
+	public RibbonTabViewModel()  // Parameterless constructor required for XAML support
+		: this(key: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string)"/>
+	public RibbonTabViewModel(string? key)
+		: this(key, label: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
+	public RibbonTabViewModel(string? key, string? label)
+		: this(key, label, keyTipText: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
+	public RibbonTabViewModel(string? key, string? label, string? keyTipText)
+		: base(key) {
+
+		_label = label ?? BarControlService.LabelGenerator.FromKey(key);
+		_keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(_label);
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for a tab control within a ribbon.
+	/// The string key of the related contextual tab group, if this should be a contextual tab.
 	/// </summary>
-	public class RibbonTabViewModel : BarKeyedObjectViewModelBase {
-
-		private string contextualTabGroupKey;
-		private VariantCollection controlVariants;
-		private string description;
-		private VariantCollection groupVariants;
-		private bool isEnabled = true;
-		private bool isVisible = true;
-		private string keyTipText;
-		private string label;
-		private string title;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public RibbonTabViewModel()  // Parameterless constructor required for XAML support
-			: this(key: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string)"/>
-		public RibbonTabViewModel(string key)
-			: this(key, label: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
-		public RibbonTabViewModel(string key, string label)
-			: this(key, label, keyTipText: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
-		public RibbonTabViewModel(string key, string label, string keyTipText)
-			: base(key) {
-			this.label = label ?? BarControlService.LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the string key of the related contextual tab group, if this should be a contextual tab.
-		/// </summary>
-		/// <value>The string key of the related contextual tab group, if this should be a contextual tab.</value>
-		public string ContextualTabGroupKey {
-			get {
-				return contextualTabGroupKey;
-			}
-			set {
-				if (contextualTabGroupKey != value) {
-					contextualTabGroupKey = value;
-					this.NotifyPropertyChanged(nameof(ContextualTabGroupKey));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the collection of variant size transitions to apply to all controls within the tab when the ribbon is in Simplified layout mode.
-		/// </summary>
-		/// <value>The collection of variant size transitions to apply to all controls within the tab when the ribbon is in Simplified layout mode.</value>
-		public VariantCollection ControlVariants {
-			get {
-				return controlVariants;
-			}
-			set {
-				if (controlVariants != value) {
-					controlVariants = value;
-					this.NotifyPropertyChanged(nameof(ControlVariants));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Description"/>
-		public string Description {
-			get {
-				return description;
-			}
-			set {
-				if (description != value) {
-					description = value;
-					this.NotifyPropertyChanged(nameof(Description));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of group view models within the tab.
-		/// </summary>
-		/// <value>The collection of group view models within the tab.</value>
-		public ObservableCollection<RibbonGroupViewModel> Groups { get; } = new ObservableCollection<RibbonGroupViewModel>();
-
-		/// <summary>
-		/// Gets or sets the collection of variant size transitions to apply to all groups within the tab when the ribbon is in Classic layout mode.
-		/// </summary>
-		/// <value>The collection of variant size transitions to apply to all groups within the tab when the ribbon is in Classic layout mode.</value>
-		public VariantCollection GroupVariants {
-			get {
-				return groupVariants;
-			}
-			set {
-				if (groupVariants != value) {
-					groupVariants = value;
-					this.NotifyPropertyChanged(nameof(GroupVariants));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets whether the control is currently enabled.
-		/// </summary>
-		/// <value>
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool IsEnabled {
-			get => isEnabled;
-			set {
-				if (isEnabled != value) {
-					isEnabled = value;
-					this.NotifyPropertyChanged(nameof(IsEnabled));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		/// <remarks>
-		/// This property should not be set to control the visibility of contextual tabs.
-		/// </remarks>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
-		public string KeyTipText {
-			get {
-				return keyTipText;
-			}
-			set {
-				if (keyTipText != value) {
-					keyTipText = value;
-					this.NotifyPropertyChanged(nameof(KeyTipText));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get {
-				return label;
-			}
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Title"/>
-		public string Title {
-			get => title;
-			set {
-				if (title != value) {
-					title = value;
-					this.NotifyPropertyChanged(nameof(Title));
-				}
-			}
-		}
-
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[Label='{this.Label}']";
-		}
-
+	public string? ContextualTabGroupKey {
+		get => _contextualTabGroupKey;
+		set => SetProperty(ref _contextualTabGroupKey, value);
 	}
+
+	/// <summary>
+	/// The collection of variant size transitions to apply to all controls within the tab when the ribbon is in Simplified layout mode.
+	/// </summary>
+	public VariantCollection? ControlVariants {
+		get => _controlVariants;
+		set => SetProperty(ref _controlVariants, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Description"/>
+	public string? Description {
+		get => _description;
+		set => SetProperty(ref _description, value);
+	}
+
+	/// <summary>
+	/// The collection of group view models within the tab.
+	/// </summary>
+	public ObservableCollection<RibbonGroupViewModel> Groups { get; } = [];
+
+	/// <summary>
+	/// The collection of variant size transitions to apply to all groups within the tab when the ribbon is in Classic layout mode.
+	/// </summary>
+	public VariantCollection? GroupVariants {
+		get => _groupVariants;
+		set => SetProperty(ref _groupVariants, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the control is currently enabled.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool IsEnabled {
+		get => _isEnabled;
+		set => SetProperty(ref _isEnabled, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	/// <remarks>
+	/// This property should not be set to control the visibility of contextual tabs.
+	/// </remarks>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
+	public string? KeyTipText {
+		get => _keyTipText;
+		set => SetProperty(ref _keyTipText, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Label"/>
+	public string? Label {
+		get => _label;
+		set => SetProperty(ref _label, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Title"/>
+	public string? Title {
+		get => _title;
+		set => SetProperty(ref _title, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[Label='{Label}']";
 
 }

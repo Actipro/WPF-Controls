@@ -1,41 +1,33 @@
-using System;
 using ActiproSoftware.SampleBrowser;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.Demo.SdiCodeEditor;
+
+/// <summary>
+/// Provides the main window for this sample.
+/// </summary>
+public partial class MainWindow : Window {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main window for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainWindow : System.Windows.Window {
+	public MainWindow() {
+		InitializeComponent();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainWindow</c> class.
-		/// </summary>
-		public MainWindow() {
-			InitializeComponent();
-        }
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc/>
+	protected override void OnClosed(EventArgs e) {
+		var previousSample = Content as ProductItemControl;
+		previousSample?.NotifyUnloaded();
 
-		/// <summary>
-		/// Occurs when the window is closed.
-		/// </summary>
-		/// <param name="e">The event arguments.</param>
-		protected override void OnClosed(EventArgs e) {
-			var previousSample = this.Content as ProductItemControl;
-			if (previousSample != null)
-				previousSample.NotifyUnloaded();
-
-			// Call the base method
-			base.OnClosed(e);
-		}
-
+		base.OnClosed(e);
 	}
 
 }

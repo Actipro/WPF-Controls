@@ -1,9 +1,9 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootControl"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.Legend.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	>
@@ -89,7 +89,7 @@
 						</charts:SeriesPaletteStyleSelector>
 					</charts:XYChart.SeriesStyleSelector>
 					<charts:XYChart.YAxes>
-						<charts:XYDoubleAxis x:Name="yAxis" AreLabelsVisible="True" AreMajorTicksVisible="True" AreMinorTicksVisible="True" 
+						<charts:XYDoubleAxis x:Name="yAxis" AreLabelsVisible="True" AreMajorTicksVisible="True" AreMinorTicksVisible="True"
 											 TickMajorInterval="10" LabelFormat="{}{0:N1}" Minimum="10" Maximum="70"/>
 					</charts:XYChart.YAxes>
 					<charts:XYChart.XAxes>

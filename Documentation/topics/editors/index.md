@@ -106,6 +106,7 @@ Each of the controls features unique designs that have been specifically crafted
 - `MaskedTextBox` - A text box that restricts input based on a specified regular expression mask.  Support for input prompts and literal completion is included.
 - `MonthCalendar` - Month, year, decade, and century views with animated changes.  Appearance customization supported.
 - `RadialHuePicker` - Uses a radial slider to select a color hue.
+- `RangeSlider` - Can be used to select one or more values within a pre-defined range of available values.
 - `Rating` - Renders glyphs that can be used present an average rating or collect a user rating.
 - `SaturationBrightnessPicker` - Uses a 2D slider to select saturation/brightness values in a square.
 

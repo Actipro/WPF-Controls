@@ -1,23 +1,18 @@
-﻿using System.ComponentModel;
-using System.Windows.Media;
+﻿namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TimecardSystem;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TimecardSystem {
+/// <summary>
+/// Specifies a clocked in or out state.
+/// </summary>
+public enum ClockInOutState {
 
 	/// <summary>
-	/// Specifies a clocked in or out state.
+	/// Clocked in.
 	/// </summary>
-	public enum ClockInOutState {
+	In,
 
-		/// <summary>
-		/// Clocked in.
-		/// </summary>
-		In,
-
-		/// <summary>
-		/// Clocked out.
-		/// </summary>
-		Out
-
-	}
+	/// <summary>
+	/// Clocked out.
+	/// </summary>
+	Out
 
 }

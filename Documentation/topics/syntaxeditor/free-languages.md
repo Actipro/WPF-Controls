@@ -11,7 +11,7 @@ SyntaxEditor includes over 20 free syntax language implementations that can be u
 
 The plain text language is included as a syntax language to use when no other language is applicable.  Since the [ICodeDocument](xref:ActiproSoftware.Text.ICodeDocument).[Language](xref:ActiproSoftware.Text.ICodeDocument.Language) property cannot be set to a `null` value, the plain text language is the ideal language to use when a document doesn't need a language implementation assigned.
 
-The plain text language can be retrieved via the [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage).[PlainText](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage.PlainText) property.
+The plain text language can be retrieved via the [SyntaxLanguage](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage).[PlainText](xref:ActiproSoftware.Text.Implementation.SyntaxLanguage.PlainText) property, which returns the same cached value on each invocation.
 
 ## Open Source Languages with a Dynamic Lexer
 

@@ -62,8 +62,8 @@
 
 	<wizard:Wizard x:Name="wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="Wizard Sample" PageSequenceType="Stack" 
 				TransitionSelector="{Binding ElementName=transitions, Path=SelectedItem}" TransitionDefaultDirection="Forward" 
-				SelectedPageChanged="wizard_SelectedPageChanged" SelectedPageChanging="wizard_SelectedPageChanging" 
-				Help="wizard_Help" Cancel="wizard_Cancel" Finish="wizard_Finish">
+				SelectedPageChanged="OnWizardSelectedPageChanged" SelectedPageChanging="OnWizardSelectedPageChanging" 
+				Help="OnWizardHelp" Cancel="OnWizardCancel" Finish="OnWizardFinish">
 		
 		<!-- Welcome -->
 		<wizard:WizardPage x:Name="welcomePage" PageType="Exterior"
@@ -340,7 +340,7 @@
 				</TextBlock>
 				<TextBlock x:Name="progressTextBlock" Margin="0,0,0,3" HorizontalAlignment="Center">Not started</TextBlock>
 				<ProgressBar x:Name="progressBar" Margin="0,0,0,7"  Width="200" Height="18" Value="0" />
-				<Button x:Name="startProcessingButton" Width="200" Click="startProcessingButton_Click">Start Processing</Button>
+				<Button x:Name="startProcessingButton" Width="200" Click="OnStartProcessingButtonClick">Start Processing</Button>
 			</StackPanel>
 		</wizard:WizardPage>
 		
@@ -548,7 +548,7 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 					
-					<ListBox x:Name="themeListBox" MaxHeight="150" HorizontalAlignment="Left" SelectionChanged="themeListBox_SelectionChanged">
+					<ListBox x:Name="themeListBox" MaxHeight="150" HorizontalAlignment="Left" SelectionChanged="OnThemeListBoxSelectionChanged">
 						<ListBoxItem IsSelected="True">(Default)</ListBoxItem>
 						<ListBoxItem Tag="WizardMetalTheme.xaml">Brushed Metal Wizard</ListBoxItem>
 						<ListBoxItem Tag="WizardRedTheme.xaml">Red Wizard with Custom Button Style</ListBoxItem>
@@ -656,12 +656,12 @@
 				<TextBlock Margin="0,14,0,0" FontWeight="Bold">Programmatic Navigation Samples</TextBlock>
 				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
 					Go to the 
-					<Hyperlink Click="programmaticSelectedIndexNavigationSampleHyperlink_Click">second page</Hyperlink>
+					<Hyperlink Click="OnProgrammaticSelectedIndexNavigationSampleHyperlinkClick">second page</Hyperlink>
 					in the wizard programmatically by setting the <Bold>Wizard.SelectedIndex</Bold> property in the code-behind class.
 				</TextBlock>
 				<TextBlock Margin="0,7,0,0" TextWrapping="Wrap">
 					Go to the 
-					<Hyperlink Click="programmaticSelectedPageNavigationSampleHyperlink_Click">transition effect page</Hyperlink>
+					<Hyperlink Click="OnProgrammaticSelectedPageNavigationSampleHyperlinkClick">transition effect page</Hyperlink>
 					in the wizard programmatically by setting the <Bold>Wizard.SelectedPage</Bold> property in the code-behind class.
 				</TextBlock>
 				<TextBlock Margin="0,14,0,7" FontWeight="Bold">Declarative Control of Next/Previous Buttons</TextBlock>

@@ -1,260 +1,165 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a popup button control within a bar control.
+/// </summary>
+[ContentProperty(nameof(MenuItems))]
+public class BarPopupButtonViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
+
+	private bool _canCloneToRibbonQuickAccessToolBar = true;
+	private ICommand? _command;
+	private object? _commandParameter;
+	private string? _description;
+	private InvocationFocusBehavior _invocationFocusBehavior = InvocationFocusBehavior.Default;
+	private bool _isVisible = true;
+	private string? _keyTipText;
+	private string? _label;
+	private ImageSource? _largeImageSource;
+	private ImageSource? _mediumImageSource;
+	private ICommand? _popupOpeningCommand;
+	private ImageSource? _smallImageSource;
+	private string? _title;
+	private ItemCollapseBehavior _toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+	private ItemVariantBehavior _toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
+	private bool _useLargeMenuItem;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel()"/>
+	public BarPopupButtonViewModel()  // Parameterless constructor required for XAML support
+		: this(key: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string)"/>
+	public BarPopupButtonViewModel(string? key)
+		: this(key, label: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
+	public BarPopupButtonViewModel(string? key, string? label)
+		: this(key, label, keyTipText: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
+	public BarPopupButtonViewModel(string? key, string? label, string? keyTipText)
+		: this(key, label, keyTipText, command: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, string, ICommand)"/>
+	protected BarPopupButtonViewModel(string? key, string? label, string? keyTipText, ICommand? command)
+		: base(key) {
+
+		// NOTE: This class has an ICommand, but it is primarily only used by derived classes and
+		//		 is why this overload is protected (instead of public)
+
+		_label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
+		_keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(_label);
+		_command = command;
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
+	public bool CanCloneToRibbonQuickAccessToolBar {
+		get => _canCloneToRibbonQuickAccessToolBar;
+		set => SetProperty(ref _canCloneToRibbonQuickAccessToolBar, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Command"/>
+	public ICommand? Command {
+		get => _command;
+		set => SetProperty(ref _command, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.CommandParameter"/>
+	public object? CommandParameter {
+		get => _commandParameter;
+		set => SetProperty(ref _commandParameter, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Description"/>
+	public string? Description {
+		get => _description;
+		set => SetProperty(ref _description, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.InvocationFocusBehavior"/>
+	public InvocationFocusBehavior InvocationFocusBehavior {
+		get => _invocationFocusBehavior;
+		set => SetProperty(ref _invocationFocusBehavior, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
+	public string? KeyTipText {
+		get => _keyTipText;
+		set => SetProperty(ref _keyTipText, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Label"/>
+	public string? Label {
+		get => _label;
+		set => SetProperty(ref _label, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.LargeImageSource"/>
+	public ImageSource? LargeImageSource {
+		get => _largeImageSource;
+		set => SetProperty(ref _largeImageSource, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.MediumImageSource"/>
+	public ImageSource? MediumImageSource {
+		get => _mediumImageSource;
+		set => SetProperty(ref _mediumImageSource, value);
+	}
 
 	/// <summary>
-	/// Represents a view model for a popup button control within a bar control.
+	/// The collection of menu items that appear within the popup.
 	/// </summary>
-	[ContentProperty(nameof(MenuItems))]
-	public class BarPopupButtonViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
+	public ObservableCollection<object> MenuItems { get; } = [];
 
-		private bool canCloneToRibbonQuickAccessToolBar = true;
-		private ICommand command;
-		private object commandParameter;
-		private string description;
-		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
-		private bool isVisible = true;
-		private string keyTipText;
-		private string label;
-		private ImageSource largeImageSource;
-		private ImageSource mediumImageSource;
-		private ICommand popupOpeningCommand;
-		private ImageSource smallImageSource;
-		private string title;
-		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
-		private ItemVariantBehavior toolBarItemVariantBehavior = ItemVariantBehavior.AlwaysSmall;
-		private bool useLargeMenuItem;
+	/// <summary>
+	/// The <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.
+	/// </summary>
+	public ICommand? PopupOpeningCommand {
+		get => _popupOpeningCommand;
+		set => SetProperty(ref _popupOpeningCommand, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
+	public ImageSource? SmallImageSource {
+		get => _smallImageSource;
+		set => SetProperty(ref _smallImageSource, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarPopupButtonViewModel()  // Parameterless constructor required for XAML support
-			: this(key: null) { }
+	/// <inheritdoc cref="BarButtonViewModel.Title"/>
+	public string? Title {
+		get => _title;
+		set => SetProperty(ref _title, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string)"/>
-		public BarPopupButtonViewModel(string key)
-			: this(key, label: null) { }
+	/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
+	public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+		get => _toolBarItemCollapseBehavior;
+		set => SetProperty(ref _toolBarItemCollapseBehavior, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
-		public BarPopupButtonViewModel(string key, string label)
-			: this(key, label, keyTipText: null) { }
+	/// <inheritdoc cref="BarButtonViewModel.ToolBarItemVariantBehavior"/>
+	public ItemVariantBehavior ToolBarItemVariantBehavior {
+		get => _toolBarItemVariantBehavior;
+		set => SetProperty(ref _toolBarItemVariantBehavior, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
-		public BarPopupButtonViewModel(string key, string label, string keyTipText)
-			: this(key, label, keyTipText, command: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string, string, ICommand)"/>
-		protected BarPopupButtonViewModel(string key, string label, string keyTipText, ICommand command)
-			: base(key) {
-
-			// NOTE: This class has an ICommand, but it is primarily only used by derived classes and
-			//		 is why this overload is protected (instead of public)
-
-			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
-			this.command = command;
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
-		public bool CanCloneToRibbonQuickAccessToolBar {
-			get => canCloneToRibbonQuickAccessToolBar;
-			set {
-				if (canCloneToRibbonQuickAccessToolBar != value) {
-					canCloneToRibbonQuickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(CanCloneToRibbonQuickAccessToolBar));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Command"/>
-		public ICommand Command {
-			get => command;
-			set {
-				if (command != value) {
-					command = value;
-					this.NotifyPropertyChanged(nameof(Command));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.CommandParameter"/>
-		public object CommandParameter {
-			get => commandParameter;
-			set {
-				if (commandParameter != value) {
-					commandParameter = value;
-					this.NotifyPropertyChanged(nameof(CommandParameter));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Description"/>
-		public string Description {
-			get => description;
-			set {
-				if (description != value) {
-					description = value;
-					this.NotifyPropertyChanged(nameof(Description));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets how the button processes focus when an item is clicked.
-		/// </summary>
-		/// <value>
-		/// The default value is <see cref="InvocationFocusBehavior.Default"/>.
-		/// </value>
-		public InvocationFocusBehavior InvocationFocusBehavior {
-			get => invocationFocusBehavior;
-			set {
-				if (invocationFocusBehavior != value) {
-					invocationFocusBehavior = value;
-					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
-		public string KeyTipText {
-			get => keyTipText;
-			set {
-				if (keyTipText != value) {
-					keyTipText = value;
-					this.NotifyPropertyChanged(nameof(KeyTipText));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get => label;
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.LargeImageSource"/>
-		public ImageSource LargeImageSource {
-			get => largeImageSource;
-			set {
-				if (largeImageSource != value) {
-					largeImageSource = value;
-					this.NotifyPropertyChanged(nameof(LargeImageSource));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.MediumImageSource"/>
-		public ImageSource MediumImageSource {
-			get => mediumImageSource;
-			set {
-				if (mediumImageSource != value) {
-					mediumImageSource = value;
-					this.NotifyPropertyChanged(nameof(MediumImageSource));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets the collection of menu items that appear within the popup.
-		/// </summary>
-		/// <value>The collection of menu items that appear within the popup.</value>
-		public ObservableCollection<object> MenuItems { get; } = new ObservableCollection<object>();
-		
-		/// <summary>
-		/// Gets or sets the <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.
-		/// </summary>
-		/// <value>The <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.</value>
-		public ICommand PopupOpeningCommand {
-			get => popupOpeningCommand;
-			set {
-				if (popupOpeningCommand != value) {
-					popupOpeningCommand = value;
-					this.NotifyPropertyChanged(nameof(PopupOpeningCommand));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
-		public ImageSource SmallImageSource {
-			get => smallImageSource;
-			set {
-				if (smallImageSource != value) {
-					smallImageSource = value;
-					this.NotifyPropertyChanged(nameof(SmallImageSource));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Title"/>
-		public string Title {
-			get => title;
-			set {
-				if (title != value) {
-					title = value;
-					this.NotifyPropertyChanged(nameof(Title));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
-		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
-			get => toolBarItemCollapseBehavior;
-			set {
-				if (toolBarItemCollapseBehavior != value) {
-					toolBarItemCollapseBehavior = value;
-					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemVariantBehavior"/>
-		public ItemVariantBehavior ToolBarItemVariantBehavior {
-			get => toolBarItemVariantBehavior;
-			set {
-				if (toolBarItemVariantBehavior != value) {
-					toolBarItemVariantBehavior = value;
-					this.NotifyPropertyChanged(nameof(ToolBarItemVariantBehavior));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.UseLargeMenuItem"/>
-		public bool UseLargeMenuItem {
-			get => useLargeMenuItem;
-			set {
-				if (useLargeMenuItem != value) {
-					useLargeMenuItem = value;
-					this.NotifyPropertyChanged(nameof(UseLargeMenuItem));
-				}
-			}
-		}
-
+	/// <inheritdoc cref="BarButtonViewModel.UseLargeMenuItem"/>
+	public bool UseLargeMenuItem {
+		get => _useLargeMenuItem;
+		set => SetProperty(ref _useLargeMenuItem, value);
 	}
 
 }

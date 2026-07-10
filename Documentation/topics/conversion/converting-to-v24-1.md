@@ -196,19 +196,23 @@ The [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highl
 ## SyntaxEditor Enhancements
 
 The following changes were made to enhance the capabilities of SyntaxEditor and might impact some applications.
-- The default colors for several [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) instances on [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) have been changed to be more consistent with modern code editor expectations.  Some classification types were updated to remove opacity from the default color and, instead, always apply an opacity when the color is rendered.
-    - [SelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.SelectedText) background from #99CCFF to #0078D7.
-    - [InactiveSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.InactiveSelectedText) background from #CCDDEE to #BFCDDB.
-    - [LineNumbers](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.LineNumbers) foreground from #2B91AF to #7A7A7A.
-    - [BreakpointEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.BreakpointEnabled) background from #AB616B to #963A46.
-    - [BreakpointDisabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.BreakpointDisabled) border from #AB616B to #000000.
-    - [IndicatorMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.IndicatorMargin) background from #F0F0F0 to #E6E7E8.
-    - [CurrentLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CurrentLine) border from #30A0A0A0 to #EAEAF2; 30% opacity automatically applied when rendered.
-    - [DelimiterMatching](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeKeys.DelimiterMatching) background from #30A0A0A0 to #DBE0CC with 75% opacity automatically applied when rendered.
-    - [FindMatchHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.FindMatchHighlight) background from #C8F4A721 to #F4A721 with 75% opacity automatically applied when rendered.
-    - [CollapsibleRegion](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CollapsibleRegion) foreground from #80D7DDE8 to #D7DDE8 with 50% opacity automatically applied when rendered.  Background from #80EDEFF5 to #F6F7FA.
-    - [ColumnGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.ColumnGuides) background from #40C0C0C0 to #D0D0D0.
-    - [IndentationGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.IndentationGuides) background from #40C0C0C0 to #D0D0D0.
+
+> [!IMPORTANT]
+> The `DisplayItemClassificationTypeProvider` referenced below was merged into [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) starting with v26.1, and the corresponding API links have been updated to reflect the new location.
+
+- The default colors for several [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) instances on `DisplayItemClassificationTypeProvider` have been changed to be more consistent with modern code editor expectations.  Some classification types were updated to remove opacity from the default color and, instead, always apply an opacity when the color is rendered.
+    - [SelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.SelectedText) background from #99CCFF to #0078D7.
+    - [InactiveSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.InactiveSelectedText) background from #CCDDEE to #BFCDDB.
+    - [LineNumbers](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.LineNumbers) foreground from #2B91AF to #7A7A7A.
+    - [BreakpointEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.BreakpointEnabled) background from #AB616B to #963A46.
+    - [BreakpointDisabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.BreakpointDisabled) border from #AB616B to #000000.
+    - [IndicatorMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.IndicatorMargin) background from #F0F0F0 to #E6E7E8.
+    - [CurrentLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CurrentLine) border from #30A0A0A0 to #EAEAF2; 30% opacity automatically applied when rendered.
+    - [DelimiterMatching](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.DelimiterMatching) background from #30A0A0A0 to #DBE0CC with 75% opacity automatically applied when rendered.
+    - [FindMatchHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.FindMatchHighlight) background from #C8F4A721 to #F4A721 with 75% opacity automatically applied when rendered.
+    - [CollapsibleRegion](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CollapsibleRegion) foreground from #80D7DDE8 to #D7DDE8 with 50% opacity automatically applied when rendered.  Background from #80EDEFF5 to #F6F7FA.
+    - [ColumnGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.ColumnGuides) background from #40C0C0C0 to #D0D0D0.
+    - [IndentationGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.IndentationGuides) background from #40C0C0C0 to #D0D0D0.
 - The [Punctuation](xref:ActiproSoftware.Text.ClassificationTypes.Punctuation) classification type was added to all appropriate Actipro languages.
   - Implement the [IDotNetClassificationTypeProvider](xref:ActiproSoftware.Text.Languages.DotNet.IDotNetClassificationTypeProvider).[Punctuation](xref:ActiproSoftware.Text.Languages.DotNet.IDotNetClassificationTypeProvider.Punctuation) property for classes that implement the interface without deriving from the [DotNetClassificationTypeProvider](xref:ActiproSoftware.Text.Languages.DotNet.Implementation.DotNetClassificationTypeProvider) class.
   - Implement the [IJavaScriptClassificationTypeProvider](xref:ActiproSoftware.Text.Languages.JavaScript.IJavaScriptClassificationTypeProvider).[Punctuation](xref:ActiproSoftware.Text.Languages.JavaScript.IJavaScriptClassificationTypeProvider.Punctuation) property for classes that implement the interface without deriving from the [JavaScriptClassificationTypeProvider](xref:ActiproSoftware.Text.Languages.JavaScript.Implementation.JavaScriptClassificationTypeProvider) class.

@@ -1,69 +1,49 @@
-using ActiproSoftware.Products;
-using System;
+using ActiproSoftware.Properties;
 using System.Reflection;
 
-namespace ActiproSoftware.SampleBrowser.Utilities.StringResourceBrowser {
+namespace ActiproSoftware.SampleBrowser.Utilities.StringResourceBrowser;
+
+/// <summary>
+/// Stores information about string resource data.
+/// </summary>
+/// <param name="srType">The <see cref="SRBase"/> <see cref="Type"/>.</param>
+/// <param name="enumType">The enumeration <see cref="Type"/>.</param>
+/// <param name="name">The name of the resource.</param>
+public class ResourceData(Type srType, Type enumType, string name) {
+
+	private readonly Type _srType = srType;
+
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about string resource data.
+	/// The enumeration <see cref="Type"/>.
 	/// </summary>
-	public class ResourceData {
+	public Type EnumType { get; } = enumType;
 
-		private Type enumType;
-		private string name;
-		private Type srType;
+	/// <summary>
+	/// The name of the resource.
+	/// </summary>
+	public string Name { get; } = name;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>ResourceData</c> class.
-		/// </summary>
-		/// <param name="srType">The <see cref="SRBase"/> <see cref="Type"/>.</param>
-		/// <param name="enumType">The enumeration <see cref="Type"/>.</param>
-		/// <param name="name">The name of the resource.</param>
-		public ResourceData(Type srType, Type enumType, string name) {
-			// Initialize
-			this.srType = srType;
-			this.enumType = enumType;
-			this.name = name;
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the enumeration <see cref="Type"/>.
-		/// </summary>
-		/// <value>The enumeration <see cref="Type"/>.</value>
-		public Type EnumType {
-			get {
-				return enumType;
+	/// <summary>
+	/// The value of the resource.
+	/// </summary>
+	public string? Value {
+		get {
+			// The 'GetString' method expects a value from the enum
+			#if NET
+			if (Enum.TryParse(EnumType, Name, out var enumValue))
+				return _srType.InvokeMember("GetString", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, binder: null, target: null, args: [enumValue]) as string;
+			#else
+			foreach (var enumValue in Enum.GetValues(EnumType)) {
+				if (Name.Equals(Enum.GetName(EnumType, enumValue), StringComparison.OrdinalIgnoreCase))
+					return _srType.InvokeMember("GetString", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, binder: null, target: null, args: [enumValue]) as string;
 			}
+			#endif
+			return null;
 		}
-
-		/// <summary>
-		/// Gets the name of the resource.
-		/// </summary>
-		/// <value>The name of the resource.</value>
-		public string Name {
-			get {
-				return name;
-			}
-		}
-
-		/// <summary>
-		/// Gets the value of the resource.
-		/// </summary>
-		/// <value>The value of the resource.</value>
-		public string Value {
-			get {
-				return srType.InvokeMember("GetString", BindingFlags.Public | BindingFlags.Static | BindingFlags.InvokeMethod, null, null, new object[] { name }) as string;
-			}
-		}
-
 	}
 
 }

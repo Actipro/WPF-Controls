@@ -1,268 +1,177 @@
-﻿using System;
-using System.Windows.Input;
-using System.Windows.Media;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a textbox control within a bar control.
+/// </summary>
+public class BarTextBoxViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
+
+	private bool _canCloneToRibbonQuickAccessToolBar = true;
+	private ICommand? _command;
+	private object? _commandParameter;
+	private string? _description;
+	private InvocationFocusBehavior _invocationFocusBehavior = InvocationFocusBehavior.Default;
+	private bool _isStarSizingAllowed;
+	private bool _isVisible = true;
+	private string? _keyTipText;
+	private string? _label;
+	private string? _placeholderText;
+	private double _requestedWidth = 110.0;
+	private ImageSource? _smallImageSource;
+	private string? _text;
+	private string? _title;
+	private ItemCollapseBehavior _toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel()"/>
+	public BarTextBoxViewModel()  // Parameterless constructor required for XAML support
+		: this(key: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string)"/>
+	public BarTextBoxViewModel(string? key)
+		: this(key, label: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
+	public BarTextBoxViewModel(string? key, string? label)
+		: this(key, label, keyTipText: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
+	public BarTextBoxViewModel(string? key, string? label, string? keyTipText)
+		: this(key, label, keyTipText, command: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(RoutedCommand)"/>
+	public BarTextBoxViewModel(RoutedCommand? routedCommand)
+		: this(routedCommand?.Name, routedCommand) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, ICommand)"/>
+	public BarTextBoxViewModel(string? key, ICommand? command)
+		: this(key, label: null, command) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, ICommand)"/>
+	public BarTextBoxViewModel(string? key, string? label, ICommand? command)
+		: this(key, label, keyTipText: null, command) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, string, ICommand)"/>
+	public BarTextBoxViewModel(string? key, string? label, string? keyTipText, ICommand? command)
+		: base(key) {
+
+		_label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
+		_keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(_label);
+		_command = command;
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// INTERFACE IMPLEMENTATION
+	// --------------------------------------------------------------------------------------------------
+
+	ImageSource? IHasVariantImages.LargeImageSource {
+		get => null;
+		set { /* No-op since a large image is not supported by the control */ }
+	}
+
+	ImageSource? IHasVariantImages.MediumImageSource {
+		get => null;
+		set { /* No-op since a medium image is not supported by the control */ }
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
+	public bool CanCloneToRibbonQuickAccessToolBar {
+		get => _canCloneToRibbonQuickAccessToolBar;
+		set => SetProperty(ref _canCloneToRibbonQuickAccessToolBar, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Command"/>
+	public ICommand? Command {
+		get => _command;
+		set => SetProperty(ref _command, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.CommandParameter"/>
+	public object? CommandParameter {
+		get => _commandParameter;
+		set => SetProperty(ref _commandParameter, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Description"/>
+	public string? Description {
+		get => _description;
+		set => SetProperty(ref _description, value);
+	}
+
+	/// <inheritdoc cref="BarGalleryViewModel.InvocationFocusBehavior"/>
+	public InvocationFocusBehavior InvocationFocusBehavior {
+		get => _invocationFocusBehavior;
+		set => SetProperty(ref _invocationFocusBehavior, value);
+	}
+
+	/// <inheritdoc cref="BarComboBoxViewModel.IsStarSizingAllowed"/>
+	public bool IsStarSizingAllowed {
+		get => _isStarSizingAllowed;
+		set => SetProperty(ref _isStarSizingAllowed, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
+	public string? KeyTipText {
+		get => _keyTipText;
+		set => SetProperty(ref _keyTipText, value);
+	}
+
+	/// <inheritdoc cref="BarButtonViewModel.Label"/>
+	public string? Label {
+		get => _label;
+		set => SetProperty(ref _label, value);
+	}
 
 	/// <summary>
-	/// Represents a view model for a textbox control within a bar control.
+	/// The placeholder text to display when the control is empty.
 	/// </summary>
-	public class BarTextBoxViewModel : BarKeyedObjectViewModelBase, IHasVariantImages {
+	public string? PlaceholderText {
+		get => _placeholderText;
+		set => SetProperty(ref _placeholderText, value);
+	}
 
-		private bool canCloneToRibbonQuickAccessToolBar = true;
-		private ICommand command;
-		private object commandParameter;
-		private string description;
-		private InvocationFocusBehavior invocationFocusBehavior = InvocationFocusBehavior.Default;
-		private bool isStarSizingAllowed;
-		private bool isVisible = true;
-		private string keyTipText;
-		private string label;
-		private string placeholderText;
-		private double requestedWidth = 110.0;
-		private ImageSource smallImageSource;
-		private string text;
-		private string title;
-		private ItemCollapseBehavior toolBarItemCollapseBehavior = ItemCollapseBehavior.Default;
+	/// <inheritdoc cref="BarComboBoxViewModel.RequestedWidth"/>
+	public double RequestedWidth {
+		get => _requestedWidth;
+		set => SetProperty(ref _requestedWidth, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
+	public ImageSource? SmallImageSource {
+		get => _smallImageSource;
+		set => SetProperty(ref _smallImageSource, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel()"/>
-		public BarTextBoxViewModel()  // Parameterless constructor required for XAML support
-			: this(key: null) { }
+	/// <summary>
+	/// The text being edited in the control.
+	/// </summary>
+	public string? Text {
+		get => _text;
+		set => SetProperty(ref _text, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string)"/>
-		public BarTextBoxViewModel(string key)
-			: this(key, label: null) { }
+	/// <inheritdoc cref="BarButtonViewModel.Title"/>
+	public string? Title {
+		get => _title;
+		set => SetProperty(ref _title, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string, string)"/>
-		public BarTextBoxViewModel(string key, string label)
-			: this(key, label, keyTipText: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string, string)"/>
-		public BarTextBoxViewModel(string key, string label, string keyTipText)
-			: this(key, label, keyTipText, command: null) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(RoutedCommand)"/>
-		public BarTextBoxViewModel(RoutedCommand routedCommand)
-			: this(routedCommand?.Name, routedCommand) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, ICommand)"/>
-		public BarTextBoxViewModel(string key, ICommand command)
-			: this(key, label: null, command) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string, ICommand)"/>
-		public BarTextBoxViewModel(string key, string label, ICommand command)
-			: this(key, label, keyTipText: null, command) { }
-
-		/// <inheritdoc cref="BarButtonViewModel(string, string, string, ICommand)"/>
-		public BarTextBoxViewModel(string key, string label, string keyTipText, ICommand command)
-			: base(key) {
-
-			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
-			this.keyTipText = keyTipText ?? BarControlService.KeyTipTextGenerator.FromCommand(command) ?? BarControlService.KeyTipTextGenerator.FromLabel(this.label);
-			this.command = command;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// INTERFACE IMPLEMENTATION
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <inheritdoc/>
-		ImageSource IHasVariantImages.LargeImageSource {
-			get => null;
-			set { /* No-op since a large image is not supported by the control */ }
-		}
-
-		/// <inheritdoc/>
-		ImageSource IHasVariantImages.MediumImageSource {
-			get => null;
-			set { /* No-op since a medium image is not supported by the control */ }
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
-		public bool CanCloneToRibbonQuickAccessToolBar {
-			get => canCloneToRibbonQuickAccessToolBar;
-			set {
-				if (canCloneToRibbonQuickAccessToolBar != value) {
-					canCloneToRibbonQuickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(CanCloneToRibbonQuickAccessToolBar));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Command"/>
-		public ICommand Command {
-			get => command;
-			set {
-				if (command != value) {
-					command = value;
-					this.NotifyPropertyChanged(nameof(Command));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.CommandParameter"/>
-		public object CommandParameter {
-			get => commandParameter;
-			set {
-				if (commandParameter != value) {
-					commandParameter = value;
-					this.NotifyPropertyChanged(nameof(CommandParameter));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Description"/>
-		public string Description {
-			get => description;
-			set {
-				if (description != value) {
-					description = value;
-					this.NotifyPropertyChanged(nameof(Description));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarGalleryViewModel.InvocationFocusBehavior"/>
-		public InvocationFocusBehavior InvocationFocusBehavior {
-			get => invocationFocusBehavior;
-			set {
-				if (invocationFocusBehavior != value) {
-					invocationFocusBehavior = value;
-					this.NotifyPropertyChanged(nameof(InvocationFocusBehavior));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarComboBoxViewModel.IsStarSizingAllowed"/>
-		public bool IsStarSizingAllowed {
-			get => isStarSizingAllowed;
-			set {
-				if (isStarSizingAllowed != value) {
-					isStarSizingAllowed = value;
-					this.NotifyPropertyChanged(nameof(IsStarSizingAllowed));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.KeyTipText"/>
-		public string KeyTipText {
-			get => keyTipText;
-			set {
-				if (keyTipText != value) {
-					keyTipText = value;
-					this.NotifyPropertyChanged(nameof(KeyTipText));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get => label;
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the placeholder text to display when the control is empty.
-		/// </summary>
-		/// <value>The placeholder text to display when the control is empty.</value>
-		public string PlaceholderText {
-			get {
-				return placeholderText;
-			}
-			set {
-				if (placeholderText != value) {
-					placeholderText = value;
-					this.NotifyPropertyChanged(nameof(PlaceholderText));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarComboBoxViewModel.RequestedWidth"/>
-		public double RequestedWidth {
-			get {
-				return requestedWidth;
-			}
-			set {
-				if (requestedWidth != value) {
-					requestedWidth = value;
-					this.NotifyPropertyChanged(nameof(RequestedWidth));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
-		public ImageSource SmallImageSource {
-			get => smallImageSource;
-			set {
-				if (smallImageSource != value) {
-					smallImageSource = value;
-					this.NotifyPropertyChanged(nameof(SmallImageSource));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the text being edited in the control.
-		/// </summary>
-		/// <value>The text being edited in the control.</value>
-		public string Text {
-			get {
-				return text;
-			}
-			set {
-				if (text != value) {
-					text = value;
-					this.NotifyPropertyChanged(nameof(Text));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Title"/>
-		public string Title {
-			get => title;
-			set {
-				if (title != value) {
-					title = value;
-					this.NotifyPropertyChanged(nameof(Title));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
-		public ItemCollapseBehavior ToolBarItemCollapseBehavior {
-			get => toolBarItemCollapseBehavior;
-			set {
-				if (toolBarItemCollapseBehavior != value) {
-					toolBarItemCollapseBehavior = value;
-					this.NotifyPropertyChanged(nameof(ToolBarItemCollapseBehavior));
-				}
-			}
-		}
-
+	/// <inheritdoc cref="BarButtonViewModel.ToolBarItemCollapseBehavior"/>
+	public ItemCollapseBehavior ToolBarItemCollapseBehavior {
+		get => _toolBarItemCollapseBehavior;
+		set => SetProperty(ref _toolBarItemCollapseBehavior, value);
 	}
 
 }

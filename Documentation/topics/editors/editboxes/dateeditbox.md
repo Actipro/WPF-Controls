@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -76,6 +67,11 @@ Each of the features listed in the table below describe functionality that is co
 <tr>
 <td>Default spin behavior</td>
 <td>Wrap.</td>
+</tr>
+
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
 </tr>
 
 </tbody>
@@ -122,6 +118,16 @@ This edit box has multiple parts:
 - AM/PM
 
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, only the following text may be entered into the edit box:
+- Valid input for the active date part.
+- The current culture date separator (e.g., `/`).
+- The current culture time separator (e.g., `:`).
+- The characters of any literal text defined by the current format (e.g., custom date/time separators) when the text selection start offset matches the position of a literal part.
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML
 

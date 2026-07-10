@@ -1,70 +1,57 @@
 using ActiproSoftware.Windows.Media.Animation;
 
-namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.TransitionEffectsShader {
+namespace ActiproSoftware.ProductSamples.SharedSamples.QuickStart.TransitionEffectsShader;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	private Transition? _transition;
+	private bool _useRandomTransition;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		private Transition transition;
-		private bool useRandomTransition;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-		}
+	/// <summary>
+	/// The <see cref="Transition"/> to use.
+	/// </summary>
+	public Transition? Transition {
+		get => _transition;
+		set {
+			if (_transition != value) {
+				_transition = value;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the <see cref="Transition"/> to use.
-		/// </summary>
-		/// <value>The <see cref="Transition"/> to use.</value>
-		public Transition Transition {
-			get {
-				return transition;
-			}
-			set {
-				if (transition != value) {
-					transition = value;
-
-					if (!useRandomTransition)
-						presenter.Transition = transition;
-				}
+				if (!_useRandomTransition)
+					presenter.Transition = _transition;
 			}
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets whether to use a random transition.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if a random transition should be used; otherwise, <c>false</c>.
-		/// </value>
-		public bool UseRandomTransition {
-			get {
-				return useRandomTransition;
-			}
-			set {
-				if (useRandomTransition != value) {
-					useRandomTransition = value;
+	/// <summary>
+	/// Indicates whether to use a random transition.
+	/// </summary>
+	public bool UseRandomTransition {
+		get => _useRandomTransition;
+		set {
+			if (_useRandomTransition != value) {
+				_useRandomTransition = value;
 
-					if (useRandomTransition)
-						presenter.Transition = null;
-					else
-						presenter.Transition = transition;
-				}
+				presenter.Transition = _useRandomTransition ? null : _transition;
 			}
 		}
-
 	}
 
 }

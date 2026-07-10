@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -34,10 +34,10 @@
 					Charts is a set of full-sized charts that provide rich visualization for quantitative data.
 					It's designed to make even the most complex data readable.
 				</TextBlock>
-				
+
 				<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}">
-					Many chart types are supported, from basic line and bar charts to stacked area charts. 
-					The chart control includes numerous useful features such as multiple series, labels, legends, stacking, and customizable palettes. 
+					Many chart types are supported, from basic line and bar charts to stacked area charts.
+					The chart control includes numerous useful features such as multiple series, labels, legends, stacking, and customizable palettes.
 					Easily convey data, from single or multiple sources, in a single chart to save space and engage users.
 				</TextBlock>
 

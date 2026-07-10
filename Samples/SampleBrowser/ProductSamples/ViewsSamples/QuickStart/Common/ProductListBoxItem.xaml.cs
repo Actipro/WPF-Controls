@@ -1,212 +1,153 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using ActiproSoftware.Compatibility;
-using ActiproSoftware.Windows.Controls.Views;
 using ActiproSoftware.SampleBrowser;
+using ActiproSoftware.Windows.Controls.Views;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.Common {
-	
+namespace ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.Common;
+
+/// <summary>
+/// Represents a product item for displaying in the various panels.
+/// </summary>
+public partial class ProductListBoxItem : ListBoxItem {
+
+	private static int _counter = 0;
+
+	#region Dependency Property Keys
+
 	/// <summary>
-	/// Represents a product item for displaying in the various panels.
+	/// Defines the <see cref="ProductFamily"/> property key.
 	/// </summary>
-	public partial class ProductListBoxItem : ListBoxItem {
+	private static readonly DependencyPropertyKey ProductFamilyPropertyKey
+		= DependencyProperty.RegisterReadOnly(nameof(ProductFamily), typeof(ProductFamilyInfo), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(defaultValue: null));
 
-		private static int counter = 0;
+	#endregion
 
-		#region Dependency Property Keys
+	#region Dependency Properties
 
-		/// <summary>
-		/// Identifies the <see cref="ProductFamily"/> dependency property key.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="ProductFamily"/> dependency property key.</value>
-		private static readonly DependencyPropertyKey ProductFamilyPropertyKey = DependencyPropertyEx.RegisterReadOnly("ProductFamily",
-			typeof(ProductFamilyInfo), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(null));
+	/// <summary>
+	/// Defines the <c>IsDockable</c> attached property.
+	/// </summary>
+	public static readonly DependencyProperty IsDockableProperty
+		= DependencyProperty.RegisterAttached(nameof(IsDockable), typeof(bool), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(defaultValue: false));
 
-		#endregion // Dependency Property Keys
+	/// <summary>
+	/// Defines the <c>IsMovable</c> attached property.
+	/// </summary>
+	public static readonly DependencyProperty IsMovableProperty
+		= DependencyProperty.RegisterAttached(nameof(IsMovable), typeof(bool), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(defaultValue: false));
 
-		#region Dependency Properties
+	/// <summary>
+	/// Defines the <see cref="ProductFamily"/> property.
+	/// </summary>
+	public static readonly DependencyProperty ProductFamilyProperty
+		= ProductFamilyPropertyKey.DependencyProperty;
 
-		/// <summary>
-		/// Identifies the <see cref="IsDockable"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="IsDockable"/> dependency property.</value>
-		public static readonly DependencyProperty IsDockableProperty = DependencyProperty.RegisterAttached("IsDockable",
-			typeof(bool), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(false));
+	#endregion
 
-		/// <summary>
-		/// Identifies the <see cref="IsMovable"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="IsMovable"/> dependency property.</value>
-		public static readonly DependencyProperty IsMovableProperty = DependencyProperty.RegisterAttached("IsMovable",
-			typeof(bool), typeof(ProductListBoxItem), new FrameworkPropertyMetadata(false));
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Identifies the read-only <see cref="ProductFamily"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="ProductFamily"/> dependency property.</value>
-		public static readonly DependencyProperty ProductFamilyProperty = ProductListBoxItem.ProductFamilyPropertyKey.DependencyProperty;
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public ProductListBoxItem() {
+		Id = _counter++;
 
-		#endregion // Dependency Properties
+		var data = FindResource("ProductData") as ProductData;
+		if (data is not null)
+			ProductFamily = data.ProductFamilies[Id % data.ProductFamilies.Count];
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		InitializeComponent();
+	}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="ProductListBoxItem"/> class.
-		/// </summary>
-		public ProductListBoxItem() {
-			this.Id = counter++;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			var data = this.FindResource("ProductData") as ProductData;
-			if (data != null)
-				this.ProductFamily = data.ProductFamilies[this.Id % data.ProductFamilies.Count];
+	private void OnDeleteButtonClick(object sender, RoutedEventArgs e) {
+		var parent = Parent as ListBox;
+		parent?.Items.Remove(this);
+	}
 
-			InitializeComponent();
-		}
+	private void OnDockBottomButtonClick(object sender, RoutedEventArgs e)
+		=> AnimatedDockPanel.SetDock(this, Dock.Bottom);
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private void OnDockLeftButtonClick(object sender, RoutedEventArgs e)
+		=> AnimatedDockPanel.SetDock(this, Dock.Left);
 
-		/// <summary>
-		/// Handles the <c>Click</c> event of the <c>deleteButton</c> control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnDeleteButtonClick(object sender, RoutedEventArgs e) {
-			ListBox parent = this.Parent as ListBox;
-			if (null != parent)
-				parent.Items.Remove(this);
-		}
+	private void OnDockRightButtonClick(object sender, RoutedEventArgs e)
+		=> AnimatedDockPanel.SetDock(this, Dock.Right);
 
-		/// <summary>
-		/// Handles the <c>Click</c> event of the dock-bottom button.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnDockBottomButtonClick(object sender, RoutedEventArgs e) {
-			AnimatedDockPanel.SetDock(this, Dock.Bottom);
-		}
+	private void OnDockTopButtonClick(object sender, RoutedEventArgs e)
+		=> AnimatedDockPanel.SetDock(this, Dock.Top);
 
-		/// <summary>
-		/// Handles the <c>Click</c> event of the dock-left button.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnDockLeftButtonClick(object sender, RoutedEventArgs e) {
-			AnimatedDockPanel.SetDock(this, Dock.Left);
-		}
+	private void OnMoveLeftButtonClick(object sender, RoutedEventArgs e) {
+		if (Parent is ListBox parent) {
+			var index = parent.Items.IndexOf(this);
+			if (index > 0) {
+				var selectedIndex = parent.SelectedIndex;
+				parent.Items.RemoveAt(index);
+				parent.Items.Insert(index - 1, this);
 
-		/// <summary>
-		/// Handles the <c>Click</c> event of the dock-right button.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnDockRightButtonClick(object sender, RoutedEventArgs e) {
-			AnimatedDockPanel.SetDock(this, Dock.Right);
-		}
-
-		/// <summary>
-		/// Handles the <c>Click</c> event of the dock-top button.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnDockTopButtonClick(object sender, RoutedEventArgs e) {
-			AnimatedDockPanel.SetDock(this, Dock.Top);
-		}
-
-		/// <summary>
-		/// Handles the <c>Click</c> event of the <c>moveLeftButton</c> control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnMoveLeftButtonClick(object sender, RoutedEventArgs e) {
-			ListBox parent = this.Parent as ListBox;
-			if (null != parent) {
-				int index = parent.Items.IndexOf(this);
-				if (index > 0) {
-					int selectedIndex = parent.SelectedIndex;
-					parent.Items.RemoveAt(index);
-					parent.Items.Insert(index - 1, this);
-
-					if (selectedIndex == index)
-						parent.SelectedIndex = index - 1;
-				}
+				if (selectedIndex == index)
+					parent.SelectedIndex = index - 1;
 			}
-		}
-
-		/// <summary>
-		/// Handles the <c>Click</c> event of the <c>moveRightButton</c> control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnMoveRightButtonClick(object sender, RoutedEventArgs e) {
-			ListBox parent = this.Parent as ListBox;
-			if (null != parent) {
-				int index = parent.Items.IndexOf(this);
-				if (index < parent.Items.Count - 1) {
-					int selectedIndex = parent.SelectedIndex;
-					parent.Items.RemoveAt(index);
-					parent.Items.Insert(index + 1, this);
-
-					if (selectedIndex == index)
-						parent.SelectedIndex = index + 1;
-				}
-			}
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the product item identifier.
-		/// </summary>
-		/// <value>The product item identifier.</value>
-		public int Id {
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets or sets a value indicating whether this instance is dockable.
-		/// This is a dependency property.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if this instance is dockable; otherwise, <c>false</c>.
-		/// The default value is <c>false</c>.
-		/// </value>
-		public bool IsDockable {
-			get { return (bool)this.GetValue(ProductListBoxItem.IsDockableProperty); }
-			set { this.SetValue(ProductListBoxItem.IsDockableProperty, value); }
-		}
-	
-		/// <summary>
-		/// Gets or sets a value indicating whether this instance is movable.
-		/// This is a dependency property.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if this instance is movable; otherwise, <c>false</c>.
-		/// The default value is <c>false</c>.
-		/// </value>
-		public bool IsMovable {
-			get { return (bool)this.GetValue(ProductListBoxItem.IsMovableProperty); }
-			set { this.SetValue(ProductListBoxItem.IsMovableProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets the product family.
-		/// This is a dependency property.
-		/// </summary>
-		/// <value>
-		/// The product family.
-		/// The default value is <c>null</c>.
-		/// </value>
-		public ProductFamilyInfo ProductFamily {
-			get { return (ProductFamilyInfo)this.GetValue(ProductListBoxItem.ProductFamilyProperty); }
-			private set { this.SetValue(ProductListBoxItem.ProductFamilyPropertyKey, value); }
 		}
 	}
+
+	private void OnMoveRightButtonClick(object sender, RoutedEventArgs e) {
+		if (Parent is ListBox parent) {
+			var index = parent.Items.IndexOf(this);
+			if (index < parent.Items.Count - 1) {
+				var selectedIndex = parent.SelectedIndex;
+				parent.Items.RemoveAt(index);
+				parent.Items.Insert(index + 1, this);
+
+				if (selectedIndex == index)
+					parent.SelectedIndex = index + 1;
+			}
+		}
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The product item identifier.
+	/// </summary>
+	public int Id { get; }
+
+	/// <summary>
+	/// Indicates whether this instance is dockable.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>false</c>.
+	/// </value>
+	public bool IsDockable {
+		get => (bool)GetValue(IsDockableProperty);
+		set => SetValue(IsDockableProperty, value);
+	}
+
+	/// <summary>
+	/// Indicates whether this instance is movable.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>false</c>.
+	/// </value>
+	public bool IsMovable {
+		get => (bool)GetValue(IsMovableProperty);
+		set => SetValue(IsMovableProperty, value);
+	}
+
+	/// <summary>
+	/// The product family.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>null</c>.
+	/// </value>
+	public ProductFamilyInfo? ProductFamily {
+		get => (ProductFamilyInfo)GetValue(ProductFamilyProperty);
+		private set => SetValue(ProductListBoxItem.ProductFamilyPropertyKey, value);
+	}
+
 }

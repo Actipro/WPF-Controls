@@ -1,154 +1,108 @@
-﻿using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls.Bars;
-using System.ComponentModel;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationXaml {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.SerializationXaml;
+
+/// <summary>
+/// Defines a view model for turning options on or off that will be used during Ribbon serialization.
+/// </summary>
+public class SerializerOptionsViewModel : ObservableObjectBase {
+
+	private bool _layoutMode = true;
+	private bool _minimizedState = true;
+	private bool _quickAccessToolBarAllowLabels = true;
+	private bool _quickAccessToolBarItems = true;
+	private bool _quickAccessToolBarLocation = true;
+	private bool _quickAccessToolBarMode = true;
+	private bool _userInterfaceDensity = true;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Defines a view model for turning options on or off that will be used during Ribbon serialization.
+	/// The <see cref="RibbonSerializerOptions"/> that are reflected by the current configuration.
 	/// </summary>
-	public class SerializerOptionsViewModel : ObservableObjectBase {
+	public RibbonSerializerOptions CreateOptions() {
+		// Start with no options enabled
+		var options = RibbonSerializerOptions.None;
 
-		private bool layoutMode = true;
-		private bool minimizedState = true;
-		private bool quickAccessToolBarAllowLabels = true;
-		private bool quickAccessToolBarItems = true;
-		private bool quickAccessToolBarLocation = true;
-		private bool quickAccessToolBarMode = true;
-		private bool userInterfaceDensity = true;
+		// Add each option that is currently turned on
+		if (LayoutMode)
+			options |= RibbonSerializerOptions.LayoutMode;
+		if (MinimizedState)
+			options |= RibbonSerializerOptions.MinimizedState;
+		if (QuickAccessToolBarAllowLabels)
+			options |= RibbonSerializerOptions.QuickAccessToolBarAllowLabels;
+		if (QuickAccessToolBarItems)
+			options |= RibbonSerializerOptions.QuickAccessToolBarItems;
+		if (QuickAccessToolBarLocation)
+			options |= RibbonSerializerOptions.QuickAccessToolBarLocation;
+		if (QuickAccessToolBarMode)
+			options |= RibbonSerializerOptions.QuickAccessToolBarMode;
+		if (UserInterfaceDensity)
+			options |= RibbonSerializerOptions.UserInterfaceDensity;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the <see cref="RibbonSerializerOptions"/> that are reflected by the current configuration.
-		/// </summary>
-		/// <returns>One or more of the <see cref="RibbonSerializerOptions"/> values.</returns>
-		public RibbonSerializerOptions CreateOptions() {
-			// Start with no options enabled
-			var options = RibbonSerializerOptions.None;
-
-			// Add each option that is currently turned on
-			if (LayoutMode)
-				options |= RibbonSerializerOptions.LayoutMode;
-			if (MinimizedState)
-				options |= RibbonSerializerOptions.MinimizedState;
-			if (QuickAccessToolBarAllowLabels)
-				options |= RibbonSerializerOptions.QuickAccessToolBarAllowLabels;
-			if (QuickAccessToolBarItems)
-				options |= RibbonSerializerOptions.QuickAccessToolBarItems;
-			if (QuickAccessToolBarLocation)
-				options |= RibbonSerializerOptions.QuickAccessToolBarLocation;
-			if (QuickAccessToolBarMode)
-				options |= RibbonSerializerOptions.QuickAccessToolBarMode;
-			if (UserInterfaceDensity)
-				options |= RibbonSerializerOptions.UserInterfaceDensity;
-
-			return options;
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.LayoutMode"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool LayoutMode {
-			get => layoutMode;
-			set {
-				if (layoutMode != value) {
-					layoutMode = value;
-					NotifyPropertyChanged(nameof(LayoutMode));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.IsMinimized"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool MinimizedState {
-			get => minimizedState;
-			set {
-				if (minimizedState != value) {
-					minimizedState = value;
-					NotifyPropertyChanged(nameof(MinimizedState));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.AllowLabelsOnQuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		[DisplayName("QAT allow labels")]
-		public bool QuickAccessToolBarAllowLabels {
-			get => quickAccessToolBarAllowLabels;
-			set {
-				if (quickAccessToolBarAllowLabels != value) {
-					quickAccessToolBarAllowLabels = value;
-					NotifyPropertyChanged(nameof(QuickAccessToolBarAllowLabels));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if the items displayed in <see cref="Ribbon.QuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		[DisplayName("QAT items")]
-		public bool QuickAccessToolBarItems {
-			get => quickAccessToolBarItems;
-			set {
-				if (quickAccessToolBarItems != value) {
-					quickAccessToolBarItems = value;
-					NotifyPropertyChanged(nameof(QuickAccessToolBarItems));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.QuickAccessToolBarLocation"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		[DisplayName("QAT location")]
-		public bool QuickAccessToolBarLocation {
-			get => quickAccessToolBarLocation;
-			set {
-				if (quickAccessToolBarLocation != value) {
-					quickAccessToolBarLocation = value;
-					NotifyPropertyChanged(nameof(QuickAccessToolBarLocation));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.QuickAccessToolBarMode"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		[DisplayName("QAT mode")]
-		public bool QuickAccessToolBarMode {
-			get => quickAccessToolBarMode;
-			set {
-				if (quickAccessToolBarMode != value) {
-					quickAccessToolBarMode = value;
-					NotifyPropertyChanged(nameof(QuickAccessToolBarMode));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets if <see cref="Ribbon.UserInterfaceDensity"/> will be processed when serializing or deserializing the Ribbon.
-		/// </summary>
-		/// <value><c>true</c> to process the option; otherwise <c>false</c> to ignore it.</value>
-		public bool UserInterfaceDensity {
-			get => userInterfaceDensity;
-			set {
-				if (userInterfaceDensity != value) {
-					userInterfaceDensity = value;
-					NotifyPropertyChanged(nameof(UserInterfaceDensity));
-				}
-			}
-		}
-
+		return options;
 	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.LayoutMode"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	public bool LayoutMode {
+		get => _layoutMode;
+		set => SetProperty(ref _layoutMode, value);
+	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.IsMinimized"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	public bool MinimizedState {
+		get => _minimizedState;
+		set => SetProperty(ref _minimizedState, value);
+	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.AllowLabelsOnQuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	[DisplayName("QAT allow labels")]
+	public bool QuickAccessToolBarAllowLabels {
+		get => _quickAccessToolBarAllowLabels;
+		set => SetProperty(ref _quickAccessToolBarAllowLabels, value);
+	}
+
+	/// <summary>
+	/// Indicates if the items displayed in <see cref="Ribbon.QuickAccessToolBar"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	[DisplayName("QAT items")]
+	public bool QuickAccessToolBarItems {
+		get => _quickAccessToolBarItems;
+		set => SetProperty(ref _quickAccessToolBarItems, value);
+	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.QuickAccessToolBarLocation"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	[DisplayName("QAT location")]
+	public bool QuickAccessToolBarLocation {
+		get => _quickAccessToolBarLocation;
+		set => SetProperty(ref _quickAccessToolBarLocation, value);
+	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.QuickAccessToolBarMode"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	[DisplayName("QAT mode")]
+	public bool QuickAccessToolBarMode {
+		get => _quickAccessToolBarMode;
+		set => SetProperty(ref _quickAccessToolBarMode, value);
+	}
+
+	/// <summary>
+	/// Indicates if <see cref="Ribbon.UserInterfaceDensity"/> will be processed when serializing or deserializing the Ribbon.
+	/// </summary>
+	public bool UserInterfaceDensity {
+		get => _userInterfaceDensity;
+		set => SetProperty(ref _userInterfaceDensity, value);
+	}
+
 }

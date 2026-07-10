@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.QuickStart.BookDataBinding.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,7 +16,7 @@
 			<Setter Property="BorderBrush" Value="Gray" />
 			<Setter Property="BorderThickness" Value="2" />
 			<Setter Property="Foreground" Value="#000000" />
-			
+
 			<Setter Property="ContentTemplate">
 				<Setter.Value>
 					<DataTemplate>
@@ -157,7 +157,7 @@
 			<views:Book HotspotExtent="100" IsFirstPageFront="True" Width="600" Height="400" PageDepth="18" TextOptions.TextFormattingMode="Ideal"
 						ItemsSource="{Binding Pages}" ItemContainerStyleSelector="{StaticResource BookPageStyleSelector}" />
 		</Viewbox>
-		
+
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

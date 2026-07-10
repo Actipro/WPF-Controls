@@ -1,4 +1,4 @@
-﻿<bars:RibbonWindow
+<bars:RibbonWindow
 	x:Class="ActiproSoftware.ProductSamples.BarsSamples.QuickStart.Backstage.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -59,7 +59,7 @@
 							</StackPanel>
 						</ScrollViewer>
 					</bars:RibbonBackstageTabItem>
-					
+
 					<!-- Appearance Tab -->
 					<bars:RibbonBackstageTabItem Key="Appearance" KeyTipText="P" SmallImageSource="/Images/Icons/ColorPicker16.png" LargeImageSource="/Images/Icons/ColorPicker32.png" VariantSize="{Binding PrimaryBackstageTabVariantSize}">
 						<ScrollViewer Margin="40,20" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
@@ -85,18 +85,18 @@
 
 					<!-- Separator and Sample Buttons (which execute a default command) -->
 					<bars:RibbonBackstageHeaderSeparator Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" />
-					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}" 
+					<bars:RibbonBackstageHeaderButton Key="SampleButton1" KeyTipText="S1" Command="{Binding BackstageHeaderButtonCommand}"
 													  Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
-					<bars:RibbonBackstageHeaderButton Key="SampleButton2" KeyTipText="S2" Command="{Binding BackstageHeaderButtonCommand}" 
+					<bars:RibbonBackstageHeaderButton Key="SampleButton2" KeyTipText="S2" Command="{Binding BackstageHeaderButtonCommand}"
 													  Visibility="{Binding IsFirstBackstage, Converter={StaticResource BooleanToCollapsedConverter}}" SmallImageSource="{Binding SampleButtonImageSource}" />
-					
+
 					<!--
 					  The following items are aligned to the bottom
 					-->
 
 					<!-- A separator is commonly displayed before the bottom-aligned items -->
 					<bars:RibbonBackstageHeaderSeparator HeaderAlignment="Bottom" />
-					
+
 					<!-- Backstage Controls Tab -->
 					<bars:RibbonBackstageTabItem Key="BackstageControls" HeaderAlignment="Bottom">
 						<Grid Margin="40,20">
@@ -113,7 +113,7 @@
 									for a large button.
 								</TextBlock>
 							</StackPanel>
-							
+
 							<bars:TaskTabControl Grid.Row="1">
 								<bars:TaskTabItem Label="TaskTabControl" KeyTipText="T" LargeImageSource="/Images/Icons/New32.png">
 									<ScrollViewer Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
@@ -167,17 +167,17 @@
 											<TextBlock Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="BarPopupButton uses RibbonBackstagePopupButtonStyleKey" />
 
 											<StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,40,0,0" Orientation="Horizontal">
-												<bars:BarButton Margin="0,0,10,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}" 
+												<bars:BarButton Margin="0,0,10,0" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageButtonStyleKey}}"
 															   LargeImageSource="/Images/Icons/PdfDocument32.png" Label="Create PDF" KeyTipText="A" />
 
-												<bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}" 
+												<bars:BarPopupButton Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstagePopupButtonStyleKey}}"
 																	 LargeImageSource="/Images/Icons/ManageVersions32.png" Label="Manage Document" KeyTipText="M">
-													
-													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/RecoverUnsavedDocuments32.png" Label="Recover Unsaved Documents" 
+
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/RecoverUnsavedDocuments32.png" Label="Recover Unsaved Documents"
 																	  Description="Browse recent copies of unsaved files." KeyTipText="B" />
-													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/DeleteUnsavedDocuments32.png" Label="Delete All Unsaved Documents" 
+													<bars:BarMenuItem UseLargeSize="True" LargeImageSource="/Images/Icons/DeleteUnsavedDocuments32.png" Label="Delete All Unsaved Documents"
 																	  Description="Delete all recent copies of unsaved files." KeyTipText="D" />
-													
+
 												</bars:BarPopupButton>
 											</StackPanel>
 
@@ -196,7 +196,7 @@
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
 							</Grid.RowDefinitions>
-							
+
 							<TextBlock Grid.Row="0" Text="Options" Margin="0,20" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" />
 							<ScrollViewer Grid.Row="1" Style="{StaticResource {x:Static themes:BarsResourceKeys.RibbonBackstageScrollViewerStyleKey}}">
 								<StackPanel Margin="0,0,40,0">
@@ -250,23 +250,23 @@
 											<TextBox MinWidth="125" Text="{Binding SampleButton3Label, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
 										</views:SettingsCard>
 									</views:SettingsGroup>
-								
+
 								</StackPanel>
 							</ScrollViewer>
 						</Grid>
 					</bars:RibbonBackstageTabItem>
-					
+
 					<!-- Another Sample Button (which executes a default command) -->
 					<bars:RibbonBackstageHeaderButton Key="SampleButton3" Label="{Binding SampleButton3Label}" KeyTipText="S3" CanCloseBackstage="{Binding SampleButton3CanCloseBackstage}"
 													  HeaderAlignment="Bottom" Command="{Binding BackstageHeaderButtonCommand}" SmallImageSource="{Binding SampleButtonImageSource}" />
-					
+
 				</bars:RibbonBackstage>
 			</bars:Ribbon.BackstageContent>
 
 			<!--
 				The following configuration is used to define the overall sample but is not directly related to the backstage
 			-->
-			
+
 			<bars:Ribbon.QuickAccessToolBarContent>
 				<bars:RibbonQuickAccessToolBar>
 					<bars:BarButton Key="Undo" KeyTipText="AZ" Command="ApplicationCommands.Undo" SmallImageSource="/Images/Icons/Undo16.png" />
@@ -302,7 +302,7 @@
 						</Grid>
 					</ItemsPanelTemplate>
 				</StatusBar.ItemsPanel>
-				
+
 				<StatusBarItem Content="Ready" />
 			</StatusBar>
 
@@ -321,5 +321,5 @@
 		</DockPanel>
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

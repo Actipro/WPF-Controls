@@ -1,48 +1,37 @@
-﻿using System;
-using System.Windows.Media.Imaging;
 using ActiproSoftware.ProductSamples.DockingSamples.Common;
+using System.Windows.Media.Imaging;
 
-namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows;
+
+/// <summary>
+/// Represents the text document view-model.
+/// </summary>
+public class TextDocumentItemViewModel : DocumentItemViewModel {
+
+	private string? _text;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents the text document view-model.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class TextDocumentItemViewModel : DocumentItemViewModel {
-		
-		private string text;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	public TextDocumentItemViewModel() {
+		Description = "Text document";
+		ImageSource = new BitmapImage(new Uri("/Images/Icons/TextDocument16.png", UriKind.Relative));
+	}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="TextDocumentItemViewModel"/> class.
-		/// </summary>
-		public TextDocumentItemViewModel() {
-			this.Description = "Text document";
-			this.ImageSource = new BitmapImage(new Uri("/Images/Icons/TextDocument16.png", UriKind.Relative));
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the text associated with the view-model.
-		/// </summary>
-		/// <value>The text associated with the view-model.</value>
-		public string Text {
-			get {
-				return this.text;
-			}
-			set {
-				if (this.text != value) {
-					this.text = value;
-					this.NotifyPropertyChanged("Text");
-				}
-			}
-		}
-
+	/// <summary>
+	/// The text associated with the view-model.
+	/// </summary>
+	public string? Text {
+		get => _text;
+		set => SetProperty(ref _text, value);
 	}
 
 }

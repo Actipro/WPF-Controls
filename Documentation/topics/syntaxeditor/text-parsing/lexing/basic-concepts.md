@@ -49,39 +49,39 @@ language.RegisterService<ILexer>(myLexer);
 
 Once the lexer is registered with a language, it can be used by other objects such as [token taggers](../tagging/taggers.md) or other higher-level syntax or semantic parsers.
 
-## Mergable vs. Non-Mergable Lexers
+## Mergeable vs. Non-Mergeable Lexers
 
-Some languages can perform transitions to other languages, such as in the case of HTML where it can transition to CSS, Javascript, etc.  These transitions are made when one lexer determines it should transition to another language's lexer.  This feature is only supported by mergable lexers.  Although language transitions are a great feature, non-mergable lexers will offer slightly better performance.
+Some languages can perform transitions to other languages, such as in the case of HTML where it can transition to CSS, Javascript, etc.  These transitions are made when one lexer determines it should transition to another language's lexer.  This feature is only supported by mergeable lexers.  Although language transitions are a great feature, non-mergeable lexers will offer slightly better performance.
 
-### Making a Lexer Mergable
+### Making a Lexer Mergeable
 
-Any [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) that implements [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) is a mergable lexer and thus supports language transition features.
+Any [ILexer](xref:ActiproSoftware.Text.Lexing.ILexer) that implements [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) is a mergeable lexer and thus supports language transition features.
 
-The [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) interface can be easily implemented by creating a lexer that inherits [MergableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase).  With this abstract base class, the only member that is required to be implemented is [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase.GetNextToken*).  That method is passed an [ITextBufferReader](xref:ActiproSoftware.Text.ITextBufferReader) and the current [ILexicalState](xref:ActiproSoftware.Text.Lexing.ILexicalState), and returns a [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult) object.
+The [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) interface can be easily implemented by creating a lexer that inherits [MergeableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase).  With this abstract base class, the only member that is required to be implemented is [GetNextToken](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase.GetNextToken*).  That method is passed an [ITextBufferReader](xref:ActiproSoftware.Text.ITextBufferReader) and the current [ILexicalState](xref:ActiproSoftware.Text.Lexing.ILexicalState), and returns a [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult) object.
 
-The [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult) class has two properties.  The [MatchType](xref:ActiproSoftware.Text.Lexing.MergableLexerResult.MatchType) property is an enumeration indicating whether there was a match, and if so, if the match was exact or loose (such as a case insensitive match).  The [LexerData](xref:ActiproSoftware.Text.Lexing.MergableLexerResult.LexerData) property is an [IMergableTokenLexerData](xref:ActiproSoftware.Text.Lexing.IMergableTokenLexerData) instance.  It provides data about what was parsed.  Programmatic lexers can use the built-in [LexicalStateTokenData](xref:ActiproSoftware.Text.Lexing.Implementation.LexicalStateTokenData) and [LexicalScopeTokenData](xref:ActiproSoftware.Text.Lexing.Implementation.LexicalScopeTokenData) classes as property values.
+The [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult) class has two properties.  The [MatchType](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult.MatchType) property is an enumeration indicating whether there was a match, and if so, if the match was exact or loose (such as a case insensitive match).  The [LexerData](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult.LexerData) property is an [IMergeableTokenLexerData](xref:ActiproSoftware.Text.Lexing.IMergeableTokenLexerData) instance.  It provides data about what was parsed.  Programmatic lexers can use the built-in [LexicalStateTokenData](xref:ActiproSoftware.Text.Lexing.Implementation.LexicalStateTokenData) and [LexicalScopeTokenData](xref:ActiproSoftware.Text.Lexing.Implementation.LexicalScopeTokenData) classes as property values.
 
-If no match is made, return the static [MergableLexerResult](xref:ActiproSoftware.Text.Lexing.MergableLexerResult).[NoMatch](xref:ActiproSoftware.Text.Lexing.MergableLexerResult.NoMatch) property value.
+If no match is made, return the static [MergeableLexerResult](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult).[NoMatch](xref:ActiproSoftware.Text.Lexing.MergeableLexerResult.NoMatch) property value.
 
 ### Tokens
 
-Mergable lexers must generate tokens that implement [IMergableToken](xref:ActiproSoftware.Text.Lexing.IMergableToken).  Non-mergable lexers, on the other hand, may generate simpler tokens that only implement [IToken](xref:ActiproSoftware.Text.Lexing.IToken).
+Mergeable lexers must generate tokens that implement [IMergeableToken](xref:ActiproSoftware.Text.Lexing.IMergeableToken).  Non-mergeable lexers, on the other hand, may generate simpler tokens that only implement [IToken](xref:ActiproSoftware.Text.Lexing.IToken).
 
 ### Performance Considerations
 
-A common question is, should I make my language's lexer mergable or not?  The two things to weigh are whether your language needs to support transitions to other languages, or would you like maximum parsing speed and minimal memory usage.
+A common question is, should I make my language's lexer mergeable or not?  The two things to weigh are whether your language needs to support transitions to other languages, or would you like maximum parsing speed and minimal memory usage.
 
-Mergable lexers require more overhead, both in the actual parsing operation and in how data ends up being tracked in tokens.  This translates into slightly slower overall lexing and some increased memory usage.
+Mergeable lexers require more overhead, both in the actual parsing operation and in how data ends up being tracked in tokens.  This translates into slightly slower overall lexing and some increased memory usage.
 
-Non-mergable lexers, since they don't support language transitions, only need to process the information needed to support the core [IToken](xref:ActiproSoftware.Text.Lexing.IToken) interface.  Therefore, they can run faster and use less overall memory.
+Non-mergeable lexers, since they don't support language transitions, only need to process the information needed to support the core [IToken](xref:ActiproSoftware.Text.Lexing.IToken) interface.  Therefore, they can run faster and use less overall memory.
 
-## Changing Mergable Lexers
+## Changing Mergeable Lexers
 
-Mergable lexers sometimes cache data about themselves.  Therefore, if they are ever to be altered after their initial creation, they need to be notified that something within them has changed.
+Mergeable lexers sometimes cache data about themselves.  Therefore, if they are ever to be altered after their initial creation, they need to be notified that something within them has changed.
 
 As an example, this scenario can occur if you load two independent languages and then wish to merge them together, such as HTML with CSS.  In this scenario you'd load two [ISyntaxLanguage](xref:ActiproSoftware.Text.ISyntaxLanguage) instances, one for HTML and one for CSS.  Then you'd create a lexical state that contains a scope transition to CSS.  See the Language Transitions QuickStart for a related full sample.
 
-Before you change the HTML language's lexer to add the transitioning state, you need to wrap the change with a `using` statement executed on the result of the [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer).[CreateChangeBatch](xref:ActiproSoftware.Text.Lexing.IMergableLexer.CreateChangeBatch*) method.
+Before you change the HTML language's lexer to add the transitioning state, you need to wrap the change with a `using` statement executed on the result of the [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer).[CreateChangeBatch](xref:ActiproSoftware.Text.Lexing.IMergeableLexer.CreateChangeBatch*) method.
 
 This code shows how to wrap changes:
 
@@ -97,9 +97,9 @@ Another scenario you may need to do this in is if you are dynamically adding/rem
 
 ### High-Level Comparison
 
-[Dynamic lexers](dynamic-lexers.md) use regular expression patterns to tokenize text.  The [DynamicLexer](xref:ActiproSoftware.Text.Lexing.Implementation.DynamicLexer) class inherits [MergableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase), meaning that all dynamic lexers are mergable and capable of transitioning to other languages.  Dynamic lexers are generic and can support the parsing of nearly any language.
+[Dynamic lexers](dynamic-lexers.md) use regular expression patterns to tokenize text.  The [DynamicLexer](xref:ActiproSoftware.Text.Lexing.Implementation.DynamicLexer) class inherits [MergeableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase), meaning that all dynamic lexers are mergeable and capable of transitioning to other languages.  Dynamic lexers are generic and can support the parsing of nearly any language.
 
-[Programmatic lexers](programmatic-lexers.md) are written by hand and optimized to parse a specific language's code.  This almost always results in faster parsing performance than dynamic lexers can achieve.  Programmatic lexers can optionally be made mergable by implementing [IMergableLexer](xref:ActiproSoftware.Text.Lexing.IMergableLexer) or inheriting [MergableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergableLexerBase).
+[Programmatic lexers](programmatic-lexers.md) are written by hand and optimized to parse a specific language's code.  This almost always results in faster parsing performance than dynamic lexers can achieve.  Programmatic lexers can optionally be made mergeable by implementing [IMergeableLexer](xref:ActiproSoftware.Text.Lexing.IMergeableLexer) or inheriting [MergeableLexerBase](xref:ActiproSoftware.Text.Lexing.Implementation.MergeableLexerBase).
 
 ### Which to Choose?
 

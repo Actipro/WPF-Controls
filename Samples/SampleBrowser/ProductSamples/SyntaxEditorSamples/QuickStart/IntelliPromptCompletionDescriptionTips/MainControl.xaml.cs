@@ -1,29 +1,27 @@
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionDescriptionTips {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IntelliPromptCompletionDescriptionTips;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl : System.Windows.Controls.UserControl {
+	public MainControl() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Load a language from a language definition
+		editor.Document.Language = Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-			
-			// Load a language from a language definition
-			editor.Document.Language = ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
-
-			// Register a custom completion provider on the language used by the editor
-			editor.Document.Language.RegisterService<ICompletionProvider>(new CustomCompletionProvider());
-		}
-		
+		// Register a custom completion provider on the language used by the editor
+		editor.Document.Language.RegisterService<ICompletionProvider>(new CustomCompletionProvider());
 	}
 
 }

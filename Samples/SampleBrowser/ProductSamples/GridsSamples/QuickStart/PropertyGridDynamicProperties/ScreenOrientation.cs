@@ -1,20 +1,18 @@
-﻿namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDynamicProperties {
-	
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDynamicProperties;
+
+/// <summary>
+/// Specifies the kind of screen orientation.
+/// </summary>
+public enum ScreenOrientation {
+
 	/// <summary>
-	/// Specifies the kind of screen orientation.
+	/// A landscape orientation.
 	/// </summary>
-	public enum ScreenOrientation {
-		
-		/// <summary>
-		/// A landscape orientation.
-		/// </summary>
-		Landscape,
+	Landscape,
 
-		/// <summary>
-		/// A portrait orientation.
-		/// </summary>
-		Portrait,
-
-	}
+	/// <summary>
+	/// A portrait orientation.
+	/// </summary>
+	Portrait,
 
 }

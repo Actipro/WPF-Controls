@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlAdditionalItems.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,9 +6,9 @@
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	>
-	
+
 	<sampleBrowser:ProductItemControl.Resources>
-		
+
 		<!--Converters -->
 		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 		<shared:ConditionalConverter x:Key="ConditionalConverter" />
@@ -30,7 +30,7 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 
 	<Grid Style="{StaticResource SamplePanelFullStyle}">
-		
+
 		<navigation:ZoomContentControl x:Name="zoomContentControl" ZoomStep="0.5">
 
 			<!-- Add several additional buttons and a separator using built-in styles -->
@@ -96,5 +96,5 @@
 		</navigation:ZoomContentControl>
 
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

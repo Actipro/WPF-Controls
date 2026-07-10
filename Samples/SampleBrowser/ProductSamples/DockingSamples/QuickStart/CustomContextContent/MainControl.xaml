@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomContextContent.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -61,7 +61,7 @@
 			</docking:Workspace>
 
 			<docking:ToolWindowContainer>
-				<docking:ToolWindow x:Name="statusToolWindow" Title="Status" 
+				<docking:ToolWindow x:Name="statusToolWindow" Title="Status"
 									AutoHideTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"
 									StandardMdiTitleBarContextContentTemplate="{StaticResource StatusIconDataTemplate}"
 									TabbedMdiTabContextContentTemplate="{StaticResource StatusIconDataTemplate}"

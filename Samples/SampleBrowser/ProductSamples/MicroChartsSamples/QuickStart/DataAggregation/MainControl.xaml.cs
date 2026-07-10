@@ -1,183 +1,147 @@
-using System.Collections.Generic;
-using System.Linq;
 using ActiproSoftware.SampleBrowser.SampleData;
 using ActiproSoftware.Windows.Controls.MicroCharts;
 
-namespace ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.DataAggregation {
+namespace ActiproSoftware.ProductSamples.MicroChartsSamples.QuickStart.DataAggregation;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		var generator = new TimeAggregatedDataGenerator() {
+			RandomSeed = 67344234,
+			AllowNegativeNumbers = true,
+			DataPointCount = 500,
+			StartAmount = 0,
+			StepRange = 10,
+		};
+		generator.Generate();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		Items = generator;
+		MaximumAmount = Items.Max(x => x.Amount);
+		MinimumAmount = Items.Min(x => x.Amount);
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			var generator = new TimeAggregatedDataGenerator() {
-				RandomSeed = 67344234,
-				AllowNegativeNumbers = true,
-				DataPointCount = 500, 
-				StartAmount = 0, 
-				StepRange = 10, 
-			};
-			generator.Generate();
-
-			this.Items = generator;
-			this.MaximumAmount = this.Items.Max(x => x.Amount);
-			this.MinimumAmount = this.Items.Min(x => x.Amount);
-
-			InitializeComponent();
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> AverageSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the sales data.
-		/// </summary>
-		public IEnumerable<TimeAggregatedData> Items {
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> FirstSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> LastSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the maximum sale amount.
-		/// </summary>
-		public double MaximumAmount {
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> MaximumSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the minimum sale amount.
-		/// </summary>
-		public double MinimumAmount {
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> MinimumSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> NoneSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = false },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> SignedMaximumSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.50 },
-				};
-			}
-		}
-
-		/// <summary>
-		/// Gets the aggregation settings for the sample.
-		/// </summary>
-		/// <value>The aggregation settings for the sample.</value>
-		public static IEnumerable<AggregationSetting> SignedMinimumSettings {
-			get {
-				return new AggregationSetting[] {
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.05 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.10 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.25 },
-					new AggregationSetting() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.50 },
-				};
-			}
-		}
-
+		InitializeComponent();
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> AverageSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Average, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The sales data.
+	/// </summary>
+	public IEnumerable<TimeAggregatedData> Items { get; }
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> FirstSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.First, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> LastSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Last, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The maximum sale amount.
+	/// </summary>
+	public double MaximumAmount { get; }
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> MaximumSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Maximum, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The minimum sale amount.
+	/// </summary>
+	public double MinimumAmount { get; }
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> MinimumSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.Minimum, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> NoneSettings {
+		get => [
+			new() { IsEnabled = false },
+		];
+	}
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> SignedMaximumSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMaximum, Factor = 0.50 },
+		];
+	}
+
+	/// <summary>
+	/// The aggregation settings for the sample.
+	/// </summary>
+	public static IEnumerable<AggregationSetting> SignedMinimumSettings {
+		get => [
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.05 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.10 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.25 },
+			new() { IsEnabled = true, Kind = MicroAggregationKind.SignedMinimum, Factor = 0.50 },
+		];
+	}
+
 }

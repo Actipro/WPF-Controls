@@ -30,7 +30,7 @@
 	</Style>
 
 	<!-- Custom DataTemplate used by XAML and MVVM samples to use circles (instead of squares) for gallery items -->
-	<DataTemplate x:Key="CircleStyleGalleryItemItemplate">
+	<DataTemplate x:Key="CircleStyleGalleryItemTemplate">
 		<!-- The CornerRadius defined here must match the CornerRadius defined by BarGalleryItemCircleStyle in the resources for each Ribbon control -->
 		<Border Width="18" Height="18"
 				BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderMidLowBrushKey}}"

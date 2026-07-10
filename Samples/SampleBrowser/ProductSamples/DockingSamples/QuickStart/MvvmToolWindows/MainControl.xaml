@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -15,7 +15,7 @@
 					in other words, data-bound items that can generate docking window container views.
 					<LineBreak /><LineBreak />
 					DockSite has numerous properties and methods that mimic what is found on a traditional ItemsControl.
-					This sample uses the ToolItemContainerStyle property to specify a Style that binds 
+					This sample uses the ToolItemContainerStyle property to specify a Style that binds
 					data item properties (Title, IsOpen, etc.) to the generated container.
 					The ToolItemTemplateSelector property specifies the view content of the container, whose data context is the data item.
 					Finally, the ToolItemsSource property is an enumerable of data items that generate tool window containers.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+PUBLIC/SAMPLES BUILD PROPERTIES
+
+-->
+
+<!--
+Public Samples CANNOT inherit properties because the samples are copied individually
+for inclusion in the installer.
+
+This empty file prevents the parent props files from being processed.
+-->
+<Project />

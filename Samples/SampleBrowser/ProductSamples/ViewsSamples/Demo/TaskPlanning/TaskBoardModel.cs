@@ -1,91 +1,64 @@
-﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Windows.Input;
-using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Input;
+using System.Collections.Specialized;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning {
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning;
+
+/// <summary>
+/// Stores information about a task board.
+/// </summary>
+public class TaskBoardModel : ObservableObjectBase {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about a task board.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class TaskBoardModel : ObservableObjectBase {
+	public TaskBoardModel() {
+		Lists.CollectionChanged += OnListsCollectionChanged;
 
-		private DelegateCommand<string>				addListCommand;
-		private ObservableCollection<TaskListModel> lists			= new ObservableCollection<TaskListModel>();
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes an instance of the <c>TaskBoardModel</c> class.
-		/// </summary>
-		public TaskBoardModel() {
-			lists.CollectionChanged += OnListsCollectionChanged;
+		AddListCommand = new DelegateCommand<string>(OnAddListCommandExecuted);
+	}
 
-			addListCommand = new DelegateCommand<string>(this.OnAddListCommandExecuted);
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	private void OnAddListCommandExecuted(string? parameter) {
+		var name = parameter ?? "New List";
+		Lists.Add(new TaskListModel(name));
+	}
+
+	private void OnListsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+		if (e.Action == NotifyCollectionChangedAction.Reset) {
+			foreach (var list in Lists)
+				list.Board = this;
 		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Occurs when the command is executed.
-		/// </summary>
-		/// <param name="parameter">The command parameter.</param>
-		private void OnAddListCommandExecuted(string parameter) {
-			var name = parameter ?? "New List";
-			this.Lists.Add(new TaskListModel(name));
-		}
-		
-		/// <summary>
-		/// Occurs when the collection is changed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="NotifyCollectionChangedEventArgs"/> containing data related to this event.</param>
-		private void OnListsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-			if (e.Action == NotifyCollectionChangedAction.Reset) {
-				foreach (var list in lists)
+		else {
+			if (e.OldItems is not null) {
+				foreach (var list in e.OldItems.OfType<TaskListModel>())
+					list.Board = null;
+			}
+			if (e.NewItems is not null) {
+				foreach (var list in e.NewItems.OfType<TaskListModel>())
 					list.Board = this;
 			}
-			else {
-				if (e.OldItems != null) {
-					foreach (TaskListModel list in e.OldItems)
-						list.Board = null;
-				}
-				if (e.NewItems != null) {
-					foreach (TaskListModel list in e.NewItems)
-						list.Board = this;
-				}
-			}
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the command used to add a list.
-		/// </summary>
-		/// <value>The command used to add a list.</value>
-		public ICommand AddListCommand {
-			get {
-				return addListCommand;
-			}
-		}
-
-		/// <summary>
-		/// Gets the collection of task lists.
-		/// </summary>
-		/// <value>The collection of task lists.</value>
-		public ObservableCollection<TaskListModel> Lists {
-			get {
-				return lists;
-			}
-		}
-
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The command used to add a list.
+	/// </summary>
+	public ICommand AddListCommand { get; }
+
+	/// <summary>
+	/// The collection of task lists.
+	/// </summary>
+	public ObservableCollection<TaskListModel> Lists { get; } = [];
 
 }

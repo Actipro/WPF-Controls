@@ -11,8 +11,14 @@ The @@PlatformName Controls are compatible with a number of different technologi
 
 The products have assemblies available for multiple frameworks, including:
 
-- .NET 6 or later
-- .NET Framework 4.6.2 or later
+- .NET 10
+- .NET 8
+- .NET Framework 4.6.2
+- .NET Standard 2.0 (some non-Windows assemblies only)
+
+This combination of target frameworks results in the following frameworks being supported for Windows controls:
+- .NET 8 or higher
+- .NET Framework 4.6.2 or higher
 
 > [!IMPORTANT]
 > The @@PlatformName Controls installer only installs the product assemblies specifically for .NET Framework.  Please use our [NuGet packages](nuget.md) to make use of assemblies that can target any of the .NET variations listed above, including the .NET Framework ones.
@@ -30,6 +36,7 @@ The products have been tested and are supported under the following architecture
 
 The products work best at design-time with the following IDEs:
 
+- Visual Studio 2026
 - Visual Studio 2022
 
 > [!NOTE]

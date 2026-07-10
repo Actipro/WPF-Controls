@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.TabbedMdiNewTabButton.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -18,7 +18,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The TabbedMdiHost's ContainersHaveNewTabButtons property can be set to true to display a 
+					The TabbedMdiHost's ContainersHaveNewTabButtons property can be set to true to display a
 					new tab button, typically with a plus sign as content, inline and at the end of the document tabs list.
 					<LineBreak /><LineBreak />
 					When the new tab button is clicked, the DockSite.NewWindowRequested event is raised.
@@ -43,7 +43,7 @@
 		<!-- Workspace -->
 		<docking:Workspace>
 			<docking:TabbedMdiHost x:Name="tabbedMdiHost"
-									ContainersHaveNewTabButtons="True" 
+									ContainersHaveNewTabButtons="True"
 									TabOverflowBehavior="ShrinkWithMenu">
 				<docking:SplitContainer>
 					<docking:TabbedMdiContainer>

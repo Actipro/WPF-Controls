@@ -1,270 +1,154 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
 using ActiproSoftware.Windows.Controls.Grids.PropertyData;
 using ActiproSoftware.Windows.Controls.Grids.PropertyEditors;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory {
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory;
+
+/// <summary>
+/// Represents a <see cref="PropertyDescriptorPropertyModel"/> implementation that supports easy customization of several properties.
+/// </summary>
+/// <param name="target">The target object that owns the property.</param>
+/// <param name="propertyDescriptor">The <see cref="PropertyDescriptor"/> for the property be accessed on the <paramref name="target"/>.</param>
+public class CustomPropertyModel(object target, PropertyDescriptor propertyDescriptor) : PropertyDescriptorPropertyModel(target, propertyDescriptor) {
+
+	private bool _customIsValueReadOnly;
+	private IEnumerable? _customStandardValues;
+	private DataTemplate? _customValueTemplate;
+	private object? _customValueTemplateKey;
+	private DefaultValueTemplateKind _customValueTemplateKind = DefaultValueTemplateKind.None;
+	private DataTemplateSelector? _customValueTemplateSelector;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a <see cref="PropertyDescriptorPropertyModel"/> implementation that supports easy customization of several properties.
+	/// Indicates whether the <see cref="Value"/> property is read-only.
 	/// </summary>
-	public class CustomPropertyModel : PropertyDescriptorPropertyModel {
-
-		private bool						customIsValueReadOnly;
-		private IEnumerable					customStandardValues;
-		private DataTemplate				customValueTemplate;
-		private object						customValueTemplateKey;
-		private DefaultValueTemplateKind	customValueTemplateKind			= DefaultValueTemplateKind.None;
-		private DataTemplateSelector		customValueTemplateSelector;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <see cref="CustomPropertyModel"/> class.
-		/// </summary>
-		/// <param name="target">The target object that owns the property.</param>
-		/// <param name="propertyDescriptor">The <see cref="PropertyDescriptor"/> for the property be accessed on the <paramref name="target"/>.</param>
-		public CustomPropertyModel(object target, PropertyDescriptor propertyDescriptor) : base(target, propertyDescriptor) {}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets whether the <see cref="Value"/> property is read-only.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the <see cref="Value"/> property is read-only; otherwise, <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// If set to <c>true</c>, this property value will ensure the <see cref="IPropertyModel.IsValueReadOnly"/> property returns <c>true</c>.
-		/// </remarks>
-		public bool CustomIsValueReadOnly {
-			get {
-				return customIsValueReadOnly;
-			}
-			set {
-				if (customIsValueReadOnly != value) {
-					customIsValueReadOnly = value;
-					this.NotifyPropertyChanged("IsValueReadOnly");
-				}
+	/// <remarks>
+	/// If set to <c>true</c>, this property value will ensure the <see cref="IPropertyModel.IsValueReadOnly"/> property returns <c>true</c>.
+	/// </remarks>
+	public bool CustomIsValueReadOnly {
+		get => _customIsValueReadOnly;
+		set {
+			if (SetProperty(ref _customIsValueReadOnly, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(IsValueReadOnly));
 			}
 		}
-
-		/// <summary>
-		/// Gets the standard list of values for the <see cref="Value"/> property.
-		/// </summary>
-		/// <value>
-		/// The standard list of values for the <see cref="Value"/> property.
-		/// </value>
-		/// <remarks>
-		/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.StandardValues"/> property.
-		/// </remarks>
-		public IEnumerable CustomStandardValues {
-			get {
-				return customStandardValues;
-			}
-			set {
-				if (customStandardValues != value) {
-					customStandardValues = value;
-					this.NotifyPropertyChanged("StandardValues");
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the custom <see cref="DataTemplate"/> to use for use for editing the property value.
-		/// </summary>
-		/// <value>The custom <see cref="DataTemplate"/> to use for use for editing the property value.</value>
-		/// <remarks>
-		/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplate"/> property.
-		/// </remarks>
-		public DataTemplate CustomValueTemplate {
-			get {
-				return customValueTemplate;
-			}
-			set {
-				if (customValueTemplate != value) {
-					customValueTemplate = value;
-					this.NotifyPropertyChanged("ValueTemplate");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the custom resource key that references a <see cref="DataTemplate"/> to use for editing the property value.
-		/// </summary>
-		/// <value>The custom resource key that references a <see cref="DataTemplate"/> to use for editing the property value.</value>
-		/// <remarks>
-		/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateKey"/> property.
-		/// </remarks>
-		public object CustomValueTemplateKey {
-			get {
-				return customValueTemplateKey;
-			}
-			set {
-				if (customValueTemplateKey != value) {
-					customValueTemplateKey = value;
-					this.NotifyPropertyChanged("ValueTemplateKey");
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the custom <see cref="DefaultValueTemplateKind"/> that specifies a default value cell template to use for editing the property value.
-		/// </summary>
-		/// <value>The custom <see cref="DefaultValueTemplateKind"/> that specifies a default value cell template to use for editing the property value.</value>
-		/// <remarks>
-		/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateKind"/> property.
-		/// </remarks>
-		public DefaultValueTemplateKind CustomValueTemplateKind {
-			get {
-				return customValueTemplateKind;
-			}
-			set {
-				if (customValueTemplateKind != value) {
-					customValueTemplateKind = value;
-					this.NotifyPropertyChanged("ValueTemplateKind");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the custom <see cref="DataTemplateSelector"/> to use for use for editing the property value.
-		/// </summary>
-		/// <value>The custom <see cref="DataTemplateSelector"/> to use for use for editing the property value.</value>
-		/// <remarks>
-		/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateSelector"/> property.
-		/// </remarks>
-		public DataTemplateSelector CustomValueTemplateSelector {
-			get {
-				return customValueTemplateSelector;
-			}
-			set {
-				if (customValueTemplateSelector != value) {
-					customValueTemplateSelector = value;
-					this.NotifyPropertyChanged("ValueTemplateSelector");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets whether the property supports <see cref="StandardValues"/>.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the property supports <see cref="StandardValues"/>; otherwise, <c>false</c>.
-		/// </value>
-		public override bool HasStandardValues {
-			get {
-				return (customStandardValues != null ? true : base.HasStandardValues);
-			}
-		}
-
-		/// <summary>
-		/// Gets whether the <see cref="Value"/> property can only be set to one of the values defined by the <see cref="StandardValues"/> property.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the <see cref="Value"/> property can only be set to one of the values defined by the <see cref="StandardValues"/> property; otherwise, <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override bool IsLimitedToStandardValuesCore {
-			get {
-				return (customStandardValues != null) || (base.IsLimitedToStandardValuesCore);
-			}
-		}
-
-		/// <summary>
-		/// Gets whether the <see cref="Value"/> property is read-only.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the <see cref="Value"/> property is read-only; otherwise, <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override bool IsValueReadOnlyCore {
-			get {
-				return customIsValueReadOnly || base.IsValueReadOnlyCore;
-			}
-		}
-
-		/// <summary>
-		/// Gets the standard list of values for the <see cref="Value"/> property.
-		/// </summary>
-		/// <value>
-		/// The standard list of values for the <see cref="Value"/> property.
-		/// </value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override IEnumerable StandardValuesCore {
-			get {
-				return customStandardValues ?? base.StandardValuesCore;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the <see cref="DataTemplate"/> to use for use for editing the property value.
-		/// </summary>
-		/// <value>The <see cref="DataTemplate"/> to use for use for editing the property value.</value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override DataTemplate ValueTemplateCore {
-			get {
-				return customValueTemplate ?? base.ValueTemplateCore;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the resource key that references a <see cref="DataTemplate"/> to use for editing the property value.
-		/// </summary>
-		/// <value>The resource key that references a <see cref="DataTemplate"/> to use for editing the property value.</value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override object ValueTemplateKeyCore {
-			get {
-				return customValueTemplateKey ?? base.ValueTemplateKeyCore;
-			}
-		}
-
-		/// <summary>
-		/// Gets the <see cref="DefaultValueTemplateKind"/> that specifies a default value cell template to use for editing the property value.
-		/// </summary>
-		/// <value>The <see cref="DefaultValueTemplateKind"/> that specifies a default value cell template to use for editing the property value.</value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override DefaultValueTemplateKind ValueTemplateKindCore {
-			get {
-				if (customValueTemplateKind != DefaultValueTemplateKind.None)
-					return customValueTemplateKind;
-				else
-					return base.ValueTemplateKindCore;
-			}
-		}
-
-		/// <summary>
-		/// Gets the <see cref="DataTemplateSelector"/> to use for use for editing the property value.
-		/// </summary>
-		/// <value>The <see cref="DataTemplateSelector"/> to use for use for editing the property value.</value>
-		/// <remarks>
-		/// This property does the actual work of retrieving the value for the cached version of this property.
-		/// </remarks>
-		protected override DataTemplateSelector ValueTemplateSelectorCore {
-			get {
-				return customValueTemplateSelector ?? base.ValueTemplateSelectorCore;
-			}
-		}
-
 	}
+
+	/// <summary>
+	/// The standard list of values for the <see cref="Value"/> property.
+	/// </summary>
+	/// <remarks>
+	/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.StandardValues"/> property.
+	/// </remarks>
+	public IEnumerable? CustomStandardValues {
+		get => _customStandardValues;
+		set {
+			if (SetProperty(ref _customStandardValues, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(StandardValues));
+			}
+		}
+	}
+
+	/// <summary>
+	/// The custom <see cref="DataTemplate"/> to use for use for editing the property value.
+	/// </summary>
+	/// <remarks>
+	/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplate"/> property.
+	/// </remarks>
+	public DataTemplate? CustomValueTemplate {
+		get => _customValueTemplate;
+		set {
+			if (SetProperty(ref _customValueTemplate, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(ValueTemplate));
+			}
+		}
+	}
+
+	/// <summary>
+	/// The custom resource key that references a <see cref="DataTemplate"/> to use for editing the property value.
+	/// </summary>
+	/// <remarks>
+	/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateKey"/> property.
+	/// </remarks>
+	public object? CustomValueTemplateKey {
+		get => _customValueTemplateKey;
+		set {
+			if (SetProperty(ref _customValueTemplateKey, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(ValueTemplateKey));
+			}
+		}
+	}
+
+	/// <summary>
+	/// The custom <see cref="DefaultValueTemplateKind"/> that specifies a default value cell template to use for editing the property value.
+	/// </summary>
+	/// <remarks>
+	/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateKind"/> property.
+	/// </remarks>
+	public DefaultValueTemplateKind CustomValueTemplateKind {
+		get => _customValueTemplateKind;
+		set {
+			if (SetProperty(ref _customValueTemplateKind, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(ValueTemplateKind));
+			}
+		}
+	}
+
+	/// <summary>
+	/// The custom <see cref="DataTemplateSelector"/> to use for use for editing the property value.
+	/// </summary>
+	/// <remarks>
+	/// If supplied, this property value will be used as a return value for the <see cref="IPropertyModel.ValueTemplateSelector"/> property.
+	/// </remarks>
+	public DataTemplateSelector? CustomValueTemplateSelector {
+		get => _customValueTemplateSelector;
+		set {
+			if (SetProperty(ref _customValueTemplateSelector, value)) {
+				// Invalidate any cached value for the IPropertyModel property since the custom value has changed
+				OnPropertyChanged(nameof(ValueTemplateSelector));
+			}
+		}
+	}
+
+	/// <inheritdoc/>
+	public override bool HasStandardValues
+		=> (_customStandardValues is not null) || base.HasStandardValues;
+
+	/// <inheritdoc/>
+	protected override bool IsLimitedToStandardValuesCore
+		=> (_customStandardValues is not null) || base.IsLimitedToStandardValuesCore;
+
+	/// <inheritdoc/>
+	protected override bool IsValueReadOnlyCore
+		=> _customIsValueReadOnly || base.IsValueReadOnlyCore;
+
+	/// <inheritdoc/>
+	protected override IEnumerable? StandardValuesCore
+		=> _customStandardValues ?? base.StandardValuesCore;
+
+	/// <inheritdoc/>
+	protected override DataTemplate? ValueTemplateCore
+		=> _customValueTemplate ?? base.ValueTemplateCore;
+
+	/// <inheritdoc/>
+	protected override object? ValueTemplateKeyCore
+		=> _customValueTemplateKey ?? base.ValueTemplateKeyCore;
+
+	/// <inheritdoc/>
+	protected override DefaultValueTemplateKind ValueTemplateKindCore
+		=> (_customValueTemplateKind == DefaultValueTemplateKind.None)
+			? base.ValueTemplateKindCore
+			: _customValueTemplateKind;
+
+	/// <inheritdoc/>
+	protected override DataTemplateSelector? ValueTemplateSelectorCore
+		=> _customValueTemplateSelector ?? base.ValueTemplateSelectorCore;
 
 }

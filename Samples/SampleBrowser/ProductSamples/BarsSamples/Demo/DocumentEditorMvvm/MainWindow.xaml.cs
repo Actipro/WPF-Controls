@@ -1,96 +1,85 @@
-﻿using ActiproSoftware.ProductSamples.BarsSamples.Common;
+using ActiproSoftware.ProductSamples.BarsSamples.Common;
 using ActiproSoftware.Windows.DocumentManagement;
 using ActiproSoftware.Windows.Input;
-using System;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Input;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
+namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm;
+
+/// <summary>
+/// The main window for the MVVM-based document editor demo.
+/// </summary>
+public partial class MainWindow {
+
+	private ICommand? _toggleFlowDirectionCommand;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// The main window for the MVVM-based document editor demo.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainWindow {
+	public MainWindow() {
+		InitializeComponent();
 
-		private ICommand toggleFlowDirectionCommand;
+		var barManager = new BarManager();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Configure recent documents with a default collection of document references for demo purposes
+		var recentDocuments = new RecentDocumentManager();
+		DocumentReferenceGenerator.BindRecentDocumentManager(recentDocuments);
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MainWindow"/> class.
-		/// </summary>
-		public MainWindow() {
-			InitializeComponent();
+		// Create the view model for the ribbon used by this demo
+		var ribbonViewModel = new DocumentEditorRibbonViewModel(barManager, recentDocuments);
 
-			var barManager = new BarManager();
+		// Create the view model for ribbon-based window to edit rich text documents
+		var windowViewModel = new RichTextEditorRibbonWindowViewModel(barManager, ribbonViewModel);
 
-			// Configure recent documents with a default collection of document references for demo purposes
-			var recentDocuments = new RecentDocumentManager();
-			DocumentReferenceGenerator.BindRecentDocumentManager(recentDocuments);
+		// Make sure composite commands are registered
+		windowViewModel.RegisterCommands();
 
-			// Create the view model for the ribbon used by this demo
-			var ribbonViewModel = new DocumentEditorRibbonViewModel(barManager, recentDocuments);
-
-			// Create the view model for ribbon-based window to edit rich text documents
-			var windowViewModel = new RichTextEditorRibbonWindowViewModel(barManager, ribbonViewModel);
-
-			// Make sure composite commands are registered
-			windowViewModel.RegisterCommands();
-
-			// Initialize the window with a new editor document
-			var document = Application.LoadComponent(new Uri("/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/FeaturesDocument.xaml", UriKind.Relative)) as FlowDocument;
+		// Initialize the window with a new editor document
+		var document = Application.LoadComponent(new Uri("/ProductSamples/BarsSamples/Demo/DocumentEditorMvvm/FeaturesDocument.xaml", UriKind.Relative)) as FlowDocument;
+		if (document is not null)
 			windowViewModel.Open(document);
 
-			// Register commands handled by this window
-			barManager.FlowDirectionCommand.RegisterCommand(this.ToggleFlowDirectionCommand);
+		// Register commands handled by this window
+		barManager.FlowDirectionCommand.RegisterCommand(ToggleFlowDirectionCommand);
 
-			this.ViewModel = windowViewModel;
+		ViewModel = windowViewModel;
 
-			this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, (Action)(() => {
-				// Focus the document
-				documentView.Focus();
-			}));
+		Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, () => {
+			// Focus the document
+			documentView.Focus();
+		});
 
-			this.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, (Action)(() => {
-				// Focusing the document above might scroll vertically a bit, reset the scroll
-				scrollViewer.ScrollToTop();
-			}));
-		}
+		Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, () => {
+			// Focusing the document above might scroll vertically a bit, reset the scroll
+			scrollViewer.ScrollToTop();
+		});
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Gets the command that will toggle the window's FlowDirection.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		private ICommand ToggleFlowDirectionCommand {
-			get {
-				if (toggleFlowDirectionCommand is null) {
-					toggleFlowDirectionCommand = new DelegateCommand<object>(param => {
-						this.FlowDirection = (this.FlowDirection == System.Windows.FlowDirection.LeftToRight)
-							? System.Windows.FlowDirection.RightToLeft
-							: System.Windows.FlowDirection.LeftToRight;
-					});
-				}
-				return toggleFlowDirectionCommand;
-			}
-		}
+	/// <summary>
+	/// The command that will toggle the window's FlowDirection.
+	/// </summary>
+	/// <value>An <see cref="ICommand"/>.</value>
+	private ICommand ToggleFlowDirectionCommand {
+		get => _toggleFlowDirectionCommand ??= new DelegateCommand<object>(_ => {
+			FlowDirection = (FlowDirection == FlowDirection.LeftToRight)
+				? FlowDirection.RightToLeft
+				: FlowDirection.LeftToRight;
+		});
+	}
 
-		/// <summary>
-		/// Gets or sets the view model for the window through the DataContext.
-		/// </summary>
-		/// <value>A <see cref="WindowViewModel"/>.</value>
-		private WindowViewModel ViewModel {
-			get => this.DataContext as WindowViewModel;
-			set => this.DataContext = value;
-		}
-
+	/// <summary>
+	/// The view model for the window through the DataContext.
+	/// </summary>
+	private WindowViewModel? ViewModel {
+		get => DataContext as WindowViewModel;
+		set => DataContext = value;
 	}
 
 }

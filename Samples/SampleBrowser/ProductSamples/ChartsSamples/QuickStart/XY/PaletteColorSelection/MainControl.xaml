@@ -1,11 +1,11 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
 	>
-	
+
 	<sampleBrowser:ProductItemControl.Resources>
 
 		<charts:SeriesPaletteStyleSelector x:Key="SequentialSeriesStyleSelector">
@@ -81,7 +81,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		
+
 	</sampleBrowser:ProductItemControl.Resources>
 
 	<sampleBrowser:ProductItemControl.SideBarContent>
@@ -105,14 +105,14 @@
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>
 			</Expander>
-			
+
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					This QuickStart shows the same data rendered in multiple charts, each in the same color palette.
 					The left column of charts shows the palette color selection when the sequential color selection hint is set,
 					while the right column of charts shows the palette color selection when the uniform distribution color selection hint is set.
 					Note how the palette colors used for each series can differ in certain series count scenarios with the two hint settings.
-					Uniform distribution is a better hint setting for palettes that have gradient transitions of colors since 
+					Uniform distribution is a better hint setting for palettes that have gradient transitions of colors since
 					when there are smaller numbers of series, it will spread the color usage out.
 				</TextBlock>
 			</Expander>
@@ -154,7 +154,7 @@
 						<charts:AreaSeries Style="{StaticResource AreaSeries4}"/>
 						<charts:AreaSeries Style="{StaticResource AreaSeries5}"/>
 					</charts:XYChart>
-				</sampleBrowser:LabeledCardControl>				
+				</sampleBrowser:LabeledCardControl>
 				<sampleBrowser:LabeledCardControl Grid.Row="1" Grid.Column="2">
 					<charts:XYChart Style="{StaticResource ChartUniformStyle}" Height="200" GridLineMajorVisibility="Y" GridStripeVisibility="Y">
 						<charts:XYChart.YAxes>

@@ -1,62 +1,43 @@
-using System;
-using System.ComponentModel;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
 using ActiproSoftware.Windows.Controls.Wizard;
-
-#if WPF
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
-#endif
 
-namespace ActiproSoftware.ProductSamples.WizardSamples.Demo.CancelSelectionChange {
+namespace ActiproSoftware.ProductSamples.WizardSamples.Demo.CancelSelectionChange;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl : System.Windows.Controls.UserControl {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs after the wizard's selected page has changed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">Event arguments.</param>
-		private void wizard_SelectedPageChanged(object sender, WizardSelectedPageChangeEventArgs e) {
-			if (e.NewSelectedPage == cancelSelectionChangePage) {
-				// Update the selection flags TextBlock to indicate what flags were used in selecting this page
-				selectionFlagsTextBlock.Text = e.SelectionFlags.ToString();
-			}
-		}
-
-		/// <summary>
-		/// Occurs before the wizard's selected page has changed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">Event arguments.</param>
-		private void wizard_SelectedPageChanging(object sender, WizardSelectedPageChangeEventArgs e) {
-			if (e.OldSelectedPage == cancelSelectionChangePage) {
-				// If the cancel selection change CheckBox is checked, cancel the selection change
-				if (cancelSelectionChangeCheckBox.IsChecked == true) {
-					MessageBox.Show("The selected page change is cancelled because you have the CheckBox set.  Clear the CheckBox to be able to navigate through the wizard again.", "Wizard Sample");
-					e.Cancel = true;
-				}
-			}
-		}
-
+	public MainControl() {
+		InitializeComponent();
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	private void OnWizardSelectedPageChanged(object sender, WizardSelectedPageChangeEventArgs e) {
+		if (e.NewSelectedPage == cancelSelectionChangePage) {
+			// Update the selection flags TextBlock to indicate what flags were used in selecting this page
+			selectionFlagsTextBlock.Text = e.SelectionFlags.ToString();
+		}
+	}
+
+	private void OnWizardSelectedPageChanging(object sender, WizardSelectedPageChangeEventArgs e) {
+		if (e.OldSelectedPage == cancelSelectionChangePage) {
+			// If the cancel selection change CheckBox is checked, cancel the selection change
+			if (cancelSelectionChangeCheckBox.IsChecked == true) {
+				MessageBox.Show("The selected page change is cancelled because you have the CheckBox set.  Clear the CheckBox to be able to navigate through the wizard again.", "Wizard Sample");
+				e.Cancel = true;
+			}
+		}
+	}
+
 }

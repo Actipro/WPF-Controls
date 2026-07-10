@@ -139,9 +139,8 @@ These packages are optional and shipped separately from the metapackage:
 
 ## Supported Technologies
 
-- **Frameworks:** .NET 6+ and .NET Framework 4.6.2+
+- **Frameworks:** .NET 8+ and .NET Framework 4.6.2+
 - **Architectures:** Any CPU, ARM64, x64, and x86
-- **IDEs:** Visual Studio 2022
 - **SDKs:** .NET SDK required for sample projects
 
 ## Contributing

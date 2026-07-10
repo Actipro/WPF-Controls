@@ -1,33 +1,27 @@
-﻿using System;
-using ActiproSoftware.Text;
+using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Tagging.Implementation;
-using ActiproSoftware.Windows.Controls.SyntaxEditor;
-using ActiproSoftware.Windows.Controls.SyntaxEditor.Implementation;
-using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightWord {
-    
-    /// <summary>
-	/// Represents a syntax language definition that renders a custom background behind highlighted words.
-    /// </summary>
-    public class CustomSyntaxLanguage : SyntaxLanguage {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightWord;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>CustomSyntaxLanguage</c> class.
-		/// </summary>
-		public CustomSyntaxLanguage() : base("CustomDecorator") {
-			// Initialize this language from a language definition
-			SyntaxEditorHelper.InitializeLanguageFromResourceStream(this, "CSharp.langdef");
+/// <summary>
+/// Represents a syntax language definition that renders a custom background behind highlighted words.
+/// </summary>
+public class CustomSyntaxLanguage : SyntaxLanguage {
 
-			// Register a tagger provider on the language as a service that can create CustomTag objects
-			this.RegisterService(new TextViewTaggerProvider<WordHighlightTagger>(typeof(WordHighlightTagger)));
-		}
-		
-    }
-	
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public CustomSyntaxLanguage() : base("CustomDecorator") {
+		// Initialize this language from a language definition
+		SyntaxEditorHelper.InitializeLanguageFromResourceStream(this, "CSharp.langdef");
+
+		// Register a tagger provider on the language as a service that can create CustomTag objects
+		RegisterService(new TextViewTaggerProvider<WordHighlightTagger>(typeof(WordHighlightTagger)));
+	}
+
 }

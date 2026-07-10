@@ -3,16 +3,19 @@
 		<OutputType>WinExe</OutputType>
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
 
 		<TargetFramework>net472</TargetFramework>
 
+		<Version>26.1.0$(PreReleaseTagWithDash)</Version>
+
+		<Company>Actipro Software LLC</Company>
+		<Authors>Actipro Software LLC</Authors>
+		<Copyright>Copyright (c) 2007-2026 Actipro Software LLC</Copyright>
+
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 
-		<Version>25.1.0.0</Version>
-
 		<RootNamespace>ActiproSoftware.Windows.WindowsWorkflowIntegration</RootNamespace>
-		<Company>Actipro Software LLC</Company>
-		<Copyright>Copyright (c) 2020-2026 Actipro Software LLC.  All rights reserved.</Copyright>
 		<Title>Windows Workflow Integration Sample</Title>
 		<Product>$(Title)</Product>
 		<Description>Sample application to demonstrate integrating into a Windows Workflow application.</Description>

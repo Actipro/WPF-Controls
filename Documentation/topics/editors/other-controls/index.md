@@ -145,6 +145,21 @@ Allows for selection of a date from a calendar with animated view changes.
 <tr>
 <td>
 
+[RangeSlider](range-slider.md)
+
+</td>
+<td>
+
+![Screenshot](../images/range-slider.png)
+
+Can be used to select one or more values within a pre-defined range of available values.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 [Rating](rating.md)
 
 </td>

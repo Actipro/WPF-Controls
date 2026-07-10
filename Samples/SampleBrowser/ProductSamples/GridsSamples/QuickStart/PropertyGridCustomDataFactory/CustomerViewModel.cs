@@ -1,124 +1,76 @@
-using System.ComponentModel;
-using System.Collections.Generic;
-using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory {
+/// <summary>
+/// Represents a customer view model object.
+/// </summary>
+public class CustomerViewModel : ObservableObjectBase {
+
+	private string? _countryName;
+	private string? _customerName;
+	private PhoneNumbersViewModel? _phoneNumbers;
+	private ReferralSourceViewModel? _referredBy;
+
+	private string _secretData = "This data should not appear in the PropertyGrid.";
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a customer view model object.
+	/// The list of available referrals.
 	/// </summary>
-	public class CustomerViewModel : ObservableObjectBase {
+	[DisplayName("Available referrals")]
+	public IList<ReferralSourceViewModel> AvailableReferrals { get; } = [];
 
-		private IList<ReferralSourceViewModel> availableReferrals = new List<ReferralSourceViewModel>();
-		private string countryName;
-		private string customerName;
-		private IDictionary<string, string> dataItems = new Dictionary<string, string>();
-		private PhoneNumbersViewModel phoneNumbers;
-		private ReferralSourceViewModel referredBy;
+	/// <summary>
+	/// The country name.
+	/// </summary>
+	[DisplayName("Country")]
+	public string? CountryName {
+		get => _countryName;
+		set => SetProperty(ref _countryName, value);
+	}
 
-		private string secretData = "This data should not appear in the PropertyGrid.";
+	/// <summary>
+	/// The customer name.
+	/// </summary>
+	[DisplayName("Customer name")]
+	public string? CustomerName {
+		get => _customerName;
+		set => SetProperty(ref _customerName, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the list of available referrals.
-		/// </summary>
-		/// <value>The list of available referrals.</value>
-		[DisplayName("Available referrals")]
-		public IList<ReferralSourceViewModel> AvailableReferrals {
-			get {
-				return availableReferrals;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the country name.
-		/// </summary>
-		/// <value>The country name.</value>
-		[DisplayName("Country")]
-		public string CountryName {
-			get {
-				return countryName;
-			}
-			set {
-				countryName = value;
-				this.NotifyPropertyChanged("CountryName");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the customer name.
-		/// </summary>
-		/// <value>The customer name.</value>
-		[DisplayName("Customer name")]
-		public string CustomerName {
-			get {
-				return customerName;
-			}
-			set {
-				customerName = value;
-				this.NotifyPropertyChanged("CustomerName");
-			}
-		}
-		
-		/// <summary>
-		/// Gets the list of data items.
-		/// </summary>
-		/// <value>The list of data items.</value>
-		[DisplayName("Data items")]
-		public IDictionary<string, string> DataItems {
-			get {
-				return dataItems;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the phone numbers.
-		/// </summary>
-		/// <value>The phone numbers.</value>
-		[DisplayName("Phone numbers")]
-		public PhoneNumbersViewModel PhoneNumbers {
-			get {
-				return phoneNumbers;
-			}
-			set {
-				phoneNumbers = value;
-				this.NotifyPropertyChanged("PhoneNumbers");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the referral.
-		/// </summary>
-		/// <value>The referral.</value>
-		[DisplayName("Referred by")]
-		public ReferralSourceViewModel ReferredBy {
-			get {
-				return referredBy;
-			}
-			set {
-				referredBy = value;
-				this.NotifyPropertyChanged("ReferredBy");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets secret data that will be filtered out by the custom data factory.
-		/// </summary>
-		/// <value>Secret data.</value>
-		[DisplayName("Secret data")]
-		public string SecretData {
-			get {
-				return secretData;
-			}
-			set {
-				secretData = value;
-				this.NotifyPropertyChanged("SecretData");
-			}
-		}
+	/// <summary>
+	/// The list of data items.
+	/// </summary>
+	[DisplayName("Data items")]
+	public IDictionary<string, string> DataItems { get; } = new Dictionary<string, string>();
 
+	/// <summary>
+	/// The phone numbers.
+	/// </summary>
+	[DisplayName("Phone numbers")]
+	public PhoneNumbersViewModel? PhoneNumbers {
+		get => _phoneNumbers;
+		set => SetProperty(ref _phoneNumbers, value);
+	}
+
+	/// <summary>
+	/// The referral.
+	/// </summary>
+	[DisplayName("Referred by")]
+	public ReferralSourceViewModel? ReferredBy {
+		get => _referredBy;
+		set => SetProperty(ref _referredBy, value);
+	}
+
+	/// <summary>
+	/// Secret data that will be filtered out by the custom data factory.
+	/// </summary>
+	[DisplayName("Secret data")]
+	public string SecretData {
+		get => _secretData;
+		set => SetProperty(ref _secretData, value);
 	}
 
 }

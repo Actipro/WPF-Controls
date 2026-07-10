@@ -1,53 +1,38 @@
-﻿using System;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt;
 using ActiproSoftware.Windows.Controls.SyntaxEditor.IntelliPrompt.Implementation;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging {
-	
-	/// <summary>
-	/// Provides IntelliPrompt popup content for a breakpoint indicator tag.
-	/// </summary>
-	internal class BreakpointIndicatorTagContentProvider : IContentProvider {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.IndicatorsDebugging;
 
-		private TagVersionRange<BreakpointIndicatorTag> tagRange;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>BreakpointIndicatorTagContentProvider</c> class.
-		/// </summary>
-		/// <param name="tagRange">The tag range.</param>
-		public BreakpointIndicatorTagContentProvider(TagVersionRange<BreakpointIndicatorTag> tagRange) {
-			if (tagRange == null)
-				throw new ArgumentNullException("tagRange");
+/// <summary>
+/// Provides IntelliPrompt popup content for a breakpoint indicator tag.
+/// </summary>
+/// <param name="tagRange">The tag range.</param>
+internal class BreakpointIndicatorTagContentProvider(TagVersionRange<BreakpointIndicatorTag> tagRange) : IContentProvider {
 
-			// Initialize
-			this.tagRange = tagRange;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Returns the content to use in various IntelliPrompt popups.
-		/// </summary>
-		/// <returns>The content to use in various IntelliPrompt popups.</returns>
-		public object GetContent() {
-			// Get the snapshot range relative to the current snapshot (in case the document changed since the provider was created)
-			var snapshotRange = tagRange.VersionRange.Translate(tagRange.VersionRange.Document.CurrentSnapshot);
+	private readonly TagVersionRange<BreakpointIndicatorTag> _tagRange = tagRange ?? throw new ArgumentNullException(nameof(tagRange));
 
-			var htmlSnippet = String.Format("At line <b>{0}</b>, character <b>{1}</b>{2}",
-				snapshotRange.StartPosition.DisplayLine, snapshotRange.StartPosition.DisplayCharacter,
-				(tagRange.Tag.IsEnabled ? String.Empty : " <i>(disabled)</i>"));
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="IContentProvider.GetContent"/>
+	public object? GetContent() {
+		// Get the snapshot range relative to the current snapshot (in case the document changed since the provider was created)
+		var snapshotRange = _tagRange.VersionRange.Translate(_tagRange.VersionRange.Document.CurrentSnapshot);
+		if (snapshotRange.HasValue) {
+			var htmlSnippet = string.Format(
+				"At line <b>{0}</b>, character <b>{1}</b>{2}",
+				snapshotRange.Value.StartPosition.DisplayLine,
+				snapshotRange.Value.StartPosition.DisplayCharacter,
+				(_tagRange.Tag.IsEnabled ? string.Empty : " <i>(disabled)</i>")
+			);
+
 			return new HtmlContentProvider(htmlSnippet).GetContent();
 		}
 
+		return null;
 	}
 
 }
-

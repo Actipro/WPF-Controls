@@ -1,182 +1,137 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-#if WINRT
-using ActiproSoftware.UI.Xaml;
-#else
-using ActiproSoftware.Windows;
-#endif
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball;
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball {
+public class Batter : ObservableObjectBase {
 
-	public class Batter : ObservableObjectBase {
+	private string? _firstName;
+	private string? _lastName;
+	private int _number;
+	private string? _position;
+	private static readonly Random _random = new();
+	private Team? _team;
 
-		private string firstName;
-		private string lastName;
-		private int number;
-		private string position;
-		private static readonly Random random = new Random();
-		private readonly ObservableCollection<BatterSeasonStats> stats = new ObservableCollection<BatterSeasonStats>();
-		private Team team;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets a random position.
-		/// </summary>
-		/// <returns>A random position.</returns>
-		private static string GetRandomPosition() {
-			int position = random.Next(0, Positions.Count());
-			return Positions.ElementAt(position);
-		}
-
-		/// <summary>
-		/// Gets the positions.
-		/// </summary>
-		/// <value>The positions.</value>
-		private static IEnumerable<string> Positions {
-			get {
-				return new List<string> {"C", "SS","3B", "2B", "1B", "CF", "LF", "RF", "DH"};
-			}
-		}
-
-		#endregion NON-PUBLIC PROCEDURES
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Builds the random stats.
-		/// </summary>
-		/// <param name="startingYear">The starting year.</param>
-		/// <param name="endingYear">The ending year.</param>
-		public void BuildRandomStats(int startingYear, int endingYear) {
-			for (int year = startingYear; year <= endingYear; year++) {
-				Stats.Add(BatterSeasonStats.Random(year));
-			}
-		}
-
-		/// <summary>
-		/// Builds the random batter.
-		/// </summary>
-		/// <param name="firstName">The first name.</param>
-		/// <param name="lastName">The last name.</param>
-		/// <param name="statStartingYear">The stat starting year.</param>
-		/// <param name="statEndingYear">The stat ending year.</param>
-		/// <returns>The batter.</returns>
-		public static Batter BuildRandomBatter(string firstName, string lastName, int statStartingYear, int statEndingYear) {
-			var batter = new Batter();
-			batter.FirstName = firstName;
-			batter.LastName = lastName;
-			batter.Number = random.Next(0, 60);
-			batter.BuildRandomStats(statStartingYear, statEndingYear);
-			batter.Position = GetRandomPosition();
-			return batter;
-		}
-
-		/// <summary>
-		/// Gets the current year stats.
-		/// </summary>
-		/// <value>The current year stats.</value>
-		public BatterSeasonStats CurrentYearStats {
-			get {
-				return Stats.Last();
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the first name.
-		/// </summary>
-		/// <value>The first name.</value>
-		public string FirstName {
-			get { return firstName; }
-			set {
-				firstName = value;
-				NotifyPropertyChanged("FirstName");
-				NotifyPropertyChanged("Name");
-				NotifyPropertyChanged("OrderedName");
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the last name.
-		/// </summary>
-		/// <value>The last name.</value>
-		public string LastName {
-			get { return lastName; }
-			set {
-				lastName = value;
-				NotifyPropertyChanged("LastName");
-				NotifyPropertyChanged("Name");
-				NotifyPropertyChanged("OrderedName");
-			}
-		}
-
-
-		/// <summary>
-		/// Gets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name {
-			get { return string.Format("{0} {1}", firstName, LastName); }
-		}
-
-		/// <summary>
-		/// Gets or sets the player number.
-		/// </summary>
-		/// <value>The player number.</value>
-		public int Number {
-			get { return number; }
-			set {
-				number = value;
-				NotifyPropertyChanged("Number");
-			}
-		}
-
-		/// <summary>
-		/// Gets the ordered name.
-		/// </summary>
-		/// <value>The ordered name.</value>
-		public string OrderedName {
-			get { return string.Format("{0}, {1}", lastName, firstName); }
-		}
-
-		/// <summary>
-		/// Gets or sets the position.
-		/// </summary>
-		/// <value>The position.</value>
-		public string Position {
-			get { return position; }
-			set {
-				position = value;
-				NotifyPropertyChanged("Position");
-			}
-		}
-
-		/// <summary>
-		/// Gets the stats.
-		/// </summary>
-		/// <value>The stats.</value>
-		public ObservableCollection<BatterSeasonStats> Stats {
-			get { return stats; }
-		}
-
-		/// <summary>
-		/// Gets or sets the team.
-		/// </summary>
-		/// <value>The team.</value>
-		public Team Team {
-			get { return team; }
-			set {
-				team = value;
-				NotifyPropertyChanged("Team");
-			}
-		}
-
-		#endregion PUBLIC PROCEDURES
+	/// <summary>
+	/// Gets a random position.
+	/// </summary>
+	private static string GetRandomPosition() {
+		var positions = Positions.ToArray();
+		int index = _random.Next(0, positions.Length);
+		return positions[index];
 	}
+
+	/// <summary>
+	/// The positions.
+	/// </summary>
+	private static IEnumerable<string> Positions
+		=> ["C", "SS", "3B", "2B", "1B", "CF", "LF", "RF", "DH"];
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Builds the random stats.
+	/// </summary>
+	/// <param name="startingYear">The starting year.</param>
+	/// <param name="endingYear">The ending year.</param>
+	public void BuildRandomStats(int startingYear, int endingYear) {
+		for (var year = startingYear; year <= endingYear; year++)
+			Stats.Add(BatterSeasonStats.Random(year));
+	}
+
+	/// <summary>
+	/// Builds the random batter.
+	/// </summary>
+	/// <param name="firstName">The first name.</param>
+	/// <param name="lastName">The last name.</param>
+	/// <param name="statStartingYear">The stat starting year.</param>
+	/// <param name="statEndingYear">The stat ending year.</param>
+	public static Batter BuildRandomBatter(string firstName, string lastName, int statStartingYear, int statEndingYear) {
+		var batter = new Batter {
+			FirstName = firstName,
+			LastName = lastName,
+			Number = _random.Next(0, 60),
+			Position = GetRandomPosition()
+		};
+		batter.BuildRandomStats(statStartingYear, statEndingYear);
+		return batter;
+	}
+
+	/// <summary>
+	/// The current year stats.
+	/// </summary>
+	public BatterSeasonStats CurrentYearStats
+		=> Stats.Last();
+
+	/// <summary>
+	/// The first name.
+	/// </summary>
+	public string? FirstName {
+		get => _firstName;
+		set {
+			if (SetProperty(ref _firstName, value)) {
+				OnPropertyChanged(nameof(Name));
+				OnPropertyChanged(nameof(OrderedName));
+			}
+		}
+	}
+
+	/// <summary>
+	/// The last name.
+	/// </summary>
+	public string? LastName {
+		get => _lastName;
+		set {
+			if (SetProperty(ref _lastName, value)) {
+				OnPropertyChanged(nameof(Name));
+				OnPropertyChanged(nameof(OrderedName));
+			}
+		}
+	}
+
+
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string Name
+		=> string.Format("{0} {1}", FirstName, LastName);
+
+	/// <summary>
+	/// The player number.
+	/// </summary>
+	public int Number {
+		get => _number;
+		set => SetProperty(ref _number, value);
+	}
+
+	/// <summary>
+	/// The ordered name.
+	/// </summary>
+	public string OrderedName
+		=> string.Format("{0}, {1}", LastName, FirstName);
+
+	/// <summary>
+	/// The position.
+	/// </summary>
+	public string? Position {
+		get => _position;
+		set => SetProperty(ref _position, value);
+	}
+
+	/// <summary>
+	/// The stats.
+	/// </summary>
+	public ObservableCollection<BatterSeasonStats> Stats { get; } = [];
+
+	/// <summary>
+	/// The team.
+	/// </summary>
+	public Team? Team {
+		get => _team;
+		set => SetProperty(ref _team, value);
+	}
+
 }

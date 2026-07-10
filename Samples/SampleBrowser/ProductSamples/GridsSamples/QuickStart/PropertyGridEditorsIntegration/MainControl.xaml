@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridEditorsIntegration.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -48,9 +48,9 @@
 							DataObject="{StaticResource TestObject}" IsSummaryVisible="False"
 							gridseditors:BuiltinPropertyEditors.IsEnabled="True" CanClearDataObjectOnUnload="True">
 			<grids:PropertyGrid.PropertyEditors>
-				<!-- 
+				<!--
 					Use the various *PropertyEditor classes provided to integrate our built-in property editors with properties
-					of specific object types, property types, and/or property names... here are several examples: 
+					of specific object types, property types, and/or property names... here are several examples:
 				-->
 				<gridseditors:DatePropertyEditor PropertyName="DateLongValue" Format="D" />
 				<gridseditors:MaskedStringPropertyEditor PropertyName="MaskedString" Mask="\w+([.]\w+)*@\w+([.]\w+)+" />
@@ -61,10 +61,10 @@
 				<gridseditors:Int16PropertyEditor PropertyType="system:SByte" Minimum="-128" Maximum="127">
 					<grids:PropertyEditor.ValueTemplate>
 						<DataTemplate>
-							<editors:Int16EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource SByteToInt16Converter}}" 
-								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							<editors:Int16EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource SByteToInt16Converter}}"
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}"
 								AutomationProperties.Name="{Binding Name}"
-							  
+
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
 								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
@@ -74,7 +74,7 @@
 								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
 								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
 								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
-							  
+
 								Format="{Binding ValuePropertyEditor.Format}"
 								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
 								Maximum="{Binding ValuePropertyEditor.Maximum}"
@@ -90,10 +90,10 @@
 				<gridseditors:Int32PropertyEditor PropertyType="system:UInt16" Minimum="0" Maximum="65535">
 					<grids:PropertyEditor.ValueTemplate>
 						<DataTemplate>
-							<editors:Int32EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt16ToInt32Converter}}" 
-								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							<editors:Int32EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt16ToInt32Converter}}"
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}"
 								AutomationProperties.Name="{Binding Name}"
-							  
+
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
 								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
@@ -103,7 +103,7 @@
 								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
 								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
 								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
-							  
+
 								Format="{Binding ValuePropertyEditor.Format}"
 								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
 								Maximum="{Binding ValuePropertyEditor.Maximum}"
@@ -119,10 +119,10 @@
 				<gridseditors:Int64PropertyEditor PropertyType="system:UInt32" Minimum="0" Maximum="4294967295">
 					<grids:PropertyEditor.ValueTemplate>
 						<DataTemplate>
-							<editors:Int64EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt32ToInt64Converter}}" 
-								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}" 
+							<editors:Int64EditBox Value="{Binding Value, Mode=TwoWay, Converter={StaticResource UInt32ToInt64Converter}}"
+								BorderThickness="0" IsReadOnly="{Binding IsReadOnly}"
 								AutomationProperties.Name="{Binding Name}"
-							  
+
 								CommitTriggers="{Binding ValuePropertyEditor.CommitTriggers}"
 								HasPopup="{Binding ValuePropertyEditor.HasPopup}"
 								IsArrowKeyPartNavigationEnabled="{Binding ValuePropertyEditor.IsArrowKeyPartNavigationEnabled}"
@@ -132,7 +132,7 @@
 								SpinnerVisibility="{Binding ValuePropertyEditor.SpinnerVisibility}"
 								SpinWrapping="{Binding ValuePropertyEditor.SpinWrapping}"
 								TextAlignment="{Binding ValuePropertyEditor.TextAlignment}"
-							  
+
 								Format="{Binding ValuePropertyEditor.Format}"
 								LargeChange="{Binding ValuePropertyEditor.LargeChange}"
 								Maximum="{Binding ValuePropertyEditor.Maximum}"

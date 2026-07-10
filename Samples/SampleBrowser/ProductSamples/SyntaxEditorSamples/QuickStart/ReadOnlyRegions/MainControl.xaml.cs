@@ -1,63 +1,47 @@
-using System.Windows;
-using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging.Implementation;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ReadOnlyRegions {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.ReadOnlyRegions;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl : System.Windows.Controls.UserControl {
+	public MainControl() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Load a language from a language definition
+		var language = Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+		// Attach a custom read-only region tagger to the language (use a singleton key so it can be retrieved later)
+		language.RegisterService(new CodeDocumentTaggerProvider<CustomReadOnlyRegionTagger>(typeof(CustomReadOnlyRegionTagger)));
 
-			// Load a language from a language definition
-			ISyntaxLanguage language = ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
+		// Assign the language to the document
+		editor.Document.Language = language;
+	}
 
-			// Attach a custom read-only region tagger to the language (use a singleton key so it can be retrieved later)
-			language.RegisterService(new CodeDocumentTaggerProvider<CustomReadOnlyRegionTagger>(typeof(CustomReadOnlyRegionTagger)));
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Assign the language to the document
-			editor.Document.Language = language;
-        }
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private void OnHighlightRegionsCheckBoxCheckedChanged(object sender, RoutedEventArgs e) {
+		if (editor?.Document.Properties.TryGetValue<CustomReadOnlyRegionTagger>(out var tagger) == true)
+			tagger!.HighlightReadOnlyRegions = (highlightRegionsCheckBox.IsChecked == true);
+	}
 
-		/// <summary>
-		/// Occurs when the checkbox is checked or unchecked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnHighlightRegionsCheckBoxCheckedChanged(object sender, RoutedEventArgs e) {
-			CustomReadOnlyRegionTagger tagger;
-			if ((editor != null) && (editor.Document.Properties.TryGetValue(typeof(CustomReadOnlyRegionTagger), out tagger)))
-				tagger.HighlightReadOnlyRegions = highlightRegionsCheckBox.IsChecked.Value;
+	private void OnMakeSelectionReadOnlyButtonClick(object sender, RoutedEventArgs e) {
+		if (editor?.Document.Properties.TryGetValue<CustomReadOnlyRegionTagger>(out var tagger) == true) {
+			tagger!.Clear();
+			if (editor.ActiveView.Selection.Length > 0)
+				tagger!.Add(editor.ActiveView.Selection.SnapshotRange, new ReadOnlyRegionTag());
 		}
-
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnMakeSelectionReadOnlyButtonClick(object sender, RoutedEventArgs e) {
-			CustomReadOnlyRegionTagger tagger;
-			if ((editor != null) && (editor.Document.Properties.TryGetValue(typeof(CustomReadOnlyRegionTagger), out tagger))) {
-				tagger.Clear();
-				if (editor.ActiveView.Selection.Length > 0)
-					tagger.Add(editor.ActiveView.Selection.SnapshotRange, new ReadOnlyRegionTag());
-			}
-		}
-
-    }
+	}
 
 }

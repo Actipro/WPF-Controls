@@ -1,7 +1,7 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"

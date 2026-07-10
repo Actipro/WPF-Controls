@@ -1,172 +1,101 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Media;
-using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCategoryEditors;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCategoryEditors {
-	
+/// <summary>
+/// Provides information about the appearance of controls in this sample.
+/// </summary>
+public class AppearanceViewModel : ObservableObjectBase {
+
+	private Color _backgroundColor = Color.FromArgb(0xff, 0xd4, 0x04, 0x04);
+	private Color _borderColor = Color.FromArgb(0xff, 0x6c, 0x27, 0x27);
+	private FontFamily _fontFamily = new("Verdana");
+	private int _fontSize = 16;
+	private FontStyle _fontStyle = FontStyles.Normal;
+	private FontWeight _fontWeight = FontWeights.Normal;
+	private Color _foregroundColor = Colors.White;
+	private string _text = "Change properties to alter this control's appearance.";
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Provides information about the appearance of controls in this sample.
+	/// The background color.
 	/// </summary>
-	public class AppearanceViewModel : ObservableObjectBase {
-		
-		private Color backgroundColor = Color.FromArgb(0xff, 0xd4, 0x04, 0x04);
-		private Color borderColor = Color.FromArgb(0xff, 0x6c, 0x27, 0x27);
-		private FontFamily fontFamily = new FontFamily("Verdana");
-		private int fontSize = 16;
-		private FontStyle fontStyle = FontStyles.Normal;
-		private FontWeight fontWeight = FontWeights.Normal;
-		private Color foregroundColor = Colors.White;
-		private string text = "Change properties to alter this control's appearance.";
+	[Category("Colors")]
+	[Description("The background color.")]
+	public Color BackgroundColor {
+		get => _backgroundColor;
+		set => SetProperty(ref _backgroundColor, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the background color.
-		/// </summary>
-		/// <value>The background color.</value>
-		[Category("Colors")]
-		[Description("The background color.")]
-		public Color BackgroundColor {
-			get {
-				return this.backgroundColor;
-			}
-			set {
-				if (this.backgroundColor != value) {
-					this.backgroundColor = value;
-					this.NotifyPropertyChanged("BackgroundColor");
-				}
-			}
-		}
+	/// <summary>
+	/// The border color.
+	/// </summary>
+	[Category("Colors")]
+	[Description("The border color.")]
+	public Color BorderColor {
+		get => _borderColor;
+		set => SetProperty(ref _borderColor, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the border color.
-		/// </summary>
-		/// <value>The border color.</value>
-		[Category("Colors")]
-		[Description("The border color.")]
-		public Color BorderColor {
-			get {
-				return this.borderColor;
-			}
-			set {
-				if (this.borderColor != value) {
-					this.borderColor = value;
-					this.NotifyPropertyChanged("BorderColor");
-				}
-			}
-		}
+	/// <summary>
+	/// The font family.
+	/// </summary>
+	[Category("Font/Text")]
+	[Description("The font family.")]
+	public FontFamily FontFamily {
+		get => _fontFamily;
+		set => SetProperty(ref _fontFamily, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the font family.
-		/// </summary>
-		/// <value>The font family.</value>
-		[Category("Font/Text")]
-		[Description("The font family.")]
-		public FontFamily FontFamily {
-			get {
-				return this.fontFamily;
-			}
-			set {
-				if (this.fontFamily != value) {
-					this.fontFamily = value;
-					this.NotifyPropertyChanged("FontFamily");
-				}
-			}
-		}
+	/// <summary>
+	/// The size of the font.
+	/// </summary>
+	[Category("Font/Text")]
+	[Description("The size of the font.")]
+	public int FontSize {
+		get => _fontSize;
+		set => SetProperty(ref _fontSize, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the size of the font.
-		/// </summary>
-		/// <value>The size of the font.</value>
-		[Category("Font/Text")]
-		[Description("The size of the font.")]
-		public int FontSize {
-			get {
-				return this.fontSize;
-			}
-			set {
-				if (this.fontSize != value) {
-					this.fontSize = value;
-					this.NotifyPropertyChanged("FontSize");
-				}
-			}
-		}
+	/// <summary>
+	/// The font style.
+	/// </summary>
+	[Category("Font/Text")]
+	[Description("The font style.")]
+	public FontStyle FontStyle {
+		get => _fontStyle;
+		set => SetProperty(ref _fontStyle, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the font style.
-		/// </summary>
-		/// <value>The font style.</value>
-		[Category("Font/Text")]
-		[Description("The font style.")]
-		public FontStyle FontStyle {
-			get {
-				return this.fontStyle;
-			}
-			set {
-				if (this.fontStyle != value) {
-					this.fontStyle = value;
-					this.NotifyPropertyChanged("FontStyle");
-				}
-			}
-		}
+	/// <summary>
+	/// The font weight.
+	/// </summary>
+	[Category("Font/Text")]
+	[Description("The font weight.")]
+	public FontWeight FontWeight {
+		get => _fontWeight;
+		set => SetProperty(ref _fontWeight, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the font weight.
-		/// </summary>
-		/// <value>The font weight.</value>
-		[Category("Font/Text")]
-		[Description("The font weight.")]
-		public FontWeight FontWeight {
-			get {
-				return this.fontWeight;
-			}
-			set {
-				if (this.fontWeight != value) {
-					this.fontWeight = value;
-					this.NotifyPropertyChanged("FontWeight");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the foreground color.
-		/// </summary>
-		/// <value>The foreground color.</value>
-		[Category("Colors")]
-		[Description("The foreground color.")]
-		public Color ForegroundColor {
-			get {
-				return this.foregroundColor;
-			}
-			set {
-				if (this.foregroundColor != value) {
-					this.foregroundColor = value;
-					this.NotifyPropertyChanged("ForegroundColor");
-				}
-			}
-		}
+	/// <summary>
+	/// The foreground color.
+	/// </summary>
+	[Category("Colors")]
+	[Description("The foreground color.")]
+	public Color ForegroundColor {
+		get => _foregroundColor;
+		set => SetProperty(ref _foregroundColor, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the text.
-		/// </summary>
-		/// <value>The text.</value>
-		[Category("Font/Text")]
-		[Description("The text.")]
-		public string Text {
-			get {
-				return this.text;
-			}
-			set {
-				if (this.text != value) {
-					this.text = value;
-					this.NotifyPropertyChanged("Text");
-				}
-			}
-		}
-
+	/// <summary>
+	/// The text.
+	/// </summary>
+	[Category("Font/Text")]
+	[Description("The text.")]
+	public string Text {
+		get => _text;
+		set => SetProperty(ref _text, value);
 	}
 
 }

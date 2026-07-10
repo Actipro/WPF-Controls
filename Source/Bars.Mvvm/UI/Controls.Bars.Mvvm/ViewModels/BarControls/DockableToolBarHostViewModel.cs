@@ -1,197 +1,134 @@
-﻿using ActiproSoftware.Windows.Themes;
-using System.Collections.ObjectModel;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a dockable toolbar host control.
+/// </summary>
+public class DockableToolBarHostViewModel : ObservableObjectBase, IHasTag {
+
+	private bool _canToolBarsFloat = true;
+	private VariantCollection? _controlVariants;
+	private double _lineSpacing = 1.0;
+	private double _toolBarItemSpacing = 1.0;
+	private double _toolBarSpacing = 1.0;
+	private BarControlTemplateSelector _itemContainerTemplateSelector = new();
+	private object? _tag;
+	private bool _toolBarsHaveGrippers = true;
+	private bool _toolBarsHaveOptionsButtons = true;
+	private UserInterfaceDensity _userInterfaceDensity = UserInterfaceDensity.Compact;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for a dockable toolbar host control.
+	/// Indicates whether toolbars can float.
 	/// </summary>
-	public class DockableToolBarHostViewModel : ObservableObjectBase, IHasTag {
+	/// <value>
+	/// <c>true</c> if toolbars can float; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool CanToolBarsFloat {
+		get => _canToolBarsFloat;
+		set => SetProperty(ref _canToolBarsFloat, value);
+	}
 
-		private bool canToolBarsFloat = true;
-		private VariantCollection controlVariants;
-		private double lineSpacing = 1.0;
-		private double toolBarItemSpacing = 1.0;
-		private double toolBarSpacing = 1.0;
-		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
-		private object tag;
-		private bool toolBarsHaveGrippers = true;
-		private bool toolBarsHaveOptionsButtons = true;
-		private UserInterfaceDensity userInterfaceDensity = UserInterfaceDensity.Compact;
+	/// <summary>
+	/// The collection of variant size transitions to apply to all controls within the toolbars.
+	/// </summary>
+	public VariantCollection? ControlVariants {
+		get => _controlVariants;
+		set => SetProperty(ref _controlVariants, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.
+	/// </summary>
+	public BarControlTemplateSelector ItemContainerTemplateSelector {
+		get => _itemContainerTemplateSelector;
+		set => SetProperty(ref _itemContainerTemplateSelector, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether toolbars can float.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if toolbars can float; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool CanToolBarsFloat {
-			get => canToolBarsFloat;
-			set {
-				if (canToolBarsFloat != value) {
-					canToolBarsFloat = value;
-					this.NotifyPropertyChanged(nameof(CanToolBarsFloat));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the collection of variant size transitions to apply to all controls within the toolbars.
-		/// </summary>
-		/// <value>The collection of variant size transitions to apply to all controls within the toolbars.</value>
-		public VariantCollection ControlVariants {
-			get => controlVariants;
-			set {
-				if (controlVariants != value) {
-					controlVariants = value;
-					this.NotifyPropertyChanged(nameof(ControlVariants));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.
-		/// </summary>
-		/// <value>The <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.</value>
-		public BarControlTemplateSelector ItemContainerTemplateSelector {
-			get => itemContainerTemplateSelector;
-			set {
-				if (itemContainerTemplateSelector != value) {
-					itemContainerTemplateSelector = value;
-					this.NotifyPropertyChanged(nameof(ItemContainerTemplateSelector));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the spacing between lines.
-		/// </summary>
-		/// <value>
-		/// The spacing between lines.
-		/// The default value is <c>1.0</c>.
-		/// </value>
-		public double LineSpacing {
-			get => lineSpacing;
-			set {
-				if (lineSpacing != value) {
-					lineSpacing = value;
-					this.NotifyPropertyChanged(nameof(LineSpacing));
-				}
-			}
-		}
+	/// <summary>
+	/// The spacing between lines.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>1.0</c>.
+	/// </value>
+	public double LineSpacing {
+		get => _lineSpacing;
+		set => SetProperty(ref _lineSpacing, value);
+	}
 
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the amount of spacing between toolbar items.
-		/// </summary>
-		/// <value>
-		/// The amount of spacing between toolbar items.
-		/// The default value is <c>1.0</c>.
-		/// </value>
-		public double ToolBarItemSpacing {
-			get => toolBarItemSpacing;
-			set {
-				if (toolBarItemSpacing != value) {
-					toolBarItemSpacing = value;
-					this.NotifyPropertyChanged(nameof(ToolBarItemSpacing));
-				}
-			}
-		}
+	/// <summary>
+	/// The amount of spacing between toolbar items.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>1.0</c>.
+	/// </value>
+	public double ToolBarItemSpacing {
+		get => _toolBarItemSpacing;
+		set => SetProperty(ref _toolBarItemSpacing, value);
+	}
 
-		/// <summary>
-		/// Gets the collection of dockable toolbars managed by the host.
-		/// </summary>
-		/// <value>The collection of dockable toolbars managed by the host.</value>
-		public ObservableCollection<DockableToolBarViewModel> ToolBars { get; } = new ObservableCollection<DockableToolBarViewModel>();
-		
-		/// <summary>
-		/// Gets or sets the spacing between toolbars on the same line.
-		/// </summary>
-		/// <value>
-		/// The spacing between toolbars on the same line.
-		/// The default value is <c>1.0</c>.
-		/// </value>
-		public double ToolBarSpacing {
-			get => toolBarSpacing;
-			set {
-				if (toolBarSpacing != value) {
-					toolBarSpacing = value;
-					this.NotifyPropertyChanged(nameof(ToolBarSpacing));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the default setting for whether toolbars have grippers.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if toolbars have grippers by default; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool ToolBarsHaveGrippers {
-			get => toolBarsHaveGrippers;
-			set {
-				if (toolBarsHaveGrippers != value) {
-					toolBarsHaveGrippers = value;
-					this.NotifyPropertyChanged(nameof(ToolBarsHaveGrippers));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the default setting for whether toolbars have options buttons.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if toolbars have options buttons by default; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool ToolBarsHaveOptionsButtons {
-			get => toolBarsHaveOptionsButtons;
-			set {
-				if (toolBarsHaveOptionsButtons != value) {
-					toolBarsHaveOptionsButtons = value;
-					this.NotifyPropertyChanged(nameof(ToolBarsHaveOptionsButtons));
-				}
-			}
-		}
-		
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[{this.ToolBars.Count} toolbars]";
-		}
+	/// <summary>
+	/// The collection of dockable toolbars managed by the host.
+	/// </summary>
+	public ObservableCollection<DockableToolBarViewModel> ToolBars { get; } = [];
 
-		/// <summary>
-		/// Gets or sets a <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
-		/// </summary>
-		/// <value>
-		/// A <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
-		/// The default value is <see cref="UserInterfaceDensity.Compact"/>.
-		/// </value>
-		public UserInterfaceDensity UserInterfaceDensity {
-			get => userInterfaceDensity;
-			set {
-				if (userInterfaceDensity != value) {
-					userInterfaceDensity = value;
-					this.NotifyPropertyChanged(nameof(UserInterfaceDensity));
-				}
-			}
-		}
+	/// <summary>
+	/// The spacing between toolbars on the same line.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>1.0</c>.
+	/// </value>
+	public double ToolBarSpacing {
+		get => _toolBarSpacing;
+		set => SetProperty(ref _toolBarSpacing, value);
+	}
 
+	/// <summary>
+	/// The default setting for whether toolbars have grippers.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if toolbars have grippers by default; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool ToolBarsHaveGrippers {
+		get => _toolBarsHaveGrippers;
+		set => SetProperty(ref _toolBarsHaveGrippers, value);
+	}
+
+	/// <summary>
+	/// The default setting for whether toolbars have options buttons.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if toolbars have options buttons by default; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool ToolBarsHaveOptionsButtons {
+		get => _toolBarsHaveOptionsButtons;
+		set => SetProperty(ref _toolBarsHaveOptionsButtons, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[{ToolBars.Count} toolbars]";
+
+	/// <summary>
+	/// A <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="UserInterfaceDensity.Compact"/>.
+	/// </value>
+	public UserInterfaceDensity UserInterfaceDensity {
+		get => _userInterfaceDensity;
+		set => SetProperty(ref _userInterfaceDensity, value);
 	}
 
 }

@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellTreeListBoxIntro.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -48,9 +48,9 @@
 
 		</StackPanel>
 	</sampleBrowser:ProductItemControl.SideBarContent>
-	
+
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 		<shell:ShellTreeListBox x:Name="treeListBox" RootSpecialFolderKind="Default" MaxWidth="{StaticResource SampleThinMaxWidth}" />
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

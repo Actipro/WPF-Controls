@@ -22,7 +22,7 @@ The [MathHelper](xref:@ActiproUIRoot.Data.MathHelper) class provides static meth
 | [Max](xref:@ActiproUIRoot.Data.MathHelper.Max*) Method | Returns the largest value from the specified numbers. |
 | [Min](xref:@ActiproUIRoot.Data.MathHelper.Min*) Method | Returns the smallest value from the specified numbers. |
 | [Range](xref:@ActiproUIRoot.Data.MathHelper.Range*) Method | Returns the specified value constrained to the specified minimum and maximum values. |
-| [Round](xref:@ActiproUIRoot.Data.MathHelper.Round*) Method | Rounds a double value based on the specified [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode), which supports several methods of rounding the value. |
+| [Round](xref:@ActiproUIRoot.Data.MathHelper.Round*) Method | Rounds a double value based on the specified [RoundMode](xref:ActiproSoftware.RoundMode), which supports several methods of rounding the value. |
 
 ## The NullableExtension Class
 
@@ -53,7 +53,7 @@ The [ValidationHelper](xref:@ActiproUIRoot.Data.ValidationHelper) class provides
 This sample code shows how to use the [ValidateDoubleIsPercentage](xref:@ActiproUIRoot.Data.ValidationHelper.ValidateDoubleIsPercentage*) method to validate that the dependency property value is a valid percentage.
 
 ```csharp
-public static DependencyProperty PercentProperty = 
-	DependencyProperty.Register("Percent", typeof(double), typeof(MyClass), new FrameworkPropertyMetadata(0.0), 
+public static DependencyProperty PercentProperty =
+	DependencyProperty.Register("Percent", typeof(double), typeof(MyClass), new FrameworkPropertyMetadata(0.0),
 	new ValidateValueCallback(ValidationHelper.ValidateDoubleIsPercentage));
 ```

@@ -1,40 +1,37 @@
-﻿using System;
-using ActiproSoftware.Text.Languages.DotNet;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
+using ActiproSoftware.Text.Languages.DotNet;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags {
-	
-	/// <summary>
-	/// Provides IntelliPrompt parameter info data for the child <c>C#</c> language.
-	/// </summary>
-	public class TranslatedCSharpParameterInfoProvider : CSharpParameterInfoProvider {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-			
-		/// <summary>
-		/// Creates an <see cref="IDotNetContext"/> for the caret's offset in the specified <see cref="IEditorView"/>.
-		/// </summary>
-		/// <param name="view">The <see cref="IEditorView"/> to examine.</param>
-		/// <returns>An <see cref="IDotNetContext"/> for the caret's offset in the specified <see cref="IEditorView"/>.</returns>
-		protected override IDotNetContext CreateContext(IEditorView view) {
-			if (view == null)
-				throw new ArgumentNullException("view");
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags;
 
-			var parseData = view.SyntaxEditor.Document.ParseData as ParentParseData;
-			if (parseData != null) {
-				// Ensure that the offset is within a child language section
-				if (parseData.TranslateEditorToGenerated(view.Selection.EndSnapshotOffset).HasValue) {
-					return new TranslatedCSharpContextFactory(parseData.TranslateEditorToGenerated).CreateContext(
-						view.Selection.EndSnapshotOffset, DotNetContextKind.ContainingInvocation);
-				}
+/// <summary>
+/// Provides IntelliPrompt parameter info data for the child <c>C#</c> language.
+/// </summary>
+public class TranslatedCSharpParameterInfoProvider : CSharpParameterInfoProvider {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	protected override IDotNetContext? CreateContext(IEditorView view) {
+		#if NET
+		ArgumentNullException.ThrowIfNull(view);
+		#else
+		if (view is null)
+			throw new ArgumentNullException(nameof(view));
+		#endif
+
+		var parseData = view.SyntaxEditor.Document.ParseData as ParentParseData;
+		if (parseData is not null) {
+			// Ensure that the offset is within a child language section
+			if (parseData.TranslateEditorToGenerated(view.Selection.EndSnapshotOffset).HasValue) {
+				return new TranslatedCSharpContextFactory(parseData.TranslateEditorToGenerated)
+					.CreateContext(view.Selection.EndSnapshotOffset, DotNetContextKind.ContainingInvocation);
 			}
-
-			return null;
 		}
-	
+
+		return null;
 	}
 
 }

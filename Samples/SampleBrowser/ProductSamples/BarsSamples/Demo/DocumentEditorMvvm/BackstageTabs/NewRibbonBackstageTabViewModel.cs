@@ -1,43 +1,40 @@
-﻿using ActiproSoftware.ProductSamples.BarsSamples.Common;
+using ActiproSoftware.ProductSamples.BarsSamples.Common;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
-using System.Windows.Input;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm {
+namespace ActiproSoftware.ProductSamples.BarsSamples.Demo.DocumentEditorMvvm;
+
+/// <summary>
+/// Represents a view model for a the "New" tab control within a ribbon backstage.
+/// </summary>
+public class NewRibbonBackstageTabViewModel : RibbonBackstageTabViewModel {
+
+	private readonly BarManager _barManager;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for a the "New" tab control within a ribbon backstage.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class NewRibbonBackstageTabViewModel : RibbonBackstageTabViewModel {
+	/// <param name="barManager">The <see cref="BarManager"/> associated with the view model.</param>
+	public NewRibbonBackstageTabViewModel(BarManager barManager) : base(BarControlKeys.BackstageTabNew, "New") {
+		_barManager = barManager ?? throw new ArgumentNullException(nameof(barManager));
 
-		private readonly BarManager barManager;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NewRibbonBackstageTabViewModel"/> class.
-		/// </summary>
-		/// <param name="barManager">The <see cref="BarManager"/> associated with the view model.</param>
-		public NewRibbonBackstageTabViewModel(BarManager barManager)
-			: base(BarControlKeys.BackstageTabNew, "New") {
-
-			this.barManager = barManager;
-
-			this.LargeImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Large);
-			this.SmallImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Small);
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="BarManager.NewBlankDocumentCommand"/>
-		public ICommand NewBlankDocumentCommand => barManager?.NewBlankDocumentCommand;
-
-		/// <inheritdoc cref="BarManager.NewDefaultDocumentCommand"/>
-		public ICommand NewDefaultDocumentCommand => barManager?.NewDefaultDocumentCommand;
-
+		LargeImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Large);
+		SmallImageSource = barManager.ImageProvider.GetImageSource(BarControlKeys.BackstageTabNew, BarImageSize.Small);
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarManager.NewBlankDocumentCommand"/>
+	public ICommand NewBlankDocumentCommand
+		=> _barManager.NewBlankDocumentCommand;
+
+	/// <inheritdoc cref="BarManager.NewDefaultDocumentCommand"/>
+	public ICommand NewDefaultDocumentCommand
+		=> _barManager.NewDefaultDocumentCommand;
 
 }

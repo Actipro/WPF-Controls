@@ -1,118 +1,80 @@
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace ActiproSoftware.SampleBrowser.Utilities.ColorBrowser {
+namespace ActiproSoftware.SampleBrowser.Utilities.ColorBrowser;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	public static readonly RoutedCommand CopyName = new(nameof(CopyName), typeof(MainControl));
+	public static readonly RoutedCommand CopyStaticResourceBrush = new(nameof(CopyStaticResourceBrush), typeof(MainControl));
+	public static readonly RoutedCommand CopyStaticResourceColor = new(nameof(CopyStaticResourceColor), typeof(MainControl));
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-		public static RoutedCommand CopyName = new RoutedCommand("CopyName", typeof(MainControl));
-		public static RoutedCommand CopyStaticResourceBrush = new RoutedCommand("CopyStaticResourceBrush", typeof(MainControl));
-		public static RoutedCommand CopyStaticResourceColor = new RoutedCommand("CopyStaticResourceColor", typeof(MainControl));
+		// Register class command bindings
+		CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(ApplicationCommands.Copy, OnCopyExecuted, OnCopyCanExecute));
+		CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(CopyName, OnCopyNameExecuted, OnCopyCanExecute));
+		CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(CopyStaticResourceBrush, OnCopyStaticResourceBrushExecuted, OnCopyCanExecute));
+		CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(CopyStaticResourceColor, OnCopyStaticResourceColorExecuted, OnCopyCanExecute));
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-
-			// Register class command bindings
-			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(System.Windows.Input.ApplicationCommands.Copy, OnCopyExecuted, OnCopyCanExecute));
-			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(MainControl.CopyName, OnCopyNameExecuted, OnCopyCanExecute));
-			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(MainControl.CopyStaticResourceBrush, OnCopyStaticResourceBrushExecuted, OnCopyCanExecute));
-			CommandManager.RegisterClassCommandBinding(typeof(ListBox), new CommandBinding(MainControl.CopyStaticResourceColor, OnCopyStaticResourceColorExecuted, OnCopyCanExecute));
+	private static void OnCopyCanExecute(object sender, CanExecuteRoutedEventArgs e) {
+		if ((sender is ListBox listBox) && (listBox.SelectedIndex != -1)) {
+			e.CanExecute = true;
+			e.Handled = true;
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	}
 
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> needs to determine whether it can execute.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="CanExecuteRoutedEventArgs"/> that contains the event data.</param>
-		private static void OnCopyCanExecute(object sender, CanExecuteRoutedEventArgs e) {
-			ListBox listBox = sender as ListBox;
-			if (null != listBox && -1 != listBox.SelectedIndex && !BrowserInteropHelper.IsBrowserHosted) {
-				e.CanExecute = true;
-				e.Handled = true;
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> is executed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">An <see cref="ExecutedRoutedEventArgs"/> that contains the event data.</param>
-		private static void OnCopyExecuted(object sender, ExecutedRoutedEventArgs e) {
-			ListBox listBox = sender as ListBox;
-			if (null != listBox && -1 != listBox.SelectedIndex && !BrowserInteropHelper.IsBrowserHosted) {
-				NamedColor namedColor = listBox.SelectedItem as NamedColor;
-				if (null == namedColor)
-					return;
-
+	private static void OnCopyExecuted(object sender, ExecutedRoutedEventArgs e) {
+		if ((sender is ListBox listBox) && (listBox.SelectedIndex != -1)) {
+			if (listBox.SelectedItem is NamedColor namedColor) {
 				Clipboard.SetText(namedColor.Color.ToString());
 				e.Handled = true;
 			}
 		}
+	}
 
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> is executed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">An <see cref="ExecutedRoutedEventArgs"/> that contains the event data.</param>
-		private static void OnCopyNameExecuted(object sender, ExecutedRoutedEventArgs e) {
-			ListBox listBox = sender as ListBox;
-			if (null != listBox && -1 != listBox.SelectedIndex && !BrowserInteropHelper.IsBrowserHosted) {
-				NamedColor namedColor = listBox.SelectedItem as NamedColor;
-				if (null == namedColor)
-					return;
-
+	private static void OnCopyNameExecuted(object sender, ExecutedRoutedEventArgs e) {
+		if ((sender is ListBox listBox) && (listBox.SelectedIndex != -1)) {
+			if (listBox.SelectedItem is NamedColor namedColor) {
 				Clipboard.SetText(namedColor.Name);
 				e.Handled = true;
 			}
 		}
+	}
 
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> is executed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">An <see cref="ExecutedRoutedEventArgs"/> that contains the event data.</param>
-		private static void OnCopyStaticResourceBrushExecuted(object sender, ExecutedRoutedEventArgs e) {
-			ListBox listBox = sender as ListBox;
-			if (null != listBox && -1 != listBox.SelectedIndex && !BrowserInteropHelper.IsBrowserHosted) {
-				NamedColor namedColor = listBox.SelectedItem as NamedColor;
-				if (null == namedColor || !namedColor.IsSystemColor)
-					return;
-
-				Clipboard.SetText(String.Format("{{StaticResource {{x:Static SystemColors.{0}BrushKey}}}}", namedColor.Name));
+	private static void OnCopyStaticResourceBrushExecuted(object sender, ExecutedRoutedEventArgs e) {
+		if ((sender is ListBox listBox) && (listBox.SelectedIndex != -1)) {
+			if (listBox.SelectedItem is NamedColor { IsSystemColor: true } namedColor) {
+				Clipboard.SetText(string.Format("{{StaticResource {{x:Static SystemColors.{0}BrushKey}}}}", namedColor.Name));
 				e.Handled = true;
 			}
 		}
-	
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> is executed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">An <see cref="ExecutedRoutedEventArgs"/> that contains the event data.</param>
-		private static void OnCopyStaticResourceColorExecuted(object sender, ExecutedRoutedEventArgs e) {
-			ListBox listBox = sender as ListBox;
-			if (null != listBox && -1 != listBox.SelectedIndex && !BrowserInteropHelper.IsBrowserHosted) {
-				NamedColor namedColor = listBox.SelectedItem as NamedColor;
-				if (null == namedColor || !namedColor.IsSystemColor)
-					return;
+	}
 
-				Clipboard.SetText(String.Format("{{StaticResource {{x:Static SystemColors.{0}ColorKey}}}}", namedColor.Name));
+	/// <summary>
+	/// Occurs when the <see cref="RoutedCommand"/> is executed.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private static void OnCopyStaticResourceColorExecuted(object sender, ExecutedRoutedEventArgs e) {
+		if ((sender is ListBox listBox) && (listBox.SelectedIndex != -1)) {
+			if (listBox.SelectedItem is NamedColor { IsSystemColor: true } namedColor) {
+				Clipboard.SetText(string.Format("{{StaticResource {{x:Static SystemColors.{0}ColorKey}}}}", namedColor.Name));
 				e.Handled = true;
 			}
 		}

@@ -1,92 +1,64 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning {
+/// <summary>
+/// Provides the user control for adding a task.
+/// </summary>
+public partial class AddTaskControl : UserControl {
+
+	private bool _isAddMode;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the user control for adding a task.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class AddTaskControl : UserControl {
+	public AddTaskControl() {
+		InitializeComponent();
+	}
 
-		private bool isAddMode;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private void OnAddListButtonClick(object sender, RoutedEventArgs e) {
+		nameTextBox.Text = "New task";
 
-		/// <summary>
-		/// Initializes an instance of the <c>AddTaskControl</c> class.
-		/// </summary>
-		public AddTaskControl() {
-			InitializeComponent();
+		IsAddMode = true;
+
+		nameTextBox.SelectAll();
+		nameTextBox.Focus();
+	}
+
+	private void OnCancelButtonClick(object sender, RoutedEventArgs e)
+		=> IsAddMode = false;
+
+	private void OnSaveButtonClick(object sender, RoutedEventArgs e) {
+		var list = DataContext as TaskListModel;
+		list?.AddTaskCommand.Execute(nameTextBox.Text);
+
+		IsAddMode = false;
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Indicates whether the control is in add mode.
+	/// </summary>
+	public bool IsAddMode {
+		get => _isAddMode;
+		set {
+			if (_isAddMode == value)
+				return;
+
+			_isAddMode = value;
+
+			addListButton.Visibility = (_isAddMode ? Visibility.Collapsed : Visibility.Visible);
+			inputPanel.Visibility = (_isAddMode ? Visibility.Visible : Visibility.Collapsed);
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to the event.</param>
-		private void OnAddListButtonClick(object sender, RoutedEventArgs e) {
-			nameTextBox.Text = "New task";
-
-			this.IsAddMode = true;
-
-			nameTextBox.SelectAll();
-			nameTextBox.Focus();
-		}
-		
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to the event.</param>
-		private void OnCancelButtonClick(object sender, RoutedEventArgs e) {
-			this.IsAddMode = false;
-		}
-		
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains data related to the event.</param>
-		private void OnSaveButtonClick(object sender, RoutedEventArgs e) {
-			var list = this.DataContext as TaskListModel;
-			if (list != null)
-				list.AddTaskCommand.Execute(nameTextBox.Text);
-
-			this.IsAddMode = false;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets whether the control is in add mode.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the control is in add mode.
-		/// </value>
-		public bool IsAddMode {
-			get {
-				return isAddMode;
-			}
-			set {
-				if (isAddMode == value)
-					return;
-
-				isAddMode = value;
-
-				addListButton.Visibility = (isAddMode ? Visibility.Collapsed : Visibility.Visible);
-				inputPanel.Visibility = (isAddMode ? Visibility.Visible : Visibility.Collapsed);
-			}
-		}
-
 	}
 
 }

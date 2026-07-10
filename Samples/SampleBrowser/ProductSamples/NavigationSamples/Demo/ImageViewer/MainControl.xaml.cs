@@ -1,73 +1,60 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using Microsoft.Win32;
-
-#if WPF
+using System.Windows.Media.Imaging;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
-#endif
 
-namespace ActiproSoftware.ProductSamples.NavigationSamples.Demo.ImageViewer {
+namespace ActiproSoftware.ProductSamples.NavigationSamples.Demo.ImageViewer;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Add command bindings
+		CommandBindings.Add(new CommandBinding(ApplicationCommands.Open, OnFileOpenCommandExecute));
+	}
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Add command bindings
-			this.CommandBindings.Add(new CommandBinding(System.Windows.Input.ApplicationCommands.Open, fileOpenCommand_Execute));
-		}
+	private void OnFileOpenCommandExecute(object sender, ExecutedRoutedEventArgs e) {
+		// Open a document
+		var dialog = new OpenFileDialog {
+			Filter = "Images Files (*.bmp; *.gif; *.jpg; *.jpeg; *.png; *.tif; *.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tif;*.tiff"
+		};
+		if (dialog.ShowDialog() == true) {
+			ImageSource? imageSource = null;
+			try {
+				var decoder = BitmapDecoder.Create(dialog.OpenFile(), BitmapCreateOptions.None, BitmapCacheOption.None);
+				imageSource = decoder.Frames[0];
+			}
+			catch (Exception) { } // Ignore
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// COMMAND HANDLERS
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+			if (imageSource is null) {
+				MessageBox.Show("Unable to open image file.", "ZoomContentControl", MessageBoxButton.OK, MessageBoxImage.Error);
+				return;
+			}
 
-		/// <summary>
-		/// Occurs when the <see cref="RoutedCommand"/> is executed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">An <see cref="ExecutedRoutedEventArgs"/> that contains the event data.</param>
-		private void fileOpenCommand_Execute(object sender, ExecutedRoutedEventArgs e) {
-			// Open a document
-			OpenFileDialog dialog = new OpenFileDialog();
-			dialog.Filter = "Images Files (*.bmp; *.gif; *.jpg; *.jpeg; *.png; *.tif; *.tiff)|*.bmp;*.gif;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
-			if (dialog.ShowDialog() == true) {
-				ImageSource imageSource = null;
-				try {
-					BitmapDecoder decoder = BitmapDecoder.Create(dialog.OpenFile(), BitmapCreateOptions.None, BitmapCacheOption.None);
-					imageSource = decoder.Frames[0];
-				}
-				catch (Exception) {
-					// No-op
-				}
-
-				if (null == imageSource) {
-					MessageBox.Show("Unable to open image file.", "ZoomContentControl", MessageBoxButton.OK, MessageBoxImage.Error);
-					return;
-				}
-
-				this.zoomContentControl.BeginUpdate();
-				try {
-					this.image.Source = imageSource;
-					this.zoomContentControl.UpdateLayout();
-					this.zoomContentControl.ZoomToFit();
-				}
-				finally {
-					this.zoomContentControl.EndUpdate(false);
-				}
+			zoomContentControl.BeginUpdate();
+			try {
+				image.Source = imageSource;
+				zoomContentControl.UpdateLayout();
+				zoomContentControl.ZoomToFit();
+			}
+			finally {
+				zoomContentControl.EndUpdate(animate: false);
 			}
 		}
 	}
+
 }

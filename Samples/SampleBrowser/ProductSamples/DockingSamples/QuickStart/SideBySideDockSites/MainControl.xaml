@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.SideBySideDockSites.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,7 +13,7 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 				    By default, dock sites are completely self-contained.
-				    This means that you can have two DockSite controls in the same element hierarchy and 
+				    This means that you can have two DockSite controls in the same element hierarchy and
 				    docking windows belonging to one can't be moved into other, and vice versa.
 				    <LineBreak /><LineBreak />
 				    Note that dock sites can optionally be linked to each other, which does allow for docking windows to be moved between the linked dock sites.

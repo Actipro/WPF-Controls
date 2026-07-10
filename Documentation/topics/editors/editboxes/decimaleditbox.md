@@ -1,0 +1,150 @@
+---
+title: "DecimalEditBox"
+page-title: "DecimalEditBox - Editors Edit Boxes"
+order: 11
+---
+# DecimalEditBox
+
+The [DecimalEditBox](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBox) control allows for the input of a `Decimal` (floating-point number) value.  It uses the [DecimalPicker](../pickers/Decimalpicker.md) control in its popup.
+
+![Screenshot](../images/doubleeditbox-opened.png)
+
+## Common Capabilities
+
+Each of the features listed in the table below describe functionality that is common to most edit boxes.  Please see the [Edit Box Basics](parteditboxbase.md) topic for details on each of these options and how to set them.
+
+<table>
+<thead>
+
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>Has a spinner</td>
+<td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
+</tr>
+
+<tr>
+<td>Has a popup</td>
+<td>Yes, and can be hidden or its picker appearance customized.</td>
+</tr>
+
+<tr>
+<td>Null value allowed</td>
+<td>Yes, and can be prevented.</td>
+</tr>
+
+<tr>
+<td>Read-only mode supported</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td>Non-editable mode supported</td>
+<td>Yes.</td>
+</tr>
+
+<tr>
+<td>Has multiple parts</td>
+<td>No.</td>
+</tr>
+
+<tr>
+<td>Placeholder text supported</td>
+<td>Yes, and overlays the control.</td>
+</tr>
+
+<tr>
+<td>Header content supported</td>
+<td>Yes, and appears above the control.</td>
+</tr>
+
+<tr>
+<td>Default spin behavior</td>
+<td>No wrap.</td>
+</tr>
+
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
+</tbody>
+</table>
+
+## Number Formats
+
+[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Format) property and affect the textual value display.  These formats are recommended:
+
+- `"C"` (currency)
+- `"F"`
+- `"Fx"`, where x is the number of decimal places (e.g., `"F1"`)
+- `"G"`
+- `"N"`
+- `"Nx"`, where x is the number of decimal places (e.g., `"N1"`)
+- `"P"` (percentage)
+
+Composite numeric formats are also supported, such as:
+
+- `"{0:0.0#} ft"`
+
+## Minimum and Maximum Values
+
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Minimum) properties.
+
+No values can be committed that lay outside of the inclusive range created by those properties.
+
+## Parts and Incrementing/Decrementing
+
+This edit box has a single part.
+
+When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
+
+Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.LargeChange) property.
+
+The [CanSnapToChangePrecision](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointNumberPartEditBoxBase`1.CanSnapToChangePrecision) property determines whether the value should be snapped to the precision of the incremental change value prior to applying the increment.
+
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
+
+## Rounding Decimal Places
+
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointNumberPartEditBoxBase`1.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `8` but can be set to any value in the range `0` to `15`.  Or set the value to `null` to prevent rounding.
+
+## Built-in Picker Kinds
+
+This edit box has multiple built-in picker kinds that can be set via the [DecimalEditBox](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBox).[PickerKind](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBox.PickerKind) property, which is of type [DecimalEditBoxPickerKind](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBoxPickerKind).
+
+The default value in is [Calculator](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBoxPickerKind.Calculator).
+
+The `Default` picker kind renders using a radial slider, while the `Calculator` picker kind utilizes the [Calculator](../other-controls/calculator.md) control.
+
+![Screenshot](../images/doubleeditbox-opened-calculator.png)
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, the allowed input is limited to numeric text based on the current format.
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
+
+## Sample XAML
+
+This control can be placed within any other XAML container control, such as a `Page` or `Panel` with this sort of XAML:
+
+```xaml
+<editors:DecimalEditBox Value="{Binding Path=YourVMProperty, Mode=TwoWay}" />
+```
+
+## Sample XAML for Currency Input
+
+![Screenshot](../images/doubleeditbox-currency.png)
+
+This control is great for currency input, which can be implemented with this XAML:
+
+```xaml
+<editors:DecimalEditBox Format="C" Value="{Binding Path=YourVMProperty, Mode=TwoWay}" />
+```

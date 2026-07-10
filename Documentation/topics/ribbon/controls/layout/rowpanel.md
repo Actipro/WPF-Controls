@@ -33,10 +33,6 @@ As an example say there were three items in a `RowPanel` and the `ThreeRowItemSo
 
 Just like in the two-row variant, `RowPanel` uses complex logic to determine where to split up items between the three rows so that the minimum total width is used.
 
-### Configuring Sort Orders in the Designer
-
-Both the two- and three-row variant item sort orders can be configured visually using the task pane for `RowPanel` in the [designer](../../designer-interaction.md).
-
 ## Child Controls
 
 `RowPanel` can contain any child control however [ButtonGroup](buttongroup.md) controls are most often its direct children since those controls have the capability of grouping controls together.  This feature is especially useful when the [ButtonGroup](buttongroup.md) contains items like [Button](../interactive/button.md) controls since a border is drawn around the group.

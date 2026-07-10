@@ -1,13 +1,13 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootSampleControl"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.ChartTypes.Bar.MainControl"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
-	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes" 
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	>
 
 	<sampleBrowser:ProductItemControl.Resources>
@@ -72,7 +72,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=xAxis, Path=BarSpacing}">
 						<grids:PropertyModel.ValueTemplate>
 							<DataTemplate>
-								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarSpacings}" SelectedItem="{Binding Value}" 
+								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarSpacings}" SelectedItem="{Binding Value}"
 										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
 							</DataTemplate>
 						</grids:PropertyModel.ValueTemplate>
@@ -80,7 +80,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=xAxis, Path=BarGroupSpacing}">
 						<grids:PropertyModel.ValueTemplate>
 							<DataTemplate>
-								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarGroupSpacings}" SelectedItem="{Binding Value}" 
+								<ComboBox ItemsSource="{Binding ElementName=rootSampleControl, Path=BarGroupSpacings}" SelectedItem="{Binding Value}"
 										  Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" />
 							</DataTemplate>
 						</grids:PropertyModel.ValueTemplate>

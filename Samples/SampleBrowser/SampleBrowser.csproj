@@ -4,21 +4,32 @@
 		<OutputType>WinExe</OutputType>
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
 
-		<TargetFrameworks>net8.0-windows</TargetFrameworks>
+		<TargetFramework Label="Visual Studio 2022 Target" Condition="'$(VisualStudioVersion)' == '17.0'">net8.0-windows</TargetFramework>
+		<TargetFramework Label="Default Target" Condition="'$(TargetFramework)' == ''">net10.0-windows</TargetFramework>
+
+		<Version>26.1.0$(PreReleaseTagWithDash)</Version>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
 
 		<AssemblyName>SampleBrowser</AssemblyName>
+		<Product>WPF Controls Sample Browser</Product>
+		<Title>WPF Controls Sample Browser</Title>
+		<Description>Sample application to demo features of the Actipro WPF controls.</Description>
+
+		<AssemblyTitle>$(Title)</AssemblyTitle>
+
+		<Company>Actipro Software LLC</Company>
+		<Authors>Actipro Software LLC</Authors>
+		<Copyright>Copyright (c) 2007-2026 Actipro Software LLC</Copyright>
+
 		<ApplicationIcon>Images\Icons\Actipro.ico</ApplicationIcon>
 		<ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-
-		<Version>25.1.4.0</Version>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -57,7 +68,7 @@
 		<Reference Include="System.Printing" />
 	</ItemGroup>
 
-	<ItemGroup Label=".NET References" Condition="'$(TargetFramework.TrimEnd(`0123456789`))' != 'net'">
+	<ItemGroup Label=".NET References" Condition="'$(TargetFramework)' == 'net8.0-windows' or '$(TargetFramework)' == 'net9.0-windows'">
 		<PackageReference Include="System.Drawing.Common" Version="4.7.2" />
 	</ItemGroup>
 

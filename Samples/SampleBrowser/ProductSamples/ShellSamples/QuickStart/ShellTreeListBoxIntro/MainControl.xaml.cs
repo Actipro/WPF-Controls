@@ -1,35 +1,31 @@
-﻿namespace ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellTreeListBoxIntro {
+namespace ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellTreeListBoxIntro;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc/>
+	public override void NotifyUnloaded() {
+		base.NotifyUnloaded();
 
-		/// <summary>
-		/// Notifies the UI that it has been unloaded.
-		/// </summary>
-		public override void NotifyUnloaded() {
-			base.NotifyUnloaded();
-			
-			// Dispose any unmanaged resources held by the shell instances now that the UI is closing
-			treeListBox.DisposeShellInstances();
-		}
-
+		// Dispose any unmanaged resources held by the shell instances now that the UI is closing
+		treeListBox.DisposeShellInstances();
 	}
 
 }

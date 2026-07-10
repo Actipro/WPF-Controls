@@ -48,7 +48,7 @@
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
 								<Border Margin="0,0,7,3" CornerRadius="3" BorderThickness="1" BorderBrush="#808080" Background="#20ffffff" Padding="5,2" Opacity="0.75">
-									<TextBlock Text="{Binding Code}" />
+									<TextBlock Text="{Binding Alpha3Code}" />
 								</Border>
 							</DataTemplate>
 						</ItemsControl.ItemTemplate>

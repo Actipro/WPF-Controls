@@ -1,25 +1,23 @@
-﻿namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling {
+﻿namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling;
+
+/// <summary>
+/// Specifies an employee status.
+/// </summary>
+public enum EmployeeStatus {
 
 	/// <summary>
-	/// Specifies an employee status.
+	/// Unavailable.
 	/// </summary>
-	public enum EmployeeStatus {
+	Unavailable = 0,
 
-		/// <summary>
-		/// Unavailable.
-		/// </summary>
-		Unavailable = 0,
+	/// <summary>
+	/// Idle while on break.
+	/// </summary>
+	Idle = 1,
 
-		/// <summary>
-		/// Idle while on break.
-		/// </summary>
-		Idle = 1,
-
-		/// <summary>
-		/// Working.
-		/// </summary>
-		Working = 2,
-
-	}
+	/// <summary>
+	/// Working.
+	/// </summary>
+	Working = 2,
 
 }

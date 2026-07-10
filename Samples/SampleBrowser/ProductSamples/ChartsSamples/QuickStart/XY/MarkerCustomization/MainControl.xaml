@@ -1,9 +1,9 @@
-﻿<sampleBrowser:ProductItemControl 
-	x:Name="microQuickStartMarkerCustomizationUC" 
+<sampleBrowser:ProductItemControl
+	x:Name="microQuickStartMarkerCustomizationUC"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.MarkerCustomization.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
 	>

@@ -1,35 +1,33 @@
-﻿namespace ActiproSoftware.SampleBrowser {
+﻿namespace ActiproSoftware.SampleBrowser;
+
+/// <summary>
+/// Specifies the application overlay mode.
+/// </summary>
+public enum ApplicationOverlayMode {
 
 	/// <summary>
-	/// Specifies the application overlay mode.
+	/// The home Backstage for the application window.
 	/// </summary>
-	public enum ApplicationOverlayMode {
-		
-		/// <summary>
-		/// The home Backstage for the application window.
-		/// </summary>
-		HomeBackstage,
+	HomeBackstage,
 
-		/// <summary>
-		/// The release history Backstage for the application window.
-		/// </summary>
-		ReleaseHistoryBackstage,
-		
-		/// <summary>
-		/// The utilities Backstage for the application window.
-		/// </summary>
-		UtilitiesBackstage,
+	/// <summary>
+	/// The release history Backstage for the application window.
+	/// </summary>
+	ReleaseHistoryBackstage,
 
-		/// <summary>
-		/// The product item info Backstage for the application window.
-		/// </summary>
-		ProductItemInfoBackstage,
+	/// <summary>
+	/// The utilities Backstage for the application window.
+	/// </summary>
+	UtilitiesBackstage,
 
-		/// <summary>
-		/// An external sample is loading.
-		/// </summary>
-		ExternalSample,
+	/// <summary>
+	/// The product item info Backstage for the application window.
+	/// </summary>
+	ProductItemInfoBackstage,
 
-	}
+	/// <summary>
+	/// An external sample is loading.
+	/// </summary>
+	ExternalSample,
 
 }

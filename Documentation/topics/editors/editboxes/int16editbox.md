@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -78,12 +69,17 @@ Each of the features listed in the table below describe functionality that is co
 <td>No wrap.</td>
 </tr>
 
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
 </tbody>
 </table>
 
 ## Number Formats
 
-[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.Format) property and affect the textual value display.  These formats are recommended:
+[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Format) property and affect the textual value display.  These formats are recommended:
 
 - `"C0"` (currency without decimals)
 - `"D"`
@@ -93,13 +89,13 @@ Each of the features listed in the table below describe functionality that is co
 - `"X"` (uppercase hexadecimal)
 - `"x"` (lowercase hexadecimal)
 
-Basic custom numeric formats are also supported, such as:
+Composite numeric formats are also supported, such as:
 
-- `"0' days'"`
+- `"{0:0} days"`
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
@@ -109,29 +105,25 @@ This edit box has a single part.
 
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
 
-Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.LargeChange) property.
+Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.LargeChange) property.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Built-in Picker Kinds
 
 This edit box has multiple built-in picker kinds that can be set via the [Int16EditBox](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox).[PickerKind](xref:@ActiproUIRoot.Controls.Editors.Int16EditBox.PickerKind) property, which is of type [Int16EditBoxPickerKind](xref:@ActiproUIRoot.Controls.Editors.Int16EditBoxPickerKind).
 
-@if (wpf) {
-
-The default value in WPF is `Calculator`.
-
-}
-
-@if (winrt) {
-
-The default value in UWP is `Default`.
-
-}
+The default value is [Calculator](xref:@ActiproUIRoot.Controls.Editors.Int16EditBoxPickerKind.Calculator).
 
 The `Default` picker kind renders using a radial slider, while the `Calculator` picker kind utilizes the [Calculator](../other-controls/calculator.md) control.
 
 ![Screenshot](../images/int32editbox-opened-calculator.png)
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, the allowed input is limited to numeric text based on the current format.
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML
 

@@ -1,286 +1,215 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-#if WINRT
-using ActiproSoftware.UI.Xaml;
-using ActiproSoftware.UI.Xaml.Controls.Charts;
-using ActiproSoftware.UI.Xaml.Controls.Charts.Palettes;
-using Windows.UI;
-#else
-using System.Windows.Media;
-using ActiproSoftware.Windows;
+using ActiproSoftware.Extensions;
 using ActiproSoftware.Windows.Controls.Charts;
 using ActiproSoftware.Windows.Controls.Charts.Palettes;
-#endif
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball {
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball;
+
+/// <summary>
+/// The view model for the baseball demo.
+/// </summary>
+public class BaseballViewModel : ObservableObjectBase {
+
+	private static readonly Random _random = new();
+	private static readonly int EndingYear = 2018;
+	private static readonly int StartingYear = 2010;
+
+	private Batter? _selectedTeamOneBatter;
+	private Batter? _selectedTeamTwoBatter;
+	private ISeriesStyleSelector? _styleSelector;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// The view model for the baseball demo.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class BaseballViewModel : ObservableObjectBase {
+	public BaseballViewModel() {
+		BuildTeamOneBatters();
+		BuildTeamTwoBatters();
+	}
 
-		private static readonly Random random = new Random();
-		private static readonly int EndingYear = 2018;
-		private static readonly int StartingYear = 2010;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		private Batter selectedTeamOneBatter;
-		private Batter selectedTeamTwoBatter;
-		private ISeriesStyleSelector styleSelector;
-		private readonly ObservableCollection<Batter> teamOneBatters = new ObservableCollection<Batter>();
-		private readonly ObservableCollection<Batter> teamTwoBatters = new ObservableCollection<Batter>();
+	private static IEnumerable<Batter> BuildBatters(List<string> teamNames, List<Color> teamColors, List<string> firstNames, List<string> lastNames) {
+		Debug.Assert(lastNames.Count >= firstNames.Count, "There must be at least as many last name values as first name values.");
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BaseballViewModel" /> class.
-		/// </summary>
-		public BaseballViewModel() {
-			BuildBatters();
+		var teams = BuildTeams(teamNames, teamColors);
+		var unsortedBatters = new HashSet<Batter>();
+		for (var i = 0; i < firstNames.Count; i++) {
+			var firstName = firstNames[i];
+			var lastName = lastNames[i];
+			var batter = Batter.BuildRandomBatter(firstName, lastName, StartingYear, EndingYear);
+			var teamIndex = _random.Next(0, teams.Count);
+			batter.Team = teams[teamIndex];
+			unsortedBatters.Add(batter);
 		}
 
-		#endregion OBJECT
+		return unsortedBatters.OrderBy(b => b.OrderedName);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private static List<Team> BuildTeams(List<string> names, List<Color> colors) {
+		Debug.Assert(colors.Count >= names.Count, "There must be at least as many colors as there are teams.");
 
-		/// <summary>
-		/// Builds the batters.
-		/// </summary>
-		private void BuildBatters() {
-			BuildTeamOneBatters();
-			BuildTeamTwoBatters();
+		var teams = new List<Team>();
+		for (var i = 0; i < names.Count; i++) {
+			var team = new Team {
+				Name = names[i],
+				Color = colors[i]
+			};
+			teams.Add(team);
 		}
 
-		/// <summary>
-		/// Builds the team one teams.
-		/// </summary>
-		/// <returns>The team one teams.</returns>
-		private IEnumerable<Team> BuildTeamOneTeams() {
-			var teams = new List<Team>();
-			for (int i = 0; i < TeamOneNames.Count(); i++) {
-				var team = new Team();
-				team.Name = TeamOneNames.ElementAt(i);
-				team.Color = TeamOneColors.ElementAt(i);
-				teams.Add(team);
-			}
+		return teams;
+	}
 
-			return teams;
-		}
+	/// <summary>
+	/// Builds the team one batters.
+	/// </summary>
+	private void BuildTeamOneBatters() {
+		TeamOneBatters.AddRange(BuildBatters(
+			TeamOneNames.ToList(),
+			TeamOneColors.ToList(),
+			TeamOneBatterFirstNames.ToList(),
+			TeamOneBatterLastNames.ToList()
+		));
 
-		/// <summary>
-		/// Builds the team two teams.
-		/// </summary>
-		/// <returns>The team two teams.</returns>
-		private IEnumerable<Team> BuildTeamTwoTeams() {
-			var teams = new List<Team>();
-			for (int i = 0; i < TeamTwoNames.Count(); i++) {
-				var team = new Team();
-				team.Name = TeamTwoNames.ElementAt(i);
-				team.Color = TeamTwoColors.ElementAt(i);
-				teams.Add(team);
-			}
+		SelectedTeamOneBatter = TeamOneBatters[0];
+	}
 
-			return teams;
-		}
+	/// <summary>
+	/// Builds the team two batters.
+	/// </summary>
+	private void BuildTeamTwoBatters() {
+		TeamTwoBatters.AddRange(BuildBatters(
+			TeamTwoNames.ToList(),
+			TeamTwoColors.ToList(),
+			TeamTwoBatterFirstNames.ToList(),
+			TeamTwoBatterLastNames.ToList()
+		));
 
-		/// <summary>
-		/// Builds the team one batters.
-		/// </summary>
-		private void BuildTeamOneBatters() {
-			var teamOneTeams = BuildTeamOneTeams();
-			var unsortedBatters = new List<Batter>();
-			for (int i = 0; i < TeamOneBatterFirstNames.Count(); i++) {
-				string firstName = TeamOneBatterFirstNames.ElementAt(i);
-				string lastName = TeamOneBatterLastNames.ElementAt(i);
-				var batter = Batter.BuildRandomBatter(firstName, lastName, StartingYear, EndingYear);
-				int teamIndex = random.Next(0, teamOneTeams.Count());
-				batter.Team = teamOneTeams.ElementAt(teamIndex);
-				unsortedBatters.Add(batter);
-			}
+		SelectedTeamTwoBatter = TeamTwoBatters[0];
+	}
 
-			foreach (var batter in unsortedBatters.OrderBy(batter => batter.OrderedName)) {
-				TeamOneBatters.Add(batter);
-			}
+	/// <summary>
+	/// The team one batter first names.
+	/// </summary>
+	private static IEnumerable<string> TeamOneBatterFirstNames
+		=> ["Allan", "Christian", "Guy", "Jaime", "Lonnie", "Jessie", "Hugh", "Kelly", "Allan", "Max", "Lance", "Clayton", "Max", "Neil"];
 
-			SelectedTeamOneBatter = teamOneBatters[0];
-		}
+	/// <summary>
+	/// The team one batter last names.
+	/// </summary>
+	private static IEnumerable<string> TeamOneBatterLastNames
+		=> ["Brobst", "Crespin", "Hursh", "Stenzel", "Iser", "Orenstein", "Loth", "Dunworth", "Atha", "Sardina", "Stimage", "Mally", "Kinslow", "Lenser"];
 
-		/// <summary>
-		/// Builds the team two batters.
-		/// </summary>
-		private void BuildTeamTwoBatters() {
-			var teamTwoTeams = BuildTeamTwoTeams();
-			var unsortedBatters = new List<Batter>();
-			for (int i = 0; i < TeamTwoBatterFirstNames.Count(); i++) {
+	/// <summary>
+	/// The team two batter first names.
+	/// </summary>
+	private static IEnumerable<string> TeamTwoBatterFirstNames
+		=> ["Julio", "Kelly", "Ted", "Darryl", "Jamie", "Lonnie", "Kurt", "Neil", "Darren", "Christian", "Erik", "Nelson", "Matthew", "Ted"];
 
-				string firstName = TeamTwoBatterFirstNames.ElementAt(i);
-				string lastName = TeamTwoBatterLastNames.ElementAt(i);
-				var batter = Batter.BuildRandomBatter(firstName, lastName, StartingYear, EndingYear);
-				int teamIndex = random.Next(0, teamTwoTeams.Count());
-				batter.Team = teamTwoTeams.ElementAt(teamIndex);
-				unsortedBatters.Add(batter);
-			}
+	/// <summary>
+	/// The team two batter last names.
+	/// </summary>
+	private static IEnumerable<string> TeamTwoBatterLastNames
+		=> ["Milbourn", "Catoe", "Dulmage", "Yocom", "Loken", "Coursey", "Weekly", "Spells", "Pazos", "Lucus", "Coursey", "Wiggin", "Geddie", "Sedlak"];
 
-			foreach (var batter in unsortedBatters.OrderBy(batter => batter.OrderedName)) {
-				TeamTwoBatters.Add(batter);
-			}
+	/// <summary>
+	/// The team one colors.
+	/// </summary>
+	private static IEnumerable<Color> TeamOneColors {
+		get => [
+			Color.FromArgb(255, 135, 188, 222),
+			Color.FromArgb(255, 219, 68, 39),
+			Color.FromArgb(255, 162, 161, 177),
+			Color.FromArgb(255, 0, 134, 166)
+		];
+	}
 
-			SelectedTeamTwoBatter = teamTwoBatters[0];
-		}
+	/// <summary>
+	/// The team two colors.
+	/// </summary>
+	private static IEnumerable<Color> TeamTwoColors {
+		get => [
+			Color.FromArgb(255, 3, 136, 89),
+			Color.FromArgb(255, 242, 167, 42),
+			Color.FromArgb(255, 81, 69, 141),
+			Color.FromArgb(255, 131, 71, 123)
+		];
+	}
 
-		/// <summary>
-		/// Gets the team one batter first names.
-		/// </summary>
-		/// <value>The team one batter first names.</value>
-		private IEnumerable<string> TeamOneBatterFirstNames {
-			get { return new List<string> { "Allan", "Christian", "Guy", "Jaime", "Lonnie", "Jessie", "Hugh", "Kelly", "Allan", "Max", "Lance", "Clayton", "Max", "Neil" }; }
-		}
+	/// <summary>
+	/// The team one names.
+	/// </summary>
+	private static IEnumerable<string> TeamOneNames
+		=> ["Chattanooga Jellyfish", "Reno Catfish", "Chicopee Plankton", "Scranton Mermen"];
 
-		/// <summary>
-		/// Gets the team one batter last names.
-		/// </summary>
-		/// <value>The team one batter last names.</value>
-		private IEnumerable<string> TeamOneBatterLastNames {
-			get { return new List<string> { "Brobst", "Crespin", "Hursh", "Stenzel", "Iser", "Orenstein", "Loth", "Dunworth", "Atha", "Sardina", "Stimage", "Mally", "Kinslow", "Lenser" }; }
-		}
+	/// <summary>
+	/// The team two names.
+	/// </summary>
+	private static IEnumerable<string> TeamTwoNames
+		=> ["Des Moines Poodles", "Roanoke Squirrels", "Dodge City Wombats", "Cupertino Meercats"];
 
-		/// <summary>
-		/// Gets the team two batter first names.
-		/// </summary>
-		/// <value>The team two batter first names.</value>
-		private IEnumerable<string> TeamTwoBatterFirstNames {
-			get { return new List<string> { "Julio", "Kelly", "Ted", "Darryl", "Jamie", "Lonnie", "Kurt", "Neil", "Darren", "Christian", "Erik", "Nelson", "Matthew", "Ted" }; }
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Gets the team two batter last names.
-		/// </summary>
-		/// <value>The team two batter last names.</value>
-		private IEnumerable<string> TeamTwoBatterLastNames {
-			get { return new List<string> { "Milbourn", "Catoe", "Dulmage", "Yocom", "Loken", "Coursey", "Weekly", "Spells", "Pazos", "Lucus", "Coursey", "Wiggin", "Geddie", "Sedlak" }; }
-		}
-
-		/// <summary>
-		/// Gets the team one colors.
-		/// </summary>
-		/// <value>The team one colors.</value>
-		private static IEnumerable<Color> TeamOneColors {
-			get {
-				return new List<Color>{
-					Color.FromArgb(255, 135, 188, 222), 
-					Color.FromArgb(255, 219, 68, 39), 
-					Color.FromArgb(255, 162, 161, 177), 
-					Color.FromArgb(255, 0, 134, 166)};
-			}
-		}
-
-		/// <summary>
-		/// Gets the team two colors.
-		/// </summary>
-		/// <value>The team two colors.</value>
-		private static IEnumerable<Color> TeamTwoColors {
-			get {
-				return new List<Color> { 
-				Color.FromArgb(255, 3, 136, 89), 
-				Color.FromArgb(255, 242, 167, 42), 
-				Color.FromArgb(255, 81, 69, 141), 
-				Color.FromArgb(255, 131, 71, 123) };
-			}
-		}
-
-		/// <summary>
-		/// Gets the team one names.
-		/// </summary>
-		/// <value>The team one names.</value>
-		private IEnumerable<string> TeamOneNames {
-			get { return new List<string> {"Chattanooga Jellyfish", "Reno Catfish", "Chicopee Plankton", "Scranton Mermen"}; }
-		}
-
-		/// <summary>
-		/// Gets the team two names.
-		/// </summary>
-		/// <value>The team two names.</value>
-		private IEnumerable<string> TeamTwoNames {
-			get { return new List<string> {"Des Moines Poodles", "Roanoke Squirrels", "Dodge City Wombats", "Cupertino Meercats"}; }
-		}
-
-		#endregion NON-PUBLIC PROCEDURES
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the selected team one batter.
-		/// </summary>
-		/// <value>The selected team one batter.</value>
-		public Batter SelectedTeamOneBatter {
-			get { return selectedTeamOneBatter; }
-			set {
-				selectedTeamOneBatter = value;
-				NotifyPropertyChanged("SelectedTeamOneBatter");
+	/// <summary>
+	/// The selected team one batter.
+	/// </summary>
+	public Batter? SelectedTeamOneBatter {
+		get => _selectedTeamOneBatter;
+		set {
+			if (SetProperty(ref _selectedTeamOneBatter, value))
 				UpdateStyleSelector();
-			}
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets the selected team two batter.
-		/// </summary>
-		/// <value>The selected team two batter.</value>
-		public Batter SelectedTeamTwoBatter {
-			get { return selectedTeamTwoBatter; }
-			set {
-				selectedTeamTwoBatter = value;
-				NotifyPropertyChanged("SelectedTeamTwoBatter");
+	/// <summary>
+	/// The selected team two batter.
+	/// </summary>
+	public Batter? SelectedTeamTwoBatter {
+		get => _selectedTeamTwoBatter;
+		set {
+			if (SetProperty(ref _selectedTeamTwoBatter, value))
 				UpdateStyleSelector();
-			}
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets the style selector.
-		/// </summary>
-		/// <value>The style selector.</value>
-		public ISeriesStyleSelector StyleSelector {
-			get { return styleSelector; }
-			set {
-				styleSelector = value;
-				NotifyPropertyChanged("StyleSelector");
-			}
-		}
+	/// <summary>
+	/// The style selector.
+	/// </summary>
+	public ISeriesStyleSelector? StyleSelector {
+		get => _styleSelector;
+		set => SetProperty(ref _styleSelector, value);
+	}
 
-		/// <summary>
-		/// Gets the team one batters.
-		/// </summary>
-		/// <value>The team one batters.</value>
-		public ObservableCollection<Batter> TeamOneBatters {
-			get { return teamOneBatters; }
-		}
+	/// <summary>
+	/// The team one batters.
+	/// </summary>
+	public ObservableCollection<Batter> TeamOneBatters { get; } = [];
 
-		/// <summary>
-		/// Gets the team two batters.
-		/// </summary>
-		/// <value>The team two batters.</value>
-		public ObservableCollection<Batter> TeamTwoBatters {
-			get { return teamTwoBatters; }
-		}
+	/// <summary>
+	/// The team two batters.
+	/// </summary>
+	public ObservableCollection<Batter> TeamTwoBatters { get; } = [];
 
-		/// <summary>
-		/// Updates the style selector.
-		/// </summary>
-		private void UpdateStyleSelector() {
-			if (selectedTeamOneBatter == null || selectedTeamTwoBatter == null)
-				return;
-
-			var selector = new SeriesPaletteStyleSelector();
-			selector.Palette = new Palette(selectedTeamOneBatter.Team.Color, selectedTeamTwoBatter.Team.Color);
+	/// <summary>
+	/// Updates the style selector.
+	/// </summary>
+	private void UpdateStyleSelector() {
+		if (
+			SelectedTeamOneBatter?.Team is { } teamOne
+			&& SelectedTeamTwoBatter?.Team is { } teamTwo
+		) {
+			var selector = new SeriesPaletteStyleSelector {
+				Palette = new Palette(teamOne.Color, teamTwo.Color)
+			};
 			StyleSelector = selector;
 		}
-
-		#endregion PUBLIC PROCEDURES
 	}
+
 }

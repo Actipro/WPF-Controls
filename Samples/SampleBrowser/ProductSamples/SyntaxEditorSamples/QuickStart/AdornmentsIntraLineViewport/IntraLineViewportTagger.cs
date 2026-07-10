@@ -1,82 +1,70 @@
-﻿using System;
-using System.Windows;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineViewport {
-    
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsIntraLineViewport;
+
+/// <summary>
+/// Provides <see cref="IntraLineViewportTag"/> objects over text ranges.
+/// </summary>
+public class IntraLineViewportTagger : CollectionTagger<IIntraLineSpacerTag> {
+
+	private IEditorView? _view;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Provides <see cref="IntraLineViewportTag"/> objects over text ranges.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class IntraLineViewportTagger : CollectionTagger<IIntraLineSpacerTag> {
+	/// <param name="view">The view to which this manager is attached.</param>
+	public IntraLineViewportTagger(IEditorView view) : base("IntraLineViewportTagger", orderings: null, view.SyntaxEditor.Document, isForLanguage: true) {
+		_view = view ?? throw new ArgumentNullException(nameof(view));
+		_view.VisualElement.SizeChanged += OnViewSizeChanged;
+	}
 
-		private IEditorView			view;
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>IntraLineViewportTagger</c> class.
-		/// </summary>
-		/// <param name="view">The view to which this manager is attached.</param>
-		public IntraLineViewportTagger(IEditorView view) : base("IntraLineViewportTagger", null, (view != null ? view.SyntaxEditor.Document : null), true) {
-			if (view == null)
-				throw new ArgumentNullException("view");
-
-			// Initialize
-			this.view = view;
-			this.view.VisualElement.SizeChanged += OnViewSizeChanged;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the size of the element changes.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="SizeChangedEventArgs"/> that contains the event data.</param>
-		private void OnViewSizeChanged(object sender, SizeChangedEventArgs e) {
+	private void OnViewSizeChanged(object sender, SizeChangedEventArgs e) {
+		if (_view is not null) {
 			foreach (var tagRange in this) {
 				var tag = (IntraLineViewportTag)tagRange.Tag;
 				var oldBottomMargin = tag.BottomMargin;
 
-				tag.UpdateBottomMargin(view);
+				tag.UpdateBottomMargin(_view);
 
-				if (oldBottomMargin != tag.BottomMargin)
-					this.RaiseTagsChanged(new TagsChangedEventArgs(tagRange.VersionRange.Translate(view.CurrentSnapshot)));
+				if (oldBottomMargin != tag.BottomMargin) {
+					var changedSnapshotRange = tagRange.VersionRange.Translate(_view.CurrentSnapshot);
+					if (changedSnapshotRange.HasValue)
+						RaiseTagsChanged(new TagsChangedEventArgs(changedSnapshotRange.Value));
+				}
 			}
 		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the tagger is closed.
-		/// </summary>
-		protected override void OnClosed() {
-			// Detach from the view
-			if (view != null) {
-				view.VisualElement.SizeChanged -= OnViewSizeChanged;
-				view = null;
-			}
-
-			// Call the base method
-			base.OnClosed();
-		}
-		
-		/// <summary>
-		/// Raises the <see cref="TagsChanged"/> event.
-		/// </summary>
-		/// <param name="e">A <c>TagsChangedEventArgs</c> that contains the event data.</param>
-		public void RaiseTagsChanged(TagsChangedEventArgs e) {
-			this.OnTagsChanged(e);
-		}
-
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	protected override void OnClosed() {
+		// Detach from the view
+		if (_view is not null) {
+			_view.VisualElement.SizeChanged -= OnViewSizeChanged;
+			_view = null;
+		}
+
+		base.OnClosed();
+	}
+
+	/// <summary>
+	/// Raises the <see cref="TagsChanged"/> event.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void RaiseTagsChanged(TagsChangedEventArgs e)
+		=> OnTagsChanged(e);
 
 }

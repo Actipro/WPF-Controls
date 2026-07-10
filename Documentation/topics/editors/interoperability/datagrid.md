@@ -32,6 +32,7 @@ The Interop assembly provides a set of classes that derive from `DataGridBoundCo
 | [DataGridCornerRadiusColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridCornerRadiusColumn) | Represents a property editor that uses a [CornerRadiusEditBox](xref:@ActiproUIRoot.Controls.Editors.CornerRadiusEditBox) for editing `CornerRadius` property values. |
 | [DataGridDateColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDateColumn) | Represents a property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Controls.Editors.DateEditBox) for editing `DateTime` (date-only) property values. |
 | [DataGridDateTimeColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDateTimeColumn) | Represents a property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime` property values. |
+| [DataGridDecimalColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDecimalColumn) | Represents a property editor that uses a [DecimalEditBox](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBox) for editing `Decimal` property values. |
 | [DataGridDoubleColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridDoubleColumn) | Represents a property editor that uses a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) for editing `Double` property values. |
 | [DataGridEnumColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridEnumColumn) | Represents a property editor that uses a [EnumEditBox](xref:@ActiproUIRoot.Controls.Editors.EnumEditBox) for editing `Enum` property values. |
 | [DataGridGuidColumn](xref:@ActiproUIRoot.Controls.Editors.Interop.DataGrid.DataGridGuidColumn) | Represents a property editor that uses a [GuidEditBox](xref:@ActiproUIRoot.Controls.Editors.GuidEditBox) for editing `Guid` property values. |
@@ -70,6 +71,7 @@ xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
 		<datagrideditors:DataGridCornerRadiusColumn Binding="{Binding CornerRadiusValue}" Header="CornerRadius" />
 		<datagrideditors:DataGridDateColumn Binding="{Binding DateValue}" Header="Date" />
 		<datagrideditors:DataGridDateTimeColumn Binding="{Binding DateTimeValue}" Header="DateTime" />
+		<datagrideditors:DataGridDecimalColumn Binding="{Binding DecimalValue}" Header="Decimal" />
 		<datagrideditors:DataGridDoubleColumn Binding="{Binding DoubleValue}" Header="Double" />
 		<datagrideditors:DataGridEnumColumn Binding="{Binding EnumValue}" Header="Enum" />
 		<datagrideditors:DataGridGuidColumn Binding="{Binding GuidValue}" Header="Guid" />

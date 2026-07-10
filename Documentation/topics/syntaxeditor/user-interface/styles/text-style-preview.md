@@ -31,3 +31,5 @@ The control is extremely simple to use.  Simply place a [TextStylePreview](xref:
 The [HighlightingStyle](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextStylePreview.HighlightingStyle) property supports data binding so it can be bound to a `Selector`'s selected item or other data source.
 
 The [HighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextStylePreview.HighlightingStyleRegistry) property can be set if you are using an alternate [IHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.IHighlightingStyleRegistry), meaning one that is not the default [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor.Highlighting.AmbientHighlightingStyleRegistry).  That ensures that it displays resolved values properly.
+
+The [Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.TextStylePreview.Text) property defaults to a series of characters that are appropriate for most programming scenarios, but can be changed if customized preview text is desired.

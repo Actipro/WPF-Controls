@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="userControl"
 	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbActionButtons.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,11 +8,11 @@
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	>
-	
+
 	<sampleBrowser:ProductItemControl.DataContext>
 		<XmlDataProvider Source="/ProductSamples/NavigationSamples/Common/Breadcrumb/ShellItem/Data.xml" />
 	</sampleBrowser:ProductItemControl.DataContext>
-	
+
 	<sampleBrowser:ProductItemControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -41,7 +41,7 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 
 	<StackPanel Style="{StaticResource SamplePanelWideStyle}">
-		
+
 		<navigation:Breadcrumb x:Name="breadcrumb"
 							   RootItem="{Binding XPath=ShellItem}"
 							   ItemContainerStyle="{StaticResource BreadcrumbItemStyle}"

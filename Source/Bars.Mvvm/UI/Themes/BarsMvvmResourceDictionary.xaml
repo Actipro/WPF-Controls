@@ -186,6 +186,7 @@
 			Key="{Binding Key}"
 			KeyTipText="{Binding KeyTipText}"
 			Label="{Binding Label}"
+			StaysOpenOnClick="{Binding StaysOpenOnClick}"
 			Tag="{Binding Tag}"
 			Title="{Binding Title}"
 			UseLargeSize="{Binding UseLargeMenuItem}"
@@ -466,6 +467,7 @@
 
 		<bars:BarSeparator
 			Tag="{Binding Tag}"
+			StandaloneToolBarSeparatorMode="{Binding StandaloneToolBarSeparatorMode}"
 			Visibility="{Binding IsVisible, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
 			/>
 	</ItemContainerTemplate>

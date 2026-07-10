@@ -1,119 +1,67 @@
-﻿using System;
-using System.Windows.Media;
-using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.AlbumViewer;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.AlbumViewer {
-	
+/// <summary>
+/// Stores brush data.
+/// </summary>
+public class AlbumData : ObservableObjectBase {
+
+	private string? _albumName;
+	private string? _artistName;
+	private ImageSource? _imageSource;
+	private double _rating;
+	private string? _releaseDate;
+	private int _trackCount;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Stores brush data.
+	/// The album name.
 	/// </summary>
-	public class AlbumData : ObservableObjectBase {
+	public string? AlbumName {
+		get => _albumName;
+		set => SetProperty(ref _albumName, value);
+	}
 
-		private string		albumName;
-		private string		artistName;
-		private ImageSource	imageSource;
-		private double		rating;
-		private string		releaseDate;
-		private int			trackCount;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The artist name.
+	/// </summary>
+	public string? ArtistName {
+		get => _artistName;
+		set => SetProperty(ref _artistName, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the album name.
-		/// </summary>
-		/// <value>The album name.</value>
-		public string AlbumName { 
-			get {
-				return this.albumName;
-			}
-			set {
-				if (this.albumName != value) {
-					this.albumName = value;
-					this.NotifyPropertyChanged("AlbumName");
-				}
-			}
-		}
+	/// <summary>
+	/// The image source.
+	/// </summary>
+	public ImageSource? ImageSource {
+		get => _imageSource;
+		set => SetProperty(ref _imageSource, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the artist name.
-		/// </summary>
-		/// <value>The artist name.</value>
-		public string ArtistName {
-			get {
-				return this.artistName;
-			}
-			set {
-				if (this.artistName != value) {
-					this.artistName = value;
-					this.NotifyPropertyChanged("ArtistName");
-				}
-			}
-		}
+	/// <summary>
+	/// The rating.
+	/// </summary>
+	public double Rating {
+		get => _rating;
+		set => SetProperty(ref _rating, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the image source.
-		/// </summary>
-		/// <value>The image source.</value>
-		public ImageSource ImageSource {
-			get {
-				return this.imageSource;
-			}
-			set {
-				this.imageSource = value;
-				this.NotifyPropertyChanged("ImageSource");
-			}
-		}
+	/// <summary>
+	/// The release date.
+	/// </summary>
+	public string? ReleaseDate {
+		get => _releaseDate;
+		set => SetProperty(ref _releaseDate, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the rating.
-		/// </summary>
-		/// <value>The rating.</value>
-		public double Rating {
-			get {
-				return this.rating;
-			}
-			set {
-				if (this.rating != value) {
-					this.rating = value;
-					this.NotifyPropertyChanged("Rating");
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the release date.
-		/// </summary>
-		/// <value>The release date.</value>
-		public string ReleaseDate {
-			get {
-				return this.releaseDate;
-			}
-			set {
-				if (this.releaseDate != value) {
-					this.releaseDate = value;
-					this.NotifyPropertyChanged("ReleaseDate");
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the track count.
-		/// </summary>
-		/// <value>The track count.</value>
-		public int TrackCount {
-			get {
-				return this.trackCount;
-			}
-			set {
-				if (this.trackCount != value) {
-					this.trackCount = value;
-					this.NotifyPropertyChanged("TrackCount");
-				}
-			}
-		}
-
+	/// <summary>
+	/// The track count.
+	/// </summary>
+	public int TrackCount {
+		get => _trackCount;
+		set => SetProperty(ref _trackCount, value);
 	}
 
 }

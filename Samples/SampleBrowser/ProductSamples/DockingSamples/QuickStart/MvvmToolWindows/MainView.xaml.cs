@@ -1,21 +1,19 @@
-﻿namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows;
+
+/// <summary>
+/// Provides the main view.
+/// </summary>
+public partial class MainView {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main view.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainView {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainView</c> class.
-		/// </summary>
-		public MainView() {
-			InitializeComponent();
-		}
-		
+	public MainView() {
+		InitializeComponent();
 	}
 
 }
