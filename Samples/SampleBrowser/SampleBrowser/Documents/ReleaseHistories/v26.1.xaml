@@ -43,6 +43,7 @@
 				<sampleBrowser:BulletContentControl Content="Improved positioning, sizing, and scaling of non-hosted popups when used within mixed DPI environments." />
 				<sampleBrowser:BulletContentControl Content="Improved resizing of WindowControl to allow dragging the right, bottom, and left edges outside the bounds of the parent panel." />
 				<sampleBrowser:BulletContentControl Content="Updated the DockingWindow.StandardMdiBounds property to be set in a way that doesn't cause bindings to be lost." />
+				<sampleBrowser:BulletContentControl Content="Updated how dock guide and drop target adornments are removed after use." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where the pressing the Escape key would not cancel a drag operation while using hosted floating windows." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
