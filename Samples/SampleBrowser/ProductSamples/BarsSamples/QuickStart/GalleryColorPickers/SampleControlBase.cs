@@ -4,6 +4,7 @@ using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Media;
+using System.Runtime.CompilerServices;
 using System.Windows.Media.Imaging;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
@@ -499,12 +500,7 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 	/// </summary>
 	public ImageSource? FontColorSmallImageSource {
 		get => _fontColorSmallImageSource;
-		set {
-			if (_fontColorSmallImageSource != value) {
-				_fontColorSmallImageSource = value;
-				NotifyPropertyChanged(nameof(FontColorSmallImageSource));
-			}
-		}
+		set => SetProperty(ref _fontColorSmallImageSource, value);
 	}
 
 	/// <summary>
@@ -516,13 +512,6 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 				"More Colors", MessageBoxButton.OK, MessageBoxImage.Information);
 		});
 	}
-
-	/// <summary>
-	/// Raises the <see cref="PropertyChanged"/> event.
-	/// </summary>
-	/// <param name="propertyName">The name of the changed property.</param>
-	protected virtual void NotifyPropertyChanged(string? propertyName)
-		=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 	/// <summary>
 	/// Handles a change in one of the individual property values on <see cref="Options"/>.
@@ -538,10 +527,10 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 		}
 		else if (args.PropertyName == nameof(OptionsViewModel.UseCustomColors)) {
 			// Notify that dependent properties have also changed
-			NotifyPropertyChanged(nameof(FontColorItems));
-			NotifyPropertyChanged(nameof(FontColorItemsColumnCount));
-			NotifyPropertyChanged(nameof(FontColorItemsWithAutomatic));
-			NotifyPropertyChanged(nameof(TextHighlightColorItems));
+			OnPropertyChanged(nameof(FontColorItems));
+			OnPropertyChanged(nameof(FontColorItemsColumnCount));
+			OnPropertyChanged(nameof(FontColorItemsWithAutomatic));
+			OnPropertyChanged(nameof(TextHighlightColorItems));
 		}
 	}
 
@@ -563,6 +552,20 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 			RefreshTextHighlightColorSmallImageSource();
 		}
 	}
+
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+		=> OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+		=> PropertyChanged?.Invoke(this, e);
 
 	/// <summary>
 	/// The options associated with this control.
@@ -590,6 +593,32 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 			},
 			cancelPreviewAction: _ => SetPreviewColor(Colors.Transparent)
 		);
+	}
+
+	/// <summary>
+	/// Called from a property setter to change the backing field's value and raise
+	/// <see cref="PropertyChanged"/> notification events if the new value is not equal to the current value.
+	/// </summary>
+	/// <typeparam name="T">The type of the property that changed.</typeparam>
+	/// <param name="field">The backing field that holds the property's value, which may be updated.</param>
+	/// <param name="newValue">The new property value.</param>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	/// <returns>
+	/// <c>true</c> if the property was changed; otherwise, <c>false</c>.
+	/// </returns>
+	protected bool SetProperty<T>(
+		#if NET
+		[NotNullIfNotNull(nameof(newValue))]
+		#endif
+		ref T field, T newValue, [CallerMemberName] string? propertyName = null) {
+		// IMPORTANT NOTE: This method is replicated over multiple classes and edits must be kept in sync
+		if (!EqualityComparer<T>.Default.Equals(field, newValue)) {
+			field = newValue;
+			OnPropertyChanged(propertyName);
+			return true;
+		}
+
+		return false;
 	}
 
 	/// <summary>
@@ -633,12 +662,7 @@ public abstract class SampleControlBase : UserControl, INotifyPropertyChanged {
 	/// </summary>
 	public ImageSource? TextHighlightColorSmallImageSource {
 		get => _textHighlightColorSmallImageSource;
-		set {
-			if (_textHighlightColorSmallImageSource != value) {
-				_textHighlightColorSmallImageSource = value;
-				NotifyPropertyChanged(nameof(TextHighlightColorSmallImageSource));
-			}
-		}
+		set => SetProperty(ref _textHighlightColorSmallImageSource, value);
 	}
 
 }

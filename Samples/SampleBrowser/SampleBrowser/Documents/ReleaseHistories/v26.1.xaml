@@ -56,10 +56,12 @@
 				<sampleBrowser:BulletContentControl Content="Updated checkboard patterns used behind transparent colors to use new CheckerboardBackgroundPrimaryBrushKey and CheckerboardBackgroundSecondaryBrushKey resources which include appropriate defaults for dark themes." />
 				<sampleBrowser:BulletContentControl Content="Updated date-related edit boxes to use genitive month names when a numeric day part is present." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where typing NaN into DoubleEditBox or SingleEditBox while IsNaNAllowed is false would coerce the value to the maximum instead of treating it as invalid input." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with all editors where a change in the IsNullAllowed property value would not force the Value property to be re-coerced." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated PropertyModelBase to implement IPropertyModel interface.  Refactored the derived CachedPropertyModelBase class as appropriate and deprecated several declarations on PropertyModelBase that were no longer necessary." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where TreeListBox and TreeListView expansion, selection, and filtering might not work correctly when data virtualization was enabled." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -94,6 +96,7 @@
 				<sampleBrowser:BulletContentControl Content="Merged the DisplayItemClassificationTypeProvider class into the BuiltInClassificationTypeProvider class." />
 				<sampleBrowser:BulletContentControl Content="Removed the Text assembly's DisposableObject class in favor of the DisposableObjectBase class in the Core assembly." />
 				<sampleBrowser:BulletContentControl Content="Refined the implementation of several core structures." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where dragging an unnormalized selection of text could show the incorrect mouse drop cursor." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -141,6 +144,7 @@
 				<sampleBrowser:BulletContentControl Content="Renamed the ActiproSoftware.Products namespace to ActiproSoftware.Properties." />
 				<sampleBrowser:BulletContentControl Content="Details for any breaking changes are in the 'Converting to v26.1' documentation topic." />
 				<sampleBrowser:BulletContentControl Content="Removed legacy XAML designer assemblies that are no longer supported by Visual Studio 2022 or higher." />
+				<sampleBrowser:BulletContentControl Content="To ensure a consistent API, all classes that implement INotifyPropertyChanged that do not derive from ObservableObjectBase have deprecated the NotifyPropertyChanged method in favor of new OnPropertyChanged and SetProperty methods that match ObservableObjectBase." />
 			</StackPanel>
 
 

@@ -1,5 +1,6 @@
 using ActiproSoftware.Windows.Input;
 using Microsoft.Win32;
+using System.Runtime.CompilerServices;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
 namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ApplicationMenu;
@@ -37,13 +38,6 @@ public partial class MainControl : INotifyPropertyChanged {
 	// --------------------------------------------------------------------------------------------------
 	// NON-PUBLIC PROCEDURES
 	// --------------------------------------------------------------------------------------------------
-
-	/// <summary>
-	/// Raises the <see cref="PropertyChanged"/> event.
-	/// </summary>
-	/// <param name="propertyName">The name of the changed property.</param>
-	private void NotifyPropertyChanged(string propertyName)
-		=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 	/// <summary>
 	/// Occurs when the <see cref="ApplicationCommands.Open"/> RoutedCommand is executed.
@@ -85,16 +79,51 @@ public partial class MainControl : INotifyPropertyChanged {
 	}
 
 	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+		=> OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+		=> PropertyChanged?.Invoke(this, e);
+
+	/// <summary>
+	/// Called from a property setter to change the backing field's value and raise
+	/// <see cref="PropertyChanged"/> notification events if the new value is not equal to the current value.
+	/// </summary>
+	/// <typeparam name="T">The type of the property that changed.</typeparam>
+	/// <param name="field">The backing field that holds the property's value, which may be updated.</param>
+	/// <param name="newValue">The new property value.</param>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	/// <returns>
+	/// <c>true</c> if the property was changed; otherwise, <c>false</c>.
+	/// </returns>
+	protected bool SetProperty<T>(
+		#if NET
+		[NotNullIfNotNull(nameof(newValue))]
+		#endif
+		ref T field, T newValue, [CallerMemberName] string? propertyName = null) {
+
+		if (!EqualityComparer<T>.Default.Equals(field, newValue)) {
+			field = newValue;
+			OnPropertyChanged(propertyName);
+			return true;
+		}
+
+		return false;
+	}
+
+	/// <summary>
 	/// Indicates if most menu items will use a large size.
 	/// </summary>
 	public bool UseLargeSize {
 		get => _useLargeSize;
-		set {
-			if (_useLargeSize != value) {
-				_useLargeSize = value;
-				NotifyPropertyChanged(nameof(UseLargeSize));
-			}
-		}
+		set => SetProperty(ref _useLargeSize, value);
 	}
 
 }

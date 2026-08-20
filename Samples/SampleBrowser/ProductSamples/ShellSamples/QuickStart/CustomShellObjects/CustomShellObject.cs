@@ -57,34 +57,19 @@ public class CustomShellObject : ShellObjectBase {
 	/// <inheritdoc/>
 	public override ImageSource? ExtraLargeIcon {
 		get => _extraLargeIcon;
-		set {
-			if (_extraLargeIcon != value) {
-				_extraLargeIcon = value;
-				NotifyPropertyChanged(nameof(ExtraLargeIcon));
-			}
-		}
+		set => SetProperty(ref _extraLargeIcon, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? ExtraLargeIconOverlay {
 		get => _extraLargeIconOverlay;
-		set {
-			if (_extraLargeIconOverlay != value) {
-				_extraLargeIconOverlay = value;
-				NotifyPropertyChanged(nameof(ExtraLargeIconOverlay));
-			}
-		}
+		set => SetProperty(ref _extraLargeIconOverlay, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? ExtraLargeThumbnail {
 		get => _extraLargeThumbnail;
-		set {
-			if (_extraLargeThumbnail != value) {
-				_extraLargeThumbnail = value;
-				NotifyPropertyChanged(nameof(ExtraLargeThumbnail));
-			}
-		}
+		set => SetProperty(ref _extraLargeThumbnail, value);
 	}
 
 	/// <inheritdoc/>
@@ -94,78 +79,43 @@ public class CustomShellObject : ShellObjectBase {
 	/// <inheritdoc/>
 	public override ImageSource? LargeIcon {
 		get => _largeIcon;
-		set {
-			if (_largeIcon != value) {
-				_largeIcon = value;
-				NotifyPropertyChanged(nameof(LargeIcon));
-			}
-		}
+		set => SetProperty(ref _largeIcon, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? LargeIconOverlay {
 		get => _largeIconOverlay;
-		set {
-			if (_largeIconOverlay != value) {
-				_largeIconOverlay = value;
-				NotifyPropertyChanged(nameof(LargeIconOverlay));
-			}
-		}
+		set => SetProperty(ref _largeIconOverlay, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? LargeThumbnail {
 		get => _largeThumbnail;
-		set {
-			if (_largeThumbnail != value) {
-				_largeThumbnail = value;
-				NotifyPropertyChanged(nameof(LargeThumbnail));
-			}
-		}
+		set => SetProperty(ref _largeThumbnail, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? MediumIcon {
 		get => _mediumIcon;
-		set {
-			if (_mediumIcon != value) {
-				_mediumIcon = value;
-				NotifyPropertyChanged(nameof(MediumIcon));
-			}
-		}
+		set => SetProperty(ref _mediumIcon, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? MediumIconOverlay {
 		get => _mediumIconOverlay;
-		set {
-			if (_mediumIconOverlay != value) {
-				_mediumIconOverlay = value;
-				NotifyPropertyChanged(nameof(MediumIconOverlay));
-			}
-		}
+		set => SetProperty(ref _mediumIconOverlay, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? MediumThumbnail {
 		get => _mediumThumbnail;
-		set {
-			if (_mediumThumbnail != value) {
-				_mediumThumbnail = value;
-				NotifyPropertyChanged(nameof(MediumThumbnail));
-			}
-		}
+		set => SetProperty(ref _mediumThumbnail, value);
 	}
 
 	/// <inheritdoc/>
 	public override string? Name {
 		get => _name;
-		set {
-			if (_name != value) {
-				_name = value;
-				NotifyPropertyChanged(nameof(Name));
-			}
-		}
+		set => SetProperty(ref _name, value);
 	}
 
 	/// <inheritdoc/>
@@ -179,34 +129,19 @@ public class CustomShellObject : ShellObjectBase {
 	/// <inheritdoc/>
 	public override ImageSource? SmallIcon {
 		get => _smallIcon;
-		set {
-			if (_smallIcon != value) {
-				_smallIcon = value;
-				NotifyPropertyChanged(nameof(SmallIcon));
-			}
-		}
+		set => SetProperty(ref _smallIcon, value);
 	}
 
 	/// <inheritdoc/>
 	public override ImageSource? SmallIconOverlay {
 		get => _smallIconOverlay;
-		set {
-			if (_smallIconOverlay != value) {
-				_smallIconOverlay = value;
-				NotifyPropertyChanged(nameof(SmallIconOverlay));
-			}
-		}
+		set => SetProperty(ref _smallIconOverlay, value);
 	}
 
 	/// <inheritdoc/>
 	public override object? ToolTip {
 		get => _toolTip;
-		set {
-			if (_toolTip != value) {
-				_toolTip = value;
-				NotifyPropertyChanged(nameof(ToolTip));
-			}
-		}
+		set => SetProperty(ref _toolTip, value);
 	}
 
 }

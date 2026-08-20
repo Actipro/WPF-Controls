@@ -283,21 +283,6 @@ public partial class SampleMvvmControl : SampleControlBase {
 	// --------------------------------------------------------------------------------------------------
 
 	/// <inheritdoc/>
-	protected override void NotifyPropertyChanged(string? propertyName) {
-		base.NotifyPropertyChanged(propertyName);
-
-		// Update the view models
-		if (propertyName == nameof(FontColorSmallImageSource)) {
-			if (_fontColorPickerWithAutomaticViewModel is not null)
-				_fontColorPickerWithAutomaticViewModel.SmallImageSource = FontColorSmallImageSource;
-		}
-		else if (propertyName == nameof(TextHighlightColorSmallImageSource)) {
-			if (_textHighlightColorPickerViewModel is not null)
-				_textHighlightColorPickerViewModel.SmallImageSource = TextHighlightColorSmallImageSource;
-		}
-	}
-
-	/// <inheritdoc/>
 	protected override void OnOptionsPropertyChanged(object? sender, PropertyChangedEventArgs args) {
 		base.OnOptionsPropertyChanged(sender, args);
 
@@ -371,6 +356,21 @@ public partial class SampleMvvmControl : SampleControlBase {
 		if ((newValue is not null) && (!_areViewModelsInitialized)) {
 			_areViewModelsInitialized = true;
 			InitializeRibbonViewModels();
+		}
+	}
+
+	/// <inheritdoc/>
+	protected override void OnPropertyChanged(PropertyChangedEventArgs e) {
+		base.OnPropertyChanged(e);
+
+		// Update the view models
+		if (e.PropertyName == nameof(FontColorSmallImageSource)) {
+			if (_fontColorPickerWithAutomaticViewModel is not null)
+				_fontColorPickerWithAutomaticViewModel.SmallImageSource = FontColorSmallImageSource;
+		}
+		else if (e.PropertyName == nameof(TextHighlightColorSmallImageSource)) {
+			if (_textHighlightColorPickerViewModel is not null)
+				_textHighlightColorPickerViewModel.SmallImageSource = TextHighlightColorSmallImageSource;
 		}
 	}
 

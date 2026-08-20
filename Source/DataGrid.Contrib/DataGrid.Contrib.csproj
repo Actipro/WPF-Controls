@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="26.1.0-rc.2" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="26.1.0-rc.3" />
 	</ItemGroup>
 
 	<ItemGroup>

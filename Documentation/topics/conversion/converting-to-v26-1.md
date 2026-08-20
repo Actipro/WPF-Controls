@@ -17,6 +17,13 @@ This release adds new targets for `net10.0` and `net10.0-windows`.
 
 This release adds full nullable reference type annotations to the public API.  These annotations improve static analysis and help callers understand when values may be null. Existing behavior is unchanged at runtime, but you may see new compiler warnings when upgrading. Review your code for null‑safety where needed.
 
+Every attempt should be made to avoid warnings that are flagged by static code analysis, but do not be discouraged if a lot of warnings are displayed for existing code after the upgrade.  Just because something *can* be `null` does not mean it *will* be `null`.  For example, several class properties that are not normally `null` still had to be flagged at nullable just because the property or its backing field were set to `null` when disposed.
+
+Even though there may not be issues, we strongly encourage all warnings to be researched and addressed as soon as possible to avoid throwing `NullReferenceException` at run-time.
+
+> [!TIP]
+> If your environment is configured to treat warnings as errors, you may want to temporarily disable that configuration and resolve all true errors before addressing the nullable-aware changes.
+
 ## Licensing Updates
 
 The licensing infrastructure and the license dialog have been refactored and improved in this version.  The license dialog now has a simpler design that makes it easier to understand what triggered the dialog display and allows copying of that information for submission to Actipro support when needed.  Licensing-related types have been moved to the new `ActiproSoftware.Licensing` namespace.
@@ -88,6 +95,8 @@ public class WindowModel : ObservableObjectBase {
 > Update any usage of the `NotifyPropertyChanged` method to the new [SetProperty](xref:ActiproSoftware.ObservableObjectBase.SetProperty*) method.
 >
 > For any scenarios where updating a backing field is not required, call the [OnPropertyChanged](xref:ActiproSoftware.ObservableObjectBase.OnPropertyChanged*) method instead of the `NotifyPropertyChanged` method.
+>
+> To ensure a consistent API, all classes that implement `INotifyPropertyChanged` that do not derive from `ObservableObjectBase` have also deprecated the `NotifyPropertyChanged` method in favor of new `OnPropertyChanged` and `SetProperty` methods that match `ObservableObjectBase`.
 
 ### DisposableObjectBase Migrated
 
@@ -136,13 +145,14 @@ The logging-related types in the `ActiproSoftware.Products.Logging` namespace, n
 > [!TIP]
 > Find `ActiproSoftware.Products.Logging` and replace with `ActiproSoftware.Logging` to convert any references to affected types.
 
-## Nullable Aware Context
+### RoundMode Migrated
 
-All assemblies have been updated to support nullable reference types.  When referenced by other nullable-aware assemblies, this may result in new warnings like attempting to dereference a possibly null reference.
+The [RoundMode](xref:ActiproSoftware.RoundMode) enum was moved to the Core library in the `ActiproSoftware` namespace.
 
-Every attempt should be made to avoid warnings that are flagged by static code analysis, but do not be discouraged if a lot of warnings are displayed for existing code after the upgrade.  Just because something *can* be `null` does not mean it *will* be `null`.  For example, several class properties that are not normally `null` still had to be flagged at nullable just because the property or its backing field were set to `null` when disposed.
-
-Even though there may not be issues, we strongly encourage all warnings to be researched and addressed as soon as possible to avoid throwing `NullReferenceException` at run-time.
+The following values were also renamed:
+- `Round` renamed to [Nearest](xref:ActiproSoftware.RoundMode.Nearest).
+- `RoundEven` renamed to [NearestEven](xref:ActiproSoftware.RoundMode.NearestEven).
+- `RoundOdd` renamed to [NearestOdd](xref:ActiproSoftware.RoundMode.NearestOdd).
 
 ## SyntaxEditor
 

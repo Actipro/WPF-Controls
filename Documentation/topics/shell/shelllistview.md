@@ -88,7 +88,7 @@ This is a sample `DataTemplate` set to the [DetailsLayoutModeItemTemplate](xref:
 
 ```xaml
 <DataTemplate>
-	<shared:PixelSnapper VerticalRoundMode="RoundToEven">
+	<shared:PixelSnapper VerticalRoundMode="NearestEven">
 		<Grid Margin="2,1" Background="Transparent" ToolTip="{Binding ToolTip, Mode=OneWay, IsAsync=True}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />

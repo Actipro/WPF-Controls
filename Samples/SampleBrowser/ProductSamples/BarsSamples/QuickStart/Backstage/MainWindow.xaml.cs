@@ -1,5 +1,6 @@
 using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Input;
+using System.Runtime.CompilerServices;
 using System.Windows.Media.Imaging;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
@@ -42,13 +43,6 @@ public partial class MainWindow : INotifyPropertyChanged {
 	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Raises the <see cref="PropertyChanged"/> event.
-	/// </summary>
-	/// <param name="propertyName">The name of the changed property.</param>
-	private void NotifyPropertyChanged(string propertyName)
-		=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-	/// <summary>
 	/// Called when the <see cref="RibbonBackstage.IsOpen"/> property value is changed.
 	/// </summary>
 	private void OnBackstageIsOpenChanged(object sender, RoutedEventArgs e) {
@@ -87,12 +81,8 @@ public partial class MainWindow : INotifyPropertyChanged {
 	public int BackstageMaxHeaderWidth {
 		get => _backstageMaxHeaderWidth;
 		set {
-			if (_backstageMaxHeaderWidth != value) {
-				_backstageMaxHeaderWidth = value;
-				NotifyPropertyChanged(nameof(BackstageMaxHeaderWidth));
-
+			if (SetProperty(ref _backstageMaxHeaderWidth, value))
 				BackstageMinHeaderWidth = Math.Min(BackstageMinHeaderWidth, value);
-			}
 		}
 	}
 
@@ -102,12 +92,8 @@ public partial class MainWindow : INotifyPropertyChanged {
 	public int BackstageMinHeaderWidth {
 		get => _backstageMinHeaderWidth;
 		set {
-			if (_backstageMinHeaderWidth != value) {
-				_backstageMinHeaderWidth = value;
-				NotifyPropertyChanged(nameof(BackstageMinHeaderWidth));
-
+			if (SetProperty(ref _backstageMinHeaderWidth, value))
 				BackstageMaxHeaderWidth = Math.Max(BackstageMaxHeaderWidth, value);
-			}
 		}
 	}
 
@@ -116,12 +102,7 @@ public partial class MainWindow : INotifyPropertyChanged {
 	/// </summary>
 	public bool CanClose {
 		get => _canClose;
-		set {
-			if (_canClose != value) {
-				_canClose = value;
-				NotifyPropertyChanged(nameof(CanClose));
-			}
-		}
+		set => SetProperty(ref _canClose, value);
 	}
 
 	/// <summary>
@@ -129,12 +110,7 @@ public partial class MainWindow : INotifyPropertyChanged {
 	/// </summary>
 	public bool CanSelectFirstTabOnOpen {
 		get => _canSelectFirstTabOnOpen;
-		set {
-			if (_canSelectFirstTabOnOpen != value) {
-				_canSelectFirstTabOnOpen = value;
-				NotifyPropertyChanged(nameof(CanSelectFirstTabOnOpen));
-			}
-		}
+		set => SetProperty(ref _canSelectFirstTabOnOpen, value);
 	}
 
 	/// <summary>
@@ -143,10 +119,7 @@ public partial class MainWindow : INotifyPropertyChanged {
 	public bool IsBackstageOpen {
 		get => _isBackstageOpen;
 		set {
-			if (_isBackstageOpen != value) {
-				_isBackstageOpen = value;
-				NotifyPropertyChanged(nameof(IsBackstageOpen));
-
+			if (SetProperty(ref _isBackstageOpen, value)) {
 				// When the backstage closes, set a flag that the initial backstage is no longer displayed
 				if (!_isBackstageOpen)
 					IsFirstBackstage = false;
@@ -161,15 +134,26 @@ public partial class MainWindow : INotifyPropertyChanged {
 	public bool IsFirstBackstage {
 		get => _isFirstBackstage;
 		set {
-			if (_isFirstBackstage != value) {
-				_isFirstBackstage = value;
-				NotifyPropertyChanged(nameof(IsFirstBackstage));
-
+			if (SetProperty(ref _isFirstBackstage, value)) {
 				// Notify dependent properties have changed
-				NotifyPropertyChanged(nameof(PrimaryBackstageTabVariantSize));
+				OnPropertyChanged(nameof(PrimaryBackstageTabVariantSize));
 			}
 		}
 	}
+
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+		=> OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+
+	/// <summary>
+	/// Raises the <see cref="PropertyChanged"/> event.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+		=> PropertyChanged?.Invoke(this, e);
 
 	/// <summary>
 	/// The <see cref="VariantSize"/> to be used for the primary tabs.
@@ -185,12 +169,7 @@ public partial class MainWindow : INotifyPropertyChanged {
 	/// </summary>
 	public bool SampleButton3CanCloseBackstage {
 		get => _sampleButton3CanCloseBackstage;
-		set {
-			if (_sampleButton3CanCloseBackstage != value) {
-				_sampleButton3CanCloseBackstage = value;
-				NotifyPropertyChanged(nameof(SampleButton3CanCloseBackstage));
-			}
-		}
+		set => SetProperty(ref _sampleButton3CanCloseBackstage, value);
 	}
 
 	/// <summary>
@@ -198,12 +177,7 @@ public partial class MainWindow : INotifyPropertyChanged {
 	/// </summary>
 	public string SampleButton3Label {
 		get => _sampleButton3Label;
-		set {
-			if (_sampleButton3Label != value) {
-				_sampleButton3Label = value;
-				NotifyPropertyChanged(nameof(SampleButton3Label));
-			}
-		}
+		set => SetProperty(ref _sampleButton3Label, value);
 	}
 
 	/// <summary>
@@ -217,12 +191,33 @@ public partial class MainWindow : INotifyPropertyChanged {
 	/// </summary>
 	public string SelectedTabKeyOnOpen {
 		get => _selectedTabKeyOnOpen;
-		set {
-			if (SelectedTabKeyOnOpen != value) {
-				_selectedTabKeyOnOpen = value;
-				NotifyPropertyChanged(nameof(SelectedTabKeyOnOpen));
-			}
+		set => SetProperty(ref _selectedTabKeyOnOpen, value);
+	}
+
+	/// <summary>
+	/// Called from a property setter to change the backing field's value and raise
+	/// <see cref="PropertyChanged"/> notification events if the new value is not equal to the current value.
+	/// </summary>
+	/// <typeparam name="T">The type of the property that changed.</typeparam>
+	/// <param name="field">The backing field that holds the property's value, which may be updated.</param>
+	/// <param name="newValue">The new property value.</param>
+	/// <param name="propertyName">(Optional) The name of the property that changed.</param>
+	/// <returns>
+	/// <c>true</c> if the property was changed; otherwise, <c>false</c>.
+	/// </returns>
+	protected bool SetProperty<T>(
+		#if NET
+		[NotNullIfNotNull(nameof(newValue))]
+		#endif
+		ref T field, T newValue, [CallerMemberName] string? propertyName = null) {
+		// IMPORTANT NOTE: This method is replicated over multiple classes and edits must be kept in sync
+		if (!EqualityComparer<T>.Default.Equals(field, newValue)) {
+			field = newValue;
+			OnPropertyChanged(propertyName);
+			return true;
 		}
+
+		return false;
 	}
 
 	/// <summary>
@@ -231,12 +226,9 @@ public partial class MainWindow : INotifyPropertyChanged {
 	public bool UseSampleButtonImages {
 		get => _useSampleButtonImages;
 		set {
-			if (_useSampleButtonImages != value) {
-				_useSampleButtonImages = value;
-				NotifyPropertyChanged(nameof(UseSampleButtonImages));
-
+			if (SetProperty(ref _useSampleButtonImages, value)) {
 				// Notify dependent properties have changed
-				NotifyPropertyChanged(nameof(SampleButtonImageSource));
+				OnPropertyChanged(nameof(SampleButtonImageSource));
 			}
 		}
 	}

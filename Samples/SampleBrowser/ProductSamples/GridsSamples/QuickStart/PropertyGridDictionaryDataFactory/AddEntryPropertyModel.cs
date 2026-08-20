@@ -68,7 +68,7 @@ public class AddEntryPropertyModel : PropertyModel {
 			case nameof(DisplayName):
 			case nameof(Value):
 				// When the Name or ValueAsString properties are edited, notify that the CanAddChild property might have changed
-				NotifyPropertyChanged(nameof(CanAddChild));
+				OnPropertyChanged(nameof(CanAddChild));
 				break;
 		}
 
