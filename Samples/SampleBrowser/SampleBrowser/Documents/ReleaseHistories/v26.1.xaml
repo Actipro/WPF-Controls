@@ -61,7 +61,7 @@
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated PropertyModelBase to implement IPropertyModel interface.  Refactored the derived CachedPropertyModelBase class as appropriate and deprecated several declarations on PropertyModelBase that were no longer necessary." />
-				<sampleBrowser:BulletContentControl Content="Improved TreeListBox and TreeListView filtering performance by preventing descendants of excluded items from being unnecessarily evaluated." />
+				<sampleBrowser:BulletContentControl Content="Improved TreeListBox and TreeListView filtering performance by preserving deferred item resolution when data virtualization is enabled and avoiding unnecessary descendant evaluation." />
 				<sampleBrowser:BulletContentControl Content="Fixed issues where TreeListBox and TreeListView expansion, selection, and filtering might not work correctly when data virtualization was enabled." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
