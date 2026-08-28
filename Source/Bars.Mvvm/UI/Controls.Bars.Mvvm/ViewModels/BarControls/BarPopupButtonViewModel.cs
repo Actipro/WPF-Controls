@@ -16,6 +16,7 @@ public class BarPopupButtonViewModel : BarKeyedObjectViewModelBase, IHasVariantI
 	private string? _label;
 	private ImageSource? _largeImageSource;
 	private ImageSource? _mediumImageSource;
+	private ICommand? _popupClosedCommand;
 	private ICommand? _popupOpeningCommand;
 	private ImageSource? _smallImageSource;
 	private string? _title;
@@ -123,6 +124,14 @@ public class BarPopupButtonViewModel : BarKeyedObjectViewModelBase, IHasVariantI
 	/// The collection of menu items that appear within the popup.
 	/// </summary>
 	public ObservableCollection<object> MenuItems { get; } = [];
+
+	/// <summary>
+	/// The <see cref="ICommand"/> that executes after the button's popup is closed, allowing its items to be customized in MVVM scenarios.
+	/// </summary>
+	public ICommand? PopupClosedCommand {
+		get => _popupClosedCommand;
+		set => SetProperty(ref _popupClosedCommand, value);
+	}
 
 	/// <summary>
 	/// The <see cref="ICommand"/> that executes before the button's popup is opened, allowing its items to be customized in MVVM scenarios.

@@ -26,6 +26,7 @@ public class BarGalleryViewModel : BarGalleryViewModelBase, IHasVariantImages {
 	private int _minLargeRibbonColumnCount = 5;
 	private int _minMediumRibbonColumnCount = 3;
 	private int _minMenuColumnCount = 1;
+	private ICommand? _popupClosedCommand;
 	private ICommand? _popupOpeningCommand;
 	private IBarGalleryItemViewModel? _selectedItem;
 	private string? _selectedFilterCategory;
@@ -373,6 +374,14 @@ public class BarGalleryViewModel : BarGalleryViewModelBase, IHasVariantImages {
 	public int MinMenuColumnCount {
 		get => _minMenuColumnCount;
 		set => SetProperty(ref _minMenuColumnCount, value);
+	}
+
+	/// <summary>
+	/// The <see cref="ICommand"/> that executes after the gallery's popup is closed, allowing its items to be customized in MVVM scenarios.
+	/// </summary>
+	public ICommand? PopupClosedCommand {
+		get => _popupClosedCommand;
+		set => SetProperty(ref _popupClosedCommand, value);
 	}
 
 	/// <summary>

@@ -19,12 +19,14 @@
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Added the BarSeparator.StandaloneToolBarSeparatorMode property that can be set to Spacer to activate spacing capabilities in a standalone toolbar, including the ability to right-align some items." />
 				<sampleBrowser:BulletContentControl Content="Added a BarsMenuFactory that can be used to ensure all Actipro product contextual menus are based on Bars controls." />
+				<sampleBrowser:BulletContentControl Content="Added PopupClosedCommand support to popup-based Bars controls and related MVVM view models, allowing a command to execute after a popup closes." />
 				<sampleBrowser:BulletContentControl Content="Improved control rendering in high contrast themes." />
 				<sampleBrowser:BulletContentControl Content="Improved BarContextMenu's handling of VerticalOffset." />
 				<sampleBrowser:BulletContentControl Content="Improved the add/remove QAT item logic to better handle MVVM scenarios." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where the context menu for recent document items would not open correctly when in an application menu." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue in the MVVM Library where the default template for BarCheckboxViewModel didn't bind StaysOpenOnClick to the related BarMenuItem." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where pressing Esc to close a BarComboBox drop-down didn't always function." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where deserializing a vertically oriented toolbar before initial layout could leave items visible that did not support vertical orientation." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -75,6 +77,7 @@
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated ShellListView and ShellTreeListBox to automatically update images when a DPI change is detected.  The related NotifyDpiChanged method is no longer necessary and has been deprecated." />
+				<sampleBrowser:BulletContentControl Content="Fixed issues with ShellListView sorting where date/time property values could be ordered incorrectly and equal property values did not use name as an ascending secondary sort." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
