@@ -27,6 +27,8 @@
 				<sampleBrowser:BulletContentControl Content="Fixed an issue in the MVVM Library where the default template for BarCheckboxViewModel didn't bind StaysOpenOnClick to the related BarMenuItem." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where pressing Esc to close a BarComboBox drop-down didn't always function." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue where deserializing a vertically oriented toolbar before initial layout could leave items visible that did not support vertical orientation." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where dockable toolbar layout was not properly invalidated in some scenarios when adding or removing items." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where custom controls with BarControlService.IsVerticalLayoutOrientationSupportedProperty set to false would still be displayed." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
