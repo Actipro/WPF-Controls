@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="26.1.0-rc.8" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="26.1.0-rc.9" />
 	</ItemGroup>
 
 	<ItemGroup Label=".NET Framework" Condition="'$(TargetFramework)' == 'net462'">
