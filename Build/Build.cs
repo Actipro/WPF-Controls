@@ -8,7 +8,6 @@ using Serilog;
 using System;
 using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 
 namespace ActiproSoftware.Tools.Builds {
 
@@ -36,9 +35,9 @@ namespace ActiproSoftware.Tools.Builds {
 		[Solution("Samples/PrismIntegration/PrismIntegration.sln")]
 		readonly Solution SamplePrismIntegrationUnitySolution;
 
-		Solution[] SourceSolutions => new[] { LibrariesSolution };  // DotNet
+		Solution[] SourceSolutions => new[] { LibrariesSolution };
 
-		Solution[] SampleSolutions => new Solution[] { SamplePrismIntegrationUnitySolution, SampleBrowserSolution };  // MSBuild
+		Solution[] SampleSolutions => new Solution[] { SamplePrismIntegrationUnitySolution, SampleBrowserSolution };
 
 		#endregion
 
@@ -112,13 +111,9 @@ namespace ActiproSoftware.Tools.Builds {
 					var project = solution.AllProjects.FirstOrDefault(p => (string.Compare(p.Name, solution.Name, StringComparison.OrdinalIgnoreCase) == 0));
 					project.NotNull($"No project with name '{solution.Name}' found.");
 
-					MSBuild(_ => _
+					DotNetBuild(_ => _
 						.SetProjectFile(project)
-						.SetRestore(true)
 						.SetConfiguration(Configuration)
-						.SetVerbosity(MSBuildVerbosity.Minimal)
-						.SetMaxCpuCount(Environment.ProcessorCount)
-						.SetProperty("BuildInParallel", "true")
 					);
 					Log.Debug(string.Empty);
 				}

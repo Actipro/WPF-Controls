@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridMultipleObjects.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -119,11 +119,11 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The property grid can be used to modify multiple objects at the same time by setting the DataObjects property. 
+					The property grid can be used to modify multiple objects at the same time by setting the DataObjects property.
 					When more than one object is set, then only properties common to all the objects are displayed.
 					<LineBreak /><LineBreak />
-					In this example, the First and Second objects share a common base class, which has Name and DerivedOnly properties defined. 
-					The Third object also has a Name property separately defined and derives directly from Object. 
+					In this example, the First and Second objects share a common base class, which has Name and DerivedOnly properties defined.
+					The Third object also has a Name property separately defined and derives directly from Object.
 					In all cases, the Name property will be merged since the property definition has the same name and Type.
 				</TextBlock>
 			</Expander>
@@ -134,8 +134,8 @@
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 
 		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
-							DataObjects="{Binding ElementName=objectsListBox, Path=SelectedItems}" 
-							gridseditors:BuiltinPropertyEditors.IsEnabled="True" 
+							DataObjects="{Binding ElementName=objectsListBox, Path=SelectedItems}"
+							gridseditors:BuiltinPropertyEditors.IsEnabled="True"
 							IsCategorized="False" CanClearDataObjectOnUnload="True">
 		</grids:PropertyGrid>
 

@@ -1,440 +1,305 @@
-﻿using ActiproSoftware.Windows.Input;
-using ActiproSoftware.Windows.Themes;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents a view model for a ribbon control.
+/// </summary>
+public class RibbonViewModel : ObservableObjectBase, IHasTag {
+
+	private bool _allowLabelsOnQuickAccessToolBar;
+	private RibbonApplicationButtonViewModel? _applicationButton;
+	private bool _areTabsVisible = true;
+	private RibbonBackstageViewModel? _backstage;
+	private bool _canChangeLayoutMode = true;
+	private ICommand? _clearFooterCommand;
+	private Size _collapseThresholdSize = new(270, 170);
+	private RibbonFooterViewModel? _footer;
+	private RibbonGroupLabelMode _groupLabelMode = RibbonGroupLabelMode.Default;
+	private bool _isApplicationButtonVisible = true;
+	private bool _isCollapsible = true;
+	private bool _isMinimizable = true;
+	private bool _isOptionsButtonVisible = true;
+	private BarControlTemplateSelector _itemContainerTemplateSelector = new();
+	private RibbonLayoutMode _layoutMode = RibbonLayoutMode.Classic;
+	private RibbonQuickAccessToolBarViewModel? _quickAccessToolBar;
+	private RibbonQuickAccessToolBarLocation _quickAccessToolBarLocation = RibbonQuickAccessToolBarLocation.Above;
+	private RibbonQuickAccessToolBarMode _quickAccessToolBarMode = RibbonQuickAccessToolBarMode.Visible;
+	private RibbonTabViewModel? _selectedItem;
+	private RibbonTabRowToolBarViewModel? _tabRowToolBar;
+	private object? _tag;
+	private UserInterfaceDensity _userInterfaceDensity = UserInterfaceDensity.Compact;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for a ribbon control.
+	/// Initializes an instance of the class in Classic layout mode.
 	/// </summary>
-	public class RibbonViewModel : ObservableObjectBase, IHasTag {
+	public RibbonViewModel()
+		: this(RibbonLayoutMode.Classic) { }
 
-		private bool allowLabelsOnQuickAccessToolBar;
-		private RibbonApplicationButtonViewModel applicationButton;
-		private bool areTabsVisible = true;
-		private RibbonBackstageViewModel backstage;
-		private bool canChangeLayoutMode = true;
-		private ICommand clearFooterCommand;
-		private Size collapseThresholdSize = new Size(270, 170);
-		private RibbonFooterViewModel footer;
-		private RibbonGroupLabelMode groupLabelMode = RibbonGroupLabelMode.Default;
-		private bool isApplicationButtonVisible = true;
-		private bool isCollapsible = true;
-		private bool isMinimizable = true;
-		private bool isOptionsButtonVisible = true;
-		private BarControlTemplateSelector itemContainerTemplateSelector = new BarControlTemplateSelector();
-		private RibbonLayoutMode layoutMode = RibbonLayoutMode.Classic;
-		private RibbonQuickAccessToolBarViewModel quickAccessToolBar;
-		private RibbonQuickAccessToolBarLocation quickAccessToolBarLocation = RibbonQuickAccessToolBarLocation.Above;
-		private RibbonQuickAccessToolBarMode quickAccessToolBarMode = RibbonQuickAccessToolBarMode.Visible;
-		private RibbonTabViewModel selectedItem;
-		private RibbonTabRowToolBarViewModel tabRowToolBar;
-		private object tag;
-		private UserInterfaceDensity userInterfaceDensity = UserInterfaceDensity.Compact;
+	/// <summary>
+	/// Initializes an instance of the class in the specified layout mode.
+	/// </summary>
+	public RibbonViewModel(RibbonLayoutMode layoutMode) {
+		// Initialize the layout mode
+		_layoutMode = layoutMode;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Initialize other properties with defaults based on the given layout mode
+		_userInterfaceDensity = (layoutMode == RibbonLayoutMode.Classic)
+			? UserInterfaceDensity.Compact
+			: UserInterfaceDensity.Spacious;
 
-		/// <summary>
-		/// Initializes a new instance of the class in Classic layout mode.
-		/// </summary>
-		public RibbonViewModel()
-			: this(RibbonLayoutMode.Classic) { }
+		// Initialize the clear footer command
+		_clearFooterCommand = new DelegateCommand<object>(_ => Footer = null);
 
-		/// <summary>
-		/// Initializes a new instance of the class in the specified layout mode.
-		/// </summary>
-		public RibbonViewModel(RibbonLayoutMode layoutMode) {
-			// Initialize the layout mode
-			this.layoutMode = layoutMode;
+		// Keep SelectedItem in sync with Tabs collection by always selecting the first
+		//   tab when selection has yet to be defined or the previous selection is removed
+		Tabs.CollectionChanged += (_, _) => {
+			if (SelectedItem is not { } selectedItem || !Tabs.Contains(selectedItem))
+				SelectedItem = Tabs.FirstOrDefault();
+		};
+	}
 
-			// Initialize other properties with defaults based on the given layout mode
-			this.userInterfaceDensity = (layoutMode == RibbonLayoutMode.Classic)
-				? UserInterfaceDensity.Compact
-				: UserInterfaceDensity.Spacious;
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Initialize the clear footer command
-			this.clearFooterCommand = new DelegateCommand<object>(_ => this.Footer = null);
+	/// <summary>
+	/// Indicates whether the quick-access toolbar allows labels when it is below the ribbon.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>false</c>.
+	/// </value>
+	public bool AllowLabelsOnQuickAccessToolBar {
+		get => _allowLabelsOnQuickAccessToolBar;
+		set => SetProperty(ref _allowLabelsOnQuickAccessToolBar, value);
+	}
 
-			// Keep SelectedItem in sync with Tabs collection by always selecting the first
-			//   tab when selection has yet to be defined or the previous selection is removed
-			Tabs.CollectionChanged += (_, _) => {
-				if (SelectedItem is not { } selectedItem || !Tabs.Contains(selectedItem))
-					SelectedItem = Tabs.FirstOrDefault();
-			};
-		}
+	/// <summary>
+	/// A <see cref="RibbonApplicationButtonViewModel"/> for the application button.
+	/// </summary>
+	public RibbonApplicationButtonViewModel? ApplicationButton {
+		get => _applicationButton;
+		set => SetProperty(ref _applicationButton, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Indicates whether tabs are visible above the ribbon's main content area.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool AreTabsVisible {
+		get => _areTabsVisible;
+		set => SetProperty(ref _areTabsVisible, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the quick-access toolbar allows labels when it is below the ribbon.
-		/// </summary>
-		/// <value>
-		/// The default value is <c>false</c>.
-		/// </value>
-		public bool AllowLabelsOnQuickAccessToolBar {
-			get => allowLabelsOnQuickAccessToolBar;
-			set {
-				if (allowLabelsOnQuickAccessToolBar != value) {
-					allowLabelsOnQuickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(AllowLabelsOnQuickAccessToolBar));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonApplicationButtonViewModel"/> for the optional Backstage.
+	/// </summary>
+	public RibbonBackstageViewModel? Backstage {
+		get => _backstage;
+		set => SetProperty(ref _backstage, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonApplicationButtonViewModel"/> for the application button.
-		/// </summary>
-		/// <value>A <see cref="RibbonApplicationButtonViewModel"/> for the application button.</value>
-		public RibbonApplicationButtonViewModel ApplicationButton {
-			get => applicationButton;
-			set {
-				if (applicationButton != value) {
-					applicationButton = value;
-					this.NotifyPropertyChanged(nameof(ApplicationButton));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether tabs are visible above the ribbon's main content area.
-		/// </summary>
-		/// <value>
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool AreTabsVisible {
-			get => areTabsVisible;
-			set {
-				if (areTabsVisible != value) {
-					areTabsVisible = value;
-					this.NotifyPropertyChanged(nameof(AreTabsVisible));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates whether the end user can change the layout mode.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the end user can change the layout mode; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool CanChangeLayoutMode {
+		get => _canChangeLayoutMode;
+		set => SetProperty(ref _canChangeLayoutMode, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonApplicationButtonViewModel"/> for the optional Backstage.
-		/// </summary>
-		/// <value>A <see cref="RibbonApplicationButtonViewModel"/> for the optional Backstage.</value>
-		public RibbonBackstageViewModel Backstage {
-			get => backstage;
-			set {
-				if (backstage != value) {
-					backstage = value;
-					this.NotifyPropertyChanged(nameof(Backstage));
-				}
-			}
-		}
+	/// <summary>
+	/// A command that, when invoked, will clear the footer.
+	/// </summary>
+	/// <value>
+	/// An <see cref="ICommand"/>.
+	/// The default value is a command that sets the <see cref="Footer"/> property to <c>null</c>.
+	/// </value>
+	public ICommand? ClearFooterCommand {
+		get => _clearFooterCommand;
+		set => SetProperty(ref _clearFooterCommand, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the end user can change the layout mode.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the end user can change the layout mode; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool CanChangeLayoutMode {
-			get => canChangeLayoutMode;
-			set {
-				if (canChangeLayoutMode != value) {
-					canChangeLayoutMode = value;
-					this.NotifyPropertyChanged(nameof(CanChangeLayoutMode));
-				}
-			}
-		}
+	/// <summary>
+	/// The threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>270, 170</c>.
+	/// </value>
+	public Size CollapseThresholdSize {
+		get => _collapseThresholdSize;
+		set => SetProperty(ref _collapseThresholdSize, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a command that, when invoked, will clear the footer.
-		/// </summary>
-		/// <value>
-		/// An <see cref="ICommand"/>.
-		/// The default value is a command that sets the <see cref="Footer"/> property to <c>null</c>.
-		/// </value>
-		public ICommand ClearFooterCommand {
-			get => clearFooterCommand;
-			set {
-				if (clearFooterCommand != value) {
-					clearFooterCommand = value;
-					this.NotifyPropertyChanged(nameof(ClearFooterCommand));
-				}
-			}
-		}
+	/// <summary>
+	/// The collection of optional contextual tab groups within the ribbon.
+	/// </summary>
+	public ObservableCollection<RibbonContextualTabGroupViewModel> ContextualTabGroups { get; } = [];
 
-		/// <summary>
-		/// Gets or sets the threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
-		/// </summary>
-		/// <value>
-		/// The threshold <see cref="Size"/> that triggers a ribbon collapse if the ribbon is sized smaller than the threshold.
-		/// The default value is <c>270, 170</c>.
-		/// </value>
-		public Size CollapseThresholdSize {
-			get => collapseThresholdSize;
-			set {
-				if (collapseThresholdSize != value) {
-					collapseThresholdSize = value;
-					this.NotifyPropertyChanged(nameof(CollapseThresholdSize));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of optional contextual tab groups within the ribbon.
-		/// </summary>
-		/// <value>The collection of optional contextual tab groups within the ribbon.</value>
-		public ObservableCollection<RibbonContextualTabGroupViewModel> ContextualTabGroups { get; } = new ObservableCollection<RibbonContextualTabGroupViewModel>();
-		
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonFooterViewModel"/> for the optional footer.
-		/// </summary>
-		/// <value>A <see cref="RibbonFooterViewModel"/> for the optional footer.</value>
-		public RibbonFooterViewModel Footer {
-			get => footer;
-			set {
-				if (footer != value) {
-					footer = value;
-					this.NotifyPropertyChanged(nameof(Footer));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="RibbonGroupLabelMode"/> that specifies when a <see cref="RibbonGroup"/> is labeled.
-		/// </summary>
-		/// <value>
-		/// The <see cref="RibbonGroupLabelMode"/> that specifies when a <see cref="RibbonGroup"/> is labeled.
-		/// The default value is <see cref="RibbonGroupLabelMode.Default"/>.
-		/// </value>
-		public RibbonGroupLabelMode GroupLabelMode {
-			get => groupLabelMode;
-			set {
-				if (groupLabelMode != value) {
-					groupLabelMode = value;
-					this.NotifyPropertyChanged(nameof(GroupLabelMode));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonFooterViewModel"/> for the optional footer.
+	/// </summary>
+	public RibbonFooterViewModel? Footer {
+		get => _footer;
+		set => SetProperty(ref _footer, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the application button is visible.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the application button is visible; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool IsApplicationButtonVisible  {
-			get => isApplicationButtonVisible;
-			set {
-				if (isApplicationButtonVisible != value) {
-					isApplicationButtonVisible = value;
-					this.NotifyPropertyChanged(nameof(IsApplicationButtonVisible ));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the ribbon collapses when it becomes smaller than a minimum threshold width/height 
-		/// as specified by the <see cref="CollapseThresholdSize"/> property.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the ribbon auto-collapsed when it becomes smaller than the threshold; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool IsCollapsible {
-			get => isCollapsible;
-			set {
-				if (isCollapsible != value) {
-					isCollapsible = value;
-					this.NotifyPropertyChanged(nameof(IsCollapsible ));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the ribbon is minimizable.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the ribbon is minimizable; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool IsMinimizable {
-			get => isMinimizable;
-			set {
-				if (isMinimizable != value) {
-					isMinimizable = value;
-					this.NotifyPropertyChanged(nameof(IsMinimizable));
-				}
-			}
-		}
+	/// <summary>
+	/// The <see cref="RibbonGroupLabelMode"/> that specifies when a <see cref="RibbonGroup"/> is labeled.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="RibbonGroupLabelMode.Default"/>.
+	/// </value>
+	public RibbonGroupLabelMode GroupLabelMode {
+		get => _groupLabelMode;
+		set => SetProperty(ref _groupLabelMode, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the options button is visible.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the options button is visible; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool IsOptionsButtonVisible {
-			get => isOptionsButtonVisible;
-			set {
-				if (isOptionsButtonVisible != value) {
-					isOptionsButtonVisible = value;
-					this.NotifyPropertyChanged(nameof(IsOptionsButtonVisible));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.
-		/// </summary>
-		/// <value>The <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.</value>
-		public BarControlTemplateSelector ItemContainerTemplateSelector {
-			get => itemContainerTemplateSelector;
-			set {
-				if (itemContainerTemplateSelector != value) {
-					itemContainerTemplateSelector = value;
-					this.NotifyPropertyChanged(nameof(ItemContainerTemplateSelector));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates whether the application button is visible.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the application button is visible; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool IsApplicationButtonVisible {
+		get => _isApplicationButtonVisible;
+		set => SetProperty(ref _isApplicationButtonVisible, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonLayoutMode"/> that indicates the current layout mode (Classic vs. Simplified).
-		/// </summary>
-		/// <value>
-		/// A <see cref="RibbonLayoutMode"/> that indicates the current layout mode.
-		/// The default value is <see cref="RibbonLayoutMode.Classic"/>.
-		/// </value>
-		public RibbonLayoutMode LayoutMode {
-			get => layoutMode;
-			set {
-				if (layoutMode != value) {
-					layoutMode = value;
-					this.NotifyPropertyChanged(nameof(LayoutMode));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates whether the ribbon collapses when it becomes smaller than a minimum threshold width/height 
+	/// as specified by the <see cref="CollapseThresholdSize"/> property.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the ribbon auto-collapsed when it becomes smaller than the threshold; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool IsCollapsible {
+		get => _isCollapsible;
+		set => SetProperty(ref _isCollapsible, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonQuickAccessToolBarViewModel"/> for the quick-access toolbar.
-		/// </summary>
-		/// <value>A <see cref="RibbonQuickAccessToolBarViewModel"/> for the quick-access toolbar.</value>
-		public RibbonQuickAccessToolBarViewModel QuickAccessToolBar {
-			get => quickAccessToolBar;
-			set {
-				if (quickAccessToolBar != value) {
-					quickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(QuickAccessToolBar));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates whether the ribbon is minimizable.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the ribbon is minimizable; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool IsMinimizable {
+		get => _isMinimizable;
+		set => SetProperty(ref _isMinimizable, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonQuickAccessToolBarLocation"/> that indicates the current location of the quick-access toolbar.
-		/// </summary>
-		/// <value>
-		/// A <see cref="RibbonQuickAccessToolBarLocation"/> that indicates the current location of the quick-access toolbar.
-		/// The default value is <see cref="RibbonQuickAccessToolBarLocation.Above"/>.
-		/// </value>
-		public RibbonQuickAccessToolBarLocation QuickAccessToolBarLocation {
-			get => quickAccessToolBarLocation;
-			set {
-				if (quickAccessToolBarLocation != value) {
-					quickAccessToolBarLocation = value;
-					this.NotifyPropertyChanged(nameof(QuickAccessToolBarLocation));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates whether the options button is visible.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the options button is visible; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool IsOptionsButtonVisible {
+		get => _isOptionsButtonVisible;
+		set => SetProperty(ref _isOptionsButtonVisible, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonQuickAccessToolBarMode"/> that indicates the current display mode for the quick-access toolbar.
-		/// </summary>
-		/// <value>
-		/// A <see cref="RibbonQuickAccessToolBarMode"/> that indicates the current display mode for the quick-access toolbar.
-		/// The default value is <see cref="RibbonQuickAccessToolBarMode.Visible"/>.
-		/// </value>
-		public RibbonQuickAccessToolBarMode QuickAccessToolBarMode {
-			get => quickAccessToolBarMode;
-			set {
-				if (quickAccessToolBarMode != value) {
-					quickAccessToolBarMode = value;
-					this.NotifyPropertyChanged(nameof(QuickAccessToolBarMode));
-				}
-			}
-		}
+	/// <summary>
+	/// The <see cref="BarControlTemplateSelector"/> that creates UI controls for bar control view models.
+	/// </summary>
+	public BarControlTemplateSelector ItemContainerTemplateSelector {
+		get => _itemContainerTemplateSelector;
+		set => SetProperty(ref _itemContainerTemplateSelector, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonTabViewModel"/> for the currently selected tab.
-		/// </summary>
-		/// <value>A <see cref="RibbonTabViewModel"/> for the currently selected tab.</value>
-		public RibbonTabViewModel SelectedItem {
-			get => selectedItem;
-			set {
-				if (selectedItem != value) {
-					selectedItem = value;
-					this.NotifyPropertyChanged(nameof(SelectedItem));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonLayoutMode"/> that indicates the current layout mode (Classic vs. Simplified).
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="RibbonLayoutMode.Classic"/>.
+	/// </value>
+	public RibbonLayoutMode LayoutMode {
+		get => _layoutMode;
+		set => SetProperty(ref _layoutMode, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="RibbonTabRowToolBarViewModel"/> for the tab row toolbar that optionally appears to the right of the tabs.
-		/// </summary>
-		/// <value>A <see cref="RibbonTabRowToolBarViewModel"/> for the tab row toolbar that optionally appears to the right of the tabs.</value>
-		public RibbonTabRowToolBarViewModel TabRowToolBar {
-			get => tabRowToolBar;
-			set {
-				if (tabRowToolBar != value) {
-					tabRowToolBar = value;
-					this.NotifyPropertyChanged(nameof(TabRowToolBar));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonQuickAccessToolBarViewModel"/> for the quick-access toolbar.
+	/// </summary>
+	public RibbonQuickAccessToolBarViewModel? QuickAccessToolBar {
+		get => _quickAccessToolBar;
+		set => SetProperty(ref _quickAccessToolBar, value);
+	}
 
-		/// <summary>
-		/// Gets the collection of tabs within the ribbon.
-		/// </summary>
-		/// <value>The collection of tabs within the ribbon.</value>
-		public ObservableCollection<RibbonTabViewModel> Tabs { get; } = new ObservableCollection<RibbonTabViewModel>();
+	/// <summary>
+	/// A <see cref="RibbonQuickAccessToolBarLocation"/> that indicates the current location of the quick-access toolbar.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="RibbonQuickAccessToolBarLocation.Above"/>.
+	/// </value>
+	public RibbonQuickAccessToolBarLocation QuickAccessToolBarLocation {
+		get => _quickAccessToolBarLocation;
+		set => SetProperty(ref _quickAccessToolBarLocation, value);
+	}
 
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonQuickAccessToolBarMode"/> that indicates the current display mode for the quick-access toolbar.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="RibbonQuickAccessToolBarMode.Visible"/>.
+	/// </value>
+	public RibbonQuickAccessToolBarMode QuickAccessToolBarMode {
+		get => _quickAccessToolBarMode;
+		set => SetProperty(ref _quickAccessToolBarMode, value);
+	}
 
-		/// <inheritdoc/>
-		public override string ToString() {
-			return $"{this.GetType().FullName}[{this.Tabs.Count} tabs]";
-		}
+	/// <summary>
+	/// A <see cref="RibbonTabViewModel"/> for the currently selected tab.
+	/// </summary>
+	public RibbonTabViewModel? SelectedItem {
+		get => _selectedItem;
+		set => SetProperty(ref _selectedItem, value);
+	}
 
-		/// <summary>
-		/// Gets or sets a <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
-		/// </summary>
-		/// <value>
-		/// A <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
-		/// The default value is <see cref="UserInterfaceDensity.Compact"/>.
-		/// </value>
-		public UserInterfaceDensity UserInterfaceDensity {
-			get => userInterfaceDensity;
-			set {
-				if (userInterfaceDensity != value) {
-					userInterfaceDensity = value;
-					this.NotifyPropertyChanged(nameof(UserInterfaceDensity));
-				}
-			}
-		}
+	/// <summary>
+	/// A <see cref="RibbonTabRowToolBarViewModel"/> for the tab row toolbar that optionally appears to the right of the tabs.
+	/// </summary>
+	public RibbonTabRowToolBarViewModel? TabRowToolBar {
+		get => _tabRowToolBar;
+		set => SetProperty(ref _tabRowToolBar, value);
+	}
 
+	/// <summary>
+	/// The collection of tabs within the ribbon.
+	/// </summary>
+	public ObservableCollection<RibbonTabViewModel> Tabs { get; } = [];
+
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> $"{GetType().FullName}[{Tabs.Count} tabs]";
+
+	/// <summary>
+	/// A <see cref="Themes.UserInterfaceDensity"/> that indicates how compact or spacious the UI should appear.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="UserInterfaceDensity.Compact"/>.
+	/// </value>
+	public UserInterfaceDensity UserInterfaceDensity {
+		get => _userInterfaceDensity;
+		set => SetProperty(ref _userInterfaceDensity, value);
 	}
 
 }

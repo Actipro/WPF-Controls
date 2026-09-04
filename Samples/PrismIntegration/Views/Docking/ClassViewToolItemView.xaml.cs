@@ -1,22 +1,19 @@
-using System.Windows.Controls;
+namespace ActiproSoftware.Windows.PrismIntegration.Views;
 
-namespace ActiproSoftware.Windows.PrismIntegration.Views {
+/// <summary>
+/// Provides a user control for a tool view-model.
+/// </summary>
+public partial class ClassViewToolItemView : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides a user control for a tool view-model.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class ClassViewToolItemView : UserControl {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>ClassViewToolItemView</c> class.
-		/// </summary>
-		public ClassViewToolItemView() {
-			InitializeComponent();
-		}
-
+	public ClassViewToolItemView() {
+		InitializeComponent();
 	}
+
 }

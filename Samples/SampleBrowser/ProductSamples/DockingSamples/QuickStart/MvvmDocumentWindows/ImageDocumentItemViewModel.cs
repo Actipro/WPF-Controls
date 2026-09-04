@@ -1,48 +1,37 @@
-﻿using System;
-using System.Windows.Media.Imaging;
 using ActiproSoftware.ProductSamples.DockingSamples.Common;
+using System.Windows.Media.Imaging;
 
-namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmDocumentWindows;
+
+/// <summary>
+/// Represents the image document view-model.
+/// </summary>
+public class ImageDocumentItemViewModel : DocumentItemViewModel {
+
+	private Uri? _uri;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents the image document view-model.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class ImageDocumentItemViewModel : DocumentItemViewModel {
-		
-		private Uri uri;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	public ImageDocumentItemViewModel() {
+		Description = "Image document";
+		ImageSource = new BitmapImage(new Uri("/Images/Icons/Picture16.png", UriKind.Relative));
+	}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="ImageDocumentItemViewModel"/> class.
-		/// </summary>
-		public ImageDocumentItemViewModel() {
-			this.Description = "Image document";
-			this.ImageSource = new BitmapImage(new Uri("/Images/Icons/Picture16.png", UriKind.Relative));
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the image <see cref="Url"/> associated with the view-model.
-		/// </summary>
-		/// <value>The image <see cref="Url"/> associated with the view-model.</value>
-		public Uri Uri {
-			get {
-				return this.uri;
-			}
-			set {
-				if (this.uri != value) {
-					this.uri = value;
-					this.NotifyPropertyChanged("Uri");
-				}
-			}
-		}
-
+	/// <summary>
+	/// The image <see cref="Url"/> associated with the view-model.
+	/// </summary>
+	public Uri? Uri {
+		get => _uri;
+		set => SetProperty(ref _uri, value);
 	}
 
 }

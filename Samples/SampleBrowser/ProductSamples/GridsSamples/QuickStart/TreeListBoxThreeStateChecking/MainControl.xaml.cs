@@ -1,51 +1,40 @@
-﻿using ActiproSoftware.ProductSamples.GridsSamples.Common;
-
-#if WINRT
-using ActiproSoftware.UI.Xaml.Controls.Grids;
-#else
+using ActiproSoftware.ProductSamples.GridsSamples.Common;
 using ActiproSoftware.Windows.Controls.Grids;
-#endif
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxThreeStateChecking {
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxThreeStateChecking;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	/// <summary>
+	/// Occurs before the default action is executed for an item.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void OnTreeListBoxItemDefaultActionExecuting(object sender, TreeListBoxItemEventArgs e) {
+		if (e.Item is CheckableTreeNodeModel { IsCheckable: true, Children.Count: 0 } model) {
+			e.Cancel = true;
+
+			// Toggle the checked state
+			model.IsChecked = !(model.IsChecked == true);
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs before the default action is executed for an item.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>TreeListBoxItemEventArgs</c> that contains the event data.</param>
-		private void OnTreeListBoxItemDefaultActionExecuting(object sender, TreeListBoxItemEventArgs e) {
-			var model = e.Item as CheckableTreeNodeModel;
-			if ((model != null) && (model.IsCheckable) && (model.Children.Count == 0)) {
-				e.Cancel = true;
-
-				// Toggle the checked state
-				if (model.IsChecked == true)
-					model.IsChecked = false;
-				else
-					model.IsChecked = true;
-			}
-		}
-		
 	}
 
 }

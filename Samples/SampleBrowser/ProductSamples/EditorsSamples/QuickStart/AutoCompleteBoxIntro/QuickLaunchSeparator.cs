@@ -1,8 +1,6 @@
-﻿namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.AutoCompleteBoxIntro {
+namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.AutoCompleteBoxIntro;
 
-	/// <summary>
-	/// Represents a quick launch separator.
-	/// </summary>
-	public class QuickLaunchSeparator { }
-	
-}
+/// <summary>
+/// Represents a quick launch separator.
+/// </summary>
+public class QuickLaunchSeparator { }

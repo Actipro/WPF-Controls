@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -76,6 +67,11 @@ Each of the features listed in the table below describe functionality that is co
 <tr>
 <td>Default spin behavior</td>
 <td>Simple wrap.</td>
+</tr>
+
+<tr>
+<td>Input filtering</td>
+<td>No.</td>
 </tr>
 
 </tbody>

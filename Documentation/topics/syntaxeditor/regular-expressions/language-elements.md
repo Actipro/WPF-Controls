@@ -131,7 +131,8 @@ Grouping constructs allow you to capture groups of subexpressions and to increas
 
 | Construct | Description |
 | ----- | ----- |
-| `( )` | Captures the matched substring if used in a find/replace operation.  In lexing, provides non-captured grouping.  Find/replace captures using `( )` are numbered automatically based on the order of the opening parenthesis, starting from one.  The first capture, capture element number zero, is the text matched by the whole regular expression pattern. |
+| `( )` | Groups and captures the matched substring.  Captures using `( )` are numbered automatically based on the order of the opening parenthesis, starting from one.  The first capture, capture element number zero, is the text matched by the whole regular expression pattern. |
+| `(?: )` | Provides non-captured grouping. |
 | `(?= )` | Zero-width positive lookahead assertion.  Continues match only if the subexpression matches at this position on the right.  For example, `_(?=\w)` matches an underscore followed by a word character, without matching the word character. |
 | `(?! )` | Zero-width negative lookahead assertion.  Continues match only if the subexpression does not match at this position on the right.  For example, `\b(?!un)\w+\b` matches words that do not begin with `un`. |
 | `(?<= )` | Zero-width positive lookbehind assertion.  Continues match only if the subexpression matches at this position on the left.  For example, `(?<=19)99` matches instances of `99` that follow `19`. |

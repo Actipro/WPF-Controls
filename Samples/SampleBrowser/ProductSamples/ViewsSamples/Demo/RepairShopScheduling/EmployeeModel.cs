@@ -1,148 +1,98 @@
-﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
 
-#if WINRT
-using ActiproSoftware.UI.Xaml;
-#else
-using ActiproSoftware.Windows;
-#endif
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling {
+/// <summary>
+/// Stores information about an employee.
+/// </summary>
+public class EmployeeModel : ObservableObjectBase {
+
+	private string _name;
+	private EmployeeStatus _status = EmployeeStatus.Unavailable;
+	private int _totalTaskHours;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about an employee.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class EmployeeModel : ObservableObjectBase {
-		
-		private string										name;
-		private EmployeeStatus								status					= EmployeeStatus.Unavailable;
-		private ObservableCollection<TaskModelBase>			tasks					= new ObservableCollection<TaskModelBase>();
-		private int											totalTaskHours;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes an instance of the <c>EmployeeModel</c> class.
-		/// </summary>
-		/// <param name="name">The employee name.</param>
-		public EmployeeModel(string name) {
-			this.Name = name;
+	/// <param name="name">The employee name.</param>
+	public EmployeeModel(string name) {
+		_name = name;
 
-			tasks.CollectionChanged += OnTasksCollectionChanged;
-		}
+		Tasks.CollectionChanged += OnTasksCollectionChanged;
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the collection is changed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="NotifyCollectionChangedEventArgs"/> containing data related to this event.</param>
-		private void OnTasksCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-			this.UpdateTotalTaskHours();
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			if (e != null) {
-				switch (e.Action) {
-					case NotifyCollectionChangedAction.Remove:
-						if ((tasks.Count == 0) && (this.Status == EmployeeStatus.Working))
-							this.Status = EmployeeStatus.Idle;
-						break;
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Updates the <see cref="TotalTaskHours"/> property.
-		/// </summary>
-		private void UpdateTotalTaskHours() {
-			this.TotalTaskHours = tasks.OfType<ServiceModel>().Sum(o => o.Hours);
-		}
+	private void OnTasksCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+		UpdateTotalTaskHours();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the employee name.
-		/// </summary>
-		/// <value>The employee name.</value>
-		public string Name {
-			get {
-				return name;
-			}
-			set {
-				if (name != value) {
-					name = value;
-					this.NotifyPropertyChanged("Name");
-				}
-			}
+		switch (e.Action) {
+			case NotifyCollectionChangedAction.Remove:
+				if ((Tasks.Count == 0) && (Status == EmployeeStatus.Working))
+					Status = EmployeeStatus.Idle;
+				break;
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets the employee status.
-		/// </summary>
-		/// <value>The employee status.</value>
-		public EmployeeStatus Status {
-			get {
-				return status;
-			}
-			set {
-				if (status != value) {
-					status = value;
-					this.NotifyPropertyChanged("Status");
-					this.NotifyPropertyChanged("StatusNumber");
-				}
-			}
-		}
+	/// <summary>
+	/// Updates the <see cref="TotalTaskHours"/> property.
+	/// </summary>
+	private void UpdateTotalTaskHours()
+		=> TotalTaskHours = Tasks.OfType<ServiceModel>().Sum(m => m.Hours);
 
-		/// <summary>
-		/// Gets the number related to the <see cref="Status"/>.
-		/// </summary>
-		/// <value>The number related to the <see cref="Status"/>.</value>
-		public double StatusNumber {
-			get {
-				switch (status) {
-					case EmployeeStatus.Unavailable:
-						return 0;
-					case EmployeeStatus.Idle:
-						return 1;
-					default:
-						return 2;
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of tasks scheduled for the employee.
-		/// </summary>
-		/// <value>The collection of tasks scheduled for the employee.</value>
-		public ObservableCollection<TaskModelBase> Tasks {
-			get {
-				return tasks;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the total count of task hours.
-		/// </summary>
-		/// <value>The total count of task hours.</value>
-		public int TotalTaskHours {
-			get {
-				return totalTaskHours;
-			}
-			private set {
-				if (totalTaskHours != value) {
-					totalTaskHours = value;
-					this.NotifyPropertyChanged("TotalTaskHours");
-				}
-			}
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
+	/// <summary>
+	/// The employee name.
+	/// </summary>
+	public string Name {
+		get => _name;
+		set => SetProperty(ref _name, value);
+	}
+
+	/// <summary>
+	/// The employee status.
+	/// </summary>
+	public EmployeeStatus Status {
+		get => _status;
+		set {
+			if (SetProperty(ref _status, value))
+				OnPropertyChanged(nameof(StatusNumber));
+		}
+	}
+
+	/// <summary>
+	/// The number related to the <see cref="Status"/>.
+	/// </summary>
+	public double StatusNumber {
+		get {
+			return Status switch {
+				EmployeeStatus.Unavailable => 0,
+				EmployeeStatus.Idle => 1,
+				EmployeeStatus.Working or _ => 2
+			};
+		}
+	}
+
+	/// <summary>
+	/// The collection of tasks scheduled for the employee.
+	/// </summary>
+	public ObservableCollection<TaskModelBase> Tasks { get; } = [];
+
+	/// <summary>
+	/// The total count of task hours.
+	/// </summary>
+	public int TotalTaskHours {
+		get => _totalTaskHours;
+		private set => SetProperty(ref _totalTaskHours, value);
 	}
 
 }

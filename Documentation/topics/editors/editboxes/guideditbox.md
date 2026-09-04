@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>No.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -78,6 +69,11 @@ Each of the features listed in the table below describe functionality that is co
 <td>No wrap.</td>
 </tr>
 
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
 </tbody>
 </table>
 
@@ -97,6 +93,16 @@ Standard GUID formats are supported via the [Format](xref:@ActiproUIRoot.Control
 - `"b"` - 32 digits separated by hyphens, enclosed in braces (lowercase)
 - `"P"` - 32 digits separated by hyphens, enclosed in parentheses (uppercase)
 - `"p"` - 32 digits separated by hyphens, enclosed in parentheses (lowercase)
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, only the following text may be entered into the edit box:
+- Hexadecimal digits `0-9`, `A-F`, and `a-f`.
+- Hypen `-` (only if the current format inludes hyphens).
+- Braces `{` and `}` (only if the current format includes braces).
+- Parenthesis `(` and `)` (only if the current format includes parenthesis).
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML
 

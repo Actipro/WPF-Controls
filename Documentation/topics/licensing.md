@@ -1,7 +1,7 @@
 ---
 title: "Licensing"
 page-title: "Licensing"
-order: 23
+order: 26
 ---
 # Licensing
 
@@ -73,7 +73,7 @@ The following code calls the `ActiproLicenseManager.RegisterLicense` method usin
 public partial class App : Application {
 	protected override void OnStartup(StartupEventArgs e) {
 		// NOTE: Set "licensee" and "licenseKey" variables to your license information
-		ActiproSoftware.Products.ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
+		ActiproSoftware.Licensing.ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
 		base.OnStartup(e);
 	}
 }
@@ -87,21 +87,42 @@ public partial class App : Application {
 
 ### Notes on Unit Tests
 
-If your application build job runs any unit tests that create Actipro UI controls, the `ActiproLicenseManager.RegisterLicense` method must be called before the Actipro UI controls are created to avoid any licensing-related prompts or exceptions.
+If you have any unit tests that create Actipro UI controls, the `ActiproLicenseManager.RegisterLicense` method must be called before the Actipro UI controls are created to avoid any licensing-related prompts or exceptions.
+
+The following code is one recommended way to achieve this:
 
 ```csharp
-using ActiproSoftware.Products;
+using ActiproSoftware.Licensing;
 ...
-public void OnTestActiproControl() {
-	// NOTE: Set "licensee" and "licenseKey" variables to your license information
-	ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
+// Place this class in a central location, accessible by all unit test assemblies
+public static class ThirdPartyLicensing {
 
-	// Unit test logic here that creates an Actipro control
-	...
+	private static readonly Lazy<bool> _registerActiproLicense = new(() => {
+		// NOTE: Set "licensee" and "licenseKey" variables to your license information
+		ActiproLicenseManager.RegisterLicense(licensee, licenseKey);
+		return true;
+	});
+
+	public static void EnsureActiproControlsLicensed() {
+		_ = _registerActiproLicense.Value;
+	}
+
+}
+...
+// Unit test class
+public class MyUnitTests {
+
+	public void OnTestActiproControl() {
+		ThirdPartyLicensing.EnsureActiproControlsLicensed();
+
+		// Unit test logic here that creates an Actipro control
+		...
+	}
+
 }
 ```
 
-The license registration could alternatively be placed in a more centralized location, such as in the unit test class constructor.  The important thing is that it is called before Actipro UI controls are created.
+The `RegisterLicense` call may only be made once per application session. Using a static lazy initializer in a centralized class accessible by all unit test assemblies as in the code above ensures the registration only occurs once.
 
 ## Licensing Via a Licenses.licx File
 
@@ -170,7 +191,7 @@ The contents of a *licenses.licx* file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the *licenses.licx* file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Products.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=25.1.4.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Licensing.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=26.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 > [!IMPORTANT]

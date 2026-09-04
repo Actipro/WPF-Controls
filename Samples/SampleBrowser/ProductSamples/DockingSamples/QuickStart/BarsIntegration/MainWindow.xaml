@@ -55,7 +55,7 @@
 							<docking:SplitContainer Orientation="Vertical">
 								<docking:TabbedMdiContainer>
 									<docking:DocumentWindow Title="Document1.txt">
-										<TextBox BorderThickness="0" Text="Focus this document and use the ribbon button above to float the document.  Then while the floating document still has focus, click the ribbon button to dock the document.  The WindowChrome is configured to not activate the main Window on toolbar clicks, and there are a couple properties set in code-behind to do the same for menus.  These features allow for main Window ribbon buttons to work on focused elements in floating documents." TextWrapping="Wrap" />
+										<TextBox BorderThickness="0" Text="Focus this document and use the ribbon button above to float the document.  Then while the floating document still has focus, click the ribbon button to dock the document.  The WindowChrome is configured to not activate the main Window on toolbar clicks.  This feature allows for main Window ribbon buttons to work on focused elements in floating documents." TextWrapping="Wrap" />
 									</docking:DocumentWindow>
 
 									<docking:DocumentWindow Title="Document2.txt">

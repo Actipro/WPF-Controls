@@ -1,93 +1,57 @@
-﻿using System;
-using System.IO;
-using System.Windows.Media.Imaging;
 using ActiproSoftware.Windows;
+using System.Windows.Media.Imaging;
 
-namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbFileSystem {
+namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbFileSystem;
+
+/// <summary>
+/// Holds data relating to a directory.
+/// </summary>
+/// <param name="info">The directory information.</param>
+public class DirectoryData(DirectoryInfo info) {
+
+	private DeferrableObservableCollection<DirectoryData>? _directories;
+	private BitmapSource? _imageSource;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Holds data relating to a directory.
+	/// The drives.
 	/// </summary>
-	public class DirectoryData {
-		private DeferrableObservableCollection<DirectoryData> directories;
-		private BitmapSource imageSource;
-		private DirectoryInfo info;
+	public DeferrableObservableCollection<DirectoryData> Directories {
+		get {
+			if (_directories is null) {
+				_directories = [];
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>DirectoryData</c> class.
-		/// </summary>
-		public DirectoryData(DirectoryInfo info) {
-			if (null == info)
-				throw new ArgumentNullException("info");
-			this.info = info;
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the drives.
-		/// </summary>
-		/// <value>The drives.</value>
-		public DeferrableObservableCollection<DirectoryData> Directories {
-			get {
-				if (null == this.directories) {
-					this.directories = new DeferrableObservableCollection<DirectoryData>();
-
-					try {
-						DirectoryInfo[] directoryInfos = this.Info.GetDirectories();
-						foreach (DirectoryInfo directoryInfo in directoryInfos)
-							this.directories.Add(new DirectoryData(directoryInfo));
-					}
-					catch (DirectoryNotFoundException) {
-						// No-op
-					}
-					catch (IOException) {
-						// No-op
-					}
-					catch (UnauthorizedAccessException) {
-						// No-op
-					}
+				try {
+					foreach (var directoryInfo in Info.GetDirectories())
+						_directories.Add(new DirectoryData(directoryInfo));
 				}
-
-				return this.directories;
+				catch (DirectoryNotFoundException) { } // Ignore
+				catch (IOException) { } // Ignore
+				catch (UnauthorizedAccessException) { } // Ignore
 			}
-		}
 
-		/// <summary>
-		/// Gets the image source.
-		/// </summary>
-		/// <value>The image source.</value>
-		public BitmapSource ImageSource {
-			get {
-				if (null == this.imageSource)
-					this.imageSource = ShellIconHelper.GetSystemImageSource(this.Info.FullName);
-				return this.imageSource;
-			}
-		}
-
-		/// <summary>
-		/// Gets the info.
-		/// </summary>
-		/// <value>The info.</value>
-		public DirectoryInfo Info {
-			get {
-				return this.info;
-			}
-		}
-
-		/// <summary>
-		/// Gets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name {
-			get {
-				return this.Info.Name;
-			}
+			return _directories;
 		}
 	}
+
+	/// <summary>
+	/// The image source.
+	/// </summary>
+	public BitmapSource ImageSource
+		=> _imageSource ??= ShellIconHelper.GetSystemImageSource(Info.FullName);
+
+	/// <summary>
+	/// The info.
+	/// </summary>
+	public DirectoryInfo Info { get; } = info ?? throw new ArgumentNullException(nameof(info));
+
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string Name
+		=> Info.Name;
+
 }

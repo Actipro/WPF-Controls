@@ -47,10 +47,10 @@ This code shows how to translate an offset to a new snapshot after changes are m
 ```csharp
 TextSnapshotOffset offset = new TextSnapshotOffset(document.CurrentSnapshot, 10);
 // Document changes made here, meaning new snapshots are created
-TextSnapshotOffset translatedOffset = offset.TranslateTo(document.CurrentSnapshot, TextOffsetTrackingMode.Negative);
+TextSnapshotOffset? translatedOffset = offset.TranslateTo(document.CurrentSnapshot, TextOffsetTrackingMode.Negative);
 ```
 
-A [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) can be marked as "deleted" via its [IsDeleted](xref:ActiproSoftware.Text.TextSnapshotOffset.IsDeleted) property.  The [Deleted](xref:ActiproSoftware.Text.TextSnapshotOffset.Deleted) static property provides access to an instance of the structure that has been marked "deleted".  This variation of the offset may be useful when you wish to flag that some edit operation removed the range that contained the offset.
+A [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) is considered "deleted" when a method returning a nullable [TextSnapshotOffset](xref:ActiproSoftware.Text.TextSnapshotOffset) returns a `null` value.  A "deleted" offset flags that some edit operation removed the range that contained the offset.
 
 ## Text Range Translation
 
@@ -65,10 +65,7 @@ This code shows how to translate a text range to a new snapshot after changes ar
 ```csharp
 TextSnapshotRange range = new TextSnapshotRange(document.CurrentSnapshot, 10, 15);
 // Document changes made here, meaning new snapshots are created
-TextSnapshotRange translatedRange = range.TranslateTo(document.CurrentSnapshot, TextRangeTrackingModes.Default);
+TextSnapshotRange? translatedRange = range.TranslateTo(document.CurrentSnapshot, TextRangeTrackingModes.Default);
 ```
 
-When translating a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange), it is possible that the resulting range no longer exists.  For example, this could happen if the user deleted the line that contained the range.  In these cases, the [IsDeleted](xref:ActiproSoftware.Text.TextSnapshotRange.IsDeleted) property may be set to `true`, depending on which tracking mode options were used.
-
-> [!NOTE]
-> The [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange).[IsDeleted](xref:ActiproSoftware.Text.TextSnapshotRange.IsDeleted) static property provides access to an instance of the structure that has been marked "deleted".
+When translating a [TextSnapshotRange](xref:ActiproSoftware.Text.TextSnapshotRange), it is possible that the resulting range no longer exists.  For example, this could happen if the user deleted the line that contained the range.  In these cases, a `null` value may be returned to indicate a "deleted" text range, depending on which tracking mode options were used.

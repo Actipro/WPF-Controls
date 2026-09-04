@@ -1,7 +1,7 @@
 ---
 title: "NuGet Packages and Feeds"
 page-title: "NuGet Packages and Feeds"
-order: 24
+order: 27
 ---
 # NuGet Packages and Feeds
 

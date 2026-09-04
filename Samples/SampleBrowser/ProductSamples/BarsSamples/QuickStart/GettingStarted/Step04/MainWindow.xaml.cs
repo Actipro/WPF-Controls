@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 RIBBON GETTING STARTED SERIES - STEP 4
 
@@ -12,56 +12,50 @@ CHANGES SINCE LAST STEP:
 
 */
 
-using System.Windows.Input;
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step04;
 
+/// <summary>
+/// Provides the main window for this sample.
+/// </summary>
+public partial class MainWindow {
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step04 {
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main window for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainWindow {
+	public MainWindow() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Add command bindings
+		CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MainWindow"/> class.
-		/// </summary>
-		public MainWindow() {
-			InitializeComponent();
+		// Configure this view with the new view model
+		ViewModel = new SampleWindowViewModel();
+	}
 
-			// Add command bindings
-			this.CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// Configure this view with the new view model
-			this.ViewModel = new SampleWindowViewModel();
-		}
+	/// <summary>
+	/// Executes the <see cref="ApplicationCommands.Help"/> command.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e) {
+		// Associate the CommandBinding with ViewModel.HelpCommand
+		ViewModel?.HelpCommand?.Execute(e.Parameter);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Executes the <see cref="ApplicationCommands.Help"/> command.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The event data.</param>
-		private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e) {
-			// Associate the CommandBinding with ViewModel.HelpCommand
-			ViewModel?.HelpCommand?.Execute(e.Parameter);
-		}
-
-		/// <summary>
-		/// Gets or sets the view model for this view.
-		/// </summary>
-		/// <value>A <see cref="SampleWindowViewModel"/>.</value>
-		private SampleWindowViewModel ViewModel {
-			get => this.DataContext as SampleWindowViewModel;
-			set => this.DataContext = value;
-		}
-
+	/// <summary>
+	/// The view model for this view.
+	/// </summary>
+	private SampleWindowViewModel? ViewModel {
+		get => DataContext as SampleWindowViewModel;
+		set => DataContext = value;
 	}
 
 }

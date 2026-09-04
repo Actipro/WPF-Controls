@@ -1,235 +1,152 @@
-﻿using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls;
-using System.ComponentModel;
-using System.Windows;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GalleryInRibbon;
+
+/// <summary>
+/// Defines configurable options for this sample.
+/// </summary>
+public class OptionsViewModel : ObservableObjectBase {
+
+	private bool _canCategorizeOnMenu = false;
+	private bool _canFilterOnMenu = false;
+	private int _itemSpacing = 4;
+	private DataTemplate? _itemTemplate;
+	private bool _isSetColorCommandEnabled = true;
+	private int _minLargeRibbonColumnCount = 6;
+	private int _maxMenuColumnCount = int.MaxValue;
+	private int _maxRibbonColumnCount = int.MaxValue;
+	private int _minMediumRibbonColumnCount = 3;
+	private ControlResizeMode _menuResizeMode = ControlResizeMode.Both;
+	private int _minMenuColumnCount = 1;
+	private string? _selectedColorCategory;
+	private bool _useAccentedItemBorder = true;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Defines configurable options for this sample.
+	/// Indicates if the gallery is categorized when displayed as a menu.
 	/// </summary>
-	public class OptionsViewModel : ObservableObjectBase {
-
-		private bool				canCategorizeOnMenu			= false;
-		private bool				canFilterOnMenu				= false;
-		private int					itemSpacing					= 4;
-		private DataTemplate		itemTemplate;
-		private bool				isSetColorCommandEnabled	= true;
-		private int					minLargeRibbonColumnCount	= 6;
-		private int					maxMenuColumnCount			= int.MaxValue;
-		private int					maxRibbonColumnCount		= int.MaxValue;
-		private int					minMediumRibbonColumnCount	= 3;
-		private ControlResizeMode	menuResizeMode				= ControlResizeMode.Both;
-		private int					minMenuColumnCount			= 1;
-		private string				selectedColorCategory;
-		private bool				useAccentedItemBorder		= true;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets if the gallery is categorized when displayed as a menu.
-		/// </summary>
-		/// <value><c>true</c> to categorize; otherwise <c>false</c>.</value>
-		public bool CanCategorizeOnMenu {
-			get => canCategorizeOnMenu;
-			set {
-				if (canCategorizeOnMenu != value) {
-					canCategorizeOnMenu = value;
-					NotifyPropertyChanged(nameof(CanCategorizeOnMenu));
-
-					if (!canCategorizeOnMenu) {
-						// Disable filtering if categories are not active
-						CanFilterOnMenu = false;
-					}
+	public bool CanCategorizeOnMenu {
+		get => _canCategorizeOnMenu;
+		set {
+			if (SetProperty(ref _canCategorizeOnMenu, value)) {
+				if (!_canCategorizeOnMenu) {
+					// Disable filtering if categories are not active
+					CanFilterOnMenu = false;
 				}
 			}
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets if the gallery can be filtered when displayed as a menu.
-		/// </summary>
-		/// <value><c>true</c> to allow filtering; otherwise <c>false</c>.</value>
-		public bool CanFilterOnMenu {
-			get => canFilterOnMenu;
-			set {
-				if (canFilterOnMenu != value) {
-					canFilterOnMenu = value;
-					NotifyPropertyChanged(nameof(CanFilterOnMenu));
+	/// <summary>
+	/// Indicates if the gallery can be filtered when displayed as a menu.
+	/// </summary>
+	public bool CanFilterOnMenu {
+		get => _canFilterOnMenu;
+		set {
+			if (SetProperty(ref _canFilterOnMenu, value)) {
+				if (_canFilterOnMenu) {
+					// Ensure categorization is enabled or filtering has no effect
+					CanCategorizeOnMenu = true;
+				}
+			}
+		}
+	}
 
-					if (canFilterOnMenu) {
-						// Ensure categorization is enabled or filtering has no effect
-						CanCategorizeOnMenu = true;
-					}
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates if the <see cref="SetColorCommand"/> can be executed.
+	/// </summary>
+	[DisplayName("Is gallery command enabled")]
+	public bool IsSetColorCommandEnabled {
+		get => _isSetColorCommandEnabled;
+		set => SetProperty(ref _isSetColorCommandEnabled, value);
+	}
 
-		/// <summary>
-		/// Gets or sets if the <see cref="SetColorCommand"/> can be executed.
-		/// </summary>
-		/// <value><c>true</c> if the command can execute; otherwise <c>false</c>.</value>
-		[DisplayName("Is gallery command enabled")]
-		public bool IsSetColorCommandEnabled {
-			get => isSetColorCommandEnabled;
-			set {
-				if (isSetColorCommandEnabled != value) {
-					isSetColorCommandEnabled = value;
-					NotifyPropertyChanged(nameof(IsSetColorCommandEnabled));
-				}
-			}
-		}
+	/// <summary>
+	/// The amount of spacing between gallery items.
+	/// </summary>
+	public int ItemSpacing {
+		get => _itemSpacing;
+		set => SetProperty(ref _itemSpacing, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the amount of spacing between gallery items.
-		/// </summary>
-		/// <value>An integer value.</value>
-		public int ItemSpacing {
-			get {
-				return itemSpacing;
-			}
-			set {
-				if (itemSpacing != value) {
-					itemSpacing = value;
-					NotifyPropertyChanged(nameof(ItemSpacing));
-				}
-			}
-		}
+	/// <summary>
+	/// The template used to display items in the gallery.
+	/// </summary>
+	public DataTemplate? ItemTemplate {
+		get => _itemTemplate;
+		set => SetProperty(ref _itemTemplate, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the template used to display items in the gallery.
-		/// </summary>
-		/// <value>A <see cref="DataTemplate"/>.</value>
-		public DataTemplate ItemTemplate {
-			get => itemTemplate;
-			set {
-				if (itemTemplate != value) {
-					itemTemplate = value;
-					NotifyPropertyChanged(nameof(ItemTemplate));
-				}
-			}
-		}
+	/// <summary>
+	/// The maximum number of columns used for gallery items when displayed in a menu.
+	/// </summary>
+	[DisplayName("Max col count (menu)")]
+	public int MaxMenuColumnCount {
+		get => _maxMenuColumnCount;
+		set => SetProperty(ref _maxMenuColumnCount, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the maximum number of columns used for gallery items when displayed in a menu.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Max col count (menu)")]
-		public int MaxMenuColumnCount {
-			get => maxMenuColumnCount;
-			set {
-				if (maxMenuColumnCount != value) {
-					maxMenuColumnCount = value;
-					NotifyPropertyChanged(nameof(MaxMenuColumnCount));
-				}
-			}
-		}
+	/// <summary>
+	/// The maximum number of columns used for gallery items when displayed in the ribbon.
+	/// </summary>
+	[DisplayName("Max col count (ribbon)")]
+	public int MaxRibbonColumnCount {
+		get => _maxRibbonColumnCount;
+		set => SetProperty(ref _maxRibbonColumnCount, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the maximum number of columns used for gallery items when displayed in the ribbon.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Max col count (ribbon)")]
-		public int MaxRibbonColumnCount {
-			get => maxRibbonColumnCount;
-			set {
-				if (maxRibbonColumnCount != value) {
-					maxRibbonColumnCount = value;
-					NotifyPropertyChanged(nameof(MaxRibbonColumnCount));
-				}
-			}
-		}
+	/// <summary>
+	/// Indicates if a menu can be resized.
+	/// </summary>
+	public ControlResizeMode MenuResizeMode {
+		get => _menuResizeMode;
+		set => SetProperty(ref _menuResizeMode, value);
+	}
 
-		/// <summary>
-		/// Gets or sets if a menu can be resized.
-		/// </summary>
-		/// <value>One of the <see cref="ControlResizeMode"/> values.</value>
-		public ControlResizeMode MenuResizeMode {
-			get => menuResizeMode;
-			set {
-				if (menuResizeMode != value) {
-					menuResizeMode = value;
-					NotifyPropertyChanged(nameof(MenuResizeMode));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a large variant size.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Min large col count (ribbon)")]
-		public int MinLargeRibbonColumnCount {
-			get => minLargeRibbonColumnCount;
-			set {
-				if (minLargeRibbonColumnCount != value) {
-					minLargeRibbonColumnCount = value;
-					NotifyPropertyChanged(nameof(MinLargeRibbonColumnCount));
-				}
-			}
-		}
+	/// <summary>
+	/// The minimum number of columns used for gallery items when displayed in the ribbon with a large variant size.
+	/// </summary>
+	[DisplayName("Min large col count (ribbon)")]
+	public int MinLargeRibbonColumnCount {
+		get => _minLargeRibbonColumnCount;
+		set => SetProperty(ref _minLargeRibbonColumnCount, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the minimum number of columns used for gallery items when displayed in the ribbon with a medium variant size.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Min med col count (ribbon)")]
-		public int MinMediumRibbonColumnCount {
-			get => minMediumRibbonColumnCount;
-			set {
-				if (minMediumRibbonColumnCount != value) {
-					minMediumRibbonColumnCount = value;
-					NotifyPropertyChanged(nameof(MinMediumRibbonColumnCount));
-				}
-			}
-		}
+	/// <summary>
+	/// The minimum number of columns used for gallery items when displayed in the ribbon with a medium variant size.
+	/// </summary>
+	[DisplayName("Min med col count (ribbon)")]
+	public int MinMediumRibbonColumnCount {
+		get => _minMediumRibbonColumnCount;
+		set => SetProperty(ref _minMediumRibbonColumnCount, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the minimum number of columns used for gallery items when displayed in a menu.
-		/// </summary>
-		/// <value>An integer value.</value>
-		[DisplayName("Min col count (menu)")]
-		public int MinMenuColumnCount {
-			get => minMenuColumnCount;
-			set {
-				if (minMenuColumnCount != value) {
-					minMenuColumnCount = value;
-					NotifyPropertyChanged(nameof(MinMenuColumnCount));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the selected color category.
-		/// </summary>
-		/// <value>The selected color category.</value>
-		public string SelectedColorCategory {
-			get => selectedColorCategory;
-			set {
-				if (selectedColorCategory != value) {
-					selectedColorCategory = value;
-					NotifyPropertyChanged(nameof(SelectedColorCategory));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets if an accented border is displayed around gallery items.
-		/// </summary>
-		/// <value><c>true</c> to use an accented border; otherwise <c>false</c>.</value>
-		public bool UseAccentedItemBorder {
-			get {
-				return useAccentedItemBorder;
-			}
-			set {
-				if (useAccentedItemBorder != value) {
-					useAccentedItemBorder = value;
-					NotifyPropertyChanged(nameof(UseAccentedItemBorder));
-				}
-			}
-		}
+	/// <summary>
+	/// The minimum number of columns used for gallery items when displayed in a menu.
+	/// </summary>
+	[DisplayName("Min col count (menu)")]
+	public int MinMenuColumnCount {
+		get => _minMenuColumnCount;
+		set => SetProperty(ref _minMenuColumnCount, value);
+	}
 
+	/// <summary>
+	/// The selected color category.
+	/// </summary>
+	public string? SelectedColorCategory {
+		get => _selectedColorCategory;
+		set => SetProperty(ref _selectedColorCategory, value);
+	}
+
+	/// <summary>
+	/// Indicates if an accented border is displayed around gallery items.
+	/// </summary>
+	public bool UseAccentedItemBorder {
+		get => _useAccentedItemBorder;
+		set => SetProperty(ref _useAccentedItemBorder, value);
 	}
 
 }

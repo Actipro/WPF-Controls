@@ -1,67 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
+using System.Text.RegularExpressions;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsCustomDecorator {
-    
-	/// <summary>
-	/// Provides <see cref="CustomTag"/> objects over text ranges that contain the specified regex pattern text.
-	/// </summary>
-	public class CustomTagger : TaggerBase<CustomTag> {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsCustomDecorator;
 
-		private string pattern;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <c>CustomTagger</c> class.
-		/// </summary>
-		/// <param name="document">The document to which this manager is attached.</param>
-		public CustomTagger(ICodeDocument document) : 
-			base("CustomTagger", null, document, true) {
+/// <summary>
+/// Provides <see cref="CustomTag"/> objects over text ranges that contain the specified regex pattern text.
+/// </summary>
+/// <param name="document">The document to which this manager is attached.</param>
+public class CustomTagger(ICodeDocument document) : TaggerBase<CustomTag>("CustomTagger", orderings: null, document, isForLanguage: true) {
 
-			this.pattern = @"\bActipro\b";
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Returns the tag ranges that intersect with the specified normalized snapshot ranges.
-		/// </summary>
-		/// <param name="snapshotRanges">The collection of normalized snapshot ranges.</param>
-		/// <param name="parameter">An optional parameter that provides contextual information about the tag request.</param>
-		/// <returns>The tag ranges that intersect with the specified normalized snapshot ranges.</returns>
-		public override IEnumerable<TagSnapshotRange<CustomTag>> GetTags(NormalizedTextSnapshotRangeCollection snapshotRanges, object parameter) {
-			if (snapshotRanges != null) {
-				// Loop through the snapshot ranges
-				foreach (TextSnapshotRange snapshotRange in snapshotRanges) {
-					// Get the text of the snapshot range
-					string text = snapshotRange.Text;
+	private readonly string _pattern = /*lang=regex*/ @"\bActipro\b";
 
-					// Look for a regex pattern match
-					MatchCollection matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
-					if (matches.Count > 0) {
-						// Loop through the matches
-						foreach (Match match in matches) {
-							// Create a tag
-							CustomTag tag = new CustomTag();
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-							// Yield the tag
-							yield return new TagSnapshotRange<CustomTag>(
-								TextSnapshotRange.FromSpan(snapshotRange.Snapshot, snapshotRange.StartOffset + match.Index, match.Length), tag);
-						}
+	/// <inheritdoc/>
+	public override IEnumerable<TagSnapshotRange<CustomTag>> GetTags(NormalizedTextSnapshotRangeCollection snapshotRanges, object? parameter) {
+		if (snapshotRanges is not null) {
+			// Loop through the snapshot ranges
+			foreach (var snapshotRange in snapshotRanges) {
+				// Get the text of the snapshot range
+				var text = snapshotRange.Text;
+
+				// Look for a regex pattern match
+				var matches = Regex.Matches(text, _pattern, RegexOptions.IgnoreCase);
+				if (matches.Count > 0) {
+					// Loop through the matches
+					foreach (Match match in matches) {
+						// Create a tag
+						var tag = new CustomTag();
+
+						// Yield the tag
+						yield return new TagSnapshotRange<CustomTag>(
+							TextSnapshotRange.FromSpan(snapshotRange.Snapshot, snapshotRange.StartOffset + match.Index, match.Length),
+							tag
+						);
 					}
 				}
 			}
 		}
-
 	}
 
 }

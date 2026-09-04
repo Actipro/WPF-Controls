@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridNestedCategories.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -25,12 +25,12 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					The property grid supports advanced nested categories using a special syntax in the category name.
-					When the AreNestedCategoriesSupported property is set to true, nested categories can be created by specifying a path to the desired category. 
+					When the AreNestedCategoriesSupported property is set to true, nested categories can be created by specifying a path to the desired category.
 					For example, &quot;First\Second&quot; will create a category titled &quot;Second&quot; that is
-					contained in a category titled &quot;First&quot;. 
+					contained in a category titled &quot;First&quot;.
 					This syntax can be used with CategoryAttribute or anywhere the category name can be specified for use in the property grid.
 					<LineBreak /><LineBreak />
-					In this example, each of the properties specifies their own nested category. 
+					In this example, each of the properties specifies their own nested category.
 					Try toggling the AreNestedCategoriesSupported property to see the difference.
 				</TextBlock>
 			</Expander>

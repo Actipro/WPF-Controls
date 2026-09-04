@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>Yes, and can be hidden or optionally displayed only when the control is active.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -78,12 +69,17 @@ Each of the features listed in the table below describe functionality that is co
 <td>No wrap.</td>
 </tr>
 
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
 </tbody>
 </table>
 
 ## Number Formats
 
-[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.Format) property and affect the textual value display.  These formats are recommended:
+[Standard .NET numeric formats](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings) are supported via the [Format](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Format) property and affect the textual value display.  These formats are recommended:
 
 - `"C"` (currency)
 - `"F"`
@@ -93,13 +89,13 @@ Each of the features listed in the table below describe functionality that is co
 - `"Nx"`, where x is the number of decimal places (e.g., `"N1"`)
 - `"P"` (percentage)
 
-Basic custom numeric formats are also supported, such as:
+Composite numeric formats are also supported, such as:
 
-- `"0.0#' ft'"`
+- `"{0:0.0#} ft"`
 
 ## Minimum and Maximum Values
 
-Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.Minimum) properties.
+Minimum and maximum values may be assigned via the [Maximum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Maximum) and [Minimum](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.Minimum) properties.
 
 No values can be committed that lay outside of the inclusive range created by those properties.
 
@@ -109,25 +105,25 @@ This edit box has a single part.
 
 When the caret is over a part, the part value may be incremented or decremented.  Please see the [Edit Box Basics](parteditboxbase.md) topic for information on how to do this.
 
-Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.LargeChange) property.
+Small value changes alter the current number component by `1`, which is the default for the [SmallChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.SmallChange) property.  Large value changes alter the current number component by `5`, which is the default for the [LargeChange](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.LargeChange) property.
 
-The [CanSnapToChangePrecision](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.CanSnapToChangePrecision) property determines whether the value should be snapped to the precision of the incremental change value prior to applying the increment.
+The [CanSnapToChangePrecision](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointNumberPartEditBoxBase`1.CanSnapToChangePrecision) property determines whether the value should be snapped to the precision of the incremental change value prior to applying the increment.
 
-The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
+The [DefaultValue](xref:@ActiproUIRoot.Controls.Editors.Primitives.NumberPartEditBoxBase`1.DefaultValue) property sets the value that will be set when incrementing or decrementing from a `null` value.
 
 ## Rounding Decimal Places
 
-The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `7` but can be set to any value in the range `0` to `7`.  Or set the value to `null` to prevent rounding.
+The [RoundingDecimalPlace](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.RoundingDecimalPlace) property determines the maximum decimal place at which to round floating-point numbers.  It defaults to `6` but can be set to any value in the range `0` to `6`.  Or set the value to `null` to prevent rounding.
 
 ## Allowing NaN or Infinity Values
 
 Text entry of `NaN` (not-a-number) and infinity values into the edit box is not allowed by default.
 
-Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter <kbd>N</kbd>.
+Set the [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointIeee754NumberPartEditBoxBase`1.IsNaNAllowed) property to `true` to allow a `NaN` value to be entered by typing the letter <kbd>N</kbd>.
 
-Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign <kbd>-</kbd> and then the letter <kbd>I</kbd>.
+Set the [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointIeee754NumberPartEditBoxBase`1.IsNegativeInfinityAllowed) property to `true` to allow a negative infinity value to be entered by typing a negative sign <kbd>-</kbd> and then the letter <kbd>I</kbd>.
 
-Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter <kbd>I</kbd>.
+Set the [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.FloatingPointIeee754NumberPartEditBoxBase`1.IsPositiveInfinityAllowed) property to `true` to allow a positive infinity value to be entered by typing the letter <kbd>I</kbd>.
 
 ## Sample XAML
 
@@ -141,21 +137,17 @@ This control can be placed within any other XAML container control, such as a `P
 
 This edit box has multiple built-in picker kinds that can be set via the [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox).[PickerKind](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox.PickerKind) property, which is of type [SingleEditBoxPickerKind](xref:@ActiproUIRoot.Controls.Editors.SingleEditBoxPickerKind).
 
-@if (wpf) {
-
-The default value in WPF is `Calculator`.
-
-}
-
-@if (winrt) {
-
-The default value in UWP is `Default`.
-
-}
+The default value is [Calculator](xref:@ActiproUIRoot.Controls.Editors.SingleEditBoxPickerKind.Calculator).
 
 The `Default` picker kind renders using a radial slider, while the `Calculator` picker kind utilizes the [Calculator](../other-controls/calculator.md) control.
 
 ![Screenshot](../images/doubleeditbox-opened-calculator.png)
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, the allowed input is limited to numeric text based on the current format.
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML for Currency Input
 

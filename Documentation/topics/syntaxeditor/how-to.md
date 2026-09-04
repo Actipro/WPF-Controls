@@ -29,12 +29,6 @@ The text content of an [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) 
 
 The [Offsets, Ranges, and Positions](text-parsing/core-text/offsets-ranges-positions.md) topic describes all the types of character indices used by the text framework and how to convert between them.
 
-### Why are offsets that I externally found not syncing up with document offsets?
-
-Normal multi-line strings in Windows use both carriage return and newline characters as line terminators.  When [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) objects load text, they convert all line terminators to newline characters only.  This helps with parsing performance.
-
-The [Line Terminators](text-parsing/core-text/line-terminators.md) topic talks about why this is done and how to get document text back out using any common line terminator.
-
 ### How to programmatically find and replace text?
 
 The [Low-Level Search Operations](text-parsing/advanced-text/searching.md) topic describes how to programmatically find/replace text using the lowest-level search object model.

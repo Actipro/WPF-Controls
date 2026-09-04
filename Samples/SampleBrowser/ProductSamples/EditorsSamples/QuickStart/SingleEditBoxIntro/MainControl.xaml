@@ -84,6 +84,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNullAllowed}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsInputFilteringEnabled}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNaNAllowed}" DisplayName="Is NaN allowed (type 'n' in edit box)" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNegativeInfinityAllowed}" DisplayName="Is -Infinity allowed (type '-i' in edit box)" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsPositiveInfinityAllowed}" DisplayName="Is +Infinity allowed (type 'i' in edit box)" />

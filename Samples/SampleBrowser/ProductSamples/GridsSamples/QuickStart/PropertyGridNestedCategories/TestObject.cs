@@ -1,198 +1,121 @@
-﻿using System.ComponentModel;
-using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridNestedCategories;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridNestedCategories {
+/// <summary>
+/// Represents a test object.
+/// </summary>
+public class TestObject : ObservableObjectBase {
+
+	private string _one = string.Empty;
+	private string _two = string.Empty;
+	private string _three = string.Empty;
+	private string _four = string.Empty;
+	private string _five = string.Empty;
+	private string _six = string.Empty;
+	private string _seven = string.Empty;
+	private string _eight = string.Empty;
+	private string _nine = string.Empty;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a test object.
+	/// The first property.
 	/// </summary>
-	public class TestObject : ObservableObjectBase {
+	[Category(@"Odd")]
+	[DefaultValue("")]
+	[Description("The first property.")]
+	public string One {
+		get => _one;
+		set => SetProperty(ref _one, value);
+	}
 
-		private string one = string.Empty;
-		private string two = string.Empty;
-		private string three = string.Empty;
-		private string four = string.Empty;
-		private string five = string.Empty;
-		private string six = string.Empty;
-		private string seven = string.Empty;
-		private string eight = string.Empty;
-		private string nine = string.Empty;
+	/// <summary>
+	/// The second property.
+	/// </summary>
+	[Category(@"Even")]
+	[DefaultValue("")]
+	[Description("The second property.")]
+	public string Two {
+		get => _two;
+		set => SetProperty(ref _two, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The third property.
+	/// </summary>
+	[Category(@"Odd\Multiples of 3")]
+	[DefaultValue("")]
+	[Description("The third property.")]
+	public string Three {
+		get => _three;
+		set => SetProperty(ref _three, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the first property.
-		/// </summary>
-		/// <value>The first property.</value>
-		[Category(@"Odd")]
-		[DefaultValue("")]
-		[Description("The first property.")]
-		public string One {
-			get {
-				return this.one;
-			}
-			set {
-				if (value != this.one) {
-					this.one = value;
-					this.NotifyPropertyChanged("One");
-				}
-			}
-		}
+	/// <summary>
+	/// The fourth property.
+	/// </summary>
+	[Category(@"Even\Multiples of 4")]
+	[DefaultValue("")]
+	[Description("The fourth property.")]
+	public string Four {
+		get => _four;
+		set => SetProperty(ref _four, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the second property.
-		/// </summary>
-		/// <value>The second property.</value>
-		[Category(@"Even")]
-		[DefaultValue("")]
-		[Description("The second property.")]
-		public string Two {
-			get {
-				return this.two;
-			}
-			set {
-				if (value != this.two) {
-					this.two = value;
-					this.NotifyPropertyChanged("Two");
-				}
-			}
-		}
+	/// <summary>
+	/// The fifth property.
+	/// </summary>
+	[Category(@"Odd")]
+	[DefaultValue("")]
+	[Description("The fifth property.")]
+	public string Five {
+		get => _five;
+		set => SetProperty(ref _five, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the third property.
-		/// </summary>
-		/// <value>The third property.</value>
-		[Category(@"Odd\Multiples of 3")]
-		[DefaultValue("")]
-		[Description("The third property.")]
-		public string Three {
-			get {
-				return this.three;
-			}
-			set {
-				if (value != this.three) {
-					this.three = value;
-					this.NotifyPropertyChanged("Three");
-				}
-			}
-		}
+	/// <summary>
+	/// The sixth property.
+	/// </summary>
+	[Category(@"Even")]
+	[DefaultValue("")]
+	[Description("The sixth property.")]
+	public string Six {
+		get => _six;
+		set => SetProperty(ref _six, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the fourth property.
-		/// </summary>
-		/// <value>The fourth property.</value>
-		[Category(@"Even\Multiples of 4")]
-		[DefaultValue("")]
-		[Description("The fourth property.")]
-		public string Four {
-			get {
-				return this.four;
-			}
-			set {
-				if (value != this.four) {
-					this.four = value;
-					this.NotifyPropertyChanged("Four");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the fifth property.
-		/// </summary>
-		/// <value>The fifth property.</value>
-		[Category(@"Odd")]
-		[DefaultValue("")]
-		[Description("The fifth property.")]
-		public string Five {
-			get {
-				return this.five;
-			}
-			set {
-				if (value != this.five) {
-					this.five = value;
-					this.NotifyPropertyChanged("Five");
-				}
-			}
-		}
+	/// <summary>
+	/// The seventh property.
+	/// </summary>
+	[Category(@"Odd")]
+	[DefaultValue("")]
+	[Description("The seventh property.")]
+	public string Seven {
+		get => _seven;
+		set => SetProperty(ref _seven, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the sixth property.
-		/// </summary>
-		/// <value>The sixth property.</value>
-		[Category(@"Even")]
-		[DefaultValue("")]
-		[Description("The sixth property.")]
-		public string Six {
-			get {
-				return this.six;
-			}
-			set {
-				if (value != this.six) {
-					this.six = value;
-					this.NotifyPropertyChanged("Six");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the seventh property.
-		/// </summary>
-		/// <value>The seventh property.</value>
-		[Category(@"Odd")]
-		[DefaultValue("")]
-		[Description("The seventh property.")]
-		public string Seven {
-			get {
-				return this.seven;
-			}
-			set {
-				if (value != this.seven) {
-					this.seven = value;
-					this.NotifyPropertyChanged("Seven");
-				}
-			}
-		}
+	/// <summary>
+	/// The eighth property.
+	/// </summary>
+	[Category(@"Even\Multiples of 4")]
+	[DefaultValue("")]
+	[Description("The eighth property.")]
+	public string Eight {
+		get => _eight;
+		set => SetProperty(ref _eight, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the eighth property.
-		/// </summary>
-		/// <value>The eighth property.</value>
-		[Category(@"Even\Multiples of 4")]
-		[DefaultValue("")]
-		[Description("The eighth property.")]
-		public string Eight {
-			get {
-				return this.eight;
-			}
-			set {
-				if (value != this.eight) {
-					this.eight = value;
-					this.NotifyPropertyChanged("Eight");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the ninth property.
-		/// </summary>
-		/// <value>The ninth property.</value>
-		[Category(@"Odd\Multiples of 3")]
-		[DefaultValue("")]
-		[Description("The ninth property.")]
-		public string Nine {
-			get {
-				return this.nine;
-			}
-			set {
-				if (value != this.nine) {
-					this.nine = value;
-					this.NotifyPropertyChanged("Nine");
-				}
-			}
-		}
-
+	/// <summary>
+	/// The ninth property.
+	/// </summary>
+	[Category(@"Odd\Multiples of 3")]
+	[DefaultValue("")]
+	[Description("The ninth property.")]
+	public string Nine {
+		get => _nine;
+		set => SetProperty(ref _nine, value);
 	}
 
 }

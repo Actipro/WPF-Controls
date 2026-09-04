@@ -1,47 +1,31 @@
-﻿using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomDataFactory {
+/// <summary>
+/// Represents a referral source view model object.
+/// </summary>
+public class ReferralSourceViewModel : ObservableObjectBase {
+
+	private int _id;
+	private string? _name;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a referral source view model object.
+	/// The ID.
 	/// </summary>
-	public class ReferralSourceViewModel : ObservableObjectBase {
+	public int Id {
+		get => _id;
+		set => SetProperty(ref _id, value);
+	}
 
-		private int id;
-		private string name;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the ID.
-		/// </summary>
-		/// <value>The ID.</value>
-		public int Id {
-			get {
-				return id;
-			}
-			set {
-				id = value;
-				this.NotifyPropertyChanged("Id");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name {
-			get {
-				return name;
-			}
-			set {
-				name = value;
-				this.NotifyPropertyChanged("Name");
-			}
-		}
-
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string? Name {
+		get => _name;
+		set => SetProperty(ref _name, value);
 	}
 
 }

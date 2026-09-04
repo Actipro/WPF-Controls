@@ -1,61 +1,52 @@
-﻿using System;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Tagging;
 using ActiproSoftware.Text.Tagging.Implementation;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightRange {
-    
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.AdornmentsHighlightRange;
+
+/// <summary>
+/// Provides <see cref="HighlightRangeTag"/> objects over text ranges.
+/// </summary>
+/// <param name="document">The document to which this tagger is attached.</param>
+public class HighlightRangeTagger(ICodeDocument document) : CollectionTagger<IClassificationTag>(key: nameof(HighlightRangeTagger), orderings: null, document, isForLanguage: true) {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Provides <see cref="HighlightRangeTag"/> objects over text ranges.
+	/// Creates and adds a new <see cref="HighlightRangeTag"/> for the given range.
 	/// </summary>
-	public class HighlightRangeTagger : CollectionTagger<IClassificationTag> {
+	/// <param name="snapshotRange">The snapshot range.</param>
+	public void HighlightRange(TextSnapshotRange snapshotRange) {
+		// Ignore zero-length ranges since there would be nothing to highlight
+		if (snapshotRange.IsZeroLength)
+			return;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Create a version range for precise control over text range tracking as the document is edited
+		var versionRange = snapshotRange.ToVersionRange(TextRangeTrackingModes.ExpandFirstEdge | TextRangeTrackingModes.DeleteWhenZeroLength);
 
-		/// <summary>
-		/// Initializes a new instance of the <c>HighlightRangeTagger</c> class.
-		/// </summary>
-		/// <param name="document">The document to which this tagger is attached.</param>
-		public HighlightRangeTagger(ICodeDocument document)
-			: base(key: nameof(HighlightRangeTagger), orderings: null, document: document, isForLanguage: true) {}
+		// Continue processing in the overload that accepts ITextVersionRange
+		HighlightRange(versionRange);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Creates and adds a new <see cref="HighlightRangeTag"/> for the given range.
+	/// </summary>
+	/// <param name="versionRange">The version range.</param>
+	public void HighlightRange(ITextVersionRange versionRange) {
+		#if NET
+		ArgumentNullException.ThrowIfNull(versionRange);
+		#else
+		if (versionRange is null)
+			throw new ArgumentNullException(nameof(versionRange));
+		#endif
 
-		/// <summary>
-		/// Creates and adds a new <see cref="HighlightRangeTag"/> for the given range.
-		/// </summary>
-		/// <param name="snapshotRange">The snapshot range.</param>
-		public void HighlightRange(TextSnapshotRange snapshotRange) {
-			// Ignore zero-length ranges since there would be nothing to highlight
-			if (snapshotRange.IsZeroLength)
-				return;
+		// Create a new IClassificationTag for the given range
+		var tag = new HighlightRangeTag();
 
-			// Create a version range for precise control over text range tracking as the document is edited
-			ITextVersionRange versionRange = snapshotRange.ToVersionRange(TextRangeTrackingModes.ExpandFirstEdge | TextRangeTrackingModes.DeleteWhenZeroLength);
-
-			// Continue processing in the overload that accepts ITextVersionRange
-			HighlightRange(versionRange);
-		}
-
-		/// <summary>
-		/// Creates and adds a new <see cref="HighlightRangeTag"/> for the given range.
-		/// </summary>
-		/// <param name="versionRange">The version range.</param>
-		public void HighlightRange(ITextVersionRange versionRange) {
-			if (versionRange is null)
-				throw new ArgumentNullException(nameof(versionRange));
-
-			// Create a new IClassificationTag for the given range
-			var tag = new HighlightRangeTag();
-
-			// Add the tag to this collection
-			this.Add(new TagVersionRange<IClassificationTag>(versionRange, tag));
-		}
-
+		// Add the tag to this collection
+		Add(new TagVersionRange<IClassificationTag>(versionRange, tag));
 	}
 
 }

@@ -1,60 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
 using ActiproSoftware.SampleBrowser.SampleData;
 
-namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.RegionReport {
+namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.RegionReport;
+
+/// <summary>
+/// Stores data about a region.
+/// </summary>
+public class RegionData {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores data about a region.
+	/// The average sales.
 	/// </summary>
-	public class RegionData {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the average sales.
-		/// </summary>
-		/// <value>The average sales.</value>
-		public double AverageSales { get; set; }
+	public double AverageSales { get; set; }
 
-		/// <summary>
-		/// Gets or sets the average units sold.
-		/// </summary>
-		/// <value>The average units sold.</value>
-		public int AverageUnitsSold { get; set; }
+	/// <summary>
+	/// The average units sold.
+	/// </summary>
+	public int AverageUnitsSold { get; set; }
 
-		/// <summary>
-		/// Gets or sets max sales.
-		/// </summary>
-		/// <value>The max sales.</value>
-		public double MaxSales { get; set; }
+	/// <summary>
+	/// Gets or sets max sales.
+	/// </summary>
+	public double MaxSales { get; set; }
 
-		/// <summary>
-		/// Gets or sets the min sales.
-		/// </summary>
-		/// <value>The min sales.</value>
-		public double MinSales { get; set; }
+	/// <summary>
+	/// The min sales.
+	/// </summary>
+	public double MinSales { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name { get; set; }
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string? Name { get; set; }
 
-		/// <summary>
-		/// Gets or sets the collection of sales data.
-		/// </summary>
-		/// <value>The collection of sales data.</value>
-		public ICollection<TimeAggregatedData> Sales { get; set; }
+	/// <summary>
+	/// The collection of sales data.
+	/// </summary>
+	public ICollection<TimeAggregatedData>? Sales { get; set; }
 
-		/// <summary>
-		/// Gets or sets the collection of units sold data.
-		/// </summary>
-		/// <value>The collection of units sold data.</value>
-		public ICollection<TimeAggregatedData> UnitsSold { get; set; }
-
-	}
+	/// <summary>
+	/// The collection of units sold data.
+	/// </summary>
+	public ICollection<TimeAggregatedData>? UnitsSold { get; set; }
 
 }

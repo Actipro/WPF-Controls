@@ -73,13 +73,13 @@ Edit boxes no longer work like an items control in terms of how UI is constructe
 
 - Spinner is now defined in each edit box control's template so placement properties no longer apply. `SpinnerMargin`, `SpinnerPlacementOrder`, `SpinnerPlacementSlot`, and `SpinnerTemplate` properties removed.
 
-In addition to the above, some number-oriented edit boxs have had these property changes:
+In addition to the above, some number-oriented edit boxes have had these property changes:
 
-- `StepValue` property renamed to [SmallChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.SmallChange), which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new [LargeChange](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.LargeChange) property is used for <kbd>PgUp</kbd>/<kbd>PgDn</kbd> incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
+- `StepValue` property renamed to `SmallChange`, which is used with arrow key, mouse wheel, spinner, and slider incrementing.  A new `LargeChange` property is used for <kbd>PgUp</kbd>/<kbd>PgDn</kbd> incrementing.  Number-oriented structure edit boxes like [ThicknessEditBox](xref:@ActiproUIRoot.Controls.Editors.ThicknessEditBox) now use the same `Type` for the change property values, so that different increments can be given for the different parts.
 
-- [Minimum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Minimum) and [Maximum](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.Maximum) now use non-nullable types instead of the same type as the `Value` property.  So for a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) (which has a `Value` of type `Nullable<Double>`), the type for those two properties will be `Double`.
+- `Minimum` and `Maximum` now use non-nullable types instead of the same type as the `Value` property.  So for a [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) (which has a `Value` of type `Nullable<Double>`), the type for those two properties will be `Double`.
 
-- `AllowInfinity` and `AllowNaN` properties are now available only on [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) and [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) as [IsPositiveInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsPositiveInfinityAllowed), [IsNegativeInfinityAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsNegativeInfinityAllowed), and [IsNaNAllowed](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox.IsNaNAllowed) properties.
+- `AllowInfinity` and `AllowNaN` properties are now available only on [DoubleEditBox](xref:@ActiproUIRoot.Controls.Editors.DoubleEditBox) and [SingleEditBox](xref:@ActiproUIRoot.Controls.Editors.SingleEditBox) as `IsPositiveInfinityAllowed`, `IsNegativeInfinityAllowed`, and `IsNaNAllowed` properties.
 
 ### PropertyGrid Integration Updates
 

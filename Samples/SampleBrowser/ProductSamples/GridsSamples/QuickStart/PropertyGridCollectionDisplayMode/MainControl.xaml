@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCollectionDisplayMode.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -39,11 +39,11 @@
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					The property grid includes special support for collection properties, which include types that
-					implement ICollection, IList, IDictionary, or the generic variations. 
-					By default, the type converter associated with the collection property/type will be used for display purposes. 
+					implement ICollection, IList, IDictionary, or the generic variations.
+					By default, the type converter associated with the collection property/type will be used for display purposes.
 					This means that only arrays will be expandable out of the box, since .NET doesn't implement an expandable type converter for lists or dictionaries.
 					<LineBreak /><LineBreak />
-					The CollectionPropertyDisplayMode property allows the type converter to be overridden and for all collections to be expandable by default. 
+					The CollectionPropertyDisplayMode property allows the type converter to be overridden and for all collections to be expandable by default.
 					In addition, collection editing buttons may be included that allow the end user to add or remove items during runtime.
 				</TextBlock>
 			</Expander>

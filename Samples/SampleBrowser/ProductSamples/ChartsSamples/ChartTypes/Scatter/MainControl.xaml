@@ -1,12 +1,12 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.ChartTypes.Scatter.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:sampleData="clr-namespace:ActiproSoftware.SampleBrowser.SampleData"
 	>
-	
+
 	<sampleBrowser:ProductItemControl.Resources>
 
 		<Style TargetType="charts:XYChart">
@@ -26,7 +26,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		
+
 	</sampleBrowser:ProductItemControl.Resources>
 
 	<sampleBrowser:ProductItemControl.SideBarContent>
@@ -55,9 +55,9 @@
 						<charts:XYChart.XAxes>
 							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" Title="Trip Milage" />
 						</charts:XYChart.XAxes>
-						<charts:ScatterSeries Description="Women" ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y" 
+						<charts:ScatterSeries Description="Women" ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y"
 											  IsAggregationEnabled="False" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
-						<charts:ScatterSeries Description="Men" ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y" 
+						<charts:ScatterSeries Description="Men" ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y"
 											  IsAggregationEnabled="False" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
 					</charts:XYChart>
 				</StackPanel>
@@ -73,9 +73,9 @@
 						<charts:XYChart.XAxes>
 							<charts:XYDoubleAxis AreMajorTicksVisible="True" AreMinorTicksVisible="True" TickMajorInterval="4" TickMinorInterval="2" AreLabelsVisible="True" />
 						</charts:XYChart.XAxes>
-						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y" 
+						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints1}" XPath="X" YPath="Y"
 												AggregationFactor="0.1" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
-						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y" 
+						<charts:ScatterSeries ItemsSource="{Binding PrimaryChartPoints2}" XPath="X" YPath="Y"
 												AggregationFactor="0.1" MarkerStyle="{StaticResource SemiTransparentEllipseMarkerStyle}" />
 					</charts:XYChart>
 				</sampleBrowser:LabeledCardControl>

@@ -41,6 +41,11 @@ This will also allow interop content to appear properly in the auto-hide popups 
 
 If you do not plan on having interop content in your application, we recommend leaving the [UseHostedPopups](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedPopups) property as its default value of `true`.
 
+@if (wpf) {
+> [!IMPORTANT]
+> When working with multiple monitors in a mixed DPI environment, moving a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) between monitors or showing an auto-hide popup that crosses two monitors can result in a DPI change to the non-hosted popup that, when combined with some debugging environments like Visual Studio, rebuilds the visual tree and triggers focus loss.  This focus loss can inadvertently cause an auto-hide popup to close.  This issue is only known to occur within a debugging environment.
+}
+
 ## Live Splitting
 
 By default, live splitting is enabled meaning that there is no preview highlight when dragging a splitter.  The surrounding containers are immediately resized during splitter drags in this mode.

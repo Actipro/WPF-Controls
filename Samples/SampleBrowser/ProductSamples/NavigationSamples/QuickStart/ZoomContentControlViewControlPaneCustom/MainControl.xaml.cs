@@ -1,91 +1,71 @@
-﻿using System.Windows;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using ActiproSoftware.Windows.Controls.Navigation;
 using ActiproSoftware.Windows.Input;
 
-namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlViewControlPaneCustom {
+namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlViewControlPaneCustom;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Setup default InputBindings
+		zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartPanDrag, new MouseGesture(MouseAction.LeftClick)));
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+		var factor = Mouse.MouseWheelDeltaForOneLine / SystemParameters.WheelScrollLines;
+		zoomContentControl.InputBindings.AddRange(new MouseWheelBinding[] {
+			new(ScrollBar.LineUpCommand, new(MouseWheelAction.PositiveDelta)) { CommandParameter = factor },
+			new(ScrollBar.LineDownCommand, new(MouseWheelAction.NegativeDelta)) { CommandParameter = factor },
+			new(ScrollBar.LineLeftCommand, new(MouseWheelAction.PositiveDelta, ModifierKeys.Shift)) { CommandParameter = factor },
+			new(ScrollBar.LineRightCommand, new(MouseWheelAction.NegativeDelta, ModifierKeys.Shift)) { CommandParameter = factor },
 
-			// Setup default InputBindings
-			this.zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartPanDrag,
-				new MouseGesture(MouseAction.LeftClick)));
+			new(ZoomContentControlCommands.ZoomInToPoint, new(MouseWheelAction.PositiveDelta, ModifierKeys.Control)),
+			new(ZoomContentControlCommands.ZoomInToPoint, new(MouseWheelAction.PositiveDelta, ModifierKeys.Control | ModifierKeys.Shift)),
+			new(ZoomContentControlCommands.ZoomOutFromPoint, new(MouseWheelAction.NegativeDelta, ModifierKeys.Control)),
+			new(ZoomContentControlCommands.ZoomOutFromPoint, new(MouseWheelAction.NegativeDelta, ModifierKeys.Control | ModifierKeys.Shift)),
+		});
+	}
 
-			double factor = Mouse.MouseWheelDeltaForOneLine / SystemParameters.WheelScrollLines;
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ScrollBar.LineUpCommand,
-				new MouseWheelGesture(MouseWheelAction.PositiveDelta)) { CommandParameter = factor });
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ScrollBar.LineDownCommand,
-				new MouseWheelGesture(MouseWheelAction.NegativeDelta)) { CommandParameter = factor });
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ScrollBar.LineLeftCommand,
-				new MouseWheelGesture(MouseWheelAction.PositiveDelta, ModifierKeys.Shift)) { CommandParameter = factor });
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ScrollBar.LineRightCommand,
-				new MouseWheelGesture(MouseWheelAction.NegativeDelta, ModifierKeys.Shift)) { CommandParameter = factor });
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ZoomContentControlCommands.ZoomInToPoint,
-				new MouseWheelGesture(MouseWheelAction.PositiveDelta, ModifierKeys.Control)));
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ZoomContentControlCommands.ZoomInToPoint,
-				new MouseWheelGesture(MouseWheelAction.PositiveDelta, ModifierKeys.Control | ModifierKeys.Shift)));
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ZoomContentControlCommands.ZoomOutFromPoint,
-				new MouseWheelGesture(MouseWheelAction.NegativeDelta, ModifierKeys.Control)));
-			this.zoomContentControl.InputBindings.Add(new MouseWheelBinding(ZoomContentControlCommands.ZoomOutFromPoint,
-				new MouseWheelGesture(MouseWheelAction.NegativeDelta, ModifierKeys.Control | ModifierKeys.Shift)));
-		}
+	private void OnRadioButtonChecked(object sender, RoutedEventArgs e) {
+		if (zoomContentControl is null)
+			return;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Handles the <c>Checked</c> event of the <see cref="logoRadioButton"/> or <see cref="buttonRadioButton"/> control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnRadioButtonChecked(object sender, RoutedEventArgs e) {
-			if (null == this.zoomContentControl)
-				return;
-
-			// Remove the MouseBinding that is bound to the LeftClick action
-			for (int i = 0; i < this.zoomContentControl.InputBindings.Count; i++) {
-				MouseBinding binding = this.zoomContentControl.InputBindings[i] as MouseBinding;
-				if (null != binding) {
-					MouseGesture gesture = binding.Gesture as MouseGesture;
-					if (null != gesture && MouseAction.LeftClick == gesture.MouseAction && ModifierKeys.None == gesture.Modifiers) {
-						this.zoomContentControl.InputBindings.RemoveAt(i);
-						break;
-					}
+		// Remove the MouseBinding that is bound to the LeftClick action
+		for (var i = 0; i < zoomContentControl.InputBindings.Count; i++) {
+			var binding = zoomContentControl.InputBindings[i] as MouseBinding;
+			if (binding?.Gesture is MouseGesture gesture) {
+				if ((MouseAction.LeftClick == gesture.MouseAction) && (ModifierKeys.None == gesture.Modifiers)) {
+					zoomContentControl.InputBindings.RemoveAt(i);
+					break;
 				}
 			}
-
-			// Add in a new MouseBinding for the LeftClick action
-			this.zoomContentControl.InputBindings.Clear();
-			if (true == this.panDragRadioButton.IsChecked)
-				this.zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartPanDrag,
-					new MouseGesture(MouseAction.LeftClick)));
-			else if (true == this.zoomInRadioButton.IsChecked)
-				this.zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomIn,
-					new MouseGesture(MouseAction.LeftClick)));
-			else if (true == this.zoomOutRadioButton.IsChecked)
-				this.zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomOut,
-					new MouseGesture(MouseAction.LeftClick)));
-			else if (true == this.zoomDragRadioButton.IsChecked)
-				this.zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomDrag,
-					new MouseGesture(MouseAction.LeftClick)));
-
-			this.zoomContentControl.UpdateCursor();
 		}
+
+		// Add in a new MouseBinding for the LeftClick action
+		zoomContentControl.InputBindings.Clear();
+		if (panDragRadioButton.IsChecked == true)
+			zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartPanDrag, new MouseGesture(MouseAction.LeftClick)));
+		else if (zoomInRadioButton.IsChecked == true)
+			zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomIn, new MouseGesture(MouseAction.LeftClick)));
+		else if (zoomOutRadioButton.IsChecked == true)
+			zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomOut, new MouseGesture(MouseAction.LeftClick)));
+		else if (zoomDragRadioButton.IsChecked == true)
+			zoomContentControl.InputBindings.Add(new MouseBinding(ZoomContentControlCommands.StartZoomDrag, new MouseGesture(MouseAction.LeftClick)));
+
+		zoomContentControl.UpdateCursor();
 	}
+
 }

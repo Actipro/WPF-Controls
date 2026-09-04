@@ -1,62 +1,37 @@
-﻿using System.Windows;
-using System.Windows.Input;
 using ActiproSoftware.Windows.Input;
-
-#if WPF
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
-#endif
 
-namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomTitleBarContent {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomTitleBarContent;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	private DelegateCommand<object>? _searchCommand;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		private DelegateCommand<object>			searchCommand;
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-
-			this.CreateCommands();
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Creates the command properties.
-		/// </summary>
-		private void CreateCommands() {
-			searchCommand = new DelegateCommand<object>((param) => {
-				MessageBox.Show("Search button clicked.");
-			});
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the <see cref="ICommand"/> that can be used to open the drop-down menu.
-		/// </summary>
-		/// <value>
-		/// The <see cref="ICommand"/> that can be used to open the drop-down menu.
-		/// </value>
-		public ICommand SearchCommand {
-			get {
-				return searchCommand;
-			}
-		}
-		
+	/// <summary>
+	/// The <see cref="ICommand"/> that can be used to open the drop-down menu.
+	/// </summary>
+	public ICommand SearchCommand {
+		get => _searchCommand ??= new DelegateCommand<object>(_ => {
+			MessageBox.Show("Search button clicked.");
+		});
 	}
 
 }

@@ -53,17 +53,17 @@ The base sorting is performed on the [IClassificationType](xref:ActiproSoftware.
 
 ## Special Classification Types (Plain Text, Line Numbers, Indicator Margin, etc.)
 
-There are several classification types that have special meaning for SyntaxEditor, all of which are available as properties on the [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) class.  These classification types are special cased to allow for end user customization of things such as the default text format, line number margin, indicator margin, visible whitespace, etc.
+There are several classification types that have special meaning for SyntaxEditor, all of which are available as properties on the [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) class.  These classification types are special cased to allow for end user customization of things such as the default text format, line number margin, indicator margin, visible whitespace, etc.
 
-The classification types on [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) are not used unless they are registered.
+The classification types on [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) are not used unless they are registered.
 
 Registration into the ambient highlighting style registry can be performed with this code:
 
 ```csharp
-new DisplayItemClassificationTypeProvider().RegisterAll();
+new BuiltInClassificationTypeProvider().RegisterAll();
 ```
 
-These are the special [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) properties on [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider):
+These are the special [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) properties on [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider):
 
 <table>
 <thead>
@@ -79,7 +79,7 @@ These are the special [IClassificationType](xref:ActiproSoftware.Text.IClassific
 <tr>
 <td>
 
-[BreakpointDisabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.BreakpointDisabled) Property
+[BreakpointDisabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.BreakpointDisabled) Property
 
 </td>
 <td>
@@ -94,7 +94,7 @@ Only the border is editable in the default [IHighlightingStyle](xref:@ActiproUIR
 <tr>
 <td>
 
-[BreakpointEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.BreakpointEnabled) Property
+[BreakpointEnabled](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.BreakpointEnabled) Property
 
 </td>
 <td>
@@ -109,7 +109,7 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
-[CaretPrimary](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CaretPrimary) Property
+[CaretPrimary](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CaretPrimary) Property
 
 </td>
 <td>
@@ -124,7 +124,7 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[CaretSecondary](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CaretSecondary) Property
+[CaretSecondary](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CaretSecondary) Property
 
 </td>
 <td>
@@ -139,7 +139,7 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[CodeSnippetDependentField](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CodeSnippetDependentField) Property
+[CodeSnippetDependentField](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CodeSnippetDependentField) Property
 
 </td>
 <td>
@@ -154,7 +154,7 @@ Only the border is editable in the default [IHighlightingStyle](xref:@ActiproUIR
 <tr>
 <td>
 
-[CodeSnippetField](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CodeSnippetField) Property
+[CodeSnippetField](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CodeSnippetField) Property
 
 </td>
 <td>
@@ -169,7 +169,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[CollapsedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CollapsedText) Property
+[CollapsedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CollapsedText) Property
 
 </td>
 <td>
@@ -184,7 +184,7 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[CollapsibleRegion](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CollapsibleRegion) Property
+[CollapsibleRegion](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CollapsibleRegion) Property
 
 </td>
 <td>
@@ -199,7 +199,7 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
-[ColumnGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.ColumnGuides) Property
+[ColumnGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.ColumnGuides) Property
 
 </td>
 <td>
@@ -214,7 +214,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[CurrentLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CurrentLine) Property
+[CurrentLine](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CurrentLine) Property
 
 </td>
 <td>
@@ -229,7 +229,7 @@ Only the background and border are editable in the default [IHighlightingStyle](
 <tr>
 <td>
 
-[CurrentStatement](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.CurrentStatement) Property
+[CurrentStatement](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.CurrentStatement) Property
 
 </td>
 <td>
@@ -244,7 +244,7 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
-[DelimiterMatching](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.DelimiterMatching) Property
+[DelimiterMatching](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.DelimiterMatching) Property
 
 </td>
 <td>
@@ -259,7 +259,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[FindMatchHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.FindMatchHighlight) Property
+[FindMatchHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.FindMatchHighlight) Property
 
 </td>
 <td>
@@ -274,7 +274,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[FindScopeHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.FindScopeHighlight) Property
+[FindScopeHighlight](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.FindScopeHighlight) Property
 
 </td>
 <td>
@@ -289,7 +289,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[InactiveSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.InactiveSelectedText) Property
+[InactiveSelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.InactiveSelectedText) Property
 
 </td>
 <td>
@@ -304,7 +304,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[IndentationGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.IndentationGuides) Property
+[IndentationGuides](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.IndentationGuides) Property
 
 </td>
 <td>
@@ -319,7 +319,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[IndicatorMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.IndicatorMargin) Property
+[IndicatorMargin](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.IndicatorMargin) Property
 
 </td>
 <td>
@@ -334,7 +334,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[LineNumberCurrent](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.LineNumberCurrent) Property
+[LineNumberCurrent](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.LineNumberCurrent) Property
 
 </td>
 <td>
@@ -347,7 +347,7 @@ Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to
 <tr>
 <td>
 
-[LineNumbers](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.LineNumbers) Property
+[LineNumbers](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.LineNumbers) Property
 
 </td>
 <td>
@@ -360,7 +360,7 @@ Gets the [IClassificationType](xref:ActiproSoftware.Text.IClassificationType) to
 <tr>
 <td>
 
-[OutliningMarginSquare](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.OutliningMarginSquare) Property
+[OutliningMarginSquare](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.OutliningMarginSquare) Property
 
 </td>
 <td>
@@ -375,7 +375,7 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
-[OutliningMarginVerticalRule](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.OutliningMarginVerticalRule) Property
+[OutliningMarginVerticalRule](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.OutliningMarginVerticalRule) Property
 
 </td>
 <td>
@@ -390,7 +390,7 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[PlainText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.PlainText) Property
+[PlainText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.PlainText) Property
 
 </td>
 <td>
@@ -405,7 +405,7 @@ Only the foreground and background are editable in the default [IHighlightingSty
 <tr>
 <td>
 
-[RevertedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.RevertedChangesMark) Property
+[RevertedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.RevertedChangesMark) Property
 
 </td>
 <td>
@@ -420,7 +420,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[SavedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.SavedChangesMark) Property
+[SavedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.SavedChangesMark) Property
 
 </td>
 <td>
@@ -435,7 +435,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[SelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.SelectedText) Property
+[SelectedText](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.SelectedText) Property
 
 </td>
 <td>
@@ -450,7 +450,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[UnsavedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.UnsavedChangesMark) Property
+[UnsavedChangesMark](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.UnsavedChangesMark) Property
 
 </td>
 <td>
@@ -465,7 +465,7 @@ Only the background is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[VisibleWhitespace](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.VisibleWhitespace) Property
+[VisibleWhitespace](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.VisibleWhitespace) Property
 
 </td>
 <td>
@@ -480,7 +480,7 @@ Only the foreground is editable in the default [IHighlightingStyle](xref:@Actipr
 <tr>
 <td>
 
-[WordWrapGlyph](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.WordWrapGlyph) Property
+[WordWrapGlyph](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.WordWrapGlyph) Property
 
 </td>
 <td>
@@ -507,7 +507,7 @@ The [AmbientHighlightingStyleRegistry](xref:@ActiproUIRoot.Controls.SyntaxEditor
 
 *SyntaxEditor after importing some custom Visual Studio settings*
 
-You can see in the screenshot above that everything from basic text to the line number margin is themed.  This is all done using the highlighting style registry and the special classification types in [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) (see above).  All of these colors, etc. can be configured by the end user as well.
+You can see in the screenshot above that everything from basic text to the line number margin is themed.  This is all done using the highlighting style registry and the special classification types in [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) (see above).  All of these colors, etc. can be configured by the end user as well.
 
 This code imports a Visual Studio settings file (pre-loaded in a `Stream` variable named `stream`) to theme the control:
 

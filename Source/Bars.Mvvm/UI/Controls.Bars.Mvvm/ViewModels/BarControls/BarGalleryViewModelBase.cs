@@ -1,244 +1,160 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
 
-namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+/// <summary>
+/// Represents an abstract view model base for a gallery control within a bar control.
+/// </summary>
+public abstract class BarGalleryViewModelBase : BarKeyedObjectViewModelBase {
+
+	private bool _areSurroundingSeparatorsAllowed = true;
+	private bool _canCloneToRibbonQuickAccessToolBar = true;
+	private ICommand? _command;
+	private bool _isVisible = true;
+	private Style? _itemContainerStyle;
+	private StyleSelector? _itemContainerStyleSelector;
+	private double _itemSpacing;
+	private DataTemplate? _itemTemplate;
+	private DataTemplateSelector? _itemTemplateSelector;
+	private string? _label;
+	private double _minItemHeight = 16.0;
+	private double _minItemWidth = 16.0;
+	private ImageSource? _smallImageSource;
+	private string? _title;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel()"/>
+	protected BarGalleryViewModelBase()  // Parameterless constructor required for XAML support
+		: this(key: null) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string)"/>
+	protected BarGalleryViewModelBase(string? key)
+		: base(key) { }
+
+	/// <inheritdoc cref="BarButtonViewModel(string, string, ICommand)"/>
+	protected BarGalleryViewModelBase(string? key, string? label, ICommand? command)
+		: base(key) {
+
+		_label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
+		_command = command;
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents an abstract view model base for a gallery control within a bar control.
+	/// Indicates whether the menu gallery can render surrounding separators.
 	/// </summary>
-	public abstract class BarGalleryViewModelBase : BarKeyedObjectViewModelBase {
+	/// <value>
+	/// <c>true</c> if the menu gallery can render surrounding separators; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool AreSurroundingSeparatorsAllowed {
+		get => _areSurroundingSeparatorsAllowed;
+		set => SetProperty(ref _areSurroundingSeparatorsAllowed, value);
+	}
 
-		private bool areSurroundingSeparatorsAllowed = true;
-		private bool canCloneToRibbonQuickAccessToolBar = true;
-		private ICommand command;
-		private bool isVisible = true;
-		private Style itemContainerStyle;
-		private StyleSelector itemContainerStyleSelector;
-		private double itemSpacing;
-		private DataTemplate itemTemplate;
-		private DataTemplateSelector itemTemplateSelector;
-		private string label;
-		private double minItemHeight = 16.0;
-		private double minItemWidth = 16.0;
-		private ImageSource smallImageSource;
-		private string title;
+	/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
+	public bool CanCloneToRibbonQuickAccessToolBar {
+		get => _canCloneToRibbonQuickAccessToolBar;
+		set => SetProperty(ref _canCloneToRibbonQuickAccessToolBar, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc cref="BarButtonViewModel.Command"/>
+	public ICommand? Command {
+		get => _command;
+		set => SetProperty(ref _command, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel()"/>
-		protected BarGalleryViewModelBase()  // Parameterless constructor required for XAML support
-			: this(key: null) { }
-		
-		/// <inheritdoc cref="BarButtonViewModel(string)"/>
-		protected BarGalleryViewModelBase(string key)
-			: base(key) { }
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel(string, string, ICommand)"/>
-		protected BarGalleryViewModelBase(string key, string label, ICommand command)
-			: base(key) {
+	/// <summary>
+	/// The <see cref="Style"/> to apply to gallery item container elements.
+	/// </summary>
+	public Style? ItemContainerStyle {
+		get => _itemContainerStyle;
+		set => SetProperty(ref _itemContainerStyle, value);
+	}
 
-			this.label = label ?? BarControlService.LabelGenerator.FromCommand(command) ?? BarControlService.LabelGenerator.FromKey(key);
-			this.command = command;
-		}
+	/// <summary>
+	/// The <see cref="StyleSelector"/> that picks a <see cref="Style"/> to apply to gallery item container elements.
+	/// </summary>
+	public StyleSelector? ItemContainerStyleSelector {
+		get => _itemContainerStyleSelector;
+		set => SetProperty(ref _itemContainerStyleSelector, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The amount of spacing between gallery items.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>0.0</c>.
+	/// </value>
+	public double ItemSpacing {
+		get => _itemSpacing;
+		set => SetProperty(ref _itemSpacing, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the menu gallery can render surrounding separators.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the menu gallery can render surrounding separators; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool AreSurroundingSeparatorsAllowed {
-			get => areSurroundingSeparatorsAllowed;
-			set {
-				if (areSurroundingSeparatorsAllowed != value) {
-					areSurroundingSeparatorsAllowed = value;
-					this.NotifyPropertyChanged(nameof(AreSurroundingSeparatorsAllowed));
-				}
-			}
-		}
+	/// <summary>
+	/// The <see cref="DataTemplate"/> used to display the content for each gallery item.
+	/// </summary>
+	public DataTemplate? ItemTemplate {
+		get => _itemTemplate;
+		set => SetProperty(ref _itemTemplate, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel.CanCloneToRibbonQuickAccessToolBar"/>
-		public bool CanCloneToRibbonQuickAccessToolBar {
-			get => canCloneToRibbonQuickAccessToolBar;
-			set {
-				if (canCloneToRibbonQuickAccessToolBar != value) {
-					canCloneToRibbonQuickAccessToolBar = value;
-					this.NotifyPropertyChanged(nameof(CanCloneToRibbonQuickAccessToolBar));
-				}
-			}
-		}
+	/// <summary>
+	/// The <see cref="DataTemplateSelector"/> that picks a <see cref="DataTemplate"/> used to display the content for each gallery item.
+	/// </summary>
+	public DataTemplateSelector? ItemTemplateSelector {
+		get => _itemTemplateSelector;
+		set => SetProperty(ref _itemTemplateSelector, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel.Command"/>
-		public ICommand Command {
-			get => command;
-			set {
-				if (command != value) {
-					command = value;
-					this.NotifyPropertyChanged(nameof(Command));
-				}
-			}
-		}
+	/// <inheritdoc cref="BarButtonViewModel.Label"/>
+	public string? Label {
+		get => _label;
+		set => SetProperty(ref _label, value);
+	}
 
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
+	/// <summary>
+	/// The minimum item height.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>16.0</c>.
+	/// </value>
+	public double MinItemHeight {
+		get => _minItemHeight;
+		set => SetProperty(ref _minItemHeight, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the <see cref="Style"/> to apply to gallery item container elements.
-		/// </summary>
-		/// <value>The <see cref="Style"/> to apply to gallery item container elements.</value>
-		public Style ItemContainerStyle {
-			get => itemContainerStyle;
-			set {
-				if (itemContainerStyle != value) {
-					itemContainerStyle = value;
-					this.NotifyPropertyChanged(nameof(ItemContainerStyle));
-				}
-			}
-		}
+	/// <summary>
+	/// The minimum item width.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>16.0</c>.
+	/// </value>
+	public double MinItemWidth {
+		get => _minItemWidth;
+		set => SetProperty(ref _minItemWidth, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the <see cref="StyleSelector"/> that picks a <see cref="Style"/> to apply to gallery item container elements.
-		/// </summary>
-		/// <value>The <see cref="StyleSelector"/> that picks a <see cref="Style"/> to apply to gallery item container elements.</value>
-		public StyleSelector ItemContainerStyleSelector {
-			get => itemContainerStyleSelector;
-			set {
-				if (itemContainerStyleSelector != value) {
-					itemContainerStyleSelector = value;
-					this.NotifyPropertyChanged(nameof(ItemContainerStyleSelector));
-				}
-			}
-		}
+	/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
+	public ImageSource? SmallImageSource {
+		get => _smallImageSource;
+		set => SetProperty(ref _smallImageSource, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the amount of spacing between gallery items.
-		/// </summary>
-		/// <value>
-		/// The amount of spacing between gallery items.
-		/// The default value is <c>0.0</c>.
-		/// </value>
-		public double ItemSpacing {
-			get => itemSpacing;
-			set {
-				if (itemSpacing != value) {
-					itemSpacing = value;
-					this.NotifyPropertyChanged(nameof(ItemSpacing));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplate"/> used to display the content for each gallery item.
-		/// </summary>
-		/// <value>The <see cref="DataTemplate"/> used to display the content for each gallery item.</value>
-		public DataTemplate ItemTemplate {
-			get => itemTemplate;
-			set {
-				if (itemTemplate != value) {
-					itemTemplate = value;
-					this.NotifyPropertyChanged(nameof(ItemTemplate));
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the <see cref="DataTemplateSelector"/> that picks a <see cref="DataTemplate"/> used to display the content for each gallery item.
-		/// </summary>
-		/// <value>The <see cref="DataTemplateSelector"/> that picks a <see cref="DataTemplateSelector"/> used to display the content for each gallery item.</value>
-		public DataTemplateSelector ItemTemplateSelector {
-			get => itemTemplateSelector;
-			set {
-				if (itemTemplateSelector != value) {
-					itemTemplateSelector = value;
-					this.NotifyPropertyChanged(nameof(ItemTemplateSelector));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get => label;
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the minimum item height.
-		/// </summary>
-		/// <value>
-		/// The minimum item height.
-		/// The default value is <c>16.0</c>.
-		/// </value>
-		public double MinItemHeight {
-			get => minItemHeight;
-			set {
-				if (minItemHeight != value) {
-					minItemHeight = value;
-					this.NotifyPropertyChanged(nameof(MinItemHeight));
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets the minimum item width.
-		/// </summary>
-		/// <value>
-		/// The minimum item width.
-		/// The default value is <c>16.0</c>.
-		/// </value>
-		public double MinItemWidth {
-			get => minItemWidth;
-			set {
-				if (minItemWidth != value) {
-					minItemWidth = value;
-					this.NotifyPropertyChanged(nameof(MinItemWidth));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.SmallImageSource"/>
-		public ImageSource SmallImageSource {
-			get => smallImageSource;
-			set {
-				if (smallImageSource != value) {
-					smallImageSource = value;
-					this.NotifyPropertyChanged(nameof(SmallImageSource));
-				}
-			}
-		}
-		
-		/// <inheritdoc cref="BarButtonViewModel.Title"/>
-		public string Title {
-			get => title;
-			set {
-				if (title != value) {
-					title = value;
-					this.NotifyPropertyChanged(nameof(Title));
-				}
-			}
-		}
-
+	/// <inheritdoc cref="BarButtonViewModel.Title"/>
+	public string? Title {
+		get => _title;
+		set => SetProperty(ref _title, value);
 	}
 
 }

@@ -5,7 +5,7 @@ order: 4
 ---
 # Dynamic Lexers
 
-Dynamic lexers are mergable lexers and use our custom pattern-based regular expression engine to match and tokenize text.  It is recommended that developers new to the text/parsing framework as well as developers who do not require much advanced parsing use dynamic lexers since they make it simple to get up and running quickly.
+Dynamic lexers are mergeable lexers and use our custom pattern-based regular expression engine to match and tokenize text.  It is recommended that developers new to the text/parsing framework as well as developers who do not require much advanced parsing use dynamic lexers since they make it simple to get up and running quickly.
 
 ## How do they work?
 
@@ -88,7 +88,7 @@ At run-time when the end scope pattern of the lexical state is recognized, the l
 
 ## Lexing Sequence
 
-The lexer coordinator used by mergable lexers matches patterns in sequential order within four sequential groups:
+The lexer coordinator used by mergeable lexers matches patterns in sequential order within four sequential groups:
 
 - Parent scopes (outside of the current lexer) to see if one ends the current state.
 - Child state start scopes to see if one starts a child state.
@@ -103,7 +103,7 @@ It is extremely important to optimize your dynamic lexer design.  By making cert
 
 ### Most Frequently Matched Patterns Should Be Defined First
 
-Dynamic lexers use our custom NFA regular expression engine to parse text and find a pattern that matches the text.  It does this by looping through all of the patterns in the lexer in the order in which they are defined.  If a pattern is found to match the current text, the code breaks out of the loop and creates a [mergable token](tokens.md) containing the pattern's lexical parse information.
+Dynamic lexers use our custom NFA regular expression engine to parse text and find a pattern that matches the text.  It does this by looping through all of the patterns in the lexer in the order in which they are defined.  If a pattern is found to match the current text, the code breaks out of the loop and creates a [mergeable token](tokens.md) containing the pattern's lexical parse information.
 
 The key here is that the looping is done in the order in which the patterns groups are defined.  Therefore, lexical parsing will be much faster if you place the most frequently-matched pattern groups first.
 

@@ -1,74 +1,66 @@
-using System.Windows;
-using ActiproSoftware.SampleBrowser;
 using ActiproSoftware.ProductSamples.EditorsSamples.Common;
+using ActiproSoftware.SampleBrowser;
 
-namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumPickerIntro {
+namespace ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.EnumPickerIntro;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl : ProductItemControl {
+
+	#region Dependency Properties
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Defines the <see cref="EnumWithFlags"/> property.
 	/// </summary>
-	public partial class MainControl : ProductItemControl {
-		
-		#region Dependency Properties
+	public static readonly DependencyProperty EnumWithFlagsProperty
+		= DependencyProperty.Register(nameof(EnumWithFlags), typeof(EnumWithFlags?), typeof(MainControl), new PropertyMetadata(defaultValue: Common.EnumWithFlags.None));
 
-		/// <summary>
-		/// Identifies the <see cref="EnumWithFlags"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="EnumWithFlags"/> dependency property.</value>
-		public static readonly DependencyProperty EnumWithFlagsProperty = DependencyProperty.Register("EnumWithFlags",
-			typeof(EnumWithFlags?), typeof(MainControl), new PropertyMetadata(ActiproSoftware.ProductSamples.EditorsSamples.Common.EnumWithFlags.None));
+	/// <summary>
+	/// Defines the <see cref="EnumWithoutFlags"/> property.
+	/// </summary>
+	public static readonly DependencyProperty EnumWithoutFlagsProperty
+		= DependencyProperty.Register(nameof(EnumWithoutFlags), typeof(EnumWithoutFlags?), typeof(MainControl), new PropertyMetadata(defaultValue: Common.EnumWithoutFlags.None));
 
-		/// <summary>
-		/// Identifies the <see cref="EnumWithoutFlags"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="EnumWithoutFlags"/> dependency property.</value>
-		public static readonly DependencyProperty EnumWithoutFlagsProperty = DependencyProperty.Register("EnumWithoutFlags",
-			typeof(EnumWithoutFlags?), typeof(MainControl), new PropertyMetadata(ActiproSoftware.ProductSamples.EditorsSamples.Common.EnumWithoutFlags.None));
+	#endregion
 
-		#endregion
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public MainControl() {
+		InitializeComponent();
 
-			this.DataContext = this;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets an enumeration value that has the flags attribute.
-		/// This is a dependency property.
-		/// </summary>
-		/// <value>
-		/// The enumeration value that has the flags attribute.
-		/// The default value is <c>EnumWithFlags.None</c>.
-		/// </value>
-		public EnumWithFlags? EnumWithFlags {
-			get { return (EnumWithFlags?)this.GetValue(MainControl.EnumWithFlagsProperty); }
-			set { this.SetValue(MainControl.EnumWithFlagsProperty, value); }
-		}
-
-		/// <summary>
-		/// Gets or sets an enumeration value that does not have the flags attribute.
-		/// This is a dependency property.
-		/// </summary>
-		/// <value>
-		/// The enumeration value that does not have the flags attribute.
-		/// The default value is <c>EnumWithoutFlags.None</c>.
-		/// </value>
-		public EnumWithoutFlags? EnumWithoutFlags {
-			get { return (EnumWithoutFlags?)this.GetValue(MainControl.EnumWithoutFlagsProperty); }
-			set { this.SetValue(MainControl.EnumWithoutFlagsProperty, value); }
-		}
-
+		DataContext = this;
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// An enumeration value that has the flags attribute.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="EnumWithFlags.None"/>.
+	/// </value>
+	public EnumWithFlags? EnumWithFlags {
+		get => (EnumWithFlags?)GetValue(EnumWithFlagsProperty);
+		set => SetValue(EnumWithFlagsProperty, value);
+	}
+
+	/// <summary>
+	/// An enumeration value that does not have the flags attribute.
+	/// </summary>
+	/// <value>
+	/// The default value is <see cref="EnumWithoutFlags.None"/>.
+	/// </value>
+	public EnumWithoutFlags? EnumWithoutFlags {
+		get => (EnumWithoutFlags?)GetValue(EnumWithoutFlagsProperty);
+		set => SetValue(EnumWithoutFlagsProperty, value);
+	}
+
 }

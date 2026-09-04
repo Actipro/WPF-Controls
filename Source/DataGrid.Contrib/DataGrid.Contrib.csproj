@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;net6.0-windows;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
 
 		<AssemblyName>ActiproSoftware.DataGrid.Contrib.Wpf</AssemblyName>
 		<Product>DataGrid.Contrib</Product>
@@ -10,15 +10,11 @@
 		<Description>Common extensions, behaviors, and themes for the WPF DataGrid control.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML DataGrid</PackageTags>
 
-		<Version>25.1.4.0</Version>
+		<AssemblyTitle>$(Title)</AssemblyTitle>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
-		<Company>Actipro Software LLC</Company>
-		<Authors>Actipro Software LLC</Authors>
-		<Copyright>Copyright (c) 2007-2026 Actipro Software LLC.  All rights reserved.</Copyright>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://www.actiprosoftware.com/products/controls/wpf</PackageProjectUrl>
@@ -34,17 +30,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="25.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Shared" Version="26.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Products\DataGrid\Contrib\Cursors\ColumnResize.cur" />
-		<Resource Include="Products\DataGrid\Contrib\Cursors\RowResize.cur" />
-		<Resource Include="Products\DataGrid\Contrib\Images\DataGridLogo.xaml">
+		<Resource Include="Cursors\*.cur" />
+		<Resource Include="Images\*.xaml">
 		  <SubType>Designer</SubType>
 		  <Generator>MSBuild:Compile</Generator>
 		</Resource>
-		<EmbeddedResource Include="Products\DataGrid\Contrib\Toolbox\ActiproSoftware.Windows.Controls.DataGrid.ThemedDataGrid.icon.png" />
+		<EmbeddedResource Include="Toolbox\*.png" />
 	</ItemGroup>
 
 </Project>

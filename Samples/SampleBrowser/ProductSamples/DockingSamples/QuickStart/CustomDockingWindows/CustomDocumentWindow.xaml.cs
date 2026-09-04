@@ -1,27 +1,20 @@
-using System;
-
-#if WINRT
-using ActiproSoftware.UI.Xaml.Controls.Docking;
-#else
 using ActiproSoftware.Windows.Controls.Docking;
-#endif
 
-namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomDockingWindows {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomDockingWindows;
+
+/// <summary>
+/// Represents a custom <see cref="DocumentWindow"/> implementation.
+/// </summary>
+public partial class CustomDocumentWindow : DocumentWindow {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a custom <see cref="DocumentWindow"/> implementation.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class CustomDocumentWindow : DocumentWindow {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>CustomDocumentWindow</c> class.
-		/// </summary>
-		public CustomDocumentWindow() {
-			InitializeComponent();
-		}
+	public CustomDocumentWindow() {
+		InitializeComponent();
 	}
 }

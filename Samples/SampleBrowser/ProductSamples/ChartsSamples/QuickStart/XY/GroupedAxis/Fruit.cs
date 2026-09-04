@@ -1,52 +1,30 @@
-﻿using System;
+namespace ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.GroupedAxis;
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.GroupedAxis {
+/// <summary>
+/// Represents a fruit, used for sample data.
+/// </summary>
+/// <param name="name">The name.</param>
+/// <param name="color">The color.</param>
+/// <param name="calories">The calories.</param>
+public class Fruit(string name, string color, double calories) {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a fruit, used for sample data.
+	/// The name.
 	/// </summary>
-	public class Fruit {
+	public string Name { get; } = name;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The color.
+	/// </summary>
+	public string Color { get; } = color;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Fruit"/> class.
-		/// </summary>
-		/// <param name="name">The name.</param>
-		/// <param name="color">The color.</param>
-		/// <param name="calories">The calories.</param>
-		public Fruit(string name, string color, double calories){
-			Name = name;
-			Color = color;
-			Calories = calories;
-		}
+	/// <summary>
+	/// The calories.
+	/// </summary>
+	public double Calories { get; } = calories;
 
-		#endregion OBJECT
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name { get; set; }
-
-		/// <summary>
-		/// Gets or sets the color.
-		/// </summary>
-		/// <value>The color.</value>
-		public string Color { get; set; }
-
-		/// <summary>
-		/// Gets or sets the calories.
-		/// </summary>
-		/// <value>The calories.</value>
-		public double Calories { get; set; }
-
-		#endregion PUBLIC PROCEDURES
-	}
 }

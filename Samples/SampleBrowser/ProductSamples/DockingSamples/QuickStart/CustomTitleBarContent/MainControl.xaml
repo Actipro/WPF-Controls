@@ -1,5 +1,5 @@
-﻿<sampleBrowser:ProductItemControl 
-	x:Name="rootSampleControl" 
+<sampleBrowser:ProductItemControl
+	x:Name="rootSampleControl"
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomTitleBarContent.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,9 +12,9 @@
 	>
 
 	<sampleBrowser:ProductItemControl.Resources>
-		
+
 		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-		
+
 		<shared:ConditionalConverter x:Key="StatusLightConditionalConverter">
 			<shared:ConditionalConverter.TrueValue>
 				<SolidColorBrush Color="#5cd404" />
@@ -23,9 +23,9 @@
 				<SolidColorBrush Color="#d40404" />
 			</shared:ConditionalConverter.FalseValue>
 		</shared:ConditionalConverter>
-		
+
 	</sampleBrowser:ProductItemControl.Resources>
-	
+
 	<sampleBrowser:ProductItemControl.SideBarContent>
 		<StackPanel>
 
@@ -55,18 +55,18 @@
 
 	<!-- DockSite -->
 	<docking:DockSite x:Name="dockSite">
-			
+
 		<docking:SplitContainer Orientation="Vertical">
-		
+
 			<docking:SplitContainer Orientation="Horizontal">
-			
+
 				<!-- Workspace -->
 				<docking:Workspace>
 					<docking:TabbedMdiHost />
 				</docking:Workspace>
-			
+
 				<docking:SplitContainer Orientation="Vertical">
-				
+
 					<docking:ToolWindowContainer>
 						<docking:ToolWindow x:Name="searchToolWindow" Title="Search Button" ContainerDockedSize="250,200">
 							<docking:ToolWindow.DataContext>
@@ -88,19 +88,19 @@
 									</Button>
 								</DataTemplate>
 							</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
-						
+
 							<Grid Margin="10">
 								<Grid.RowDefinitions>
 									<RowDefinition Height="Auto" />
 									<RowDefinition Height="*" />
 								</Grid.RowDefinitions>
-						
+
 								<CheckBox Content="Is search button visible" IsChecked="{Binding ElementName=searchToolWindow, Path=DataContext, Mode=TwoWay}" />
 								<TextBlock Grid.Row="1" Margin="0,10,0,0" Text="This tool window contains a custom search button in the title bar, whose visibilty is controlled by the CheckBox." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
 							</Grid>
 						</docking:ToolWindow>
 					</docking:ToolWindowContainer>
-			
+
 					<docking:ToolWindowContainer>
 						<docking:ToolWindow x:Name="labelToolWindow" Title="Label" ContainerDockedSize="250,200">
 							<docking:ToolWindow.DataContext>
@@ -111,13 +111,13 @@
 									<TextBlock Margin="10,0" Text="{Binding}" FontSize="10" FontStyle="Italic" VerticalAlignment="Center" />
 								</DataTemplate>
 							</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
-						
+
 							<Grid Margin="10">
 								<Grid.RowDefinitions>
 									<RowDefinition Height="Auto" />
 									<RowDefinition Height="*" />
 								</Grid.RowDefinitions>
-						
+
 								<ComboBox SelectedItem="{Binding ElementName=labelToolWindow, Path=DataContext, Mode=TwoWay}">
 									<system:String>Approved</system:String>
 									<system:String>Rejected</system:String>
@@ -127,9 +127,9 @@
 						</docking:ToolWindow>
 					</docking:ToolWindowContainer>
 				</docking:SplitContainer>
-			
+
 			</docking:SplitContainer>
-			
+
 			<docking:ToolWindowContainer>
 				<docking:ToolWindow x:Name="statusToolWindow" Title="Status" ContainerDockedSize="200,120">
 					<docking:ToolWindow.DataContext>
@@ -141,21 +141,21 @@
 										Fill="{Binding Converter={StaticResource StatusLightConditionalConverter}}" />
 						</DataTemplate>
 					</docking:ToolWindow.ToolWindowContainerTitleBarContextContentTemplate>
-					
+
 					<Grid Margin="10">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="*" />
 						</Grid.RowDefinitions>
-						
+
 						<CheckBox Content="Is approved" IsChecked="{Binding ElementName=statusToolWindow, Path=DataContext, Mode=TwoWay}" />
 						<TextBlock Grid.Row="1" Margin="0,10,0,0" Text="This tool window contains a custom indicator in the title bar that is controlled by the CheckBox." TextWrapping="Wrap" TextTrimming="WordEllipsis" />
 					</Grid>
 				</docking:ToolWindow>
 			</docking:ToolWindowContainer>
-		
+
 		</docking:SplitContainer>
-					
+
 	</docking:DockSite>
-		
+
 </sampleBrowser:ProductItemControl>

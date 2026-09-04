@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Threading;
 
 namespace ActiproSoftware.ProductSamples.GaugeSamples.QuickStart.LinearGaugeRefreshRate {
@@ -8,59 +8,52 @@ namespace ActiproSoftware.ProductSamples.GaugeSamples.QuickStart.LinearGaugeRefr
 	/// </summary>
 	public partial class MainControl {
 
-		private Random random;
-		private DispatcherTimer timer;
+		private readonly Random _random;
+		private DispatcherTimer? _timer;
 
 		////////////////////////////////////////////////////////////////////////
 		// OBJECT
 		////////////////////////////////////////////////////////////////////////
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="MainControl"/> class.
+		/// Initializes an instance of the class.
 		/// </summary>
 		public MainControl() {
 			InitializeComponent();
 
-			random = new Random();
+			_random = new Random();
 
-			timer = new DispatcherTimer();
-			timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-			timer.Tick += this.OnTimerTick;
-			timer.IsEnabled = true;
+			_timer = new DispatcherTimer {
+				Interval = new TimeSpan(0, 0, 0, 0, 100)
+			};
+			_timer.Tick += OnTimerTick;
+			_timer.IsEnabled = true;
 		}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Handles the <c>Tick</c> event of the <see cref="timer"/> object.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-		private void OnTimerTick(object sender, EventArgs e) {
-			leftBar.Value = (double)random.Next(100);
-			rightBar.Value = ((double)random.Next(60)) - 10;
+		private void OnTimerTick(object? sender, EventArgs e) {
+			leftBar.Value = (double)_random.Next(100);
+			rightBar.Value = ((double)_random.Next(60)) - 10;
 		}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
+		// PUBLIC PROCEDURES
+		// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Notifies the UI that it has been unloaded.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void NotifyUnloaded() {
 			base.NotifyUnloaded();
 
-			if (timer != null) {
-				timer.IsEnabled = false;
-				timer.Tick -= this.OnTimerTick;
-				timer = null;
+			if (_timer is not null) {
+				_timer.IsEnabled = false;
+				_timer.Tick -= OnTimerTick;
+				_timer = null;
 			}
 		}
 
-		#endregion // PUBLIC PROCEDURES
 
 	}
 

@@ -1,33 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Windows;
-using ActiproSoftware.Windows;
+using System.ComponentModel.DataAnnotations;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridExplicitProperties {
-	
-	/// <summary>
-	/// Represents a test object for demonstration purposes.
-	/// </summary>
-	public class TestObject : ObservableObjectBase {
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridExplicitProperties;
 
-		private Size recommendedSize;
+/// <summary>
+/// Represents a test object for demonstration purposes.
+/// </summary>
+public class TestObject : ObservableObjectBase {
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private Size _recommendedSize;
 
-		[Display(GroupName = "Defined on TestObject", ShortName = "Recommended size", Description = "This property is defined on the TestObject class instance bound to PropertyGrid.DataObject.")]
-		public Size RecommendedSize {
-			get {
-				return recommendedSize;
-			}
-			set {
-				if (recommendedSize != value) {
-					recommendedSize = value;
-					this.NotifyPropertyChanged("RecommendedSize");
-				}
-			}
-		}
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
+	[Display(GroupName = "Defined on TestObject", ShortName = "Recommended size", Description = "This property is defined on the TestObject class instance bound to PropertyGrid.DataObject.")]
+	public Size RecommendedSize {
+		get => _recommendedSize;
+		set => SetProperty(ref _recommendedSize, value);
 	}
 
 }

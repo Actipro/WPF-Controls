@@ -43,7 +43,6 @@ Allows for the input of a `Brush` value.
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -58,7 +57,6 @@ Allows for the input of a `Byte` (8-bit positive integer) value.
 
 </td>
 </tr>
-}
 
 <tr>
 <td>
@@ -116,6 +114,21 @@ Allows for the input of a `DateTime` value's date component.
 ![Screenshot](../images/datetimeeditbox-closed.png)
 
 Allows for the input of a `DateTime` value.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[DecimalEditBox](decimaleditbox.md)
+
+</td>
+<td>
+
+![Screenshot](../images/doubleeditbox-closed.png)
+
+Allows for the input of a `Decimal` (floating-point number) value.
 
 </td>
 </tr>

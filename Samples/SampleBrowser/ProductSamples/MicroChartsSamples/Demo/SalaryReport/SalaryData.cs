@@ -1,50 +1,38 @@
-﻿using System;
+namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.SalaryReport;
 
-namespace ActiproSoftware.ProductSamples.MicroChartsSamples.Demo.SalaryReport {
+/// <summary>
+/// Stores data about a salary.
+/// </summary>
+public class SalaryData {
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores data about a salary.
+	/// The salary amount.
 	/// </summary>
-	public class SalaryData {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the salary amount.
-		/// </summary>
-		/// <value>The salary amount.</value>
-		public double Amount { get; set; }
-		
-		/// <summary>
-		/// Gets or sets the branch name.
-		/// </summary>
-		/// <value>The branch name.</value>
-		public string BranchName { get; set; }
-		
-		/// <summary>
-		/// Gets or sets the department name.
-		/// </summary>
-		/// <value>The department name.</value>
-		public string DepartmentName { get; set; }
+	public double Amount { get; set; }
 
-		/// <summary>
-		/// Gets or sets the year the employee was hired.
-		/// </summary>
-		/// <value>The year the employee was hired.</value>
-		public int HireYear { get; set; }
+	/// <summary>
+	/// The branch name.
+	/// </summary>
+	public string? BranchName { get; set; }
 
-		/// <summary>
-		/// Gets the hire year set index.
-		/// </summary>
-		/// <value>The hire year set index.</value>
-		public int HireYearSet {
-			get {
-				return (DateTime.Now.Year - this.HireYear) / 5;
-			}
-		}
+	/// <summary>
+	/// The department name.
+	/// </summary>
+	public string? DepartmentName { get; set; }
 
-	}
+	/// <summary>
+	/// The year the employee was hired.
+	/// </summary>
+	public int HireYear { get; set; }
+
+	/// <summary>
+	/// The hire year set index.
+	/// </summary>
+	public int HireYearSet
+		=> (DateTime.Now.Year - HireYear) / 5;
 
 }

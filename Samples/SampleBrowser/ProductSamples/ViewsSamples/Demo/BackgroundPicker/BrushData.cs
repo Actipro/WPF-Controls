@@ -1,49 +1,31 @@
-﻿using System;
-using System.Windows.Media;
-using ActiproSoftware.Windows;
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.BackgroundPicker;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.BackgroundPicker {
-	
+/// <summary>
+/// Stores brush data.
+/// </summary>
+public class BrushData : ObservableObjectBase {
+
+	private Brush? _brush;
+	private string? _description;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Stores brush data.
+	/// The <see cref="Brush"/>.
 	/// </summary>
-	public class BrushData : ObservableObjectBase {
+	public Brush? Brush {
+		get => _brush;
+		set => SetProperty(ref _brush, value);
+	}
 
-		private Brush brush;
-		private string description;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the <see cref="Brush"/>.
-		/// </summary>
-		/// <value>The <see cref="Brush"/>.</value>
-		public Brush Brush { 
-			get {
-				return brush;
-			}
-			set {
-				brush = value;
-				this.NotifyPropertyChanged("Brush");
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the description of the brush.
-		/// </summary>
-		/// <value>The description of the brush.</value>
-		public string Description { 
-			get {
-				return description;
-			}
-			set {
-				description = value;
-				this.NotifyPropertyChanged("Description");
-			}
-		}
-
+	/// <summary>
+	/// The description of the brush.
+	/// </summary>
+	public string? Description {
+		get => _description;
+		set => SetProperty(ref _description, value);
 	}
 
 }

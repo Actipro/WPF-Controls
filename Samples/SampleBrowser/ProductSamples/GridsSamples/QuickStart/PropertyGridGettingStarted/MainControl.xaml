@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridGettingStarted.MainControl"
+<sampleBrowser:ProductItemControl x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridGettingStarted.MainControl"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
@@ -24,7 +24,7 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The PropertyGrid control can be bound to any object or objects, using the DataObject or DataObjects properties.  
+					The PropertyGrid control can be bound to any object or objects, using the DataObject or DataObjects properties.
 					When object(s) are bound, the property grid enumerates the properties on the object(s) and renders them.
 					Each property has an editor that allows its value to be altered, assuming the property is not read-only.
 					Everything can be completely controlled and customized, from whether categories are used, to the properties displayed in the control,

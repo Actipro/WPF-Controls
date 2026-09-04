@@ -24,6 +24,7 @@
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Message}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=Severity}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsIconVisible}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsSingleLineAllowed}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=IsOpen}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=infobar, Path=CanClose}" />
 					</sampleBrowser:SampleOptionsPropertyGrid>

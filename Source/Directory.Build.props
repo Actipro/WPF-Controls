@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+
+PUBLIC\SOURCE BUILD PROPERTIES
+
+-->
 <Project>
+
+	<!-- Merge in parent folder's Directory.Build.props file -->
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
 	<PropertyGroup>
-		<LangVersion>latest</LangVersion>
+		<TargetFrameworks Label="Visual Studio 2022 Target" Condition="'$(BuildingInsideVisualStudio)' == 'true' and '$(VisualStudioVersion)' == '17.0'">net462;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks Label="Default Target" Condition="'$(TargetFrameworks)' == ''">net462;net8.0-windows;net10.0-windows</TargetFrameworks>
 	</PropertyGroup>
+
 </Project>

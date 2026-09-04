@@ -1,83 +1,64 @@
-﻿using ActiproSoftware.ProductSamples.GridsSamples.Common;
-
-#if WINRT
-using Windows.UI.Xaml;
-using ActiproSoftware.UI.Xaml.Controls.Grids;
-#else
-using System.Windows;
+using ActiproSoftware.ProductSamples.GridsSamples.Common;
 using ActiproSoftware.Windows.Controls.Grids;
-#endif
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxChecking {
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxChecking;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	private void OnCheckAllButtonClick(object sender, RoutedEventArgs e) {
+		foreach (CheckableTreeNodeModel model in treeListBox.Items)
+			SetIsCheckedRecursive(model, isChecked: true);
+	}
+
+	/// <summary>
+	/// Occurs before the default action is executed for an item.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void OnTreeListBoxItemDefaultActionExecuting(object sender, TreeListBoxItemEventArgs e) {
+		var model = e.Item as CheckableTreeNodeModel;
+		if (model?.IsCheckable == true) {
+			e.Cancel = true;
+
+			// Toggle the checked state
+			model.IsChecked = !model.IsChecked;
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>RoutedEventArgs</c> that contains the event data.</param>
-		private void OnCheckAllButtonClick(object sender, RoutedEventArgs e) {
-			foreach (CheckableTreeNodeModel model in treeListBox.Items)
-				SetIsCheckedRecursive(model, true);
-		}
+	}
 
-		/// <summary>
-		/// Occurs before the default action is executed for an item.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>TreeListBoxItemEventArgs</c> that contains the event data.</param>
-		private void OnTreeListBoxItemDefaultActionExecuting(object sender, TreeListBoxItemEventArgs e) {
-			var model = e.Item as CheckableTreeNodeModel;
-			if ((model != null) && (model.IsCheckable)) {
-				e.Cancel = true;
+	private void OnUncheckAllButtonClick(object sender, RoutedEventArgs e) {
+		foreach (CheckableTreeNodeModel model in treeListBox.Items)
+			SetIsCheckedRecursive(model, isChecked: false);
+	}
 
-				// Toggle the checked state
-				model.IsChecked = !model.IsChecked;
-			}
-		}
-		
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>RoutedEventArgs</c> that contains the event data.</param>
-		private void OnUncheckAllButtonClick(object sender, RoutedEventArgs e) {
-			foreach (CheckableTreeNodeModel model in treeListBox.Items)
-				SetIsCheckedRecursive(model, false);
-		}
+	/// <summary>
+	/// Recursively sets nodes as checked or unchecked.
+	/// </summary>
+	/// <param name="model">The <see cref="CheckableTreeNodeModel"/> to update.</param>
+	/// <param name="isChecked">Whether the model is checked.</param>
+	private static void SetIsCheckedRecursive(CheckableTreeNodeModel model, bool isChecked) {
+		if (model.IsCheckable)
+			model.IsChecked = isChecked;
 
-		/// <summary>
-		/// Recursively sets nodes as checked or unchecked.
-		/// </summary>
-		/// <param name="model">The <see cref="CheckableTreeNodeModel"/> to update.</param>
-		/// <param name="isChecked">Whether the model is checked.</param>
-		private static void SetIsCheckedRecursive(CheckableTreeNodeModel model, bool isChecked) {
-			if (model.IsCheckable)
-				model.IsChecked = isChecked;
-
-			foreach (CheckableTreeNodeModel childModel in model.Children)
-				SetIsCheckedRecursive(childModel, isChecked);
-		}
-
+		foreach (var childModel in model.Children.OfType<CheckableTreeNodeModel>())
+			SetIsCheckedRecursive(childModel, isChecked);
 	}
 
 }

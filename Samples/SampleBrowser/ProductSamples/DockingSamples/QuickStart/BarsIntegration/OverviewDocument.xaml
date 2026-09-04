@@ -16,15 +16,7 @@
 		The Actipro WindowChrome class has a CanMouseActivateOverToolBar property that can be set to false to prevent toolbar clicks from activating the Window.
 		A toolbar is considered any control with the WindowChrome.ElementKind attached property set to ToolBar.
 		Bars' Ribbon and StandaloneToolBar controls have this attached property set by default.
-	</Paragraph>
-
-	<Paragraph>
-		.NET also has a couple properties applied in the MainWindow's constructor that help prevent Window activation when working with menus, 
-		such as a menu that opens when pressing a BarPopupButton.
-	</Paragraph>
-
-	<Paragraph>
-		When these features are combined, controls on main Window ribbons and toolbars can execute commands on active floating document windows.
+		When this feature is activated, controls on main Window ribbons and toolbars can execute commands on active floating document windows.
 	</Paragraph>
 	
 	<sampleBrowser:ExternalSampleLauncherUIContainer />

@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.Demo.MusicCatalog.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -42,10 +42,10 @@
 
 		<grids:TreeListView x:Name="treeListView" RootItem="{Binding}" CanColumnsToggleVisibility="True">
 			<grids:TreeListView.ItemAdapter>
-				<grids:TreeListBoxItemAdapter 
-					ChildrenBinding="{Binding Children, Mode=OneTime}" 
-					IsExpandedBinding="{Binding IsExpanded, Mode=TwoWay}" 
-					IsSelectedBinding="{Binding IsSelected, Mode=TwoWay}" 
+				<grids:TreeListBoxItemAdapter
+					ChildrenBinding="{Binding Children, Mode=OneTime}"
+					IsExpandedBinding="{Binding IsExpanded, Mode=TwoWay}"
+					IsSelectedBinding="{Binding IsSelected, Mode=TwoWay}"
 					/>
 			</grids:TreeListView.ItemAdapter>
 			<grids:TreeListView.Columns>

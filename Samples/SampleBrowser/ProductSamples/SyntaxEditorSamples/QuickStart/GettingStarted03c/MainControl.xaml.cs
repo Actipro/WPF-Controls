@@ -1,5 +1,5 @@
-using System;
 using ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common;
+using System;
 
 namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingStarted03c {
 
@@ -8,12 +8,12 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingS
 	/// </summary>
 	public partial class MainControl : System.Windows.Controls.UserControl {
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// --------------------------------------------------------------------------------------------------
 		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+		// --------------------------------------------------------------------------------------------------
+
 		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
+		/// Initializes an instance of the class.
 		/// </summary>
 		public MainControl() {
 			InitializeComponent();

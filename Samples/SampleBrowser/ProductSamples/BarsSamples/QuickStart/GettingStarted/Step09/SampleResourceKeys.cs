@@ -12,33 +12,31 @@ CHANGES SINCE LAST STEP:
 
 */
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09 {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09;
+
+/// <summary>
+/// Defines the keys used to reference static resources in this sample.
+/// </summary>
+public class SampleResourceKeys {
 
 	/// <summary>
-	/// Defines the keys used to reference static resources in this sample.
+	/// The key for the FlowDocument that defines the default document content.
 	/// </summary>
-	public class SampleResourceKeys {
+	public const string DefaultDocumentTemplate = nameof(DefaultDocumentTemplate);
 
-		/// <summary>
-		/// The key for the FlowDocument that defines the default document content.
-		/// </summary>
-		public const string DefaultDocumentTemplate = nameof(DefaultDocumentTemplate);
+	/// <summary>
+	/// The key for a Style used for a Heading on a BackstageTab.
+	/// </summary>
+	public const string SampleBackstageHeadingTextBlockStyle = nameof(SampleBackstageHeadingTextBlockStyle);
 
-		/// <summary>
-		/// The key for a Style used for a Heading on a BackstageTab.
-		/// </summary>
-		public const string SampleBackstageHeadingTextBlockStyle = nameof(SampleBackstageHeadingTextBlockStyle);
+	/// <summary>
+	/// The key for a Style used for a Sub-Heading on a BackstageTab.
+	/// </summary>
+	public const string SampleBackstageSubHeadingTextBlockStyle = nameof(SampleBackstageSubHeadingTextBlockStyle);
 
-		/// <summary>
-		/// The key for a Style used for a Sub-Heading on a BackstageTab.
-		/// </summary>
-		public const string SampleBackstageSubHeadingTextBlockStyle = nameof(SampleBackstageSubHeadingTextBlockStyle);
-
-		/// <summary>
-		/// The key for the instance of the SampleBackstageTabContentTemplateSelector class.
-		/// </summary>
-		public const string SampleBackstageTabContentTemplateSelector = nameof(SampleBackstageTabContentTemplateSelector);
-
-	}
+	/// <summary>
+	/// The key for the instance of the SampleBackstageTabContentTemplateSelector class.
+	/// </summary>
+	public const string SampleBackstageTabContentTemplateSelector = nameof(SampleBackstageTabContentTemplateSelector);
 
 }

@@ -227,4 +227,9 @@ The [WindowAutoHidePopupOpened](xref:@ActiproUIRoot.Controls.Docking.DockSite.Wi
 
 If you use an interop @if (avalonia) { (e.g., `NativeControlHost`) }@if (wpf) { (WinForms, ActiveX, etc.) } control in your docking windows, auto-hide popups in their default configuration will not appear on top of the interop content due to @@PlatformName airspace issues with interop content in the same `Window`.  By setting the [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite).[UseHostedPopups](xref:@ActiproUIRoot.Controls.Docking.DockSite.UseHostedPopups) property to `false`, non-hosted popups will be used to display auto-hide content instead.  This uses a separate `Window` to render the popup and thereby allows @@PlatformName content in the popup to render above the interop content.  The only downside to setting this property is that you lose the popup open/close animation.
 
+@if (wpf) {
+> [!IMPORTANT]
+> When working with multiple monitors in a mixed DPI environment, moving a [DockSite](xref:@ActiproUIRoot.Controls.Docking.DockSite) between monitors or showing an auto-hide popup that crosses two monitors can result in a DPI change to the non-hosted popup that, when combined with some debugging environments like Visual Studio, rebuilds the visual tree and triggers focus loss.  This focus loss can inadvertently cause an auto-hide popup to close.  This issue is only known to occur within a debugging environment.
+}
+
 See the [Interop Compatibility](../interop-compatibility.md) topic for more information.

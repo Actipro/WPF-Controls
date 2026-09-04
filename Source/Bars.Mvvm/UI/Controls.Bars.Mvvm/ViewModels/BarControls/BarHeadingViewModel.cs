@@ -1,69 +1,52 @@
-﻿namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
+
+/// <summary>
+/// Represents a view model for a heading control within a bar control.
+/// </summary>
+public class BarHeadingViewModel : ObservableObjectBase, IHasTag {
+
+	private bool _isVisible = true;
+	private string? _label;
+	private object? _tag;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a view model for a heading control within a bar control.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class BarHeadingViewModel : ObservableObjectBase, IHasTag {
+	public BarHeadingViewModel()  // Parameterless constructor required for XAML support
+		: this(label: null) { }
 
-		private bool isVisible = true;
-		private string label;
-		private object tag;
+	/// <summary>
+	/// Initializes an instance of the class with the specified label.
+	/// </summary>
+	/// <param name="label">The text label to display.</param>
+	public BarHeadingViewModel(string? label) {
+		_label = label;
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes a new instance of the class.
-		/// </summary>
-		public BarHeadingViewModel()  // Parameterless constructor required for XAML support
-			: this(label: null) { }
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
 
-		/// <summary>
-		/// Initializes a new instance of the class with the specified label.
-		/// </summary>
-		/// <param name="label">The text label to display.</param>
-		public BarHeadingViewModel(string label) {
-			this.label = label;
-		}
+	/// <inheritdoc cref="BarButtonViewModel.Label"/>
+	public string? Label {
+		get => _label;
+		set => SetProperty(ref _label, value);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="BarButtonViewModel.Label"/>
-		public string Label {
-			get => label;
-			set {
-				if (label != value) {
-					label = value;
-					this.NotifyPropertyChanged(nameof(Label));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
-
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
 	}
 
 }

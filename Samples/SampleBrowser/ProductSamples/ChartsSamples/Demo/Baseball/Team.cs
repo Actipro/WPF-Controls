@@ -1,49 +1,31 @@
-﻿#if WINRT
-using ActiproSoftware.UI.Xaml;
-using Windows.UI;
-#else
-using System.Windows.Media;
-using ActiproSoftware.Windows;
-#endif
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball;
 
-namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Baseball {
+/// <summary>
+/// A baseball team.
+/// </summary>
+public class Team : ObservableObjectBase {
+
+	private Color _color;
+	private string? _name;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// A baseball team.
+	/// The color.
 	/// </summary>
-	public class Team : ObservableObjectBase {
-
-		private Color color;
-		private string name;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the color.
-		/// </summary>
-		/// <value>The color.</value>
-		public Color Color {
-			get { return color; }
-			set {
-				color = value;
-				NotifyPropertyChanged("Color");
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name {
-			get { return name; }
-			set {
-				name = value;
-				NotifyPropertyChanged("Name");
-			}
-		}
-
-		#endregion PUBLIC PROCEDURES
+	public Color Color {
+		get => _color;
+		set => SetProperty(ref _color, value);
 	}
+
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string? Name {
+		get => _name;
+		set => SetProperty(ref _name, value);
+	}
+
 }

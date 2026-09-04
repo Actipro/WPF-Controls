@@ -66,11 +66,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
         /// </summary>
         /// <returns>The public static fields in this ID provider.</returns>
         private static FieldInfo[] GetFields() {
-			#if WINRT
-			return typeof(ParentLexicalStateId).GetTypeInfo().DeclaredFields.Where(f => (f.IsPublic) && (f.IsStatic)).ToArray();
-			#else
-			return typeof(ParentLexicalStateId).GetFields((BindingFlags.Public | BindingFlags.Static));
-			#endif
+            return typeof(ParentLexicalStateId).GetFields((BindingFlags.Public | BindingFlags.Static));
         }
         
         /// <summary>

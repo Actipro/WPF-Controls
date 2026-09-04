@@ -182,11 +182,7 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.GettingS
         /// </summary>
         /// <returns>The public static fields in this ID provider.</returns>
         private static FieldInfo[] GetFields() {
-			#if WINRT
-			return typeof(SimpleTokenId).GetTypeInfo().DeclaredFields.Where(f => (f.IsPublic) && (f.IsStatic)).ToArray();
-			#else
-			return typeof(SimpleTokenId).GetFields((BindingFlags.Public | BindingFlags.Static));
-			#endif
+            return typeof(SimpleTokenId).GetFields((BindingFlags.Public | BindingFlags.Static));
         }
         
         /// <summary>

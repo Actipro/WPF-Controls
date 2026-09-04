@@ -56,7 +56,6 @@ Represents a property editor that uses a [BrushEditBox](xref:@ActiproUIRoot.Cont
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -69,7 +68,6 @@ Represents a property editor that uses a [ByteEditBox](xref:@ActiproUIRoot.Contr
 
 </td>
 </tr>
-}
 
 <tr>
 <td>
@@ -119,6 +117,19 @@ Represents a property editor that uses a [DateEditBox](xref:@ActiproUIRoot.Contr
 <td>
 
 Represents a property editor that uses a [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox) for editing `DateTime` property values.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[DecimalPropertyEditor](xref:@ActiproUIRoot.Controls.Editors.Interop.Grids.PropertyEditors.DecimalPropertyEditor)
+
+</td>
+<td>
+
+Represents a property editor that uses a [DecimalEditBox](xref:@ActiproUIRoot.Controls.Editors.DecimalEditBox) for editing `Decimal` property values.
 
 </td>
 </tr>

@@ -1,34 +1,18 @@
-﻿using System.Collections.ObjectModel;
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling;
 
-#if WINRT
-using ActiproSoftware.UI.Xaml;
-#else
-using ActiproSoftware.Windows;
-#endif
+/// <summary>
+/// Stores information about a repair shop.
+/// </summary>
+public class ShopModel : ObservableObjectBase {
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling {
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about a repair shop.
+	/// The collection of shop employees.
 	/// </summary>
-	public class ShopModel : ObservableObjectBase {
-
-		private ObservableCollection<EmployeeModel> employees = new ObservableCollection<EmployeeModel>();
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the collection of shop employees.
-		/// </summary>
-		/// <value>The collection of shop employees.</value>
-		public ObservableCollection<EmployeeModel> Employees {
-			get {
-				return employees;
-			}
-		}
-
-	}
+	/// <value>The collection of shop employees.</value>
+	public ObservableCollection<EmployeeModel> Employees { get; } = [];
 
 }

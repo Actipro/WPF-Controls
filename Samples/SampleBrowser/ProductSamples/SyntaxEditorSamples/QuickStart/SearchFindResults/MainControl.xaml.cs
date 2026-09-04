@@ -1,90 +1,82 @@
-using System;
-using System.Text;
-using System.Windows;
-using System.Windows.Input;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Searching;
 using ActiproSoftware.Windows.Controls.SyntaxEditor;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SearchFindResults {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.SearchFindResults;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl : UserControl {
+
+	private ISearchResultSet? _lastResultSet;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl : System.Windows.Controls.UserControl {
+	public MainControl() {
+		InitializeComponent();
 
-		private ISearchResultSet lastResultSet;
+		// Load a language from a language definition
+		editor.Document.Language = Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	/// <summary>
+	/// Occurs when a search operation occurs in a view.
+	/// </summary>
+	private void OnEditorViewSearch(object sender, EditorViewSearchEventArgs e)
+		=> UpdateResults(e.ResultSet);
 
-			// Load a language from a language definition
-			editor.Document.Language = ActiproSoftware.ProductSamples.SyntaxEditorSamples.Common.SyntaxEditorHelper.LoadLanguageDefinitionFromResourceStream("CSharp.langdef");
-        }
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when a search operation occurs in a view.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="EditorViewSearchEventArgs"/> that contains the event data.</param>
-		private void OnEditorViewSearch(object sender, EditorViewSearchEventArgs e) {
-			this.UpdateResults(e.ResultSet);
-		}
+	private void OnResultsTextBoxDoubleClick(object sender, MouseButtonEventArgs e) {
+		// Quit if there is not result set stored yet
+		if (_lastResultSet is null)
+			return;
 
-		/// <summary>
-		/// Occurs when the mouse is double-clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="MouseButtonEventArgs"/> that contains the event data.</param>
-		private void OnResultsTextBoxDoubleClick(object sender, MouseButtonEventArgs e) {
-			// Quit if there is not result set stored yet
-			if (lastResultSet == null)
-				return;
+		var charIndex = resultsTextBox.GetCharacterIndexFromPoint(e.GetPosition(resultsTextBox), snapToText: true);
+		var lineIndex = resultsTextBox.GetLineIndexFromCharacterIndex(charIndex);
 
-			int charIndex = resultsTextBox.GetCharacterIndexFromPoint(e.GetPosition(resultsTextBox), true);
-			int lineIndex = resultsTextBox.GetLineIndexFromCharacterIndex(charIndex);
-
-			int resultIndex = lineIndex - 1;  // Account for first line in results displaying search info
-			if ((resultIndex >= 0) && (resultIndex < lastResultSet.Results.Count)) {
-				// A valid result was clicked
-				ISearchResult result = lastResultSet.Results[resultIndex];
-				if (result.ReplaceSnapshotRange.IsDeleted) {
-					// Find result
-					editor.ActiveView.Selection.SelectRange(result.FindSnapshotRange.TranslateTo(editor.ActiveView.CurrentSnapshot, TextRangeTrackingModes.Default).TextRange);
-				}
-				else {
-					// Replace result
-					editor.ActiveView.Selection.SelectRange(result.ReplaceSnapshotRange.TranslateTo(editor.ActiveView.CurrentSnapshot, TextRangeTrackingModes.Default).TextRange);
-				}
-
-				// Focus the editor
-				editor.Focus();
+		var resultIndex = lineIndex - 1;  // Account for first line in results displaying search info
+		if ((0 <= resultIndex) && (resultIndex < _lastResultSet.Results.Count)) {
+			// A valid result was clicked
+			var result = _lastResultSet.Results[resultIndex];
+			TextSnapshotRange? selectionSnapshotRange;
+			if (result.ReplaceSnapshotRange.HasValue) {
+				// Replace result
+				selectionSnapshotRange = result.ReplaceSnapshotRange.Value.TranslateTo(editor.ActiveView.CurrentSnapshot, TextRangeTrackingModes.Default);
 			}
-		}
+			else {
+				// Find result
+				selectionSnapshotRange = result.FindSnapshotRange.TranslateTo(editor.ActiveView.CurrentSnapshot, TextRangeTrackingModes.Default);
+			}
 
-		/// <summary>
-		/// Updates the results.
-		/// </summary>
-		/// <param name="resultSet">The <see cref="ISearchResultSet"/> containing results.</param>
-		private void UpdateResults(ISearchResultSet resultSet) {
-			// Show the results
-			resultsToolWindow.Title = String.Format("Find Results - {0} match{1}", resultSet.Results.Count, (resultSet.Results.Count == 1 ? String.Empty : "es"));
-			resultsTextBox.Text = resultSet.ToString();
+			// Select the range
+			if (selectionSnapshotRange.HasValue)
+				editor.ActiveView.Selection.SelectRange(selectionSnapshotRange.Value.TextRange);
 
-			// Save the result set
-			lastResultSet = resultSet;
+			// Focus the editor
+			editor.Focus();
 		}
-    }
+	}
+
+	/// <summary>
+	/// Updates the results.
+	/// </summary>
+	/// <param name="resultSet">The <see cref="ISearchResultSet"/> containing results.</param>
+	private void UpdateResults(ISearchResultSet resultSet) {
+		// Show the results
+		resultsToolWindow.Title = string.Format("Find Results - {0} match{1}", resultSet.Results.Count, (resultSet.Results.Count == 1 ? string.Empty : "es"));
+		resultsTextBox.Text = resultSet.ToString();
+
+		// Save the result set
+		_lastResultSet = resultSet;
+	}
 
 }

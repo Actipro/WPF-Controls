@@ -312,7 +312,7 @@ Set the [IsClickEnabled](xref:@ActiproUIRoot.Controls.Card.IsClickEnabled) prope
 > If the `Command` property is assigned a non-`null` value, the [IsClickEnabled](xref:@ActiproUIRoot.Controls.Card.IsClickEnabled) property is automatically coerced to `true`, so no additional configuration is necessary.
 
 > [!NOTE]
-> Setting the [IsClickEnabled](xref:@ActiproUIRoot.Controls.Card.IsClickEnabled) property to `true` will also trigger hover effects to emphasize the control is actionable.
+> Setting the [IsClickEnabled](xref:@ActiproUIRoot.Controls.Card.IsClickEnabled) property to `true` will also trigger pointer over and pointer pressed effects to emphasize the control is actionable. @if (wpf) { For more advanced control, including making non-clickable cards appear actionable, the [IsResponsiveToPointerOver](xref:@ActiproUIRoot.Controls.Card.IsResponsiveToPointerOver) and [IsResponsiveToPointerPressed](xref:@ActiproUIRoot.Controls.Card.IsResponsiveToPointerPressed) properties can be explicitly set. }
 
 @if (wpf) {
 ## Badge Adornment

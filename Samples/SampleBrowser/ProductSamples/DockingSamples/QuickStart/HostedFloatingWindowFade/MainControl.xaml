@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.HostedFloatingWindowFade.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -40,14 +40,14 @@
 	</sampleBrowser:ProductItemControl.SideBarContent>
 
 	<!-- DockSite -->
-	<docking:DockSite x:Name="dockSite" 
+	<docking:DockSite x:Name="dockSite"
 					  UseHostedFloatingWindows="True"
 					  InactiveFloatingWindowFadeDelay="3000"
 					  InactiveFloatingWindowFadeDuration="5000">
 		<docking:Workspace>
 			<docking:TabbedMdiHost>
 				<docking:TabbedMdiContainer>
-						
+
 					<docking:DocumentWindow Title="Fade Properties">
 						<TextBox BorderThickness="0" TextWrapping="Wrap" Text="Focus this TextBox to have the floating tool window slowly fade out." />
 					</docking:DocumentWindow>
@@ -56,5 +56,5 @@
 			</docking:TabbedMdiHost>
 		</docking:Workspace>
 	</docking:DockSite>
-	
+
 </sampleBrowser:ProductItemControl>

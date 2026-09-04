@@ -35,26 +35,26 @@ The [PixelSnapper](xref:@ActiproUIRoot.Controls.PixelSnapper) class has these im
 
 | Member | Description |
 |-----|-----|
-| [HorizontalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is `RoundMode.Ceiling`. |
-| [VerticalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is `RoundMode.Ceiling`. |
+| [HorizontalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.HorizontalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.RoundMode) indicating how to round the horizontal measurement of the child content.  The default value is [Ceiling](xref:ActiproSoftware.RoundMode.Ceiling). |
+| [VerticalRoundMode](xref:@ActiproUIRoot.Controls.PixelSnapper.VerticalRoundMode) Property | Gets or sets a [RoundMode](xref:ActiproSoftware.RoundMode) indicating how to round the vertical measurement of the child content.  The default value is [Ceiling](xref:ActiproSoftware.RoundMode.Ceiling). |
 
 ## RoundMode Enumeration
 
-The [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration has these values:
+The [RoundMode](xref:ActiproSoftware.RoundMode) enumeration has these values:
 
 | Value | Description |
 |-----|-----|
-| `None` | No rounding is applied. |
-| `Floor` | The largest integer less than or equal to the value is returned. |
-| `FloorToEven` | The largest even integer less than or equal to the value is returned. |
-| `FloorToOdd` | The largest odd integer less than or equal to the value is returned. |
-| `Ceiling` | The smallest integer greater than or equal to the value is returned. |
-| `CeilingToEven` | The smallest even integer greater than or equal to the value is returned. |
-| `CeilingToOdd` | The smallest odd integer greater than or equal to the value is returned. |
-| `Round` | The closest integer to the value is returned. |
-| `RoundToEven` | The closest even integer to the value is returned. |
-| `RoundToOdd` | The closest odd integer to the value is returned. |
+| [None](xref:ActiproSoftware.RoundMode.None) | No rounding is applied. |
+| [Nearest](xref:ActiproSoftware.RoundMode.Nearest) | The closest integer to the value is returned. |
+| [NearestEven](xref:ActiproSoftware.RoundMode.NearestEven) | The closest even integer to the value is returned. |
+| [NearestOdd](xref:ActiproSoftware.RoundMode.NearestOdd) | The closest odd integer to the value is returned. |
+| [Floor](xref:ActiproSoftware.RoundMode.Floor) | The largest integer less than or equal to the value is returned. |
+| [FloorToEven](xref:ActiproSoftware.RoundMode.FloorToEven) | The largest even integer less than or equal to the value is returned. |
+| [FloorToOdd](xref:ActiproSoftware.RoundMode.FloorToOdd) | The largest odd integer less than or equal to the value is returned. |
+| [Ceiling](xref:ActiproSoftware.RoundMode.Ceiling) | The smallest integer greater than or equal to the value is returned. |
+| [CeilingToEven](xref:ActiproSoftware.RoundMode.CeilingToEven) | The smallest even integer greater than or equal to the value is returned. |
+| [CeilingToOdd](xref:ActiproSoftware.RoundMode.CeilingToOdd) | The smallest odd integer greater than or equal to the value is returned. |
 
 ## Centering Within a Parent
 
-Say that you are trying to horizontally center an `Image` that is 32x32 pixels within a parent `StackPanel` that also has a `TextBlock` in it.  The `TextBlock` could lead to a fractional width.  By wrapping the `TextBlock` with a `PixelSnapper` and using a `CeilingToEven` horizontal round mode, you ensure that the entire contents of the `TextBlock` is visible, and that it forces the `StackPanel`'s width to an even number, allowing the `Image` to be centered horizontally directly on integer boundaries within the `StackPanel`.
+Say that you are trying to horizontally center an `Image` that is 32x32 pixels within a parent `StackPanel` that also has a `TextBlock` in it.  The `TextBlock` could lead to a fractional width.  By wrapping the `TextBlock` with a `PixelSnapper` and using a [CeilingToEven](xref:ActiproSoftware.RoundMode.CeilingToEven) horizontal round mode, you ensure that the entire contents of the `TextBlock` is visible, and that it forces the `StackPanel`'s width to an even number, allowing the `Image` to be centered horizontally directly on integer boundaries within the `StackPanel`.

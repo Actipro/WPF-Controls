@@ -1,23 +1,21 @@
 ﻿using System.Windows.Documents;
 
-namespace ActiproSoftware.SampleBrowser {
+namespace ActiproSoftware.SampleBrowser;
+
+/// <summary>
+/// Implements a simple <see cref="FlowDocument"/> with basic styling.
+/// </summary>
+public class SimpleFlowDocument : FlowDocument {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Implements a simple <see cref="FlowDocument"/> with basic styling.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class SimpleFlowDocument : FlowDocument {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="SimpleFlowDocument"/> class.
-		/// </summary>
-		public SimpleFlowDocument() {
-			this.DefaultStyleKey = typeof(SimpleFlowDocument);
-		}
-
+	public SimpleFlowDocument() {
+		DefaultStyleKey = typeof(SimpleFlowDocument);
 	}
 
 }

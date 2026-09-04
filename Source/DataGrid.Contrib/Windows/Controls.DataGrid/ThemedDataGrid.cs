@@ -1,150 +1,140 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using ActiproSoftware.Windows.Themes;
 using DataGridControl = System.Windows.Controls.DataGrid;
 
-namespace ActiproSoftware.Windows.Controls.DataGrid {
+namespace ActiproSoftware.Windows.Controls.DataGrid;
+
+/// <summary>
+/// Represents a <see cref="DataGridControl"/> that uses custom themes and integrates into the Actipro theme manager.
+/// </summary>
+public class ThemedDataGrid : DataGridControl {
+
+	private Style? _defaultCheckBoxEditingStyle;
+	private Style? _defaultCheckBoxStyle;
+	private Style? _defaultComboBoxStyle;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Represents a <see cref="DataGridControl"/> that uses custom themes and integrates into the Actipro theme manager.
+	/// Initializes the class.
 	/// </summary>
-	public class ThemedDataGrid : DataGridControl {
+	static ThemedDataGrid() {
+		DefaultStyleKeyProperty.OverrideMetadata(typeof(ThemedDataGrid), new FrameworkPropertyMetadata(defaultValue: typeof(ThemedDataGrid)));
+	}
 
-		private Style defaultCheckBoxEditingStyle;
-		private Style defaultCheckBoxStyle;
-		private Style defaultComboBoxStyle;
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Applies a themed style to the element in the specified column, if the current style is defaulted.
+	/// </summary>
+	/// <param name="column">The column to examine.</param>
+	protected virtual void ApplyThemedStyle(DataGridCheckBoxColumn column) {
+		if (column is null)
+			throw new ArgumentNullException(nameof(column));
 
-		/// <summary>
-		/// Initializes the <see cref="ThemedDataGrid"/> class.
-		/// </summary>
-		static ThemedDataGrid() {
-			DefaultStyleKeyProperty.OverrideMetadata(typeof(ThemedDataGrid), new FrameworkPropertyMetadata(typeof(ThemedDataGrid)));
-		}
-
-		#endregion // OBJECT
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Applies a themed style to the element in the specified column, if the current style is defaulted.
-		/// </summary>
-		/// <param name="column">The column to examine.</param>
-		protected virtual void ApplyThemedStyle(DataGridCheckBoxColumn column) {
-			if (column == null)
-				throw new ArgumentNullException("column");
-
-			// If one of the styles is defaulted...
-			if ((column.ElementStyle == DataGridCheckBoxColumn.DefaultElementStyle) || (column.EditingElementStyle == DataGridCheckBoxColumn.DefaultEditingElementStyle)) {
-				if (column.ElementStyle == DataGridCheckBoxColumn.DefaultElementStyle) {
-					// Create the default style as necessary
-					if (defaultCheckBoxStyle == null) {
-						var basedOnStyle = this.TryFindResource(SharedResourceKeys.CheckBoxStyleKey) as Style;
-						if (basedOnStyle == null)
-							return;
-
-						defaultCheckBoxStyle = new Style(typeof(CheckBox)) {
-							BasedOn = basedOnStyle,
-							Setters = {
-								new Setter(UIElement.IsHitTestVisibleProperty, false),
-								new Setter(UIElement.FocusableProperty, false),
-								new Setter(FrameworkElement.HorizontalAlignmentProperty, HorizontalAlignment.Center),
-								new Setter(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Top),
-							}
-						};
-						defaultCheckBoxStyle.Seal();
-					}
-
-					column.ElementStyle = defaultCheckBoxStyle;
-				}
-
-				if (column.EditingElementStyle == DataGridCheckBoxColumn.DefaultEditingElementStyle) {
-					// Create the default style as necessary
-					if (defaultCheckBoxEditingStyle == null) {
-						var basedOnStyle = this.TryFindResource(SharedResourceKeys.CheckBoxStyleKey) as Style;
-						if (basedOnStyle == null)
-							return;
-
-						defaultCheckBoxEditingStyle = new Style(typeof(CheckBox)) {
-							BasedOn = basedOnStyle,
-							Setters = {
-								new Setter(FrameworkElement.HorizontalAlignmentProperty, HorizontalAlignment.Center),
-								new Setter(FrameworkElement.VerticalAlignmentProperty, VerticalAlignment.Top),
-							}
-						};
-						defaultCheckBoxEditingStyle.Seal();
-					}
-
-					column.EditingElementStyle = defaultCheckBoxEditingStyle;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Applies a themed style to the element in the specified column, if the current style is defaulted.
-		/// </summary>
-		/// <param name="column">The column to examine.</param>
-		protected virtual void ApplyThemedStyle(DataGridComboBoxColumn column) {
-			if (column == null)
-				throw new ArgumentNullException("column");
-
-			// If one of the styles is defaulted...
-			if ((column.ElementStyle == DataGridComboBoxColumn.DefaultElementStyle) || (column.EditingElementStyle == DataGridComboBoxColumn.DefaultEditingElementStyle)) {
+		// If one of the styles is defaulted...
+		if (column.ElementStyle == DataGridCheckBoxColumn.DefaultElementStyle
+			|| column.EditingElementStyle == DataGridCheckBoxColumn.DefaultEditingElementStyle
+		) {
+			if (column.ElementStyle == DataGridCheckBoxColumn.DefaultElementStyle) {
 				// Create the default style as necessary
-				if (defaultComboBoxStyle == null) {
-					var basedOnStyle = this.TryFindResource(SharedResourceKeys.ComboBoxStyleKey) as Style;
-					if (basedOnStyle == null)
+				if (_defaultCheckBoxStyle is null) {
+					var basedOnStyle = TryFindResource(SharedResourceKeys.CheckBoxStyleKey) as Style;
+					if (basedOnStyle is null)
 						return;
 
-					defaultComboBoxStyle = new Style(typeof(ComboBox)) {
+					_defaultCheckBoxStyle = new Style(typeof(CheckBox)) {
 						BasedOn = basedOnStyle,
 						Setters = {
-							new Setter(Selector.IsSynchronizedWithCurrentItemProperty, false)
+							new Setter(IsHitTestVisibleProperty, false),
+							new Setter(FocusableProperty, false),
+							new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center),
+							new Setter(VerticalAlignmentProperty, VerticalAlignment.Top),
 						}
 					};
-					defaultComboBoxStyle.Seal();
+					_defaultCheckBoxStyle.Seal();
 				}
 
-				if (column.ElementStyle == DataGridComboBoxColumn.DefaultElementStyle)
-					column.ElementStyle = defaultComboBoxStyle;
-
-				if (column.EditingElementStyle == DataGridComboBoxColumn.DefaultEditingElementStyle)
-					column.EditingElementStyle = defaultComboBoxStyle;
-			}
-		}
-
-		/// <summary>
-		/// Occurs when auto-generating a column.
-		/// </summary>
-		/// <param name="e">The <c>DataGridAutoGeneratingColumnEventArgs</c> that contains data related to this event.</param>
-		protected override void OnAutoGeneratingColumn(DataGridAutoGeneratingColumnEventArgs e) {
-			if (e == null)
-				throw new ArgumentNullException("e");
-
-			// Apply themed styles as appropriate
-			var comboBoxColumn = e.Column as DataGridComboBoxColumn;
-			if (comboBoxColumn != null)
-				this.ApplyThemedStyle(comboBoxColumn);
-			else {
-				var checkBoxColumn = e.Column as DataGridCheckBoxColumn;
-				if (checkBoxColumn != null)
-					this.ApplyThemedStyle(checkBoxColumn);
+				column.ElementStyle = _defaultCheckBoxStyle;
 			}
 
-			// Call the base method
-			base.OnAutoGeneratingColumn(e);
+			if (column.EditingElementStyle == DataGridCheckBoxColumn.DefaultEditingElementStyle) {
+				// Create the default style as necessary
+				if (_defaultCheckBoxEditingStyle is null) {
+					var basedOnStyle = TryFindResource(SharedResourceKeys.CheckBoxStyleKey) as Style;
+					if (basedOnStyle is null)
+						return;
+
+					_defaultCheckBoxEditingStyle = new Style(typeof(CheckBox)) {
+						BasedOn = basedOnStyle,
+						Setters = {
+							new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center),
+							new Setter(VerticalAlignmentProperty, VerticalAlignment.Top),
+						}
+					};
+					_defaultCheckBoxEditingStyle.Seal();
+				}
+
+				column.EditingElementStyle = _defaultCheckBoxEditingStyle;
+			}
 		}
-
-		#endregion // PUBLIC PROCEDURES
-
 	}
+
+	/// <summary>
+	/// Applies a themed style to the element in the specified column, if the current style is defaulted.
+	/// </summary>
+	/// <param name="column">The column to examine.</param>
+	protected virtual void ApplyThemedStyle(DataGridComboBoxColumn column) {
+		if (column is null)
+			throw new ArgumentNullException(nameof(column));
+
+		// If one of the styles is defaulted...
+		if (
+			column.ElementStyle == DataGridComboBoxColumn.DefaultElementStyle
+			|| column.EditingElementStyle == DataGridComboBoxColumn.DefaultEditingElementStyle
+		) {
+			// Create the default style as necessary
+			if (_defaultComboBoxStyle is null) {
+				var basedOnStyle = TryFindResource(SharedResourceKeys.ComboBoxStyleKey) as Style;
+				if (basedOnStyle is null)
+					return;
+
+				_defaultComboBoxStyle = new Style(typeof(ComboBox)) {
+					BasedOn = basedOnStyle,
+					Setters = {
+						new Setter(IsSynchronizedWithCurrentItemProperty, false)
+					}
+				};
+				_defaultComboBoxStyle.Seal();
+			}
+
+			if (column.ElementStyle == DataGridComboBoxColumn.DefaultElementStyle)
+				column.ElementStyle = _defaultComboBoxStyle;
+
+			if (column.EditingElementStyle == DataGridComboBoxColumn.DefaultEditingElementStyle)
+				column.EditingElementStyle = _defaultComboBoxStyle;
+		}
+	}
+
+	/// <inheritdoc/>
+	protected override void OnAutoGeneratingColumn(DataGridAutoGeneratingColumnEventArgs e) {
+		if (e is null)
+			throw new ArgumentNullException(nameof(e));
+
+		// Apply themed styles as appropriate
+		switch (e.Column) {
+			case DataGridComboBoxColumn comboBoxColumn:
+				ApplyThemedStyle(comboBoxColumn);
+				break;
+			case DataGridCheckBoxColumn checkBoxColumn:
+				ApplyThemedStyle(checkBoxColumn);
+				break;
+		}
+
+		// Call the base method
+		base.OnAutoGeneratingColumn(e);
+	}
+
 }

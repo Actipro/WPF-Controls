@@ -84,6 +84,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNullAllowed}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsInputFilteringEnabled}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNaNAllowed}" DisplayName="Is NaN allowed (type 'n' in edit box)" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsNegativeInfinityAllowed}" DisplayName="Is -Infinity allowed (type '-i' in edit box)" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsPositiveInfinityAllowed}" DisplayName="Is +Infinity allowed (type 'i' in edit box)" />
@@ -178,7 +179,7 @@
 				</sampleBrowser:LabeledCardControl>
 
 				<sampleBrowser:LabeledCardControl Label="Custom text formats">
-					<editors:DoubleEditBox MinWidth="150" Format="0.0#' ft'" HorizontalAlignment="Left" />
+					<editors:DoubleEditBox MinWidth="150" Format="0.0# ft" HorizontalAlignment="Left" />
 				</sampleBrowser:LabeledCardControl>
 
 			</sampleBrowser:SampleGalleryControl>

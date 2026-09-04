@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ShellSamples.Demo.BrowseForFolder.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -18,7 +18,7 @@
 					<LineBreak /><LineBreak />
 					It's easy to use ShellTreeListBox in a dialog window to provide a fully customizable Browse for Folder dialog.
 					<LineBreak /><LineBreak />
-					In this sample, we show an example implementation of an in-line dialog.  
+					In this sample, we show an example implementation of an in-line dialog.
 					In real world usage, you would put the content in a normal WPF dialog Window instead.
 					<LineBreak /><LineBreak />
 					Press the 'OK' button to see information about the selected folder.
@@ -50,9 +50,9 @@
 							<ColumnDefinition Width="*" />
 							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
-					
+
 						<Button MinWidth="120" Content="Make New Folder" Command="{Binding ElementName=treeListBox, Path=SelectedItem.CreateChildFolderCommand}" />
-					
+
 						<StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
 							<Button Margin="15,0,0,0" MinWidth="75" Content="OK" IsDefault="True" Click="OnOkButtonClick" />
 							<Button Margin="7,0,0,0" MinWidth="75" Content="Cancel" IsCancel="True" Click="OnCancelButtonClick" />
@@ -62,5 +62,5 @@
 			</docking:WindowControl>
 		</shared:ShadowChrome>
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

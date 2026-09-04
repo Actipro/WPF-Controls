@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
 using ActiproSoftware.Text;
 using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Languages.CSharp.Implementation;
@@ -19,181 +13,173 @@ using ActiproSoftware.Windows.Input;
 using ActiproSoftware.Windows.Media;
 using ActiproSoftware.Windows.Themes;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddonGoToDefinition {
-	
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddonGoToDefinition;
+
+/// <summary>
+/// A custom tagger that adds a custom <see cref="IClassificationTag"/> over tokens that might be
+/// valid for "Go To Definition" functionality and provides special handling for clicking over
+/// those tags.
+/// </summary>
+public class GoToDefinitionTagger : TaggerBase<IClassificationTag> {
+
+	private TextSnapshotRange? _currentTaggedSnapshotRange;
+	private readonly GoToDefinitionService? _goToDefinitionService;
+	private bool _isCustomCursorActive;
+	private readonly IEditorView _view;
+
+	private static readonly Color _defaultDarkForegroundColor = UIColor.FromWebColor("#569cd6");
+	private static readonly Color _defaultLightForegroundColor = UIColor.FromWebColor("#0000ff");
+	private static readonly ClassificationType _goToDefinitionClassificationType = new("GoToDefinition", "Go To Definition");
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// A custom tagger that adds a custom <see cref="IClassificationTag"/> over tokens that might be
-	/// valid for "Go To Definition" functionality and provides special handling for clicking over
-	/// those tags.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class GoToDefinitionTagger : TaggerBase<IClassificationTag> {
+	/// <param name="view">The view to which this manager is attached.</param>
+	public GoToDefinitionTagger(IEditorView view) : base(nameof(GoToDefinitionTagger), [new Ordering(TaggerKeys.Token, OrderPlacement.Before)], view.SyntaxEditor.Document) {
+		_view = view ?? throw new ArgumentNullException(nameof(view));
 
-		private TextSnapshotRange						currentTaggedSnapshotRange;
-		private readonly GoToDefinitionService			goToDefinitionService;
-		private bool									isCustomCursorActive;
-		private readonly IEditorView					view;
+		// Ensure a classification type is registered to apply styles to tags and listen for theme changes
+		EnsureClassificationTypeRegistered();
+		ThemeManager.CurrentThemeChanged += OnThemeManagerCurrentThemeChanged;
 
-		private static readonly Color					defaultDarkForegroundColor = UIColor.FromWebColor("#569cd6");
-		private static readonly Color					defaultLightForegroundColor = UIColor.FromWebColor("#0000ff");
-		private static readonly IClassificationType		goToDefinitionClassificationType = new ClassificationType("GoToDefinition", "Go To Definition");
+		// Get the required service
+		_goToDefinitionService = view.SyntaxEditor.Document.Language.GetService<GoToDefinitionService>();
+		Debug.Assert(_goToDefinitionService is not null);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes a new instance of the <c>WordHighlightTagger</c> class.
-		/// </summary>
-		/// <param name="view">The view to which this manager is attached.</param>
-		public GoToDefinitionTagger(IEditorView view) : base(nameof(GoToDefinitionTagger),
-			new Ordering[] { new Ordering(TaggerKeys.Token, OrderPlacement.Before) }, view.SyntaxEditor.Document) {
-
-			this.view = view;
-
-			// Ensure a classification type is registered to apply styles to tags and listen for theme changes
-			EnsureClassificationTypeRegistered();
-			ThemeManager.CurrentThemeChanged += this.OnThemeManagerCurrentThemeChanged;
-
-			// Get the required service
-			goToDefinitionService = view.SyntaxEditor.Document.Language.GetService<GoToDefinitionService>();
-			Debug.Assert(goToDefinitionService != null);
+	/// <summary>
+	/// Configures the view with a custom cursor to indicate the tag can be clicked.
+	/// </summary>
+	private void ApplyCustomCursor() {
+		if (!_isCustomCursorActive) {
+			Mouse.OverrideCursor = Cursors.Hand;
+			_isCustomCursorActive = true;
 		}
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Configures the view with a custom cursor to indicate the tag can be clicked.
-		/// </summary>
-		private void ApplyCustomCursor() {
-			if (!isCustomCursorActive) {
-				Mouse.OverrideCursor = Cursors.Hand;
-				isCustomCursorActive = true;
-			}
+	/// <summary>
+	/// Clears the custom cursor configuration from the view.
+	/// </summary>
+	private void ClearCustomCursor() {
+		if (_isCustomCursorActive) {
+			Mouse.OverrideCursor = null;
+			_isCustomCursorActive = false;
 		}
+	}
 
-		/// <summary>
-		/// Clears the custom cursor configuration from the view.
-		/// </summary>
-		private void ClearCustomCursor() {
-			if (isCustomCursorActive) {
-				Mouse.OverrideCursor = null;
-				isCustomCursorActive = false;
-			}
+	/// <summary>
+	/// Tests if the given key is one that could impact the tagging process.
+	/// </summary>
+	/// <param name="key">The key to be tested.</param>
+	private static bool DoesKeyImpactTagging(Key key) {
+		// Any of the modifier keys can impact the tagging process
+		return key == System.Windows.Input.Key.LeftCtrl
+			|| key == System.Windows.Input.Key.RightCtrl
+			|| key == System.Windows.Input.Key.LeftShift
+			|| key == System.Windows.Input.Key.RightShift
+			|| key == System.Windows.Input.Key.LeftAlt
+			|| key == System.Windows.Input.Key.RightAlt;
+	}
+
+	/// <summary>
+	/// Ensures a <see cref="IClassificationType"/> is registered with a <see cref="IHighlightingStyle"/> for the tags created by this tagger.
+	/// </summary>
+	private static void EnsureClassificationTypeRegistered() {
+		var registry = AmbientHighlightingStyleRegistry.Instance;
+		if (registry.GetClassificationType(_goToDefinitionClassificationType.Key) is null) {
+			// Configure light/dark color palettes with default colors
+			registry.LightColorPalette?.SetForeground(_goToDefinitionClassificationType.Key, _defaultLightForegroundColor);
+			registry.DarkColorPalette?.SetForeground(_goToDefinitionClassificationType.Key, _defaultDarkForegroundColor);
+
+			// Define a style with the underline decoration
+			var style = new HighlightingStyle() { UnderlineKind = LineKind.Solid };
+
+			// Associate the style with the classification type
+			//   and the current color palette color will be automatically applied
+			registry.Register(_goToDefinitionClassificationType, style);
 		}
+	}
 
-		/// <summary>
-		/// Tests if the given key is one that could impact the tagging process.
-		/// </summary>
-		/// <param name="key">The key to be tested.</param>
-		/// <returns><c>true</c> if the key could impact the tagging process; otherwise <c>false</c>.</returns>
-		private bool DoesKeyImpactTagging(Key key) {
-			// Any of the modifier keys can impact the tagging process
-			return key == System.Windows.Input.Key.LeftCtrl
-				|| key == System.Windows.Input.Key.RightCtrl
-				|| key == System.Windows.Input.Key.LeftShift
-				|| key == System.Windows.Input.Key.RightShift
-				|| key == System.Windows.Input.Key.LeftAlt
-				|| key == System.Windows.Input.Key.RightAlt;
-		}
+	/// <summary>
+	/// Invalidates any previously defined tags.
+	/// </summary>
+	/// <param name="snapshotRange">The invalidated snapshot range.</param>
+	private void InvalidateTags(TextSnapshotRange? snapshotRange) {
+		// Quit if the range is undefined or zero-length
+		if (!snapshotRange.HasValue || snapshotRange.Value.IsZeroLength)
+			return;
 
-		/// <summary>
-		/// Ensures a <see cref="IClassificationType"/> is registered with a <see cref="IHighlightingStyle"/> for the tags created by this tagger.
-		/// </summary>
-		private static void EnsureClassificationTypeRegistered() {
-			var registry = AmbientHighlightingStyleRegistry.Instance;
-			if (registry.GetClassificationType(goToDefinitionClassificationType.Key) is null) {
-				// Configure light/dark color palettes with default colors
-				registry.LightColorPalette?.SetForeground(goToDefinitionClassificationType.Key, defaultLightForegroundColor);
-				registry.DarkColorPalette?.SetForeground(goToDefinitionClassificationType.Key, defaultDarkForegroundColor);
+		// Notify that tags have changed for this range
+		OnTagsChanged(new TagsChangedEventArgs(snapshotRange.Value));
+	}
 
-				// Define a style with the underline decoration
-				var style = new HighlightingStyle() { UnderlineKind = LineKind.Solid };
+	/// <summary>
+	/// Indicates whether tagging is currently active.
+	/// </summary>
+	private static bool IsTaggingActive {
+		// Tagging is only performed when just the CTRL key is pressed
+		get => Keyboard.Modifiers == ModifierKeys.Control;
+	}
 
-				// Associate the style with the classification type
-				// and the current color palette color will be automatically applied
-				registry.Register(goToDefinitionClassificationType, style);
-			}
-		}
+	private void OnThemeManagerCurrentThemeChanged(object? sender, EventArgs e)
+		=> EnsureClassificationTypeRegistered();
 
-		/// <summary>
-		/// Invalidates any previously defined tags.
-		/// </summary>
-		/// <param name="snapshotRange">The invalidated snapshot range.</param>
-		private void InvalidateTags(TextSnapshotRange snapshotRange) {
-			// Quit if the range is undefined or zero-length
-			if (snapshotRange.IsDeleted || snapshotRange.IsZeroLength)
-				return;
+	/// <summary>
+	/// Updates the tagged range for a "Go To Definition" tag.
+	/// </summary>
+	/// <param name="cursorLocation">The current cursor location.</param>
+	/// <returns><c>true</c> if a valid tagged range was detected; otherwise <c>false</c>.</returns>
+	private bool UpdateTaggedRange(Point cursorLocation)
+		=> UpdateTaggedRange(cursorLocation, out _);
 
-			// Notify that tags have changed for this range
-			this.OnTagsChanged(new TagsChangedEventArgs(snapshotRange));
-		}
+	/// <summary>
+	/// Updates the tagged range for a "Go To Definition" tag.
+	/// </summary>
+	/// <param name="cursorLocation">The current cursor location.</param>
+	/// <param name="resolverResult">Outputs the result of a resolver operation, if any, that was found for a successfully tagged range.</param>
+	/// <returns><c>true</c> if a valid tagged range was detected; otherwise <c>false</c>.</returns>
+	private bool UpdateTaggedRange(Point cursorLocation, out IResolverResult? resolverResult) {
+		// Initialize output argument
+		resolverResult = null;
 
-		/// <summary>
-		/// Gets whether tagging is currently active.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if tagging is active; otherwise, <c>false</c>.
-		/// </value>
-		private bool IsTaggingActive {
-			get {
-				// Tagging is only performed when just the CTRL key is pressed
-				return Keyboard.Modifiers == ModifierKeys.Control;
-			}
-		}
+		// Cache the current snapshot range
+		var oldSnapshotRange = _currentTaggedSnapshotRange;
 
-		/// <summary>
-		/// Updates the tagged range for a "Go To Definition" tag.
-		/// </summary>
-		/// <param name="cursorLocation">The current cursor location.</param>
-		/// <returns><c>true</c> if a valid tagged range was detected; otherwise <c>false</c>.</returns>
-		private bool UpdateTaggedRange(Point cursorLocation) {
-			return UpdateTaggedRange(cursorLocation, out var _);
-		}
+		// Reset the snapshot range
+		_currentTaggedSnapshotRange = null;
 
-		/// <summary>
-		/// Updates the tagged range for a "Go To Definition" tag.
-		/// </summary>
-		/// <param name="cursorLocation">The current cursor location.</param>
-		/// <param name="resolverResult">Outputs the result of a resolver operation, if any, that was found for a successfully tagged range.</param>
-		/// <returns><c>true</c> if a valid tagged range was detected; otherwise <c>false</c>.</returns>
-		private bool UpdateTaggedRange(Point cursorLocation, out IResolverResult resolverResult) {
-			// Initialize output argument
-			resolverResult = null;
+		// Only perform additional testing if tagging is active
+		if (IsTaggingActive) {
 
-			// Cache the current snapshot range
-			var oldSnapshotRange = currentTaggedSnapshotRange;
+			// Check if the mouse is currently positioned a character in the text area of the view
+			var hitTestResult = _view.SyntaxEditor.HitTest(cursorLocation);
+			if (hitTestResult.Type == HitTestResultType.ViewTextAreaOverCharacter) {
 
-			// Reset the snapshot range
-			currentTaggedSnapshotRange = TextSnapshotRange.Deleted;
+				// Find the token whose range can be tagged and ensure it's for an identifier or keyword
+				var currentToken = hitTestResult.Snapshot!.GetReader(hitTestResult.Offset).Token;
+				if (
+					currentToken is not null
+					&& (CSharpTokenId.IsIdentifierClassificationType(currentToken.Id) || CSharpTokenId.IsKeywordClassificationType(currentToken.Id))
+				) {
 
-			// Only perform additional testing if tagging is active
-			if (IsTaggingActive) {
+					// Attempt to resolve the item at this position so tags are only placed over items which can be resolved
+					var snapshotOffset = new TextSnapshotOffset(hitTestResult.Snapshot, hitTestResult.Offset);
+					var resolutionResultSet = _goToDefinitionService?.PerformResolution(snapshotOffset);
+					if (resolutionResultSet is { Results.Count: > 0 }) {
 
-				// Check if the mouse is currently positioned a character in the text area of the view
-				IHitTestResult hitTestResult = view.SyntaxEditor.HitTest(cursorLocation);
-				if (hitTestResult.Type == HitTestResultType.ViewTextAreaOverCharacter) {
+						// Update the currently tagged snapshot range to match the token
+						_currentTaggedSnapshotRange = new TextSnapshotRange(hitTestResult.Snapshot, currentToken.StartOffset, currentToken.EndOffset);
 
-					// Find the token whose range can be tagged and ensure it's for an identifier or keyword
-					var currentToken = hitTestResult.Snapshot.GetReader(hitTestResult.Offset).Token;
-					if (
-						(currentToken != null)
-						&& (CSharpTokenId.IsIdentifierClassificationType(currentToken.Id) || CSharpTokenId.IsKeywordClassificationType(currentToken.Id))
-						) {
-
-						// Attempt to resolve the item at this position so tags are only placed over items which can be resolved
-						var snapshotOffset = new TextSnapshotOffset(hitTestResult.Snapshot, hitTestResult.Offset);
-						var resolutionResultSet = goToDefinitionService.PerformResolution(snapshotOffset);
-						if (resolutionResultSet.Results.Count > 0) {
-
-							// Update the currently tagged snapshot range to match the token
-							currentTaggedSnapshotRange = new TextSnapshotRange(hitTestResult.Snapshot, currentToken.StartOffset, currentToken.EndOffset);
-
-							// Output the resolver result
-							resolverResult = resolutionResultSet.Results[0];
-
-						}
+						// Output the resolver result
+						resolverResult = resolutionResultSet.Results[0];
 
 					}
 
@@ -201,149 +187,134 @@ namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAd
 
 			}
 
-			if (oldSnapshotRange != currentTaggedSnapshotRange) {
-				// Notify tags have changed
-				InvalidateTags(oldSnapshotRange);
-				InvalidateTags(currentTaggedSnapshotRange);
-			}
-
-			if (resolverResult is null) {
-				// Clear any custom cursor when the pointer is not over a successfully tagged range
-				ClearCustomCursor();
-				return false;
-			}
-			else {
-				// Apply a custom cursor when the pointer is over a successfully tagged range
-				ApplyCustomCursor();
-				return true;
-			}
 		}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		if (oldSnapshotRange != _currentTaggedSnapshotRange) {
+			// Notify tags have changed
+			InvalidateTags(oldSnapshotRange);
+			InvalidateTags(_currentTaggedSnapshotRange);
+		}
 
-		/// <summary>
-		/// Returns the tag ranges that intersect with the specified normalized snapshot ranges.
-		/// </summary>
-		/// <param name="snapshotRanges">The collection of normalized snapshot ranges.</param>
-		/// <param name="parameter">An optional parameter that provides contextual information about the tag request.</param>
-		/// <returns>The tag ranges that intersect with the specified normalized snapshot ranges.</returns>
-		public override IEnumerable<TagSnapshotRange<IClassificationTag>> GetTags(NormalizedTextSnapshotRangeCollection snapshotRanges, object parameter) {
-			// Quit if the range is undefined or zero-length
-			if (currentTaggedSnapshotRange.IsDeleted || currentTaggedSnapshotRange.IsZeroLength)
+		if (resolverResult is null) {
+			// Clear any custom cursor when the pointer is not over a successfully tagged range
+			ClearCustomCursor();
+			return false;
+		}
+		else {
+			// Apply a custom cursor when the pointer is over a successfully tagged range
+			ApplyCustomCursor();
+			return true;
+		}
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	public override IEnumerable<TagSnapshotRange<IClassificationTag>> GetTags(NormalizedTextSnapshotRangeCollection snapshotRanges, object? parameter) {
+		// Quit if the range is undefined or zero-length
+		if (!_currentTaggedSnapshotRange.HasValue || _currentTaggedSnapshotRange.Value.IsZeroLength)
+			yield break;
+
+		// Loop through the requested snapshot ranges...
+		foreach (var snapshotRange in snapshotRanges) {
+			if (
+				!snapshotRange.IsZeroLength
+				&& snapshotRange.Contains(_currentTaggedSnapshotRange.Value)
+			) {
+				// Yield a tag for the current range
+				yield return new TagSnapshotRange<IClassificationTag>(
+					_currentTaggedSnapshotRange.Value,
+					new ClassificationTag(_goToDefinitionClassificationType)
+				);
+
+				// There is only ever a single tag, so no additional processing is necessary
 				yield break;
-
-			// Loop through the requested snapshot ranges...
-			foreach (var snapshotRange in snapshotRanges) {
-				if (!snapshotRange.IsZeroLength
-					&& snapshotRange.Contains(currentTaggedSnapshotRange)) {
-
-					// Yield a tag for the current range
-					yield return new TagSnapshotRange<IClassificationTag>(
-						currentTaggedSnapshotRange,
-						new ClassificationTag(goToDefinitionClassificationType)
-						);
-
-					// There is only ever a single tag, so no additional processing is necessary
-					yield break;
-				}
 			}
 		}
+	}
 
-		/// <summary>
-		/// Notifies when a key is pressed down while focus is in the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <c>KeyEventArgs</c> that contains the event data.</param>
-		public void NotifyKeyDown(KeyEventArgs e) {
-			if (DoesKeyImpactTagging(e.Key)) {
-				// The state of the modifier key has changed, so tagging should be updated
-				UpdateTaggedRange(Mouse.GetPosition(view.SyntaxEditor));
-			}
+	/// <summary>
+	/// Notifies when a key is pressed down while focus is in the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyKeyDown(KeyEventArgs e) {
+		if (DoesKeyImpactTagging(e.Key)) {
+			// The state of the modifier key has changed, so tagging should be updated
+			UpdateTaggedRange(Mouse.GetPosition(_view.SyntaxEditor));
 		}
+	}
 
-		/// <summary>
-		/// Notifies when a key is released while focus is in the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <c>KeyEventArgs</c> that contains the event data.</param>
-		public void NotifyKeyUp(KeyEventArgs e) {
-			if (DoesKeyImpactTagging(e.Key)) {
-				// The state of the modifier key has changed, so tagging should be updated
-				UpdateTaggedRange(Mouse.GetPosition(view.SyntaxEditor));
-			}
+	/// <summary>
+	/// Notifies when a key is released while focus is in the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyKeyUp(KeyEventArgs e) {
+		if (DoesKeyImpactTagging(e.Key)) {
+			// The state of the modifier key has changed, so tagging should be updated
+			UpdateTaggedRange(Mouse.GetPosition(_view.SyntaxEditor));
 		}
+	}
 
-		/// <summary>
-		/// Occurs when the pointer leaves the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <see cref="InputPointerEventArgs"/> that contains the event data.</param>
-		public void NotifyPointerExited(InputPointerEventArgs e) {
-			// Make sure tags and custom cursors are cleared when the mouse leaves
-			if (!currentTaggedSnapshotRange.IsDeleted) {
-				InvalidateTags(currentTaggedSnapshotRange);
-				currentTaggedSnapshotRange = TextSnapshotRange.Deleted;
-			}
-			ClearCustomCursor();
+	/// <summary>
+	/// Occurs when the pointer leaves the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyPointerExited(InputPointerEventArgs e) {
+		// Make sure tags and custom cursors are cleared when the mouse leaves
+		InvalidateTags(_currentTaggedSnapshotRange);
+		_currentTaggedSnapshotRange = null;
+		ClearCustomCursor();
+	}
+
+	/// <summary>
+	/// Occurs when the pointer is moved over the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyPointerMoved(InputPointerEventArgs e) {
+		// Update the tagged range for the current mouse position
+		UpdateTaggedRange(e.GetPosition(_view.SyntaxEditor));
+	}
+
+	/// <summary>
+	/// Occurs when a pointer button is pressed over the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyPointerPressed(InputPointerButtonEventArgs e) {
+		if ((e.ButtonKind == InputPointerButtonKind.Primary) && UpdateTaggedRange(e.GetPosition(_view.SyntaxEditor))) {
+			// Block the editor from picking up the click over the URL
+			e.Handled = true;
 		}
+	}
 
-		/// <summary>
-		/// Occurs when the pointer is moved over the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <see cref="InputPointerEventArgs"/> that contains the event data.</param>
-		public void NotifyPointerMoved(InputPointerEventArgs e) {
-			// Update the tagged range for the current mouse position
-			UpdateTaggedRange(e.GetPosition(this.view.SyntaxEditor));
+	/// <summary>
+	/// Occurs when a pointer button is released over the <see cref="IEditorView"/> for this tagger.
+	/// </summary>
+	/// <param name="e">The event data.</param>
+	public void NotifyPointerReleased(InputPointerButtonEventArgs e) {
+		if (
+			e.ButtonKind == InputPointerButtonKind.Primary
+			&& UpdateTaggedRange(e.GetPosition(_view.SyntaxEditor), out var resolverResult)
+		) {
+			// The user has performed a single left-click on an item, so attempt to go to definition
+			e.Handled = true;
+			_goToDefinitionService?.NavigateToDefinition(resolverResult);
+
+			// Set focus to the view since the click event was not allowed to be processed by SyntaxEditor
+			_view.Focus(Windows.FocusState.Programmatic);
 		}
+	}
 
-		/// <summary>
-		/// Occurs when a pointer button is pressed over the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <see cref="InputPointerButtonEventArgs"/> that contains the event data.</param>
-		public void NotifyPointerPressed(InputPointerButtonEventArgs e) {
-			if (e.ButtonKind == InputPointerButtonKind.Primary && UpdateTaggedRange(e.GetPosition(view.SyntaxEditor))) {
-				// Block the editor from picking up the click over the URL
-				e.Handled = true;
-			}
-		}
+	/// <inheritdoc/>
+	protected override void OnClosed() {
+		// Clear any custom cursor that might be in effect
+		ClearCustomCursor();
 
-		/// <summary>
-		/// Occurs when a pointer button is released over the <see cref="IEditorView"/> for this tagger.
-		/// </summary>
-		/// <param name="e">The <see cref="InputPointerButtonEventArgs"/> that contains the event data.</param>
-		public void NotifyPointerReleased(InputPointerButtonEventArgs e) {
-			if (e.ButtonKind == InputPointerButtonKind.Primary
-				&& UpdateTaggedRange(e.GetPosition(view.SyntaxEditor), out var resolverResult)) {
-				// The user has performed a single left-click on an item, so attempt to go to definition
-				e.Handled = true;
-				goToDefinitionService.NavigateToDefinition(resolverResult);
+		// Stop listening for theme changes
+		ThemeManager.CurrentThemeChanged -= OnThemeManagerCurrentThemeChanged;
 
-				// Set focus to the view since the click event was not allowed to be processed by SyntaxEditor
-				view.Focus(Windows.FocusState.Programmatic);
-			}
-		}
-
-		/// <summary>
-		/// Occurs when the tagger is closed.
-		/// </summary>
-		protected override void OnClosed() {
-			// Clear any custom cursor that might be in effect
-			ClearCustomCursor();
-
-			// Stop listening for theme changes
-			ThemeManager.CurrentThemeChanged -= this.OnThemeManagerCurrentThemeChanged;
-
-			base.OnClosed();
-		}
-
-		/// <summary>
-		/// Occurs when the currently loaded theme is changed.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <c>EventArgs</c> which contain data for the event.</param>
-		private void OnThemeManagerCurrentThemeChanged(object sender, EventArgs e) {
-			EnsureClassificationTypeRegistered();
-		}
-
+		base.OnClosed();
 	}
 
 }

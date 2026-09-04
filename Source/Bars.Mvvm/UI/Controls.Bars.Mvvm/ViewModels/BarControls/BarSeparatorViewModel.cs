@@ -1,39 +1,39 @@
-﻿namespace ActiproSoftware.Windows.Controls.Bars.Mvvm {
+﻿namespace ActiproSoftware.Windows.Controls.Bars.Mvvm;
+
+/// <summary>
+/// Represents a view model for a separator control within a bar control.
+/// </summary>
+public class BarSeparatorViewModel : ObservableObjectBase, IHasTag {
+
+	private bool _isVisible = true;
+	private StandaloneToolBarSeparatorMode _standaloneToolBarSeparatorMode = StandaloneToolBarSeparatorMode.Default;
+	private object? _tag;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
+	public bool IsVisible {
+		get => _isVisible;
+		set => SetProperty(ref _isVisible, value);
+	}
 
 	/// <summary>
-	/// Represents a view model for a separator control within a bar control.
+	/// The mode that determines how the separator behaves within a <see cref="StandaloneToolBar"/>.
 	/// </summary>
-	public class BarSeparatorViewModel : ObservableObjectBase, IHasTag {
+	/// <value>
+	/// The default value is <see cref="StandaloneToolBarSeparatorMode.Default"/>.
+	/// </value>
+	public StandaloneToolBarSeparatorMode StandaloneToolBarSeparatorMode {
+		get => _standaloneToolBarSeparatorMode;
+		set => SetProperty(ref _standaloneToolBarSeparatorMode, value);
+	}
 
-		private bool isVisible = true;
-		private object tag;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <inheritdoc cref="BarButtonViewModel.IsVisible"/>
-		public bool IsVisible {
-			get => isVisible;
-			set {
-				if (isVisible != value) {
-					isVisible = value;
-					this.NotifyPropertyChanged(nameof(IsVisible));
-				}
-			}
-		}
-
-		/// <inheritdoc cref="IHasTag.Tag"/>
-		public object Tag {
-			get => tag;
-			set {
-				if (tag != value) {
-					tag = value;
-					this.NotifyPropertyChanged(nameof(Tag));
-				}
-			}
-		}
-
+	/// <inheritdoc cref="IHasTag.Tag"/>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
 	}
 
 }

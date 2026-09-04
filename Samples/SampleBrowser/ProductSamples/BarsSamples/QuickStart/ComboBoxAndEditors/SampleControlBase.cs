@@ -1,295 +1,243 @@
-﻿using ActiproSoftware.ProductSamples.BarsSamples.Common;
-using ActiproSoftware.ProductSamples.WizardSamples.QuickStart.CustomPageClasses;
+using ActiproSoftware.ProductSamples.BarsSamples.Common;
 using ActiproSoftware.SampleBrowser.SampleData;
 using ActiproSoftware.Windows.Controls;
-using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors;
+
+/// <summary>
+/// Provides the base user control of shared logic for this sample that is extended for MVVM- and XAML-based samples.
+/// </summary>
+public class SampleControlBase : UserControl {
+
+	private ICommand? _comboBoxGalleryCommand;
+	private ICommand? _comboBoxUnmatchedNumberTextCommand;
+	private ICommand? _comboBoxUnmatchedTextCommand;
+	private ICommand? _notImplementedCommand;
+	private ICommand? _textBoxCommitCommand;
+
+	private CollectionViewSource? _comboBoxColorItems;
+	private CollectionViewSource? _comboBoxEnumItems;
+	private CollectionViewSource? _comboBoxFontFamilyItems;
+	private IEnumerable? _comboBoxFontSizeItems;
+	private CollectionViewSource? _comboBoxNumberItems;
+	private CollectionViewSource? _comboBoxPersonItems;
+
+	#region Dependency Properties
+
+	public static readonly DependencyProperty ComboboxPreviewLabelProperty
+		= DependencyProperty.Register(nameof(ComboboxPreviewLabel), typeof(string), typeof(SampleControlBase), new PropertyMetadata(defaultValue: "<None>"));
+
+	#endregion Dependency Properties
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the base user control of shared logic for this sample that is extended for MVVM- and XAML-based samples.
+	/// The items to be displayed in combobox for selecting colors.
 	/// </summary>
-	public class SampleControlBase : UserControl {
+	public IEnumerable ComboBoxColorItems {
+		get {
+			if (_comboBoxColorItems is null) {
+				var primaryCategory = "Primary Colors";
+				var secondaryCategory = "Secondary Colors";
 
-		private ICommand comboBoxGalleryCommand;
-		private ICommand comboBoxUnmatchedNumberTextCommand;
-		private ICommand comboBoxUnmatchedTextCommand;
-		private ICommand notImplementedCommand;
-		private ICommand textBoxCommitCommand;
+				_comboBoxColorItems = BarGalleryViewModel.CreateCollectionViewSource(
+					new TextBarGalleryItemViewModel[] {
+						// Primary
+						new ("Red", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.RedSwatch) },
+						new ("Yellow", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.YellowSwatch) },
+						new ("Blue", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.BlueSwatch) },
 
-		private CollectionViewSource comboBoxColorItems;
-		private CollectionViewSource comboBoxEnumItems;
-		private CollectionViewSource comboBoxFontFamilyItems;
-		private IEnumerable comboBoxFontSizeItems;
-		private CollectionViewSource comboBoxNumberItems;
-		private CollectionViewSource comboBoxPersonItems;
+						// Secondary
+						new ("Orange", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.OrangeSwatch) },
+						new ("Green", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.GreenSwatch) },
+						new ("Purple", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.PurpleSwatch) },
+					},
+					categorize: true
+				);
+			}
 
-		#region Dependency Properties
+			return _comboBoxColorItems.View;
+		}
+	}
 
-		public static readonly DependencyProperty ComboboxPreviewLabelProperty = DependencyProperty.Register(nameof(ComboboxPreviewLabel), typeof(string), typeof(SampleControlBase), new PropertyMetadata("<None>"));
+	/// <summary>
+	/// The items to be displayed in combobox based on an enum.
+	/// </summary>
+	public IEnumerable ComboBoxEnumItems {
+		get {
+			_comboBoxEnumItems ??= BarGalleryViewModel.CreateCollectionViewSource(
+				EnumBarGalleryItemViewModel<SampleEnum>.CreateCollection().Select(vm => {
+					// Apply a default category
+					if (vm.Category is null)
+						vm.Category = "Uncategorized";
+					return vm;
+				}),
+				categorize: true
+			);
 
-		#endregion Dependency Properties
+			return _comboBoxEnumItems.View;
+		}
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// The items to be displayed in combobox for selecting font families.
+	/// </summary>
+	public IEnumerable ComboBoxFontFamilyItems {
+		get {
+			if (_comboBoxFontFamilyItems is null) {
+				const string RecentlyUsedCategory = "Recently-Used Fonts";
 
-		/// <summary>
-		/// Gets the items to be displayed in combobox for selecting colors.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable{T}"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable ComboBoxColorItems {
-			get {
-				if (comboBoxColorItems is null) {
-					var primaryCategory = "Primary Colors";
-					var secondaryCategory = "Secondary Colors";
-					
-					comboBoxColorItems = BarGalleryViewModel.CreateCollectionViewSource(new [] {
-						new TextBarGalleryItemViewModel("Red", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.RedSwatch) },
-						new TextBarGalleryItemViewModel("Yellow", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.YellowSwatch) },
-						new TextBarGalleryItemViewModel("Blue", primaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.BlueSwatch) },
+				_comboBoxFontFamilyItems = BarGalleryViewModel.CreateCollectionViewSource(
+					new FontFamilyBarGalleryItemViewModel[] {
+						new(FontSettings.DefaultFontFamilyName, RecentlyUsedCategory)
+					}.Concat(FontFamilyBarGalleryItemViewModel.CreateDefaultCollection()),
+					categorize: true
+				);
+			}
 
-						new TextBarGalleryItemViewModel("Orange", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.OrangeSwatch) },
-						new TextBarGalleryItemViewModel("Green", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.GreenSwatch) },
-						new TextBarGalleryItemViewModel("Purple", secondaryCategory) { ImageSource = (ImageSource)FindResource(LocalResourceKeys.PurpleSwatch) },
-					}, categorize: true);
+			return _comboBoxFontFamilyItems.View;
+		}
+	}
+
+	/// <summary>
+	/// The items to be displayed in combobox for selecting font sizes.
+	/// </summary>
+	public IEnumerable ComboBoxFontSizeItems
+		=> _comboBoxFontSizeItems ??= FontSizeBarGalleryItemViewModel.CreateDefaultCollection();
+
+	/// <summary>
+	/// The command for a gallery item selection from a combobox.
+	/// </summary>
+	public ICommand ComboBoxGalleryCommand {
+		get => _comboBoxGalleryCommand ??= new PreviewableDelegateCommand<IBarGalleryItemViewModel>(
+			executeAction: p =>
+				MessageBox.Show($"The value '{p?.Label}' was matched from the gallery.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
+			canExecuteFunc: _ => true,
+
+			// The items of BarComboBox support previewing the current item just like other gallery-based controls
+			previewAction: p =>
+				ComboboxPreviewLabel = p?.Label ?? "<Unknown>",
+			cancelPreviewAction: _ => ComboboxPreviewLabel = "<None>"
+		);
+	}
+
+	/// <summary>
+	/// The items to be displayed in combobox for selecting numbers.
+	/// </summary>
+	public IEnumerable ComboBoxNumberItems {
+		get {
+			if (_comboBoxNumberItems is null) {
+				var evenCategory = "Even Numbers";
+				var oddCategory = "Odd Numbers";
+
+				var items = new List<SimpleComboBoxGalleryItem>();
+				for (var i = 1; i <= 20; i++) {
+					bool isEven = (i % 2 == 0);
+					items.Add(new SimpleComboBoxGalleryItem(i.ToString(), (isEven ? evenCategory : oddCategory)));
 				}
 
-				return comboBoxColorItems.View;
+				_comboBoxNumberItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
 			}
+
+			return _comboBoxNumberItems.View;
 		}
+	}
 
-		/// <summary>
-		/// Gets the items to be displayed in combobox based on an enum.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable"/> of type <see cref="EnumBarGalleryItemViewModel{TEnum}"/>.</value>
-		public IEnumerable ComboBoxEnumItems {
-			get {
-				if (comboBoxEnumItems is null) {
-					comboBoxEnumItems = BarGalleryViewModel.CreateCollectionViewSource(
-						EnumBarGalleryItemViewModel<SampleEnum>.CreateCollection().Select(vm => {
-							// Apply a default category
-							if (vm.Category is null)
-								vm.Category = "Uncategorized";
-							return vm;
-						}),
-						categorize: true);
-				}
+	/// <summary>
+	/// The items to be displayed in combobox for selecting people.
+	/// </summary>
+	public IEnumerable ComboBoxPersonItems {
+		get {
+			if (_comboBoxPersonItems is null) {
+				var items = new List<SimpleComboBoxGalleryItem>();
 
-				return comboBoxEnumItems.View;
+				foreach (var person in People.All.OrderBy(x => x.FullName))
+					items.Add(new SimpleComboBoxGalleryItem(person.FullName, person.Position));
+
+				_comboBoxPersonItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
 			}
+
+			return _comboBoxPersonItems.View;
 		}
+	}
 
-		/// <summary>
-		/// Gets the items to be displayed in combobox for selecting font families.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable"/> of type <see cref="FontFamilyBarGalleryItemViewModel"/>.</value>
-		public IEnumerable ComboBoxFontFamilyItems {
-			get {
-				if (comboBoxFontFamilyItems is null) {
-					const string RecentlyUsedCategory = "Recently-Used Fonts";
+	/// <summary>
+	/// The combobox preview label.
+	/// </summary>
+	public string? ComboboxPreviewLabel {
+		get => (string)GetValue(ComboboxPreviewLabelProperty);
+		set => SetValue(ComboboxPreviewLabelProperty, value);
+	}
 
-					comboBoxFontFamilyItems = BarGalleryViewModel.CreateCollectionViewSource(
-						new FontFamilyBarGalleryItemViewModel[] {
-							new FontFamilyBarGalleryItemViewModel(FontSettings.DefaultFontFamilyName, RecentlyUsedCategory)
-						}.Concat(FontFamilyBarGalleryItemViewModel.CreateDefaultCollection()),
-					categorize: true);
-				}
-
-				return comboBoxFontFamilyItems.View;
+	/// <summary>
+	/// The command that is executed when an unmatched value is entered into a combobox for selecting numbers.
+	/// </summary>
+	public ICommand ComboBoxUnmatchedNumberTextCommand {
+		// This command is raised when text is typed in a BarComboBox that does not match one of the known gallery items
+		get => _comboBoxUnmatchedNumberTextCommand ??= new DelegateCommand<string>(
+			executeAction: p => {
+				// No action necessary, but show a message to indicate that the value was accepted
+				MessageBox.Show($"The integer text value '{p}' was manually entered and accepted without a match in the gallery.", "Custom Number Text Value Committed", MessageBoxButton.OK, MessageBoxImage.Information);
+			},
+			canExecuteFunc: p => {
+				// The BarComboBox.UnmatchedTextCommand.CanExecute result will determine if the
+				//   typed text should be allowed... true to allow the value and false to reject it
+				return int.TryParse(p, out var number) && (number > 0);
 			}
-		}
+		);
+	}
 
-		/// <summary>
-		/// Gets the items to be displayed in combobox for selecting font sizes.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable"/> of type <see cref="FontSizeBarGalleryItemViewModel"/>.</value>
-		public IEnumerable ComboBoxFontSizeItems {
-			get {
-				if (comboBoxFontSizeItems is null)
-					comboBoxFontSizeItems = FontSizeBarGalleryItemViewModel.CreateDefaultCollection();
-
-				return comboBoxFontSizeItems;
+	/// <summary>
+	/// The command that is executed when an unmatched value is entered into a general combobox.
+	/// </summary>
+	public ICommand ComboBoxUnmatchedTextCommand {
+		// This command is raised when text is typed in a BarComboBox that does not match one of the known gallery items
+		get => _comboBoxUnmatchedTextCommand ??= new DelegateCommand<string>(
+			executeAction: p => {
+				// No action necessary, but show a message to indicate that the value was accepted
+				MessageBox.Show($"The text value '{p}' was manually entered and accepted without a match in the gallery.", "Custom Text Value Committed", MessageBoxButton.OK, MessageBoxImage.Information);
+			},
+			canExecuteFunc: _ => {
+				// The BarComboBox.UnmatchedTextCommand.CanExecute result will determine if the
+				//   typed text should be allowed... true to allow the value and false to reject it
+				return true;
 			}
-		}
+		);
+	}
 
-		/// <summary>
-		/// Gets the command for a gallery item selection from a combobox.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand ComboBoxGalleryCommand {
-			get {
-				if (comboBoxGalleryCommand is null) {
-					comboBoxGalleryCommand = new PreviewableDelegateCommand<IBarGalleryItemViewModel>(
-						executeAction:			param => ThemedMessageBox.Show($"The value '{param?.Label}' was matched from the gallery.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
-						canExecuteFunc:			param => true,
-						
-						// The items of BarComboBox support previewing the current item just like other gallery-based controls
-						previewAction:			param => this.ComboboxPreviewLabel = param?.Label ?? "<Unknown>",
-						cancelPreviewAction:	param => this.ComboboxPreviewLabel = "<None>"
-					);
-				}
-				return comboBoxGalleryCommand;
+	/// <summary>
+	/// The committed text associated with <see cref="TextBoxCommitCommand"/>.
+	/// </summary>
+	/// <returns>The committed text; or <c>null</c> if the text could not be determined.</returns>
+	protected virtual string? GetTextBoxCommitCommandText(object? commandParameter)
+		=> null;
+
+	/// <summary>
+	/// The command for functionality that has not been implemented by the sample.
+	/// </summary>
+	public ICommand NotImplementedCommand {
+		get => _notImplementedCommand ??= new DelegateCommand<object>(
+			_ => {
+				MessageBox.Show(
+					"This control is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Not Implemented",
+					MessageBoxButton.OK, MessageBoxImage.Information);
 			}
-		}
+		);
+	}
 
-		/// <summary>
-		/// Gets the items to be displayed in combobox for selecting numbers.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable ComboBoxNumberItems {
-			get {
-				if (comboBoxNumberItems is null) {
-					var evenCategory = "Even Numbers";
-					var oddCategory = "Odd Numbers";
-
-					var items = new List<SimpleComboBoxGalleryItem>();
-					for (var i = 1; i <= 20; i++) {
-						bool isEven = (i % 2 == 0);
-						items.Add(new SimpleComboBoxGalleryItem(i.ToString(), (isEven ? evenCategory : oddCategory)));
-					}
-
-					comboBoxNumberItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
-				}
-
-				return comboBoxNumberItems.View;
-			}
-		}
-
-		/// <summary>
-		/// Gets the items to be displayed in combobox for selecting people.
-		/// </summary>
-		/// <value>An <see cref="IEnumerable"/> of type <see cref="SimpleComboBoxGalleryItem"/>.</value>
-		public IEnumerable ComboBoxPersonItems {
-			get {
-				if (comboBoxPersonItems is null) {
-					var items = new List<SimpleComboBoxGalleryItem>();
-
-					foreach (var person in People.All.OrderBy(x => x.FullName))
-						items.Add(new SimpleComboBoxGalleryItem(person.FullName, person.Position));
-
-					comboBoxPersonItems = BarGalleryViewModel.CreateCollectionViewSource(items, categorize: true);
-				}
-
-				return comboBoxPersonItems.View;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the combobox preview label.
-		/// </summary>
-		/// <value>The combobox preview label.</value>
-		public string ComboboxPreviewLabel {
-			get => (string)GetValue(ComboboxPreviewLabelProperty);
-			set => SetValue(ComboboxPreviewLabelProperty, value);
-		}
-		
-		/// <summary>
-		/// Gets the command that is executed when an unmatched value is entered into a combobox for selecting numbers.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand ComboBoxUnmatchedNumberTextCommand {
-			get {
-				if (comboBoxUnmatchedNumberTextCommand is null) {
-					// This command is raised when text is typed in a BarComboBox that does not match
-					// one of the known gallery items
-					comboBoxUnmatchedNumberTextCommand = new DelegateCommand<string>(
-						executeAction: param => {
-							// No action necessary, but show a message to indicate that the value was accepted
-							ThemedMessageBox.Show($"The integer text value '{param}' was manually entered and accepted without a match in the gallery.", "Custom Number Text Value Committed", MessageBoxButton.OK, MessageBoxImage.Information);
-						},
-						canExecuteFunc: param => {
-							// The BarComboBox.UnmatchedTextCommand.CanExecute result will determine if the
-							// typed text should be allowed... true to allow the value and false to reject it
-							return int.TryParse(param, out var number) && number > 0;
-						}
-					);
-				}
-				return comboBoxUnmatchedNumberTextCommand;
-			}
-		}
-
-		/// <summary>
-		/// Gets the command that is executed when an unmatched value is entered into a general combobox.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand ComboBoxUnmatchedTextCommand {
-			get {
-				if (comboBoxUnmatchedTextCommand is null) {
-					// This command is raised when text is typed in a BarComboBox that does not match
-					// one of the known gallery items
-					comboBoxUnmatchedTextCommand = new DelegateCommand<string>(
-						executeAction: param => {
-							// No action necessary, but show a message to indicate that the value was accepted
-							ThemedMessageBox.Show($"The text value '{param}' was manually entered and accepted without a match in the gallery.", "Custom Text Value Committed", MessageBoxButton.OK, MessageBoxImage.Information);
-						},
-						canExecuteFunc: param => {
-							// The BarComboBox.UnmatchedTextCommand.CanExecute result will determine if the
-							// typed text should be allowed... true to allow the value and false to reject it
-							return true;
-						}
-					);
-				}
-				return comboBoxUnmatchedTextCommand;
-			}
-		}
-
-		/// <summary>
-		/// Gets the committed text associated with <see cref="TextBoxCommitCommand"/>.
-		/// </summary>
-		/// <param name="commandParameter">The parameter passed to <see cref="TextBoxCommitCommand"/>.</param>
-		/// <returns>The committed text; or <c>null</c> if the text could not be determined.</returns>
-		protected virtual string GetTextBoxCommitCommandText(object commandParameter) {
-			return null;
-		}
-
-		/// <summary>
-		/// Gets the command for functionality that has not been implemented by the sample.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand NotImplementedCommand {
-			get {
-				if (notImplementedCommand is null) {
-					notImplementedCommand = new DelegateCommand<object>(
-						param => {
-							ThemedMessageBox.Show(
-								"This control is for user interface demonstration purposes only and no application functionality has been implemented for it.", "Not Implemented",
-								MessageBoxButton.OK, MessageBoxImage.Information);
-						}
-					);
-
-				}
-				return notImplementedCommand;
-			}
-		}
-
-		/// <summary>
-		/// Gets the command for a commit from a textbox.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand TextBoxCommitCommand {
-			get {
-				if (textBoxCommitCommand is null) {
-					textBoxCommitCommand = new DelegateCommand<string>(
-						executeAction:			param => ThemedMessageBox.Show($"The value '{GetTextBoxCommitCommandText(param)}' was committed from the textbox.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
-						canExecuteFunc:			param => true
-					);
-				}
-				return textBoxCommitCommand;
-			}
-		}
-
+	/// <summary>
+	/// The command for a commit from a textbox.
+	/// </summary>
+	public ICommand TextBoxCommitCommand {
+		get => _textBoxCommitCommand ??= new DelegateCommand<string>(
+			executeAction: p => MessageBox.Show($"The value '{GetTextBoxCommitCommandText(p)}' was committed from the textbox.", "Value Committed", MessageBoxButton.OK, MessageBoxImage.Information),
+			canExecuteFunc: _ => true
+		);
 	}
 
 }

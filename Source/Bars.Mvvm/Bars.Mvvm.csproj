@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;net6.0-windows;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
 
 		<AssemblyName>ActiproSoftware.Bars.Mvvm.Wpf</AssemblyName>
 		<Product>Bars.Mvvm</Product>
@@ -10,15 +10,11 @@
 		<Description>Common view models, templates, and other types used when implementing Bars controls with MVVM (Model-View-ViewModel) patterns.</Description>
 		<PackageTags>Actipro UI Controls WPF XAML MVVM Model View ViewModel Bars</PackageTags>
 
-		<Version>25.1.4.0</Version>
+		<AssemblyTitle>$(Title)</AssemblyTitle>
 
 		<RootNamespace>ActiproSoftware</RootNamespace>
-		<Company>Actipro Software LLC</Company>
-		<Authors>Actipro Software LLC</Authors>
-		<Copyright>Copyright (c) 2007-2026 Actipro Software LLC.  All rights reserved.</Copyright>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://www.actiprosoftware.com/products/controls/wpf</PackageProjectUrl>
@@ -34,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="25.1.4" />
+		<PackageReference Include="ActiproSoftware.Controls.WPF.Bars" Version="26.1.0" />
 	</ItemGroup>
 
 	<ItemGroup Label=".NET Framework" Condition="'$(TargetFramework)' == 'net462'">

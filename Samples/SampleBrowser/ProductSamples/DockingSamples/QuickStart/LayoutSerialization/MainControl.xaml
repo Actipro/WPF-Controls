@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LayoutSerialization.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -39,7 +39,7 @@
 					The layout data can be discarded (default), auto-created, or lazy loaded.
 					<LineBreak /><LineBreak />
 					Since the layout data of this sample is saved in a static member variable,
-					changes are not maintained if the entire Sample Browser application is closed. 
+					changes are not maintained if the entire Sample Browser application is closed.
 					That behavior can easily be updated to save the layout to a file instead.
 				</TextBlock>
 			</Expander>

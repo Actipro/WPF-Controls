@@ -131,7 +131,7 @@ When the major and minor tick labels do not offer enough customization, custom t
 
 By default, the tick labels will round the associated value(s) to the nearest whole number and convert that to a string, which is displayed on the gauge. Both the method of rounding and the text format can be customized using the [RoundMode](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularTickLabelBase.RoundMode) and [TextFormat](xref:@ActiproUIRoot.Controls.Gauge.Primitives.CircularTickLabelBase.TextFormat) properties, respectively.
 
-The rounding used is specified using the [RoundMode](xref:@ActiproUIRoot.Controls.RoundMode) enumeration, which offers several rounding methods.  See the [PixelSnapper](../../shared/windows-controls/pixelsnapper.md) topic for more information on the various round modes.
+The rounding used is specified using the [RoundMode](xref:ActiproSoftware.RoundMode) enumeration, which offers several rounding methods.  See the [PixelSnapper](../../shared/windows-controls/pixelsnapper.md) topic for more information on the various round modes.
 
 The format is used to convert `double` values to a string using the `String.Format` method, which uses the associated value as the only input parameter (e.g., `"{0}"`).
 

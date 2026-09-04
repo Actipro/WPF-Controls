@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Name="rootSampleControl"
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.CustomDockingWindows.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

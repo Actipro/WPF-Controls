@@ -1,0 +1,163 @@
+<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:views="http://schemas.actiprosoftware.com/winfx/xaml/views"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	Style="{StaticResource DocumentPresenterStyle}">
+
+	<views:InertiaScrollViewer>
+		<StackPanel Style="{StaticResource DocumentContentPanelStyle}">
+			<Control x:Name="focusCaptureControl" />
+
+
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/3/2026 - Version 26.1.0</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bar Codes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an encoding error in the Codabar symbology with a couple start/stop characters." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bars</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the BarSeparator.StandaloneToolBarSeparatorMode property that can be set to Spacer to activate spacing capabilities in a standalone toolbar, including the ability to right-align some items." />
+				<sampleBrowser:BulletContentControl Content="Added a BarsMenuFactory that can be used to ensure all Actipro product contextual menus are based on Bars controls." />
+				<sampleBrowser:BulletContentControl Content="Added PopupClosedCommand support to popup-based Bars controls and related MVVM view models, allowing a command to execute after a popup closes." />
+				<sampleBrowser:BulletContentControl Content="Improved control rendering in high contrast themes." />
+				<sampleBrowser:BulletContentControl Content="Improved BarContextMenu's handling of VerticalOffset." />
+				<sampleBrowser:BulletContentControl Content="Improved the add/remove QAT item logic to better handle MVVM scenarios." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the context menu for recent document items would not open correctly when in an application menu." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue in the MVVM Library where the default template for BarCheckboxViewModel didn't bind StaysOpenOnClick to the related BarMenuItem." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where pressing Esc to close a BarComboBox drop-down didn't always function." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where deserializing a vertically oriented toolbar before initial layout could leave items visible that did not support vertical orientation." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where dockable toolbar layout was not properly invalidated in some scenarios when adding or removing items." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where custom controls with BarControlService.IsVerticalLayoutOrientationSupportedProperty set to false would still be displayed." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved how charts determine element type from the ItemsSource." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where bar charts may not render at the correct size in certain scenarios." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Docking</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added the virtual protected SwitcherBase.GetOrderedDocuments and GetOrderedToolWindows methods to allow for switcher item sort order customization." />
+				<sampleBrowser:BulletContentControl Content="Added TabbedMdiContainer.OpenContextMenu method to open the context menu for the selected window." />
+				<sampleBrowser:BulletContentControl Content="Added TabbedMdiContainer.OpenContextMenuKeyGesture property that can be used to change the default 'Alt+-' gesture for opening the context menu." />
+				<sampleBrowser:BulletContentControl Content="Added TabbedMdiContainer.OpenTabMenu method to open the tab menu if the menu button is visible." />
+				<sampleBrowser:BulletContentControl Content="Added TabbedMdiContainer.OpenTabMenuKeyGesture property that can be used to change the default 'Ctrl+Alt+Down' gesture for opening the tab menu if the menu button is visible." />
+				<sampleBrowser:BulletContentControl Content="Added ToolWindowContainer.CloseButtonKeyGesture property that can be used to change the default 'Shift+Esc' gesture for closing a tool window." />
+				<sampleBrowser:BulletContentControl Content="Added ToolWindowContainer.OpenOptionsMenuKeyGesture property that can be used to change the default 'Alt+-' gesture for opening the options menu." />
+				<sampleBrowser:BulletContentControl Content="Improved positioning, sizing, and scaling of non-hosted popups when used within mixed DPI environments." />
+				<sampleBrowser:BulletContentControl Content="Improved resizing of WindowControl to allow dragging the right, bottom, and left edges outside the bounds of the parent panel." />
+				<sampleBrowser:BulletContentControl Content="Updated the DockingWindow.StandardMdiBounds property to be set in a way that doesn't cause bindings to be lost." />
+				<sampleBrowser:BulletContentControl Content="Updated how dock guide and drop target adornments are removed after use." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where the pressing the Escape key would not cancel a drag operation while using hosted floating windows." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added RangeSlider control." />
+				<sampleBrowser:BulletContentControl Content="Added DecimalEditBox and DecimalPicker for working with Decimal value types, including interop support for DataGrid and Grids." />
+				<sampleBrowser:BulletContentControl Content="Added the IsInputFilteringEnabled property which is supported by most edit boxes and can be used to restrict the text that is allowed as input." />
+				<sampleBrowser:BulletContentControl Content="Added support for composite string formats (e.g., &quot;{0:G}&quot;) on edit boxes that format numbers." />
+				<sampleBrowser:BulletContentControl Content="Updated SingleEditBox, SinglePicker, and related interop types for DataGrid and Grids to default rounding of 6 decimal places." />
+				<sampleBrowser:BulletContentControl Content="Updated checkboard patterns used behind transparent colors to use new CheckerboardBackgroundPrimaryBrushKey and CheckerboardBackgroundSecondaryBrushKey resources which include appropriate defaults for dark themes." />
+				<sampleBrowser:BulletContentControl Content="Updated date-related edit boxes to use genitive month names when a numeric day part is present." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where typing NaN into DoubleEditBox or SingleEditBox while IsNaNAllowed is false would coerce the value to the maximum instead of treating it as invalid input." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue with all editors where a change in the IsNullAllowed property value would not force the Value property to be re-coerced." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated PropertyModelBase to implement IPropertyModel interface.  Refactored the derived CachedPropertyModelBase class as appropriate and deprecated several declarations on PropertyModelBase that were no longer necessary." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Micro Charts</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved how charts determine element type from the ItemsSource." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Navigation</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated ZoomContentControl's zoom-to-region drag behavior to use a more visible selection box." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated ShellListView and ShellTreeListBox to automatically update images when a DPI change is detected.  The related NotifyDpiChanged method is no longer necessary and has been deprecated." />
+				<sampleBrowser:BulletContentControl Content="Fixed issues with ShellListView sorting where date/time property values could be ordered incorrectly and equal property values did not use name as an ascending secondary sort." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Refactored the design of documents and snapshots to track the actual line terminators used in text instead of internally always normalizing line terminators to LF only." />
+				<sampleBrowser:BulletContentControl Content="Updated all methods for text retrieval to return document text with the actual line terminators by default, while still allowing normalization to other line terminator kinds." />
+				<sampleBrowser:BulletContentControl Content="Added properties to ITextSnapshot to return the inferred line terminator for a document snapshot's text and whether all lines uniformly use that same line terminator." />
+				<sampleBrowser:BulletContentControl Content="Added the ITextDocument.NormalizeLineTerminators method to ensure all line terminators in a document are of the same kind, and new edit actions to invoke its logic." />
+				<sampleBrowser:BulletContentControl Content="Added shorter-named values to the LineTerminator enumeration." />
+				<sampleBrowser:BulletContentControl Content="Added the ILineIndicatorTag interface for line-based indicator tags and updated line-based indicator APIs to use that interface." />
+				<sampleBrowser:BulletContentControl Content="Added SyntaxEditor.LineNumberMarginCurrentLineForeground and LineNumberMarginCurrentLineBackground properties." />
+				<sampleBrowser:BulletContentControl Content="Refactored the internal document text storage mechanism to improve performance and memory usage." />
+				<sampleBrowser:BulletContentControl Content="Changed the default value of TextStylePreview.Text from 'AaBbCcXxYyZz' to 'ij = I::oO(0xB81l);'." />
+				<sampleBrowser:BulletContentControl Content="Renamed several types and members to fix a misspelling of 'mergable' to the proper word 'mergeable'." />
+				<sampleBrowser:BulletContentControl Content="Updated the Language Designer to generate more modern code." />
+				<sampleBrowser:BulletContentControl Content="Updated regular expression search patterns to support non-capturing group syntax." />
+				<sampleBrowser:BulletContentControl Content="Updated the search overlay pane to render the Find textbox with a red border when invalid regular expression syntax is detected." />
+				<sampleBrowser:BulletContentControl Content="Updated the default editor context menu to show InputGestureText based on SyntaxEditor.InputBindings if the associated RoutedCommand does not have a KeyBinding." />
+				<sampleBrowser:BulletContentControl Content="Updated the SyntaxLanguage.PlainText property to return a cached instance." />
+				<sampleBrowser:BulletContentControl Content="Moved all regular expression-related types to the regex engine reimplementation in the Core assembly." />
+				<sampleBrowser:BulletContentControl Content="Merged the DisplayItemClassificationTypeProvider class into the BuiltInClassificationTypeProvider class." />
+				<sampleBrowser:BulletContentControl Content="Removed the Text assembly's DisposableObject class in favor of the DisposableObjectBase class in the Core assembly." />
+				<sampleBrowser:BulletContentControl Content="Refined the implementation of several core structures." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where dragging an unnormalized selection of text could show the incorrect mouse drop cursor." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Improved IntelliPrompt capabilities within top-level statements." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shared</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added several new extension methods for DependencyObject that can be used to interact with the logical tree." />
+				<sampleBrowser:BulletContentControl Content="Added several new extension methods for Visual and Visual3D that can be used to interact with the visual tree." />
+				<sampleBrowser:BulletContentControl Content="Added support for numeric string formats (e.g., &quot;0'*'&quot;) for NumericBadge.OverflowStringFormat." />
+				<sampleBrowser:BulletContentControl Content="Added InfoBar.IsSingleLineAllowed property that can be used to force a wrapped layout." />
+				<sampleBrowser:BulletContentControl Content="Added Card.IsResponsiveToPointerOver and IsResponsiveToPointerPressed properties that provide more discrete control over making a Card appear actionable." />
+				<sampleBrowser:BulletContentControl Content="Refactored licensing infrastructure and moved types to a new ActiproSoftware.Licensing namespace." />
+				<sampleBrowser:BulletContentControl Content="Created a new simpler licensing dialog that displays when necessary, guiding the user through next steps." />
+				<sampleBrowser:BulletContentControl Content="Moved the ObservableObjectBase class to the Core assembly in the ActiproSoftware namespace and improved APIs, including adding a SetValue method." />
+				<sampleBrowser:BulletContentControl Content="Moved the DisposableObjectBase class to the Core assembly in the ActiproSoftware namespace and made the Dispose method abstract." />
+				<sampleBrowser:BulletContentControl Content="Moved a few extension method classes to the Core assembly in the ActiproSoftware.Extensions namespace and improved APIs.  The RoundMode, DateTimeFormatPattern, and DayOfWeekFormatPattern enumerations used by the extension methods were moved to the ActiproSoftware namespace." />
+				<sampleBrowser:BulletContentControl Content="Moved all types in the ActiproSoftware.Products.Logging namespace to the Core assembly in the ActiproSoftware.Logging namespace." />
+				<sampleBrowser:BulletContentControl Content="Moved the WeakEventListener class to the Core assembly in the ActiproSoftware namespace." />
+				<sampleBrowser:BulletContentControl Content="Updated DateRange.OverlapsWith logic to be inclusive of the start and end dates." />
+				<sampleBrowser:BulletContentControl Content="Updated some brush comparison logic." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Themes</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Refactored WindowChrome internals to reduce complexity and utilize native window borders, which also fixes a prior issue of jittery resizing when using the left or top borders." />
+				<sampleBrowser:BulletContentControl Content="Updated list controls to use a lower contrast background for selected items, allowing for better display of various foreground content." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Core</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added a new Core assembly that is referenced by all Actipro assemblies and contains various fundamental classes used across our product line." />
+				<sampleBrowser:BulletContentControl Content="Applications that use Actipro assembly references instead of NuGet packages must now also reference the Core assembly." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Legacy</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Legacy Editors and PropertyGrid assemblies were removed from the installer.  These assemblies were included starting in v17.1 for compatibility with older APIs." />
+				<sampleBrowser:BulletContentControl Content="Details for the removal of these assemblies are in the 'Converting to v26.1' documentation topic." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Added official support for Visual Studio 2026." />
+				<sampleBrowser:BulletContentControl Content="Added .NET assembly targets for .NET 10 and removed targets for .NET 6." />
+				<sampleBrowser:BulletContentControl Content="Added nullable reference type (NRT) annotations for all libraries and samples except some legacy/deprecated products." />
+				<sampleBrowser:BulletContentControl Content="Added MenuFactory that is used by all Actipro products which can be used to customize or replace built-in contextual menus." />
+				<sampleBrowser:BulletContentControl Content="Moved all assembly image and cursor resources to a root path level in each assembly." />
+				<sampleBrowser:BulletContentControl Content="Renamed the ActiproSoftware.Products namespace to ActiproSoftware.Properties." />
+				<sampleBrowser:BulletContentControl Content="Details for any breaking changes are in the 'Converting to v26.1' documentation topic." />
+				<sampleBrowser:BulletContentControl Content="Removed legacy XAML designer assemblies that are no longer supported by Visual Studio 2022 or higher." />
+				<sampleBrowser:BulletContentControl Content="To ensure a consistent API, all classes that implement INotifyPropertyChanged that do not derive from ObservableObjectBase have deprecated the NotifyPropertyChanged method in favor of new OnPropertyChanged and SetProperty methods that match ObservableObjectBase." />
+			</StackPanel>
+
+
+			<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}"><Italic>
+				Use the navigation arrows in the header above to see the release histories for other versions.
+			</Italic></TextBlock>
+
+
+		</StackPanel>
+	</views:InertiaScrollViewer>
+
+</UserControl>

@@ -165,7 +165,7 @@ language.RegisterService(new CodeSnippetProvider() { RootFolder = folder });
 This code is also required to be called once per application instance since it registers the classification types and related styles for any fields that will be visible during a template session.  If it is not called, then field backgrounds and borders might not display.
 
 ```csharp
-new DisplayItemClassificationTypeProvider().RegisterAll();
+new BuiltInClassificationTypeProvider().RegisterAll();
 ```
 
 Once the provider has been registered on a language, it will watch for <kbd>Tab</kbd> key presses.  If a shortcut for a known code snippet appears before the caret, then that code snippet will be activated into a new template session.

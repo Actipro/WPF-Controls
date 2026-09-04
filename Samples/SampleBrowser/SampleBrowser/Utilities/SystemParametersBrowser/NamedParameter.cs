@@ -1,56 +1,50 @@
-using System.Collections.Generic;
 using System.Reflection;
-using System.Windows;
 
-namespace ActiproSoftware.SampleBrowser.Utilities.SystemParametersBrowser {
+namespace ActiproSoftware.SampleBrowser.Utilities.SystemParametersBrowser;
+
+/// <summary>
+/// Stores information about resource data.
+/// </summary>
+public class NamedParameter {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about resource data.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class NamedParameter {
+	/// <param name="name">The name.</param>
+	/// <param name="value">The value.</param>
+	protected NamedParameter(string name, object value) {
+		Name = name;
+		Value = value;
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NamedParameter"/> class.
-		/// </summary>
-		/// <param name="name">The name.</param>
-		/// <param name="value">The value.</param>
-		protected NamedParameter(string name, object value) {
-			this.Name = name;
-			this.Value = value;
-		}
+	/// <summary>
+	/// The name.
+	/// </summary>
+	public string Name { get; }
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
-		/// <value>The name.</value>
-		public string Name { get; private set; }
-
-		/// <summary>
-		/// Gets the parameters from <see cref="SystemParameters"/>.
-		/// </summary>
-		public static IEnumerable<NamedParameter> SystemParameters {
-			get {
-				foreach (PropertyInfo p in typeof(SystemParameters).GetProperties(BindingFlags.Public | BindingFlags.Static)) {
-					if (p.PropertyType != typeof(ResourceKey))
-						yield return new NamedParameter(p.Name, p.GetValue(null, null));
-				}
+	/// <summary>
+	/// The parameters from <see cref="System.Windows.SystemParameters"/>.
+	/// </summary>
+	public static IEnumerable<NamedParameter> SystemParameters {
+		get {
+			foreach (var p in typeof(SystemParameters).GetProperties(BindingFlags.Public | BindingFlags.Static)) {
+				if (p.PropertyType != typeof(ResourceKey))
+					yield return new NamedParameter(p.Name, p.GetValue(obj: null, index: null)!);
 			}
 		}
-
-		/// <summary>
-		/// Gets or sets the value.
-		/// </summary>
-		/// <value>The value.</value>
-		public object Value { get; private set; }
-
 	}
+
+	/// <summary>
+	/// The value.
+	/// </summary>
+	public object Value { get; }
 
 }

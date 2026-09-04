@@ -161,6 +161,9 @@
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.Duplicate" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.DeleteBlankLines" />
 					<Separator />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.NormalizeLineTerminatorsToCRLF" />
+					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.NormalizeLineTerminatorsToLF" />
+					<Separator />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MoveSelectedLinesUp" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.MoveSelectedLinesDown" />
 					<MenuItem CommandTarget="{Binding ElementName=editor}" Command="editor:EditorCommands.TransposeLines" />

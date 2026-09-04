@@ -2,6 +2,7 @@
 	x:Name="window" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:core="clr-namespace:ActiproSoftware;assembly=ActiproSoftware.Core.Wpf"
 	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors" 
 	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"     
 	xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon" 
@@ -203,7 +204,7 @@
 										</Grid.ColumnDefinitions>
 
 										<TextBlock x:Name="from" Margin="0,0,5,0" Text="{Binding From}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
-										<TextBlock x:Name="sent" Grid.Column="1" Text="{Binding Sent, Converter={StaticResource DateTimeFormatPatternConverter}, ConverterParameter={x:Static shared:DateTimeFormatPattern.ShortDate}}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" />
+										<TextBlock x:Name="sent" Grid.Column="1" Text="{Binding Sent, Converter={StaticResource DateTimeFormatPatternConverter}, ConverterParameter={x:Static core:DateTimeFormatPattern.ShortDate}}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" />
 										<shared:DynamicImage x:Name="flag" Grid.RowSpan="2" Grid.Column="2" Width="16" Height="16" Source="/Images/Icons/Flag16.png" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
 										<TextBlock x:Name="subject" Grid.Row="1" Grid.ColumnSpan="2" Opacity="0.6"

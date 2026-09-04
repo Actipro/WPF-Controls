@@ -140,7 +140,7 @@ This code uses the reader to scan through code and insert a C-like comment at th
 ```csharp
 while (!reader.IsAtSnapshotEnd) {
 	change.InsertText(reader.Offset, "//");
-	reader.ReadCharacterThrough('\n');
+	reader.GoToNextSnapshotLineStart();
 }
 ```
 

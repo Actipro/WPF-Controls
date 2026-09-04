@@ -5,59 +5,62 @@ order: 4
 ---
 # Line Terminators
 
-While the text framework can load text using any sort of standard line terminator character sequence, the framework internally tracks all line terminators as a single line feed character.  Text can easily be exported back out with any line terminator.
+The text framework can load text using any standard line terminator character sequence.  Document snapshots can return the line terminator kind that is used within the document and report when mixed line terminators are used.  Text can easily be normalized to any line terminator.
 
 ## Standard Line Terminators
 
-The standard line terminators are:
+The [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) enumeration has a value for each of the standard line terminators:
 
-- Carriage return followed immediately by a newline (CR/LF)
-- Carriage return only (CR)
-- Newline only (LF)
+- [CRLF](xref:ActiproSoftware.Text.LineTerminator.CRLF) (`"\r\n"`) - Carriage return and line feed sequence.  This format is typically used on Windows machines.
+- [LF](xref:ActiproSoftware.Text.LineTerminator.LF) (`"\n"`) - Line feed.  This format is typically used on UNIX and macOS machines.
+- [CR](xref:ActiproSoftware.Text.LineTerminator.CR) (`"\r"`) - Carriage return.  Not commonly used.
 
-Standard line terminators can be specified by the [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) enumeration.
+<!--
+- [LS](xref:ActiproSoftware.Text.LineTerminator.LS) (`"\u2028"`) - Line separator.  Not commonly used.
+- [PS](xref:ActiproSoftware.Text.LineTerminator.PS) (`"\u2029"`) - Paragraph separator.  Not commonly used.
+-->
 
-## Why Does the Framework Only Track Line Feeds?
+## Document Snapshots Track Line Terminators
 
-As mentioned above, it is important to know that when text added to an [ITextDocument](xref:ActiproSoftware.Text.ITextDocument), it is converted so that the internal buffer stores the text using a single line feed character for denoting line terminators, regardless of what sort of line terminator was originally used.
+Document snapshots track the line terminator for each line in the document text.  This means that when reading characters in a snapshot, you could encounter any of the line terminator characters described above at line end, or even a CRLF sequence.
 
-The main reason for doing this is for performance when parsing.  If we didn't store line terminators this way, any parsing code would require more complicated and time-consuming procedures to be looking for carriage return characters, line feed characters, or potentially both at each line terminator.  Using a single LF character makes it easy for parsing to perform quickly and efficiently since we know which specific single character denotes the end of a line.
+The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[HasUniformLineTerminators](xref:ActiproSoftware.Text.ITextSnapshot.HasUniformLineTerminators) property returns whether all of the line terminators in the document snapshot are the same.  When this property returns `false`, the line terminators are considered mixed.
 
-> [!IMPORTANT]
-> Since text is tracked internally using only line feeds, see the following sections for information on how to retrieve text back out of the text framework with specific line terminators.
+The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[InferredLineTerminator](xref:ActiproSoftware.Text.ITextSnapshot.InferredLineTerminator) property returns a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) value indicating which line terminator should be used in the document.  The value returned is based on what is identified in the document text.
 
-## Impact on Offsets
+In the case of mixed line terminators, priority is given to line terminators in the order of the list above.  A document with one CRLF line terminator and two LF line terminators in its text will return CRLF as the inferred line terminator, since the presence of any CRLF has a higher priority than LF.
 
-An offset is the zero-based index of a character within text.  Sometimes you may have scanned some text that has CR/LF endings and saved a character range.  Then you passed the text into a document and tried to get the substring of the range.  What you'd find is that the returned text is not what you expected.
+When a document is empty, there are no line terminators from which to infer a result.  The system's line terminator via `Environment.NewLine` will be used to infer a result in that case.
 
-A simple diagram will illustrate why.  Say your text string was:
+## Getting Text and Substrings With Actual Line Terminators
 
+These [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) members return text with the actual line terminators in the document text:
+
+- [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) property - Returns the full snapshot text with actual line terminators.
+- [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) method - Returns a substring with actual line terminators when the optional [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument is not specified.
+- [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method - Returns the full snapshot text with actual line terminators when the optional [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument is not specified.  The [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) property effectively calls this method with no [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) specified.
+
+## Getting Text and Substrings With a Specific Line Terminator
+
+These [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot) members return text that contains line terminators normalized to a specified kind:
+
+- [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) method - Returns a substring with normalized line terminators when the [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument is specified.  The [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument indicates the kind of line terminator to use.
+- [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method - Returns the full snapshot text with normalized line terminators when the [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument is specified.  The [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument indicates the kind of line terminator to use.
+
+## Notes on Snapshot Readers
+
+Any code that reads snapshot characters, such as while lexing or parsing, should support any CRLF sequence, LF, or CR as line terminators at a minimum.
+
+<!--
+Less commonly used line terminators such as LS or PS may also be optionally supported.
+-->
+
+## Normalizing Line Terminators
+
+In scenarios where the line terminators in a document snapshot are mixed or simply not the desired line terminator kind, the document's line terminators can be normalized with a call to the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[NormalizeLineTerminators](xref:ActiproSoftware.Text.ITextDocument.NormalizeLineTerminators*) method.  The [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) argument indicates the line terminator kind to which all line terminators should be normalized.  No text change occurs if nothing needs to be updated.
+
+This code shows how to normalize a document's line terminators to CRLF:
+
+```csharp
+document.NormalizeLineTerminators(LineTerminator.CRLF);
 ```
-int a;
-int b;
-```
-
-In a string with a CR/LF line terminator, the `b` character would be located at offset `12` like in the diagram below.
-
-![Screenshot](../../images/line-terminators.png)
-
-*The top character sequence showing original text, the bottom showing how it is stored in documents*
-
-The bottom part of the diagram shows how an [ITextDocument](xref:ActiproSoftware.Text.ITextDocument) would convert the text to LF line terminators.  You can see how offset `12` now points to the semi-colon character instead.
-
-To work around this issue, use the text framework to determine your offsets once it's in a document.
-
-> [!IMPORTANT]
-> If you will be doing any external parsing, use the [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method (described below) to retrieve the text with LF-only format so the offsets remain in sync.
-
-## The ITextSnapshot.Text and GetSubstring Members
-
-The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) property and [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) method both return text back out with CR/LF format.
-
-Since those properties are generally accessed when getting text and using it in other places within your application, they return the Windows default line terminator, which is CR/LF.
-
-## Getting Text and Substrings with a Specific Line Terminator
-
-Since the two members above return text using CR/LF, sometimes you need to get the text with LF-only or CR-only.  To do this, you can use the [GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method and the [GetSubstring](xref:ActiproSoftware.Text.ITextSnapshot.GetSubstring*) method overload that accepts a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter.
-
-Both of those methods allow you to obtain the text with any line terminator that you specify.

@@ -1,0 +1,634 @@
+<sampleBrowser:ProductItemControl 
+	x:Class="ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.RangeSliderIntro.MainControl"
+	x:Name="sampleRootControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:editors="http://schemas.actiprosoftware.com/winfx/xaml/editors"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
+	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.EditorsSamples.QuickStart.RangeSliderIntro"
+	>
+
+	<sampleBrowser:ProductItemControl.SideBarContent>
+		<StackPanel>
+
+			<Expander Style="{StaticResource SampleHeaderOptionsExpanderStyle}">
+				<sampleBrowser:SampleOptionsPropertyGrid>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=RangeStart}">
+						<gridseditors:DoublePropertyEditor SmallChange="1" Minimum="0" Maximum="100" Format="G8" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=RangeEnd}">
+						<gridseditors:DoublePropertyEditor SmallChange="1" Minimum="0" Maximum="100" Format="G8" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=StepFrequency}">
+						<gridseditors:DoublePropertyEditor SmallChange="1" LargeChange="5" Minimum="0" Maximum="10" Format="N1" />
+					</grids:PropertyModel>
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=IsRanged}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=IsRangeDragEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=IsInclusive}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=IsDirectionReversed}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=slider, Path=IsEnabled}" />
+				</sampleBrowser:SampleOptionsPropertyGrid>
+			</Expander>
+
+			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
+				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
+					A RangeSlider can be used to select one or more values within a pre-defined range of available values.
+					<LineBreak /><LineBreak />
+					While typically used with two values, the RangeSlider can also be used with a single value our bound to
+					a collection of many values that can optionally be edited at run-time.
+					<LineBreak /><LineBreak />
+					A value badge can be used to display the current value of any thumb on the track.  Ticks and/or marks can also
+					be added to the track to help denote meaningful values.
+				</TextBlock>
+			</Expander>
+
+		</StackPanel>
+	</sampleBrowser:ProductItemControl.SideBarContent>
+
+	<ScrollViewer Style="{StaticResource SampleVerticalScrollViewerStyle}">
+		<StackPanel Style="{StaticResource SamplePanelWideStyle}">
+
+			<!--
+			SAMPLE: Basic usage
+			-->
+			<sampleBrowser:LabeledCardControl HorizontalAlignment="Center">
+				<editors:RangeSlider x:Name="slider" MinWidth="200" MinHeight="20"
+					Minimum="0" Maximum="100"
+					RangeStart="20" RangeEnd="80"
+					IsRanged="True"
+					IsInclusive="True"
+					StepFrequency="1.0"
+					TickFrequency="10"
+					/>
+
+			</sampleBrowser:LabeledCardControl>
+
+			<sampleBrowser:SampleGalleryControl>
+
+				<!--
+				SAMPLE: Ticks
+				-->
+				<sampleBrowser:LabeledCardControl Label="Tick marks can be displayed and optionally snap values to the ticks">
+					<StackPanel>
+						<TextBlock HorizontalAlignment="Center" Margin="0,0,0,10">Tick frequency (10)</TextBlock>
+						<StackPanel Orientation="Horizontal">
+							<StackPanel Width="150">
+								<editors:RangeSlider TickPlacement="Both" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+								<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+								<editors:RangeSlider TickPlacement="TopLeft" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+								<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+								<editors:RangeSlider TickPlacement="BottomRight" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+							</StackPanel>
+							<StackPanel Margin="30,0,0,0" Orientation="Horizontal">
+								<editors:RangeSlider Orientation="Vertical" TickPlacement="Both" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+								<Separator Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" />
+								<editors:RangeSlider Orientation="Vertical" TickPlacement="TopLeft" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+								<Separator Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" />
+								<editors:RangeSlider Orientation="Vertical" TickPlacement="BottomRight" StepFrequency="1" TickFrequency="10" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+							</StackPanel>
+						</StackPanel>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<StackPanel HorizontalAlignment="Center">
+							<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5">Explicit ticks (10, 20, 50, 80)</TextBlock>
+							<editors:RangeSlider TickPlacement="BottomRight" StepFrequency="1" Ticks="10,20,50,80" IsSnapToTickEnabled="{Binding ElementName=ticksSliderIsSnapToTickEnabledCheckBox, Path=IsChecked}" RangeStart="20" RangeEnd="80" />
+						</StackPanel>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<CheckBox x:Name="ticksSliderIsSnapToTickEnabledCheckBox" Margin="0,4" IsChecked="True" Content="Snap to tick" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Overlap
+				-->
+				<sampleBrowser:LabeledCardControl Width="300" Label="OverlapKind defines how thumbs behave when one thumb is dragged into another one">
+					<StackPanel>
+						<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5">Overlap (Default)</TextBlock>
+						<editors:RangeSlider OverlapKind="Overlap" Margin="20,0" RangeStart="20" RangeEnd="80"
+							StepFrequency="{Binding ElementName=overlapSliderStepFrequency, Path=Value}"
+							MinimumStepsBetweenThumbs="{Binding ElementName=overlapSliderMinStepsBetweenThumbs, Path=Value}"
+							IsDirectionReversed="{Binding ElementName=overlapSliderIsDirectionReversedCheckBox, Path=IsChecked}"
+							/>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5">Push</TextBlock>
+						<editors:RangeSlider OverlapKind="Push" Margin="20,0" RangeStart="20" RangeEnd="80"
+							StepFrequency="{Binding ElementName=overlapSliderStepFrequency, Path=Value}"
+							MinimumStepsBetweenThumbs="{Binding ElementName=overlapSliderMinStepsBetweenThumbs, Path=Value}"
+							IsDirectionReversed="{Binding ElementName=overlapSliderIsDirectionReversedCheckBox, Path=IsChecked}"
+							/>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<TextBlock HorizontalAlignment="Center" Margin="0,0,0,5">None</TextBlock>
+						<editors:RangeSlider OverlapKind="None" Margin="20,0" RangeStart="20" RangeEnd="80"
+							StepFrequency="{Binding ElementName=overlapSliderStepFrequency, Path=Value}"
+							MinimumStepsBetweenThumbs="{Binding ElementName=overlapSliderMinStepsBetweenThumbs, Path=Value}"
+							IsDirectionReversed="{Binding ElementName=overlapSliderIsDirectionReversedCheckBox, Path=IsChecked}"
+							/>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Step frequency: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:DoubleEditBox x:Name="overlapSliderStepFrequency" Value="1.0" VerticalAlignment="Center" Minimum="0" Maximum="10" SmallChange="1" LargeChange="5" Format="N1" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Minimum steps between thumbs: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:Int32EditBox x:Name="overlapSliderMinStepsBetweenThumbs" Value="3" VerticalAlignment="Center" Minimum="0" Maximum="10" SmallChange="1" LargeChange="5" />
+						</StackPanel>
+						<CheckBox x:Name="overlapSliderIsDirectionReversedCheckBox" Margin="0,4" IsChecked="False" Content="Direction reversed" />
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Value badge
+				-->
+				<sampleBrowser:LabeledCardControl Width="400" Label="The value badge is used to display the current value represented by the thumb">
+					<StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="0,20" HorizontalAlignment="Center">
+							<editors:RangeSlider MinWidth="200" VerticalAlignment="Center"
+								RangeStart="20" RangeEnd="80" IsRangeDragEnabled="True"
+								ThumbValueBadgeDisplayKinds="{Binding ElementName=valueBadgeSliderDisplayKindsComboBox, Path=Value}"
+								ThumbValueBadgePlacement="{Binding ElementName=valueBadgeSliderPlacementComboBox, Path=Value}"
+								ValueFormat="N2"
+								/>
+							<Separator Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" Margin="30,0,60,0" />
+							<editors:RangeSlider Orientation="Vertical" MinHeight="100" HorizontalAlignment="Center"
+								RangeStart="20" RangeEnd="80" IsRangeDragEnabled="True"
+								ThumbValueBadgeDisplayKinds="{Binding ElementName=valueBadgeSliderDisplayKindsComboBox, Path=Value}"
+								ThumbValueBadgePlacement="{Binding ElementName=valueBadgeSliderPlacementComboBox, Path=Value}"
+								ValueFormat="N2"
+								/>
+						</StackPanel>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Value badge display kind: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:EnumEditBox x:Name="valueBadgeSliderDisplayKindsComboBox" EnumType="{x:Type editors:RangeSliderValueBadgeDisplayKinds}" Value="{x:Static editors:RangeSliderValueBadgeDisplayKinds.Always}" />
+							<TextBlock Text="(Default: Interacting)" Margin="10,0,0,0" VerticalAlignment="Center" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Value badge placement: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:EnumEditBox x:Name="valueBadgeSliderPlacementComboBox" EnumType="{x:Type editors:RangeSliderPlacement}" Value="{x:Static editors:RangeSliderPlacement.TopLeft}" VerticalAlignment="Center" />
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Marks
+				-->
+				<sampleBrowser:LabeledCardControl Label="Use marks to designate special values along the slider track">
+					<StackPanel>
+
+						<editors:RangeSlider x:Name="marksSlider" Margin="20,0"
+							ValueFormat="P1"
+							IsRanged="False"
+							IsTrackEdgeAlignedWithValue="True"
+							Marks="0.0, 0.5, 1.0"
+							MarkContentPlacement="{Binding ElementName=marksSliderContentPlacementComboBox, Path=Value}"
+							MarkSnapDistance="0.02"
+							IsMarkTrackDecorationVisible="{Binding ElementName=marksSliderIsTrackDecorationVisibleCheckBox, Path=IsChecked}"
+							IsMarkContentVisible="{Binding ElementName=marksSliderIsContentVisibleCheckBox, Path=IsChecked}"
+							Minimum="0.0"
+							Maximum="1.0"
+							StepFrequency="0.001"
+							RangeEnd="0.25"
+							SmallChange="0.01"
+							LargeChange="0.05"
+							/>
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+
+						<CheckBox x:Name="marksSliderIsTrackDecorationVisibleCheckBox" Margin="0,4" IsChecked="True" Content="Show decoration" />
+						<CheckBox x:Name="marksSliderIsContentVisibleCheckBox" Margin="0,4" IsChecked="True" Content="Show content" />
+						<CheckBox x:Name="marksSliderIsTrackEdgeAlignedWithValueCheckBox" Margin="0,4" IsChecked="{Binding ElementName=marksSlider, Path=IsTrackEdgeAlignedWithValue}" Content="Track edge aligns with value" />
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Content placement: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:EnumEditBox x:Name="marksSliderContentPlacementComboBox" EnumType="{x:Type editors:RangeSliderPlacement}" VerticalAlignment="Center" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="0,4">
+							<TextBlock Text="Mark snap distance: " Margin="0,0,4,0" VerticalAlignment="Center" />
+							<editors:DoubleEditBox x:Name="marksSliderSnapDistance" Value="{Binding ElementName=marksSlider, Path=MarkSnapDistance}" VerticalAlignment="Center" Minimum="0.00" Maximum="0.1" SmallChange="0.01" LargeChange="0.1" Format="P1" />
+						</StackPanel>
+
+					</StackPanel>
+
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Multiple values
+				-->
+				<sampleBrowser:LabeledCardControl Label="A ranged slider can define more than just a start and end value.">
+					<StackPanel>
+						<TextBlock Margin="0,20" HorizontalAlignment="Center">Use <Italic>Ctrl+Click</Italic> to add/remove thumbs on the track</TextBlock>
+						<editors:RangeSlider x:Name="multiSlider" Margin="20,0" MinWidth="200" VerticalAlignment="Center"
+							StepFrequency="1"
+							IsRangeDragEnabled="True"
+							IsRangeEditEnabled="True"
+							RangeEditMinimumValueCount="0"
+							RangeEditMaximumValueCount="5"
+							Values="{Binding ElementName=sampleRootControl, Path=MultiValues}"
+							/>
+
+						<Separator Style="{StaticResource SampleSectionSmallHorizontalRuleStyle}" />
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<StackPanel Grid.Column="0">
+								<StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+									<TextBlock Text="Range start: " Margin="0,0,4,0" VerticalAlignment="Center" />
+									<editors:DoubleEditBox Value="{Binding ElementName=multiSlider, Path=RangeStart}" VerticalAlignment="Center" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" Format="N0" />
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" Margin="0,4">
+									<TextBlock Text="Range End: " Margin="0,0,4,0" VerticalAlignment="Center" />
+									<editors:DoubleEditBox Value="{Binding ElementName=multiSlider, Path=RangeEnd}" VerticalAlignment="Center" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" Format="N0" />
+								</StackPanel>
+								<CheckBox Margin="0,4" IsChecked="{Binding ElementName=multiSlider, Path=IsRangeDragEnabled}" Content="Range drag enabled" />
+								<CheckBox Margin="0,4" IsChecked="{Binding ElementName=multiSlider, Path=IsRangeEditEnabled}" Content="Range edit enabled" />
+								<StackPanel Orientation="Horizontal" Margin="0,4">
+									<TextBlock Text="Min range value count: " Margin="0,0,4,0" VerticalAlignment="Center" />
+									<editors:Int32EditBox VerticalAlignment="Center" Minimum="0" Maximum="5" SmallChange="1" Value="{Binding ElementName=multiSlider, Path=RangeEditMinimumValueCount}" />
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+									<TextBlock Text="Max range value count: " Margin="0,0,4,0" VerticalAlignment="Center" />
+									<editors:Int32EditBox VerticalAlignment="Center" Minimum="0" Maximum="5" SmallChange="1" Value="{Binding ElementName=multiSlider, Path=RangeEditMaximumValueCount}" />
+								</StackPanel>
+							</StackPanel>
+							<Separator Grid.Column="1" Style="{StaticResource SampleSectionSmallVerticalRuleStyle}" Margin="30,0" />
+							<Grid Grid.Column="2">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<TextBlock Grid.Row="0" Text="Values collection:" />
+								<ListBox Grid.Row="1" x:Name="multiValuesListBox" Height="120" ItemsSource="{Binding ElementName=multiSlider, Path=Values, Mode=OneWay}" />
+								<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+									<TextBlock>
+										<Hyperlink Command="{Binding ElementName=sampleRootControl, Path=AddMultiValueCommand}" ToolTip="Add a new random value" >Add</Hyperlink>
+									</TextBlock>
+									<TextBlock Margin="6,0">
+										<Hyperlink Command="{Binding ElementName=sampleRootControl, Path=RemoveMultiValueCommand}" CommandParameter="{Binding ElementName=multiValuesListBox, Path=SelectedValue}" ToolTip="Remove the selected value" >Remove</Hyperlink>
+									</TextBlock>
+									<TextBlock>
+										<Hyperlink Command="{Binding ElementName=sampleRootControl, Path=ClearMultiValuesCommand}" ToolTip="Clear all values" >Clear</Hyperlink>
+									</TextBlock>
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Custom thumbs
+				-->
+				<sampleBrowser:LabeledCardControl Width="400" Label="This sample uses a custom thumb theme to adjust the appearance based on position.">
+
+					<!-- NOTE: The Thumb and Track must be odd number height to vertically center the point of the arrow (e.g., 15px thumb and 5px track in this sample) -->
+					<editors:RangeSlider Margin="20"
+						Minimum="0" Maximum="100"
+						RangeStart="20" RangeEnd="80"
+						StepFrequency="1"
+						TrackAscent="5"
+						>
+						<editors:RangeSlider.ThumbStyle>
+							<Style TargetType="{x:Type editors:RangeSliderThumb}" BasedOn="{StaticResource {x:Static themes:EditorsResourceKeys.RangeSliderThumbHorizontalStyleKey}}">
+								<Style.Resources>
+									<Geometry x:Key="SliderPointedThumbGeometry">M 0.5,1.5 A 1 1 0 0 0 1.5,0.5 L 10.5,0.5 L 17.5,7.5 L 10.5,14.5 L 1.5,14.5 A 1 1 0 0 0 0.5,13.5 Z</Geometry>
+								</Style.Resources>
+
+								<Setter Property="Width" Value="18" />
+								<Setter Property="Height" Value="15" />
+
+								<Style.Triggers>
+									<!-- RangeStart Thumb -->
+									<Trigger Property="Index" Value="0">
+										<Setter Property="Template">
+											<Setter.Value>
+												<ControlTemplate TargetType="{x:Type Thumb}">
+													<Canvas SnapsToDevicePixels="true" RenderTransformOrigin="0.5,0.5">
+														<Path
+															Data="{StaticResource SliderPointedThumbGeometry}"
+															Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundHighBrushKey}}"
+															Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteGreenBackgroundLowBrushKey}}"
+															/>
+													</Canvas>
+												</ControlTemplate>
+											</Setter.Value>
+										</Setter>
+									</Trigger>
+									
+									<!-- RangeEnd Thumb -->
+									<Trigger Property="Index" Value="1">
+										<Setter Property="Template">
+											<Setter.Value>
+												<ControlTemplate TargetType="{x:Type Thumb}">
+													<Canvas SnapsToDevicePixels="true" RenderTransformOrigin="0.5,0.5">
+														<Canvas.RenderTransform>
+															<TransformGroup>
+																<RotateTransform Angle="180" />
+															</TransformGroup>
+														</Canvas.RenderTransform>
+														<Path
+															Data="{StaticResource SliderPointedThumbGeometry}"
+															Stroke="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}"
+															Fill="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundLowBrushKey}}"
+															/>
+													</Canvas>
+												</ControlTemplate>
+											</Setter.Value>
+										</Setter>
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+							
+						</editors:RangeSlider.ThumbStyle>
+					</editors:RangeSlider>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Price range
+				-->
+				<sampleBrowser:LabeledCardControl Width="400" Label="This price range sample shows how to customize the tickbar, marks, and thumb value badge">
+					<editors:RangeSlider Margin="20,20,20,0"
+						Minimum="0" Maximum="100000"
+						RangeStart="20000" RangeEnd="65000"
+						SmallChange="1000" LargeChange="10000"
+						StepFrequency="1000"
+						TickFrequency="10000"
+						TickPlacement="BottomRight"
+						ThumbValueBadgeDisplayKinds="Always"
+						IsTrackEdgeAlignedWithValue="True"
+						ValueFormat="C0"
+						Marks="0, 25000, 50000, 75000, 100000"
+						>
+						<editors:RangeSlider.MarkStyle>
+							<Style TargetType="editors:RangeSliderMark">
+								<Setter Property="Padding" Value="12" />
+								<Style.Triggers>
+									<Trigger Property="IsActive" Value="True">
+										<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.HyperlinkForegroundNormalBrushKey}}" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</editors:RangeSlider.MarkStyle>
+						<editors:RangeSlider.ThumbStyle>
+							<Style TargetType="editors:RangeSliderThumb" BasedOn="{StaticResource {x:Static themes:EditorsResourceKeys.RangeSliderThumbHorizontalStyleKey}}">
+								<Setter Property="ValueBadgeStyle">
+									<Setter.Value>
+										<Style TargetType="shared:Badge">
+											<Setter Property="BorderThickness" Value="0" />
+											<Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentBackgroundHighBrushKey}}" />
+											<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.PrimaryAccentForegroundHighNormalBrushKey}}" />
+										</Style>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</editors:RangeSlider.ThumbStyle>
+						<editors:RangeSlider.TickBarStyle>
+							<Style TargetType="TickBar" BasedOn="{StaticResource {x:Static themes:EditorsResourceKeys.RangeSliderTickBarStyleKey}}">
+								<Style.Triggers>
+									<Trigger Property="Placement" Value="Bottom">
+										<Setter Property="Margin" Value="0,-75,0,0" />
+										<Setter Property="Height" Value="10" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</editors:RangeSlider.TickBarStyle>
+					</editors:RangeSlider>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Condition range 1
+				-->
+				<sampleBrowser:LabeledCardControl Label="Custom mark labels that change color when included in the range">
+					<editors:RangeSlider Margin="20,0" MinWidth="400"
+						Minimum="1" Maximum="5"
+						RangeStart="3" RangeEnd="5"
+						StepFrequency="1"
+						IsTrackEdgeAlignedWithValue="True"
+						ThumbValueBadgeDisplayKinds="None"
+						>
+						<editors:RangeSlider.MarkStyle>
+							<Style TargetType="editors:RangeSliderMark">
+								<Style.Triggers>
+									<Trigger Property="IsActive" Value="True">
+										<Setter Property="Foreground" Value="{DynamicResource {x:Static themes:AssetResourceKeys.HyperlinkForegroundNormalBrushKey}}" />
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</editors:RangeSlider.MarkStyle>
+						<editors:RangeSlider.MarkElements>
+							<editors:RangeSliderMark Value="1" Content="Poor" />
+							<editors:RangeSliderMark Value="2" Content="Fair" />
+							<editors:RangeSliderMark Value="3" Content="Good" />
+							<editors:RangeSliderMark Value="4" Content="Very Good" />
+							<editors:RangeSliderMark Value="5" Content="Excellent" />
+						</editors:RangeSlider.MarkElements>
+					</editors:RangeSlider>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Condition range 2
+				-->
+				<sampleBrowser:LabeledCardControl Label="Custom label-only marks between snap points">
+					<editors:RangeSlider Margin="20,0" MinWidth="400"
+						Minimum="0" Maximum="10"
+						RangeStart="4" RangeEnd="10"
+						StepFrequency="2"
+						MinimumStepsBetweenThumbs="1"
+						OverlapKind="Push"
+						IsTrackEdgeAlignedWithValue="True"
+						ThumbValueBadgeDisplayKinds="None"
+						>
+						<editors:RangeSlider.MarkElements>
+							<editors:RangeSliderMark Value="0" IsContentVisible="False" />
+							<editors:RangeSliderMark Value="1" Content="Poor" IsTrackDecorationVisible="False" />
+							<editors:RangeSliderMark Value="2" IsContentVisible="False" />
+							<editors:RangeSliderMark Value="3" Content="Fair" IsTrackDecorationVisible="False" />
+							<editors:RangeSliderMark Value="4" IsContentVisible="False" />
+							<editors:RangeSliderMark Value="5" Content="Good" IsTrackDecorationVisible="False" />
+							<editors:RangeSliderMark Value="6" IsContentVisible="False" />
+							<editors:RangeSliderMark Value="7" Content="Very Good" IsTrackDecorationVisible="False" />
+							<editors:RangeSliderMark Value="8" IsContentVisible="False" />
+							<editors:RangeSliderMark Value="9" Content="Excellent" IsTrackDecorationVisible="False" />
+							<editors:RangeSliderMark Value="10" IsContentVisible="False" />
+						</editors:RangeSlider.MarkElements>
+					</editors:RangeSlider>
+				</sampleBrowser:LabeledCardControl>
+
+				<!--
+				SAMPLE: Flight search
+				-->
+				<sampleBrowser:LabeledCardControl Label="RangeSlider in various configurations as part of a flight search form.">
+					<sampleBrowser:LabeledCardControl.Resources>
+						<local:TotalMinutesToElapsedTimeConverter x:Key="TotalMinutesToElapsedTimeConverter" />
+						<local:TotalMinutesToTimeOfDayConverter x:Key="TotalMinutesToTimeOfDayConverter" />
+					</sampleBrowser:LabeledCardControl.Resources>
+					<StackPanel>
+						<StackPanel Margin="0,0,0,20">
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge3FontSizeDoubleKey}}" Text="Flight Search" />
+							<TextBlock FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLarge2FontSizeDoubleKey}}" Text="Nashville, TN (BNA) - Maui, HI (OGG)" />
+						</StackPanel>
+						<StackPanel Margin="0,0,0,20">
+							<TextBlock Margin="0,0,0,10" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="DemiBold" Text="Max Flight Duration" />
+							<DockPanel>
+								<TextBlock DockPanel.Dock="Left" MinWidth="75" Text="{Binding ElementName=flightSearchMaxDuration, Path=RangeEnd, Converter={StaticResource TotalMinutesToElapsedTimeConverter}}" />
+								<editors:RangeSlider x:Name="flightSearchMaxDuration" Minimum="0" Maximum="1440" StepFrequency="5" IsRanged="False" RangeEnd="120" ThumbValueBadgeDisplayKinds="None" />
+							</DockPanel>
+						</StackPanel>
+						<StackPanel Margin="0,0,0,20">
+							<TextBlock Margin="0,0,0,10" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="DemiBold" Text="Layover Duration" />
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="75" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="75" />
+								</Grid.ColumnDefinitions>
+								<TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="{Binding ElementName=flightSearchLayoverDuration, Path=RangeStart, Converter={StaticResource TotalMinutesToElapsedTimeConverter}}" />
+								<editors:RangeSlider x:Name="flightSearchLayoverDuration" Grid.Column="1" Minimum="30" Maximum="1440" StepFrequency="5" RangeStart="30" RangeEnd="360" OverlapKind="Push" ThumbValueBadgeDisplayKinds="None" />
+								<TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding ElementName=flightSearchLayoverDuration, Path=RangeEnd, Converter={StaticResource TotalMinutesToElapsedTimeConverter}}" />
+							</Grid>
+						</StackPanel>
+						<StackPanel Margin="0,0,0,20">
+							<TextBlock Margin="0,0,0,10" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="DemiBold" Text="Departing Flight" />
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="75" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<TextBlock Grid.Row="0" Grid.Column="0" Text="Depart" />
+								<editors:RangeSlider Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="2160" StepFrequency="5" RangeStart="360" RangeEnd="780" OverlapKind="Push" IsTrackEdgeAlignedWithValue="True" ValueContentConverter="{StaticResource TotalMinutesToTimeOfDayConverter}">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="0" Content="12 AM" />
+										<editors:RangeSliderMark Value="720" Content="12 PM" />
+										<editors:RangeSliderMark Value="1440" Content="12 AM" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+
+								<TextBlock Grid.Row="1" Grid.Column="0" Text="Arrive" />
+								<editors:RangeSlider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="2160" StepFrequency="5" RangeStart="840" RangeEnd="1320" OverlapKind="Push" IsTrackEdgeAlignedWithValue="True" ValueContentConverter="{StaticResource TotalMinutesToTimeOfDayConverter}">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="0" Content="12 AM" />
+										<editors:RangeSliderMark Value="720" Content="12 PM" />
+										<editors:RangeSliderMark Value="1440" Content="12 AM" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+							</Grid>
+						</StackPanel>
+						<StackPanel Margin="0,0,0,20">
+							<TextBlock Margin="0,0,0,10" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="DemiBold" Text="Return Flight" />
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="75" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<TextBlock Grid.Row="0" Grid.Column="0" Text="Depart" />
+								<editors:RangeSlider Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="2160" StepFrequency="5" RangeStart="840" RangeEnd="1440" OverlapKind="Push" IsTrackEdgeAlignedWithValue="True" ValueContentConverter="{StaticResource TotalMinutesToTimeOfDayConverter}">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="0" Content="12 AM" />
+										<editors:RangeSliderMark Value="720" Content="12 PM" />
+										<editors:RangeSliderMark Value="1440" Content="12 AM" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+
+								<TextBlock Grid.Row="1" Grid.Column="0" Text="Arrive" />
+								<editors:RangeSlider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="2160" StepFrequency="5" RangeStart="720" RangeEnd="2000" OverlapKind="Push" IsTrackEdgeAlignedWithValue="True" ValueContentConverter="{StaticResource TotalMinutesToTimeOfDayConverter}">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="0" Content="12 AM" />
+										<editors:RangeSliderMark Value="720" Content="12 PM" />
+										<editors:RangeSliderMark Value="1440" Content="12 AM" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+							</Grid>
+						</StackPanel>
+						<StackPanel Grid.IsSharedSizeScope="True">
+							<TextBlock Margin="0,0,0,10" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.LargeFontSizeDoubleKey}}" FontWeight="DemiBold" Text="Matching Flights" />
+							<Grid VerticalAlignment="Center">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" SharedSizeGroup="DepartTime" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" SharedSizeGroup="ArriveTime" />
+								</Grid.ColumnDefinitions>
+								<Grid Grid.Column="0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*" />
+										<RowDefinition Height="8" />
+										<RowDefinition Height="*" />
+									</Grid.RowDefinitions>
+									<TextBlock Grid.Row="0" FontWeight="Bold" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Right" VerticalAlignment="Bottom">5:50a</TextBlock>
+									<TextBlock Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,4,0,0">BNA</TextBlock>
+								</Grid>
+								<editors:RangeSlider Padding="10,0" Grid.Column="1" IsRangeEditEnabled="True" RangeEditMaximumValueCount="0" Minimum="0" Maximum="745">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="170" Padding="4" Content="DEN" BorderThickness="0" Background="{DynamicResource {x:Static themes:AssetResourceKeys.SliderForegroundNormalBrushKey}}" />
+										<editors:RangeSliderMark Value="170" Padding="4" Content="45m" IsTrackDecorationVisible="False" ContentPlacement="TopLeft" />
+										<editors:RangeSliderMark Value="335" Padding="4" Content="LAX" BorderThickness="0" Background="{DynamicResource {x:Static themes:AssetResourceKeys.SliderForegroundNormalBrushKey}}" />
+										<editors:RangeSliderMark Value="335" Padding="4" Content="1h 15m" IsTrackDecorationVisible="False" ContentPlacement="TopLeft" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+								<Grid Grid.Column="2">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*" />
+										<RowDefinition Height="8" />
+										<RowDefinition Height="*" />
+									</Grid.RowDefinitions>
+									<TextBlock Grid.Row="0" FontWeight="Bold" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Left" VerticalAlignment="Bottom">12:55p</TextBlock>
+									<TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,4,0,0">OGG</TextBlock>
+								</Grid>
+							</Grid>
+							<Grid VerticalAlignment="Center" Margin="0,10,0,0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" SharedSizeGroup="DepartTime" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" SharedSizeGroup="ArriveTime" />
+								</Grid.ColumnDefinitions>
+								<Grid Grid.Column="0">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*" />
+										<RowDefinition Height="8" />
+										<RowDefinition Height="*" />
+									</Grid.RowDefinitions>
+									<TextBlock Grid.Row="0" FontWeight="Bold" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Right" VerticalAlignment="Bottom">8:45p</TextBlock>
+									<TextBlock Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="0,4,0,0">OGG</TextBlock>
+								</Grid>
+								<editors:RangeSlider Padding="10,0" Grid.Column="1" IsRangeEditEnabled="True" RangeEditMaximumValueCount="0" Minimum="0" Maximum="765">
+									<editors:RangeSlider.MarkElements>
+										<editors:RangeSliderMark Value="380" Padding="4" Content="LAS" BorderThickness="0" Background="{DynamicResource {x:Static themes:AssetResourceKeys.SliderForegroundNormalBrushKey}}" />
+										<editors:RangeSliderMark Value="380" Padding="4" Content="1h 55m" IsTrackDecorationVisible="False" ContentPlacement="TopLeft" />
+										<editors:RangeSliderMark Value="560" Padding="4" Content="DAL" BorderThickness="0" Background="{DynamicResource {x:Static themes:AssetResourceKeys.SliderForegroundNormalBrushKey}}" />
+										<editors:RangeSliderMark Value="560" Padding="4" Content="44m" IsTrackDecorationVisible="False" ContentPlacement="TopLeft" />
+									</editors:RangeSlider.MarkElements>
+								</editors:RangeSlider>
+								<Grid Grid.Column="2">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*" />
+										<RowDefinition Height="8" />
+										<RowDefinition Height="*" />
+									</Grid.RowDefinitions>
+									<TextBlock Grid.Row="0" FontWeight="Bold" FontSize="{DynamicResource {x:Static themes:AssetResourceKeys.ExtraLargeFontSizeDoubleKey}}" HorizontalAlignment="Left" VerticalAlignment="Bottom">2:30p</TextBlock>
+									<TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,4,0,0">BNA</TextBlock>
+								</Grid>
+							</Grid>
+						</StackPanel>
+					</StackPanel>
+				</sampleBrowser:LabeledCardControl>
+
+			</sampleBrowser:SampleGalleryControl>
+
+		</StackPanel>
+	</ScrollViewer>
+
+</sampleBrowser:ProductItemControl>

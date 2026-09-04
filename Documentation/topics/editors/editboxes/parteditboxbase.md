@@ -35,6 +35,67 @@ Value validation occurs when the user types in a value and attempts to commit it
 
 Custom conversion and validation logic can be implemented by overriding the [TryConvertFromString](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.TryConvertFromString*) and its related [ConvertToString](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.ConvertToString*) method.
 
+## Input Filtering
+
+To help reduce the likelihood of a user typing an invalid value, the [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) property (which defaults to `false`) can be set to `true`.  When enabled, most attempts to type invalid text into the edit box are ignored.  For example, numeric edit boxes like [Int32EditBox](int32editbox.md) or [DoubleEditBox](doubleeditbox.md) will primarily restrict input to digits and separators (e.g., `.` and `,`).
+
+> [!NOTE]
+> Input filtering only applies to text that is typed and has no impact on clipboard operations.
+
+Some edit boxes have multiple component parts. An example is the [TimeEditBox](timeeditbox.md), which generally has hour, minute, and AM/PM parts. These types of edit boxes typically filter input on a part-by-part basis, meaning the hour part might filter input to digit characters while the AM/PM part will expect characters like `A`, `M`, or `P` (case-insensitive and varies by culture).
+
+> [!TIP]
+> To customize which text is allowed for input, create a custom class that derives from one of the built-in edit boxes and override the [IsTextInputAllowed](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsTextInputAllowed*) method.
+
+### Numeric Input
+
+Many edit boxes include a single numeric part or, like [CornerRadiusEditBox](cornerradiuseditbox.md), allow for the entry of multiple numeric parts with a separator between values.  The allowed text input for numeric parts varies by the number format in use.
+
+When decimal formatting is applied, only the following text may be entered into the numeric part:
+- Unicode decimal digits (commonly `0-9`).
+- The current culture decimal separator (e.g., `.`).
+- The current culture group separator (e.g., `,`).
+- The current culture positive and negative signs (e.g., `+` and `-`).
+- The scientific notation exponent character `E` or `e`.
+- Additional format-specific characters as noted below.
+
+When hexadecimal formatting is applied, only the following text may be entered into the numeric part:
+- Hexadecimal digits `0-9`, `A-F`, and `a-f`.
+- The space character commonly used for number groups (e.g., `FFFF 0000`).
+
+When binary formatting is applied (available in .NET 8+), only the following text may be entered into the numeric part:
+- Binary digits `0` and `1`.
+- The space character commonly used for number groups (e.g., `1111 0000`).
+
+For decimal formatting only, the current format is also applied to a range of sample values (including a positive value, a negative value, and zero) to look for additional characters included by the format.  Any additional characters detected by the formatted values will be added to the list of already allowed text input.  For example, a currency format might produce a sample positive value of `$12,345.67` and a sample negative value of `$(12,345.64)`.  Based on those formatted values, the additional characters `$`, `(`, and `)` will also be allowed for text input.
+
+> [!IMPORTANT]
+> Input filtering for numeric values may include characters that are technically not valid but not allowing their entry could result in a value being fundamentally changed when typed.  For example, an [Int32EditBox](int32editbox.md) cannot support floating-point values, but it still allows the decimal separator (e.g., `.` in some cultures) to be typed.  This is necessary because if a user tries to type `1.5` it should not be inadvertently altered to `15`, which would happen if the decimal separator was ignored when typed.
+
+### Date and Time Input
+
+The [DateEditBox](dateeditbox.md), [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox), and [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox) edit boxes are used to edit `DateTime` values and support multiple formats.  The current format for the edit box is analyzed to separate values into multiple parts (e.g., year, month, day, hour, or minute), and each part has its own limitations on which text input is allowed.
+
+The following numeric parts are limited to Unicode decimal digits (commonly `0-9`):
+- Year
+- Month (`"%M"`, `"M"`, and `"MM"` formats only)
+- Day
+- Hour
+- Minute
+- Second
+- Millisecond
+
+The AM/PM designator part is limited to the individual characters defined by the current culture's values.  For example, if the current culture uses `"AM"` and `"PM"` then the characters `A`, `M`, and `P` (case-insensitive) are allowed for input.
+
+The following parts have no restrictions on input:
+- Era
+- Month (`"MMM"` and `"MMMM"` formats only)
+- Day of week
+- Time zone
+
+> [!IMPORTANT]
+> Input filtering is only recommended on edit boxes with simple formats.  Using input filtering for complex formats, like those used by [DateTimeEditBox](xref:@ActiproUIRoot.Controls.Editors.DateTimeEditBox), may not produce a desirable experience, especially since `DateTime` values can often be expressed in and successfully parsed from multiple formats.
+
 ## Incrementing/Cycling Values
 
 <kbd>Up Arrow</kbd>/<kbd>Down Arrow</kbd> keys, <kbd>PgUp</kbd>/<kbd>PgDn</kbd> keys, and the mouse wheel can all be used to increment and decrement the value in many edit boxes.
@@ -47,7 +108,7 @@ All edit boxes have a protected virtual [CreateIncrementalChangeRequest](xref:@A
 
 ## Moving Between Parts
 
-Some edit boxes have multiple component parts.  An example is the [TimeEditBox](xref:@ActiproUIRoot.Controls.Editors.TimeEditBox), which generally has hour, minute, and AM/PM parts.
+Some edit boxes have multiple component parts.  An example is the [TimeEditBox](timeeditbox.md), which generally has hour, minute, and AM/PM parts.
 
 ![Screenshot](../images/editbox-part-navigation.png)
 

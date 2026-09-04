@@ -1,9 +1,9 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
-	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
@@ -17,7 +17,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=needle, Path=Value}">
 						<gridseditors:DoublePropertyEditor Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" HasPopup="True" PickerKind="Default" />
 					</grids:PropertyModel>
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=RimType}" DisplayName="Frame rim type" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=RimBrush}" DisplayName="Frame rim brush" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=IsRimEffectEnabled}" />
@@ -28,11 +28,11 @@
 					</grids:PropertyModel>
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=IsBackgroundEffectEnabled}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=GlassType}" DisplayName="Frame glass type" />
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=Text}" DisplayName="TextBlock text" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=Foreground}" DisplayName="TextBlock foreground" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=textBlock, Path=FontFamily}" DisplayName="TextBlock font family" />
-					
+
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=gauge, Path=(themes:ThemeProperties.ZoomLevel)}">
 						<gridseditors:DoublePropertyEditor Minimum="1" Maximum="5" SmallChange="0.5" LargeChange="1" Format="P0" IsEditable="False" />
 					</grids:PropertyModel>

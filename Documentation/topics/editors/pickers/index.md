@@ -37,7 +37,6 @@ Allows for the input of a `Brush` value.
 </td>
 </tr>
 
-@if (wpf) {
 <tr>
 <td>
 
@@ -52,7 +51,6 @@ Allows for the input of a `Byte` (8-bit positive integer) value.
 
 </td>
 </tr>
-}
 
 <tr>
 <td>
@@ -110,6 +108,21 @@ Allows for the input of a `DateTime` value's date component.
 ![Screenshot](../images/datetimepicker.png)
 
 Allows for the input of a `DateTime` value.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+[DecimalPicker](decimalpicker.md)
+
+</td>
+<td>
+
+![Screenshot](../images/doublepicker.png)
+
+Allows for the input of a `Decimal` (floating-point number) value.
 
 </td>
 </tr>

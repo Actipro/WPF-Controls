@@ -1,207 +1,174 @@
-﻿using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Threading;
-
+using ActiproSoftware.ProductSamples.NavigationSamples.Common.Breadcrumb.ShellItem;
 using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls.Navigation;
-using ActiproSoftware.ProductSamples.NavigationSamples.Common.Breadcrumb.ShellItem;
 
-namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbComboBox {
+namespace ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.BreadcrumbComboBox;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	private bool _includeFavorites = true;
+	private bool _includeRecentHistory = true;
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Holds the favorite items shown in the ComboBox in the Breadcrumb.
 	/// </summary>
-	public partial class MainControl {
+	private readonly DeferrableObservableCollection<object> _favoriteItems = [];
 
-		private bool includeFavorites = true;
-		private bool includeRecentHistory = true;
+	/// <summary>
+	/// Holds the recent items shown in the ComboBox in the Breadcrumb.
+	/// </summary>
+	private readonly DeferrableObservableCollection<object> _recentItems = [];
 
-		/// <summary>
-		/// Holds a combined collection of favorites and recent items.
-		/// </summary>
-		private CompositeCollection comboBoxItems = new CompositeCollection();
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Holds the favorite items shown in the ComboBox in the Breadcrumb.
-		/// </summary>
-		private DeferrableObservableCollection<object> favoriteItems = new DeferrableObservableCollection<object>();
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public MainControl() {
+		InitializeComponent();
+		OnUpdateComboItems(sender: null, e: null);
+		AddHandler(LoadedEvent, new RoutedEventHandler(OnLoaded));
+	}
 
-		/// <summary>
-		/// Holds the recent items shown in the ComboBox in the Breadcrumb.
-		/// </summary>
-		private DeferrableObservableCollection<object> recentItems = new DeferrableObservableCollection<object>();
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Handles the <see cref="Breadcrumb.ConvertItem"/> event.
+	/// </summary>
+	/// <param name="sender">The source of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void OnBreadcrumbConvertItem(object? sender, BreadcrumbConvertItemEventArgs e)
+		=> ConvertItemHelper.HandleConvertItem(sender, e);
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-			OnUpdateComboItems(null, null);
-			this.AddHandler(FrameworkElement.LoadedEvent, new RoutedEventHandler(OnLoaded));
+	/// <summary>
+	/// Handles the <see cref="Breadcrumb.SelectedItemChanged"/> event.
+	/// </summary>
+	/// <param name="sender">The source of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void OnBreadcrumbSelectedItemChanged(object? sender, ObjectPropertyChangedRoutedEventArgs e)
+		=> UpdateRecentItems();
+
+	private void OnLoaded(object sender, RoutedEventArgs e) {
+		_favoriteItems.BeginUpdate();
+		try {
+			_favoriteItems.Clear();
+			if (breadcrumb.RootItem is { } rootItem) {
+				_favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, @"Desktop\Control Panel\Security")!);
+				_favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, @"Desktop\Recycle Bin")!);
+				_favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, @"Desktop\Computer\Local Disk (C:)\Temp")!);
+			}
+		}
+		finally {
+			_favoriteItems.EndUpdate();
+		}
+	}
+
+	/// <summary>
+	/// Updates the <see cref="ComboBoxItems"/> collection.
+	/// </summary>
+	/// <param name="sender">The sender.</param>
+	/// <param name="e">The event data.</param>
+	private void OnUpdateComboItems(object? sender, RoutedEventArgs? e) {
+		if (!IsInitialized)
+			return;
+
+		ComboBoxItems.Clear();
+
+		if (IncludeFavorites) {
+			var separator = new Separator {
+				Style = (Style)FindResource("FavoritesSeparatorStyle")
+			};
+			ComboBoxItems.Add(separator);
+
+			var collectionContainer = new CollectionContainer {
+				Collection = _favoriteItems
+			};
+			ComboBoxItems.Add(collectionContainer);
 		}
 
+		if (IncludeRecentHistory) {
+			var separator = new Separator {
+				Style = (Style)FindResource("RecentSeparatorStyle")
+			};
+			ComboBoxItems.Add(separator);
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Handles the ConvertItem event of the breadcrumb control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="ActiproSoftware.Windows.Controls.Navigation.BreadcrumbConvertItemEventArgs"/> instance containing the event data.</param>
-		private void OnBreadcrumbConvertItem(object sender, BreadcrumbConvertItemEventArgs e) {
-			ConvertItemHelper.HandleConvertItem(sender, e);
+			var collectionContainer = new CollectionContainer {
+				Collection = _recentItems
+			};
+			ComboBoxItems.Add(collectionContainer);
 		}
 
-		/// <summary>
-		/// Handles the SelectedItemChanged event of the breadcrumb control.
-		/// </summary>
-		/// <param name="sender">The source of the event.</param>
-		/// <param name="e">The <see cref="PropertyChangedRoutedEventArgs{object}"/> instance containing the event data.</param>
-		private void OnBreadcrumbSelectedItemChanged(object sender, ObjectPropertyChangedRoutedEventArgs e) {
-			UpdateRecentItems();
+		if (ComboBoxItems.Count == 0) {
+			var separator = new Separator {
+				Style = (Style)FindResource("EmptyListSeparatorStyle")
+			};
+			ComboBoxItems.Add(separator);
 		}
+	}
 
-		/// <summary>
-		/// Occurs when the element is loaded
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnLoaded(object sender, RoutedEventArgs e) {
-			this.favoriteItems.BeginUpdate();
+	/// <summary>
+	/// Updates the <see cref="RecentItems"/>.
+	/// </summary>
+	private void UpdateRecentItems() {
+		if (breadcrumb.SelectedItem is { } selectedItem) {
+			_recentItems.BeginUpdate();
 			try {
-				this.favoriteItems.Clear();
-				object rootItem = this.breadcrumb.RootItem;
-				this.favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, "Desktop\\Control Panel\\Security"));
-				this.favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, "Desktop\\Recycle Bin"));
-				this.favoriteItems.Add(ConvertItemHelper.GetItem(rootItem, "Desktop\\Computer\\Local Disk (C:)\\Temp"));
+				// Make sure item doesn't already exist in the list
+				while (_recentItems.Remove(selectedItem)) { /* no-op */ }
+
+				// Insert it at the beginning
+				_recentItems.Insert(0, selectedItem);
+
+				// Cap the size of the list
+				while (_recentItems.Count > 15)
+					_recentItems.RemoveAt(15);
 			}
 			finally {
-				this.favoriteItems.EndUpdate();
+				_recentItems.EndUpdate();
 			}
 		}
-
-		/// <summary>
-		/// Updates the <see cref="ComboBoxItems"/> collection.
-		/// </summary>
-		/// <param name="sender">The sender.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-		private void OnUpdateComboItems(object sender, RoutedEventArgs e) {
-			if (!this.IsInitialized)
-				return;
-
-			this.comboBoxItems.Clear();
-
-			if (this.IncludeFavorites) {
-				Separator sep = new Separator();
-				sep.Style = (Style)FindResource("FavoritesSeparatorStyle");
-				this.comboBoxItems.Add(sep);
-
-				CollectionContainer collectionContainer = new CollectionContainer();
-				collectionContainer.Collection = this.favoriteItems;
-				this.comboBoxItems.Add(collectionContainer);
-			}
-
-			if (this.IncludeRecentHistory) {
-				Separator sep = new Separator();
-				sep.Style = (Style)FindResource("RecentSeparatorStyle");
-				this.comboBoxItems.Add(sep);
-
-				CollectionContainer collectionContainer = new CollectionContainer();
-				collectionContainer.Collection = this.recentItems;
-				this.comboBoxItems.Add(collectionContainer);
-			}
-
-			if (0 == this.comboBoxItems.Count) {
-				Separator sep = new Separator();
-				sep.Style = (Style)FindResource("EmptyListSeparatorStyle");
-				this.comboBoxItems.Add(sep);
-			}
-		}
-
-		/// <summary>
-		/// Updates the <see cref="RecentItems"/>.
-		/// </summary>
-		private void UpdateRecentItems() {
-			if (null != this.breadcrumb.SelectedItem) {
-				this.recentItems.BeginUpdate();
-				try {
-					// Make sure item doesn't already exist in the list
-					while (this.recentItems.Remove(this.breadcrumb.SelectedItem))
-						; // No-op
-
-					// Insert it at the beginning
-					this.recentItems.Insert(0, this.breadcrumb.SelectedItem);
-
-					// Cap the size of the list
-					while (this.recentItems.Count > 15)
-						this.recentItems.RemoveAt(15);
-				}
-				finally {
-					this.recentItems.EndUpdate();
-				}
-			}
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the combo box items.
-		/// </summary>
-		/// <value>The combo box items.</value>
-		public CompositeCollection ComboBoxItems {
-			get {
-				return this.comboBoxItems;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether to include favorites.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if favorites should be included; otherwise, <c>false</c>.
-		/// </value>
-		public bool IncludeFavorites {
-			get {
-				return includeFavorites;
-			}
-			set {
-				if (includeFavorites != value) {
-					includeFavorites = value;
-					OnUpdateComboItems(null, null);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets whether to include recent history.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if recent history should be included; otherwise, <c>false</c>.
-		/// </value>
-		public bool IncludeRecentHistory {
-			get {
-				return includeRecentHistory;
-			}
-			set {
-				if (includeRecentHistory != value) {
-					includeRecentHistory = value;
-					OnUpdateComboItems(null, null);
-				}
-			}
-		}
-
-
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// A combined collection of favorites and recent items.
+	/// </summary>
+	public CompositeCollection ComboBoxItems { get; } = [];
+
+	/// <summary>
+	/// Indicates whether to include favorites.
+	/// </summary>
+	public bool IncludeFavorites {
+		get => _includeFavorites;
+		set {
+			if (_includeFavorites != value) {
+				_includeFavorites = value;
+				OnUpdateComboItems(sender: null, e: null);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Indicates whether to include recent history.
+	/// </summary>
+	public bool IncludeRecentHistory {
+		get => _includeRecentHistory;
+		set {
+			if (_includeRecentHistory != value) {
+				_includeRecentHistory = value;
+				OnUpdateComboItems(sender: null, e: null);
+			}
+		}
+	}
+
 }

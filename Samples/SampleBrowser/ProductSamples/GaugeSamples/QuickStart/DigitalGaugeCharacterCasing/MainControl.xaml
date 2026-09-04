@@ -1,13 +1,13 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:gauge="http://schemas.actiprosoftware.com/winfx/xaml/gauge"
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
-	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
+	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	>
-	
+
 	<sampleBrowser:ProductItemControl.SideBarContent>
 		<StackPanel>
 
@@ -30,11 +30,11 @@
 
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
-					The DigitalGauge control has three different casing modes in which it can display characters, 
-					Lower, Normal, and Upper. Lower will cause characters to 
-					be rendered in lower case. Normal will cause characters to be rendered in whatever case was 
-					specified in the input string. Upper will cause characters to be rendered in upper case. Because 
-					of the limitations inherent to segmented displays, some of the characters may not be possible to display in 
+					The DigitalGauge control has three different casing modes in which it can display characters,
+					Lower, Normal, and Upper. Lower will cause characters to
+					be rendered in lower case. Normal will cause characters to be rendered in whatever case was
+					specified in the input string. Upper will cause characters to be rendered in upper case. Because
+					of the limitations inherent to segmented displays, some of the characters may not be possible to display in
 					the desired case. In these cases, the character will be displayed in the case that is available.
 					<LineBreak /><LineBreak />
 					The options that control the characters are available.

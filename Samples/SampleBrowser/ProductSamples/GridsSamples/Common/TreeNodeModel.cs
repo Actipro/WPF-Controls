@@ -1,268 +1,126 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+namespace ActiproSoftware.ProductSamples.GridsSamples.Common;
 
-#if WINRT
-using Windows.UI.Xaml.Markup;
-using Windows.UI.Xaml.Media;
-using ActiproSoftware.UI.Xaml;
-#else
-using System.Windows.Markup;
-using System.Windows.Media;
-using ActiproSoftware.Windows;
-#endif
+/// <summary>
+/// Provides a common implementation of a tree node model.
+/// </summary>
+[ContentProperty(nameof(Children))]
+public class TreeNodeModel : ObservableObjectBase {
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
-	
+	private ICommand? _defaultActionCommand;
+	private ImageSource? _imageSource;
+	private bool _isDraggable = true;
+	private bool _isEditable;
+	private bool _isEditing;
+	private bool _isExpanded;
+	private bool _isLoading;
+	private bool _isSelectable = true;
+	private bool _isSelected;
+	private string _name = string.Empty;
+	private object? _tag;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Provides a common implementation of a tree node model.
+	/// The collection of child nodes.
 	/// </summary>
-	#if WINRT
-	[ContentProperty(Name = "Children")]
-	#else
-	[ContentProperty("Children")]
-	#endif
-	public class TreeNodeModel : ObservableObjectBase {
-		
-		private ObservableCollection<TreeNodeModel> children = new ObservableCollection<TreeNodeModel>();
-		private ICommand defaultActionCommand;
-		private ImageSource imageSource;
-		private bool isDraggable = true;
-		private bool isEditable;
-		private bool isEditing;
-		private bool isExpanded;
-		private bool isLoading;
-		private bool isSelectable = true;
-		private bool isSelected;
-		private string name;
-		private object tag;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the collection of child nodes.
-		/// </summary>
-		/// <value>The collection of child nodes.</value>
-		public ObservableCollection<TreeNodeModel> Children {
-			get {
-				if (children == null)
-					children = new ObservableCollection<TreeNodeModel>();
+	public ObservableCollection<TreeNodeModel> Children { get; } = [];
 
-				return children;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the default action command.
-		/// </summary>
-		/// <value>The default action command.</value>
-		public ICommand DefaultActionCommand {
-			get {
-				return defaultActionCommand;
-			}
-			set {
-				defaultActionCommand = value;
-				this.NotifyPropertyChanged("DefaultActionCommand");
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets the <see cref="ImageSource"/> for an image to display on the node.
-		/// </summary>
-		/// <value>The <see cref="ImageSource"/> for an image to display on the node.</value>
-		public ImageSource ImageSource {
-			get {
-				return imageSource;
-			}
-			set {
-				if (imageSource == value)
-					return;
-
-				imageSource = value;
-				this.NotifyPropertyChanged("ImageSource");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is draggable.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is draggable; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsDraggable {
-			get {
-				return isDraggable;
-			}
-			set {
-				if (isDraggable == value)
-					return;
-
-				isDraggable = value;
-				this.NotifyPropertyChanged("IsDraggable");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is editable.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is editable; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsEditable {
-			get {
-				return isEditable;
-			}
-			set {
-				if (isEditable == value)
-					return;
-
-				isEditable = value;
-				this.NotifyPropertyChanged("IsEditable");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is currently being edited.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is currently being edited; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsEditing {
-			get {
-				return isEditing;
-			}
-			set {
-				if (isEditing == value)
-					return;
-
-				isEditing = value;
-				this.NotifyPropertyChanged("IsEditing");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is expanded.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is expanded; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsExpanded {
-			get {
-				return isExpanded;
-			}
-			set {
-				if (isExpanded == value)
-					return;
-
-				isExpanded = value;
-				this.NotifyPropertyChanged("IsExpanded");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is currently loading children asynchronously.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is currently loading children asynchronously; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsLoading {
-			get {
-				return isLoading;
-			}
-			set {
-				if (isLoading == value)
-					return;
-
-				isLoading = value;
-				this.NotifyPropertyChanged("IsLoading");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is capable of being selected.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is capable of being selected; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsSelectable {
-			get {
-				return isSelectable;
-			}
-			set {
-				if (isSelectable == value)
-					return;
-
-				isSelectable = value;
-				this.NotifyPropertyChanged("IsSelectable");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the node is selected.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the node is selected; otherwise, <c>false</c>.
-		/// </value>
-		public bool IsSelected {
-			get {
-				return isSelected;
-			}
-			set {
-				if (isSelected == value)
-					return;
-
-				isSelected = value;
-				this.NotifyPropertyChanged("IsSelected");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the name of the node.
-		/// </summary>
-		/// <value>The name of the node.</value>
-		public string Name {
-			get {
-				return name;
-			}
-			set {
-				if (name == value)
-					return;
-
-				if (!string.IsNullOrEmpty(value))
-					name = value;
-				this.NotifyPropertyChanged("Name");
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets custom data for the node.
-		/// </summary>
-		/// <value>The custom data for the node.</value>
-		public object Tag {
-			get {
-				return tag;
-			}
-			set {
-				if (tag == value)
-					return;
-
-				tag = value;
-				this.NotifyPropertyChanged("Tag");
-			}
-		}
-
-		/// <summary>
-		/// Returns a <see cref="String"/> representation of this instance.
-		/// </summary>
-		/// <returns>
-		/// A <see cref="String"/> representation of this instance.
-		/// </returns>
-		public override string ToString() {
-			return string.Format("{0}[Name={1}]", this.GetType().Name, this.Name);
-		}
-
+	/// <summary>
+	/// The default action command.
+	/// </summary>
+	public ICommand? DefaultActionCommand {
+		get => _defaultActionCommand;
+		set => SetProperty(ref _defaultActionCommand, value);
 	}
+
+	/// <summary>
+	/// The <see cref="ImageSource"/> for an image to display on the node.
+	/// </summary>
+	public ImageSource? ImageSource {
+		get => _imageSource;
+		set => SetProperty(ref _imageSource, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is draggable.
+	/// </summary>
+	public bool IsDraggable {
+		get => _isDraggable;
+		set => SetProperty(ref _isDraggable, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is editable.
+	/// </summary>
+	public bool IsEditable {
+		get => _isEditable;
+		set => SetProperty(ref _isEditable, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is currently being edited.
+	/// </summary>
+	public bool IsEditing {
+		get => _isEditing;
+		set => SetProperty(ref _isEditing, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is expanded.
+	/// </summary>
+	public bool IsExpanded {
+		get => _isExpanded;
+		set => SetProperty(ref _isExpanded, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is currently loading children asynchronously.
+	/// </summary>
+	public bool IsLoading {
+		get => _isLoading;
+		set => SetProperty(ref _isLoading, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is capable of being selected.
+	/// </summary>
+	public bool IsSelectable {
+		get => _isSelectable;
+		set => SetProperty(ref _isSelectable, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the node is selected.
+	/// </summary>
+	public bool IsSelected {
+		get => _isSelected;
+		set => SetProperty(ref _isSelected, value);
+	}
+
+	/// <summary>
+	/// The name of the node.
+	/// </summary>
+	public string Name {
+		get => _name;
+		set {
+			// Prevent the name from being cleared
+			if (!string.IsNullOrEmpty(value))
+				SetProperty(ref _name, value);
+		}
+	}
+
+	/// <summary>
+	/// Custom data for the node.
+	/// </summary>
+	public object? Tag {
+		get => _tag;
+		set => SetProperty(ref _tag, value);
+	}
+
+	/// <inheritdoc/>
+	public override string ToString()
+		=> string.Format("{0}[Name={1}]", GetType().Name, Name);
 
 }

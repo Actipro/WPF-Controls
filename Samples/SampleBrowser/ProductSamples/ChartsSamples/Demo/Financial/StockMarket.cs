@@ -1,69 +1,49 @@
-﻿namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial {
+namespace ActiproSoftware.ProductSamples.ChartsSamples.Demo.Financial;
+
+/// <summary>
+/// A stock marker.
+/// </summary>
+public class StockMarket : Stock {
+
+	private readonly decimal _stockPriceMin;
+	private readonly decimal _stockPriceMax;
+	private readonly decimal _stockPriceDelta;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// A stock marker.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class StockMarket : Stock {
+	/// <param name="name">The name.</param>
+	/// <param name="priceMin">The minimum price.</param>
+	/// <param name="priceMax">The maximum price.</param>
+	/// <param name="priceDelta">The price delta.</param>
+	public StockMarket(string name, decimal priceMin, decimal priceMax, decimal priceDelta)
+		: base(name, symbol: null) {
 
-		private decimal stockPriceMin;
-		private decimal stockPriceMax;
-		private decimal stockPriceDelta;
+		_stockPriceMin = priceMin;
+		_stockPriceMax = priceMax;
+		_stockPriceDelta = priceDelta;
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>StockMarket</c> class.
-		/// </summary>
-		/// <param name="name">The name.</param>
-		/// <param name="priceMin">The minimum price.</param>
-		/// <param name="priceMax">The maximum price.</param>
-		/// <param name="priceDelta">The price delta.</param>
-		public StockMarket(string name, decimal priceMin, decimal priceMax, decimal priceDelta)
-			: base(name, null) {
-			stockPriceMin = priceMin;
-			stockPriceMax = priceMax;
-			stockPriceDelta = priceDelta;
-			InitializeSampleData();
-		}
-
-		#endregion OBJECT
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		#region PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the stock price delta.
-		/// </summary>
-		/// <value>The stock price delta.</value>
-		protected override decimal StockPriceDelta {
-			get {
-				return stockPriceDelta;
-			}
-		}
-
-		/// <summary>
-		/// Gets the stock price max.
-		/// </summary>
-		/// <value>The stock price max.</value>
-		protected override decimal StockPriceMax {
-			get {
-				return stockPriceMax;
-			}
-		}
-
-		/// <summary>
-		/// Gets the stock price min.
-		/// </summary>
-		/// <value>The stock price min.</value>
-		protected override decimal StockPriceMin {
-			get {
-				return stockPriceMin;
-			}
-		}
-
-		#endregion PUBLIC PROCEDURES
+		InitializeSampleData();
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	protected override decimal StockPriceDelta
+		=> _stockPriceDelta;
+
+	/// <inheritdoc/>
+	protected override decimal StockPriceMax
+		=> _stockPriceMax;
+
+	/// <inheritdoc/>
+	protected override decimal StockPriceMin
+		=> _stockPriceMin;
+
 }

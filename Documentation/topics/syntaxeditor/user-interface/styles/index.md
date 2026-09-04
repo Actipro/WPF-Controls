@@ -29,6 +29,6 @@ See the [TextStylePreview Control](text-style-preview.md) topic for more informa
 
 [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) supports the ability to easily switch between light and dark themes.
 
-All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) as well as the built-in language implementations are designed to support either light or dark themes.  However, any custom language implementations may require additional configuration to support a dark theme since most styles intended for use on a light background are not very appealing on a dark background.
+All of the default styles registered by [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) as well as the built-in language implementations are designed to support either light or dark themes.  However, any custom language implementations may require additional configuration to support a dark theme since most styles intended for use on a light background are not very appealing on a dark background.
 
 See the [Dark Themes](dark-themes.md) topic for more information.

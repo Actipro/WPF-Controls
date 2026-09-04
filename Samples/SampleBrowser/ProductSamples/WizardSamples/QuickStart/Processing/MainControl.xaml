@@ -15,7 +15,7 @@
 					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
 			
 				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False"
-					SelectedPageChanged="wizard_SelectedPageChanged">				  
+					SelectedPageChanged="OnWizardSelectedPageChanged">				  
 
 					<!-- Processing -->
 					<wizard:WizardPage x:Name="processingPage" PageType="Interior" Caption="Buttons Disabled During Processing" 
@@ -29,7 +29,7 @@
 							</TextBlock>
 							<TextBlock x:Name="progressTextBlock" Margin="0,0,0,3" HorizontalAlignment="Center">Not started</TextBlock>
 							<ProgressBar x:Name="progressBar" Margin="0,0,0,7"  Width="200" Height="18" Value="0" />
-							<Button x:Name="startProcessingButton" Width="200" Click="startProcessingButton_Click">Start Processing</Button>
+							<Button x:Name="startProcessingButton" Width="200" Click="OnStartProcessingButtonClick">Start Processing</Button>
 						</StackPanel>
 					</wizard:WizardPage>
 				

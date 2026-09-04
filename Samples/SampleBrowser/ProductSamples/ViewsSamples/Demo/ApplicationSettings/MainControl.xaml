@@ -1,5 +1,5 @@
-﻿<sampleBrowser:ProductItemControl 
-	x:Name="sampleRootControl" 
+<sampleBrowser:ProductItemControl
+	x:Name="sampleRootControl"
 	x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.ApplicationSettings.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -25,7 +25,7 @@
 		<shared:BooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" IsInverted="True" />
 
 		<!--
-			Icons from: https://icon-sets.iconify.design/fluent-mdl2/ 
+			Icons from: https://icon-sets.iconify.design/fluent-mdl2/
 			- These icons do not have any margin so the icon sizes have been reduced to 20x20
 			- Alternatively, 24x24 icons (the default size) could be used with 2px margin around the glyph content
 		-->
@@ -42,7 +42,7 @@
 		<Geometry x:Key="icon-fluent-mdl2-update-restore">M1024 0q141 0 272 36t245 103t207 160t160 208t103 245t37 272q0 141-36 272t-103 245t-160 207t-208 160t-245 103t-272 37q-172 0-330-55t-289-154t-226-238t-141-304l123-34q40 145 123 265t198 208t253 135t289 49q123 0 237-32t214-90t182-141t140-181t91-214t32-238q0-123-32-237t-90-214t-141-182t-181-140t-214-91t-238-32q-129 0-251 36T546 267T355 428T215 640h297v128H0V256h128v274q67-123 163-221t212-166T752 37t272-37</Geometry>
 		<Geometry x:Key="icon-fluent-mdl2-volume-3">M1673 119q90 90 160 195t117 220t73 239t25 251q0 128-25 251t-72 239t-118 220t-160 195l-91-91q81-81 144-175t106-198t65-215t22-226t-22-226t-65-214t-106-198t-144-176zm-9 905q0 180-68 343t-194 291l-91-91q109-109 167-249t58-294t-58-294t-167-249l91-91q126 128 194 291t68 343m-534-362q73 73 111 166t39 196q0 103-38 196t-112 166l-90-90q54-54 83-124t29-148q0-77-29-147t-83-125zM677 256h91v1536h-90l-385-384H0V640h293zm-37 219L347 768H128v512h219l293 293z</Geometry>
 		<Geometry x:Key="icon-fluent-mdl2-volume-disabled">M1472 896q119 0 224 45t183 124t123 183t46 224q0 119-45 224t-124 183t-183 123t-224 46q-119 0-224-45t-183-124t-123-183t-46-224q0-119 45-224t124-183t183-123t224-46m0 1024q93 0 174-35t142-96t96-142t36-175q0-93-35-174t-96-142t-142-96t-175-36q-93 0-174 35t-142 96t-96 142t-36 175q0 93 35 174t96 142t142 96t175 36M640 768v512h122q-8 32-14 64t-9 64H512V640h293l384-384h91v506q-67 18-128 48V475L858 768zm1069 557l-147 147l147 147l-90 90l-147-146l-147 146l-90-90l146-147l-146-147l90-90l147 147l147-147z</Geometry>
-		
+
 		<!-- Paths used for icons in this sample should match the foreground color -->
 		<Style TargetType="Path">
 			<Setter Property="Fill" Value="{Binding Path=(TextElement.Foreground), RelativeSource={RelativeSource Mode=Self}}" />

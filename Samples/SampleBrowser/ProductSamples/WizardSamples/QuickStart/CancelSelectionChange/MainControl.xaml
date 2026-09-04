@@ -13,7 +13,7 @@
 					Background="{DynamicResource {x:Static themes:AssetResourceKeys.WindowBackgroundNormalBrushKey}}">
 
 				<wizard:Wizard x:Name="wizard" CancelButtonClosesWindow="False" FinishButtonClosesWindow="False"
-					SelectedPageChanged="wizard_SelectedPageChanged" SelectedPageChanging="wizard_SelectedPageChanging">
+					SelectedPageChanged="OnWizardSelectedPageChanged" SelectedPageChanging="OnWizardSelectedPageChanging">
 
 					<!-- Cancel Selection Change -->
 					<wizard:WizardPage x:Name="cancelSelectionChangePage" PageType="Interior"

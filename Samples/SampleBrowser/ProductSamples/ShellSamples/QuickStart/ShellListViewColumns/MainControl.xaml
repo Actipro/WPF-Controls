@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellListViewColumns.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -26,11 +26,11 @@
 					</grids:PropertyModel>
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>
-			
+
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
-					<LineBreak /><LineBreak />	
+					<LineBreak /><LineBreak />
 					This QuickStart shows two ways to customize a ShellListView's columns.
 					<LineBreak /><LineBreak />
 					First, the default DetailsLayoutModeItemTemplate, used as the DataTemplate for the Name column, is updated to include a CheckBox that is bound to the view model's Tag property.
@@ -42,12 +42,12 @@
 
 		</StackPanel>
 	</sampleBrowser:ProductItemControl.SideBarContent>
-	
+
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 		<shell:ShellListView x:Name="listView" RootSpecialFolderKind="Default">
 			<shell:ShellListView.DetailsLayoutModeItemTemplate>
 				<DataTemplate>
-					<shared:PixelSnapper VerticalRoundMode="RoundToEven">
+					<shared:PixelSnapper VerticalRoundMode="NearestEven">
 						<Grid Margin="2,1" Background="Transparent" ToolTip="{Binding ToolTip, Mode=OneWay, IsAsync=True}">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
@@ -72,5 +72,5 @@
 			</shell:ShellListView.ItemAdapter>
 		</shell:ShellListView>
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

@@ -1,47 +1,44 @@
-﻿using System.Collections.Generic;
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDictionaryDataFactory;
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridDictionaryDataFactory {
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	private Dictionary<string, string>? _dictionary;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-		private Dictionary<string, string> dictionary;
+		InitializeData();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
+	/// <summary>
+	/// Initializes the default data and factory.
+	/// </summary>
+	private void InitializeData() {
+		_dictionary = new Dictionary<string, string> {
+			{ "Key1", "Value1" },
+			{ "Key2", "Value2" },
+			{ "Key3", "Value3" },
+			{ "Key4", "Value4" },
+			{ "Key5", "Value5" },
+			{ "Key6", "Value6" }
+		};
 
-			this.InitializeData();
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes the default data and factory.
-		/// </summary>
-		private void InitializeData() {
-			dictionary = new Dictionary<string, string>();
-			dictionary.Add("Key1", "Value1");
-			dictionary.Add("Key2", "Value2");
-			dictionary.Add("Key3", "Value3");
-			dictionary.Add("Key4", "Value4");
-			dictionary.Add("Key5", "Value5");
-			dictionary.Add("Key6", "Value6");
-
-			propGrid.DataFactory = new DictionaryDataFactory<string, string>();
-			propGrid.DataObject = dictionary;
-		}
-
+		propGrid.DataFactory = new DictionaryDataFactory<string, string>();
+		propGrid.DataObject = _dictionary;
 	}
 
 }

@@ -1,59 +1,44 @@
 ﻿#if MS_LOGGING
+#pragma warning disable CA2254 // Template should be a static expression
 
-using ActiproSoftware.Products.Logging;
+using ActiproSoftware.Logging;
 using Microsoft.Extensions.Logging;
-using System;
-using ActiproLogLevel = ActiproSoftware.Products.Logging.LogLevel;
+using ActiproLogLevel = ActiproSoftware.Logging.LogLevel;
 using IMSExtensionsLogger = Microsoft.Extensions.Logging.ILogger;
 
-namespace ActiproSoftware.SampleBrowser.Logging {
+namespace ActiproSoftware.SampleBrowser.Logging;
 
-	/// <summary>
-	/// Defines an adapter to allow Microsoft's <c>ILogger</c> to work with Actipro's <see cref="Logger"/>.
-	/// </summary>
-	internal class LoggerAdapter : Logger {
+/// <summary>
+/// Defines an adapter to allow Microsoft's <c>ILogger</c> to work with Actipro's <see cref="Logger"/>.
+/// </summary>
+/// <param name="wrappedLogger">The Microsoft-based logger.</param>
+internal class LoggerAdapter(IMSExtensionsLogger wrappedLogger) : Logger {
 
-		private readonly IMSExtensionsLogger wrappedLogger;
+	private readonly IMSExtensionsLogger _wrappedLogger = wrappedLogger ?? throw new ArgumentNullException(nameof(wrappedLogger));
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="LoggerAdapter"/> class.
-		/// </summary>
-		/// <param name="wrappedLogger">The Microsoft-based logger.</param>
-		internal LoggerAdapter(IMSExtensionsLogger wrappedLogger) {
-            this.wrappedLogger = wrappedLogger ?? throw new ArgumentNullException(nameof(wrappedLogger));
-        }
+	/// <inheritdoc/>
+	public override IDisposable BeginScope(string? messageFormat, params object?[] args)
+		=> _wrappedLogger.BeginScope(messageFormat ?? string.Empty, args);
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <inheritdoc/>
+	public override bool IsEnabled(ActiproLogLevel logLevel)
+		=> _wrappedLogger.IsEnabled(logLevel.ToMicrosoftLogLevel());
 
-		/// <inheritdoc/>
-		public override IDisposable BeginScope(string messageFormat, params object[] args) {
-            return wrappedLogger.BeginScope(messageFormat, args);
-        }
+	/// <inheritdoc/>
+	public override void Log(ActiproLogLevel logLevel, Exception? exception, string? message, params object?[] args)
+		=> _wrappedLogger.Log(logLevel.ToMicrosoftLogLevel(), exception, message, args);
 
-		/// <inheritdoc/>
-		public override bool IsEnabled(ActiproLogLevel logLevel) {
-            return wrappedLogger.IsEnabled(logLevel.ToMicrosoftLogLevel());
-        }
-
-		/// <inheritdoc/>
-		public override void Log(ActiproLogLevel logLevel, Exception exception, string message, params object[] args) {
-            wrappedLogger.Log(logLevel.ToMicrosoftLogLevel(), exception, message, args);
-        }
-
-		/// <inheritdoc/>
-		public override void Log(ActiproLogLevel logLevel, Func<string> messageFactory, Exception exception) {
-			var msLogLevel = logLevel.ToMicrosoftLogLevel();
-			if (wrappedLogger.IsEnabled(msLogLevel))
-				wrappedLogger.Log(msLogLevel, exception, messageFactory?.Invoke());
-		}
-
+	/// <inheritdoc/>
+	public override void Log(ActiproLogLevel logLevel, Func<string?> messageFactory, Exception? exception) {
+		var msLogLevel = logLevel.ToMicrosoftLogLevel();
+		if (_wrappedLogger.IsEnabled(msLogLevel))
+			_wrappedLogger.Log(msLogLevel, exception, messageFactory?.Invoke());
 	}
+
 }
 
 #endif

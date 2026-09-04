@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.PromptOnClose.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -36,7 +36,7 @@
 
 		<!-- DockSite -->
 		<docking:DockSite x:Name="dockSite" Grid.Row="1" CanDocumentWindowsFloat="True" FloatingWindowTitle="Docking/MDI QuickStart" FloatingWindowIcon="/Images/Icons/Actipro.ico"
-						  WindowsClosing="OnDockSiteWindowsClosing" 
+						  WindowsClosing="OnDockSiteWindowsClosing"
 						  >
 			<docking:SplitContainer>
 

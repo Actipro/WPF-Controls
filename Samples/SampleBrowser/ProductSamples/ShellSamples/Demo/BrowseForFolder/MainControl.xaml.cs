@@ -1,68 +1,49 @@
-﻿using ActiproSoftware.Windows.Controls.Shell;
-using System.Windows;
-
-#if WPF
+using ActiproSoftware.Windows.Controls.Shell;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
-#endif
 
-namespace ActiproSoftware.ProductSamples.ShellSamples.Demo.BrowseForFolder {
+namespace ActiproSoftware.ProductSamples.ShellSamples.Demo.BrowseForFolder;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	private void OnCancelButtonClick(object sender, RoutedEventArgs e)
+		=> MessageBox.Show("The dialog was canceled.");
 
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnCancelButtonClick(object sender, RoutedEventArgs e) {
-			MessageBox.Show("The dialog was canceled.");
-		}
+	private void OnOkButtonClick(object sender, RoutedEventArgs e) {
+		var selectedViewModel = treeListBox.SelectedItem as ShellObjectViewModel;
+		if (selectedViewModel is not null)
+			MessageBox.Show(string.Format("The '{0}' folder with parsing name '{1}' was selected.", selectedViewModel.Name, selectedViewModel.ParsingName));
+		else
+			MessageBox.Show("Nothing was selected.");
+	}
 
-		/// <summary>
-		/// Occurs when the button is clicked.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="RoutedEventArgs"/> that contains the event data.</param>
-		private void OnOkButtonClick(object sender, RoutedEventArgs e) {
-			var selectedViewModel = treeListBox.SelectedItem as ShellObjectViewModel;
-			if (selectedViewModel != null)
-				MessageBox.Show(string.Format("The '{0}' folder with parsing name '{1}' was selected.", selectedViewModel.Name, selectedViewModel.ParsingName));
-			else
-				MessageBox.Show("Nothing was selected.");
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-		/// <summary>
-		/// Notifies the UI that it has been unloaded.
-		/// </summary>
-		public override void NotifyUnloaded() {
-			base.NotifyUnloaded();
-			
-			// Dispose any unmanaged resources held by the shell instances now that the UI is closing
-			treeListBox.DisposeShellInstances();
-		}
+	/// <inheritdoc/>
+	public override void NotifyUnloaded() {
+		base.NotifyUnloaded();
 
+		// Dispose any unmanaged resources held by the shell instances now that the UI is closing
+		treeListBox.DisposeShellInstances();
 	}
 
 }

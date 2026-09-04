@@ -1,8 +1,8 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlCustomInputBindings.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids" 
+	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:navigation="http://schemas.actiprosoftware.com/winfx/xaml/navigation"
 	xmlns:sample="clr-namespace:ActiproSoftware.ProductSamples.NavigationSamples.QuickStart.ZoomContentControlCustomInputBindings"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -18,7 +18,7 @@
 
 		<DataTemplate x:Key="InputBindingSelectionTemplate">
 			<ComboBox ItemsSource="{x:Static sample:MainControl.Commands}" ItemTemplate="{StaticResource RoutedCommandTemplate}"
-						Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}" 
+						Style="{StaticResource {x:Static themes:SharedResourceKeys.EmbeddedComboBoxStyleKey}}"
 						SelectionChanged="OnComboBoxSelectionChanged" SelectedItem="{Binding Value}" />
 		</DataTemplate>
 

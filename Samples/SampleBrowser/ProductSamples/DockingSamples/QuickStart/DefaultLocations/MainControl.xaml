@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.DefaultLocations.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -15,7 +15,7 @@
 					For tool windows that are being opened for the first time and don't yet have a breadcrumb available, default location information is requested.
 					<LineBreak /><LineBreak />
 					This sample creates a number of tool windows in code behind.
-					It shows off the various ways, everything from simple properties to events, 
+					It shows off the various ways, everything from simple properties to events,
 					to provide default location information when a tool window is told to open without being passed specific location information.
 					This concept is especially important in MVVM scenarios.
 				</TextBlock>

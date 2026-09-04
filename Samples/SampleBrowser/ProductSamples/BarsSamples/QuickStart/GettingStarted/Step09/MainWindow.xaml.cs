@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 RIBBON GETTING STARTED SERIES - STEP 9
 
@@ -18,98 +18,91 @@ CHANGES SINCE LAST STEP:
 
 */
 
-using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Input;
 
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step09 {
+/// <summary>
+/// Provides the main window for this sample.
+/// </summary>
+public partial class MainWindow {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main window for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainWindow {
+	public MainWindow() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Add command bindings
+		CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
+		CommandBindings.Add(new CommandBinding(ApplicationCommands.New, ExecuteNewCommand));
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MainWindow"/> class.
-		/// </summary>
-		public MainWindow() {
-			InitializeComponent();
+		// Configure this view with the new view model
+		var viewModel = new SampleWindowViewModel();
 
-			// Add command bindings
-			this.CommandBindings.Add(new CommandBinding(ApplicationCommands.Help, ExecuteHelpCommand));
-			this.CommandBindings.Add(new CommandBinding(ApplicationCommands.New, ExecuteNewCommand));
+		// SAMPLE NOTE 9.1:
+		//   Each RibbonBackstageTabViewModel configured for the Backstage must have a view to associated with the view model,
+		//   so configure the RibbonBackstageViewModel to use the custom DataTemplateSelector configured in the XAML of this sample.
+		viewModel.Ribbon.Backstage!.ContentTemplateSelector = FindResource(SampleResourceKeys.SampleBackstageTabContentTemplateSelector) as DataTemplateSelector;
+		ViewModel = viewModel;
+	}
 
-			// Configure this view with the new view model
-			var viewModel = new SampleWindowViewModel();
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
-			// SAMPLE NOTE 9.1:
-			//		Each RibbonBackstageTabViewModel configured for the Backstage must have a view to associated with the view model,
-			//		so configure the RibbonBackstageViewModel to use the custom DataTemplateSelector configured in the XAML of this sample.
-			viewModel.Ribbon.Backstage.ContentTemplateSelector = this.FindResource(SampleResourceKeys.SampleBackstageTabContentTemplateSelector) as DataTemplateSelector;
-			this.ViewModel = viewModel;
-		}
+	/// <summary>
+	/// Executes the <see cref="ApplicationCommands.Help"/> command.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e) {
+		// Associate the CommandBinding with ViewModel.HelpCommand
+		ViewModel?.HelpCommand?.Execute(e.Parameter);
+	}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// Executes the <see cref="ApplicationCommands.New"/> command.
+	/// </summary>
+	/// <param name="sender">The sender of the event.</param>
+	/// <param name="e">The event data.</param>
+	private void ExecuteNewCommand(object sender, ExecutedRoutedEventArgs e) {
+		// Since RichTextBox does not work well with MVVM patterns, the New command is handled by the
+		// view instead of adding a corresponding command to the view model. This reduces the complexity
+		// of the sample since the focus should be on configuring the Ribbon instead of RichTextBox.
 
-		/// <summary>
-		/// Executes the <see cref="ApplicationCommands.Help"/> command.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The event data.</param>
-		private void ExecuteHelpCommand(object sender, ExecutedRoutedEventArgs e) {
-			// Associate the CommandBinding with ViewModel.HelpCommand
-			ViewModel?.HelpCommand?.Execute(e.Parameter);
-		}
+		// SAMPLE NOTE 9.2:
+		//   When a button is clicked that is defined within the Tab content of a Backstage Tab, the
+		//   Backstage does not automatically close. This behavior is intentional since some buttons
+		//   may intend to leave the backstage open after they are clicked.
+		//
+		//   Since there is no reason to leave the Backstage open after opening a new document, make
+		//   sure the Backstage is closed.
 
-		/// <summary>
-		/// Executes the <see cref="ApplicationCommands.New"/> command.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The event data.</param>
-		private void ExecuteNewCommand(object sender, ExecutedRoutedEventArgs e) {
-			// Since RichTextBox does not work well with MVVM patterns, the New command is handled by the
-			// view instead of adding a corresponding command to the view model. This reduces the complexity
-			// of the sample since the focus should be on configuring the Ribbon instead of RichTextBox.
+		// Make sure the backstage is closed
+		ViewModel!.Ribbon.Backstage!.IsOpen = false;
 
-			//	SAMPLE NOTE 9.2:
-			//		When a button is clicked that is defined within the Tab content of a Backstage Tab, the
-			//		Backstage does not automatically close. This behavior is intentional since some buttons
-			//		may intend to leave the backstage open after they are clicked.
-			//
-			//		Since there is no reason to leave the Backstage open after opening a new document, make
-			//		sure the Backstage is closed.
+		// Load the document, using the parameter (if given) as a key for a resource that defines a
+		//   pre-defined template for a FlowDocument
+		if ((e.Parameter is string { Length: > 0 } templateKey) && TryFindResource(templateKey) is (FlowDocument flowDocument))
+			editor.Document = flowDocument;
+		else
+			editor.Document = new FlowDocument();
 
-			// Make sure the backstage is closed
-			this.ViewModel.Ribbon.Backstage.IsOpen = false;
+		// Focus the editor
+		editor.Focus();
+	}
 
-			// Load the document, using the parameter (if given) as a key for a resource that defines a
-			// pre-defined template for a FlowDocument
-			var templateKey = e.Parameter as string;
-			if (!string.IsNullOrEmpty(templateKey) && this.TryFindResource(templateKey) is FlowDocument flowDocument)
-				editor.Document = flowDocument;
-			else
-				editor.Document = new FlowDocument();
-
-			// Focus the editor
-			editor.Focus();
-		}
-
-		/// <summary>
-		/// Gets or sets the view model for this view.
-		/// </summary>
-		/// <value>A <see cref="SampleWindowViewModel"/>.</value>
-		private SampleWindowViewModel ViewModel {
-			get => this.DataContext as SampleWindowViewModel;
-			set => this.DataContext = value;
-		}
-
+	/// <summary>
+	/// The view model for this view.
+	/// </summary>
+	private SampleWindowViewModel? ViewModel {
+		get => DataContext as SampleWindowViewModel;
+		set => DataContext = value;
 	}
 
 }

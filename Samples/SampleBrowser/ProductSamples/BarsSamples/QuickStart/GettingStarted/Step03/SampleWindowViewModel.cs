@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 RIBBON GETTING STARTED SERIES - STEP 3
 
@@ -17,80 +17,69 @@ CHANGES SINCE LAST STEP:
 
 */
 
-using ActiproSoftware.Windows;
 using ActiproSoftware.Windows.Controls;
 using ActiproSoftware.Windows.Controls.Bars;
 using ActiproSoftware.Windows.Controls.Bars.Mvvm;
 using ActiproSoftware.Windows.Input;
-using System;
-using System.Windows;
-using System.Windows.Input;
+using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step03 {
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step03;
+
+/// <summary>
+/// Defines the view model for this sample.
+/// </summary>
+public class SampleWindowViewModel : ObservableObjectBase {
+
+	private ICommand? _helpCommand;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Defines the view model for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class SampleWindowViewModel : ObservableObjectBase {
+	public SampleWindowViewModel() {
 
-		private ICommand helpCommand;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="SampleWindowViewModel"/> class.
-		/// </summary>
-		public SampleWindowViewModel() {
-
-			// Initialize the view model for the Ribbon
-			this.Ribbon = new RibbonViewModel() {
-				QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.None,
-			};
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		//	SAMPLE NOTE 3.1:
-		//		The SampleBarManager will be used to access view models for individual controls.
-		//		While not used in this step, a reference will be made to the manager class for
-		//		use by future steps.
-
-		/// <summary>
-		/// Gets the manager for working with the objects used by Ribbon and related menus.
-		/// </summary>
-		private SampleBarManager BarManager { get; } = new SampleBarManager();
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the command for displaying Help.
-		/// </summary>
-		/// <value>An <see cref="ICommand"/>.</value>
-		public ICommand HelpCommand {
-			get {
-				if (helpCommand is null) {
-					helpCommand = new DelegateCommand<object>(
-						param => {
-							// Execute
-							ThemedMessageBox.Show("This is where contextual Help would be displayed.", "Help", MessageBoxButton.OK, MessageBoxImage.Information);
-						});
-				}
-				return helpCommand;
-			}
-		}
-
-		/// <summary>
-		/// Gets the view model for the ribbon control.
-		/// </summary>
-		/// <value>A <see cref="RibbonViewModel"/>.</value>
-		public RibbonViewModel Ribbon { get; }
-
+		// Initialize the view model for the Ribbon
+		Ribbon = new RibbonViewModel() {
+			QuickAccessToolBarMode = RibbonQuickAccessToolBarMode.None,
+		};
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	// SAMPLE NOTE 3.1:
+	//   The SampleBarManager will be used to access view models for individual controls.
+	//   While not used in this step, a reference will be made to the manager class for
+	//   use by future steps.
+
+	/// <summary>
+	/// The manager for working with the objects used by Ribbon and related menus.
+	/// </summary>
+	private SampleBarManager BarManager { get; } = new SampleBarManager();
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The command for displaying Help.
+	/// </summary>
+	public ICommand HelpCommand {
+		get => _helpCommand ??= new DelegateCommand<object>(
+			executeAction: _ => {
+				MessageBox.Show("This is where contextual Help would be displayed.", "Help", MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+		);
+	}
+
+	/// <summary>
+	/// The view model for the ribbon control.
+	/// </summary>
+	/// <value>A <see cref="RibbonViewModel"/>.</value>
+	public RibbonViewModel Ribbon { get; }
 
 }

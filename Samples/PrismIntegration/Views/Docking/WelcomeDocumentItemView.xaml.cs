@@ -1,22 +1,19 @@
-using System.Windows.Controls;
+namespace ActiproSoftware.Windows.PrismIntegration.Views;
 
-namespace ActiproSoftware.Windows.PrismIntegration.Views {
+/// <summary>
+/// Provides a user control that uses a rich text box.
+/// </summary>
+public partial class WelcomeDocumentItemView : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides a user control that uses a rich text box.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class WelcomeDocumentItemView : UserControl {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>WelcomeDocumentItemView</c> class.
-		/// </summary>
-		public WelcomeDocumentItemView() {
-			InitializeComponent();
-		}
-
+	public WelcomeDocumentItemView() {
+		InitializeComponent();
 	}
+
 }

@@ -1,45 +1,43 @@
-﻿using System;
+﻿namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.WallCalendar;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.WallCalendar {
+/// <summary>
+/// The days of the week.
+/// </summary>
+public enum Day {
 
 	/// <summary>
-	/// The days of the week.
+	/// The first day of the week.
 	/// </summary>
-	public enum Day {
+	Sunday,
 
-		/// <summary>
-		/// The first day of the week.
-		/// </summary>
-		Sunday,
+	/// <summary>
+	/// The second day of the week.
+	/// </summary>
+	Monday,
 
-		/// <summary>
-		/// The second day of the week.
-		/// </summary>
-		Monday,
+	/// <summary>
+	/// The third day of the week.
+	/// </summary>
+	Tuesday,
 
-		/// <summary>
-		/// The third day of the week.
-		/// </summary>
-		Tuesday,
+	/// <summary>
+	/// The fourth day of the week.
+	/// </summary>
+	Wednesday,
 
-		/// <summary>
-		/// The fourth day of the week.
-		/// </summary>
-		Wednesday,
+	/// <summary>
+	/// The fifth day of the week.
+	/// </summary>
+	Thursday,
 
-		/// <summary>
-		/// The fifth day of the week.
-		/// </summary>
-		Thursday,
+	/// <summary>
+	/// The sixth day of the week.
+	/// </summary>
+	Friday,
 
-		/// <summary>
-		/// The sixth day of the week.
-		/// </summary>
-		Friday,
+	/// <summary>
+	/// The seventh, and last, day of the week.
+	/// </summary>
+	Saturday
 
-		/// <summary>
-		/// The seventh, and last, day of the week.
-		/// </summary>
-		Saturday
-	}
 }

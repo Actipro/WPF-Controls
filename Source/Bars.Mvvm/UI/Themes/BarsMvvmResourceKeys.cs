@@ -1,497 +1,436 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+namespace ActiproSoftware.Windows.Themes;
 
-namespace ActiproSoftware.Windows.Themes {
+/// <summary>
+/// Provides access to the resource keys that identify all reusable resources included in this assembly.
+/// </summary>
+public static class BarsMvvmResourceKeys {
+
+	// Styles
+	private static ComponentResourceKey? _barGalleryItemStyle;
+	private static ComponentResourceKey? _barMainMenuStyle;
+	private static ComponentResourceKey? _dockableToolBarHostStyle;
+	private static ComponentResourceKey? _ribbonStyle;
+	private static ComponentResourceKey? _standaloneToolBarStyle;
+
+	// Items container templates
+	private static ComponentResourceKey? _barButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barButtonMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barCheckBoxDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barCheckBoxMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barComboBoxDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barComboBoxMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barGalleryDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barGalleryItemDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barHeadingMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barGalleryMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barGalleryOverflowMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barPopupButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barPopupButtonMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barSeparatorDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barSeparatorMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barSizeSelectionGalleryMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barSplitButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barSplitButtonMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barSplitToggleButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barSplitToggleButtonMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _barTextBoxDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barTextBoxMenuItemContainerTemplate;
+	private static ComponentResourceKey? _barToggleButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _barToggleButtonMenuItemItemContainerTemplate;
+	private static ComponentResourceKey? _dockableToolBarDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _miniToolBarDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonApplicationButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonBackstageDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonBackstageHeaderButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonBackstageHeaderSeparatorDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonBackstageTabDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonContextualTabGroupDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonControlGroupDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonFooterDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonGroupDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonGroupLauncherButtonDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonMultiRowControlGroupDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonQuickAccessToolBarDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonTabDefaultItemContainerTemplate;
+	private static ComponentResourceKey? _ribbonTabRowToolBarDefaultItemContainerTemplate;
+
+	// Gallery item data templates
+	private static ComponentResourceKey? _barGalleryItemColorDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemColorMenuItemDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemDefaultDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemFontFamilyDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemFontSizeDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemMenuItemDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemSizeSelectionDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemSymbolDataTemplate;
+	private static ComponentResourceKey? _barGalleryItemTextStyleDataTemplate;
+
+	// Ribbon footer content data templates
+	private static ComponentResourceKey? _ribbonFooterContentInfoBarDataTemplate;
+	private static ComponentResourceKey? _ribbonFooterContentSimpleDataTemplate;
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides access to the resource keys that identify all reusable resources included in this assembly.
+	/// Initializes the <see cref="BarsMvvmResourceKeys"/> class.
 	/// </summary>
-	public static class BarsMvvmResourceKeys {
-
-		// Styles
-		private static ComponentResourceKey barGalleryItemStyle;
-		private static ComponentResourceKey barMainMenuStyle;
-		private static ComponentResourceKey dockableToolBarHostStyle;
-		private static ComponentResourceKey ribbonStyle;
-		private static ComponentResourceKey standaloneToolBarStyle;
-
-		// Items container templates
-		private static ComponentResourceKey barButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey barButtonMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barCheckBoxDefaultItemContainerTemplate;
-		private static ComponentResourceKey barCheckBoxMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barComboBoxDefaultItemContainerTemplate;
-		private static ComponentResourceKey barComboBoxMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barGalleryDefaultItemContainerTemplate;
-		private static ComponentResourceKey barGalleryItemDefaultItemContainerTemplate;
-		private static ComponentResourceKey barHeadingMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barGalleryMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barGalleryOverflowMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barPopupButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey barPopupButtonMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barSeparatorDefaultItemContainerTemplate;
-		private static ComponentResourceKey barSeparatorMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barSizeSelectionGalleryMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barSplitButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey barSplitButtonMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barSplitToggleButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey barSplitToggleButtonMenuItemItemContainerTemplate;
-		private static ComponentResourceKey barTextBoxDefaultItemContainerTemplate;
-		private static ComponentResourceKey barTextBoxMenuItemContainerTemplate;
-		private static ComponentResourceKey barToggleButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey barToggleButtonMenuItemItemContainerTemplate;
-		private static ComponentResourceKey dockableToolBarDefaultItemContainerTemplate;
-		private static ComponentResourceKey miniToolBarDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonApplicationButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonBackstageDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonBackstageHeaderButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonBackstageHeaderSeparatorDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonBackstageTabDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonContextualTabGroupDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonControlGroupDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonFooterDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonGroupDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonGroupLauncherButtonDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonMultiRowControlGroupDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonQuickAccessToolBarDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonTabDefaultItemContainerTemplate;
-		private static ComponentResourceKey ribbonTabRowToolBarDefaultItemContainerTemplate;
-
-		// Gallery item data templates
-		private static ComponentResourceKey barGalleryItemColorDataTemplate;
-		private static ComponentResourceKey barGalleryItemColorMenuItemDataTemplate;
-		private static ComponentResourceKey barGalleryItemDefaultDataTemplate;
-		private static ComponentResourceKey barGalleryItemFontFamilyDataTemplate;
-		private static ComponentResourceKey barGalleryItemFontSizeDataTemplate;
-		private static ComponentResourceKey barGalleryItemMenuItemDataTemplate;
-		private static ComponentResourceKey barGalleryItemSizeSelectionDataTemplate;
-		private static ComponentResourceKey barGalleryItemSymbolDataTemplate;
-		private static ComponentResourceKey barGalleryItemTextStyleDataTemplate;
-
-		// Ribbon footer content data templates
-		private static ComponentResourceKey ribbonFooterContentInfoBarDataTemplate;
-		private static ComponentResourceKey ribbonFooterContentSimpleDataTemplate;
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes the <see cref="BarsMvvmResourceKeys"/> class.
-		/// </summary>
-		static BarsMvvmResourceKeys() {
-			// Ensure the resources are registered in the app
-			ThemeManager.RegisterThemeCatalog(nameof(BarsMvvmThemeCatalog), new BarsMvvmThemeCatalog());
-		}
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// RESOURCE KEYS (STYLES)
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemStyle
-			=> (barGalleryItemStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemStyle)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarMainMenuStyle
-			=> (barMainMenuStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarMainMenuStyle)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey DockableToolBarHostStyle
-			=> (dockableToolBarHostStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarHostStyle)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonStyle
-			=> (ribbonStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonStyle)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey StandaloneToolBarStyle
-			=> (standaloneToolBarStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(StandaloneToolBarStyle)));
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// RESOURCE KEYS (ITEM CONTAINER TEMPLATES)
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarButtonDefaultItemContainerTemplate
-			=> (barButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarButtonMenuItemItemContainerTemplate
-			=> (barButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarButtonMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarCheckBoxDefaultItemContainerTemplate
-			=> (barCheckBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarCheckBoxDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarCheckBoxMenuItemItemContainerTemplate
-			=> (barCheckBoxMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarCheckBoxMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarComboBoxDefaultItemContainerTemplate
-			=> (barComboBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarComboBoxDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarComboBoxMenuItemItemContainerTemplate
-			=> (barComboBoxMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarComboBoxMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryDefaultItemContainerTemplate
-			=> (barGalleryDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryMenuItemItemContainerTemplate
-			=> (barGalleryMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryOverflowMenuItemItemContainerTemplate
-			=> (barGalleryOverflowMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryOverflowMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemDefaultItemContainerTemplate
-			=> (barGalleryItemDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemDefaultItemContainerTemplate)));
-
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarHeadingMenuItemItemContainerTemplate
-			=> (barHeadingMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarHeadingMenuItemItemContainerTemplate)));
-
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarPopupButtonDefaultItemContainerTemplate
-			=> (barPopupButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarPopupButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarPopupButtonMenuItemItemContainerTemplate
-			=> (barPopupButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarPopupButtonMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSeparatorDefaultItemContainerTemplate
-			=> (barSeparatorDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSeparatorDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSeparatorMenuItemItemContainerTemplate
-			=> (barSeparatorMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSeparatorMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSizeSelectionGalleryMenuItemItemContainerTemplate
-			=> (barSizeSelectionGalleryMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSizeSelectionGalleryMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSplitButtonDefaultItemContainerTemplate
-			=> (barSplitButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSplitButtonMenuItemItemContainerTemplate
-			=> (barSplitButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitButtonMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSplitToggleButtonDefaultItemContainerTemplate
-			=> (barSplitToggleButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitToggleButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarSplitToggleButtonMenuItemItemContainerTemplate
-			=> (barSplitToggleButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitToggleButtonMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarTextBoxDefaultItemContainerTemplate
-			=> (barTextBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarTextBoxDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarTextBoxMenuItemContainerTemplate
-			=> (barTextBoxMenuItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarTextBoxMenuItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarToggleButtonDefaultItemContainerTemplate
-			=> (barToggleButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarToggleButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarToggleButtonMenuItemItemContainerTemplate
-			=> (barToggleButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarToggleButtonMenuItemItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey DockableToolBarDefaultItemContainerTemplate
-			=> (dockableToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey MiniToolBarDefaultItemContainerTemplate
-			=> (miniToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(MiniToolBarDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonApplicationButtonDefaultItemContainerTemplate
-			=> (ribbonApplicationButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonApplicationButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonBackstageDefaultItemContainerTemplate
-			=> (ribbonBackstageDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonBackstageHeaderButtonDefaultItemContainerTemplate
-			=> (ribbonBackstageHeaderButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageHeaderButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate
-			=> (ribbonBackstageHeaderSeparatorDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonBackstageTabDefaultItemContainerTemplate
-			=> (ribbonBackstageTabDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageTabDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonContextualTabGroupDefaultItemContainerTemplate
-			=> (ribbonContextualTabGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonContextualTabGroupDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonControlGroupDefaultItemContainerTemplate
-			=> (ribbonControlGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonControlGroupDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonFooterDefaultItemContainerTemplate
-			=> (ribbonFooterDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonGroupDefaultItemContainerTemplate
-			=> (ribbonGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonGroupDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonGroupLauncherButtonDefaultItemContainerTemplate
-			=> (ribbonGroupLauncherButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonGroupLauncherButtonDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonMultiRowControlGroupDefaultItemContainerTemplate
-			=> (ribbonMultiRowControlGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonMultiRowControlGroupDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonQuickAccessToolBarDefaultItemContainerTemplate
-			=> (ribbonQuickAccessToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonQuickAccessToolBarDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonTabDefaultItemContainerTemplate
-			=> (ribbonTabDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonTabDefaultItemContainerTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonTabRowToolBarDefaultItemContainerTemplate
-			=> (ribbonTabRowToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonTabRowToolBarDefaultItemContainerTemplate)));
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// RESOURCE KEYS (GALLERY ITEM DATA TEMPLATES)
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemColorDataTemplate
-			=> (barGalleryItemColorDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemColorDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemColorMenuItemDataTemplate
-			=> (barGalleryItemColorMenuItemDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemColorMenuItemDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemDefaultDataTemplate
-			=> (barGalleryItemDefaultDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemDefaultDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemFontFamilyDataTemplate
-			=> (barGalleryItemFontFamilyDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemFontFamilyDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemFontSizeDataTemplate
-			=> (barGalleryItemFontSizeDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemFontSizeDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemMenuItemDataTemplate
-			=> (barGalleryItemMenuItemDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemMenuItemDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemSizeSelectionDataTemplate
-			=> (barGalleryItemSizeSelectionDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemSizeSelectionDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemSymbolDataTemplate
-			=> (barGalleryItemSymbolDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemSymbolDataTemplate)));
-		
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey BarGalleryItemTextStyleDataTemplate
-			=> (barGalleryItemTextStyleDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemTextStyleDataTemplate)));
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// RESOURCE KEYS (RIBBON FOOTER CONTENT DATA TEMPLATES)
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonFooterContentInfoBarDataTemplate
-			=> (ribbonFooterContentInfoBarDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterContentInfoBarDataTemplate)));
-
-		/// <summary>
-		/// Gets the <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
-		/// </summary>
-		/// <value>A resource key.</value>
-		public static ResourceKey RibbonFooterContentSimpleDataTemplate
-			=> (ribbonFooterContentSimpleDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterContentSimpleDataTemplate)));
-		
+	static BarsMvvmResourceKeys() {
+		// Ensure the resources are registered in the app
+		ThemeManager.RegisterThemeCatalog(nameof(BarsMvvmThemeCatalog), new BarsMvvmThemeCatalog());
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// RESOURCE KEYS (STYLES)
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarGalleryItemStyle
+		=> _barGalleryItemStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemStyle));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarMainMenuStyle
+		=> _barMainMenuStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarMainMenuStyle));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey DockableToolBarHostStyle
+		=> _dockableToolBarHostStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarHostStyle));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonStyle
+		=> _ribbonStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonStyle));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="Style"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey StandaloneToolBarStyle
+		=> _standaloneToolBarStyle ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(StandaloneToolBarStyle));
+
+	// --------------------------------------------------------------------------------------------------
+	// RESOURCE KEYS (ITEM CONTAINER TEMPLATES)
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarButtonDefaultItemContainerTemplate
+		=> _barButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarButtonMenuItemItemContainerTemplate
+		=> _barButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarButtonMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarCheckBoxDefaultItemContainerTemplate
+		=> _barCheckBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarCheckBoxDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarCheckBoxMenuItemItemContainerTemplate
+		=> _barCheckBoxMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarCheckBoxMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarComboBoxDefaultItemContainerTemplate
+		=> _barComboBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarComboBoxDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarComboBoxMenuItemItemContainerTemplate
+		=> _barComboBoxMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarComboBoxMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarGalleryDefaultItemContainerTemplate
+		=> _barGalleryDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarGalleryMenuItemItemContainerTemplate
+		=> _barGalleryMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarGalleryOverflowMenuItemItemContainerTemplate
+		=> _barGalleryOverflowMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryOverflowMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarGalleryItemDefaultItemContainerTemplate
+		=> _barGalleryItemDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarHeadingMenuItemItemContainerTemplate
+		=> _barHeadingMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarHeadingMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarPopupButtonDefaultItemContainerTemplate
+		=> _barPopupButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarPopupButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarPopupButtonMenuItemItemContainerTemplate
+		=> _barPopupButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarPopupButtonMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSeparatorDefaultItemContainerTemplate
+		=> _barSeparatorDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSeparatorDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSeparatorMenuItemItemContainerTemplate
+		=> _barSeparatorMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSeparatorMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSizeSelectionGalleryMenuItemItemContainerTemplate
+		=> _barSizeSelectionGalleryMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSizeSelectionGalleryMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSplitButtonDefaultItemContainerTemplate
+		=> _barSplitButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSplitButtonMenuItemItemContainerTemplate
+		=> _barSplitButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitButtonMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSplitToggleButtonDefaultItemContainerTemplate
+		=> _barSplitToggleButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitToggleButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarSplitToggleButtonMenuItemItemContainerTemplate
+		=> _barSplitToggleButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarSplitToggleButtonMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarTextBoxDefaultItemContainerTemplate
+		=> _barTextBoxDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarTextBoxDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarTextBoxMenuItemContainerTemplate
+		=> _barTextBoxMenuItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarTextBoxMenuItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarToggleButtonDefaultItemContainerTemplate
+		=> _barToggleButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarToggleButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey BarToggleButtonMenuItemItemContainerTemplate
+		=> _barToggleButtonMenuItemItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarToggleButtonMenuItemItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey DockableToolBarDefaultItemContainerTemplate
+		=> _dockableToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(DockableToolBarDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey MiniToolBarDefaultItemContainerTemplate
+		=> _miniToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(MiniToolBarDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonApplicationButtonDefaultItemContainerTemplate
+		=> _ribbonApplicationButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonApplicationButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonBackstageDefaultItemContainerTemplate
+		=> _ribbonBackstageDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonBackstageHeaderButtonDefaultItemContainerTemplate
+		=> _ribbonBackstageHeaderButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageHeaderButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate
+		=> _ribbonBackstageHeaderSeparatorDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageHeaderSeparatorDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonBackstageTabDefaultItemContainerTemplate
+		=> _ribbonBackstageTabDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonBackstageTabDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonContextualTabGroupDefaultItemContainerTemplate
+		=> _ribbonContextualTabGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonContextualTabGroupDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonControlGroupDefaultItemContainerTemplate
+		=> _ribbonControlGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonControlGroupDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonFooterDefaultItemContainerTemplate
+		=> _ribbonFooterDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonGroupDefaultItemContainerTemplate
+		=> _ribbonGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonGroupDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonGroupLauncherButtonDefaultItemContainerTemplate
+		=> _ribbonGroupLauncherButtonDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonGroupLauncherButtonDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonMultiRowControlGroupDefaultItemContainerTemplate
+		=> _ribbonMultiRowControlGroupDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonMultiRowControlGroupDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonQuickAccessToolBarDefaultItemContainerTemplate
+		=> _ribbonQuickAccessToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonQuickAccessToolBarDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonTabDefaultItemContainerTemplate
+		=> _ribbonTabDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonTabDefaultItemContainerTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="ItemContainerTemplate"/> that may be applied to a bar control.
+	/// </summary>
+	public static ResourceKey RibbonTabRowToolBarDefaultItemContainerTemplate
+		=> _ribbonTabRowToolBarDefaultItemContainerTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonTabRowToolBarDefaultItemContainerTemplate));
+
+	// --------------------------------------------------------------------------------------------------
+	// RESOURCE KEYS (GALLERY ITEM DATA TEMPLATES)
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemColorDataTemplate
+		=> _barGalleryItemColorDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemColorDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemColorMenuItemDataTemplate
+		=> _barGalleryItemColorMenuItemDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemColorMenuItemDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemDefaultDataTemplate
+		=> _barGalleryItemDefaultDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemDefaultDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemFontFamilyDataTemplate
+		=> _barGalleryItemFontFamilyDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemFontFamilyDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemFontSizeDataTemplate
+		=> _barGalleryItemFontSizeDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemFontSizeDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemMenuItemDataTemplate
+		=> _barGalleryItemMenuItemDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemMenuItemDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemSizeSelectionDataTemplate
+		=> _barGalleryItemSizeSelectionDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemSizeSelectionDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemSymbolDataTemplate
+		=> _barGalleryItemSymbolDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemSymbolDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to a gallery item.
+	/// </summary>
+	public static ResourceKey BarGalleryItemTextStyleDataTemplate
+		=> _barGalleryItemTextStyleDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(BarGalleryItemTextStyleDataTemplate));
+
+	// --------------------------------------------------------------------------------------------------
+	// RESOURCE KEYS (RIBBON FOOTER CONTENT DATA TEMPLATES)
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
+	/// </summary>
+	public static ResourceKey RibbonFooterContentInfoBarDataTemplate
+		=> _ribbonFooterContentInfoBarDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterContentInfoBarDataTemplate));
+
+	/// <summary>
+	/// The <see cref="ResourceKey"/> for an <see cref="DataTemplate"/> that may be applied to ribbon footer content.
+	/// </summary>
+	public static ResourceKey RibbonFooterContentSimpleDataTemplate
+		=> _ribbonFooterContentSimpleDataTemplate ??= new ComponentResourceKey(typeof(BarsMvvmResourceKeys), nameof(RibbonFooterContentSimpleDataTemplate));
 
 }

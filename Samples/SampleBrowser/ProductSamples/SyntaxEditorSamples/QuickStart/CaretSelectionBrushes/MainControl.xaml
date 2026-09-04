@@ -17,6 +17,8 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=OutliningMarginBackground}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginForeground}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginBackground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginCurrentLineForeground}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=LineNumberMarginCurrentLineBackground}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=CaretBrush}" DisplayName="Caret" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=SelectedTextBackground}" DisplayName="Active selection background" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editor, Path=InactiveSelectedTextBackground}" DisplayName="Inactive selection background" />
@@ -34,6 +36,8 @@
 							OutliningMarginBackground="#242121"
 							LineNumberMarginForeground="#3399FF"
 							LineNumberMarginBackground="#343536"
+							LineNumberMarginCurrentLineForeground="#a6d2ff"
+							LineNumberMarginCurrentLineBackground="#343536"
 							CaretBrush="#C0C0C0"
 							SelectedTextBackground="#503399FF"
 							InactiveSelectedTextBackground="#303399FF"

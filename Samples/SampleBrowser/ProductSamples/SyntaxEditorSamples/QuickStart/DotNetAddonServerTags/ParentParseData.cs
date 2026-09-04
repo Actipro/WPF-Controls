@@ -1,157 +1,110 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using ActiproSoftware.Text;
-using ActiproSoftware.Text.Implementation;
 using ActiproSoftware.Text.Languages.DotNet;
 using ActiproSoftware.Text.Languages.DotNet.Ast.Implementation;
 using ActiproSoftware.Text.Parsing;
 using ActiproSoftware.Text.Parsing.Implementation;
 using ActiproSoftware.Text.Parsing.LLParser;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags {
-	
-	/// <summary>
-	/// Provides the result of a parsing operation.
-	/// </summary>
-	public class ParentParseData : IDotNetParseData {
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.DotNetAddOnServerTags;
 
-		private List<IParseError>					errors;
-		private ILLParseData						generatedParseData;
-		private ITextSnapshot						snapshot;
-		private List<Tuple<TextRange, TextRange>>	textRangeMappings		= new List<Tuple<TextRange,TextRange>>();
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the object that contains the abstract syntax tree result.
-		/// </summary>
-		/// <value>The object that contains the abstract syntax tree result.</value>
-		public IAstNode Ast {
-			get { 
-				return (generatedParseData != null ? generatedParseData.Ast : null); 
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of <see cref="IParseError"/> objects that specify parse errors.
-		/// </summary>
-		/// <value>The collection of <see cref="IParseError"/> objects that specify parse errors.</value>
-		public IEnumerable<IParseError> Errors { 
-			get {
-				if (errors == null) {
-					errors = new List<IParseError>();
+/// <summary>
+/// Provides the result of a parsing operation.
+/// </summary>
+/// <param name="snapshot">The <see cref="ITextSnapshot"/> from which the parse errors were created.</param>
+public class ParentParseData(ITextSnapshot snapshot) : IDotNetParseData {
 
-					if ((generatedParseData != null) && (generatedParseData.Errors != null) && (generatedParseData.Snapshot != null)) {
-						// Loop through errors and translate to the editor snapshot
-						foreach (var parseError in generatedParseData.Errors) {
-							if (parseError != null) {
-								var generatedSnapshotRange = new TextSnapshotRange(generatedParseData.Snapshot, generatedParseData.Snapshot.PositionRangeToTextRange(parseError.PositionRange));
-								var editorSnapshotOffset = this.TranslateGeneratedToEditor(new TextSnapshotOffset(generatedParseData.Snapshot, generatedSnapshotRange.StartOffset));
-								if (editorSnapshotOffset.HasValue) {
-									// Add the error
-									var positionRange = snapshot.TextRangeToPositionRange(TextRange.FromSpan(editorSnapshotOffset.Value, Math.Max(1, generatedSnapshotRange.AbsoluteLength)));
-									errors.Add(new ParseError(parseError.Level, parseError.Description, positionRange));
-								}
+	private List<IParseError>? _errors;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc cref="ILLParseData.Ast"/>
+	public IAstNode? Ast
+		=> GeneratedParseData?.Ast;
+
+	/// <inheritdoc cref="IParseErrorProvider.Errors"/>
+	public IEnumerable<IParseError> Errors {
+		get {
+			if (_errors is null) {
+				_errors = [];
+
+				if (GeneratedParseData is { Errors: not null, Snapshot: not null }) {
+					// Loop through errors and translate to the editor snapshot
+					foreach (var parseError in GeneratedParseData.Errors) {
+						if (parseError?.PositionRange.HasValue == true) {
+							var generatedSnapshotRange = new TextSnapshotRange(GeneratedParseData.Snapshot, GeneratedParseData.Snapshot.PositionRangeToTextRange(parseError.PositionRange.Value));
+							var editorSnapshotOffset = TranslateGeneratedToEditor(new TextSnapshotOffset(GeneratedParseData.Snapshot, generatedSnapshotRange.StartOffset));
+							if (editorSnapshotOffset.HasValue) {
+								// Add the error
+								var positionRange = Snapshot.TextRangeToPositionRange(TextRange.FromSpan(editorSnapshotOffset.Value, Math.Max(1, generatedSnapshotRange.Length)));
+								_errors.Add(new ParseError(parseError.Level, parseError.Description, positionRange));
 							}
 						}
 					}
 				}
+			}
 
-				return errors;
-			}
+			return _errors;
 		}
+	}
 
-		/// <summary>
-		/// Gets or sets the generated parse data.
-		/// </summary>
-		/// <value>The generated parse data.</value>
-		public ILLParseData GeneratedParseData { 
-			get {
-				return generatedParseData;
-			}
-			set {
-				generatedParseData = value;
-			}
-		}
-	
-		/// <summary>
-		/// Gets the collection of preprocessor directives.
-		/// </summary>
-		/// <value>The collection of preprocessor directives.</value>
-		public IList<PreprocessorDirective> PreprocessorDirectives {
-			get { 
-				return null; 
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the <see cref="ITextSnapshot"/>, if known, from which the parse errors were created.
-		/// </summary>
-		/// <value>The <see cref="ITextSnapshot"/>, if known, from which the parse errors were created.</value>
-		public ITextSnapshot Snapshot { 
-			get {
-				return snapshot;
-			}
-			set {
-				snapshot = value;
-			}
-		}
-		
-		/// <summary>
-		/// Gets the collection of text range mappings from the editor snapshot to the generated snapshots.
-		/// </summary>
-		/// <value>The collection of text range mappings from the editor snapshot to the generated snapshots.</value>
-		public IList<Tuple<TextRange, TextRange>> TextRangeMappings { 
-			get {
-				return textRangeMappings;
-			}
-		}
-		
-		/// <summary>
-		/// Translates from an editor snapshot to a generated snapshot.
-		/// </summary>
-		/// <param name="snapshotOffset">The snapshot offset.</param>
-		/// <returns>The translated snapshot, if within a child language section.</returns>
-		public TextSnapshotOffset? TranslateEditorToGenerated(TextSnapshotOffset snapshotOffset) {
-			if ((generatedParseData != null) && (generatedParseData.Snapshot != null)) {
-				// Translate back to the editor snapshot
-				snapshotOffset = snapshotOffset.TranslateTo(snapshot, TextOffsetTrackingMode.Negative);
+	/// <summary>
+	/// The generated parse data.
+	/// </summary>
+	public ILLParseData? GeneratedParseData { get; set; }
 
-				foreach (var mapping in textRangeMappings) {
-					if (mapping.Item1.IntersectsWith(snapshotOffset.Offset)) {
-						var generatedSnapshotOffset = new TextSnapshotOffset(generatedParseData.Snapshot, mapping.Item2.StartOffset + (snapshotOffset.Offset - mapping.Item1.StartOffset));
-						return generatedSnapshotOffset;
-					}
+	/// <inheritdoc cref="IDotNetParseData.PreprocessorDirectives"/>
+	public IList<PreprocessorDirective> PreprocessorDirectives { get; } = [];
+
+	/// <inheritdoc cref="IParseErrorProvider.Snapshot"/>
+	public ITextSnapshot Snapshot { get; } = snapshot ?? throw new ArgumentNullException(nameof(snapshot));
+
+	/// <summary>
+	/// The collection of text range mappings from the editor snapshot to the generated snapshots.
+	/// </summary>
+	public IList<Tuple<TextRange, TextRange>> TextRangeMappings { get; } = [];
+
+	/// <summary>
+	/// Translates from an editor snapshot to a generated snapshot.
+	/// </summary>
+	/// <param name="snapshotOffset">The snapshot offset.</param>
+	/// <returns>The translated snapshot, if within a child language section.</returns>
+	public TextSnapshotOffset? TranslateEditorToGenerated(TextSnapshotOffset snapshotOffset) {
+		if (GeneratedParseData?.Snapshot is not null) {
+			// Translate back to the editor snapshot
+			snapshotOffset = snapshotOffset.TranslateTo(Snapshot, TextOffsetTrackingMode.Negative);
+
+			foreach (var mapping in TextRangeMappings) {
+				if (mapping.Item1.IntersectsWith(snapshotOffset.Offset)) {
+					var generatedSnapshotOffset = new TextSnapshotOffset(GeneratedParseData.Snapshot, mapping.Item2.StartOffset + (snapshotOffset.Offset - mapping.Item1.StartOffset));
+					return generatedSnapshotOffset;
 				}
 			}
-
-			return null;
 		}
-		
-		/// <summary>
-		/// Translates from a generated snapshot to an editor snapshot.
-		/// </summary>
-		/// <param name="snapshotOffset">The snapshot offset.</param>
-		/// <returns>The translated snapshot, if within a child language section.</returns>
-		public TextSnapshotOffset? TranslateGeneratedToEditor(TextSnapshotOffset snapshotOffset) {
-			if ((generatedParseData != null) && (generatedParseData.Snapshot != null)) {
-				// Translate back to the generated parse data's snapshot
-				snapshotOffset = snapshotOffset.TranslateTo(generatedParseData.Snapshot, TextOffsetTrackingMode.Negative);
 
-				foreach (var mapping in textRangeMappings) {
-					if (mapping.Item2.IntersectsWith(snapshotOffset.Offset)) {
-						var editorSnapshotOffset = new TextSnapshotOffset(snapshot, mapping.Item1.StartOffset + (snapshotOffset.Offset - mapping.Item2.StartOffset));
-						return editorSnapshotOffset;
-					}
+		return null;
+	}
+
+	/// <summary>
+	/// Translates from a generated snapshot to an editor snapshot.
+	/// </summary>
+	/// <param name="snapshotOffset">The snapshot offset.</param>
+	/// <returns>The translated snapshot, if within a child language section.</returns>
+	public TextSnapshotOffset? TranslateGeneratedToEditor(TextSnapshotOffset snapshotOffset) {
+		if (GeneratedParseData?.Snapshot is not null) {
+			// Translate back to the generated parse data's snapshot
+			snapshotOffset = snapshotOffset.TranslateTo(GeneratedParseData.Snapshot, TextOffsetTrackingMode.Negative);
+
+			foreach (var mapping in TextRangeMappings) {
+				if (mapping.Item2.IntersectsWith(snapshotOffset.Offset)) {
+					var editorSnapshotOffset = new TextSnapshotOffset(Snapshot, mapping.Item1.StartOffset + (snapshotOffset.Offset - mapping.Item2.StartOffset));
+					return editorSnapshotOffset;
 				}
 			}
-
-			return null;
 		}
 
+		return null;
 	}
 
 }

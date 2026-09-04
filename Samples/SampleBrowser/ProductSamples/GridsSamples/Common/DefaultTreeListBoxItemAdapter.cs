@@ -1,252 +1,140 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Data;
-using System.Windows.Input;
-
-#if WINRT
-using ActiproSoftware.UI.Xaml.Controls.Grids;
-#else
 using ActiproSoftware.Windows.Controls.Grids;
-#endif
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.Common {
-	
+namespace ActiproSoftware.ProductSamples.GridsSamples.Common;
+
+/// <summary>
+/// An adapter that can provide an item's hierarchy and visual state data for usage in a <see cref="TreeListBox"/>.
+/// This default implementation is intended to specifically adapt <see cref="TreeNodeModel"/>
+/// and is geared for high-performance due to the various get/set method overrides
+/// instead of using bindings for updates.
+/// </summary>
+public class DefaultTreeListBoxItemAdapter : TreeListBoxItemAdapter {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// An adapter that can provide an item's hierarchy and visual state data for usage in a <see cref="TreeListBox"/>.
-	/// This default implementation is intended to specifically adapt <see cref="TreeNodeModel"/>
-	/// and is geared for high-performance due to the various get/set method overrides
-	/// instead of using bindings for updates.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class DefaultTreeListBoxItemAdapter : TreeListBoxItemAdapter {
-
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="DefaultTreeListBoxItemAdapter"/> class.
-		/// </summary>
-		public DefaultTreeListBoxItemAdapter() {
-			// Setting these properties tells the adapter which properties to watch for INotifyPropertyChanged updates
-			//   so that the UI can receive the updated values without binding usage
-			this.ChildrenPath = "Children";
-			this.IsEditingPath = "IsEditing";
-			this.IsExpandedPath = "IsExpanded";
-			this.IsLoadingPath = "IsLoading";
-			this.IsSelectablePath = "IsSelectable";
-			this.IsSelectedPath = "IsSelected";
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Returns an <see cref="IEnumerable"/> that will be used to provide child items for the specified parent item.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>An <see cref="IEnumerable"/> that will be used to provide child items for the specified parent item.</returns>
-		public override IEnumerable GetChildren(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			var enumerable = (model != null ? model.Children : null);
-
-			// If a sort description is specified, sort the results in a collection view
-			if (this.SortDescription.HasValue) {
-				var collectionViewSource = new CollectionViewSource() {
-					SortDescriptions = {
-						this.SortDescription.Value
-					},
-					Source = enumerable,
-				};
-				return collectionViewSource.View;
-			}
-
-			return enumerable;
-		}
-		
-		/// <summary>
-		/// Returns the default action command.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// The <see cref="ICommand"/> to execute as a default action.
-		/// </returns>
-		/// <remarks>
-		/// The <see cref="DefaultActionCommandBinding"/> property can be set for a pure XAML-based implementation of this method.
-		/// Please note that bindings aren't as performant as code, so for large trees or if you see performance issues,
-		/// it is recommended to override this method instead with custom logic to retrieve the appropriate value.
-		/// </remarks>
-		public override ICommand GetDefaultActionCommand(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.DefaultActionCommand : null);
-		}
-
-		/// <summary>
-		/// Returns whether the specified item is draggable.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is draggable; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsDraggable(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsDraggable : false);
-		}
-
-		/// <summary>
-		/// Returns whether the specified item is editable.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is editable; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsEditable(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsEditable : false);
-		}
-
-		/// <summary>
-		/// Returns whether the specified item is currently being edited.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is currently being edited; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsEditing(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsEditing : false);
-		}
-		
-		/// <summary>
-		/// Returns whether the specified item is expanded.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is expanded; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsExpanded(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsExpanded : false);
-		}
-		
-		/// <summary>
-		/// Returns whether the specified item is currently loading children asynchronously.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is currently loading children asynchronously; otherwise, <c>false</c>.
-		/// </returns>
-		/// <remarks>
-		/// The <see cref="IsLoadingBinding"/> binding property can be set for a pure XAML-based implementation of this method.
-		/// Please note that bindings aren't as performant as code, so for large trees or if you see performance issues,
-		/// it is recommended to override this method instead with custom logic to retrieve the appropriate value.
-		/// </remarks>
-		public override bool GetIsLoading(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsLoading : false);
-		}
-		
-		/// <summary>
-		/// Returns whether the specified item is capable of being selected.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is capable of being selected; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsSelectable(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsSelectable : true);
-		}
-	
-		/// <summary>
-		/// Returns whether the specified item is selected.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>
-		/// <c>true</c> if the specified item is selected; otherwise, <c>false</c>.
-		/// </returns>
-		public override bool GetIsSelected(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.IsSelected : false);
-		}
-
-		/// <summary>
-		/// Returns the item's string path.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>The item's string path.</returns>
-		public override string GetPath(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.Name: null);
-		}
-
-		/// <summary>
-		/// Returns the item's text by which to match when searching.
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to examine.</param>
-		/// <returns>The item's string search text.</returns>
-		public override string GetSearchText(TreeListBox ownerControl, object item) {
-			var model = item as TreeNodeModel;
-			return (model != null ? model.Name: null);
-		}
-		
-		/// <summary>
-		/// Sets whether the specified item is currently being edited. 
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to update.</param>
-		/// <param name="value">The new value.</param>
-		public override void SetIsEditing(TreeListBox ownerControl, object item, bool value) {
-			var model = item as TreeNodeModel;
-			if (model != null)
-				model.IsEditing = value;
-		}
-
-		/// <summary>
-		/// Sets whether the specified item is expanded. 
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to update.</param>
-		/// <param name="value">The new value.</param>
-		public override void SetIsExpanded(TreeListBox ownerControl, object item, bool value) {
-			var model = item as TreeNodeModel;
-			if (model != null)
-				model.IsExpanded = value;
-		}
-
-		/// <summary>
-		/// Sets whether the specified item is selected. 
-		/// </summary>
-		/// <param name="ownerControl">The owner control.</param>
-		/// <param name="item">The item to update.</param>
-		/// <param name="value">The new value.</param>
-		public override void SetIsSelected(TreeListBox ownerControl, object item, bool value) {
-			var model = item as TreeNodeModel;
-			if (model != null)
-				model.IsSelected = value;
-		}
-
-		/// <summary>
-		/// Gets or sets the optional <see cref="System.ComponentModel.SortDescription"/> to use for sorting children.
-		/// </summary>
-		/// <value>The optional <see cref="System.ComponentModel.SortDescription"/> to use for sorting children.</value>
-		/// <remarks>
-		/// When specified, an <see cref="ICollectionView"/> will be returned from the <see cref="GetChildren"/> method.
-		/// </remarks>
-		public SortDescription? SortDescription { get; set; }
-
+	public DefaultTreeListBoxItemAdapter() {
+		// Setting these properties tells the adapter which properties to watch for INotifyPropertyChanged updates
+		//   so that the UI can receive the updated values without binding usage
+		ChildrenPath = nameof(TreeNodeModel.Children);
+		IsEditingPath = nameof(TreeNodeModel.IsEditing);
+		IsExpandedPath = nameof(TreeNodeModel.IsExpanded);
+		IsLoadingPath = nameof(TreeNodeModel.IsLoading);
+		IsSelectablePath = nameof(TreeNodeModel.IsSelectable);
+		IsSelectedPath = nameof(TreeNodeModel.IsSelected);
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	public override IEnumerable? GetChildren(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		var enumerable = model?.Children;
+
+		// If a sort description is specified, sort the results in a collection view
+		if (SortDescription.HasValue) {
+			var collectionViewSource = new CollectionViewSource() {
+				SortDescriptions = {
+					SortDescription.Value
+				},
+				Source = enumerable,
+			};
+			return collectionViewSource.View;
+		}
+
+		return enumerable;
+	}
+
+	/// <inheritdoc/>
+	public override ICommand? GetDefaultActionCommand(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.DefaultActionCommand;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsDraggable(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsDraggable == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsEditable(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsEditable == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsEditing(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsEditing == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsExpanded(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsExpanded == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsLoading(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsLoading == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsSelectable(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsSelectable == true;
+	}
+
+	/// <inheritdoc/>
+	public override bool GetIsSelected(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.IsSelected == true;
+	}
+
+	/// <inheritdoc/>
+	public override string? GetPath(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.Name;
+	}
+
+	/// <inheritdoc/>
+	public override string? GetSearchText(TreeListBox ownerControl, object item) {
+		var model = item as TreeNodeModel;
+		return model?.Name;
+	}
+
+	/// <inheritdoc/>
+	public override void SetIsEditing(TreeListBox ownerControl, object item, bool value) {
+		if (item is TreeNodeModel model)
+			model.IsEditing = value;
+	}
+
+	/// <inheritdoc/>
+	public override void SetIsExpanded(TreeListBox ownerControl, object item, bool value) {
+		if (item is TreeNodeModel model)
+			model.IsExpanded = value;
+	}
+
+	/// <inheritdoc/>
+	public override void SetIsSelected(TreeListBox ownerControl, object item, bool value) {
+		if (item is TreeNodeModel model)
+			model.IsSelected = value;
+	}
+
+	/// <summary>
+	/// The optional <see cref="System.ComponentModel.SortDescription"/> to use for sorting children.
+	/// </summary>
+	/// <remarks>
+	/// When specified, an <see cref="ICollectionView"/> will be returned from the <see cref="GetChildren"/> method.
+	/// </remarks>
+	public SortDescription? SortDescription { get; set; }
 
 }

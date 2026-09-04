@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridCustomPropertyEditor.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -49,7 +49,7 @@
 				<grids:PropertyEditor PropertyType="sample:OnOffAuto">
 					<grids:PropertyEditor.ValueTemplate>
 						<DataTemplate>
-							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0" 
+							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0"
 													  SelectedValue="{Binding Value, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
 													  IsEnabled="{Binding IsReadOnly, Converter={StaticResource BooleanNotConverter}}">
 								<sample:OnOffAuto>Auto</sample:OnOffAuto>
@@ -64,7 +64,7 @@
 				<grids:PropertyEditor PropertyType="sample:OnOffAuto" PropertyName="Alarm">
 					<grids:PropertyEditor.ValueTemplate>
 						<DataTemplate>
-							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0" 
+							<shared:HorizontalListBox x:Name="listBox" BorderThickness="0"
 													  SelectedValue="{Binding Value, Mode=TwoWay, ValidatesOnExceptions=True, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
 													  IsEnabled="{Binding IsReadOnly, Converter={StaticResource BooleanNotConverter}}">
 								<sample:OnOffAuto>On</sample:OnOffAuto>

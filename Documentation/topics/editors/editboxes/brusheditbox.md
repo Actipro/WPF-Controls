@@ -24,19 +24,10 @@ Each of the features listed in the table below describe functionality that is co
 </thead>
 <tbody>
 
-@if (winrt) {
-<tr>
-<td>Has a clear button</td>
-<td>Yes, and can be hidden.</td>
-</tr>
-}
-
-@if (wpf) {
 <tr>
 <td>Has a spinner</td>
 <td>No.</td>
 </tr>
-}
 
 <tr>
 <td>Has a popup</td>
@@ -78,6 +69,11 @@ Each of the features listed in the table below describe functionality that is co
 <td>No wrap.</td>
 </tr>
 
+<tr>
+<td>Input filtering</td>
+<td>Yes, as noted below.</td>
+</tr>
+
 </tbody>
 </table>
 
@@ -109,7 +105,16 @@ When hiding the text, be sure to also set the [IsEditable](xref:@ActiproUIRoot.C
 
 ## Reusing Brushes
 
-By default, the brush instance will generally be reused when a component like gradient stop is updated.  But this prevents the [ValueChanged](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.ValueChanged) event from firing on certain component changes, and also bindings to the `Value` property from updating when using value converters.  The [CanReuseBrush](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.CanReuseBrush) property can be set to `false` to force a new brush to be created any time a component is updated, which works around those issues.
+By default, the brush instance will generally be reused when a component like gradient stop is updated.  But this prevents the [ValueChanged](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.ValueChanged) event from firing on certain component changes, and also bindings to the `Value` property from updating when using value converters.  The [CanReuseBrush](xref:@ActiproUIRoot.Controls.Editors.BrushEditBox.CanReuseBrush) property can be set to `false` to force a new brush to be created any time a component is updated, which works around those issues.
+
+## Input Filtering
+
+When [IsInputFilteringEnabled](xref:@ActiproUIRoot.Controls.Editors.Primitives.PartEditBoxBase`1.IsInputFilteringEnabled) is set to `true`, only the following text may be entered into the edit box:
+- The `#` symbol.
+- Hexadecimal digits `0-9`, `A-F`, and `a-f`.
+- Latin letters `A-Z` and `a-z` for typing the name of known colors (e.g., `"white"`).
+
+Please see the [Edit Box Basics](parteditboxbase.md) topic for additional details input filtering.
 
 ## Sample XAML
 

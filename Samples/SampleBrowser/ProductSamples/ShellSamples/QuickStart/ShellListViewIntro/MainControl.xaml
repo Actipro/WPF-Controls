@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ShellSamples.QuickStart.ShellListViewIntro.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -34,7 +34,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=listView, Path=SortDirection}" />
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>
-			
+
 			<Expander Style="{StaticResource SampleHeaderDescriptionExpanderStyle}">
 				<TextBlock Style="{StaticResource SampleHeaderDescriptionTextBlockStyle}">
 					<Italic Foreground="{DynamicResource {x:Static themes:AssetResourceKeys.ColorPaletteRedBackgroundHighBrushKey}}">The Shell controls demonstrated here are operating on your PC's file system, so use caution with operations like delete, rename, etc.</Italic>
@@ -55,9 +55,9 @@
 
 		</StackPanel>
 	</sampleBrowser:ProductItemControl.SideBarContent>
-	
+
 	<Grid Style="{StaticResource SamplePanelWideStyle}">
 		<shell:ShellListView x:Name="listView" RootSpecialFolderKind="Computer" />
 	</Grid>
-	
+
 </sampleBrowser:ProductItemControl>

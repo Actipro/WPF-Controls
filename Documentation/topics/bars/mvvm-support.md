@@ -53,7 +53,7 @@ With all of that in place, when a [Ribbon](xref:@ActiproUIRoot.Controls.Bars.Rib
 Properties on the `RibbonTabViewModel` may be modified, and as long as `INotifyPropertyChanged` is implemented on the view model class, the property changes will flow into the generated [RibbonTabItem](xref:@ActiproUIRoot.Controls.Bars.RibbonTabItem) via the bindings that were set up in the @if (avalonia) { `IDataTemplate`. }@if (wpf) { `ItemContainerTemplate`. }
 
 > [!TIP]
-> View model classes can inherit the @if (avalonia) { [ObservableObjectBase](xref:ActiproSoftware.ObservableObjectBase) class from the Core Library }@if (wpf) { [ObservableObjectBase](xref:@ActiproUIRoot.ObservableObjectBase) class from the Shared Library } to easily implement `INotifyPropertyChanged`.
+> View model classes can inherit the @if (avalonia) { [ObservableObjectBase](xref:ActiproSoftware.ObservableObjectBase) class from the Core Library }@if (wpf) { [ObservableObjectBase](xref:ActiproSoftware.ObservableObjectBase) class from the Shared Library } to easily implement `INotifyPropertyChanged`.
 
 ### Gallery Item Content
 

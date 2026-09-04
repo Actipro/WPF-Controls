@@ -97,62 +97,44 @@ document.SetText(TextChangeTypes.Typing, text);
 
 Document text may be saved to files using one of the overloads of the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[SaveFile](xref:ActiproSoftware.Text.ITextDocument.SaveFile*) method.
 
-### Save to File Using UTI-8 Encoding
+### Save to a File Path
 
-The first overload simply accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter and a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter.  It saves files using standard UTF-8 encoding.
+The first overload has a path parameter, along with optional `Encoding` and [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameters.  The path parameter indicates the file system path of the file to create.
 
-@if (winrt) {
+The specified `Encoding` is used, falling back to using the standard UTF-8 encoding if none is specified.
 
-This code saves document text to a file using UTF-8 encoding:
+When a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) is specified, all line ends will be normalized to the specified line terminator.  If none is specified, no normalization will occur and the actual line terminators in document text will be used.
 
-```csharp
-await document.SaveFileAsync(storageFile, LineTerminator.CarriageReturnNewline);
-```
-
-}
-
-@if (wpf winforms) {
-
-This code saves document text to a file using UTF-8 encoding:
+This code shows multiple ways to save document text to a file:
 
 ```csharp
-document.SaveFile("C:\Code.cs", LineTerminator.CarriageReturnNewline);
+// Save using UTF-8 encoding and actual line terminators
+document.SaveFile(@"C:\Code.cs");
+
+// Save using ASCII encoding and actual line terminators
+document.SaveFile(@"C:\Code.cs", Encoding.ASCII);
+
+// Save using UTF-8 encoding and CRLF normalized line terminators
+document.SaveFile(@"C:\Code.cs", lineTerminator: LineTerminator.CRLF);
+
+// Save using ASCII encoding and CRLF normalized line terminators
+document.SaveFile(@"C:\Code.cs", Encoding.ASCII, LineTerminator.CRLF);
 ```
-
-}
-
-### Save to File Using a Specified Encoding
-
-The second overload accepts @if (winrt) {an `IStorageFile`}@if (wpf winforms) {a path} parameter, a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter, as well as an `Encoding` parameter.  It saves files using the `Encoding` that you specify.  This allows for easy saving of non-UTF-8 encoded files.
-
-@if (winrt) {
-
-This code saves document text to a file using ASCII encoding:
-
-```csharp
-await document.SaveFileAsync(storageFile, Encoding.ASCII, LineTerminator.CarriageReturnNewline);
-```
-
-}
-
-@if (wpf winforms) {
-
-This code saves document text to a file using ASCII encoding:
-
-```csharp
-document.SaveFile("C:\Code.cs", Encoding.ASCII, LineTerminator.CarriageReturnNewline);
-```
-
-}
 
 ### Save to Stream Using a Specified Encoding
 
-The third overload accepts a `Stream` parameter, a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter, as well as an `Encoding` parameter.  It saves to the stream using the `Encoding` that you specify.  This allows for easy saving of non-UTF-8 encoded files.
+The second overload accepts `Stream` and `Encoding` parameters, along with an optional a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) parameter.  It saves to the stream using the `Encoding` that you specify.
 
-This code saves document text to a `Stream` using UTF-8 encoding:
+When a [LineTerminator](xref:ActiproSoftware.Text.LineTerminator) is specified, all line ends will be normalized to the specified line terminator.  If none is specified, no normalization will occur and the actual line terminators in document text will be used.
+
+This code shows multiple ways to save document text to a stream:
 
 ```csharp
-document.SaveFile(stream, Encoding.UTF8, LineTerminator.CarriageReturnNewline);
+// Save using UTF-8 encoding and actual line terminators
+document.SaveFile(stream, Encoding.UTF8);
+
+// Save using ASCII encoding and CRLF normalized line terminators
+document.SaveFile(stream, Encoding.ASCII, LineTerminator.CRLF);
 ```
 
 ## Updating the IsModified Property
@@ -167,13 +149,13 @@ document.IsModified = false;
 
 When the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property is set to `false` all unsaved changes in undo history's change tracking will be switched to saved changes.
 
-Calling any of the `SaveFile` overloads with a path parameter will automatically set the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` if the specified path is the same as the document's [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value.
+Calling the `SaveFile` overloads with a path parameter will automatically set the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[IsModified](xref:ActiproSoftware.Text.ITextDocument.IsModified) property to `false` if the specified path is the same as the document's [FileName](xref:ActiproSoftware.Text.ITextDocument.FileName) property value.
 
 ## Getting Text into a String
 
-Sometimes a document's text needs to be saved using an external process, such as to a database.  In this case, the text to save needs to be retrieve into a string variable.
+Sometimes a document's text needs to be saved using an external process, such as to a database.  In this case, the text to save needs to be retrieved into a string variable.
 
-The current snapshot of a document (see the [Documents, Snapshots, and Versions](documents-snapshots-versions.md) topic for more information) is available via the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[CurrentSnapshot](xref:ActiproSoftware.Text.ITextDocument.CurrentSnapshot) property.  The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method can be used to retrieve a snapshot's text content with a specified [LineTerminator](xref:ActiproSoftware.Text.LineTerminator).  The [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) property returns the snapshot's text using standard Windows carriage return / newline line terminators.
+The current snapshot of a document (see the [Documents, Snapshots, and Versions](documents-snapshots-versions.md) topic for more information) is available via the [ITextDocument](xref:ActiproSoftware.Text.ITextDocument).[CurrentSnapshot](xref:ActiproSoftware.Text.ITextDocument.CurrentSnapshot) property.  The [ITextSnapshot](xref:ActiproSoftware.Text.ITextSnapshot).[GetText](xref:ActiproSoftware.Text.ITextSnapshot.GetText*) method can be used to retrieve a snapshot's text content with a specified normalized [LineTerminator](xref:ActiproSoftware.Text.LineTerminator).  Whereas the [Text](xref:ActiproSoftware.Text.ITextSnapshot.Text) property returns the snapshot's text using the actual line terminator characters in the text.
 
 This code fetches the current document text into a string:
 

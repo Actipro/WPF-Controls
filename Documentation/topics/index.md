@@ -171,6 +171,10 @@ The [Actipro Shared Library](shared/index.md) is a common control library refere
 
 The Shared Library components are free for use by any licensed customers of our WPF control products.
 
+### Core Library
+
+The [Actipro Core Library](core/index.md) is a class library that is completely UI framework agnostic.  It contains numerous helpful utilities and base classes that can be used in your .NET projects.
+
 ### Ribbon
 
 ![Screenshot](images/card-ribbon.png)

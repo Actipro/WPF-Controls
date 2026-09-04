@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
     x:Name="rootSampleControl"
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.Palettes.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -65,7 +65,7 @@
 										</charts:AreaSeries.ItemsSource>
 									</charts:AreaSeries>
 								</charts:XYChart>
-								
+
 								<ItemsControl ItemsSource="{Binding Palette.BaseColors}" HorizontalAlignment="Center">
 									<ItemsControl.ItemsPanel>
 										<ItemsPanelTemplate>
@@ -74,7 +74,7 @@
 									</ItemsControl.ItemsPanel>
 									<ItemsControl.ItemTemplate>
 										<DataTemplate>
-											<Border Width="16" Height="16" Margin="1,1,0,1" Padding="0" 
+											<Border Width="16" Height="16" Margin="1,1,0,1" Padding="0"
 													BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 												<Border.Background>
 													<SolidColorBrush Color="{Binding}" />

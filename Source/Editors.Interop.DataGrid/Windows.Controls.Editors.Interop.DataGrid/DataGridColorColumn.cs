@@ -1,172 +1,136 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Media;
-using ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid.Primitives;
+namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid;
 
-namespace ActiproSoftware.Windows.Controls.Editors.Interop.DataGrid {
+/// <summary>
+/// Represents a data-bound column for use in a <c>DataGrid</c> that utilizes the <see cref="ColorEditBox"/> control.
+/// </summary>
+public class DataGridColorColumn : DataGridPartEditBoxColumnBase<Color?> {
+
+	#region Dependency Properties
 
 	/// <summary>
-	/// Represents a data-bound column for use in a <c>DataGrid</c> that utilizes the <see cref="ColorEditBox"/> control.
+	/// Defines the <see cref="CanSwatchStretch"/> property.
 	/// </summary>
-	public class DataGridColorColumn : DataGridPartEditBoxColumnBase<Color?> {
+	public static readonly DependencyProperty CanSwatchStretchProperty
+		= DependencyProperty.Register(nameof(CanSwatchStretch), typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(defaultValue: true, NotifyPropertyChangeForRefreshContent));
 
-		#region Dependency Properties
+	/// <summary>
+	/// Defines the <see cref="DefaultValue"/> property.
+	/// </summary>
+	public static readonly DependencyProperty DefaultValueProperty
+		= DependencyProperty.Register(nameof(DefaultValue), typeof(Color), typeof(DataGridColorColumn), new PropertyMetadata(defaultValue: Colors.Red, NotifyPropertyChangeForRefreshContent));
 
-		/// <summary>
-		/// Identifies the <see cref="CanSwatchStretch"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="CanSwatchStretch"/> dependency property.</value>
-		public static readonly DependencyProperty CanSwatchStretchProperty = DependencyProperty.Register("CanSwatchStretch", typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
+	/// <summary>
+	/// Defines the <see cref="HasSwatch"/> property.
+	/// </summary>
+	public static readonly DependencyProperty HasSwatchProperty
+		= DependencyProperty.Register(nameof(HasSwatch), typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(defaultValue: true, NotifyPropertyChangeForRefreshContent));
 
-		/// <summary>
-		/// Identifies the <see cref="DefaultValue"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="DefaultValue"/> dependency property.</value>
-		public static readonly DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(Color), typeof(DataGridColorColumn), new PropertyMetadata(Colors.Red, NotifyPropertyChangeForRefreshContent));
-		
-		/// <summary>
-		/// Identifies the <see cref="HasSwatch"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="HasSwatch"/> dependency property.</value>
-		public static readonly DependencyProperty HasSwatchProperty = DependencyProperty.Register("HasSwatch", typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
-		
-		/// <summary>
-		/// Identifies the <see cref="HasText"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="HasText"/> dependency property.</value>
-		public static readonly DependencyProperty HasTextProperty = DependencyProperty.Register("HasText", typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
+	/// <summary>
+	/// Defines the <see cref="HasText"/> property.
+	/// </summary>
+	public static readonly DependencyProperty HasTextProperty
+		= DependencyProperty.Register(nameof(HasText), typeof(bool), typeof(DataGridBrushColumn), new PropertyMetadata(defaultValue: true, NotifyPropertyChangeForRefreshContent));
 
-		/// <summary>
-		/// Identifies the <see cref="IsAlphaEnabled"/> dependency property.  This field is read-only.
-		/// </summary>
-		/// <value>The identifier for the <see cref="IsAlphaEnabled"/> dependency property.</value>
-		public static readonly DependencyProperty IsAlphaEnabledProperty = DependencyProperty.Register("IsAlphaEnabled", typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(true, NotifyPropertyChangeForRefreshContent));
+	/// <summary>
+	/// Defines the <see cref="IsAlphaEnabled"/> property.
+	/// </summary>
+	public static readonly DependencyProperty IsAlphaEnabledProperty
+		= DependencyProperty.Register(nameof(IsAlphaEnabled), typeof(bool), typeof(DataGridColorColumn), new PropertyMetadata(defaultValue: true, NotifyPropertyChangeForRefreshContent));
 
-		#endregion
+	#endregion
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes an instance of the <see cref="DataGridColorColumn"/> class.
-		/// </summary>
-		public DataGridColorColumn() {
-			this.IsArrowKeyPartNavigationEnabled = false;
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// Initializes an instance of the class.
+	/// </summary>
+	public DataGridColorColumn() {
+		IsArrowKeyPartNavigationEnabled = false;
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <inheritdoc/>
+	protected override void ApplyStandardValues(FrameworkElement targetElement) {
+		base.ApplyStandardValues(targetElement);
+
+		if (targetElement is ColorEditBox) {
+			ApplyValue(CanSwatchStretchProperty, targetElement, ColorEditBox.CanSwatchStretchProperty);
+			ApplyValue(DefaultValueProperty, targetElement, ColorEditBox.DefaultValueProperty);
+			ApplyValue(HasSwatchProperty, targetElement, ColorEditBox.HasSwatchProperty);
+			ApplyValue(HasTextProperty, targetElement, ColorEditBox.HasTextProperty);
+			ApplyValue(IsAlphaEnabledProperty, targetElement, ColorEditBox.IsAlphaEnabledProperty);
 		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Applies standard values to the specified target element.
-		/// </summary>
-		/// <param name="targetElement">The target element.</param>
-		protected override void ApplyStandardValues(FrameworkElement targetElement) {
-			base.ApplyStandardValues(targetElement);
-			if (targetElement is ColorEditBox) {
-				this.ApplyValue(CanSwatchStretchProperty, targetElement, ColorEditBox.CanSwatchStretchProperty);
-				this.ApplyValue(DefaultValueProperty, targetElement, ColorEditBox.DefaultValueProperty);
-				this.ApplyValue(HasSwatchProperty, targetElement, ColorEditBox.HasSwatchProperty);
-				this.ApplyValue(HasTextProperty, targetElement, ColorEditBox.HasTextProperty);
-				this.ApplyValue(IsAlphaEnabledProperty, targetElement, ColorEditBox.IsAlphaEnabledProperty);
-			}
-		}
+	}
 
-		/// <summary>
-		/// Gets or sets whether the swatch can stretch when <see cref="HasText"/> is <c>false</c>.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the swatch can stretch when <see cref="HasText"/> is <c>false</c>; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool CanSwatchStretch {
-			get {
-				return (bool)this.GetValue(CanSwatchStretchProperty);
-			}
-			set {
-				this.SetValue(CanSwatchStretchProperty, value);
-			}
-		}
+	/// <summary>
+	/// Indicates whether the swatch can stretch when <see cref="HasText"/> is <c>false</c>.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the swatch can stretch when <see cref="HasText"/> is <c>false</c>; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool CanSwatchStretch {
+		get => (bool)GetValue(CanSwatchStretchProperty);
+		set => SetValue(CanSwatchStretchProperty, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the value to set when incrementing/decrementing from a null value.
-		/// </summary>
-		/// <value>
-		/// The value to set when incrementing/decrementing from a null value.
-		/// The default value is <c>Red</c>.
-		/// </value>
-		public Color DefaultValue {
-			get {
-				return (Color)this.GetValue(DefaultValueProperty);
-			}
-			set {
-				this.SetValue(DefaultValueProperty, value);
-			}
-		}
-		
-		/// <summary>
-		/// Gets the type of the associated <c>PartEditBoxBase</c>-derived control.
-		/// </summary>
-		/// <returns>The type of the associated <c>PartEditBoxBase</c>-derived control.</returns>
-		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-		protected override Type GetEditBoxType() {
-			return typeof(ColorEditBox);
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the edit box should display a swatch that previews the <c>Value</c>.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the edit box should display a swatch that previews the <c>Value</c>; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool HasSwatch {
-			get {
-				return (bool)this.GetValue(HasSwatchProperty);
-			}
-			set {
-				this.SetValue(HasSwatchProperty, value);
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets whether the edit box should display a text representation of the <c>Value</c>.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the edit box should display a text representation of the <c>Value</c>; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		public bool HasText {
-			get {
-				return (bool)this.GetValue(HasTextProperty);
-			}
-			set {
-				this.SetValue(HasTextProperty, value);
-			}
-		}
+	/// <summary>
+	/// The value to set when incrementing/decrementing from a <c>null</c> value.
+	/// </summary>
+	/// <value>
+	/// The default value is <c>Red</c>.
+	/// </value>
+	public Color DefaultValue {
+		get => (Color)GetValue(DefaultValueProperty);
+		set => SetValue(DefaultValueProperty, value);
+	}
 
-		/// <summary>
-		/// Gets or sets whether the alpha channel (transparency) of the color value is enabled.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if the alpha channel (transparency) of the color value is enabled; otherwise, <c>false</c>.
-		/// The default value is <c>true</c>.
-		/// </value>
-		/// <remarks>
-		/// When disabled, no transparency is supported.
-		/// </remarks>
-		public bool IsAlphaEnabled {
-			get {
-				return (bool)this.GetValue(IsAlphaEnabledProperty);
-			}
-			set {
-				this.SetValue(IsAlphaEnabledProperty, value);
-			}
-		}
-		
+	/// <inheritdoc/>
+	protected override Type GetEditBoxType()
+		=> typeof(ColorEditBox);
+
+	/// <summary>
+	/// Indicates whether the edit box should display a swatch that previews the <c>Value</c>.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the edit box should display a swatch that previews the <c>Value</c>; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool HasSwatch {
+		get => (bool)GetValue(HasSwatchProperty);
+		set => SetValue(HasSwatchProperty, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the edit box should display a text representation of the <c>Value</c>.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the edit box should display a text representation of the <c>Value</c>; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	public bool HasText {
+		get => (bool)GetValue(HasTextProperty);
+		set => SetValue(HasTextProperty, value);
+	}
+
+	/// <summary>
+	/// Indicates whether the alpha channel (transparency) of the color value is enabled.
+	/// </summary>
+	/// <value>
+	/// <c>true</c> if the alpha channel (transparency) of the color value is enabled; otherwise, <c>false</c>.
+	/// The default value is <c>true</c>.
+	/// </value>
+	/// <remarks>
+	/// When disabled, no transparency is supported.
+	/// </remarks>
+	public bool IsAlphaEnabled {
+		get => (bool)GetValue(IsAlphaEnabledProperty);
+		set => SetValue(IsAlphaEnabledProperty, value);
 	}
 
 }

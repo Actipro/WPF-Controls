@@ -23,6 +23,7 @@
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsReadOnly}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsEditable}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsAlphaEnabled}" />
+					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=IsInputFilteringEnabled}" />
 					<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=editBox, Path=PlaceholderText}" />
 				</sampleBrowser:SampleOptionsPropertyGrid>
 			</Expander>

@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.GridsSamples.QuickStart.PropertyGridLazyLoading.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -35,7 +35,7 @@
 
 		<grids:PropertyGrid x:Name="propGrid" MaxWidth="{StaticResource SampleThinMaxWidth}"
 							DataObject="{StaticResource ParentObject}" SummaryHeight="Auto" CanClearDataObjectOnUnload="True" />
-		
+
 	</Grid>
 
 </sampleBrowser:ProductItemControl>

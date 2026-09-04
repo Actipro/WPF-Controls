@@ -1,58 +1,40 @@
-﻿using System;
-using System.Globalization;
-using System.Windows.Input;
 using ActiproSoftware.ProductSamples.GridsSamples.Common;
-
-#if WINRT
-using Windows.UI.Xaml.Media.Imaging;
-using ActiproSoftware.UI.Xaml.Input;
-#else
-using System.Windows;
-using System.Windows.Media.Imaging;
 using ActiproSoftware.Windows.Input;
-#endif
-
-#if WPF
+using System.Windows.Media.Imaging;
 using MessageBox = ActiproSoftware.Windows.Controls.ThemedMessageBox;
-#endif
 
-namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxChecking {
-	
+namespace ActiproSoftware.ProductSamples.GridsSamples.QuickStart.TreeListBoxChecking;
+
+/// <summary>
+/// Provides a tree node model implementation for tracking optional fields.
+/// </summary>
+public class FieldTreeNodeModel : CheckableTreeNodeModel {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
+
 	/// <summary>
-	/// Provides a tree node model implementation for tracking optional fields.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public class FieldTreeNodeModel : CheckableTreeNodeModel {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="FieldTreeNodeModel"/> class.
-		/// </summary>
-		public FieldTreeNodeModel() {
-			var imageUri = new Uri("/Images/Icons/New16.png", UriKind.Relative);
-			this.ImageSource = new BitmapImage(imageUri);
+	public FieldTreeNodeModel() {
+		var imageUri = new Uri("/Images/Icons/New16.png", UriKind.Relative);
+		ImageSource = new BitmapImage(imageUri);
 
-			this.IsCheckable = true;
+		IsCheckable = true;
 
-			this.ShowDialogCommand = new DelegateCommand<object>(p => {
-				MessageBox.Show(String.Format(CultureInfo.CurrentCulture, "Show custom dialog here for item '{0}'.", this.Name), "Button Clicked");
-			});
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the <see cref="ICommand"/> that can be used to show a dialog.
-		/// </summary>
-		/// <value>
-		/// The <see cref="ICommand"/> that can be used to show a dialog.
-		/// </value>
-		public ICommand ShowDialogCommand { get; private set; }
-		
+		ShowDialogCommand = new DelegateCommand<object>(_ => {
+			MessageBox.Show(string.Format(CultureInfo.CurrentCulture, "Show custom dialog here for item '{0}'.", Name), "Button Clicked");
+		});
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The <see cref="ICommand"/> that can be used to show a dialog.
+	/// </summary>
+	public ICommand ShowDialogCommand { get; }
 
 }

@@ -1,8 +1,8 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.ChartsSamples.QuickStart.XY.BarStyles.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts" 
+	xmlns:charts="http://schemas.actiprosoftware.com/winfx/xaml/charts"
 	xmlns:grids="http://schemas.actiprosoftware.com/winfx/xaml/grids"
 	xmlns:gridseditors="http://schemas.actiprosoftware.com/winfx/xaml/gridseditors"
 	xmlns:sampleBrowser="clr-namespace:ActiproSoftware.SampleBrowser"
@@ -68,9 +68,9 @@
 					<charts:BarSeries Style="{StaticResource BarSeriesStyle}"/>
 				</charts:XYChart>
 			</sampleBrowser:LabeledCardControl>
-			
+
 			<sampleBrowser:SampleGalleryControl>
-			
+
 				<sampleBrowser:LabeledCardControl Label="Custom BarTemplate">
 					<StackPanel>
 						<charts:XYChart Style="{StaticResource ChartStyle}" PaddingPercentage="0.005" Padding="10" Margin="-10" IsAxisBaselineVisible="False">
@@ -78,7 +78,7 @@
 								<charts:SeriesPaletteStyleSelector />
 							</charts:XYChart.SeriesStyleSelector>
 							<charts:XYChart.YAxes>
-								<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2" 
+								<charts:XYDoubleAxis AreMajorTicksVisible="True" TickMajorInterval="2"
 													AreMinorTicksVisible="True" TickMinorInterval="1" Minimum="0" Maximum="10"/>
 							</charts:XYChart.YAxes>
 							<charts:XYChart.XAxes>
@@ -93,7 +93,7 @@
 								</charts:BarSeries.BarStyle>
 								<charts:BarSeries.BarTemplate>
 									<DataTemplate>
-										<Viewbox ClipToBounds="True" StretchDirection="DownOnly" 
+										<Viewbox ClipToBounds="True" StretchDirection="DownOnly"
 												Stretch="UniformToFill" Margin="0" VerticalAlignment="Bottom" >
 											<StackPanel Width="20" Orientation="Vertical">
 												<Ellipse Style="{StaticResource EllipseStyle}"/>
@@ -116,10 +116,10 @@
 						<TextBlock FontStyle="Italic" Text=""/>
 					</StackPanel>
 				</sampleBrowser:LabeledCardControl>
-				
+
 			</sampleBrowser:SampleGalleryControl>
-				
+
 		</StackPanel>
 	</ScrollViewer>
-	
+
 </sampleBrowser:ProductItemControl>

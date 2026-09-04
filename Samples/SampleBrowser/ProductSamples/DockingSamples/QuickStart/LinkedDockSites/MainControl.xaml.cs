@@ -1,24 +1,22 @@
-﻿namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LinkedDockSites {
+namespace ActiproSoftware.ProductSamples.DockingSamples.QuickStart.LinkedDockSites;
+
+/// <summary>
+/// Provides the main user control for this sample.
+/// </summary>
+public partial class MainControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides the main user control for this sample.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class MainControl {
+	public MainControl() {
+		InitializeComponent();
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		/// <summary>
-		/// Initializes an instance of the <c>MainControl</c> class.
-		/// </summary>
-		public MainControl() {
-			InitializeComponent();
-
-			// Link the two dock sites together
-			dockSite1.LinkDockSite(dockSite2);
-		}
-		
+		// Link the two dock sites together
+		dockSite1.LinkDockSite(dockSite2);
 	}
 
 }

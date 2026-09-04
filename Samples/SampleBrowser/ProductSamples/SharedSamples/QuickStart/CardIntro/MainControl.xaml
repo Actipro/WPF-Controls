@@ -132,6 +132,8 @@
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=Padding}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsEnabled}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsAnimationEnabled}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsResponsiveToPointerOver}" />
+						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=IsResponsiveToPointerPressed}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=TwoWay, ElementName=card, Path=CoverDock}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsCoverVisible}" />
 						<grids:PropertyModel CanAutoConfigure="True" Value="{Binding Mode=OneWayToSource, ElementName=card, Path=IsHeaderVisible}" />

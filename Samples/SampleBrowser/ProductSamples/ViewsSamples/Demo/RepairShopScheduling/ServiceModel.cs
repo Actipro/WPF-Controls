@@ -1,133 +1,68 @@
-﻿using System;
+namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling;
 
-namespace ActiproSoftware.ProductSamples.ViewsSamples.Demo.RepairShopScheduling {
+/// <summary>
+/// Stores information about an employee service task.
+/// </summary>
+/// <param name="description">The description.</param>
+/// <param name="orderNumber">The order number.</param>
+/// <param name="itemNumber">The item number.</param>
+/// <param name="itemCount">The item count.</param>
+/// <param name="dueDate">The due date.</param>
+/// <param name="hours">The number of hours for the task to complete.</param>
+public class ServiceModel(string description, string orderNumber, int itemNumber, int itemCount, DateTime dueDate, int hours) : TaskModelBase(hours) {
+
+	private string _description = description;
+	private DateTime _dueDate = dueDate;
+	private int _itemCount = itemCount;
+	private int _itemNumber = itemNumber;
+	private string _orderNumber = orderNumber;
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Stores information about an employee service task.
+	/// The description.
 	/// </summary>
-	public class ServiceModel : TaskModelBase {
+	public string Description {
+		get => _description;
+		set => SetProperty(ref _description, value);
+	}
 
-		private string		description;
-		private DateTime	dueDate;
-		private int			itemCount;
-		private int			itemNumber;
-		private string		orderNumber;
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes an instance of the <c>ServiceModel</c> class.
-		/// </summary>
-		/// <param name="description">The description.</param>
-		/// <param name="orderNumber">The order number.</param>
-		/// <param name="itemNumber">The item number.</param>
-		/// <param name="itemCount">The item count.</param>
-		/// <param name="dueDate">The due date.</param>
-		/// <param name="hours">The number of hours for the task to complete.</param>
-		public ServiceModel(string description, string orderNumber, int itemNumber, int itemCount, DateTime dueDate, int hours) : base(hours) {
-			this.Description = description;
-			this.OrderNumber = orderNumber;
-			this.ItemNumber = itemNumber;
-			this.ItemCount = itemCount;
-			this.DueDate = dueDate;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets or sets the description.
-		/// </summary>
-		/// <value>The description.</value>
-		public string Description {
-			get {
-				return description;
-			}
-			set {
-				if (description != value) {
-					description = value;
-					this.NotifyPropertyChanged("Description");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the due date.
-		/// </summary>
-		/// <value>The due date.</value>
-		public DateTime DueDate {
-			get {
-				return dueDate;
-			}
-			set {
-				if (dueDate != value) {
-					dueDate = value;
-					this.NotifyPropertyChanged("DueDate");
-				}
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the item count.
-		/// </summary>
-		/// <value>The item count.</value>
-		public int ItemCount {
-			get {
-				return itemCount;
-			}
-			set {
-				if (itemCount != value) {
-					itemCount = value;
-					this.NotifyPropertyChanged("ItemCount");
-				}
-			}
-		}
+	/// <summary>
+	/// The due date.
+	/// </summary>
+	public DateTime DueDate {
+		get => _dueDate;
+		set => SetProperty(ref _dueDate, value);
+	}
 
-		/// <summary>
-		/// Gets or sets the item number.
-		/// </summary>
-		/// <value>The item number.</value>
-		public int ItemNumber {
-			get {
-				return itemNumber;
-			}
-			set {
-				if (itemNumber != value) {
-					itemNumber = value;
-					this.NotifyPropertyChanged("ItemNumber");
-				}
-			}
-		}
+	/// <summary>
+	/// The item count.
+	/// </summary>
+	public int ItemCount {
+		get => _itemCount;
+		set => SetProperty(ref _itemCount, value);
+	}
 
-		/// <summary>
-		/// Gets the name of the service.
-		/// </summary>
-		/// <value>The name of the service.</value>
-		public override string Name {
-			get {
-				return this.Description;
-			}
-		}
-		
-		/// <summary>
-		/// Gets or sets the order number.
-		/// </summary>
-		/// <value>The order number.</value>
-		public string OrderNumber {
-			get {
-				return orderNumber;
-			}
-			set {
-				if (orderNumber != value) {
-					orderNumber = value;
-					this.NotifyPropertyChanged("OrderNumber");
-				}
-			}
-		}
+	/// <summary>
+	/// The item number.
+	/// </summary>
+	public int ItemNumber {
+		get => _itemNumber;
+		set => SetProperty(ref _itemNumber, value);
+	}
 
+	/// <inheritdoc/>
+	public override string Name
+		=> Description;
+
+	/// <summary>
+	/// The order number.
+	/// </summary>
+	public string OrderNumber {
+		get => _orderNumber;
+		set => SetProperty(ref _orderNumber, value);
 	}
 
 }

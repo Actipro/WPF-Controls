@@ -7,7 +7,7 @@ order: 5
 
 [SyntaxEditor](xref:@ActiproUIRoot.Controls.SyntaxEditor.SyntaxEditor) supports the ability to easily switch between light and dark themes.
 
-All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) as well as the built-in language implementations are designed to support either light or dark themes.  However, any custom language implementations may require additional configuration to support a dark theme since most styles intended for use on a light background are not very appealing on a dark background.
+All of the default styles registered by [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) as well as the built-in language implementations are designed to support either light or dark themes.  However, any custom language implementations may require additional configuration to support a dark theme since most styles intended for use on a light background are not very appealing on a dark background.
 
 ## Understanding Dark Themes
 
@@ -90,7 +90,7 @@ The [Highlighting Style Registry](highlighting-style-registries.md) associated w
 AmbientHighlightingStyleRegistry.Instance.CurrentColorPalette = AmbientHighlightingStyleRegistry.Instance.DarkColorPalette;
 ```
 
-All of the default styles registered by [DisplayItemClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider) and [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) are designed with colors for either light or dark themes.  Additionally, the built-in language implementations and all of the [free languages](../../free-languages.md) are similarly designed to support both themes.
+All of the default styles registered by [BuiltInClassificationTypeProvider](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider) are designed with colors for either light or dark themes.  Additionally, the built-in language implementations and all of the [free languages](../../free-languages.md) are similarly designed to support both themes.
 
 Any custom styles to be used in a dark theme may need to define additional colors if the default colors are not appealing on a dark background.
 
@@ -219,7 +219,7 @@ AmbientHighlightingStyleRegistry.Instance.Register(classificationType, style);
 ### Setting Explicit Plain Text Colors
 
 @if (winforms) {
-By default, the special [Plain Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.DisplayItemClassificationTypeProvider.PlainText) classification type is registered with a style that does not explicitly define foreground and background colors for the style, so the editor's `ForeColor` and `BackColor` properties will be used for Plain Text instead.  It can be problematic to synchronize these colors when switching between light and dark themes, so explicitly setting the foreground and background colors for Plain Text will result in the `ForeColor` and `BackColor` properties being ignored.
+By default, the special [Plain Text](xref:@ActiproUIRoot.Controls.SyntaxEditor.BuiltInClassificationTypeProvider.PlainText) classification type is registered with a style that does not explicitly define foreground and background colors for the style, so the editor's `ForeColor` and `BackColor` properties will be used for Plain Text instead.  It can be problematic to synchronize these colors when switching between light and dark themes, so explicitly setting the foreground and background colors for Plain Text will result in the `ForeColor` and `BackColor` properties being ignored.
 }
 @if (wpf) {
 By default, the special Plain Text classification type is registered with a style that does not explicitly define foreground and background colors for the style, so the editor's `Foreground` and `Background` properties will be used for Plain Text instead.  If preferred, Plain Text can be configured to always use explicit colors for light and dark themes, thus ignoring the `Foreground` and `Backgroup` properties.
@@ -284,7 +284,6 @@ if (darkColorData != null)
 	HighlightingStyleColorPaletteSerializer.Deserialize(AmbientHighlightingStyleRegistry.Instance.DarkColorPalette, darkColorData);
 
 // Register common classification types
-new DisplayItemClassificationTypeProvider().RegisterAll();
 new BuiltInClassificationTypeProvider().RegisterAll();
 ```
 

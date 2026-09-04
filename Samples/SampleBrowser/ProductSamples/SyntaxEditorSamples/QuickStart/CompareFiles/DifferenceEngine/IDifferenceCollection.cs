@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
+namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles.DifferenceEngine;
 
-namespace ActiproSoftware.ProductSamples.SyntaxEditorSamples.QuickStart.CompareFiles.DifferenceEngine {
+/// <summary>
+/// A collection of <see cref="IDifference"/> instances.
+/// </summary>
+public interface IDifferenceCollection : ICollection<IDifference> {
 
 	/// <summary>
-	/// A collection of <see cref="IDifference"/> instances.
+	/// The difference at the specified zero-based index in the collection.
 	/// </summary>
-	public interface IDifferenceCollection : ICollection<IDifference> {
+	/// <param name="index">The zero-based index.</param>
+	IDifference this[int index] { get; }
 
-		/// <summary>
-		/// Gets the difference at the specified zero-based index in the collection.
-		/// </summary>
-		/// <param name="index">The zero-based index.</param>
-		/// <returns>The <see cref="IDifference"/> at the given <paramref name="index"/>.</returns>
-		IDifference this[int index] { get; }
-
-	}
 }

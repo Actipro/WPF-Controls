@@ -1,4 +1,4 @@
-﻿<sampleBrowser:ProductItemControl 
+<sampleBrowser:ProductItemControl
 	x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.NestedDockSites.MainControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -18,7 +18,7 @@
 				    The MDI contains two document windows, each with their own nested dock sites.
 				    Those two dock sites have their own docking windows.
 				    <LineBreak /><LineBreak />
-				    When you drag tool windows around from any of the dock sites, notice how they remain self-contained within their ancestor dock site.  
+				    When you drag tool windows around from any of the dock sites, notice how they remain self-contained within their ancestor dock site.
 				    Also try to float one of the tool windows from within a document window's dock site.
 				    Then switch to the other document window.
 				    Notice how the floating tool window automatically closes.

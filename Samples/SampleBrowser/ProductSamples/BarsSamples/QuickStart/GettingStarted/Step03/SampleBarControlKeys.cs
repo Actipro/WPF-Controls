@@ -15,20 +15,16 @@ CHANGES SINCE LAST STEP:
 
 */
 
-using System;
+namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step03;
 
-namespace ActiproSoftware.ProductSamples.BarsSamples.QuickStart.GettingStarted.Step03 {
+/// <summary>
+/// Defines the keys used to reference controls used by Ribbon and related menus.
+/// </summary>
+public class SampleBarControlKeys {
 
 	/// <summary>
-	/// Defines the keys used to reference controls used by Ribbon and related menus.
+	/// The key for the Help control.
 	/// </summary>
-	public class SampleBarControlKeys {
-
-		/// <summary>
-		/// The key for the Help control.
-		/// </summary>
-		public const string Help = nameof(Help);
-
-	}
+	public const string Help = nameof(Help);
 
 }

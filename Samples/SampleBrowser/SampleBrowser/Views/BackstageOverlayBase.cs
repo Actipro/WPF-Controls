@@ -1,79 +1,58 @@
 ﻿using ActiproSoftware.Windows.Controls.Views;
-using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace ActiproSoftware.SampleBrowser {
+namespace ActiproSoftware.SampleBrowser;
+
+/// <summary>
+/// Provides a base class for a Backstage overlay.
+/// </summary>
+public partial class BackstageOverlayBase : UserControl {
+
+	// --------------------------------------------------------------------------------------------------
+	// OBJECT
+	// --------------------------------------------------------------------------------------------------
 
 	/// <summary>
-	/// Provides a base class for a Backstage overlay.
+	/// Initializes an instance of the class.
 	/// </summary>
-	public partial class BackstageOverlayBase : UserControl {
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// OBJECT
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Initializes an instance of the <c>BackstageOverlayBase</c> class.
-		/// </summary>
-		public BackstageOverlayBase() {
-			this.DataContextChanged += this.OnDataContextChanged;
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// NON-PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Occurs when the data context changes.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> containing data related to this event.</param>
-		private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-			var oldViewModel = e.OldValue as ApplicationViewModel;
-			var newViewModel = e.NewValue as ApplicationViewModel;
-
-			if (oldViewModel != null)
-				oldViewModel.PropertyChanged -= this.OnViewModelPropertyChanged;
-
-			if (newViewModel != null)
-				newViewModel.PropertyChanged += this.OnViewModelPropertyChanged;
-		}
-
-		/// <summary>
-		/// Occurs when a property changes.
-		/// </summary>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="e">The <see cref="PropertyChangedEventArgs"/> containing data related to this event.</param>
-		private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e) {
-			switch (e.PropertyName) {
-				case nameof(ApplicationViewModel.IsBackstageOpen):
-					if (this.ViewModel.IsBackstageOpen) {
-						var scrollViewer = this.ScrollViewer;
-						scrollViewer?.ScrollToTop(TimeSpan.Zero);
-					}
-					break;
-			}
-		}
-		
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC PROCEDURES
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		/// <summary>
-		/// Gets the primary scroll viewer.
-		/// </summary>
-		/// <value>The primary scroll viewer.</value>
-		public virtual InertiaScrollViewer ScrollViewer => null;
-
-		/// <summary>
-		/// Gets the view-model for this view.
-		/// </summary>
-		/// <value>The view-model for this view.</value>
-		public ApplicationViewModel ViewModel => (ApplicationViewModel)this.DataContext;
-		
+	public BackstageOverlayBase() {
+		DataContextChanged += OnDataContextChanged;
 	}
+
+	// --------------------------------------------------------------------------------------------------
+	// NON-PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	private void OnDataContextChanged(object? sender, DependencyPropertyChangedEventArgs e) {
+		if (e.OldValue is ApplicationViewModel oldViewModel)
+			oldViewModel.PropertyChanged -= OnViewModelPropertyChanged;
+
+		if (e.NewValue is ApplicationViewModel newViewModel)
+			newViewModel.PropertyChanged += OnViewModelPropertyChanged;
+	}
+
+	private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e) {
+		switch (e.PropertyName) {
+			case nameof(ApplicationViewModel.IsBackstageOpen):
+				if (ViewModel.IsBackstageOpen)
+					ScrollViewer?.ScrollToTop(TimeSpan.Zero);
+				break;
+		}
+	}
+
+	// --------------------------------------------------------------------------------------------------
+	// PUBLIC PROCEDURES
+	// --------------------------------------------------------------------------------------------------
+
+	/// <summary>
+	/// The primary scroll viewer.
+	/// </summary>
+	public virtual InertiaScrollViewer? ScrollViewer
+		=> null;
+
+	/// <summary>
+	/// The view-model for this view.
+	/// </summary>
+	public ApplicationViewModel ViewModel
+		=> (ApplicationViewModel)DataContext;
 
 }
