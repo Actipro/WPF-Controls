@@ -10,6 +10,18 @@
 			<Control x:Name="focusCaptureControl" />
 
 
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">11/3/2026 - Version 26.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated IAstNode.ToTreeString implementations to consistently include node offset range information." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Updated the license dialog logic to better handle licensed customers evaluating an unlicensed product." />
+			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
+
+
 			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">9/3/2026 - Version 26.1.0</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Bar Codes</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -150,6 +162,7 @@
 				<sampleBrowser:BulletContentControl Content="Removed legacy XAML designer assemblies that are no longer supported by Visual Studio 2022 or higher." />
 				<sampleBrowser:BulletContentControl Content="To ensure a consistent API, all classes that implement INotifyPropertyChanged that do not derive from ObservableObjectBase have deprecated the NotifyPropertyChanged method in favor of new OnPropertyChanged and SetProperty methods that match ObservableObjectBase." />
 			</StackPanel>
+			<Rectangle Style="{StaticResource DocumentSectionHorizontalRuleStyle}" />
 
 
 			<TextBlock Style="{StaticResource DocumentParagraphTextBlockStyle}"><Italic>

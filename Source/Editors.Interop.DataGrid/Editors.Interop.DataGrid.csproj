@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="26.1.0" />
+	  <PackageReference Include="ActiproSoftware.Controls.WPF.Editors" Version="26.1.1-beta.1" />
 	</ItemGroup>
 
 </Project>
