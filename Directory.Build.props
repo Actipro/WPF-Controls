@@ -7,7 +7,7 @@ PUBLIC BUILD PROPERTIES
 <Project>
 	<PropertyGroup>
 		<LangVersion>latest</LangVersion>
-		<PreReleaseTagWithDash>-beta.2</PreReleaseTagWithDash>
+		<PreReleaseTagWithDash>-beta.3</PreReleaseTagWithDash>
 		<Version>26.1.1$(PreReleaseTagWithDash)</Version>
 		<Company>Actipro Software LLC</Company>
 		<Authors>Actipro Software LLC</Authors>

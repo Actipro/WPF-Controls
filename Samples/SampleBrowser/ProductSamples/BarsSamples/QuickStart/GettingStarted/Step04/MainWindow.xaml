@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 RIBBON GETTING STARTED SERIES - STEP 4
 
@@ -6,13 +6,13 @@ STEP SUMMARY:
 
 	This step finally adds Tabs to the Ribbon. The RibbonViewModel definition is updated with a
 	collection of view models for each Tab.
-	
+
 CHANGES SINCE LAST STEP:
 
 	This XAML is unchanged by this step.
-	
+
 EXPECTED OPERATION:
-	
+
 	This step finally starts to populate the Ribbon. When this sample window is opened, the Ribbon
 	should display with a "Help" tab pre-selected. The tab should contain a "Resources" group
 	with a single "Help" button. Clicking the button should display the same message that has
@@ -47,10 +47,10 @@ EXPECTED OPERATION:
 					MinWidth="100" MinHeight="100"
 					HorizontalAlignment="Center" VerticalAlignment="Center"
 					/>
-			
+
 		</DockPanel>
 
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

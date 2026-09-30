@@ -1,25 +1,25 @@
-﻿<!--
+<!--
 
 RIBBON GETTING STARTED SERIES - STEP 8
 
 STEP SUMMARY:
 
 	Configure the Appliation Button to show a Backstage with additional commands.
-	
+
 CHANGES SINCE LAST STEP:
-	
+
 	This XAML is fundamentally unchanged by this step. Prior sample comments were removed/condensed.
-	
+
 	A note was added about the importance of using RibbonContainerPanel when working with Backstage.
-	
+
 	See the SampleWindowViewModel class for details on configuring the Backstage.
-	
+
 EXPECTED OPERATION:
-	
+
 	When this sample window is opened, the "File" Application Button will be displayed next to the Ribbon Tabs.
 	Clicking the Application Button will reveal a RibbonBackstage that covers the entire application window. The
 	"Close" and "Print" buttons are displayed aligned to the top. The "Help" button is aligned to the bottom.
-	
+
 	Clicking any of these buttons will display a message and close the Backstage.
 
 -->
@@ -60,14 +60,14 @@ EXPECTED OPERATION:
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<samplesCommon:RichTextBoxExtended x:Name="editor">
-							
+
 							<!-- Configure Ribbon-based context menu -->
 							<samplesCommon:RichTextBoxExtended.ContextMenu>
 								<bars:BarContextMenu ItemsSource="{Binding EditorContextMenuItems}"
 													 ItemContainerTemplateSelector="{Binding Ribbon.ItemContainerTemplateSelector}">
 								</bars:BarContextMenu>
 							</samplesCommon:RichTextBoxExtended.ContextMenu>
-							
+
 						</samplesCommon:RichTextBoxExtended>
 					</Border>
 				</shared:ShadowChrome>
@@ -77,5 +77,5 @@ EXPECTED OPERATION:
 
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

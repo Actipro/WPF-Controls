@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows.MainView"
+<UserControl x:Class="ActiproSoftware.ProductSamples.DockingSamples.QuickStart.MvvmToolWindows.MainView"
 		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:common="clr-namespace:ActiproSoftware.ProductSamples.DockingSamples.Common"
@@ -8,7 +8,7 @@
 		>
 
     <UserControl.Resources>
-		
+
 		<common:ToolItemDockSideConverter x:Key="ToolItemDockSideConverter" />
 		<common:ToolItemStateConverter x:Key="ToolItemStateConverter" />
 
@@ -46,7 +46,7 @@
                 </DataTemplate>
             </sample:ToolItemTemplateSelector.ToolItem3Template>
         </sample:ToolItemTemplateSelector>
-		
+
     </UserControl.Resources>
 
     <!-- DockSite -->

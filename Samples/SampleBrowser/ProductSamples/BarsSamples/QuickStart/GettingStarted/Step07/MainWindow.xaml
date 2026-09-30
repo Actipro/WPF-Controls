@@ -1,19 +1,19 @@
-﻿<!--
+<!--
 
 RIBBON GETTING STARTED SERIES - STEP 7
 
 STEP SUMMARY:
 
 	Enable and configure the Quick Access Toolbar.
-	
+
 CHANGES SINCE LAST STEP:
-	
+
 	This XAML is fundamentally unchanged by this step. Prior sample comments were removed/condensed.
-	
+
 	See the SampleWindowViewModel class for details on configuring the Quick Access Toolbar.
-	
+
 EXPECTED OPERATION:
-	
+
 	When this sample window is opened, The Undo/Redo and Cut/Copy/Paste commands will be displayed in
 	the Quick Access Toolbar (QAT) shown below the Ribbon control. Clicking the drop-down arrow next to
 	the QAT will display the Cut/Copy/Paste commands in the Customize menu. Selecting any of the
@@ -51,14 +51,14 @@ EXPECTED OPERATION:
 				<shared:ShadowChrome Margin="32,20" RenderMode="ShaderEffectsRequired" Elevation="6" ShadowOpacity="0.1">
 					<Border MaxWidth="690" BorderThickness="1" BorderBrush="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderLowBrushKey}}">
 						<samplesCommon:RichTextBoxExtended x:Name="editor">
-							
+
 							<!-- Configure Ribbon-based context menu -->
 							<samplesCommon:RichTextBoxExtended.ContextMenu>
 								<bars:BarContextMenu ItemsSource="{Binding EditorContextMenuItems}"
 													 ItemContainerTemplateSelector="{Binding Ribbon.ItemContainerTemplateSelector}">
 								</bars:BarContextMenu>
 							</samplesCommon:RichTextBoxExtended.ContextMenu>
-							
+
 						</samplesCommon:RichTextBoxExtended>
 					</Border>
 				</shared:ShadowChrome>
@@ -68,5 +68,5 @@ EXPECTED OPERATION:
 
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.CardContentControl"
+<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.CardContentControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
@@ -6,23 +6,23 @@
 	<UserControl.Resources>
 		<ResourceDictionary Source="CommonResources.xaml" />
 	</UserControl.Resources>
-	
+
 	<Grid>
 		<Border Margin="-10,-10,0,-10" Width="4" CornerRadius="3,0,0,3" HorizontalAlignment="Left">
 			<Border.Background>
 				<SolidColorBrush Color="{Binding Color}" />
 			</Border.Background>
 		</Border>
-						
+
 		<shared:PixelSnapper>
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				
+
 				<TextBlock Margin="4,0,0,0" Text="{Binding Name}" TextWrapping="Wrap" />
-								
+
 				<shared:PopupButton Grid.Column="1" Margin="0,0,-8,0" DisplayMode="PopupOnly" Background="#ffffff" Style="{StaticResource TransparentButtonStyle}">
 					<Path Data="M 0,0 L 10,0 L 5,5 Z" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}, Path=(TextElement.Foreground)}" VerticalAlignment="Center" />
 					<shared:PopupButton.PopupMenu>
