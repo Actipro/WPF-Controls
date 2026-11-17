@@ -10,7 +10,7 @@
 			<Control x:Name="focusCaptureControl" />
 
 			
-			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">10/29/2026 - Version 26.1.1</TextBlock>
+			<TextBlock Style="{StaticResource DocumentHeadingTextBlockStyle}">11/17/2026 - Version 26.1.1</TextBlock>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Editors</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Updated country and currency data used in CountryComboBox and CurrencyComboBox to the latest ISO information." />
@@ -18,6 +18,10 @@
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Grids</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous release where the TreeListBoxItemAdapter could be passed an internal placeholder type for some items." />
+			</StackPanel>
+			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">Shell</TextBlock>
+			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where ShellObjectItemAdapter was including folder links in children results, even when CanIncludeLinks was set to false." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">SyntaxEditor</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
@@ -30,12 +34,14 @@
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">.NET Languages Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous release where the VB lexer didn't tokenize dot characters followed by CRLF properly." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where C# IntelliPrompt could fail to resolve types referenced through global using directives." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeading2TextBlockStyle}">Python Language Add-on</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
 				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous release where external modules no longer resolved properly, breaking some IntelliPrompt functionality." />
 				<sampleBrowser:BulletContentControl Content="Fixed an issue introduced in the previous release where base classes and return types from other modules in the same package might not resolve properly." />
 				<sampleBrowser:BulletContentControl Content="Improved how the Python resolver handles unresolved types in variable assignments." />
+				<sampleBrowser:BulletContentControl Content="Fixed an issue where reflection cache files could be unnecessarily regenerated between application runs." />
 			</StackPanel>
 			<TextBlock Style="{StaticResource DocumentSubHeadingTextBlockStyle}">All</TextBlock>
 			<StackPanel Style="{StaticResource DocumentBulletPanelStyle}">
