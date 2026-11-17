@@ -1,9 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:bars="http://schemas.actiprosoftware.com/winfx/xaml/bars"
 	xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
 	xmlns:local="clr-namespace:ActiproSoftware.ProductSamples.BarsSamples.QuickStart.ComboBoxAndEditors">
-	
+
 	<!-- Define resources used by both the MVVM- and XAML-based samples -->
 
 	<DataTemplate x:Key="{x:Static local:LocalResourceKeys.LargeMenuComboBoxGalleryItemTemplate}"  DataType="local:SimpleComboBoxGalleryItem">

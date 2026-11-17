@@ -54,7 +54,7 @@ There are two ways to apply licensing once you have purchased licenses for Actip
 > [!NOTE]
 > Each `major.minor` version has its own distinct license information that can be obtained for licensed versions on [your Actipro account](https://www.actiprosoftware.com/support/account)'s page for your organization.
 
-1. **RegisterLicense Call** - Make a method call at app startup before any UI is referenced to register your license information.  This option is quick and easy, and works best for scenarios where Actipro [NuGet packages](nuget.md) or build servers are used.  See the "Licensing Via a RegisterLicense Call" section below for detailed information on this option.
+1. **RegisterLicense Call** - Make a method call at app startup before any UI is referenced to register your license information.  This option is quick and easy, and works best for scenarios where Actipro [NuGet packages](nuget.md) or build servers are used.  It also is required for modern .NET applications.  See the "Licensing Via a RegisterLicense Call" section below for detailed information on this option.
 
 1. **Licenses.licx File** - Provide licensing via a *licenses.licx* file.  This option is only available for classic .NET Framework applications that have direct assembly references and is what Actipro exclusively used prior to v21.1.  See the "Licensing Via a Licenses.licx File" section below for detailed information on this option.
 
@@ -62,6 +62,7 @@ There are two ways to apply licensing once you have purchased licenses for Actip
 
 This licensing option is the easiest to apply and has the most predictable results, so it is the recommended for most users.
 
+- This method is required in modern .NET applications.
 - This method is required when using Actipro [NuGet packages](nuget.md).
 - This method does not rely on a build machine configuration, so it is ideal when build servers are used for applications with direct Actipro assembly references.
 
@@ -191,7 +192,7 @@ The contents of a *licenses.licx* file are pretty simple.  It needs a single lin
 This single line (update the version to match the one you use) should be added to the *licenses.licx* file in any project that uses Actipro @@PlatformName control or SyntaxEditor add-on products:
 
 ```
-ActiproSoftware.Licensing.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=26.1.0.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
+ActiproSoftware.Licensing.ActiproLicenseToken, ActiproSoftware.Shared.Wpf, Version=26.1.1.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9
 ```
 
 > [!IMPORTANT]

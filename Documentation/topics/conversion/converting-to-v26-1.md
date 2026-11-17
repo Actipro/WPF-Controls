@@ -58,6 +58,16 @@ In the past when looking for stored license information in an assembly context, 
 > [!IMPORTANT]
 > If you use `licenses.licx` licensing, check the deployment of your app on a clean end user machine to verify licensing is working as intended after making necessary changes.
 
+### Only Classic .NET Framework Scans the Registry
+
+The Actipro installer for the controls asks for license information and can place it in the Windows registry.  This is done for classic .NET Framework applications that use `licenses.licx` file licensing, as the license compiler can pick up the license information from the registry and embed it into the compiled application executable.
+
+In past versions, even modern .NET applications would check the registry for license information.  The problem there is that modern .NET applications cannot use `licenses.licx` licensing (they must use the `RegisterLicense` way of licensing) and customers could potentially deploy an application, thinking it was licensed since no license dialogs would show in development, but in fact no license information was in the compiled application.
+
+To prevent against that scenario, modern .NET applications no longer check the registry for license information.  This allows a license dialog to show on a development machine and give early warning that a `RegisterLicense` call needs to be made before deployment to end users.
+
+Classic .NET Framework applications will continue to check the registry since they do support `licenses.licx` file licensing.
+
 ## Core Library
 
 A new Core library has been added in this version to contain fundamental classes used throughout our product line, and all the Actipro assemblies reference it.  A number of core types used throughout our UI and non-UI assemblies have been migrated into this new Core library.

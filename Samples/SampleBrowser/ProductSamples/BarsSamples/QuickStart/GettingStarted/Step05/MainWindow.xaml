@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 RIBBON GETTING STARTED SERIES - STEP 5
 
@@ -9,9 +9,9 @@ STEP SUMMARY:
 	smaller concepts to populate more tabs and controls in the Ribbon. The stand-alone
 	Help button is replaced by an editor that will better showcase the new commands that
 	are added in this step and future steps.
-	
+
 CHANGES SINCE LAST STEP:
-	
+
 	The stand-alone WPF "Help" button was removed and replaced with an instance of a
 	RichTextBox editor control that has been extended for use by this sample application.
 	The editor control is decorated with UI controls that improve the appearance of the
@@ -19,19 +19,19 @@ CHANGES SINCE LAST STEP:
 	FocusManager is configured to automatically focus the editor element when the window
 	is displayed. Including this control also added the 'shared' and 'samplesCommon'
 	namespace entries.
-	
+
 	See the "SampleWindowViewModel.cs" file for details on a new "Home" tab with "Undo"
 	and "Clipboard" control groups. The following guidelines apply to adding support for
 	new Ribbon configurations:
-	
+
 		For every new Ribbon Tab...
 			- Add to the Tabs collection in SampleWindowViewModel.
-	
+
 		For every new Ribbon Group...
 			- Add key to SampleBarControlKeys.
 			- Optionally configure collapsed image using SampleBarManager.RegisterImages.
 			- Add to the appropriate Ribbon Tab view model in SampleRibbonViewModel.
-	
+
 		For every new Ribbon Control...
 			- Add key to SampleBarControlKeys.
 			- Configure large and/or small images using SampleBarManager.RegisterImages.
@@ -39,15 +39,15 @@ CHANGES SINCE LAST STEP:
 			- Add to the appropriate Ribbon Group in SampleRibbonViewModel.
 
 	Prior sample comments were removed/condensed.
-	
+
 EXPECTED OPERATION:
-	
+
 	When this sample window is opened, the Ribbon should display "Home" and "Help" tabs with
 	the "Home" tab selected. On the "Home" tab will be control groups for "Undo" and "Clipboard".
 	Since the "Undo" and "Clipboard" groups contain commands based on RoutedUICommand, these
 	commands will automatically work with the editor. Undo, Redo, Cut, Copy, and Paste controls
 	should exhibit typical behavor for an edit control.
-	
+
 	Since the "Paste Special" command is not implemented, attempting to select this command
 	will display a "Not Implemented" message.
 
@@ -97,5 +97,5 @@ EXPECTED OPERATION:
 
 
 	</bars:RibbonContainerPanel>
-	
+
 </bars:RibbonWindow>

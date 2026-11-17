@@ -9,7 +9,7 @@
 		<TargetFramework Label="Visual Studio 2022 Target" Condition="'$(VisualStudioVersion)' == '17.0'">net8.0-windows</TargetFramework>
 		<TargetFramework Label="Default Target" Condition="'$(TargetFramework)' == ''">net10.0-windows</TargetFramework>
 
-		<Version>26.1.0$(PreReleaseTagWithDash)</Version>
+		<Version>26.1.1$(PreReleaseTagWithDash)</Version>
 
 		<DefineConstants>CODE_ANALYSIS;WPF;DESKTOP</DefineConstants>
 

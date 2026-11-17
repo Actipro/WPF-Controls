@@ -11,7 +11,7 @@
 		<Authors>Actipro Software LLC</Authors>
 		<Copyright>Copyright (c) 2007-2026 Actipro Software LLC</Copyright>
 
-		<Version>26.1.0$(PreReleaseTagWithDash)</Version>
+		<Version>26.1.1$(PreReleaseTagWithDash)</Version>
 
 		<ApplicationIcon>Actipro.ico</ApplicationIcon>
 

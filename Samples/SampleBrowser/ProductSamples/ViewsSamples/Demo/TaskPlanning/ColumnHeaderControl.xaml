@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.ColumnHeaderControl"
+<UserControl x:Class="ActiproSoftware.ProductSamples.ViewsSamples.Demo.TaskPlanning.ColumnHeaderControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
@@ -6,7 +6,7 @@
 	<UserControl.Resources>
 		<ResourceDictionary Source="CommonResources.xaml" />
 	</UserControl.Resources>
-	
+
 	<Border Background="#ffffff" CornerRadius="3,3,0,0" Opacity="0.75">
 		<shared:PixelSnapper>
 			<Grid>
